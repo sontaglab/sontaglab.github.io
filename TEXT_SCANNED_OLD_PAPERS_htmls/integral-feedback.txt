@@ -1,0 +1,116 @@
+      A QUICK PRIMER ON ADAPTATION AND INTEGRAL FEEDBACK
+
+Suppose that a variable x(t) describes a quantity of interest, such as the
+concentration of some given chemical, or the speed at which an E-coli
+bacterium is moving.  (The two examples are not unrelated: the motor rate
+is given by the concentration of a certain protein that controls it.)
+
+There is also another variable, d(t); for example the value d(t) of d at time
+t quantifies the amount of chemoattractant being sensed by an E-coli bacterium.
+
+The effect of d on x is described by a differential equation like this:
+
+  dx/dt = - x + d
+
+  (omitting the times 't' from x(t), etc, from now on).
+
+One biochemical interpretation is: D is a catalyst for the formation of X,
+which undergoes degradation (the term -x).
+
+One mechanical interpretation is: d acts as a force on some object, whose
+velocity is x: dx/dt is acceleration, and we have mass x acceleration = force
+(with mass=1), where "-x" corresponds to some damping or friction.
+
+Often one wants the following property to hold true:
+
+   for EVERY POSSIBLE CONSTANT d, x should converge to some given "default" or
+   constitutive value; let us say, from now on, that this value is zero.  
+
+(The exact same theory can be done for any other fixed value, but zero is the
+easiest one to write equations for.)
+
+This property is often called "adaptation" in biology (and called "disturbance
+rejection" in control theory, which is a field concerned with the study or
+precisely these types of things.)
+
+For example, in E-coli chemotaxis, the bacterium should stop moving (speed
+becomes 0, at least for large t) if d (the sensed amount of nutrient) is
+constant.  It can only keep moving if it "smelled" a change of food (the
+signal d(t) was NOT constant).
+
+Now, if we solve the differential equation (variation of parameters), we get,
+assuming that d(t) is constantly equal to 'd' (this formula is not right if d
+is not constant - it is a little more complicated in that case; but we only
+care, for this problem, about what happens for constant d anyway):
+
+  x(t) = d + (x(0) - d) exp(-t)
+
+so we see that x(t) -> d as t -> +oo, instead of x(t) -> 0 (so, no adaptation:
+the velocity x(t) is higher if the constant level of food d is higher).
+
+How to fix???
+
+Easy: INTEGRATE the "error" x, that is, add an equation that integrates x:
+
+  dy/dt = x                   (1)
+
+(for instance, a new protein is used, whose production is catalyzed by x;
+or add methyl groups to a receptor, and let y count how many have been added),
+
+and at the same time subtract ("feed-back" to x) the negative of this integral:
+
+  dx/dt = - x - y + d         (2)
+
+The system of two differential equations (1-2) now has the following property:
+for every possible constant d, and for every initial conditions x(0) and y(0),
+the solution approaches
+
+   x(t) -> 0  (what we wanted!)
+
+and y(t) -> d (which we didn't ask for, but don't care anyway, since we only
+asked about "x" adapting).
+
+To prove that this is true, one can either write out the solution or, much
+easier, argue like this: under a change of variables z = y-d, the equations
+become dz/dt = x and dx/dt = -x-z, and the matrix
+
+    0  1
+   -1 -1
+
+has eigenvalues with negative real parts (solve p^2 + p + 1 = 0), so all
+solutions of the transformed system have x->0 and z->0, which is the same
+as saying that x>0 and y->d, as claimed.
+
+(Easier way to think of it: the steady states of (1-2) are obtained by setting
+dx/dt=0 and dy/dt=0.  The first equation already tells us that the only
+possible steady state has x=0.  This is not, however, a complete proof,
+because it merely establishes that the only steady state is the wanted one,
+but it does not prove that the trajectories actually APPROACH that steady
+state -- instead of, say, oscillating around it, or diverging to infinity.
+The stability proof is still needed.  But the steady state way of thinking of
+the problem allows one to understand it more intuitively.)
+
+REMARK 1: This system is "robust" in the following sense.  Suppose that the
+equation dx/dt = - x - y + d is implemented with some error, let us say that
+the kinetic constants are different and we have 
+
+   dx/dt = - a x - b y + c d 
+
+where a,b,c are any positive numbers.  Also, the integrator could be, say,
+dy/dt = kx, instead of dy/dt = x.
+Surprise (!!!): it is still true that x(t) will converge to 0 (same proof as
+above).  So the system has the same behavior, in the sense that x "adapts",
+even though the constants a,b,c are not all equal to one.  (Of course, "y"
+converges to something else, namely cd/b instead of d, so not everything is
+insensitive to parameters.)
+
+REMARK 2: the system (1-2) contains the "integrator" dy/dt = x.  This is an
+example of the "internal model principle", which says that, in order to
+achieve adaptation, the system MUST have an "internal model" of the signals
+(d) that it is trying to adapt to.  Constant "d" means that d satisfies
+d(d)/dt = 0, i.e. d is like an output of an integrator.  So we need an
+integrator.  (If we had to adapt to a periodic signal, we need to include an
+oscillator, and so on, see [1].)
+
+[1] Sontag, E.D., Adaptation and regulation with signal detection implies
+internal model, Systems and Control Letters 50(2003): 119-126.

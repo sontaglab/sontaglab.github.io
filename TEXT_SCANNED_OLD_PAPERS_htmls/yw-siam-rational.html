@@ -1,0 +1,1106 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yw-siam-rational.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yw-siam-rational.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+ALGEBRAIC DIFFERENTIAL EQUATIONS AND RATIONAL CONTROL
+
+SYSTEMS1
+
+Yuan Wang Mathematics Department, Florida Atlantic University, Boca Raton, Fl 33431
+
+(407)367-3317, E-mail: y wang@fauvax.bitnet
+
+Eduardo D. Sontag Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+(908)932-3072, E-mail: sontag@hilbert.rutgers.edu
+
+ABSTRACT An equivalence is shown between realizability of input/output operators by rational control systems and high order algebraic differential equations for input/output pairs. This generalizes, to nonlinear systems, the equivalence between autoregressive representations and finite dimensional linear realizability.
+
+1. Introduction. In this paper we prove an equivalence between realizability of input/output operators by rational control systems and the existence of high order algebraic differential equations relating derivatives of inputs and outputs.
+
+In many experimental situations involving systems, it is often the case that one can model system behavior through differential equations, which are referred to as input/output ("i/o") equations in this work, of the type
+
+E iu(t); u0(t); u00(t); : : : ; u(r)(t); y(t); y0(t); y00(t); : : : ; y(r)(t)j = 0(1) where u(\Delta ) and y(\Delta ) are the input and output signals respectively, and E is a polynomial. An i/o operator F : u(\Delta ) 7! y(\Delta ) is said to satisfy the equation (1) if the equation holds for each sufficiently differentiable input u and the corresponding output y = F [u] of F . (Precise definitions will be given later.)
+
+The functional relation E is usually estimated, for instance through least squares techniques, if a parametric general form (e.g. polynomials of fixed degree) is chosen. For example, in linear systems theory one often deals with degree-one polynomials E:
+
+y(k)(t) = a1y(t) + : : : + aky(k\Gamma 1)(t) + b1u(t) + : : : + bku(k\Gamma 1)(t)(2) (or their frequency-domain equivalent, transfer functions; the difference equation analogue is sometimes called an "autoregressive moving average" representation). In the linear case, such representations form the basis of much of modern systems analysis and identification theory.
+
+State-space formalisms are more popular than i/o equations in nonlinear control, however. There, one assumes that inputs and outputs are related by a system of first order differential equations
+
+x0(t) = f (x(t)) + G(x(t))u(t) ; y(t) = h(x(t))(3) where the state x(t) is now a vector, and no derivatives of controls are allowed. These descriptions are central to the modern nonlinear control theory, as they permit the application of techniques from differential equations, dynamical systems, and optimization theory. Thus a basic question is that of deciding when a given i/o operator admits a representation of this form. This is the area of realization theory, which is closely related, especially when stochastic effects are included, to systems identification. Roughly speaking, if such a state space description does exist for a given i/o operator, then we say that the i/o operator is realizable. More precisely, we shall be interested in realizations in which the entries of f and G, as well as the function h, can be expressed in terms of rational functions of the state, but due to the technical problems that arise in the definition because of possible poles of these rational functions, we will give the precise definition in terms of "singular polynomial systems" and we will also study realizability by (nonsingular) polynomial systems.
+
+One knows that an equation such as (2) can be reduced, by adding state variables for enough derivatives of the output y, to a system (3) of first order equations, with f (x) linear and G(x) constant,
+
+1 This research was supported in part by US Air Force Grant AFOSR-88-0235. Keywords: Rational systems, input/output equations, identification. AMS(MOS) subject classification: Primary: 93B15, Secondary: 93A25,93B25,93B27,93B29 Running head: Algebraic equations and rational systems
+
+1
+
+i.e., a linear finite-dimensional system. In frequency-domain terms, rationality of the transfer function is equivalent to realizability. (For references on the linear theory, see eg [14], [23] and [32].) One of the methods for obtaining a linear realization from a given linear i/o equation relies on Lord Kelvin's principle for solving differential equations by means of mechanical analog computers (cf. [14]). The principle, which was suggested a hundred years ago, provided a way for simulating a system without using differentiators.
+
+For nonlinear systems this reduction presents a far harder problem, one that is to a great extent unsolved. The problem is basically that of in some sense replacing a nontrivial equation (1) by a system of first-order equations (3) which does not involve derivatives of the inputs. A number of results were already available about the relation between (1) and (3); see for instance [4], [12], or [26]. It is easy to show, by elementary arguments involving finite transcendence degree, that any i/o operator realizable by a rational state space system satisfies some i/o equation of type (1), with E a polynomial. In [6] it was remarked --as a consequence of theorems from differential algebra,-- that in order to characterize the i/o behavior of a state space system uniquely, one needs to add inequality constraints to (1). In [18] and [27] it was shown that, under some constant rank conditions, the outputs of an observable smooth state space system can be described by an equation of type (1) for which E is a smooth function, and local i/o equations were shown to exist, for generic initial states of (3), in [3].
+
+1.1. Our Approach. The discrete-time work reported in [20] and [21] provided one approach to relating these two types of representations --with difference equations appearing instead,-- based on the idea of dealing with existence of realizations separately from the question of "well-posedness" of the equation (in the sense to be described). This work has been developed further and it was for example used as a basis of identification algorithms by other authors; see for instance [15] and [5]. (The former reference shows also how to include stochastic effects.) These results have recently been extended to continuous-time for the very special case of bilinear systems: A theorem showed that realizability by such systems is equivalent to the existence of an E of a special form, namely affine on y (see [22]). However, the techniques in [22] were linear-algebraic, and hence not powerful enough to handle the extension of [21] to the general nonlinear case. The present work completes the development of the extension of the main realizability result in [21] to continuous-time.
+
+The separation into "well-posedness" and realizability can be illustrated with the simple example
+
+u(t)y0(t) = 1 : This can never be satisfied by all the input/output pairs corresponding to a state space system, as remarked in [22]. Moreover, it cannot even be satisfied by any "input/output map" of the type that we shall consider, realizable or not. Indeed, our main result gives that if the equation would have been well-posed, in the sense that it is an equation satisfied by all input/output pairs corresponding to what we will call a Fliess operator --i.e. one described by a convergent generating series-- and if E is a polynomial, then it is always realizable by a singular polynomial system, or a rational system with possible poles. (Singular systems appear naturally in control theory, for instance in robotics; see [17] for many examples.) In the special case when equation (1) is recursive --i.e. the coefficient of the highest derivative of y in (1) does not depend on the lower derivatives of y,-- our construction will provide a polynomial realization (no poles).
+
+Our formalism is based on the generating series suggested by Fliess in the late 70's, who was in turn motivated by Chen's work on power series solutions of differential equations. The i/o operators induced by convergent generating series form a very general class of causal operators, capable of representing a variety of nonlinear systems. We shall call them "Fliess operators". For instance, any i/o operator induced by an initialized analytic state space system affine in controls can be described in this manner. In the paper [29] we develop the basic analytic properties of Fliess operators, and results from there will be freely used here.
+
+The proofs are based on a careful analysis of the concept of observation space, introduced in [16] (and [21] for discrete-time), developed further in [11], and later rediscovered by many authors. One of the central technical results relates two different definitions of this space, one in terms of smooth controls and another in terms of piecewise constant ones: these two definitions are seen to coincide. One of them immediately relates to i/o equations, while the other is related to realizability through the
+
+2
+
+notion of observation algebras and observation fields. The latter are the analogues of the corresponding discrete-time concepts studied in [21]. For differential equations they were first employed in [1] and [2]; the results there related finiteness properties of the various algebraic objects to realizability, in strict analogy to the relations that hold in discrete time ([21]).
+
+In addition to single operators, it is also natural to study families of i/o maps, defined by a family of convergent generating series. To study a single i/o map is natural as a formal description of a initialized black box , but in general, a system may induce more than one i/o map. For example, a system described by an ordinary differential equation on a manifold may induce infinitely many i/o maps, each of them corresponding to some initial state. One should study all the i/o maps induced by the system simultaneously rather than individually, unless a fixed initial state is of particular interest. This leads to the concept of families of i/o maps. One question arises naturally: when can a family of i/o maps be realized by one state space system? i.e., when can all the members of the family be realized by some singular polynomial system in such a way that each member of the family is associated to some initial state of the system? We will prove that a family of i/o maps is realizable in this sense if and only if all the members of the family satisfy a common i/o equation.
+
+The paper is organized as follows. After introducing an algebraic structure on series, the shuffle product, we consider observation spaces. Then we study i/o equations satisfied by i/o operators, showing that the existence of an i/o equation implies that the observation field is a finitely generated field extension of IR. In the next section, realizability by polynomial systems and singular polynomial systems is considered; the result there is that realizability by singular polynomial systems is guaranteed by the condition that the observation field is a finitely generated extension of IR. The approach pursued there is to use the generators of the field as state variables and use the equalities which hold among the generators to construct the needed vector fields. In the main section, based on the previous results, we establish the equivalence between equations and realizability. We also show there that a special kind of equations, recursive i/o equations, lead to realization by polynomial systems. However, as opposed to the general case, the converse of this fact is not true in general, and a counterexample is provided to illustrate the fact that realizability by a polynomial system may not lead to a recursive i/o equation. Finally, we extend our main result to families of i/o operators.
+
+This paper has a heavily algebraic flavor. All analytic properties needed are quoted from [28] and [29], and will not be proved here. The latter paper also shows how, using analytic function theory as well as differential-geometric nonlinear realization tools, an analogous theory can be developed for local realizability provided that an equation with E analytic (not necessarily polynomial) exist for the given operator.
+
+2. Preliminaries. Let m be a fixed integer and consider the "alphabet" set
+
+P = fj0; j1; : : : ; jmg and P \Lambda , the free monoid generated by P , where the neutral element of P \Lambda  is the empty word, denoted by 1, and the product is concatenation. Let
+
+P k = fji1ji2 : : : jik : 0 ^ is ^ m; 1 ^ s ^ kg for each k * 0. We define P to be the IR-algebra generated by P \Lambda , i.e, the set of all polynomials in the variables ji's. A power series in the noncommutative variables j0; j1; : : : ; jm is a formal power series
+
+c = X
+
+'2I\Lambda 
+
+hc; j'ij';(4)
+
+where
+
+j' = ji1 ji2 \Delta  \Delta  \Delta  jil if ' = i1i2 \Delta  \Delta  \Delta  il; and hc; j'i 2 IR for each multiindex '. Note that c is a polynomial if and only if there are only finitely many hc; j'i's which are non-zero. A power series is nothing more than a mapping from I\Lambda  to IR; as we shall see later, however, the algebraic structures suggested by the series formalism are very important. We use S to denote the set of all power series (over a fixed but arbitrary alphabet P ).
+
+3
+
+For c; d 2 S and fl 2 IR, flc + d is the series defined as follows:
+
+hflc + d; j'i = flhc; j'i + hd; j'i: With these operations, S forms a vector space over IR. In addition, we can introduce an algebra structure on S by defining the shuffle product on S. First of all, we define the shuffle product on words,
+
+: P \Lambda  \Theta  P \Lambda  \Gamma ! P inductively on length in the following way:
+
+1 j = j 1 = j for any j 2 P ;
+
+ji j' jj j^ = ji(j' jj j^) + jj (jij' j^) for any j'; j^ 2 P \Lambda ; ji; jj 2 P:(5) It can be proved by induction that an equivalent way to define the shuffle product is to replace (5) by the following:
+
+j'ji j^ jj = (j' j^jj )ji + (j'ji j^)jj for any j'; j^ 2 P \Lambda ; ji; jj 2 P:(6) Then we extend the shuffle product to power series in the following way: For
+
+c = Xhc; j'ij' and d = Xhd; j^ij^; we define
+
+c d = Xhc; j'ihd; j^ij' j^:(7) With the operations "+" and " " defined as above, S forms a commutative IR-algebra. Remark 2.1. One can also define a comultiplication M : S ! S \Theta  S and a counit " over S. First, for z 2 P \Lambda , define
+
+M (z) = X
+
+z1z2=z
+
+(z1; z2);
+
+"(z) = ae 0 if z 6= 1,1 if z = 1 . Then extend M and " to S. It can be shown that S forms a Hopf algebra with the antipode oe defined by
+
+oe(ji
+
+1 ji2 \Delta  \Delta  \Delta  jis ) = (\Gamma 1)
+
+sj
+
+s \Delta  \Delta  \Delta  ji2 ji1
+
+for any s and ji
+
+1 ji2 \Delta  \Delta  \Delta  jis 2 P
+
+\Lambda  (cf [25]). Though S possesses both an algebra structure and a coalgebra
+
+structure, in this work, however, only the algebra structure of S will be studied. 2
+
+Lemma 2.1. The algebra S is an integral domain. Proof. First we order the basis elements (ji
+
+1 ; : : : ; jik ) of P
+
+\Lambda  lexicographically with respect to
+
+k; i1; i2; : : : ; ik: Then take two nonzero series c and d and let
+
+z1 = ji
+
+1 \Delta  \Delta  \Delta  jim and z2 = jj1 \Delta  \Delta  \Delta  jjn
+
+be the smallest basis element of P \Lambda  appearing in c and d, respectively, with nonzero coefficients. Let
+
+w := jl
+
+1 \Delta  \Delta  \Delta  jlm+n
+
+4
+
+be the smallest basis elements of P \Lambda  appearing in z1 z2. Then the coefficient of w in c d is:
+
+hc d; wi = X
+
+';^
+
+hc; j'ihd; j^ihj' j^; wi:
+
+Using the minimality property of w; z1; z2, we get
+
+hc d; wi = hc; z1ihd; z2ihz1 z2; wi; which is nonzero since hc; z1i; hd; z2i; hz1 z2; wi are all nonzero.
+
+The method used in the above proof is similar to the method used in [19], where the author proved that the ring of polynomials in j0; j1; : : : ; jm is an integral domain. In [19], the author used the greatest basis elements (the "degree") for polynomials while here we used the smallest basis elements (the "order") for power series. Alternatively, one could prove this elementary fact by establishing an isomorphism with a ring of power series in (infinitely many) commuting variables, along the lines of the discussion in pages 46-47 in [21].
+
+In order to define operators associated to series, one needs a notion of convergence. We follow [8], [13] and [29] and say that c is convergent if there exist some nonnegative real numbers K and M so that the estimate
+
+jhc; j'ij ^ KM kk!(8) holds for each multiindex ' 2 Ik, and each k * 0. As in [29], we denote by UT the set of all essentially bounded measurable functions u : [0; T ] ! IRm, for each fixed T ? 0. It is convenient to think of UT as a space with the L1 norm (kuk1 := maxfkuik1 : 1 ^ i ^ mg), but we also use at times the norm u1 := maxfkuik1 : 1 ^ i ^ mg.
+
+By induction of l, one defines, for each input u 2 UT , and each ' 2 Il,
+
+VOE := 1; Vi1\Delta \Delta \Delta il+1 [u](t) = Z
+
+t
+
+0 u
+
+i1(s)Vi2\Delta \Delta \Delta il+1 (s) ds:(9)
+
+Here ui denotes the i-th coordinate of u, if i = 1; 2; : : : ; m, and we make the convention u0(t) j 1. Using these notations, to each convergent power series c in j0; j1; : : : ; jm, one can associate the input/output operator
+
+Fc[u](t) = Xhc; j'iV'[u](t):(10) This is well-defined for any T admissible for c, i.e, T ! (M m + M )\Gamma 1; see for [8], [13] and [29] for details (the series (10) converges uniformly and absolutely for all t 2 [0; T ] and all those u 2 UT such that kuk1 ! 1; we denote VT = fu 2 UT : kuk1 ! 1g; the set of all such controls).
+
+The correspondence between series and operators is one-to-one in the following sense: Assume that c and d are two convergent series and Fc coincides with Fd on VT for some T ? 0, then the two power series c and d coincide; see [30], [29] for these facts as well as further properties of generating series and their associated operators.
+
+Assume that c and d are two convergent power series and T is admissible for both c and d, then T is admissible for both c + d and c d (cf [28]). Now for any positive integer n, denote
+
+cn = c c \Delta  \Delta  \Delta  c-- -z ""
+
+n
+
+;
+
+and c0 = 1. In [7] it was shown that for any polynomial p 2 IR[X1; X2; : : : ; Xs] and any s convergent power series c1; : : : ; cs,
+
+p (Fc1 ; Fc2; : : : ; Fcs) = Fp(c1;c2;:::;cs);(11) that is, the assignment c 7! Fc is a homomorphism from the set of all convergent series, seen as an algebra under the shuffle product, into the set of input/output operators. (More precisely, identifying operators
+
+5
+
+with their restrictions to smaller time intervals.) By the previous discussion, this homomorphism in one-to-one.
+
+Assume c is a convergent series and pick up a T admissible for c. We show in [29] that Fc is a continuous operator from VT to C[0; T ] with respect to the L1 norm in VT and the C0 norm in C[0; T ]. Furthermore, Fc maps functions of class Ck\Gamma 1 to functions of class Ck, for all k = 1; 2; : : :, and analytic functions to analytic functions. See also [10] for the proof of the following formula:
+
+d dt Fc[u](t) = Fj
+
+\Gamma 1 0 c[u](t) +
+
+mX
+
+j=1
+
+uj(t) Fj\Gamma 1
+
+j c[u](t) ;(12)
+
+where hz\Gamma 1c; j'i := hc; zj'i is defined for each z 2 P \Lambda  and each j' 2 P \Lambda . (It is known, cf [22] that z\Gamma 1c is convergent if c is, and in fact the same T remains admissible.)
+
+3. Observation Space. In realization theory and many other areas of nonlinear control, the concept of observation space plays a central role. Observation spaces were first defined in [16] and [11] for continuous-time systems, and in [21] for discrete-time. The solution of many problems for systems, such as the the "bilinear immersion" problem treated in [11], are characterized by properties of these spaces. One may define observation spaces in two very different ways, as discussed in this section. Roughly, one possibility is to take the functions corresponding to derivatives with respect to switching times in piecewise constant controls, and the other is to take high-order derivatives at the final time, if smooth controls are used. We will show however that both definitions lead to the same concept, and this equivalence will provide one of the main technical tools that we use in order to establish the main result.
+
+For each power series c, we define the first type of observation space F1 as the linear subspace of the set of all power series spanned by all the elements of the form z\Gamma 1c, i.e.,
+
+F1(c) = span IRfz\Gamma 1c : z 2 P \Lambda g:(13) Then F1(c) consists of convergent series if c is a convergent series (cf [22]).
+
+For a convergent power series c, the elements of F1(c) are closely related to the derivatives of Fc[u] with respect to switching times in piecewise constant controls, in the sense to be made precise next.
+
+For any _ 2 IRm, we define P _ : F ! F, where F is the set of all germs of i/o operators induced by convergent generating series, in the following way:
+
+(P _ ffi Fc)[u](t) = ddt fififio/=0+ Fc[u#t!_](t + o/ ); where u#o/ v denotes the concatenated control:
+
+(u#tv)(oe) = ae u(oe) if 0 ^ oe ^ t,v(oe \Gamma  t) if t ! oe ^ T for any u and v, and !_(o/ ) j _, a constant control. Note that (P _ ffi Fc)[u] is defined if u is in the domain of Fc. In fact, by formula (12), one has the following easy relation:
+
+P _ ffi Fc = Fj\Gamma 10 c +
+
+mX
+
+j=1
+
+_j Fj\Gamma 1
+
+j c;
+
+for any _ = (_1; _2; : : : ; _m) 2 IRm.
+
+For a convergent power series c, let G1(c) be the smallest subspace of operators which contains Fc and which is invariant under P _ for any _ 2 IRm. By Lemma 2.1 in [30], G1(c) is isomorphic to F1(c).
+
+To introduce the second type of observation space, we need to introduce more notations. Consider, for each q * 1, the following set of 2 \Theta  q matrices:
+
+Sq = ae` j1 j2 \Delta  \Delta  \Delta  jqi
+
+1 i2 \Delta  \Delta  \Delta  iq ' :
+
+is; js 2 ZZ; 1 ^ is ^ m; j * 0; (1; 0) ^ (i1; j1) ^ \Delta  \Delta  \Delta  ^ (iq; jq)g ;(14)
+
+6
+
+where "^" is the lexicographic order on the set \Phi (i; j) : i; j 2 ZZ\Psi . For each element`
+
+j1 j2 \Delta  \Delta  \Delta  jq
+
+i1 i2 \Delta  \Delta  \Delta  iq '
+
+in Sq and each n * q + P jr, we define
+
+\Gamma j
+
+1\Delta \Delta \Delta jq
+
+i1\Delta \Delta \Delta iq (n) = j
+
+(k) 0 ji1 X(
+
+j1) ji
+
+2X(
+
+j2) \Delta  \Delta  \Delta  ji
+
+q X(
+
+jq)fififi
+
+X=1 ;(15)
+
+where k = n \Gamma  q \Gamma  P js. The evaluation is interpreted as follows: first introduce a new variable X, then perform all shuffles, and finally delete X from the result. Note that (15) is different from ji1 ji2 \Delta  \Delta  \Delta  jiq , for example,
+
+j0 j1XfifiX=1 = j0j1 + 2j1j0 ; while
+
+j0 j1 = j0j1 + j1j0: For any word w 2 P \Lambda  and and each series c 2 S, we define c(w) = w\Gamma 1c, and more generally, for any polynomial d = Phd; j^ij^, we let
+
+c(d) = Xhd; j^ij^\Gamma 1c: Now let Xj = (X1j ; : : : ; Xmj) be m indeterminates over IR, for j * 0. For any n ? 0, let
+
+cn(X0; : : : ; Xn\Gamma 1) = c(j(n)0 ) +
+
+nX
+
+q=1 X
+
+1 s1! \Delta  \Delta  \Delta  sp! c i\Gamma 
+
+j1\Delta \Delta \Delta jq i1\Delta \Delta \Delta iq (n)j Xi1j1 \Delta  \Delta  \Delta  Xiqjq ;(16)
+
+where the second sum is taken over the set of all those`
+
+j1 j2 \Delta  \Delta  \Delta  jq
+
+i1 i2 \Delta  \Delta  \Delta  iq ' 2 Sq
+
+such that P js + q ^ n, and where s1; : : : ; sp are integers so that`
+
+j1 j2 \Delta  \Delta  \Delta  jq
+
+i1 i2 \Delta  \Delta  \Delta  iq ' = 0@
+
+fi1 \Delta  \Delta  \Delta  fi1 fi2 \Delta  \Delta  \Delta  fi2 \Delta  \Delta  \Delta  fip \Delta  \Delta  \Delta  fip ff1 \Delta  \Delta  \Delta  ff1-- -z ""
+
+s1
+
+ff2 \Delta  \Delta  \Delta  ff2-- -z ""
+
+s2
+
+\Delta  \Delta  \Delta  ffp \Delta  \Delta  \Delta  ffp-- -z ""
+
+sp
+
+1A
+
+and (ff1; fi1) ! (ff2; fi2) ! \Delta  \Delta  \Delta  ! (ffp; fip). For n = 0, we simply define
+
+c0 := c: It was shown in [30] that for each integer n and every u 2 VT such that T is admissible for c, we have
+
+dn dtn Fc[u](t) = Fcn(u(t);:::;u
+
+n\Gamma 1(t))[u](t):(17)
+
+Hence, for any _0; : : : ; _n\Gamma 1 2 IRm,
+
+dn do/n fifififio/=0+ Fc[u#tw_](t + o/ ) = Fcn(_0;:::;_n\Gamma 1)[u](t);(18)
+
+where w_(t) = _0 + _1 t + \Delta  \Delta  \Delta  + _s\Gamma 1 t
+
+s\Gamma 1
+
+(s \Gamma  1)! :
+
+7
+
+The second type of observation space associated to c, F2(c), is defined as follows:
+
+F2(c) = span IR fcn(_0; : : : ; _n\Gamma 1) : _i 2 IRm; 0 ^ i ^ n \Gamma  1; n * 0g :(19) Let G2(c) be the subspace of operators spanned by Fcn(_0 _1:::_n
+
+\Gamma 1) for all n and all choices of_
+
+0; : : : ; _n\Gamma 1. Then F2(c) is isomorphic to G2(c) (cf [30]).Clearly for any power series c, F
+
+2(c) ` F1(c) since for each integer n, cn(X0; : : : ; Xn\Gamma 1) is a polynomial on the Xi's with coefficients belonging to F1(c). A less trivial conclusion is that F1(c) `
+
+F2(c). The following is an outline of the proof of this conclusion, for the detailed proof, we refer the readers to [30].
+
+For any fixed positive integers k and i1; i2; : : : ; iq such that
+
+1 ^ i1 ^ i2 ^ \Delta  \Delta  \Delta  ^ iq ^ m; let
+
+Sk(i1; i2; : : : ; iq) = 8!:oe(0; : : : ; 0-- -z ""
+
+k
+
+; i1; i2; : : : ; iq) : oe 2 Sn9=; ;
+
+where n = k + q and Sn is the permutation group on a set of n elements. Let
+
+Tk(i1; i2; : : : ; iq) = nw = jl
+
+1 jl2 \Delta  \Delta  \Delta  jln : (l1; : : : ; ln) 2 S
+
+k(i1; i2; : : : ; iq)o ;
+
+and order the elements of Tk(i1; i2; : : : ; iq) as W1; W2; : : : ; Wr. Then for any j1; : : : ; jq given,
+
+\Upsilon j
+
+1\Delta \Delta \Delta jq
+
+i1\Delta \Delta \Delta iq (k) := \Gamma 
+
+j1\Delta \Delta \Delta jq i1\Delta \Delta \Delta iq (j1 + \Delta  \Delta  \Delta  + jq + k + q)
+
+= j(k)0 ji1X(j1) ji2X(j2) \Delta  \Delta  \Delta  jiq X(jq)fififi
+
+X=1
+
+is a linear combination of the elements in Tk(i1; i2; : : : ; iq). We now define
+
+\Delta k(i1; : : : ; iq) = n\Upsilon j
+
+1\Delta \Delta \Delta jq
+
+i1\Delta \Delta \Delta iq (k) : js * 0; 1 ^ s ^ qo :
+
+Our conclusion can be proved by showing that every element of Tk(i1; i2; : : : ; iq) is a linear combination of elements in \Delta k(i1; i2; : : : ; iq) for any i1; : : : ; iq and k given.
+
+For each fixed k and q and fixed i1; i2; : : : ; iq, we order the elements of \Delta k(i1; i2; : : : ; iq) as Q1; Q2; : : :. Then for each Qi, there exist aij; j = 1; : : : ; r such that
+
+Qi =
+
+rX
+
+j=1
+
+aijWj :
+
+Let A be the matrix of r columns and infinitely many rows whose (i; j)-th entry is aij, i.e, A = (aij).
+
+We claim that A is of full column rank in the sense that there is no nonzero vector v 2 IRr such that Av = 0. Suppose there is some v 6= 0 such that Av = 0. Let a be the polynomial defined by
+
+a = v1W1 + v2W2 + \Delta  \Delta  \Delta  ; + vrWr where vi is the i-th component of v. Then for any w 2 P \Lambda ,
+
+hw\Gamma 1a; OEi 6= 0 if and only if w = Wi for some i. Hence
+
+ha i\Upsilon j
+
+1\Delta \Delta \Delta jps
+
+1\Delta \Delta \Delta sp(l)j ; OEi = 0(20)
+
+8
+
+if l 6= k, or p 6= q or st 6= it for some t. In the other words, (20) holds if
+
+\Upsilon s1\Delta \Delta \Delta spj1 \Delta  \Delta  \Delta  jp(k) 62 \Delta k(i1; i2; : : : ; iq) : For Qi 2 \Delta k(i1; i2; : : : ; iq), we have
+
+ha(Qi); OEi =
+
+rX
+
+j=1
+
+aij hW \Gamma 1j a; OEi =
+
+rX
+
+j=1
+
+aijha; Wj i =
+
+rX
+
+j=1
+
+aijvj :
+
+But by assumption, P aijvj = 0 for any i. Therefore, (20) holds for any choice of s1; : : : ; sp; j1; : : : ; jp and any l. It then follows directly from the definition of an(X0; : : : ; Xn\Gamma 1) that
+
+han(_0 ; _1; : : : ; _n\Gamma 1); OEi = 0(21) for any n and any value of _0; : : : ; _n\Gamma 1, which, by (17), implies that
+
+dl dtl Fa[u](0) = Fan(_0;:::;_n
+
+\Gamma 1)[u](0) = han(_0; _1; : : : ; _n\Gamma 1); OEi
+
+for any analytic control u. Thus Fa[u] j 0 for any analytic control. It then follows from the continuity of Fa and the density property of analytic controls in L1 controls that Fa j 0, which in turn implies that a = 0, a contradiction to the assumption that v 6= 0. Hence, A is of full column rank.
+
+It is not hard to see that there exists some submatrix A1 of A with finitely many rows such that A1 is full column rank, which implies that each Wi is a linear combination of finitely many Qj's.
+
+The above discussion shows that following conclusion: Theorem 3.1. For any power series c, F1(c) = F2(c).
+
+4. Input/Output Equations. In this section, we study high-order differential equations satisfied by inputs and outputs arising from i/o operators. To carry out this study, we find it useful to introduce the algebraic concepts of observation algebra and observation field corresponding to any given series c.
+
+The observation algebra A2(c) is defined as the IR-algebra generated by the elements of F2(c). By Lemma 2.1, A2(c) is an integral domain, so its quotient field is well defined; we define the observation field of c as this quotient field. We shall see later that elementary properties of these algebraic objects serve to characterize the existence of i/o equations.
+
+4.1. Definitions. By an algebraic input/output equation of order k we shall mean an equation of the type
+
+P iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0;(22) where
+
+P 2 IR[S0; : : : ; Sk; L0; : : : ; Lk] is a polynomial nontrivial in Lk, and Si denotes the set of m variables
+
+(S1i; : : : ; Smi): Definition 4.1. We say that a polynomial P as above is (a) rational when P (S0; : : : ; Sk; L0; : : : ; Lk) =
+
+P0(S0; : : : ; Sk\Gamma 1; L0; : : : ; Lk\Gamma 1) Lk + P1(S0; : : : ; Sk; L0; : : : ; Lk\Gamma 1);(23) (b) recursive when P (S0; : : : ; Sk; L0; : : : ; Lk) =
+
+= P0(S0; : : : ; Sk\Gamma 1) Lk + P1(S0; : : : ; Sk; L0; : : : ; Lk\Gamma 1);(24)
+
+9
+
+2 Definition 4.2. Assume that c is a convergent power series. We say that the i/o operator Fc satisfies an algebraic i/o equation (22) if (22) holds for every possible Ck i/o pair
+
+(u(t); y(t)) := (u(t); Fc[u](t)) of Fc for all t 2 [0; T ] and for any T admissible for c. In such a case, (22) is called an i/o equation of Fc.
+
+An i/o operator Fc satisfies a rational i/o equation if P can be chosen rational so that P0 = 0 is not an i/o equation of Fc, in another word, there exists some i/o pair (u; y) of Fc such that
+
+P0(u(t); u0(t); : : : ; u(k)(t); y(t); y0(t); : : : ; y(k\Gamma 1)(t)) 6= 0;(25) for some t. An i/o operator Fc satisfies a recursive equation if there is some such equation for which P is recursive. 2
+
+The following Lemma was proved in [28]; a detailed proof in the more general analytic case is given in [29].
+
+Lemma 4.3. Fc satisfies i/o equation (22) if and only if
+
+P i_0; : : : ; _k ; Fc; Fc1(_0); : : : ; Fck (_0;:::;_k
+
+\Gamma 1)j = 0;(26)
+
+for any _0; _1; : : : ; _k 2 IRm. 2
+
+4.2. Properties of I/O Equations. We now introduce the field
+
+K = IR(fSij ; i = 1; : : : ; m; j * 1g) obtained by adjoining the indeterminates Sij to IR. Let FK, AK be the K-space and K-algebra generated by cn(S0; : : : ; Sn\Gamma 1) for all n. Let QK be the quotient field of AK. Note that the field QK is defined since AK is an integral domain. The reason for this is essentially because AK can be naturally identified to the tensor product A2 \Omega  K.
+
+Lemma 4.4. Let Fc be the i/o operator corresponding to the series c. The following properties then hold:
+
+(a) If Fc satisfies a recursive i/o equation, then AK is a finitely generated K-algebra.
+
+(b) If Fc satisfies an algebraic i/o equation, then QK is a finitely generated field extension of K. Proof. Consider ^AK, the K-algebra generated by Fcn(S0;:::;Sn
+
+\Gamma 1) for all n. Since the assignment
+
+ : cn(_0; : : : _n\Gamma 1) 7! Fcn(_0;:::;_n
+
+\Gamma 1) is a isomorphism from A2(c) onto ^A2(c); the IR-algebra generated
+
+by Fcn(_0;:::;_n
+
+\Gamma 1). thus  induces an isomorphism from AK onto ^AK . Consequently, ^QK, the quotient
+
+field of ^AK , is isomorphic to QK. We shall prove conclusion (b) by showing that ^QK is a finite generated field extension of K, when Fc satisfies some algebraic equation.
+
+It is not hard to show, by taking the derivative with respect to time t on both sides of an algebraic i/o equation, that existence of an algebraic i/o equation for Fc implies that Fc also satisfies a rational i/o equation. Thus
+
+P0(u(t); : : : ; u(k)(t); y(t); : : : ; y(k\Gamma 1)(t)) y(k)(t)
+
+= \Gamma P1(u(t); : : : ; u(k)(t); y(t); : : : ; y(k\Gamma 1)(t));(27)
+
+for some polynomials P0 and P1, where P0 = 0 is not an i/o equation of Fc. (See [28] for details, as well as [29] for an analogous result for result for analytic i/o equations). By Lemma 4.3, we know that
+
+P0 \Gamma S0; : : : ; Sk\Gamma 1; Fc; : : : ; Fck
+
+\Gamma 1(S0;:::;Sk\Gamma 2)\Delta  Fck(S0;:::;Sk\Gamma 1)
+
+= \Gamma P1 \Gamma S0; : : : ; Sk; Fc; : : : ; Fck
+
+\Gamma 1(S0;:::;Sk\Gamma 2)\Delta  :
+
+Notice that since P0 = 0 is not an i/o equation of Fc, there must exist some vector (_0; : : : ; _k\Gamma 1) such that
+
+P0 i_0; : : : ; _k\Gamma 1; Fc; : : : ; Fck
+
+\Gamma 1(_0 ;:::;_k\Gamma 2 )j 6= 0
+
+10
+
+which in turn implies that
+
+P0 \Gamma S0; : : : ; Sk\Gamma 1; Fc; : : : ; Fck
+
+\Gamma 1(S0;:::;Sk\Gamma 2)\Delta  6= 0
+
+as a polynomial in S0; : : : ; Sk\Gamma 1. It follows from this discussion that
+
+Fck(S0;:::;Sk
+
+\Gamma 1) 2 ^Q
+
+K k\Gamma 1;
+
+where ^QKr denotes the field obtained by adjoining Fc; Fc1(S0); : : : ; Fcr(S0;:::;Sr
+
+\Gamma 1) to K.Taking the derivative with respect to t on both sides of (27), we get
+
+P0(u(t); : : : ; u(k)(t); y(t); : : : ; y(k\Gamma 1)(t)) y(k+1)(t)
+
+= P2(u(t); : : : ; u(k+r)(t); y(t); : : : ; y(k+r\Gamma 1)(t));(28)
+
+where P2 is some polynomial. By using the same argument as before, one shows that
+
+Fck+1(S0; :::;Sk) 2 ^QKk ae ^QKk\Gamma 1: By induction, one shows that
+
+^QK = ^QKk\Gamma 1:
+
+Since ^QKk\Gamma 1 is a finitely generated field extension of K, -- the generators are the coefficients of Sij i = 1; : : : ; m; j = 0; 1; : : : ; k \Gamma  2, in Fc; Fc1; : : : ; Fck
+
+\Gamma 1,-- we get our conclusion that QK is also a finitelygenerated field extension of
+
+K. This completes the proof of (b); property (a) is proved in a similar
+
+fashion.
+
+Lemma 4.5. Let Fc be the i/o operator corresponding to the series c. The following properties then hold:
+
+(a) If AK is a finitely generated K-algebra, then A2(c) is a finitely generated IR-algebra.
+
+(b) If QK is a finitely generated field extension of K, then Q2(c) is a finitely generated field extension
+
+of IR. Proof. Again, we shall only provide the proof for part (b). Part (a) can proved similarly. Assume that QK is a finitely generated field extension of K. Then there exists some n ? 0 so that for any r * 0, there exist two polynomials Q0; Q1 over K with
+
+Q0 (c0; c1(S1); : : : ; cn\Gamma 1(S0; : : : ; Sn\Gamma 2)) 6= 0 such that
+
+Q0 (c0; c1(S0); : : : ; cn\Gamma 1(S0; : : : ; Sn\Gamma 1) cn+r(S0; : : : ; Sn+r\Gamma 1)
+
+= Q1 (c0; c1(S0); : : : ; cn\Gamma 1(S0; S1; : : : ; Sn\Gamma 2))
+
+After clearing denominators and getting rid of extra _j 's there results an equation
+
+P0 (S0; : : : ; Sn+r\Gamma 1; c0; c1(S0); : : : ; cn\Gamma 1(S0; : : : ; Sn\Gamma 2)) cn+r(S0; : : : ; Sn+r\Gamma 1) = P1 (S0; : : : ; Sn+r\Gamma 1; c0; c1(S0); : : : ; cn\Gamma 1(S0; : : : ; Sn\Gamma 2))
+
+with
+
+P0 (S0; : : : ; Sn+r\Gamma 1; c0; c1(S0); : : : ; cn\Gamma 1(S0; : : : ; Sn\Gamma 2)) 6= 0; which implies that there exists some (_0 ; : : : ; _n+r\Gamma 1) so that
+
+P0 i_0; : : : ; _n+r\Gamma 1; c0; c1(_0); : : : ; cn\Gamma 1(_0; : : : ; _n\Gamma 2)j 6= 0; or equivalently,
+
+P0 i_0; : : : ; _n+r\Gamma 1; Fc; Fc1(_0); : : : ; Fcn
+
+\Gamma 1(_0;:::;_n\Gamma 2)j 6= 0:
+
+11
+
+This is an equation involving operators. Its meaning is that there exists some u 2 VT , where T is admissible to c, and t such that
+
+P0 i_0 ; : : : ; _n+r\Gamma 1; Fc[u](t); : : : ; Fcn
+
+\Gamma 1(_0;:::;_n\Gamma 2)[u](t)j 6= 0:
+
+It follows from the fact that
+
+P0 i_0; : : : ; _n+r\Gamma 1; Fc[u](t); : : : ; Fcn
+
+\Gamma 1(_0 ;:::;_n\Gamma 2)[u](t)j
+
+is a polynomial in _0; : : : ; _n+r\Gamma 1, the set
+
+\Omega 1 := n_n+r\Gamma 1 : P0 i_(n+r\Gamma 1); Fc[u](t); : : : ; Fcn
+
+\Gamma 1(_n
+
+\Gamma 2)[u](t)j 6= 0:o
+
+is dense in IRm\Theta (n+r), where _l = (_0 ; : : : ; _l ) for any l. Define
+
+\Omega  = \Phi _n+r\Gamma 1 : P0 \Gamma _n+r\Gamma 1; c0; : : : ; cn\Gamma 1(_n\Gamma 2)\Delta  6= 0\Psi  : Then \Omega 1 ` \Omega . Thus \Omega  is dense in IRn+r.
+
+Clearly if _n+r\Gamma 1 2 \Omega , then Fcn+r(_n+r\Gamma 1) 2 Tn\Gamma 1, the field obtained by adjoining all the coefficients of Xij in cp(X1; : : : ; Xp\Gamma 1) for p ^ n \Gamma  1 to IR. Applying Lemma 12.11 in [21], one sees that Fcn+r(_n+r\Gamma 1) 2 Tn\Gamma 1 for any _n+r\Gamma 1 2 IRn+r. Since r can be chosen arbitrarily, it follows that Q2(c) = Tn\Gamma 1, from which it follows that Q2(c) is a finitely generated field extension of IR.
+
+Combining Lemma 4.4 and 4.5, we get our main result in this section: Theorem 4.6. Let Fc be the i/o operator corresponding to the series c. The following properties then hold:
+
+(a) If Fc satisfies a recursive i/o equation, then A2(c) is a finitely generated IR-algebra.
+
+(b) If Fc satisfies an algebraic i/o equation, then Q2(c) is a finitely generated field extension of IR. Remark 4.1. Generally speaking, a field extension over IR with finite transcendence degree is not necessarily a finitely generated field extension of IR. But by using Theorem 4.6, one can show that if the transcendence degree of Q2(c) is finite, then it follows that Q2(c) is a finitely generated field extension of IR. The reasoning is as follows:
+
+Assume that
+
+trdegIR Q2(c) ! 1; where trdegK Q denotes the transcendence degree of Q over K for any fields Q and K.
+
+Now let Ln be the set of all the coefficients of cn(S0; : : : ; Sn\Gamma 1), seen as a polynomial in S0; : : : ; Sn\Gamma 1 over S, the ring of all series. Let
+
+L = [
+
+n
+
+Ln :
+
+Then Q2(c) = IR(L). On the other hand, QK = K(L). Therefore,
+
+trdegIR Q2(c) ! 1 implies that
+
+trdegK QK ! 1:(29) If (29) holds, then there exists some n such that
+
+c; c1(S0); : : : ; cn(S0; : : : ; Sn\Gamma 1) are algebraically dependent over K, i.e., there exists some polynomial P over K such that
+
+P (c; c1(S0); : : : ; cn(S0; : : : ; Sn\Gamma 1)) = 0: After clearing denominators and getting rid of the extra Sij, one gets the following equation:
+
+Q (S0; : : : ; Sk; c; c1(S0); : : : ; cn(S0; : : : ; Sn\Gamma 1)) = 0 :(30) Notice that if a convergent series c satisfies (30), then (30) is an algebraic i/o equation of Fc, which, by Theorem 4.6, implies that Q2(c) is a finitely generated field extension of IR. 2
+
+12
+
+5. Realizability. We wish to study realization by "rational" systems, such as those studied in Bartosiewicz [1]. However, the question of possible poles in the right-hand side of the equation is very delicate, and it seems better to study instead a "singular" polynomial model, as we do next.
+
+Just as i/o equations turn out to be related to the structure of A2(c) and Q2(c), realizability forces the study of the observation algebra and observation field corresponding to the other type of observation space, F1(c). For a given power series c, we associate with it an observation algebra A1(c) defined as the IR-algebra generated by the elements of F1(c), and associate with it an observation field Q1(c) defined as the quotient field of A1(c). Again, we know that Q1(c) is defined since A1(c) is an integral domain. It turns out, because of previous results, that A1 = A2 and Q1 = Q2 for every c, but the facts in this Chapter do not depend on the equality, and they are more readily understood in terms of A1 and Q1.
+
+Definition 5.1. Suppose that c is a convergent series and T is admissible for c. The i/o operator Fc is realizable by a singular polynomial state-space system
+
+\Sigma  = ((g0; : : : ; gm); x0; q; h) if there exists an integer n, some x0 2 IRn, polynomial vector fields
+
+g0; g1; : : : ; gm on IRn, and two polynomial functions
+
+q; h : IRn ! IR such that the following properties hold:
+
+(a) For each u 2 VT and y = Fc[u], there is some absolutely continuous function x(\Delta ) defined on
+
+[0; T ] and satisfying x(0) = x0, such that
+
+q(x(t))x0(t) = g0(x(t)) +
+
+mX
+
+i=1
+
+ui(t)gi(x(t))
+
+for almost all t 2 [0; T ], and,
+
+y(t) = h(x(t)) ; for all t 2 [0; T ]. (b) The solution x(\Delta ) in part (a) is of class C! if u is of class C!, and x(\Delta ) is of class Ck+1 if u is
+
+of class Ck. (c) There holds the following regularity condition: there exists some set \Omega  of analytic inputs which
+
+is dense in C1[0; T ] (with respect to the Whitney topology) such that for any u 2 VT " \Omega m, there exists some C! solution x(\Delta ) as in (a) so that q(x(\Delta )) 6= 0. If Fc can be realized by a singular polynomial system with q(x) j 1, we say that Fc is realizable by a polynomial state-space system. 2
+
+It can be seen from the definition (5.1) that if q(x) 6= 0 for any x 2 IRn, then Fc is realizable (globally) by an analytic system in the usual sense. If q(x0) 6= 0, then Fc is realizable locally by an analytic system.
+
+The nondegeneracy condition turns out to be equivalent (as shown in the proof below) to the fact that for "almost every" i/o pair it holds that q(x(t)) 6= 0 for almost every t. It could happen, however, that q vanishes along some trajectories.
+
+The following Theorem is our main result in this section. It constitutes a converse to Theorem 4.6, but in terms of different algebraic objects.
+
+Theorem 5.2. Let Fc be the i/o operator corresponding to the series c. The following properties then hold:
+
+(a) If A1(c) is a finitely generated IR-algebra, then Fc is realizable by a polynomial system.
+
+(b) If Q1(c) is a finitely generated field extension of IR, then Fc is realizable by a singular polynomial
+
+system.
+
+13
+
+Proof. As in the proof of Theorem 4.6, we shall only provide proof of part (b). Part (a) can be proved by the same argument without involving regularity property.
+
+Suppose that Q1(c) is a finitely generated field extension of IR, i.e, there exist some c1; c2; : : : ; cn such that
+
+Q1(c) = IR(c1; c2; : : : ; cn): Without loss of generality, we may assume that ci 2 A1(c) for i = 1; 2; : : : ; n and c1 = c. For each ci and jj , there exist some qij ; gij 2 IR[X1; X2; : : : ; Xn] such that
+
+qij (c1; c2; : : : ; cn) (j\Gamma 1j c) = gij(c1; c2; : : : ; cn); for i = 1; 2; : : : ; n; j = 0; 1; : : : ; m, and qij (c1; c2; : : : ; cn) 6= 0. Without loss of generality, we may assume that qij = q for all i; j. Otherwise, we may let
+
+q(c1; c2; : : : ; cn) = Y
+
+i;j
+
+qij (c1; c2; : : : ; cn)
+
+and change the gij accordingly. It follows from the fact that S is an integral domain that
+
+q(c1; c2; : : : ; cn) 6= 0:(31) For j = 0; 1; : : : ; m, let gj = (g1j; g2j; : : : ; gnj)0, where " ' " denotes the transpose. Let x0 = (hc1; OEi; hc2; OEi; : : : ; hcn; OEi)0 and h(x) = x1. For u 2 VT , let
+
+x(t) = (Fc1[u](t); Fc2 [u](t); : : : ; Fcn[u](t))0 ;(32) Then x(0) = x0,
+
+q(x(t))x0(t) = g0(x(t)) +
+
+mX
+
+j=1
+
+uj(t)gj(x(t))
+
+for almost all t 2 [0; T ] and
+
+y(t) = h(x(t)): Thus the system
+
+q(x)x0 = g0(x) + X gj(x)uj
+
+x(0) = x0
+
+y = h(x)
+
+realized Fc if regularity property of the system holds. To verify the regularity condition for this realization, let d = q(c1; c2; : : : ; cn). Then Fd 6= 0. Note that polynomial controls are dense in VT with respect to the L1 norm and Fd is a continuous operator. Hence there is at least one polynomial control p 2 IR[t] such that Fd[p] 6= 0. It follows from the fact that, for any t, Fd[p](t) depends analytically on the coefficients of t in p(t) (cf [28]) that Fd[u] 6= 0 for all polynomial controls u in a dense set of VT , which is the desired regularity property.
+
+6. Main Results. In this section we establish the equivalence between realizability and the existence of input/output equations. Recall that any convergent series c induces an i/o operator Fc on VT for which T is admissible for c. The following is our main result in this work.
+
+Theorem 6.1. Assume that c is a convergent power series, let T ? 0 be admissible for c, and let Fc be the i/o operator induced by c on VT . Then:
+
+(a) The following statements are equivalent:
+
+(i) Fc satisfies an algebraic i/o equation;
+
+14
+
+(ii) Fc satisfies a rational i/o equation; (iii) Fc is realizable by a singular polynomial system. (b) Fc is realizable by a polynomial system if Fc satisfies a recursive i/o equation. The realizability implications follow from Theorems 3.1, 4.6 and 5.2. The converses, i.e. the existence of equations assuming realizability, are quite straightforward exercises in elimination theory, and the details are given next.
+
+Lemma 6.2. Assume that c is a convergent power series. Then Fc satisfies an algebraic i/o equation if Fc is realizable by a singular polynomial system.
+
+Proof. Assume c is a convergent power series. We need to prove that Fc satisfies some i/o equation
+
+P iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0(33) valid for all Ck i/o pairs (u; y) with u 2 VT , and any T admissible for c. Form now on we shall fix such a T and we assume that Fc is realized by the singular polynomial system
+
+q(x)x0 = g0(x) +
+
+mX
+
+j=0
+
+uj gj(x); x 2 IRn(34)
+
+x(0) = x0; x0 2 IRn(35) y = h(x); y 2 IR :(36)
+
+Assume for now that q(x0) 6= 0. Then there exists some neighborhood N of x0 in IRn such that q(x) 6= 0 for all x 2 N . Note that on N , equation (34) can be written as
+
+x0 = p0(x) +
+
+mX
+
+j=0
+
+uj pj(x);(37)
+
+where pj = gjq , for j = 0; 1; : : : ; m.
+
+Let '(t; x; u) to denote the solution of (37) corresponding to the control u with the initial condition x(0) = x. Let yx(t) = h('(t; x; u)). Then
+
+yx(0); y0x(0); : : : ; y(n)x (0) are rational functions of x over the field of K, the field obtained by adjoining _ij (i = 0; : : : ; n \Gamma  1; j = 0; : : : ; m) to IR. Since the transcendence degree of K(x) over K is n, the n + 1 rational functions
+
+yx(0); y0x(0); : : : ; y(n)x (0) are algebraically dependent over K, i.e., there exists some nontrivial polynomial Q over K such that
+
+Q iyx(0); y0x(0); : : : ; y(n)x (0)j = 0: Clearing the denominators in the coefficients (rational functions in the variables _0; : : : ; _n\Gamma 1), one gets
+
+P i_0; : : : ; _n\Gamma 1; yx(0); : : : ; y(n)x (0)j = 0 where P 2 IR [Y; _0; : : : ; _n\Gamma 1] is some polynomial over IR. Note here that P is nontrivial in Y since Q is nontrivial.
+
+Since P was chosen independent of the initial state x, it follows that, for any u 2 VT , there exists some ffi ? 0 such that
+
+P iu(t); : : : ; u(n\Gamma 1)(t); y(t); : : : ; y(n)(t)j = 0(38)
+
+for t ! ffi. By principle of analytic continuation, (38) holds for all t 2 [0; T ] and analytic controls in VT . Since analytic controls are dense in VT and Fc is continuous, (38) holds for all controls in VT .
+
+15
+
+Finally, we show how to overcome the restriction q(x0) 6= 0. Assume now q(x0) = 0. Then by definition, there exists a set \Omega  of analytic inputs in C1, open dense with respect to the Whitney topology, so that for each u 2 \Omega  " VT , there exists some analytic function '(t) satisfying (34) and (35) such that q('(\Delta )) 6= 0 and Fc[u](t) = h('(t)). It follows from analyticity that there exists some ffi ? 0 such that q('(t)) 6= 0 for t 2 (0; ffi). From the previous argument one sees that (u(t); y(t)) satisfies equation (38) for any t 2 (0; ffi). Using analyticity again, one knows that (u(t); Fc[u](t)) satisfies (38) for all t 2 [0; T ].
+
+Since \Omega  is dense in C1 controls and C1 controls are dense in Cn controls with respect to the Whitney topology, it follows that (38) holds for all Cn controls in VT .
+
+Note that, in contrast to the cases of rational i/o equation the converse of part (b) does not hold in general, i.e, realizability by polynomials system does not necessarily imply the existence of a recursive i/o equation. This can be illustrated by the following example:
+
+Example 6.1. Consider the following system
+
+x01 = x1x2; x1(0) = x10 = 1; x02 = u; x2(0) = x20 = 0;(39) y = x1:
+
+Then there exists some T ? 0 such that for all u 2 VT , y(t) = Fc[u](t); where c is given by
+
+hc; ji1 ji2 \Delta  \Delta  \Delta  jili = Lgil \Delta  \Delta  \Delta  Lgi2 Lgi1 h(x0)
+
+where g0 = x1x2 @@x
+
+1 ; g1 =
+
+@ @x2 and h(x) = x1. (cf [13]). In the other words, Fc is realizable by thepolynomial system (39).
+
+To show that the operator Fc does not satisfy any recursive i/o equation, we need first establish the following fact: To a general analytic state space system
+
+x0 = g0(x) +
+
+mX
+
+i=1
+
+gi(x); x 2 M
+
+y = h(x);(40) we associate an observation space F1 defined as IR-space spanned by all the functions
+
+Lgi1 Lgi2 \Delta  \Delta  \Delta  Lgik h(x) ; k * 0; 0 ^ i1; i2; : : : ; ik ^ m : We define the observation algebra A of (40) as the IR\Gamma algebra generated by the elements of F1.
+
+For each x0 2 M, let ch be the generating series defined by
+
+hch; ji
+
+1 ji2 \Delta  \Delta  \Delta  jil i = Lgil \Delta  \Delta  \Delta  Lgi2 Lgi1 h(x0) :(41)
+
+We say that the system (40) is accessible at x0 if for any neighborhood B of x0, there exists an open subset of U of B such that for any p 2 U, there exist some o/ * 0 and some u 2 Lm1[0; o/ ] such that x(o/; x0; u) = p. The following Lemma was provided in [28]:
+
+Lemma 6.3. Assume that the analytic system (40) is accessible at x0 and that M is connected. Let ch be the series defined by (41). Then the observation algebra A1(ch) associated with ch is isomorphic to the observation algebra A associated with (40). 2
+
+The system (34) is accessible at x0 = (1; 0) since the accessibility rank condition (see for instance [24]) holds:
+
+rank ( g0(x0) [g0; g1](x0) ) = 2 : If Fc would satisfy some recursive i/o equation, then the observation algebra A2(c) would be finitely generated, which by Lemma 6.3, would imply that A is also finitely generated as an IR-algebra. But this is false as A is the algebra generated by
+
+x1; x1x2; x1x22; : : : ; x1xk2; : : : k * 0 : Thus Fc cannot satisfy any recursive i/o equation, even though it is realized by the polynomial system (39). 2
+
+16
+
+7. Families of I/O Operators. In this section we study families of power series and i/o operators. Let \Lambda  be an index set. We say that c is a family of power series (parameterized by * 2 \Lambda ) if
+
+c = fc* : * 2 \Lambda g; where c* is a power series for each fixed *. A family c can also be viewed as a power series with coefficients belonging to a ring of functions from \Lambda  to IR, i.e,
+
+c = X hc; j'ij'; where hc; j'i : \Lambda  ! IR; * 7! hc*; j'i is a function defined on \Lambda .
+
+Thus one may treat families of power series as power series over some ring R. We use SR to denote the set of all power series over R. Then SR is a ring with "+" and " " defined as the following:
+
+flc + d = fflc* + d* : * 2 \Lambda g;
+
+c * = fc* d* : * 2 \Lambda g; for all c; d 2 SR, fl 2 IR.
+
+Unlike the set S of power series over IR, SR may not be an integral domain. This is due to the fact that ring R may not be an integral domain. However, by following the same steps in the proof of Lemma 2.1, one can get the following conclusion:
+
+Lemma 7.1. The ring SR is an integral domain if R is an integral domain. 2 It follows from the principle of analytic continuation that any ring of analytic functions from a connected analytic manifold to IR is an integral domain. So we have the following fact:
+
+Corollary 7.2. If \Lambda  is a connected analytic manifold and R is a ring of analytic functions from \Lambda  to IR, then SR is an integral domain. 2
+
+Definition 7.3. We say a family c is a convergent family if: (a) Each member of the family is convergent;
+
+(b) \Lambda  is a topological space, hc*; j'i depends on * continuously, for each j' 2 P \Lambda , and the constants
+
+K*; M* as in (8) can be chosen continuously depending on *. Since each convergent series induces an i/o operator, each convergent family c of power series induces a family of i/o operators
+
+fFc* : * 2 \Lambda g which we denote by Fc. The following result was provided in [28].
+
+Lemma 7.4. Assume that c is a convergent family. If T is admissible for c*0 , then T is admissible for c* for all * in a small neighborhood of *0, and, F *c [u](t) depends (jointly) continuously on t and *. 2
+
+7.1. Observation Spaces for Families of I/O Operators. For a family c of power series, we define z\Gamma 1c to be the family fz\Gamma 1c : * 2 \Lambda g, for any z 2 P \Lambda . For any n * 0, cn(X0; : : : ; Xn\Gamma 1) is defined to be the family \Phi 
+
+c*n(X0; : : : ; Xn\Gamma 1) : * 2 \Lambda \Psi  ; where Xi = (Xi1; : : : ; Xim) are m indeterminates over IR, i * 0.
+
+As in the case of single power series, we associate to c two types of observation spaces in the following way:
+
+~F1(c) := span IR \Phi ff\Gamma 1c : ff 2 P \Lambda \Psi  :
+
+~F2(c) := span IR fcn(_0; : : : ; _n\Gamma 1) : _i 2 IRm; 0 ^ i ^ n \Gamma  1; n * 0g :
+
+17
+
+Note here the elements of ~F1(c) and ~F2(c) are families of series. For instance, if c is given by
+
+c* = *2 + 2* j0 \Gamma  *3 j1; * 2 IR: Then ~F1(c) is spanned by three elements: c; 2* and *3, thus, ~F1(c) is a three dimensional IR-space.
+
+Treating families of series as single series over a ring and following the same steps in the proof of Theorem 3.1, one can obtain an analogue of Theorem 3.1 for families:
+
+Theorem 7.5. For any family c of power series, ~F1(c) = ~F2(c).
+
+7.2. I/O Equations for Families of I/O operators. We say that a family Fc satisfies an algebraic i/o equation of order k if there exists some polynomial P 2 IR[S0; : : : ; Sk; L0; : : : ; Lk], nontrivial in Lk such that
+
+P iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0(42) is an i/o equation for Fc* for each * 2 \Lambda .
+
+If (42) is recursive, then we say that Fc satisfies a recursive equation. We say that (42) is a rational i/o equation for Fc if
+
+P (S0; : : : ; Sk; L0; : : : ; Lk) = P0 (S0; : : : ; Sk; L0; : : : ; Lk\Gamma 1) Lk + P1 (S0; : : : ; Sk; L0; : : : ; Lk\Gamma 1)
+
+for some polynomials P0 and P1, and P0 is not an i/o equation for Fc, i.e., there exists some * 2 \Lambda  and some i/o pair (u; y) of Fc* which does not satisfy equation (42).
+
+For a family of generating series c, we associate with it an observation algebra ~A2(c) defined as the IR-algebra generated by the elements of ~F2(c). Recall that ~F2(c) is the IR-space generated by
+
+cn(_0; : : : ; _n\Gamma 1) for all n and all _.
+
+To be able to define the observation field, we need the assumption that ~A2(c) is an integral domain. Definition 7.6. We say that a convergent family
+
+c = fc* : * 2 \Lambda g is an analytic family if \Lambda  is a connected analytic manifold and hc*; j'i is an analytic function defined on \Lambda  for all ' 2 P \Lambda . 2
+
+By Corollary 7.3, ~A2(c) is an integral domain, therefore, its quotient field is well defined. For an analytic family c, we define the observation field ~Q2(c) of c as the quotient field of ~A2(c). By using the same ideas used in x4, we get the following conclusion: Theorem 7.7. Assume that c is an analytic family of power series. Then (a) ~A2(c) is a finitely generated IR-algebra if ~Fc satisfies a recursive i/o equation.
+
+(b) ~Q2(c) is finitely generated field extension of IR if ~Fc satisfies an algebraic i/o equation.
+
+7.3. Realizability for Families of I/O Operators. Definition 7.8. We say that a family Fc of i/o operators is realizable by a singular polynomial state space system
+
+\Sigma  = ((g0; g1; : : : ; gm); X; q; h) where
+
+g0; g1; : : : ; gm are polynomial vector fields of IRn, X is a subset of IRn, q and h are polynomial functions defined on IRn, if the following properties hold:
+
+18
+
+(a) For each * 2 \Lambda  and each u 2 VT*, where T* is admissible for c*, there exists some absolutely
+
+continuous function x*(\Delta ) defined on [0; T ] satisfying x*(0) = x*0 for some x*0 2 X, such that
+
+q(x*(t)) (x*(t))0 = g0(x*(t)) +
+
+mX
+
+j=1
+
+gj(x*(t))uj(t)
+
+for almost all t 2 [0; T ], and,
+
+Fc*[u](t) = h(x*(t)) for all t 2 [0; T ] and all * 2 \Lambda . (b) The solution x*(\Delta ) in part (a) is of class C! if u is of class C!, and x*(\Delta ) is of class Ck+1 if u
+
+is of class Ck. (c) There holds the following regularity condition: There exists some open dense set \Lambda 1 of \Lambda  such
+
+that for * 2 \Lambda 1, there exists some set \Omega * of analytic functions which is dense in C1[0; T*] (with respect to Whitney topology) such that for any u 2 VT* " \Omega m* , there exists some C! solution x*(\Delta ) as in (a) so that
+
+q(x*(\Delta )) 6= 0 If Fc can be realized by a singular polynomial system with
+
+q(x) = 1 for all x 2 IRn; we say that Fc is realizable by a polynomial system, and if in addition, the vector fields g0; : : : ; gm are linear in x, then we say that Fc is realizable by a bilinear system. 2For an analytic family of power
+
+series c, we associated with it an observation algebra ~A1(c) defined as the IR-algebra generated by the elements of ~F1(c) and an observation field ~Q1(c) defined as the quotient field of ~A1(c). Note here that the analyticity of the family implies that the quotient field of ~A1(c) is well defined.
+
+By using the same techniques used in x5, we get the following conclusion: Theorem 7.9. Let c be an analytic family of power series. Then (a) The family of i/o operators Fc is realizable by a polynomial system if ~A1(c) is a finitely generated
+
+IR-algebra. (b) The family of i/o operators Fc is realizable by a singular polynomial system if ~Q1(c) is a finitely
+
+generated field extension of IR. Combining all the results in this section, one sees that the existence of i/o equations implies realizability. On the other hand, if Fc is realizable by some singular polynomial system, then by using approximation arguments, one can show that Fc must satisfy some algebraic i/o equation. Hence we have
+
+Theorem 7.10. Assume that c is an analytic families of series. Then (a) The following statements are equivalent:
+
+(i) Fc satisfies an algebraic i/o equation; (ii) Fc satisfies a rational i/o equation; (iii) Fc is realizable by a singular polynomial system. (b) Fc is realizable by a polynomial system if Fc satisfies a recursive i/o equation.
+
+Remark 7.1. In the proofs of part (a) of Theorems 7.9 and 7.9, one needs not to assume that ~A1(c) and ~A2(c) are integral domains. Hence part (b) of Theorem 7.10 also holds for continuous families, that is, for continuous families of operators, existence of recursive i/o equation implies realizability by polynomial systems. 2
+
+8. Closing Remarks. We envision our results being used as follows (the idea is very similar to that employed in the discrete case, and explored in some detail in [5]). If there are reasons to believe that the system producing the observed data is well-posed, then an equation E may be fit to the data. We are assured that there is then a realization of the type to be considered, and we then try to find this realization. We are still very far from having constructive techniques for obtaining realizations; this is a
+
+19
+
+major topic for further research involving symbolic computation. The following example illustrates the type of construction suggested by the proofs.
+
+Consider the input/output equation
+
+uy00 = y2u2 + y0u0(43) and assume that it is "well-posed" in the sense mentioned above, that is, that there is a Fliess operator y = Fc[u] for which every pair (u; Fc[u]) satisfies the equation. Then we know that Fc can be realized by some polynomial state space system
+
+x0 = f (x) + g(x)u;(44)
+
+y = h(x) :(45)
+
+with some fixed initial state. We try to deduce now what f; g; h should be. We have
+
+y0 = Lf h(x) + Lgh(x)u; y00 = L2f h(x) + (Lf Lgh(x) + LgLf h(x)) u + L2gh(x)u2 + Lgh(x)u0:
+
+Substituting y; y0; y00 into equation (43) we get the following formulas:
+
+Lf h = 0;(46) Lf Lgh + LgLf h = h2;(47) L2gh = 0:(48)
+
+Formulas (46) and (47) suggest that L2f h = 0 and Lf Lgh = h2. Now let
+
+z1 = h(x); z2 = Lgh(x): Then along any trajectory x(t) of (44),
+
+z01(t) = Lf h(x(t)) + Lgh(x(t))u(t) = z2(t)u(t); z02(t) = Lf Lgh(x(t)) + L2gh(x(t))u(t) = z1(t)2:
+
+Hence, Fc can be realized by the following polynomial system
+
+z01 = z2u; z02 = z21;
+
+y = z1;
+
+where the choice of initial state will depend on additional data (such as the knowledge of y(0) and y0(0) for some nonzero control).
+
+Of course, for practical applications, it is not clear when one would be justified in assuming wellposedness. But we take the position that postulating well-posedness is a far weaker assumption than assuming that the data was produced by a linear system, an assumption that itself underlies most applications of control theory.
+
+Sometimes one imposes a "causality" constraint on i/o equations, requiring that the highest derivative of u be of lower order than derivatives of y. However, it is easy to see (cf. [28]) that for i/o behaviors described by generating series, an equation of the type (1) always leads to an equation in which the highest order of derivative of inputs is lower than the highest order of derivative of outputs, i.e., an equation of the type
+
+E iu(t); u0(t); u00(t); : : : ; u(r\Gamma 1)(t); y(t); y0(t); y00(t); : : : ; y(r)(t)j = 0 : This is essentially a consequence of the fact that an i/o operator induced by a generating series must be causal in the sense that the k-th order derivatives of outputs do not depend on the k-th order derivatives of inputs.
+
+20
+
+Though nonsingular systems are to be preferred, but we do not yet know if there is always a realization of that type (for nonrecursive equations). However, the analytic results in [29] can be applied to prove that about every singular point of the realization obtained here there is another system, locally defined in terms of analytic functions, that realizes (locally) the desired behavior. The picture that emerges then is that, at least, one can cover the possibly singular part with local analytic realizations. In a computer simulation, this would be achieved by passing to a subroutine to deal with trajectories near this set.
+
+As a final remark, we explain how this work relates to alternative foundations for systems theory recently proposed by various authors. One may consider the behavior w(\Delta ) = (u(\Delta ); y(\Delta )) associated to an input/output description. It has been proposed by [31] that one should formulate systems modeling without a priori distinctions between input and output signals. In these terms, an input/output equation takes the form
+
+E iw(t); w0(t); w00(t); : : : ; w(r)(t)j = 0 :(49)
+
+One of the central questions in [31] and related work is that of in some sense partitioning an abstract behavior w(\Delta ) into "inputs" and "outputs." Once this task is achived, however, and provided that one may assume a suitable structure -in our case, the existence of a Fliess-operator relationship between inputs and outputs,- it is still important to be able to relate an abstract equation such as (49) to realizability, and this is precisely what our result does. Similarly, the work [9] defined realizability by the requirement that outputs be differentiably dependent on inputs, in other words, that an equation such as (1) hold; we showed that this is basically the same as realizability in the more classical sense.
+
+REFERENCES [1] Z. Bartosiewicz, Rational systems and observation fields, Systems & Control Letters, 9 (1987), pp. 379-386. [2] , Minimal polynomial realizations, Math. of Control, Signals, and Systems, 1 (1988), pp. 227-231. [3] G. Conte, G. H. Moog, and A. Perdon, Un th'eor`eme sur la repr'esentation entr'ee-sortie d'un syst`eme non lin'eaire,
+
+C. R. Acad. Sci. Paris, t. 307, S'erie I, (1988), pp. 363-366. [4] P. Crouch and F. Lamnabhi-Lagarrigue, State space realizations of nonlinear systems defined by input-output
+
+differential equations, in Proc. 8th Internat. Conf. Analysis Optimiz. Systems, Antibes, 1988, A. Bensousan and J. L. Lions, eds., Berlin, 1988, Spring-Verlag, pp. 138-149. [5] H. Diaz and A. Desrochers, Modeling of nonlinear discrete time systems from input-output data, Automatica, 24
+
+(1988), pp. 629-641. [6] S. Diop, Elimination procedure and control theory, Math. Contr., Signals & Syst, 4 (1991). to appear. [7] M. Fliess, Fonctionnelles causales non lin'eaires et ind'etermin'ees non commutatives, Bull. Soc. Math. France, 109
+
+(1981), pp. 3-40. [8] , R'ealisation locale des syst`emes non lin'eaires, alg`ebres de lie filtr'ees transitives et s'eries g'en'eratrices non
+
+commutatives, Invent. Math., 71 (1983), pp. 521-537. [9] , Automatique et corps diff`erentiels, Forum Math., 1 (1989), pp. 227-238. [10] M. Fliess and C.Reutenauer, Une application de l'algebra differentielle aux systems reguliers (ou bilineaires), in
+
+Analysis and Optimization of Systems, Lect. Notes. Control Informat. Sci., A. Bensoussan and J. L. Lions, eds., Berlin, 1982, Springer-Verlag, pp. 99-107. [11] M. Fliess and I. Kupka, A finiteness criterion for nonlinear input-output differential systems, SIAM J. Control
+
+and Opt., 21 (1983), pp. 721-728. [12] S. T. Glad, Nonlinear state space and input output descriptions using differential polynomials, in New Trends in
+
+Nonlinear Control Theory, J. Descusse, M. Fliess, A. Isidori, and M. Leborgne, eds., Heidelberg, 1989, SpringerVerlag, pp. 182-189. [13] A. Isidori, Nonlinear Control Systems: An Introduction, Springer-Verlag, Berlin, 1985. [14] T. Kailath, Linear Systems, Prentice-Hall, Englewood Cliffs, NJ, 1980. [15] I. Leontaritis and S.A.Billings, Input-output parametric models for nonlinear systems: Parts I and II, Int.J.
+
+Control, 41 (1985), pp. 303-344. [16] J. T. Lo, Global bilinearization of systems with controls appearing linearly, SIAM J. Control, 13 (1975), pp. 879-885. [17] N. H. McClamroch, Singular systems of differential equations as dynamic models for constrained robot systems, in
+
+IEEE Conf. Robotics and Automation, San Fransico, 1986, pp. 21-23. [18] H. Nijmeijer and A. van der Schaft, Nonlinear Dynamical Control Systems, Springer-Verlag, New York, 1990. [19] R. Ree, Lie elements and an algebra associated with shuffles, Annals of Mathematics, 68 (1958), pp. 210-220. [20] E. D. Sontag, On the internal realization of nonlinear behaviors, in Dynamical Systems, A. Bednarek and L. Cesari,
+
+eds., New York, 1977, Academic Press, pp. 493-497. [21] , Polynomial Response Maps, Springer-Verlag, Berlin-NY, 1979. [22] , Bilinear realizability is equivalent to existence of a singular affine differential i/o equation, Systems & Control
+
+Letters, 11 (1988), pp. 181-187.
+
+21
+
+[23] , Mathematical Control Theory, Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990. [24] H. J. Sussmann, Lie brackets and real analyticity in control theory, Mathematical Control Theory, Banach Center
+
+Publications, 14 (1985), pp. 515-542. [25] M. E. Sweedler, Hopf Algebras, W. A. Benjamin, New York, 1969. [26] A. V. van der Schaft, On realizations of nonlinear systems described by higher-order differential equations, Math
+
+Systems Theory, 19 (1987), pp. 239-275. [27] , Representing a nonlinear state space system as a set of higher-order differential equations in the inputs and
+
+outputs, Systems & Control Letters, 12 (1989), pp. 151-160. [28] Y. Wang, Algebraic Differential Equations and Nonlinear Control Systems, PhD thesis, Dept. Math., Rutgers, the
+
+State University of New Jersey, 1990. [29] Y. Wang and E. D. Sontag, Generating series and nonlinear systems: analytic aspects, local realizability, and i/o
+
+representations, Forum Math., 3 (1991), to appear. [30] , On two definitions of observation spaces, Systems and Control Letters, 13 (1989), pp. 279-289. [31] J. C. Willems, Paradigms and puzzles in the theory of dynamical systems, IEEE Trans. Autom. Control, TAC-36
+
+(1991), pp. 259-294. [32] W. M. Wonham, Linear Multivariable Control: A Geometric Approach, Springer-Verlag, Berlin, second ed., 1979.
+
+22</pre>
+</body>
+</html>

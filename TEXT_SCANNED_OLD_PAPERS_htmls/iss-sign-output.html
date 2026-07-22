@@ -1,0 +1,640 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iss-sign-output.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iss-sign-output.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Input-to-State Stabilization of Linear Systems with Positive Outputs
+
+D. Ne^si'c\Lambda , CCEC, Department of Electrical and Computer Engineering,
+
+University of California, Santa Barbara, CA, 93106-9560
+
+dragan@lagrange.ece.ucsb.edu
+
+E. D. Sontagy Department of Mathematics Rutgers University, Piscataway, NJ 08854-8019, USA
+
+sontag@hilbert.rutgers.edu
+
+Abstract This paper considers the problem of stabilization of linear systems for which only the magnitudes of outputs are measured. It is shown that, if a system is controllable and observable, then one can find a stabilizing controller, which is robust with respect to observation noise (in the ISS sense).
+
+1 Introduction In this paper, we consider questions regarding the control of scalar-input scalar-output linear systems for which only the magnitude of the output is measured. We show that such systems can be stabilized by dynamic sample-and-hold feedback, assuming only controllability and observability. Far more interestingly, we include the possibility of measurement errors, and we show that our controller is robust to such disturbances, in the precise sense captured by the notion of input-to-state stability. Thus, we are interested in systems of the following type:
+
+.x = Ax + Bu z = jCxj + d ; (1)
+
+where states x(t) 2 Rn for a suitable n (the dimension of the system), controls take values u(t) 2 R, outputs z(t) 2 R, and the matrices describing the system are of the obvious sizes: A 2 Rn\Theta n , B 2 Rn\Theta 1 , and C 2 R1\Theta n . We think of the scalar function d = d(\Delta ) as a measurement disturbance. A variation of this model is that in which the noise represented by the function d acts before taking absolute value of the output, that is:
+
+.x = Ax + Bu z = jCx + dj = jyj (2)
+
+We will focus on this second model, using "y(t)" to denote Cx(t) + d(t). Later, we point out that identical results for (1) can be obtained, by a simple argument, from those for (2).
+
+We must define the meaning of "robustness with respect to d". One general approach to defining stability with respect to disturbances is provided by the concept of ISS (input-to-state stability), and we
+
+\Lambda This work was supported by the National Science Foundation under grant ECS 9528370.
+
+ySupported in part by US Air Force Grant AFOSR-97-0159
+
+1
+
+wish to use this notion. There are many equivalent definitions of ISS for continuous-time systems, and several of the equivalences are highly nontrivial, cf. [17]. However, when applied to a closed-loop system in which the controller is dynamic (has memory) and operates in a sample-and-hold mode, as we will do here, the definitions are not necessarily equivalent anymore. Thus, we will choose (a linear version of) one of the many equivalent definitions of ISS to generalize. We use jxj to denote the Euclidean norm of a vector.
+
+Definition 1 An ultimately-linear L1-gain controller for the system (2) is one such that the following two properties hold:
+
+1. There is some constant c ? 0 such that, for each initial state x(0), and for each real number D, ifj
+
+d(t)j ^ D for all t 2 R*0 , then the closed-loop state satisfies that
+
+lim sup
+
+t!1 jx(t)j ^ cD :
+
+2. For each " ? 0 there is some ffi ? 0 such that, if jx(0)j ^ ffi and jd(t)j ^ ffi for all t 2 R*0 , then the
+
+closed-loop state satisfies that j
+
+x(t)j ^ "
+
+for all t * 0.
+
+In this paper we use, informally, the term "ISS" to mean the above-defined property. Remark 1 In order to keep the formalism as simple as possible, we have chosen not to define precisely the general meaning of "controller" and "closed-loop behavior". One may define these concepts in general, see e.g. [15], and it will be clear from our constructions how one could represent our controller as a dynamic (n-dimensional, in fact) time-periodic discrete-time system which operates on the continuoustime system (2) by means of sample and hold. In terms of such an abstract definition, the closed-loop behavior that we obtain has the property that all signals in the loop are ultimately bounded, in a manner similar to the way that the norm of the state is in the definition just given; furthermore, this property holds irrespective of the initial state of the controller. Finally, we note that, in order to keep the presentation as simple as possible and to focus on the interesting theoretical issues, we restricted attention to single-input single-output systems, but generalizations to the multi-variable case, for which the absolute value of each output coordinate is considered, are possible, see the closing remarks.
+
+Remark 2 Note that if a controller achieves ultimately-linear L1-gain, then, in particular, it globally stabilizes the system in the absence of disturbances. Indeed, when D = 0, the definition reduces to global attractivity and stability.
+
+The paper is organized as follows. The main controller is described in Section 2. In Section 3, we also describe an alternative possible approach. An auxiliary result, needed in Section 3, is proved in the Appendix.
+
+Motivations This work is ultimately motivated by the need to further understand three issues, which are at the core of current control theory research, namely questions of stabilization using partial state information, the use of discontinuous ("hybrid") feedback, and sensitivity of discontinuous stabilizers with respect to noise. These questions, which are well-understood for linear systems, are extremely difficult to deal with in a general nonlinear situation, and it seems reasonable to try to understand them in particular situations, such as the class of systems considered here.
+
+In contrast to linear systems, for general nonlinear systems it is in general not true that controllability and observability suffice for the existence of a (dynamic) output stabilizer. In [12], necessary and sufficient (but, except for certain special cases, cf. [13], hard to check) conditions for dynamic output
+
+2
+
+regulation were obtained. The problem is one of great interest; some recent references are [1, 2, 3, 9, 18].) In addition, when stabilizing nonlinear systems, the effect of disturbances on actuators and/or on measurements cannot be disregarded in the design. For linear systems, small or bounded disturbances produce small or bounded steady state errors, if stability of the undisturbed system holds. Disturbances on actuators are somewhat easier to handle than those on measurements: while a controller, even a feedback-linearizing one, can easily become unstable in the presence of actuator noise, the paper [14] showed how a simple feedback redesign can render the closed-loop system ISS. On the other hand, disturbances on measurements can lead to serious instability, and one of the most interesting open problems in nonlinear control theory concerns the formulation of output controllers which are robust, in an ISS sense, with respect to disturbances. In a remarkable contribution, Randy Freeman produced in [4] a counterexample showing that it is in general impossible to stabilize, using a state feedback, a simple system with state measurements .x = f (x; u), y = x (h is the identity), if ISS behavior with respect to disturbances is required, that is, a feedback law k(\Delta ) such that .x = f (x; k(x + d)) is ISS with respect to d(\Delta ). On the other hand, Freeman showed in [5] that, for his example, a dynamic (time-varying) controller can be used to obtain ISS behavior in this sense. The challenge now is to understand how general this situation (existence of dynamic controllers providing ISS with respect to disturbances) is, and to see how explicit the constructions can be made. As noted in [5], some of the most important features of the counterexample in [4] are captured by the study of ISS design for linear systems "with positive noisy outputs" .x = Ax + Bu, y = jCx + dj, which are the subject of the present work.
+
+As for related work, we remark that the controllers presented here are somewhat similar to the stabilizers designed for linear systems with output saturating nonlinearity in [7]. They are also closely related to the time-optimal dead-beat controllers for linear systems with positive inputs presented in [10, 11]. However, due to the different nonlinearities, the designs are notably different and, more importantly, neither of the cited references investigates the performance of the designed controllers in the presence of disturbances. Finally, we remark that questions of robustness with respect to noise, even for small noise levels (not ISS behavior, which considers arbitrary magnitudes), leads to extremely interesting theoretical questions; see for instance [8]. Linear systems with positive outputs are a particular class of "constrained output linear systems" in the sense of [6].
+
+2 Main Construction The controller to be designed is a time-varying sampled-data scheme which in the absence of disturbances produces a dead-beat response. It acts by cycling through four basic steps or "modes", each of the same duration and proportional to the dimension n of the system:
+
+1. In the first step, one applies a zero control and uses the measured outputs z(\Delta ) to obtain an estimate
+
+of the combined magnitude of the state and disturbances.
+
+2. The second mode drives the state to a region of the state space in which the sign of y = Cx + d
+
+can be unambiguously determined. To be precise, it does so provided that the disturbance is small in comparison to the state; otherwise, if the observation noise is large, nothing interesting is accomplished.
+
+3. The third step makes the assumption that the sign of y is known and reconstructs the state using
+
+a linear filter. If the disturbance was large, so that step 2 did not guarantee that the sign was known, this step does not achieve any useful goals.
+
+4. Finally, the controller in the last stage computes a control that drives the estimated state to the
+
+origin. If the noise was large in comparison to the initial state, then the final state is not necessarily small, but it is still small with respect to the magnitude of the disturbance.
+
+We now formalize this procedure.
+
+3
+
+The design of the ISS controller is based on the discrete-time model of the system (2) for a fixed sampling period T :
+
+x(k + 1) = F x(k) + Gu(k)
+
+z(k) = jCx(k) + d(k)j (3)
+
+where
+
+F = eAT and G = Z
+
+T
+
+0 e
+
+AsB ds ; (4)
+
+and jd(k)j ^ D, 8k * 0. The sampling period T is chosen so that the triple (F; G; C) is minimal. Without loss of generality we also assume below that T = 1, in order to simplify the notation. We base the controller design on the discrete-time plant model (3), and then analyze the state trajectories for the original continuous-time system, when using the piecewise constant inputs that arise from the corresponding discrete-time controls.
+
+The notation Zk2k
+
+1 denotes a vector whose entries are stacked measurements z(i); i = k1; k1 +1; : : : ; k2.
+
+Similarly, Dk2k
+
+1 and U
+
+k2 k1 denote, respectively, vectors whose entries are the stacked disturbances d(i) and
+
+control inputs u(i) at sample times i = k1; k1 + 1; : : : ; k2. Note that jDk2k
+
+1 j ^ p1 + k2 \Gamma  k1D for allk
+
+1; k2.
+
+Mode 1: We apply the controls u(k + t) = 0; k = 0; 1; 2; : : : ; n \Gamma  1, t 2 [0; 1[ over the time interval [0; n[, and take the measurements z(k); k = 0; 1; : : : ; n \Gamma  1. Note that we have:
+
+\Sigma z(k) = CF kx(0) + d(k) ; k = 0; 1; : : : ; n \Gamma  1 : For an arbitrary but fixed L ? 0, we introduce the notation
+
+B \Gamma Zn\Gamma 10 \Delta  = (1 + L) flflO(F; C)\Gamma 1flfl fifiZn\Gamma 10 fifi : (5) The number B \Gamma Zn\Gamma 10 \Delta  can be interpreted as an estimate for a bound on the norm of the initial state x(0), and is obtained from the measurements Zn\Gamma 10 . Similarly, we introduce:
+
+kF nk B \Gamma Zn\Gamma 10 \Delta  (6) as an estimate for a bound of the norm of the state x(n). The following Lemma shows that the above estimates are correct if the norm of the initial state is large enough.
+
+Lemma 1 Consider the bound (5) with an arbitrary L ? 0. Then, there exists K ? 0 such that, ifj
+
+x(0)j * KD, then
+
+jx(0)j ^ (1 + L) flflO(F; C)\Gamma 1flfl fifiZn\Gamma 10 fifi = B \Gamma Zn\Gamma 10 \Delta  : (7)
+
+Proof of Lemma 1: Consider (3) with u(k) = 0, k = 0; 1; : : : ; n \Gamma  1, and suppose that we recorded the following measurements:
+
+z(0) = jCx(0) + d(0)j z(1) = jCF x(0) + d(1)j
+
+...
+
+z(n \Gamma  1) = fifiCF n\Gamma 1x(0) + d(n \Gamma  1)fifi :
+
+(8)
+
+Rewrite the set of equations (8) as follows:
+
+O(F; C)x(0) + Dn\Gamma 10 = \Sigma Zn\Gamma 10 ; (9)
+
+4
+
+where the matrices Dn\Gamma 10 and Zn\Gamma 10 have the obvious interpretation. (We use the notation \Sigma X, for a vector X = (x1; : : : ; xn)T , to denote a vector each of whose entries is \Sigma xi.) From equation (9) we obtain:
+
+jx(0)j ^ flflO(F; C)\Gamma 1flfl \Gamma fifiZn\Gamma 10 fifi + pnD\Delta  : (10) Now suppose that j
+
+x(0)j ? (1 + L)L flflO(F; C)\Gamma 1flfl pnD =: KD :
+
+Using (10), we obtain that pnD ^ L fifiZn\Gamma 10 fifi, and, substituting this estimate of D back into (10), we obtain (7), as desired.
+
+Remark 3 With M := (1 + L) flflO(F; C)\Gamma 1flfl, we can summarize the above conclusions as: There are constants M and K such that
+
+jx(0)j ^ max \Phi M fifiZn\Gamma 10 fifi ; K fifiDn\Gamma 10 fifi\Psi  :
+
+Mode 2: Before we describe Mode 2 in more detail, we need to construct a cone which plays a central role in the computation of the controls that are applied to the system over the time interval [n; 2n[. Let us first introduce the cone C0 = fx : CF ix * 0 j i = 0; 1; : : : ; n \Gamma  1g. We note that this cone has a non-empty interior, since the pair (C; F ) is observable. We remark that in order to stabilize the system in the absence of disturbances, we could base the controller design on the cone C0. However, in order to obtain ISS behavior, we must introduce an appropriate subcone of C0, to be denoted as C1.
+
+For each number D 2 [0; 1[, we introduce the following sets:
+
+Hj(D) := fx : fifiCF jxfifi ^ Dg; j 2 f0; 1; : : : ; n \Gamma  1g : For any r * 0, Br denotes the ball of radius r.
+
+Lemma 2 There exists a cone C1 ` Rn with a non-empty interior, contained in C0, and there is a positive number * ? 0, such that 0@[
+
+j
+
+Hj(D)1A " C1 ` B*D
+
+for every D 2 [0; 1[. In particular, the set ([jHj(D)) " C1 is bounded, for each D. Proof of Lemma 2: We define C1 as the set of vectors x 2 Rn which satisfy all the following inequalities:
+
+Cx * 0 2Cx * CF x * Cx
+
+...
+
+2CF n\Gamma 2x * CF n\Gamma 1x * CF n\Gamma 2x :
+
+(11)
+
+It is clear that C1 is a cone with non-empty interior contained in C0, and, for all i; j 2 f0; : : : ; n \Gamma  1g and all x 2 C1,
+
+i ! j ) CF ix ^ CF j x
+
+and
+
+i ? j ) CF ix ^ 2i\Gamma jCF jx :
+
+Now take any j; D and any x 2 Hj(D) " C1. Thus all CF ix * 0, and 0 ^ CF j x ^ D. It follows from the above properties that CF ix ^ 2n\Gamma 1CF j x ^ 2n\Gamma 1D for all i 2 f0; : : : ; n \Gamma  1g, so also kxk ^ *D, where
+
+* := flflO(F; C)\Gamma 1flfl pn2n\Gamma 1D : Now we show how to compute the control sequence in Mode 2.
+
+5
+
+Remark 4 The above Lemma will be used in its contrapositive form, namely the fact that, for the above C1 and *, we have: if x 2 C1 is such that jxj ? *D, then CF jx ? D for all j 2 f0; 1; : : : ; n \Gamma  1g, and in particular, if jd(j)j ^ D for all j,
+
+CF jx + d(j) ? 0 for all j 2 f0; 1; : : : ; n \Gamma  1g.
+
+We can represent the cone C1 by means of some set of M independent inequalities, as follows:
+
+r1x * 0 ; r2x * 0 ; : : : ; rM x * 0 ; where the ri, i = 1; 2; : : : ; M , are row vectors. We now choose an arbitrary vector v 2 int C1 with unit norm jvj = 1; by definition, riv ? 0 for i = 1; : : : ; M . Since the pair (F; G) is controllable, there exist ai 2 Rm , i = 0; 1; : : : ; n \Gamma  1, such that
+
+v =
+
+n\Gamma 1X
+
+i=0
+
+F n\Gamma 1\Gamma iGai : (12)
+
+Assume now that the following control sequence is applied to the system:
+
+u(k + t) = ffak\Gamma n ; k = n; n + 1; : : : ; 2n \Gamma  1 ; t 2 [0; 1[ ; (13) where ff ? 0 is a positive number to be specified below. The state of the system, under the control sequence (13) and starting from the state x(nT ), is given by:
+
+x(2n) = F nx(n) +
+
+n\Gamma 1X
+
+i=0
+
+F n\Gamma 1\Gamma iG(ffai) = F nx(n) + ffv : (14)
+
+The particular choice of ff which we use in the design is given by:
+
+ff \Gamma Zn\Gamma 10 \Delta  = maxi=1;::: ;M flflF
+
+2nflfl + 1
+
+riv jrij B \Gamma Z
+
+n\Gamma 10 \Delta  ; (15)
+
+and the control sequence applied in Mode 2 is given by (13) with (12) and (15).
+
+The following Lemma shows that any "large" initial state is transferred to the cone C1 at the end of Mode 2:
+
+Lemma 3 Consider the Modes 1 and 2 of the ISS controller over the time interval [0; 2n[. Suppose thatj
+
+x(0)j * KD, where K satisfies the conditions of Lemma 1. Then we have that:
+
+1. x(2n) 2 C1, 2. jx(2n)j * jx(0)j.
+
+Proof of Lemma 3: If ff * 0 is chosen so that all the inequalities
+
+r1F nx(n) + ffr1v * 0 ; r2F nx(n) + ffr2v * 0 ; : : : ; rM F nx(n) + ffrM v * 0 (16) are satisfied, then x(2n) 2 C1. It can be verified that, if
+
+ff * ff\Lambda  := maxi=1;::: ;M jrij flflF
+
+2nflfl jx(0)j
+
+riv ;
+
+then all the inequalities are indeed satisfied. Since for our choice given in (15), and for those initial states so that jx(0)j * KD we have that B \Gamma Zn\Gamma 10 \Delta  * jx(0)j, it follows that ff \Gamma Zn\Gamma 10 \Delta  * ff\Lambda  and x(2n) 2 C1.
+
+6
+
+For the second statement, we proceed as follows. Since jvj = 1 and riv ? 0; 8i, we have that riv = jrivj ^ jrij jvj = jrij. Together with jx(0)j ^ B \Gamma Zn\Gamma 10 \Delta , which follows because jx(0)j * KD, we have:
+
+ff \Gamma Zn\Gamma 10 \Delta  * \Gamma flflF 2nflfl + 1\Delta  B \Gamma Zn\Gamma 10 \Delta  * \Gamma flflF 2nflfl + 1\Delta  jx(0)j * fifiF 2nx(0)fifi + jx(0)j (17) and so
+
+jx(2n)j = fififf \Gamma Zn\Gamma 10 \Delta  v \Gamma  F 2nx(0)fifi * fififf \Gamma Zn\Gamma 10 \Delta  vfifi \Gamma  fifiF 2nx(0)fifi * jx(0)j where the last inequality follows from (17) and fififf \Gamma Zn\Gamma 10 \Delta  vfifi = ff \Gamma Zn\Gamma 10 \Delta .
+
+Mode 3: We apply
+
+u(k + t) = 0 ; k = 2n; 2n + 1; : : : ; 3n \Gamma  1 ; t 2 [0; 1[ ; (18) measure z(k); k = 2n; : : : ; 3n \Gamma  1, and then reconstruct the state at time step 3n using
+
+^x(3n) = F nO(F; C)\Gamma 1Z3n\Gamma 12n :
+
+The following corollary follows from the construction of the controller. Corollary 1 Suppose that x(2n) 2 C1 is such that jx(2n)j ? *D, where * is as in Lemma 2, and let us compute the state estimate of x(2n) as follows:
+
+^x(2n) = O(F; C)\Gamma 1Z3n\Gamma 12n (19) and introduce the notation E := ^x(2n) \Gamma  x(2n). Then we have that the bound on the norm of the state estimation error E is jEj ^ flflO(F; C)\Gamma 1flfl pnD (which is independent of x(0)).
+
+Proof of Corollary 1: From the construction of C1 in Lemma 2 we have that if jx(2n)j ? *D, then sign (y(k)) = +1 for k = 2n; : : : ; 3n \Gamma  1. So, for all such k, z(k) = y(k) = CF k\Gamma 2nx(2n) + d(k), and thus
+
+^x(2n) = O(F; C)\Gamma 1Z3n\Gamma 12n = O(F; C)\Gamma 1 \Theta O(F; C)x(2n) + D3n\Gamma 12n \Lambda  = x(2n) + O(F; C)\Gamma 1D3n\Gamma 12n ; and the estimate is proved.
+
+Mode 4: In this mode we fix an integer N * n and steer the state of the system estimated at time 3n, which we take to be ^x(3n), to the origin using the minimum energy control over the time interval [3n; 3n + N \Gamma  1[. For simplicity, we take N = n, so that controls are computed using:
+
+[u(3n) : : : u(4n \Gamma  1)]T = \Gamma C(F; G)\Gamma 1F 2n ^x(2n) ; (20) where C(F; G) is the non-singular controllability matrix for the pair (F; G).
+
+2.1 Proof of Correctness The controller then consists of Modes 1-4 which are cyclically applied to the plant. (Thus, the controller that we obtain is periodic.) In order to summarize the control algorithm, we introduce the following vector (stack of controls):
+
+Uj = 0BBB@
+
+U 4j+n\Gamma 14j U 4j+2n\Gamma 14j+n U 4j+3n\Gamma 14j+2n U 4j+4n\Gamma 14j+3n
+
+1CCC A
+
+7
+
+The entries of Uj are the control inputs which are applied (as piecewise constant controls in each sampling interval) to the system over the time interval [4nj; 4nj + 4n[. Then the controller U can be summarized as follows:
+
+U 4j+n\Gamma 14j = U 4j+3n\Gamma 14j+2n = 0BBB@
+
+0 0
+
+...
+
+0
+
+1CCC A ; U
+
+4j+2n\Gamma 1 4j+n = ff(Z
+
+4j+n\Gamma 1 4j )
+
+0BBB
+
+@
+
+a0 a1
+
+...
+
+an\Gamma 1
+
+1CCC A ; j = 0; 1; : : : where the ai's are defined in terms of the vector v by (12), and ff is computed using formula (15), and
+
+U 4j+4n\Gamma 14j+3n = \Gamma C(F; G)\Gamma 1F 2nO(F; C)\Gamma 1Z4nj+3n\Gamma 14nj+2n ; j = 0; 1; : : : : (We "padded" by adding one instant where the control is 0 during the first cycle, so that the formulas are more elegant, having each of the four parts of the same length n.) We also write U (j) to denote the input to the system produced by the controller over the time interval [4nj; 4nj + 4n[; j = 0; 1; : : : . The controller is summarized below:
+
+U (j) = Uj; j = 0; 1; : : : (21)
+
+The following lemmas are instrumental in the proof of the ISS property for the controller: Lemma 4 Suppose that the state x(2n) is estimated with an error E, that is, ^x(2n) = x(2n) + E. Then, if we apply the sequence of controls (20), we have the following bound:
+
+jx(4n)j ^ flflF 2nflfl jEj :
+
+Proof of Lemma 4: From ^x(3n) = F n ^x(2n) = F nx(2n) + F nE = x(3n) + F nE, and applying the control u from (20), we obtain 0 = x(4n) + F 2nE.
+
+We denote the evolution of the closed-loop continuous time state of the plant (2) under the controller (21) by x(t; x(0)).
+
+Corollary 2 There exist positive numbers K1; K2, such that, if jx(0)j ? K2D, then the closed-loop state satisfies jx(4n; x(0))j ^ K1D.
+
+Proof of Corollary 2: Choose K2 = max(K; *), where K is taken as in Lemma 1 and * is taken from Lemma 2. From Lemma 3 it follows that if jx(0)j ? K2D, then jx(2n; x(0))j * jx(0)j, since K2 * K. From Corollary 1 it follows that, since jx(2n; x(0))j ? *D, we have that jEj ^ flflO(F; C)\Gamma 1flfl pnD. Finally, Lemma 4 guarantees that the corollary holds with K1 = flflF 2nflfl flflO(F; C)\Gamma 1flfl pn.
+
+Lemma 5 There exist positive numbers K3; K4 such that, for each initial state x(0) 2 Rn , we have that
+
+jx(t; x(0))j ^ K3 jx(0)j + K4D; t 2 [0; 4n[ :
+
+Proof of Lemma 5: Notice that for all Modes 1-4, the system is a linear system with different piecewise constant inputs. The following bound holds in continuous time for an arbitrary time interval [t1; t2]:
+
+jx(t; x(t1))j ^ max
+
+t2[t1;t2] flfle
+
+Atflfl jx(t1)j + ^Z
+
+t2
+
+t1 flflfle
+
+A(t2\Gamma s)flflfl kBk ds* max
+
+t2[t1;t2] ju(t)j : (22)
+
+Also, notice that the control input for Modes 1 and 3 is identically equal to zero, whereas for Modes 2 and 4 it is computed based on the measurement vectors Zn\Gamma 10 and Z3n\Gamma 12n respectively. Also, it is easy to see that we have, for suitable constants Pi:fifi
+
+Zn\Gamma 10 fifi ^ P1 jx(0)j + P2D ;fifi Z3n\Gamma 12n fifi ^ P3 jx(2nT )j + P4D ; (23)
+
+from which one may derive bounds on the control u(t) over the entire time interval [0; 4n[. Finally, using (22), we conclude as desired.
+
+8
+
+Corollary 3 There exists K5 ? 0 such that given an arbitrary x(0) 2 Rn , we have that jx(4n; x(0))j ^ K5D.
+
+Proof of Corollary 3: From Corollary 2 we have that if jx(0)j ? K2D then jx(4n; x(0))j ^ K1D. If on the other hand we have that jx(0)j ^ K2D, from Lemma 5 it follows that jx(4n; x(0))j ^ (K3K2 +K4)D. The claim follows with K5 = max fK1; K2K3 + K4g.
+
+Corollary 4 There exists K6 ? 0 such that given an arbitrary x(0) 2 Rn , we have that
+
+jx(t; x(0))j ^ K6D ; t * 4n :
+
+Proof of Corollary 4: From Corollary 3 and the fact that Modes 1-4 of controller (21) are applied cyclically, it follows that jx(4n)j ^ K5D. Also, note that the bound given in Lemma 5 can be rewritten as follows: j
+
+x(t; x(4nj))j ^ K3 jx(4nj)j + K4D ; t 2 [4nj; 4nj + 4n[; 8 j = 0; 1; : : : ;
+
+and the proof follows by induction since we also have from Corollary 3 that
+
+jx(4nj; x(4nj \Gamma  4n))j ^ K5D ; 8 j = 1; : : : : So we may use K6 = K3K5 + K4.
+
+Theorem 1 The controller (21) is an ultimately-linear L1-gain controller for the system (2). Proof of Theorem 1: Just combine the bounds given in Corollary 4 and Lemma 5.
+
+As remarked earlier, the obtained controller globally stabilizes (in a dead-beat fashion) the system in the absence of disturbances.
+
+Corollary 5 The controller defined by (21) globally stabilizes the plant (2) with d(t) j 0. Proof of Corollary 5: First, we prove that the control scheme defined by (21) renders the origin of (2) with d j 0 an equilibrium. Indeed, if x(0) = 0, then U n\Gamma 10 = U 3n\Gamma 12n = 0, by definition, U 2n\Gamma 1n = 0 because Zn\Gamma 10 and ff(0) = 0 and then it follows that Z3n\Gamma 12n = 0 which implies U 4n\Gamma 13n = 0. Hence x(t; 0) = 0; t 2 [0; 4n[ and by induction we can show that x(t; 0) = 0; 8t. For x(0) 6= 0, the controller scheme is dead beat in nature and it yields x(t; x(0)) = 0; t * 4n for arbitrary x(0). Hence the origin of the closed loop system is globally attractive. The only thing left to prove is the stability of the origin. From the Corollary 4 and Lemma 5, with D = 0, we can see that jx(t; x(0))j ^ K3 jx(0)j, t 2 [0; 4n]. Hence, since x(t; x(0)) j 0; t * 4n, for any ffl ? 0, there exists ffi = ffl=K3 such that if jx(0)j ^ ffi thenj
+
+x(t; x(0))j ^ ffl, t * 0, which proves stability in Lyapunov sense.
+
+The Model (1) The same controller can be used, and precisely the same result holds, for model (1), i.e., if the measured output is z(t) = jCx(t)j + d(t) with jd(t)j ^ D for all t * 0. Indeed, we may simply use our controller by first taking the absolute value of the observed output, jz(t)j. If we introduce for each t the "virtual disturbance"
+
+d0(t) := ae d(t) if Cx(t) * 0\Gamma d(t) if Cx(t) ! 0
+
+then d0(t) has the same norm as d(t), and the closed loop behavior is the same as before, because:
+
+jz(t)j = jjCx(t)j + d(t)j = jCx(t) + d0(t)j :
+
+9
+
+3 An Alternative Approach to Stabilization In this section, we present an alternative approach to the stabilization (no measurement noise) for
+
+.x = Ax + Bu z = jCxj = jyj ; (24)
+
+Although the controller to be obtained is somewhat more complicated, we present it because the construction is very different, and might be of some interest in that it appears to result in smaller state excursions. This better transient behavior is due to the fact that in this construction we do not force the state away from the origin in order to estimate its sign. As earlier, the controller is periodic, so we describe the modes of operation over each cycle (there are now three, rather than four, basic steps).
+
+Estimate a state , so that x0 = +, or x0 = \Gamma , (Mode 1): We apply u(t) = 0; t 2 [0; T [. From Corollary 6 in the Appendix, it follows that there exists a positive integer K such that, for all x 2 Rn , CetAx has at most K zeroes for t in [0; T ]. It follows that, for each x 2 Rn , there are at least K + 1 intervals of the form^
+
+`T 2K + 1 ;
+
+(` + 1)T
+
+2K + 1 * ; ` = 0; : : : ; 2K
+
+where the sign of CetAx is constant (since there are 2K + 1 such intervals, and there can be zeroes in the interiors of at most K of them).
+
+We now introduce the sampling period
+
+ffi := T(2K + 1)n and consider the sampled outputs CekffiAx, for k 2 f0; : : : ; (2K + 1)ng. It is assumed that the sampling period ffi is such that the pair of matrices F := eAffi; G := R ffi0 eAsBds is controllable and (F; C) is observable; if this would not be the case, a smaller sampling period can be used and the argument is entirely analogous.
+
+Let J denote the set of integer intervals of the form
+
+fhnffi; : : : ; ((h + 1)n \Gamma  1)ffig ; h = 0; 1; : : : ; 2K ; The set J consists of 2K + 1 disjoint intervals, each of them containing n consecutive sampling instants.
+
+We now form the following set of vectors:
+
+,(h) = F \Gamma nhO(F; C)\Gamma 1Z(h+1)n\Gamma 1hn ; h = 0; 1; : : : ; 2K ; where the vector Z(h+1)n\Gamma 1hn = (z(hnffi) : : : z(((h + 1)n \Gamma  1)ffi))T ; h = 0; 1; : : : ; 2K.
+
+For each state x 2 Rn , we say that an interval J 2 J is pure if CekffiAx has constant sign whenever kffi 2 J. By construction, for each x 2 Rn there are at least K + 1 pure intervals. The state ,(h) equals either x(0) or \Gamma x(0) at the end of each pure interval. Thus, the following algorithm always returns, at time t = T , a state , which is equal to either x(0) or \Gamma x(0):
+
+Observer Algorithm: Run the above observer for k = 0; : : : ; (2K + 1)n \Gamma  1 and find ,(h); h = 0; 1; : : : ; 2K. At each time of the form hnffi, store the vector ,(h) or \Gamma ,(h), using the (arbitrary) convention that we pick the one with the property that the sum of its coordinates is nonnegative. At time T , choose, among the 2K + 1 stored vectors, the one that appears at least K + 1 times. The vector returned is denoted as , and is used in Mode 2 of the algorithm.
+
+10
+
+Estimate the sign of x0 (Mode 2): For a chosen " ? 0, we apply the control u(t) = " j,j = " jx(0)j, t 2 [T; 2T [.
+
+Since we assumed that (F; C) is observable and since G 6= 0, it follows for the SISO system (24) that9 i 2 f0; 1; : : : ; n \Gamma  1g such that CF iG 6= 0. Introduce i\Lambda  = minifi : CF iG 6= 0g. Consider the output of the system at time T + i\Lambda ffi:
+
+z(T + i\Lambda ffi) = fififiCF n(2K+1)+i
+
+\Lambda  x(0) + CF i\Lambda G" j,jfififi
+
+and notice that the sign of x(0) can be reconstructed using the following procedure. Sign observer: If , = 0 then we do not need to reconstruct the sign since x(0) = 0.
+
+Notice that by construction if j,j 6= 0, then CF i
+
+\Lambda  G" j,j 6= 0. Now we suppose that x(0) = +, and
+
+then we have that if
+
+z(T + i\Lambda ffi) ? fififiCF n(2K+1)+i
+
+\Lambda (+,)fififi
+
+then it must hold that sign (CF n(2K+1)+i
+
+\Lambda  (+,)) = sign (CF i\Lambda G). If the signs are the same, this means
+
+that our hypothesis on the sign of x(0) was wrong and therefore we actually have that x(0) = \Gamma ,.
+
+If we suppose that x(0) = +, and it happens that our measurements show:
+
+z(T + i\Lambda ffi) ! fififiCF n(2K+1)+i
+
+\Lambda (+,)fififi
+
+then it must hold that sign (CF n(2K+1)+i
+
+\Lambda  (+,)) = \Gamma sign (CF i\Lambda  G). If the signs are opposite, then our
+
+hypothesis on the sign of x(0) was wrong and we actually have that x(0) = \Gamma ,.
+
+Steer the state to the origin (Mode 3): With the reconstructed state x(0) and the known inputs prior to time 2T , we easily obtain
+
+x(2T ) = e2AT x(0) + Z
+
+T
+
+0 e
+
+A(T \Gamma s)B ds! " jx(0)j ;
+
+we use now the minimum energy control to transfer the state x(2t) using piecewise constant control to the origin at time 3T . The controls used during the next n sampling instants is given by:
+
+\Gamma W \Gamma 1C (F; G)[F (2K+1)n\Gamma 1G : : : : : G]T F (2K+1)nx(2T ) where
+
+WC (F; G) = [F (2K+1)n\Gamma 1G : : : : : G]T [F (2K+1)n\Gamma 1G : : : : : G]
+
+is the nonsingular controllability Grammian for the pair (F; G).
+
+Finally, just as with our first controller, we apply periodically these control laws using zero-th order hold, using u(t) = u(iffi); t = [iffi; (i + 1)ffi[.
+
+The proof of the following theorem follows the same lines as that of the first controller (for the special case D = 0).
+
+Theorem 2 A controllable and observable system (24) is stabilized by the controller defined in this section.
+
+11
+
+Remark 5 The controller obtained in this section is not continuous on the observation data, which entails in principle poor noise robustness (even for small disturbances, much less ISS behavior). This discontinuity is due to two steps taken by the controller in the phase in which the state x or its negative\Gamma 
+
+x is identified: (1) the storage of a normalized version that folds the signs, and (2) the selection, by a majority vote, of the correct estimate. Clearly this last step can only work in an unrealistic situation in which there is no observation noise. At the cost of an increase in complexity, it is possible, however, to modify our design in such a way that this discontinuous behavior can be overcome. We sketch the modified procedure next. The first modification consists in picking a sampling period T := 1(3K+1)n
+
+(note the 3 instead of 2). In this manner, we are assured that, in the ideal no-noise case, there will be at least K + 1 estimates of the state which are equal, as opposed to merely equal up to sign. (Note that it may happen that there are two sets of estimated states, each of cardinality at least K + 1, corresponding to the two estimates x and \Gamma x.) The second modification, to make step (2) continuous on the data, is as follows. We pick the 3K + 1 estimates, and consider all possible subsets of K + 1 elements. For each possible subset of this cardinality, we compute its center of mass and its dispersion (average distance to center). Finally, we pick the centers of those subsets with minimum dispersion. Note that there are at most two such minimizers in the noise free case, corresponding to x and \Gamma x, and in the presence of small observation noise the estimates so obtained can be expected to be robust.
+
+Obviously, the procedure just described is not practical, since a combinatorial search is needed (all\Gamma  K+1 3K+1\Delta  subsets must be considered). Thus, more sophisticated clustering techniques would be used inpractice.
+
+4 Closing Remark Our first controller could be modified in a fairly straightforward manner in order to cope with MIMO systems, where the output is now the absolute value of each coordinate of the linear output. The main modification needed is in the construction of the cone C1, which is used in Mode 2 of the controller. Indeed, since there are more outputs, we chose (any) n linearly independent rows of the observability matrix of (C; F ). They are used to construct the cone C0. Cone C1 is then constructed in the same manner as for the SISO case. In Modes 1 and 3, we reconstruct respectively the states ^x(0) and ^x(2n) using only the outputs at times that correspond to the rows of the observability matrix which are used to construct C1.
+
+5 Appendix Lemma 6 Suppose that the pair (A; C) is observable. Then, there exists some \Delta  ? 0 so that, for each nonzero state x 2 Rn , the function
+
+fx(t) = CetAx
+
+has at most n \Gamma  1 zeroes in the interval [0; \Delta ].
+
+Proof of Lemma 6: Suppose that the result is not true. Then, for each positive integer ` there is some nonzero state x` with the property that the function f` := fx` has at least n zeroes in the interval [0; 1=`]. Dividing x` by its norm, we may assume that jx`j = 1 for all `. By compactness of the unit sphere in Rn , the sequencef
+
+x`g has a convergent subsequence. We relabel this subsequence as fx`g, so we may and will assume from now on that x` ! ^x as ` ! 1, for some state ^x of norm 1.
+
+We next remark that, for any ` and any k 2 f0; : : : ; n \Gamma  1g, the kth derivative f (k)` has at least n \Gamma  k zeroes in the interval [0; 1=`]. Indeed, by induction: for k = 0, there are at least n zeroes by assumption,
+
+and, if f (k)` has n \Gamma  k zeroes, then by Rolle's Theorem f (k+1)` has n \Gamma  k \Gamma  1 zeroes.
+
+12
+
+Now fix any k 2 f0; : : : ; n \Gamma  1g. From the above remark it follows that, for each `, f (k)` has at least one zero in [0; 1=`], that is, there is some t 2 [0; 1=`] such that f (k)` (t`) = 0. As
+
+0 = f (k)` (t`) = CAket`Ax` ! CAk ^x when ` ! 1, it follows that CAk ^x = 0 for all k 2 f0; : : : ; n \Gamma  1g. By observability, this implies ^x = 0, a contradiction.
+
+Corollary 6 Suppose that the pair (A; C) is observable, and pick any M ? 0. Then there is some integer K with the following property: For each nonzero state x 2 Rn , the function fx(t) = CetAx has at most K zeroes in the interval [0; M ].
+
+Proof of Corollary 6: Pick \Delta  as in the Lemma, and take any integer q so that M ^ q\Delta . We claim that fx has at most K := (n \Gamma  1)q zeroes in [0; q\Delta ]. For this, it suffices to show that this function has at most n \Gamma  1 zeroes in each interval of the form [s\Delta ; (s + 1)\Delta ], s 2 f0; : : : ; q \Gamma  1g. Pick any such s. Then fx(t) = fxs(t \Gamma  s\Delta ), where xs := es\Delta Ax. The Lemma, applied to the initial state xs, implies that the function fxs has at most n \Gamma  1 zeroes in [0; \Delta ]. This means that fx has the claimed property.
+
+References
+
+[1] A. Astolfi and A. Schaufelberger, "State and output feedback stabilization of multiple chained
+
+systems with discontinuous control', Syst. Contr. Lett. 32(1997): 49-56.
+
+[2] J.-M. Coron, "On the stabilization of controllable and observable systems by an output feedback
+
+law", Math. Control Signals Systems 7(1994): 187-216.
+
+[3] J.-M. Coron, L. Praly, and L. Teel, "Feedback stabilization of nonlinear systems: sufficient conditions and Lyapunov and input-output techniques", in Trends in Control, Springer, Berlin, 1995, pp. 293-348.
+
+[4] R.A. Freeman, "Global internal stabilizability does not imply global external stabilizability for small
+
+sensor disturbances", IEEE Trans. Automat. Control 40(1995): 2119-2122.
+
+[5] R.A. Freeman, "Time-varying feedback for the global stabilization of nonlinear systems with measurement disturbances", Proc. European Control Conference, Brussels, Belgium, 1997.
+
+[6] R. Koplon and E.D. Sontag, "Linear systems with sign-observations," SIAM J. Control and Optimization 31(1993): 1245-1266.
+
+[7] G. Kreisselmeier, "Stabilization of linear systems in the presence of output measurement saturation",
+
+Syst. Contr. Lett. 29(1996): 27-30.
+
+[8] Ledyaev, Yu.S., and E.D. Sontag, "A Lyapunov characterization of robust stabilization," 1998
+
+Automatic Control Conference, to appear.
+
+[9] F. Mazenc and L. Praly, "Global stabilization by output feedback: examples and counterexamples",
+
+Syst. Contr. Lett. 23(1994): 119-125.
+
+[10] D. Ne^si'c and I.M.Y. Mareels, "Dead beat control of simple Hammerstein systems", to appear in
+
+IEEE Trans. Automat. Contr., 1998.
+
+[11] D. Ne^si'c, Dead-beat control for polynomial systems, PhD Thesis, The Australian National University,
+
+Canberra, 1996.
+
+[12] E.D. Sontag, "Conditions for abstract nonlinear regulation," Inform. & Control, 51(1981):105-127 [13] E.D. Sontag, "Abstract regulation of nonlinear systems: stabilization, Part II," Proc. Conference
+
+Info. Sci. and Systems, Princeton, Mar. 1982, pp.431-435.
+
+13
+
+[14] E.D. Sontag, "Smooth stabilization implies coprime factorization", IEEE Trans. Automat. Contr.
+
+34(1989): 435-443.
+
+[15] E. D. Sontag, Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer,
+
+New York, 1990. (Second Edition, Springer, NY, 1998.)
+
+[16] E.D. Sontag, "On the input-to-state stability property", European J. Control 1(1995): 24-36. [17] E.D. Sontag and Y. Wang, "New characterizations of the input to state stability property," IEEE
+
+Trans. on Automatic Control 41(1996): 1283-1294.
+
+[18] J. Tsinias, "Input to state stability properties of nonlinear systems and applications to bounded
+
+feedback stabilization using saturation," ESAIM Control Optim. Calc. Var. 2(1997): 57-85.
+
+14</pre>
+</body>
+</html>

@@ -1,0 +1,12017 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converse-siam.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converse-siam.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "converse-siam.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Pass0: Page 22
+Pass0: Page 23
+Pass0: Page 24
+Pass0: Page 25
+Pass0: Page 26
+Pass0: Page 27
+Pass0: Page 28
+Pass0: Page 29
+Pass0: Page 30
+Pass0: Page 31
+Pass0: Page 32
+Pass0: Page 33
+Pass0: Page 34
+Dvi file name: "converse-siam.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+A Smooth Converse Lyapunov Theorem for Robust Stability
+
+Yuandan Lin
+
+\Lambda 
+
+Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431
+
+yuandan@polya.math.fau.edu
+
+Eduardo D. Sontag
+
+\Lambda 
+
+Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+sontag@hilbert.rutgers.edu
+
+Yuan Wang
+
+y
+
+Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@polya.math.fau.edu
+
+Abstract. This paper presents a Converse Lyapunov Function Theorem motivated by robust control anal- ysis and design. Our result is based upon, but generalizes, various aspects of well-known classical theorems. In a unified and natural manner, it (1) allows arbitrary bounded time-varying parameters in the system description, (2) deals with global asymptotic stability, (3) results in smooth (infinitely differentiable) Lyapunov functions, and (4) applies to stability with respect to not necessarily compact invariant sets.
+
+1. Introduction. This work is motivated by problems of robust nonlinear stabilization. One of our main contributions is to provide a statement and proof of a Converse Lyapunov Function Theorem which is in a form particularly useful for the study of such feedback control analysis and design problems. We provide a single (and natural) unified result that:
+
+1. applies to stability with respect to not necessarily compact invariant sets; 2. deals with global (as opposed to merely local) asymptotic stability; 3. results in smooth (infinitely differentiable) Lyapunov functions; 4. most importantly, applies to stability in the presence of bounded time varying parameters in the system. (This latter property is sometimes called "total stability" and it is equivalent to the stability of an associated differential inclusion.)
+
+The interest in stability with respect to possibly non-compact sets is motivated by applications to areas such as output-control (one needs to stabilize with respect to the zero set of the output variables) and Luenberger-type observer design ("detectability" corresponds to stability with respect to the diagonal set f(x; x)g, as a subset of the composite state/observer system). Such applications and others are explored in [16], Chapter 5.
+
+Smooth Lyapunov functions, as opposed to merely continuous or once-differentiable, are required in order to apply "backstepping" techniques in which a feedback law is built by successively taking directional derivatives of feedback laws obtained for a simplified system. (See for instance [9] for more on backstepping design.)
+
+Finally, the effect of parameter uncertainty, and the study of associated Lyapunov functions, are topics of interest in robust control theory. An application of the result proved in this paper to the study of "input to state stability" is provided in [26].
+
+\Lambda 
+
+Supported in part by US Air Force Grant AFOSR-91-0346
+
+y
+
+Supported in part by NSF Grant DMS-9108250
+
+Keywords: Nonlinear stability, Stability with respect to sets, Lyapunov function techniques, Robust stability. Running head: Converse Lyapunov Theorem for Robust Stability AMS(MOS) subject classifications: 93D05, 93D09, 93D20, 34D20
+
+1Pass1: Page 2
+
+
+1.1. Organization of Paper. The paper is organized as follows. The next section provides the basic definitions and the statement of the main result. Actually, two versions are given, one that applies to global asymptotic stability with respect to arbitrary invariant sets, but assuming completeness of the system --that is, global existence of solutions for all inputs-- and another version which does not assume completeness but only applies to the special case of compact invariant sets (in particular, to the usual case of global asymptotic stability with respect to equilibria).
+
+Equivalent characterizations of stability by means of decay estimates have proved very useful in control theory -see e.g. [24]- and this is the subject of Section 3. Some technical facts about Lyapunov functions, including a result on the smoothing of such functions around an attracting set, are given in Section 4. After this, Section 5 establishes some basic facts about complete systems needed for the main result.
+
+Section 6 contains the proof of the main result for the general case. Our proof is based upon, and follows to a great extent the outline of, the one given by Wilson in [30], who provided in the late 1960s a converse Lyapunov function theorem for local asymptotic stability with respect to closed sets. There are however some major differences with that work: we want a global rather than a local result, and several technical issues appear in that case; moreover, and most importantly, we have to deal with parameters, which makes the careful analysis of uniform bounds of paramount importance. (In addition, even for the case of no parameters and local stability, several critical steps in the proof are only sketched in [30], especially those concerning Lipschitz properties and smoothness around the attracting set; thus it seems useful to have an expository detailed and self-contained proof in the literature.) A needed technical result on smoothing functions, based closely also on [30], is placed in an Appendix for convenience. Section 7 deals with the compact case, essentially by reparameterization of trajectories.
+
+An example, motivated by related work of Tsinias and Kalouptsidis, is given in Section 8 to show that the analogous theorems are false for unbounded parameters.
+
+Obviously in a topic such as this one, there are many connections to previous work. While it is likely that we have missed many relevant references, we discuss in Section 9 some relationships between our work and other results in the literature. Relations to work using "prolongations" are particularly important, and are the subject of some more detail in Section 10.
+
+2. Definitions and Statements of Main Results. Consider the following system:
+
+.x(t) = f(x(t); d(t)) ;(1) where for each t 2 IR, x(t) 2 IR
+
+n
+
+and d(t) 2 D, and where D is a compact subset of IR
+
+m
+
+, for some positive
+
+integers n and m. The map f : IR
+
+n
+
+\Theta  D ! IR
+
+n
+
+is assumed to satisfy the following two properties:
+
+ffl f is continuous. ffl f is locally Lipschitz on x uniformly on d, that is, for each compact subset K of IR
+
+n
+
+there is some
+
+constant c so that jf(x; d) \Gamma  f(z; d)j ^ c jx \Gamma  zj for all x; z 2 K and all d 2 D, where j\Delta j denotes the usual Euclidian norm. Note that these properties are satisfied, for instance, if f extends to a continuously differentiable function on a neighborhood of IR
+
+n
+
+\Theta  D.
+
+Let M
+
+D
+
+be the set of all measurable functions from IR to D. We will call functions d 2 M
+
+D
+
+time varying
+
+parameters. For each d 2 M
+
+D
+
+, we denote by x(t; x
+
+0
+
+; d) (and sometimes simply by x(t) if there is no ambiguity
+
+from the context) the solution at time t of (1) with x(0) = x
+
+0
+
+. This is defined on some maximal interval
+
+(T
+
+\Gamma 
+
+x
+
+0
+
+;d
+
+; T
+
++
+
+x
+
+0
+
+;d
+
+) with \Gamma 1 ^ T
+
+\Gamma 
+
+x
+
+0
+
+;d
+
+! 0 ! T
+
++
+
+x
+
+0
+
+;d
+
+^ +1.
+
+Sometimes we will need to consider time varying parameters d that are defined only on some interval I ` IR with 0 2 I. In those cases, by abuse of notation, x(t; x
+
+0
+
+; d) will still be used, but only times t 2 I will be
+
+considered.
+
+The system is said to be forward complete if T
+
++
+
+x
+
+0
+
+;d
+
+= +1 for all x
+
+0
+
+all d 2 M
+
+D
+
+. It is backward complete if
+
+T
+
+\Gamma 
+
+x
+
+0
+
+;d
+
+= \Gamma 1 for all x
+
+0
+
+all d 2 M
+
+D
+
+, and it is complete if it is both forward and backward complete.
+
+2Pass1: Page 3
+
+
+We say that a closed set A is an invariant set for (1) if
+
+8x
+
+0
+
+2 A; 8d 2 M
+
+D
+
+; T
+
++
+
+x
+
+0
+
+;d
+
+= +1 and x(t; x
+
+0
+
+; d) 2 A; 8t * 0:
+
+Remark 2.1. An equivalent formulation of invariance is in terms of the associated differential inclusion
+
+.x 2 F (x) ;(2) where F (x) = ff(x; d); d 2 Dg. The set A is invariant for (1) if and only if it is invariant with respect to (2) (see e.g. [1]). The notions of stability to be considered later can be rephrased in terms of (2) as well. 2
+
+We will use the following notation: for each nonempty subset A of IR
+
+n
+
+, and each , 2 IR
+
+n
+
+, we denote
+
+j,j
+
+A
+
+def
+
+= d(,; A) = inf
+
+j2A
+
+d(,; j) ;
+
+the common point-to-set distance, and j,j
+
+f0g
+
+= j,j is the usual norm.
+
+Let A ` IR
+
+n
+
+be a closed, invariant set for (1). We emphasize that we do not require A to be compact. We
+
+will assume throughout this work that the following mild property holds:
+
+sup ,2IR
+
+n
+
+fj,j
+
+A
+
+g = 1 :(3)
+
+This is a minor technical assumption, satisfied in all examples of interest, which will greatly simplify our state- ments and proofs. (Of course, this property holds automatically whenever A is compact, and in particular in the important special case in which A reduces to an equilibrium point.)
+
+Definition 2.2. System (1) is (absolutely) uniformly globally asymptotically stable (UGAS) with respect to the closed invariant set A if it is forward complete and the following two properties hold:
+
+1. Uniform Stability. There exists a K
+
+1
+
+-function ffi(\Delta ) such that for any " * 0,
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+^ " for all d 2 M
+
+D
+
+; whenever jx
+
+0
+
+j
+
+A
+
+^ ffi(") and t * 0 :(4)
+
+2. Uniform Attraction. For any r; " ? 0, there is a T ? 0, such that for every d 2 M
+
+D
+
+,
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+! "(5)
+
+whenever jx
+
+0
+
+j
+
+A
+
+! r and t * T . 2
+
+For the definitions of the standard comparison classes of K
+
+1
+
+and KL functions, we refer the reader to the
+
+appendix.
+
+Observe that when A is compact the forward completeness assumption is redundant, since in that case property (4) already implies that all solutions are bounded.
+
+In the particular case in which the set D consists of just one point, the above definition reduces to the standard notion of set asymptotic stability of differential equations. (Note, however, that this definition differs from those in [3], and [30], which are not global.) If, in addition, A consists of just an equilibrium point x
+
+0
+
+, this
+
+is the usual notion of global asymptotic stability for the solution x(t) j x
+
+0
+
+.
+
+Remark 2.3. It is an easy exercise to verify that an equivalent definition results if one replaces M
+
+D
+
+by the
+
+subset of piecewise constant time varying parameters. 2
+
+Remark 2.4. Note that the uniform stability condition is equivalent to: there is a K
+
+1
+
+-function ' so that
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+^ '(jx
+
+0
+
+j
+
+A
+
+); 8x
+
+0
+
+; 8t * 0; and 8d 2 M
+
+D
+
+:
+
+(Just let ' = ffi
+
+\Gamma 1
+
+.) 2
+
+The following characterization of the UGAS property will be extremely useful.
+
+3Pass1: Page 4
+
+
+Proposition 2.5. The system (1) is UGAS with respect to a closed, invariant set A ` IR
+
+n
+
+if and only if it
+
+is forward complete and there exists a KL-function fi such that, given any initial state x
+
+0
+
+, the solution x(t; x
+
+0
+
+; d)
+
+satisfies
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+^ fi(jx
+
+0
+
+j
+
+A
+
+; t) ; any t * 0 ;(6)
+
+for any d 2 M
+
+D
+
+.
+
+Observe that when A is compact the forward completeness assumption is again redundant, since in that case property (6) implies that solutions are bounded.
+
+Next we introduce Lyapunov functions with respect to sets. For any differentiable function V : IR
+
+n
+
+\Gamma ! IR,
+
+we use the standard Lie derivative notation
+
+L
+
+f
+
+d
+
+V (,)
+
+def
+
+=
+
+@V (,)
+
+@x
+
+\Delta  f
+
+d
+
+(,) ;
+
+where for each d 2 D, f
+
+d
+
+(\Delta ) is the vector field defined by f(\Delta ; d). By "smooth" we always mean infinitely
+
+differentiable.
+
+Definition 2.6. A Lyapunov function for the system (1) with respect to a nonempty, closed, invariant set A ` IR
+
+n
+
+is a function V : IR
+
+n
+
+\Gamma ! IR such that V is smooth on IR
+
+n
+
+nA and satisfies
+
+1. there exist two K
+
+1
+
+-functions ff
+
+1
+
+and ff
+
+2
+
+such that for any , 2 IR
+
+n
+
+,
+
+ff
+
+1
+
+(j,j
+
+A
+
+) ^ V (,) ^ ff
+
+2
+
+(j,j
+
+A
+
+) ;(7)
+
+2. there exists a continuous, positive definite function ff
+
+3
+
+such that for any , 2 IR
+
+n
+
+nA, and any d 2 D,
+
+L
+
+f
+
+d
+
+V (,) ^ \Gamma ff
+
+3
+
+(j,j
+
+A
+
+) :(8)
+
+A smooth Lyapunov function is one which is smooth on all of IR
+
+n
+
+. 2
+
+Remark 2.7. Continuity of V on IR
+
+n
+
+nA and property 1. in the definition imply:
+
+ffl V is continuous on all of IR
+
+n
+
+;
+
+ffl V (x) = 0 () x 2 A; and ffl V : IR
+
+n
+
+onto
+
+\Gamma ! IR
+
+*0
+
+(recall the assumption in equation (3)). 2
+
+Our main results will be two converse Lyapunov theorems. The first one is for general closed invariant sets and assumes completeness of the system.
+
+Theorem 2.8. Assume that the system (1) is complete. Let A ` IR
+
+n
+
+be a nonempty, closed invariant subset
+
+for this system. Then, (1) is UGAS with respect to A if and only if there exists a smooth Lyapunov function V with respect to A.
+
+The following result does not assume completeness but instead applies only to compact A: Theorem 2.9. Let A ` IR
+
+n
+
+be a nonempty, compact invariant subset for the system (1). Then, (1) is
+
+UGAS with respect to A if and only if there exists a smooth Lyapunov function V with respect to A.
+
+3. Some Preliminaries about UGAS. It will be useful to have a restatement of the second condition in the definition of UGAS stated in terms of uniform attraction times:
+
+Lemma 3.1. The uniform attraction property defined in Definition 2.2 is equivalent to the following: There exists a family of mappings fT
+
+r
+
+g
+
+r?0
+
+with
+
+ffl for each fixed r ? 0, T
+
+r
+
+: IR
+
+?0
+
+onto \Gamma ! IR
+
+?0
+
+is continuous and is strictly decreasing;
+
+ffl for each fixed " ? 0, T
+
+r
+
+(") is (strictly) increasing as r increases and lim
+
+r!1
+
+T
+
+r
+
+(") = 1;
+
+such that, for each d 2 M
+
+D
+
+,
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+! " whenever jx
+
+0
+
+j
+
+A
+
+! r and t * T
+
+r
+
+(") :(9)
+
+Proof. Sufficiency is clear. Now we show the necessity part. For any r; " ? 0, let
+
+A
+
+r; "
+
+def
+
+=
+
+\Phi 
+
+T * 0 : 8 jx
+
+0
+
+j
+
+A
+
+! r; 8t * T; 8d 2 M
+
+D
+
+; jx(t; x
+
+0
+
+; d)j
+
+A
+
+! "
+
+\Psi 
+
+` IR
+
+*0
+
+:(10)
+
+4Pass1: Page 5
+
+
+Then from the assumptions, A
+
+r; "
+
+6= ; for any r; " ? 0. Moreover,
+
+A
+
+r; "
+
+1
+
+` A
+
+r; "
+
+2
+
+; if "
+
+1
+
+^ "
+
+2
+
+; and A
+
+r
+
+2
+
+; "
+
+` A
+
+r
+
+1
+
+; "
+
+; if r
+
+1
+
+^ r
+
+2
+
+:
+
+Now define
+
+_ T
+
+r
+
+(")
+
+def
+
+= inf A
+
+r; "
+
+. Then
+
+_ T
+
+r
+
+(") ! 1, for any r; " ? 0, and it satisfies
+
+_ T
+
+r
+
+("
+
+1
+
+) *
+
+_ T
+
+r
+
+("
+
+2
+
+); if "
+
+1
+
+^ "
+
+2
+
+; and
+
+_ T
+
+r
+
+1
+
+(") ^
+
+_ T
+
+r
+
+2
+
+("); if r
+
+1
+
+^ r
+
+2
+
+:
+
+So we can define for any r; " ? 0,
+
+~ T
+
+r
+
+(")
+
+def
+
+=
+
+2
+
+"
+
+Z
+
+"
+
+"=2
+
+_ T
+
+r
+
+(s) ds :(11)
+
+Since
+
+_ T
+
+r
+
+(\Delta ) is decreasing,
+
+~ T
+
+r
+
+(\Delta ) is well defined and is locally absolutely continuous. Also
+
+~ T
+
+r
+
+(") *
+
+2
+
+"
+
+_ T
+
+r
+
+(")
+
+Z
+
+"
+
+"=2
+
+ds =
+
+_ T
+
+r
+
+(") :(12)
+
+Furthermore,
+
+d
+
+~ T
+
+r
+
+(")
+
+d"
+
+= \Gamma 
+
+2
+
+"
+
+2
+
+Z
+
+"
+
+"=2
+
+_ T
+
+r
+
+(s) ds +
+
+2
+
+"
+
+i
+
+_ T
+
+r
+
+(") \Gamma 
+
+1
+
+2
+
+_ T
+
+r
+
+(
+
+"
+
+2
+
+)
+
+j
+
+=
+
+1
+
+"
+
+^
+
+_ T
+
+r
+
+(") \Gamma 
+
+2
+
+"
+
+Z
+
+"
+
+"=2
+
+_ T
+
+r
+
+(s) ds
+
+*
+
++
+
+1
+
+"
+
+h
+
+_ T
+
+r
+
+(") \Gamma 
+
+_ T
+
+r
+
+i
+
+"
+
+2
+
+ji
+
+=
+
+1
+
+"
+
+\Theta 
+
+_ T
+
+r
+
+(") \Gamma 
+
+~ T
+
+r
+
+(")
+
+\Lambda 
+
++
+
+1
+
+"
+
+h
+
+_ T
+
+r
+
+(") \Gamma 
+
+_ T
+
+r
+
+i
+
+"
+
+2
+
+ji
+
+^ 0; a.e.,(13)
+
+hence
+
+~ T
+
+r
+
+(\Delta ) decreases (not necessarily strictly). Since
+
+_ T
+
+(\Delta )
+
+(") increases, from the definition,
+
+~ T
+
+(\Delta )
+
+(") also increases.
+
+Finally, define
+
+T
+
+r
+
+(")
+
+def
+
+=
+
+~ T
+
+r
+
+(") +
+
+r
+
+" (14)
+
+Then it follows that
+
+ffl for any fixed r, T
+
+r
+
+(\Delta ) is continuous, maps IR
+
+?0
+
+onto \Gamma ! IR
+
+?0
+
+, and is strictly decreasing;
+
+ffl for any fixed ", T
+
+r
+
+(") is increasing as r increases, and lim
+
+r!1
+
+T
+
+r
+
+(") = 1.
+
+So the only thing left to be shown is that T
+
+r
+
+defined by (14) satisfies (9). To do this, pick any x
+
+0
+
+and t with
+
+jx
+
+0
+
+j
+
+A
+
+! r and t * T
+
+r
+
+("). Then
+
+t * T
+
+r
+
+(") ?
+
+~ T
+
+r
+
+(") *
+
+_ T
+
+r
+
+(") :
+
+Hence, by the definition of
+
+_ T
+
+r
+
+("), jx(t; x
+
+0
+
+; d)j
+
+A
+
+! " ; as claimed.
+
+3.1. Proof of Characterization via Decay Estimate. We now provide a proof of Proposition 2.5. [(=] Assume that there exists a KL-function fi such that (6) holds. Let
+
+c
+
+1
+
+def
+
+= sup fi(\Delta ; 0) ^ 1 ;
+
+and choose ffi(\Delta ) to be any K
+
+1
+
+-function with
+
+ffi(") ^
+
+_ fi
+
+\Gamma 1
+
+("); any 0 ^ " ! c
+
+1
+
+;
+
+where
+
+_ fi
+
+\Gamma 1
+
+denotes the inverse function of
+
+_ fi(\Delta )
+
+def
+
+= fi(\Delta ; 0). (If c
+
+1
+
+= 1, we can simply choose ffi(")
+
+def
+
+=
+
+_ fi
+
+\Gamma 1
+
+(").)
+
+Clearly ffi(") is the desired K
+
+1
+
+-function for the uniform stability property.
+
+The uniform attraction property follows from the fact that for every fixed r, lim
+
+t!1
+
+fi(r; t) = 0.
+
+5Pass1: Page 6
+
+
+[=)] Assume that (1) is UGAS with respect to the closed set A, and let ffi be as in the definition. Let '(\Delta ) be the K-function ffi
+
+\Gamma 1
+
+(\Delta ). As mentioned in Remark 2.4, it follows that jx(t; x
+
+0
+
+; d))j
+
+A
+
+^ '(jx
+
+0
+
+j
+
+A
+
+) for any
+
+x
+
+0
+
+2 IR
+
+n
+
+, any t * 0, and any d 2 M
+
+D
+
+.
+
+Let fT
+
+r
+
+g
+
+r2(0; 1)
+
+be as in Lemma 3.1, and for each r 2 (0; 1) denote 
+
+r
+
+def
+
+= T
+
+\Gamma 1
+
+r
+
+. Then, for each
+
+r 2 (0; 1), 
+
+r
+
+: IR
+
+?0
+
+\Gamma !IR
+
+?0
+
+is again continuous, onto, and strictly decreasing. We also write 
+
+r
+
+(0) = +1,
+
+which is consistent with that fact that
+
+lim t!0
+
++
+
+
+
+r
+
+(t) = +1 :
+
+(Note: The property that T
+
+(\Delta )
+
+(t) increases to 1 is not needed here.)
+
+Claim: For any jx
+
+0
+
+j
+
+A
+
+! r, any t * 0 and any d 2 M
+
+D
+
+, jx(t; x
+
+0
+
+; d)j
+
+A
+
+^ 
+
+r
+
+(t).
+
+Proof: It follows from the definition of the maps T
+
+r
+
+that, for any r; " ? 0, and for any d 2 M
+
+D
+
+,
+
+jx
+
+0
+
+j
+
+A
+
+! r; t * T
+
+r
+
+(") =) jx(t; x
+
+0
+
+; d)j
+
+A
+
+! " :
+
+As t = T
+
+r
+
+(
+
+r
+
+(t)) if t ? 0, we have, for any such x
+
+0
+
+and d,
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+! 
+
+r
+
+(t) ; 8t ? 0 :(15)
+
+The claim follows by combining (15) and the fact that 
+
+r
+
+(0) = +1.
+
+Now for any s * 0 and t * 0, let
+
+_ (s; t)
+
+def
+
+= min
+
+ae
+
+'(s); inf
+
+r2(s; 1)
+
+
+
+r
+
+(t)
+
+oe
+
+:(16)
+
+Because of the definition of ' and the above claim, we have, for each x
+
+0
+
+, d 2 M
+
+D
+
+, and t * 0:
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+^
+
+_ (jx
+
+0
+
+j
+
+A
+
+; t) :(17)
+
+If
+
+_  would be of class KL, we would be done. This may not be the case, so we next majorize
+
+_  by such a
+
+function.
+
+By its definition, for any fixed t,
+
+_ (\Delta ; t) is an increasing function (not necessarily strictly). Also because for
+
+any fixed r 2 (0; 1), 
+
+r
+
+(t) decreases to 0 (this follows from the fact that 
+
+r
+
+: IR
+
+?0
+
+onto \Gamma ! IR
+
+?0
+
+is continuous and
+
+strictly decreasing), it follows that
+
+for any fixed s;
+
+_ (s; t) decreases to 0 as t ! 1:
+
+Next we construct a function
+
+~  : IR
+
+[0; 1)
+
+\Theta  IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+with the following properties:
+
+ffl for any fixed t * 0,
+
+~ (\Delta ; t) is continuous and strictly increasing;
+
+ffl for any fixed s * 0,
+
+~ (s; t) decreases to 0 as t ! 1;
+
+ffl
+
+~ (s; t) *
+
+_ (s; t) :
+
+Such a function
+
+~  always exists; for instance, it can be obtained as follows. Define first
+
+^ (s; t)
+
+def
+
+=
+
+Z
+
+s+1
+
+s
+
+_ ("; t) d" :(18)
+
+Then
+
+^ (\Delta ; t) is an absolutely continuous function on every compact subset of IR
+
+*0
+
+, and it satisfies
+
+^ (s; t) *
+
+_ (s; t)
+
+Z
+
+s+1
+
+s
+
+d" =
+
+_ (s; t) :
+
+It follows that
+
+@
+
+^ (s; t)
+
+@s
+
+=
+
+_ (s + 1; t) \Gamma 
+
+_ (s; t) * 0 ; a.e.,
+
+6Pass1: Page 7
+
+
+and hence
+
+^ (\Delta ; t) is increasing. Also since for any fixed s,
+
+_ (s; \Delta ) decreases, so does
+
+^ (s; \Delta ). Note that
+
+_ (s; t) ^
+
+_ (s; 0) = min
+
+ae
+
+inf r2(s; 1)
+
+
+
+r
+
+(0); '(s)
+
+oe
+
+= '(s) ;
+
+(recall that 
+
+r
+
+(0) = +1), so by the Lebesgue dominated convergence theorem, for any fixed s * 0,
+
+lim t!1
+
+^ (s; t) =
+
+Z
+
+s+1
+
+s
+
+lim t!1
+
+_ ("; t) d" = 0 :
+
+Now we see that the function
+
+^ (s; t) satisfies all of the requirements for
+
+~ (s; t) except possibly for the strictly
+
+increasing property. We define
+
+~  as follows:
+
+~ (s; t)
+
+def
+
+=
+
+^ (s; t) +
+
+s
+
+(s + 1)(t + 1)
+
+:
+
+Clearly it satisfies all the desired properties.
+
+Finally, define
+
+fi(s; t)
+
+def
+
+=
+
+p
+
+'(s)
+
+q
+
+~ (s; t) :
+
+Then it follows that fi(s; t) is a KL-function, and, for all x
+
+0
+
+, t, d:
+
+jx(t; x
+
+0
+
+; d)j
+
+A
+
+^
+
+p
+
+'(jx
+
+0
+
+j
+
+A
+
+)
+
+q
+
+_ (jx
+
+0
+
+j
+
+A
+
+; t) ^ fi(jx
+
+0
+
+j
+
+A
+
+; t) ;
+
+which concludes the proof of the Proposition.
+
+4. Some Preliminaries about Lyapunov Functions. In this section we provide some technical results about set Lyapunov functions. A lemma on differential inequalities is also given, for later reference.
+
+Remark 4.1. One may assume in Definition 2.6 that all of ff
+
+1
+
+; ff
+
+2
+
+; ff
+
+3
+
+are smooth in (0; +1) and of class
+
+K
+
+1
+
+. For ff
+
+1
+
+and ff
+
+2
+
+, this is proved simply by finding two functions ~ff
+
+1
+
+; ~ff
+
+2
+
+in K
+
+1
+
+, smooth in (0; +1) so that
+
+~ff
+
+1
+
+(s) ^ ff
+
+1
+
+(s) ^ ff
+
+2
+
+(s) ^ ~ff
+
+2
+
+(s) ; for all s:
+
+For ff
+
+3
+
+, a new Lyapunov function W and a function ~ff
+
+3
+
+which satisfies (8) with respect to W , but is smooth
+
+in (0; +1) and of class K
+
+1
+
+, can be constructed as follows. First, pick ~ff
+
+3
+
+to be any K
+
+1
+
+-function, smooth in
+
+(0; +1), such that
+
+~ff
+
+3
+
+(s) ^ sff
+
+3
+
+(s) ; 8s 2 [0; ff
+
+\Gamma 1
+
+1
+
+(1)]:
+
+This is possible since ff
+
+3
+
+is positive definite. Then let
+
+fl : IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+be a K
+
+1
+
+-function, smooth in (0; +1), such that
+
+ffl fl(r) * ff
+
+\Gamma 1
+
+1
+
+(r) for all r 2 [0; 1];
+
+ffl fl(r) ?
+
+~ff
+
+3
+
+(ff
+
+\Gamma 1
+
+1
+
+(r))
+
+ff
+
+3
+
+(ff
+
+\Gamma 1
+
+1
+
+(r))
+
+for all r ? 1.
+
+Now define fi(s)
+
+def
+
+=
+
+Z
+
+s
+
+0
+
+fl(r) dr : Note that fi is a K
+
+1
+
+-function, smooth in (0; +1). Let W (,)
+
+def
+
+= fi(V (,)) :
+
+This is smooth on IR
+
+n
+
+nA, and fi ffi ff
+
+1
+
+; fi ffi ff
+
+2
+
+bound W as in equation (7). Moreover,
+
+fi
+
+0
+
+(V (,)) = fl(V (,)) * fl(ff
+
+1
+
+(j,j
+
+A
+
+)) ;
+
+7Pass1: Page 8
+
+
+so
+
+L
+
+f
+
+d
+
+W (,) = fi
+
+0
+
+(V (,))L
+
+f
+
+d
+
+V (,) ^ \Gamma fl(ff
+
+1
+
+(j,j
+
+A
+
+))ff
+
+3
+
+(j,j
+
+A
+
+) :(19)
+
+We claim that this is bounded by \Gamma ~ff
+
+3
+
+(j,j
+
+A
+
+). Indeed, if s
+
+def
+
+= j,j
+
+A
+
+^ ff
+
+\Gamma 1
+
+1
+
+(1), then from the first item above and
+
+the definition of ~ff
+
+3
+
+,
+
+fl(ff
+
+1
+
+(s)) * s *
+
+~ff
+
+3
+
+(s)
+
+ff
+
+3
+
+(s)
+
+;
+
+if instead s ? ff
+
+\Gamma 1
+
+1
+
+(1), then from the second item, also
+
+fl(ff
+
+1
+
+(s)) *
+
+~ff
+
+3
+
+(s)
+
+ff
+
+3
+
+(s)
+
+:
+
+In either case, fl(ff
+
+1
+
+(s))ff
+
+3
+
+(s) * ~ff
+
+3
+
+(s) ; as desired. From now on, whenever necessary, we assume that ff
+
+1
+
+; ff
+
+2
+
+; ff
+
+3
+
+are K
+
+1
+
+-functions, smooth in (0; +1). 2
+
+4.1. Smoothing of Lyapunov Functions. When dealing with control system design, one often needs to know that V can be taken to be globally smooth, rather than just smooth outside of A.
+
+Proposition 4.2. If there is a Lyapunov function for (1) with respect to A, then there is also a smooth such Lyapunov function.
+
+The proof relies on constructing a smooth function of the form W = fi ffi V , where
+
+fi : IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+is built using a partition of unity.
+
+Again let A ` IR
+
+n
+
+be nonempty and closed. For a multi-index % = (%
+
+1
+
+; %
+
+2
+
+; : : : ; %
+
+n
+
+), we use j%j to denote
+
+P
+
+n
+
+i=1
+
+%
+
+i
+
+. The following regularization result will be needed; it generalizes to arbitrary A the analogous (but
+
+simpler, due to compactness) result for equilibria given in [13, Theorem 6].
+
+Lemma 4.3. Assume that V : IR
+
+n
+
+\Gamma ! IR
+
+*0
+
+is C
+
+0
+
+, the restriction V j
+
+IR
+
+n
+
+nA
+
+is C
+
+1
+
+, and also V j
+
+A
+
+=
+
+0 ; V j
+
+IR
+
+n
+
+nA
+
+? 0 : Then there exists a K
+
+1
+
+-function fi, smooth on (0; 1) and so that fi
+
+(i)
+
+(t) ! 0 as t ! 0
+
++
+
+for each i = 0; 1; : : : and having fi
+
+0
+
+(t) ? 0; 8t ? 0, such that
+
+W
+
+def
+
+= fi ffi V
+
+is a C
+
+1
+
+function on all of IR
+
+n
+
+.
+
+Proof. Let K
+
+1
+
+; K
+
+2
+
+; : : : ; be compact subsets of IR
+
+n
+
+such that A `
+
+S
+
+1
+
+i=1
+
+int (K
+
+i
+
+) : For any k * 1, let
+
+I
+
+k
+
+def
+
+=
+
+i
+
+1
+
+k + 2
+
+;
+
+1
+
+k
+
+j
+
+` IR
+
+and I
+
+0
+
+def
+
+= I
+
+1
+
+. Pick for any k * 1, a smooth (C
+
+1
+
+) function fl
+
+k
+
+: IR
+
+?0
+
+! [0; 1] satisfying
+
+ffl fl
+
+k
+
+(t) = 0 if t 62 I
+
+k
+
+; and
+
+ffl fl
+
+k
+
+(t) ? 0 if t 2 I
+
+k
+
+.
+
+Define for any k * 1,
+
+G
+
+k
+
+def
+
+=
+
+(
+
+x 2 IR
+
+n
+
+: x 2
+
+k [
+
+i=1
+
+K
+
+i
+
+; V (x) 2 clos I
+
+k
+
+)
+
+:
+
+Then G
+
+k
+
+is compact (because of compactness of the sets K
+
+i
+
+and continuity of V ). Observe that each derivative
+
+fl
+
+(i)
+
+k
+
+has a compact support included in clos I
+
+k
+
+, so it is bounded. For each k = 1; 2; : : :, let c
+
+k
+
+2 IR satisfy
+
+1. c
+
+k
+
+* 1;
+
+2. c
+
+k
+
+* j (D
+
+%
+
+V ) (x)j for any multi-index j%j ^ k and any x 2 G
+
+k
+
+; and
+
+8Pass1: Page 9
+
+
+3. c
+
+k
+
+* jfl
+
+(i)
+
+k
+
+(t)j, for any i ^ k and any t 2 IR
+
+?0
+
+.
+
+Choose the sequence d
+
+k
+
+to satisfy
+
+0 ! d
+
+k
+
+!
+
+1
+
+2
+
+k
+
+(k + 1)!c
+
+k
+
+k
+
+; k = 1; 2; : : : :(20)
+
+Let ff : IR
+
+*0
+
+! IR
+
+*0
+
+be a C
+
+1
+
+function such that ff j 0 on
+
+h
+
+0;
+
+1
+
+3
+
+i
+
+and ff * 1 on
+
+h
+
+1
+
+2
+
+; 1
+
+j
+
+. Define fl(0)
+
+def
+
+= 0 and
+
+fl(t)
+
+def
+
+=
+
+1 X
+
+k=1
+
+d
+
+k
+
+fl
+
+k
+
+(t) + ff(t) ; 8t ? 0 :(21)
+
+Notice that for any t 2 (0; 1), if k
+
+def
+
+=
+
+\Xi 
+
+1
+
+t
+
+\Pi 
+
+* 1 denotes the largest integer ^
+
+1
+
+t
+
+, then t 2 I
+
+k\Gamma 1
+
+, and
+
+t 62 I
+
+j
+
+if j 6= k; k \Gamma  1 :
+
+Hence the sum in (21) at most consists of three terms (for t * 1 the sum is just fl = ff), and so fl is C
+
+1
+
+at each
+
+t 2 (0; 1).
+
+Claim: For any i * 0, lim
+
+t!0
+
++
+
+fl
+
+(i)
+
+(t) = 0.
+
+Proof: Fix any i * 0. Given any " ? 0, let k
+
+0
+
+2 ZZ be such that " ?
+
+1
+
+k
+
+0
+
+? 0. Let
+
+T
+
+def
+
+= min
+
+n
+
+1
+
+k
+
+0
+
+;
+
+1
+
+i + 1
+
+;
+
+1
+
+3
+
+o
+
+:
+
+We will show that t 2 (0; T ) =)
+
+fi fi
+
+fl
+
+(i)
+
+(t)
+
+fi fi
+
+! " : Indeed, as 0 ! t ! min
+
+n
+
+1
+
+k
+
+0
+
+;
+
+1
+
+i + 1
+
+;
+
+1
+
+3
+
+o
+
+, it follows that
+
+k
+
+def
+
+=
+
+j
+
+1
+
+t
+
+k
+
+* maxfi + 1; k
+
+0
+
+; 3g. So
+
+fl
+
+(i)
+
+(t) ^ d
+
+k\Gamma 1
+
+fl
+
+(i)
+
+k\Gamma 1
+
+(t) + d
+
+k
+
+fl
+
+(i)
+
+k
+
+(t) ;
+
+and noticing that
+
+i ^ k \Gamma  1 ! k =) c
+
+k
+
+*
+
+fi fi fi
+
+fl
+
+(i)
+
+k
+
+(t)
+
+fi fi fi
+
+; c
+
+k\Gamma 1
+
+*
+
+fi fi fi
+
+fl
+
+(i)
+
+k\Gamma 1
+
+(t)
+
+fi fi fi
+
+;
+
+we have
+
+fi fi
+
+fl
+
+(i)
+
+(t)
+
+fi fi
+
+^ d
+
+k\Gamma 1
+
+c
+
+k\Gamma 1
+
++ d
+
+k
+
+c
+
+k
+
+^
+
+1
+
+2k!
+
++
+
+1
+
+2(k + 1)!
+
+!
+
+1
+
+k!
+
+!
+
+1
+
+k
+
+^
+
+1
+
+k
+
+0
+
+! " ;
+
+as wanted.
+
+Note also that if t *
+
+1
+
+2
+
+, then fl(t) * ff(t) * 1 ? 0; and if t 2
+
+i
+
+0;
+
+1
+
+2
+
+j
+
+, then fl(t) * d
+
+k\Gamma 1
+
+fl
+
+k\Gamma 1
+
+(t) ? 0 with
+
+k
+
+def
+
+=
+
+j
+
+1
+
+t
+
+k
+
+* 2, so the function
+
+fi(t)
+
+def
+
+=
+
+Z
+
+t
+
+0
+
+fl(s) ds(22)
+
+is also a K
+
+1
+
+-function, smooth on (0; 1). Furthermore, fi satisfies fi
+
+(i)
+
+(t) ! 0 as t ! 0
+
++
+
+for each i = 0; 1; : : :.
+
+Finally, we show that W = fi ffiV is C
+
+1
+
+. For this, it is enough to show that D
+
+%
+
+0
+
+W (x
+
+n
+
+) ! 0 as x
+
+n
+
+! _x 2 @A,
+
+for each multi-index %
+
+0
+
+and each sequence fx
+
+n
+
+g ` IR
+
+n
+
+nA converging to a point _x in the boundary of A. (In
+
+general, see e.g. [4] (p. 52), if A ` IR
+
+n
+
+is closed and ' : IR
+
+n
+
+\Gamma ! IR satisfies that 'j
+
+A
+
+= 0, 'j
+
+IR
+
+n
+
+nA
+
+is C
+
+1
+
+, and for
+
+each boundary point a of A and all multi-indices % = (%
+
+1
+
+; %
+
+2
+
+; : : : ; %
+
+n
+
+) ; it holds that lim
+
+x!a
+
+x62A
+
+D
+
+%
+
+'(x) = 0 ; then ' is
+
+C
+
+1
+
+on IR
+
+n
+
+.)
+
+9Pass1: Page 10
+
+
+Pick one such %
+
+0
+
+and any sequence fx
+
+n
+
+g with x
+
+n
+
+! _x 2 @A. If j%
+
+0
+
+j = 0, one only needs to show that
+
+W (x
+
+n
+
+) ! 0, which follows easily from the facts that fi 2 K
+
+1
+
+and V (x
+
+n
+
+) ! 0. So from now on, we can assume
+
+that j%
+
+0
+
+j
+
+def
+
+= i * 1. As A ` [
+
+1
+
+j=0
+
+int K
+
+j
+
+, _x 2 int K
+
+l
+
+for some l, and without loss of generality we may assume
+
+that there is some fixed l so that
+
+x
+
+n
+
+2 K
+
+l
+
+; for all n:
+
+Pick any " ? 0. We will show that there exists some N such that
+
+n ? N =) jD
+
+%
+
+0
+
+W (x
+
+n
+
+)j ! " :
+
+Let k 2 ZZ be so that
+
+k ? max
+
+n
+
+i; log
+
+2
+
+i
+
+1
+
+"
+
+j
+
+; l
+
+o
+
+and let T 2
+
+i
+
+0;
+
+1
+
+3
+
+j
+
+be such that T !
+
+1
+
+k + 2
+
+. Observe that if t ! T , then t 62 I
+
+1
+
+[ \Delta  \Delta  \Delta  [ I
+
+k
+
+.
+
+As V is C
+
+0
+
+everywhere, V = 0 at A, V (x
+
+n
+
+) ! V (_x) = 0. So there exists N such that V (x
+
+n
+
+) ! T whenever
+
+n ? N. Fix an N like this. Then for any n ? N,
+
+fl
+
+(j)
+
+s
+
+(V (x
+
+n
+
+)) = 0; 8j; 8s = 1; 2; : : : ; k;
+
+(since fl
+
+s
+
+vanishes outside I
+
+s
+
+). Pick any j 2 IN with j ^ i, any h 2 IN with h ^ i, and %
+
+1
+
+; : : : ; %
+
+h
+
+multi-indices
+
+such that j%
+
+_
+
+j ^ i; 8_ = 1; : : : ; h. Then for any q 2 IN with q ? k, by the way we chose c
+
+k
+
+,
+
+fi fi
+
+fl
+
+(j)
+
+q
+
+(V (x
+
+n
+
+))
+
+fi fi
+
+^ c
+
+q
+
+;
+
+since q ? k ? i * j. Also, if V (x
+
+n
+
+) 2 I
+
+q
+
+, then again by the properties of the sequence c
+
+k
+
+,
+
+jD
+
+%
+
+_
+
+V (x
+
+n
+
+)j ^ c
+
+q
+
+;
+
+(since q ? k ? l and x
+
+n
+
+2 K
+
+l
+
+imply x
+
+n
+
+2 K
+
+1
+
+[ \Delta  \Delta  \Delta  [ K
+
+q
+
+, and j%
+
+_
+
+j ^ i ! k ! q). Therefore, for such q, if
+
+V (x
+
+n
+
+) 2 I
+
+q
+
+,
+
+fi fi
+
+fl
+
+(j)
+
+q
+
+(V (x
+
+n
+
+))
+
+fi fi
+
+jD
+
+%
+
+1
+
+V (x
+
+n
+
+)j \Delta  \Delta  \Delta  jD
+
+%
+
+h
+
+V (x
+
+n
+
+)j ^ c
+
+h+1
+
+q
+
+^ c
+
+i+1
+
+q
+
+! c
+
+q
+
+q
+
+:(23)
+
+If instead it would be the case that V (x
+
+n
+
+) 62 I
+
+q
+
+, then fl
+
+(j)
+
+q
+
+(V (x
+
+n
+
+)) = 0, and hence the inequality (23) still holds.
+
+Since
+
+fl
+
+(j)
+
+(V (x
+
+n
+
+)) =
+
+1 X
+
+q=k+1
+
+d
+
+q
+
+fl
+
+(j)
+
+q
+
+(V (x
+
+n
+
+)) ;
+
+we also have
+
+fi fi
+
+fl
+
+(j)
+
+(V (x
+
+n
+
+))
+
+fi fi
+
+jD
+
+%
+
+1
+
+V (x
+
+n
+
+)j \Delta  \Delta  \Delta  jD
+
+%
+
+h
+
+V (x
+
+n
+
+)j ^
+
+1 X
+
+q=k+1
+
+d
+
+q
+
+c
+
+q
+
+q
+
+!
+
+1 X
+
+q=k+1
+
+1 2
+
+q
+
+(q + 1)!
+
+!
+
+
+
+1 X
+
+q=k+1
+
+1 2
+
+q
+
+!
+
+1 (k + 1)!
+
+=
+
+1
+
+2
+
+k
+
+(k + 1)!
+
+!
+
+"
+
+(k + 1)!
+
+:(24)
+
+Now observe that
+
+(D
+
+%
+
+0
+
+W ) (x) = (D
+
+%
+
+0
+
+(fi ffi V )) (x)
+
+10Pass1: Page 11
+
+
+is a sum of ^ i! terms (recall 0 ! i = j%
+
+0
+
+j), each of which is of the form
+
+fi
+
+(p)
+
+(V (x)) (D
+
+%
+
+1
+
+V ) (x) \Delta  \Delta  \Delta  (D
+
+%
+
+h
+
+V ) (x) ;
+
+where 0 ! p ^ i, h ^ i, and each j%
+
+_
+
+j ^ i. Each
+
+fi
+
+(p)
+
+(V (x)) = fl
+
+(j)
+
+(V (x)) ; j = p \Gamma  1 ^ i \Gamma  1 ;
+
+so (24) applies, and we conclude
+
+j (D
+
+%
+
+0
+
+W ) (x
+
+n
+
+)j ^ i!
+
+"
+
+(k + 1)!
+
+! " ;
+
+(since k ? i.)
+
+Now let us return to the proof of the Proposition 4.2. Proof of Proposition 4.2. Assume A, V and ff
+
+1
+
+; ff
+
+2
+
+; ff
+
+3
+
+are as defined in Definition 2.6. Let fi; W be as in
+
+Lemma 4.3. We show that W is a smooth Lyapunov function as required.
+
+Let ^ff
+
+i
+
+def
+
+= fi ffi ff
+
+i
+
+; i = 1; 2. These are again K
+
+1
+
+-functions, and they satisfy
+
+^ff
+
+1
+
+(j,j
+
+A
+
+) ^ W (,) ^ ^ff
+
+2
+
+(j,j
+
+A
+
+) :
+
+We define, for s ? 0:
+
+^ fi(s)
+
+def
+
+= min
+
+t2[ff
+
+1
+
+(s); ff
+
+2
+
+(s)]
+
+fi
+
+0
+
+(t) ? 0 :
+
+Let also
+
+^ fi(0)
+
+def
+
+= 0. Define ^ff
+
+3
+
+(s)
+
+def
+
+=
+
+^ fi(s)ff
+
+3
+
+(s) : Then ^ff
+
+3
+
+is a continuous positive definite function. Also, for
+
+any , 2 IR
+
+n
+
+nA,
+
+L
+
+f
+
+d
+
+W (,) = fi
+
+0
+
+(V (,))L
+
+f
+
+d
+
+V (,) ^ \Gamma fi
+
+0
+
+(V (,))ff
+
+3
+
+(j,j
+
+A
+
+)
+
+^ \Gamma 
+
+^ fi(j,j
+
+A
+
+)ff
+
+3
+
+(j,j
+
+A
+
+) = \Gamma ^ff
+
+3
+
+(j,j
+
+A
+
+) ;
+
+which concludes the proof of the Proposition.
+
+4.2. A Useful Estimate. The following lemma establishes a useful comparison principle. Lemma 4.4. For each continuous and positive definite function ff, there exists a KL-function fi
+
+ff
+
+(s; t) with
+
+the following property: if y(\Delta ) is any (locally) absolutely continuous function defined for t * 0 and with y(t) * 0 for all t, and y(\Delta ) satisfies the differential inequality
+
+.y(t) ^ \Gamma ff(y(t)); for almost all t(25) with y(0) = y
+
+0
+
+* 0, then it holds that
+
+y(t) ^ fi
+
+ff
+
+(y
+
+0
+
+; t)
+
+for all t * 0.
+
+Proof. Define for any s ? 0, j(s)
+
+def
+
+= \Gamma 
+
+Z
+
+s
+
+1
+
+dr ff(r)
+
+. This is a strictly decreasing differentiable function on
+
+(0; 1). Without loss of generality, we will assume that lim
+
+s!0
+
++
+
+j(s) = +1: If this were not the case, we could
+
+consider instead the following function:
+
+_ff(s)
+
+def
+
+=
+
+(
+
+minfs; ff(s)g ; if 0 ^ s ! 1 ;
+
+ff(s) ; if s * 1 :
+
+11Pass1: Page 12
+
+
+This function is again continuous, positive definite, satisfies _ff(s) ^ ff(s) for any s * 0, and
+
+lim s!0
+
++
+
+Z
+
+1
+
+s
+
+dr _ff(r)
+
+*
+
+Z
+
+1
+
+s
+
+dr
+
+r
+
+= +1 :
+
+Moreover, if .y(t) ^ \Gamma ff(y(t)) then also .y(t) ^ \Gamma _ff(y(t)), so fi
+
+_ff
+
+could be used to bound solutions.
+
+Let
+
+0 ! a
+
+def
+
+= \Gamma  lim
+
+s!+1
+
+j(s) :
+
+Then the range of j, and hence also the domain of j
+
+\Gamma 1
+
+, is the open interval (\Gamma a; 1). (We allow the possibility
+
+that a = 1.) For (s; t) 2 IR
+
+*0
+
+\Theta  IR
+
+*0
+
+, define
+
+fi
+
+ff
+
+(s; t)
+
+def
+
+=
+
+(
+
+0; if s = 0,
+
+j
+
+\Gamma 1
+
+(j(s) + t) ; if s ? 0.
+
+We claim that for any y(\Delta ) satisfying the conditions in the Lemma,
+
+y(t) ^ fi
+
+ff
+
+(y
+
+0
+
+; t) ; for all t * 0 :(26)
+
+As .y(t) ^ \Gamma ff(y(t)), it follows that y(t) is nonincreasing, and if y(t
+
+0
+
+) = 0 for some t
+
+0
+
+* 0, then y(t) j 0; 8t * t
+
+0
+
+.
+
+Without loss of generality, assume that y
+
+0
+
+? 0. Let
+
+t
+
+0
+
+def
+
+= infft : y(t) = 0g ^ +1 :
+
+It is enough to show (26) holds for t 2 [0; t
+
+0
+
+).
+
+As j is strictly decreasing, we only need to show that j(y(t)) * j(y
+
+0
+
+) + t ; that is,
+
+\Gamma 
+
+Z
+
+y(t)
+
+1
+
+dr ff(r)
+
+* \Gamma 
+
+Z
+
+y
+
+0
+
+1
+
+dr ff(r)
+
++ t ;
+
+which is equivalent to
+
+Z
+
+y
+
+0
+
+y(t)
+
+dr ff(r)
+
+* t :(27)
+
+From (25), one sees that
+
+Z
+
+t
+
+0
+
+.y(o/) ff(y(o/))
+
+do/ ^ \Gamma 
+
+Z
+
+t
+
+0
+
+do/ = \Gamma t :
+
+Changing variables in the integral, this gives (27).
+
+It only remains to show that fi
+
+ff
+
+is of class KL. The function fi
+
+ff
+
+is continuous since both j and j
+
+\Gamma 1
+
+are
+
+continuous in their domains, and lim
+
+r!1
+
+j
+
+\Gamma 1
+
+(r) = 0 : It is strictly increasing in s for each fixed t since since both
+
+j and j
+
+\Gamma 1
+
+are strictly decreasing. Finally, fi
+
+ff
+
+(s; t) ! 0 as t ! 1 by construction. So fi
+
+ff
+
+is a KL-function.
+
+5. Some Properties of Complete Systems. We need to first establish some technical properties that hold for complete systems, and in particular a Lipschitz continuity fact.
+
+For each , 2 IR
+
+n
+
+and T ? 0, let
+
+R
+
+T
+
+(,)
+
+def
+
+=
+
+\Phi 
+
+j : j = x(T; ,; d); d 2 M
+
+D
+
+\Psi 
+
+:
+
+This is the reachable set of (1) from , at time T . We use R
+
+^T
+
+(,) to denote
+
+[
+
+0^t^T
+
+R
+
+t
+
+(,). If S is a subset of IR
+
+n
+
+,
+
+we write
+
+R
+
+T
+
+(S)
+
+def
+
+=
+
+[
+
+,2S
+
+R
+
+T
+
+(,) ; R
+
+^T
+
+(S)
+
+def
+
+=
+
+[
+
+,2S
+
+R
+
+^T
+
+(,) :
+
+12Pass1: Page 13
+
+
+In what follows we use S to denote the closure of S for any subset S of IR
+
+n
+
+.
+
+Proposition 5.1. Assume that (1) is forward complete. Then for any compact subset K of IR
+
+n
+
+and any
+
+T ? 0, the set R
+
+^T
+
+(K) is compact.
+
+To prove Proposition 5.1, we first need to make a couple of technical observations. Lemma 5.2. Let K be a compact subset of IR
+
+n
+
+and let T ? 0. Then the set R
+
+^T
+
+(K) is compact if and only
+
+if R
+
+^T
+
+(,) is compact for each , 2 K.
+
+Proof. It is clear that the compactness of R
+
+^T
+
+(K) implies the compactness of R
+
+^T
+
+(,) for any , 2 K.
+
+Now assume, for T ? 0 and a compact set K, that R
+
+^T
+
+(,) is compact for each , 2 K. Pick any , 2 K, and
+
+let U = fj : d(j; R
+
+^T
+
+(,)) ! 1g. Then U is compact. Let C be a Lipschitz constant for f with respect to x on U,
+
+and let r = e
+
+\Gamma CT
+
+. For each d 2 M
+
+D
+
+and each j with jj \Gamma  ,j ! r, let
+
+~ t = infft * 0 : jx(t; j; d) \Gamma  x(t; ,; d)j * 1g.
+
+Then, using Gronwall's Lemma, one can show that
+
+~ t * T , from which it follows that
+
+R
+
+^T
+
+(j) ` U; 8jj \Gamma  ,j ! r:
+
+Thus, for each , 2 K, there is a neighborhood V
+
+,
+
+of , such that R
+
+^T
+
+(V
+
+,
+
+) is compact. By compactness of K, it
+
+follows that R
+
+^T
+
+(K) is compact.
+
+Lemma 5.3. For any subset S of IR
+
+n
+
+and any T ? 0,
+
+R
+
+T
+
+\Gamma 
+
+S
+
+\Delta 
+
+` R
+
+T
+
+(S); R
+
+^T
+
+\Gamma 
+
+S
+
+\Delta 
+
+` R
+
+^T
+
+(S) :
+
+In particular, R
+
+^T
+
+\Gamma 
+
+S
+
+\Delta 
+
+= R
+
+T
+
+(S).
+
+Proof. The first conclusion follows from the continuity of solutions on initial states; see [25], Theorem 1. The second is immediate from there.
+
+We now return to the proof of Proposition 5.1. By Lemma 5.2, it is enough to show that R
+
+^T
+
+(,) is compact
+
+for each , 2 IR
+
+n
+
+and each T ? 0. Pick any ,
+
+0
+
+2 IR
+
+n
+
+, and let
+
+o/ = supfT * 0 : R
+
+^T
+
+(,
+
+0
+
+) is compact g :
+
+Note that o/ ? 0. This is because jx(t; ,
+
+0
+
+; d) \Gamma  ,
+
+0
+
+j ^ 1 for any 0 ^ t ! 1=M and any d 2 M
+
+D
+
+, where
+
+M = max fjf(,; d)j : j, \Gamma  ,
+
+0
+
+j ^ 1; d 2 Dg :
+
+We must show that o/ = 1.
+
+Assume that o/ ! 1. Using the same argument used above, one can show that if R
+
+^t
+
+(,
+
+0
+
+) is compact for
+
+some t ? 0 then there is some ffi ? 0 such that R
+
+^(t+ffi)
+
+(,
+
+0
+
+) is compact. From here it follows that R
+
+^o/
+
+(,
+
+0
+
+) is not
+
+compact. By definition, R
+
+^t
+
+(,
+
+0
+
+) is compact for any t ! o/.
+
+Let o/
+
+1
+
+= o/=2. Then there is some j
+
+1
+
+2 R
+
+o/
+
+1
+
+(,
+
+0
+
+) such that R
+
+^(o/\Gamma o/
+
+1
+
+)
+
+(j
+
+1
+
+) is not compact; otherwise, by
+
+Lemma 5.2, R
+
+^(o/\Gamma o/
+
+1
+
+)
+
+\Gamma 
+
+R
+
+o/
+
+1
+
+(,
+
+0
+
+)
+
+\Delta 
+
+would be compact. This, in turn, would imply that R
+
+^o/
+
+(,
+
+0
+
+) is compact, since
+
+R
+
+^o/
+
+(,
+
+0
+
+) ` R
+
+^o/
+
+1
+
+(,
+
+0
+
+)
+
+[
+
+R
+
+^(o/\Gamma o/
+
+1
+
+)
+
+(R
+
+o/
+
+1
+
+(,
+
+0
+
+)) ` R
+
+^o/
+
+1
+
+(,
+
+0
+
+)
+
+[
+
+R
+
+^(o/\Gamma o/
+
+1
+
+)
+
+\Gamma 
+
+R
+
+o/
+
+1
+
+(,
+
+0
+
+)
+
+\Delta 
+
+:
+
+On the other hand, combining Lemma 5.3 with the fact that R
+
+^t
+
+(R
+
+o/
+
+1
+
+(,
+
+0
+
+)) is compact for any 0 ^ t ! o/ \Gamma  o/
+
+1
+
+,
+
+one sees that R
+
+^t
+
+(j
+
+1
+
+) is compact for any 0 ^ t ! o/ \Gamma  o/
+
+1
+
+.
+
+Since j
+
+1
+
+2 R
+
+o/
+
+1
+
+(,
+
+0
+
+), there exists a sequence fz
+
+n
+
+g ! j
+
+1
+
+with z
+
+n
+
+2 R
+
+o/
+
+1
+
+(,
+
+0
+
+). Assume, for each n, that
+
+z
+
+n
+
+= x(o/
+
+1
+
+; ,
+
+0
+
+; d
+
+n
+
+) for some d
+
+n
+
+2 M
+
+D
+
+. For each d 2 M
+
+D
+
+, and each s 2 IR, we use d
+
+s
+
+to denote the function
+
+defined by d
+
+s
+
+(t) = d(s + t). Then by uniqueness, one has that for each n, x(s; z
+
+n
+
+; (d
+
+n
+
+)
+
+o/
+
+1
+
+) 2 K
+
+1
+
+for any
+
+\Gamma o/
+
+1
+
+^ s ^ 0, where K
+
+1
+
+= R
+
+^o/
+
+1
+
+(,
+
+0
+
+). We want to claim next that, by compactness of K
+
+1
+
+and Gronwall's Lemma,
+
+jx(\Gamma o/
+
+1
+
+; j
+
+1
+
+; (d
+
+n
+
+)
+
+o/
+
+1
+
+) \Gamma  ,
+
+0
+
+j = jx(\Gamma o/
+
+1
+
+; j
+
+1
+
+; (d
+
+n
+
+)
+
+o/
+
+1
+
+) \Gamma  x(\Gamma o/
+
+1
+
+; z
+
+n
+
+; (d
+
+n
+
+)
+
+o/
+
+1
+
+)j \Gamma ! 0; as n ! 1 :
+
+13Pass1: Page 14
+
+
+The only potential problem is that the solution x(\Gamma o/
+
+1
+
+; j
+
+1
+
+; (d
+
+n
+
+)
+
+o/
+
+1
+
+) may fail to exist a priori. However, it is possible
+
+to modify f(x; d) outside a neighborhood of K
+
+1
+
+\Theta  D so that it now has compact support and is hence globally
+
+bounded. The modified dynamics is complete. Now the above limit holds for the modified system, and a fortriori it also holds for the original system.
+
+Choose n
+
+0
+
+such that
+
+jx(\Gamma o/
+
+1
+
+; j
+
+1
+
+; (d
+
+n
+
+0
+
+)
+
+o/
+
+1
+
+) \Gamma  ,
+
+0
+
+j ! 1=2:(28)
+
+Let v
+
+1
+
+= d
+
+n
+
+0
+
+, and let j
+
+0
+
+= x(\Gamma o/
+
+1
+
+; j
+
+1
+
+; (d
+
+n
+
+0
+
+)
+
+o/
+
+1
+
+). Then, by continuity on initial conditions, there is a neighborhood
+
+U
+
+1
+
+of j
+
+1
+
+contained in B(j
+
+1
+
+; 1) such that
+
+jx (\Gamma o/
+
+1
+
+; ,; (v
+
+1
+
+)
+
+o/
+
+1
+
+) \Gamma  j
+
+0
+
+j ! 1=2; 8, 2 U
+
+1
+
+;(29)
+
+where B(j; r) denotes the open ball centered at j with radius r. Combining (28) and (29), one has
+
+x(\Gamma o/
+
+1
+
+; ,; (v
+
+1
+
+)
+
+o/
+
+1
+
+) 2 U
+
+0
+
+; 8, 2 U
+
+1
+
+;
+
+where U
+
+0
+
+= B(,
+
+0
+
+; 1).
+
+Let o/
+
+2
+
+= o/
+
+1
+
+=2 = (o/ \Gamma  o/
+
+1
+
+)=2. Applying the above argument with ,
+
+0
+
+replaced by j
+
+1
+
+, o/ replaced by (o/ \Gamma  o/
+
+1
+
+),
+
+and o/
+
+1
+
+replaced by o/
+
+2
+
+, one shows that there exists some j
+
+2
+
+2 R
+
+o/
+
+2
+
+(j
+
+1
+
+) such that R
+
+^t
+
+(j
+
+2
+
+) is compact for any
+
+0 ^ t ! o/ \Gamma  oe
+
+2
+
+, and R
+
+^(o/\Gamma oe
+
+2
+
+)
+
+(j
+
+2
+
+) is not compact, where oe
+
+2
+
+= o/
+
+1
+
++ o/
+
+2
+
+, and there exist some v
+
+2
+
+defined on [0; o/
+
+2
+
+)
+
+and some neighborhood U
+
+2
+
+of j
+
+2
+
+contained in B(j
+
+2
+
+; 1), such that
+
+x(\Gamma o/
+
+2
+
+; ,; (v
+
+2
+
+)
+
+o/
+
+2
+
+) 2 U
+
+1
+
+; 8, 2 U
+
+2
+
+:
+
+By induction, one can get, for each k * 1 a point j
+
+k
+
+, a neighborhood U
+
+k
+
+of j
+
+k
+
+contained in B(j
+
+k
+
+; 1), and a
+
+function v
+
+k
+
+defined on [0; o/
+
+k
+
+) (where o/
+
+k
+
+= 2
+
+\Gamma k
+
+o/) such that
+
+ffl R
+
+^(o/\Gamma oe
+
+k
+
+)
+
+(j
+
+k
+
+) is not compact, where oe
+
+k
+
+= o/
+
+1
+
++ o/
+
+2
+
++ \Delta  \Delta  \Delta  + o/
+
+k
+
+= o/(1 \Gamma  2
+
+\Gamma k
+
+) ! o/;
+
+ffl x(\Gamma o/
+
+k
+
+; ,; (v
+
+k
+
+)
+
+o/
+
+k
+
+) 2 U
+
+k\Gamma 1
+
+, for any , 2 U
+
+k
+
+.
+
+Now define v on [0; o/) by concatenating all the v
+
+k
+
+'s. That is, v(t) = v
+
+k
+
+(t) for t 2 [oe
+
+k\Gamma 1
+
+; oe
+
+k
+
+) (with oe
+
+0
+
+def
+
+= 0).
+
+Then v 2 M
+
+D
+
+. For each k, let
+
+i
+
+k
+
+= x(\Gamma oe
+
+k
+
+; j
+
+k
+
+; (v
+
+k
+
+)
+
+oe
+
+k
+
+) ;
+
+where v
+
+k
+
+is the restriction of v to [0; oe
+
+k
+
+). By induction,
+
+x
+
+i
+
+\Gamma (oe
+
+k
+
+\Gamma  oe
+
+i
+
+); j
+
+k
+
+; (v
+
+k
+
+)
+
+oe
+
+k
+
+j
+
+2 U
+
+k\Gamma i
+
+;
+
+for each 0 ^ i ^ k, from which it follows that i
+
+k
+
+2 U
+
+0
+
+for each k. By compactness of U
+
+0
+
+, there exists some
+
+subsequence of fi
+
+k
+
+g converging to some point i
+
+0
+
+2 IR
+
+n
+
+. For ease of notation, we still use fi
+
+k
+
+g to denote this
+
+convergent subsequence. Our aim is next to prove that the solution starting at i
+
+0
+
+and applying the measurable
+
+function v does not exist for time o/, contradicting forward completeness.
+
+First notice that for any compact set S, there exists some k such that j
+
+k
+
+62 S. Otherwise, assume that there
+
+exists some compact set S such that j
+
+k
+
+2 S for all k. Let S
+
+1
+
+= fj : d(j; S) ^ 1g. The compactness of S implies
+
+that there exists some ffi ? 0 such that
+
+R
+
+^t
+
+(j) ` S
+
+1
+
+for any j 2 S, and any t 2 [0; ffi]. In particular, it implies that R
+
+^(o/\Gamma oe
+
+k
+
+)
+
+(j
+
+k
+
+) ` S
+
+1
+
+for k large enough so that
+
+o/ \Gamma  oe
+
+k
+
+! ffi. This contradicts the fact that R
+
+^(o/\Gamma oe
+
+k
+
+)
+
+(j
+
+k
+
+) is not compact for each k.
+
+14Pass1: Page 15
+
+
+Assume that x(o/; i
+
+0
+
+; v) is defined. By continuity on initial conditions, this would imply that x(t; i
+
+k
+
+; v) is
+
+defined for all t ^ o/ and for all k large enough, and it converges uniformly to x(t; i
+
+0
+
+; v). Thus, x(t; i
+
+k
+
+; v) remains
+
+in a compact for all t 2 [0; o/] and all k. But
+
+x(oe
+
+k
+
+; i
+
+k
+
+; v) = x(oe
+
+k
+
+; i
+
+k
+
+; v
+
+k
+
+) = j
+
+k
+
+;
+
+contradicting what was just proved. So x(o/; i
+
+0
+
+; v) is not defined, which contradicts the forward completeness of
+
+the system.
+
+Remark 5.4. For T ? 0 and , 2 IR
+
+n
+
+, let
+
+R
+
+\Gamma T
+
+(,) = fj : j = x(\Gamma T; ,; d); d 2 M
+
+D
+
+g; and R
+
+*\Gamma T
+
+(,) =
+
+[
+
+t2[\Gamma T;0]
+
+R
+
+t
+
+(,) :
+
+These are the reachable sets from , for the time reversed system
+
+.x(t) = \Gamma f(x(t); d(t)) :(30) Similarly, one defines R
+
+\Gamma T
+
+(S) and R
+
+*\Gamma T
+
+(S) for subsets S of IR
+
+n
+
+. If (1) is backward complete, that is, if (30) is
+
+forward complete, and applying Proposition 5.1 to (30), one concludes, for system (1), that R
+
+*\Gamma T
+
+(K) is compact
+
+for any T ? 0 and any compact subset K of IR
+
+n
+
+. In particular, for systems that are (forward and backward)
+
+complete,
+
+R
+
+*\Gamma T
+
+(K)
+
+[
+
+R
+
+^T
+
+(K)
+
+is compact for any compact set K and any T ? 0. 2
+
+Combining the above conclusion and Gronwall's Lemma, one has the following fact: Proposition 5.5. Assume that (1) is complete. For any fixed T ? 0 and any compact K ` IR
+
+n
+
+, there
+
+is a constant C ? 0 (which only depends on the set K and T ), such that for the trajectories x(t; x
+
+0
+
+; d) of the
+
+system (1),
+
+jx(t; ,; d) \Gamma  x(t; j; d)j ^ Cj, \Gamma  jj for any ,; j 2 K, any jtj ^ T , and any d 2 M
+
+D
+
+. 2
+
+6. Proof of the First Converse Lyapunov Theorem. Proof. [(=] Pick any x
+
+0
+
+2 IR
+
+n
+
+and any d 2 M
+
+D
+
+, and let x(\Delta ) be the corresponding trajectory. Then we
+
+have
+
+dV (x(t))
+
+dt
+
+^ \Gamma ff
+
+3
+
+(jx(t)j
+
+A
+
+) ^ \Gamma ff(V (x(t))) ; a.e. t * 0 ;
+
+where ff is the K
+
+1
+
+-function defined by
+
+ff(\Delta )
+
+def
+
+= ff
+
+3
+
+(ff
+
+\Gamma 1
+
+2
+
+(\Delta )) :
+
+Now let fi
+
+ff
+
+be the KL-function as in Lemma 4.4 with respect to ff, and define
+
+fi(s; t)
+
+def
+
+= ff
+
+\Gamma 1
+
+1
+
+\Gamma 
+
+fi
+
+ff
+
+(ff
+
+2
+
+(s); t)
+
+\Delta 
+
+:(31)
+
+Then fi is a KL-function, since both ff
+
+1
+
+and ff
+
+2
+
+are K
+
+1
+
+-functions. By Lemma 4.4,
+
+V (x(t)) ^ fi
+
+ff
+
+\Gamma 
+
+V (x
+
+0
+
+); t
+
+\Delta 
+
+; any t * 0 :
+
+Hence
+
+jx(t)j
+
+A
+
+^ fi(jx
+
+0
+
+j
+
+A
+
+; t) ; any t * 0 :
+
+15Pass1: Page 16
+
+
+Therefore the system (1) is UGAS with respect to A, by Proposition 2.5.
+
+[=)] We will show the existence of a not necessarily smooth Lyapunov function; then the existence of a smooth function will follow from Proposition 4.2. Assume that the system is UGAS with respect to the set A. Let ffi and T
+
+r
+
+be as in Definition 2.2 and Lemma 3.1.
+
+Define g : IR
+
+n
+
+\Gamma ! IR by
+
+g(,)
+
+def
+
+= inf
+
+t^0;d2M
+
+D
+
+\Phi 
+
+jx(t; ,; d)j
+
+A
+
+\Psi 
+
+:(32)
+
+Note that, by uniqueness of solutions, for each t
+
+0
+
+? 0 and each d, it holds that
+
+x(t \Gamma  t
+
+0
+
+; x(t
+
+0
+
+; ,; d); d
+
+t
+
+0
+
+) = x(t; ,; d) ;
+
+where d
+
+t
+
+0
+
+is defined by d
+
+t
+
+0
+
+(t) = d(t + t
+
+0
+
+). Pick any d 2 M
+
+D
+
+, , 2 IR
+
+n
+
+, and t
+
+1
+
+? 0. Let ,
+
+1
+
+= x(t
+
+1
+
+; ,; d). Then for
+
+any t ! 0, and v 2 M
+
+D
+
+,
+
+x(t; ,; v) = x(t \Gamma  t
+
+1
+
+; ,
+
+1
+
+; v
+
+t
+
+1
+
+#d
+
+t
+
+1
+
+) ;
+
+where
+
+v
+
+t
+
+1
+
+#d
+
+t
+
+1
+
+(s) =
+
+(
+
+d(s + t
+
+1
+
+); if \Gamma t
+
+1
+
+^ s ^ 0,
+
+v(s + t
+
+1
+
+); if s ! \Gamma t
+
+1
+
+.
+
+Thus,
+
+g(,) = inf
+
+t^0;v2M
+
+D
+
+jx(t; ,; v)j
+
+A
+
+= inf
+
+t^0;d2M
+
+D
+
+fi fi
+
+x(t \Gamma  t
+
+1
+
+; ,
+
+1
+
+; v
+
+t
+
+1
+
+#d
+
+t
+
+1
+
+)
+
+fi fi
+
+A
+
+= inf
+
+o/^\Gamma t
+
+1
+
+;v2M
+
+D
+
+fi fi
+
+x(o/; ,
+
+1
+
+; v
+
+t
+
+1
+
+#d
+
+t
+
+1
+
+)
+
+fi fi
+
+A
+
+* inf
+
+o/^0;v2M
+
+D
+
+fi fi
+
+x(o/; ,
+
+1
+
+; v)
+
+fi fi
+
+A
+
+= g(,
+
+1
+
+) :
+
+This implies that
+
+g
+
+\Gamma 
+
+x(t; ,; d)
+
+\Delta 
+
+^ g(,); 8t ? 0 ; 8d 2 M
+
+D
+
+:(33)
+
+Also one has
+
+ffi(j,j
+
+A
+
+) ^ g(,) ^ j,j
+
+A
+
+:(34)
+
+The second half of (34) is obvious from x(0; ,; d) = ,. On the other hand, if the first half were not true, then there would be some d 2 M
+
+D
+
+and some t
+
+0
+
+^ 0 such that
+
+ffi(j,j
+
+A
+
+) ? jx(t
+
+0
+
+; ,; d)j
+
+A
+
+:
+
+Pick any 0 ! " ! j,j
+
+A
+
+so that jx(t
+
+0
+
+; ,; d)j
+
+A
+
+! ffi("). By the uniform stability property, applied with t = \Gamma t
+
+0
+
+and
+
+x
+
+0
+
+= x(t
+
+0
+
+; ,; d),
+
+j,j
+
+A
+
+= jx(\Gamma t
+
+0
+
+; x(t
+
+0
+
+; ,; d); d
+
+t
+
+0
+
+)j
+
+A
+
+! j,j
+
+A
+
+;
+
+which is a contradiction.
+
+For any 0 ! " ! r, define K
+
+"; r
+
+def
+
+=
+
+\Phi 
+
+, 2 IR
+
+n
+
+: " ^ j,j
+
+A
+
+! r
+
+\Psi 
+
+:
+
+Fact 1: For all " and r with 0 ! " ! r, there exists q
+
+"; r
+
+^ 0, such that:
+
+, 2 K
+
+"; r
+
+; d 2 M
+
+D
+
+; and t ! q
+
+"; r
+
+=) jx(t; ,; d)j
+
+A
+
+* r :
+
+16Pass1: Page 17
+
+
+Proof: If the statement were not true, then there would exist "; r with 0 ! " ! r and three sequences f,
+
+k
+
+g ` K
+
+"; r
+
+, ft
+
+k
+
+g ` IR and d
+
+k
+
+2 M
+
+D
+
+with lim
+
+k!1
+
+t
+
+k
+
+= \Gamma 1 such that for all k:
+
+jx(t
+
+k
+
+; ,
+
+k
+
+; d
+
+k
+
+)j
+
+A
+
+! r :
+
+Pick k large enough so that \Gamma t
+
+k
+
+? T
+
+r
+
+("), then by the uniform attraction property,
+
+j,
+
+k
+
+j
+
+A
+
+= jx(\Gamma t
+
+k
+
+; x(t
+
+k
+
+; ,
+
+k
+
+; d
+
+k
+
+); (d
+
+k
+
+)
+
+t
+
+k
+
+)j
+
+A
+
+! " ;
+
+which is a contradiction. This proves the fact.
+
+Therefore, for any , 2 K
+
+"; r
+
+,
+
+g(,) = inffjx(t; ,; d)j
+
+A
+
+: t 2 [q
+
+"; r
+
+; 0]; d 2 M
+
+D
+
+g:
+
+Lemma 6.1. The function g(,) is locally Lipschitz on IR
+
+n
+
+nA, and continuous everywhere.
+
+Proof. Fix any ,
+
+0
+
+2 IR
+
+n
+
+nA, and let s =
+
+j,
+
+0
+
+j
+
+A
+
+2
+
+. Let
+
+_ B (,
+
+0
+
+; s) denote the closed ball centered at ,
+
+0
+
+and with
+
+radius s. Then
+
+_ B (,
+
+0
+
+; s) ` K
+
+oe; r
+
+for some 0 ! oe ! r. Pick a constant C as in Proposition 5.5 with respect to
+
+this closed ball and T = jq
+
+oe; r
+
+j. Pick any i; j 2
+
+_ B (,
+
+0
+
+; s). For any " ? 0, there exist some d
+
+j;"
+
+and t
+
+j;"
+
+2 [q
+
+oe;r
+
+; 0]
+
+such that g(j) * jx(t
+
+j;"
+
+; j; d
+
+j;"
+
+)j
+
+A
+
+\Gamma  ". Thus
+
+g(i) \Gamma  g(j) ^ jx(t
+
+j;"
+
+; i; d
+
+j;"
+
+)j
+
+A
+
+\Gamma  jx(t
+
+j;"
+
+; j; d
+
+j;"
+
+)j
+
+A
+
++ " ^ Cji \Gamma  jj + " :(35)
+
+Note that (35) holds for all " ? 0, so it follows that
+
+g(i) \Gamma  g(j) ^ C ji \Gamma  jj : Similarly, g(j) \Gamma  g(i) ^ Cji \Gamma  jj : This proves that g is locally Lipschitz on IR
+
+n
+
+nA.
+
+Note that g is 0 on A, and for , 2 A, j 2 IR
+
+n
+
+:
+
+jg(j) \Gamma  g(,)j = jg(j)j ^ jjj
+
+A
+
+^ jj \Gamma  ,j ;
+
+thus g is globally continuous. (We are not claiming that g is locally Lipschitz on IR
+
+n
+
+, though.)
+
+Now define U : IR
+
+n
+
+\Gamma ! IR
+
+*0
+
+by
+
+U(,)
+
+def
+
+= sup
+
+t*0;d2M
+
+D
+
+n
+
+g
+
+\Gamma 
+
+x(t; ,; d)
+
+\Delta 
+
+k(t)
+
+o
+
+;(36)
+
+where k : R
+
+*0
+
+\Gamma ! IR
+
+?0
+
+is any strictly increasing, smooth function that satisfies:
+
+ffl there are two constants 0 ! c
+
+1
+
+! c
+
+2
+
+! 1, such that k(t) 2 [c
+
+1
+
+; c
+
+2
+
+] for all t * 0;
+
+ffl there is a bounded positive decreasing continuous function o/(\Delta ), such that
+
+k
+
+0
+
+(t) * o/(t) for all t * 0 :
+
+(For instance,
+
+c
+
+1
+
++ c
+
+2
+
+t
+
+1 + t
+
+is one example of such a function.) Observe that
+
+U(,) ^ sup
+
+t*0
+
+i
+
+g(,) k(t)
+
+j
+
+^ c
+
+2
+
+g(,) ^ c
+
+2
+
+j,j
+
+A
+
+;(37)
+
+and
+
+U(,) * sup
+
+d2M
+
+D
+
+g(x(t; ,; d)) k(t)
+
+fi fi
+
+t=0
+
+* c
+
+1
+
+g(,) * c
+
+1
+
+ffi(j,j
+
+A
+
+) :(38)
+
+17Pass1: Page 18
+
+
+For any , 2 IR
+
+n
+
+, since
+
+jx(t; ,; d)j
+
+A
+
+^ fi(j,j
+
+A
+
+; t); 8d ; 8t * 0;
+
+for some KL-function fi, and 0 ^ g(x(t; ,; d)) ^ jx(t; ,; d)j
+
+A
+
+for all t * 0, it follows that
+
+lim t!+1
+
+sup
+
+d
+
+g(x(t; ,; d)) = 0 :
+
+Thus there exists some o/
+
+,
+
+2 [0; 1) such that
+
+U(,) = sup
+
+0^t^o/
+
+,
+
+;d2M
+
+D
+
+g(x(t; ,; d)) k(t) :
+
+In fact, we can get the following explicit bound.
+
+Fact 2: For any 0 ! j,j
+
+A
+
+! r,
+
+U(,) = sup
+
+0^t^t
+
+,
+
+;d2M
+
+D
+
+g
+
+\Gamma 
+
+x(t; ,; d)
+
+\Delta 
+
+k(t) ;
+
+where t
+
+,
+
+= T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(j,j
+
+A
+
+)
+
+j
+
+.
+
+Proof: If the statement is not true, then for any " ? 0, there exists some t
+
+"
+
+? T
+
+r
+
+\Gamma 
+
+c
+
+1
+
+2c
+
+2
+
+ffi(j,j
+
+A
+
+)
+
+\Delta 
+
+and some d
+
+"
+
+such that
+
+U(,) ^ g(x(t
+
+"
+
+; ,; d
+
+"
+
+))k(t
+
+"
+
+) + " :
+
+So we have
+
+ffi(j,j
+
+A
+
+) ^
+
+1
+
+c
+
+1
+
+U(,) ^
+
+1
+
+c
+
+1
+
+g(x(t
+
+"
+
+; ,; d
+
+"
+
+)) k(t
+
+"
+
+) +
+
+"
+
+c
+
+1
+
+^
+
+c
+
+2
+
+c
+
+1
+
+g(x(t
+
+"
+
+; ,; d
+
+"
+
+)) +
+
+"
+
+c
+
+1
+
+^
+
+c
+
+2
+
+c
+
+1
+
+jx(t
+
+"
+
+; ,; d
+
+"
+
+)j
+
+A
+
++
+
+"
+
+c
+
+1
+
+!
+
+ffi(j,j
+
+A
+
+)
+
+2
+
++
+
+"
+
+c
+
+1
+
+:
+
+Taking the limit as " tends to 0 results in a contradiction.
+
+For any compact set K ` IR
+
+n
+
+nA, let
+
+t
+
+K
+
+def
+
+= max
+
+,2K
+
+t
+
+,
+
+! 1 :
+
+(Finiteness follows from Fact 2, as K ` f, : 0 ! j,j
+
+A
+
+! rg for some r ? 0.)
+
+Lemma 6.2. The function U(\Delta ) defined by (36) is locally Lipschitz on IR
+
+n
+
+nA, and continuous everywhere.
+
+Proof. For ,
+
+0
+
+62 A, pick up a compact neighborhood K
+
+0
+
+of ,
+
+0
+
+so that K
+
+0
+
+" A = ;. By (38), one knows that
+
+U(,) ? r
+
+0
+
+; 8, 2 K
+
+0
+
+;
+
+for some constant r
+
+0
+
+? 0. Let r
+
+1
+
+=
+
+r
+
+0
+
+2c
+
+2
+
+and let
+
+K
+
+1
+
+= K
+
+0
+
+"
+
+n
+
+j : jj \Gamma  ,
+
+0
+
+j ^
+
+r
+
+1
+
+4C
+
+o
+
+;
+
+where C is such a constant that
+
+jx(t; ,; d) \Gamma  x(t; j; d)j ^ C j, \Gamma  jj ; 8,; j 2 K
+
+0
+
+; 0 ^ t ^ t
+
+K
+
+0
+
+; d 2 M
+
+D
+
+:(39)
+
+In the following we will show that there exists some L ? 0 such that for any ,; j 2 K
+
+1
+
+, it holds that
+
+jU(,) \Gamma  U(j)j ^ L j, \Gamma  jj :(40)
+
+18Pass1: Page 19
+
+
+First of all, for any , 2 K
+
+1
+
+and any " 2 (0; r
+
+0
+
+=2), there exists t
+
+,;"
+
+2 [0; t
+
+K
+
+0
+
+] and d
+
+,;"
+
+2 M
+
+D
+
+, such that
+
+U(,) ^ g(x(t
+
+,;"
+
+; ,; d
+
+,;"
+
+))k(t
+
+,;"
+
+) + " ^ c
+
+2
+
+jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+)j
+
+A
+
++ " ;
+
+from which it follows that
+
+jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+)j
+
+A
+
+* r
+
+1
+
+:
+
+It follows from (39) that for any j 2 K
+
+1
+
+,
+
+jx(t
+
+,;"
+
+; j; d
+
+,;"
+
+)j
+
+A
+
+* jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+)j
+
+A
+
+\Gamma  jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+) \Gamma  x(t
+
+,;"
+
+; j; d
+
+,;"
+
+)j *
+
+r
+
+1
+
+2
+
+:
+
+By Proposition 5.1 one knows that there exists some compact set K
+
+2
+
+such that
+
+x(t; ,; d) 2 K
+
+2
+
+; 8, 2 K
+
+1
+
+; 8t 2 [0; t
+
+K
+
+1
+
+]; and 8d 2 M
+
+D
+
+:
+
+Again, applying Lemma 6.1 to the compact set K
+
+2
+
+T
+
+fi : jij
+
+A
+
+* r
+
+1
+
+=2g, one sees that
+
+jg(x(t
+
+,;"
+
+; ,; d
+
+,;"
+
+)) \Gamma  g(x(t
+
+,;"
+
+; j; d
+
+,;"
+
+))j ^ C
+
+1
+
+jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+) \Gamma  x(t
+
+,;"
+
+; j; d
+
+,;"
+
+)j ;
+
+for some C
+
+1
+
+? 0. Therefore, we have the following:
+
+U(,) \Gamma  U(j) ^ g(x(t
+
+,;"
+
+; ,; d
+
+,;"
+
+))k(t
+
+,;"
+
+) + " \Gamma  g(x(t
+
+,;"
+
+; j; d
+
+,;"
+
+))k(t
+
+,;"
+
+)
+
+^ c
+
+2
+
+jg(x(t
+
+,;"
+
+; ,; d
+
+,;"
+
+)) \Gamma  g(x(t
+
+,;"
+
+; j; d
+
+,;"
+
+))j + "
+
+^ C
+
+1
+
+c
+
+2
+
+jx(t
+
+,;"
+
+; ,; d
+
+,;"
+
+) \Gamma  x(t
+
+,;"
+
+; j; d
+
+,;"
+
+)j + "
+
+^ L j, \Gamma  jj + " ;
+
+for some constant L that only depends on the compact set K
+
+1
+
+. Note that the above holds for any " 2 (0; r
+
+0
+
+=2),
+
+thus,
+
+U(,) \Gamma  U(j) ^ L j, \Gamma  jj ; 8,; j 2 K
+
+1
+
+:
+
+By symmetry, one proves (40).
+
+To prove the continuity of U on IR
+
+n
+
+, note that for any , 2 A, it holds that U(,) = 0, and so for all j 2 IR
+
+n
+
+:
+
+jU(,) \Gamma  U(j)j = U(j) ^ c
+
+2
+
+jjj
+
+A
+
+^ c
+
+2
+
+j, \Gamma  jj :
+
+The proof of Lemma 6.2 is thus concluded.
+
+We next start proving that U decreases along trajectories. Now pick any , 62 A. Let h
+
+0
+
+? 0 be such that
+
+jx(t; ,; d)j
+
+A
+
+*
+
+j,j
+
+A
+
+2
+
+; 8d 2 D; 8t 2 [0; h
+
+0
+
+] ;
+
+where d denotes the constant function d(t) j d. Such an h
+
+0
+
+exists by continuity. Pick any h 2 [0; h
+
+0
+
+]. For each
+
+d 2 D, let j
+
+d
+
+= x(h; ,; d). For any " ? 0, there exist some t
+
+d;"
+
+and d
+
+d;"
+
+2 M
+
+D
+
+such that
+
+U(j
+
+d
+
+) ^ g(x(t; j
+
+d
+
+; d
+
+d;"
+
+))k(t
+
+d;"
+
+) + "
+
+= g(x(t
+
+d;"
+
++ h; ,;
+
+~ d
+
+d;"
+
+))k(t
+
+d;"
+
++ h)
+
+`
+
+1 \Gamma 
+
+k(t
+
+d;"
+
++ h) \Gamma  k(t
+
+d;"
+
+)
+
+k(t
+
+d;"
+
++ h)
+
+'
+
++ "
+
+^ U(,)
+
+`
+
+1 \Gamma 
+
+k(t
+
+d;"
+
++ h) \Gamma  k(t
+
+d;"
+
+)
+
+c
+
+2
+
+'
+
++ " ;(41)
+
+19Pass1: Page 20
+
+
+where
+
+~ d
+
+d;"
+
+is the concatenation of d and d
+
+d;"
+
+. Still for these , and h, and for any r ? j,j
+
+A
+
+, define
+
+T
+
+r
+
+,;h
+
+def
+
+= max
+
+0^
+
+_ t^h;d2D
+
+T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(jx(
+
+_ t; ,; d)j
+
+A
+
+)
+
+j
+
+:(42)
+
+Claim: t
+
+d;"
+
++ h ^ T
+
+r
+
+,;h
+
+, for all d 2 D and for all " 2
+
+`
+
+0;
+
+c
+
+1
+
+2
+
+ffi
+
+`
+
+j,j
+
+A
+
+2
+
+''
+
+.
+
+Proof: If this were not true, then there would exist some
+
+~ d and some ~" 2
+
+`
+
+0;
+
+c
+
+1
+
+2
+
+ffi
+
+`
+
+j,j
+
+A
+
+2
+
+''
+
+such that
+
+t
+
+~
+
+d;~"
+
++ h ? T
+
+r
+
+,;h
+
+, and hence in particular, for
+
+_ t = h and d =
+
+~ d it holds that
+
+t
+
+~
+
+d;~"
+
++ h ? T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(jj
+
+~
+
+d
+
+j
+
+A
+
+)
+
+j
+
+;
+
+which implies that
+
+fi fi
+
+x(t
+
+~
+
+d;~"
+
+; j
+
+~
+
+d
+
+; d
+
+~
+
+d;~"
+
+)
+
+fi fi
+
+A
+
+=
+
+fi fi
+
+x(t
+
+~
+
+d;~"
+
++ h; ,; v)
+
+fi fi
+
+A
+
+!
+
+c
+
+1
+
+2c
+
+2
+
+ffi(jj
+
+~
+
+d
+
+j
+
+A
+
+) ;
+
+where v is the concatenated function defined by
+
+v(t) =
+
+(
+
+~ d; if 0 ^ t ^ h,
+
+d
+
+~
+
+d;~"
+
+(t \Gamma  h); if t ? h.
+
+Using (38), one has
+
+ffi
+
+\Gamma 
+
+jj
+
+~
+
+d
+
+j
+
+A
+
+\Delta 
+
+^
+
+1
+
+c
+
+1
+
+U(j
+
+~
+
+d
+
+) ^
+
+1
+
+c
+
+1
+
+g(x(t
+
+~
+
+d;~"
+
+; j
+
+~
+
+d
+
+; d
+
+~
+
+d;~"
+
+))k(t
+
+~
+
+d;~"
+
+) +
+
+~"
+
+c
+
+1
+
+^
+
+c
+
+2
+
+c
+
+1
+
+fi fi
+
+x(t
+
+~
+
+d;~"
+
+; j
+
+~
+
+d
+
+; d
+
+~
+
+d;~"
+
+)
+
+fi fi
+
+A
+
++
+
+~"
+
+c
+
+1
+
+!
+
+1
+
+2
+
+ffi
+
+\Gamma 
+
+jj
+
+~
+
+d
+
+j
+
+A
+
+\Delta 
+
++
+
+~"
+
+c
+
+1
+
+;
+
+which is a contradiction, since ~" !
+
+c
+
+1
+
+2
+
+ffi
+
+`
+
+j,j
+
+A
+
+2
+
+'
+
+^
+
+c
+
+1
+
+ffi
+
+\Gamma 
+
+jj
+
+~
+
+d
+
+j
+
+A
+
+\Delta 
+
+2
+
+. This proves the claim.
+
+From (41), we have for any d 2 D and for any " ? 0 small enough,
+
+U(x(h; ,; d)) \Gamma  U(,) ^ \Gamma U(,)
+
+(k(t
+
+d;"
+
++ h) \Gamma  k(t
+
+d;"
+
+))
+
+c
+
+2
+
++ " = \Gamma 
+
+U(,)
+
+c
+
+2
+
+k
+
+0
+
+(t
+
+d;"
+
++ `h)h + " ;
+
+where ` is some number in (0; 1). Hence, by the assumptions made on the function k, we have
+
+U(x(h; ,; d)) \Gamma  U(,) ^ \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/(t
+
+d;"
+
++ `h)h + " ^ \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/(T
+
+r
+
+,;h
+
+) h + " :
+
+Again, since " can be chosen arbitrarily small, we have
+
+U(x(h; ,; d)) \Gamma  U(,) ^ \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/(T
+
+r
+
+,;h
+
+)h; 8d 2 D :
+
+Thus we showed that for any d and any h ? 0 small enough,
+
+U(x(h; ,; d)) \Gamma  U(,)
+
+h
+
+^ \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/(T
+
+r
+
+,;h
+
+) :
+
+Since U is locally Lipschitz on IR
+
+n
+
+nA, it is differentiable almost everywhere in IR
+
+n
+
+nA, and hence for any d 2 D
+
+and for any r ? j,j
+
+A
+
+,
+
+L
+
+f
+
+d
+
+U(,) = lim
+
+h!0
+
++
+
+U(x(h; ,; d)) \Gamma  U(,)
+
+h
+
+^ \Gamma  lim
+
+h!0
+
++
+
+U(,)
+
+c
+
+2
+
+o/(T
+
+r
+
+,; h
+
+)
+
+= \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/
+
+i
+
+lim h!0
+
++
+
+T
+
+r
+
+,; h
+
+j
+
+= \Gamma 
+
+U(,)
+
+c
+
+2
+
+o/
+
+i
+
+T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(j,j
+
+A
+
+)
+
+jj
+
+^ \Gamma 
+
+c
+
+1
+
+ffi(j,j
+
+A
+
+)
+
+c
+
+2
+
+o/
+
+i
+
+T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(j,j
+
+A
+
+)
+
+jj (43)
+
+= \Gamma _ff
+
+r
+
+(j,j
+
+A
+
+); a.e. ;(44)
+
+20Pass1: Page 21
+
+
+where
+
+_ff
+
+r
+
+(s) =
+
+c
+
+1
+
+ffi(s)
+
+c
+
+2
+
+o/
+
+i
+
+T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(s)
+
+jj
+
+:
+
+Now define the function _ff by
+
+_ff(s) = sup
+
+r?s
+
+_ff
+
+r
+
+(s) :
+
+Note that _ff
+
+r
+
+(0) = 0 for any r ? 0, so _ff(0) = 0. Also, applying to r = 2s, we have
+
+_ff(s) *
+
+c
+
+1
+
+ffi(s)
+
+c
+
+2
+
+o/
+
+i
+
+T
+
+2s
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(s)
+
+jj
+
+? 0
+
+for all s ? 0. Notice that (44) holds for any r ? j,j
+
+A
+
+, so it follows that for every d 2 D, L
+
+f
+
+d
+
+U(,) ^ \Gamma _ff(j,j
+
+A
+
+)
+
+for almost all , 2 IR
+
+n
+
+nA. Now let
+
+^ff(s) =
+
+c
+
+1
+
+ffi(s)
+
+c
+
+2
+
+Z
+
+2s+1
+
+2s
+
+o/
+
+i
+
+T
+
+r
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(s)
+
+jj
+
+dr;
+
+for s ? 0, and let ^ff(0) = 0. Then ^ff is continuous on [0; 1) (the continuity at s = 0 is because o/ is bounded and ffi(0) = 0), and for s ? 0, it holds that
+
+0 ! ^ff(s) ^
+
+c
+
+1
+
+ffi(s)
+
+c
+
+2
+
+o/
+
+i
+
+T
+
+2s
+
+i
+
+c
+
+1
+
+2c
+
+2
+
+ffi(s)
+
+jj
+
+because of the monotonicity properties of T and o/. Furthermore,
+
+L
+
+f
+
+d
+
+U(,) ^ \Gamma _ff(j,j
+
+A
+
+) ^ \Gamma ^ff(j,j
+
+A
+
+);
+
+for almost all , 2 IR
+
+n
+
+n A.
+
+By Theorem B.1 provided in the appendix, there exists a C
+
+1
+
+function V : IR
+
+n
+
+nA \Gamma ! IR
+
+*0
+
+such that for
+
+almost all , 2 IR
+
+n
+
+nA,
+
+jV (,) \Gamma  U(,)j !
+
+U(,)
+
+2
+
+and L
+
+f
+
+d
+
+V (,) ^ \Gamma 
+
+1
+
+2
+
+^ff(j,j
+
+A
+
+); 8d 2 D :
+
+Extend V to IR
+
+n
+
+by letting V j
+
+A
+
+= 0 and again denote the extension by V . Note that V is continuous on IR
+
+n
+
+.
+
+So V is a Lyapunov function, as desired, with ff
+
+1
+
+(s) =
+
+c
+
+1
+
+2
+
+ffi(s); ff
+
+2
+
+(s) =
+
+3c
+
+2
+
+2
+
+s and ff
+
+3
+
+(s) =
+
+1
+
+2
+
+^ff(s).
+
+7. Proof of the Second Converse Lyapunov Theorem. We need a couple of Lemmas. The first one is trivial, so we omit its proof.
+
+Lemma 7.1. Let f : IR
+
+n
+
+\Theta  D \Gamma ! IR
+
+n
+
+be continuous, where D is a compact subset of IR
+
+l
+
+. Then there exists
+
+a smooth function a
+
+f
+
+: IR
+
+n
+
+\Gamma ! IR, with a
+
+f
+
+(x) * 1 everywhere, such that jf(x; d)j ^ a
+
+f
+
+(x) for all x and all d.
+
+2
+
+Now for any given system
+
+\Sigma  : .x = f(x; d) ; not necessarily complete, consider the following system:
+
+\Sigma 
+
+b
+
+: .x =
+
+1
+
+a
+
+f
+
+(x)
+
+f(x; d) :
+
+Note that the system \Sigma 
+
+b
+
+is complete since
+
+jf(x; d)j
+
+a
+
+f
+
+(x)
+
+^ 1 for all x; d. We let x
+
+b
+
+(\Delta ; x
+
+0
+
+; d) denote the trajectory
+
+of \Sigma 
+
+b
+
+corresponding to the initial state x
+
+0
+
+and the time-varying parameter d. The following result is a simple
+
+21Pass1: Page 22
+
+
+consequence of the fact that the trajectories of \Sigma  are the same as those of \Sigma 
+
+b
+
+up to a rescaling of time. We
+
+provide the details to show clearly that the uniformity conditions are not violated.
+
+Lemma 7.2. Assume that A is a compact set. Suppose that system \Sigma  is UGAS with respect to A. Then, system \Sigma 
+
+b
+
+is UGAS with respect to A.
+
+Proof. Pick a time-varying parameter d 2 M
+
+D
+
+and an initial state x
+
+0
+
+2 IR
+
+n
+
+. Let fl
+
+b
+
+(t) denote x
+
+b
+
+(t; x
+
+0
+
+; d).
+
+Let o/
+
+fl
+
+b
+
+(t) denote the solution for t * 0 of the following initial value problem:
+
+.o/ = a
+
+f
+
+(fl
+
+b
+
+(o/)); o/(0) = 0 :(45)
+
+Since a
+
+f
+
+is smooth, and fl
+
+b
+
+is Lipschitz, a
+
+f
+
+ffifl
+
+b
+
+is locally Lipschitz as well. It follows that a unique o/
+
+fl
+
+b
+
+(t) is at least
+
+defined in some interval [0;
+
+_ t ). Note that o/
+
+fl
+
+b
+
+is strictly increasing, so
+
+_ t ! +1 would imply lim
+
+t!
+
+_ t
+
+\Gamma 
+
+o/
+
+fl
+
+b
+
+(t) = +1.
+
+Claim: For every trajectory fl
+
+b
+
+of \Sigma 
+
+b
+
+, o/
+
+fl
+
+b
+
+(t) is defined for all t * 0.
+
+Proof: If the claim is not true, then there exist some trajectory fl
+
+b
+
+of \Sigma 
+
+b
+
+and some t
+
+1
+
+? 0 such that lim
+
+t!t
+
+\Gamma 
+
+1
+
+o/
+
+fl
+
+b
+
+(t) =
+
+1. Now for t 2 [0; t
+
+1
+
+), one has:
+
+d dt
+
+fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(t)) =
+
+1
+
+a
+
+f
+
+(fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(t)))
+
+f
+
+i
+
+fl
+
+b
+
+\Gamma 
+
+o/
+
+fl
+
+b
+
+(t)
+
+\Delta 
+
+; d
+
+\Gamma 
+
+o/
+
+fl
+
+b
+
+(t)
+
+\Delta 
+
+j
+
+d
+
+dt
+
+o/
+
+fl
+
+b
+
+(t)
+
+= f
+
+i
+
+fl
+
+b
+
+\Gamma 
+
+o/
+
+fl
+
+b
+
+(t)
+
+\Delta 
+
+; d
+
+\Gamma 
+
+o/
+
+fl
+
+b
+
+(t)
+
+\Delta 
+
+j
+
+:(46)
+
+Thus fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(t)) is a solution of \Sigma  on [0; t
+
+1
+
+). By the stability of \Sigma , it follows that
+
+jfl
+
+b
+
+(o/
+
+fl
+
+b
+
+(t))j
+
+A
+
+! ffi
+
+\Gamma 1
+
+(jx
+
+0
+
+j
+
+A
+
+); t 2 [0; t
+
+1
+
+) ;
+
+where x
+
+0
+
+= fl
+
+b
+
+(0), and ffi is the function for \Sigma  as defined in Definition 2.2. (c.f. Remark 2.4.) Let c = ffi
+
+\Gamma 1
+
+(jx
+
+0
+
+j
+
+A
+
+),
+
+and let M = sup
+
+j,j
+
+A
+
+^c
+
+a
+
+f
+
+(,). (M is finite because the set f, : j,j
+
+A
+
+^ cg is a compact set.) From here one sees
+
+that jo/
+
+fl
+
+b
+
+(t)j ^ Mt
+
+1
+
+for any t 2 [0; t
+
+1
+
+). This is a contradiction. Thus o/
+
+fl
+
+b
+
+(t) is defined for all t * 0. This proves
+
+the claim.
+
+Since a
+
+f
+
+(s) * 1 and, for every trajectory fl
+
+b
+
+of \Sigma 
+
+b
+
+, o/
+
+fl
+
+b
+
+(0) = 0, it follows that o/
+
+fl
+
+b
+
+(\Delta ) 2 K
+
+1
+
+for each trajectory
+
+fl
+
+b
+
+of \Sigma 
+
+b
+
+. From (46), one also sees that if fl
+
+b
+
+(t) is a trajectory of \Sigma 
+
+b
+
+, then fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(t)) is a trajectory of \Sigma , and
+
+furthermore,
+
+jfl
+
+b
+
+(o/
+
+fl
+
+b
+
+(s))j
+
+A
+
+! " 8s * 0 ; if jfl
+
+b
+
+(0)j
+
+A
+
+^ ffi(") :
+
+It follows that
+
+jfl
+
+b
+
+(t)j
+
+A
+
+=
+
+fi fi
+
+fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(o/
+
+\Gamma 1
+
+fl
+
+b
+
+(t)))
+
+fi fi
+
+A
+
+! "; 8t * 0; whenever jfl
+
+b
+
+(0)j
+
+A
+
+^ ffi(") :
+
+This shows that condition (1) of Definition 2.2 holds for \Sigma 
+
+b
+
+, with the same function ffi.
+
+Fix any r; " ? 0. Pick any x
+
+0
+
+with jx
+
+0
+
+j
+
+A
+
+! r and any d 2 M
+
+D
+
+. Again let fl
+
+b
+
+(t) denote the corresponding
+
+trajectory of \Sigma 
+
+b
+
+. Then
+
+jfl
+
+b
+
+(t)j
+
+A
+
+=
+
+fi fi
+
+fl
+
+b
+
+(o/
+
+fl
+
+b
+
+(o/
+
+\Gamma 1
+
+fl
+
+b
+
+(t)))
+
+fi fi
+
+A
+
+! ffi
+
+\Gamma 1
+
+(r); 8t * 0 :
+
+Let
+
+L = supfa
+
+f
+
+(,) : j,j
+
+A
+
+^ ffi
+
+\Gamma 1
+
+(r)g:
+
+Then one sees that j .o/(t)j ^ L, which implies that o/
+
+fl
+
+b
+
+(t) ^ Lt for all t * 0. Note that for the given r; " ? 0, by
+
+the UGAS property for \Sigma , there exists T ? 0 such that for every d 2 M
+
+D
+
+,
+
+jfl
+
+b
+
+(o/
+
+fl
+
+b
+
+(s))j
+
+A
+
+! "
+
+22Pass1: Page 23
+
+
+whenever jfl
+
+b
+
+(0)j
+
+A
+
+! r and s * T . This implies that
+
+jfl
+
+b
+
+(t)j
+
+A
+
+! "
+
+whenever jfl
+
+b
+
+(0)j
+
+A
+
+! r and t * o/
+
+fl
+
+b
+
+(T ). Combining this with the fact that o/
+
+fl
+
+b
+
+(t) ^ Lt, one proves that for any
+
+d 2 M
+
+D
+
+, it holds that
+
+jfl
+
+b
+
+(t)j
+
+A
+
+! "
+
+whenever jfl
+
+b
+
+(0)j
+
+A
+
+! r and t * LT . Hence we conclude that \Sigma 
+
+b
+
+is UGAS.
+
+In Lemma 7.2, the assumption that A is compact is crucial. Without this assumption, the conclusion may fail as the following example shows.
+
+Example 7.3. Consider the following system \Sigma :
+
+.x = (1 + y
+
+2
+
+) tanh x; .y = y
+
+4
+
+:(47)
+
+(Here f is independent of d.) Let A = f(x; y) : x = 0g. Clearly the system is UGAS with respect to A. For this system, a natural choice of a
+
+f
+
+is 2 + y
+
+4
+
+. Thus, the corresponding \Sigma 
+
+b
+
+is as follows:
+
+.x = (tanh x)
+
+1 + y
+
+2
+
+2 + y
+
+4
+
+; .y =
+
+y
+
+4
+
+2 + y
+
+4
+
+:
+
+However, the system \Sigma 
+
+b
+
+is not UGAS with respect to A. This can be seen as follows. Assume that \Sigma 
+
+b
+
+is UGAS.
+
+Then for " = 1=2, there exists some T ? 0 such that for any solution (x(t); y(t)) of \Sigma 
+
+b
+
+with x(0) = 1, it holds
+
+that
+
+jx(t)j !
+
+1
+
+2
+
+; 8t * T :(48)
+
+Since
+
+1 + y
+
+2
+
+2 + y
+
+4
+
+! 0 as y ! 1, it follows that there exists some y
+
+0
+
+? 0 such that
+
+fi fi fi fi
+
+1 + y
+
+2
+
+2 + y
+
+4
+
+fi fi fi fi
+
+!
+
+1
+
+3T
+
+; 8y * y
+
+0
+
+:
+
+Now consider the trajectory (x(t); y(t)) of \Sigma 
+
+b
+
+with x(0) = 1; y(0) = y
+
+0
+
+, where y
+
+0
+
+is as above. Clearly y(t) * y
+
+0
+
+for all t * 0, and thus,
+
+.x = (tanh x)
+
+1 + y
+
+2
+
+2 + y
+
+4
+
+^ (tanh x)
+
+1
+
+3T
+
+^
+
+1
+
+3T
+
+;
+
+which implies that
+
+jx(T )j * 1 \Gamma 
+
+1
+
+3T
+
+T =
+
+2
+
+3
+
+:
+
+This contradicts (48). From here one sees that \Sigma 
+
+b
+
+is not UGAS with respect to A. 2
+
+We now prove Theorem 2.9. The proof of the sufficiency part is the same as in the proof of Theorem 2.8. Observe that the fact that V (,) is nonincreasing along trajectories implies, by compactness of A, that trajectories are bounded, so x(t) is defined for all t * 0. We now prove necessity.
+
+Let a
+
+f
+
+be a function for f as in Lemma 7.1, and let \Sigma 
+
+b
+
+be the corresponding system. Then by Lemma 7.2,
+
+one knows that the system \Sigma 
+
+b
+
+is UGAS. Applying Theorem 2.8 to the complete system \Sigma 
+
+b
+
+, one knows that there
+
+exists a smooth Lyapunov function V for \Sigma 
+
+b
+
+such that
+
+ff
+
+1
+
+(j,j
+
+A
+
+) ^ V (,) ^ ff
+
+2
+
+(j,j
+
+A
+
+) ; 8, 2 IR
+
+n
+
+;
+
+23Pass1: Page 24
+
+
+and
+
+L
+
+~
+
+f
+
+d
+
+V (,) ^ \Gamma ff
+
+3
+
+(j,j
+
+A
+
+) ; 8, 62 A ; 8d 2 D ;
+
+for some K
+
+1
+
+-functions ff
+
+1
+
+; ff
+
+2
+
+and some positive definite function ff
+
+3
+
+, where
+
+~ f
+
+d
+
+(,) =
+
+f(,; d)
+
+a
+
+f
+
+(,)
+
+:
+
+Since a
+
+f
+
+(,) * 1 everywhere, it follows that
+
+L
+
+f
+
+d
+
+V (,) ^ \Gamma ff
+
+3
+
+(j,j
+
+A
+
+); 8, 62 A; 8d 2 D :
+
+Thus, one concludes that V is also a Lyapunov function of \Sigma .
+
+8. An Example. In general, for a noncompact parameter value set D, the converse Lyapunov theorem will fail, even if the vector fields f(,; d) are locally Lipschitz uniformly on d on any compact subset of D (for instance, if f is smooth everywhere). To illustrate this fact, consider the common case of systems affine in controls:
+
+.x = f(x) + g(x)d; where for simplicity we consider only the unconstrained single-input case, that is, D = IR. Assume that there would exist a Lyapunov function V for this system in the sense of definition 2.6. Then, calculating Lie derivatives, we have that, in particular,
+
+L
+
+f
+
+V (,) + dL
+
+g
+
+V (,) ! 0; 8, 6= 0; 8d 2 IR;
+
+which implies that
+
+L
+
+g
+
+V (,) = 0; 8, 6= 0:
+
+Thus V must be constant along all the trajectories of the differential equation
+
+.x = g(x): In general, such a property will contradict the properness or the positive definiteness of V, unless the vector field g is very special. As a way to construct counterexamples, consider the following property of a vector field g, which is motivated by the prolongation ideas in [27].
+
+Consider the closure W (,
+
+0
+
+) of the trajectory through ,
+
+0
+
+with respect to the vector field g. Note that
+
+if ,
+
+1
+
+2 W (,
+
+0
+
+), then the fact that V is constant on trajectories, coupled with continuity of V , implies that
+
+V (,
+
+1
+
+) = V (,
+
+0
+
+). Now assume that there is a chain ,
+
+0
+
+; ,
+
+1
+
+; ,
+
+2
+
+; : : : so that for each i = 1; 2; : : :, ,
+
+i
+
+2 W (,
+
+i\Gamma 1
+
+). Then
+
+we conclude that V (,
+
+i
+
+) = V (,
+
+0
+
+) for all i. If the sequence f,
+
+i
+
+g converges to zero (and ,
+
+0
+
+6= 0) or diverges to
+
+infinity, we contradict positive definiteness or properness of V respectively. For an example, take the following two dimensional system, which was used in [7] to show essentially the same fact.
+
+Let S be the spiral that describes the solution of the differential equation
+
+.x = \Gamma x \Gamma  y; .y = x \Gamma  y; passing through the point (1; 0). Explicitly, S can be parameterized as x = e
+
+\Gamma t
+
+cos t; y = e
+
+\Gamma t
+
+sin t, \Gamma 1 ! t ! 1.
+
+In polar coordinates, the spiral is given by r = e
+
+\Gamma `
+
+, \Gamma 1 ! ` ! 1. Let a(x; y) be any nonnegative smooth
+
+function which is zero exactly on the closure of the spiral S (that is, S plus the origin). (Such a function always
+
+24Pass1: Page 25
+
+
+exists since any closed subset of Euclidean space can be described as the zero set of a smooth function; see for instance [6]. Now consider the system
+
+.x = \Gamma x \Gamma  y + xa(x; y)d;
+
+.y = x \Gamma  y + ya(x; y)d:(49)
+
+Note that the system is smooth everywhere. Let D = IR, and let A be the origin. In polar coordinates, the system (49) on IR
+
+2
+
+nf0g satisfies the equations
+
+.r = \Gamma r + ra(r cos `; r sin `)d;
+
+. ` = 1:(50)
+
+(This can be seen as a system on IR
+
+?0
+
+\Theta  S
+
+1
+
+.) In polar coordinates, then, the trajectory passing through (r; `) =
+
+(1; 0) is precisely the spiral r = e
+
+\Gamma `
+
+, for any d 2 M
+
+D
+
+. Pick any trajectory (r(t); `(t)) with (r(0); `(0)) = (r
+
+0
+
+; `
+
+0
+
+),
+
+where `
+
+0
+
+2 [0; 2ss). Then there exists some integer k * 0 such that r
+
+0
+
+! e
+
+\Gamma `
+
+0
+
++2kss
+
+.
+
+Claim: It holds that
+
+r(t) ^ e
+
+\Gamma `
+
+0
+
++2kss\Gamma t
+
+^ e
+
+2kss\Gamma t
+
+; 8t * 0 :(51)
+
+Assume that (51) is not true. Then there exists some t
+
+1
+
+? 0 such that
+
+r(t
+
+1
+
+) = e
+
+\Gamma `
+
+0
+
++2kss\Gamma t
+
+1
+
+:
+
+Note that we also have `(t
+
+1
+
+) = `
+
+0
+
++ t
+
+1
+
+. Now let (_r(t);
+
+_ `(t)) = (e
+
+\Gamma `
+
+0
+
++2kss\Gamma t
+
+; `
+
+0
+
+\Gamma  2kss + t). Then (_r(t);
+
+_ `(t)) is
+
+a trajectory of the system, and furthermore, (_r(0);
+
+_ `(0)) and (r(0); `
+
+0
+
+) are different points since _r(0) 6= r(0).
+
+However, the points (r(t
+
+1
+
+); `(t
+
+1
+
+)) and (_r(t
+
+1
+
+);
+
+_ `(t
+
+1
+
+)) are the same point on the xy-plane. This violates the
+
+uniqueness of solutions. Therefore, (51) holds for t * 0.
+
+Note that in the above discussion, one can always choose k = r
+
+0
+
++ 1. It then follows from (51) that for any
+
+trajectory of the system with r(0) = r
+
+0
+
+, it holds that
+
+r(t) ^ e
+
+2(r
+
+0
+
++1)ss\Gamma t
+
+; 8t * 0; 8d:(52)
+
+Thus we conclude that the system is UGAS.
+
+However, this system fails to admit a Lyapunov function. In this example, the vector field g is (xa(x; y); ya(x; y)). Consider the sequence of points in the xy-plane f,
+
+k
+
+g with ,
+
+k
+
+= (e
+
+2kss
+
+; 0) for k * 0. Note
+
+that for each k * 1,
+
+,
+
+k
+
+2 W (,
+
+j
+
+k\Gamma 1
+
+);
+
+where ,
+
+j
+
+k
+
+=
+
+`
+
+e
+
+2kss
+
++
+
+1
+
+j
+
+; 0
+
+'
+
+. Therefore, V (,
+
+k
+
+) = V (,
+
+j
+
+k\Gamma 1
+
+) for any j and any k. This implies that
+
+V (,
+
+k
+
+) = V (,
+
+0
+
+); 8k * 1;
+
+contradicting the properness of V . This shows that it is impossible for the system to have a Lyapunov function.
+
+It is worthwhile to note that by the same argument, one sees that not only there is no smooth Lyapunov function for the system, but also there is not even a Lyapunov function which is merely continuous (in the sense that V is not even smooth away from A, and the Lie derivative condition is replaced by a condition asking that V should decrease along trajectories).
+
+In [17], a simple example is given illustrating that uniform global asymptotic stability with respect merely to constant parameters is also not sufficient to guarantee the existence of Lyapunov functions.
+
+25Pass1: Page 26
+
+
+9. Relations to Other Work. The study of smooth Converse Lyapunov Theorems has a long history. In the special case of stability with respect to equilibria, and for systems without parameters, the first complete work was that done in the early 1950s by Massera and Kurzweil; see for instance the papers [18] and [13]. (Although more general because we deal with set stability and time varying parameters, there is one important aspect in which our results are weaker than some of this classical work, especially that of Kurzweil: we assume enough regularity on the original system, so that there are unique solutions and there is continuous dependence. We do so because lack of regularity is not an issue in the main applications in which we are interested. Of course, the proofs become much simpler under regularity assumptions.) In the late 1960s, Wilson, in [30], extended the Massera and Kurzweil results to a converse Lyapunov function theorem for local asymptotic stability with respect to closed sets. As explained earlier, our proof is modeled along the lines of that paper. See also the textbooks [31] and [12] for many of these classical results.
+
+Nondifferentiable Lyapunov functions have been studied in many papers and textbooks. Among these we may mention the classic book [3] by Bhatia and Szeg"o, as well as Zubov's work (see for instance [32]) which study in detail continuous Lyapunov function characterizations for global asymptotic stability with respect to arbitrary closed invariant sets. Also, in [28] and [27], and related work, the authors obtained the existence of continuous Lyapunov functions for systems which are stable, uniformly on parameters (or inputs) and with respect to compact sets, assuming various additional conditions involving prolongations of dynamical systems. (The next section provides some more details on the prolongation approach.) Many results on converse Lyapunov functions with respect to sets can also be found in the many books and articles by Lakshmikantham and several coauthors. For instance, in [14], Theorem 3.4.1, a Massera-type proof is provided of a general converse theorem on local asymptotic stability with respect to two K-functions, that provides a Lipschitz Lyapunov function. As the authors point out, their theorem immediately provides a set-stability result (when using distance to the set as one of the comparison functions). In the very recent work [21], the author considered asymptotic stability for systems with merely measurable right hand sides, and proved the existence of locally Lipschitz Lyapunov functions for such systems. Note that in our case, we obtained the existence of locally Lipschitz Lyapunov functions as an intermediate result, but our regularity assumption on the vector fields made it possible to obtain the existence of smooth Lyapunov functions.
+
+The questions addressed in this paper are related to studies of "total stability," which typically ask about the preservation of stability when considering a new system .x = f(x) + R(x; t), where R(x; t) is a perturbation. (Sometimes the original system may be allowed to be time-varying, that is, it has equations .x = f(x; t); in that case, its stability can in turn be interpreted in terms of stability of the set fx = 0g for the extended system
+
+.x = f(x; z), .z = 1.) In [15], Lefschetz discussed stability with respect to equilibria under perturbations (referred to by the author as quasi-stability). In [12] and [31], one can find such studies, and relationships to the special case of .x = f(x) + d(t), with results proved regarding stability under integrable perturbations (not arbitrary bounded ones).
+
+Under suitable technical conditions, systems with time varying parameters can also be treated as general dynamical systems, or general control systems, as in [23, 32, 22, 10, 11]. In these works, systems were defined in terms of set-valued maps associated with reachable sets (or attainable sets). A similar treatment was also adopted in [28] and related work, where the prolongation sets of reachable sets were used to study stability. In [22], the author established the existence of different types of Lyapunov functions (not necessarily continuous) for both stability and weak stability with respect to closed invariant sets, where "weak stability" means the existence of a stable trajectory from every point outside the invariant set. In [10], the author provided Lyapunov characterizations for both local asymptotic stability and weak asymptotic stability. See [11] for an excellent survey of work along these lines.
+
+It is also possible to reformulate stability for systems with time varying parameters in terms of differential inclusions, as explained earlier; see e.g. [1] and [2]. The first of these books employs Lyapunov functions in sufficiency characterizations of viability properties (not the same as stability with respect to all solutions), while the second one (see Chapter 6, and especially Section 4) shows various converse theorems that result in
+
+26Pass1: Page 27
+
+
+nondifferentiable Lyapunov functions, connecting their existence with the solution of optimal control problems. In the recent work [20], one can find conclusions analogous to those in this paper but only for the very special case of linear differential inclusions, resulting in homogeneous "quasiquadratic" Lyapunov functions. Finally, let us mention the work [19] on systems with time varying parameters, in which the author established, under the assumption of exponential stability, the existence of differentiable Lyapunov functions on compact sets, for the special case of equilibria.
+
+10. Relations to Stability of Prolongations. In [7, 8, 27, 28, 29], the authors considered various notions of stability for systems of the type (1) (with D not necessarily compact). These properties are defined in terms of the "prolongations" of the original system. The above papers investigated the relationships between such stability notions and the existence of continuous, not necessarily smooth, Lyapunov functions. In this section, we briefly discuss relations between UGAS stability and the notions considered in those papers, with the purpose of clarifying relations to this related previous work. For the more details on the definitions and elementary properties of prolongation maps and the corresponding stability concepts, we refer the reader to the papers mentioned above.
+
+We start with some abstract definitions. Let F : IR
+
+n
+
+\Theta  IR
+
+*0
+
+! 2
+
+IR
+
+n
+
+; (,; t) 7! F (,; t) ` IR
+
+n
+
+be any map
+
+from IR
+
+n
+
+\Theta  IR
+
+*0
+
+to the set of subsets of IR
+
+n
+
+. Associated to F , one defines DF and JF by
+
+DF (,; t) =
+
+n
+
+j 2 IR
+
+n
+
+: there exist sequences ,
+
+n
+
+; j
+
+n
+
+2 IR
+
+n
+
+; and t
+
+n
+
+* 0
+
+with ,
+
+n
+
+! ,; j
+
+n
+
+! j; t
+
+n
+
+! t; j 2 F (,
+
+n
+
+; t
+
+n
+
+)
+
+o
+
+;
+
+JF (,; t) =
+
+n
+
+j 2 IR
+
+n
+
+: there exist t
+
+1
+
+; t
+
+2
+
+; : : : ; t
+
+k
+
+* 0 with
+
+k X
+
+i=1
+
+t
+
+i
+
+= t; such that j 2 F
+
+i
+
+F
+
+\Gamma 
+
+\Delta  \Delta  \Delta  F (F (,
+
+n
+
+; t
+
+1
+
+); t
+
+2
+
+) \Delta  \Delta  \Delta  ; t
+
+k\Gamma 1
+
+\Delta 
+
+; t
+
+k
+
+jo
+
+;
+
+where F (S; t)
+
+def
+
+=
+
+S
+
+,2S
+
+F (,; t) for any subset S of IR
+
+n
+
+.
+
+The map F is called cluster if DF = F , and F is called transitive if JF = F . For any system (1), consider the reachable set R
+
+t
+
+(,) defined in section 5, seen now as a set-valued map. The
+
+prolongation map \Gamma  associated with (1) is then defined by letting \Gamma (,; t) be the smallest set containing R
+
+t
+
+(,)
+
+such that \Gamma  is both transitive and cluster. For further discussion regarding the definition of the map \Gamma , we refer the reader to [27] and the other papers mentioned above.
+
+For subsets A and B of IR
+
+n
+
+, we denote the usual distance between the two sets by d(A; B) =
+
+inf fd(,; j) : , 2 A; j 2 Bg : We say that a system (1) is T-stable (we use here the "T" for the name of the author of [27] who, in turn, was inspired by previous work [8]) with respect to a closed, invariant set A if the following two properties hold:
+
+ffl There exists a K
+
+1
+
+-function ffi(\Delta ) such that for any " ? 0,
+
+d(\Gamma  (,; t); A) ! "; whenever j,j
+
+A
+
+^ ffi("); and t * 0 ;
+
+ffl For any r; " ? 0, there is a T ? 0 such that
+
+d (\Gamma (,; t); A) ! "; whenever j,j
+
+A
+
+! r; and t * T:
+
+Note that this is the same as what is called "global absolute asymptotic stability" (global A.A.S) in [27] for the special case when A is compact. Clearly, if a system is T-stable, then it is UGAS. It was shown in [27], under some extra technical assumptions, but without the compactness of D, that global A.A.S implies the existence of a continuous, not necessarily smooth, Lyapunov function (meaning that V is globally merely continuous; the condition L
+
+f
+
+d
+
+V (,) ^ \Gamma ff
+
+3
+
+(j,j
+
+A
+
+) is replaced by a condition that V should decrease along trajectories).
+
+27Pass1: Page 28
+
+
+We will show next that, at least when D is compact, UGAS implies (and is therefore equivalent to) T- stability. So in what follows in this section, we assume that D is compact, and also that all systems involved are forward complete. We first need the following fact.
+
+Lemma 10.1. For system (1), \Gamma (,; t) = R
+
+t
+
+(,) for any , 2 IR
+
+n
+
+and any t * 0.
+
+Proof. First note that the cluster property of \Gamma  implies that \Gamma (,; t) is closed for each , 2 IR
+
+n
+
+and each
+
+t * 0. Thus it is enough to show that the map R : (,; t) 7! R
+
+t
+
+(,) is cluster and transitive.
+
+Take ,
+
+0
+
+2 IR
+
+n
+
+and o/ ? 0. (The case when t = 0 is trivial.) Pick j
+
+0
+
+2 DR(,
+
+0
+
+; o/). Then, by definition, there
+
+exist sequences f,
+
+n
+
+g; fj
+
+n
+
+g and ft
+
+n
+
+g with t
+
+n
+
+* 0 such that ,
+
+n
+
+! ,
+
+0
+
+; j
+
+n
+
+! j
+
+0
+
+; t
+
+n
+
+! o/ and j
+
+n
+
+2 R
+
+t
+
+n
+
+(,
+
+n
+
+).
+
+Note then that for each n, there exists d
+
+n
+
+such that
+
+jj
+
+n
+
+\Gamma  x(t
+
+n
+
+; ,
+
+n
+
+; d
+
+n
+
+)j !
+
+1
+
+n
+
+:
+
+Let i
+
+n
+
+= x(t
+
+n
+
+; ,
+
+n
+
+; d
+
+n
+
+). Then i
+
+n
+
+2 R
+
+t
+
+n
+
+(,
+
+n
+
+) and i
+
+n
+
+! j
+
+0
+
+. Let K
+
+0
+
+be a compact set such that ,
+
+n
+
+2 K
+
+0
+
+for each
+
+n, and let T ? 0 be such that t
+
+n
+
+^ T for any n. Then by Proposition 5.1, there exists a compact set K
+
+1
+
+such
+
+that R(K
+
+0
+
+; T ) ` K
+
+1
+
+. Let L be a Lipschitz constant for f with respect to states in K
+
+1
+
+. Then it follows from
+
+Gronwall's Lemma that, for n large enough so that j,
+
+n
+
+\Gamma  ,
+
+0
+
+j ! e
+
+\Gamma LT
+
+, it holds that
+
+jx(t; ,
+
+0
+
+; d
+
+n
+
+) \Gamma  x(t; ,
+
+n
+
+; d
+
+n
+
+)j ^ j,
+
+0
+
+\Gamma  ,
+
+n
+
+je
+
+LT
+
+;
+
+for any 0 ^ t ^ T . Let ^
+
+n
+
+= x(o/; ,
+
+0
+
+; d
+
+n
+
+). Then
+
+j^
+
+n
+
+\Gamma  i
+
+n
+
+j = jx(o/; ,
+
+0
+
+; d
+
+n
+
+) \Gamma  x(t
+
+n
+
+; ,
+
+n
+
+; d
+
+n
+
+)j
+
+^ jx(o/; ,
+
+0
+
+; d
+
+n
+
+) \Gamma  x(o/; ,
+
+n
+
+; d
+
+n
+
+)j + jx(o/; ,
+
+n
+
+; d
+
+n
+
+) \Gamma  x(t
+
+n
+
+; ,
+
+n
+
+; d
+
+n
+
+)j
+
+^ j,
+
+0
+
+\Gamma  ,
+
+n
+
+je
+
+o/L
+
++ Mjo/ \Gamma  t
+
+n
+
+j
+
+where M = maxfjf(,; d)j; d(,; K
+
+1
+
+) ^ 1; d 2 Dg. It then follows that ^
+
+n
+
+2 R
+
+o/
+
+(,
+
+0
+
+) for each n and ^
+
+n
+
+! j
+
+0
+
+.
+
+Thus, we conclude that j
+
+0
+
+2 R
+
+o/
+
+(,
+
+0
+
+). Hence we showed that DR
+
+o/
+
+(,
+
+0
+
+) = R
+
+o/
+
+(,
+
+0
+
+) for any o/ ? 0 and any ,
+
+0
+
+2 IR
+
+n
+
+,
+
+that is, the map R is cluster.
+
+To show the transitivity of R, first note that, by induction, it is enough to show that
+
+R(R(,; t
+
+1
+
+); t
+
+2
+
+) ` R(,; t
+
+1
+
++ t
+
+2
+
+)(53)
+
+for any , 2 IR
+
+n
+
+and any t
+
+1
+
+; t
+
+2
+
+* 0.
+
+Applying Lemma 5.3 to S = R
+
+t
+
+1
+
+(,) together with the fact that
+
+R
+
+t
+
+2
+
+\Gamma 
+
+R
+
+t
+
+1
+
+(,)
+
+\Delta 
+
+= R
+
+t
+
+1
+
++t
+
+2
+
+(,) ;
+
+one immediately gets (53).
+
+Rewritting the definition of UGAS in terms of reachable sets, one has that a system (1) is UGAS if and only if the following properties hold:
+
+ffl There exists a K
+
+1
+
+-function ffi(\Delta ) such that for any " ? 0,
+
+d
+
+\Gamma 
+
+R
+
+t
+
+(,); A
+
+\Delta 
+
+! "; whenever j,j
+
+A
+
+^ ffi("); and t * 0 ;
+
+ffl For any r; " ? 0, there is a T ? 0 such that
+
+d
+
+\Gamma 
+
+R
+
+t
+
+(,); A
+
+\Delta 
+
+! "; whenever j,j
+
+A
+
+! r; and t * T:
+
+The following conclusion then follows immediately from the continuity of the function , 7! d(,; A) and Lemma 10.1:
+
+Proposition 10.2. For compact D, a system (1) is UGAS with respect to A if and only if it is T-stable.
+
+28Pass1: Page 29
+
+
+Remark 10.3. In the special case when A is compact, a UGAS system is always forward complete. Thus in that case Proposition 10.2 is still true without completeness. 2
+
+Remark 10.4. The compactness condition on D is essential. Without the compactness of D, Proposi- tion 10.2 is in general not true. For instance, the system defined by (50) in section 8 is UGAS with respect to the origin (0; 0). However the system is not T-stable, since \Gamma (0; t) = IR
+
+2
+
+for any t ? 0. Note that for this
+
+example, R
+
+t
+
+(0; t) = f0g for any t ? 0 which is different from \Gamma (0; t). The inconsistency with the conclusion of
+
+Lemma 10.1 is caused by the noncompactness of D. 2
+
+Acknowledgements. We wish to thank the Institute for Mathematics and Its Applications for providing an excellent research environment during the Special Year in Control Theory (1992-1993); part of this work was completed while the authors visited the IMA. We also wish to thank John Tsinias and Randy Freeman for useful comments, and most especially H'ector Sussmann for help with the proof of Proposition 5.1.
+
+REFERENCES [1] J.-P. Aubin, Viability Theory, Birkh"auser, Boston, 1991. [2] J.-P. Aubin and A. Cellina, Differential Inclusions: Set-Valued Maps and Viability Theory, Springer-
+
+Verlag, New York, 1984. [3] N. P. Bhatia and G. P. Szeg
+
+" o, Stability Theory of Dynamical Systems, Springer-Verlag, New York, 1970.
+
+[4] T. Br
+
+" ocker, Differentiable Germs and Catastrophes, Cambridge University Press, Cambridge, 1975.
+
+[5] H. Federer, Geometric Measure Theory, Springer-Verlag, New York, 1969. [6] M. W. Hirsch, Differential Topology, Springer-Verlag, New York, 1976. [7] N. Kalouptsidis, Accessibility and stability theory of nonlinear control systems, PhD thesis, Washington
+
+University, Saint Louis, Missouri, 1977. [8] N. Kalouptsidis and D. L. Elliott, Stability analysis of the orbits of control systems, Mathematical
+
+Systems Theory, 15 (1982), pp. 323-342. [9] I. Kanellakopoulos, P. V. Kokotovic, and A. S. Morse, A toolkit for nonlinear feedback design,
+
+Systems & Control Letters, 18 (1992), pp. 83-92. [10] P. E. Kloeden, Eventual stability in general control systems, Journal of Differential Equations, 19 (1975),
+
+pp. 106-124. [11] , General control systems, in Mathematical Control Theory (Proceedings, Canberra, Australia 1977),
+
+A. Bold and B. Eckmann, eds., Springer-Verlag, New York, 1978, pp. 119-137. [12] N. N. Krasovski
+
+*
+
+i, Stability of Motion, Stanford University Press, Stanford, Ca., 1963.
+
+[13] J. Kurzweil, On the inversion of Ljapunov's second theorem on stability of motion, American Mathematical
+
+Society Translations, Series 2, 24 (1956), pp. 19-77. [14] V. Lakshmikantham, S. Leela, and A. A. Martynyuk, Stability Analysis of Nonlinear Systems, Marcel
+
+Dekker, New York, 1989. [15] S. Lefschetz, Differential Equations: Geometric Theory, Interscience Publishers, New York, second ed.,
+
+1963. [16] Y. Lin, Lyapunov Function Techniques for Stabilization, PhD thesis, Rutgers, The State University of New
+
+Jersey, New Brunswick, New Jersey, 1992. [17] Y. Lin, E. D. Sontag, and Y. Wang, Input to state stabilizability for parameterized families of systems.
+
+To appear in International Journal of Robust and Nonlinear Control. [18] J. L. Massera, Contributions to stability theory, Annals of Mathematics, 64 (1956), pp. 182-206. [19] A. M. Meilakhs, Design of stable control systems subject to parametric perturbation, Avtomatka i Tele-
+
+mekhanika, 10 (1978), pp. 5-15. [20] A. P. Molchanov and Y. S. Pyanitskiy, Criterial of asymptotic stability of differential and difference
+
+inclusions encountered in control theory, Systems & Control Letters, 13 (1989), pp. 59-64. [21] L. Rosier, Inverse of Lyapunov's second theorem for measurable functions, in Proceedings of Nonlinear
+
+Control Systems Design Symposium, Bordeaux, France, June 1992, M. Fliess, ed., IFAC Publications, 1992, pp. 655-660. [22] E. O. Roxin, Stability in general control systems, Journal of Differential Equations, 1 (1965), pp. 115-150. [23] P. Seibert, Stability under perturbations in generalized dynamical systems, in International Symposium on
+
+Nonlinear Differential Equations and Nonlinear Mechanics, J. P. LaSalle and S. Lefschetz, eds., New York, 1963, Academic Press, pp. 463-473.
+
+29Pass1: Page 30
+
+
+[24] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Transactions on Automatic Control,
+
+AC-34 (1989), pp. 435-443. [25] , Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer-Verlag, New
+
+York, 1990. [26] E. D. Sontag and Y. Wang, On characterizations of the input-to-state stability property, To appear in
+
+Systems & Control Letters. [27] J. Tsinias, A Lyapunov description of stability in control systems, Nonlinear Analysis, Theory, Methods &
+
+Applications, 13 (1989), pp. 63-74. [28] J. Tsinias and N. Kalouptsidis, Prolongations and stability analysis via lyapunov functions of dynamical
+
+polysystems, Mathematical Systems Theory, 20 (1987), pp. 215-233. [29] J. Tsinias, N. Kalouptsidis, and A. Bacciotti, Lyapunov functions and stability of dynamical polysys-
+
+tems, Mathematical Systems Theory, 19 (1987), pp. 333-354. [30] F. W. Wilson, Jr., Smoothing derivatives of functions and applications, Transactions of the American
+
+Mathematical Society, 139 (1969), pp. 413-428. [31] T. Yoshizawa, Stability Theory and the Existence of Periodic Solutions and Almost Periodic Solutions,
+
+Springer-Verlag, New York, 1975. [32] V. I. Zubov, Methods of A. M. Lyapunov and Their Application, P. Noordhoff Ltd., Groningen, The
+
+Netherlands, 1964. English edition.
+
+Appendix
+
+A. Some Basic Definitions. In this section we recall some standard concepts from stability theory. A function fl : IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+is:
+
+ffl a K-function if it is continuous, strictly increasing and fl(0) = 0; ffl a K
+
+1
+
+-function if it is a K-function and also fl(s) ! 1 as s ! 1;
+
+ffl a positive definite function if fl(s) ? 0 for all s ? 0, and fl(0) = 0. A function fi : IR
+
+*0
+
+\Theta  IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+is a KL-function if:
+
+ffl for each fixed t * 0 the function fi(\Delta ; t) is a K-function, and ffl for each fixed s * 0 it is decreasing to zero as t ! 1. Note that we are not requiring fi to be continuous in both variables simultaneously; however it turns out in our results that this stronger property will usually hold.
+
+B. Smooth Approximations of Locally Lipschitz Functions. In the proof of the converse Lyapunov theorem, we used a parameterized version of an approximation theorem given in [30]. For convenience of reference, and to make this work self-contained and expository, we next provide the needed variation of the theorem and its proof. (Several details, missing in the proof in [30], have been included as well.)
+
+Theorem B.1. Let O be an open subset of IR
+
+n
+
+, and let D be a compact subset of IR
+
+l
+
+, and assume given:
+
+ffl a locally Lipschitz function \Phi  : O \Gamma ! IR; ffl a continuous map f : IR
+
+n
+
+\Theta  D \Gamma ! IR
+
+n
+
+; (x; d) 7! f(x; d) which is locally Lipschitz on x uniformly
+
+on d; ffl a continuous function ff : O \Gamma ! IR and continuous functions _; * : O \Gamma ! IR
+
+?0
+
+such that for each d 2 D,
+
+L
+
+f
+
+d
+
+\Phi (,) ^ ff(,) ; a.e. , 2 O ;(54)
+
+where f
+
+d
+
+is the vector field defined by f
+
+d
+
+(\Delta ) = f(\Delta ; d), (Recall that r\Phi  is defined a.e., since \Phi  is locally Lipschitz
+
+by Rademacher's Theorem, see e.g. [5], page 216). Then there exists a smooth function \Psi  : O \Gamma ! IR such that
+
+j\Phi (,) \Gamma  \Psi (,)j ! _(,) ; 8 , 2 O and for each d 2 D,
+
+L
+
+f
+
+d
+
+\Psi (,) ^ ff(,) + *(,) ; 8 , 2 O :
+
+30Pass1: Page 31
+
+
+To prove the theorem, we need first some easy facts about regularization. Let  : IR
+
+n
+
+\Gamma ! IR be a smooth
+
+nonnegative function which vanishes outside of the unit disk and satisfies
+
+Z
+
+IR
+
+n
+
+(s) ds = 1 :
+
+For any measurable, locally essentially bounded function \Phi  : O \Gamma ! IR and 0 ! oe ^ 1, define the function \Phi 
+
+oe
+
+by
+
+convolution with
+
+1
+
+oe
+
+n
+
+
+
+i
+
+s
+
+oe
+
+j
+
+, that is:
+
+\Phi 
+
+oe
+
+(,)
+
+def
+
+=
+
+Z
+
+IR
+
+n
+
+\Phi (, + oes)(s) ds :(55)
+
+We think of this function as defined only for those , so that , + oes 2 O for all jsj ^ 1. Note that the integral is finite, as the integrand is essentially bounded and of compact support. The following observation is a standard approximation exercise, so we omit its proof.
+
+Lemma B.2. For each compact subset K of O, there exists some oe
+
+0
+
+? 0 such that \Phi 
+
+oe
+
+is defined on K, and
+
+smooth there, for all oe ! oe
+
+0
+
+. Moreover, if \Phi  is continuous, then \Phi 
+
+oe
+
+approaches \Phi  uniformly on K, as oe tends
+
+to 0. 2
+
+Now assume that \Phi  is a locally Lipschitz function. Then, for each d 2 D, L
+
+f
+
+d
+
+\Phi  is defined almost everywhere,
+
+and furthermore, on any compact subset K ` O,
+
+jL
+
+f
+
+d
+
+\Phi (,)j ^ k jf(,; d)j ; a.e. , 2 K ; 8d 2 D ;
+
+where k is a Lipschitz constant for \Phi  on K. Therefore, for each d, (omitting from now on the IR
+
+n
+
+in integrals)
+
+(L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,) =
+
+Z
+
+(L
+
+f
+
+d
+
+\Phi )(, + oes)(s) ds
+
+is well defined as long as , + oes 2 O for all jsj ^ 1. Applying Lemma B.2 to (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+, this is smooth for any
+
+oe ? 0 small.
+
+Suppose that for all d 2 D,
+
+L
+
+f
+
+d
+
+\Phi (,) ^ ff(,) ; a.e. , 2 O ;(56)
+
+for some continuous function ff. Pick any compact subset K ` O. On this set K, we have
+
+(L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,) =
+
+Z
+
+(L
+
+f
+
+d
+
+\Phi )(, + oes)(s) ds ^
+
+Z
+
+ff(, + oes)(s) ds
+
+^ ff(,) + max
+
+jsj^1; ,2K
+
+jff(, + oes) \Gamma  ff(,)j :
+
+From here we get the following conclusion:
+
+Lemma B.3. For any compact subset K of O, (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+is a C
+
+1
+
+function defined on K for all oe small
+
+enough, and, if (56) holds for all d 2 D and all , 2 O, then for any " ? 0 given, there exists some oe
+
+0
+
+? 0 such
+
+that
+
+(L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,) ^ ff(,) + "
+
+for all oe ^ oe
+
+0
+
+, all d 2 D, and all , 2 K. 2
+
+The following lemma illustrates the relationship between L
+
+f
+
+d
+
+(\Phi 
+
+oe
+
+) and (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+.
+
+Lemma B.4. On any compact subset K of O,
+
+sup d2D;,2K
+
+jL
+
+f
+
+d
+
+(\Phi 
+
+oe
+
+)(,) \Gamma  (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,)j ! 0
+
+31Pass1: Page 32
+
+
+as oe tends to 0.
+
+Proof. For each , 2 O, we use '(t; ,; d) to denote the solution of the differential equation:
+
+.x = f(x; d) with the initial condition '(0; ,; d) = ,. It follows from the assumptions on f and compactness of K and D that there exist some compact neighborhood V of K and some o/
+
+1
+
+? 0 and oe
+
+0
+
+? 0 such that '(t; , + oes; d) 2 V for
+
+all , 2 K; jsj ^ 1; oe ^ oe
+
+0
+
+; d 2 D and jtj ^ o/
+
+1
+
+.
+
+For the Lipschitz function \Phi , we have, for all ,; d and oe ^ oe
+
+0
+
+:
+
+L
+
+f
+
+d
+
+(\Phi 
+
+oe
+
+)(,) =
+
+d
+
+dt
+
+fi fi fi
+
+t=0
+
+\Phi 
+
+oe
+
+('(t; ,; d)) =
+
+d
+
+dt
+
+fi fi fi
+
+t=0
+
+Z
+
+\Phi ('(t; ,; d) + oes)(s) ds
+
+= lim
+
+t!0
+
+1
+
+t
+
+Z
+
+(\Phi ('(t; ,; d) + oes) \Gamma  \Phi (, + oes))(s) ds ;
+
+and
+
+(L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,) =
+
+Z
+
+L
+
+f
+
+d
+
+\Phi (, + oes)(s) ds(57)
+
+=
+
+Z
+
+d
+
+dt
+
+fi fi fi
+
+t=0
+
+\Phi ('(t; , + oes; d))(s) ds(58)
+
+= lim
+
+t!0
+
+1
+
+t
+
+Z
+
+[\Phi ('(t; , + oes; d)) \Gamma  \Phi (, + oes)] (s) ds :(59)
+
+Notice that the integrand in (57) equals that in (58) almost everywhere on s (for each fixed , and oe) and that (59) follows from (58) because of the Lebesgue Dominated Convergence Theorem and the following fact:
+
+1 jtj
+
+j\Phi ('(t; , + oes; d)) \Gamma  \Phi (, + oes)j (s)
+
+^
+
+k
+
+jtj
+
+j'(t; , + oes; d) \Gamma  (, + oes)j (s) ^ kC(s) ; 8t 2 [\Gamma o/
+
+1
+
+; o/
+
+1
+
+] ;
+
+where C
+
+def
+
+= max
+
+,2V;d2D
+
+jf(,; d)j and k is a Lipschitz constant for \Phi  on V .
+
+Now one sees that
+
+L
+
+f
+
+d
+
+(\Phi 
+
+oe
+
+)(,) \Gamma  (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,) = lim
+
+t!0
+
+1
+
+t
+
+Z
+
+[\Phi ('(t; ,; d) + oes) \Gamma  \Phi ('(t; , + oes; d))](s) ds :
+
+Thus it is enough to show that for any " ? 0, there exist some ffi ? 0 and o/
+
+\Lambda 
+
+? 0 such that the above integral
+
+is bounded by " for all d 2 D; , 2 K, jtj ! o/
+
+\Lambda 
+
+and oe ! ffi. This is basically a standard argument on continuous
+
+dependence on initial conditions, but we provide the details. For 0 ^ o/ ^ o/
+
+1
+
+, let
+
+fl(o/)
+
+def
+
+= sup fjf('(t; i; d); d) \Gamma  f(i; d)j : jtj ^ o/; i 2 V; d 2 Dg :
+
+Then fl(0) = 0, and fl is nondecreasing and continuous at t = 0, because
+
+jf('(t; i; d); d) \Gamma  f(i; d)j ^ C
+
+3
+
+j'(t; i; d) \Gamma  ij ^ C
+
+3
+
+C
+
+4
+
+jtj ;
+
+where C
+
+3
+
+is a (uniform) Lipschitz constant for f on V
+
+1
+
+, C
+
+4
+
+is an upper bound for jf(,; d)j on V
+
+1
+
+, and V
+
+1
+
+is some
+
+compact neighborhood of V such that '(t; i; d) 2 V
+
+1
+
+for any i 2 V; d 2 D and jtj ^ o/
+
+1
+
+. For any i 2 V; d 2 D
+
+and jtj ^ o/
+
+1
+
+,
+
+j'(t; i; d) \Gamma  (i + tf(i; d))j ^
+
+Z
+
+jtj
+
+0
+
+fl(o/) do/ ^ jtj fl(jtj) :
+
+32Pass1: Page 33
+
+
+Now for , 2 K, we have
+
+j\Phi ('(t; ,; d) + oes) \Gamma  \Phi ('(t; , + oes); d)j ^ k j'(t; ,; d) + oes \Gamma  '(t; , + oes; d)j
+
+^ k j, + oes + tf(,; d) \Gamma  (, + oes + tf(, + oes; d))j
+
++k j'(t; ,; d) \Gamma  (, + tf(,; d))j + k j'(t; , + oes; d) \Gamma  (, + oes + tf(, + oes; d))j ^ k jtj jf(,; d) \Gamma  f(, + oes; d)j + 2k jtj fl(jtj) :(60)
+
+Finally, for " ? 0, let ffi and o/
+
+\Lambda 
+
+be such that
+
+fl(o/) !
+
+"
+
+3k
+
+and jf(,; d) \Gamma  f(, + oes; d)j !
+
+"
+
+3k
+
+for any , 2 K; d 2 D; jsj ^ 1; oe ! ffi and jtj ! o/
+
+\Lambda 
+
+. It then follows from (60) that
+
+1 jtj
+
+Z
+
+[\Phi ('(t; ,; d) + oes) \Gamma  \Phi ('(t; , + oes; d))](s) ds !
+
+Z
+
+"(s) ds = "
+
+for any , 2 K; d 2 D; jtj ! o/
+
+\Lambda 
+
+and oe ! ffi, which implies
+
+jL
+
+f
+
+d
+
+(\Phi 
+
+oe
+
+)(,) \Gamma  (L
+
+f
+
+d
+
+\Phi )
+
+oe
+
+(,)j ! "
+
+for any oe ! oe
+
+0
+
+; d 2 D and , 2 K.
+
+Combining the previous three lemmas, we obtain the following conclusion: Lemma B.5. Let K be a compact subset of O. Then for any given " ? 0, there exists some smooth function \Psi  defined on K such that
+
+j\Psi (,) \Gamma  \Phi (,)j ! " and L
+
+f
+
+d
+
+\Psi (,) ^ ff(,) + "
+
+for all , 2 K; d 2 D. 2
+
+Now we are ready to complete the proof of Theorem (B.1). For the open subset O of IR
+
+n
+
+, let fU
+
+i
+
+g be a
+
+locally finite countable cover of O with
+
+_ U
+
+i
+
+compact and
+
+_ U
+
+i
+
+` O. Let ffi
+
+i
+
+g be a partition of unity on O subordinate
+
+to fU
+
+i
+
+g. For any given positive functions _(\Delta ) and *(\Delta ), let
+
+"
+
+i
+
+def
+
+= min
+
+ae
+
+inf ,2U
+
+i
+
+_(,); inf
+
+,2U
+
+i
+
+*(,)
+
+oe
+
+:
+
+For each i, it follows from Lemma B.5 that there exists some smooth function \Psi 
+
+i
+
+defined on
+
+_ U
+
+i
+
+such that
+
+j\Phi (,) \Gamma  \Psi 
+
+i
+
+(,)j !
+
+"
+
+i
+
+2
+
+i+1
+
+(1 + o/
+
+i
+
+)
+
+and L
+
+f
+
+d
+
+\Psi 
+
+i
+
+(,) ^ ff(,) +
+
+"
+
+i
+
+2
+
+on
+
+_ U
+
+i
+
+, where o/
+
+i
+
+def
+
+= maxfjL
+
+f
+
+d
+
+fi
+
+i
+
+(,)j : , 2
+
+_ U
+
+i
+
+; d 2 Dg. We define \Psi  =
+
+P
+
+i
+
+fi
+
+i
+
+\Psi 
+
+i
+
+. Clearly \Psi  is a smooth function
+
+defined on O, and
+
+j\Psi (,) \Gamma  \Phi (,)j ^
+
+X
+
+j2J
+
+,
+
+fi
+
+j
+
+(,) j\Psi 
+
+j
+
+(,) \Gamma  \Phi (,)j
+
+! max
+
+j2J
+
+,
+
+"
+
+j
+
+^ _(,) ;
+
+where J
+
+,
+
+def
+
+=
+
+n
+
+j : , 2 U
+
+j
+
+o
+
+.
+
+33Pass1: Page 34
+
+
+For L
+
+f
+
+d
+
+\Psi , one has
+
+L
+
+f
+
+d
+
+\Psi (,) = L
+
+f
+
+d
+
+\Phi (,) + L
+
+f
+
+d
+
+(
+
+X
+
+i
+
+fi
+
+i
+
+(\Psi 
+
+i
+
+\Gamma  \Phi ))(,)
+
+= L
+
+f
+
+d
+
+\Phi (,) +
+
+X
+
+(L
+
+f
+
+d
+
+fi
+
+i
+
+)(\Psi 
+
+i
+
+\Gamma  \Phi )(,) +
+
+X
+
+fi
+
+i
+
+(L
+
+f
+
+d
+
+\Psi 
+
+i
+
+(,) \Gamma  L
+
+f
+
+d
+
+\Phi (,))
+
+=
+
+X
+
+j2J
+
+,
+
+(L
+
+f
+
+d
+
+fi
+
+j
+
+)(\Psi 
+
+j
+
+\Gamma  \Phi )(,) +
+
+X
+
+j2J
+
+,
+
+fi
+
+j
+
+L
+
+f
+
+d
+
+\Psi 
+
+j
+
+(,)
+
+!
+
+X
+
+j2J
+
+,
+
+"
+
+j
+
+2
+
+j+1
+
++
+
+X
+
+j2J
+
+,
+
+fi
+
+j
+
+(,)
+
+i
+
+ff(,) +
+
+"
+
+i
+
+2
+
+j
+
+^
+
+1
+
+2
+
+max j2J
+
+,
+
+f"
+
+j
+
+g + ff(,) +
+
+1
+
+2
+
+max j2J
+
+,
+
+f"
+
+j
+
+g
+
+^ ff(,) + *(,) : We conclude that \Psi  is the desired function.
+
+34</pre>
+</body>
+</html>

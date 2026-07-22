@@ -1,0 +1,472 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ibc-fading-mem.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ibc-fading-mem.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Worst-Case Identification of Nonlinear Fading Memory Systems
+
+Munther A. Dahleh\Lambda  Lab. for Information & Decision Systems
+
+M.I.T. Cambridge, MA 02139
+
+David N.C. Tsey Lab. for Information & Decision Systems
+
+M.I.T. Cambridge, MA 02139
+
+Eduardo D. Sontagz Dept. of Mathematics, SYCON
+
+Rutgers University New Brunswick, NJ 08903
+
+John N. Tsitsiklisx Lab. for Information & Decision Systems
+
+M.I.T. Cambridge, MA 02139
+
+Published in Automatica, 31, no. 3, March 1995.
+
+Abstract In this paper, the problem of asymptotic identification for fading memory systems in the presence of bounded noise is studied. For any experiment, the worst-case error is characterized in terms of the diameter of the worst-case uncertainty set. Optimal inputs that minimize the radius of uncertainty are studied and characterized. Finally, a convergent algorithm that does not require knowledge of the noise upper bound is furnished. The algorithm is based on interpolating data with spline functions, which are shown to be well suited for identification in the presence of bounded noise; more so than other basis functions such as polynomials.
+
+\Lambda Research Supported by AFOSR under grant AFOSR-91-0368 and by NSF under grant 9157306-ECS
+
+yResearch supported by an NSERC fellowship from the government of Canada, and by the NSF under Grant
+
+ECS-8552419
+
+zResearch Supported by AFOSR under grant AFOSR-91-0346
+
+xResearch supported by the NSF under Grant ECS-8552419 and by AFOSR under grant AFOSR-91-0368
+
+1
+
+1 Introduction Recently, there has been an increasing interest among the control community in the problem of identifying plants for control purposes. This generally means that the identified model should approximate the plant in the operator topology, since this allows the immediate use of robust control tools for designing controllers [2, 4]. This problem is of special importance when the data are corrupted with bounded noise. The case where the objective is to optimize prediction for a fixed input was analyzed by many researchers (see [9] and the references therein). The problem is more interesting when the objective is to approximate the original system as an operator, a problem extensively discussed in [19], especially when the plant's order is not known a priori. For linear time invariant plants, such approximation can be achieved by uniformly approximating the frequency response (H1-norm) or the impulse response (`1 norm). In H1 identification, it was shown that robustly convergent algorithms can be furnished, when the available data is in the form of a corrupted frequency response, at a set of points dense on the unit circle ([7, 5, 6]). When the topology is induced by the `1 norm, a complete study of asymptotic identification was furnished in [17] for arbitrary inputs, and the question of optimal input design was addressed. Most work on input design has been done in stochastic settings (e.g. [10, 20] ), but recently there are also some results in worst-case settings ([11, 12] Related work on the worst-case identification problem was also reported in [13, 14, 3, 8].
+
+In this paper, the work of Tse et al [17] is extended to analyse the worst-case asymptotic identification of nonlinear fading memory systems. As in [17], the study is done in two steps. The first step is concerned with obtaining tight upper and lower bounds on the optimal achievable error by any identification algorithm. The bounds are functions of the input used for the experiments, and this can be arbitrary. The second step is then to study these bounds and characterize the inputs that will minimize them. In particular, simple topological conditions are furnished that guarantee the existence of an algorithm with a worst-case error within a factor of two from the lower bound. An near optimal input is characterized so that the worst-case error is within a factor of two of the bound on the noise.
+
+It is noted that for the results on arbitrary experiments, the suggested optimal algorithms are tuned to the knowledge of the bound on the noise. If however, the near optimal input is used, then an untuned algorithm can be provided that results in a worst-case error equal to the noise bound, ffi. Such an algorithm is based on interpolating data by spline functions of several variables.
+
+The rest of the paper is organized as follows. Section 2 gives a formal definition of nonlinear fading memory systems. Section 3 describes the identification set-up. Section 4 characterizes the asymptotically optimal algorithms and the associated optimal worst-case errors for a given input. The problem of optimal inputs is addressed in Section 5. An optimal untuned algorithm is developed in Section 6. Section 7 contains our conclusions.
+
+2 Fading Memory Systems Let U be the set of one-sided infinite sequences whose `1 norm is bounded by 1. This can be viewed as the input set which contains the possible inputs that can be used for performing the identification experiments. We consider the set of models X as discrete-time, causal functions from U to !1; a plant h 2 X takes as input a sequence u = (u0; u1; : : :) to give an output sequence (h0(u); h1(u); : : :). We assume that h 2 X further satisfies the following properties:
+
+1. hn(u) depends continuously on u0; : : :; un\Gamma 1.
+
+2
+
+2. h has equilibrium-initial behavior:
+
+hn+1(0u) = hn(u) for all n ; where 0u is the input 0; u0; u1; : : :. (In general, we will use the notation vw for concatenation, i.e. first apply the finite sequence v, then w. Since we are dealing with causal systems, we shall slightly abuse the notation and write hn(w) to mean hn(u), where u is any infinite sequence the first n elements of which are given by the finite sequence w.)
+
+3. h has fading memory (FM): for each " ? 0 there is some T = T (") such that for every k,
+
+every t * T and every finite sequences v 2 [\Gamma 1; 1]k, w 2 [\Gamma 1; 1]t,
+
+jht+k(vw) \Gamma  ht(w)j ! "
+
+To measure the identification error, we shall consider the metric ae to be the one corresponding to the operator gain:
+
+khkX = sup
+
+u2U kh(u)k1 :
+
+It can be seen that systems in X satisfying the above property necessarily must have bounded operator gain. This is a good norm to consider for robust control applications. However, it should be noted that this norm is different from the standard definition of the gain of a nonlinear operator, which is readily suitable for robust control applications. For the above induced norm to be useful, an upper bound on the amplitudes of input signals has to be known apriori. In the above definition, this bound is normalized to one.
+
+Examples of FM Systems:
+
+Stable LTI systems. For each h 2 `1 consider the input/output map u 7! u \Lambda  h. It is clear that these systems satisfy the above conditions. The operator-induced norm in this case is just the `1 norm.
+
+Hammerstein systems. These are systems which are formed by composition of a stable LTI system followed by a memoryless nonlinear element:
+
+yn = g((u \Lambda  h)n)
+
+for some h 2 `1 and some continuous function g : ! ! !. It is easily to verify that these systems satisfy the first two conditions above. If we assume further that g is uniformly continuous, then it can be seen that the system also has fading memory.
+
+For further details on fading memory operators, see [1, 15].
+
+3 Identification Setup The plant to be identified is known to be in a model set M ae X . An input u is selected from the set U . We assume that the observed output y is corrupted by some additive disturbance d which is unknown but magnitude-bounded, kdk1 ^ ffi, i.e. if h is the system, then
+
+y = h(u) + d :
+
+3
+
+An identification algorithm is a sequence of mappings OE = fOEng generating at each time an estimate OEn(Pnu; Pny) 2 X of the unknown plant. Here, Pn(u0; u1; : : : ; un; un+1; : : :) = (u0; : : : ; un; 0; 0; : : :) is the truncation operator.
+
+Given an identification algorithm and a chosen input, we would like to consider the limiting situation when longer and longer of the output sequences are observed. To this end, the worst case asymptotic error, e1(OE; u; ffi), of an algorithm OE is defined as the smallest number r such that for all plants h 2 M and for all disturbances d with kdk1 ^ ffi;
+
+lim sup
+
+n!1 kOE(Pnu; Pn(u \Lambda  h + d)) \Gamma  hkX ^ r
+
+Equivalently,
+
+e1(OE; u; ffi) j sup
+
+h2M supkdk1^ffi lim supn!1 kOE(P
+
+nu; Pn(u \Lambda  h + d)) \Gamma  hkX
+
+The interpretation of this definition is that no matter what the true plant and the disturbances are, the plant can be eventually approximated to within e1(OE; u; ffi), using the estimates generated by the identification algorithm. The convergence rate may depend on the plant and noise, i.e. for a given " there exists some N (d; h; ") so that
+
+kOEn(y) \Gamma  hkX ! e1(OE; u; ffi) + " whenever n * N . We say that the convergence is uniform if N (y; h; ") depends only on ". For more motivations and discussions on these definitions, see [17].
+
+The optimal worst-case asymptotic error E1(u; ffi) is defined as the smallest error achievable by any algorithm:
+
+E1(u; ffi) j inf
+
+OE e1(OE; u; ffi)
+
+Any algorithm for which the infimum is attained is said to be asymptotically optimal. We will obtain a general characterization of the asympotically optimal algorithms and the resulting optimal error, for any given input u. We will then find conditions on the input u to make this optimal worst-case asymptotic error small.
+
+4 Asymptotically Optimal Identification The characterization of asymptotically optimal algorithms and optimal asymptotic errors is in terms of the uncertainty set, an important notion in information-based complexity theory. The uncertainty set Sn(u; y; ffi) at time n is the set of all systems in the given model set M which are consistent with the observed data up until time n:
+
+Sn(u; y; ffi) = fh 2 M : kPn(y \Gamma  h(u))k1 ^ ffig These are the plants which can give rise to the observed output for some valid disturbance sequence. The infinite-horizon uncertainty set is
+
+S1(u; y; ffi) = fh 2 M : ky \Gamma  h(u)k1 ^ ffig
+
+For a given set A ae X , define the diameter of the set as:
+
+diam(A) = sup
+
+g;h2A kg \Gamma  hkX
+
+4
+
+and let D(u; ffi) be the diameter of the worst-case infinite-horizon uncertainty set:
+
+D(u; ffi) = sup
+
+h2M supkdk1^ffi diam(S1(u; u \Lambda  h + d; ffi))
+
+Under appropriate topological conditions on the model set, this quantity characterizes the optimal asymptotic worst-case error. The following result is a generalization of Proposition 3.3, Theorem 3.4 and Proposition 3.9 in the LTI case ([17]) to our present setting.
+
+Theorem 4.1 If the model set M ae X is oe-compact (i.e. M is a countable union of compact sets), then
+
+D(u; ffi)
+
+2 ^ E1(u; ffi) ^ D(u; ffi) Furthermore, if M is compact, then the convergence can be made uniform.
+
+In the oe-compact case, an algorithm achieving an asymptotic error within the above bounds can be realized using the principle of Occam's razor. Let M = [iMi, where the Mi's are compact and increasing. This decomposition gives a complexity index to each plant in M, as the index of the smallest Mi containing the plant. At each time n, the algorithm simply returns as an estimate any plant in the uncertainty set Sn with the smallest complexity index. Note that since the disturbance bound ffi is required to compute the uncertainty set, this algorithm is tuned to this information. On the other hand, if M is compact, one can use an algorithm which simply returns the plant in M which fits best the input/output data observed so far. This algorithm attains an asymptotic error within the above bounds with a uniform rate of convergence. It is also untuned to the disturbance bound ffi.
+
+A slight extension of the above result yields essentially the same bounds for the case when M is separable. The proof is along the same lines as the proofs of Lemma 4.5 and Proposition 4.6 in [17]. The optimal algorithm has roughly the same structure as that for the oe-compact case.
+
+Theorem 4.2 If M is separable, then
+
+D(u; ffi)
+
+2 ^ E1(u; ffi) ^ limx#ffi D(u; x)
+
+To apply the above results, we now look at the topological structure of some classes of fading memory systems under the operator-induced norm.
+
+Consider first the class of stable LTI systems. Since this corresponds to the space `1, which is separable, Theorem 4.2 is applicable in this case. More generally, we can in fact prove:
+
+Theorem 4.3 The class of all fading memory systems is separable. Proof. Define the class of pth-order memory systems, Mp, to be the set of all f such that for every k and for every t ? p and every finite sequences v 2 [\Gamma 1; 1]k,w 2 [\Gamma 1; 1]t, ft+k(vw) = ft(w). It is clear that any fading memory system can be approximated (in the operator-induced norm) arbitrarily closely by a pth-order memory system for sufficiently large p. Hence it suffices to prove that Mp is separable for all p.
+
+Now given any f 2 Mp we can find some continuous function g : [\Gamma 1; 1]p ! ! such that for all time n, and all input u,
+
+fn(u) = g(un\Gamma p; : : : ; un\Gamma 1)
+
+5
+
+We call g the memory function for f . Hence we have that kf k = kgk1, where the infinity norm is taken over [\Gamma 1; 1]p. But the space of continuous functions with the uniform topology induced by the `1-norm, denoted by C([\Gamma 1; 1]p), is separable, and hence so is Mp.
+
+This means that when we look at fading memory system, we can apply Theorem 4.2, and reduce the analysis of the asymptotic optimal error to the analysis of the worst-case infinite-horizon diameter.
+
+5 Optimal Inputs We now turn to the question of optimal inputs, i.e. inputs u that minimize the worst-case infinitehorizon diameter D(u; ffi). First we state a simple lower bound. Let
+
+ae(M) := supfr j 0 ! ffi ! r ) 9 g; h 2 M with kg \Gamma  hk = rg : Note that if M is path connected, then ae(M) = diam(M).
+
+Lemma 5.1 If 2ffi ! ae(M), then D(u; ffi) * 2ffi for all u 2 U . Proof. See [17]
+
+Since ae(M) ? 2ffi for most of the reasonable model sets, the above result gives a general lower bound. We now investigate how to choose an input which achieves this bound.
+
+Recall that M is balanced if h 2 M implies \Gamma h 2 M. For balanced and convex model sets, it is well known from information-based complexity theory [16] that the worst case diameter is equal to the diameter of the uncertainty set when the output is identically equal to zero. The following lemma summarizes this.
+
+Lemma 5.2 Assume that M is balanced and convex. Then, for all u 2 U ; ffi ? 0,
+
+D(u; ffi) = diam(S1(u; 0; ffi))
+
+Call an input u 2 U persistently exciting for M if the following property holds:
+
+kh(u)k1 = khkX 8 h 2 M : The following result says that persistently exciting inputs are optimal.
+
+Theorem 5.1 Assume M is balanced and convex.
+
+1. If the input u is persistently exciting, then D(u; ffi) ^ 2ffi for all ffi ? 0.
+
+2. If u is persistently exciting then D(u; ffi) = 2ffi for each 0 ! ffi ^ diam(M)2 . Proof. (1): By Lemma 5.2, for all ffi ? 0,
+
+D(u; ffi) = 2 supfkhk j h 2 M; kh(u)k1 ^ ffig :
+
+6
+
+Pick any h 2 M such that kh(u)k1 ^ ffi. If u is persistently exciting, this means that also khkX ^ ffi, so D(u; ffi) ^ 2ffi.
+
+(2) From Lemma 5.1, D(u; ffi) * 2ffi for such ffi. The result follows from (1) above.
+
+It follows from Theorem 4.2, Theorem 4.3, Lemma 5.1 and the above theorem that one can achieve nearly optimal asymptotic identification for the entire class of fading memory systems if we use a persistently exciting input.
+
+Corollary 5.3 Let M = X , the class of all fading memory systems. Then for any identification algorithm OE and any input u, the worst-case asymptotic error e1(OE; u; ffi) is lower bounded by ffi. If u is persistently exciting, then there is an algorithm which can achieve an asymptotic error of less than 2ffi.
+
+A natural question which arises at this point is whether persistently exciting inputs exist. In the stable LTI case, this was shown to be the case [17]. The next theorem shows that they also exist when the model set consists of nonlinear fading memory systems.
+
+Theorem 5.2 Let the model set M be some subset of the set of fading memory systems. Let W be any countable dense subset of [\Gamma 1; 1] and consider any input !0 2 [\Gamma 1; 1]1 which contains all possible finite sequences of elements of W . Then, !0 is persistently exciting.
+
+Proof. Assume that h 2 M; khk = K ! 1. Pick any " ? 0. Let T = T (") as in the definition of FM. By definition of the sup norm, there is some ! and some T1 so that
+
+sup 0^t!T1 jh
+
+t(!)j ? K \Gamma  " :
+
+Using the equilibrium-initial assumption and replacing ! by 0T ! and T1 by T + T1, we may assume that
+
+sup T ^t!T1 jh
+
+t(!)j ? K \Gamma  " :
+
+By density of W and continuity of ht(!) on past values of !, we may further assume that !(0); : : :; !(T1 \Gamma  1) take values in W . From the construction of !0, there is some k so that
+
+!0(k) = !(0); !0(k + 1) = !(1); : : : ; !0(k + T1 \Gamma  1) = !(T1 \Gamma  1) : Let v be the finite sequence !0(0); !0(1); : : :; !0(k \Gamma  1) and w be the finite sequence
+
+!(0); !(1); : : :!(T1 \Gamma  1) ; which is equal to !0(k); !0(k + 1); : : :; !0(k + T1 \Gamma  1). So vw is the same as the first T1 + k \Gamma  1 elements of !0.
+
+By the FM property applied to these inputs, we have that
+
+jht+k(vw) \Gamma  ht(w)j ! " for each t * T (using the notational convention mentioned above for hs(w) if the length of w is larger than s). Then for such t,
+
+jht+k(!0)j = jht+k(vw)j * jht(w)j \Gamma  " ;
+
+so
+
+kh(!0)k * sup
+
+T +k^r!T1+k jh
+
+r(!0)j * K \Gamma  2" :
+
+Thus, we conclude that K = khk * kh(!0)k * K \Gamma  2" for all " ? 0, so kh(!0)k = K as wanted.
+
+7
+
+6 An Untuned Algorithm As remarked earlier, the asymptotically optimal algorithms for oe-compact and separable model sets are tuned to the knowledge of ffi, the bound on the disturbance. It will be shown that for fading memory systems, one can achieve asymptotically optimal identification without knowing ffi, provided that we use a persistently exciting input. This is in fact a generalization of a result by Makila [12], which was proved in the context of stable LTI systems.
+
+We shall make use of multivariate piecewise linear spline functions to interpolate between the measured data to form an approximation to the unknown plant. This is a generalization of the univariate linear spline, but because in higher dimension there is no natural ordering of the data points, the description of the interpolant is more complicated.
+
+Consider the cube I = [\Gamma 1; 1]p ae !p. Let x1; x2; : : : ; xm; m ? p be m points in the interior of the cube. We wish to construct a continuous, piecewise linear function f : I ! ! such that f (xi) = yi; i = 1; 2; : : :; m, where the yi's are given data values to interpolate.
+
+To facilitate the discussion, we need to first define several basic geometric concepts. A pdimensional simplex S in !p is the convex hull of p + 1 affinely independent points. Each of these points is a vertex of S. The convex hull F of any subset of these p + 1 points form a face of S if there exists a hyperplane H such that S lies entirely on one side of H and S " H = F . If F is the convex hull of p points, it is called a facet. A point v outside S is said to be separated from S by a face F if v and S lie on the opposite sides of the p \Gamma  1 dimensional hyperplane containing F .
+
+The first step is to find a set of simplices fSjg such that (1) their combined vertex set is fx1; : : : ; xmg, (2) the simplices only intersect at common faces (3) their union gives the convex hull of the vertex set. This can be done inductively as follows: for m = p + 1, the set simply consists of one simplex which is the convex hull of the p + 1 points. Suppose now we obtain a set of simplices S1; S2; : : : ; Sd to cover m ? p points, and consider one additional point xm+1. If xm+1 2 Sk for some k, then we can simply replace Sk with the p + 1 simplices formed by xm+1 with each of the faces of Sk. It is easy to see that these p + 1 simplices only intersect at common faces and their union is Sk, so that the updated set of simplices now covers the m + 1 points. On the other hand, if xm+1 lies outside P = [di=1Si, then for each facet F of some Sk which separates xm+1 from P , we add a simplex formed by xm+1 with F to the set. It can also be proved that these added simplices together with the original ones satisfy the three conditions.
+
+Given these simplices, we can now define our interpolating linear spline f as follows. First define f (xi) = yi at the given data points. For other x 2 [\Gamma 1; 1]p, if x 2 Sj for some j, let f (x) j Pi ffif (ui), where ui's are the vertices of Sj and x = Pi ffiui. It is easy to check that because of the above three conditions on the simplices, f is well-defined and continuous. To extend f continuously outside P = [j Sj, define f (x) to be equal to the value of f at the nearest point in P to x. Since P is convex, this nearest point is unique, and this guarantees the continuity of this extension.
+
+If we view this interpolating process as an operator Tm mapping the data vector y = (y1; y2; : : : ; ym) to the piecewise linear interpolating function (Tm(y))(x), then we can see that this operator is linear and its gain defined as:
+
+kTmk j sup
+
+kyk1=1 kT
+
+m(y)k1 (1)
+
+is equal to one. This simple fact ensures that no matter how many data are obtained, noise in the data will not be amplified in the interpolating process. This property of linear splines, which is not shared by methods such as global polynomial interpolation, turns out to be the key to guarantee
+
+8
+
+the consistency of the estimates. A similar situation is encountered in linear system identification from frequency response data [7], where 1 dimensional splines are used instead of polynomials to interpolate the noisy data to guarantee robustness of the identification procedure.
+
+With the above basic discussions on multivariate linear splines, we may now state the main result of this section.
+
+Theorem 6.1 Let the model set M = X , the set of all fading memory systems. If the input u is persistently exciting, then there is an algorithm which can achieve an optimal worst-case asymptotic error e1(OE; u; ffi) = ffi. This algorithm does not require the knowledge of ffi in computing the estimates.
+
+Proof. The structure of the algorithm is as follows. We view the model set M as the closure of the finite-memory systems Mp, p = 0; 1; 2; : : :. We start by assuming that the true system is in M0. Data is observed until time n(0), after which the algorithm comes up with an estimate ^h(0) 2 M0. Then it moves onto the next model set M1, and waits until time n(1) before coming up with an estimate ^h(1) 2 M1. The algorithm continues to move onto the model set of one higher order, to produce a new estimate. It will be shown below how the time n(p) is specified and the estimate^ h(p) is computed for each p.
+
+Let h be the true system. Let fffipg be any sequence which monotonically goes to zero. Fix p, and let the time n 2 [n(p \Gamma  1); n(p)]. (This is when the algorithm is collecting data to compute an estimate in Mp.) Consider all the blocks
+
+(un\Gamma p+1; : : : ; un\Gamma 1; un); 8n = n(p \Gamma  1); : : :; n(p) in the input as data points in the cube [\Gamma 1; 1]p. We maintain a simplex structure in [\Gamma 1; 1]p with these data points as vertex set, and the structure is incrementally modified more or less according to the procedure discussed earlier, with a slight twist. Let Cn = [jSj be the union of the simplices at time n, and dn be the distance between Cn and the corner of [\Gamma 1; 1]p farthest away from Cn. At time n + 1, one more data point is obtained. If dn ! ffip and the new data point lies outside Cn, then discard the new point. Otherwise update the simplex structure as described earlier.
+
+Let n(p) be the earliest time such that dn(p) ! ffip and the diameter of the largest simplex in Cn is less than ffip. At this time, the algorithm returns an estimate ^h(p) j OEn(p)(h(u) + d) to be the p-th order system with memory function as the piecewise linear spline interpolant of the current simplex structure.
+
+We now claim that n(p) ! 1 for every p. First we see that because the input is persistently exciting, the p-blocks in u are dense in [\Gamma 1; 1]p (Otherwise, there is a ball in [\Gamma 1; 1]p which does not contain any blocks in u, and we can construct a p-step finite memory system with a continuous memory function f : !p ! ! to be positive at the centre of the ball and zero outside. Then applying the input u to the system will give a zero output while the gain of the system is nonzero, thus contradicting the persistent excitedness of u.) Hence there exists a time m(p) such that dm(p) ! ffip. After this time, the convex hull Cn no longer expands. All the changes consist of further partitioning of the simplices inside Cn due to the new data points. Because the data points are dense, it can seen that the diameter of the largest simplex must go to zero. Hence, n(p) is finite.
+
+We now claim that:
+
+lim sup
+
+p!1 kOEn(p)(h(u) + d) \Gamma  hk ^ ffi
+
+9
+
+for all d, kdk1 ^ ffi. Note also that the algorithm defined above does not use the value of ffi in computing the estimate.
+
+Take any ffl ? 0. There exists some q such that Mq contains a system hffl with
+
+kh \Gamma  hfflk ^ ffl (2) Let gffl be the (q-step) memory function for hffl. For p * q, OEn(p)(h(u)+d) is the spline interpolant that approximates the unknown memory function, and y = h(u) + d is the output. We can also extend gffl to a function on [\Gamma 1; 1]p which depends only on the last q coordinates. Now,
+
+kOEn(p)(h(u) + d) \Gamma  gfflk1 = kOEn(p)(h(u)) + OEn(p)(d) \Gamma  gfflk1 by linearity of the interpolation operator ^ kOEn(p)(h(u)) \Gamma  gfflk1 + kOEn(p)(d)k1 ^ kOEn(p)(h(u)) \Gamma  gfflk1 + ffi by eq. 1.
+
+The first term is the interpolation error when the data is noiseless, whereas the second term is the error due to the noise. We now show that the first term can be made arbitrarily small for large p.
+
+Since gffl is continuous, gffl is a uniformly continuous function on [\Gamma 1; 1]q. Choose ffl1 such that
+
+kx1 \Gamma  x2k2 ^ ffl1 ) kgffl(x1) \Gamma  gffl(x2)k2 ^ ffl : (3) Now pick p sufficiently large such that ffip ! ffl1 and p ? q. Let gp(x) j OEn(p)(h(u)).
+
+Now for any x 2 Cn(p), the convex hull, let x = Pi ffixi, where xi are the vertices of the simplex containing x. Since gp agreees with the noiseless output data at the vertices, by Eqn. 2, for each i,
+
+jgp(xi) \Gamma  gffl(xi)j ^ ffl : (4) We have:
+
+jgp(x) \Gamma  gffl(x)j = j X
+
+i
+
+ffigp(xi) \Gamma  gffl(x)j
+
+^ j X
+
+i
+
+ffigffl(xi) \Gamma  gffl(x)j + ffl by Eqn. 4
+
+^ X
+
+i
+
+ffijgffl(xi) \Gamma  gffl(x)j + ffl
+
+^ 2ffl by Eqn. 2, since kxi \Gamma  xk is less than the diameter of the simplex, which is smaller than ffl1.
+
+Now for x outside Cn(p), let x0 be the point in Cn(p) which is closest to x. By definition of n(p), the distance of x0 from x is at most ffip ! ffl1. Hence:
+
+jgp(x) \Gamma  gffl(x)j = jgp(x0) \Gamma  gffl(x)j by definition of the interpolant ^ jgp(x0) \Gamma  gffl(x0)j + ffl by Eqn. 2 ^ 3ffl from above.
+
+10
+
+Therefore, if hp is the finite-memory system with memory function OEn(p)(h(u) + d), then
+
+khp \Gamma  hk ^ kgp \Gamma  gfflk1 + ffl ^ ffi + 4ffl :
+
+Since this is true for all ffl, it follows that
+
+lim sup
+
+p!1 kh
+
+p \Gamma  hk ^ ffi
+
+as desired.
+
+We would like to make a comment about the time complexity of this identification problem. It can be easily seen that in general, the time needed to identify a system to a prescribed accuracy grows exponentially as the order of the system, even when there is no noise. For example, if we assume a certain Lipschitz condition on the order p memory function g, such as jg(x) \Gamma  g(y)j ! M kx \Gamma  yk, then to identify the function up to accuracy ffl (in the k \Delta  k1 norm), the number of data points needed is at least the minimum number of ffl-balls to cover [\Gamma 1; 1]p. Since the volume of an ffl-ball is proportional to fflp, it is clear that this minimum number is at least proportional to ( 1ffl )p, and hence so is the experiment length. This means that if p is large, the experiment length will be very long if we make no further assumption on the unknown plant.
+
+It is interesting to compare this situation with the problem of identifying linear finite impulse response systems. For nonlinear systems the time complexity is exponential of the order, whether or not there is noise. For the linear case, while it takes only linear time to identify a FIR system exactly when there is no noise, it has been shown [3, 14] that the time complexity immediately becomes exponential once we introduce any worst-case noise. Moreover, it has been demonstrated that if we are willing to put a probability distribution on the noise, polynomial time complexity can often be obtained [18]. These facts show that while in the nonlinear case, the plant uncertainty determines the time complexity of the identification, in the linear case, the complexity is sensitive to how the noise is modelled.
+
+7 Conclusions A framework for the analysis of asymptotic worst-case identification of LTI systems has been extended to the setting of nonlinear fading memory systems. For model sets that are either oecompact or separable, and for any experiment, the optimal worst-case error is always bounded by twice the lower bound, which is the diameter of a certain uncertainty set. Optimal inputs which minimize this diameter are characterized. It is also shown that accurate asymptotic identification can be achieved by an optimal input, using an untuned algorithm based on spline interpolation.
+
+References
+
+[1] S. Boyd and L.O. Chua, "Fading Memory and the problem of approximating nonlinear operators with Volterra series," IEEE Transactions on Circuits and Systems, Vol. CAS-32, 1985, pp. 1150-1161.
+
+[2] M.A. Dahleh and M.H. Khammash, "Controller Design in the Presence of Structured Uncertainty," to appear in Automatica special issue on robust control.
+
+11
+
+[3] M.A.Dahleh, T.V.Theodosopoulos, J.N. Tsitsiklis " The Sample Complexity of Worst-Case
+
+Identification of FIR Linear Systems", Systems and Control Letters, March, 1993.
+
+[4] J. C. Doyle, "Analysis of feedback systems with structured uncertainty," IEEE Proceedings
+
+129, 242-250,1982.
+
+[5] G. Gu, P.P. Khargonekar and Y. Li, "Robust convergence of two stage nonlinear algorithms
+
+for identification in H1, Systems and Control Letters, Vol 18, No. 4, April 1992.
+
+[6] G. Gu and P.P. Khargonekar, " Linear and nonlinear algorithms for identification in H1 with
+
+error bounds, IEEE Trans. A-C, Vol 37, No. 7, July 1992, pp 953-963.
+
+[7] A.J. Helmicki, C.A. Jacobson and C.N. Nett, "Control-oriented System Identification: A
+
+Worst-case/deterministic Approach in H1'," IEEE Trans. A-C, Vol 36, No. 10, October 1991, pp 1163-1176.
+
+[8] C.A. Jacobson and C.N. Nett, "Worst-case system identification in `1: Optimal algorithms
+
+and error bounds," in Proc. of the 1991 American Control Conference, June 1991.
+
+[9] L. Ljung, System Identification - Theory for the User, Prentice-Hall, 1987. [10] R.K. Mehra, "Optimal input signals for parameter estimation in dynamic systems-A survey
+
+and new results", em IEEE Trans. Automatic Control, vol AC-19, pp.753-768, 1974.
+
+[11] B. Kacewicz and M. Milanese, "On the Optimal Experiment Design in the Worst-Case `1
+
+System Identification, submitted to CDC.
+
+[12] P.M. Makila, "Robust Identification and Galois Sequences", Technical Report 91-1, Process
+
+Control Laboratory, Swedish University of Abo, January, 1991.
+
+[13] P.M. Makila and J.R. Partington, "Robust Approximation and Identification in H1", Proc.
+
+1991 American Control Conference, June, 1991.
+
+[14] K. Poolla and A. Tikku, "On the time complexity of worst-case system identification,"
+
+preprint, 1992.
+
+[15] J.S. Shamma and R. Zhao, "Fading memory feedback systems and robust stability," to appear
+
+in Automatica.
+
+[16] J.F. Traub and H. Wozniakowski, A General Theory of Optimal Algorithms, Academic Press,
+
+New York, 1980.
+
+[17] D. Tse, M.A. Dahleh and J.N. Tsitsiklis. Optimal Asymptotic Identification under bounded
+
+disturbances. To appear in the IEEE Trans. Automat. Contr.
+
+[18] D.N.C. Tse and J.N. Tsitsiklis, " Sample Complexity of Worst-Case System Identification in
+
+the Presence of Bounded Random Noise", in preparation.
+
+[19] G. Zames, "On the metric complexity of casual linear systems: ffl-entropy and ffl-dimension for
+
+continuous-time", IEEE Trans. on Automatic Control, Vol. 24, April 1979.
+
+[20] M. Zarrop, Optimal Experimental Design for Dynamic System Identification, Springer-Verlag,
+
+New York, 1979.
+
+12</pre>
+</body>
+</html>

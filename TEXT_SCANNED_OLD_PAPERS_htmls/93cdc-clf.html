@@ -1,0 +1,1388 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93cdc-clf.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93cdc-clf.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Remarks on Control Lyapunov Functions for Discontinuous
+
+Stabilizing Feedback
+
+G.A. Lafferriere
+
+1
+
+Department of Mathematics, Portland State University, Portland, OR 97207-0751
+
+Eduardo D. Sontag
+
+2
+
+Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+Abstract We present a formula for a stabilizing feedback law under the assumption that a piecewise smooth controlLyapunov function exists. The resulting feedback is continuous at the origin and smooth everywhere except on a hypersurface of codimension 1. We provide an explicit and "universal" formula. Finally, we mention a general result connecting asymptotic controllability and the existence of control-Lyapunov functions in the sense of nonsmooth optimization.
+
+1. Introduction
+
+In this work we want to focus on nonsmooth Lyapunov functions that can be obtained by "pasting together" smooth ones (see [6] for other approaches). For these functions the verification of the Lyapunov property can be carried out using gradients, as in the smooth case.
+
+A result by Artstein [1] guarantees the existence of a globally stabilizing feedback law provided the system has a smooth control Lyapunov function. Sontag [5] gave a constructive proof providing a formula for the feedback law in terms of Lie derivatives of the Lyapunov function and which is in a sense "universal". Sontag and Lin [8] then used a similar idea to allow for certain types of control constraints. Here we generalize that idea to certain cases when we only have a piecewise smooth Lyapunov function.
+
+Non-holonomic systems of the form .x =
+
+P
+
+m
+
+i=1
+
+f
+
+i
+
+(x)u
+
+i
+
+(which appear naturally in the study of mechanical systems) cannot be stabilized by continuous static feedback at the origin since they do not satisfy Brockett's necessary conditions (see e.g. [7], Section 4.8). Stabilizing feedback laws have been found for several such systems using either time-varying feedback or dynamic feedback; see [3] and references there. Recently, however, piecewise continuous feedback laws were presented for two such examples in [2] and [4].
+
+The approach presented here permits the construction of a piecewise continuous globally stabilizing feedback law from a piecewise smooth control Lyapunov function. We illustrate the theorem with an example.
+
+Finally, we mention a general result connecting asymptotic controllability and the existence of controlLyapunov functions in the sense of nonsmooth optimiza1
+
+Supported in part by a Portland State University Research
+
+and Publications grant and a Portland State University Outstanding Junior Faculty Award
+
+2
+
+Supported in part by US Air Force Grant AFOSR-91-0346
+
+tion. This result relies on recent work on viscocity solutions.
+
+2. Stability
+
+Notation. We denote by M the closure of the set M . If g is a vector field on R
+
+n
+
+and V : R
+
+n
+
+\Gamma ! R is a smooth
+
+function then we denote by L
+
+g
+
+V the Lie derivative of V
+
+with respect to g (i.e. L
+
+g
+
+V (x) = rV (x) \Delta  g(x)).
+
+Definition 2.1 We say that a subset \Gamma  of R
+
+n
+
+is a separating hypersurface if \Gamma  is an embedded, oriented, connected, (n \Gamma  1)-dimensional sub-manifold and R
+
+n
+
+n \Gamma 
+
+has two connected components. If \Gamma  is a separating hypersurface let C
+
+i
+
+, i = 1; 2 be the two connected components of R
+
+n
+
+n \Gamma  and let n(x) be a unit normal vector
+
+on \Gamma  which defines the orientation such that C
+
+1
+
+is on
+
+the "positive side". That is, if p 2 \Gamma  and we choose local coordinates (W; ') centered at p in which W " \Gamma  is the set f(x
+
+1
+
+; : : : ; x
+
+n
+
+) 2 W : x
+
+1
+
+= : : : = x
+
+n\Gamma 1
+
+= 0g and
+
+n(x) = [0; : : : ; 0; 1]
+
+T
+
+then C
+
+1
+
+" W = f(x
+
+1
+
+; : : : ; x
+
+n
+
+) 2 W :
+
+x
+
+n
+
+? 0g. We say that a vector field f points towards
+
+C
+
+1
+
+on \Gamma  if 8x 2 \Gamma  n
+
+T
+
+(x)f (x) ? 0.
+
+Definition 2.2 Let M be a connected open subset of R
+
+n
+
+such that 0 2 M . Let f be a (Lipschitz) vector field
+
+on M [ f0g, with f (0) = 0. Let U be an open subset of R
+
+n
+
+such that 0 2 U ae M [ f0g. We say that U is
+
+f-invariant if every trajectory of f starting at x 2 U remains in U for all t ? 0. A function V : M ! R is called a Lyapunov function for f on U if
+
+(i) U is f-invariant (ii) V is continuous on M , and of class C
+
+1
+
+on M
+
+(iii) V is positive definite and proper on M (iv) 8x 2 U x 6= 0; L
+
+f
+
+V (x) ! 0.
+
+Definition 2.3 Let N be an open subset of R
+
+n
+
+with 0 2
+
+N. A vector field f on N is asymptotically stable on N if for each neigborhood V of 0 there is a neighborhood W of 0 such that 8x 2 W"N the integral curve of f starting at x, OE(x; t), is defined for all t ? 0, OE(x; t) 2 V " N , and lim
+
+t!1
+
+OE(x; t) = 0.
+
+The following two lemmas can be proved with classical arguments together with the fact that trajectories do not leave the appropriate regions.
+
+Lemma 2.1 Let M , U and f as in definition (2.2). Let V be a Lyapunov function for f on U . Then f is asymptotically stable on U .
+
+Lemma 2.2 Let M
+
+1
+
+, M
+
+2
+
+be two open connected subsets
+
+of R
+
+n
+
+such that M
+
+1
+
+[ M
+
+2
+
+= R
+
+n
+
+n f0g. Let f
+
+i
+
+: M
+
+i
+
+\Gamma !
+
+R
+
+n
+
+, i = 1; 2 be two vector fields. Assume also, that
+
+there exists a separating hypersurface \Gamma  with 0 2 \Gamma  and \Gamma  n f0g ae M
+
+1
+
+" M
+
+2
+
+. Let C
+
+1
+
+, C
+
+2
+
+be the two connected
+
+components of R
+
+n
+
+n\Gamma  and assume that C
+
+i
+
+ae M
+
+i
+
+and that
+
+f
+
+i
+
+points towards C
+
+i
+
+on \Gamma  for i = 1; 2. Finally assume
+
+that f
+
+1
+
+, f
+
+2
+
+are asymptotically stable on M
+
+1
+
+, M
+
+2
+
+. Then,
+
+the vector field f : R
+
+n
+
+\Gamma ! R
+
+n
+
+defined by
+
+f (x) =
+
+8 !
+
+:
+
+f
+
+1
+
+(x) if x 2 (\Gamma  n f0g) [ C
+
+1
+
+f
+
+2
+
+(x) if x 2 C
+
+2
+
+0 if x = 0
+
+is globally asymptotically stable.
+
+3. Control-Lyapunov Functions Definition 3.4 Let M be an open connected subset of R
+
+n
+
+. Given the system
+
+(\Sigma ) .x = f (x) +
+
+m X
+
+i=1
+
+g
+
+i
+
+(x)u
+
+i
+
+a function V : M \Gamma ! R is called a control Lyapunov function (clf) for \Sigma  on M if the following hold:
+
+(i) V is continuous on M , and of class C
+
+1
+
+on M
+
+(ii) V is positive definite and proper on M (iii) inf
+
+u2R
+
+m
+
+fL
+
+f
+
+V (x) + u
+
+1
+
+L
+
+g
+
+1
+
+V (x) + \Delta  \Delta  \Delta  +
+
+u
+
+m
+
+L
+
+g
+
+m
+
+V (x)g ! 0 for each x 2 M.
+
+The following theorem presents the construction of a piecewise continuous stabilizing feedback law.
+
+Theorem 3.1 Let M
+
+j
+
+, j = 1; 2, be connected open subsets of R
+
+n
+
+such that M
+
+1
+
+[ M
+
+2
+
+= R
+
+n
+
+n f0g. Consider the
+
+system (\Sigma ) as above. Suppose there exists a separating hypersurface \Gamma  with 0 2 \Gamma , \Gamma  n f0g ae M
+
+1
+
+" M
+
+2
+
+. Let
+
+C
+
+1
+
+, C
+
+2
+
+be the two connected components of R
+
+n
+
+n \Gamma , with
+
+C
+
+j
+
+ae M
+
+j
+
+, for j = 1; 2. Let V
+
+j
+
+: M
+
+j
+
+\Gamma ! R
+
+n
+
+be control
+
+Lyapunov functions for (\Sigma ) on M
+
+j
+
+.
+
+Assume the following transversality conditions hold:
+
+(i) f(x) is tangent to \Gamma  for all x 2 \Gamma , (ii) \Gamma L
+
+g
+
+i
+
+V
+
+j
+
+(x) \Delta  g
+
+i
+
+(x) points to C
+
+j
+
+on \Gamma  for j = 1; 2,
+
+i = 1; : : : ; m.
+
+Then there exists a globally stabilizing feedback law which is smooth on C
+
+1
+
+[ C
+
+2
+
+.
+
+Proof. Consider the set S = f(a; b) 2 R
+
+2
+
+: b ?
+
+0 or a ! 0g. Define
+
+(a; b) =
+
+ae
+
+a+
+
+p
+
+a
+
+2
+
++b
+
+2
+
+b
+
+b 6= 0
+
+0 b = 0
+
+Then  is analytic on S. (The function p = (a; b) is a solution of bp
+
+2
+
+\Gamma  2ap \Gamma  b = 0 for (a; b) 2 S.) Define
+
+for j = 1; 2, i = 1; : : : ; m, x 2 M
+
+j
+
+,the functions ff
+
+j
+
+(x) =
+
+L
+
+f
+
+V
+
+j
+
+(x), b
+
+j
+
+i
+
+(x) = L
+
+g
+
+i
+
+V
+
+j
+
+(x), and fi
+
+j
+
+(x) =
+
+P
+
+m
+
+i=1
+
+(b
+
+j
+
+i
+
+(x))
+
+2
+
+.
+
+The third condition in the definition of clf, applied to V
+
+j
+
+, M
+
+j
+
+is equivalent to asking that fi
+
+j
+
+(x) = 0 =)
+
+ff
+
+j
+
+(x) ! 0. That is, (ff
+
+j
+
+(x); fi
+
+j
+
+(x)) 2 S for j = 1; 2.
+
+We define feedback laws k
+
+j
+
+= (k
+
+j
+
+1
+
+; : : : ; k
+
+j
+
+m
+
+), j = 1; 2
+
+by
+
+k
+
+j
+
+i
+
+(x) =
+
+ae
+
+\Gamma b
+
+j
+
+i
+
+(x)(ff
+
+j
+
+(x); fi
+
+j
+
+(x)) x 6= 0 x 2 M
+
+j
+
+0 x = 0
+
+These functions are smooth on M
+
+j
+
+. If f; g
+
+i
+
+as well as V
+
+j
+
+are real analytic then k
+
+j
+
+is real analytic. On each M
+
+j
+
+this is the same universal formula used in the smooth case (see [5]).
+
+We now define vector fields h
+
+j
+
+on M
+
+j
+
+, for j = 1; 2
+
+by h
+
+j
+
+(x) = f (x) +
+
+P
+
+m
+
+i=1
+
+k
+
+j
+
+i
+
+(x)g
+
+i
+
+(x). These vector fields
+
+are smooth on M
+
+j
+
+. Since h
+
+j
+
+(x) points into C
+
+j
+
+on \Gamma  for
+
+j = 1; 2, we conclude that C
+
+j
+
+is h
+
+j
+
+-invariant. Finally,
+
+the function V
+
+j
+
+is a Lyapunov function for h
+
+j
+
+on C
+
+j
+
+,
+
+j = 1; 2. Indeed
+
+L
+
+h
+
+j
+
+V (x) = L
+
+f
+
+j
+
+V
+
+j
+
+(x) + k
+
+j
+
+1
+
+L
+
+g
+
+1
+
+V (x) + \Delta  \Delta  \Delta  + k
+
+j
+
+m
+
+L
+
+g
+
+m
+
+V (x)
+
+= ff
+
+j
+
+(x) \Gamma  fi
+
+j
+
+(x)(ff
+
+j
+
+(x); fi
+
+j
+
+(x))
+
+= \Gamma 
+
+p
+
+(ff
+
+j
+
+(x))
+
+2
+
++ (fi
+
+j
+
+(x))
+
+2
+
+! 0
+
+By Lemma 2.1, the vector fields h
+
+j
+
+are asymptotically
+
+stable. We can apply now Lemma 2.2 to conclude that the feedback law
+
+k(x) =
+
+ae
+
+k
+
+1
+
+(x) x 2 \Gamma  [ C
+
+1
+
+k
+
+2
+
+(x) x 2 C
+
+2
+
+results in a globally asymptotically stable system. 4. Example
+
+Consider the system on R
+
+2
+
+:
+
+. , = g(,)u where , =
+
+[x y]
+
+T
+
+, and g(,) =
+
+\Theta 
+
+x
+
+2
+
+\Gamma  y
+
+2
+
+2xy
+
+\Lambda 
+
+T
+
+. Here m = 1 and
+
+f j 0. The orbits of g are in Figure 1 (a). It can be shown by a topological argument that this system is not locally smoothly stabilizable.
+
+-15 -10
+
+-5
+
+0 5 10 15
+
+-15 -10
+
+-5
+
+0 5 10 15 Level curves of V
+
+Figure 1: Orbits of g and level curves of V In this case a natural Lyapunov function is given by the following formula (see also Figure 1 (b))
+
+V (x; y) =
+
+(
+
+x
+
+2
+
++y
+
+2
+
+p
+
+x
+
+2
+
++y
+
+2
+
++jxj
+
+(x; y) 6= (0; 0)
+
+0 x = y = 0
+
+Instead of using explicitly this function, we may consider two partially defined functions. Let ffl ? 0 and let K
+
+1
+
+ffl
+
+, K
+
+2
+
+ffl
+
+be the cones with vertex at the origin given (in
+
+polar coordinates) by, K
+
+1
+
+ffl
+
+= f(r; `) : ss \Gamma  ffl ^ ` ^ ss + fflg
+
+and K
+
+2
+
+ffl
+
+= f(r; `) : \Gamma ffl ^ ` ^ fflg.
+
+We can take M
+
+j
+
+= R
+
+2
+
+n K
+
+j
+
+and consider V
+
+j
+
+on
+
+M
+
+j
+
+for j = 1; 2 defined by V
+
+1
+
+(x; y) =
+
+x
+
+2
+
++y
+
+2
+
+p
+
+x
+
+2
+
++y
+
+2
+
++x
+
+,
+
+V
+
+2
+
+(x; y) =
+
+x
+
+2
+
++y
+
+2
+
+p
+
+x
+
+2
+
++y
+
+2
+
+\Gamma x
+
+, and V
+
+1
+
+(0; 0) = V
+
+2
+
+(0; 0) = 0.
+
+As separating hypersurface \Gamma  we can take the y-axis oriented with the right half-plane as the positive side.
+
+Clearly, V
+
+j
+
+is smooth on M
+
+j
+
+and continuous on M
+
+j
+
+.
+
+The functions V
+
+j
+
+are also proper on M
+
+j
+
+since V
+
+j
+
+(x; y) ^
+
+k =)
+
+p
+
+x
+
+2
+
++ y
+
+2
+
+^ 2k.
+
+A direct calculation shows that the conditions of Theorem 3.1 are then easily checked. We conclude that the feedback law
+
+k(x) =
+
+8 ? ? ? ? !
+
+? ? ?
+
+? :
+
+\Gamma 
+
+\Gamma 
+
+p
+
+x
+
+2
+
++y
+
+2
+
+\Delta 
+
+3
+
+p
+
+x
+
+2
+
++y
+
+2
+
++x
+
+x ? 0 or (x = 0 and y 6= 0)
+
+\Gamma 
+
+\Gamma 
+
+p
+
+x
+
+2
+
++y
+
+2
+
+\Delta 
+
+3
+
+\Gamma 
+
+p
+
+x
+
+2
+
++y
+
+2
+
++x
+
+x ! 0
+
+0 x = y = 0 makes the system globally asymptotically stable. 5. Further Remarks
+
+In [6] a converse Lyapunov theorem for control Lyapunov functions was proved. More precisely, it was shown that asymptotic controllablility (defined below), which is a minimal condition for stabilizability, is suffi- cient to insure the existence of a control Lyapunov function V which is C
+
+ffi
+
+but not necessarily smooth (with
+
+derivatives of V replaced with Dini derivatives).
+
+Definition 5.5 Consider the system .x = f (x; u), x 2 R
+
+n
+
+, with f 2 C
+
+1
+
+(R
+
+n
+
+\Theta  R
+
+m
+
+), u 2 U ae R
+
+n
+
+bounded,
+
+f (0; 0) = 0. We say that the system is asymptotically controllable if the following conditions hold:
+
+1. 8x 2 R
+
+n
+
+, 9u(\Delta ), measurable, locally essentially
+
+bounded, u : [0; 1) \Gamma ! U such that the solution corresponding to the control u, OE(t; x; u), is defined for all t and OE(t; x; u) \Gamma ! 0 as t ! 1.
+
+2. 8" ? 0, 9ffi ? 0, such that, if kxk ! ffi then 9u(\Delta ) as
+
+in (1) such that x(t) \Gamma ! 0 as t ! 1 and kx(t)k ^ ", for all t * 0.
+
+The above mentioned control Lyapunov function was given by
+
+V (x) = inf
+
+u(\Delta )
+
+Z
+
+1
+
+0
+
+N (kOE(t; x; u)k)dt
+
+where N is a suitably constructed function of class K. The resulting function V is continuous, proper and positive definite, and satisfies a Dini condition (see [6] for more details). We now give a more geometric interpretation of such a condition using the theory of subdifferentials.
+
+Definition 5.6 For a continuous function V : \Omega  ae R
+
+n
+
+\Gamma ! R, \Omega  open, we define the subdifferential
+
+D
+
+\Gamma 
+
+V (x) as the set
+
+D
+
+\Gamma 
+
+V (x) = fp : lim inf
+
+y!x
+
+V (y) \Gamma  V (x) \Gamma  p(y \Gamma  x)
+
+jy \Gamma  xj
+
+* 0g
+
+Using a standard calculation, one can show that the function V is a viscosity supersolution of the HamiltonJacobi-Bellman equation. That is,
+
+8x; 8p 2 D
+
+\Gamma 
+
+V (x) sup
+
+u2U
+
+f\Gamma pf(x; u) \Gamma  N (kxk)g * 0
+
+Therefore, inf
+
+u2U
+
+fpf (x; u)g ^ \Gamma N (kxk). Since for x 6=
+
+0, N (kxk)=2 ? 0, there exists u such that
+
+pf (x; u) !
+
+N (kxk)
+
+2
+
+! 0
+
+Observe that this is exactly the condition that a standard Lyapunov function must satisfy with p replacing the gradient.
+
+References
+
+[1] Artstein, Z., "Stabilization with relaxed controls,"
+
+Nonlinear Anal. TMA 7 (1983) 1163-1173.
+
+[2] Canudas de Wit, C., and So/rdalen, O., "Exponential Stabilization of Mobile Robots with Nonholonomic Constraints," IEEE Trans. Aut. Control, Vol. 13, No 11, (1992), 1791-1797.
+
+[3] Coron, J-M., "Global asymptotic stabilization for
+
+controllable systems without drift," Math of Control, Signals, and Systems 5(1992): 295-312.
+
+[4] Krishnan, H., Reyhanoglu, M., and McClamroch,
+
+H., "Attitude stabilization of a rigid spacecraft using gas jet actuators operating in a failure mode," 31st IEEE CDC (1992), 1612-1617.
+
+[5] Sontag,E.D., "A `universal' construction of Artstein's theorem on nonlinear stabilization," Systems Control Lett. 13 (1989) 117-123
+
+[6] Sontag, E.D., "A Lyapunov-like characterization of
+
+asymptotic controllability," SIAM J. Control and Opt. Vol. 21, No. 3, (1983) 462-471.
+
+[7] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990.
+
+[8] Sontag, E.D. and Lin Y., "A universal formula for
+
+stabilization with bounded controls," Systems Control Lett. 16 (1991), 393-397.</pre>
+</body>
+</html>

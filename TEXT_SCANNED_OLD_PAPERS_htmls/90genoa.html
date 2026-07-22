@@ -1,0 +1,320 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/90genoa.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/90genoa.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Input/Output and State-Space Stability
+
+Eduardo D. Sontag\Lambda 
+
+ABSTRACT This paper first reviews various results relating state-space (Lyapunov) stabilization to notions of input/output or "bounded-input bounded-output" stabilization, and then provides generalizations of some of these results to the case of systems with saturating controls.
+
+1 Various Notions of Stability Problems of stabilization underlie most questions of control design. In the nonlinear control literature, a great deal of effort has been directed towards the understanding of the general problem of stabilizing systems of the type
+
+.x = f (x; u) ; f (0; 0) = 0 (1) by means of feedback control laws
+
+u = k(x) ; k(0) = 0 (2) which make the closed-loop system
+
+.x = f (x; k(x)) (3) globally asymptotically stable about x = 0. There are many variants of this general question, which differ on the degree of smoothness required of k, as well as on the structure assumed of the original system. We call this type of problem a statespace stabilization problem. For references, see for instance the survey paper [8], which includes a rather large bibliography, as well as the textbook [9], Section 4.8. Technically, we make here the blanket assumption that all systems considered have smooth (infinitely differentiable) f , and states x 2 IRn and control values u 2 IRm, though far less is needed for the validity of many of the results to be described.
+
+In many contexts, it is of more interest to study somewhat different notions of stability. These have to do with the effect of perturbations on controls, due for example to actuator noise --and possibly also on observations, if there is sensor
+
+\Lambda This research was supported in part by US Air Force Grant AFOSR-88-0235.
+
+noise. These different notions appear naturally also when studying operator-theoretic stability, as needed when dealing with parameterization problems for compensators; see for instance [6] and references there. Mathematically, the general problem is to find a feedback (2) with the property that the new control system
+
+.x = f (x; k(x) + u) (4) be in some sense "input-to-state stable." In essence, what is desired is that when the external perturbation u in (4) is identically zero, the system (3) be globally asymptotically stable about x = 0 (so, this includes state-space stability) and that, in addition, a "nice" input u(\Delta ) should produce a `nice" state trajectory x(\Delta ) when starting at any initial state. We call this type of question an input/output (or, more precisely unless only partial observations are of interest, input-to-state) stabilization problem. There are many possible definitions of input/output stability, and it is far from clear which is the appropriate notion for various applications. One possibility is to impose the requirement that bounded inputs produce bounded outputs --including variants where the state bounds should depend on the input bounds, or even that this dependence should be linear, which gives rise to "finite-gain" stability. Other possibilities are to request that controls that converge to zero produce trajectories that converge to zero, or that controls that decay exponentially produce an exponentially decaying trajectory. We review later some results which illustrate several of these notions.
+
+In general, a feedback law k which achieves state-space stabilization does not necessarily produce input/output stabilization; indeed, the associated problems have been known for a long time, and appear in slightly different form in the classical study of "total stability" --see e.g. [1], Section 56. Some of the general results that do hold will be reviewed in this paper, but in general extremely strong extra assumptions are needed. (In the special case of linear systems, however, all reasonable stability notions do coincide.) What is at first somewhat surprising is that, if a k which achieves state-space stabilization exists, there may be a different k which in addition provides input/output stability. This was shown in [4] to always be the case for systems that are affine in controls, that is, those for which f (x; u) is an affine function of u. For such systems, the evolution equations take the form
+
+.x = f0(x) + G(x) u (5) where f0(0) = 0. (Still under the assumption that all entries of the vector f0 and the n \Theta  m matrix G are smooth functions on IRn, and the result ts stated in terms of smooth feedback laws k : IRn ! IRm.)
+
+The theorem from [4] cited above does not extend to arbitrary systems that are not affine on controls. In [7] the following trivial counterexample is given:
+
+.x = \Gamma x + u2x2 where m = n = 1. Note that k = 0 already stabilizes this in the state-space sense. However, it is shown there that for no possible feedback law k can there hold for the closed-loop system
+
+.x = \Gamma x + (k(x) + u)2x2 (6)
+
+that for u j 0 the system is globally asymptotically stable while for u j 1 and arbitrary initial conditions the solution remains bounded. (On the other hand, it is proved in [7] that if one allows the more general feedback configuration
+
+u = k(x) + D(x)v (7)
+
+where D is now allowed to be a matrix of smooth functions, invertible for all x but not necessarily equal to the identity, then the theorem does generalize, in the sense that there exists such a D so that .x = f (x; k(x) + D(x)u) satisfies an input/output stability property. Such more general classes of feedback are useful in control theory, and they appear in studies of feedback linearization, coprime factorizations, and other areas. But here we wish to stay with the purely additive-feedback configuration, in which we insist on D j I.)
+
+We shall show in Section 3 that the positive result from [4] does extend to the case in which the control appears in the right-hand side in a linear-growth fashion. This is of interest when dealing with systems that have saturation effects on controls, and it properly generalizes the case of systems affine in controls. The example mentioned above indicates that the linear growth assumption cannot in general be weakened.
+
+2 Input/Output From State-Space Stability We first review known conditions under which state-space stability automatically gives some type of i/o stability. In other words, we look here at the case when the same feedback law k that provides the first type of stability also gives i/o stability.
+
+To simplify statements, when we say that
+
+the system .x = f (x; 0) is globally asymptotically stable we mean that 0 is a globally asymptotically stable state for this differential equation. When we say that
+
+the system .x = f (x; 0) is globally exponentially stable we mean that there exist constants a; c such that each solution x(t) of .x = f (x; 0) satisfies the estimate k
+
+x(t)k ^ ce\Gamma atkx(0)k :
+
+We say that
+
+the system .x = f (x; u) is BIBS ("bounded-input bounded-state stable") if for each number a ? 0 there is some b ? 0 such that, for each bounded measurable control u(\Delta ) with
+
+kuk1 := sup
+
+t*0 fku(t)kg ! a ;
+
+and each initial condition x0 with kx0k ! a, the corresponding solution satisfies
+
+kx(t)k ^ b for all t ? 0. The first result is due to [12] and [3]:
+
+Theorem 1 Assume that:
+
+ffl f is globally Lipschitz, and
+
+ffl the system .x = f (x; 0) is globally exponentially stable. Then the system .x = f (x; u) is BIBS.
+
+A sketch of the proof is as follows. Under the assumptions of the theorem, there exists a Lyapunov function of quadratic growth for .x = f (x; 0), that is to say a positive definite smooth function V on IRn with the properties that
+
+ffl rV (x) f (x; 0) ^ \Gamma ffkxk2 and ffl krV (x)k ^ fikxk for all x, for some positive constants ff and fi. (Essentially, one takes V (x) :=R
+
+1 0 k,(t)k
+
+2dt, where , is the trajectory with ,(0) = x; see [1], 56.1, modified for
+
+the time-invariant case, and [13], Section 5.6. Exponential stability guarantees that this integral is well defined.) Then, the derivative of V (x(t)), for any control, satisfies
+
+.V ^ kxk(flkuk1 \Gamma  ffkxk)
+
+for some constant fl. From here it follows that V decreases provided that kxk is sufficiently large, which in turn implies the BIBS property. Somewhat weaker conditions on f would suffice, for instance that f (x; u) be globally Lipschitz on u alone, but uniformly on x (satisfied for a system (5) affine in controls, with the gi's bounded), or even that an estimate kf (x; u) \Gamma  f (x; 0)k ^ q(u) holds, for some function q.
+
+It is shown in [5] that BIBS plus .x = f (x; 0) being globally asymptotically stable imply that controls u so that u(t) ! 0 as t ! 1 produce trajectories that satisfy also x(t) ! 0, for any initial states. Thus, under the conditions of the above theorem, controls converging to zero produce trajectories that also converge to zero.
+
+A related result is as follows, and is a simple consequence of Theorem 5.3 in [11]. The exponential stability assumption is relaxed, but a weaker conclusion results. Let exp(ff) be the class of functions ffi that satisfy an estimate of the form kffi(t)k ! ^e\Gamma fft for some ^ (which may depend on ffi).
+
+Theorem 2 Assume that:
+
+ffl f is globally Lipschitz, and ffl the system .x = f (x; 0) is globally asymptotically stable. Then there exists some ff ? 0 such that every solution of .x = f (x; u) converges to zero, for every u 2 exp(ff).
+
+Note that this second result does not guarantee the BIBS property. As an example, consider the system
+
+.x = \Gamma  tanh x + u :
+
+Here .x = f (x; 0) is globally asymptotically stable, and f is globally Lipschitz, but all trajectories diverge to +1 under the control u j 1. Of course, this example fails to be globally exponentially stable.
+
+The results on BIBS stability are useful in the context of output stabilization. Assume that a feedback law k has been designed in such a manner that (3) is globally asymptotically stable, but so that only an estimate x(t) + ffi(t) is available for the
+
+current state x(t) (satisfying ffi ! 0), for instance as obtained by a Luenberger-type observer. If this estimate is used instead of x, the equation for x(\Delta ) becomes
+
+.x = f (x; k(x) + u) ; where
+
+u := k(x + ffi) \Gamma  k(x) :
+
+In order to obtain that x(t) ! 0, one needs then that k not only provide stability but that it also give a BIBS system, and in addition that u ! 0 as t ! 1. The latter property will for instance be guaranteed if k is globally Lipschitz. Moreover, the BIBS property can be relaxed if one knows more about the estimation error ffi. For instance, in view of theorem 2, if f and k are both globally Lipschitz, it is enough to assume that the estimates converge to zero exponentially, at a fast enough rate. An illustration is given in the next section.
+
+3 Systems With Saturating Controls We consider in this section systems of the form
+
+.x = f0(x) + G(x)~oe(u) (8) where
+
+~oe(u) := (oe(u1); : : : ; oe(um))0
+
+for each u = (u1; : : : ; um)0 2 IRm, and where we let oe : IR ! IR be any fixed nondecreasing function that satisfies oe(0) = 0 and a globally Lipschitz condition:
+
+joe(u) \Gamma  oe(v)j ^ c ju \Gamma  vj for all u; v 2 IR, for some fixed constant c. (For instance, oe(u) j u gives rise to systems affine in controls.) Such systems appear naturally when modeling actuator saturation; typically oe might be a sigmoidal function such as tanh. (Since we are restricting systems to be smooth, we must assume that oe is smooth, but the assumption is not really needed, and one could just as well consider the case of the piecewise linear function oe defined by: oe(u) = u for juj ^ 1 and oe(u) = sign u otherwise.) We will need the following observation, valid for any oe as above:
+
+Lemma 3.1 For each real numbers b; j; u, the following inequality holds:
+
+b foe(j + u \Gamma  b) \Gamma  oe(j)g ^ c u
+
+2
+
+4 :
+
+Proof. We can take without loss of generality b 6= 0 and u \Gamma  b 6= 0 (since otherwise the right-hand side vanishes). Assume first that b(u \Gamma  b) ! 0. If b ? 0, then u \Gamma  b ! 0, so, as oe nondecreasing, also oe(j + u \Gamma  b) \Gamma  oe(j) ^ 0. This implies that
+
+b foe(j + u \Gamma  b) \Gamma  oe(j)g ^ 0 (9) and hence the desired inequality holds. If instead b ! 0 then oe(j + u \Gamma  b) \Gamma  oe(j) * 0, and therefore again (9) holds. So we assume from now on that b(u \Gamma  b) ? 0.
+
+Take first the case b ! 0, u \Gamma  b ! 0. Then,
+
+oe(j + u \Gamma  b) \Gamma  oe(j) = \Gamma joe(j + u \Gamma  b) \Gamma  oe(j)j* \Gamma 
+
+cju \Gamma  bj = c(u \Gamma  b) :
+
+Multiplying by b, we conclude that
+
+b foe(j + u \Gamma  b) \Gamma  oe(j)g ^ cb(u \Gamma  b)
+
+= \Gamma c(b \Gamma  u2 )2 + c u
+
+2
+
+4 ^ c u
+
+2
+
+4 as desired. The case in which both b and u \Gamma  b are positive is similar.
+
+The following result generalizes (and simplifies somewhat) the result given in [4] for the particular case oe = identity.
+
+Theorem 3 Assume that there exists a smooth function k0 : IRn ! IRm, k0(0) = 0, so that the origin is globally asymptotically stable for the system
+
+.x = f0(x) + G(x) ~oe(k0(x)) : (10) Then there exists also a smooth k : IRn ! IRm, k(0) = 0, so that
+
+.x = f0(x) + G(x) ~oe(k(x) + u) (11) is BIBS.
+
+Proof. We let V be a proper positive definite Lyapunov function so that, denoting
+
+a := rV ff0(x) + G(x)~oe(k0(x))g ; it holds that a(x) ! \Gamma 1 as kxk ! 1 (that is, \Gamma a is proper; cf. [4]). We define
+
+b := rV G and
+
+k(x) := k0(x) \Gamma  b(x) :
+
+Letting gi, respectively bi, be the ith column of G, respectively b, the derivative of V (x(t)) along the trajectory of (11) corresponding to any given control u is as follows (omitting x where clear):
+
+rV f0 +
+
+mX
+
+i=1
+
+bioe(k0(x)i \Gamma  bi + ui) = a +
+
+mX
+
+i=1
+
+bi foe(k0(x)i + ui \Gamma  bi) \Gamma  oe(k0(x)i)g
+
+which is bounded, because of Lemma 3.1, by
+
+a + X c u
+
+2 i
+
+4 = a +
+
+c 4 kuk
+
+2 :
+
+It follows that this derivative is negative when x is large enough, for essentially bounded u, and it is negative for u j 0. By standard arguments (see e.g. [4]) this provides the BIBS conclusion.
+
+3.1 Linear Systems With Saturation In [10], we studied the particular case of systems of the type
+
+.x = Ax + B ~oe(u) (12) where A and B are n \Theta  n and n \Theta  m matrices respectively; that is, linear systems with saturating controls. We assume now also that oe is strictly increasing and bounded. Such a system is said to be asymptotically null-controllable if every state can be driven asymptotically to zero using some (measurable) control; equivalently, it must hold that the pair (A; B) is stabilizable in the ordinary sense, and all eigenvalues of A have nonpositive real part. We proved in [10]:
+
+Theorem 4 For the system (12), there is a smooth feedback so that (3) is globally asymptotically stable if and only if (12) is asymptotically null-controllable.
+
+In other words, subject only to the obvious necessary condition, there are smooth feedback stabilizers. From here, one can obtain also a different feedback guaranteeing BIBS stability, using theorem 3.
+
+The output stabilization problem was also studied in [10]. Assuming that only y = Cx is available for control, one may pick the obvious observer of the type
+
+.z = (A + LC)z + B ~oe(u) \Gamma  Ly where L is choosen appropriately. The construction can be done with a k which is globally Lipschitz, and the technique described at the end of section 2 can be applied to insure closed-loop stability of the resulting dynamic feedback configuration, much as done in the standard linear case.
+
+3.2 Almost-Smooth Stabilization Theorem 3 also holds if "smooth" is replaced by "almost smooth" in the sense of [8], that is, k is smooth on IRn \Gamma f0g and is continuous at the origin. This is clear from the proof. A recent paper, [2], has characterized almost-smooth stabilizability in terms of Lyapunov functions; we describe the main result for the case of scalar controls; see the reference for the general case. The systems considered have the form
+
+.x = f0(x) + oe(u) g(x) (13) where we assume again that the smooth map oe (with oe(0) = 0) is strictly increasing and bounded. Up to a change of coordinates in control space we may, and will assume from now on, that the range of oe is the open interval (\Gamma 1; 1).
+
+A proper and positive definite smooth function V on IRn is said to be a control Lyapunov function (clf ) satisfying the small control property (scp) for the system (13) if it holds that
+
+inf u2IRfa(x) + b(x)oe(u)g ! 0
+
+for all nonzero x 2 IRn, and also that for each ffi ? 0 there is an " ? 0 such that, if x 6= 0 satisfies kxk ! ", then there is some u with juj ! ffi such that a(x) + b(x)oe(u) ! 0, where we are denoting a := rV f0(x) and b := rV g. The main result in [2], an explicit version of a theorem of Artstein, can be stated as follows (in [2] this is phrased in terms of systems affine in controls and with bounded controls, but the translation to the present language is immediate):
+
+Theorem 5 The system (13) can be stabilized by an almost-smooth feedback if and only if there exists a control Lyapunov function V satisfying the small control property for this system. Moreover, if V is any such function, then k(x) = oe\Gamma 1(ff(a(x); b(x))) is a feedback as desired, where
+
+ff(a; b) :=
+
+8???!
+
+???: \Gamma 
+
+a + pa2 + b4 b(1 + p1 + b2) if b 6= 0,
+
+0 ; if b = 0.
+
+4 References
+
+1. Hahn, W., Stability of Motion, Springer-Verlag, New York, 1967. 2. Lin, Y. and E.D. Sontag, "A universal formula for stabilization with bounded
+
+controls," Report 90-10, SYCON-Rutgers Center for Systems and Control, July 1990; to appear.
+
+3. Sastry, S.I., and A. Isidori, "Adaptive control of linearizable systems," Memo
+
+UCB/ERL M87/53, March 1988, U.California, Berkeley.
+
+4. Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE
+
+Trans. Automatic Control, 34(1989): 435-443.
+
+5. Sontag, E.D., "Remarks on stabilization and input-to-state stability," Proc.
+
+IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 1376-1378.
+
+6. Sontag, E.D., "Some connections between stabilization and factorization," Proc.
+
+IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 990-995.
+
+7. Sontag, E.D., "Further facts about input to state stabilization", IEEE Trans.
+
+Automatic Control, 35(1990): 473-476.
+
+8. Sontag, E.D., "Feedback stabilization of nonlinear systems," in Robust Control
+
+of Linear Systems and Nonlinear Control (M.A. Kaashoek, J.H. van Schuppen, and A.C.M. Ran, eds,.) Birkh"auser, Cambridge, MA, 1990.
+
+9. Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional
+
+Systems, Springer, New York, 1990.
+
+10. Sontag, E.D. and H.J. Sussmann, "Nonlinear output feedback design for linear
+
+systems with saturating controls," Proc. IEEE Conf. Decision and Control, Honolulu, Dec. 1990, IEEE Publications, 1990.
+
+11. Sussmann, H.J., and P.V. Kokotovic, "The peaking phenomenon and the global
+
+stabilization of nonlinear systems," IEEE Trans. Autom. Control, to appear.
+
+12. Varaiya, P.P. and R. Liu, "Bounded-input bounded-output stability of nonlinear
+
+time-varying differential systems," SIAM J. Control 4(1966): 698-704.
+
+13. Vidyasagar, M., Nonlinear Systems Analysis, Prentice-Hall, Englewood Cliffs,
+
+1978.
+
+Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control Department of Mathematics Rutgers University, New Brunswick, NJ 08903 e-mail: sontag@hilbert.rutgers.edu</pre>
+</body>
+</html>

@@ -1,0 +1,1030 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nets-real.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nets-real.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+ANALOG COMPUTATION VIA NEURAL NETWORKS \Lambda 
+
+Hava T. Siegelmann Department of Computer Science Rutgers University, New Brunswick, NJ 08903
+
+E-mail: siegelma@yoko.rutgers.edu
+
+Eduardo D. Sontag Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+E-mail: sontag@control.rutgers.edu
+
+ABSTRACT We pursue a particular approach to analog computation, based on dynamical systems of the type used in neural networks research.
+
+Our systems have a fixed structure, invariant in time, corresponding to an unchanging number of "neurons". If allowed exponential time for computation, they turn out to have unbounded power. However, under polynomial-time constraints there are limits on their capabilities, though being more powerful than Turing Machines. (A similar but more restricted model was shown to be polynomial-time equivalent to classical digital computation in the previous work [20].) Moreover, there is a precise correspondence between nets and standard non-uniform circuits with equivalent resources, and as a consequence one has lower bound constraints on what they can compute. This relationship is perhaps surprising since our analog devices do not change in any manner with input size.
+
+We note that these networks are not likely to solve polynomially NP-hard problems, as the equality "p = np " in our model implies the almost complete collapse of the standard polynomial hierarchy.
+
+In contrast to classical computational models, the models studied here exhibit at least some robustness with respect to noise and implementation errors.
+
+1 Introduction "Neural networks" have attracted much attention lately as models of analog computation. Such nets consist of a finite number of simple processors, each of which computes a scalar --real-valued, not binary-- function of an integrated input. This scalar function, or "activation," is meant to reflect the graded response of biological neurons to the net sum of excitatory and inhibitory inputs affecting them. The existence of feedback loops in the interconnection graph gives rise to a dynamical system. In this paper, we introduce a mathematical model for such recurrent neural networks, and we study their computational abilities.
+
+\Lambda This research was supported in part by US Air Force Grant AFOSR-91-0343.
+
+1
+
+1.1 Main Results We focus on recurrent neural networks. In these networks, the activation of each processor is updated according to a certain type of piecewise affine function of the activations (xj) and inputs (uj) at the previous instant, with real coefficients --also called weights-- (aij; bij; ci). Each processor's state is updated by an equation of the type
+
+xi(t + 1) = oe 0@
+
+NX
+
+j=1
+
+aijxj(t) +
+
+MX
+
+j=1
+
+bijuj(t) + ci1A ; i = 1; : : : ; N (1)
+
+where N is the number of processors and M is the number of external input signals. The function oe is the simplest possible "sigmoid," namely the saturated-linear function:
+
+oe(x) := 8?!?:
+
+0 if x ! 0 x if 0 ^ x ^ 1 1 if x ? 1 :
+
+(2)
+
+We will give later a precise definition of language acceptance for these computational models.
+
+We prove that neural networks can recognize in polynomial time the same class of languages as those recognized by Turing Machines that consult sparse oracles in polynomial time (the class P/poly); they can recognize all languages, including of course non-computable ones, in exponential time. Furthermore, we show that almost every language requires exponential recognition time. (For simplicity, we give our main results in terms of recognition; it is also possible to provide a more general version regarding the computation of more general functions.)
+
+The proofs of the above results will be consequences of the following equivalence. For functions T : IN ! IN and S : IN ! IN, let net (T ) be the class of all functions computed by neural networks in time T (n) --that is, recognition of strings of length n is in time at most T (n)-- and let circuit (S) the class of functions computed by non-uniform families of circuits of size S(n) --that is, circuits for input vectors of length n have size at most S(n). We show that if F is so that F (n) * n, then
+
+net (F (n)) ` circuit (Poly(F (n))) and
+
+circuit (F (n)) ` net (Poly(F (n))) :
+
+This equivalence will allow us to make use of results from the theory of (nonuniform) circuit complexity.
+
+As our model is highly homogeneous and extremely simple, one may suspect that it is weaker than other possible more complex models. For example, in many applications of neural networks to language recognition, each neuron is allowed to compute inside its sigma function a polynomial combination of its input values rather than affine combinations only. Furthermore, in both applications and biologically plausible models, the activation function is usually more complicated than the saturated-linear function used in our model; for instance, one encounters the classical sigmoid
+
+1 1+e\Gamma x or other activations.
+
+We show that if one allows multiplications in addition to only linear operations in each neuron, that is, if one considers instead what are often called high order neural nets, the computational power does not increase. Even further, and perhaps more surprising, no increase in computational power (up to polynomial time) can be achieved by letting the activation function be not necessarily the simple saturated linear one in equation (2), but any function which satisfies certain reasonable
+
+2
+
+assumptions. Also, no increase results even if the activation functions are not necessarily identical in the different processors.
+
+One might ask about using such analog models, maybe high order nets, to "solve" NP-hard problems in polynomial time. We introduce a nondeterministic model and show that the equality p = np is unlikely in the nets model.
+
+The models used here have a weak property of "robustness" to noise and to implementation error, in the sense that small enough changes in the network would not affect the computation. The robustness includes changes in the precise form of the activation function, in the weights of the network, and even an error in the update. In classical models of (digital) computation, this type of robustness can not even be properly defined.
+
+A Previous Related Result In our work [20], we showed that if one restricts attention to nets all whose interconnection weights are rational numbers, which we call rational nets, then one obtains a model of computation that is polynomially related to Turing Machines. More precisely, given any multi-tape Turing Machine, one can simulate it in real time by some network with rational weights, and of course the converse simulation in polynomial time is obvious. Here we are interested in the case when weights are arbitrary real numbers. (It turns out that, as far as the results given here, the existence of just one irrational weight is all that is needed.)
+
+1.2 The Model The model we work with is that described by an iteration equation such as (1). For notational simplicity, we often summarize this equation, writing "x+(t)" instead of "x(t+1)" and then dropping arguments t; we also write this in vector form, as
+
+x+ = oe(Ax + Bu + c) (3) where x is now a vector of size N = number of processors, u is a vector of size M = number of inputs, c is an N -vector, and A and B are, respectively, real matrices of sizes N \Theta  N and N \Theta  M . (Now oe denotes application of oe into each coordinate of x.) Of course, one can drop the vector c from this description at the cost of adding a coordinate x0 j 1, but it is often useful to have c explicitly, and this allows us to take initial states to be x = 0, which corresponds to the intuitive idea that the system is at rest before the first input appears.
+
+As part of the description, we assume that we have singled out a subset of the N processors, say xi1 ; : : : ; xip; these are the p output processors, and they are used to communicate the outputs of the network to the environment. Thus a net is specified by the data (A; B; c) together with a subset of its nodes.
+
+In our further development, both input and output channels will be forced to carry only binary data. Input and output are streams, that is, one input letter is transferred at each time (via M binary lines) and one output letter is produced at a time (and appears in the output via p binary lines). As opposed to the I/O, the computations inside the network will in general involve continuous real values.
+
+We call a system defined by equations such as (3) simply a network or processor network . In the neural network literature, these are called recurrent first-order neural nets. We show later that considering higher-order nets, those in which multiplications of activations and/or inputs are
+
+3
+
+allowed, does not result in any gain in computational capabilities (up to a polynomial increase in time).
+
+The Finite Structure We should emphasize from the outset that our networks are built up of finitely many processors, whose number does not increase with the length of the input. There is a small number of input channels (just two in our main result), into which inputs get presented sequentially. We assume that the structure of the network, including the values of the interconnection weights, does not change in time but rather remains constant. What changes in time are the activation values, or outputs of each processor, which are used in the next iteration. (A synchronous update model is used.) In this sense our model is very "uniform" in contrast with certain models used in the past, including those used in [9] or in the cellular automata literature, which allow the number of units to increase over time and often even the structure to change depending on the length of inputs being presented.
+
+The Meaning of (Non-Computable) Real Weights One may ask about the meaning of real weights. In response, we recall that our intention is to model systems in which certain real numbers --corresponding to values of resistances, capacitances, physical constants, and so forth-- may not be directly measurable, indeed may not even be computable real numbers, but they affect the "macroscopic" behavior of the system. For instance, imagine a spring/mass system. The dynamical behavior of this system is influenced by several real valued constants, such as stiffness and friction coefficients. On any finite time interval, one could replace these constants by rational numbers, and the same qualitative behavior is observed, but the long-term characteristics of the system depend on the true values. We take this use of real numbers as a basic feature of analog computation. (Another characteristic would be the use of differential as opposed to difference equations, but technical difficulties make that further study harder, and we will defer it to future work.)
+
+What is interesting is to find a class of such systems which on the one hand is rich enough to exhibit behavior that is not captured by digital computation, while still being amenable to useful theoretical analysis, and in particular so that the imposition of resource constraints results in nontrivial reduction of computational power. That this is in accordance with models currently used in neural net studies, is especially attractive.
+
+1.3 Previous work Many authors have reported successful applications when using neural networks for various computational tasks, including classification and optimization problems. Special purpose analog chips are being built to implement these solutions directly in hardware; see for instance [1], [6]. However, very little work has been done in the direction of exploring the ultimate capabilities of such devices from a theoretical standpoint. Part of the problem is that, much interesting work notwithstanding, analog computation is hard to model, as difficult questions about precision of data and readout of results are immediately encountered --see for instance [21], and the many references there.
+
+With the constraint of an unchanging structure, it is easy to see that classical McCullochPitts--that is, binary--neurons would have no more power than finite automata, which is not an interesting situation from a theoretical complexity point of view. Therefore, and also because this
+
+4
+
+is what is done in practical applications of neural nets, and because it provides a closer analogy to biological systems, we take our neurons to have a graded, analog, response. For mathematical tractability, we pick this response function to be the saturation function oe defined in Equation (2). This is a "sigmoidal" nonlinearity; one could also develop a theory using instead of oe a differentiable function such as
+
+1=(1 + e\Gamma x) ;
+
+but this presents technical difficulties which we prefer to avoid in this presentation. We show in Section 8 that sigmoidal networks are not more powerful, when considering the discrete inputoutput convention, than networks with the saturated-linear function. (One may ask about the capabilities of sigmoidal networks with specific activation functions such as the above. One step in understanding this issue, for first order nets, was taken in [11]. On the other hand, if high-order nets are allowed, such sigmoidal nets can be proved to have the same power as the ones considered in this paper.)
+
+It is important to note that graded responses, as opposed to a threshold-binary output, are more reasonable in models of computing devices, as it is not reasonable to assume that physical devices can discern clearly two values which are arbitrarily close. This continuity in behavior is a basic characteristic of our model.
+
+In the paper [22], the author studies a class of machines with just linear activation functions, and shows that this class is at least as powerful as any Turing Machine (and clearly has superTuring capabilities as well). It is essential in that model, however, that the number of "neurons" be allowed to be infinite --as a matter of fact, in [22] the number of such units is even uncountable-- as the construction relies on using different neurons to encode different possible tape configurations in Turing Machines.
+
+The work closest to ours seems to be that on real-number-based computation started by Blum, Shub and Smale (see e.g. [4]); we believe that our setup is far simpler, and is much more appropriate if one is interested in studying neural networks or distributed processor environments. In the related previous paper [13], there were different models for each input size, the model allowed for no loops, and the emphasis was on comparisons with similar models made up of binary processors.
+
+The remainder of this paper is organized as follows: Section 2 includes the basic definitions of networks and circuits, and states the main theorem regarding the relationships between these two models. Sections 3 and 4 contain the proof of this theorem: Section 3 shows that circuit (F (n)) `net (Poly(F (n))), and section 4 proves that net (F (n)) `circuit (Poly(F (n))). In Section 5, we show the equivalence between networks and threshold circuits. As Boolean and threshold circuits are polynomially equivalent, this proof does not add any conceptually new ideas to those in previous sections. Nonetheless, the direct connection and simulation may shed insight when a finer comparison is desired. Furthermore, the proof techniques differ in the two proofs. Section 6 states some corollaries for neural networks which follow from the above relation with circuits. We also define there a notion of nondeterministic network. In section 7, we briefly compare our model to the Blum, Shub, and Smale model of computation over the reals. In section 8, we show that our model does not gain power if one lets each neuron compute a polynomial function --rather than just affine combinations-- of the activations of all the neurons and the external inputs, or by allowing more general activation functions than the piecewise linear one. We conclude in section 9 with a discussion on analog and non-Turing computation.
+
+We now turn to precise definitions.
+
+5
+
+2 Basic Definitions As we discussed above, we consider synchronous networks which can be represented as dynamical systems whose state at each instant is a real vector x(t) 2 IRN . The ith coordinate of this vector represents the activation value of the ith processor at time t. In matrix form, the equations are as in (3), for suitable matrices A; B and vector c.
+
+Given a system of equations such as (3), an initial state x(1), and an infinite input sequence
+
+u = u(1); u(2); : : : ; we can define iteratively the state x(t) at time t, for each integer t * 1, as the value obtained by recursively solving the equations. This gives rise, in turn, to a sequence of output values, by restricting attention to the output processors; we refer to this sequence as the "output produced by the input u" starting from the given initial state.
+
+2.1 Recognizing Languages To define what we mean by a net recognizing a language
+
+L ` f0; 1g+ ; we must first define a formal network, a network which adheres to a rigid encoding of its input and output. We proceed as in [20] and define formal nets with two binary input lines. The first of these is a data line, and it is used to carry a binary input signal; when no signal is present, it defaults to zero. The second is the validation line, and it indicates when the data line is active; it takes the value "1" while the input is present there and "0" thereafter. We use "D" and "V " to denote the contents of these two lines, respectively, so
+
+u(t) = (D(t); V (t)) 2 f0; 1g2 for each t. We always take the initial state x(1) to be zero and to be an equilibrium state, that is,
+
+oe(A0 + B0 + c) = 0 : We assume that there are two output processors, which also take the role of data and validation lines and are denoted Od(t); Ov(t) respectively.
+
+(The convention of using two input lines allows us to have all external signals be binary; of course many other conventions are possible and would give rise to the same results, for instance, one could use a three-valued input, say with values f\Gamma 1; 0; 1g, where "0" indicates that no signal is present, and \Sigma 1 are the two possible binary input values.)
+
+We now encode each word
+
+ff = ff1 \Delta  \Delta  \Delta  ffk 2 f0; 1g+
+
+as follows. Let
+
+uff(t) = (Vff(t); Dff(t)) ; t = 1; : : : ;
+
+where
+
+Vff(t) = ( 1 if t = 1; : : :; k0 otherwise ;
+
+6
+
+and
+
+Dff(t) = ( ffk if t = 1; : : : ; k0 otherwise :
+
+Given a formal net N , with two inputs as above, we say that a word ff is classified in time o/ , if the following property holds: the output sequence
+
+y(t) = (Od(t); Ov(t)) produced by uff when starting from x(1) = 0 has the form
+
+Od = 0 \Delta  \Delta  \Delta  0-- -z ""
+
+o/\Gamma 1
+
+jff000 \Delta  \Delta  \Delta  ; Ov = 0 \Delta  \Delta  \Delta  0-- -z ""
+
+o/\Gamma 1
+
+1000 \Delta  \Delta  \Delta  ;
+
+where jff = 0 or 1.
+
+Let T : IN ! IN be a function on natural numbers. We say that the language L ` f0; 1g+ is recognized in time T by the formal net N provided that each word ff 2 f0; 1g+ is classified in time o/ ^ T (jffj), and jff equals 1 when ff 2 L, and jff equals 0 otherwise.
+
+2.2 Circuit Families We briefly recall some of the basic definitions of non-uniform families of circuits. A Boolean circuit is a directed acyclic graph. Its nodes of in-degree 0 are called input nodes, while the rest are called gates and are labeled by one of the Boolean functions AND, OR, or NOT (the first two seen as functions of many variables, the last one as a unary function). One of the nodes, which has no outgoing edges, is designated as the output node. The size of the circuit is the total number of gates. Adding if necessary extra gates, we assume that nodes are arranged into levels 0; 1; : : : ; d, where the input nodes are at level zero, the output node is at level d, and each node only has incoming edges from the previous level. The depth of the circuit is d, and its width is the maximum size of each level. A gate computes the corresponding Boolean function of the values from the previous level, and the value obtained is considered as an input to be used by the successive level; in this fashion each circuit computes a Boolean function of the inputs.
+
+A family of circuits C is a set of circuits
+
+fcn; n 2 INg : These have sizes SC(n), depth DC(n), and width WC(n), n = 1; 2; : : :, which are assumed to be monotone nondecreasing functions. If L ` f0; 1g+, we say that the language L is computed by the family C if the characteristic function of
+
+L "f0; 1gn is computed by cn, for each n 2 IN.
+
+The qualifier "nonuniform" serves as a reminder that there is no requirement that circuit families be recursively described. It is this lack of classical computability that makes circuits a possible model of resource-bounded "computing," as emphasized in [16]. We will show that recurrent neural networks, although more "uniform" in the sense that they have an unchanging physical structure, share exactly the same power.
+
+If L is recognized by the formal net N in time T , we write OEN = L and TN = T . If L is computed by the family of circuits C, we write OEC = L. We are interested in comparing the functions TN and SC for formal nets and circuits so that OEN = OEC.
+
+7
+
+2.3 Statement Of Result Recall that net (T (n)) is the class of languages recognized by formal networks (with real weights) in time T (n) and that circuit (S(n)) is the class of languages recognized by (non-uniform) families of circuits of size S(n).
+
+Theorem 1 Let F be so that F (n) * n. Then, net (F (n)) `circuit (Poly(F (n))), and circuit (F (n)) `net (Poly(F (n))).
+
+More precisely, we prove the following two facts. For each function F (n) * n: ffl circuit (F (n)) ` net (nF 2(n)). ffl net (F (n)) ` circuit (F 3(n)).
+
+3 Circuit Families Are Simulated By Networks We start by reducing circuit families to networks. The proof will construct a fixed, "universal" net, having roughly N = 1000 processors, which, through the setting of a particular real weight which encodes an entire circuit family, can simulate that family.
+
+Theorem 2 There exists a positive integer N such that the following property holds: For each circuit family C of size SC(n) there exists an N -processor formal network N = N (C) so that OEN = OEC and TN (n) = O(n S2C(n)).
+
+The proof is provided in the remainder of this section.
+
+3.1 The circuit Encoding Given a circuit c--with size s, width w, and wi gates in the ith level--we encode it as a finite sequence over the alphabet f0; 2; 4; 6g, as follows:
+
+ffl The encoding of each level i starts with the letter 6. Levels are encoded successively, starting
+
+with the bottom level and ending with the top one.
+
+ffl At each level, gates are encoded successively. The encoding of a gate g consists of three
+
+parts--a starting symbol, a 2-digit code for the gate type, and a code to indicate which gate feeds into it:
+
+- It starts with the letter 0. - A two digit sequence f42; 44; 22g denotes the type of the gate, fAND, OR, NOTg respectively.
+
+- If gate g is in level i, then the input to g is represented as a sequence in f2; 4gwi\Gamma 1, such
+
+that the jth position in the sequence is 4 if and only if the jth gate of the (i \Gamma  1)th level feeds into gate g.
+
+The encoding of a gate g in level i is of length (wi\Gamma 1 + 3). The length of the encoding of a circuit c is l(c) j jen(c)j = O(sw).
+
+8
+
+`j'i
+
+`j'i`j'i`j'i
+
+6
+
+\Gamma \Gamma 
+
+\Gamma \Gamma ` AA AAK \Delta \Delta 
+
+\Delta \Delta * SS SSo
+
+ZZ ZZ Z""
+
+@@ @@I
+
+ZZ ZZ""6 aeae
+
+aeae?
+
+I3 Or I2I1
+
+Or
+
+NotAnd
+
+Figure 1: Circuit c1 Example 3.1 The circuit c1 in Figure 1 is encoded as
+
+en[c1] = 6 042444-- -z ""
+
+g1
+
+044424-- -z ""
+
+g2
+
+022242-- -z ""
+
+g3
+
+6 044444-- -z ""
+
+g4
+
+:
+
+For instance, the NOT gate corresponds to the subsequence "022242": It starts with the letter 0, followed by the two digits "22," denoting that the gate is of type NOT, and ends with "242," which indicates that only the second input feeds into the gate. 2
+
+We encode a non-uniform family of circuits, C, of size S(n) as an infinite sequence
+
+e(C) = 8 en[c1] 8 en[c2] 8 en[c3] \Delta  \Delta  \Delta  ; (4) where en[ci] is the encoding of ci in the reversed order.
+
+Let b be a natural number, and r = r1r2 \Delta  \Delta  \Delta  a finite or infinite sequence of natural numbers smaller than b. The interpretation of the sequence r in base b is the number
+
+rjb j
+
+1X
+
+i=1
+
+ri bi :
+
+Generally, two different sequences may result in the same encoding. For instance, both r = 0999 \Delta  \Delta  \Delta  and r = 1000 \Delta  \Delta  \Delta  provide rj10 = 0:1 . However, restricted to the sequences we will consider, the encoding is one-to-one.
+
+We can interpret formula (4) in base 9. We denote this representation of the family of circuits C as ^C, ^
+
+C = 8 en[c1] 8 en[c2] 8 en[c3] \Delta  \Delta  \Delta  j9 : (5)
+
+Let ci be the ith circuit in the family. We denote by cen[ci], the encoding en[ci] interpreted in base 9.
+
+3.2 Cantor Like Set Encoding A number which encodes a family of circuits, or one which is a suffix of such an encoding, is a number between 0 and 1. However, not every number in the range [0; 1] can appear in this manner. If the first digit to the right of the decimal point is 0, then the value of the encoding ranges in [0; 19]; if it is 2, the value ranges in [ 29; 39], and so forth. The number cannot lie in any of the ranges
+
+9
+
+Figure 2: Values of the circuit encoding [ 2i\Gamma 19 ; 2i9 ], for i = 1; 2; 3; 4. The second digit after the decimal point decides the possible range relative to the currently candidate range; see Figure 2.
+
+In summary, not every value in [0; 1] appears. The set of possible values is not continuous and has "holes". Such a set of values "with holes" is a Cantor set. Its self-similar structure means that bit (base 9) shifts preserve the "holes."
+
+The advantage of this approach is that there is never a need to distinguish among two very close numbers in order to read the desired circuit out of the encoding; the circuit can be then retrieved with finite-precision operations employing a finite number of neurons.
+
+3.3 A Circuit Retrieval Lemma 3.2 For each (non-uniform) family of circuits C there exists a 16-processor network NR(C) with one input line such that, starting from the zero initial state and given the input signal
+
+u(1) = 1 1 \Delta  \Delta  \Delta  1-- -z ""
+
+n
+
+0 0 \Delta  \Delta  \Delta j2 = 1 \Gamma  2\Gamma n; u(t) = 0 for t ? 1 ;
+
+NR(C) outputs
+
+xr = 0 0 0 \Delta  \Delta  \Delta  \Delta  \Delta  \Delta  0-- -z ""
+
+2n+2 Pni=1 l(ci)+4 c
+
+en[cn] 0 0 0 \Delta  \Delta  \Delta  :
+
+Proof. Let \Sigma  = f0; 2; 4; 6; 8g. Denote by C9 the "Cantor 9-set," which consists of all those real numbers q which admit an expansion of the form
+
+q =
+
+1X
+
+i=1
+
+ffi
+
+9i (6)
+
+with each ffi 2 \Sigma . Let \Lambda  : IR ! [0; 1] be the function
+
+\Lambda [x] := 8?!?:
+
+0 if x ! 0 9x \Gamma  b9xc if 0 ^ x ^ 1 1 if x ? 1 :
+
+(7)
+
+Let \Xi  : IR ! [0; 1] be the function
+
+\Xi [x] := 8?!?:
+
+0 if x ! 0 2b 9x2 c if 0 ^ x ^ 1 1 if x ? 1 :
+
+(8)
+
+Note that, for each
+
+q =
+
+1X
+
+i=1
+
+ffi=9i 2 C9 ;
+
+we may think of \Xi [q] as the "select left" operation, since
+
+\Xi [q] = ff1 ;
+
+10
+
+and of \Lambda [q] as the "shift left" operation, since
+
+\Lambda [q] =
+
+1X
+
+i=1
+
+ffi+1=9i 2 C9 :
+
+For each i * 0, q 2 C9,
+
+\Xi [\Lambda i[q]] = ffi+1 :
+
+The following procedure summarizes the task to be performed by the network constructed below, which in turn satisfies the requirements of the lemma.
+
+Procedure Retrieval( ^C; n) Variables counter, y, z Begin
+
+counter  0, y  0, z  ^C, While counter ! n
+
+Parbegin
+
+z  \Lambda [z] if \Xi [z] = 8 then increment counter Parend, While \Xi [z] ! 8
+
+Parbegin
+
+z  \Lambda [z] y  19 (y + \Xi [z]) Parend, Return(y) End
+
+The functions \Lambda  and \Xi  can not be programmed within the neural network model due to their discontinuity. However, we can program the functions ~\Lambda ; ~\Xi , which coincide with \Lambda ; \Xi  respectively on C9:
+
+~\Lambda [q] =
+
+8X
+
+j=0
+
+(\Gamma 1)joe(9q \Gamma  j) ; (9)
+
+and
+
+~\Xi [q] = 2
+
+3X
+
+j=0
+
+oe(9q \Gamma  (2j + 1)) : (10)
+
+11
+
+0 1
+
+0 2/9 4/9 6/9 8/9 1 Figure 2: the function ~\Lambda [x].
+
+0 2 4 6 8
+
+1/9 2/9 3/9 4/9 5/9 6/9 7/9 8/9 Figure 3: the function ~\Xi [x]. The retrieval procedure is, then, achieved by the following network:
+
+x+i = oe(9x10 \Gamma  i) i = 0; : : :; 8 x+9 = oe(2u) x+10 = oe( ^Cx9 + x0 \Gamma  x1 + x2 \Gamma  x3 + x4 \Gamma  x5 + x6 \Gamma  x7 + x8)
+
+x+11 = oe( 19x12 + 29 (x1 + x3 + x5 + x7) \Gamma  2x13)
+
+12
+
+x+12 = oe(x11) x+13 = oe(u + x14 + x15) x+14 = oe(2x13 + x7 \Gamma  2) x+15 = oe(x13 \Gamma  x7) x+16 = oe(x12 + x7 \Gamma  1) :
+
+If the input u arrives at time 1, then x10(2k + 3) = ~\Lambda k[ ^C] (because of equation (9)). Processors x13; x14; x15 serve to implement the counter, and processor x16 is the output processor. This network satisfies the requirements of the lemma.
+
+3.4 Circuit Simulation By A Network Let ff 2 f0; 1gn be a binary sequence. Denote by en[ff] the sequence 2 f2; 4gn that substitutes (2ffi + 2) for each ffi, and by cen[ff] the interpretation of en[ff] in base 9, that is, en[ff]j9. We next construct a "universal net" for interpreting circuits.
+
+Lemma 3.3 There exists a network Ns, such that for each circuit c and binary sequence ff, starting from the zero initial state and applying the input signal
+
+u1 = cen[c] 0 0 \Delta  \Delta  \Delta  u2 = cen[ff] 0 0 \Delta  \Delta  \Delta  ; Ns outputs
+
+x0 = 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+T
+
+y 0 0 \Delta  \Delta  \Delta  xv = 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+T
+
+1 0 0 \Delta  \Delta  \Delta  ;
+
+where y is the response of circuit c on the input ff, and T = O(l(c) + jffj). Proof. It is easy to verify that, given any circuit, there is a three-tape Turing Machine which can simulate the given circuit in time O(l(c) + jffj). This Turing Machine would employ its tapes to store the circuit encoding, the input and output encoding, and the current level's calculation, respectively. Now we can simulate this machine by a net. Indeed, we proved in ([20]) that if M is a k-tape Turing Machine with s states which computes in time T a function f on binary input strings, then there exists a rational network N , which consists of
+
+9ks + s + 28k + 2 processors, that computes the same function f in time O(T ). Closer counting shows that less than 1000 processors suffice.
+
+Remark 3.4 If the lemma would only require an estimate of a polynomial number of processors, as opposed to the more precise estimate that we obtain, the proof would have been immediate from the consideration of the circuit value problem (CVP). This is the problem of recognizing the set of all pairs !x; y?, where x 2 f0; 1g+, and y encodes a circuit with jxj input lines which outputs 1 on input x. It is known that CVP 2 P ([3] volume I, pg 110). 2
+
+13
+
+3.5 Proof: Circuit Families Are Simulated By Networks Proof of Theorem 2. Let C be a circuit family. We construct the required formal network as a composition of the following three networks:
+
+ffl An input network, NI , which receives the input
+
+u1 = ff 0 0 \Delta  \Delta  \Delta  u2 = 1 1 \Delta  \Delta  \Delta  1-- -z ""
+
+jffj
+
+0 0 \Delta  \Delta  \Delta  ;
+
+and computes cen[ff] and u2j2, for each ff 2 f0; 1g+. This network is trivial to implement. ffl A retrieval network, NR(c), as described in Lemma 3.2, which receives u2j2 from NI , and
+
+computes cen[cjffj]. (Note that during the encoding operation, network NI produces an output of zero, and NR(c) remains in its initial state 0.)
+
+ffl A simulation network, NS, as stated in Lemma 3.3, which receives cen[cjffj] and cen[ffj, and
+
+computes
+
+x0 = 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+T
+
+OEc(ff) 0 0 \Delta  \Delta  \Delta  xv = 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+T
+
+1 0 0 \Delta  \Delta  \Delta  :
+
+Notice that out of the above three networks, only NR depends on the specific family of circuits C. Moreover, all weights can be taken to be rational numbers, except for the one weight that encodes the entire circuit family.
+
+The time complexity to compute the response of C to the input ff is dominated by that of retrieving the circuit description. Thus, the complexity is of order
+
+T = O 0@
+
+jffjX
+
+i=1
+
+l(ci)1A :
+
+We remarked that the length of the encoding l(ci) is of order O(WC(i)SC(i)) = O(S2C(i)). Since SC(i) ^ SC(i + 1) for i = 1; 2; : : : , we achieve the claimed bound T = O(jffj S2C(jffj)).
+
+Remark 3.5 In case of bounded fan-in, the "standard encoding" of circuit cn is of length l(cn) = O(SC(n) log(SC(n))). The total running time of the algorithm is then O(n SC(n) log(SC(n))). 2
+
+4 Networks Are Simulated By Circuit Families We next state the reverse simulation, of nets by nonuniform families of circuits. Theorem 3 Let N be a formal network that computes in time T : IN ! IN. There exists a nonuniform family of circuits C(N ) of size O(T 3), depth O(T log(T )), and width O(T 2), that accepts the same language as N does.
+
+The proof is given in the next two subsections. In the first part, we replace a single formal network by a family of formal networks with small rational weights. (This is unrelated to the standard fact for threshold gates that weights can be taken to have n log n bits.) In the second part, we simulate such a family of formal networks by circuits.
+
+14
+
+4.1 Linear Precision Suffices Define a processor to be a designated output processor if its activation value is used as an output of the network (i.e. it is an output processor) and is not fed into any other processor. A formal network, for which its two output processors are designated, is called an output designated network. Its processors, which are not the designated output processors, are called internal processors.
+
+For the next result, we introduce the notion of a q-truncation net. This is a processor network in which the update equations take the form
+
+x+i = q-Truncation [oe(
+
+NX
+
+j=1
+
+aijxj +
+
+MX
+
+j=1
+
+bijuj + ci)] ;
+
+where q-Truncation means the operation of truncating after q bits. Lemma 4.1 Let N be an output designated network. If N computes in time T , there exists a family of T (n)-Truncation output designated networks N1(n) such that
+
+ffl For each n, N1(n) has the same number of processors and input and output channels as N
+
+does.
+
+ffl The weights feeding into the internal processors of N1(n) are like those of N , but truncated
+
+after O(T (n)) bits.
+
+ffl For each designated output processor in N , if this processor computes x+i = oe(f ), where f is
+
+a linear function of processors and inputs, then the respective processor in N1(n) computes oe(2 ~f \Gamma  :5), where ~f is the same as the linear function f but applied instead to the processors of N1(n) and with weights truncated at O(T (n)) bits.
+
+ffl The respective output processors of N and N1(n) have the same activation values at all times
+
+t ^ T (n).
+
+Proof. We first measure the difference (error) between the activations of the corresponding internal processors of N1(n) and N at time t ^ T (n). This calculation is analogous to that of the chop error in floating point computation, [2].
+
+We use the following notations:
+
+- N is the number of processors, M is the number of input lines,
+
+L j N + M + 1. - W 0 is the largest absolute value of the weights of N , W j W 0 + 1. - xi(t) is the value of processor i of network N at time t. - ffiw 2 (0; 1) and ffip ? 0 are the truncation errors at weights and processors,
+
+respectively. - fflt ? 0 is the largest accumulated error at time t in processors of N1(n). - u 2 f0; 1gM is the input to both N and N1(n). (u(t) = 0M for t ? n.) - aij, bij, and ci are the weights influencing processor i of network N . - ~xi(t), ~aij, ~bij, and ~ci are the respective activation values of processors, and
+
+weights of N1(n).
+
+15
+
+Network N1(n) computes at each step
+
+~x+i = q-Truncation [oe(
+
+NX
+
+j=1
+
+~aij ~xj +
+
+MX
+
+i=1
+
+~bijuj + ~ci)] :
+
+We assume by induction on t that for all internal processors i; j,
+
+j ~xi(t) \Gamma  xi(t)j ^ fflt j~aij(t) \Gamma  aij(t)j ^ ffiw
+
+j~bij(t) \Gamma  bij(t)j ^ ffiw ; and
+
+j ~ci(t) \Gamma  ci(t)j ^ ffiw :
+
+Using the global Lipschitz property joe(a) \Gamma  oe(b)j ^ ja \Gamma  bj, it follows that
+
+fflt ^ N (W 0 + ffiw)fflt\Gamma 1 + (N + M + 1)ffiw + ffip ^ LW fflt\Gamma 1 + Lffiw + ffip : Therefore,
+
+fflt ^
+
+t\Gamma 1X
+
+i=0
+
+(LW )i(Lffiw + ffip) ^ (LW )t(Lffiw + ffip) :
+
+We now analyze the behavior of the output processors. We need to prove that oe(2 ~f \Gamma  :5) = 0; 1 when oe(f ) = 0; 1 respectively. That is,
+
+f ^ 0 =) ~f ! 14 and
+
+f * 1 =) ~f ? 34 :
+
+This happens if jf \Gamma  ~f j ! 14 . Arguing as earlier, the condition fflt ! 14 suffices. This is translated into the requirement
+
+(Lffiw + ffip) ^ 14 (LW )\Gamma t :
+
+If both ffiw and ffip are bounded by 18 (LW )\Gamma (t\Gamma 1) , this inequality holds. This happens when the weights and the processor activations are truncated after O(t log(LW )) bits. As L and W are constants, we conclude as desired that a sufficient truncation for a computation of length T is O(T ).
+
+4.2 The Network Simulation by a Circuit Lemma 4.2 Let N1 be a family of T (n)-Truncation output designated networks, where all networks N1(n) consist of N processors and the weights are all rational numbers with O(T ) bits. Then, there exists a circuit family C of size O(T 3), depth O(T log(T )), and width O(T 2), so that cn accepts the same language as N1(n) does on f0; 1gn.
+
+Proof. We sketch the construction of the circuit cn which corresponds to the T (n)-Truncation output designated net N1(n).
+
+The network N1(n) has two input lines: data and validation, where the validation line sees n consecutive 1's followed by 0's. We think of the n data bits on the data line which appear
+
+16
+
+simultaneously with the 1's in the validation line, as data input of size n. These n bits are fed simultaneously into cn via n input nodes.
+
+To simulate the sequential input in N1(n), we construct an input-subcircuit which preserves the input as it is to be released one bit at a time in later times of the computation. The input subcircuit is of size nDC(n).
+
+Let
+
+p; p = 1; : : : ; N
+
+be a processor of N1(n). We associate with each processor p a subcircuit sc(p). Each processor p 2 N1(n) computes a truncated sum of up to N + 2 numbers, N of which are multiplications of two T -bit numbers. Hardwiring the weights, we can say that each processor computes a sum of (T N + 2) (2T )-bit numbers. Using the carry-look-ahead method, [19], the summation can be computed via a subcircuit of depth O(log(T N )), width O(T 2N ), and size O(T 2N ). (This depth is of the same order as the lower bound of similar tasks, see [5], [7].)
+
+As for the saturation, one gate, pu, is sufficient for the integer part. As only O(T ) bits are preserved, the activation of each processor can be represented in binary by the unit gate, pu, and the most significant gates
+
+pi; i = 1; : : : O(T )
+
+after the operation
+
+AND (pi; :(pu)); i = 1; : : :O(T ) :
+
+Let sc(p0) be a subcircuit of largest depth. Pad the other sc(p)'s with "demi gates" (e.g. an AND gate of a single input), so that all sc(p)'s are of equal depth. The output of circuit sc(p) is called the activation of sc(p).
+
+We place the N subcircuits
+
+sc(p); p = 1; : : : ; N
+
+to compute in parallel. We call this subcircuit a layer. A layer corresponds to one step in the computation of N1(n). As N1(n) computes in time T (n), T (n) layers are connected sequentially. Each layer i receives the ith input bit from the input-subcircuit, and the N activation values of its preceding layer (except for layer 1, which receives input only). This main subarchitecture is of size O(T 3), depth O(T log(T )), and width O(T 2), where T = T (n).
+
+As N1(n) may compute the response to different strings of size n in different times of order O(T ), we construct an output-subcircuit which forces the response to every string of size n to appear at the top of the circuit.
+
+For each layer i = 1; : : : ; T , we apply the AND function to the output of the subcircuits sc(p1); sc(p2) ; where p1; p2 are the output processors of N1(n). We transfer these values and apply the OR functions to them. The resulting value is the output of the circuit. When OR is applied at each layer, only DC(n) gates are needed for this subcircuit.
+
+The resources of the total circuit are dominated by those of the main subarchitecture.
+
+The proof of Theorem 3 follows immediately from Lemma 4.1 and Lemma 4.2.
+
+5 Real Networks Versus Threshold Circuits A threshold circuit is defined similarly to a Boolean circuit, but the function computed by each node is now a linear threshold function rather than one of the Boolean functions (And, Or, Not).
+
+17
+
+Each gate i computes
+
+fi : IBni 7! IB ;
+
+thus giving rise to the activation updates
+
+xi(t + 1) = fi(xi1; xi2; : : :; xin) j H 0@
+
+niX
+
+j=1
+
+aijxij (t) + ci1A : (11)
+
+Here xij are the activations of the processors feeding into it, and the aij and ci are integer constants associated to the gate. Without loss of generality, one may assume that these constants can each be expressed in binary with at most ni log(ni) bits; see [15]. If xi is on the bottom level, its input is the external input. The function H is the threshold function
+
+H(z) = ( 1 z * 00 z ! 0 : (12) The relationships between threshold circuits and Boolean circuits are well studied. (See for example [17].) They are known to be polynomial equivalent in size. We provide here an alternative direct relationship between threshold circuits and real networks, without passing through Boolean circuits.
+
+Statement Of Result Recall that net (T (n)) is the class of languages recognized by formal networks (with real weights) in time T (n) and define T-circuit (S(n)) as the class of languages recognized by (non-uniform) families of threshold circuits of size S(n).
+
+Theorem 4 Let F be so that F (n) * n. Then, net (F (n)) `T-circuit (Poly(F (n))), and Tcircuit (F (n)) `net (Poly(F (n))).
+
+More precisely, we prove the following two facts. For each function F (n) * n: ffl T-circuit (F (n)) ` net (nF 3(n) log(F (n))). ffl net (F (n)) ` T-circuit (F 2(n)).
+
+The first implication is proven similarly to the Boolean circuit case. Each threshold gate is encoded in a Cantor like way, including the description of the weights. We next state the reverse simulation, of nets by nonuniform families of threshold circuits.
+
+Theorem 5 Let N be a formal network that computes in time T : IN ! IN. There exists a nonuniform family of threshold circuits C(N ) of size O(T 2), depth O(T ), and width O(T ), that accepts the same language as N does.
+
+We start with simulating N by the family of T (n)-Truncation output designated networks N1(n) as described in Lemma 4.1. Next, we simulate this family of networks of depth T (n) and size O(T (n)) via a family of threshold circuits of depth 2T (n) and size O(T 2(n)).
+
+Assume N 0 j N1(n) is an m-truncation network for input of size n; N 0 has depth T (n) and m = O(T (n)). Each gate of N 0 computes an addition of N m-bit numbers; then, it applies the oe function to it. Using a technique similar to the one provided in [17] pg 156-157, we show how
+
+18
+
+to simulate each oe gate of N 0 via a threshold circuit of size O(m) and depth 2. We achieve the simulation in two steps: First we add the N numbers and then we simulate the application of the saturation functions.
+
+Simulating a saturated gate in an m-truncation network by a threshold circuit. Step 1: Adding N m-bit numbers. Suppose the numbers are
+
+z1; : : : zN ;
+
+each having m bit representation:
+
+zi = zi1zi2 \Delta  \Delta  \Delta  zim :
+
+The sum of the N m-bit numbers has ^ m + blog N c + 1 bits in the representation. [As the upper bound on the absolute value of the result is N (2m \Gamma  1).] Generally, the sum is
+
+z11 z12 \Delta  \Delta  \Delta  z1m + ...
+
+zN1 zN2 \Delta  \Delta  \Delta  zNm y\Gamma l \Delta  \Delta  \Delta  y\Gamma 1 y0 y1 y2 \Delta  \Delta  \Delta  ym
+
+As the network is an m-truncation network, we only need to compute y0; y1; : : : ym. We show below how to compute yk, k * 1. The circuit for y0 is very similar.
+
+To compute yk, we need to consider only zij for all i and j * k. Look at the sum:
+
+z1k \Delta  \Delta  \Delta  z1m + ...
+
+zNk \Delta  \Delta  \Delta  zNm c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 c0 yk \Delta  \Delta  \Delta  ym
+
+It is easy to verify that
+
+~zk j c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 c0 yk \Delta  \Delta  \Delta  ym =
+
+NX
+
+i=1
+
+mX j=k
+
+(zij2m\Gamma j ) :
+
+To extract from the sum the ykth bit, we build the following circuit:
+
+1. Level 1: For each possible value i of c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 c0 (i = 1 : : : 2l+1), we have a pair of threshold
+
+gates
+
+~yki0 = H(~zk \Gamma  c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 c0 1 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+m\Gamma k
+
+) ; ~yki1 = H(\Gamma ~zk + c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 c0 1 1 1 \Delta  \Delta  \Delta  1-- -z ""
+
+m\Gamma k
+
+) :
+
+If yk = 0, exactly one of each pair is active; if yk = 1, one of the pairs has both gates active and the rest one only. Thus, the yk bit can be computed by counting if more than half of the gates in the first level are active.
+
+2. Level 2: It includes one gate only that computes the desired bit:
+
+yk = H(
+
+2l+1X
+
+i=1
+
+(~yki0 + ~yki1) \Gamma  (2l+1 + 1)) : (13)
+
+19
+
+Step 2: Applying the saturated function. The value of the kth bit is
+
+bk = ( yk c0 = 00 c
+
+0 = 1 :
+
+First, we have to compute c0. We allocate 2l pairs of threshold gates in the first level:
+
+~cki0 = H(~zk \Gamma  c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 1 0 0 \Delta  \Delta  \Delta  0-- -z ""
+
+m+1\Gamma k
+
+) ; ~cki1 = H(\Gamma ~zk + c\Gamma l \Delta  \Delta  \Delta  c\Gamma 1 1 1 1 \Delta  \Delta  \Delta  1-- -z ""
+
+m+1\Gamma k
+
+) :
+
+The majority of these gates is the value of c0:
+
+c0 j
+
+2lX
+
+i=1
+
+(~cki0 + ~cki1) \Gamma  2l :
+
+We change Equation 13 to compute bk directly without computing first yk.
+
+bk = H(
+
+2l+1X
+
+i=1
+
+(~yki0 + ~yki1) \Gamma  (2l+1 + 1) \Gamma  c0) : (14)
+
+The size of the circuit that computes the kth bit is then O(2l), where l = blog N c. We copy this circuit for each of the m bits to simulate one threshold gate. Thus, each oe gate is simulated via a threshold circuit of depth 2 and size O(m). The network itself is hence simulated via N m copies of those. As m = O(T ), and N is considered a constant, the simulating threshold circuit has the size O(T 2), and it doubles the depth of the network N 0.
+
+6 Corollaries Let net-p and net-exp be the classes of languages accepted by formal networks in polynomial time and exponential time, respectively. Let circuit-p and circuit-exp be the classes of languages accepted by families of circuits in polynomial and exponential size, respectively.
+
+Corollary 6.1 net-p = circuit-p and net-exp = circuit-exp . The class circuit-p is often called "P/poly" and coincides with the class of languages recognized by Turing Machine "with advice sequences" in polynomial time. The following corollary states that this class also coincides with the class of languages recognized in polynomial time by Turing Machines that consult oracles, where the oracles are sparse sets. A sparse set S is a set in which for each length n, the number of words in S of length at most n is bounded by some polynomial function. For instance, any tally set, that is, a subset of 1\Lambda , is an example of a sparse set. The class P (S), for a given sparse set S, is the class of all languages computed by Turing machines in polynomial time and using queries from the oracle S.
+
+From [3], volume I, Theorem 5.5, pg 112, and Corollary 6.1, we conclude as follows:
+
+Corollary 6.2
+
+net-p = [S sparse P (S) :
+
+From [3], volume I, Theorem 5.11, pg 122 (originally, [14]), we conclude as follows: Corollary 6.3 net-exp includes all possible binary languages. Furthermore, most Boolean functions require exponential time complexity.
+
+20
+
+Nondeterministic Neural Networks The concept of a nondeterministic circuit family is usually defined by means of an extra input, whose role is that of an oracle. Similarly, we define a nondeterministic network to be a network having an extra binary input line, the Guess line, in addition to the Data and Validation lines. A language L is said to accepted by a nondeterministic formal network N in time B if
+
+L = fff j 9 a guess fl; OEN (ff; fl) = 1; TN (ff; fl) ^ B(jffj)g :
+
+It is easy to see that Corollary (6.1), stated for the deterministic case, holds for the nondeterministic case as well. That is, if we define net-np to be the class of languages accepted by nondeterministic formal networks in polynomial time, and circuit-np to be the class of languages accepted by nondeterministic non-uniform families of circuits of polynomial size, then:
+
+Corollary 6.4 net-np = circuit-np . 2 Since np ` net-np (one may simulate a nondeterministic Turing Machine by a nondeterministic network with rational weights), the equality net-np = net-p implies np ` circuit-p = P/poly. Thus, from [10] we conclude:
+
+Theorem 6 If net-np = net-p then the polynomial hierarchy collapses to \Sigma 2.
+
+The above result says that a theory of computation similar to that which arises in the classical case of Turing machine computation is also possible for our model of analog computation. In particular, even though the two models have very different power, the question of knowing if the verification of solutions to problems is really easier than finding solutions, at the core of modern computational complexity, has a precise corresponding version in our setup, and its solution will be closely related to that of the classical case. Of course, it follows from this that it is quite likely that net-np is strictly more powerful than net-p .
+
+7 Complexity Over The Reals Blum, Shub, and Smale introduced in [4] a powerful model of computation over the real numbers. This model allows one possible formalization of the notion of analog computing. Three main characteristics differentiate our neural network model from the BSS model, namely:
+
+ffl The BSS model allows real-valued inputs, rather than only binary. ffl In the BSS model, values can be compared for exact equality to any particular value, e.g.,
+
+zero. That is, exact precision is available. This is not possible in our model, as discontinuities are not allowed. By appropriate choice of weights, we are able, however, to distinguish, for any fixed ffl ? 0, between any two values x and y so that jy \Gamma  xj ? ffl.
+
+ffl The BSS model allows for an infinite range of values in registers -which correspond to our
+
+"neurons"- whereas our model restricts the possible range of values to an adjustable, but finite, bound.
+
+The BSS model is closely related to the model that is obtained if two types of neurons are available: "Heaviside" neurons that compute linear threshold functions and identity neurons. This model allows for discontinuous branching, as in the BSS model.
+
+21
+
+8 Equivalence of Different Dynamical Systems We show that a large class of different networks and dynamical systems has no more computational power than our neural (first-order) model with real weights. Analogously to Church's thesis of computability (see e.g. [23] p.98), our results suggest the following Thesis of Time-bounded Analog Computing: "Any reasonable analog computer will have no more power (up to polynomial time) than first-order recurrent networks."
+
+We consider dynamical systems -which we will call generalized processor networks- with far less restrictive structure than the recurrent neural network model which was described above.
+
+Let N; M; p be natural numbers. A generalized processor network is a dynamical system D that consists of N processors x1; x2; : : : xN ; and receives its input u1(t); u2(t); : : :uM (t) via M input lines. A subset of the N processors, say xi1; : : : ; xip, is the set of output processors of the system, used to communicate the output of the system to the environment. In vector form, a generalized processor network D updates its processors via the dynamic equation
+
+x+ = f (x; u) ; where x is the current state of the network (a vector), u is an external input (also possibly a vector), and f is a composition of functions:
+
+f =  ffi ss ;
+
+where
+
+ss : IRN+M 7! IRN
+
+is some vector polynomial in N + M variables with real coefficients, and
+
+ : IRN 7! IRN is any vector function which has a bounded range and is locally Lipschitz. (Thus, the composite function f =  ffi ss again satisfies the same properties.)
+
+We also assume, as part of the definition of generalized processor network, that, at least for binary inputs of the type considered in the definition of "formal networks," D outputs "soft" binary information. That is, there exist two constants ff; fi, satisfying ff ! fi and called the decision thresholds, so that each output neuron of D outputs a stream of numbers each of which is either smaller than ff or larger than fi. We interpret the outputs of each output neuron y as a binary value:
+
+binary(y) = ( 0 if y ^ ff1 if y * fi :
+
+In the usual model we studied earlier, the values are always binary, but we allow more generality to show that even if one allows more general analog values, no increase in computational power is attained, at least up to polynomial time.
+
+Remark 8.1 The above assumptions imply that, for each ae ? 0, there exists a constant C, such that, for all x and ~x satisfying that
+
+jx \Gamma  ~xj ! ae and x 2 Range () (the absolute value sign indicates Euclidean norm), the following property holds:
+
+j(x; u) \Gamma  (~x; u)j ^ Cjx \Gamma  ~xj for any binary vector u. A similar property holds for f . 2
+
+22
+
+Let T : IN 7! IN be a function from integers into integers. We say that a generalized processor network D computes in time T if for every input of size n 2 IN, D completes its output in no more than T (n) steps.
+
+A neural network is a special case of a generalized processor network, in which all coordinates of the function  compute the same piecewise linear function oe, and the polynomial ss is a first order polynomial, that is, an affine function.
+
+8.1 Generalized Networks with Bounded Precision Let D be a generalized processor network
+
+D : x+ = (ss(x; u)) as above. Let Q be a positive integer. The Q-truncation of D, denoted
+
+Q-Truncation (D) ; is the network with dynamics defined by
+
+x+ = Q-Truncation [(ss(x; u))] ; where "Q-Truncation" represents the operation of truncating after Q bits. The Q-chop of D is the network with dynamics defined by
+
+x+ = Q-Chop [(ss(x; u))] j Q-Truncation [(~ssQ(x; u))] ; where ~ssQ is the polynomial ss but with coefficients truncated after Q bits.
+
+The next observations insure that round-off errors due to truncation or chopping are not too large.
+
+Lemma 8.2 Assume D computes in time T , with decision thresholds ff; fi. Then, there is a constant c such that the function
+
+q(n) = cT (n)
+
+satisfies the following property. For each positive integer n, let Q = q(n). Then, Q-Truncation(D) computes the same function as D on inputs of length at most n, with decision thresholds
+
+ff0 = ff + fi \Gamma  ff3 and fi0 = fi \Gamma  fi \Gamma  ff3 :
+
+Proof. Let D be a generalized processor network satisfying the above conditions, and let ~D = Qtruncation(D), with Q still to be decided upon. Let ffi be the error due to truncating after Q bits, that is, ffi = c12\Gamma Q for some constant c1. Finally, let fflt be the largest accumulated error in all the processors by time t. The following estimates are obtained using the Lipschitz property of f :
+
+fflo = 0 ffl1 = ffi
+
+fflt = ffi
+
+t\Gamma 1X
+
+i=o
+
+Ci = ffi C
+
+t \Gamma  1
+
+C \Gamma  1 ;
+
+23
+
+where C is the Lipschitz constant of f for ae = 1 (c.f. Remark 8.1). To bound the error with the amount fl = fi\Gamma ff3 , we require
+
+fflt ^ fl :
+
+That is,
+
+ffi ^ fl(C \Gamma  1)Ct \Gamma  1 ^ ~C\Gamma t ;
+
+for some constant ~C. This requirement is met when ffi is the truncation error corresponding to
+
+Q = (log2(( 1c
+
+1
+
+~C))T ;
+
+so we can take q(n) = log2( 1c1 ~C)T (n).
+
+As a corollary of Lemma 4.1, and using an argument exactly as in the proof of Lemma 8.2, we conclude:
+
+Lemma 8.3 Lemma 8.2 holds for the Q-chop network as well.
+
+8.2 Equivalence of Neural and Generalized Networks Definition 8.4 Given a vector function f =  ffi ss as above, we say that f is approximable in time Af (n), if there is a Turing Machine M that computes T (n)-Truncation(f ) in time Af (n) on each input having total bit size n.
+
+Example 8.5 If f =  ffi ss,  is approximable, and ss has rational coefficients, then f is approximable. (As ss is approximable at this case.) 2
+
+Lemma 8.6 Let L(T ) be the class of languages recognized by generalized processor networks in time T , for which the function f is approximable in time Af , and the function T is computable in time M (n). Then, L(T ) is included in the class of languages recognized by Turing Machines in time O(M (n) + T (n)Af (T (n))).
+
+Proof. Assume given a generalized processor network D satisfying the above assumptions. A Turing Machine which approximates it can be built as follows. The machine receives an input string of length n. As a first step, it computes the function T (n), and it estimates the required precision Q = q(n) as in the previous Lemma. Finally, it simulates the generalized processor network step by step, forgetting all information but the first Q required bits. This Turing Machine computes the required function in the stated time.
+
+Corollary 8.7 Let D be a network which computes in polynomial time T , and so that f is approximable is polynomial time. Then the language recognized by D is in P .
+
+Definition 8.8 Given a vector function f =  ffi ss as above, we say that f is non-uniformly F (n)- approximable in time Af (n), if there is a Turing Machine M that computes T (n)-Chop(f) using an advice function (c.f. [3], volume I, pg 99-115) in K[F (n), poly(T (n))].
+
+24
+
+Example 8.9 Assume a generalized processor network D that computes in time T . A polynomial ss with general real coefficients is non-uniformly T (n)-computable: For each input of size n, the machine receives the first O(T (n)) bits of each coefficient as an advice sequence, and then computes the polynomial. 2
+
+From the above results, we may conclude as follows: Theorem 7 Let D be a generalized processor network which computes via a function f =  ffi ss. Assume  is non-uniformly F (n)-approximable in polynomial time. Then there exists a neural network ND which recognizes the same language as D and which does so with at most a polynomial time slowdown. Furthermore, if  is F (n)-approximable in polynomial time and ss involves rational coefficients only, the weights of ND are rational numbers as well.
+
+Corollary 8.10 Adding flexibility to the neural network model does not add power to the model, except for a possible polynomial time speed up. This flexibility includes:
+
+ffl Using a high order polynomial ss rather than an affine function. ffl Using other  functions rather than the saturation we used earlier, including the possibility
+
+of having different functions in different neurons.
+
+ffl Allowing for the output to be "soft binary" rather than pure binary.
+
+Note that networks with high order polynomials have appeared especially in the language recognition literature (see e.g. [8] and references there). We emphasize the relationship between these models: Let N1 be neural network (of any order), which recognizes a language L in polynomial time. Then there is a first order network N2 which recognizes the same language L in polynomial time.
+
+Remark 8.11 The networks that we consider are mildly "robust to noise and to implementation error" in the sense that small enough perturbations in weights or (formulated in a suitable sense) in the sigmoid activation function do not affect the computation, as long as "soft binary" outputs are considered. Given any time T , there is some fflT so that an error of fflT would not affect the computation up to a time T . This is an easy consequence of the continuous dependence of the output on all the data. (A detailed proof involves defining precisely "perturbations of the activation function; we omit the details.) 2
+
+9 Comments on Analog and non-Turing "Computation" In the recent, very popular -and very controversial- book [18], Penrose has argued that the standard model of computing is not appropriate for modeling true biological intelligence. The author argues that physical processes, evolving at a quantum level, may result in computations which cannot be incorporated in Church's Thesis. It is interesting to point out that the work that we report here does allow for such non-Turing power, while keeping track of computational constraints -and thus embedding a possible answer to Penrose's challenge in more classical computer science. Note that Parberry, in [16], also insists that possible non-Turing theories should take account of such constraints, though he suggests a different approach, namely the use of probabilistic computations within the theory of circuit complexity.
+
+25
+
+Finally, we remark that human cognition seems to be clearly based on "subsymbolic" or "analog" components and modes of operation. As pointed out by many authors, in particular in the work of [12], the issue of understanding how macroscopic symbolic behavior arises from such a substrate is one of the most challenging ones in science. Perhaps our work, with its implicit use of infinite precision for internal computations, is not at all relevant to this understanding, because neurons are often taken to be low-precision devices. On the other hand, it is also possible that the precision issue should be understood solely in terms of limitations on observers and more generally interactions with the environment, and in that respect, our model is not deficient, since input and output data are binary.
+
+26
+
+References [1] Alspector J., R.B. Allen, "A neuromorphic VLSI learning system," in Advanced Research in
+
+VLSI: Proceedings of the 1987 Stanford Conference, (P. Loseleben ed.,) MIT Press, Cambridge, MA, 1987: 313-349. [2] Atkinson K.E., An Introduction to Numerical Analysis, Wiley, New York, 1989. [3] Balcazar J.L., J. Diaz, J. Gabarro, Structural Complexity, Springer-Verlag, Berlin, 1988. [4] Blum L., M. Shub, and S. Smale, "On a theory of computation and complexity over the real numbers: NP completeness, recursive functions, and universal machines," Bull. A.M.S. 21(1989): 1-46. [5] Chandra A.K., L. Stockmeyer, U. Vishkin, "Constant depth reducibility," SIAM J. Computing
+
+13(1984): 423-439. [6] Eberhardt S.P., T. Daud, D. A. Kerns, T. X. Brown, and A. P. Thakoor, "Competitive neural
+
+architecture for hardware solution to the assignment problem," Neural Networks 4(1989): 431- 442. [7] Furst M., J.B.Saxe, M. Sipser "Parity, circuits, and the polynomial-time hierarchy," Proc. 22nd
+
+IEEE Symp. Foundations of Comp. Sci., 1981: 260-270. [8] Giles, C. L., C.B. Miller, D. Chen, H.H. Chen, G.Z. Sun and Y.C. Lee, "Learning and Extracting
+
+Finite State Automata with Second-Order Recurrent Neural Networks," it Neural Computation, 4, 1992: 393-405. [9] Hong J.W., "On Connectionist Models," Comm. on Pure and Applied Mathematics 41(1988):
+
+1039-1050. [10] Karp R.M., R. Lipton, "Turing Machines that take advice," Enseign. Math. 28(1982): 191-209. [11] Kilian, J. and H.T. Siegelmann, "On the power of sigmoid neural networks," Proc. Sixth ACM
+
+Workshop on Computational Learning Theory, Santa Cruz, July, 1993. [12] MacLennan B.J., "Continuous symbol systems: The logic of connectionism," in D.S. Levine
+
+and M. Aparicio IV (eds.), Neural Networks for Knowledge Representation and Inference, Lawrence Erlbaum, Hillsdale, NJ, 1992. [13] Maass W., G. Schnitger, and E.D. Sontag, "On the computational power of sigmoid versus
+
+Boolean threshold circuits," Proc. 32nd IEEE Symp. Foundations of Comp. Sci., 1991: 767-776. [14] Muller D.E., "Complexity in electronic switching circuits," IRE Trans. Electronic Comp.
+
+5(1956): 15-19. [15] Muroga, S., Threshold Logic and its Applications, Wiley, New York, 1971. [16] Parberry I., "Knowledge, understanding, and computational complexity," Technical Report
+
+CRPDC-92-2, Center for Research in Parallel and Distributed Computing, Department of Computer Sciences, University of North Texas, Feb. 1992. [17] Parberry, I., The Computational and Learning Complexity of Neural Networks, draft. [18] Penrose R., The Emperor's New Mind, Oxford University Press, Oxford, 1989. [19] Savage J.E. The Complexity of Computing, New Tork, Wiley, 1976. [20] Siegelmann H.T., E.D. Sontag, "On the computational power of neural nets," in Proc. Fifth
+
+ACM Workshop on Computational Learning Theory, Pittsburgh, July 1992: 440-449. [21] Vergis A., K. Steiglitz, B. Dickinson, "The complexity of analog computation," in Math. and
+
+Computers in Simulation 28(1986): 91-113. [22] Wolpert D., "A computationally universal field computer which is purely linear," Los Alamos
+
+National Laboratory report LA-UR-91-2937. [23] Yasuhara, A., Recursive Function Theory and Logic, Academic Press, New York, 1971.
+
+27</pre>
+</body>
+</html>

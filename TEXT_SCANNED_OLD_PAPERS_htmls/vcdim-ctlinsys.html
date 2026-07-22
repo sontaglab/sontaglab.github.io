@@ -1,0 +1,2184 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/vcdim-ctlinsys.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/vcdim-ctlinsys.pdf">pdf</a></ul>
+The text version follows.
+<br>
+<pre>
+
+                            Learning  Complexity  Dimensions
+
+
+                      for  a  Continuous-Time  Control  System
+
+
+
+                    Pirkko Kuusela, Daniel Ocone, and Eduardo D. Sontag
+
+                       Rutgers, The State University of New Jersey, USA
+                                                       Abstract
+
+             This  paper  takes  a  computational  learning  theory  approach  to  a  problem  of
+        linear  systems  identification.   It  is  assumed  that  input  signals  have  only  a  finite
+        number k of frequency components, and systems to be identified have dimension no
+        greater than n.  The main result establishes that the sample complexity needed for
+        identification scales polynomially with n and logarithmically with k.
+             Keywords:  linear systems identification, learning theory, VC dimension
+1      Introduction
+
+
+The problem of systems identification may be seen as an instance of the general question
+of "learning" an unknown function.  Thus, one may ask if techniques from Computational
+Learning Theory ("CLT" in what follows; see for instance [20  ] for a general introduction,
+as  well  as  the  papers  in  the  Special  Issue  [4 ]  of  Systems  and  Control  Letters)  can  be
+used to obtain insight into this central question in control theory.
+     Indeed, Ljung asked precisely this question in a paper presented at a Special Session
+in Learning Theory organized at the 1996 Conference on Decision and Control, see [14  ],
+and, independently, the papers [7 , 8 ] had already provided results along these lines for
+discrete-time  linear  systems  on  finite-window  data.   See  also  [11  ],  [9 ],  and  references
+there, as well as [12  ] for several results for nonlinear systems in discrete time.
+     For continuous-time systems, the situation is complicated by the fact that, even for
+finite-length inputs, learnability is impossible when formulated in the CLT framework;
+this  was  proved  in  [23  ],  and,  alternatively,  can  be  seen  by  applying  the  discrete-time
+results (through sampling) from [7 , 8 ].
+     Thus,  in  this  paper,  we  suppose  that  all  inputs  to  be  used,  in  the  learning  as  well
+as  validation  stages,  belong  to  the  linear  span  of  a  fixed  number  k  of  sinusoidal  basic
+functions.   This  band-limiting  assumption  allows  us  to  obtain  a  precise  result:   the
+sample complexity needed for identification scales polynomially on an upper bound on
+the systems being identified, and logarithmically with k.  This provides a tight analogy
+to  the  discrete  results  previously  obtained,  in  which  k  appeared  as  the  length  of  the
+discrete-time window employed.
+     The reader is referred to [17  ] for results that apply to a class of nonlinear continuous-
+time  systems,  but  which  is  formulated  in  terms  of  learning  derivatives  evaluated  at  a
+particular instant (as opposed to time data).
+     This paper is organized in a top-down fashion.  Definitions and main results are given
+in Section 2 and in Section 3 we state main upper and lower bounds for the complexity
+                                                             1
+
+
+dimensions.   After  that  we  concentrate  on  proving  the  results;  central  techniques  are
+discussed in Section 4 and proofs are in Sections 5 and 6.  An example of a class with
+VC-dimension k is given in Section 7.
+
+
+
+2      Definitions  and  Statements  of  Main  Results
+
+
+In this section, we formulate the problem of system identification as a learning problem
+and illustrate the corresponding learning setting.  We define the systems to be studied
+and,  as  main  results,  we  state  bounds  for  the  number  of  samples  needed  in  order  to
+identify systems in this setting.
+     We  begin  with  a  general  introduction  to  classification  problems.   Assume  that  a
+set  X ,  to  be  called  the  input  space,  is  given  together  with  a  collection  C  of  mappings
+X ! {0, 1}.1  Let W  be the set of all sequences
+
+
+                                        w = (u1 , OE(u1 )), . . ., (us , OE(us ))
+
+
+over all s   1, (u1 , . . ., us ) 2 X s and let OE 2 C.  An identifier is a map _ : W  ! C.  The
+value of _  on a sequence w  above is denoted as _w  instead of _(w).  The "error" of _
+is the probability that _ will misclassify a future sample.  More formally, the error of _
+with respect to a probability measure P  on X , a OE 2 C, and a sequence (u1 , . . ., us ) 2 X s,
+is
+
+
+                          Err  (P, OE, u1 , . . ., us ) := P {u 2 X ;  _w (u) 6= OE(u)}.
+
+
+     The  class  C  is  said  to  be  learnable  if  there  is  some  identifier  _  with  the  following
+property:  For each accuracy  parameter ffl > 0 and confidence  parameter ffi  > 0 there is
+some s so that, for every probability P  and every OE 2 C,
+
+
+                        P s{(u1 , . . ., us ) 2 X s ;  Err (P, OE, u1 , . . ., us ) > ffl} < ffi,
+
+
+where  P s is  the  s-fold  product  of  P .  In  the  learnable  case,  the  function  s(ffl, ffi)  which
+provides the smallest s achieving this bound for any positive ffl and ffi is called the sample
+complexity.   It  can  be  proved  that  learnability  is  equivalent  to  the  finiteness  of  the
+Vapnik-Chervonenkis dimension VC   (C) of the class C, which is a combinatorial quantity
+describing  the  richness  of  the  class  C.  Moreover,  for  learning  algorithms  that  classify
+the observed samples correctly, the sample complexity is bounded by
+                                                ae                  `      '             `    ' oe
+                                                   8VC   (C)           8e       4           2
+                           s(ffl, ffi)   max       ___________log  2   ____   , __ log 2    __    .
+                                                        ffl             ffl     ffl         ffi
+
+
+In addition, there is a similar lower bound for the sample complexity.
+     Classification  may  be  viewed  as  the  problem  of  identifying  systems  with  binary
+outputs.   More  generally,  we  introduce  a  problem  of  identification  for  systems  hav-
+ing bounded outputs ([0, 1]-valued, for technical reasons) via an L1 -error, following [5 ]
+(for similar statements with L2 -error see [2 ]).  Denote by F  a class of mappings from X
+to [0, 1].
+__________________________________________________1
+     The set X is assumed to be either countable or an Euclidean space, and the maps in C are assumed
+to be measurable. In addition, a mild regularity assumption called "permissibility" is needed so that all
+sets appearing below are measurable, for further discussion on the topic see an appendix in [15 ]. In our
+context the measurability assumptions are satisfied.
+
+
+
+                                                             2
+
+
+     By  definition,  an  identifier  is  a  mapping  from  [s2N   (X x [0, 1])    s to  [0, 1]X  .  Such  a
+map takes as data a sequence of labeled samples and produces an hypothesis.  If h is a
+[0, 1]-valued function defined on X  and P  is a probability measure over X x [0, 1],  we
+define the error of h with respect to P  as
+                                                Z
+
+                                   ErP   (h) :=             |h(u) - y|    dP (u, y).
+                                                  Xx[0,1]
+
+
+For ffl > 0 and ffi > 0 we say that an identifier _  (ffl, ffi)-learns in the agnostic sense with
+respect to F  from s examples if, for all distributions P  on X x [0, 1], and all f  in F :
+
+
+                                  P s{w ;  ErP  (_w )    inf  ErP  (f ) + ffl} < ffi.
+                                                        f 2F
+
+
+Similarly, for ffl > 0 the function class F  is said to be ffl-agnostically learnable if there is
+a  function  s0  : (0, 1) ! N  such  that,  for  all  0 < ffi  < 1,  there  is  an  identifier  _  which
+(ffl, ffi)-learns  in  the  above  sense  with  s0  samples.   In  addition,  if  the  identifier  always
+chooses a hypothesis from F , we say that F  is properly ffl-agnostically learnable.
+     For  learning  [0, 1]-valued  functions,  a  sample  complexity  result  may  be  stated  in
+terms of a fat-shattering dimension, which is a generalization of the VC-dimension.  For
+ffl > 0 and ffi > 0 there is an identifier _ that properly (ffl, ffi)-learns in the agnostic sense
+with respect to F  from ([5 ])
+
+                                         `              `                  '          '
+                                     _4__   _6d__     7      336e        7          8
+                                                  ln ___   _________ ln  ___  + ln  __
+                                     ff2    ln  2    ff    ff3 ln 2      ff         ffi
+                                       `      `                      '   '
+                                           1          2  1         1
+                                  =  O    ____  d log   ___ + log  __
+                                          ff2           ff         ffi
+
+
+samples,  where 0 < ff < ffl=4 is chosen so that d = fat ffl=4-ff(F ) is finite.  The quantity
+fat fl(F ) is called the fat-shattering dimension of the class F and it measures the richness
+of the class F  with scale fl.
+     The  sample  complexity  results  show  us  that  the  difficulty  of  system  identification
+in  the  learning  theoretic  setting  can  be  analyzed  by  studying  various  complexity  di-
+mensions,  and  it  is  the  main  focus  of  this  paper.   However,  formal  definitions  of  the
+complexity dimensions are delayed until Section 3.
+
+
+
+2.1      Linear  Systems
+
+
+In the context of learning we discuss continuous-time linear control systems:
+
+
+                                `x = Ax + Bu,       x(0) = x0 ,       y = Cx,                                           (1)
+
+
+where A, B, and C  are n x n, n x m, and p x n real matrices, and the time interval is
+[0,1].  We study sign-observations (see [13  ] for related work in control theory):
+
+
+                                 sign   y(1) = (sign   y1 (1), . . ., sign   yp (1)) T ,
+
+
+where  sign  z  =  0,  if  z     0,  sign  z  =  1,  if  z  >  0  and  T  stands  for  the  transpose.  For
+scalar observations this is a classification problem;  each output is classified either 0 or
+1  and  the  VC-dimension  can  be  used  to  study  the  complexity  of  the  problem.  When
+p > 1, a generalization of the VC-dimension or a loss function is needed.
+
+
+
+                                                             3
+
+
+     In general, unlike the VC-dimension associated to discrete-time linear systems [7 , 12 ],
+the  VC-dimension  of  the  classification  problem  for  continuous-time  control  systems  is
+unbounded [23  ], even when n = 1, and the identification problem is not learnable in the
+sense discussed earlier.  Therefore we restrict the class of admissible controls in order to
+achieve a bound for the VC-dimension.  We consider controls u = (u1 , . . ., um  ) such that
+
+
+                                                        u = G!,
+
+
+where G is a m x k matrix that parameterizes the control.  The set of basis input func-
+tions   = {!1 , . . ., !k } is fixed.  The bounds for the VC-dimension or other complexity
+dimensions will depend on the properties of the set  .
+     For scalar inputs (i.e.,   m = 1) the VC-dimension associated to the mapping from
+inputs G to scalar sign-observations is bounded by k, which in fact can be very large in
+applications.  This  bound  is  tight;  we  give  an  example  of  a  function  class     for  which
+the associated VC-dimension is indeed k (see Section 7).  However, by considering band-
+limited controls a better bound can be achieved.  In this work we consider the following
+set of basis input functions
+
+                      n
+                    =   !1 , . . ., !k  ;   !1 , . . ., !k  linearly independent and
+
+
+                                            !j = t`j effjt sin (fij t) or  !j = t`j effjt cos (fij t)                   (2)
+                                                                                          o
+                                            with    `j 2 N, ffj , fij 2 R, j = 1, . . ., k   ,
+
+
+and let
+
+
+                                             `max   = max   {`1 , . . ., `k }.                                          (3)
+
+
+The  results  in  this  paper  hold  with  minor  modifications  if  basis  input  functions
+!j , j  =  1, . . ., k  are,  for  example,  linear  combinations  of  the  functions  of  the  above
+form.  However, the proofs and formulae are messier.
+
+
+Definition  1.        (Sign system concept class, Cm,p  ) Order the set of basis input func-
+tions   and denote ! = (!1 , . . ., !k )T .  Let
+
+
+                                   X   = {G! : [0, 1] ! Rm   ;  G 2 Rmk  },
+
+
+and  for  each  linear  system    = (A, B, C, x0 )  of  dimension  n  define  the  mapping      :
+X    !  Rp  by     (G!)  =  y(1),  where  y(1)  is  the  solution  of     with  control  u  =  G!.
+Similarly we define the mapping for sign-observations,
+
+
+                                S   : X   ! {0, 1}p    G! 7! sign  (   (G!)).
+
+
+The   class   of   above   mappings   is   the   sign   system   concept   class,    Cm,p      =
+{S   ;    linear system of dimension             n}.
+
+
+     When studying the learning complexity associated to the classification problem we
+consider the time interval [0, 1] for simplicity, as the length of the interval plays no role
+in  the  result.   However,  for  learning  [0, 1]-valued  functions  utilizing  pseudo-dimension
+without a loss function, we consider the time interval [0, o ] with o  > 1.
+                                                             4
+
+
+     For the system
+
+
+                                                    x` =  Ax + Bu,                                                      (4)
+
+                                                    y =   Cx,
+
+
+we can write CeAt B = [fl1 , . . ., flm  ], where each fli is a linear combination of n functions
+,1 , . . ., ,n .  Each ,i is of the form t`eat sin (bt) or t`eat cos  (bt) with ` 2 {0, . . ., n - 1} and
+a + ib  an  eigenvalue  of  A.  Assume  that  A  has  a  fixed  Jordan  block  structure  and  let
+ak + ibk  be an eigenvalue of A.P We take ff11 , . . ., ffnm  , a1 , b1 , . . ., ar , br  to be the system
+parameters,  where  fli(t)  =     nj=1 ffij,j (t)  for  i  =  1, . . ., m  and  a1 , b1 , . . ., ar , br  are  n
+eigenvalue parameters.  For example the eigenvalue parameters for a real 4 x 4 matrix A
+with eigenvalues a1   b1 i, a2  and a3  would be a1 , b1 , a2  and a3 .  Similarly, the eigenvalue
+parameters with purely complex eigenvalues a1   b1 i and a2   b2 i would be a1 , b1 , a2  and
+b2 , whereas real eigenvalue parameters would be listed as a1 , a2 , a3  and a4 .
+     Let  U     Rmk    be  a  bounded  set.   Define  a  mapping  F  :  ~ x U  !  R  such  that
+F (~, G) = y(o ),  where  o    1  and  y(o )  is  a  solution  of  (4)  with  system  parameters  ~,
+and initial condition x(0) = 0.
+     In the following definition we take the final time to be o  > 1 in order to show the
+effect of the time interval in the learning complexity.
+
+
+Definition  2.        Assume  that  the  system  x`  =  Ax  +  Bu,  y   =  Cx,  x(0)  =  0  can
+be  parameterized  by  ~  2  Rn(m+1)     as  above  and  k ~k 1    =  max   1 i n(m+1)      ~i  <  1.
+Let  F (~, u)  =  y(o )  be  the  solution  of  (4)   with  systemR parameters  ~  and  control
+u  =  (u1 , . . ., um  )  2  U  =  {u  =  (u1 , . . ., um  )  ;    o0ui(t)dt     M, i  =  1, . . ., m}.  Denote
+Bk1 (c) := {x 2 Rk  ;  kxk  1  < c} and define
+
+
+                                FB  = {F (~, .) : U  ! R ;  ~ 2 Bn(m+1)1   (1)}.
+
+
+
+2.2      Main  Results
+
+
+We  formulate  two  theorems  about  bounding  sample  complexities  as  main  results.   In
+Section  3  we  summarize  upper  and  lower  bounds  for  complexity  dimensions  studied
+in  this  paper  together  with  definitions.   The  following  results,  formulated  as  sample
+complexity statements, are immediate corollaries of learning complexity bounds proved
+in this paper, and hence no separate proofs are given.
+
+
+Theorem  1  (Sample  complexity  for  concept  learning).                                 For sign systems concept
+class Cm,1   with scalar observations, i.e., p = 1, the sample complexity s(ffl, ffi) for identi-
+fiers that agree with the observed sample can be bounded as
+
+                                             ae                       `     '             `    ' oe
+                                                8VC   (Cm,1  )          8e       4           2
+                        s(ffl, ffi)   max       _______________log  2   ____   , __ log 2    __     ,
+                                                       ffl               ffl     ffl         ffi
+
+
+where
+                                        h                                                i
+  VC   (Cm,1  )   2(2mn2 + 4n + 1) log 2  8e  8mn2 k(n + `max  ) + 1   2nk + 2(1 + 2k)n
+
+
+and `max   is given by  (3) .
+
+
+                                                             5
+
+
+     In terms of n (the dimension of the state space) and k  (the band-width) the upper
+bound for the VC-dimension is of the form O(n3 log 2 (nk)).  The next section states also
+a  corresponding  VC-dimension  lower  bound,  in  terms  of  the  band-width,  of  the  form
+O(log (k)), and together with a lower bound for the sample complexity, this provides an
+estimate for the number of samples needed in learning.  In particular, in a typical setting
+of  fairly  small  system  dimension  n  and  large  band-width  k,  the  log k  bound  is  a  clear
+improvement over the linear bound given by elementary analysis.
+
+
+Theorem  2  (Sample  complexity  for  proper  agnostic  learning).                                     Let ~ > 0, then
+the class FB , given in Definition 2, is properly agnostically learnable from
+
+                                   `     `                                        '     '
+                                      1                             2 1         1
+                                 O    ___   fat (1=4-~)ffl(FB ) log   __ + log  __
+                                      ffl2                            ffl       ffi
+
+
+samples, where
+                            8                   j                k
+                            <    (m + 1)n log 2   n2mo_neo_kM____  ,
+fat (1=4-~)ffl(FB )   min                        i  (1=4-~)ffl                                  j
+                            :    2(m + 4)n log 2   8e  nmk4(n + `max  ) + 1   2nk + 2(2k + 1)n    ,
+
+together with `max   given by  (2)  and  (3) , and M  a constant satisfying
+
+                                              Z  o
+
+                                                   |ui(o - t)|dt   kM
+                                                0
+
+for all i = 1, . . ., m.  In above, bxc stands for the integer part of x.
+
+
+     In addition to thePbound above the control systems can be parameterized linearly as
+follows:  Let u(s) =     kj=1 gj !j (s).  Then
+
+             Z  o                       Z  o             X    k
+
+   y(o ) = C      eA(o -s)  Bu(s)ds = C      eA(o -s)  B           gj !j (s)ds
+               0                          0                 Z j=1
+                                             X    k            o                             X    k
+                                           =      j=1  gj C      eA(o -s)  B!j (s)ds       =           gj ~j (o ).   (5)
+                                                          ____0_________-z_____________"          j=1
+
+                                                                       ~j(o )
+
+                                                P   k                  P  k
+Then by considering the class F  := {g 2 Rk  7!     j=1  gj ~j (o ) ;     j=1  ~j (o )2  = 1} and
+further restricting g so that k gk 2    R, [18  , 16  ] have shown that
+
+
+                                     fat fl(F )   min   {9R2 =fl2 , k + 1} + 1.
+3      Complexity  dimensions;  main  upper  and  lower  bounds
+
+
+We begin this section by defining various learning complexity dimensions and after that
+we summarize the main upper and lower bounds proved in this paper.
+
+
+Definition  3  (Vapnik-Chervonenkis  dimension).                               The richness of the collection C
+can be measured by its Vapnik-Chervonenkis (VC) dimension introduced in [19  ].  A set
+S = {x1 , . . ., xn }   X is said to be shattered by C if, for every subset B   S, there exists
+
+
+
+                                                             6
+
+
+a set A 2 C  such that S \ A = B.  The Vapnik-Chervonenkis  dimension  of  C, denoted
+VC   (C), equals the largest integer n such that there exists a set of cardinality n that is
+shattered by C.  For example, in Rk  the VC-dimension of closed half-spaces through the
+origin is k [22  ].  Thus, if VC   (C) = d, C is not rich enough to distinguish all subsets of any
+d + 1 element set, but there is some d element set where subsets can be distinguished.
+Proving exact values of the VC-dimension is hard and typically one looks for upper and
+lower bounds for the VC-dimension, as is also done in this paper.
+
+     For  our  purposes,  it  is  more  convenient  to  work  with  shattering  in  terms  of  di-
+chotomies, i.e., boolean-valued maps.  We identify subsets of D with Boolean functions
+OE : D  ! {0, 1}.  Similarly,  each set C  2 C  gives rise to a Boolean function on X ,  and
+intersections C \ D are restrictions of functions to D.  In this language, a subset D   X
+is shattered by F  := {OE ;  OE : X  ! {0, 1}}, if every dichotomy on D  is a restriction to
+D of some OE 2 F .
+
+Definition  4  (Pseudo-dimension  with  respect  to  a  loss  function).                                   For  a  given
+class  of  functions  F  :  X  !  Y  and  a  loss  function  L  :  Y  x Y  !  [0, r],  we  introduce
+for each f  2 F  the function
+
+
+                   Af,L  : X x Y  x R ! {0, 1};   (x, y, ae) 7! sign  (L(f (x), y) - ae),                               (6)
+
+
+and let AF,L   denote all such Af,L  with f  2 F .  The pseudo-dimension of F  with respect
+to the loss function L, PD   [F , L], is defined as:
+
+
+                                             PD   [F , L] := VC   (AF,L  ).
+
+
+     The  VC-dimension  characterizes  learnability  of  {0, 1}-valued  functions.  For  learn-
+ing real-valued functions we look for a generalization of the VC-dimension with similar
+properties.   One  such  generalization  is  the  pseudo-dimension.   Unfortunately,  pseudo-
+dimension does not share the property the VC-dimension has; there are learnable func-
+tion classes with infinite pseudo-dimension, see [20  , p.206] and [3 ].
+     Next  we  define  the  fat-shattering  dimension  that  corresponds  to  shattering  with
+fixed  "margin"  fl.   Both  the  pseudo-dimension  and  the  fat-shattering  dimension  can
+be  used  to  bound  certain  covering  numbers  and  in  this  sense  they  act  like  the  VC-
+dimension.   Moreover,  the  fat-shattering  dimension  gives  upper  and  lower  bounds  for
+covering numbers of function classes and the finiteness of the fat-shattering dimension
+can characterize learnability (see [1 ] and [2 ]).
+
+Definition  5  (Fat-shattering  dimension).                        Let F  be a set of real-valued functions.
+We say that a set of points X  is fl-shattered by F  if there are real numbers rx  indexed
+by x 2 X  such that for all binary vectors bx  indexed by X , there is a function fb  2 F
+satisfying
+
+
+                                       fb(x)     rx  + fl,     if bx  = 1, and
+
+                                       fb(x)     rx  - fl,     otherwise     .
+
+
+The fat-shattering dimension fat fl(F ) is a function from positive real numbers to integers
+which maps a value fl to the size of the largest fat-shattered set, if it is finite, or infinity
+otherwise.
+     The shattering dimension when the margin fl equals 0 is called the pseudo-dimension
+and it is denoted by PD   (F ).  Clearly, for all fl > 0, fat fl(F )   PD   (F ).
+
+
+
+                                                             7
+
+
+3.1      Bounds
+
+
+We  begin  by  stating  bounds  in  the  easiest  learning  setting_classifying  the  final  state
+observations as either 0 or 1.
+
+Theorem  3.         (VC-dimension  upper  bound,  p = 1   ) The VC-dimension of the sign
+system concept class Cm,1   with scalar observations can be bounded as
+                                         h                                                i
+    VC  (Cm,1  )   2(2mn2 + 4n + 1) log 2  8e  8mn2 k(n + `max  ) + 1   2nk + 2(1 + 2k)n    ,
+
+
+where `max   is given by  (3) .
+
+     In terms of n (the dimension of the state space) and k  (the band-width) the upper
+bound is of the form O(n3 log 2 (nk)).
+     All  VC-dimension  upper  bounds  are  based  on  the  fact  that  input  basis  functions
+satisfy  a  certain  rationality  condition.  Remark  17  indicates  how  the  bound  is  formed
+when the input functions satisfy the more abstract rationality condition.  In that case
+the degrees of the polynomials and the number of polynomial evaluations are different.
+However, in terms of n and k, the bound is of the same form.  VC-dimension or pseudo-
+dimension bounds stated in this paper can be modified for the rationality condition in
+the same way.
+     The lower bound for the VC-dimension is in terms of n and k.  It holds for linearly
+independent continuous basis input functions and compared to upper bounds,  no par-
+ticular form of the functions is needed.  The bound is obtained by imposing a specific
+structure on control systems, and a lower bound for a restricted class of control systems
+provides a lower bound for more general classes.
+
+Theorem  4.         (VC-dimension  lower  bound,m = 1     ,  p = 1   )
+                                                        ae   ~       ~             oe
+                                                                        k         0
+                                  VC   (C1,1 )   max      m0   log 2   ____    , m
+                                                                       m0
+
+where m0 = min   {n, k}.
+
+     In terms of k the upper and the lower bound match up to a constant.  For n and k the
+lower bound is typically of the form O(n log 2(k=n)).  Note that if the system dimension
+n is small compared to the band-width k the VC-dimension upper and lower bounds in
+Theorems 3 and 4 become tighter, both being of the form c log 2 k (with different values
+of the constant c).
+     Extending the upper bounds to the case of vector-valued observations can be done
+in various ways based on the result obtained for scalar observations.  For example,  we
+may consider the p-dimensional output as bits representing a number in {0, . . ., 2p - 1}
+and introduce a loss function for each f  2 Cm,p   as L0-1,f (z, a) = L0-1 (f (z), a) = 1, when
+f (z) 6= a, and 0 otherwise.  We define the VC-dimension of the p-dimensional observation
+as the VC-dimension of the above class of loss functions.  Modifying the argument used
+with scalar observations leads to a bound of the following form:
+
+Theorem  5.         (VC-dimension  upper  bound)
+
+
+   VC   (Cm,p  )   2(2pmn2 + 4n + p)
+                                      h                                                          i
+                              x log 2  8e  8mn2 k(n + `max  ) + 1   2p - 1 + 2p(2k + 1)n  + 2nk   ,
+
+
+where `max   is given by  (3) .
+
+
+
+                                                             8
+
+
+     Next  we  state  the  main  result  concerning  learnability  of  the  actual  input-output
+mapping, i.e., learning without taking the sign of the final state observation.
+
+
+Definition  6.        (Control  system  concept  class,   Gp,L )  Let  Fe   =  {     :  X    !
+Rp  ;    linear system of dimension             n}  and  define  the  control  system  concept  class  as
+Gp,L  = AFe,L , where AFe,L  is given by (6)  .
+
+
+     Methods for calculating upper bounds for the VC-dimension readily give a tool for
+obtaining  upper  bounds  for  the  pseudo-dimension  with  respect  to  loss  functions  that
+preserve the rationality structure of the output.  A typical example is illustrated by the
+loss function
+
+
+                                   L(z1 , z2 ) = (z1 - z2 )2 =(1 + (z1 - z2 )2 )                                        (7)
+
+
+and the following result:
+
+
+Theorem  6.         (Pseudo-dimension  upper  bound,  p = 1   )
+
+                       2                         h         2                                    n  i
+   PD  (G1,L )   2  2mn  + 4n + 1          log  2  16e  8mn  k(n + `max  ) + 1   2nk + 2(2k + 1)     ,
+
+
+where the loss function L is given by  (7)  and `max   is given by  (3) .
+
+
+     This  differs  from  the  corresponding  VC-dimension  bound  only  by  the  maximum
+degree  of  the  polynomials,  which  is  doubled.  Extending  this  pseudo-dimension  bound
+for  p-dimensional  observations  can  be  done  naturally  by  modifying  the  loss  function.
+Lower bounds for the VC-dimension are lower bounds for the pseudo-dimension as such.
+     The next results summarize upper bounds for the fat-shattering dimension.  We begin
+by illustrating how fat-shattering dimension can be bounded for Lipschitz functions in
+certain cases:
+
+
+Theorem  7  (Fat-shattering  bound).                       Let F (~, u) : Rk x U  ! R be such that F (., u)
+is Lipschitz with constant L, i.e., |F (~1 , u) - F (~2 , u)|   Lk~1 - ~2 k for all u 2 U .  For
+any subset B   Rk , consider the following class of functions:
+
+
+                                       FB  = {F (~, .) : U  ! R ;  ~ 2 B}.
+
+
+Then
+                                                                 ~
+                                                                   CL
+                                   fat fl(FBk1 (C)  )    k log 2   _____   ,
+                                                                     fl
+                                                                 `     ~        '
+                                                                         CL
+                                   fat fl(FB~k1(C)  )    k log 2   1 +   _____       ,
+                                                                           fl
+                                                                 `        '
+                                                                       L
+                                       fat fl(FB~2,1)    k log 2   C + ___      ,
+                                                                       fl
+
+where
+
+
+                             Bk1 (C)    = {x 2 Rk  ;  kxk1   =  max    |xi| < C},
+                                                               1 i k
+
+                             B~k1 (C)   = {x 2 Rk  ;  kxk1   =  max    |xi|   C},
+                                                               1 i k
+                                                              r  _____________
+                                                                 X    k
+                              B~k2(C)   = {x 2 Rk  ;  kxk2  =              x2    C}.
+                                                                      i=1   i
+
+
+
+                                                             9
+
+
+Theorem  8  (Fat-shattering  bound  for  a  control  system).                                Assume  that  the  sys-
+tem  `x= Ax + Bu,  y = Cx,  x(0) = 0  can  be  parameterized  by  ~ 2 Rn(m+1)     as  in  Def-
+inition  2  and  k~k  1   < 1.  Let  F (~, u) = y(o )  be  the  solutionR with  system  parameters  ~
+and control u = (u1 , . . ., um  ) 2 U  = {u = (u1 , . . ., um  ) ;   0o ui(t)dt   M, i = 1, . . ., m}.
+Define
+
+
+                                   FB  = {F (~, .) : U  ! R ;  ~ 2 Bk1 (1)}.
+
+
+Then
+                                                             ~
+                                                               n2 mo neo M
+                                 fatfl(FB )   n(m + 1) log 2   _________________  .
+                                                                      fl
+
+
+
+4      Techniques  for  Proving  VC-Dimension  Results
+
+
+Our  main  results  are  based  on  a  fact  that  the  basis  input  functions  satisfy  a  certain
+rationality  condition.  In  this  section  we  first  formulate  this  rationality  condition  and
+then we summarize existing results that are used in proving upper and lower bounds for
+the complexity dimensions.
+     We recall briefly the control system setting.  We study systems
+
+                                 x` = Ax + Bu,    x(0) = x0 ,    y = Cx,
+
+                                 u  = G!,    and      !j 2   for  j = 1, . . ., k,
+
+with basis input functions
+                      n
+                    =   !1 , . . ., !k  ;   !1 , . . ., !k  linearly independent and
+
+
+                                            !j = t`j effjt sin (fij t) or  !j = t`j effjt cos (fij t)
+                                                                                          o
+                                            with    `j 2 N, ffj , fij 2 R, j = 1, . . ., k   ,
+
+
+such that
+
+
+                                             `max   = max   {`1 , . . ., `k }.
+
+
+Definition  7.        (Rationality  condition  (RAT)) Let n be a positive integer.  We say
+that a bounded function ! : [0, 1] ! R satisfies the rationality condition relative to the
+class of n-dimensional systems if there exists h polynomial functions f1 , . . ., fh  : R4  ! R
+and  2fln  rational  functions  rij`",  i  2  {1, 2},  j  2  {1, . . ., fl}  and  "`2  {1, . . ., n}  with  no
+
+poles on subsets Sij`" of R4 , such that the following properties hold:
+
+
+    1.  For each i 2 {1, 2}, `" 2 {1, . . ., n},  R4  is a disjoint union of Si1"`, . . ., Sifl`".
+
+
+    2.  Each Sij`" can be defined in terms of a Boolean expression involving [f1  = 0]  , . . .,
+
+        [fh  = 0]  , where we say that for functions f1 , . . ., fh  : R4  ! R, [fi = 0] has value 1,
+        if fi(x1 , x2 , x3 , x4 ) = 0, and 0 otherwise.
+
+
+    3.  Letting ri"`: R4  ! R, i 2 {1, 2}, `" 2 {1, . . ., n} be defined as
+                                                      8
+                                                      >><ri1"`(v),      if v 2 Si1"`,
+
+                                            ri"`(v) =    ...          ...
+                                                      >>:
+                                                         rifl`"(v),     if v 2 Sifl`",
+
+
+
+                                                            10
+
+
+        then for each a, b 2 R, and for all `" 2 {1, . . ., n}
+
+                              Z  1
+
+                                   t"`-1 eat cos  (bt)!(t)dt    = r1"`(a, b, ea cos  b, ea sin  b),
+                              Z 01
+
+                                   t"`-1 eat sin (bt)!(t)dt     = r2"`(a, b, ea cos  b, ea sin  b).
+                                0
+
+
+     We denote by dmax   the maximum degree of any polynomial (i.e., f1 , . . ., fh , numer-
+ators and denominators of rij`"'s) appearing in the rationality condition .
+
+Remark 9.       First,  entries of eAt  are functions of the form ts eat cos  (bt) and ts eat sin (bt).
+Solving (1)  involves convolutions of eAt  and the basis input functions !j , and we require
+those to be rational functions.
+
+Example 10.        Let !(t) = sin (ct), with nonzero c.  Then
+
+           Z  1                         Z  1                            Z  1
+                                      1       at                     1        at
+                eat sin (bt)!(t)dt =  __     e   cos  ((b - c)t)dt - __      e   cos  ((b + c)t)dt
+             0                        2   0                          2    0
+
+after integration this can be split into cases with no poles yielding
+
+                                          8     p(a,b,ea cos b,ea sin b)
+                Z  1                      >< ____________________________(a2+(b+c)2)(a2+(b-c)2),iff1  6= 0, f2  6= 0,
+
+                     eat sin (bt)!(t)dt =    b-sin_b_cosb__2b,                 if f1  = 0, f2  6= 0,
+                  0                       >: sin_b_cosb-b__
+                                                   2b      ,                   if f1  6= 0, f2  = 0,
+
+where
+
+                                  f1 (a, b, ea sin  b, ea cos  b)  = a2 + (b + c)2 ,
+
+                                  f2 (a, b, ea sin  b, ea cos  b)  = a2 + (b - c)2 ,
+
+
+and p(a, b, ea cos  b, ea sin  b) stands for the polynomial
+
+
+    - 4abc + 4abcea  cos  b cos  c - 2a2 cea  cos  c sin b + 2b2 cea  cos  c sin b
+
+            - 2c3 ea  cos  c sin b - 2a2 bea  cos  b sin c - 2b3 ea  cos  b sin c + 2bc2 ea  cos  b sin c
+
+                                            + 2a3 ea  sin  b sin c + 2ab2 ea  sin b sin c + 2ac2 ea  sin b sin c.
+
+
+Lemma  11.          Each !j  2   given by  (2)  satisfies the rationality condition.  Further, the
+maximum  degree  of  polynomials  in  (RAT)  is  at  most  4(n + `max  ),  where  `max   is  given
+by  (3) .
+
+
+
+Review  of  VC-Dimension  Techniques
+
+
+In  the  context  of  control  theory  it  is  sometimes  easier  to  work  with  the  dual  VC-
+dimension.   Assume  that  a  function  F  :    x X  !  {0, 1}  is  given.   This  induces  two
+function classes
+
+
+                                     F := {F (~, .) : X ! {0, 1} ;  ~ 2  }
+
+
+and
+
+
+                                    F * := {F (., x) :   ! {0, 1} ;  x 2 X }.
+
+
+
+                                                            11
+
+
+The complexity dimension VC   (F *) is called the dual VC-dimension of F and it is related
+to VC   (F ) as follows [20  ]:
+
+
+                                            VC   (F )   blog 2 VC   (F *)c,                                             (8)
+
+
+where bxc is the integer part of x.
+     A sharper estimate can be obtained if   can be written as a product  1 x . . .x  n .
+The following construction and result are due to DasGupta and Sontag [7 ].  We study
+in  particular  those  dichotomies  that  are  defined  on  "rectangular"  subsets  of   .   Let
+L = L1 x . . .x Ln  be a subset of   such that for each i,  Li    i is nonempty.  Given
+any  index  1     ~     n  a  ~-axis  dichotomy  on  L  is  any  function  ffi  :  L  !  {0, 1}  which
+depends  only  on  the  ~th  coordinate,  i.e.,  there  is  some  function  OE  :  L~  !  {0, 1}  so
+that ffi(~1 , . . ., ~n ) = OE(~~ ) for all (~1 , . . ., ~n ) 2 L.  We say that a mapping is an axis
+dichotomy if it is a ~-axis dichotomy for some ~.  A rectangular set L is said to be axis
+shattered by F * if every axis dichotomy is a restriction to L of some function of the form
+F (., x) :   ! {0, 1}, for some x 2 X .
+
+
+Theorem  12.          (Axis  shattering  bound  [7 ])  If  L = L1  x . . .x Ln       can  be  axis
+shattered and each Li has cardinality ri > 0, then VC   (F )   blog 2 (r1 )c + . . .+ blog 2 (rn )c.
+
+
+     Upper bounds for VC-dimensions of concept classes that are obtained by evaluating
+polynomial  equalities  and  inequalities  can  be  obtained  in  terms  of  the  number  and
+degrees of the polynomials:
+
+
+Theorem  13.          (Goldberg-Jerrum bound [10  ]) Given a function F  :   x X ! {0, 1}
+and  the  associated  concept  class  F  :=  {F (~, .)  :  X  !  {0, 1}  ;  ~  2   },  suppose  that
+   =  R`  and  X  =  Rk .   Let  F  be  defined  in  terms  of  a  Boolean  formula  involving  at
+most  s  polynomial  equalities  and  inequalities  in  ` + k  variables,  each  polynomial  being
+of degree at most d in ~ for all x 2 Rk .  Then, VC   (F )   2` log 2(8eds).
+
+
+     The Goldberg-Jerrum bound is based on a result showing that the number of sign
+assignments {-1, 0, 1} to polynomials can not grow too fast:
+
+
+Theorem  14.          ([10  ])  Suppose  that  f1 , . . ., fm   are  polynomials  of  degree  at  most  d  in
+n   m variables.  Then the number of distinct vectors
+
+                                                                                    m
+                                  sign  f1 (x), . . ., sign   fm  (x)   2 {-1, 0, 1}   ,
+
+
+that can be generated by varying x over Rn , is at most ( (8edm)    =n)  n .
+5      Proofs  of  the  VC-dimension  bounds
+
+
+5.1      An Upper Bound for the VC-Dimension with Scalar Observations
+
+
+We begin this section by proving Lemma 11 stating that the input basis functions satisfy
+the rationality condition (RAT) and bounding the degrees of polynomials appearing in
+(RAT). As a proposition we formalize how control systems can be parameterized.  After
+that,  as  a  lemma,  we  develop  an  upper  bound  for  the  VC-dimension  induced  by  the
+control system (1)   with its initial state fixed to be zero.  Theorem 3 with an arbitrary
+initial condition is then a simple modification of the argument.
+
+
+
+                                                            12
+
+
+Proof  of  Lemma  11.             If !(t) = t`efftsin (fit) or !(t) = t`efftcos  (fit) with `   `max   then
+in place of
+
+                           Z  1                                Z   1
+
+                                t"`eat sin (bt)!(t)dt    or         t"`eat cos  (bt)!(t)dt                              (9)
+                             0                                   0
+
+by combining exponents and using sum formulae for sin  and cos   (see Example 10) it is
+enough to study terms of the form
+
+                                Z  1                             Z   1
+
+                                     t"ke"atsin ("bt)dt    or         t"ke"atcos  ("bt)dt,
+                                  0                                0
+
+
+where k" 2 {0, . . ., n + `max   - 1}.  In fact, each expression in (9)   is one of the following
+type
+
+                         `  Z  1                               Z  1                            '
+                       1_         "`"at                              "`"at
+                                 t e   cos  ((b - fi)t)   dt -      t e   cos  ((b + fi)t)   dt
+                       2     0                                   0
+                         `  Z  1                               Z  1                            '
+                       1_         "`"at                              "`"at
+                                 t e   cos  ((b + fi)t)   dt +      t e   cos  ((b - fi)t)   dt
+                       2     0                                   0
+                        `  Z  1                               Z  1                            '
+                      1_         "`"at                              "`"at
+                                t e   sin  ((b - fi)t)   dt -      t e   sin  ((b + fi)t)   dt       ,
+                      2      0                                  0
+                        `  Z  1                               Z  1                            '
+                      1_         "`"at                              "`"at
+                                t e   sin  ((b + fi)t)   dt +      t e   sin  ((b - fi)t)   dt       ,
+                      2      0                                  0
+
+
+where "a = a + ff.  Because for "k > 0
+
+   Z   1                           "a
+                                  e
+         t"ke"atsin ("bt)dt =  __________("a sin "b- "bcos  "b)
+     0                         "a2 + "b2
+                                                            "k     Z  1  "
+                                                      - __________      tk -1 e"at("a sin ("bt) - "bcos ("bt))dt   (10)
+                                                        "a2 + "b2    0
+
+and
+                                 Z  1                     "a
+                                                         e  ("a sin "b- "bcos  "b) + "b
+                                      e"atsin ("bt)dt =  ________________________________                             (11)
+                                   0                                "a2 + "b2
+                           R 1  "
+and a similar formulae for   0 tk e"atcos  ("bt)dt hold, we see by induction that the numerator
+   R  1  "
+of   0  tk e"atsin ("bt)dt is a polynomial of "a, "b, e"acos  "b and e"asin  "b.  By using sum formulae
+for sin and cos, the previous expression is in turn a polynomial of a, b, ea cos  b and ea sin  b
+because  "a= a + ff  and "b = b   fi  for  some  fixed  ff  and  fi.  By  similar  arguments,  the
+denominator is a polynomial of a and b.  Note that, for example, eff equals a constant
+times ea , so this process does not change the degreesRof the polynomials.
+     Further,  observe  that  the  denominator  of   01 t"`eat sin (bt)!(t)dt  consists  of  at  most
+
+two products of variables a and b of the form ((a + ff)2 + (b   fi)2 )"`+`+1  , and similarly
+with the cos  (bt) term.  Let us index the basis input functions !1 , . . ., !k  so that !~  has
+parameters ff~  and fi~ .  Hence the functions fi in (RAT), defining the subsets without
+poles, can be taken as
+
+
+                   {(a + ff~ )2 + (b - fi~ )2 , (a + ff~ )2 + (b + fi~ )2 ;  ~ = 1, . . ., k}.
+
+
+
+                                                            13
+
+
+Furthermore, the sets Sij`" are as simple as
+
+
+[k~=1  {{(x1 , x2 , x3 , x4 ) ;  x1  = -ff~ , x2  = -fi~ } [ {(x1 , x2 , x3 , x4 ) ;  x1  = -ff~ , x2  = fi~ }}
+
+
+
+and
+
+
+   R4 \ [k~=1  {{(x1 , x2 , x3 , x4 ) ;  x1  = -ff~ , x2  = -fi~ } [
+
+                                                                 {(x1 , x2 , x3 , x4 ) ;  x1  = -ff~ , x2  = fi~ }}     .
+
+     We turn to estimating the maximum degree of polynomials appearing in (RAT). We
+already saw that functions fi are polynomials of degree 2.  Equations (10)   and (11)   show
+that the degree of numerator is not higher than the one of denominator.  We claim that
+                      Z   1        ae       "
+                                                         P (2("k + 1))
+                            t"ke"at    sin (b"t)   dt =  __________________"  for  k" = 0, 1, . . .
+                        0              cos  (b t)        ("a2 + "b2)k +1
+
+where P (2("k + 1)) stands for some polynomial in "a, "b, e"asin ("b) and e"acos  ("b) of degree
+2("k + 1).  Clearly, the claim is true for "k = 0 by (11)   and the inductive argument follows
+from (10)  .  Assuming the claim true for "k - 1, we get
+
+   Z   1
+
+         t"ke"atsin ("bt)dt
+     0                                 Z                                       Z
+
+                P (2)           "k"a      1  "k-1  "at                  "k"b      1  "k-1  "at
+            =  __________ - __________      t     e   sin ("bt)dt + __________      t     e   cos  ("bt)dt
+               "a2 + "b2    "a2 + "b2    0                          "a2 + "b2    0
+
+                            P (2)          P (1)        P (2"k)            P (1)        P (2"k)
+                        =  __________ - _____________ _______________"+ _____________ _______________"
+                           "a2 + "b2    ("a2 + "b2)   ("a2 + "b2)k      ("a2 + "b2)   ("a2 + "b2)k
+
+                                                         P (2)("a2 + "b2)"k - 2P (2"k + 1)            P (2("k + 1))
+                                                      =  _________________________________________"=  __________________"
+                                                                     ("a2 + "b2)k +1                  ("a2 + "b2)k +1
+
+
+and similarly for the cos  ("bt) term, concluding the proof of the claim.  As a corollary of
+the claim
+                Z  1
+                                                  P (2("k + 1))                 P (2("k + 1))
+                     t"`eat sin (bt)!(t)dt =  __________________________"+ __________________________",
+                 0                            ("a2 + (b + fi)2 )k +1       ("a2 + (b - fi)2 )k +1
+
+where "k = ` + "`and "a = a + ff.
+     Hence the maximum degree of denominators of expressions in (9)  is 2("k + 1) + 2("k +
+1) = 4("k + 1) with "k 2 {0, . . ., `max   + n - 1}.  Thus the maximum degree of polynomials                __
+appearing in the (RAT) is 4(n + `max  ).                                                                   |__|
+
+
+     The next proposition indicates how control systems are parameterized and later the
+concept  or  function  classes  associated  to  control  systems  are  obtained  by  varying  the
+parameter vector.
+
+Proposition  15.           Denote  the  basis  input  functions  by  !  =  (!1 , . . ., !k )T   and  assume
+that each !i, i = 1, . . ., k satisfies the rationality condition (RAT) and let   = R2pn2m   x
+R4n  x Rp .  Then there exists a mapping H :   x Rmk   ! Rp  (depending on !) such that
+for each   = (A, B, C, x0 ) there exists a ~ 2   satisfying
+
+                                       (G!) = H (~, G) for all   G 2 Rmk  .
+
+
+
+                                                            14
+
+
+Proof.    Given a system   = (A, B, C, x0 ),
+
+                                                        Z  1
+
+                                (u) = y(1) = CeA x0 + C      eA(1-t)  Bu(t)dt.
+                                                          0
+
+
+By  an  argument  based  on  the  real  Jordan  form  of  eAt ,  the  entries  of  eA(1-t)    are
+linear  combinations  of  functions  of  the  form  t"`eat cos  (bt)  and  t"`eat sin (bt),   where
+"`2 {0, . . ., n - 1}     and  a + ib  is  an  eigenvalue  of  A.  Hence  we  define  the  following  2n
+
+functions
+
+
+                                             ,1 (a, b, t)  = eat cos  (bt)
+
+                                             ,2 (a, b, t)  = teat cos  (bt)
+
+                                                         ..
+                                                         .
+
+                                             ,n (a, b, t)  = tn-1  eat cos  (bt)
+
+                                          ,n+1  (a, b, t)  = eat sin (bt)
+
+                                                         ..
+                                                         .
+
+                                           ,2n (a, b, t)   = tn-1  eat sin (bt).
+
+
+     By the rationality condition (RAT), for all ` = 1, . . ., 2n
+
+                             Z  1                        ^           a          a
+                                                         P`j (a, b, e  cos  b, e  sin  b)
+                                  ,`(a, b, t)!j (t)dt =  ___________________________________
+                              0                          Q^`j (a, b, ea cos  b, ea sin  b)
+
+
+for all a, b 2 R and where P^`j  and Q^`j  are piecewise polynomial expressions.
+     Let H (A, X, h, G) = (H1 , . . ., Hp )T , where for 1   ~   p
+
+
+                    X    m    X   n     X   2n           X   k        P^`j(xr1 , xr2 , xr3 , xr4 )
+  H~ (A, X, h, G) =      i=1      r=1       `=1  ffir`~      j=1  gij ______________________________^+ h~
+                                                                      Q`j  (xr1 , xr2 , xr3 , xr4 )
+
+
+and
+
+
+                        A   = (ffir`~ ) i=1,...,m                          X   = (xrj ) r=1,...,n
+                                        r=1,...,n                                       j=1,...,4
+                                        `=1,...,2n
+                                        ~=1,...,p
+
+                         h  = (h1 , . . ., hp )T                            G  = (gij) i=1,...,m  .
+                                                                                        j=1,...,k
+
+     Next, we relate     and H  and we write
+
+                                                      2                     3
+                                                        fl11    . . .  fl1m
+
+                                        CeA(1-t)  B = 64  ...            ...75 .
+
+                                                        flp1    . . . flpm
+
+
+We list the eigenvalues of A as ar + ibr  for r = 1, . . ., n and let ,r` (t) = ,`(ar , br , t) for
+r = 1, . . ., n and ` = 1, . . ., 2n.  Then there exists some ( ffir`~ ) such that
+
+                                                 X    n    X    2n
+                                      fl~i (t) =      r=1       `=1  ffir`~ ,r~ (t).                                  (12)
+                                                            15
+
+
+     Let ~ = (A, X, h), where A satisfies (12)  , X = (xrj ), where xr1  = ar , xr2  = br , xr3  =
+ear  cos br  and xr4  = ear  sin br , and h = CeA x0 .  We claim that
+
+
+                               H (~, G) = y(1) =    (G!) for all   G 2 Rmk  .
+
+
+Note that the ~-th component of    (G!) is given by
+
+                Z   1 X   m
+
+                               fl~i (t)ui(t)dt + h~
+                  0       i=1
+                   X    m    X   n     X   2n           Z  1         X    k
+                 =      i=1      r=1       `=1  ffir`~       ,r` (t)           gij!j (t)dt + h~
+                                                         0                j=1
+                   X    m    X   n     X   2n           X   k        Z  1
+                 =      i=1      r=1       `=1  ffir`~      j=1  gij      ,`(ar , br , t)!j (t)dt + h~
+                                                                       0
+                   X    m    X   n     X   2n           X   k        P^`j(xr1 , xr2 , xr3 , xr4 )
+                 =      i=1      r=1       `=1  ffir`~      j=1  gij ______________________________^+ h~
+                                                                     Q`j  (xr1 , xr2 , xr3 , xr4 )
+
+                 = H~ (A, X, h, G).
+
+                                                                                                                           __
+                                                                                                                          |__|
+
+
+     Next we take p = 1 and study the VC-dimension of the sign system concept class,
+Cm,1  , where each control parameterized by G gives rise to sign   y(1).
+
+
+Lemma  16.          Sign system concept class Cm,1   with initial condition x(0) = 0 satisfies
+
+                            2                   h        2                                    n  i
+      VC   (Cm,1  )   2  2mn  + 4n         log 2  8e  8mn  k(n + `max  ) + 1   2nk + 2(1 + 2k)     ,
+
+
+where `max   is given by  (3) .
+
+
+Proof.    By  Proposition  15  y(1)  =  H (~, G),  where  ~  2  R2mn2    x R4n   are  considered  as
+parameters.  In fact, y(1) =  P__Q, where P and Q denote piecewise polynomial functions.
+
+As  in  the  statement  of  Goldberg-Jerrum  bounds  we  have  a  function  F  :    x Rmk   !
+{0, 1}  defined  by  F (~, G) = sign   H (~, G).  The  concept  class  associated  to  the  system
+identification problem is F  := {F (~, .) : Rmk   ! {0, 1} ;  ~ 2  }, where   = R2mn2+4n    .
+Before applying the Goldberg-Jerrum bound we need to determine the possible degrees
+of P and Q with respect to the parameters.
+     The rationality condition implies that
+                                             n                           o
+                                      max      deg  (P^`j ), deg  (Q^`j )     dmax  .
+                                     i ` n
+                                     1 j k
+
+
+Then
+
+                                                Pei`    X    k        P^
+                                                _____ =           gij _`j__
+                                                Qei`         j=1      Q^`j
+
+
+
+so  deg  (Qei` )     kdmax    and  deg  (Pei`)     kdmax  .   Note  here  that  we  are  calculating  the
+degree  with  respect  to  the  system  parameters,  and  the  inputs  gij  do  not  contribute.
+By  continuing  in  a  similar  fashion  andP combining  r-summation  to  the  `-summation
+                                                 2
+in  Proposition  15,  we  write  Pi=Qi  =      2n`=1ffi`Pei`=Qei`   to  conclude  that  deg  (Qi)
+
+
+
+                                                            16
+
+                                                                                          P  m
+2n2 deg  (Qei` )  =  2n2 kdmax    and  deg  (Pi)     2n2 kdmax   + 1.   Finally,  P=Q  =     i=1  Pi=Qi
+with deg  (Q)   m2n2 kdmax   and deg  (P)   m2n2 kdmax   + 1.
+     Recall that with p = 1 and initial condition x(0) = 0, using the notation of Propo-
+sition 15
+
+                      X    m    X   n     X   2n         X    k        Z  1
+               y(1) =      i=1      r=1       `=1  ffir`      j=1  gij      ,`(xr1 , xr2 , t)!j (t)dt.
+                                                                         0
+
+The proof of Lemma 11 indicates that the denominator of
+                                             Z   1
+
+                                                   ,`(xr1 , xr2 , t)!j (t)dt
+                                               0
+
+equals
+                  i                                    j  z`j i                                   j  z`j
+                    ( xr1  + ffj ) 2 + (xr2  + fij ) 2          (xr1  + ffj ) 2 + (xr2  - fij ) 2        ,
+
+
+where ffj , fij  are fixed parameters of the basis input function !j  and z`j  2 N.
+     By carrying out the summations we get y(1) = P=Q, where Q consists of powers of
+polynomials fij1 , fij2  with
+
+
+                                fij1 (A, X, G)      = (xi1 + ffj )2 + (xi2 + fij )2 ,
+
+                                fij2 (A, X, G)      = (xi1 + ffj )2 + (xi2 - fij )2 ,
+
+
+and i = 1, . . ., n, j = 1, . . ., k.
+     Our final step before applying the Goldberg-Jerrum bound is finding out the number
+of  polynomial  inequalities  s  needed  in  the  Boolean  formula  evaluating  the  sign  of  the
+final  state  output.  This  is  done  by  studying  the  number  of  different  P=Q  expressions
+without poles.
+     An  upper  bound  for  different  P=Q  expressions  without  poles  can  be  obtained  by
+applying Theorem 14 to 2nk polynomials fij1 , fij2 , i = 1, . . ., n and j = 1, . . ., k viewing
+those as polynomials of 2n variables and each polynomial having degree 2.  This gives
+the upper bound (16ek)2n .
+     However, a more specific bound can be obtained in this problem.  Note that varying
+xi1  and  xi2  we  can  make  at  most  one  of  the  2k  polynomials  fij1 ,  fij2 ,  j  = 1, . . ., k  to
+be  zero.  For  example,  fl  zeros  among  fij1 ,  fij2 ,  i  =  1, . . ., n  and  j  =  1, . . ., k  can  be
+obtained in (2k)fl nfl  ways and the number of possible sign assignments is obtained by
+summing over fl  yielding
+
+                                         X    n       fl` n '             n
+
+                                              fl=0(2k)    fl    = (1 + 2k)  .
+
+
+Thus  the  number  of  P=Q  expressions  without  poles  is  (1 + 2k)n ,  which  gives  rise  to
+2(1 + 2k)n  polynomials.
+     Note  that  in  order  to  write  sign  y(1)  as  a  Boolean  formula  evaluating  polynomial
+inequalities  and  equalities  it  also  has  to  include  the  2nk  polynomials  fij1 ,  fij2 ,  i  =
+1, . . ., n, j = 1, . . ., k.  Values of these polynomials determine which P=Q expression is
+the valid one to determine sign  y(1).  The Boolean formula for sign  y(1) can be given as a
+truth table involving polynomial inequalities of 2nk fij1 , fij2  expressions and 2(1 + 2k)n
+different P and Q expressions.
+     Using  Lemma  11  for  bound  on  dmax  ,  we  apply  the  Goldberg-Jerrum  bound  with __
+s = 2nk + 2(2k + 1)n , d = m2n2 k4(n + `max  ) + 1 and ` = 2mn2 + 4n.                       |__|
+
+
+
+                                                            17
+
+
+     A simple example of a piecewise polynomial function P=Q together with the decision
+table for the final output is provided in Appendix A.
+
+Remark 17.        The  VC-dimension  bound  is  modified  for  the  more  abstract  rationality
+conditions  as  follows.   Evaluating  the  sign  of  the  output  involves  the  evaluation  of
+2(8edmax  2n2 kh=4n)4n  + 2n2 kh  polynomials;  2n2 kh  evaluations  are  needed  to  find  an
+appropriate  piece  and  by  Theorem  14  the  maximum  number  of  possible  expressions
+of  the  type  P=Q  is  bounded  by  (8edmax  2n2 kh=4n)4n .  Applying  the  Goldberg-Jerrum
+bound with s = 2(8edmax  2n2 kh=4n)4n  + 2n2 kh, d = m2n2 kdmax   + 1 and ` = 2mn2 + 4n
+gives the result.
+
+
+Proof  of  Theorem  3,  the  VC-dimensionR upper  bound,  p = 1   .                                 By using the pre-
+vious  notation  y   =  CeA x0  + C   10eA(1-t)  Bu(t)dt.    Let  ex  =  CeA x0 .    Then  y   =
+
+ex + P=Q = (exQ + P)     =Q = Pe =Q.  This has 2mn2 + 4n + 1 parameters and deg  (Pe )                                     __
+m2n2 kdmax   + 1      .                                                                                                   |__|
+
+
+Remark 18.        Taking 2n2  functions ,r` (t), r = 1, . . ., n, ` = 1, . . ., 2n in Proposition 15 is
+clear  overcounting.  Further  calculations  indicate  that  O(n ln n)  functions  ,r` (t)  would
+be enough.  For more details see Appendix B.
+
+
+
+5.2      Lower  Bounds  for  the  VC-Dimension
+
+
+The lower bounds for the VC-dimension are developed for a single-input single-output
+system with initial state zero.  The control is
+
+                                              X    k
+                                          u =      j=1  gj !j : [0, 1] ! R.
+
+
+
+We derive lower bounds by fixing the structure of A, B, and C, and using the dual VC-
+dimension and axis shattering following the ideas of DasGupta and Sontag [7 ].  Lemmata
+20,  21  and  22  given  in  this  section  together  prove  Theorem  4.   These  lower  bounds
+are  very  general;  we  just  assume  that  the  input  functions  are  continuous  and  linearly
+independent, thus no particular structure on input function is required as in the upper
+bounds.
+     To make the next proof cleaner we formulate a part of it as a separate proposition.
+(The proposition is a standard fact but we include a short proof for the completeness of
+exposition.)
+
+
+Proposition  19.           Let  !j  : [0, 1] ! R,  j  = 1, . . ., k  be  continuous  and  linearly  indepen-
+dent.  Then the functions
+
+                                             Z  1
+
+                                    hj (~) =      e~t !j (t)dt,    j = 1, . . ., k
+                                               0
+
+are linearly independent.
+
+
+Proof.    We begin by showing that for any f  2 C[0, 1] = {f : [0, 1] ! R ;  f  continuous     }
+
+                                      Z  1
+
+                                           e~t f (t)dt = 0       for all ~ 2 R
+                                        0
+
+                                                            18
+
+
+implies f (t)   0 on [0, 1].  The above integral is anRanalytic function of ~.  Moreover, all
+derivatives in ~ are zero at ~ = 0, which gives that   01 tk f (t)dt = 0 for all k = 1, 2, . . ..
+As f  is continuous and polynomials are dense in C[0, 1], we have that f (t)   0.
+     Linear  independence  of  h1 , . . ., hk  follows:  If  ff1 h1 (~) + . . .+ ffk hk (~)  =  0  for  all
+~ 2 R, then
+
+                            Z  1
+
+                                 e~t (ff1 !1 (t) + . . .+ ffk !k (t))dt = 0,    8~ 2 R
+                             0
+
+and  by  the  above  argument  ff1 !1 (t) + . . .+ ffk !k (t) = 0  for  all  t.  As  !1 , . . ., !k  were_
+assumed to be linearly independent, we have that (ff1 , . . ., ffk ) = (0, . . ., 0).               |__|
+
+
+Lemma  20  (Lower  bound  1).                   Sign system concept class C1,1  with scalar inputs and
+scalar outputs satisfies
+
+                                                           ~       ~
+                                                                      k
+                                          VC  (C1,1 )   m0   log 2   ____    ,
+                                                                     m0
+
+
+where m0 = min   {n, k}.
+
+
+Proof.    Let  !j (t),  j  =  1, . . ., k  be  continuous  and  linearly  independent.  Let  A  have  n
+distinct real eigenvalues -~1 , . . ., -~n , and take B  and C  so that
+
+                                                           X    m0
+                                             CeA(1-t)  B =      i=1  e~it ,
+
+
+where m0 = min   {n, k}.  Then the final output of the system is
+
+                  Z  1             X    k                  X    m0   X   k       Z  1
+
+           y(1) =      CeA(1-t)  B           gj !j (t)dt =                    gj      e~it !j (t)dt.
+                    0                   j=1                     i=1      j=1       0
+
+                      R  1
+     Define  hj (~) =   0  e~t !j (t)dt.  By  Proposition  19  the  hj 's  are  linearly  independent
+and we can find ~1 , . . ., ~k  such that the matrix
+
+                                            2                                 3
+                                               h1 (~1 )     . . .  hk (~1 )
+                                            6      .                   .      7
+                                            4      ..                  ..     5
+
+                                               h1 (~k )     . . .  hk (~k )
+
+
+has rank k.
+     The control system with sign observations gives the mapping F  : Rm0  x Rk  ! {0, 1}
+by
+
+                                                                   ~ X                            ~
+                                                                          m0   X   k
+                      (~1 , . . ., ~m0 , g1 , . . ., gk ) 7! sign         i=1      j=1  gj hj (~i)    .
+
+
+
+     We show that the mapping from parameters ~1 , . . ., ~m0   to {0, 1} can be axis shat-
+tered.  Let  L  =  {~1 , . . ., ~k }  be  so  that  [hj (~i)]i,j has  rank  k.  Denote  by  L1 , . . ., Lm0
+                                                                S  m0
+disjoint subsets of L such that |Li| = bk=m0c and let M  = L \ {   i=1  Li}.  Next we want
+to interpolate in the points of L.
+
+
+
+                                                            19
+
+
+     Fix  s,  1   s   m0 and  let  OE : Ls  ! {0, 1}  be  any  dichotomy.  Next  find  g1 , . . ., gk
+such that
+
+                              X    k
+
+                                   j=1  gj hj (~s )  = OE(~s ),       8 ~s 2 Ls ,
+                                X   k                                                                                 (13)
+
+                                    j=1   gj hj (~)  = 0,       8 ~ 2 (L [ M ) \ Ls .
+
+
+Let g*1, . . .g*k satisfy (13)  .  (A unique solution exists because [hj (~i)]   has rank k.)  Then
+
+                                                              ~ X                            ~
+                                                                     m0   X   k     *
+                F [~1 , . . ., ~m0 , g*1, . . ., g*k] = sign         i=1      j=1  gj hj (~i)     = OE(~),
+
+
+
+when ~ 2 Ls  and for all (~1 , . . ., ~m0 ) 2 L1 x . . .x Lm0 .
+     Let  Fe  =  {F (~1 , . . ., ~m0 , .)  :  Rk   !  {0, 1}  ;   (~1 , . . ., ~m0 )  2  Rm0 }.  By  the  Axis
+shattering bound given in Theorem 12
+
+                                                           ~       ~
+                                                                      k
+                                           VC   (Fe )   m0   log 2   ____
+                                                                     m0
+
+
+and  thus  VC  (C1,1 )     VC  (Fe ),  where  C1,1  is  the  control  system  concept  class  with  p  =               __
+m = 1.                                                                                                                |__|
+
+
+Lemma  21  (Lower  bound  2).                   If k   n then
+
+
+                                                    VC   (C1,1 )   k.
+
+
+Proof.    We make a small modification of the above argument.  Assume that k   n and
+letPA have n real eigenvalues ~1 , . . ., ~n .  Next we take B  and C  so that CeA(1-t)  B  =
+   n     ~it
+   i=1  e    fii, where (fi1 , . . ., fin , ~1 , . . ., ~n ) are considered as system parameters.
+     We study the mapping
+
+                                                                  ~ X                               ~
+                                                                         n    X   k
+      (fi1 , . . ., fin , ~1 , . . .,,~ng1 , . . ., gk ) 7! sign         i=1      j=1  gj hj (~i)fii
+
+                                              "                                     #         ~                  ~
+                                                 X    k       X    n                            X    k
+                                      = sign          j=1  gj      i=1  hj (~i)fii    = sign              gj flj  .
+                                                              _________-z________"                   j=1
+                                                                       flj
+
+
+Given    (fl1 , . . ., flk ),     by    linearP   independence    of    h1 , . . ., hk ,     we    can    find
+~1 , . . ., ~n , fi1 , . . ., fin  such that     ni=1 hj (~i)fii = flj ,  j  = 1, . . ., k.  But (fl1 , . . ., flk ) can
+be viewed as a normal vector for a hyperplane through the origin inhRk  and the concepti
+                                                                   P   k
+class  associated  to  the  mapping  (g1 , . . ., gk )  7!  sign       j=1  gj flj   as  (fl1 , . . ., flk )  varies
+                                                                                                           __
+has VC-dimension k.  Hence VC   (C1,1 )   k.                                                              |__|
+
+
+Lemma  22  (Lower  bound  3).                   If n   k  then
+
+
+                                                    VC   (C1,1 )   n.
+
+
+                                                            20
+
+
+Proof.    Our construction for the control system is as in the previous proof but now we
+assume that n   k and we study
+                                                                    ~ X                               ~
+                                                                           n    X   k
+        (fi1 , . . ., fin , ~1 , . . .,,~ng1 , . . ., gk ) 7! sign         i=1      j=1  gj hj (~i)fii
+
+                                                "                                    #
+                                                   X    n   X    k                              h X    n         i
+                                        = sign          i=1      j=1  gj hj (~i)  fii   = sign             g"ifii
+                                                            _________-z________"                       i=1
+                                                                      "gi
+
+
+and  again  by  linear  independence  and  the  above  hyperplane  argument  (now  via  first
+transforming (g1 , . . ., gk )) we can conclude that the above mapping has VC-dimension                              __
+n.  Thus VC   (C1,1 )   n.                                                                                          |__|
+
+
+
+5.3      VC-Dimension  Upper  Bounds  for  p-Dimensional  Outputs
+
+
+We begin by proving Theorem 5.
+
+
+Proof  of  the  VC-dimension  upper  bound.                          We develop an upper bound based on
+the  bound  for  a  scalar  sign-observation.   We  have  seen  that  under  the  rationality  as-
+sumption (RAT) the scalar output is a piecewise rational expression P=Q.  In general,
+the control system maps G to (sign  (P1 =Q1 ), . . ., sign (Pp =Qp ))T , which is understood as
+a binary representation of a number in {0, 1, . . ., 2p - 1}.  Let f  : Rmk   ! {0, . . ., 2p - 1}
+be the mapping given by the control system, and denote the class of all such mappings
+by F .  For each f  2 F  introduce a loss function L0-1,f (z, a) = L0-1 (f (z), a) = 1,  when
+f (z) 6= a, and 0 otherwise.  Define the class L0-1,F  = {L0-1,f  ;  f  2 F }.
+     In order to calculate the value of the output, after determining an appropriate piece,
+one needs to know the truth values of the expressions P1  > 0, Q1  > 0, . . ., Pp  > 0 and
+Qp  >  0,  where  P's  and  Q's  are  polynomials  on  inputs  and  parameters  of  the  control
+system.  To evaluate the value of the loss function L0-1,f (z, a), one needs the truth values
+of y = 0, y = 1, . . ., y = 2p - 2.
+     In  the  general  case  one  needs  2nk + 2p(2k + 1)n  + 2p  - 1  truth  values.   As  this
+procedure  evaluates  only  polynomials,  we  can  use  the  Goldberg-Jerrum  bound  again.
+The maximum degree of the polynomials is m2n2 k4(n + `max  ) + 1, and the total number
+of parameters is 2pn2 m + 4n + p, where the last term comes from the initial condition.                                    __
+                                                                                                                          |__|
+
+
+Remark 23.        An upper bound can be derived by using the uniform  -dimension defined
+by  Ben-David  et.  al.  [6 ].   As  before  let  f  :  Rmk    !  {0, . . ., 2p  - 1}  be  the  mapping
+given  by  the  control  system.   Let     =  {_1 , . . ., _p }  be  a  collection  of  distinguishers
+_j  : {0, . . ., 2p - 1} ! {0, 1} given by _j (sign  (y1 ), . . ., sign (yp )) = sign  (yj ).
+
+     Let _jf : Rmk   ! {0, 1} be given by _jf(z) = _j (f (z)) and _jF  = {_jf ;  f  2 F }.  An
+
+upper bound for VC   (_jF) is given by Theorem 3.  Ben-David et. al. define the uniform
+ -dimension of F , in which only one distinguisher is selected to shatter, as
+
+
+                                   - dim  U  (F ) = max   {VC   (_jF) ;  _j  2  }.
+
+
+That is, the upper bound for the uniform  -dimension is just the upper bound obtained
+earlier for scalar observations.  However, the uniform  -dimension can not be compared
+to  the  VC-dimension  as  such.   For  example,  the  formula  for  sample  complexity  with
+
+
+
+                                                            21
+
+
+ -dimension is different:  to calculate the sample complexity the uniform  -dimension
+is multiplied by p log 2(2p - 1), see [6 , Theorem 27].
+6      A  Fat-Shattering  Bound
+
+
+We  begin  this  section  by  proving  Theorems  7  and  8.  As  a  corollary  of  Theorem  8  we
+prove the fat-shattering bound appearing in Theorem 2 bounding the sample complexity
+for proper agnostic learning.
+
+
+Proof  of  Theorem  7.             For  the  first  part  of  the  proof  we  use  a  generic  set  B  for  the
+parameters.  Assume that we can fl-shatter a set of inputs {u1 , . . ., ud } and there exists
+{r1 , . . ., rd } such that, for each assignment b 2 {0, 1}d , there exists a ~ 2 B  such that
+
+
+                                      F (~, ui)     ri + fl,     if bi = 1, and
+
+                                      F (~, ui)     ri - fl,     otherwise.
+
+
+We write ~ ~ ~ if and only if the parameters ~ and ~ give the same assignment for all
+{u1 , . . ., ud }.  Further, let   = {~1 , . . ., ~2d } be a collection of parameters that shatter
+{u1 , . . ., ud } and let ~i, ~j 2  .  Now ~i 6~ ~j  implies that there exists u*  2 {u1 , . . ., ud }
+and r*  2 {r1 , . . ., rd } such that F (~i, u* )   fl + r*  and F (~j , u* )   fl - r* , or vice versa.
+Hence
+
+
+                                2fl   |F (~i, u* ) - F (~j , u* )|   Lk~i - ~j k
+
+
+and so k~i - ~j k   2fl=L.  That is, the set   of cardinality 2d  is a 2fl=L-separated set
+in  B.  Now  the  fat-shattering  bounds  follow  by  calculating  2fl=L-packing  numbers  for
+different sets B.
+     If B = Bk1 (C) the maximum possible cardinality for an ffl-separated set is b2C=fflck ,
+and thus
+
+                                                  ~           k   ~        k
+                                                      2C            CL
+                                            2d      ________    =   _____
+                                                    2fl=L             fl
+
+
+and solving for d yields d   k log 2 bCL=flc.
+     Similarly, if B = B~k1 (C) the maximum possible cardinality for an ffl-separated set is
+(1 + b2C=fflc)    k and by a similar argument we arrive at the bound d   k log 2 (1 + bLC=flc)      .
+     For B = B~k2(C), let P (ffl) be a collection of ffl-separated sets in B~k2 (C) and let |P (ffl)|
+denote  its  cardinality.   As  all  open  balls  with  radius  ffl=2  with  centers  at  ffl-separated
+points have to be disjoint and their union has to be inside a ball of radius C + ffl=2, we
+get that |P (ffl)|ff(k)(ffl=2)k    ff(k)(C + ffl=2)k , where ff(k) = ssk=2 = (k=2 + 1) is the volume
+of a unit ball in Rk .  Hence |P (ffl)|   (C + 2=ffl)k  and
+
+
+                                                 2d    (C + L=fl)     k ,
+
+                                                                                                                    __
+i.e., d   k log 2 (C + L=fl).                                                                                      |__|
+
+
+     Next we prove Theorem 8 by applying the Lipschitz bound to a control system.
+
+
+
+                                                            22
+
+
+Proof  of  Theorem  8.             Our aim is to compute the Lipschitz constant associated to the
+control system in Definition 2 and then we apply Theorem 7.
+     Denote  the  system  parameters  (ff11 , . . ., ffnm  , a1 , b1 , . . ., ar , br )  by  ~  and  assume
+k~k1   < 1.  Let
+                                           Z  o  X   m    X    n
+
+                        F (~, u) = y(o ) =                          ffi`,`(t)ui(o - t)dt.
+                                             0       i=1       `=1
+
+Functions ,1 (t), . . ., ,n (t) are of the form ,(t) = tceat sin (bt) or ,(t) = tceat cos  (bt) where
+a + ib  is  an  eigenvalue  of  A  and  c  2  {0, . . ., n - 1}.  Thus  taking  a  partial  derivative
+with respect to a or b will increase the power of t by one and change the trigonometric
+functions.  Therefore,
+                fifi          fi    fi        fi     fiX        X                Z  o                 fi
+                fifi@F_(~,_u)_fifi= fifi@y(o_)_fifi= fifi  m        n    d(i, `)      ,`(t)ui(o - t)dtfifi
+                    @ff~ae    fi    fi @ff~ae fi     fi    i=1      `=1            0                  fi
+                                                    Z  o
+
+                                                 nm      |,`(t)ui(o - t)|     dt   nmo n-1  eo M,
+                                                      0
+
+because  sup t2[0,o ] |,`(t)|    eo o n  and  d(i, `) = @ffij=@ff~ae = 1  if  (i, `) = (~, ae)  and  zero
+otherwise.  Similarly we calculate
+                                  fifi          fi    fi        fi
+                                  fifi@F_(~,_u)_fifi= fifi@y(o_)_fifi  nmo neo M  and
+                                       @a~      fi    fi  @a~   fi
+                                  fifi          fi    fi        fi
+                                  fifi@F_(~,_u)_fifi= fifi@y(o_)_fifi  nmo neo M
+                                       @b~      fi    fi  @b~   fi
+                fi       fi                                fi       fi
+as sup  t2[0,o ]fifi@,`(t)_@~fifi  eo o n and sup  t2[0,o ]fifi@,`(t)_@b~fifi  eo o n.
+
+     Now the Lipschitz constant can be taken to be L = n2 meo o nM  as
+
+
+                        |F (~, u) - F (~* , u)|      = |rF . (~ - ~* )|        Lk~ - ~* k1  .
+
+
+The  number  of  system  parameters  is  at  most  nm + n  =  (m + 1)n  and  we  get  the
+level fat-shattering bound by applying Theorem 7 with space dimension n(m + 1) and                                  __
+L = n2 meo o nM .                                                                                                  |__|
+
+
+     As a corollary, we combine the above result together with a pseudo-dimension bound
+to prove the fat-shattering bound given in Theorem 2.
+
+Corollary  24  (Fat-shattering  bound  in  Theorem  2).                              Assume   that   the   system
+`x =  Ax + Bu,  y  =  Cx,  x(0)  =  0  can  be  parameterized  by  ~  2  Rn(m+1)     as  in  Defi-
+nition  2  with  k~k  1   <  1  and  assume  in  addition  that  the  control  is  given  by  u  =  G!
+where the input basis functions !j  are in   given by  (2) .  We denote the corresponding
+control system class by
+
+
+                                       FB  = {F (~, .) : U  ! R ;  ~ 2 B}.
+
+
+Then
+                       8                   j                k
+                       <    (m + 1)n log 2   n2mo_neo_kM____  ,
+   fat fl(FB )   min                        i       fl                                     j
+                       :    2(m + 4)n log 2   8e  nmk4(n + `max  ) + 1   2nk + 2(2k + 1)n    ,
+
+
+                                                            23
+
+
+where `max   is given by  (2)  and  (3)  and M  is a constant satisfying
+
+                                              Z  o
+
+                                                   |ui(o - t)|dt   kM
+                                                0
+
+for all i = 1, . . ., m.
+
+
+Proof.    The first part of the bound follows from Theorem 8 with kM  in place of M .
+     The  remaining  part  of  the  bound  comes  from  the  pseudo-dimension  bound.  First
+we  derive  the  associated  VC-dimension  bound.   As  we  assumed  that  A  has  a  fixed
+Jordan  block  structure,  every  entry  of  eA(1-t)    is  a  linear  combination  of  n  functions
+,1 (t), . . ., ,n (t).  (That is, we don't need to consider all possible functions over different
+Jordan  block  structures.)  This  implies  that  in  the  Goldberg-Jerrum  argument  of  Sec-
+tion 5.1 we can take ` = mn + 4n, d = nmk4(n + `max  ) + 1 and s = 2nk + 2(2k + 1)n .
+Moreover, in that section the VC-dimension bounds were derived for time interval [0, 1].
+However,  the  upper  bound  depends  on  the  number  of  system  parameters  and  the  de-
+grees  of  polynomials  to  be  evaluated.   Changing  the  time  interval  to  be  [0, o ]  means
+just that we replace the eigenvalue parameters (referring to the proof of Proposition 15)
+a, b, ea cos  b, ea sin  b by ao, bo, eao  cos  bo, eao  sin bo .
+     The  above  bound  is  also  a  bound  for  the  pseudo-dimension.     Observe  that
+for  G   =   {g   :   X   !   R},   the  pseudo-dimension  can  be  defined  as  PD   (G)   =
+VC   {Ind  (x, y)  =  sign (g(x) - y)      ;  g  2  G}.   Hence  we  study  the  VC-dimension  associ-
+ated to sign  (y(o ) - z)    = sign  (P=Q - z) = sign  (P^ =Q), where P^  = P - zQ has the same
+degree as P with respect to the parameters.  Here z  is a new input, but the bound uti-
+lizing Goldberg-Jerrum technique does not depend on the dimension of the inputs, and
+hence the above VC-dimension bound is also a bound for the pseudo-dimension.  (Note
+that here in the scale sensitive setting we do not apply the pseudo-dimension results of          __
+Section 5.3 using loss functions, as those rescaled the outputs.)                                |__|
+
+
+Remark 25.        In  the  special  case  of  scalar  controls  (i.e.,  m  =  1)  that  are  given  by  a
+linear combination of k fixed input functions, the control system class discussed can be
+viewedPas a family of linear mappings in Rk  as calculated in (5)  .  Let F  = {x 2 Rk  7!
+
+   i wixi + `     ;  kwk2  = 1    }.  If we further restrict x such that kxk2    R and |`|    R then
+[18  , 16  ] have shown that
+
+
+                                     fat fl(F )   min   {9R2 =fl2 , k + 1} + 1.
+
+
+     In  this  special  case  our  fl-shattering  result  is  of  the  form  c1 log 2 ( bc2 k=flc)  ,  where
+c1  and c2  are constants.  This gives improvement over the hyperplane bound when the
+margin fl  is small.
+7      A  Class  of  Systems  with  VC-Dimension  k
+
+                                                                 P  k
+For  the  control  system  (1)   with  scalar  control  u(t)  =     i=1  gi!i(t)  and  unrestricted
+!1 , . . ., !k ,  the  standard  half-space  argument  gives  an  upper  bound  k.  This  bound  is
+tight.  We will give an example of a single-input, single-output one parameter family of
+control systemsPin dimension two that has VC-dimension k, when the controls are of the
+form u(t) =     ki=1gi!i(t) and !i(1 - t) = 1[2-i ,2-i +2ff], where ff = -2(k + 1).
+
+                                                            24
+
+
+     Consider a control system
+
+
+                                                   x`1 = x2
+
+                                                   x`2 = -~2 x1 + u                                                   (14)
+
+                                                    y  = -x1 .
+
+
+For  timeR interval  [0,1]  and  initial  condition  (x1 , x2 )  =  (0, 0),  the  output  is  given  by
+y(1) =   10sin (~t)u(1 - t)dt.
+
+
+Lemma  26.          Controls {!1 , . . ., !k } such that !i(1-t) = 1[2-i ,2-i +2ff], where ff = -2(k +
+1), are shattered by the control system  (14)   with sign-observations.
+                                                                          P  k
+Proof.    Let T  = {2-i ,  i = 1, . . ., k} and J    T .  Define ~J  = ss    i=1  ai2i, where ai = 1
+if 2-i  62 J  and ai = 0 otherwise.  Now if t = 2-` , then
+                                               _                                                !
+                          X    k                  X    `-1                 X    k
+                ~J t = ss      i=1 ai2i-`  = ss        i=1  ai2i-`   +a` +              ai2i-`     ,
+                                                  ________-z_______"       _____i=`+1_-z________"
+                                                        1=2 c2                      2c1
+
+
+where c1  2 N and 0   c2  < 2.
+     Hence sin (~J t) = sin (ss(1=2 c2 + a`)). Note that if a` = 0 then 1=2 c2 + a` 2 [0, 1 - 2-` ]
+and if a` = 1 then 1=2 c2 + a` 2 [1, 2 - 2-` ].  Thus sin (ss(1=2 c2 + a`))   0 if a` = 0 and
+sin (ss(1=2 c2 + a`))   0 if a` = 1.  Therefore,
+
+
+                                              sin (~J t)   0  ,  a` = 0
+
+
+and
+
+
+                                              sin (~J t)   0  ,  t 2 J.
+
+
+Further,
+
+                                     Z   2-` +2ff
+
+                                                  sin (~J t)dt   0  ,  a` = 0,
+                                       2-`
+
+where ff is taken so that
+                                              X    k     j  ff    -(k+1)
+
+                                                   j=1  2  2     2         .                                          (15)
+
+
+This assures that when `   k and t 2 [2-` , 2-`  + 2ff]
+
+                                                 X    k
+                        ~J t 2 [0, ss(1 - 2-`  +      j=1  2j 2ff)]   [0, ss) ,  if a` = 0
+
+
+or similarly
+
+
+                                             ~J t 2 [ss, 2ss) ,  if a` = 1.
+
+                                        P   k
+In (15)   we can take ff = -2(k + 1) as     j=1  2j = 2k+1   - 2.
+     In this way the integrand in
+
+                                                Z   2-` +2ff
+
+                                                             sin (~J t)dt
+                                                  2-`
+
+
+
+                                                            25
+
+
+is either positive or negative.
+     For S   {1, . . ., k}, let J = {2-i , i 2 S}.  For each !i,
+
+                    Z  1                         Z  2-i +2ff
+
+                         sin (~J t)!i(1 - t)dt =              sin (~J t)dt > 0 ,  i 2 S,
+                      0                            2-i
+
+i.e., the set of controls {!1 , . . ., !k } is shattered by the mapping
+
+                                                 h Z   1                      i
+                                     !i 7! sign          sin (~J t)!i(1 - t)dt  .
+                                                     0
+                                                                                                                           __
+                                                                                                                          |__|
+
+
+
+A       An  Example  of  the  Goldberg-Jerrum  Bound
+
+
+We begin this appendix with an informal discussion on the Goldberg-Jerrum technique
+used to prove the VC-dimension upper bounds in this paper.
+     We want to write y(1) = P=Q, where P and Q are polynomials.  Unfortunately, the
+value  of  sign  y(1)  can  not  be  obtained  by  just  evaluating  P  and  Q  since  Q  may  have
+zeros.  Therefore we need to write
+                                        8
+                                        >><P1 =Q1 ,        if f1  6= 0, . . ., f~  6= 0
+
+                                 y(1) =       ...
+                                        >>:
+                                           Pfl =Qfl  ,     if f1  = 0, . . ., f~  6= 0
+
+
+so that after evaluating ~ polynomials f1 , . . ., f~  we can pick a definition Pi=Qi without
+poles in a region defined by the ~ polynomials.  When y(1) is defined in this way sign  y(1)
+can be easily expressed by a Boolean formula evaluating 2fl + ~ polynomial inequalities
+and equalities.
+     For simplicity we assume that p = 1 and the initial condition x(0) = 0.  Then using
+the notation of Proposition 15 we write
+
+                       X    m    X   n     X   2n         X    k        Z  1
+                y(1) =      i=1      r=1       `=1  ffir`      j=1  gij      ,`(xr1 , xr2 , t)!j (t)dt
+                                                                          0
+
+and by the proof of Lemma 11
+Z   1
+                                                                          P`j
+      ,`(xr1 , xr2 , t)!j (t)dt =  ____________________________________________________________________________________22z`j22z`j,
+  0                                ( (xr1  + ffj )  + (xr2  + fij )  )       ((xr1  + ffj )  + (xr2  - fij )  )
+
+
+
+where  P`j   is  some  polynomial,  z`j   2   N  and  !j (t)   =   t`j effjt sin (fij t)  or  !j (t)   =
+t`j effjt cos (fij t).  Hence the denominator of
+
+                                      X    k        Z  1
+
+                                           j=1  gij   0  ,`(xr1 , xr2 , t)!j (t)dt
+
+is
+
+                  2                2      z`1                2                2      z`1
+     (xr1  + ff1 )  + (xr2  + fi1 )             (xr1  + ff1 )  + (xr2  - fi1 )           x
+                                               2                2       z`k                2                2      z`k
+                          . . .x  (xr1  + ffk )  + (xr2  + fik )              (xr1  + ffk )  + (xr2  - fik )           .
+
+
+
+                                                            26
+
+
+By  carrying  out  all  summations  y(1)  =  P=Q.   The  denominator  Q  consists  of  the
+product
+            _
+   Y    n                    2                2      *                2                2      *
+
+        r=1     (xr1  + ff1 )  + (xr2  + fi1 )           (xr1  + ff1 )  + (xr2  - fi1 )         x
+                                                                                                                    !
+                                                 2                2       *               2                2       *
+                            . . .x  (xr1  + ffk )  + (xr2  + fik )           (xr1  + ffk )  + (xr2  - fik )            ,
+
+
+
+where *'s stand for some unspecified powers.  Hence the zeros of Q are determined by
+2nk polynomials
+
+                                       fij1  = (xi1 + ffj )2 + (xi2 + fij )2 ,
+
+                                       fij2  = (xi1 + ffj )2 + (xi2 - fij )2 ,
+
+and i = 1, . . ., n, j = 1, . . ., k.  The number of different sign assignments determining fl
+is calculated as in the proof of Lemma 16.
+
+
+
+Example
+
+
+The  purpose  of  the  following  example  is  to  illustrate  the  function  y  =  P=Q  used  in
+the  Goldberg-Jerrum  technique  together  with  the  sequence  of  polynomial  evaluations
+involved and a table for the final output depending on the outcomes of the polynomial
+evaluations.
+     Take m = 1, n = 2, k = 2, and assume that A has complex eigenvalues a   ib.  Take
+basis input functions to be !1 (t) = et and !2 (t) = e2t .  Then
+
+                                       X    2        X   2        Z  1
+                                y(1) =      l=1  ffl     j=1   gj      ,l(t)!j (t) dt,
+                                                                    0
+
+where ,1 (t) = eat sin (bt), ,2 (t) = eat cos  (bt), ff1 , ff2 , a, b, ea sin  b and ea cos  b are system
+parameters and g1 , g2  are input parameters.
+     By using formulas
+                            Z  1                       "a
+                                                      e  ("a sin "b- "bcos  "b) + "b
+                                 e"atsin ("bt) dt  =  ________________________________,    and
+                            Z 0                                  "a2 + "b2
+                               1                      e"a("a cos "b + "bsin "b) - "a
+                                 e"atcos  ("bt) dt =  ________________________________,
+                             0                                   "a2 + "b2
+
+we calculate the integrals appearing in the rationality condition, and we call them r11 ,
+r12 , r21 , and r22 :
+             Z  1                     Z  1                        (                    2    2
+                                                                     r11 ,   if (a + 1)  + b   6= 0,
+                  ,1 (t)!1 (t) dt   =      e(a+1)t  sin (bt) dt =                      2    2
+               0                        0                            0,      if (a + 1)  + b   = 0,
+             Z  1                     (                    2    2
+                                         r12 ,   if (a + 2)  + b   6= 0,
+                  ,1 (t)!2 (t) dt   =                      2    2
+               0                         0,      if (a + 2)  + b   = 0,
+             Z  1                     (                    2    2
+                                         r21 ,   if (a + 1)  + b   6= 0,
+                  ,2 (t)!1 (t) dt   =                      2    2
+               0                         1,      if (a + 1)  + b   = 0,
+             Z  1                     (                    2    2
+                                         r22 ,   if (a + 2)  + b   6= 0,
+                  ,2 (t)!2 (t) dt   =                      2    2
+               0                         1,      if (a + 2)  + b   = 0.
+
+
+
+                                                            27
+
+
+     The computation of
+
+                                            `  X                         Z                  '
+                                                   2        X   2           1
+                        sign   y(1) = sign         l=1  ffl     j=1   gj      ,l(t)!j (t) dt
+                                                                           0
+
+is divided into three cases:
+
+
+     o  Case (a + 1)2 + b2  6= 0, (a + 2)2 + b2  6= 0:
+
+                                                                                                   `      '
+                                                                                                      P1
+                sign  y(1) = sign  (ff1 g1 r11  + ff1 g2 r12  + ff2 g1 r21  + ff2 g2 r22 ) = sign     ____   .
+                                                                                                      Q1
+
+
+
+     o  Case (a + 1)2 + b2  = 0, (a + 2)2 + b2  6= 0:
+
+                                                                                         `      '
+                                                                                            P2
+                         sign  y(1) = sign  (ff1 g2 r12  + ff2 g1 + ff2 g2 r22 ) = sign     ____   .
+                                                                                            Q2
+
+
+
+     o  Case (a + 1)2 + b2  6= 0, (a + 2)2 + b2  = 0:
+
+                                                                                          `      '
+                                                                                             P3
+                         sign  y(1) = sign  (ff1 g1 r11  + ff2 g2 r21  + ff2 g2 ) = sign     ____   .
+                                                                                             Q3
+
+
+                                                      P
+Thus we have three different expressions of the form  ___.
+                                                      Q
+     Next  we  form  the  Boolean  formula,  F  =  sign  y(1),  evaluating  polynomials  f1  =
+(a + 1)2 + b2  = 0, f2  = (a + 2)2 + b2  = 0, Pi > 0, Qi > 0, for i 2 {1, 2, 3}.  In the following
+table 1 means true and 0 means false for the above polynomial evaluation (** = 1 or 0,
+i.e., extend the table).
+
+
+      __f1__=_0______f2__=_0_____P1__>_0______Q1__>_0_______P2__>_0______Q2__>_0_______P3__>_0______Q3__>_0__|___F____
+
+            0           0            1            1            **           **            **           **     |   1
+            0           0            1            0            **           **            **           **     |   0
+            ..           .            .            .            .            .             .            .         .
+            .            ..           ..           ..           ..           ..            ..           ..     || ..
+            1           0           **            **            1            1            **           **     |   1
+            1           0           **            **            1            0            **           **     |   0
+            ..           .            .            .            .            .             .            .         .
+            .            ..           ..           ..           ..           ..            ..           ..     || ..
+            0           1           **            **           **           **            0             0      |  1
+
+
+In    this    case    (see    the    statement    of    Goldberg-Jerrum    bounds)           =
+{ff1 , ff2 , a, b, ea cos  b, ea sin  b}, X = {g1 , g2 }, s = 8, d = 12, and l = 6.
+B       Functions  Needed  to  Express  an  Exponential  of  a  Real
+
+        Matrix
+
+
+Taking 2n2  functions ,r` (t), r = 1, . . ., n, ` = 1, . . ., 2n to express eAt  in Proposition 15
+is clear overcounting.  In this appendix we estimate how many functions are needed to
+express eAt  for any n x n real matrix A.
+
+                                                            28
+
+
+     Let us list the complex eigenvalues of A as a1   ib1 , . . ., a~    ib~ , where ~   bn=2c,
+in the decreasing order by their geometric multiplicities.  We introduce functions
+
+                                                                                     n_c-1  a t
+      a1   ib1  :     Mfa1 ib1    := {ea1t cos  (b1 t), tea1t cos  (b1 t), . . ., tb 2     e 1  cos  (b1 t),
+                                                                                       n_c-1  a t
+                                          ea1t sin (b1 t), tea1t sin (b1 t), . . ., tb 2     e 1  sin (b1 t)},
+                                                                  n_c-1  a t
+      a2   ib2  :     Mfa2 ib2    := {ea2t cos  (b2 t), . . ., tb 4     e 2  cos  (b2 t),
+                                                                     n_c-1  a t
+                                          ea2t sin (b2 t), . . ., tb 4     e 2  sin (b2 t)},
+
+                     ..
+                     .
+
+      a~    ib~  :    Mfa~  ib~    := {ea~ t cos (b~ t),
+
+                                          ea~ t sin (b~ t)}.
+
+
+Linear combinations of the above functions can express all possible matrices eAt  when
+A has purely complex eigenvalues.
+     As  real  eigenvalues  can  have  higher  geometric  multiplicities,  we  add  the  following
+functions
+
+                                                             n_c a t           n-1   a t
+                            Ma1 ib1     := Mfa1 ib1    [ {tb 2  e 1  , . . ., t     e 1  },
+                                                             n_c a t           b n_c-1  a t
+                            Ma2 ib2     := Mfa2 ib2    [ {tb 4  e 2  , . . ., t  2     e 2  },
+
+                                      ..
+                                      .
+
+                            Ma~  ib~    := Mfa~  ib~   [ {tea~ t}.
+
+
+     To  express  eAt   when  A  has  real  eigenvalues  a`,  `  =  ~ + 1, . . ., n  with  geometric
+multiplicity one, we add at most bn=2c + 1 functions Ma`  = {ea`t } for ` = ~ + 1, . . ., n.
+     The total number of functions in
+
+
+                              Ma1 ib1   [ . . .[ Ma~  ib~  [ Ma~+1   [ . . .[ Man
+
+
+is
+
+                             X    bn=2c   n      X    bn=2c  i   n       n   j       n
+                           2      i=1   b ___c +               b __c - b ___c    + b __c + 1
+                                          2i          i=1         i      2i          2
+                              X    bn=2c   n      X    bn=2c   n       n
+                            =      i=1   b ___c +            b __c + b __c + 1
+                                           2i          i=1      i      2
+                               3n  X    bn=2c  1      n
+                               ____            __ + b __c + 1
+                                2       i=1     i     2
+                               3n  i      n      j        n
+                               ____  ln b __c + 1     + b __c + 1 = O(n ln n),
+                                2         2               2
+
+                                 P   l    1
+using the fact that ln (k + 1)       i=1  __i  ln (k) + 1.
+
+
+
+Acknowledgments
+
+
+This  research  has  been  financed  in  part  by  grants  from  the  following  organizations:
+the  Academy  of  Finland,  Finnish  Academy  of  Sciences  and  Letters,  Finnish  Cultural
+Foundation and US Air Force (grant F47620-97-1-0159).
+
+                                                            29
+
+
+References
+
+
+  [1]  N.  Alon,  S.  Ben-David,  N  Cesa-Bianchi,  and  D.  Haussler,  Scale-sensitive  dimen-
+       sions, uniform convergence and learnability, Journal of the ACM 44 (1997), no. 4,
+       615-631.
+
+
+  [2]  M. Anthony and B. Bartlett, Learning in neural networks:  theoretical foundations,
+       Cambridge University Press, 1999.
+
+
+  [3]  P.  Bartlett,  P.  Long,  and  R.  Williamson,  Fat-shattering  and  learnability  of  real-
+       valued functions, Proceedings of the Seventh Annual Conference on Computational
+       Learning Theory (New York, N.Y.), ACM, 1994, p. 299.
+
+
+  [4]  P. Bartlett and M. Vidyasagar (eds.), Learning theory special issue of Systems and
+       Control Letters, vol. 34, 1998.
+
+
+  [5]  Peter L. Bartlett and Philip M. Long, More theorems about scale-sensitive dimen-
+       sions  and  learning,  In  Proceedings  of  the  Eight  Annual  Conference  on  Computa-
+       tional Learning Theory, Santa Cruz, California, 5-8 July 1995, ACM Press, 1995,
+       also  appeared  as  Prediction,  Learning,  Uniform  Convergence  and  Scale-Sensitive
+       Dimensions, Journal of Computer and System Sciences,v 56, n2, Feb 1998, pp. 174-
+       190.
+
+
+  [6]  S. Ben-David, N. Cesa-Bianchi, D. Haussler, and P. M. Long, Characterizations of
+       learnability  for  classes  of  {0, . . ., n}-valued  functions,  J.  Comput.  System  Sci.  50
+       (1995), no. 1, 74-86.
+
+
+  [7]  B. DasGupta and E. D. Sontag, Sample complexity for learning recurrent perceptron
+       mappings, IEEE Trans. Inform. Theory 42 (1996), no. 5, 1479-1487.
+
+
+  [8]  B. DasGupta and E. D. Sontag, Sample complexity for learning recurrent perceptron
+       mappings, Advances in Neural Information Processing Systems 8, (D.S. Touretzky,
+       M.C.  Moser,  and  M.E.  Hasselmo,  eds.),  MIT  Press,  Cambridge,  MA,  1996,  pp.
+       204-210.
+
+
+  [9]  C.-N. Fiechter, PAC adaptive control of linear systems, Tenth Annual Conference
+       on Computational Learning Theory, ACM, 1997.
+
+
+[10]   P. Goldberg and M. Jerrum, Bounding the Vapnik-Chervonenkis dimension of con-
+       cept classes parametrized by real numbers, Machine Learning 18 (1995), 131-148.
+
+
+[11]   T.  Johansen  and  E.  Weyer,  On  convergence  proofs  in  system  identification  -  a
+       general principle using ideas from learning theory, Systems and Contol Letters 34
+       (1998), 85-92.
+
+
+[12]   P.  Koiran  and  E.  D.  Sontag,  Vapnik-Chervonenkis  dimension  of  recurrent  neural
+       networks, Discrete Applied Mathematics 86 (1998), no. 1, 63-80.
+
+
+[13]   R. Koplon and E. D. Sontag, Linear systems with sign-observations, SIAM J. Con-
+       trol Optim. 31 (1993), 1245-1266.
+
+
+                                                            30
+
+
+[14]   L. Ljung, PAC-learning and symptotic system identification theory, Proceedings of
+       35th  IEEE  Conf.  on  Decision  and  Control,  Kobe,  Japan,  IEEE,  1996,  pp.  2303-
+       2307.
+
+
+[15]   D.  Pollard,   Convergence  of  stochastic  processes,   Springer  series  in  statistics,
+       Springer Verlag, 1984.
+
+
+[16]   J.     Shawe-Taylor,      P.     Bartlett,      R     Williamson,      and     M.     Anthony,
+       Structural     risk     minimization     over     data-dependent     hierarchies,      Neu-
+       roCOLT      Technical      Report,       NC-TR-96-053      (1996),       available      at
+       ftp://ftp.dcs.rhbnc.ac.uk/pub/neurocolt/tech_reports                          or
+       www.neurocolt.com
+
+
+[17]   E.D. Sontag, A learning result for continuous-time recurrent neural networks, Sys-
+       tems and Control Letters 34 (1998), 151-158.
+
+
+[18]   V. Vapnik, The nature of statistical learning theory, Springer-Verlag, 1995.
+
+
+[19]   V. Vapnik and A. Chervonenkis, On the uniform convergence of relative frequencies
+       of events to their probabilities, Theory Probab. Appl. 16 (1971), 264-280.
+
+
+[20]   M. Vidyasagar, A theory of learning and generalization; with applications to neural
+       networks and control systems, Springer-Verlag, 1997.
+
+
+[21]   __________,  Introduction  to  some  statistical  aspects  of  PAC  learning  theory,  Systems
+       and Control Letters 34 (1998), no. 3, 115-124.
+
+
+[22]   R.  Wenocur  and  R.  Dudley,  Some  special  Vapnik-Chervonenkis  classes,  Discrete
+       Mathematics 33 (1981), 313-318.
+
+
+[23]   A. Zador and B. Pearlmutter, VC dimension of an integrate-and-fire neuron model,
+       Neural Computation 8 (1996), no. 3, 611-624.
+                                                            31
+</pre>
+</body>
+</html>

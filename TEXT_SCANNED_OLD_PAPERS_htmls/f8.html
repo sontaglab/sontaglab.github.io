@@ -1,0 +1,1425 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/f8.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/f8.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "f8.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Dvi file name: "f8.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+STABILIZATION WITH SATURATED ACTUATORS, A WORKED EXAMPLE:F-8 LONGITUDINAL FLIGHT CONTROL
+
+\Lambda 
+
+Yudi Yang, Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control
+
+Department of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903 USA
+
+Abstract
+
+Proc. 1993 IEEE Conf. on Aerospace Control Systems, Thousand Oaks, CA, May 1993, pp. 289-293 The authors and coworkers recently proved general theorems on the global stabilization of linear systems subject to control saturation. This paper develops in detail an explicit design for the linearized equa- tions of longitudinal flight control for an F-8 aircraft, and tests the obtained controller on the original non- linear model. This paper represents the first detailed derivation of a controller using the techniques in ques- tion, and the results are very encouraging.
+
+Keywords: Aircraft control, saturated con- trollers
+
+1. Introduction In [5], [6], [12], and [8], the authors and Sussmann considered linear time-invariant continuous time sys- tems of the type
+
+.x = Ax + Boe(u) ; where as usual A 2 IR
+
+n\Theta n
+
+and B 2 IR
+
+n\Theta m
+
+, for some
+
+integers n, the dimension of the system, and m, the number of inputs. The function oe is supposed to be a saturation nonlinearity such as oe(u) = u for juj ! " and oe(u) = " sign u otherwise; if u is a vector, then oe is understood as being applied coordinatewise. (The positive constant " indicates the level at which the actuator saturates. Alternatively, one may think of linear systems .x = Ax + Bu for which the control values u(t) are restricted to a bounded set contain- ing the origin in its interior; mathematically there is no difference.) The imposition of control constraints is a realistic addition to the standard linear systems model, and it reflects practical limitations on actua- tors. The above-mentioned papers presented results pertaining to the global stabilization of such systems.
+
+The main result in the above references was that, subject only to the more or less obvious necessary conditions, namely: all eigenvalues of A have non- positive real part, and all eigenvalues of the uncon- trollable part of the system have strictly negative real parts --that is, the pair (A; B) is stabilizable in the ordinary sense, e.g. [4],-- there exists an infinitely dif- ferentiable global feedback stabilizer u = k(x). No- tice that this result is nontrivial because there may exist non-simple Jordan blocks corresponding to crit- ical eigenvalues, so that the system .x = Ax is not
+
+\Lambda 
+
+This research was supported in part by US Air Force Grant
+
+AFOSR-91-0343
+
+even marginally stable. Moreover, Fuller had already shown long ago in [2] (see [7] for a related result) that the "naive" technique consisting of just using a linear controller will in general lead to oscillations and even instability.
+
+In the first paper, [5], we presented a fairly ab- stract existence theorem. Motivated by this, Teel in- troduced a constructive approach to the problem, in the particular case of single-input multiple integra- tors. He proposed a feedback law u = k(x) which consisted of certain linear combinations of the basic linear saturation oe used above. In the technical re- port [6], we generalized Teel's construction to the full case considered in the original work [5], allowing us to deal with multivariable inputs, non-zero eigenvalues, and output stabilization. Also in [8], we extended this in such a manner as to allow much more general saturation nonlinearities oe in the feedback loop, and we also showed that an alternative design based on a "feedforward neural network" architecture also pro- vides global stabilization. The paper [8] will present complete details of the most general possible theorem along these lines.
+
+This paper develops in detail an explicit design, fol- lowing the general philosophy outlined in [12], for the linearized equations of longitudinal flight control for an F-8 aircraft, and tests --via simulations-- the ob- tained controller on the original nonlinear model. We feel that it is appropriate to provide the example, in order to illustrate the power of our techniques, as they have not been applied before in a realistic problem. Reasons of space precluded including such a detailed example in the main theoretical papers [12, 8]. In the process of working out this example, we were able to obtain tighter bounds, in certain particular cases, than in [12, 8], for some critical estimates. With these improved bounds, we can achieve better performance.
+
+We picked the model in [3], as expanded and cor- rected in [10], since this has been often considered as a paradigm for many aircraft control problems. The paper uses the exact constants and trim condi- tions --that is, the desired operating points-- given in references [1, 10, 11]; we thank Jianliang Wang for providing us with the preprints of his work. (Note that the problem considered here is different from the question treated in those references, and only the data is employed. Also, we add a saturation to the model. We pick relative small values of these satura- tions, to analyze our control design under demandingPass1: Page 2
+
+
+conditions.)
+
+In the next section we provide the detailed model and all constants. After that, we linearize the sys- tem about an operating point and construct a glob- ally stabilizing controller for the resulting lineariza- tion, following the steps of the proof in [12] and [8]. Then we proceed to compare the performance of our controller, applied to the original nonlinear airplane, and starting reasonably far from the desired operat- ing point, with the "naive" controller that would re- sult from applying a linear feedback law which would stabilize in the absence of saturations.
+
+2. The Model We rely on [10, 11] (see also [3]) for the following non- linear model for the F8 aircraft longitudinal flight dy- namics. For the reader's convenience, we repeat here all the relevant equations, using the same notations as in the above references:
+
+._ = \Gamma _q tan ff \Gamma  g sin ` +
+
+L
+
+!
+
+m
+
+sin ff +
+
+L
+
+t
+
+m
+
+sin ff
+
+t
+
+.ff = q +
+
+g
+
+_
+
+cos ff cos(ff \Gamma  `) \Gamma 
+
+L
+
+!
+
+_m
+
+cos ff
+
+\Gamma 
+
+L
+
+t
+
+_m
+
+cos ff cos(ff \Gamma  ff
+
+t
+
+)
+
+. ` = q
+
+.q = (M
+
+!
+
++ lL
+
+!
+
+cos ff \Gamma  l
+
+t
+
+L
+
+t
+
+cos ff
+
+t
+
+\Gamma  cq)=I
+
+y
+
+:
+
+(1) We are using the following symbols:
+
+ff
+
+t
+
+= (1 \Gamma  a
+
+ffl
+
+)ff + ffi
+
+ffl
+
+L
+
+!
+
+= C
+
+L
+
+(ff)_qS
+
+L
+
+t
+
+= C
+
+L
+
+t
+
+(ff
+
+t
+
+; ffi
+
+e
+
+)_qS
+
+t
+
+_q =
+
+ae_
+
+2
+
+2 cos
+
+2
+
+ff
+
+fl = ` \Gamma  ff :
+
+(2)
+
+Still quoting from [10, 11], the meaning of the above coefficients and variables, and their units, are:
+
+_: forward speed, in ft/sec, ff: wing angle of attack, in rad, `; q: pitch angle, in rad, and pitch rate, in rad/sec, fl: flight path angle, in rad, ff
+
+t
+
+: tail angle of attack, in rad,
+
+ffi
+
+e
+
+: elevator angle, in rad,
+
+m: mass of aircraft, in slugs, I
+
+y
+
+: moment of inertia of aircraft about Y axis, in
+
+slugs ft
+
+2
+
+,
+
+L
+
+!
+
+; L
+
+t
+
+: wing and tail lifts, in lb,
+
+M
+
+!
+
+: wing moment,
+
+l: distance between wing a.c and aircraft c.g., in ft, l
+
+t
+
+: distance between tail a.c and aircraft c.g., in ft,
+
+c: damping coefficient, in lb ft sec, C
+
+L
+
+; C
+
+L
+
+t
+
+: wing and tail lift coefficients,
+
+_q: dynamic pressure, in lb/ft
+
+2
+
+,
+
+S; S
+
+t
+
+: wing and tail area, in ft
+
+2
+
+, and
+
+ae: atmospheric density, in slugs ft
+
+3
+
+.
+
+The lift coefficients are complicated nonlinear func- tions of the angles of attack and elevator angle; for simplicity, and again following [10, 11], we use a cubic approximation:
+
+C
+
+L
+
+(ff) = (C
+
+1
+
+L
+
+ff \Gamma  C
+
+2
+
+L
+
+ff
+
+3
+
+)
+
+C
+
+L
+
+t
+
+(ff
+
+t
+
+; ffi
+
+e
+
+) = (C
+
+1
+
+L
+
+ff
+
+t
+
+\Gamma  C
+
+2
+
+L
+
+ff
+
+3
+
+t
+
++ a
+
+e
+
+ffi
+
+e
+
+) :
+
+(3)
+
+Define
+
+oe(s) = sign (s) minfjsj; 0:01g : (4)
+
+The control u is applied to ffi
+
+e
+
+, by means of an actu-
+
+ator with the following dynamics:
+
+. ffi
+
+e
+
+= oe(\Gamma ffi
+
+e
+
++ ffi
+
+e
+
+0
+
++ u) ; (5)
+
+where ffi
+
+e
+
+0
+
+is a desired equilibrium (see below). We
+
+have included a saturation nonlinearity, which satu- rates the right hand side at 0.01.
+
+2.1. Trim Conditions The desired operating point corresponds to an alti- tude of 30; 000 ft, again as in the references [10, 11], and we also choose, as there, the following values for all parameters:
+
+ae = 0:00089 slugs=ft
+
+3
+
+C
+
+1
+
+L
+
+= 4:0
+
+C
+
+2
+
+L
+
+= 12 a
+
+e
+
+= 0:1
+
+a
+
+ffl
+
+= 0:75 S = 375 ft
+
+2
+
+S
+
+t
+
+= 93:4 ft
+
+2
+
+m = 667:7 slugs
+
+I
+
+y
+
+= 96800 slugs ft
+
+2
+
+l = 0:189 ft
+
+l
+
+t
+
+= 16:7 ft M
+
+!
+
+= 0 lb ft
+
+c = 38332:8 lb ft sec g = 32:2 ft=sec
+
+2
+
+:
+
+(6) The equations (1) with (2) and (3), and (5) give rise to a control system. We consider the system with constants given in (6) and the desired equilibrium at:
+
+_
+
+0
+
+= 389:1; ff
+
+0
+
+= :24007; `
+
+0
+
+= :23759;
+
+q
+
+0
+
+= 0; ffi
+
+e
+
+0
+
+= \Gamma 0:05 :
+
+(7) The above values are essentially those given in [1], but calculated more precisely using the Maple symbolic manipulation system (the numbers in that reference, namely: _
+
+0
+
+= 388:7; ff
+
+0
+
+= 0:240; `
+
+0
+
+= 0:238; q
+
+0
+
+=
+
+0; ffi
+
+e
+
+0
+
+= \Gamma 0:05, give numerical values significantly far
+
+from zero when substituted in the equations).
+
+3. Controller Design The linearization of the model at the equilibrium (7) (but not linearizing the saturation, of course), is as follows:
+
+._ = a(ff \Gamma  ff
+
+0
+
+) + b(` \Gamma  `
+
+0
+
+) + cq + d(ffi
+
+e
+
+\Gamma  ffi
+
+e
+
+0
+
+)
+
+.ff = e(ff \Gamma  ff
+
+0
+
+) + q + f(ffi
+
+e
+
+\Gamma  ffi
+
+e
+
+0
+
+)
+
+. ` = q
+
+.q = g(ff \Gamma  ff
+
+0
+
+) + hq + i(ffi
+
+e
+
+\Gamma  ffi
+
+e
+
+0
+
+)
+
+. ffi
+
+e
+
+= oe(\Gamma (ffi
+
+e
+
+\Gamma  ffi
+
+e
+
+0
+
+) + u) ;
+
+(8)Pass1: Page 3
+
+
+where a = 53:20473, b = \Gamma 31:29545, c = \Gamma 95:25528, d = :76017, e = \Gamma :25642, f = \Gamma :09966, g = \Gamma 1:06173, h = \Gamma :39600, i = \Gamma 4:71364, and some small coefficients are eliminated. Disregarding the saturation, the eigenvalues of (8) are 0; 0; 0 and:
+
+1=2(e + h) \Sigma  1=2(\Gamma e
+
+2
+
++ 2eh \Gamma  h
+
+2
+
+\Gamma  4g)
+
+1=2
+
+p
+
+\Gamma 1 :
+
+Following the procedure in [12, 8], we wish to trans- form (8) into a system of the following form:
+
+.x
+
+1
+
+= 1=2(e + h)x
+
+1
+
++ *x
+
+2
+
+.x
+
+2
+
+= \Gamma *x
+
+1
+
++ 1=2(e + h)x
+
+2
+
++ x
+
+4
+
+.x
+
+3
+
+= x
+
+4
+
+.x
+
+4
+
+= x
+
+5
+
+.x
+
+5
+
+= oe(\Gamma x
+
+5
+
++ u) ;
+
+(9)
+
+where * = 1=2(\Gamma e
+
+2
+
++ 2eh \Gamma  h
+
+2
+
+\Gamma  4g)
+
+1=2
+
+. This can be
+
+achieved by changing into the variables:
+
+x
+
+1
+
+=
+
+i
+
+2
+
+*
+
+\Delta 
+
+(ff \Gamma  ff
+
+0
+
+) \Gamma 
+
+*
+
+ei\Gamma gf
+
+(` \Gamma  `
+
+0
+
+) \Gamma 
+
+if*
+
+\Delta 
+
+q ;
+
+x
+
+2
+
+=
+
+i(ei\Gamma hi\Gamma 2gf)
+
+2\Delta 
+
+(ff \Gamma  ff
+
+0
+
+)
+
++
+
+e+h
+
+2(ei\Gamma gf)
+
+(` \Gamma  `
+
+0
+
+) \Gamma 
+
+f(ei\Gamma hi\Gamma 2gf)
+
+2\Delta 
+
+q ;
+
+x
+
+3
+
+= \Gamma 
+
+eh\Gamma g
+
+(ei\Gamma gf)b
+
+(_ \Gamma  _
+
+0
+
+)
+
++
+
+ieha\Gamma dehg\Gamma agi\Gamma ibg+dg
+
+2
+
+(e
+
+2
+
+i
+
+2
+
+\Gamma 2fgei+g
+
+2
+
+f
+
+2
+
+)b
+
+(ff \Gamma  ff
+
+0
+
+)
+
++
+
+N
+
+(e
+
+2
+
+i
+
+2
+
+\Gamma 2fgei+g
+
+2
+
+f
+
+2
+
+)b
+
+(` \Gamma  `
+
+0
+
+)
+
++
+
+dhe
+
+2
+
+\Gamma efah\Gamma egd+bgf+agf
+
+(e
+
+2
+
+i
+
+2
+
+\Gamma 2fgei+g
+
+2
+
+f
+
+2
+
+)b
+
+q
+
+x
+
+4
+
+= \Gamma 
+
+g
+
+ei\Gamma gf
+
+(ff \Gamma  ff
+
+0
+
+) \Gamma 
+
+eh\Gamma g
+
+ei\Gamma gf
+
+(` \Gamma  `
+
+0
+
+) +
+
+e
+
+ei\Gamma gf
+
+q
+
+x
+
+5
+
+= (ffi
+
+e
+
+\Gamma  ffi
+
+e
+
+0
+
+)
+
+(10) where N = e
+
+2
+
+bi + e
+
+2
+
+chi \Gamma  e
+
+2
+
+h
+
+2
+
+d + efah
+
+2
+
+\Gamma  ebgf \Gamma 
+
+echgf \Gamma  igec \Gamma  ieha + 2dehg \Gamma  fbgh \Gamma  fahg + fg
+
+2
+
+c +
+
+agi+ibg\Gamma dg
+
+2
+
+, and \Delta  = e
+
+2
+
+fi
+
+2
+
++i
+
+3
+
+e\Gamma efi
+
+2
+
+h\Gamma 2ef
+
+2
+
+gi\Gamma 
+
+gfi
+
+2
+
++ f
+
+2
+
+ihg + f
+
+3
+
+g
+
+2
+
+.
+
+Finally, we carry out the design following the gen- eral outline of the construction in [12, 8], as applied to a system in the form (9) and provide a very simple feedback, which uses one saturation. (Note that in the closed-loop system there is one other saturation, which is part of the original system: the one that already exists in the equation for .x
+
+5
+
+.)
+
+The feedback we obtain is as follows:
+
+u = \Gamma 0:9 oe(0:2x
+
+3
+
++ 2:2x
+
+4
+
++ 2x
+
+5
+
+) : (11)
+
+These constants 0:9, 0:2, and so forth, are not the ones that would follow from using the very conserva- tive bounds in the proof of the theorems in [12, 8]. We picked much better constants, taking advantage of the knowledge of the equations. (Of course, one may expect that a fair amount of such fine tuning will be necessary in any realistic application.) Using the transformation (10), we get a control law for the original system (1).
+
+3.1. Stability of the Linear System We sketch next a proof of the fact that the above design globally stabilizes the linearized system. This
+
+is of course not enough in order to guarantee stabil- ity when the nonlinear model is used, except locally, but we think it is nonetheless of interest to show the computations. Later, we investigate experimentally the domain of stability for the nonlinear system.
+
+Consider the system
+
+.x
+
+1
+
+= x
+
+2
+
+.x
+
+2
+
+= x
+
+3
+
+.x
+
+3
+
+= oe(\Gamma x
+
+3
+
++ u) :
+
+(12)
+
+Let y
+
+1
+
+= x
+
+1
+
++ x
+
+2
+
+; y
+
+2
+
+= x
+
+2
+
++ x
+
+3
+
+; y
+
+3
+
+= x
+
+3
+
+. Then we
+
+have
+
+.y
+
+1
+
+= y
+
+2
+
+.y
+
+2
+
+= y
+
+3
+
++ oe(\Gamma y
+
+3
+
++ u)
+
+.y
+
+3
+
+= oe(\Gamma y
+
+3
+
++ u) :
+
+(13)
+
+Let
+
+u = \Gamma aeoe(ay
+
+1
+
++ by
+
+2
+
+) : (14)
+
+Then we have the following result.
+
+Theorem 1 For any " ? 0, let oe(s) = sign (s) minfjsj; "g. Let a; b; ae be positive numbers such that b * 2a, 2b
+
+2
+
+? 5a, and 1=2 ! ae ! 1. Then,
+
+the closed-loop system consisting of (13) together with the control (14) is globally asymptotically stable.
+
+Choosing " = 0:01, ae = 0:9; a = 0:2; b = 2 in the theorem, we obtain the feedback (11). For reasons of space, we cannot provide the proof here. Interested people can ask a copy from either of the authors.
+
+Remark 3.1 In [8], [6], [12], and [9], only the case ae ^
+
+1
+
+2
+
+was discussed. Therefore, the conclusion of the
+
+theorem can be shown to be true for any a; b ? 0. In the above theorem, we allow ae to be bigger than
+
+1
+
+2
+
+,
+
+and for the particular model in studied in this paper, the value ae ?
+
+1
+
+2
+
+indeed makes performance far better.
+
+2
+
+4. Simulation Results It is guaranteed by our theorems that the control law that we obtained globally stabilizes the linearized model, and hence locally the original model. But lo- cal stabilization of the nonlinear airplane could be achieved in principle also by using linear feedback. Thus we intend to discuss next, via simulations, the advantages of our control law with regards to such linear feedback, when used for the nonlinear model. Essentially, we obtain a relatively large domain of at- traction with respect to the desired equilibrium. Pro- viding explicit bounds on this region of attraction is in principle a difficult problem, and we do not in any way attempt to do so.
+
+We provide now several plots regarding the closed- loop system consisting of (1-5) when using the controlPass1: Page 4
+
+
+(11). We also provide comparisons between our con- trol and the "naive" design, which does not use the saturation in (11).
+
+The initial values of ff; `; q; ffi
+
+e
+
+in all plots are:
+
+ff(0) = ff
+
+0
+
++ 0:25 = 0:4900685620
+
+`(0) = `
+
+0
+
++ 0:2 = 0:4375883269
+
+q(0) = 0 ffi
+
+e
+
+(0) = ffi
+
+e
+
+0
+
+\Gamma  0:04 = 0:01
+
+These represent fairly large displacements from equi- librium. The different plots will differ on the initial value taken for _.
+
+Figures 1 and 2 are as follows. In each case, there are two vertical sets of three plots each. The three left plots are for the design that results when using (11), while the three right plots are for the design obtained when using instead the "naive" linear control law
+
+u = \Gamma 0:9(0:2x
+
+3
+
++ 2:2x
+
+4
+
++ 2x
+
+5
+
+) ; (15)
+
+which would stabilize in the absence of the satura- tions in the elevator rate. Observe that (11) and (15) coincide for all small deviations x from the de- sired equilibrium. The top two plots are for the for- ward speed _, the bottom plots are for
+
+. ffi
+
+e
+
+(so that
+
+the effective control being applied is illustrated; no- tice the saturation at 0:01), and the middle plot dis- plays the variables (ff; `; q; ffi
+
+e
+
+), plotted according to
+
+the linestyles explained in the captions.
+
+In Figure 1, the initial value for _ is
+
+_
+
+0
+
+\Gamma  18 = 371:1315833
+
+while in Figure 2 it is
+
+_
+
+0
+
+\Gamma  63 = 326:1315833
+
+These values were chosen for the following reasons. Simulations show that our design stabilizes the non- linear system for a wide range of values. But the "naive" design is stable roughly only in the range [\Gamma 62; \Gamma 18] (the domain of attraction is a connected subset of IR
+
+5
+
+, but it is not convex, of course), thus we
+
+considered the extreme cases \Gamma 18, \Gamma 63. In the first of these cases, the "naive" design would stabilize as well, as shown, though the difference in performance is quite striking. In the second case, the "naive" de- sign results in instability.
+
+5. Conclusions We carried out an explicit design of a control law for a realistic model of a system with actuator saturation. The objective was to show that the calculations in the abstract proofs can indeed be carried out explicitly (though this an extremely simple case compared to the generality of the results in [12, 8]), and moreover, to study the performance of the resulting controller when used for the original, nonlinear, model. We consider the results to be encouraging and indicating
+
+the usefulness of further work along this direction. Among topics being considered now are questions of tracking and disturbance rejection for linear systems with saturation.
+
+References
+
+[1] W.T. Baumann, J. Wang, and W.L. Rugh, "ap-
+
+plication of the extended linearization design method to longitudinal flight control," in Proc. IEEE Conf. Decision and Control, Ft. Laud- erdale, IEEE Publications, 1985, pp. 1653-1654. [2] A.T. Fuller, "In the large stability of relay
+
+and saturated control systems with linear con- trollers," Int. J. Control, 10(1969): 457-480. [3] W.L. Garrard, and J.M. Jordan, "Design of non-
+
+linear automatic flight control systems," Auto- matica 13(1977): 497-505.
+
+[4] E.D. Sontag, Mathematical Control Theory: De-
+
+terministic Finite Dimensional Systems, Sprin- ger, New York, 1990.
+
+[5] E.D. Sontag, and H.J. Sussmann, "Nonlinear
+
+output feedback design for linear systems with saturating controls," Proc. IEEE Conf. Deci- sion and Control, Honolulu, IEEE Publications, 1990, pp. 3414-3416. [6] E.D. Sontag, and Y. Yang, "Global stabiliza-
+
+tion of linear systems with bounded feedback," SYCON Report 91-09, Rutgers Center for Sys- tems and Control, July 1991. [7] H.J. Sussmann, and Y. Yang, "On the stabi-
+
+lizability of multiple integrators by means of bounded feedback controls" Proc. IEEE Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991, pp. 70-73.
+
+[8] H.J. Sussmann, E.D. Sontag, and Y. Yang, "A
+
+general result on the stabilization of linear sys- tems using bounded controls," preprint, Rut- gers, 1992. [9] A.R. Teel, "Global stabilization and re-
+
+stricted tracking for multiple integrators with bounded controls," Systems and Control Letters 18(1992): 165-171. [10] J. Wang, "Longitudinal flight control of F-8
+
+aircraft by scheduled nonlinear optimal control laws," preprint, Nanyang Technological Univer- sity, Singapore, Nov. 1992. [11] J. Wang, and N. Sundararajan, "A nonlinear
+
+flight controller design for aircrafts," submitted to IEEE Trans. Control Tech., 1992. [12] Y. Yang, H.J. Sussmann, and E.D. Sontag, "Sta-
+
+bilization of linear systems with bounded con- trols," Proc. Nonlinear Control Systems Design Symp., Bordeaux, June 1992 (M. Fliess, Ed.), IFAC Publications, pp. 15-20.Pass1: Page 5
+
+
+370 375 380 385 390 395 400 405 410 415
+
+0 10 20 30 40 50 60 70 80 90 100 370
+
+375 380 385 390 395 400 405 410 415
+
+0 10 20 30 40 50 60 70 80 90 100 -0.2
+
+-0.1
+
+0 0.1 0.2 0.3 0.4 0.5
+
+0 10 20 30 40 50 60 70 80 90 100 -0.2
+
+-0.1
+
+0 0.1 0.2 0.3 0.4 0.5
+
+0 10 20 30 40 50 60 70 80 90 100 -4
+
+-2
+
+0 2 4 6 8 10
+
+x10-3
+
+0 10 20 30 40 50 60 70 80 90 100 -0.01
+
+-0.008 -0.006 -0.004 -0.002
+
+0 0.002 0.004 0.006 0.008
+
+0.01
+
+0 10 20 30 40 50 60 70 80 90 100
+
+Figure 1: _
+
+0
+
+= 371, saturated and naive design; ff: ; `: ; q: \Delta  \Delta  \Delta ; ffi
+
+e
+
+: \Delta 
+
+320 330 340 350 360 370 380 390 400 410
+
+0 10 20 30 40 50 60 70 80 90 100 50
+
+100 150 200 250 300 350 400 450
+
+0 5 10 15 20 25 -0.2
+
+-0.1
+
+0 0.1 0.2 0.3 0.4 0.5
+
+0 10 20 30 40 50 60 70 80 90 100 -0.4
+
+-0.2
+
+0 0.2 0.4 0.6 0.8
+
+1 1.2 1.4 1.6
+
+0 5 10 15 20 25 -2
+
+0 2 4 6 8 10
+
+x10-3
+
+0 10 20 30 40 50 60 70 80 90 100 -0.01
+
+-0.008 -0.006 -0.004 -0.002
+
+0 0.002 0.004 0.006 0.008
+
+0.01
+
+0 5 10 15 20 25
+
+Figure 2: _
+
+0
+
+= 326, saturated and naive design; ff: ; `: ; q: \Delta  \Delta  \Delta ; ffi
+
+e
+
+: \Delta </pre>
+</body>
+</html>

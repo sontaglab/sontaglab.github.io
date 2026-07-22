@@ -1,0 +1,1222 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/complexity-training.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/complexity-training.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Abstract We deal with computational issues of loading a fixed-architecture neural network with a set of positive and negative examples. This is the first result on the hardness of loading networks which do not consist of the binary-threshold neurons, but rather utilize a particular continuous activation function, commonly used in the neural network literature.
+
+We observe that the loading problem is polynomial-time if the input dimension is constant. Otherwise, however, any possible learning algorithm based on particular fixed architectures faces severe computational barriers. Similar theorems have already been proved by Megiddo and by Blum and Rivest, to the case of binary-threshold networks only. Our theoretical results lend further justification to the use of incremental (architecture-changing) techniques for training networks rather than fixed architectures. Furthermore, they imply hardness of learnability in the probably-approximatelycorrect sense as well.
+
+On the Complexity of Training Neural Networks with Continuous
+
+Activation Functionsz
+
+Bhaskar DasGupta\Lambda  Department of Computer Science
+
+University of Minnesota Minneapolis, MN 55455-0159 Email: dasgupta@cs.umn.edu
+
+Hava T. Siegelmanny Department of Computer Science
+
+Rutgers University New Brunswick, NJ 08903 Email: siegelma@paul.rutgers.edu
+
+Eduardo Sontagy Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 Email: sontag@control.rutgers.edu
+
+September 19, 1993
+
+\Lambda Research supported in part by NSF Grant CCR-92-08913
+
+yResearch supported in part by US Air Force Grant AFOSR-91-0343 zA part of the results reported here will also appear in V. P. Roychowdhury, K. Y. Siu, and A. Orlitsky (eds.), Theoretical
+
+Advances in Neural Computation and Learning, Kluwer Academic Publishers, 1994
+
+1 Introduction Neural networks have been proposed as a tool for machine learning. In this role, a network is trained to recognize complex associations between inputs and outputs that were presented during a supervised training cycle. These associations are incorporated into the weights of the network, which encode a distributed representation of the information that was contained in the patterns. Once trained, the network will compute an input/output mapping which, if the training data was representative enough, will closely match the unknown rule which produced the original data. Massive parallelism of computation, as well as noise and fault tolerance, are often offered as justifications for the use of neural nets as learning paradigms.
+
+By "neural network" we always mean, in this paper, feedforward ones of the type routinely employed in artificial neural nets applications. That is, a net consists of a number of processors ("nodes" or "neurons") each of which computes a function of the type
+
+y = oe 
+
+kX
+
+i=1
+
+aiui + b! (1)
+
+of its inputs u1; : : : ; uk. These inputs are either external (input data is fed through them) or they represent the outputs y of other nodes. No cycles are allowed in the connection graph (feedforward nets rather than "recurrent" nets) and the output of one designated node is understood to provide the output value produced by the entire network for a given vector of input values. The possible coefficients ai and b appearing in the different nodes are the weights of the network, and the functions oe appearing in the various nodes are the node or activation functions. An architecture specifies the interconnection structure and the oe's, but not the actual numerical values of the weights themselves.
+
+This paper deals with basic theoretical questions regarding learning by neural networks. There are three types of such questions that one may ask, all closely related and complementary to each other. We next describe all three, keeping for the end the one that is the focus of this paper.
+
+A possible line of work deals with sample complexity questions, that is, the quantification of the amount of information (number of samples) needed in order to characterize a given unknown mapping. Some recent references to such work, establishing sample complexity results, and hence "weak learnability" in the Valiant model, for neural nets, are the papers [2, 18, 10, 17]; the first of these references deals with networks that employ hard threshold activations, the second and third cover continuous activation functions of a type (piecewise polynomial) close to those used in this paper, and the last one provides results for networks employing the standard sigmoid activation function.
+
+A different perspective to learnability questions takes a numerical analysis or approximation theoretic point of view. There one asks questions such as how many hidden units are necessary in order to approximate well, that is to say, with a small overall error, an unknown function. This type of research ignores the training question itself, asking instead what is the best one could do, in this sense of overall error, if the best possible network with a given architecture were to be eventually found. Some recent papers along these lines are [1, 11, 5], which deal with single hidden layer nets, and [6], which dealt with multiple hidden layers.
+
+Yet another direction in which to approach theoretical questions regarding learning by neural networks, and the one that concerns us here, originates with the work of Judd (see for instance [12, 13], as well as the related work [3, 16, 28]). Judd, like us, was motivated by the observation that the "backpropagation" algorithm often runs very slowly, especially for high-dimensional data. Recall that this algorithm is used in order to find a network (that is, find the weights, assuming a fixed architecture) that reproduces the observed data. Of course, many modifications of the vanilla "backprop" approach
+
+1
+
+are possible, using more sophisticated techniques such as high-order (Newton), conjugate gradient, or sequential quadratic programming methods. However, the "curse of dimensionality" seems to arise as a computational obstruction to all these training techniques as well, when attempting to learn arbitrary data using a standard feedforward network. For the simpler case of linearly separable data, the perceptron algorithm and linear programming techniques help to find a network -with no "hidden units"- relatively fast. Thus one may ask if there exists a fundamental barrier to training by general feedforward networks, a barrier that is insurmountable no matter which particular algorithm one uses. (Those techniques which adapt the architecture to the data, such as cascade correlation or incremental techniques, would not be subject to such a barrier.)
+
+In this paper, we consider the tractability of the training problem, that is, of the question (essentially quoting Judd): "Given a network architecture (interconnection graph as well as choice of activation function) and a set of training examples, does there exist a set of weights so that the network produces the correct output for all examples?"
+
+The simplest neural network, i.e., the perceptron, consists of one threshold neuron only. It is easily verified that the computational time of the loading problem in this case is polynomial in the size of the training set irrespective of whether the input takes continuous or discrete values. This can be achieved via a linear programming technique. On the other-hand, loading recurrent networks (i.e. networks with feedback loops) is a hard problem. In [24], Siegelmann and Sontag showed the existence of a finite size recurrent network made of a specific saturated linear neurons which is Turing universal. Thus, the loading problem is undecidable for such nets. Furthermore, in [25], they showed that if real numbers are allowed in the weights of these specific networks (rather than rational ones) the network is equivalent to a non-uniform version of Turing machines (i.e. Turing machine with advice) which is stronger than the common model. Kilian and Siegelmann [15] proved universality for the sigmoidal network and a large class of sigmoidal-type nets. They concluded that Turing-universality is a common property among recurrent nets (and not only for the specific case of the saturated linear function). A different power is demonstrated by the recurrent threshold nets. It was proved in [22] that the problem of determining whether a recurrent network with threshold units (that is, the number of states in the network is finite) has a stable configuration is P-hard. Bruck and Goodman[4] showed that a recurrent threshold network of polynomial size cannot solve NP-complete problems unless NP=co-NP. The result was further extended by Yao[27] who showed that a polynomial size threshold recurrent network cannot solve NP-complete problems even approximately within a guaranteed performance ratio unless NP=co-NP.
+
+In the rest of this paper, we focus on feedforward nets only. We show that, for networks employing a simple, saturated piecewise linear activation function, and two hidden units only, the loading problem is NP-complete. Recall that if one establishes that a problem is NP-complete then one has shown, in the standard way done in computer science, that the problem is at least as hard as most problems widely believed to be hard (the "traveling salesman" problem, Boolean satisfiability problem, and so forth). This shows that, indeed, any possible neural net learning algorithm (for this activation function) based on fixed architectures faces severe computational barriers. Furthermore, our result implies non-learnability in the PAC sense under the complexity-theoretic assumption of RP 6= N P . We generalize our result to another similar architecture.
+
+The work most closely related to ours is that due to Blum and Rivest; see [3]. They showed a similar NP-completeness result for networks having the same architecture but where the activation functions are all of a hard threshold type, that is, they provide a binary output y equal to 1 if the sum in equation (1) is positive, and 0 otherwise. In their papers, Blum and Rivest explicitly pose as an open problem the question of establishing NP-completeness, for this architecture, when the activation function is "sigmoidal" and they conjecture that this is indeed the case. (For the far more complicated architectures considered in Judd's work, in contrast, enough measurements of internal variables are provided that there
+
+2
+
+is essentially no difference between results for varying activations, and the issue does not arise there. However, it is not clear what are the consequences for practical algorithms when the obstructions to learning are due to considering such architectures. In any case, we address here the open problem exactly as posed by Blum and Rivest.)
+
+It turns out that a definite answer to the question posed by Blum and Rivest is not possible. It is shown in [26] that for certain activation functions oe, the problem can be solved in constant time, independently of the input size, and hence the question is not NP-complete. In fact, there exist "sigmoidal" functions, innocent-looking qualitatively (bounded, infinite differentiable and even analytic, and so forth) for which any set of data can be loaded, and hence for which the loading problem is not in NP (just answer "yes" to the question "do there exist weights that learn the given data?"!). The functions used in the construction in [26] are however extremely artificial and in no way likely to appear in practical implementations. Nonetheless, the mere existence of such examples means that the mathematical question is far from trivial.
+
+The main open question, then, is to understand if "reasonable" activation functions lead to NPcompleteness results similar to the ones in the work by Blum and Rivest or if they are closer to the other extreme, the purely mathematical construct in [26]. The most puzzling case is that of the standard sigmoid function, 1=(1 + e\Gamma x). For that case we do not know the answer yet, but we conjecture that NP-completeness will indeed hold. It is the purpose of this paper to show an NP-completeness result for piecewise linear or "saturating" activation function that has appeared in the neural networks literature, especially in the context of hardware implementations, and which is relatively simpler to analyze than the standard sigmoid.
+
+We view our result as a first step in dealing with the general case of arbitrary piecewise linear functions, and as a further step towards elucidating the complexity of the problem in general.
+
+The rest of the paper is organized as follows:
+
+ffl In section 2 we introduce the model and summarize some previous results. We also distinguish the
+
+case of analog versus binary inputs, and observe that the problem is solvable in polynomial time for analog inputs using standard linear-programming techniques (see [18] for further positive results on PAC-learnability when the input dimension is a fixed constant and the activation functions are piecewise polynomials). In the rest of the paper we concentrate on binary inputs only, where the input dimension is not constant.
+
+ffl In section 3 we prove the hardness of the loading problem for the 2 ss-node architecture and use this
+
+result to show the impossibility of learnability for binary inputs under the assumption of RP 6= N P .
+
+ffl In section 4 we generalize the hardness of the loading problem to include another similar architectures with more nodes in the hidden layer.
+
+ffl In section 5 we conclude with some open problems.
+
+Before turning to the next section, we provide a short overview on complexity classes and probabilistic learnability. Readers familiar with this material are recommended to skip to Section 2.
+
+1.1 Some complexity classes We informally discuss some well known structural-complexity classes (the reader is referred to any standard text on structural complexity classes (e.g. [8, 9]) for more details). Here, whenever we say polynomial
+
+3
+
+time we mean polynomial time in the length of any reasonable encoding of the input (see [8] for a discussion of a "reasonable" encoding of the inputs), and problems referred to here are always decision problems.
+
+A problem is in the class P when there is a polynomial time algorithm which solves the problem. A problem is in NP when a "guessed" solution for the problem can be verified in polynomial time. A problem X is NP-hard iff any problem Y in NP can be transformed in polynomial time f to X, such that given an instance I of Y , I has a solution iff f (I) has a solution. A problem is NP-complete iff it is both NP and NP-hard. Examples of NP-complete problems include the traveling salesperson problem, the Boolean satisfiability problem and the set-splitting problem.
+
+A problem X is in the complexity class RP ("random polynomial") with error parameter ffl if and only if there is a polynomial time algorithm A such that for every instance I of X the following holds:
+
+If I is a "yes" instance of X then A outputs "yes" with probability at least 1 \Gamma  ffl for some constant 0 ! ffl ! 1, and if I is a "no" instance of X then A always outputs "no".
+
+It is well known that P ` RP ` N P , but whether any of the inclusions is proper is an important open question in structural complexity theory.
+
+1.2 Probabilistic learnability Let n 2 N . A concept is a function f : f0; 1gn ! f0; 1g. We focus on functions computable by architectures (defined in section 2.2); hence, we use the terms function and architecture interchangeably. The set of inputs f \Gamma 1(0) = fx j x 2 f0; 1gn; f (x) = 0g is the set of negative examples, where the set of inputs f \Gamma 1(1) = fx j x 2 f0; 1gn; f (x) = 1g is the set of positive examples.
+
+Let Cn be the set Boolean functions on n variables defined by a specific architecture A. Then C = [1i=1Cn is a class of representations achievable by the architecture A for all binary input strings. For example, C may be the class of Boolean formulae computable by one hidden-layer net with two sigmoidal hidden units and threshold output unit. Given some function f 2 C, P OS(f ) (resp. N EG(f )) denotes the source of positive (resp. negative) examples for f . Whenever P OS(f ) (resp. N EG(f )) is called, a positive or 0+0 (resp. negative or 0\Gamma 0) example is provided according to some arbitrary probability distribution D+ (resp. D\Gamma ) satisfying the condition:X
+
+x=f\Gamma 1(1)
+
+D+(x) = 1
+
+X x=f\Gamma 1(0)
+
+D\Gamma (x) = 1
+
+A learning algorithm is an algorithm that may access P OS(f ) and N EG(f ). Each access to P OS(f ) or N EG(f ) is counted as one step. A class C of representations of an architecture A is said to be (ffl; ffi)- learnable iff, for some given fixed constants 0 ! ffl; ffi ! 1, there is a learning algorithm L such that for all n 2 N , all functions f 2 Cn, and all possible distributions D+ and D\Gamma ,
+
+(a) L halts in number of steps polynomial in n, 1ffl , 1ffi , and jjAjj (where jjAjj denotes the size of the
+
+architecture A),
+
+4
+
+(b) L outputs a hypothesis g 2 Cn such that with probability at least 1 \Gamma  ffi the following conditions are
+
+satisfied: X
+
+x2g\Gamma 1(0)
+
+D+(x) ! ffl
+
+X x2g\Gamma 1(1)
+
+D\Gamma (x) ! ffl
+
+A class C of representations of an architecture A is said to be learnable[14] iff it is (ffl; ffi)-learnable for all ffl and ffi (where 0 ! ffl; ffi ! 1).
+
+Remark 1.1 Hence, to prove that a class of representations of an architecture A is not learnable, it is sufficient to prove that it is not (ffl; ffi)-learnable for some particular values of ffl and ffi, and some particular distributions D+ and D\Gamma .
+
+As we will see later, our results on NP-completeness of the loading problem will imply a nonlearnability of the corresponding concept under the assumption of RP 6= N P .
+
+2 Preliminaries and previous works In this section we define our model of computation precisely and state some previous results for this model.
+
+2.1 Feedforward networks and the loading problem Let \Phi  be a class of real-valued functions, where each function is defined on some subset of IR. A \Phi -net C is an unbounded fan-in directed acyclic graph. To each vertex v, an activation function OEv 2 \Phi  is assigned, and we assume that C has a single sink w.
+
+The network C computes a function fC : [0; 1]n ! IR as follows. The components of the input vector x = (x1; : : :; xn) 2 [0; 1]n are assigned to the sources of C. Let v1; : : :; vk be the immediate predecessors of a vertex v. The input for v is then sv(x) = Pki=1 aiyi \Gamma  bv, where yi is the value assigned to vi and a and b are the weights of v. We assign the value OEv(sv(x)) to v. Then fC = sz is the function computed by C where z is the unique sink of C.
+
+The architecture A of the \Phi -net C is the structure of the underlying directed acyclic graph. Hence each architecture A defines a behavior function fiA that maps from the r real weights (corresponding to all the weights and thresholds of the underlying directed acyclic graph) and the input string into a binary output. We denote such a behavior as the function fiA(IRr; [0; 1]n) 7! f0; 1g : The set of inputs which cause the output of the network to be 0 (resp. 1) are termed as the set of negative (resp. positive) examples. The size of the architecture A is the number of nodes and connections of A plus the maximum number of bits needed to represent any weight of A.
+
+The loading problem is defined as follows: Given an architecture A and a set of positive and negative examples M = f(x; y) j x 2 [0; 1]n; y 2 f0; 1gg, so that jM j = O(n); find weights ~w so that for all pairs (x; y) 2 M :
+
+fiA( ~w; x) = y :
+
+5
+
+The decision version of the loading problem is to decide (rather than to find the weights) whether such weights exist that load M onto A.
+
+Since the sink z of C is assumed to output only zero or one for the purpose of loading, we may henceforth assume that sink z is a threshold gate without any loss of generality.
+
+For the purpose of this paper we will be concerned with a very simple architecture as described in the next section.
+
+2.2 The k \Phi -node architecture Here we focus on 1 hidden layer (1HL) architectures. The k \Phi -node architecture is a 1HL architecture with k hidden OE-units (for some OE 2 \Phi ), and an output node with the threshold activation H. The 2 \Phi -node architecture consists of two hidden nodes N1 and N2 that compute:
+
+N1(~a; ~x) = OE(
+
+nX
+
+i=1
+
+aixi);
+
+N2(~b; ~x) = OE(
+
+nX
+
+i=1
+
+bixi);
+
+respectively.
+
+The output node N3 computes the threshold function of the inputs received from the two hidden nodes, namely a binary threshold function of the form
+
+N3(N1; N2; ff; fi; fl) = ( 1 ffN1(~a; ~x) + fiN2(~b; ~x) ? fl0 ffN
+
+1(~a; ~x) + fiN2(~b; ~x) ^ fl
+
+for some parameters ff; fi, and fl. Figure 1 illustrates a 2 \Phi -node architecture.
+
+mm m
+
+CC CCO QQ QQ Qk
+
+\Gamma \Gamma 
+
+\Gamma `6 aeae
+
+aeae
+
+ae?
+
+jj
+
+jj
+
+jj3
+
+\Lambda \Lambda 
+
+\Lambda \Lambda * \Theta \Theta 
+
+\Theta \Theta ffi
+
+6
+
+JJ J] \Omega \Omega 
+
+\Omega OE
+
+n321
+
+N3
+
+N2N1
+
+Figure 1: A 2 \Phi -node architecture The two activations function classes \Phi  that we consider are the threshold functions H
+
+H(x) = ( 0 if x ^ 01 if x ? 0 and the piecewise linear or "saturating" activation functions ss defined as
+
+6
+
+ss(x) = 8?!?:
+
+0 if x ! 0 x if 0 ^ x ^ 1 1 if x ? 1 :
+
+(2)
+
+Another model, called the 2-cascade architecture, was investigated by Lin and Vitter[16] (see fig. 2). A 2-cascade architecture consists of two processors N1 and N2 each of which computes a binary threshold function H. The output of the node N1 in the hidden layer is provided to the input of the output node N2. Moreover, all the inputs are connected to both the nodes N1 and N2.
+
+. . . ...
+
+1     2              n
+
+N    2 N    1
+
+Figure 2: A 2-cascade network. Both the nodes N1 and N2 are threshold units. 2.3 Loading the k H-Node Architecture We consider two kinds of inputs: analog and binary. An analog input is in [0; 1]d, where d is a fixed constant, also called the input dimension. In the binary case, the input is in f0; 1g\Lambda , that is, it has unbounded dimensions.
+
+Blum and Rivest[3] showed when the inputs are binary and the training set is sparse (i.e. if n is the length of the longest string in the training set M , then jM j is polynomial in n) the loading problem is NP-Complete for the 2 H-node architecture. In another related paper, Lin and Vitter[16] proved a slightly stronger result by showing that the loading problem of 2-cascade threshold net with binary input is NP-complete.
+
+Howvever, when the input is analog, loading a 1-hidden layer network requires a polynomial time only in the size of the training set. This result is achieved by utilizing a result described by Megiddo [20].
+
+Theorem 1 Let k ? 0 be an integer. It is possible to load any k H-node architecture in polynomial time if the input is analog.
+
+Before proving Theorem 1, we summarize the related result of Megiddo in [20] regarding polyhedral separability in fixed dimension and hyperplanes.
+
+The following definition is due to Megiddo [20]:
+
+7
+
+Definition 2.1 k-Polyhedral Separability: Given two sets of points A and B in IRd, and an integer k, decide whether there exist k hyperplanes
+
+Hj = fp : (xj)T p = xj0g; (xj 2 IRd; xj0 2 IR; j = 1; : : :; k) that separate the sets through a Boolean formula. That is, associate a Boolean variable vj with each hyperplane Hj. The variable vj is true at a point p if (xj)T p ? xj0, false if (xj)T p ! xj0, and undefined at points lying on the hyperplane itself. A Boolean formula OE = OE(v1; : : : ; vk) that separates the sets A and B is true for each point a 2 A and false for each b 2 B.
+
+One hidden layer net with k hidden units separates the space by k hyperplanes. However, not any Boolean formula of them is permitted, but only those which can be defined by a threshold neuron, i.e., the ones which are linearly separable in the quadrants.
+
+Consider the geometrical view of the loading problem for such a network. Every threshold neuron defines a hyperplane, and we ask if there exists a set of hyperplanes that separate the points in the ddimensional space which are labeled 0+0 from the points there which are separated as 0\Gamma 0. The following Lemma is from [20].
+
+Lemma 2.2 [20] Let d; k be constants, and Z represents the integers numbers. M is a set of points in Zd which are labeled +/\Gamma . Then, there exists an algorithm to decide whether a set of classified points M can be separated by k hyperplanes which takes time polynomial in jM j.
+
+Proof of Theorem 1. The computational view of the loading problem of analog input is very similar to the model of Lemma 2.2. However, in this case the points are in [0; 1]d rather than Zd. The second discrepancy is that the output of the k H-node architecture is a linear threshold function of the hyperplanes rather than an arbitrary Boolean function. The proof of Lemma 2.2 holds for the analog input as well. We add a polynomial algorithm to test each separating configuration of the hyperplanes to assure that the output of the network is indeed a linear threshold function of the hyperplanes.2
+
+Remark 2.1 A k H-node network with analog inputs is also learnable; this follows as a consequence of a result proven in [18].
+
+3 The Loading Problem For the 2 ss-node Architecture One can generalize Theorem 1 and show that it is possible to load the 2 ss-node architecture with analog inputs in polynomial time. In this section we show that the loading problem for the 2 ss-node architecture is NP-complete when binary inputs are considered. The main theorem of this section is as follows.
+
+Theorem 3.1 The loading problem for the 2 ss-node architecture (LssAP) with binary inputs is NPcomplete.
+
+A corollary of the above theorem is as follows. Corollary 3.1 The class of Boolean functions computable by the 2 ss-node architecture with binary inputs is not learnable, unless RP = N P .
+
+8
+
+To prove theorem 3.1 we reduce a restricted version of the set splitting problem, which is known to be NP-complete[8], to this problem in polynomial time. However, due to the continuity of this activation function, many technical difficulties arise. The proof is organized as follows:
+
+1. Providing a geometric view of the problem [subsection 3.1]. 2. Introducing the (k; l)-set splitting problem and the symmetric 2-SAT problem [subsection 3.2]. 3. Proving the existence of a polynomial algorithm that transforms a solution of the (3,3)-set splitting
+
+problem into a solution of its associated (2,3)-set splitting problem (using the symmetric 2-SAT problem) [subsection 3.3].
+
+4. Defining the 3-hyperplane problem and proving it is NP-complete by reducing from the (2,3)-set
+
+splitting problem [subsection 3.4].
+
+5. Proving that the LssAP is NP-complete. This is done using all the above items[subsection 3.5]. In subsection 3.6, we prove the corollary.
+
+3.1 A Geometric View Of The Loading Problem
+
+M    1 M   2
+
+P   1
+
+P   2
+
+(0,1)
+
+(1,1)
+
+(0,0)
+
+(1,0)
+
+(a) (b)
+
+(c) (d)
+
++ -
+
+-
+
+-
+
++
+
++-
+
+-
+
++ +
+
+-
+
+-
+
+Figure 3: Different classifications produced by the 3-node network. We start by categorizing the different types of classifications produced by the 2 ss-node architecture. Without loss of generality we assume ff; fi 6= 0 (if ff = 0 or fi = 0 the network reduces to a simple perceptron which can be trained in polynomial time). Consider the 4 hyperplanes M1 : Pni=1 aixi = 0, M2 : Pni=1 aixi = 1, P1 : Pni=1 bixi = 0, and P2 : Pni=1 bixi = 1 (refer to fig. 3). Let (c1; c2) denote the set of points in the (n \Gamma  1)-dimensional facet corresponding to Pni=1 aixi = c1 and Pni=1 bixi = c2. As all points belonging to one facet are labeled equally, we consider "labeling the facets" rather than the single points.
+
+Type 1. All facets are labeled either 0+0 or 0\Gamma 0. In that case, all the examples are labeled 0+0 or 0\Gamma 0,
+
+respectively.
+
+9
+
+Type 2. Exactly one facet is labeled 0+0. Assume that this facet is (0,0). Then, two different types of
+
+separations exist:
+
+(a) There exist two halfspaces H1 and H2 such that all the 0+0 points belong to H1 ^ H2 and all
+
+the 0\Gamma 0 points belong to H1 . H2 (H1 and H2 may be identical).
+
+(b) There exist three hyperplanes of the following form (fig. 3(b)):
+
+H1 : ff(
+
+nX
+
+i=1
+
+aixi) ? fl
+
+H2 : fi(
+
+nX
+
+i=1
+
+bixi) ? fl
+
+H3 :
+
+nX
+
+i=1
+
+(ffai + fibi)xi ? fl
+
+where 0 ? fl, ff; fi ^ fl ! 0 (hence fl ? 2fl), and all the 0+0 and 0\Gamma 0 points belong to H1^H2 ^H3 and H1 . H2 . H3, respectively (here, as well, H1 and H2 may be identical).
+
+If any other facet is marked 0+0, a similar separation is produced. Type 3. Two facets are marked 0+0 and the remaining two are labeled 0\Gamma 0. Because the labeling must
+
+be linearly separable, only the following types of classifications are possible:
+
+(a) (0; 1) and (0; 0) are 0+0 (fig. 3(d)). Then, the input space is partitioned via the three halfspaces:
+
+H1 : ff(
+
+nX
+
+i=1
+
+aixi) ? fl \Gamma  fi
+
+H2 : ff(
+
+nX
+
+i=1
+
+aixi) ? fl
+
+H3 :
+
+nX
+
+i=1
+
+(ffai + fibi)xi ? fl
+
+fi ? fl; ff ^ fl ! 0; ff + fi ^ fl If fi ! 0 then all the 0+0 and 0\Gamma 0 points lie in H1 . (H2 ^ H3) and H2 . (H1 ^ H3), respectively. If fi ? 0 then all the 0+0 and 0\Gamma 0 points lie in H2 . (H1 ^ H3) and H1 . (H2 ^ H3), respectively.
+
+(b) (0; 0) and (1; 0) are 0+0 (fig. 3(c)). Then, the input space is partitioned via the three halfspaces:
+
+H1 : fi(
+
+nX
+
+i=1
+
+bixi) ? fl \Gamma  ff
+
+10
+
+H2 : fi(
+
+nX
+
+i=1
+
+bixi) ? fl
+
+H3 :
+
+nX
+
+i=1
+
+(ffai + fibi)xi ? fl
+
+ff ? fl; fi ^ fl ! 0; ff + fi ^ fl If ff ! 0 then all the 0+0 and 0\Gamma 0 points lie in H1 . (H2 ^ H3) and H2 . (H1 ^ H3), respectively. If ff ? 0 then all the 0+0 and 0\Gamma 0 points lie in H2 . (H1 ^ H3) and H1 . (H2 ^ H3), respectively.
+
+(c) (1; 0) and (1; 1) are 0+0 (similar to fig. 3(d) with the labeling of 0+0 and 0\Gamma 0 points interchanged).
+
+This is the symmetrically opposite case of type 3(a).
+
+(d) (0; 1) and (1; 1) are 0+0 (similar to fig. 3(c) with the labeling of 0+0 and 0\Gamma 0 points interchanged).
+
+This is the symmetrically opposite case of type 3(b).
+
+Type 4. Three facets are labeled 0+0. This case is symmetrically opposite to type 2, and thus details are
+
+precluded. Note that two types are possible in type 4, namely type 4(a) and type 4(b), depending upon whether two or three halfspaces are involved, respectively (similar to type 2).
+
+3.2 The Set Splitting and Symmetric 2-SAT Problems The following problem is referred to as the (k; l)-set splitting problem (SSP) for k * 2.
+
+INSTANCE: A set S = fsi j 1 ^ i ^ ng, and a collection C = fcj j 1 ^ j ^ mg of subsets of S, all of exactly size l.
+
+QUESTION: Are there k sets S1; : : : ; Sk, such that Si " Sj = OE for i 6= j, [ki=1Si = S, and cj 6` Si for 1 ^ i ^ k and 1 ^ j ^ m?
+
+Note that the (k; l)-SSP is solvable in polynomial time if both k ^ 2 and l ^ 2, but remains NPcomplete if k * 2 and l = 3 (see [8]).
+
+For later purposes we consider the symmetric 2-SAT problem:
+
+INSTANCE: Variables v1; v2; \Delta  \Delta  \Delta  ; vn and a collection D of one or two literal disjunctive clauses satisfying the condition:
+
+8i; j [(vi . (:vj)) 62 D] & [((:vi) . vj) 62 D]
+
+QUESTION: Decide whether there exists a satisfying assignment, and find one if exists.
+
+Note that the clause (xi . xj ) (resp. ((:xi) . (:xj ))) is equivalent to both the implications (:xi ! xj) and (:xj ! xi) (resp. (xi ! :xj ) and (xj ! :xi), while the clause xi (resp. :xi) is equivalent to
+
+11
+
+the implication (:xi ! xi) (resp. (xi ! :xi) ) only. These two forms of disjunction and implication are used interchangeably. In a manner similar to [23], we create a directed graph G = (V; E), where where V = fdi; di j vi is a variableg, and E = f(li; lj) j (i; j 2 f1; : : : ; ng); (li 2 fdi; :dig); (lj 2 fdj; :djg); (li ! lj) 2 Dg. Note that an edge (x; y) in E is directed from x to y. In the symmetric 2-SAT problem, the graph G has the following crucial property:
+
+(--) Complemented and uncomplemented vertices alternate in any path. This is because the edges in G
+
+are only of the form (di; dj) or (di; dj) for some two indices i and j (i = j is possible).
+
+The following algorithm finds a satisfiable assignment if exists or, stops if there is no one: 1. Denote by ) the transitive closure of !. For any variable vi such that vi ) :vi (resp :vi ) vi)
+
+set vi to false (resp. true).
+
+2. Repeat until there is no edge directed into a false literal or from a true literal.
+
+ffl Pick an edge directed into a false literal, i.e. of the type dr ! :ds (resp. :dr ! ds) so that
+
+the variable vs is set to true (resp. false) and set vr to false (resp. true).
+
+ffl Pick an edge directed from a true literal, i.e. of the type dr ! :ds (resp. :dr ! ds) so that
+
+the variable vr is set to true (resp. false) and set vs to false (resp. true).
+
+3. If there is still an unassigned variable, set it arbitrarily and return to step 2. Otherwise, halt.
+
+The above algorithm produces a satisfying assignment provided the following condition holds (see, for example, [23, pp. 377-378]):
+
+The instance of the 2-SAT problem has a solution if and only if there is no directed cycle in G which contains both the vertices di and di for some i.
+
+It is easy to check the above condition in O(j V j) = O(n) time by finding the strongly connected components of G. Hence, computing a satisfying assignment (or, reporting that no such assignment exists) can be done in time polynomial in the input size.
+
+3.3 The (k; l)-Reduction Problem We prove that under certain conditions, a solution of the (k; l)-set splitting instance (S; C) can be transformed into a solution of the associated (k \Gamma  1; l)-set splitting problem. More formally, we define the (k; l)-reduction problem ((k; l)-RP) as follows:
+
+INSTANCE: An instance (S; C) of the (k; l)-SSP, and a solution (S1; S2; : : : ; Sk). QUESTION: Decide whether there exists a solution (S01; S02; : : : ; S0k\Gamma 1) to the associated (k \Gamma 1; l)-SSP and construct one if exists, where, for all i; j 2 f1; 2; : : :; k \Gamma  1g i 6= j:
+
+S0i = Si [ Ti
+
+Ti ` Sk (Ti " Tj) = OE
+
+[k\Gamma 1p=1Tp = Sk
+
+12
+
+We next state the existence of a polynomial algorithm for the (3; 3)-reduction problem. Since we are interested in placing elements of S3 in S1 or S2, we focus on sets having at least one element of S3. Since (S1; S2; S3) is a solution of the (3; 3)-SSP, no set contains 3 elements of S3. Let C0 = fcj j 1 ^ i ^ mg ` C be the collection of sets which contain at least one element of S3. Obviously, 8j(cj 6` S1)^(cj 6` S2)^(cj 6` S3).
+
+Let A = fai j 1 ^ i ^ jSjg and B = fbi j 1 ^ i ^ jSjg be two disjoint sets. Each element of A [ B is to be colored 0red0 or 0blue0 so that the overall coloring satisfies the valid coloring conditions:
+
+(a) For each set fxi; xj; xpg 2 C0, where xi; xj 2 S3, at least one of ai or aj should be colored red if
+
+xp 2 S1 and at least one of bi or bj has to be colored red if xp 2 S2.
+
+(b) For each i, 1 ^ i ^ jSj, at least one of ai or bi has to be colored blue. (c) For each set fxi; xj; xpg such that xp 2 S3 and xi; xj 2 S1 (resp. xi; xj 2 S2), ap (resp. bp) must be
+
+colored red.
+
+Theorem 3.2 The following two statements are true: (a) The (3; 3)-reduction problem is polynomially solvable. (b) If the (3; 3)-RP has no solution, no valid coloring of A S B exists.
+
+Proof. (a) We show how to reduce the (3; 3)-reduction problem in polynomial time to the symmetric 2-SAT. As the later is polynomially solvable, part (a) will be proven. Assume an instance (S; C; S1; S2; S3) is given and (S01; S02) is to be found. For each element xi 2 S3 assign a variable vi; vi = T RU E (resp. vi = F ALSE) indicates that the element xi is placed in S1 (resp. S2). For each set ck = fxi; xj; xpg, where xi; xj 2 S3, if xp is in S1, create the clause :vi . :vj (indicating both vi and vj should not be true, since otherwise ck ` S01); if xp is in S2 create the clause vi . vj; for each set ck = fxi; xj; xpg, where xi; xj 2 S1 (resp, 2 S2), create the clause :vp (resp. vp). Let D be the collection of all such clauses. This instance of the symmetric 2-SAT problem has a satisfying assignment if and only if the (3; 3)-RP has a solution: for each variable vj ; vj is true (resp. false) in the satisfying assignment if and only if xj is assigned into S1 (resp. S2).
+
+(b) Construct the graph G from the collection of clauses D as described in section 3.2. If no satisfying assignment exists, the graph G has a directed cycle containing both di and di for some i. We show that in that case no valid coloring of all the elements of A [ B is possible: rearrange the indices and names of the variable, if necessary, so that the cycle contains d1 and d1, and (due to property (--) of G of section 3.2) is of the form d1 ! d2 ! d3 ! \Delta  \Delta  \Delta  ! dr ! d1 ! d10 ! d20 ! d30 ! \Delta  \Delta  \Delta  ! ds0 ! d1, where r and s0 are two positive integers and x ! y denotes an edge directed from vertex x to vertex y in G (not all of the indices 1; 2; : : :; r; 10; 20; : : :; s0 need to be distinct). Next, we consider the following 2 cases.
+
+Case 1. Assume a1 is colored red. Hence, b1 must be colored blue due to coloring condition (b).
+
+Consider the path from P from d1 to d1 (i.e., the path d1 ; d1, where ; denotes the sequence of one or more edges in G). The following subcases are possible:
+
+Case 1.1. P contains at least one edge of the form dt0 ! dt0 or dt0 ! dt0 for some index t0.
+
+Consider the first such edge along P as we traverse from d1 to d1.
+
+13
+
+Case 1.1.1. The edge is of the form dt0 ! dt0, (that is, the associated clause is :xt0). Consider
+
+the path P 0 : d1 ; dt0. P 0 is of the form d1 ! d10 ! d20 ! \Delta  \Delta  \Delta  ! dt0\Gamma 1 ! dt0 and t0 is odd (t0 = 1 is possible). Now, due to coloring condition (a) and (b), bt0 is colored red (see below).
+
+i = 1 i = 10 i = 20 : : : i = t0 \Gamma  1 i = t0 ai : blue red \Delta  \Delta  \Delta  red
+
+bi : blue red blue \Delta  \Delta  \Delta  blue red
+
+On the other hand, at0 is colored red due to coloring condition (c) and the edge dt0 ! dt0. But, coloring condition (b) prevents both at0 and bt0 to be colored red.
+
+Case 1.1.2. The edge is of the form dt0 ! dt0 (that is, the associated clause is xt0). Consider
+
+the path P 0 : d1 ; dt0. P 0 is of the form d1 ! d10 ! d20 ! \Delta  \Delta  \Delta  ! dt0\Gamma 1 ! dt0 and t0 is even. Now, due to coloring condition (a) and (b), at0 is colored red (see below).
+
+i = 1 i = 10 i = 20 : : : i = t0 \Gamma  1 i = t0 ai : blue red \Delta  \Delta  \Delta  blue red
+
+bi : blue red blue \Delta  \Delta  \Delta  red
+
+On the other hand, bt0 is colored red due to coloring condition (c) and the edge dt0 ! dt0. But, coloring condition (b) prevents both at0 and bt0 to be colored red.
+
+Case 1.2. P contains no edge of the form dt0 ! dt0 or dt0 ! dt0 for any index t0.
+
+Then, s0 is even, and because of the coloring conditions (a) and (b) we must have bs0 colored blue (see below).
+
+i = 1 i = 10 i = 20 : : : i = s0 \Gamma  1 i = s0 ai : blue red \Delta  \Delta  \Delta  blue
+
+bi : blue red blue \Delta  \Delta  \Delta  red blue
+
+Now, b1 must be colored red because of the edge ds0 ! d1, a contradiction. Case 2. Assume a1 is colored blue.
+
+This case is symmetric to Case 1 if we consider the path d1 ; d1 instead of the path d1 ; d1.
+
+Hence, part (b) is proved. 2
+
+3.4 The 3-hyperplane Problem We prove the following problem, which we term as the 3-hyperplane problem (3HP), to be NP-complete. INSTANCE: A set of points in an n-dimensional hypercube labeled 0+0 and 0\Gamma 0. QUESTION: Does there exist a separation of one or more of the following forms: (a) A set of two halfspaces ~a~x ? a0 and H2 : ~b~x ? b0 such that all the 0+0 points are in H1 ^ H2, and all
+
+the 0\Gamma 0 points belong to H1 . H2?
+
+(b) A set of 3 halfspaces H1 : ~a~x ? a0, H2 : ~b~x ? b0 and H3 : ~(a + b)~x ? c0 such that all the 0+0 points
+
+belong to H1 ^ H2 ^ H3 and all the 0\Gamma 0 points belong to H1 . H2 . H3?
+
+14
+
+Theorem 3.3 The 3-hyperplane problem is NP-complete. Proof. We first notice that this problem is in NP as an affirmative solution can be verified in polynomial time. To prove NP-completeness of the 3HL, we reduce the (2,3)-set splitting problem to it:
+
+Given an instance I of the (2,3)-SSP:
+
+I: S = fsig, C = fcjg, cj ` S, j S j= n, j cj j= 3 for all j we create the instance I0 of the 3-hyperplane problem (like in [3]):
+
+? The origin (0n) is labeled 0+0; for each element sj , the point pj having 1 in the jth coordinate only is labeled 0\Gamma 0; and for each clause cl = fsi; sj; skg, we label with 0+0 the point pijk which has 1 in its ith, jth, and kth coordinates.
+
+We next prove that
+
+An instance I0 of the 3-hyperplane problem has a solution if and only if instance I of the (2,3)-SSP has a solution.
+
+) Given a solution (S1; S2) of the (2,3)-SSP, we create the following two halfspaces: H1 : Pni=1 aixi ? \Gamma  12 , where ai = \Gamma 1 if si 2 S1 and ai = 2 otherwise, H2 : Pni=1 bixi ? \Gamma  12 , where bi = \Gamma 1 if si 2 S2 and bi = 2 otherwise. This is a solution type (a) of the 3-hyperplane problem.
+
+(
+
+(A) If there is a separation of type (a), the solution of the set-splitting is analogous to [3]: Let S1 and
+
+S2 be the set of 0\Gamma 0 points pj separated from the origin by H1 and H2, respectively (any point separated by both is placed arbitrarily in one of them). To show that this separation is indeed a valid solution, assume a subset cd = fxi; xj; xkg so that pi; pj; pk are separated from the origin by H1. Then, also cd is separated from the origin by the same hyperplane, contradicting its positive labeling.
+
+(B) Otherwise, let H1 : Pni=1 aixi ? \Gamma  12 , H2 : Pni=1 bixi ? \Gamma  12 and H3 : Pni=1(ai + bi)xi ? c be the
+
+three solution halfspaces of type (b), where 0 ? c (since the origin is labeled 0+0). We show how to construct a solution of the set splitting problem.
+
+Let S1 and S2 be the set of 0\Gamma 0 points pj separated from the origin by H1 and H2, respectively (any point separated by both is placed arbitrarily in one of the sets), and let S3 be the set of points pj separated from the origin by H3 but by neither H1 nor H2. If S3 = OE then S1 and S2 imply a solution as in (A) above. Otherwise, the following properties hold:
+
+(I) There cannot be a set cj = fsx; sy; szg where px, py and pz all belong to S3. Otherwise,
+
+ax; ay; az ! c ! 0, and the 0+0 point corresponding to cj is classified 0\Gamma 0 by H3. Similarly, no set cj exists that is included in either S1 or S2.
+
+(II) Consider a set fsx; sy; szg, where px; py 2 S3; pz 2 S1. Since az ^ \Gamma  12 and az + ax + ay ? \Gamma  12 ,
+
+we conclude ax + ay ? 0. Hence, at least one of ax or ay must be strictly positive. Similarly, if pz 2 S2, at least one of bx; by is strictly positive.
+
+(III) Consider any element sx of S3. Since the associated point px is classified as 0\Gamma 0 by H3,
+
+ax + bx ! c ! 0. Hence, at least one of ax and bx is negative for each px.
+
+15
+
+(IV) If there is a set fsx; sy; szg where sx 2 S3, and sy; sz 2 S1 (resp. sy; sz 2 S2) then ax
+
+(resp. bx) is positive. This is because since sy; sz 2 S1 (resp. sy; sz 2 S2), ay; az ^ \Gamma  12 (resp. by; bz ^ \Gamma  12 ), but ax + ay + az ? \Gamma  12 (resp. bx + by + bz ? \Gamma  12 ), and hence ax ? 12 (resp. bx ? 12).
+
+As for condition (I), (S1; S2; S3) can be viewed as a solution of the (3,3)-SSP. We show that this solution can be transformed into a solution of the required (2,3)-SSP.
+
+Let A = fai j 1 ^ i ^ tg, B = fbi j 1 ^ i ^ tg, S1, S2 and S3 be as in theorem 3.2. Each element x of A [ B is colored red (resp. blue) if x ? 0 (resp. x ^ 0). Conditions (a), (b) and (c) of valid coloring of A [ B hold because of conditions (II), (III) and (IV) above. Thus, (S1; S2; S3) is transformed into (S01; S02)--a solution of the (2,3)-SSP. 2
+
+3.5 Loading The 2 ss-node Architecture is NP-complete Next, we prove that loading the 2 ss-node architecture is NP-complete. We do so by comparing it to the 3-hyperplane problem. To this end, we construct a gadget that will allow the architecture to produce only separations of type 2 (section 3.1), which are similar to those of the 3HP.
+
+We construct such a gadget with two steps: first, in Lemma 3.1, we exclude separation of type 3, and then we exclude in separations of type 4 in Lemma 3.2.
+
+Lemma 3.1 Consider the 2-dimensional hypercube in which (0,0), (1,1) are labeled 0+0, and (1,0), (0,1) are labeled 0\Gamma 0. Then the following statements are true:
+
+(a) There do not exist three halfspaces H1, H2, H3 as described in type 3(a)-(d) in section 3.1 which
+
+correctly classify this set of points.
+
+(b) There exist two halfspaces of the form H1 : ~a~x ? a0 and H2 : ~b~x ? b0, where a0; b0 ! 0, such that all
+
+the 0+0 and 0\Gamma 0 points belong to H1 ^ H2 and H1 . H2, respectively.
+
+Lemma 3.2 Consider the labeled set A: (0,0,0), (1,0,1), (0,1,1) are labeled 0+0, and (0,0,1), (0,1,0), (1,0,0), (1,1,1) are labeled 0\Gamma 0. Then, there does not exist a separation of these points by type 4 halfspaces as described in section 3.1.
+
+The proof of Lemmas 3.1 and 3.2 involve a long case-by-case analysis and is provided in the appendix. Consider the following classification again on a 3-dimensional hypercube: (0,0,0), (1,0,1), and (0,1,1) are labeled 0+0, and (0,0,1), (0,1,0), (1,0,0), and (1,1,1) are labeled 0\Gamma 0. Then, the following statements are true due to the result in [3]:
+
+(a) No single hyperplane can correctly classify the 0+0 and 0\Gamma 0 points. (b) No two halfspaces H1 and H2 exist such that all the 0+0 points belong to H1 . H2 and all the 0\Gamma 0
+
+points belong to H1 ^ H2.
+
+(c) There exist two halfspaces H1 : P3i=1 ffixi ? ff0 and H2 : P3i=1 fiixi ? fi0 such that all the 0+0 points
+
+lie in H1 ^ H2, and all the 0\Gamma 0 points lie in H1 . H2 (where X = (x1; x2; x3) is the input).
+
+16
+
+Now, we can show that the loading problem for the 2 ss-node architecture is NP-complete. Proof of theorem 3.1. First we observe that the problem is in NP as follows. The classifications of the labeled points produced by the 2 ss-node architecture (as discussed in section 3.1) are 3-polyhedrally separable. Hence, from the result of [21] one can restrict all the weights to have at most O(n log n) bits. Thus, a "guessed" solution can be verified in polynomial time.
+
+Next, we show that the problem is NP-complete. Consider an instance I = (S; C) of the (2,3)-SSP. We transform it into an instance I0 of the problem of loading the 2 ss-node architecture as follows: we label points on the (jSj + 5) hypercube similar to as is ? (section 3.4).
+
+The origin (0jSj+5) is labeled 0+0; for each element sj, the point pj having 1 in the jth coordinate only is labeled 0\Gamma 0; and for each clause cl = fsi; sj; skg, we label with 0+0 the point pijk which has 1 in its ith, jth, and kth coordinates. The points (0n; 0; 0; 0; 0; 0), (0n; 0; 0; 0; 1; 1), (0n; 1; 0; 1; 0; 0) and (0n; 0; 1; 1; 0; 0) are marked 0+0, and the points (0n; 0; 0; 0; 1; 0), (0n; 0; 0; 0; 0; 1), (0n; 0; 0; 1; 0; 0), (0n; 0; 1; 0; 0; 0), (0n; 1; 0; 0; 0; 0) and (0n; 1; 1; 1; 0; 0) are labeled 0\Gamma 0.
+
+Next, we show that a solution for I exists iff there exists a solution to I0. Given a solution to the (2,3)-SSP, by lemma 3.1(part(b)) and the result in [3] the two solution halfspaces to I0 are as follows (assume the last 5 dimensions are xn+1 to xn+5):
+
+H1 : (
+
+nX
+
+i=1
+
+aixi) \Gamma  xn+1 \Gamma  xn+2 + xn+3 \Gamma  xn+4 + xn+5 ? \Gamma  12
+
+H2 : (
+
+nX
+
+i=1
+
+bixi) + xn+1 + xn+2 \Gamma  xn+3 + xn+4 \Gamma  xn+5 ? \Gamma  12
+
+where
+
+ai = ( \Gamma 1 if si 2 S12 otherwise
+
+bi = ( \Gamma 1 if si 2 S22 otherwise We map the two solution halfspaces into the 2 ss-node architecture as follows:.
+
+N1 = ss[\Gamma ((
+
+nX
+
+i=1
+
+aixi) \Gamma  xn+1 \Gamma  xn+2 + xn+3 \Gamma  xn+4 + xn+5)] ;
+
+N2 = ss[\Gamma ((
+
+nX
+
+i=1
+
+bixi) + xn+1 + xn+2 \Gamma  xn+3 + xn+4 \Gamma  xn+5)] ;
+
+N3 = ( 1 \Gamma N1 \Gamma  N2 ? \Gamma 10 \Gamma N
+
+1 \Gamma  N2 ^ \Gamma 1 :
+
+Conversely, given a solution to I0, by Lemma 3.1(part (a)), Lemma 3.2 and the result in [3] (as discussed above) the only type of classification produced by the 2 ss-node architecture consistent with the classifications on the lower 5 dimensions is of type 2(a) (with H1 6= H2) or 2(b) only, which was shown to be NP-complete in theorem 3.3. 2
+
+17
+
+Remark 3.1 From the above proof of theorem 3.1 it is clear that the NP-completeness result holds even if all the weights are constrained to lie in the set f\Gamma 2; \Gamma 1; 1g. Thus the hardness of the loading problem holds even if all the weights are "small" constants.
+
+3.6 Learning the 2 ss-node Architecture Here, we prove corollary 3.1 which states that the functions computable by the 2 ss-node architecture with binary inputs is not learnable unless RP = N P . As it is not believed that NP and RP are equal, the corollary implies that most likely the 2 ss-node architecture is not learnable (i.e. there are particular values of ffl and ffi such that it is not (ffl; ffi)-learnable).
+
+Proof of Corollary 3.1. The proof uses a similar technique to the one applied in the proof of theorem 9 of [14]. We assume that the functions computed by the 2 ss-node architecture are learnable and show that it implies an RP algorithm for solving a known NP-complete problem, that is, NP=RP.
+
+Given a instance I = (S; C) of the (2; 3)-SSP, we create an instance I0 of the 2 ss-node architecture and a set of labeled points M (this was used in the proof of theorem 3.1):
+
+The origin (0jSj+5) is labeled 0+0; for each element sj, the point pj having 1 in the jth coordinate only is labeled 0\Gamma 0; and for each clause cl = fsi; sj; skg, we label with 0+0 the point pijk which has 1 in its ith, jth, and kth coordinates. The points (0n; 0; 0; 0; 0; 0), (0n; 0; 0; 0; 1; 1), (0n; 1; 0; 1; 0; 0) and (0n; 0; 1; 1; 0; 0) are marked 0+0, and the points (0n; 0; 0; 0; 1; 0), (0n; 0; 0; 0; 0; 1), (0n; 0; 0; 1; 0; 0), (0n; 0; 1; 0; 0; 0), (0n; 1; 0; 0; 0; 0) and (0n; 1; 1; 1; 0; 0) are labeled 0\Gamma 0.
+
+Let D+ (resp. D\Gamma ) be the uniform distribution over these 0+0 (resp. 0\Gamma 0) points. Choose ffl ! minf 1jSj+5; 1jCj+4 g, and ffi = 1 \Gamma  ffl. To prove the corollary it is sufficient to show that for the above choice
+
+of ffl, ffi, D+ and D\Gamma , (ffl; ffi)-learnability of the 2 ss-node architecture can be used to decide the outcome of the (2; 3)-SSP in random polynomial time:
+
+ffl Suppose I is an instance of the (2; 3)-SSP and let (S1; S2) be its solution. Then, from the proof of
+
+the "only if" part of Theorem 3.1 (see previous subsection), there exists a solution to I0 which is consistent with the labeled points of M . So, if the 2 ss-node architecture is (ffl; ffi)-learnable, then due to choice of ffl and ffi (and, by Theorem 3.1), the probabilistic learning algorithm must produce a solution which is consistent with M with probability at least 1 \Gamma  ffl, thereby providing a probabilistic solution of the (2; 3)-SSP. That is, if the answer to the (2; 3)-SSP question is "YES", then we answer "YES" with probability at least 1 \Gamma  ffl.
+
+ffl Now, suppose that there is no solution possible for the given instance of the (2; 3)-SSP. Then, by
+
+Theorem 3.1, there is no solution of the 2 ss-node architecture which is consistent with M . Hence, the learning algorithm must always either produce a solution which is not consistent with M , or fail to halt in time polynomial in n, 1ffl , and 1ffi . In either case we can detect that the learning algorithm was inconsistent with labeled points or did not halt in stipulated time, and answer "NO". In other words, if the answer to the (2; 3)-SSP is "NO", we always answer "NO".
+
+Since the (2; 3)-SSP is NP-complete (i.e., any problem in NP has a polynomial time transformation to (2; 3)-SSP), it follows that any problem in NP has a random polynomial time solution, i.e., N P ` RP . But it is well-known that RP ` N P , hence we have RP = N P . 2
+
+18
+
+Remark 3.2 In a similar manner, the subsequent NP-completeness result of the loading problem proven in the next section can be used to provide a proof of the impossibility of learnability of the associated concept under the assumption of RP 6= N P .
+
+4 Another Architecture Which is Hard to Load In this section we discuss an extension of the NP-completeness result. Inspired by Blum and Rivest[3] who considered loading a few variations of the k H-node network, in which all activations functions were discrete; we consider a variations of the k \Phi -node architecture in which two nodes compute continuous activation functions. The result of this section has theoretical importance only, as binary threshold units are not popular in applications.
+
+Consider a unit G that computes H(Pni=1 ffixi \Gamma  j), where ffi's are real constants and x1 to xn are input variables which assume any real value in [0; 1]. We say that this unit G computes a Boolean NAND (i.e., negated AND) function of its inputs provided its weights and threshold satisfy the following requirements:
+
+ffi ! j ! 0 1 ^ i ^ n (3) For justification, assume that the inputs to node G are binary. Then, the output of G is one iff all its inputs are zeroes.
+
+N
+
+1          . . . . . . .            n
+
+NNNN \Pi HHH
+
+NANDN   r+3
+
+\Pi .    .     . 1 r-1  r r+1 r+2 Figure 4: The "Restricted" (2; r) (ss, H)-node network. Our model consists of r + 2 hidden nodes N1; N2; : : :; Nr+2 (where r is a fixed polynomial in n, the number of inputs) and one output node. The nodes N1; N2; : : : ; Nr in the hidden layer compute the binary threshold functions H, and the two remaining hidden nodes Nr+1 and Nr+2 compute the "saturating activation" functions ss (equation 2). The output node Nr+3 computes a Boolean NAND function (fig. 4). We term this as the "Restricted" (2; r) (ss; H)-node architecture.
+
+One can generalise Theorem 1 and show that the "Restricted" (2; r) (ss; H)-node architecture can be loaded in polynomial time in the case of analog inputs. However, the loading problem becomes NP-complete when binary inputs are considered. The main theorem of this section is as follows.
+
+Theorem 4.1 The loading problem for the "Restricted" (2; r) (ss; H)-node architecture with binary inputs is NP-complete.
+
+Before proving Theorem 4.1 we show, given an instance I of the (2; 3)-SSP, how to construct an instance I0 of the (r + 2; 3)-SSP such that I has a solution iff I0 has one.
+
+19
+
+Let I = (S; C) be a given instance of the (2; 3)-SSP. We construct I0 by adding 2r + 2 new elements Y = fyi j 1 ^ i ^ 2r + 2g and creating the following new sets:
+
+ffl Create the sets fsi; yj; ykg for all 1 ^ i ^ n, 1 ^ j; k ^ 2r + 2, j 6= k. This ensures that if a set in
+
+a solution of the set-splitting problem contains an element of S, it may contain at most one more element of Y .
+
+ffl Create the sets fyi; yj; ykg for all 1 ^ i; j; k ^ 2r + 2, i 6= j 6= k. This ensures that no set in a
+
+solution of the set-splitting problem may contain more than two elements of Y .
+
+Let I0 = (S0:C0) be the new instance of the (r + 2; 3)-SSP, where S0 = S [ Y , and C0 contains all the sets of C and the additional sets as described above.
+
+Lemma 4.1 The instance I0 of the (r + 2; 3)-SSP has a solution if and only if the instance I of the (2; 3)-SSP has a solution.
+
+Proof.
+
+( Let (S1; S2) be a solution of I. Then, a solution (T1; T2; \Delta  \Delta  \Delta  ; Tr+2) of the instance I0 is as follows:
+
+Ti = fy2i\Gamma 1; y2ig for 1 ^ i ^ r
+
+Tr+1 = S1 [ fy2r+1g Tr+2 = S2 [ fy2r+2g ) Let (T1; T2; \Delta  \Delta  \Delta  ; Tr+2) be a solution of I0.
+
+Case 1. There are at most two sets of T1; T2; \Delta  \Delta  \Delta  ; Tr+2 which contain all the elements of S. Then these two sets constitute a solution of I.
+
+Example: Let n = 5. If T1 = fx1; x2; x3; y2g and T2 = fx4; x5; y4g are the two sets that contain all the elements of S = fx1; x2; x3; x4; x5g, then the two solution sets S1 and S2 are:
+
+S1 = fx1; x2; x3g S2 = fx4; x5g
+
+Case 2. Otherwise, there are m (m * 3) sets, T1; : : : ; Tm, each containing a distinct element of S. At most one element of Y occurs in each Ti (since two elements of Y cannot be in the same set with an element of S without violating the set-splitting constraint), hence m ! r + 2. So, there are r + 2 \Gamma  m remaining sets in the solution of the instance I0 and at least 2r + 2 \Gamma  m elements of Y to be placed in
+
+20
+
+those sets. By the pigeonhole principle, one of these remaining r + 2 \Gamma  m sets must contain at least three elements of Y (since m * 3), thus violating the set-splitting constraint. So, case 2 is not possible. 2
+
+Proof of Theorem 4.1. The 0+0 and 0\Gamma 0 points are (r + 3)-polyhedrally separated by the output of the network in which the Boolean formula for the polyhedral separation is the formula for the NAND function. Hence, from the result of [21] we can restrict all the weights to have at most p(n + r) number of bits (where p(x) is some polynomial in x). Since r is a polynomial in n, any "guessed" solution may be verified in polynomial time. So, the problem is in NP.
+
+We next show that the problem is NP-complete. Given an instance I of the (2; 3)-SSP, we construct an instance I0 of the "Restricted" (2; r) (ss; H)-node architecture as follows: We create first an instance I00 of the (r + 2; 3)-SSP (see Lemma 4.1). We then add the following labeled points, thus constructing the associated instance I0.
+
+The instance I0 is the architecture along with the following set of points: The origin (0jS
+
+0j)
+
+is labeled 0+0; for each element sj 2 S0, the point pj having 1 in the jth coordinate only is labeled 0\Gamma 0; and for each clause cl = fsi; sj; skg 2 C0, we label with 0+0 the point pijk which has 1 in its ith, jth, and kth coordinates.
+
+( Given a solution (S1; S2) of I, we construct a solution (T1; T2; \Delta  \Delta  \Delta  ; Tr+2) of I00 as described in the proof of Lemma 4.1. Consider the following r + 2 halfspaces:
+
+Hi :
+
+nX
+
+j=1
+
+ffii;jxj ? \Gamma  12 (1 ^ i ^ r + 2)
+
+where,
+
+ffii;j = ( \Gamma 1 if sj 2 Ti2 otherwise All labeled points of I0 are separated by these halfspaces: the 0+0 points lie in ^r+2i=1 Hi and the 0\Gamma 0 points lie in .r+2i=1 Hi.
+
+We map the r + 2 halfspaces to the "Restricted" (2; r) (ss; H)-node architecture as follows. The hidden nodes compute:
+
+Ni = H[\Gamma (
+
+nX
+
+j=1
+
+ffii;jxj)] i = 1 : : : r
+
+Nr+1 = ss[\Gamma (
+
+nX
+
+j=1
+
+ffir+1;j xj)]
+
+Nr+2 = ss[\Gamma (
+
+nX
+
+j=1
+
+ffir+2;j xj)] ;
+
+and the output node Nr+3 computes:
+
+Nr+3 = ( 1 if \Gamma (P
+
+r+2 i=1 Ni) ? \Gamma  120 if \Gamma (Pr+2
+
+i=1 Ni) ^ \Gamma  12
+
+21
+
+) Conversely, given a solution to the instance I0, we construct a solution to I. The classification produced by the "Restricted" (2; r) (ss; H)-node architecture is as follows. Each hidden threshold node Ni (1 ^ i ^ r) defines a halfspace Hi:
+
+Hi :
+
+nX
+
+j=1
+
+ffii;j xj ? ji
+
+for some real numbers ffii;1; \Delta  \Delta  \Delta  ; ffii;n and ji. From the classifications produced by the 2 ss-node architecture as described in section 3.1 and since the output node Nr+3 computes a Boolean NAND function, there are at most j halfspaces (for 2 ^ j ^ 3) corresponding to the nodes Nr+1 and Nr+2:
+
+Hr+1 :
+
+nX
+
+i=1
+
+aixi ? a0
+
+Hr+2 :
+
+nX
+
+i=1
+
+bixi ? b0
+
+Ht :
+
+nX
+
+i=1
+
+(ai + bi)xi ? c0 (r + 3 ^ t ^ r + j)
+
+All the 0+0 points lie in ^r+ji=1 Hi, and all the 0\Gamma 0 points lie in .r+ji=1 Hi.
+
+Let Ti be the 0\Gamma 0 points separated from the origin by the halfspace Hi of the output of the network (for 1 ^ i ^ r + j, 2 ^ j ^ 3). No Ti contains three elements of the same set of the instance I0, otherwise the set itself will be in Ti as well, contradicting its positive labeling. Consider the sets Ti as the solution of the instance I00. By Theorem 3.3 the sets Tr+1 to Tr+j can be combined to 2 sets, say T 0r+1 and T 0r+2, without violating the set-splitting constraints. Hence, we have r + 2 sets, T1; T2; \Delta  \Delta  \Delta ; Tr; T 0r+1; T 0r+2, as the r + 2 solution sets for the instance I00 which satisfy the set-splitting constraint. Hence, by Lemma 4.1 we can construct the two solution sets (S1; S2) of the instance I. 2
+
+5 Conclusion and Open Problems We have shown that the loading problem is NP-complete even for a simple feedforward network with a specific "saturated linear " (analog type) activation functions. This adds to the previously known results stating that the loading of a simple net with discrete activations is NP-complete ([3]) and a net with a specific (somehow artificial) analog activation function has a fast loading ([26]). Unfortunately, our proof does not seem to generalize to other activation functions. The following open problems may be worth investigating further:
+
+ffl Does the NP-completeness result hold for the 2 oe-node architecture, where oe(x) = 11+e\Gamma x is the
+
+standard sigmoid function?
+
+ffl What is the complexity of the loading problem for networks with more layers? Note that hardness
+
+of the loading problem for networks with one hidden layers does not necessarily imply the same for networks with more hidden layers. In fact, it is already known that there are functions which cannot be computed by threshold networks with one hidden layer and a constant number of nodes, but can be computed by threshold networks with two hidden layers and a constant number of nodes, see [19].
+
+22
+
+ffl Is there a characterization of the activation functions for which the loading problem is intractable? 6 Acknowledgments. The first author wishes to thank Piotr Berman and Vwani P. Roychowdhury for helpful discussions.
+
+References
+
+[1] Barron, A.R., "Approximation and estimation bounds for artificial neural networks", Proc. 4th Annual Workshop on Computational Learning Theory, Morgan Kaufmann, 1991, pp. 243-249.
+
+[2] Baum, E.B., and Haussler, D., "What size net gives valid generalization?," Neural Computation, 1(1989):
+
+151-160
+
+[3] Blum, A., and Rivest, R. L., "Training a 3-node neural network is NP-complete," in Advances in Neural
+
+Information Processing Systems 2 (D.S. Touretzky, ed), Morgan Kaufmann, San Mateo, CA, 1990, pp. 9-18; also as "Training a 3-Node Neural Network is NP-Complete," Neural Networks, 5(1992): 117-127.
+
+[4] Bruck, J., and Goodman, J. W., "On the power of neural networks for solving hard problems", Journal of
+
+Complexity, 6(1990): 129-135.
+
+[5] Darken, C., Donahue, M., Gurvits, L., and Sontag, E., "Rate of approximation results motivated by robust
+
+neural network learning," Proc. 6th ACM Workshop on Computational Learning Theory, Santa Cruz, July 1993, pp. 303-309.
+
+[6] DasGupta, B., and Schnitger, G., "The power of approximating: a comparison of activation functions," in
+
+Advances in Neural Information Processing Systems 5 (Giles, C.L., Hanson, S.J., and Cowan, J.D., eds), Morgan Kaufmann, San Mateo, CA, 1993, pp. 615-622.
+
+[7] Fischer, P. and Simon, H. U., "On Learning Ring-Sum Expansions", SIAM J. Computing, 21, 1(1992):
+
+181-192.
+
+[8] Garey, M. R., and Johnson, D., Computers and Intractability: A Guide to the Theory of NP-Completeness,
+
+W.H.Freeman and Company, San Francisco, 1979.
+
+[9] Gill, J., "Computational Complexity of Probabilistic Turing Machines", SIAM J. Computing, 7, 4(1977):
+
+675-695.
+
+[10] Goldberg, P., and Jerrum, M., "Bounding the Vapnik-Chervonenkis dimension of concept classes parametrized
+
+by real numbers," Proc. 6th ACM Workshop on Computational Learning Theory, Santa Cruz, July 1993, pp. 361-369.
+
+[11] Jones, K.L., "A simple lemma on greedy approximation in Hilbert space and convergence rates for projection
+
+pursuit regression and neural network training," Annals of Statistics, to appear.
+
+[12] Judd, J.S., "On the complexity of learning shallow neural networks," J. of Complexity, 4(1988): 177-192. [13] Judd, J.S., Neural Network Design and the Complexity of Learning, MIT Press, Cambridge, MA, 1990. [14] Kearns, M., Li, M., Pitt, L., and Valiant, L., "On the learnability of Boolean formulae," Proc. of the 19th
+
+ACM Symp. Theory of Computing, 1987, pp. 285-295.
+
+[15] Kilian, J. and Siegelmann, H. T., "Computability With The Classical Sigmoid," Proc. of the 5th ACM Workshop on Computational Learning Theory, Santa Cruz, July 1993, pp. 137-143.
+
+[16] Lin, J-H., and Vitter, J. S., "Complexity results on learning by neural networks," Machine Learning, 6(1991):
+
+211-230.
+
+[17] Macintyre, A., and Sontag, E. D., "Finiteness results for sigmoidal `neural' networks," Proc. 25th Annual
+
+Symp. Theory Computing, San Diego, May 1993, pp. 325-334.
+
+[18] Maass, W., "Bounds for the computational power and learning complexity of analog neural nets," Proc. of
+
+the 25th ACM Symp. Theory of Computing, May 1993, pp. 335-344 .
+
+[19] Maass, W., Schnitger, G., and Sontag, E. D., "On the computational power of sigmoid versus boolean threshold
+
+circuits", Proc. of the 32nd Annual Symp. on Foundations of Computer Science,1991, pp. 767-776.
+
+23
+
+[20] Megiddo, M., "On the complexity of polyhedral separability," Discrete Computational Geometry, 3(1988):
+
+325-337.
+
+[21] Muroga, S., Threshold Logic and its Applications, John Wiley & Sons Inc., 1971. [22] Papadimitriou, C. H., Sch"affer, A. A., and Yannakakis M., "On the Complexity of Local Search", Proc. 22nd
+
+Annual Symp. Theory Computing, 1990, pp. 438-445.
+
+[23] Papadimitriou, C.H., and Steiglitz, K., Combinatorial Optimization: Algorithms and Complexity, PrenticeHall, Englewood Cliffs, 1982.
+
+[24] Siegelmann H. T., and Sontag E. D., "On the computational power of neural nets", Proc. 5th ACM Workshop
+
+on Computational Learning Theory, Pittsburgh, July, 1992.
+
+[25] Siegelmann H. T. and Sontag, E. D., "Neural networks with Real Weights: Analog Computational Complexity," TCS journal, to appear.
+
+[26] Sontag, E.D., "Feedforward nets for interpolation and classification," J. Comp. Syst. Sci., 45(1992): 20-48. [27] Yao, X., "Finding Approximate Solutions to NP-hard Problems by Neural Networks is hard", Information
+
+Processing Letters, 41(1992): 93-98.
+
+[28] Zhang, X-D., "Complexity of neural network learning in the real number model," preprint, Comp. Sci. Dept.,
+
+U. Mass., 1992.
+
+24
+
+APPENDIX Proof of Lemma 3.1. (a) Since the origin is labeled 0+0 it is not possible for 3 halfspaces of type 3(c) or type 3(d) to correctly classify the above set of points in the 2-dimensional hypercube.
+
+Note that the origin is labeled 0+0, and hence it must lie in at least one of H1 or H2 for the three halfspaces of type 3(a) or type 3(b).
+
+Consider the halfspaces as in type 3(a). There are two cases:
+
+Case 1. fi ? 0. Since H1 ` H2 and H2 ` H1, all the 0+0 points must belong to H1 and all the 0\Gamma 0 points must belong to H2. Hence, (0,1) and (1,0) must belong to H2 and we have
+
+ffa1 ^ fl (4) ffa2 ^ fl (5)
+
+Adding inequalities 4 and 5, and since fl ! 0, we get
+
+ff(a1 + a2) ^ 2fl ! fl ! 0 (6)
+
+Inequality 6 implies that the 0+0 point (1,1) belongs to H2 and hence in H1 ^ H3. Hence, we must have
+
+ff(a1 + a2) ? fl \Gamma  fi (7) ff(a1 + a2) + fi(b1 + b2) ? fl (8)
+
+We find the following three cases: Case 1.1. Both the 0\Gamma 0 points (0,1) and (1,0) belong to H2 ^ H3. Then, we must have
+
+ffa1 + fib1 ^ fl (9) ffa2 + fib2 ^ fl (10)
+
+(11)
+
+Adding inequalities 9 and 10 and since fl ! 0 we get
+
+ff(a1 + a2) + fi(b1 + b2) ^ 2fl ! fl (12)
+
+Inequality 12 contradicts inequality 8. Case 1.2. Both the 0\Gamma 0 points belong to H1. Then, we must have
+
+ffa1 ^ fl \Gamma  fi (13) ffa2 ^ fl \Gamma  fi (14)
+
+(15)
+
+Adding inequalities 13 and 14 and since fl ! fi, we get
+
+ff(a1 + a2) ^ 2(fl \Gamma  fi) ! fl \Gamma  fi (16)
+
+Inequality 16 contradicts inequality 7. Case 1.3. One of the negative points belongs to H1 but not in H2 ^ H3 and the other negative point belongs to H2 ^ H3 but not in H1.
+
+Case 1.3.1. (0,1) belongs to H2 ^ H3 and (1,0) belongs to H1. Since (1,0) belongs to H1, we must have
+
+ffa1 ^ fl \Gamma  fi (17)
+
+25
+
+From inequalities 7 and 17 we must have ffa2 ? 0. On the other hand, inequality 5 claims that ffa2 ^ fl. We get 0 ! fl, which is impossible since fl ! 0.
+
+Case 1.3.2. (1,0) belongs to H2 ^ H3 and (0,1) belongs to H1. Similar to case 3.1.
+
+Case 2. fi ! 0. Again, since H1 and H2 are parallel, all the 0\Gamma 0 points must lie in H1, and all the 0+0 point must belong to H2. Hence (1,0) and (0,1) must belong to H1 which gives
+
+ffa1 ^ fl \Gamma  fi (18) ffa2 ^ fl \Gamma  fi (19)
+
+(20)
+
+By adding inequalities 18 and 19, we get
+
+ff(a1 + a2) ^ 2fl \Gamma  2fi (21)
+
+Since fi ? fl, we have 2fl \Gamma  2fi ! fl \Gamma  fi. Hence, from inequality 21 we get ff(a1 + a2) ! fl \Gamma  fi. Hence, the point (1,1) lies in H1, and hence in H2 ^ H3. Then, we have
+
+ff(a1 + b1) + fi(b1 + b2) ? fl (22)
+
+ff(a1 + a2) ? fl (23)
+
+(24)
+
+Now, we have the following 3 cases: Case 2:1: Both the negative points (1,0),(0,1) lie in H3 ^ H1. Then, we have
+
+ffa1 + fib1 ^ fl (25) ffa2 + fib2 ^ fl (26)
+
+(27)
+
+Adding inequalities 25 and 26 we get
+
+ff(a1 + a2) + fi(b1 + b2) ^ 2fl (28)
+
+From inequalities 22 and 28 we get fl ! ff(a1 + a2) + fi(b1 + b2) ^ 2fl, which is impossible since fl ! 0. Case 2:2: Both the negative points (0,1),(1,0) lie in H2. Then, we have
+
+ffa1 ^ fl (29) ffa2 ^ fl (30)
+
+(31)
+
+Adding inequalities 29 and 30 we get ff(a1 + a2) ^ 2fl ! fl (since fl ! 0) which contradicts inequalities 23. Case 2:3: One of the two negative points lie in H2 and the other one lie in H1 ^ H3 but not H2. Case 2:3:1. (1,0) lies in H2 and (0,1) lies in H1 ^ H3 but not in H2. Hence,
+
+ffa1 ^ fl (32) ffa2 + fib2 ^ fl (33)
+
+ffa2 ? fl (34)
+
+(35)
+
+From inequalities 23 and 32 we have ffa2 ? 0. On the other hand, from inequality 19 we have ffa2 ^ fl \Gamma  fi. It implies that 0 ! fl \Gamma  fi which contradicts fi ? fl.
+
+26
+
+Case 2:3:2. (0,1) lies in H2 and (1,0) lies in H1 ^ H3 but not in H2. Similar to case 2:3:1. The proof for the type 3(b) halfspaces is similar to that of type 3(a) (by interchanging the roles of the parameters ff and fi).
+
+(b). The following are a set of 2 possible halfspaces:
+
+x1 \Gamma  x2 ? \Gamma  12
+
+\Gamma x1 + x2 ? \Gamma  12 2 Proof of Lemma 3.2. The case of two halfspaces of type 4(a) follows from the result of [3]. We prove the case for halfspaces of type 4(b):
+
+Let H1 : P
+
+3
+
+i=1 aixi ? a0, H2 : P
+
+3 i=1 bixi ? b0 and H3 : P
+
+3 i=1 cixi ? c0 be the three halfspaces of type 4(b),where c
+
+i = ai + bi for 1 ^ i ^ 3 (assuming (x1; x2; x3) is the input). The following observations are true:
+
+(i) If a0 ! 0 (resp. b0 ! 0, c0 ! 0) then all the examples in A except for the origin lie in H1 (resp. H2, H3). The
+
+reason is as follows. If a0 ! 0, then since (0,0,1), (0,1,0) and (0,0,1) are 0\Gamma 0, we must have a1; a2; a3 ! a0. However, then since a0 ! 0, a1 + a3 ! 2a0 ! a0, a2 + a3 ! 2a0 ! a0, and a1 + a2 + a3 ! 3a0 ! a0, hence the claim follows.
+
+(ii) Consider the same set of examples as in A except that now the origin is not labeled. Then, there does
+
+not exist a single hyperplane that separates the 0+0 and 0\Gamma 0 points in this set. Assume it does, and let H : ax1 + bx2 + cx3 ? d be the hyperplane. Since (1,1,1) is 0\Gamma 0, we must have
+
+a + b + c ^ d (36)
+
+Since (1,0,1) and (0,1,1) are 0+0, we must have a + c ? d, b + c ? d. Adding the last two inequalities we get
+
+a + b + 2c ? 2d (37)
+
+From inequalities 36 and 37 we get
+
+2d \Gamma  c ! a + b + c ^ d , d ! c which implies that the 0\Gamma 0 point (0,0,1) belongs to H, a contradiction! Since the origin is classified as 0+0 by at least one of the hyperplanes, at least one of a0, b0 and c0 must be negative. We consider the following cases:
+
+Case 1. a0; b0; c0 ! 0. By observation (i) above all the 0+0 points except the origin lie in ^3i=1Hi, a contradiction! Case 2. Two of a0; b0; c0, say a0 and b0, are negative.
+
+By observation (i) above all the points (except the origin) are classified as 0\Gamma 0 by two of the three halfspaces, namely halfspaces H1 and H2, and by observation (ii) above the remaining halfspace H3 cannot correctly classify all of them.
+
+Case 3. One of a0, b0 and c0 is negative.
+
+Case 3.1. a0 ! 0, b0; c0 * 0.
+
+By observation (i) above, all the points except for the origin, lie in H1. By observation (ii) above both the 0+0 points (other than the origin) cannot be correctly classified by H2 alone or H3 alone.
+
+27
+
+Case 3.1.1. (1,0,1) lies in H2 and (0,1,1) lies in H3.
+
+Considering the 0+0 and 0\Gamma 0 points (other than the origin) and the corresponding classifications by the hyperplanes H1, H2 and H3, we have the following set of inequalities:
+
+a2 ^ a0 ! 0 b1 + b2 + b3 ^ b0
+
+c3 ^ c0 b1 + b3 ? b0 ? 0 c2 + c3 ? c0 ? 0
+
+Since b1 + b2 + b3 ^ b0 and b1 + b3 ? b0, we have b2 ! 0. Since c2 + c3 ? c0 * 0, but c3 ! c0, we must have c2 ? 0. However, since c2 = a2 + b2, and a2 ! 0, b2 ! 0, so c2 ! 0, hence a contradiction!
+
+Case 3.1.2. (1,0,1) lies in H3 and (0,1,1) lies in H2. Similar to case 3.1.1.
+
+Case 3.2. b0 ! 0, a0; c0 * 0. Similar to case 3.1. Case 3.3. a0; b0 * 0, c0 ! 0.
+
+By observation (i) above all the points except for the origin lies in H3. By observation (ii) above both the 0+0 points (other than the origin) cannot be correctly classified by H1 alone or H2 alone.
+
+Case 3.3.1. (1,0,1) lies in H1 and (0,1,1) lies in H2.
+
+Considering the 0+0 and 0\Gamma 0 points (other than the origin) and the corresponding classifications by the hyperplanes H1, H2 and H3, we have the following set of inequalities:
+
+a1 ^ a0 a1 + a3 ? a0 * 0
+
+b2 ^ b0 b2 + b3 ? b0 * 0
+
+c3 ^ c0 ! 0
+
+Since b2 ^ b0, and b2 + b3 ? b0 * 0, we must have b3 ? 0. Since a1 ^ a0, and a1 + a3 ? a0 * 0, we must have a3 ? 0. So, c3 = a3 + b3 ? 0, which contradicts the inequality c3 ! 0 above.
+
+Case 3.3.2. (1,0,1) lies in H2 and (0,1,1) lies in H1. Similar to case 3.3.1. 2
+
+28</pre>
+</body>
+</html>

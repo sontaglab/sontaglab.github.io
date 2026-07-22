@@ -1,0 +1,582 @@
+OCR of paper; see pdf file 80cdc.pdf for viewwable/printable page
+
+
+
+Abstract 
+
+We show that, in general, it is impossible to stabilize a controllable system
+by means of a continuous feedback, even if memory is allowed.  No optimality
+considerations are involved.  All state spaces are Euclidean spaces, so no
+obstructions arising from the state space topology are involved either.  For
+one dimensional state and input, we prove that continuous stabilization with
+memory is always possible.
+
+1.  Introduction
+
+It is well known that optimal control problems often result in solutions that
+can naturally be implemented in terms of discontinuous feedback laws.  It
+appears to be less widely appreciated, however, that it is in general not
+possible to control a ("controllable") system using continuous feedback, even
+without any optimality requirements.  Of course, the state contains all the
+"information" needed for control, but this does not imply the existence of a
+continuous feedback for, say, a stabilization problem.  The (rather
+elementary) remarks given in this note will show that: (I) sometimes
+continuous "dynamic feedback" may be available for stabilization even if no
+continuous (constant) state feedback stabilizers, exist, and (II) in general
+not even dynamic stabilizers can be defined continuously.  Our systems will be
+of the form
+
+x = f(x,u), x e Rn, u e Rn,
+
+so that the state space is Rn.  Of course, one could consider more complicated
+state spaces (e.g., manifolds) but, since our purpose is to snow that certain
+things cannot be done in general, it is better to take the simplest possible
+spaces.  In particular, this will make it clear that the imposibility of
+finding continuous feedback is not due to topological obstructions caused by
+the topology of the state space or the input space.  In S.3, we give necessary
+and sufficient conditions for the existence of a constant feedback stabilizers
+that are either continuous or locally Lipschitz, if n = m = 1.  These
+conditions make it easy to construct examples where no continuous feed-back
+exists, as well as examples where a continuous feedback stabilizer exists but
+a locally Lipschitzian one does not.  We then prove that, when n = m = 1, a
+time-varying feedback always exists.  We show that this situation is atypical
+and that, when n = 2, it is possible to have a "completely controllable"
+system that admits no continuous dynamic feedback, even when allowing memory
+in possible regulators.  Finally, in S.4, we briefly mention some positive
+results on the existence of discontinuous feedback which is not too
+pathological.
+
+2. Definitions And Notations
+(2.1) Definition. A control system is defined by
+giving (a) an open subset X of some Euclidean space
+(b) a metric space U, (c) a map F: XxU
+and (d) a class U of admissible control functions
+u(-), defined on subintervals of the real line, and
+taking values in U.
+We require that (X,U,f,U) satisfy:
+(I) f: X-U - Rn is a locally Lipschitz map.
+(II) Every piecewise continuous U-valued function
+is an admissible control.
+(III) If I is an interval, and u(-): I - U is
+admissible, then (a) u(-) is measurable and (b) the
+time-varying vector field (x,t) - f(-X,u(t)) sat-
+isfies Carath~odory-type conditions. (Precisely: let
+A(K,u) = sup(jjf(x,u)jj: xeK11
+11
+B(K,u) = sup(l 1f'x1u)_f(v1u)-L-: x e K, v e K,
+''X-Y11
+We assume that
+ACK,u(t))dt < - and B(K,u(t))dt <
+for every compact K~~ X, and every compact subinter
+val J - I.)
+It follows from the usual existence and unic ,ueness
+theorems that whenever u(-) e U, x 0 e X, to E 1
+domain Cu(-))), then there exists a unique maximal
+trajectcrv x(-) corresponding to the control u"),
+-
+) x0, 7ne dcmain of x(-) is an
+and such that x(t.) = -
+interval, ,,which is relat4,,,elV open in 1. (By a tra
+iectorv for an admissible control u(-) : I we
+mean an absolutelv continuous zun-e x(-) K (j I)
+such that
+.Partially supported by USAF Grant AFOSR-0196
+Partial!), supported by NSF Grant
+(*) ~(t) = fCxCt),U(t))
+916
+0191-2216/80/0000-0916$00.75 -~:, 1980 IEEE
+<<PAGE-DIVIDER>>
+for almost all t e J.)
+Moreover, the following is an easy consequence of
+our technical assumptions:
+(2.2) Piecewise Constant APPTOXimation Lemma: If
+u(-): [a,bJ - U is an admissible control for the
+system (*), and x(-): fa,b] - X is a trajectory for
+u(-), then there exists a sequence fu n(-)} of
+piecewise constant controls defined on [a,b], and
+trajectories x n (-): [a,b] - X, such that
+un(t) - u(t) for almost all t e[a,bl, ~Ld that
+xn(-) - x(-) uniformly.
+(2.3) Definition. An equilibrium state is an X e X
+such that
+f(x,u) = 0 for some _U E U.
+We shall assume that 0 E X, and that 0 is an
+equilibrium state.
+(2.4) Definition. The system (*) is asymptoticall,
+controllable to a ESI~ x(a.c. to ~) iff for each
+xo e X there exists an admissible
+u(-): [0,-[ U such that (i) the trajectory xC-)
+corresponding to u(-) and the initial condition
+x(O) = X 0 is defined for all t > 0, and (ii) x(-)
+satisfies
+lim X(t) x
+(2.5) Definition. A constant asymptotic feedback
+stabilizer (c.a.f.s.) for (*) is a pair (K,~) where
+(i) K is a map from X-~01 to U,
+(ii) ~: X-{O} - U is a map which selects, for each
+x e X-03, an admissible control
+0
+x (-): [0,-[ , U,
+0
+in such a way that, for each x0 e X-0), the tra-
+jectory x(-) for and the initial condition
+UX
+X(Q = X. satisfies:
+~ii.a) x(t) is defined for all t > 0
+(ii.b) lim x(t) = 0, and
+t-+
+(s) = K(x(t+s)) for all t>0 and
+almost all s>O.
+(2.6) Remark. The above definition says, approxi-
+mately, that a c.a.f.s. is a map K: X - U such that~
+if x 0E: X, x0 ~ 0, then the solution x(-) of
+~ = f(x,K(x))
+K(D) = X
+is defined for all 0t > 0 and converges to 0 as
+t The reason why we do not say it exactly that
+way is that, in general, f(x,K(x)) may fail to be
+locally Lipschitz, or even continuous. (In fact, the
+point of this paper is precisely to show that such
+K's are unavoidable!) When this happens, we cannot
+talk about "the" solution of (**), because there may
+be many solutions, or none. Hence we must add the
+assumption that (**) has a solution and, if more than
+one solution exists, the specification of K must be
+supplemented with the choice of one solution of (**)
+for each x So we must specify both the map K and,
+for each x a solution of Equivalently, we
+may specify, for each x., an admissible control a x
+whose trajectory x(-) is a solution of (**), with
+~x (t) = K(x(t)). Thus we arrive at Def. 2.S.
+0
+(2.7) Remark. One can give a totally analogous
+definition of what it means for (*) to be controllable
+(i.e., "controllable in finite time") to
+a point x,
+by making the following changes in Def. 2A:
+(a) the domain of definition of u(-) is required to
+be an interval [0,T], rather than [0,-[, and (b)
+condition (#) is replaced by: x(T) = x. Similarly,
+one can define a constant finite-time feedback sta-
+bilizer (c.f.t.f.s.) exactly as in Def. 2.S1 except
+that now the admissible control ~ X 0(-) is defined on
+some finite interval [0,T] (with T depending on
+xa ), and that condition (ii.b) is replaced by x(T) = 0.
+(2.8) Remark. If K: X-01 - U is locally Lipschitz
+on X-{O}, then x - f(x,K(x)) is locally Lipschitz,
+and (**) has a unique solution x(-) such that
+X(0) = X0, for any x E X-01. I~ for every
+0
+xa , X(-) is defined for all t > 0, and x(t) - 0
+as t - +-, we will say that K is a locally
+Lipschitz constant asymptotic feedback stabilizer
+(I.L.c.a.f.s.). In this case, there exists a unique
+X-{01 - U such that the pair (K,~) is a
+c.a.f.s. in the sense of Def. 2.S, so this new defini-
+tion agrees with Def. 2.5.
+(2.9) Definition. A dynamic asymptotic feedback sta-
+bilizer (d.a.f.s.) is a triple (g,K,~), where
+g(z,x) defines a control system with state set Z
+and input value set X, and where (K,u) is a c.a.f.s.
+for the system
+f(x,u)
+g(z,x)
+(2,10) Remarks. (a) One can define in a similar way
+the concept of a dynamic finite-time feedback sta-
+bilizer (d.f.t.f,s.). (b) when K is continuous on
+X-(D), and the trajectories of (K,~) depend con-
+tinuously on the initial state, we say that (K,u) is
+a continuous feedback. (c) Other definitions of
+917
+<<PAGE-DIVIDER>>
+d.a.f.s. might be reasonable as well. For instance,
+we may eliminate the requirement that the state of the
+regulator coverage to 0, or we may only ask con-
+vergence to 0 of the trajectories that start at some
+fixed z(0). Although possibly of theoretical interest,
+such a controller design would not provide a basic
+feature of feedback: the stabilization even under
+sudden perturbations of the plant.
+In any case, our positive result (Theorem 3.5)
+will prove existence of a I.L.d.a.f.s. in the "strong"
+sense of Def. 2.9, for n = m = 1, whereas our coun-
+teTexample for n = 2 proves nonexistence of a con-
+tinuous d.a.f.s. with the weakest possible definition.
+(2.11) Definition. A "time-varying feedback sta-
+bilizer" for the system (*) is a pair (K,~), where
+K: Xx[O,-[ - U and, for each
+x0 E X, to > 0, ux 't : [to,-[ - U is an admissible
+- 0 0
+control such that the trajectory x(-) for ~ x0 'to,
+which satisfies x(to X01 is defined for all
+t > t converges to 0 as t and satisfies
+01
+K(t,x(t)) x 0't0(t) for t > t 0* Equivalently, if
+we let u x 't (t)X 't (t+t 0), for 0 < t, we
+0 0 0 0
+see that R is the trajectory for C1 X0 't0 such that
+3~(O) = X,l and R satisfies K(t+t OXW = u x 0, t M
+0
+for t > 0, so that R is a solution of
+xf(x(t),K(t+to,x(t)))
+Therefore, (K,u) is a c.a.f.s. for the system
+= f(X,U), = 1, x E X, z e R,, U E U ,
+except for the fact that, as t - -, (x(t),z(t)) cOrr
+verges to (0,+-), rather than to (0,0). By making
+the change of variable w = 1, a time-varving feed-
+Z
+back for (*) gives rise to a
+d.a.f.s., in the sense of
+Def. 2.9.
+Continuous Feedback
+We consider first the case of systems with
+X = U R. Let
+0 '(x,u): xf(-x,U) < 0~
+-
+0 ((x,u): x ~ 0, xf(x,u) < 0).
+Let 7: R 2 _ R be the projection (x,u) - x.
+(3.1) Lemma. If (*) is a.c. to 0 then 7T(0) R-(O}.
+Proof. Let x0 > 0, and u(-) e U such that
+x(t) - 0 as t , -, where
+X(O) = x0, ~W = f(x(t),U(t))
+for t > 0. Dick T > 0 siich that x(T) < XO
+y . Thep
+pick a piecewise constant u'(-): [0,T] - R such that
+x
+xl(T) < -0, where x'(0) = x0l and
+~1(t) = f(x'(t),u'(t))
+for 0 < t < T (here we use 2.2). Let
+to = sup~t: X'(t) > xo).
+I'llen
+0 < to < T, x1(t 0 X01
+and x'(t) < x for to < t < T. If c > o is small
+0 for
+enough, then u'(-) has the constant value UO
+to < t < to+E. So the restriction of x'(-) to
+[to 'tP-1 is an integral curve of the locally
+Lipschitzian vector field f(-,u ). Clearly, this
+0
+implies that f(x 0 U0) < 0. Therefore, (x0 U0) e 0,
+and so x0 e Tr(O). A similar argument applies if
+X0 < 0. Q.E.D.
+(3.2) Proposition. Assume that X = U = R. Then
+(a) the system (*) admits a locally Lipschitz c.a.f.s.
+if and only if there exists a continuous function
+k: R-fO} - R whose graph is included in 0.
+(b) (*) admits an a.f.s. (K,~) such that K is con-
+tinuous on R-O} if and only if there exists a ~~on-
+tinuous function k: R-10} R such that (i) the
+graph of k is included in 0 and (ii) the function
+x - f(x,k(x))-l is locally Integrable on R-f0j.
+Proof. Suppose that k: R-O) , R is a locally
+Lipschitz c.a.f.s. Then x - f(x,k(x)) is a locally
+Lipschitz vector field whose trajectories go to 0.
+Hence f(x,k(x)) < 0 if x > 0, and f(x,k(x)) > 0 if
+x < 0. So Graph (k)~~ 0. Conversely, if
+Graph (k) C 0, and k is locally Lipschitz, then k
+is a c.a.f.s. If k is merely continuous, then one
+can approximate k by a locally Lipschitz V such
+that Graph W) C 0. This completes the proof of (a).
+Now let k: R-01 - R satisfy (i) and (ii). Let
+X0 > 0, and define T: ]O,xo I ~ R4. by
+x0 d
+T(x) 1 (3.3)
+X
+Then T is well defined, finite, positive, and
+strictly decreasing. So T(O) = lim T(x) exists
+X-0
+(and may be finite or infinite). Let
+x(-)-. [0,T(O)[ R
+be the unique continuous function such that
+T(x(t)) = t for 0 < t < T(O). Then x(-) is
+918
+<<PAGE-DIVIDER>>
+strictly decreasing, and lim x(t) = 0. If
+t-T(O)
+0 < to < T (0) , then the compact interval
+I = [X(t 0) xo ]is contained in fx: x > O'~, and so
+0 < f(x,k(x)) < C for X E I, and some constant
+dTI
+C > 0. So throughout 1, and so
+T (y) - T (x) > 1(x-y) whenever y < x, y E: I, x e 1.
+This shows that x(-) is Lipschitzian on I. So
+x(-) is absolutely continuous, and satisfies
+~(t) f(x(t) k(x(t))) for almost all t e[01T(0)]_
+Let ux0(t) k(x(t)) for 0 < t < T(0)
+Define k(O) U, whereu is such that
+f(O,u) 0 (recall that0is an equilibrium
+point) and let x(t) = _u for t > T (0)
+0
+Construct uforx<0 in a similar
+0
+fashion. Then (k,u) is a continuous a.f.s.
+(recall that our definition of continuity does
+not require that kbe continuous at 0).
+Conversely, suppose (k,~) is a con-
+tinuous c.a.f.s._ Then the graph of k must
+be included in 0. (Otherwise, if there is
+an x0 > 0 such that f(x0k(x 0)) > 0, then
+there exists an open interval Icontaining
+x0 and such that f(x,k(x)) > 0 for x e I.
+Hence no curve x(-) which satisfies
+X(t) = f(x(t),k(x(t)) can cross Ifrom
+right to left, contradicting the fact that
+(k,u) is a c.a.f.s.) Along a curve x(-)
+which is a trajectory of u x for some
+X0 > 0, we can reparametrize using x,
+rather than t, as the parameter. Then we
+can write t = T(x) ,andTsatisfies (3.3).
+Since T(x) remains finite for x > 0, the
+function x- T(x,k(x))-1is locally in-
+tegrable on {x: x > 0). The proof that it is
+locally integrable on {x: x < 01 is similar.
+E. D.
+S3. 4) Example. Consider the system
+~ = f (x, u) , where f(x,u) = u(l+x+cxarctan(u)),
+and a e R is a constant. Then
+-(0) = R-fOl, for any a, but 77(0) = R-{O}
+iff cc > 0 (and 7(0) = R-(0,11 ifa < 0.)
+So the system is not a.c. to 0 ifa < 0.
+Now suppose that 0 < a < -~. Then 0 is the
+7
+union of three sets, namely,
+e1= ~(X,U): X>0, U<0), 0 2 = {(x,u): U>O,
+-1-a arc tan u < x < 0), and
+=f(x,u): u < 0, x < -1-a arc tan u}. We
+3
+have clos 0 3~~clos C 1
+clos 0 3r)clos 0 2 = f(-1,0)} and
+clos 0 211~ clos 0 1 = { (0 0) 1 . It is easy to
+construct a continuous k: R- R such that
+(x,k(x)) e 0 whenever x ~ 0, x ~ -1. More-
+over, such a k can be taken to be of class
+C However, (x,k(x)) has to belong to
+0 for x < -1, because 7(0 ) does not
+3 2
+extend all the way to -. And (x,k(x))
+must be in 02 for -1 <x< 0, because 7T(0 3)
+does not extend all the way to 0. Hence k(-I) must
+equal 0, and so f(-I,k('-l)) = 0. Therefore,
+(-l,k(-l)) 0 0. So there is no continuous
+k: R-{O) - R such that (x,k(x)) e 0 for all x ~ 0.
+Hence, no locally Lipschitz c.a.f.s. exists. However,
+if we no longer insist that k be locally Lipschitz,
+it is clear that we can choose k such that
+(i) k is C' except at x =1,
+Cii) lk(x)l - ll+xl~ as x --1, and
+(iii) (x,k(x)) e 0 whenever x~ 0, x ~ -1.
+Here E> 0 is arbitrary. If we choose 6 such that
+1, U
+Tthen lf(x,k(x))l - a~ll+xl as x - -1, and
+so x- f(x,k(x)) -1 is integrable near x = -1.
+Therefore, k satisfies conditions (i) and (ii) of
+part (b) of Prop. 3.2. So, we see that the system
+f(x,u) admits a continuous c.a.f.s., but doesn't
+admit a locally Lipschitzian c.a.f.s.
+If o~ > 2, then there is a unique u E R that
+Tr 0
+satisfies I+c( arc tan u = 0. Then u is neces-
+0 0
+sarily negative, and so f(x,u 0) e 0 for all x ~ 0.
+So in this case, the system admits a constant (i.e.,
+independent of x) c.a.f.s. Finally, for an example
+where no continuous c.a.f.s. exists, take
+~ = ((U-l) 2_ (x-1))(x-2+(u+l) 2) . Then 0 '~ { (x, u) : x > 0)
+consists of two disjoint pieces, namely, the set 0 1
+of points to the right of the parabola x = 1+(u-1) 2,
+and the set 0 2 of points (x,u) such
+that x > 0 and that (x,u) lies to the left of
+2
+the parabola x = 2-(u+l) . 6 is simply the closure
+of 0. It is easy to see that there exists no con-
+tinuous k: R, - R such that (x,k(x)) c 0 for all
+x > 0. On the other hand, one sees easily that
+7(0) = R-{O}, so the system is a.c. to 0, and that
+there exists a piecewise constant c.a.f.s.
+We now show that, in dimension one, every system
+which is a.c. to 0 can be stabilized by a con-
+tinuous dynamic feedback u = K(t,x).
+919
+<<PAGE-DIVIDER>>
+(3. S) Proposition. (Still X = U = R.) The
+system (*) is a.c. to 0 if and only if it admits
+a continuous d.a.f.s. (in particular, the converse of
+(3.1) is also valid.)
+Proof. By (3.1), it is enough to prove that
+Tr(O) = R-01 implies the existence of a K(t,x)
+as in (****). Ve first construct K(~,x) for
+t > 0, x > 0. Pick first any U with f(O,d)
+and define K(t,O) u for all t > 0.
+Since Tr(O)r~f(x,u): x>0)) = ]o,+-[, there exist
+3 sets of reals {a jeZJ, {bj' jEZI, and {u,, jE:~
+such that the following properties hold:
+(i) all a,lb > 0; (a ) ~b have no nonzero
+j j
+limit points; a as j +-, a as
+- --;
+(ii) aj+l < b < a for all j;
+i j+2
+(iii) f(x,u < 0 for all x in Ii failb j I.
+For each j, let M i and m i be positive numbers
+such that
+(iv) ~ f(x,u) I < M for all x in [aj+jlb j J and
+all u between u i and uj+11 and
+CV) f(x,u < -M for all x in I..
+We now define a map K for t > 0 and x > 0 (which
+can be analogously extended to x < 0, to give K.)
+First, for each j, let:
+Kt,x) = uj+, for x in [bila (3.6)
+j+2
+and all t > 0. It remains to define R(t,x) for x
+in intervals of the type [aj+jlb iI in such a way
+that k is continuous.
+To simplify notations, take now a fLNed j and
+let c = a,+I, d = bil m = max(m ilmj+l),
+M= Mj, (d-c)/4, t 1 = 36/m, and t, = ti + ~/M.
+Further, define a continuous piecewise linear map a r
+on [c,d], for each r bet-,ieen d and d-3~ c+~
+by:
+i-(x) = uj-, for r < x < d
+r (x) = ui for c < X < r-6
+~1r(x) = linear on fr-~,r].
+Now let
+d-.mt for 0 < t < t (3. '17)
+and
+R(t'-) a3%1(t-t )+C+6 for t, < t < t (3.8)
+1 - - 2'
+.Note that K is continuous in (x,t), and that
+K(t,,-) Extend i to all pairs (t,x) with
+x in [c,d] and t > 0, as a periodic function with
+period t,. Note that for x in [c,d] this gives
+that f,1x,R(x,t)) is locally Lipschitz on x,
+uniformly in t, This construction can be carried out
+for all j, yielding corresponding tl(j)' t7(j)'s-
+An analogous construction gives R(t,x) for x < 0.
+Thus i is defined for all (t,x) with t > 0.
+We now prove:
+Claim 1. Let x(-) be a solution of
+~(t) = f(x(t),K(t,x(t))), suppose that 0 < x(t 0) < b
+for some to lad some j. Then x(t,+3t.,) < aj+l for
+t = t ~i) . For this fixed j use the previous
+2 2~
+notations. Let t6 be an integer multiple of t2
+satisfying to < Since f(d,kft,d)) < 0
+'6 < '0 ' t2-
+for all t' also x(t6) < d. Since is periodic
+in t with period t the curve t - x(t6-t) is
+2'
+also a solution of ~(t) = f(t,K(t,x(t))). We know
+that ~(O) < d, and we want to prove that
+~(to+3t -t') < c. Since k(t,c) = u for all t, we
+2 0 i
+have f(t,R(t,c)) < 0 for all t, and therefore
+~(t) < c for all t > if FI(T) < c. In particular,
+the conclusion that -7(to+3t? t6) < c will follow if
+we prove that ,(2t 2) < c' So all we need is to prove
+that, whenever x(-) satisfies x(O) < d, it follows
+that x(2t.) < c. Since trajectories do not cross at
+any given time, it will be enough to prove that
+x(2t 2) < c whenever x(O) = d. Consider the map
+5(t) = x(t) + mt-d. Then ~(O) = 0. If 0,(-) = 0 for
+some 0 < T < t then ~(i) = f(x(T),u('i)) with
+1
+u(T) = K(-r,d-mT) = uj+l, so < -m (by (v)
+above). Thus ~(t) < 0 whenever 3(t) = 0, if
+0 < t < t I' It follows that 3(t) < 0 for such t,
+and in particular that x(tl) < c+,. Now consider
+x(t) for ti < t < t,. We may assume that x(tl)=C+I.
+By the mean value theorem and (iv) above,
+X(t') -~ X(t 1) + m(t 2- t 1) < c+2-.
+With an agrument similar to the one used above, one
+shows that x(t,+'~/-i) < c, so also x(2t 2) < c' as
+wanted.
+Pick now any xo > 0 and consider the trajectory
+x(t), corresponding to (****), and such that x(O)=.,( 0'
+We claim that x(t) - 0. To prove this, it suffices
+to assume that to = 0. Moreover, it is enough to
+prove that for ever.., j e 7 the inequalitY x(t) < a
+J
+holds for sufficientIv large t (because a. as
+j Since a as there ;is a
+such that x(O) < a j, If we prove that x(t) < a j-
+implies that x(-~) < a, I for sufficiently large 7,
+the conclusion will follow bv a simDlc induction.
+%reWeT, by definition of K, we have K(t,a j-1 )=u i-?
+for all t, and so f(a j-1' K(t,a,_,)) < 0 for all
+Therefore, x(7) < a j-1 for all -~ > 7 0 if
+X(-,O) < a So, it suffices to prove that x(t) < a.
+j-I-
+920
+<<PAGE-DIVIDER>>
+i-nlie~ that x(7) < a for some T > t. 1~ow
+j-1 ^
+a ~_2 < ail and f(x,K(t,x)) = f(x,ui-l) < 0
+t, 'and all x such that b j-2 < x < a
+Iflx,K(t,xj) is bounded above b%, a fixed
+strictly Tiegative constant for b j - 2< X < ail t > 0.
+T_~-,,,~Yefore, x(t) < aj implies that XC7) < b
+j-2
+for somie > t. But then, by Claim 1, x(7) < a
+j-1
+for om- > This concludes the proof that any
+solution of x(t) = f(t,K(t+t D,X(t))) that starts
+at an x(O) > 0 converges to .0 as t The
+proofs for the case x(D) < 0 is similar.
+Noto that the above argument could be trivially
+i-,iodificd to imply the existence of a K which is
+infinitely differentiable in x, for x ~ 0. Even
+a K which is continuous even-where can be obtained,
+if one modifies the above K by a time-varying linear
+interpolant in a shrinking neighborhood of the origin.
+For dimension greater than one the existence of
+even adynamic f.s. is not insured by (*) being a.c.
+An example Of this is provided by the 2-dijT)ensional
+system (X = R 2, U = R 2
+1 2
+x(t) (4-),'(t))u (t)
+~(t) e_x(t)+y(t)-2e_X(t)sinZu(t).
+This system is a.c. to 0. However, no continuous
+La.f.s. exists. This follows from the arguments in
+Sussmann [1979, Appendix]. In fact, those arguments
+show that it is impossible in this example to even
+choose continuously a path from states to the origin.
+(The obstructions here are in the choice of directions,
+while those in dimension one are only in the choice of
+particular input values.)
+4. Discontinuous Regi~latio
+We mention here some -results from SUSSNIkNN [1979]
+and from SO\-rAG [1980].
+7hese results indicate how to regulate nonlinear
+systems using various types of (not necessarily con-
+tinuous) feedback. Since the technical details may
+be found in the above references, we only explain
+here the intuitive ideas of each approach.
+In the case of SUSS~ANN [19,191 one proves that a
+"piecewise analytic" c.f.s. always exists provided
+that the original system (plant) be completely
+controllable (any state can be driven to any other
+and that the "f" in (*,) be real-analytic
+in x. The complete controllability assumption can
+he i~eakened considerably into a local condition
+around the origin, but the condition on f cannot
+since the results use facts from the theon, of sub-
+analytic sets.
+In contrast, the approach in SONTAG [1980) applies
+to the construction of saTmled feedback stabilizers
+under rather minimal conditions on f (continuity,
+and differentiable with controllable linearization at
+the origin). "Sampled" refers to the fact that
+control is assumed to be based on a constant-rate
+sampling; in a sense sampled-feedback lies somewhere
+in between "true" feedback and open-loop control, but
+is closer to the former than the latter due to the
+constant sampling rate. (In any digital implementa-
+tion of a feedback law, a sampled feedback is
+necessarily used.)
+References
+SONTAG, E. D., [1980] "Nonlinear Regulation: The
+Piecewise Linear Approach," to appear in the IEEE
+Trans. Autom. Control.
+SUSSMANN, H. , [19791 "Subanalytic Sets and Feedback
+Control," J. of Diff. T-qs., 31, 31-52.
+921

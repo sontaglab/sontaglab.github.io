@@ -1,0 +1,11107 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-stab.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-stab.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "main.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Pass0: Page 22
+Pass0: Page 23
+Pass0: Page 24
+Pass0: Page 25
+Pass0: Page 26
+Pass0: Page 27
+Pass0: Page 28
+Pass0: Page 29
+Dvi file name: "main.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+A General Result on the Stabilization of Linear Systems Using Bounded Controls
+
+1
+
+H'ector J. Sussmann, Eduardo D. Sontag, and Yudi Yang
+
+SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+2
+
+ABSTRACT We present two constructions of controllers that globally stabilize linear systems subject to control saturation. We allow essentially arbitrary saturation functions. The only conditions imposed on the system are the obvious necessary ones, namely that no eigenvalues of the uncontrolled system have positive real part and that the standard stabilizability rank condi- tion hold. One of the constructions is in terms of a "neural-network type" one-hidden layer architecture, while the other one is in terms of cascades of linear maps and saturations.
+
+Key words: linear systems, saturated actuators, bounded controls, neural nets
+
+October, 1992. Revised February 1994. 1
+
+This research was supported in part by US Air Force Grant 91-0343 and by NSF Grant DMS-8902994.
+
+2
+
+Phones: (908)932-3072 [Sontag], (908)932-5407 [Sussmann]
+
+Email addresses: sontag@hilbert.rutgers.edu, sussmann@hilbert.rutgers.edu FAX: (908)932-5530Pass1: Page 1
+
+
+1 Introduction We consider linear time-invariant continuous-time systems
+
+\Sigma  : .x = Ax + Bu ; (1.1) where (i) A 2 IR
+
+n\Theta n
+
+and B 2 IR
+
+n\Theta m
+
+, for some integers n (the dimension of the system) and m
+
+(the number of inputs), and (ii) the control values u are restricted to satisfy a bound juj ^ C, where C is a given positive constant.
+
+The study of such systems is motivated by the possibility of actuator saturation or con- straints on actuators, reflected sometimes also in bounds on available power supply or rate limits. These systems cannot be naturally dealt with within the context of standard (alge- braic) linear control theory, but are ubiquitous in control applications. To quote the recent textbook [8] (page 171): "saturation is probably the most commonly encountered nonlinearity in control engineering." Mathematically, control questions become nontrivial, as only control values bounded by C are allowed into the underlying linear system.
+
+We will present results on global stabilization, concentrating on several explicit architectures for controllers. Of course, there are general limits as to what can be achieved, no matter what type of control law is allowed. An obvious necessary condition for stabilizability is that \Sigma  be asymptotically null-controllable with bounded controls (ANCBC). (We call \Sigma  ANCBC with bound C if for every x 2 IR
+
+n
+
+there exists an open-loop control u : [0; 1) ! IR
+
+m
+
+that steers x to
+
+the origin in the limit as t ! +1 and satisfies ju(t)j ^ C for all t. It turns out --cf. Remark 1.1 below-- that if \Sigma  has this property for some C 2 (0; 1) then it has it for every C 2 (0; 1), so we can simply talk about \Sigma  being ANCBC, without mentioning C.) The ANCBC property is equivalent to the following algebraic condition:
+
+(ANCBC*) (i) A has no eigenvalues with positive real part, and (ii) the pair (A; B) is
+
+stabilizable in the ordinary sense (i.e. all the uncontrollable modes of \Sigma  have strictly negative real parts).
+
+(The theory of controllability of linear systems with bounded controls is a well-studied topic; see e.g. the fundamental paper [6], as well as the different, more algebraic approach discussed in [9].) Notice that under Condition (ANCBC*) there may very well be nontrivial Jordan blocks corresponding to critical eigenvalues, so the system .x = Ax need not be asymptotically stable or even Lyapunov-stable. This is what makes the problem interesting, and allows inclusion of examples of practical importance such as systems involving integrators.
+
+In very special cases, including all one- and two-dimensional systems, stabilization is pos- sible by simply using a saturated linear feedback law of the type:
+
+u = oe(F x) ; (1.2) where F is an m \Theta  n matrix and oe is a function that computes a saturation in each coordinate of the vector F x, for instance, u
+
+i
+
+= sat ((F x)
+
+i
+
+) --where sat (s) = sign (s) minfjsj; 1g-- or
+
+u
+
+i
+
+= tanh((F x)
+
+i
+
+). A similar solution is possible for systems that are neutrally stable (i.e. such
+
+that the Jordan form of A has no off-diagonal ones corresponding to imaginary eigenvalues), using the "Jurdjevic-Quinn" approach (see [2] and [7]). Thus it is natural to ask if simple
+
+1Pass1: Page 2
+
+
+control laws such as (1.2) can also be used for more general systems. This was negatively answered in a paper by A.T. Fuller as far back as the late 1960s. He showed in [1] that already for triple integrators such saturated linear feedback is not sufficient, at least under certain assumptions on the saturation oe. (A stronger negative result, which applies to basically arbitrary oe's, was more recently given, independently, in [14].)
+
+The fact that linear feedback laws when saturated can lead to instability has motivated a large amount of research. (See for instance [3] and [4], and references therein, for estimates of the size of the regions of attraction that result when using linear saturated controllers.) Here we take a different approach. Rather than working with linear saturated control laws u = oe(F x), and trying to show that they are globally stabilizing, or to estimate their domains of attraction, we allow more general bounded (and hence necessarily nonlinear) laws. This is not a new idea since, for example, optimal control techniques can be and have been applied. Optimal control laws, however, may be highly discontinuous. But by ignoring optimality questions, one may hope to find more regular and/or simpler controllers. Indeed, taking this point of view, we were able to obtain, in the previous work [12], a general result on bounded stabilization by means of infinitely differentiable feedback laws. The result of [12] holds under the weakest possible conditions, namely, for ANCBC systems.
+
+Unfortunately, the construction in [12] relied on a complicated and far from explicit in- ductive procedure. On the other hand, since saturated linear feedbacks suffice for up to two dimensions, it is natural to look, in higher dimensions, for control designs based on combining saturation nonlinearities in simple ways, for example by taking linear combinations or compo- sitions. (In the language of neural networks, one wants control laws that are implementable by feedforward nets with "hidden layers", rather than by the "perceptrons" represented by (1.2)). Recently, and motivated in part by [12] and [14], Andrew Teel showed in [15] how, in the particular case of single-input multiple integrators, such combinations of saturations are indeed sufficient to obtain stabilizing feedback controllers. Here we obtain a general solution of the same type, for the full case treated in [12]. The approach is explicit and constructive. Our solution is inspired by the techniques introduced in [15] for the particular case treated there, but the details are far more complicated, due to the possibilities of having both mul- tiple inputs and (perhaps multiple) purely imaginary eigenvalues, and the need to deal with arbitrary saturations.
+
+We present two types of control designs, labeled "Type F " and "Type G," involving, respec- tively, compositions and linear combinations of saturated linear functions. (In neural network terms, a Type G design involves a "single hidden layer net.") We also study the output stabi- lization problem, in which only partial measurements y = Cx are available for control. Under suitable detectability conditions, the standard Luenberger observer construction is shown to carry over to this case, and a separation principle is proved which allows the use of the saturated control design given earlier in the paper.
+
+Our result was first announced in [17], where we considered a very special type of feedbacks for which the saturations are exactly linear near 0 and, when a system has a pure imaginary eigenvalue, a saturation with three different slopes may be needed. For the results proved here, the saturations oe are essentially arbitrary, since they are only required to be locally Lipschitz, bounded away from 0 as s ! \Sigma 1, differentiable at 0, and such that oe
+
+0
+
+(0) ? 0 and
+
+soe(s) ? 0 whenever s 6= 0. So, mathematically, our results show, for example, that one can
+
+2Pass1: Page 3
+
+
+use real analytic functions to implement feedback laws, a fact that would not follow from the conclusions of [17] or [15]. From an engineering point of view, they insure that rather general components can be employed in the feedback design, subject only to mild conditions which are robustly satisfied. In the terminology of current "artificial neural networks" technology, our results allow the implementation of feedback controllers using very general types of activation (neuron characteristic) functions. For a detailed application of the results given in this paper to a model aircraft control example, see [13].
+
+The paper is organized as follows. Our main result on state feedback is stated in Section 2 and proved in Section 4, using two technical lemmas proved in Section 3. In Section 5 we provide an algorithm to find a stabilizing feedback when saturations are employed, and describe the structure of our two kinds of feedbacks by means of block diagrams. The algorithm is then applied in Section 6 to the case of multiple integrators. Section 7 contains the statement and proof of the result on output feedback stabilization. Finally, in Section 8 we present applications to the stabilization of cascaded systems.
+
+Remark 1.1 If C ? 0, let \Sigma 
+
+C
+
+denote the system \Sigma  with control values u restricted to satisfy
+
+juj ^ C. Let C
+
+1
+
+? 0, C
+
+2
+
+? 0, and write r =
+
+C
+
+2
+
+C
+
+1
+
+. Then it is easy to see that if t ! x(t) is
+
+a trajectory of \Sigma 
+
+C
+
+1
+
+, then t ! rx(t) is a trajectory of \Sigma 
+
+C
+
+2
+
+. In particular, a state x
+
+0
+
+can be
+
+asymptotically steered to 0 by means of a control bounded by C
+
+1
+
+if and only if rx
+
+0
+
+can be
+
+asymptotically steered to 0 using a control bounded by C
+
+2
+
+. Therefore, if all initial states x
+
+0
+
+can be steered to 0 using open-loop or feedback controls bounded by C
+
+1
+
+, then the same is true
+
+using controls bounded by C
+
+2
+
+. So the property that \Sigma  is ANCBC with bound C holds for one
+
+C if and only if it holds for every C, and the same is true for the property that \Sigma  is stabilizable by means of a smooth feedback bounded by C. 2
+
+Acknowledgement This paper benefited from many constructive suggestions made by several referees, the cog- nizant Associate Editor, and especially Andrew Teel. (In particular, the fact that no Lipschitz continuity assumptions on k are required in Theorem 7.1 was observed by Teel.) We wish to express our gratitude to all of them.
+
+2 Statement of the Main Results We first define S to be the class of all locally Lipschitz functions oe : IR ! IR such that soe(s) ? 0 whenever s 6= 0, oe is differentiable at 0, oe
+
+0
+
+(0) ? 0, and lim inf
+
+jsj!1
+
+joe(s)j ? 0.
+
+For any finite sequence oeoe
+
+oe
+
+= (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+k
+
+) of functions in S, we define a set F
+
+n
+
+(oeoe
+
+oe
+
+) of functions
+
+f from IR
+
+n
+
+to IR inductively as follows:
+
+ffl if k = 0 (i.e. if oeoe
+
+oe
+
+is the empty sequence), then F
+
+n
+
+(oeoe
+
+oe
+
+) consists of one element, namely,
+
+the zero function from IR
+
+n
+
+to IR,
+
+ffl F
+
+n
+
+(oe
+
+1
+
+) consists of all the functions h : IR
+
+n
+
+! IR of the form h(x) = oe
+
+1
+
+(g(x)), where
+
+g : IR
+
+n
+
+! IR is linear,
+
+3Pass1: Page 4
+
+
+ffl for every k ? 1, F
+
+n
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+k
+
+) is the set of all functions h : IR
+
+n
+
+! IR that are of the
+
+form h(x) = oe
+
+k
+
+(f (x) + cg(x)), with f linear, g 2 F
+
+n
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+k\Gamma 1
+
+), and c * 0.
+
+We also define G
+
+n
+
+(oeoe
+
+oe
+
+) to be the class of functions h : IR
+
+n
+
+! IR of the form
+
+h(x) = a
+
+1
+
+oe
+
+1
+
+(f
+
+1
+
+(x)) + a
+
+2
+
+oe
+
+2
+
+(f
+
+2
+
+(x)) + \Delta  \Delta  \Delta  + a
+
+k
+
+oe
+
+k
+
+(f
+
+k
+
+(x)) ;
+
+where f
+
+1
+
+; \Delta  \Delta  \Delta  ; f
+
+k
+
+are linear functions and a
+
+1
+
+; \Delta  \Delta  \Delta  ; a
+
+k
+
+are nonnegative constants such that a
+
+1
+
++
+
+\Delta  \Delta  \Delta  + a
+
+k
+
+^ 1.
+
+Next, for an m-tuple ll
+
+l
+
+= (l
+
+1
+
+; \Delta  \Delta  \Delta  ; l
+
+m
+
+) of nonnegative integers, define jll
+
+l
+
+j = l
+
+1
+
++ \Delta  \Delta  \Delta + l
+
+m
+
+. For a
+
+finite sequence oeoe
+
+oe
+
+= (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+jll
+
+l
+
+j
+
+) = (oe
+
+1
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+1
+
+l
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+m
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+m
+
+l
+
+m
+
+) of functions in S, we let F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+),
+
+G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) denote, respectively, the set of all functions h : IR
+
+n
+
+! IR
+
+m
+
+such that h
+
+i
+
+2 F
+
+n
+
+(oe
+
+i
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+i
+
+l
+
+i
+
+)
+
+for i = 1; 2; \Delta  \Delta  \Delta  ; m, and the set of those h : IR
+
+n
+
+! IR
+
+m
+
+such that h
+
+i
+
+2 G
+
+n
+
+(oe
+
+i
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+i
+
+l
+
+i
+
+)) for
+
+i = 1; 2; \Delta  \Delta  \Delta  ; m, where h
+
+1
+
+; : : : ; h
+
+m
+
+are the components of h. (It is clear that F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) = F
+
+n
+
+(oeoe
+
+oe
+
+) and
+
+G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) = G
+
+n
+
+(oeoe
+
+oe
+
+) if m = 1.) For a system (1.1), a feedback control law u = \Gamma k(x) will be said to
+
+be of type F (or of type G) if k 2 F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) (or k 2 G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+)) for some ll
+
+l
+
+and some finite sequence oeoe
+
+oe
+
+of bounded functions belonging to S.
+
+Let ffi ? 0. Let I ` IR be an interval, and let f : I ! IR
+
+n
+
+be a vector-valued function on
+
+I. We say that f is eventually bounded by ffi (and write jf j ^
+
+ev
+
+ffi) if there exists a T 2 IR such
+
+that [T; +1) ` I and jf (t)j ^ ffi for all t * T . Given a control system \Sigma  : .x = f (x; u) in IR
+
+n
+
+,
+
+with inputs in IR
+
+m
+
+, we say that \Sigma  is SISS ("small-input small-state") if for every " ? 0 there
+
+is a ffi ? 0 such that, if e : [0; +1) ! IR
+
+m
+
+is bounded, measurable, and eventually bounded
+
+by ffi, then every maximally defined solution t ! x(t) of .x = f (x; e(t)) is eventually bounded by ". For \Delta  ? 0; N ? 0, we say that \Sigma  is SISS
+
+L
+
+(\Delta ; N) if, whenever 0 ! ffi ^ \Delta , it follows
+
+that, if e : [0; +1) ! IR
+
+m
+
+is bounded, measurable, and eventually bounded by ffi, then every
+
+maximally defined solution of .x = f (x; e(t)) is eventually bounded by N ffi. A system is SISS
+
+L
+
+("SISS with linear gain") if it is SISS
+
+L
+
+(\Delta ; N ) for some \Delta  ? 0; N ? 0. A differential equation
+
+.x = f (x) will be called SISS, SISS
+
+L
+
+(\Delta ; N ), or SISS
+
+L
+
+, if the control system .x = f (x) + u is,
+
+respectively, SISS, SISS
+
+L
+
+(\Delta ; N) or SISS
+
+L
+
+.
+
+Remark 2.1 We will frequently use the fact that if a system .x = f (x) is SISS
+
+L
+
+(\Delta ; N), and
+
+* ? 0, then the system .x = *f (
+
+x
+
+*
+
+) is SISS
+
+L
+
+(*\Delta ; N). To prove this, assume that x takes values
+
+in IR
+
+n
+
+, and let e : [0; 1) ! IR
+
+n
+
+be bounded, measurable, and eventually bounded by a ffi such
+
+that ffi ^ *\Delta . Let I 3 t ! x(t) 2 IR
+
+n
+
+be a maximally defined solution of .x(t) = *f (
+
+x(t)
+
+*
+
+) + e(t).
+
+Let y(t) = *
+
+\Gamma 1
+
+x(t) for t 2 I. Then .y(t) = f (y(t)) + *
+
+\Gamma 1
+
+e(t), and it is clear that y is a
+
+maximally defined solution of this equation, since any extension of y to a larger interval yields in an obvious way an extension of x. Since j*
+
+\Gamma 1
+
+e(t)j ^
+
+ev
+
+*
+
+\Gamma 1
+
+ffi ^ \Delta , we see that there is a T
+
+such that [T; 1) ` I and jy(t)j ^ N *
+
+\Gamma 1
+
+ffi for t * T . But then jx(t)j ^ N ffi for t * T , and our
+
+conclusion follows. 2
+
+Remark 2.2 The terminology "SISS" should not be confused with the different -but closely related- notion of "input to state stability" (ISS) given in [10] and other recent papers. It should also be possible to restate and prove the results given in this paper in terms of the ISS property, but the property called here SISS was exactly the one needed for the induction step in the proof of Theorem 2.3. 2
+
+4Pass1: Page 5
+
+
+For a system .x = f (x; u), x 2 IR
+
+n
+
+, u 2 IR
+
+m
+
+, we say that a feedback u = k(x) is stabilizing if 0
+
+is a globally asymptotically stable equilibrium of the closed-loop system .x = f (x; k(x)). If, in addition, this closed-loop system is SISS
+
+L
+
+, then we will say that k is SISS
+
+L
+
+-stabilizing.
+
+For a square matrix A, let _(A) = s(A) + z(A), where s(A) is the number of conjugate pairs of nonzero purely imaginary eigenvalues of A (counting multiplicity) and z(A) is the multiplicity of zero as an eigenvalue of A. We recall that an eigenvalue * of a matrix A is stable if Re * ! 0, unstable if Re * ? 0, and critical if Re * = 0. Our main result is:
+
+Theorem 2.3 Let \Sigma  be a linear system .x = Ax + Bu with state space IR
+
+n
+
+and input space
+
+IR
+
+m
+
+. Assume that \Sigma  is ANCBC, i.e. that \Sigma  is stabilizable and A has no unstable eigenvalues.
+
+Let _ = _(A). Let oeoe
+
+oe
+
+= (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_
+
+) be an arbitrary sequence of bounded functions belonging
+
+to S. Then there exists an m-tuple ll
+
+l
+
+= (l
+
+1
+
+; \Delta  \Delta  \Delta  ; l
+
+m
+
+) of nonnegative integers such that jll
+
+l
+
+j = _,
+
+for which there are SISS
+
+L
+
+-stabilizing feedbacks u = \Gamma k
+
+F
+
+(x) and u = \Gamma k
+
+G
+
+(x) such that k
+
+F
+
+2
+
+F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+), k
+
+G
+
+2 G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+). Moreover, k
+
+F
+
+and k
+
+G
+
+can be chosen so that the linearizations at 0 of the
+
+corresponding closed-loop systems are asymptotically stable.
+
+Precise procedures to compute these feedbacks, and diagrams describing their structure, will be discussed in later sections.
+
+Remark 2.4 The definitions of F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) and G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) clearly imply that every member of F
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) [
+
+G
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) is differentiable at the origin, so the linearizations referred to in the statement of Theorem
+
+2.3 are well defined. 2
+
+Remark 2.5 We chose to formulate our main result in terms of the SISS
+
+L
+
+property for two
+
+main reasons, namely, (a) that, even if we were only interested in stabilization, our inductive proof of Theorem 2.3 requires that we prove the SISS
+
+L
+
+property at each step in order to carry
+
+out the induction, and (b) because it will be needed later in our proof of Theorem 7.1 on output feedback. 2
+
+Remark 2.6 A stabilizing feedback need not have the SISS property, even if it is linear near the origin. To illustrate this, consider the double integrator \Sigma  : .x = y; .y = u: Let oe : IR ! IR be an odd continuous function such that soe(s) ? 0 for s 6= 0, oe(s) = s for jsj !
+
+1
+
+2
+
+and oe(s) =
+
+1
+
+s
+
+for s ? 1. Then the feedback u = \Gamma oe(x + y) stabilizes \Sigma . (This
+
+can be proved by verifying that V (x; y) =
+
+R
+
+x+y
+
+0
+
+oe(s) ds +
+
+1
+
+2
+
+y
+
+2
+
+is a Lyapunov function for the
+
+closed-loop system with u = \Gamma oe(x + y), and applying the LaSalle Invariance Principle.) Let
+
+e(t) = oe
+
+i
+
+log(t + 1) +
+
+1
+
+t+1
+
+j
+
+\Gamma 
+
+1
+
+(t+1)
+
+2
+
+. Then clearly e(t) ! 0 as t ! 1. But not every solution
+
+of .x = y ; .y = \Gamma oe(x + y) + e(t) converges to zero. For example, x(t) = log(t + 1), y(t) =
+
+1
+
+t+1
+
+is a solution, but x(t) ! 1 as t ! 1. 2
+
+3 Two Technical Lemmas The proof of Theorem 2.3 will be based on two lemmas.
+
+5Pass1: Page 6
+
+
+Lemma 3.1 Let \Sigma  : .x = Ax + bu be an n-dimensional linear single-input system. Suppose that (A; b) is a controllable pair and all the eigenvalues of A are critical. Fix a * ? 0.
+
+(i) If 0 is an eigenvalue of A, then there is a linear change of coordinates T x = (y
+
+1
+
+; \Delta  \Delta  \Delta  ; y
+
+n
+
+)
+
+0
+
+=
+
+(_y
+
+0
+
+; y
+
+n
+
+)
+
+0
+
+of IR
+
+n
+
+that puts \Sigma  in the form
+
+. _y = A
+
+1
+
+_y + b
+
+1
+
+(y
+
+n
+
++ *u) ;
+
+.y
+
+n
+
+= u ;
+
+(3.1)
+
+where the pair (A
+
+1
+
+; b
+
+1
+
+) is controllable and y
+
+n
+
+is a scalar variable.
+
+(ii) If A has an eigenvalue of the form i!, with ! ? 0, then there is a linear change of
+
+coordinates T x = (y
+
+1
+
+; \Delta  \Delta  \Delta  ; y
+
+n
+
+)
+
+0
+
+= (_y
+
+0
+
+; y
+
+n\Gamma 1
+
+; y
+
+n
+
+)
+
+0
+
+of IR
+
+n
+
+that puts \Sigma  in the form:
+
+. _y = A
+
+1
+
+_y + b
+
+1
+
+(y
+
+n
+
++ *u) ;
+
+.y
+
+n\Gamma 1
+
+= !y
+
+n
+
+;
+
+.y
+
+n
+
+= \Gamma !y
+
+n\Gamma 1
+
++ u ;
+
+(3.2)
+
+where the pair (A
+
+1
+
+; b
+
+1
+
+) is controllable and y
+
+n\Gamma 1
+
+; y
+
+n
+
+are scalar variables.
+
+Proof. We first prove (i). If 0 is an eigenvalue of A, then there exists a nonzero n-dimensional row vector v such that vA = 0. Let , : IR
+
+n
+
+! IR be the linear function x ! vx. Then
+
+. , = (vb)u along trajectories of \Sigma  . Controllability of (A; b) implies that vb 6= 0. So we may
+
+assume that vb = 1. Make a linear change of coordinates T x = (_z
+
+0
+
+; z
+
+n
+
+)
+
+0
+
+so that z
+
+n
+
+j ,. Then
+
+the system equations are of the form
+
+. _z = A
+
+1
+
+_z + z
+
+n
+
+~
+
+b
+
+1
+
++ u
+
+~
+
+b
+
+2
+
+, .z
+
+n
+
+= u. It is clear that every
+
+eigenvalue of A
+
+1
+
+also has zero real part. Now change coordinates again by letting _y = _z + z
+
+n
+
+~
+
+b
+
+3
+
+,
+
+y
+
+n
+
+= z
+
+n
+
+, where the vector
+
+~
+
+b
+
+3
+
+will be chosen below. Then the system equations become
+
+. _y =
+
+A
+
+1
+
+_y + y
+
+n
+
+(
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+3
+
+) + u(
+
+~
+
+b
+
+2
+
++
+
+~
+
+b
+
+3
+
+), .y
+
+n
+
+= u. Choose
+
+~
+
+b
+
+3
+
+to be a solution of
+
+~
+
+b
+
+2
+
++
+
+~
+
+b
+
+3
+
+= *(
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+3
+
+),
+
+i.e. *A
+
+1
+
+~
+
+b
+
+3
+
++
+
+~
+
+b
+
+3
+
+= *
+
+~
+
+b
+
+1
+
+\Gamma 
+
+~
+
+b
+
+2
+
+. (This is possible because *A
+
+1
+
++ I is nonsingular.) Let b
+
+1
+
+=
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+3
+
+.
+
+The equations now become
+
+. _y = A
+
+1
+
+_y + (y
+
+n
+
++ *u)b
+
+1
+
+, .y
+
+n
+
+= u, as desired.
+
+We now prove (ii). Let ! ? 0 be such that i! is an eigenvalue of A. Then \Gamma !
+
+2
+
+is an
+
+eigenvalue of A
+
+2
+
+. So there is a nonzero n-dimensional row vector ~v such that ~vA
+
+2
+
+= \Gamma !
+
+2
+
+~v.
+
+Let ~w = !
+
+\Gamma 1
+
+~vA. Then ~wA = \Gamma !~v and ~wA
+
+2
+
+= \Gamma !
+
+2
+
+~w. Moreover, ~w cannot be a multiple of ~v
+
+because, if ~w = *~v, then ~wA = \Gamma !~v would imply that ~vA = \Gamma *
+
+\Gamma 1
+
+!~v, so \Gamma *
+
+\Gamma 1
+
+! would be a
+
+nonzero real eigenvalue of A. So the linear span S of ~v and ~w is a two-dimensional subspace, all whose members v satisfy vA
+
+2
+
+= \Gamma !
+
+2
+
+v. In particular, we can choose v 2 S such that
+
+vb = 0 but v 6= 0. If we then define w by w = !
+
+\Gamma 1
+
+vA, we get wA = \Gamma !v. Moreover, wb
+
+cannot vanish for, if it did, the subspace fx : vx = wx = 0g would contain b and be invariant under A, contradicting controllability. So, after multiplying both v and w by a constant, if necessary, we may assume that wb = 1. Let ,, j be the linear functionals x ! vx, x ! wx. Then, along trajectories of \Sigma  ,
+
+. , = !j and .j = \Gamma !, + u. Make a linear change of coordinates
+
+T x = (_z
+
+0
+
+; z
+
+n\Gamma 1
+
+; z
+
+n
+
+)
+
+0
+
+so that z
+
+n\Gamma 1
+
+j ,, z
+
+n
+
+j j. Then the system equations are of the form
+
+. _z = A
+
+1
+
+_z + z
+
+n\Gamma 1
+
+~
+
+b
+
+1
+
++ z
+
+n
+
+~
+
+b
+
+2
+
++ u
+
+~
+
+b
+
+3
+
+, .z
+
+n\Gamma 1
+
+= !z
+
+n
+
+, .z
+
+n
+
+= \Gamma !z
+
+n\Gamma 1
+
++ u, and every eigenvalue of A
+
+1
+
+has
+
+zero real part. Now change coordinates again by letting _y = _z + z
+
+n\Gamma 1
+
+~
+
+b
+
+4
+
++ z
+
+n
+
+~
+
+b
+
+5
+
+, y
+
+n\Gamma 1
+
+= z
+
+n\Gamma 1
+
+,
+
+y
+
+n
+
+= z
+
+n
+
+, where the vectors
+
+~
+
+b
+
+4
+
+,
+
+~
+
+b
+
+5
+
+will be chosen below. Then the system equations become
+
+. _y = A
+
+1
+
+_y + y
+
+n\Gamma 1
+
+(
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+4
+
+\Gamma  !
+
+~
+
+b
+
+5
+
+) + y
+
+n
+
+(
+
+~
+
+b
+
+2
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+5
+
++ !
+
+~
+
+b
+
+4
+
+) + u(
+
+~
+
+b
+
+3
+
++
+
+~
+
+b
+
+5
+
+);
+
+.y
+
+n\Gamma 1
+
+= !y
+
+n
+
+;
+
+.y
+
+n
+
+= \Gamma !y
+
+n\Gamma 1
+
++ u:
+
+(3.3)
+
+6Pass1: Page 7
+
+
+If we could choose
+
+~
+
+b
+
+4
+
+,
+
+~
+
+b
+
+5
+
+such that
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+4
+
+\Gamma  !
+
+~
+
+b
+
+5
+
+= 0 and
+
+~
+
+b
+
+3
+
++
+
+~
+
+b
+
+5
+
+= *(
+
+~
+
+b
+
+2
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+5
+
++ !
+
+~
+
+b
+
+4
+
+); (3.4)
+
+then we could let b
+
+1
+
+=
+
+~
+
+b
+
+2
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+5
+
++ !
+
+~
+
+b
+
+4
+
+, and (3.3) would become
+
+. _y = A
+
+1
+
+_y + (y
+
+n
+
++ *u)b
+
+1
+
+,
+
+.y
+
+n\Gamma 1
+
+= !y
+
+n
+
+, .y
+
+n
+
+= \Gamma !y
+
+n\Gamma 1
+
++ u, as desired. To prove the existence of
+
+~
+
+b
+
+4
+
+and
+
+~
+
+b
+
+5
+
+, we rewrite the
+
+second equation of (3.4) as (*A
+
+1
+
++ I)
+
+~
+
+b
+
+5
+
+= *
+
+~
+
+b
+
+2
+
+\Gamma 
+
+~
+
+b
+
+3
+
++ *!
+
+~
+
+b
+
+4
+
+, multiply both sides by !, and plug
+
+in the value of !
+
+~
+
+b
+
+5
+
+given by the first equation of (3.4), namely, !
+
+~
+
+b
+
+5
+
+=
+
+~
+
+b
+
+1
+
+\Gamma  A
+
+1
+
+~
+
+b
+
+4
+
+. We end up
+
+with the equation (*A
+
+2
+
+1
+
++ A
+
+1
+
++ *!
+
+2
+
+I)
+
+~
+
+b
+
+4
+
+= *A
+
+1
+
+~
+
+b
+
+1
+
++
+
+~
+
+b
+
+1
+
+\Gamma  *!
+
+~
+
+b
+
+2
+
++ !
+
+~
+
+b
+
+3
+
+. Since all the eigenvalues
+
+of A
+
+1
+
+are critical, the matrix *A
+
+2
+
+1
+
++ A
+
+1
+
++ *!
+
+2
+
+I is nonsingular, so
+
+~
+
+b
+
+4
+
+exists. 2
+
+Lemma 3.2 Let ! ? 0. Let oe : IR ! IR be a continuous function such that soe(s) ? 0 whenever s 6= 0, lim inf
+
+jsj!1
+
+joe(s)j ? 0, lim inf
+
+s!0
+
+(
+
+oe(s)
+
+s
+
+) ? 0, and lim sup
+
+s!0
+
+(
+
+oe(s)
+
+s
+
+) ! 1. Then
+
+the 3-input control system
+
+.x = !y + v
+
+3
+
+; .y = \Gamma !x \Gamma  oe(y \Gamma  v
+
+1
+
+) + v
+
+2
+
+(3.5)
+
+has the SISS
+
+L
+
+property.
+
+Proof. First, we remark that, if e
+
+1
+
+; e
+
+2
+
+; e
+
+3
+
+are bounded measurable real-valued functions on
+
+[0; 1), then every maximally defined solution fl = (x(\Delta ); y(\Delta )) : I ! IR
+
+2
+
+of the system
+
+.x = !y + e
+
+3
+
+(t) ; .y = \Gamma !x \Gamma  oe(y \Gamma  e
+
+1
+
+(t)) + e
+
+2
+
+(t); (3.6)
+
+defined on a subinterval I of [0; 1) such that 0 2 I, is in fact defined on [0; 1). (To see this, assume that I = [0; a) with a ! 1. Let V (x; y) = x
+
+2
+
++ y
+
+2
+
+. Then lim
+
+t!a\Gamma 
+
+V (fl(t)) =
+
++1. On the other hand, the derivative
+
+. V of V along a solution is easily seen to be equal
+
+to 2x(t)e
+
+3
+
+(t) + 2y(t)e
+
+2
+
+(t) \Gamma  2y(t)oe(y(t) \Gamma  e
+
+1
+
+(t)). Let M ? 0 be such that je
+
+i
+
+(t)j ^ M for all
+
+i = 1; 2; 3, t 2 [0; 1), and let N ? 0 be such that joe(s)j ^ N whenever jsj ^ 2M . Then yoe(y \Gamma  e
+
+1
+
+(t)) * 0 if jyj * M , and jyoe(y \Gamma  e
+
+1
+
+(t))j ^ M N if jyj ^ M , so
+
+. V ^ V + 2M
+
+2
+
++ 2N M .
+
+But then t ! V (fl(t)) is bounded on I, and we have reached a contradiction.)
+
+In view of the above observation, it clearly suffices to find positive constants \Delta ; *
+
+1
+
+; *
+
+2
+
+; *
+
+3
+
+with the property that
+
+(P) whenever 0 ! ffi ! \Delta , and e
+
+1
+
+; e
+
+2
+
+; e
+
+3
+
+are bounded measurable real-valued functions on
+
+[0; 1) such that
+
+lim sup
+
+t!+1
+
+je
+
+i
+
+(t)j ^
+
+ffi
+
+*
+
+i
+
+for i = 1; 2; 3 ; (3.7)
+
+then, if fl = (x(\Delta ); y(\Delta )) : [0; 1) ! IR
+
+2
+
+is any solution of (3.6), it follows that
+
+lim sup
+
+t!+1
+
+jjfl(t)jj ^ ffi.
+
+Actually, it suffices to find \Delta ; *
+
+1
+
+; *
+
+2
+
+; *
+
+3
+
+such that
+
+(I) if 0 ! ffi ! \Delta , and fl : [0; 1) ! IR
+
+2
+
+is a solution of (3.6) for some triple of functions
+
+e
+
+1
+
+; e
+
+2
+
+; e
+
+3
+
+: [0; 1) ! IR such that jje
+
+i
+
+jj
+
+L
+
+1 ^
+
+ffi
+
+*
+
+i
+
+for i = 1; 2; 3, then lim sup
+
+t!+1
+
+jjfl(t)jj ^ ffi.
+
+7Pass1: Page 8
+
+
+(Indeed, if (I) holds, e
+
+1
+
+; e
+
+2
+
+; e
+
+3
+
+are bounded measurable on [0; 1), (3.7) holds for some ffi 2 (0; \Delta ),
+
+and fl : [0; 1) ! IR
+
+2
+
+is a solution of (3.6), then for every
+
+~ ffi 2 (ffi; \Delta ) there is a T * 0 such that
+
+the restrictions ~e
+
+1
+
+; ~e
+
+2
+
+; ~e
+
+3
+
+of e
+
+1
+
+; e
+
+2
+
+; e
+
+3
+
+to [T; 1) satisfy jj~e
+
+i
+
+jj
+
+L
+
+1 ^
+
+~ ffi
+
+*
+
+i
+
+. Applying (I) to the curve
+
+t ! fl(t + T ) we find that lim sup
+
+t!+1
+
+jjfl(t)jj ^
+
+~ ffi.)
+
+For a ? 0, ! ? 0, we let A
+
+a;!
+
+be the matrix
+
+
+
+0 !
+
+\Gamma ! \Gamma a
+
+!
+
+, and define P
+
+a;!
+
+to be the
+
+symmetric matrix P that satisfies the Lyapunov equation A
+
+y
+
+a;!
+
+P + P A
+
+a;!
+
+= \Gamma 2I, so
+
+P
+
+a;!
+
+=
+
+0 B @
+
+a !
+
+2
+
++
+
+2
+
+a
+
+1 !
+
+1 !
+
+2 a
+
+1 C A
+
+: (3.8)
+
+Then P ? 0. We write B
+
+1
+
+= (1; 0), B
+
+2
+
+= (0; 1), fi
+
+i;a;!
+
+= jjB
+
+i
+
+P
+
+a;!
+
+jj, so
+
+fi
+
+1;a;!
+
+=
+
+s
+
+5
+
+!
+
+2
+
++
+
+a
+
+2
+
+!
+
+4
+
++
+
+4
+
+a
+
+2
+
+and fi
+
+2;a;!
+
+=
+
+1
+
+a!
+
+p
+
+a
+
+2
+
++ 4!
+
+2
+
+:
+
+We let p
+
+\Gamma 
+
+a;!
+
+and p
+
++
+
+a;!
+
+denote, respectively, the smallest and largest eigenvalues of P
+
+a;!
+
+. Then
+
+jjP
+
+a;!
+
+jj = p
+
++
+
+a;!
+
+, and
+
+p
+
+\Sigma 
+
+a;!
+
+=
+
+a
+
+2
+
+fi
+
+2
+
+2;a;!
+
+\Sigma 
+
+a
+
+2!
+
+fi
+
+2;a;!
+
+: (3.9)
+
+For each \Lambda  ? 0, we define three numbers a(\Lambda ), b(\Lambda ), c(\Lambda ) by
+
+a(\Lambda ) = inf
+
+(
+
+oe(s)
+
+s
+
+: jsj ^ \Lambda 
+
+)
+
+; b(\Lambda ) = sup
+
+(
+
+oe(s)
+
+s
+
+: jsj ^ \Lambda 
+
+)
+
+; c(\Lambda ) = inffjoe(s)j : jsj * \Lambda g :
+
+(3.10) Our hypotheses on oe imply that a(\Lambda ), b(\Lambda ) and c(\Lambda ) are finite and nonzero and, moreover, a(\Lambda ) ^ b(\Lambda ), with equality holding iff oe is linear on [\Gamma \Lambda ; \Lambda ].
+
+From now on we fix a \Lambda 
+
+0
+
+? 0 and an ! ? 0, and let a = a(\Lambda 
+
+0
+
+), b = b(\Lambda 
+
+0
+
+), c = c(\Lambda 
+
+0
+
+),
+
+A = A
+
+a;!
+
+, P = P
+
+a;!
+
+, p
+
+\Sigma 
+
+= p
+
+\Sigma 
+
+a;!
+
+, fi
+
+i
+
+= fi
+
+i;a;!
+
+. We let
+
+_ \Lambda  = min
+
+
+
+\Lambda 
+
+0
+
+;
+
+c
+
+a
+
+!
+
+: (3.11)
+
+Then
+
+\Lambda  ^
+
+_ \Lambda  )
+
+i
+
+joe(s)j * a\Lambda  for all s such that jsj * \Lambda 
+
+j
+
+: (3.12)
+
+This implies that
+
+if 0 ! \Lambda  ^
+
+_ \Lambda  ; then jas \Gamma  oe(s)j ^
+
+s oe(s)
+
+\Lambda 
+
++ (b \Gamma  a)jsjO/
+
+\Lambda 
+
+(s) for all s 2 IR ; (3.13)
+
+where O/
+
+\Lambda 
+
+is the indicator function of the interval [\Gamma \Lambda ; \Lambda ]. We will also need the trivial estimate
+
+joe(s)j ^
+
+s oe(s)
+
+\Lambda 
+
++ bjsjO/
+
+\Lambda 
+
+(s) whenever s 2 IR ; 0 ! \Lambda  ^
+
+_ \Lambda  : (3.14)
+
+8Pass1: Page 9
+
+
+For K ? 0, 0 ! \Lambda  ^
+
+_ \Lambda , we define a function V
+
+K;\Lambda 
+
+: IR
+
+2
+
+! IR by
+
+V
+
+K;\Lambda 
+
+(X) = KjjXjj
+
+3
+
++ \Lambda  X
+
+y
+
+P X for X = (x; y)
+
+y
+
+2 IR
+
+2
+
+: (3.15)
+
+Then the derivative
+
+. V
+
+K;\Lambda 
+
+of V
+
+K;\Lambda 
+
+along a solution of (3.6) is given by
+
+. V
+
+K;\Lambda 
+
+= 3KjjXjj
+
+i
+
+EX \Gamma  oe(z)y
+
+j
+
+\Gamma  2\Lambda jjXjj
+
+2
+
++ 2\Lambda (E + (ay \Gamma  oe(z))B
+
+2
+
+)P X ; (3.16)
+
+where z = y \Gamma  e
+
+1
+
+, E = (e
+
+3
+
+; e
+
+2
+
+). Writing y = z + e
+
+1
+
+, and using (3.13) and jB
+
+i
+
+P Xj ^ fi
+
+i
+
+jjXjj, we
+
+get
+
+. V
+
+K;L
+
+^ 3KjjXjj
+
+2
+
+jjEjj + 3KjjXjj je
+
+1
+
+j joe(z)j \Gamma  3KjjXjj zoe(z)
+
+\Gamma  2\Lambda jjXjj
+
+2
+
++ 2\Lambda (fi
+
+1
+
+je
+
+3
+
+j + fi
+
+2
+
+je
+
+2
+
+j)jjXjj + 2\Lambda afi
+
+2
+
+je
+
+1
+
+j jjXjj
+
++ 2fi
+
+2
+
+jjXjj z oe(z) + 2\Lambda fi
+
+2
+
+(b \Gamma  a)jjXjj jzjO/
+
+\Lambda 
+
+(z) : (3.17)
+
+It is clear that jzjO/
+
+\Lambda 
+
+(z) ^ \Lambda . In addition, (3.14) implies that the term je
+
+1
+
+j joe(z)j can be
+
+replaced by je
+
+1
+
+j
+
+zoe(z)
+
+\Lambda 
+
++je
+
+1
+
+j bjzjO/
+
+\Lambda 
+
+(z), which is bounded by je
+
+1
+
+j
+
+zoe(z)
+
+\Lambda 
+
++je
+
+1
+
+j b\Lambda . Assume je
+
+i
+
+j ^ C
+
+i
+
+\Lambda 
+
+for i = 1; 2; 3, where the C
+
+i
+
+are constants to be chosen below, and write jjXjj = ,\Lambda . Let
+
+C =
+
+p
+
+C
+
+2
+
+2
+
++ C
+
+2
+
+3
+
+. Then (3.17) implies
+
+. V
+
+K;L
+
+^ K
+
+1
+
+\Lambda ,zoe(z) + \Lambda 
+
+3
+
+,(K
+
+2
+
+\Gamma  K
+
+3
+
+,) ; (3.18)
+
+where K
+
+1
+
+= 2fi
+
+2
+
+\Gamma  3K(1 \Gamma  C
+
+1
+
+), and
+
+K
+
+2
+
+= 3KC
+
+1
+
+b + 2C
+
+3
+
+fi
+
+1
+
++ 2C
+
+2
+
+fi
+
+2
+
++ 2C
+
+1
+
+afi
+
+2
+
++ 2fi
+
+2
+
+(b \Gamma  a) ; K
+
+3
+
+= 2 \Gamma  3KC : (3.19)
+
+Now choose the C
+
+i
+
+such that
+
+0 ^ C
+
+1
+
+! 1 ; C
+
+2
+
+* 0 ; C
+
+3
+
+* 0 ; and C
+
+1
+
++ fi
+
+2
+
+q
+
+C
+
+2
+
+2
+
++ C
+
+2
+
+3
+
+! 1 ; (3.20)
+
+and observe that (3.20) guarantees the existence of a K such that
+
+3K(1 \Gamma  C
+
+1
+
+) * 2fi
+
+2
+
+and 3CK ! 2 : (3.21)
+
+Choose K so that (3.21) holds. Then K
+
+1
+
+^ 0, K
+
+2
+
+? 0, and K
+
+3
+
+? 0. So, if we define
+
+\Xi  =
+
+K
+
+2
+
+K
+
+3
+
+; (3.22)
+
+we see that if , ? \Xi  then
+
+. V
+
+K;\Lambda 
+
+(X) ^ \Gamma \Lambda 
+
+3
+
+K
+
+3
+
+,(, \Gamma  \Xi ) ! 0 : (3.23)
+
+Now let T
+
+\Lambda 
+
+be the set of all trajectories fl : [0; 1) ! IR
+
+2
+
+of (3.6) corresponding to inputs e
+
+i
+
+(t)
+
+that satisfy and jje
+
+i
+
+jj
+
+L
+
+1
+
+^ C
+
+i
+
+\Lambda  for i = 1; 2; 3. For r ? 0, write '(r) = Kr
+
+3
+
++ \Lambda p
+
++
+
+r
+
+2
+
+, and let
+
+S
+
+r
+
+= fX : V
+
+K;\Lambda 
+
+(X) ^ '(r)g. Choose r ? \Xi \Lambda . Then the equality V
+
+K;\Lambda 
+
+(X) = '(r) implies
+
+jjXjj * r, so (3.23) implies that S
+
+r
+
+is forward-invariant under all trajectories in T
+
+\Lambda 
+
+. If fl 2 T
+
+\Lambda 
+
+,
+
+then (3.23) implies that fl(t) 2 S
+
+r
+
+for all sufficiently large t. On the other hand, every X 2 S
+
+r
+
+satisfies the inequalities KjjXjj
+
+3
+
++ p
+
+\Gamma 
+
+\Lambda jjXjj
+
+2
+
+^ V
+
+K;\Lambda 
+
+(X) ^ Kr
+
+3
+
++ p
+
++
+
+\Lambda r
+
+2
+
+. Therefore
+
+lim sup
+
+t!+1
+
+(KjjX(t)jj
+
+3
+
++ p
+
+\Gamma 
+
+\Lambda jjX(t)jj
+
+2
+
+) ^ Kr
+
+3
+
++ p
+
++
+
+\Lambda r
+
+2
+
+:
+
+9Pass1: Page 10
+
+
+Since this is true for all r ? \Xi \Lambda , we can conclude that
+
+lim sup
+
+t!+1
+
+(KjjX(t)jj
+
+3
+
++ p
+
+\Gamma 
+
+\Lambda jjX(t)jj
+
+2
+
+) ^ \Lambda 
+
+3
+
+(K \Xi 
+
+3
+
++ p
+
++
+
+\Xi 
+
+2
+
+) :
+
+Now let
+
+~ \Xi  be the number characterized by
+
+~ \Xi  ? 0 and K
+
+~ \Xi 
+
+3
+
++ p
+
+\Gamma 
+
+~
+
+\Xi 
+
+2
+
+= K\Xi 
+
+3
+
++ p
+
++
+
+\Xi 
+
+2
+
+: (3.24)
+
+Then
+
+lim sup
+
+t!+1
+
+(KjjX(t)jj
+
+3
+
++ p
+
+\Gamma 
+
+\Lambda jjX(t)jj
+
+2
+
+) ^ \Lambda 
+
+3
+
+(K
+
+~ \Xi 
+
+3
+
++ p
+
+\Gamma 
+
+~
+
+\Xi 
+
+2
+
+) :
+
+Writing jjX(t)jj = \Lambda ,(t), we find that lim sup
+
+t!+1
+
+(K,(t)
+
+3
+
++p
+
+\Gamma 
+
+,(t)
+
+2
+
+) ^ K
+
+~ \Xi 
+
+3
+
++p
+
+\Gamma 
+
+~
+
+\Xi 
+
+2
+
+. Therefore
+
+lim sup
+
+t!+1
+
+,(t) ^
+
+~ \Xi , and then lim sup
+
+t!+1
+
+jjX(t)jj ^
+
+~ \Xi \Lambda . So we have shown that (I) holds
+
+with \Delta  =
+
+~ \Xi 
+
+_ \Lambda , and *
+
+i
+
+=
+
+~ \Xi 
+
+C
+
+i
+
+for i = 1; 2; 3. 2
+
+Remark 3.3 The proof of Lemma 3.2 actually yields explicit formulas for possible choices of *
+
+1
+
+; *
+
+2
+
+; *
+
+3
+
+and \Delta . The constants C
+
+i
+
+can be chosen in an arbitrary fashion, subject only to the
+
+condition that (3.20) hold, and then one can take K to be any number that satisfies (3.21). Formulas (3.19), (3.22) and (3.24) then determine K
+
+2
+
+, K
+
+3
+
+, \Xi  and
+
+~ \Xi . We can then let \Delta  =
+
+~ \Xi 
+
+_ L,
+
+*
+
+i
+
+=
+
+~ \Xi 
+
+C
+
+i
+
+.
+
+A particularly simple choice of \Delta  and the *
+
+i
+
+results from taking
+
+C
+
+1
+
+=
+
+1
+
+3
+
+; C =
+
+1
+
+3fi
+
+2
+
+; C
+
+2
+
+= ff
+
+2
+
+C ; C
+
+3
+
+= ff
+
+3
+
+C ; K = fi
+
+2
+
+; (3.25)
+
+where ff
+
+2
+
+* 0, ff
+
+3
+
+* 0, and ff
+
+2
+
+2
+
++ ff
+
+2
+
+3
+
+= 1. Then (3.20) and (3.21) clearly hold, and K
+
+3
+
+= 1. So
+
+\Xi  = K
+
+2
+
+=
+
+2ff
+
+2
+
+3
+
++
+
+2ff
+
+3
+
+fi
+
+1
+
+3fi
+
+2
+
++
+
+i
+
+3b \Gamma 
+
+4a
+
+3
+
+j
+
+fi
+
+2
+
+: (3.26)
+
+The value of
+
+~ \Xi  can then be found by solving (3.24). This equation implies the inequalities
+
+\Xi  !
+
+~ \Xi  !
+
+q
+
+p
+
++
+
+p
+
+\Gamma 
+
+\Xi , and it is easy to see that
+
+s
+
+p
+
++
+
+p
+
+\Gamma 
+
+=
+
+p
+
+a
+
+2
+
++ 4!
+
+2
+
++ a
+
+2!
+
+^ 1 +
+
+a
+
+!
+
+;
+
+from which we get the bounds
+
+\Xi  !
+
+~ \Xi  !
+
+i
+
+1 +
+
+a
+
+!
+
+j
+
+\Xi  :
+
+We can then take *
+
+1
+
+= 3
+
+~ \Xi , ff
+
+2
+
+*
+
+2
+
+= ff
+
+3
+
+*
+
+3
+
+= 3fi
+
+2
+
+~ \Xi , and \Delta  =
+
+~ \Xi 
+
+_ \Lambda . Moreover, it is clear that if we
+
+replace \Delta  by a smaller number, and the *
+
+i
+
+by larger ones, then the resulting values still have the
+
+desired properties. So we can also take \Delta  = \Xi 
+
+_ \Lambda , *
+
+1
+
+= 3(1 +
+
+a
+
+!
+
+)\Xi , ff
+
+2
+
+*
+
+2
+
+= ff
+
+3
+
+*
+
+3
+
+= 3fi
+
+2
+
+(1 +
+
+a
+
+!
+
+)\Xi .
+
+Using the value of \Xi  computed earlier, we get
+
+\Delta  =
+
+_ \Lambda 
+
+3
+
+
+
+2ff
+
+2
+
++
+
+2ff
+
+3
+
+fi
+
+1
+
+fi
+
+2
+
++ (9b \Gamma  4a)fi
+
+2
+
+!
+
+; *
+
+1
+
+=
+
+
+
+2ff
+
+2
+
++
+
+2ff
+
+3
+
+fi
+
+1
+
+fi
+
+2
+
++ (9b \Gamma  4a)fi
+
+2
+
+!
+
+1 +
+
+a
+
+!
+
+!
+
+; (3.27)
+
+10Pass1: Page 11
+
+
+ff
+
+2
+
+*
+
+2
+
+= ff
+
+3
+
+*
+
+3
+
+= fi
+
+2
+
+*
+
+1
+
+: (3.28)
+
+A particularly simple formula for a possible choice of \Delta  is obtained by replacing the value of \Delta  given in (3.27) by the lower bound obtained using the inequalities b * a, afi
+
+2
+
+* 2, fi
+
+1
+
+* fi
+
+2
+
+,
+
+and ff
+
+2
+
++ ff
+
+3
+
+* 1. This leads to the choice
+
+\Delta  = 4
+
+_ \Lambda  : (3.29)
+
+Remark 3.4 In Remark 3.3 we allow the possibility that ff
+
+i
+
+= 0 for i = 2 or 3. In that case,
+
+the corresponding constant *
+
+i
+
+is infinite, which means that the corresponding input e
+
+i
+
+has to
+
+vanish. For example, if we choose ff
+
+2
+
+= 1, ff
+
+3
+
+= 0, we obtain constants \Delta , *
+
+1
+
+, *
+
+2
+
+with the
+
+property that, whenever 0 ! ffi ! \Delta , and e
+
+1
+
+; e
+
+2
+
+are bounded measurable real-valued functions
+
+on [0; 1) such that lim sup
+
+t!+1
+
+je
+
+i
+
+(t)j ^
+
+ffi
+
+*
+
+i
+
+for i = 1; 2, then, if fl = (x(\Delta ); y(\Delta )) : [0; 1) ! IR
+
+2
+
+is any solution of .x = !y, .y = \Gamma !x\Gamma oe(y \Gamma e
+
+1
+
+(t))+e
+
+2
+
+(t), it follows that lim sup
+
+t!+1
+
+jjfl(t)jj ^ ffi.
+
+Corollary 3.5 Let oe : IR ! IR satisfy the assumptions of Lemma 3.2. For n = 1 or 2, let J be an n \Theta  n skew-symmetric matrix. Let b = 1 if n = 1, and b = (0; 1)
+
+0
+
+if n = 2. If n = 2,
+
+assume that J 6= 0. Then the control system
+
+.x = Jx \Gamma  oe(x
+
+n
+
+\Gamma  v
+
+1
+
+)b + v
+
+2
+
+; x 2 IR
+
+n
+
+; v
+
+1
+
+2 IR ; v
+
+2
+
+2 IR
+
+n
+
+; (3.30)
+
+is SISS
+
+L
+
+.
+
+Proof. When n = 2, the conclusion follows from Lemma 3.2. Assume n = 1. Pick \Lambda 
+
+0
+
+;
+
+_ \Lambda ; a; b; c
+
+as in the proof of Lemma 3.2. Let \Delta  = 2
+
+_ L, *
+
+1
+
+= 2, *
+
+2
+
+=
+
+3
+
+a
+
+. Let 0 ! ffi ! \Delta . Let V (x) = x
+
+2
+
+.
+
+Let x(\Delta ) : [0; 1) ! IR be a solution of .x = \Gamma oe(x \Gamma  e
+
+1
+
+(t)) + e
+
+2
+
+(t) for some pair of measurable
+
+real-valued functions on [0; 1) such that lim sup
+
+t!1
+
+je
+
+i
+
+(t)j ^
+
+ffi
+
+*
+
+i
+
+for i = 1; 2. Pick
+
+~ ffi such that
+
+ffi !
+
+~ ffi ! \Delta , and then T * 0 such that je
+
+i
+
+(t)j ^
+
+~ ffi
+
+*
+
+i
+
+for i = 1; 2 and t * T . Then, if jx(t)j *
+
+~ ffi, it
+
+follows that
+
+. V (x(t)) = \Gamma 2x(t)(oe(x(t) \Gamma  e
+
+1
+
+(t)) \Gamma  e
+
+2
+
+(t)) ! \Gamma 
+
+a
+
+~ ffi
+
+2
+
+3
+
+:
+
+Therefore, jx(t)j ^
+
+~ ffi for sufficiently large t. Since
+
+~ ffi can be taken arbitrarily close to ffi, we
+
+conclude that lim sup jx(t)j ^ ffi. 2
+
+Corollary 3.6 Let J; b; n; oe be as in the statement of Corollary 3.5. Let e
+
+1
+
+: [0; 1) ! IR and
+
+e
+
+2
+
+: [0; 1) ! IR
+
+n
+
+be bounded measurable functions such that lim
+
+t!1
+
+e
+
+i
+
+(t) = 0. Let fl : [0; 1) ! IR
+
+n
+
+be a solution of (3.30) with v
+
+1
+
+= e
+
+1
+
+(t), v
+
+2
+
+= e
+
+2
+
+(t). Then lim
+
+t!1
+
+fl(t) = 0. 2
+
+Remark 3.7 The above proof of Lemma 3.2 is an adaptation of ideas of [5]. Using a similar technique, it can be shown that Corollary 3.5 also holds in higher dimensions, for controllable pairs (J; b) such that J is skew-symmetric, although in the general case it becomes more difficult to get explicit formulas for the constants. 2
+
+11Pass1: Page 12
+
+
+4 The Proof of Theorem 2.3 First, we notice that under the conditions of the theorem there exists a linear change of coordinates of the state space that transforms \Sigma  into the block form
+
+\Sigma  :
+
+(
+
+.x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
++ B
+
+1
+
+u; x
+
+1
+
+2 IR
+
+n
+
+1
+
+;
+
+.x
+
+2
+
+= A
+
+2
+
+x
+
+2
+
++ B
+
+2
+
+u; x
+
+2
+
+2 IR
+
+n
+
+2
+
+;
+
+where (i) n
+
+1
+
++ n
+
+2
+
+= n, (ii) all the eigenvalues of A
+
+1
+
+are critical, (iii) all the eigenvalues of A
+
+2
+
+are stable, and (iv) (A
+
+1
+
+; B
+
+1
+
+) is a controllable pair. Suppose that we find a SISS
+
+L
+
+-stabilizing
+
+feedback u = \Gamma k(x
+
+1
+
+) of Type F or Type G for the system .x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
++ B
+
+1
+
+u such that the
+
+linearization at 0 of the resulting closed-loop system is asymptotically stable. Then it is clear that this same feedback law will work for \Sigma  as well. Thus, in order to stabilize \Sigma , it is enough to stabilize the "critical subsystem" .x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
++ B
+
+1
+
+u. Without loss of generality, in our proof
+
+of the theorem we will suppose that \Sigma  is already in this form.
+
+We start with the single-input case, and prove the theorem by induction on the dimension of the system. As discussed earlier, we may assume that all the eigenvalues of A have zero real part and the pair (A; B) is controllable.
+
+For dimension zero, there is nothing to prove. Now assume that we are given a single-input n-dimensional system, n * 1, and suppose that Theorem 2.3 has been established for all single- input systems of dimension ^ n \Gamma  1. We consider separately the following two possibilities:
+
+(i) zero is an eigenvalue of A, (ii) zero is not an eigenvalue of A. Recall that _ = _(A). We want to prove that for any finite sequence oeoe
+
+oe
+
+= (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_
+
+) of
+
+bounded functions in S there are SISS
+
+L
+
+-stabilizing feedbacks u = \Gamma k
+
+F
+
+(x) and u = \Gamma k
+
+G
+
+(x)
+
+such that k
+
+F
+
+2 F
+
+n
+
+(oeoe
+
+oe
+
+), k
+
+G
+
+2 G
+
+n
+
+(oeoe
+
+oe
+
+), and the linearizations at 0 of the resulting closed-loop
+
+systems are asymptotically stable.
+
+Assume that oe
+
+0
+
+_
+
+(0) = ^ ? 0. In Case (i) we apply Part (i) of Lemma 3.1 and rewrite our
+
+system in the form
+
+. _y = A
+
+1
+
+_y + (y
+
+n
+
++
+
+1
+
+^
+
+u)b
+
+1
+
+;
+
+.y
+
+n
+
+= u ;
+
+(4.1)
+
+where _y = (y
+
+1
+
+; \Delta  \Delta  \Delta  ; y
+
+n\Gamma 1
+
+)
+
+0
+
+. (Notice that if n = 1 then only the second equation occurs.) In
+
+Case (ii), since n ? 0, A has an eigenvalue of the form i!, with ! ? 0. So we apply Part (ii) of Lemma 3.1 and make a linear transformation that puts \Sigma  in the form
+
+. _y = A
+
+1
+
+_y + (y
+
+n
+
++
+
+1
+
+^
+
+u)b
+
+1
+
+;
+
+.y
+
+n\Gamma 1
+
+= !y
+
+n
+
+;
+
+.y
+
+n
+
+= \Gamma !y
+
+n\Gamma 1
+
++ u ;
+
+(4.2)
+
+where _y = (y
+
+1
+
+; y
+
+2
+
+; \Delta  \Delta  \Delta  ; y
+
+n\Gamma 2
+
+)
+
+0
+
+. (Naturally, in the special case when n = 2, the first equation will
+
+be missing.) So in both cases Lemma 3.1 enables us to rewrite our system in the form
+
+. _y = A
+
+1
+
+_y + (y
+
+n
+
++
+
+1
+
+^
+
+u)b
+
+1
+
+;
+
+. ~y = J ~y + ub
+
+0
+
+;
+
+(4.3)
+
+12Pass1: Page 13
+
+
+where J is a skew-symmetric matrix, (J; b
+
+0
+
+) is a controllable pair, and we have ~y = y
+
+n
+
+; b
+
+0
+
+= 1
+
+in Case (i) and ~y = (y
+
+n\Gamma 1
+
+; y
+
+n
+
+)
+
+0
+
+; b
+
+0
+
+= (0; 1)
+
+0
+
+in Case (ii).
+
+Let u = \Gamma oe
+
+_
+
+(y
+
+n
+
+\Gamma  ,v) \Gamma  jv, where , and j are constants such that ,j = 0; , + j = 1, and
+
+v is to be chosen later. Define g(s) = oe
+
+_
+
+(s) \Gamma  ^s. Then
+
+y
+
+n
+
++
+
+1
+
+^
+
+u = (, \Gamma 
+
+1
+
+^
+
+j)v \Gamma 
+
+1
+
+^
+
+g(y
+
+n
+
+\Gamma  ,v) :
+
+Therefore the first equation of (4.3) becomes
+
+. _y = A
+
+1
+
+_y + vb
+
+2
+
+\Gamma  g(y
+
+n
+
+\Gamma  ,v)b
+
+3
+
+; (4.4)
+
+where b
+
+2
+
+= (, \Gamma 
+
+1
+
+^
+
+j)b
+
+1
+
+, b
+
+3
+
+=
+
+1
+
+^
+
+b
+
+1
+
+. Notice that , \Gamma 
+
+1
+
+^
+
+j 6= 0, and therefore (A
+
+1
+
+; b
+
+2
+
+) is still a
+
+controllable pair. From the inductive hypothesis we know that, if H is either F or G, then there exist
+
+_ k 2 H
+
+n
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_\Gamma 1
+
+) such that the system
+
+. _y = A
+
+1
+
+_y \Gamma 
+
+_ k(_y)b
+
+2
+
+is SISS
+
+L
+
+(
+
+_ \Delta ;
+
+_ N) for
+
+some
+
+_ \Delta ;
+
+_ N ? 0, and the linearization at 0 of the closed-loop system is asymptotically stable.
+
+(For instance, in Case (ii) there exists a SISS
+
+L
+
+-stabilizing feedback u = \Gamma 
+
+_ k
+
+F
+
+for
+
+. _y = A
+
+1
+
+_y + b
+
+2
+
+v
+
+such that
+
+_ k
+
+F
+
+2 F
+
+n\Gamma 2
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_\Gamma 1
+
+). Then
+
+_ k
+
+F
+
+can also be viewed in an obvious way as a
+
+function from IR
+
+n
+
+to IR. Thus
+
+_ k
+
+F
+
+2 F
+
+n
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_\Gamma 1
+
+).) Let * ? 0. Then
+
+. _y = A
+
+1
+
+_y \Gamma  *
+
+_ k(
+
+_y
+
+*
+
+)b
+
+2
+
+is
+
+SISS
+
+L
+
+(*
+
+_ \Delta ;
+
+_ N).
+
+Also, since
+
+_ k is bounded and locally Lipschitz, and
+
+_ k(0) = 0, it follows that there exist
+
+L; M ? 0 such that the inequalities j
+
+_ k(_y)j ^ Lj_yj and j
+
+_ k(_y)j ^ M hold for all _y.
+
+On the other hand, the second equation of (4.3) becomes
+
+. ~y = J ~y \Gamma  oe
+
+_
+
+(y
+
+n
+
+\Gamma  ,v)b
+
+0
+
+\Gamma  jvb
+
+0
+
+: (4.5)
+
+Corollary 3.5 implies that there exist \Delta 
+
+1
+
+; *
+
+1
+
+; *
+
+2
+
+? 0 such that
+
+(A) whenever ffi ^ \Delta 
+
+1
+
+, and e
+
+1
+
+; e
+
+2
+
+: [0; 1) ! IR are bounded measurable functions such that
+
+je
+
+i
+
+j ^
+
+ev
+
+ffi
+
+*
+
+i
+
+, i = 1; 2, it follows that all the solutions of
+
+. ~y = J ~y \Gamma  oe
+
+n
+
+(y
+
+n
+
+\Gamma  e
+
+1
+
+)b
+
+0
+
++ e
+
+2
+
+b
+
+0
+
+are
+
+eventually bounded by ffi.
+
+Recall that oe
+
+_
+
+is differentiable at 0 and oe
+
+0
+
+_
+
+(0) = ^. Then for every " ? 0 there exists \Delta 
+
+2
+
+? 0
+
+such that
+
+jg(s)j ^ "jsj for jsj ^ \Delta 
+
+2
+
+: (4.6)
+
+Now, fix a positive number ff ! 1. Choose " ? 0 such that
+
+"
+
+i
+
+M (,*
+
+1
+
++ j*
+
+2
+
++ ,) + \Delta 
+
+1
+
+j
+
+jjb
+
+3
+
+jj ! ff
+
+_ \Delta  ; (4.7)
+
+and
+
+"
+
+_ N L(,*
+
+1
+
++ j*
+
+2
+
++ ,) !
+
+1
+
+4
+
+: (4.8)
+
+Then there exists a \Delta 
+
+2
+
+? 0 such that (4.6) is satisfied. (Notice that in the special case when
+
+oe
+
+_
+
+is linear near 0 the existence of a \Delta 
+
+2
+
+? 0 such that (4.6) holds is also guaranteed if " = 0,
+
+and then of course (4.7) and (4.8) hold as well. So in this case we can actually choose " = 0.)
+
+Now, choose ffi
+
+0
+
+? 0 so that
+
+ffi
+
+0
+
+^ minf\Delta 
+
+1
+
+; ff\Delta 
+
+2
+
+g ; (4.9)
+
+13Pass1: Page 14
+
+
+and let * be such that 0 ! * ! 1 and
+
+*,M ^ (1 \Gamma  ff)\Delta 
+
+2
+
+; (4.10)
+
+*(,*
+
+1
+
++ j*
+
+2
+
+)M ^ ffffi
+
+0
+
+: (4.11)
+
+Then define
+
+\Delta  = minfffi
+
+0
+
+;
+
+(1 \Gamma  ff)*ffi
+
+0
+
+*
+
+2
+
+; (1 \Gamma  ff)*
+
+_ \Delta g : (4.12)
+
+Now choose v = \Gamma *
+
+_ k(
+
+_y
+
+*
+
+). Then the closed-loop system arising from (4.4) and (4.5) is
+
+. _y = A
+
+1
+
+_y \Gamma  *
+
+_ k(
+
+_y
+
+*
+
+)b
+
+2
+
+\Gamma  g(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))b
+
+3
+
+;
+
+. ~y = J ~y \Gamma  oe
+
+_
+
+(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))b
+
+0
+
++ *j
+
+_ k(
+
+_y
+
+*
+
+)b
+
+0
+
+:
+
+(4.13)
+
+We will prove that (4.13) is SISS
+
+L
+
+(\Delta ; N) for some N ? 0. This will imply the conclusion of
+
+Theorem 2.3 for the single-input case, as we now show.
+
+Notice that the linearization \Sigma 
+
+L
+
+of (4.13) at 0 is obviously asymptotically stable. (Indeed,
+
+if we linearize the first equation we just obtain the linearization at 0 of the system
+
+. _y =
+
+A
+
+1
+
+_y \Gamma 
+
+_ k(_y)b
+
+2
+
+, and this linearization is asymptotically stable by the inductive hypothesis. If
+
+we linearize the second equation and discard the terms involving _y, we get the equation
+
+. ~y =
+
+J ~y \Gamma  ^y
+
+n
+
+, which is also asymptotically stable. The asymptotic stability of \Sigma 
+
+L
+
+follows easily.)
+
+As a consequence, the local asymptotic stability of (4.13) is guaranteed. To get a Type F feedback we take , = 1; j = 0. Then the feedback u = \Gamma oe
+
+_
+
+(y
+
+n
+
++ *
+
+_ k(
+
+_y
+
+*
+
+)) is as desired. To
+
+get a Type G feedback we take , = 0; j = 1. Then, for any r ? 0, the closed-loop system corresponding to (4.3) and the feedback
+
+u = \Gamma roe
+
+_
+
+(
+
+y
+
+n
+
+r
+
+) \Gamma  r*
+
+_ k(
+
+_y
+
+r*
+
+) ; (4.14)
+
+is SISS
+
+L
+
+(r\Delta ; N ). Choosing r sufficiently small, we can insure that the sum of the coefficients
+
+of all saturations in (4.14) is bounded by 1. Therefore the feedback defined by (4.14) is as desired. This completes the proof that the conclusion of Theorem 2.3 for the single-input case follows if (4.13) is SISS
+
+L
+
+(\Delta ; N ) for some N ? 0.
+
+We now show that (4.13) is SISS
+
+L
+
+(\Delta ; N ) for some N ? 0. Given ffi ^ \Delta , let _e; ~e be
+
+bounded measurable vector-valued functions on [0; 1), eventually bounded by ffi, and of the same dimensions as _y; ~y, respectively. We consider the system:
+
+. _y = A
+
+1
+
+_y \Gamma  *
+
+_ k(
+
+_y
+
+*
+
+)b
+
+2
+
+\Gamma  g(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))b
+
+3
+
++ _e ;
+
+. ~y = J ~y \Gamma  oe
+
+_
+
+(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))b
+
+0
+
++ *j
+
+_ k(
+
+_y
+
+*
+
+)b
+
+0
+
++ ~e :
+
+(4.15)
+
+From (4.11) we get
+
+*,j
+
+_ k(
+
+_y
+
+*
+
+)j ^
+
+ev
+
+*,M ^
+
+ffi
+
+0
+
+*
+
+1
+
+; (4.16)
+
+and (because ffi ^
+
+(1\Gamma ff)*ffi
+
+0
+
+*
+
+2
+
+)
+
+j*j
+
+_ k(
+
+_y
+
+*
+
+)b
+
+0
+
++ ~ej ^
+
+ev
+
+*jM + ffi ^
+
+ffi
+
+0
+
+*
+
+2
+
+: (4.17)
+
+14Pass1: Page 15
+
+
+So applying (A) to the second equation of (4.15), we conclude that
+
+j~yj ^
+
+ev
+
+maxf*,M *
+
+1
+
+; *jM *
+
+2
+
++ ffi*
+
+2
+
+g ^ *M (,*
+
+1
+
++ j*
+
+2
+
+) + ffi*
+
+2
+
+; (4.18)
+
+and therefore
+
+jy
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+)j ^
+
+ev
+
+*M (,*
+
+1
+
++ j*
+
+2
+
+) + ffi*
+
+2
+
++ *,M : (4.19)
+
+Inequality (4.11) and ffi*
+
+2
+
+^ (1 \Gamma  ff)ffi
+
+0
+
+then imply that the right-hand side of (4.18) is bounded
+
+by ffi
+
+0
+
+. Therefore, it follows from (4.9) that
+
+j~yj ^
+
+ev
+
+minf\Delta 
+
+1
+
+; ff\Delta 
+
+2
+
+g : (4.20)
+
+Then (4.20) and (4.10) imply that jy
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+)j ^
+
+ev
+
+\Delta 
+
+2
+
+. From (4.6) we then get
+
+jg(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))j ^
+
+ev
+
+"jy
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+)j : (4.21)
+
+Since ffi*
+
+2
+
+^ (1 \Gamma  ff)*ffi
+
+0
+
+and ffi
+
+0
+
+^ \Delta 
+
+1
+
+, using (4.19) we obtain
+
+jy
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+)j ^
+
+ev
+
+*
+
+i
+
+M (,*
+
+1
+
++ j*
+
+2
+
++ ,) + (1 \Gamma  ff)\Delta 
+
+1
+
+j
+
+;
+
+and then
+
+jg(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))b
+
+3
+
++ _ej ^
+
+ev
+
+*"
+
+i
+
+M (,*
+
+1
+
++ j*
+
+2
+
++ ,) + (1 \Gamma  ff)\Delta 
+
+1
+
+j
+
+jjb
+
+3
+
+jj + ffi : (4.22)
+
+From (4.7) and (4.12) we see that the right-hand side of (4.22) is bounded by *
+
+_ \Delta . Since the
+
+system
+
+. _y = A
+
+1
+
+_y \Gamma  *
+
+_ k(
+
+_y
+
+*
+
+)b
+
+2
+
+is SISS
+
+L
+
+(*
+
+_ \Delta ;
+
+_ N), it follows that
+
+j_yj ^
+
+ev
+
+*
+
+_ N
+
+_ \Delta  : (4.23)
+
+Now, suppose lim sup
+
+t!1
+
+j_y(t)j = ae ? 0. Then j_yj ^
+
+ev
+
+2ae. So j
+
+_ k(y)j ^ Ljyj implies that
+
+j*,
+
+_ k(
+
+_y
+
+*
+
+)j ^
+
+ev
+
+2,Lae (4.24)
+
+and
+
+j*j
+
+_ k(
+
+_y
+
+*
+
+)b
+
+0
+
++ ~ej ^
+
+ev
+
+2jLae + ffi : (4.25)
+
+We now apply (A) again to the second equation in (4.15), but this time we use (4.24) and (4.25). We then obtain
+
+j~yj ^
+
+ev
+
+maxf2,*
+
+1
+
+Lae; 2j*
+
+2
+
+Lae + *
+
+2
+
+ffig ^ 2(,*
+
+1
+
++ j*
+
+2
+
+)Lae + *
+
+2
+
+ffi : (4.26)
+
+(Notice that if the right-hand side of (4.26) is greater than \Delta 
+
+1
+
+, then the inequality is trivial
+
+because of (4.20).) From (4.21), (4.24), and (4.26) it follows that
+
+jg(y
+
+n
+
++ *,
+
+_ k(
+
+_y
+
+*
+
+))j ^
+
+ev
+
+"
+
+i
+
+2(,*
+
+1
+
++ j*
+
+2
+
++ ,)Lae + *
+
+2
+
+ffi
+
+j
+
+:
+
+Now, if
+
+"
+
+i
+
+2(,*
+
+1
+
++ j*
+
+2
+
++ ,)Lae + *
+
+2
+
+ffi
+
+j
+
++ ffi ^ *
+
+_ \Delta  ; (4.27)
+
+15Pass1: Page 16
+
+
+then, since the system
+
+. _y = A
+
+1
+
+_y \Gamma  *
+
+_ k(
+
+_y
+
+*
+
+)b
+
+2
+
+is SISS
+
+L
+
+(*
+
+_ \Delta ;
+
+_ N), it follows that
+
+j_yj ^
+
+ev
+
+"
+
+_ N
+
+i
+
+2(,*
+
+1
+
++ j*
+
+2
+
++ ,)Lae + *
+
+2
+
+ffi
+
+j
+
++
+
+_ Nffi : (4.28)
+
+If (4.27) is not satisfied, then "
+
+_ N
+
+i
+
+2(,*
+
+1
+
++ j*
+
+2
+
++ ,)Lae + *
+
+2
+
+ffi
+
+j
+
++
+
+_ N ffi ? *
+
+_ N
+
+_ \Delta . However, from
+
+(4.23) we see that (4.28) still holds. So we have established (4.28) in all cases. From (4.8) we then get
+
+j_yj ^
+
+ev
+
+1
+
+2
+
+ae +
+
+_ N ("*
+
+2
+
++ 1)ffi : (4.29)
+
+Taking the lim sup
+
+t!1
+
+of the left-hand side of (4.29), we get the inequality ae ^
+
+1
+
+2
+
+ae+
+
+_ N("*
+
+2
+
++1)ffi,
+
+i.e. ae ^ 2
+
+_ N("*
+
+2
+
++ 1)ffi. Substituting this into (4.26) and (4.29), we find that j~yj ^
+
+ev
+
+i
+
+4(,*
+
+1
+
++
+
+j*
+
+2
+
+)L
+
+_ N("*
+
+2
+
++ 1) + *
+
+2
+
+j
+
+ffi and j_yj ^
+
+ev
+
+2
+
+_ N("*
+
+2
+
++ 1)ffi. So, if we take N = 2
+
+_ N("*
+
+2
+
++ 1)(1 + 2L(,*
+
+1
+
++
+
+j*
+
+2
+
+)) + *
+
+2
+
+, then (4.13) is SISS
+
+L
+
+(\Delta ; N ). As explained before, this establishes the conclusion of
+
+Theorem 2.3 for the single-input case.
+
+Next, we deal with the general m-input case, and prove Theorem 2.3 by induction on m. We already know that the theorem is true if m = 1. Assume that Theorem 2.3 has been established for all k-input systems, for all k ^ m \Gamma  1, and consider an m-input system \Sigma  : .x = Ax + Bu.
+
+Assume without loss of generality that the first column b
+
+1
+
+of B is nonzero and consider the
+
+Kalman controllability decomposition of the system \Sigma 
+
+1
+
+: .x = Ax + b
+
+1
+
+u (see [11], Lemma 3.3.3).
+
+We conclude that, after a change of coordinates y = T
+
+\Gamma 1
+
+x, \Sigma 
+
+1
+
+has the form
+
+.y
+
+1
+
+= A
+
+1
+
+y
+
+1
+
++ A
+
+2
+
+y
+
+2
+
++
+
+_
+
+b
+
+1
+
+u ;
+
+.y
+
+2
+
+= A
+
+3
+
+y
+
+2
+
+;
+
+where (A
+
+1
+
+;
+
+_
+
+b
+
+1
+
+) is a controllable pair. In these coordinates, \Sigma  has the form
+
+.y
+
+1
+
+= A
+
+1
+
+y
+
+1
+
++ A
+
+2
+
+y
+
+2
+
++
+
+_
+
+b
+
+1
+
+u
+
+1
+
++
+
+_ B
+
+1
+
+_u ;
+
+.y
+
+2
+
+= A
+
+3
+
+y
+
+2
+
++
+
+_ B
+
+2
+
+_u ;
+
+(4.30)
+
+where _u = (u
+
+2
+
+; \Delta  \Delta  \Delta  ; u
+
+m
+
+)
+
+0
+
+and
+
+_ B
+
+1
+
+;
+
+_ B
+
+2
+
+are matrices of the appropriate dimensions. So it suffices
+
+to prove the conclusion for (4.30). Let n
+
+1
+
+; n
+
+2
+
+denote the dimensions of y
+
+1
+
+; y
+
+2
+
+, respectively.
+
+Recall that _ = _(A). Let oeoe
+
+oe
+
+= (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_
+
+) be any finite sequence of bounded functions in S.
+
+Let H stand for either F or G. Then, for the single-input controllable system
+
+.y
+
+1
+
+= A
+
+1
+
+y
+
+1
+
++
+
+_
+
+b
+
+1
+
+u
+
+1
+
+there is a feedback
+
+u
+
+1
+
+= \Gamma k
+
+1
+
+(y
+
+1
+
+) (4.31)
+
+such that (i) k
+
+1
+
+2 H
+
+n
+
+1
+
+(oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_
+
+1
+
+), where _
+
+1
+
+= _(A
+
+1
+
+); (ii) the resulting closed-loop system
+
+is SISS
+
+L
+
+(\Delta 
+
+1
+
+; N
+
+1
+
+) for some \Delta 
+
+1
+
+; N
+
+1
+
+? 0; (iii) the linearization at 0 of the closed-loop system
+
+is asymptotically stable. Since (4.30) is controllable, we conclude that the (m \Gamma  1)-input subsystem .y
+
+2
+
+= A
+
+3
+
+y
+
+2
+
++
+
+_ B
+
+2
+
+_u is controllable as well. By the inductive hypothesis, this subsystem
+
+can be stabilized by a feedback
+
+_u = \Gamma 
+
+_ k(y
+
+2
+
+) = \Gamma (k
+
+2
+
+(y
+
+2
+
+); \Delta  \Delta  \Delta  ; k
+
+m
+
+(y
+
+2
+
+)) (4.32)
+
+16Pass1: Page 17
+
+
+such that (i)
+
+_ k 2 H
+
+_ ll
+
+l
+
+n
+
+2
+
+(oe
+
+_
+
+1
+
++1
+
+; \Delta  \Delta  \Delta  ; oe
+
+_
+
+), where
+
+_
+
+ll
+
+l
+
+= (_
+
+2
+
+; \Delta  \Delta  \Delta  ; _
+
+m
+
+) is an (m \Gamma  1)-tuple of nonnegative
+
+integers and j
+
+_
+
+ll
+
+l
+
+j = _ \Gamma  _
+
+1
+
+; (ii) the resulting closed-loop system \Sigma 
+
+2
+
+is SISS
+
+L
+
+(\Delta 
+
+2
+
+; N
+
+2
+
+) for some
+
+\Delta 
+
+2
+
+; N
+
+2
+
+? 0; (iii) the linearization at 0 of the closed-loop system is asymptotically stable. Let
+
+C be such that jA
+
+2
+
+y
+
+2
+
+\Gamma 
+
+_ B
+
+1
+
+_ k(y
+
+2
+
+)j ^
+
+ev
+
+Cjy
+
+2
+
+j whenever jy
+
+2
+
+j ^ N
+
+2
+
+\Delta 
+
+2
+
+. (Such a C exists because
+
+_ k is locally Lipschitz.) Let \Delta 
+
+3
+
+be such that 0 ! \Delta 
+
+3
+
+^ \Delta 
+
+2
+
+and (CN
+
+2
+
++ 1)\Delta 
+
+3
+
+! \Delta 
+
+1
+
+. Then \Sigma 
+
+2
+
+is also SISS
+
+L
+
+(\Delta 
+
+3
+
+; N
+
+2
+
+). If e
+
+1
+
+, e
+
+2
+
+are bounded measurable vector functions of the appropriate
+
+dimensions that are eventually bounded by ffi ^ \Delta 
+
+3
+
+, and t ! (y
+
+1
+
+(t); y
+
+2
+
+(t)) is a solution of
+
+.y
+
+1
+
+= A
+
+1
+
+y
+
+1
+
++ A
+
+2
+
+y
+
+2
+
+\Gamma 
+
+_
+
+b
+
+1
+
+k
+
+1
+
+(y
+
+1
+
+) \Gamma 
+
+_ B
+
+1
+
+_ k(y
+
+2
+
+) + e
+
+1
+
+;
+
+.y
+
+2
+
+= A
+
+3
+
+y
+
+2
+
+\Gamma 
+
+_ B
+
+2
+
+_ k(y
+
+2
+
+) + e
+
+2
+
+;
+
+(4.33)
+
+then the fact that .y
+
+2
+
+= A
+
+3
+
+y
+
+2
+
+\Gamma 
+
+_ B
+
+2
+
+_ k(y
+
+2
+
+) is SISS
+
+L
+
+(\Delta 
+
+3
+
+; N
+
+2
+
+) implies that jy
+
+2
+
+j ^
+
+ev
+
+N
+
+2
+
+ffi. Then
+
+jA
+
+2
+
+y
+
+2
+
+\Gamma 
+
+_ B
+
+1
+
+_ k(y
+
+2
+
+) + e
+
+1
+
+j ^
+
+ev
+
+(CN
+
+2
+
++ 1)ffi ^ (CN
+
+2
+
++ 1)\Delta 
+
+3
+
+^ \Delta 
+
+1
+
+. Since .y
+
+1
+
+= A
+
+1
+
+y
+
+1
+
+\Gamma 
+
+_
+
+b
+
+1
+
+k
+
+1
+
+(y
+
+1
+
+)
+
+is SISS
+
+L
+
+(\Delta 
+
+1
+
+; N
+
+1
+
+), we conclude that jy
+
+1
+
+j ^
+
+ev
+
+N
+
+1
+
+(CN
+
+2
+
++ 1)ffi. So jyj ^
+
+ev
+
+N ffi, where N =
+
+N
+
+1
+
++ N
+
+2
+
++ CN
+
+1
+
+N
+
+2
+
+. So the feedback given by (4.31) and (4.32) globally stabilizes (4.30), and
+
+the resulting closed-loop system is SISS
+
+L
+
+(\Delta 
+
+3
+
+; N ). Therefore, if we let ll
+
+l
+
+= (_
+
+1
+
+; _
+
+2
+
+; \Delta  \Delta  \Delta  ; _
+
+m
+
+) and
+
+k = (k
+
+1
+
+(y
+
+1
+
+); k
+
+2
+
+(y
+
+2
+
+); \Delta  \Delta  \Delta  ; k
+
+m
+
+(y
+
+2
+
+)), then k 2 H
+
+ll
+
+l
+
+n
+
+(oeoe
+
+oe
+
+) satisfies all the required properties. 2
+
+5 An Algorithm We now present a two-step procedure for computing stabilizing feedbacks of the kind described in the statement of Theorem 2.3. The first step is to transform \Sigma  into a special form by means of a linear change of coordinates. The second step is the construction of a stabilizing feedback for the transformed system. This essentially amounts to keeping track of the constants that occur in the proof of Lemma 3.2. All the relevant information about this proof has already been summarized in Remark 3.3 and Corollary 3.5, so our discussion will be based on these results --and on the proof of Theorem 2.3-- but not on the proof of Lemma 3.2.
+
+We will need the following corollary of the Kalman controllability decomposition:
+
+Lemma 5.1 Let \Sigma  be a linear system of the form (1.1) with state space IR
+
+n
+
+and input space
+
+IR
+
+m
+
+. Suppose that all the eigenvalues of A have nonpositive real parts and all the eigenvalues of
+
+the uncontrollable part of \Sigma  have strictly negative real parts. Then there exists a linear change of coordinates which transforms (1.1) into the following form
+
+.x
+
+0
+
+= A
+
+00
+
+x
+
+0
+
++ A
+
+01
+
+x
+
+1
+
++ A
+
+02
+
+x
+
+2
+
++ \Delta  \Delta  \Delta  + A
+
+0m
+
+x
+
+m
+
++b
+
+01
+
+u
+
+1
+
++ b
+
+02
+
+u
+
+2
+
++ \Delta  \Delta  \Delta  + b
+
+0m
+
+u
+
+m
+
+;
+
+.x
+
+1
+
+= A
+
+11
+
+x
+
+1
+
++ A
+
+12
+
+x
+
+2
+
++ \Delta  \Delta  \Delta  + A
+
+1m
+
+x
+
+m
+
++b
+
+11
+
+u
+
+1
+
++ b
+
+12
+
+u
+
+2
+
++ \Delta  \Delta  \Delta  + b
+
+1m
+
+u
+
+m
+
+;
+
+.x
+
+2
+
+= A
+
+22
+
+x
+
+2
+
++ \Delta  \Delta  \Delta  + A
+
+2m
+
+x
+
+m
+
++ b
+
+22
+
+u
+
+2
+
++ \Delta  \Delta  \Delta  + b
+
+2m
+
+u
+
+m
+
+;
+
+. . .
+
+.x
+
+m
+
+= A
+
+mm
+
+x
+
+m
+
++ b
+
+mm
+
+u
+
+m
+
+;
+
+(5.1)
+
+where all the eigenvalues of A
+
+00
+
+have negative real part, all the eigenvalues of A
+
+ii
+
+with i * 1
+
+have zero real part, and all the pairs (A
+
+ii
+
+; b
+
+ii
+
+), i * 1, are controllable. (The coordinate x
+
+i
+
+may
+
+have zero dimension. In that case, there is no equation for x
+
+i
+
+in (5.1). ) 2
+
+17Pass1: Page 18
+
+
+From the proof of Theorem 2.3 we see that, if we find SISS
+
+L
+
+-stabilizing feedbacks u
+
+i
+
+=
+
+k
+
+i
+
+(x
+
+i
+
+) of Type F or Type G for the systems \Sigma 
+
+i
+
+: .x
+
+i
+
+= A
+
+ii
+
+x
+
+i
+
++ b
+
+ii
+
+u
+
+i
+
+and let k = (k
+
+1
+
+; \Delta  \Delta  \Delta  ; k
+
+m
+
+) then
+
+k is SISS
+
+L
+
+-stabilizing for \Sigma . So what we need is to stabilize each \Sigma 
+
+i
+
+separately, making sure
+
+that the SISS
+
+L
+
+property holds. To simplify the notation, we consider again an n-dimensional
+
+single-input controllable system \Sigma  : .x = Ax + bu such that all the eigenvalues of A have zero real part. Our goal is to find SISS
+
+L
+
+-stabilizing feedbacks of Type F and Type G for \Sigma . For
+
+this purpose, we will use the following corollary of Lemma 3.1.
+
+Lemma 5.2 Let \Sigma  : .x = Ax + bu, x 2 IR
+
+n
+
+, be a controllable single-input linear system. Sup-
+
+pose that all eigenvalues of A are critical. Let \Sigma !
+
+1
+
+i; \Sigma !
+
+2
+
+i; \Delta  \Delta  \Delta  ; \Sigma !
+
+q
+
+i be the nonzero eigenvalues
+
+of A, and let p be the multiplicity of 0 as an eigenvalue, so p + 2q = n. Let s = p + q, and let (*
+
+1
+
+; \Delta  \Delta  \Delta  ; *
+
+s\Gamma 1
+
+) be a finite sequence of positive numbers. Let `
+
+j;k
+
+= 1 for k = j + 1, and
+
+`
+
+j;k
+
+=
+
+k\Gamma 2
+
+Q
+
+h=j
+
+*
+
+h
+
+for j + 2 ^ k ^ s + 1. Then there is a linear change of coordinates that puts \Sigma  in
+
+the form:
+
+.z
+
+j
+
+= !
+
+j
+
+y
+
+j
+
+; j = 1; 2; \Delta  \Delta  \Delta  ; q ;
+
+.y
+
+j
+
+= \Gamma !
+
+j
+
+z
+
+j
+
++
+
+s P
+
+k=j+1
+
+`
+
+j;k
+
+y
+
+k
+
++ `
+
+j;s+1
+
+u ; j = 1; 2; \Delta  \Delta  \Delta  ; q ;
+
+.y
+
+j
+
+=
+
+s P
+
+k=j+1
+
+`
+
+j;k
+
+y
+
+k
+
++ `
+
+j;s+1
+
+u ; j = q + 1; q + 2; \Delta  \Delta  \Delta  ; s \Gamma  1 ;
+
+.y
+
+s
+
+= u :
+
+(5.2)
+
+To derive this from Lemma 3.1, we notice that, if p ? 0, then from Part (i) of Lemma 3.1 it follows that there is a linear change of coordinates x ! (_y
+
+0
+
+; y
+
+n
+
+) that puts \Sigma  in the form
+
+. _y = A
+
+1
+
+_y + b
+
+1
+
+(y
+
+n
+
++ *
+
+s\Gamma 1
+
+u) ; .y
+
+n
+
+= u :
+
+If p ? 1, then relabeling _y as x and applying Part (i) of Lemma 3.1 to the system \Sigma 
+
+1
+
+: .x =
+
+A
+
+1
+
+x + b
+
+1
+
+v, with *
+
+s\Gamma 2
+
+in the role of *, we find a linear change of coordinates x ! (_y
+
+0
+
+; y
+
+n\Gamma 1
+
+) that
+
+puts \Sigma 
+
+1
+
+in the form
+
+. _y = A
+
+2
+
+_y + b
+
+2
+
+(y
+
+n\Gamma 1
+
++ *
+
+s\Gamma 2
+
+v) ; .y
+
+n\Gamma 1
+
+= v, where (A
+
+2
+
+; b
+
+2
+
+) is controllable.
+
+Substituting v = y
+
+n
+
++ *
+
+s\Gamma 1
+
+u, we see that \Sigma  has been transformed into
+
+. _y = A
+
+2
+
+_y + b
+
+2
+
+(y
+
+n\Gamma 1
+
++ *
+
+s\Gamma 2
+
+y
+
+n
+
++ *
+
+s\Gamma 2
+
+*
+
+s\Gamma 1
+
+u) ;
+
+.y
+
+n\Gamma 1
+
+= y
+
+n
+
++ *
+
+s\Gamma 1
+
+u ;
+
+.y
+
+n
+
+= u :
+
+Continuing in this way, we apply Part (i) of Lemma 3.1 to each pair (A
+
+`
+
+; b
+
+`
+
+), with *
+
+s\Gamma `\Gamma 1
+
+in
+
+the role of *, until zero is no longer an eigenvalue of A
+
+`
+
+, thereby generating a system whose
+
+last p equations are the last p equations of (5.2). We then apply Part (ii) q times, until we obtain the representation (5.2). 2
+
+Now let (oe
+
+1
+
+; \Delta  \Delta  \Delta  ; oe
+
+s
+
+) be a finite sequence of bounded functions in S. Suppose oe
+
+0
+
+i
+
+(0) = ^
+
+i
+
+.
+
+Choose *
+
+i
+
+=
+
+1
+
+^
+
+i+1
+
+, and then use Lemma 5.2 to put \Sigma  in the form (5.2). (To find a linear trans-
+
+formation that puts \Sigma  in this form simply let (
+
+~ A;
+
+~
+
+b) denote the controllable pair corresponding
+
+to (5.2). Then y = T
+
+\Gamma 1
+
+x, with T = R(A; b)R(
+
+~ A;
+
+~
+
+b)
+
+\Gamma 1
+
+, is the desired transformation, where
+
+R(A; b) denotes the controllability matrix of (A; b). See Section 3.3 of [11].)
+
+18Pass1: Page 19
+
+
+To get a stabilizing feedback of Type F , we will choose positive constants *
+
+1
+
+; *
+
+2
+
+; \Delta  \Delta  \Delta  ; *
+
+s\Gamma 1
+
+and let
+
+u = \Gamma oe
+
+s
+
+
+
+y
+
+s
+
++ *
+
+s\Gamma 1
+
+oe
+
+s\Gamma 1
+
+`
+
+y
+
+s\Gamma 1
+
+*
+
+s\Gamma 1
+
++ *
+
+s\Gamma 2
+
+oe
+
+s\Gamma 2
+
+i
+
+y
+
+s\Gamma 2
+
+*
+
+s\Gamma 2
+
+*
+
+s\Gamma 1
+
++ \Delta  \Delta  \Delta  + *
+
+1
+
+oe
+
+1
+
+(
+
+y
+
+1
+
+*
+
+1
+
+*
+
+2
+
+\Delta  \Delta  \Delta  *
+
+s\Gamma 1
+
+) \Delta  \Delta  \Delta 
+
+j
+
+'
+
+!
+
+: (5.3)
+
+To get a Type G stabilizing feedback we choose positive numbers *
+
+1
+
+; *
+
+2
+
+; \Delta  \Delta  \Delta  ; *
+
+s
+
+and let
+
+u = \Gamma *
+
+s
+
+oe
+
+s
+
+
+
+y
+
+s
+
+*
+
+s
+
+!
+
+\Gamma  *
+
+s\Gamma 1
+
+*
+
+s
+
+oe
+
+s\Gamma 1
+
+
+
+y
+
+s\Gamma 1
+
+*
+
+s\Gamma 1
+
+*
+
+s
+
+!
+
+\Gamma  \Delta  \Delta  \Delta  \Gamma  (*
+
+1
+
+*
+
+2
+
+\Delta  \Delta  \Delta  *
+
+s
+
+) oe
+
+1
+
+
+
+y
+
+1
+
+*
+
+1
+
+*
+
+2
+
+\Delta  \Delta  \Delta  *
+
+s
+
+!
+
+(5.4)
+
+(See Figures 1 and 2.)
+
++ +
+
++
+
++ l-1s-1 l-1s-1
+
+l-1s-1
+
+l-1s-1
+
+3-1l 3-1l 3-1l
+
+-1l2 -1l2 -1l1 s1
+
+2s 3s
+
+ss ss-1
+
+l1 l2
+
+3l
+
+ls-1 ys
+
+ys-1
+
+y3
+
+y1 y2 L NE AR
+
+TR AN SF OR MA T ON
+
+I
+
+I
+
+z ,z , ..., z1 2 q
+
+xn
+
+xn-1
+
+x3 x1 x2
+
+-1 u
+
+S Y S T E M
+
+Figure 1: Block diagram for (5.3) In both cases, the crucial question is how to choose the constants *
+
+j
+
+. We now describe in detail
+
+how to find values of *
+
+1
+
+; *
+
+2
+
+; \Delta  \Delta  \Delta  ; *
+
+s\Gamma 1
+
+for (5.3) that achieve the desired goal. (The procedure
+
+for (5.4) is similar.)
+
+The *
+
+j
+
+will be chosen recursively. As in the proof of Theorem 2.3, we first find (\Delta 
+
+1
+
+; N
+
+1
+
+) so
+
+that the (z
+
+1
+
+; y
+
+1
+
+)-subsystem of (5.2) with u = \Gamma oe
+
+1
+
+(y
+
+1
+
+) is SISS
+
+L
+
+(\Delta 
+
+1
+
+; N
+
+1
+
+), then find *
+
+1
+
+so that
+
+the (z
+
+1
+
+; y
+
+1
+
+; z
+
+2
+
+; y
+
+2
+
+)-subsystem of (5.2) with u = \Gamma oe
+
+2
+
+(y
+
+2
+
++ *
+
+1
+
+oe
+
+1
+
+(
+
+y
+
+1
+
+*
+
+1
+
+)) or u = \Gamma oe
+
+2
+
+(y
+
+2
+
+) \Gamma  *
+
+1
+
+oe
+
+1
+
+(
+
+y
+
+1
+
+*
+
+1
+
+)
+
+is SISS
+
+L
+
+(\Delta 
+
+2
+
+; N
+
+2
+
+) for some \Delta 
+
+2
+
+; N
+
+2
+
+? 0, and so on.
+
+19Pass1: Page 20
+
+
+L NE AR
+
+TR AN SF OR MA T ON
+
+I
+
+I
+
+xn
+
+xn-1
+
+x3 x1 x2
+
+u
+
+l s +
+
+3-1l 3-1l 3-1l
+
+-1l2 -1l2 -1l1
+
+y3 y2
+
+z ,z , ..., z1 2 q
+
+s1
+
+2s 3s
+
+l1 l2
+
+3l +
+
++
+
++-1ls -1ls -1ls
+
+-1
+
+y1 ys -1l
+
+s ss
+
+S Y S T E M
+
+Figure 2: Block diagram for (5.4) Step 1: For i = 1; 2; \Delta  \Delta  \Delta  ; s, find
+
+~ L
+
+i
+
+* 1; M
+
+i
+
+? 0 such that joe
+
+i
+
+(t)j ^
+
+~ L
+
+i
+
+jtj and joe
+
+i
+
+(t)j ^ M
+
+i
+
+for all t. Notice that
+
+~ L
+
+i
+
+exists because oe
+
+i
+
+is locally Lipschitz and bounded. Then define
+
+L
+
+i
+
+=
+
+~ L
+
+1
+
+~ L
+
+2
+
+\Delta  \Delta  \Delta 
+
+~ L
+
+i
+
+. The numbers L
+
+i
+
+; M
+
+i
+
+will play the roles of L; M in the proof of Theorem 2.3.
+
+Step 2: For i = 1; 2; \Delta  \Delta  \Delta  ; s, we apply Remark 3.3 (with ff
+
+2
+
+= 1, ff
+
+3
+
+= 0, cf. Remark 3.4) and
+
+Corollary 3.5 to find \Delta 
+
+i
+
+1
+
+; *
+
+i
+
+1
+
+; *
+
+i
+
+2
+
+? 0 such that, whenever e
+
+1
+
+; e
+
+2
+
+are two bounded real-valued
+
+measurable functions on [0; 1) such that je
+
+1
+
+j ^
+
+ev
+
+ffi
+
+*
+
+i
+
+1
+
+and je
+
+2
+
+j ^
+
+ev
+
+ffi
+
+*
+
+i
+
+2
+
+for some ffi ^ \Delta 
+
+i
+
+1
+
+, it
+
+follows that the state OE of the system
+
+. OE = J
+
+i
+
+OE \Gamma  oe
+
+i
+
+(y
+
+i
+
++ e
+
+1
+
+)b
+
+i
+
++ e
+
+2
+
+b
+
+i
+
+is eventually bounded by
+
+ffi, where (i) J
+
+i
+
+=
+
+
+
+0 !
+
+j
+
+\Gamma !
+
+j
+
+0
+
+!
+
+and b
+
+i
+
+= (0; 1)
+
+y
+
+for i = 1; : : : ; q and (ii) J
+
+i
+
+= 0 and b
+
+i
+
+= 1 for
+
+i = q + 1; : : : ; s. Step 3: Let \Delta 
+
+0
+
+= 1; N
+
+0
+
+= 0 and fix ff 2 (0; 1). We now describe how to find
+
+"
+
+i
+
+; \Delta 
+
+i
+
+2
+
+; ffi
+
+i
+
+0
+
+; *
+
+i
+
+; \Delta 
+
+i
+
+; N
+
+i
+
+recursively for i = 1; 2; \Delta  \Delta  \Delta  ; s \Gamma  1.
+
+Let "
+
+i
+
+? 0 satisfy
+
+"
+
+i
+
+(M
+
+i
+
+(*
+
+i
+
+1
+
++ 1) + \Delta 
+
+i
+
+1
+
+)
+
+1
+
+^
+
+i
+
+! ff\Delta 
+
+i\Gamma 1
+
+and "
+
+i
+
+N
+
+i\Gamma 1
+
+L
+
+i
+
+(*
+
+i
+
+1
+
++ 1) !
+
+1
+
+4
+
+; (5.5)
+
+20Pass1: Page 21
+
+
+and find \Delta 
+
+i
+
+2
+
+? 0 such that
+
+joe
+
+i
+
+(t) \Gamma  ^
+
+i
+
+tj ^ "
+
+i
+
+jtj for jtj ^ \Delta 
+
+i
+
+2
+
+: (5.6)
+
+(If oe
+
+i
+
+is linear near 0 then it is also possible to take "
+
+i
+
+= 0.)
+
+Then let ffi
+
+i
+
+0
+
+; *
+
+i
+
+; \Delta 
+
+i
+
+; N
+
+i
+
+? 0 satisfy the conditions of the proof of Theorem 2.2, namely,
+
+ffi
+
+i
+
+0
+
+^ minf\Delta 
+
+i
+
+1
+
+; ff\Delta 
+
+i
+
+2
+
+g ;
+
+*
+
+i
+
+^ minf1;
+
+ffffi
+
+i
+
+0
+
+*
+
+i
+
+1
+
+M
+
+i
+
+;
+
+(1\Gamma ff)\Delta 
+
+i
+
+2
+
+M
+
+i
+
+g ;
+
+\Delta 
+
+i
+
+^ minfffi
+
+i
+
+0
+
+;
+
+(1\Gamma ff)*
+
+i
+
+ffi
+
+i
+
+0
+
+*
+
+i
+
+2
+
+; (1 \Gamma  ff)*
+
+i
+
+\Delta 
+
+i\Gamma 1
+
+g ;
+
+N
+
+i
+
+* 2N
+
+i\Gamma 1
+
+("
+
+i
+
+*
+
+i
+
+2
+
++ 1)(1 + 2L
+
+i
+
+*
+
+i
+
+1
+
+) + *
+
+i
+
+2
+
+:
+
+With the above choices, the constants *
+
+i
+
+, i = 1; 2; \Delta  \Delta  \Delta  ; s\Gamma 1 are such that (5.3) globally stabilizes
+
+(5.2), and the closed-loop system is SISS
+
+L
+
+. 2
+
+Remark 5.3 When all oe
+
+i
+
+, i = 1; 2; \Delta  \Delta  \Delta  ; s\Gamma 1, are linear near the origin, the algorithm described
+
+above is very simple. As an example, we consider the case of oe
+
+i
+
+(s) = sat (s), where sat (s) =
+
+sign (s) minfjsj; 1g. Then L
+
+i
+
+= M
+
+i
+
+= ^
+
+i
+
+= 1. When i ^ q, we use (3.27) and (3.29), and
+
+observe that we can take
+
+_ \Lambda  = 1, a = b = 1, and then fi
+
+2
+
+=
+
+q
+
+4 +
+
+1
+
+!
+
+2
+
+i
+
+. So we can choose \Delta 
+
+i
+
+1
+
+= 4,
+
+and
+
+*
+
+i
+
+1
+
+=
+
+
+
+2 + 5
+
+s
+
+4 +
+
+1
+
+!
+
+2
+
+i
+
+!
+
+1 +
+
+1
+
+!
+
+i
+
+!
+
+: (5.7)
+
+When i ? q, we take \Delta 
+
+i
+
+1
+
+= 2 and *
+
+i
+
+1
+
+= 2. Next, we choose "
+
+i
+
+= 0, and \Delta 
+
+i
+
+2
+
+= 1 in Step 3 of the
+
+above algorithm. (Notice that the choice "
+
+i
+
+= 0 automatically guarantees that (5.5) and (5.6)
+
+hold, irrespective of the values of \Delta 
+
+i\Gamma 1
+
+, N
+
+i\Gamma 1
+
+. So there is no need to compute the \Delta 
+
+i
+
+and N
+
+i
+
+.)
+
+For every i, the facts that \Delta 
+
+i
+
+1
+
+? 1 and \Delta 
+
+i
+
+2
+
+= 1 imply that, after fixing ff 2 (0; 1), we can take
+
+ffi
+
+i
+
+0
+
+= ff, and then it suffices to choose the *
+
+i
+
+such that *
+
+i
+
+^ minf
+
+ff
+
+2
+
+*
+
+i
+
+1
+
+; 1 \Gamma  ffg. Then the feedback
+
+law (5.3) stabilizes (5.2). 2
+
+Example 5.4 Consider an oscillator with multiplicity two:
+
+.x
+
+1
+
+= x
+
+2
+
+; .x
+
+2
+
+= \Gamma x
+
+1
+
++ x
+
+3
+
+; .x
+
+3
+
+= x
+
+4
+
+; .x
+
+4
+
+= \Gamma x
+
+3
+
++ u ; (5.8)
+
+where u is required to satisfy the constraint juj ^ ".
+
+To get a feedback of the form
+
+u = \Gamma sat
+
+i
+
+f
+
+1
+
+(x) + * sat (
+
+f
+
+2
+
+(x)
+
+*
+
+)
+
+j
+
+;
+
+we need to find a linear transformation that puts (5.8) in the form (5.2). In our case, (5.2) reduces to
+
+.y
+
+1
+
+= y
+
+2
+
+; .y
+
+2
+
+= \Gamma y
+
+1
+
++ y
+
+4
+
++ u ; .y
+
+3
+
+= y
+
+4
+
+; .y
+
+4
+
+= \Gamma y
+
+3
+
++ u : (5.9)
+
+21Pass1: Page 22
+
+
+We now write (5.8) as .x = Ax + bu and (5.9) as .y =
+
+~ Ay +
+
+~
+
+bu. A simple computation then
+
+shows that
+
+R(A; b) =
+
+0 B B B @
+
+0 0 0 1 0 0 1 0 0 1 0 \Gamma 1 1 0 \Gamma 1 0
+
+1 C C C A
+
+and R(
+
+~ A;
+
+~
+
+b) =
+
+0 B B B @
+
+0 1 1 \Gamma 1 1 1 \Gamma 1 \Gamma 2 0 1 0 \Gamma 1 1 0 \Gamma 1 0
+
+1 C C C A
+
+:
+
+If we let T = R(A; b)R(
+
+~ A;
+
+~
+
+b)
+
+\Gamma 1
+
+, then the coordinate change y = T
+
+\Gamma 1
+
+x transforms (5.8) into
+
+(5.9). The matrix T
+
+\Gamma 1
+
+is easily computed, and the transformation y = T
+
+\Gamma 1
+
+x turns out to be
+
+y
+
+1
+
+= x
+
+2
+
++ x
+
+3
+
+; y
+
+2
+
+= \Gamma x
+
+1
+
++ x
+
+3
+
++ x
+
+4
+
+; y
+
+3
+
+= x
+
+3
+
+; y
+
+4
+
+= x
+
+4
+
+:
+
+We now need to find * ? 0 so that
+
+u = \Gamma sat
+
+i
+
+y
+
+4
+
++ * sat (
+
+y
+
+2
+
+*
+
+)
+
+j
+
+(5.10)
+
+stabilizes (5.9). To compute *, we follow the steps of Remark 5.3. Notice that !
+
+i
+
+= 1. So
+
+we can take \Delta 
+
+1
+
+1
+
+= 4, *
+
+1
+
+1
+
+= 4 + 10
+
+p
+
+5, and we can also replace the value of *
+
+1
+
+1
+
+by any larger
+
+number, so we can actually take *
+
+1
+
+1
+
+= 27. Let ff 2 (0; 1). Then *
+
+1
+
+= minf
+
+ff
+
+2
+
+27
+
+; 1 \Gamma  ffg. Choosing
+
+ff =
+
+28
+
+29
+
+we obtain *
+
+1
+
+=
+
+1
+
+29
+
+, so we can choose * =
+
+1
+
+29
+
+. Then the feedback defined by (5.10)
+
+globally stabilizes (5.9) and the resulting closed-loop system is SISS. Transforming back to the original x-coordinates, we have shown that the feedback
+
+u = \Gamma " sat
+
+`
+
+x
+
+4
+
+"
+
++
+
+1
+
+29
+
+sat
+
+i
+
+29
+
+"
+
+(\Gamma x
+
+1
+
++ x
+
+3
+
++ x
+
+4
+
+)
+
+j
+
+'
+
+is SISS
+
+L
+
+-stabilizing for the system (5.8). 2
+
+6 Multiple Integrators For special systems, the general method of Section 5 can be often be pushed further, yield- ing simpler formulas with better constants. We will now illustrate this by showing a simple procedure to stabilize multiple integrators.
+
+Theorem 6.1 Let 0 ! " ^
+
+1
+
+4
+
+. Then for the n-th order integrator
+
+.x
+
+1
+
+= x
+
+2
+
+; .x
+
+2
+
+= x
+
+3
+
+; : : : ; .x
+
+n
+
+= u ; (6.1)
+
+there exists a feedback law of the form
+
+u = \Gamma 
+
+n X
+
+i=1
+
+"
+
+i
+
+sat (h
+
+i
+
+(x
+
+1
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+)) ; (6.2)
+
+where each h
+
+i
+
+: IR
+
+n
+
+! IR, i = 1; \Delta  \Delta  \Delta  ; n, is a linear function, such that the origin is a globally
+
+asymptotically stable state for the resulting closed-loop system.
+
+22Pass1: Page 23
+
+
+Proof. We first apply Lemma 5.2 to (6.1) and conclude that for every " ? 0 there exists a linear change of coordinates (x
+
+1
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+) ! (y
+
+1
+
+; \Delta  \Delta  \Delta  ; y
+
+n
+
+) which transforms (6.1) into the form
+
+.y
+
+1
+
+= "
+
+n\Gamma 1
+
+y
+
+2
+
++ "
+
+n\Gamma 2
+
+y
+
+3
+
++ \Delta  \Delta  \Delta  + "y
+
+n
+
++ u ;
+
+.y
+
+2
+
+= "
+
+n\Gamma 2
+
+y
+
+3
+
++ \Delta  \Delta  \Delta  + "y
+
+n
+
++ u ;
+
+. . .
+
+.y
+
+n\Gamma 1
+
+= "y
+
+n
+
++ u ;
+
+.y
+
+n
+
+= u :
+
+(6.3)
+
+(We only need to set *
+
+i
+
+=
+
+1
+
+"
+
+in (5.2) and then make a dilation (x
+
+1
+
+; x
+
+2
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+) !
+
+("
+
+1+2+\Delta \Delta \Delta +(n\Gamma 1)
+
+x
+
+1
+
+, "
+
+1+2+\Delta \Delta \Delta +(n\Gamma 2)
+
+x
+
+2
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+). ) We will show that, when " ^
+
+1
+
+4
+
+, the feedback
+
+u = k(y) = \Gamma "sat (y
+
+n
+
+) \Gamma  "
+
+2
+
+sat (y
+
+n\Gamma 1
+
+) \Gamma  \Delta  \Delta  \Delta  \Gamma  "
+
+n
+
+sat (y
+
+1
+
+) (6.4)
+
+stabilizes (6.3).
+
+To prove this, we observe that, for any trajectory t ! y(t) of the resulting closed-loop system of (6.3) with the feedback given in (6.4), the n-th coordinate y
+
+n
+
+(t) will enter and stay
+
+in the interval (\Gamma 
+
+1
+
+2
+
+;
+
+1
+
+2
+
+) after a finite time. This is obvious from the facts that the sign of k(y)
+
+is opposite to that of y
+
+n
+
+if jy
+
+n
+
+j *
+
+1
+
+2
+
+, since j"
+
+2
+
+sat (y
+
+n\Gamma 1
+
+) + \Delta  \Delta  \Delta  + "
+
+n
+
+sat (y
+
+1
+
+)j ^
+
+4
+
+3
+
+"
+
+2
+
+^
+
+1
+
+3
+
+" ! "jy
+
+n
+
+j,
+
+and that
+
+d
+
+dt
+
+y
+
+2
+
+n
+
+(t) ^ \Gamma 
+
+1
+
+6
+
+" if jy
+
+n
+
+(t)j *
+
+1
+
+2
+
+. So, after a finite time, sat (y
+
+n
+
+) will be equal to y
+
+n
+
+, and
+
+the expression for k(y) gives
+
+k(y) = \Gamma "y
+
+n
+
+\Gamma  "
+
+2
+
+sat (y
+
+n\Gamma 1
+
+) \Gamma  \Delta  \Delta  \Delta  \Gamma  "
+
+n
+
+sat (y
+
+1
+
+) : (6.5)
+
+Next, we consider the equation for .y
+
+n\Gamma 1
+
+. From (6.5), it follows that, after a finite time, this
+
+equation has the form
+
+.y
+
+n\Gamma 1
+
+= \Gamma "
+
+2
+
+sat (y
+
+n\Gamma 1
+
+) \Gamma  \Delta  \Delta  \Delta  \Gamma  "
+
+n
+
+sat (y
+
+1
+
+) :
+
+With an analysis similar to that done for y
+
+n
+
+, we conclude that the coordinate y
+
+n\Gamma 1
+
+(t) will stay
+
+in the interval (\Gamma 
+
+1
+
+2
+
+;
+
+1
+
+2
+
+) after a finite time, and then k(y) will be given by the expression
+
+k(y) = \Gamma "y
+
+n
+
+\Gamma  "
+
+2
+
+y
+
+n\Gamma 1
+
+\Gamma  "
+
+3
+
+sat (y
+
+n\Gamma 2
+
+) \Gamma  \Delta  \Delta  \Delta  \Gamma  "
+
+n
+
+sat (y
+
+1
+
+) :
+
+Continuing in this way, we see that after a finite time k(y) becomes linear in all the coordinates of y, and is given by
+
+k(y) = \Gamma "y
+
+n
+
+\Gamma  "
+
+2
+
+y
+
+n\Gamma 1
+
+\Gamma  \Delta  \Delta  \Delta  \Gamma  "
+
+n
+
+y
+
+1
+
+: (6.6)
+
+It is clear that the closed-loop system of (6.3) with the feedback u = k(y) given in (6.6) is asymptotically stable. So the proof is complete. 2
+
+In Section 5 we described how to find the linear transformation that puts (6.1) in the form (6.3). We now develop another method to get the transformation for multiple integrators, which will also allow us to illustrate the stabilization of multiple integrators by means of a concrete systems diagram.
+
+Consider the n-th order integrator (6.1). Let " ? 0. Define linear functions f
+
+1
+
+; f
+
+2
+
+; \Delta  \Delta  \Delta  ; f
+
+n
+
+as follows:
+
+f
+
+1
+
+(s
+
+1
+
+) = s
+
+1
+
+;
+
+f
+
+2
+
+(s
+
+1
+
+; s
+
+2
+
+) = "f
+
+1
+
+(s
+
+1
+
+) + f
+
+1
+
+(s
+
+2
+
+) ;
+
+. . .
+
+f
+
+n
+
+(s
+
+1
+
+; s
+
+2
+
+; \Delta  \Delta  \Delta  ; s
+
+n
+
+) = "
+
+n\Gamma 1
+
+f
+
+n\Gamma 1
+
+(s
+
+1
+
+; s
+
+2
+
+; \Delta  \Delta  \Delta  ; s
+
+n\Gamma 1
+
+) + f
+
+n\Gamma 1
+
+(s
+
+2
+
+; s
+
+3
+
+; \Delta  \Delta  \Delta  ; s
+
+n
+
+) :
+
+23Pass1: Page 24
+
+
+Then the change of coordinates (x
+
+1
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+) ! (y
+
+1
+
+; \Delta  \Delta  \Delta  ; y
+
+n
+
+) in IR
+
+n
+
+given by
+
+y
+
+n
+
+= f
+
+1
+
+(x
+
+n
+
+) ;
+
+y
+
+n\Gamma 1
+
+= f
+
+2
+
+(x
+
+n\Gamma 1
+
+; x
+
+n
+
+) ;
+
+. . .
+
+y
+
+1
+
+= f
+
+n
+
+(x
+
+1
+
+; x
+
+2
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+) ;
+
+(6.7)
+
+puts (6.1) in the form (6.3).
+
+Indeed, the definition of y
+
+k
+
+implies that y
+
+k
+
+\Gamma  y
+
+k+1
+
+= "
+
+n\Gamma k
+
+f
+
+n\Gamma k
+
+(x
+
+k
+
+; \Delta  \Delta  \Delta  ; x
+
+n\Gamma 1
+
+) for k =
+
+1; 2; \Delta  \Delta  \Delta  ; n \Gamma  1. Since f
+
+n\Gamma k
+
+(s
+
+1
+
+; \Delta  \Delta  \Delta  ; s
+
+n\Gamma k
+
+) is a linear function, it follows that
+
+@f
+
+n\Gamma k
+
+@s
+
+i
+
+is the co-
+
+efficient of s
+
+i
+
+in f
+
+n\Gamma k
+
+. Notice that .x
+
+i
+
+= x
+
+i+1
+
+for i = 1; 2; \Delta  \Delta  \Delta  ; n \Gamma  1, so we end up with the
+
+equality
+
+. f
+
+n\Gamma k
+
+(x
+
+k
+
+; \Delta  \Delta  \Delta  ; x
+
+n\Gamma 1
+
+) = f
+
+n\Gamma k
+
+(x
+
+k+1
+
+; \Delta  \Delta  \Delta  ; x
+
+n
+
+). Therefore
+
+.y
+
+k
+
+\Gamma  .y
+
+k+1
+
+= "
+
+n\Gamma k
+
+y
+
+k+1
+
+; k = 1; 2; \Delta  \Delta  \Delta  ; n \Gamma  1 : (6.8)
+
+Adding (6.8) for k = i; i + 1; \Delta  \Delta  \Delta  ; n \Gamma  1, we conclude that
+
+.y
+
+i
+
+\Gamma  u = "
+
+n\Gamma i
+
+y
+
+i+1
+
++ "
+
+n\Gamma i\Gamma 1
+
+y
+
+i+2
+
++ \Delta  \Delta  \Delta  + "y
+
+n
+
+;
+
+which is the i
+
+th
+
+equation in (6.3).
+
+The change of coordinates given in (6.7) leads to the design of a bounded stabilizing feed- back for multiple integrators shown in Figure 3.
+
+e
+
+e e
+
+e e e2
+
+e2
+
+e2
+
+e2
+
+e3
+
+e3
+
+e3
+
+en-2 en-2
+
+xn-1 xn-2 xn-3
+
+x2 x1
+
+k xn
+
+-e
+
++
+
++ + + ++ +
+
++ + + +
+
++ + + + +
+
+en-1
+
+yn-1 yn-2
+
+yn-3
+
+y1 y2
+
+y
+
+sn
+
++
+
+s s s
+
+s s
+
+e e e
+
+e + +
+
++
+
++ +
+
+Figure 3: The design of stabilizing feedback for multiple integrators
+
+24Pass1: Page 25
+
+
+7 Output Feedback We now turn to the problem of dynamic output feedback stabilization.
+
+Suppose we have a system .x = Ax + Bu with an IR
+
+p
+
+-valued output y = Cx. We assume
+
+that (A; B) is stabilizable, (A; C) is detectable, and A has no unstable eigenvalues.
+
+We proceed as in the classical case of stabilization by a linear feedback. That is, we consider the composite system
+
+.x = Ax + Bu ;
+
+y = Cx ;
+
+.z = Az + Bu + L(y \Gamma  Cz) ; u = k(z) ;
+
+(7.1)
+
+where k is any stabilizing feedback for the system .x = Ax + Bu such that the closed-loop system is SISS, and L is any matrix such that all the eigenvalues of A \Gamma  LC have negative real parts. (Such a matrix exists because (A; C) is detectable.) As usual, it is better to analyze this system by using as state variables the coordinates z and e = z \Gamma  x (which is interpreted as observation error). In these variables, the equations are
+
+.e = (A \Gamma  LC)e ; .z = Az + Bk(z) \Gamma  LCe :
+
+(7.2)
+
+We claim that the origin of this system is a globally asymptotically stable equilibrium. Local asymptotic stability is immediate, because (7.2) has the form of a cascade of two asymptotically stable subsystems. So we only need to show that all trajectories approach the origin. For this, it is enough to show that every solution of .z = Az + Bk(z) \Gamma  LCe(t) for which e(t) ! 0 as t ! 1 must converge to zero. The SISS property insures the desired result. Summarizing, we have established:
+
+Theorem 7.1 Consider a linear system of the form .x = Ax + Bu, y = Cx, such that A has no unstable eigenvalues, (A; B) is stabilizable and (A; C) is detectable. Then, for any observer system .z = Az + Bu + L(y \Gamma  Cz), and for any stabilizing feedback u ! k(z) given by Theorem 2.3, it follows that the composite system .x = Ax+Bk(z), .z = Az+Bk(z)+L(Cx\Gamma Cz) has the origin as a globally asymptotically stable equilibrium . 2
+
+We remark that, since the stabilizing feedback given in this paper causes the resulting closed- loop system to have the SISS property, Theorem 7.1 holds for any linear observer. In [12], the same problem was also considered, but the result in [12] required that all observer poles have real part less than a certain margin. So Theorem 7.1 answers a question posed in [12], namely, whether an arbitrary linear observer can be used for stabilization.
+
+8 An Application to Cascaded Systems We now show how to extend our result to other classes of systems, such as those obtained by having a saturation nonlinearity in a forward path of integrators, as in Figure 4.
+
+25Pass1: Page 26
+
+
+u s x1x4s(    ) x3 x2x4
+
+Figure 4: Cascaded system Consider an (n + m)-dimensional system in the following partitioned form
+
+.x = Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(z
+
+i
+
+) ; .z = u ; (8.1)
+
+where x 2 IR
+
+n
+
+, z = (z
+
+1
+
+; \Delta  \Delta  \Delta  ; z
+
+m
+
+)
+
+0
+
+2 IR
+
+m
+
+, u = (u
+
+1
+
+; \Delta  \Delta  \Delta  ; u
+
+m
+
+)
+
+0
+
+2 IR
+
+m
+
+, and all oe
+
+i
+
+: IR ! IR are
+
+globally Lipschitz functions that are strictly monotonic near zero and satisfy oe
+
+i
+
+(0) = 0. Let
+
+B denote (b
+
+1
+
+; \Delta  \Delta  \Delta  ; b
+
+m
+
+). Assume that (A; B) is stabilizable and A has no unstable eigenvalues.
+
+We claim that (8.1) is stabilizable and, moreover, if all the oe
+
+i
+
+'s and their inverses are smooth
+
+functions near 0, then there exists a smooth feedback that SISS
+
+L
+
+-stabilizes (8.1).
+
+The stabilizability assertion follows trivially. In fact, the assumptions on the oe
+
+i
+
+'s, imply
+
+that there is an " ? 0 such that all oe
+
+i
+
+'s are strictly monotonic on the interval (\Gamma "; "). From The-
+
+orem 2.3 we know that there exists an analytic feedback v =
+
+_ k(x) = (
+
+_ k
+
+1
+
+(x); \Delta  \Delta  \Delta  ;
+
+_ k
+
+m
+
+(x))
+
+0
+
+, where
+
+j
+
+_ k
+
+i
+
+(x)j ! " for x 2 IR
+
+n
+
+, which SISS
+
+L
+
+- stabilizes the system .x = Ax+Bv. If we regard z as a con-
+
+trol in the first equation of (8.1), then the feedback z = k(x) =
+
+i
+
+oe
+
+\Gamma 1
+
+1
+
+(
+
+_ k
+
+1
+
+(x)); \Delta  \Delta  \Delta  ; oe
+
+\Gamma 1
+
+m
+
+(
+
+_ k
+
+m
+
+(x))
+
+j
+
+0
+
+gives rise to a SISS
+
+L
+
+-stable closed-loop system
+
+.x = Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x)) ; (8.2)
+
+where k
+
+i
+
+= oe
+
+\Gamma 1
+
+i
+
+(
+
+_ k
+
+i
+
+(x)). Using the standard "backstepping" (or "adding an integrator") con-
+
+struction (see, e.g., Lemma 4.8.3 in [11]), we conclude that (8.1) is stabilizable.
+
+However, in order to build a stabilizer for (8.1) using backstepping, we would first have to find a Lyapunov function for (8.2). Since this is usually hard to do, it is desirable to be able to build a stabilizer without using Lyapunov functions. We now show how this can be done.
+
+Since (8.2) is SISS
+
+L
+
+and the oe
+
+i
+
+'s are globally Lipschitz, the control system
+
+.x = f (x; v) = Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x) + v
+
+i
+
+) (8.3)
+
+is SISS
+
+L
+
+as well. Let w = z \Gamma  k(x). Then, in the coordinates (x
+
+0
+
+; w
+
+0
+
+)
+
+0
+
+in the state space, the
+
+equations of System (8.1) are
+
+.x = Ax +
+
+P
+
+m
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x) + w
+
+i
+
+);
+
+.w = u \Gamma  5k(x) \Delta 
+
+i
+
+Ax +
+
+P
+
+m
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x) + w
+
+i
+
+)
+
+j
+
+:
+
+(8.4)
+
+Now let
+
+u = \Gamma w + 5k(x) \Delta 
+
+i
+
+Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x) + w
+
+i
+
+)
+
+j
+
+= k(x) \Gamma  z + 5k(x) \Delta 
+
+i
+
+Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(z
+
+i
+
+)
+
+j
+
+: (8.5)
+
+26Pass1: Page 27
+
+
+Then the resulting closed-loop system for (8.1) becomes
+
+.x = Ax +
+
+m X
+
+i=1
+
+b
+
+i
+
+oe
+
+i
+
+(k
+
+i
+
+(x) + w
+
+i
+
+) ; .w = \Gamma w ;
+
+which is stable because w(t) ! 0 as t ! 1 and the (8.3) is SISS
+
+L
+
+-stable. So (8.5) is a
+
+stabilizer for (8.1).
+
+As an example to illustrate the above procedure, we consider the system
+
+.x
+
+1
+
+= x
+
+2
+
+; .x
+
+2
+
+= x
+
+3
+
+; .x
+
+3
+
+= tanh(x
+
+4
+
+) ; .x
+
+4
+
+= u ; (8.6)
+
+which is of the form shown in Figure 4. (See also [16], where the author considers the case when "tanh" in (8.6) is replaced by any function oe satisfying oe
+
+0
+
+(0) ? 0.) First, we need to find
+
+a smooth feedback that stabilizes the triple integrator
+
+.x
+
+1
+
+= x
+
+2
+
+; .x
+
+2
+
+= x
+
+3
+
+; .x
+
+3
+
+= u ; (8.7)
+
+and has absolute value less than one. To do this, we use the transformation:
+
+y
+
+1
+
+=
+
+1
+
+8
+
+x
+
+1
+
++
+
+3
+
+4
+
+x
+
+2
+
++ x
+
+3
+
+; y
+
+2
+
+=
+
+1
+
+2
+
+x
+
+2
+
++ x
+
+3
+
+; y
+
+3
+
+= x
+
+3
+
+:
+
+Then (8.7) takes the form
+
+.y
+
+1
+
+=
+
+1
+
+4
+
+y
+
+2
+
++
+
+1
+
+2
+
+y
+
+3
+
++ u ; .y
+
+2
+
+=
+
+1
+
+2
+
+y
+
+3
+
++ u ; .y
+
+3
+
+= u : (8.8)
+
+Let ' : IR ! IR be a smooth increasing function with the property that
+
+'(s) =
+
+(
+
+s if jsj !
+
+3
+
+4
+
+sign (s) if jsj ? 1 :
+
+For every " ? 0, we define '
+
+"
+
+(s) = "'(
+
+s
+
+"
+
+). Then it is not difficult to see that the feedback
+
+u = \Gamma 
+
+1
+
+2
+
+i
+
+'
+
+1
+
+(y
+
+3
+
+) + '
+
+1
+
+2
+
+(y
+
+2
+
+) + '
+
+1
+
+4
+
+(y
+
+1
+
+)
+
+j
+
+stabilizes (8.8). Therefore
+
+u =
+
+_ k(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+) = \Gamma 
+
+1
+
+2
+
+i
+
+'
+
+1
+
+(x
+
+3
+
+) + '
+
+1
+
+2
+
+(
+
+1
+
+2
+
+x
+
+2
+
++ x
+
+3
+
+) + '
+
+1
+
+4
+
+(
+
+1
+
+8
+
+x
+
+1
+
++
+
+3
+
+4
+
+x
+
+2
+
++ x
+
+3
+
+)
+
+j
+
+stabilizes (8.7). Clearly, the magnitude of this feedback is less than one. Let k(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+)
+
+= tanh
+
+\Gamma 1
+
+(
+
+_ k(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+)). Then from (8.5), we conclude that the feedback
+
+u = k(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+) \Gamma  x
+
+4
+
++ x
+
+2
+
+@k
+
+@x
+
+1
+
+(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+) + x
+
+3
+
+@k
+
+@x
+
+2
+
+(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+) + tanh(x
+
+4
+
+)
+
+@k
+
+@x
+
+3
+
+(x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+)
+
+stabilizes (8.6). 2
+
+27Pass1: Page 28
+
+
+References
+
+[1] Fuller, A.T., "In the large stability of relay and saturated control systems with linear
+
+controllers," Int. J. Control , 10(1969): 457-480.
+
+[2] Gutman, P-O., and P. Hagander, "A new design of constrained controllers for linear
+
+systems," IEEE Transactions on Automat. Contr. AC-30(1985): 22-23.
+
+[3] Kosut, R.L., "Design of linear systems with saturating linear control and bounded states,"
+
+IEEE Trans. Autom. Control AC-28(1983): 121-124.
+
+[4] Krikelis, N.J., and S.K. Barkas, "Design of tracking systems subject to actuator saturation
+
+and integrator wind-up," Int. J. Control 39(1984): 667-682.
+
+[5] Liu, W., Y. Chitour, and E.D. Sontag, "On finite gain stabilizability of linear systems
+
+subject to input saturation," submitted. (Preliminary version entitled "Remarks on finite gain stabilizability of linear systems subject to input saturations," in Proc. 32nd IEEE Conf. Dec. and Control , San Antonio, Texas, 1993, pp. 1808-1813.)
+
+[6] Schmitendorf, W.E. and B.R. Barmish, "Null controllability of linear systems with con-
+
+strained controls," SIAM J. Control and Opt. 18(1980): 327-345.
+
+[7] Slemrod, M., "Feedback stabilization of a linear control system in Hilbert space," Math.
+
+Control Signals Systems 2(1989): 265-285.
+
+[8] Slotine, J-J.E., and W. Li, Applied Nonlinear Control , Prentice-Hall, Englewood Cliffs,
+
+1991.
+
+[9] Sontag, E.D., "An algebraic approach to bounded controllability of linear systems,"
+
+Int. J. Control 39(1984): 181-188.
+
+[10] Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Trans. on Au-
+
+tomatic Control AC-34(1989): 435-443.
+
+[11] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+[12] Sontag,E.D., and H.J. Sussmann, "Nonlinear output feedback design for linear systems
+
+with saturating controls," Proc. IEEE Conf. Decision and Control, Honolulu, Dec. 1990, IEEE Publications, 1990, pp. 3414-3416.
+
+[13] Sontag, E.D., and Y. Yang, "Stabilization with saturated actuators, a worked example:
+
+F-8 longitudinal flight control," Proc. 1993 IEEE Conf. on Aerospace Control Systems, Thousand Oaks, CA, May 1993, pp. 289-293.
+
+[14] Sussmann, H. J. and Y. Yang, "On the stabilizability of multiple integrators by means of
+
+bounded feedback controls" Proc. IEEE Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991: 70-73.
+
+[15] Teel, A.R., "Global stabilization and restricted tracking for multiple integrators with
+
+bounded controls," Systems and Control Letters 18(1992): 165-171.
+
+28Pass1: Page 29
+
+
+[16] Teel, A.R., "Using saturation to stabilize a class of single-input partially linear compos-
+
+ite systems," Proc. Nonlinear Control Systems Design Symp., Bordeaux, June 1992 (M. Fliess, Ed.), IFAC Publications, pp. 224-229.
+
+[17] Yang, Y., H.J. Sussmann and E.D. Sontag, "Stabilization of linear systems with bounded
+
+controls," Proc. Nonlinear Control Systems Design Symp., Bordeaux, June 1992 (M. Fliess, Ed.), IFAC Publications, pp. 15-20.
+
+29</pre>
+</body>
+</html>

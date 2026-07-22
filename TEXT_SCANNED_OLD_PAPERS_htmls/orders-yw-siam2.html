@@ -1,0 +1,1010 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/orders-yw-siam2.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/orders-yw-siam2.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Orders of Input/Output Differential Equations
+
+and State Space Dimensions
+
+Yuan Wang\Lambda  Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@polya.math.fau.edu
+
+Eduardo D. Sontagy Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+sontag@hilbert.rutgers.edu
+
+Abstract. This paper deals with the orders of input/output equations satisfied by nonlinear systems. Such equations represent differential (or difference, in the discretetime case) relations between high-order derivatives (or shifts, respectively) of input and output signals. It is shown that, under analyticity assumptions, there cannot exist equations of order less than the minimal dimension of any observable realization; this generalizes the known situation in the classical linear case. The results depend on new facts, themselves of considerable interest in control theory, regarding universal inputs for observability in the discrete case, and observation spaces in both the discrete and continuous cases. Included in the paper is also a new and simple self-contained proof of Sussmann's universal input theorem for continuous-time analytic systems.
+
+1. Introduction. Previous papers by the authors, see [41, 42], studied various relationships between realizability of continuous-time systems and the existence of algebraic or analytic input/output differential equations. These are equations of the form
+
+E iu(t); u0(t); u00(t); : : : ; u(r\Gamma 1)(t); y(t); y0(t); y00(t); : : : ; y(r)(t)j = 0(1) that relate inputs u(\Delta ) and outputs y(\Delta ). Such equations, and their discrete-time analogues, are of interest in identification theory, and arise also naturally in the "behavioral" approach to systems (see e.g. [44]). They provide a natural generalization of the autoregressive moving-average representations that appear in linear systems theory, where E is linear (in that case, the Laplace transform of the equation leads to the usual transfer function).
+
+The papers [38, 41, 42] (see also [28] for analogous work in the discrete time case) dealt with the relationships between the existence of such equations and the possibility of realizing the corresponding input/output operator u(\Delta ) 7! y(\Delta ) by a state space system of the type
+
+x0(t) = f (x(t)) + G(x(t))u(t) ; y(t) = h(x(t))(2) \Lambda  Supported in part by NSF Grant DMS-9108250
+
+y Supported in part by US Air Force Grant AFOSR-91-0346
+
+Keywords: control systems, input/output equations, observation spaces, universal inputs, observability
+
+AMS(MOS) subject classification: Primary: 93B15, Secondary: 93A25,93B25,93B27,93B29 Running head: Orders of Input/Output Equations
+
+1
+
+whose state x(t) evolves in an n-dimensional manifold. (Precise definitions are given later; for the rest of the introduction we give an informal discussion. The main assumption will be that all functions appearing are analytic.) While i/o equation descriptions of type (1) are well-suited to identification algorithms, state space descriptions of type (2) are often the basis of feedback design tools and are needed for the statement and solution of control problems. Thus, it is of great interest to study the possible relationships between the two kinds of descriptions.
+
+A question that has not been sufficiently studied, and was not addressed in [41, 42] is that of comparing the order r of an i/o equation (1) to the minimal possible dimension n of a realization (2). In discrete-time, for the analogous equations
+
+E (u(t \Gamma  1); u(t \Gamma  2); : : : ; u(t \Gamma  r); y(t); y(t \Gamma  1); : : : ; y(t \Gamma  r)) = 0:(3) and systems
+
+\Sigma  : x(t + 1) = f (x(t); u(t)); y(t) = h(x(t)); t = 0; 1; 2; : : :(4) it was known for a long time (see [28]) that one may have r ! n, even if the system in Equation (4) is minimal. It turns out, perhaps surprisingly, that this cannot happen in the continuous time case: we prove here that if there is a minimal realization of dimension n then no i/o equation can have order less than n. Moreover, we show that the result holds true also for discrete-time systems that are reversible, that is, those for which the controls induce one-to-one maps on the state space (the examples in [28] were not reversible).
+
+The results in [41, 42] depended on an important equality among observation spaces. The latter are sets of functions on the state space which are obtained by performing different kinds of "experiments" with the system and extracting infinitesimal information from the observed data. The basic fact needed was established in [40], and it related the space obtained by using piecewise constant controls (and derivatives of the output function with respect to switching times between constant pieces) to the space obtained when using instead differentiable inputs (and the corresponding jet of derivatives of the output at time zero). The new results given in this paper depend on new facts, themselves of considerable interest in control theory, regarding subspaces obtained by application of "generic" smooth inputs.
+
+The results in this paper were announced, and their proofs were sketched, in the conference paper [33] (and for discrete time in [43]). To be more precise, in [33] we derived our results from an equality between observation spaces which is somewhat weaker than the corresponding one proved here, namely, instead of the current Lemma 2.1, we only had that dF (x) = dF_(x) for generic jets _ and for generic states x. This is all that is needed in order to establish the desired results on orders of i/o equations. However, while this journal version was being written, Coron in the paper [5] showed that the equality can be strengthenned, so that it holds for all (not merely generic) states (but still generic _). Since it turns out that the stronger equality can in fact be obtained with essentially the same proof as in [33], we now present the result directly in that form. (Since we are only interested in analytic systems, we can use elementary facts from analytic geometry to present a simpler approach to the problem than in [5]; in that reference the techniques of proof are very different, as the focus is on applications to feedback control problems for smooth systems. See also [31] for remarks on applications of results of the type proved here to path-planning and feedback.)
+
+2
+
+In the development of the new observation space results, we needed to extend to discrete-time the well-known and fundamental theorem by Sussmann on universal inputs for distinguishability of continuous-time analytic systems. It turned out that our proof also applies in continuous-time. The theorem is obtained in a fairly direct way from a stronger result, Lemma 2.1 in this work. The proof of Lemma 2.1 is very elementary and intuitive, as it does not use anything more complicated than the fact that every descending chain of sets defined by analytic equations stabilizes relative to any fixed compact. (The original proof of Sussmann's Theorem relies heavily on the stratification theory of subanalytic sets, a considerably deeper set of tools. Thus one contribution of this paper is to provide an alternative and simpler proof of that important result.) In addition to its role in helping to derive the universal input theorem and our main results, Lemma 2.1 also has its own independent interest, as it provides relationships between observation spaces defined in different ways, and thus, provides connections between several different notions of observability.
+
+Another set of results that arose naturally while studying the problems in this paper, and which are included here, deal with the relationships among various alternative notions of observability, especially those proposed in the context of the differentialalgebraic approach to control theory. We are able to characterize, for instance, the notion of observability proposed in [10, 9] in terms of more standard local observability concepts.
+
+1.1. Other Related Work. In addition to the references already mentioned, work by many authors is related to the topic of i/o equations and realizability; see for instance [6, 13, 38]. In particular, [7, 8] showed that one must add inequality constraints to (1) in order to obtain a precise characterization of the behavior of a state-space system, unless stronger algebraic conditions hold. In [26, 39, 4], local i/o equations were derived under nondegeneracy rank conditions, for smooth systems, under observability assumptions. The notions of observation space and algebra that we employ were introduced for discrete time systems in [28], and their analogous continuous-time versions were given in [2, 3]. We also note the very recent work [34], where further results on universal inputs are presented; these results show in particular the existence of inputs which are universal uniformly over the class of all analytic systems.
+
+1.2. Outline of Paper. In Section 2 we introduce continuous-time systems and a technical result on observation spaces for generic jets. Certain special cases for which stronger conclusions can be given, namely bilinear and rational systems, are also studied there. In Section 3, we define universal inputs, and relate their properties to the results on equality of observation spaces and to the orders of i/o equations. The following Section has a proof of the main technical results stated in Section 2 and 3. After this, Section 5 provides the discrete-time results. There are also two Appendixes with some technical lemmas needed in the proofs.
+
+2. Observation Spaces for Continuous Time Systems. In this section we first discuss several natural ways of defining observation spaces for continuous time systems, and then we explore the relationships between the different definitions.
+
+3
+
+2.1. Observation Spaces. Consider an analytic system:
+
+\Sigma  : 8?!?: x
+
+0(t) = g0(x(t)) +
+
+mX
+
+i=1
+
+gi(x(t))ui(t) ;
+
+y(t) = h(x(t)) ; (5)
+
+where for each t, x(t) 2 M, which is an analytic (second countable) manifold of dimension n, h : M \Gamma ! IR is an analytic function, and g0; g1; : : : ; gm are analytic vector fields defined on M. Controls are measurable essentially bounded maps u : [0; T ] \Gamma ! IRm defined on suitable intervals. In general, '(t; x; u) denotes the state trajectory of (5) corresponding to a control u and initial state x, defined at least for small t.
+
+In the special case in which M = IRn and the entries of the vector fields gi's (on the natural global coordinates) and of the function h are rational (with no real poles), we call (5) a rational system. If, in addition, the entries of the gi's and h are polynomials, we call (5) a polynomial system.
+
+For a given continuous time system, let F be the subspace of functions M \Gamma ! IR spanned by the Lie derivatives of h in the directions of g0; g1; : : : ; gm, i.e.,
+
+F := span IR nLgi1 Lgi2 \Delta  \Delta  \Delta  Lgir h : r * 0; 0 ^ ij ^ mo :(6) This is the observation space associated to (5); see e.g. [30], Remark 5.4.2. For each x 2 M, let F (x) denote the space obtained by evaluating the elements of F at x.
+
+For each ff 2 F , we may consider its differential dff, seen as a 1-form. For each x 2 M, we let dF (x) be the space of covectors defined by
+
+dF (x) = fdff(x) : ff 2 F g : We also let dF be fdff : ff 2 F g as a space of 1-forms.
+
+A related construction is as follows. First of all, let IRm;1 = Q1i=1 IRm endowed with the box topology, for which a base of open sets consists of all sets of the formQ
+
+1 i=1 Ui, where each Ui is an open set of IRm. A generic subset W of IRm;1 is onewhich contains a countable intersection of open dense sets. It can be easily shown
+
+that with the above topology, IRm;1 is a Baire space; thus a generic subset is always dense.
+
+Now for any _ = (_0; _1; : : :) in IRm;1, we define
+
+i(x; _) = d
+
+i
+
+dti fififififit=0 h('(t; x; u))(7)
+
+for i * 0, where u is any C1 control with initial values u(j)(0) = _j . The functions i(x; _) can be expressed, -applying repeatedly the chain rule,- as polynomials in the _j = (_1j ; : : : ; _mj ) whose coefficients are analytic functions (rational functions if the system is rational) of x. Take the single input case
+
+.x = f (x) + g(x); y = h(x); (for simplicity of notation) as an example. The functions are:
+
+0(x; _) = h(x); 1(x; _) = Lf h(x) + _0Lgh(x); 2(x; _) = L2f h(x) + _0(LgLf h(x) + Lf Lgh(x)) + _20L2gh(x) + _1Lgh(x);
+
+4
+
+and so forth. For instance, for single-input single-output linear systems
+
+x0 = Ax + bu; y = cx; we have,
+
+l(x; _) = cAlx +
+
+lX
+
+i=1
+
+_i\Gamma 1cAi\Gamma 1b; l = 0; 1; : : : :
+
+For each fixed _ 2 IRm;1, let F_ be the subspace of functions from M to IR defined by
+
+F_ = span IR f0(\Delta ; _); 1(\Delta ; _); 2(\Delta ; _); : : :g ;(8) and let F_(x) be the space obtained by evaluating the elements of F_ at x for each x 2 M. Let dF_(x) be the space of covectors given by
+
+dF_(x) = fd(x; _) :  2 F_g ; for each x 2 M. For instance, for linear systems, dl(x; _) = cAl, and
+
+dF_(x) = span fc; cA; cA2; : : :g; which is independent of _ (and x). We also let dF_ be fd(\Delta ; _) :  2 F_g, seen as a space of covector fields.
+
+Clearly, for each _, F_ is a subspace of F , and therefore, for each x also dF_(x) is a subspace of dF (x). The main result in [40] says that
+
+F = X
+
+_ F
+
+_ :(9)
+
+This equality is fundamental in establishing results linking realizability to the existence of i/o equations, in [41] and [42]. In intuitive but less rigorous terms, the equality in (9) can be interpreted as follows. We consider the successive derivatives y(0); y0(0); y00(0); : : : expressed as functions of x(0) and u(0); u0(0); u00(0); : : :. For particular controls u(t), the y(0); y0(0); y00(0); : : : are just functions of x; taking the span of all such functions, over all possible smooth controls, one obtains the right hand side of (9). On the other hand, taking all possible piecewise constant instead of smooth controls, and taking derivatives with respect to the times at which the controls switch values, one obtains the space F in the left hand side of (9).
+
+The following is a technical result for continuous time systems, which will help in deriving the desired facts about i/o equations.
+
+Lemma 2.1. Assume that (5) is an analytic system. Then there exists a generic subset W of IRm;1 such that
+
+F (x) = F_(x)(10) and
+
+dF (x) = dF_(x)(11)
+
+5
+
+for every x 2 M and all _ 2 W.
+
+Remark 2.2. The above conclusions are also true if instead of the box topology one uses the weak topology on IRm;1. This is the topology for which a basis of open sets consists of all sets of the form Q1i=1 Ui, where each Ui is an open subset of IRm and only finitely many of them are proper subsets of IRm. Clearly, the weak topology is coarser than the topology used before. With this topology, IRm;1 is again a Baire space. We will remark at the end of the proof of Lemma 2.1 in section 4, that the conclusions of Lemma 2.1 also hold for the weak topology. Moreover, these conclusions can be established as consequences of a more general result about convergent generating series, which insures that there exists a generic subset W of IRm;1 with the property that these jets suffice for distinguishing all possible convergent generating series; details are given in the upcoming paper [32].
+
+Remark 2.3. The conclusions in Lemma 2.1 do not always hold for every _ 2 IRm;1. Consider as an illustration the following bilinear system:
+
+x01 = x2; x02 = x2 + x1u; y = x2 :(12) For this system, F = span fx1; x2g, thus, F (x) 6= 0 for all x 6= 0. But on the other hand, we have
+
+0(x; _) = x2; 1(x; _) = x2 + x1_0 ; and in general, k (x; _) = Pk(x; _0; _1; : : : ; _k\Gamma 2 ) + x1_k\Gamma 1 , where Pk is some polynomial. Clearly, for every x = (x1; x2) for which x1 6= 0, one can find a solution _ recursively for the equations i(x; _) = 0 for i ? 0. Hence, as long as x1 6= 0 and x2 = 0, there exists some jet _ such that F_(x) = 0, which is therefore different from F (x) when x1 6= 0 and x2 = 0. 2
+
+2.2. Algebraic Formulation. In this section, we assume for simplicity that M = IRn; we could work with more general manifolds, but this would complicate notations, and in any case we will only need to apply the results given here locally. We say a function fi is a meromorphic function if fi = pq , where p and q are analytic functions defined on M, and q 6j 0. (Note that this global definition is different from the local definition usually given, see e.g. [17]. It will be enough for our purposes.) For each function ff 2 F , dff is a covector field defined on M. If fi is a meromorphic function defined on M, then fidff is a well defined 1-form on some open dense subset of M, and any finite sum of such partially defined covector fields is defined on a common open dense set. Thus, we may introduce the subspace ddF of the cotangent space defined by d
+
+dF := span IRx fdff : ff 2 F g ; where IRx is the field of meromorphic functions defined on M. Similarly, one can define, for each _ 2 IRm;1, the space ddF_ byd
+
+dF_ := span IRx fdff : ff 2 F_g : Note that there are natural identifications ddF ' dF \Omega  IRx and ddF _ ' dF_ \Omega  IRx.
+
+Since M = IRn, we can identify elements of ddF with vectors
+
+(ff1(x); ff2(x); : : : ; ffn(x))
+
+6
+
+of meromorphic functions defined on M. The dimension of ddF over IRx is the size of the largest matrix that can be formed out of such vectors and has full rank, i.e. has a minor which is not zero as a function. That is, dimIRx ddF is the same as maxx2M dim dF (x). A similar argument can be made for each dF_(x); together with
+
+Lemma 2.1, we can then conclude:
+
+Corollary 2.4. For any analytic system, ddF_ = ddF for all _ in a generic set of IRm;1. 2
+
+Yet another object is obtained if one views instead the elements
+
+i(x; U )(13) as rational functions, (in particular polynomials) on the formal variables U = fUijg, whose coefficients are functions of x, as opposed to seeing them as functions of x for each numerical choice Uij = _ij . We proceed as follows. Let
+
+K = IRi fUij : 1 ^ i ^ m; j * 0g j be the field obtained by adjoining the indeterminates Uij to IR, and let
+
+Kx = IRxi fUij : 1 ^ i ^ m; j * 0g j be the field obtained by adjoining the indeterminates Uij to IRx. We then let F be defined as the subspace of Kx spanned by the functions i over the field K, i.e.,
+
+F := span K fi : i * 0g : Thus, F consists of finite linear combinations P qi(U )i(x; U ), where the qi(\Delta ) are rational functions on the variables fUijg. Such a linear combination can be seen as a rational function on the fUijg whose coefficients are meromorphic functions of x (and hence also meromorphic functions), thus elements of Kx. The differentials (with respect to x) of elements of Kx are viewed as rational functions in fUijg, whose coefficients are (in general, partially defined) covector fields. Finally we definec
+
+dF := span Kxfd :  2 Fg : Then Lemma 2.1 implies the following:
+
+Corollary 2.5. For any analytic system, dimIRx ddF = dimKx cdF. Proof. Clearly dimKx cdF ^ dimIRx ddF . On the other hand, dimKx cdF = max_ dimRx ddF_. The desired conclusion then follows from Corollary 2.4.
+
+2.3. Bilinear and Rational Systems. Now consider a bilinear system,
+
+x0 = A0x +
+
+mX
+
+i=1
+
+uiAix
+
+y = cx;
+
+where A0; A1; : : : ; Am are n\Theta n matrices, and c is an 1\Theta n matrix. For each multiindex i1i2 \Delta  \Delta  \Delta  ir, where 0 ^ ij ^ m for each j * 0,
+
+Lgi1 Lgi2 \Delta  \Delta  \Delta  Lgir h(x) = cAir Air\Gamma 1 \Delta  \Delta  \Delta  Ai1 x :
+
+7
+
+Note that i (as defined in (7)) is also linear in x for each i; for instance, in the single input case (for simplicity of notations),
+
+2(x; _0 ; _1 ) = c(A0 + _0A1)2x + _1 cA1x : Thus, for the bilinear case, we have
+
+Corollary 2.6. For a bilinear system,
+
+F = F_ and dF = dF_(14) for every _ in a generic subset of IRm;1. 2
+
+Remark 2.7. We would like to point out that this Corollary does not hold in general. The following simple example shows that for a general nonlinear system, F and F_ (respectively, dF and dF_) may not be the same for any _, even though the
+
+two spaces ddF and ddF _ are the same.
+
+Example 2.8. Consider the system:
+
+x0 = x3 + x2u; y = x: It is easy to see that
+
+y = x; y0 = x3 + x2u; y00 = 3x5 + 5x4u + 2x3u2 + x2u0;
+
+and in general, y(k) = (2k \Gamma  1)!!x2k+1 + pk(u; u0; : : : ; u(k\Gamma 2); x) + x2u(k\Gamma 1); where pk is a polynomial in x of degree less than or equal to 2k. It can be seen that
+
+F = span IR nx; x2; x3; : : :o : However, x2 62 F_ for any _ for the following reason: Assume that
+
+x2 =
+
+kX
+
+i=0
+
+aii(x; _)
+
+for some k and some a0; a1; : : : ; ak 2 IR. Then ai = 0 for i * 2, for otherwise the degree of x in the left hand side would be higher than 3. Thus the above equation becomes
+
+x2 = a0x + a1(x3 + x2_0) which is impossible. This shows that F_ 6= F for any _ even though, in this case,d dF = ddF_ = span IRxfdxg for all _.
+
+In this example, it is also true that dF 6= dF_ for any _. This can be shown as follows: If dF = dF_, then dx2 = 2xdx 2 dFu. From here it would follow that x2 = ff1(x; _) + ff2(x; _) + \Delta  \Delta  \Delta  + ffl(x; _) + c for some elements ffi 2 F_ and some constant c 2 IR. But it can be seen from the above argument that this is impossible. 2
+
+Assume now that (5) is a rational system. Define A (A_, respectively) as the IR-algebra generated by the elements of F (F_, repectively). Then we define the observation field Q (Q_, respectively) as the quotient field of A (A_, respectively).
+
+8
+
+For a field extension Q of IR, we use trdegIRQ to denote the transcendence degree of Q over IR. Then we have the following conclusion for rational systems, in analogy to the above conclusion about bilinear systems:
+
+Corollary 2.9. For a rational system,
+
+trdegIRQ = trdegIRQ_ ; for each _ in a generic subset of IRm;1. 2
+
+3. Observability and Universal Inputs in Continuous-Time. Consider an analytic system (5). Fix any two states p; q 2 M and take an input u. We say p and q are distinguished by u, denoted by p 6,u q, if h('(\Delta ; p; u)) 6= h('(\Delta ; q; u)) (considered as functions defined on the common domain of '(\Delta ; p; u) and '(\Delta ; q; u)); otherwise we say p and q cannot be distinguished by u, denoted by p ,u q. If p and q cannot be distinguished by any input u, then we say p and q are indistinguishable, denoted by p , q. If for any two states, p , q implies p = q, then we say that system (5) is observable. (See [30], Chapter 5.)
+
+An input u is called a universal (distinguishing) input for system (5) if every distinguishable pair can be distinguished by u. The existence of universal inputs was first studied in [15] for bilinear systems, in [27] for analytic systems with compact state spaces, and for arbitrary analytic systems in [36] for the continuous case. In this work, we will provide a different and simpler proof of the general result in [36]. (Also, we later give a discrete time version.) We now state the result to be proved.
+
+For each T ? 0, we consider C1[0; T ] endowed with the Whitney topology, that is, the topology for which a neighborhood base for each function u(\Delta ) 2 C1[0; T ] consists of the sets of the following form:
+
+Uu;k;ffi = fv 2 C1[0; T ] : max0^
+
+i^k; t2[0; T ] jv
+
+(i)(t) \Gamma  u(i)(t)j ^ ffig
+
+for some k * 0 and some ffi ? 0. This is well-known to be a Baire space (see [14]). By a generic subset of C1[0; T ] we mean a subset of C1[0; T ] containing a countable intersection of open dense sets.
+
+Theorem 3.1. (Sussmann's Universal Input Theorem) For any analytic system (5), and any fixed T ? 0, the set of universal inputs is a generic subset of C1[0; T ].
+
+Proposition 3.2. There is always an analytic universal input for any analytic system. 2
+
+We will provide proofs of Theorem 3.1 and Proposition 3.2 in section 4.1. Consider the following more general class of systems:
+
+x0(t) = f (x(t); u(t)); y(t) = h(x(t)) ;(15) where for each t, x(t) 2 M, an analytic manifold of dimension n, h : M ! IR is an analytic function, and f : M \Theta  IRm ! T M is analytic, and f (x; u) 2 TxM for each (x; u), so in particular, f (\Delta ; u) is an analytic vector field for each u 2 IRm. Controls are measurable essentially bounded maps: u : [0; T ] \Gamma ! IRm, for some T = Tu ? 0. We apply the same definitions of distinguishability, observability and universal inputs as for system (5) to system (15). One can then generalize to systems of type (15) the conclusion of Theorem 3.1, by means of the following argument. We consider the following system:
+
+x0(t) = f (x(t); z(t)); z0(t) = v(t) ;
+
+y(t) = h(x(t)) ;(16)
+
+9
+
+where v is now a new control. By Proposition 5.1.11 in [30], one knows that if (x1; x2) is a distinguishable pair for (15), then x1; x2 can be distinguished by a differentiable (in fact, an analytic) control u. It then follows that for (16), the pair (,; i), where , = (x1; u(0)) and i = (x2; u(0)), is distinguished by v(t) = u0(t). On the other hand, if for (16), the pair ((x1; z); (x2; z)) is distinguished by v, then for (15), (x1; x2) is distinguished by the control
+
+z + Z
+
+t
+
+0 v(s) ds: Therefore, (x1; x2) is a distinguishable pair of (15) if and only if there exists some z 2 IRm such that ((x1; z); (x2; z)) is a distinguishable pair for (16) for some z. Applying Theorem 3.1 to system (16), we proved the following conclusion:
+
+Corollary 3.3. The universal inputs for system (15) form a generic subset of C1[0; T ], for any T ? 0. 2
+
+3.1. Other Notions of Observability. In the following, we study relationships among several alternative notions of "observability" that have been proposed by various authors.
+
+Take an open subset U of M and any two points p; q 2 U . If for every input u, h('(t; p; u)) = h('(t; q; u)) for each t for which '(T; p; u) and '(T; q; u) are both defined and in U for all 0 ^ t ^ T , then we say that p and q are U -indistinguishable (see e.g. [29]).
+
+Fix a point p 2 M. If for every neighborhood Up there is a neighborhood Vp ae Up so that for any q 2 Vp, the condition that q and p are Up-indistinguishable implies p = q, then we say the system (5) is locally observable at p. If (5) is locally observable at every point p, then we say (5) is locally observable. If there is an open dense set U ae M such that (5) is locally observable at every point p of U , then we say (5) is generically locally observable. See [29] for details on local observability and related concepts such as the slightly different definition in [26]. The following fact is an immediate consequence of Lemma 2.10 and facts (2.4) and (2.8) in [29]:
+
+Proposition 3.4. An analytic system (5) is generically locally observable if and only if maxx dim dF (x) = n. 2
+
+Proposition 3.5. Let M = IRn and let (5) be an analytic system. Then the following are equivalent:
+
+1. The system is generically locally observable. 2. dimKx cdF = n. 3. dimIRx ddF = n. Proof. The maximum dimension of dF (x) is the same as the dimIRx ddF . This shows that (1) and (3) are equivalent; (2) is equivalent to (3) by Corollary 2.5.
+
+For a polynomial system, the i(x; U )'s (as defined in (13)) are polynomial functions of both x and U . We say that a polynomial system is weakly algebraically observable if each coordinate xi is algebraically over the field K(fi : i * 0g) (= IR(fUij; k; i = 1; : : :; m; j; k * 0g)). It follows that \Sigma  is weakly algebraically observable if and only if dimK(x) cdF = n, where K(x) is the field of rational functions over K. (This is proved as follows: The dimension condition is equivalent, by [18], Theorem III of III.7, to the property that the transcendence degree of K0 = K(fi : i * 0g) over K should be equal to n. On the other hand, we have the inclusions K ` K0 ` K(x), so trdegKK0+trdegK0K(x) = n. Thus the dimension is n if and only if trdegK0K(x) = 0, i.e., iff K(x) is algebraic over K0.) By Proposition 3.5, we have the following:
+
+10
+
+Corollary 3.6. A polynomial system is weakly algebraically observable if and only if the system is generically locally observable. 2
+
+The notion of weakly algebraic observability used here was called "weak observability" in [28]. The same notion was used in [10], and extended to cover implicit systems as well.
+
+3.2. Orders of I/O Equations in Continuous Time Case. 3.2.1. State Space Systems. We say that a state space system \Sigma  admits an i/o equation such as
+
+A(u(t); u0(t); : : : ; u(k\Gamma 1)(t); y(t); y0(t); : : : ; y(k)(t)) = 0 ;(17) where A is a nonzero analytic function from IRmk \Theta  IRk+1 to IR, if (17) holds for every initial state x, every Ck i/o pair (u; y) of (5), and all t such that y(t) is defined. The order of an equation (17) is defined to be the highest r ^ k such that
+
+@ @*r A(_0; : : : ; _k\Gamma 1; *0; *1; : : : ; *k)
+
+is not a zero function.
+
+For a given system \Sigma , we define ffi(\Sigma ) to be the lowest possible order of an i/o equation that \Sigma  admits. In case that there is no such i/o equation, ffi(\Sigma ) is defined to be +1.
+
+Theorem 3.7. Assume \Sigma  is an n-dimensional analytic system defined by (5). If \Sigma  is generically locally observable, then ffi(\Sigma ) * n. If, in addition, \Sigma  is a rational system, then ffi(\Sigma ) = n.
+
+Proof. Let U ` M be an open subset diffeomorphic to IRn. We consider the restriction of \Sigma  to U . This system is still generically locally observable, and an equation for \Sigma  is also an equation for the restriction. So without loss of generality, we assume from now on that M = IRn.
+
+Assume that ffi(\Sigma ) = k ! 1 and \Sigma  admits i/o equation (17) of order k. For each integer i * 0, let
+
+Ai = @
+
+i
+
+@*ik A(_0; : : : ; _k\Gamma 1; *0; *1; : : : ; *k) :
+
+Claim: There exists an i, such that Ai is not an i/o equation of \Sigma .
+
+We prove the claim as the follows. Assume that Ai is an i/o equation of \Sigma  for every i. Then for any fixed i/o pair (u; y) and any fixed t, it holds that
+
+Ai(u(t); : : : ; u(k\Gamma 1)(t); y(t); : : : ; y(k)(t)) = 0 for all i. Thus, as a function of *k for these fixed values u(t); : : : ; y(k\Gamma 1)(t), all derivatives of
+
+A(u(t); : : : ; u(k\Gamma 1)(t); y(t); : : : ; y(k\Gamma 1)(t); *k )(18) evaluated at *k = y(k)(t) vanish. It then follows from the analyticity of A that (18) vanishes for all values of *k . Let _*k be such that the function
+
+~A(_0; : : : ; _k\Gamma 1; *0; : : : ; *
+
+k\Gamma 1 ) := A(_0; : : : ; _k\Gamma 1; *0; : : : ; *k\Gamma 1 ; _*k)
+
+11
+
+is not a zero function. Clearly it holds that
+
+~A(u(t); : : : ; u(k\Gamma 1)(t); y(t); : : : ; y(k\Gamma 1)(t)) = 0(19)
+
+for all i/o pairs of \Sigma . If one can show that ~A does not depend on _k\Gamma 1 , then one concludes that ~A = 0 is an i/o equation for \Sigma . For this, we proceed as follows: First of all, (19) holds for all i/o pairs of (u; y) if and only if the following holds:
+
+~A(_0; : : : ; _
+
+k\Gamma 1 ; 0(x; _); : : : ; k\Gamma 1(x; _)) = 0
+
+for all x 2 M and all _. Note here that i defined by (7) does not depend on _j for j * i. It follows that for any __k\Gamma 1 ,
+
+~A(_0; : : : ; _
+
+k\Gamma 2 ; __k\Gamma 1 ; 0(x; _); : : : ; k\Gamma 1(x; _)) = 0
+
+for all x and all _. Finally, pick __k\Gamma 1 such that
+
+_A(_0; : : : ; _
+
+k\Gamma 2; *0; : : : ; *k\Gamma 1 ) := ~A(_0; : : : ; _k\Gamma 2 ; __k\Gamma 1 ; *0; : : : ; *k\Gamma 1 ; _*k)
+
+is not a zero function. Then _A = 0 is an i/o equation of order k \Gamma  1 for \Sigma . This contradicts the assumption that ffi(\Sigma ) = k. The claim is thus proved.
+
+Now let r * 1 be the smallest number for which Ar = 0 is not an i/o equation for \Sigma . Replace A in (17) by Ar\Gamma 1. Evaluating (17) at t = 0, the equation implies the identity:
+
+A(_0; : : : ; _k\Gamma 1; 0(x; _); : : : ; k (x; _)) = 0 :(20)
+
+Since A1 = 0 is not an i/o equation of \Sigma , it follows that there exists some _ 2 IRmk such that
+
+A1(_0; : : : ; _k\Gamma 1; 0(x; _); : : : ; k (x; _)) 6= 0 ;(21) as a function of x, and hence by analyticity the complement of
+
+B = f_ 2 IRmk : A1(_0; : : : ; _k\Gamma 1; 0(x; _); : : : ; k (x; _)) = 0 ; 8xg:
+
+is an open dense subset of IRmk.
+
+Combining (20) and (21), one sees, for each _ 62 B, that dk (\Delta ; _) is a linear
+
+combination of d0(\Delta ; _); : : : ; dk\Gamma 1 (\Delta ; _) over IRx. Thus ddF
+
+k
+
+_ = ddF
+
+k\Gamma 1 _ , where, for
+
+each i, ddF
+
+i
+
+_ is the subspace of ddF _ spanned by d0(\Delta ; _); d1(\Delta ; _); : : : ; di(\Delta ; _).Differentiating (17) with respect to time, one sees that for any
+
+i ? 1, it holds that
+
+A1(u(t); : : : ; u(k\Gamma 1)(t); y(t); : : : ; y(k)(t))y(k+i)(t)
+
+= Ai(u(t); : : : ; u(k+i\Gamma 1)(t); : : : ; y(t); : : : ; y(k+i\Gamma 1)(t))
+
+for every i/o pair (u; y) of \Sigma , where Ai is some analytic function. Thus, by induction, one can show that ddF
+
+k+i
+
+_ = ddF
+
+k\Gamma 1 _ for all _ 62 B. It then follows that dimRx ddF_ ^ k
+
+for all _ 62 bB, where bB ae IRm;1 is defined by bB = B \Theta  IRm \Theta  IRm \Theta  \Delta  \Delta  \Delta .
+
+On the other hand, by Corollary 2.4 and Proposition 3.5, one knows that dimIRx ddF_ = dimIRx ddF = n for all _ in a dense (in fact, even in a generic) subset of IRm;1. Therefore, \Sigma  cannot admit any i/o equation of order lower than n.
+
+If \Sigma  is a rational system, then an easy elimination argument, (based on the fact that any set of n + 1 rational functions in n variables must be algebraically dependent, see [41] for details), shows that it admits at least one i/o equation of order n, therefore, ffi(\Sigma ) = n.
+
+12
+
+3.2.2. I/O Operators. Next we consider i/o equations for i/o operators rather than for state space systems. By an i/o operator we mean an i/o map given by a convergent generating series. For detailed definition of i/o operators, we refer the reader to [42]. We say an i/o operator F satisfies an i/o equation (17) if every Ck i/o pair (u; y) of F satisfies (17).
+
+For any given operator F , we define ffi(F ) to be the lowest possible order of an i/o equation for F . Again, in case that there is no i/o equation for F , ffi(F ) is defined to be +1.
+
+An operator F is said to be realized by an initialized analytic system
+
+(M; x0; fg0; g1; : : :; gmg; h) if every i/o pair (u; y) of F satisfies the equations
+
+x0(t) = g0(x(t))u(t) +
+
+mX
+
+i=1
+
+gi(x(t))ui(t); x(0) = x0;
+
+y(t) = h(x(t)) for t small enough.
+
+Let *(F ) be the Lie rank of F , as defined in [11], [19], or [26]. It is well-known that F is realizable if and only *(F ) ! 1, and the dimension of any canonical realization for F is *(F ), cf [11] and [35]. Here, by a canonical realization we mean a realization by an accessible and generically locally observable system.
+
+Proposition 3.8. Assume that F is an i/o operator. Then: (a) *(F ) ^ ffi(F );
+
+(b) if there exists a rational canonical realization for F , then *(F ) = ffi(F ). Proof. It was shown in [42] that if ffi(F ) ! 1, then *(F ) ! 1. Thus we may assume that *(F ) ! 1, and in this case, one knows that F is realizable by some canonical system \Sigma  = (M; x0; fg0; g1; : : : ; gmg; h).
+
+By Remark 4.2 and Lemma 4.3 in [42], one knows that F admits i/o equation (17) if and only if (17) holds at any point t at which u(k\Gamma 1)(t) exists. Combining this fact with the accessibility of the system, one sees that F admits i/o equation (17) if and only if (20) holds for \Sigma  for all x in an open subset N of M and for all _. On the other hand, it can be seen that (20) holds for all x 2 N and all _ for system \Sigma  if and only if (17) is an i/o equation for \Sigma  as a system restricted to N . Applying Theorem 3.7, we obtain the desired conclusion.
+
+4. Proof of Lemma 2.1. In this section, we will prove Lemma 2.1. We will show first that there exists a generic subset W1 of IRm;1, so that
+
+F (x) = F_(x)(22) for all x and _ 2 W1, and then that there is a generic subset W2 of IRm;1 so that
+
+dF (x) = dF_(x)(23) for all x and all _ 2 W2. Then we just let W = W1 T W2. Proof of first part. For system (5), let
+
+B := fx 2 M : F (x) = 0g :
+
+13
+
+To prove (22), we consider, for each subset N of the open subset M n B, the following set:
+
+GN : = f_ 2 IRm;1 : \Psi (x; _) 6= 0; 8x 2 N g ; where \Psi (x; _) = (0(x; _); 1(x; _); : : :).
+
+To prove the desired conclusion, it is enough to show that GN is open dense whenever N is a compact subset of M n B (since M n B can be written as a countable union of such subsets). In the following we let N be a fixed compact subset of M n B, and we just write G instead of GN . To show that G is dense, we need the following fact.
+
+Let r ? 1 be an integer. For each fixed vector *r = (*0; *1 ; : : : ; *r\Gamma 1) 2 IRmr, we say that _ = (_1; _1 ; : : :) 2 IRm;1 is an extension of *r if _i = *i for each i 2 [0; r\Gamma 1].
+
+Lemma 4.1. Let x0 2 M and let *r be a fixed vector in IRmr. If \Psi (x0; _) = 0 for every extension _ of *r, then x 2 B.
+
+The proof of the above lemma will be given in Appendix A. We now return to show that G is dense. Take any open subset U of IRm;1; without loss of generality, we may assume that U = U0 \Theta  U1 \Theta  \Delta  \Delta  \Delta  \Theta  Ul \Theta  \Delta  \Delta  \Delta , where each Ui is an open subset of IRm. For each integer r ? 0, let U r = Qr\Gamma 1i=0 Ui. For each _r 2 U r, define
+
+B_r := fx 2 N : \Psi r(x; _r) = 0g where \Psi r(x; _r) = (0(x; _); 1(x; _); : : : ; r\Gamma 1(x; _)) for any extension _ of _r. Note that \Psi r is well defined because i(x; _) does not depend on _j for j * i. For each finite jet *, B* is an analytic subset of N , i.e. a set defined by analytic equalities. As a consequence of the Weierstrass Preparation Theorem (in the form given for instance in Thm. 2.7, Cor. 3 of [17]), one knows that analytic subsets of a compact set satisfy a descending chain condition. That is, if A1 ' A2 ' \Delta  \Delta  \Delta  ' Al ' \Delta  \Delta  \Delta  are analytic subsets of a compact set, then there exists some r ? 0 such that Aj = Ar for all j * r. From here it follows immediately that there is a minimal element B_* of the family fB*g in the sense that B_* = B* whenever B* ae B_* . Assume now that _* 2 U r provides such a minimal element. Claim: B_* = ;.
+
+Assume that the above claim is not true. Then there exists some x0 2 N such that \Psi r(x0; _*) = 0. Pick such an x0. By Lemma 4.1, there exists some extension _ of
+
+_* such that \Psi (x0; _) 6= 0, so there exists some l ? r such that l(x0; _) 6= 0. Write
+
+_l = (_*0; _*1; : : : ; _*r\Gamma 1 ; __r ; : : : ; __l\Gamma 1) 2 IRml : Note that (_*0; _*1; : : : ; _*r\Gamma 1 ) 2 U r by construction. For these fixed _*0; : : : ; _*r\Gamma 1 and x0, the function l(x0; _) does not depend on _j for j * l, and is analytic in (_r ; _r+1; : : : ; _l\Gamma 1). Since it does not vanish at (__r ; : : : ; __l\Gamma 1), there is also some
+
+(~_r ; ~_r+1; : : : ; ~_l\Gamma 1 ) 2 Ur \Theta  Ur+1 \Theta  \Delta  \Delta  \Delta  \Theta  Ul\Gamma 1 such that, for ~* := (_*0; : : : ; _*r\Gamma 1 ; ~_r ; : : : ; ~_l\Gamma 1 ), l(x0; ~_) 6= 0 for any extension ~_ of
+
+~*, and hence, \Psi l(x0; ~*) 6= 0. So x0 2 B_* n B~* . Also, obviously B~* ` B_*, since ~* is an extension of _*. This contradicts the minimality of B_* . So we proved that \Psi r(x; _*) 6= 0 for all x 2 N , as claimed.
+
+14
+
+Take any extension _ 2 U of _r to an infinite jet. Then \Psi (x; _) 6= 0 for all x 2 N , that is, G " U is not empty for any open subset U of IRm;1. Since U was arbitrary, one concludes that G is dense.
+
+To prove the openness of G, let
+
+Gr = f_r 2 IRmr : \Psi r(x; _r) 6= 0; 8x 2 N g : By compactness of N , Gr is open. Let Gr = Gr \Theta  IRm;1. Then Gr is open. Since G = S1r=1 Gr, it follows that G is open. Proof of second part (equation (23)). Clearly dF_(x) ` dF (x) for all x and _, and, for each _ 2 IRm;1, dF_(x) = dF (x) if and only if
+
+ker dF (x) = ker dF_(x) :(24) We now let b
+
+B = f(x; v) 2 T M : v 2 ker dF (x)g Then T M n bB is open. Let b\Psi (x; v; _) = ( b0(x; v; _); b1(x; v; _); : : :), whereb i(x; v; _) = di(x; _)v. To prove the desired conclusion, it is enough to show that there exists a generic subset W of IRm;1 such that for any _ 2 W, b\Psi (x; v; _) 6= 0 for all (x; v) 62 bB. For this, it is enough to show that for any compact subset cN of T M n bB, the set b
+
+G bN := f_ 2 IRm;1 : b\Psi (x; v; _) 6= 0; 8 (x; v) 2 cN g
+
+is open dense. We now fix a compact subset cN of T M n bB, and write bG instead of bG bN . Similar to the proof of part 1, we need the following conclusion to prove the density property of bG. The proof of the conclusion will again be provided in the Appendix A.
+
+Lemma 4.2. For any given fixed point (x; v) 2 T M, if b\Psi (x; v; _) = 0 for all extensions _ of *r, for some *r 2 IRmr, then (x; v) 2 bB.
+
+To show the density of bG, we take any open subset U of IRm;1. Again, without loss of generality, we can assume that U = U0 \Theta  U1 \Theta  \Delta  \Delta  \Delta  \Theta  Ul \Theta  \Delta  \Delta  \Delta , where each Ui is an open subset of IRm. Using the same notions for _r and U r as used before, we defineb
+
+B_r := n(x; v) 2 cN : b\Psi r(x; v; _r) = 0o
+
+where b\Psi r(x; _r) = ( b0(x; v; _); b1(x; v; _); : : : ; br\Gamma 1(x; v; _)) for any extension _ of _r. For each finite jet *, bB* is an analytic subset of cN (with the obvious analytic manifold structure on the tangent bundles). Using the same argument as before, one knows that there exists a minimal element of the family f bB*g. Let * 2 U s be such that bB* is a minimal element. Claim: b\Psi s(x; v; *) 6= 0 for all (x; v) 2 cN .
+
+Assume that the claim is not true. Then there exists some (x0; v0) 2 cN such that b\Psi s(x0; v0; *) = 0. By Lemma 4.2, there exists some extension _ of * such thatb \Psi (x0; v0; _) 6= 0. This means there exists some l * s such that bl(x0; v0; _) 6= 0. By analyticity of bl, one knows that there exists some
+
+(~_s; ~_s+1 ; : : : ; ~_l\Gamma 1 ) 2 Us \Theta  Us+1 \Theta  \Delta  \Delta  \Delta  \Theta  Ul\Gamma 1
+
+15
+
+such that, for ~_ := (*0; : : : ; *s\Gamma 1 ; ~_s ; : : : ; ~_l\Gamma 1), b\Psi l(x0; v0; ~_) 6= 0. So (x0; v0) 2b B* n bB~_. Also, obviously bB~_ ` bB*, since ~* is an extension of *. This contradicts the minimality of bB*. So we proved that b\Psi r(x; v; *) 6= 0 for all (x; v) 2 cN . Noting then that for any extension _ of *, b\Psi (x; v; _) 6= 0 for any (x; v) 2 cN , we conclude that G T U 6= ;. This proves the density of G.
+
+To prove the openness of bG, we again letb
+
+Gr = f_r 2 IRmr : b\Psi r(x; v; _r) 6= 0; 8(x; v) 2 cN g : By compactness of cN , bGr is open. Let bGr = bGr \Theta  IRm;1. Then bGr is open. Sinceb G = S1r=1 bGr, it follows that G is open. The proof of Lemma 2.1 is then complete.
+
+Finally, we remark that also with respect to the weak topology on IRm;1, GN andb G bN are still open and dense. Density is obvious, as they are dense with respect to
+
+a stronger topology. The openness of GN and bG bN follows from the compactness of N and cN . Thus, the conclusions of Lemma 2.1 also hold with respect to the weak topology on IRm;1.
+
+4.1. Proof of Theorem 3.1. In this section, we provide a proof for Theorem 3.1. To study observability for system (5), we consider the following system:
+
+,0 = ~g0(,) +
+
+mX
+
+i=1
+
+~gi(,)ui ;
+
+y = ~h(,) ; (25)
+
+where
+
+, = ` xz ' 2 M \Theta  M; ~gi(,) = ` gi(x)g
+
+i(z) ' ; 0 ^ i ^ m;
+
+and ~h(,) = h(x) \Gamma  h(z). Clearly, x 6,u z for system (5) if and only if , 6,u 0 for system (25). Thus, to prove Theorem 3.1, it is enough to establish the following conclusion:
+
+Proposition 4.3. Assume that for an analytic system (5), the i/o map induced by the zero initial state is a zero map, that is, h ffi '(t; 0; u) = 0 for all t and all u. Then for any T ? 0, the set
+
+G = fu 2 C1[0; T ] : x 6,u 0 if x 6, 0g : is a generic subset of C1[0; T ].
+
+Proof. Let B := fx : x , 0g. Then M n B is an open subset of M. To prove Proposition 4.3, it is enough to show that for every compact subset N of M n B, the set
+
+GN = fu 2 C1[0; T ] : x 6,u 0 for all x 2 N g is an open dense subset of C1[0; T ].
+
+Note that for u 2 C1, x 6,u 0 if i(x; _) 6= 0 for some i, where _ = (_0; _1 ; : : :) 2
+
+IR1 with _i = u(i)(0), and i is as defined in (7) for each i. Also, by Theorem 3-1.5 in [19], one knows that for x 2 M, if F (x) = 0, then x 2 B. This means that for each x 2 N , F (x) 6= 0. Thus, by Lemma 2.1, there exists a dense subset G of IRm;1 such that \Psi (x; _) 6= 0 for all x 2 N and all _ 2 G.
+
+16
+
+To complete the proof of Proposition 4.3, we need to show that GN is an open dense subset of C1[0; T ].
+
+Take _! 2 C1[0; T ], and let U be a neighborhood of _!. Without loss of generality when showing the density of GN , we may assume that
+
+U = ae! 2 C1[0; T ] : max0^
+
+i^k jw
+
+(i)(t) \Gamma  _!(i)(t)j ! ffi; t 2 [0; T ]oe ;
+
+for some integer k * 0 and some ffi ? 0.
+
+Let __ := (__0; __1; : : :), where __i := _!(i)(0), and let W be the open subset of IRm;1 defined by:
+
+W = n_ 2 IRm;1 : j_i \Gamma  __ij ! ffie\Gamma T ; i * 0o : As W T G 6= ;, there exists some * 2 W such that \Psi (x; *) 6= 0 for all x 2 N . By compactness of N , there exists some r ? 0 such that
+
+\Psi r(x; *r) 6= 0; for any x 2 N :(26) Without loss of generality, one can always assume that r ? k.
+
+Now let _!0(t) := _!(t) \Gamma 
+
+r\Gamma 1X
+
+i=0
+
+__i
+
+i! t
+
+i. Note then that _!(i)0 (0) = 0 for all 0 ^ i ^ r \Gamma  1.
+
+Finally, we define
+
+!(t) := _!0(t) +
+
+r\Gamma 1X
+
+i=0
+
+*i
+
+i! t
+
+i :
+
+Then, for 0 ^ i ^ k and 0 ^ t ^ T , we have
+
+j!(i)(t) \Gamma  _!(i)(t)j ^
+
+r\Gamma 1X
+
+j=i
+
+j*j \Gamma  __j j
+
+(j \Gamma  i)! t
+
+j\Gamma i ^ 1X
+
+j=0
+
+j*j+i \Gamma  __j+i j
+
+j! t
+
+j
+
+! ffie\Gamma T et ^ ffi : Thus, ! 2 U .
+
+On the other hand, (26) implies that for every x 2 N , there exists some i ^ r \Gamma  1, such that
+
+di dti fififififit=0 h('(t; x; w)) 6= 0 :
+
+From here it follows that x 6,! 0 for every x 2 N , that is, ! 2 GN . This proves that GN is dense.
+
+We then conclude the proof of Proposition 4.3 by noting that the openness of GN follows from the compactness of N .
+
+Remark 4.4. Note that the above proof only depends on the first half of Lemma 2.1, i.e., formula (22), and the proof of (22) is fairly straightforward (though it calls upon some notions and elementary results from the theory for generating series). Proof of Proposition 3.2: As indicated in the beginning of this section, it is enough to show the following:
+
+17
+
+Assume that for an analytic system (5), the i/o map induced by the zero initial state is a zero map, that is, h ffi '(t; 0; u) = 0 for all t and all u. Then there exists some analytic input u such that x 6,u 0 for all x 6, 0. Proof. Consider the following open subset of IRm;1:
+
+U = U0 \Theta  U1 \Theta  U2 \Theta  \Delta  \Delta  \Delta  where Ui = (\Gamma 1; 1) for all i * 0. By Lemma 2.1, there is at least one jet _ in U such that F_(x) = F (x), from which it follows that
+
+\Psi (x; _) 6= 0 ; 8x 6, 0 :(27) Now let
+
+u(t) =
+
+1X
+
+i=0
+
+_i
+
+i! t
+
+i :
+
+Then u is an analytic function and u(i)(0) = _i . By (27), one knows that x 6,u 0 for all x 6, 0.
+
+5. Main Results for Discrete Time Systems. In this section, we discuss our main results for discrete time systems.
+
+5.1. Basic Definitions for Discrete Time Systems. We consider analytic systems as in Equation (4), where for each t, x(t) 2 M, an analytic manifold and u(t) 2 IRm. We assume that h : M ! IRp and f : M \Theta  IRn ! M are analytic. If M = IRn, and the entries of f and h are rational functions with no (real) poles, then we call (4) a rational system. A system \Sigma  will be called reversible if f (\Delta ; u) is one-to-one, for each fixed u 2 IRm. (Reversible systems are a more general class than the systems usually called invertible in the discrete-time controllability literature, for which one makes the stronger requirement that f (\Delta ; u) is a diffeomorphism of M, for each u. Invertible systems arise naturally through the sampling of continuous-time systems in digital control, by integrating flows over a sampling period; their controllability properties were studied in, among other papers, [20, 12, 21, 24, 22, 23, 1].)
+
+For each control sequence ! 2 IRkm, we define f ! : M ! M inductively by f e(x) = x for the empty sequence e and f !u(x) = f (f !(x); u). We also let h! := hffif !. For _ = (_0; _1; ; : : :) 2 IRm;1, we let H_(x) := (h(x); h_0(x); h_0_1 (x); : : :).
+
+Two states p and q are said to be distinguished by _ 2 IRm;1, denoted by p 6,_ q, if H_(p) 6= H_(q). A discrete time system is said to be observable if any two distinct states p and q can be distinguished by some _. See [27] for detailed introduction to observability and related concepts, and in particular [25] for results on observability of discrete-time systems.
+
+For an analytic system, we define the observation space of \Sigma  as the following subspace of the space of analytic functions defined on M:
+
+F = span IR fh! : ! 2 IRmr; r * 0g : This space plays an important role in studying observability of discrete time systems, see e.g. [28] and [27]. See also [16] for related algebraic structures.
+
+18
+
+Associated to the above space, for each x 2 M we let dF (x) be the subspace of the cotangent space at x defined by
+
+dF (x) = fdff(x) : ff 2 F g : In analogy to the continuous time case, we define, for each _ = (_0; _1; : : :) 2 IRm;1, the following subspace F_ of analytic functions:
+
+F_ = span IR fh; h_0 ; h_0 _1 ; : : :g : For each _ 2 IRm;1 and each x 2 M, we also consider
+
+dF_(x) = fdff : ff 2 F_g : Clearly, F = P_ F_ and dF (x) = P_ dF_(x) for each x. Here we will need the following result:
+
+Lemma 5.1. Assume that (4) is reversible and observable. Then there exists a generic subset W of IRm;1 such that for each _ 2 W,
+
+dF (x) = dF_(x) = IRn ;(28) for all x in an open dense subset of M. The proof will be given later; it will rely on a result about universal inputs for discrete time systems which is presented in the next section.
+
+Assume now that M = IRn. Still using the notations used in section 2.2, we introduce: d
+
+dF := span IRx fdff : ff 2 F g ; ddF_ := span IRxfdff : ff 2 F_g : From the Lemma, and using an argument analogous to that used in proving Corollary 2.4, we have:
+
+Corollary 5.2. For an analytic, reversible and observable system, ddF _ = ddF for all _ in a generic set of IRm;1. 2
+
+5.2. Observability and Universal inputs. An input sequence is said to be a universal input of a discrete time system \Sigma  if it distinguishes every distinguishable pair of \Sigma .
+
+Theorem 5.3. Assume that (4) is analytic, reversible and observable. Then the universal inputs of (4) form a generic subset of IRm;1. Proof. First of all, we let
+
+D := f(x; x) : x 2 Mg ` M \Theta  M : By observability, every pair (x; z) 2 (M \Theta  M) n D is a distinguishable pair of (4). For each * 2 IRmr, we let *r(x; z; *) = h* (x) \Gamma  h*(z), and we also let *0(x; z) = h(x; z). For each _ = (_0; _1 ; : : :), we define
+
+\Lambda (x; z; _) = (*0(x; z); *1(x; z; _0 ); *2(x; z; _1_0); : : :) : To prove the desired conclusion, it is enough to show that for each compact subset N of (M \Theta  M) n D, the set GN defined by
+
+GN := f_ 2 IRm;1 : \Lambda (x; z; _) 6= 0; 8(x; z) 2 N g
+
+19
+
+is an open dense subset of IRm;1.
+
+For each open subset U of IRm;1 given by U0 \Theta  U1 \Theta  \Delta  \Delta  \Delta , consider, for each * 2 U s = Qs\Gamma 1i=0 Ui, the subset B* of N defined by
+
+B* = f(x; z) 2 N : \Lambda r(x; z; *) = 0g ; where \Lambda r(x; z; *) = (*0(x; z); *1(x; z; *0); : : : ; *s(x; z; *)). Using the same argument as that employed in the proof of Lemma 2.1, we know that there exists a minimal element B_* of the family fB_*g. Suppose _* 2 U r. We next show that _* distinguishes every pair (x; z) 2 N . Assume that there would exist a pair (x0; z0) 2 N such that x0 ,_* z0. Since (4) is reversible, x1 6= z1, where x1 = f * (x0) and z1 = f * (z0). By observability of (4), one knows that there exists some ~* 2 IRms such that x1 6,~* z1. Let b* = ~* _* (concatenation of sequences), then it follows that \Lambda r+s(x0; z0; _* ~*) 6= 0. By the analyticity of \Lambda r+s when fixing x0; z0 and _*, one knows that there exists some b* 2 Ur \Theta  \Delta  \Delta  \Delta  \Theta  Ur+s\Gamma 1 such that \Lambda r+s(x0; z0; _* b*) 6= 0. This implies that (x0; z0) 2 B_* n B_*b* , which, in turn, implies that B_*b* is a proper subset of B_* , contradicting the assumed minimality of B_* . Thus, we showed that \Lambda r(x; z; _*) 6= 0 for any (x; z) 2 N . Clearly, any extension _ of _* in U is an element of GN . This shows that GN T U 6= ; for any open subset U of IRm;1. The density of GN is thus proved.
+
+Again as in the proof of Lemma 2.1 for the continuous case, GN is open since N is compact.
+
+In the statement of Theorem 5.3, we assumed more than we did in its continuous counterpart, Theorem 3.1 (and also concluded slightly less). One of the extra conditions is observability. We needed to impose this because the counterpart of Lemma 4.1 is not available in the discrete time case. The discrete case analogy would be that any distinguishable pair is again carried to a distinguishable pair by the flow of the system, no matter which input is applied. Unfortunately, this not true in general. The following example, suggested by F. Albertini, shows that distinguishable pairs can be carried to indistinguishable pairs. (Note that this can never happen with analytic continuous time systems.)
+
+Example 5.4. Consider the system
+
+x(t + 1) = x(t) + 1; y(t) = h(x(t));(29) where h(x) is defined by
+
+h(x) = (
+
+sin ssx
+
+ssx if x 6= 01 if x = 0 .
+
+Clearly the system is analytic and reversible. However, the distinguishable pair (0; 1) is carried to an indistinguishable pair after t = 1. 2 Proof of Lemma 5.1: To obtain the desired conclusion, it is enough to show that (28) holds in an open dense subset of M for every universal input _ (since universal inputs themselves form a generic subset).
+
+Fix any universal input _. By observability, one knows that H(\Delta ; _) is a one-to-one map. Let k = maxp dim F_(p). It is sufficient to show that k = n. But this is an immediate consequence of Lemma B.1 (see Appendix B), applied to fh; h_0; h_0_1; : : :g seen as a family of maps.
+
+20
+
+5.2.1. Orders of I/O Equations. We say that the discrete-time system (4) admits the i/o equation such as that in Equation (3) if (3) holds for all input/output pairs of (4) (for t * r and any possible initial state x(0)). The order of the equation is r if
+
+@ @*r E(_0; : : : ; _k\Gamma 1; *0; *1; : : : ; *k)
+
+is not a zero function. For any given system \Sigma , we let ffi(\Sigma ) be the lowest possible order of an i/o equation that \Sigma  admits. If there is no such equation, ffi(\Sigma ) is defined to be 1. Following the same outline as in the proof of Theorem 3.7, but using now Lemma 5.1, we conclude as follows:
+
+Theorem 5.5. Let \Sigma  be an n-dimensional analytic system. Assume, further, that \Sigma  is reversible and observable. Then ffi(\Sigma ) * n. If, in addition, \Sigma  is a rational system, then ffi(\Sigma ) = n.
+
+Remark 5.6. The result in Lemma 5.1 is false if the assumption of reversability is dropped, as discussed in [28]. As a consequence of this, the above conclusions may be false without the invertibility assumption. To illustrate this, consider the following system of dimension 3:
+
+x1(t + 1) = u(t) ; x2(t + 1) = x3(t) ; x3(t + 1) = x3(t)x1(t) + x1(t) + x2(t)u(t) ; y(t) = x3(t):
+
+This is an observable polynomial system. However, it admits an equation of order 2:
+
+y(t) = y(t \Gamma  1)u(t \Gamma  2) + y(t \Gamma  2)u(t \Gamma  1) + u(t \Gamma  2); Note that this system is not reversible. 2
+
+A. Proofs of two Lemmas. In this appendix, we will prove Lemmas 4.1 and 4.2. For this, we need to recall some basic definitions and properties of i/o operators defined by convergent generating series. For a detailed study of generating series and i/o operators, we refer the reader to [42].
+
+Let m be a fixed integer and I = f0; 1; : : : ; mg. For any integer k * 1, we define Ik to be the set of all sequences i1i2 \Delta  \Delta  \Delta  ik, where is 2 I for each s. We use I0 to denote the set whose only element is the empty sequence OE. Let I\Lambda  = [1k*0Ik.
+
+A generating series
+
+c = X
+
+'2I\Lambda 
+
+hc; j'ij';
+
+is a formal power series in the noncommutative variables j0; j1; : : : ; jm for some fixed number m, where we use the notation j' = ji1ji2 \Delta  \Delta  \Delta  jil for each multiindex ' = i1i2 \Delta  \Delta  \Delta  il. The coefficients hc; j'i are assumed to be real.
+
+We shall say that a power series c is convergent if there exist K; M * 0 such that
+
+jhc; j'ij ^ KM kk! for each ' 2 Ik, and each k * 0:(30) For any fixed real number T ? 0, let UT be the set of all essentially bounded measurable functions
+
+u : [0; T ] ! IRm
+
+21
+
+endowed with the L1 norm. We write kuk1 for maxfkuik1 :; 1 ^ i ^ mg and kuk1 for maxfkuik1 :; 1 ^ i ^ mg where ui is the i-th component of u, and kuik1 is the L1 norm of ui, kuik1 is the L1 norm of ui. For each u 2 UT and each ' 2 Il, we define inductively the functions
+
+V' = V'[u] 2 C[0; T ] by
+
+Vi1\Delta \Delta \Delta il+1[u](t) = Z
+
+t
+
+0 u
+
+i1(s)Vi2\Delta \Delta \Delta il+1 (s) ds;
+
+where VOE = 1 and ui is the i-th coordinate of u(t) for i = 1; 2; : : :; m and u0(t) j 1.
+
+For each formal power series c in j0; j1; : : : ; jm, we define a formal operator on UT in the following way:
+
+Fc[u](t) = Xhc; j'iV'[u](t):(31) If the series is convergent and (30) holds, then it is known that for any
+
+T ! (kuk1(M m + M ))\Gamma 1; the series (31) converges uniformly and absolutely for all t 2 [0; T ]. Let
+
+VT := fu 2 Lm1 : kuk1T ! (M m + M )\Gamma 1g: We refer the reader to [42] for the proof of the following lemmas: Lemma A.1. Assume that c is a convergent power series. Then the operator
+
+Fc : VT ! C[0; T ] is continuous with respect to the L1 norm in VT and the C0 norm in C[0; T ]. 2
+
+Lemma A.2. Suppose c is a convergent series. Then Fc[u] is analytic if u 2 VT is analytic.
+
+For each convergent series c, we let, for each _ 2 IRm;1 and each integer i * 0,
+
+ci(_) = d
+
+i
+
+dti fififififit=0 Fc[u](t) ;(32)
+
+where u is any smooth input with u(i)(0) = _i . Note that ci(_) is a polynomial in _, and ci(_) doesn't depend on _j for j * i.
+
+By Lemma 2.1 in [40], one knows that for a convergent series c, Fc[u] = 0 for every piecewise constant input u if and only if c = 0. On the other hand, it is not hard to see that for each piecewise constant function u, there exists a sequence fujg of analytic functions such that kujk ^ kuk and uj ! u as j ! 1 in the L1 norm. By Lemma A.2, one concludes that Fc[u] = 0 for every analytic input u if and only if c = 0. Since Fc[u] is analytic if u is analytic, it then follows from (32) that for an analytic u with u(i)(0) = _i, Fc[u] = 0 if and only if ci(_) = 0 for all i * 0. Thus we conclude that c = 0 if and only ci(_) = 0 for all _ and all i. To prove the desired conclusions, we need the following well known fact:
+
+Lemma A.3. Assume that f is a continuous function defined on [0; t0] for some t0 ? 0. Then for any given integer r and any vector (w0; w1; : : : ; wr), there exists a
+
+22
+
+L1-bounded sequence of analytic functions fj defined on [0; t0], such that f (i)j (0) = wi for all i ^ r, and fj converges to f in the L1 norm.
+
+Proof. For the given vector, letb
+
+f (t) = f (t) \Gamma 
+
+rX
+
+i=0
+
+witi
+
+i! :
+
+Without loss of generality, one may assume that bf (0) = 0. Otherwise, one can always choose a L1-bounded sequence of continuous functions bfj converging to bf in the L1 norm and such that bfj(0) = 0. Now one may apply Lemma 4.3 in [42] to bf to conclude that there exists a sequence ~fj converging to bf uniformly (hence also in L1 norm) with the property that ~f (i)j (0) = 0 for all i ^ r. Then the functions
+
+fj (t) := ~fj(t) +
+
+rX
+
+i=0
+
+witi
+
+i!
+
+give the desired sequence.
+
+Combining the above conclusion and Lemma A.1, one proves the following: Lemma A.4. Assume that c is a convergent series, and that r is an integer. Let __r be a given vector in IRmr. If for every extension _ of __r, ci(_) = 0 for all i, then c = 0. 2 Proof of Lemma 4.1: For analytic system (5) and for each x 2 M, we define a generating series by letting
+
+hcx; ji
+
+1 ji2 \Delta  \Delta  \Delta  jir i = Lgir \Delta  \Delta  \Delta  Lgi2 Lgi1 h(x) :(33)
+
+By Lemma 4.2 in[37], such a series is always convergent, and it follows from Theorem 3- 1.5 in [19] that for any _ 2 IRm;1,
+
+i(x; _) = ci(x; _) ;(34) where
+
+ci(x; _) = d
+
+i
+
+dti fififififit=0 Fc
+
+x [u](t) :
+
+The conclusion of Lemma 4.1 then follows from Lemma A.4. Proof of Lemma 4.2: For analytic system (5), instead of considering the series defined by (33), we consider, for each (x; v) 2 T M, the series defined by
+
+hd(x; v); ji
+
+1 ji2 \Delta  \Delta  \Delta  jir i = dLgir \Delta  \Delta  \Delta  Lgi2 Lgi1 h(x)v :(35)
+
+Claim: For each (x; v), the series d(x; v) is a convergent series.
+
+First of all, by Lemma 4.2 in [37], there is some constant M0 ? 0 such that for g0(x); g1(x); : : : ; gm(x); v 2 TxM, there exists some M0 ? 0 such thatfififi
+
+dLgi1 Lgi2 \Delta  \Delta  \Delta  Lgir h(x)vfififi = fififiLvLgi1 Lgi2 \Delta  \Delta  \Delta  Lgir h(x)vfififi ^ M r+10 (r + 1)! :(36) It is then not hard to see that there exist some constants K and M ? M0 such thatfififi
+
+dLgi1 Lgi2 \Delta  \Delta  \Delta  Lgir h(x)vfififi ^ KM rr! ;
+
+23
+
+for all r ? 0. Therefore d(x; v) is a convergent series for each pair (x; v).
+
+For each smooth input u with u(i)(0) = _i , let
+
+di(x; v; _) = d
+
+i
+
+dti fififififit=0 Fd(x; v)[u](t) :
+
+Then it follows from (34) that
+
+di(x; _) = dci(x; _) ; from which it follows that
+
+di(x; _)v = di(x; v; _) : Applying Lemma A.4 to the series d(x; _), one obtains the desired conclusion of Lemma 4.2.
+
+B. A Simple Consequence of the Rank Theorem. The next result is a simple and well-known consequence of the Rank Theorem; we include its proof as it seems difficult to find a precise reference. (We provide a somewhat stronger form than needed, which applies in more generality, including to nonobservable systems.)
+
+Lemma B.1. Assume that H = fh* : Z ! IR; * 2 \Lambda g is a family of continuously differentiable real-valued functions on an n-dimensional differentiable manifold Z, parameterized by a set \Lambda . Then, there exists an open dense subset Z0 ` Z with the following property: For each z0 2 Z0 there exist an integer r = r(z0), an open neighborhood V of z0 in Z0, and parameter values *1; : : :; *r, so that, for each parameter * 2 \Lambda ,
+
+h*(z) = F*(h*1;:::;*r (z)) 8z 2 V ; where h*1;:::;*r(z) := (h*1(z); : : :; h*r (z)) and F* is some C1 function from some neighborhood U of h*1;:::;*r(V ) to IR. Moreover, the rank of the differential of h*1;:::;*r (z) is r at all z 2 V (so the nonempty fibres h\Gamma 1*1;:::;*r (q) intersect V at submanifolds of dimension n \Gamma  r). In particular, if it is known that z 7! (h*(z); * 2 \Lambda ) is one-to-one on any open subset of Z, then r(z0) = n for some z0 2 Z0.
+
+Proof. Consider for any s and any *1; : : : ; *s the rank ae*1;:::;*s(z) of the differential of h*1;:::;*s at z, and let ae(z) be the maximum possible value of this rank over all s and *1; : : : ; *s. A point z is regular if ae(z) is constant in a neighborhood of z. The regular points form an open set by definition, and it is an easy exercise to show, by induction on n; n \Gamma  1; : : : ; 1 that the set Z0 of such points is also dense. Pick now any z0 in Z0, and let ae(z0) = r. By definition of ae, there are parameters *1; : : : ; *r so that ae*1;:::;*r(z) = r for all z in some neighborhood of z0. By the Rank Theorem, there are local changes of coordinates in Z so that, in some neighborhood V of z0, h*i(z) = zi for i = 1; : : : ; r, and without loss of generality one may assume that ae*1;:::;*r (z) = r for all z in this same V . Now pick any * 2 \Lambda . Let f = h*. If it were the case that
+
+@f @zj (z) is nonzero for some z 2 V and some j ? r then the map h*1;:::;*s;* would haverank
+
+r + 1 at z, contradicting the choice of V . It follows that h* depends only on
+
+z1; : : : ; zr on this neighborhood, as desired.
+
+Remark B.2. Observe that, when dealing with analytic mappings and Z connected, the rank is constant on regular points, and one could pick the elements
+
+24
+
+*1; : : : ; *r globally on an open dense set. Also, in general this argument shows that locally there are always n control sequences that (locally) distinguish states, even in the nonanalytic case. 2
+
+REFERENCES [1] F. Albertini and E. D. Sontag, Discrete-time transitivity and accessibility: Analytic systems,
+
+SIAM J. Control and Optimization, 31 (1993), pp. 1599-1622. [2] Z. Bartosiewicz, Rational systems and observation fields, Systems & Control Letters, 9 (1987),
+
+pp. 379-386. [3] , Minimal polynomial realizations, Math. of Control, Signals, and Systems, 1 (1988),
+
+pp. 227-231. [4] G. Conte, G. H. Moog, and A. Perdon, Un th'eor`eme sur la repr'esentation entr'ee-sortie
+
+d'un syst`eme non lin'eaire, C. R. Acad. Sci. Paris, t. 307, S'erie I, (1988), pp. 363-366. [5] J.-M. Coron, Linearized control systems and applications to smooth stabilization, SIAM J.
+
+Control and Optimization, 32 (1994), pp. 358-386. [6] P. Crouch and F. Lamnabhi-Lagarrigue, State space realizations of nonlinear systems defined by input-output differential equations, in Proc. 8th Internat. Conf. Analysis Optimiz. Systems, Antibes, 1988, A. Bensousan and J. L. Lions, eds., Berlin, 1988, Spring-Verlag, pp. 138-149. [7] S. Diop, Elimination in control theory, Math. Contr., Signals & Syst, 4 (1991), pp. 17-32. [8] S. Diop, Closedness of morphisms of differential algebraic sets. Application to systems theory,
+
+Forum Math., 1 (1992), pp. 1-15. [9] S. Diop and M. Fliess, Nonlinear observability, identifiability, and persistent trajectories, in
+
+Proc. 30th IEEE Conference on Decision and Control, Brighton, IEEE Publications, 1991, pp. 714-719. [10] , On nonlinear obervability, in Proceedings of the first European Control Conference,
+
+C. Commault, D. Normand-Cyrot, L. J.M.Dion, M.Fliess, A. Titli, A.Benveniste, and I. Landau, eds., 1991, pp. 152-157. [11] M. Fliess, R'ealisation locale des syst`emes non lin'eaires, alg`ebres de Lie filtr'ees transitives et
+
+s'eries g'en'eratrices non commutatives, Invent. Math., 71 (1983), pp. 521-537. [12] M. Fliess and D. Normand-Cyrot, A group-theoretic approach to discrete-time nonlinear
+
+controllability, in Proc. IEEE Conf. Dec. Control, 1981. [13] S. T. Glad, Nonlinear state space and input output descriptions using differential polynomials, in
+
+New Trends in Nonlinear Control Theory, J. Descusse, M. Fliess, A. Isidori, and M. Leborgne, eds., Heidelberg, 1989, Springer-Verlag, pp. 182-189. [14] M. Golubitsky and V. Guillemin, Stable Mapping and Their Singularities, Springer-Verlag,
+
+New York, 1973. [15] O. M. Graselli and A. Isidori, Deterministic state reconstruction and reachability of bilinear
+
+control processes, in Proc. J.A.C.C., San Francisco, June 22-25 1977. [16] J. W. Grizzle, Linear algebraic framework for the analysis of discrete-time nonlinear systems,
+
+SIAM J. Control and Optimization, 31 (1993), pp. 1026-1044. [17] Herv'e, Several Complex Variables, Local Theory, Oxford University Press, London, 1963. [18] W. Hodge and D. Pedoe, Methods of Algebraic Geometry,, vol. I, Cambridge University Press,
+
+Cambridge, 1968. [19] A. Isidori, Nonlinear Control Systems, Springer-Verlag, Berlin, second ed., 1989. [20] B. Jakubczyk, Invertible realizations of nonlinear discrete time systems, in Proc. Princeton
+
+Conf. Info. Sc. and Syst., 1980, pp. 235-239. [21] B. Jakubczyk and D. Normand-Cyrot, Orbites de pseudo groupes de diffeophismes et commandabilit'e des syst`emes non lin'eaires en temps discret, in C. R. Acad. Sciences de Paris, 298-I, 1984, pp. 257-260. [22] B. Jakubczyk and E. D. Sontag, Controllability of nonlinear discrete-time systems: A Liealgebraic approach, SIAM J. Control and Opt., 28 (1990), pp. 1-33. [23] A. Mokkadem, Orbites de semi-groupes de morphismes r'eguliers et syst`emes non lin'eaires en
+
+temps discret, Forum Mathematicum, 1 (1989), pp. 359-376. [24] S. Monaco and D. Normand-Cyrot, Invariant distributions for nonlinear discrete-time systems, Systems and Control Letters, 5 (1984), pp. 191-196. [25] H. Nijmeijer, Observability of autonomous discrete-time nonlinear systems: a geometric ap25
+
+proach, Int. J. Control, 36 (1982), pp. 867-874. [26] H. Nijmeijer and A. van der Schaft, Nonlinear Dynamical Control Systems, Springer-Verlag,
+
+New York, 1990. [27] E. D. Sontag, On the observability of polynomial systems, I: Finite-time problems, SIAM J.
+
+Control & Optimization, 17 (1979), pp. 139-151. [28] , Polynomial Response Maps, Springer-Verlag, Berlin-NY, 1979. [29] , A concept of local observability, Systems & Control Letters, 5 (1984), pp. 41-47. [30] , Mathematical Control Theory, Deterministic Finite Dimensional Systems, SpringerVerlag, New York, 1990. [31] , Universal nonsingular controls, Systems & Control Letters, 19 (1992), pp. 221-224. Errata
+
+in 20 (1993), p.77. [32] E. D. Sontag and Y. Wang, Further results on generic observation spaces. Submitted. [33] , I/O equations for nonlinear systems and observation spaces, in Proc. 30th IEEE Conf.
+
+Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991, pp. 720-725. [34] , Orders of I/O equations and uniformly universal inputs, in Proc. 33rd IEEE Conf. Decision and Control, Orlando, Dec. 1994, IEEE Publications, 1994. [35] H. J. Sussmann, A proof of the realization theorem for convergent generating series of finite lie
+
+rank. Submitted. [36] , Single-input observability of continuous-time systems, Mathematical Systems Theory, 12
+
+(1979), pp. 371-393. [37] , Lie brackets and local controllability: A sufficient condition for scalar-input systems,
+
+SIAM J. Control & Optimization, 21 (1983), pp. 686-713. [38] A. V. van der Schaft, On realizations of nonlinear systems described by higher-order differential equations, Math Systems Theory, 19 (1987), pp. 239-275. [39] , Representing a nonlinear state space system as a set of higher-order differential equations
+
+in the inputs and outputs, Systems & Control Letters, 12 (1989), pp. 151-160. [40] Y. Wang and E. D. Sontag, On two definitions of observation spaces, Systems and Control
+
+Letters, 13 (1989), pp. 279-289. [41] , Algebraic differential equations and rational control systems, SIAM J. Control and Optimization, 30 (1992), pp. 1126-1149. [42] , Generating series and nonlinear systems: Analytic aspects, local realizability and i/o
+
+representions, Forum Mathematicum, 4 (1992), pp. 299-322. [43] , I/O equations in discrete and continuous time, in Proc. 31st IEEE Conf. Decision and
+
+Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 3661-3662. [44] J. C. Willems, From time series to linear systems, Part I: Finite dimensional time-invariant
+
+systems, Part II: Exact modelling, and part III: Approximate modelling, Automatica, 22, 22, 23 (1986, 1986, 1987), pp. 561-580, 675-694, 87-115.
+
+26</pre>
+</body>
+</html>

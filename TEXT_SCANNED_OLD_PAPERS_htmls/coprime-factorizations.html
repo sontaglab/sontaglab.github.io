@@ -1,0 +1,698 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/coprime-factorizations.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/coprime-factorizations.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Appeared in IEEE Trans. Automatic Control 34(1989): 435-443
+
+SMOOTH STABILIZATION IMPLIES COPRIME FACTORIZATION
+
+Eduardo D. Sontag1 Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+ABSTRACT This paper shows that coprime right factorizations exist for the input to state mapping of a continuous time nonlinear system provided that the smooth feedback stabilization problem be solvable for this system. In particular, it follows that feedback linearizable systems admit such factorizations. In order to establish the result a Lyapunov-theoretic definition is proposed for "bounded input bounded output" stability. The main technical fact proved relates the notion of stabilizability studied in the state space nonlinear control literature to a notion of stability under bounded control perturbations analogous to those studied in operator theoretic approaches to systems; it states that smooth stabilization implies smooth input-to-state stabilization.
+
+1 Introduction Constructions of coprime factorizations for nonlinear systems have been obtained of late in the literature ([10], [12], [8]). The potential significance of such fraction representations to the theory of nonlinear control has been pointed out, for instance, in [31], [11], and [9]. Such factorizations are of interest in principle when studying the problem of parameterizing compensator laws. It has also been pointed out that, in general, factorizations for systems can be obtained through a judicious use of stabilizing feedback controllers (see [18] for the case of linear systems, and [11] and [8] for the nonlinear case.)
+
+The paper [8] shows that one may always obtain such factorizations for the input to state maps of certain types of continuous time systems of a rather special form, namely those expressible as bounded and input-independent perturbations of controllable linear systems. In this note, we establish that factorizations exist under weaker hypotheses, and in doing so we make contact with the growing literature on nonlinear feedback control. In order to develop the necessary techniques, we must also provide what we believe are original definitions of input/output stability. These definitions refine those that had been typically used in operator theoretic approaches to nonlinear systems analysis (see e.g. [31], [8]) and which were motivated by analogous linear concepts. Our definitions are more natural in the context of Lyapunov stability, and they may be relevant as well in areas other than the application to factorization problems.
+
+1Research supported in part by US Air Force Grants 85-0247 and 88-0235. Keywords: stabilization, BIBO stability, coprime factorizations
+
+1
+
+Even for systems that are linearizable under feedback, it is not entirely clear that coprime factorizations should exist. This is because the construction of coprime factorizations is based on the use of feedback laws of the type
+
+u = K(x) + v; (1) (or, in operator terms, the diagram in Figure 1,) while in order to feedback-linearize systems one needs in general (but not in the special case [5]) a state dependent term multiplying the control, such as
+
+u = K(x) + fi(x)v (2)
+
+with everywhere invertible but nonconstant fi. (See for instance [16], [14].) Thus the intuition that "if a system is feedback linearizable then it must behave just as a linear system, and hence admit factorizations" is not a priori correct and requires careful analysis. We shall show that indeed factorizations do exist in this case, however, but the argument will be much less trivial. In fact, we shall give a general result which relates the existence of factorizations to the solution of smooth feedback stabilization problem(s). For variants of the latter see for instance [17], [29], [26], [27], [3], [6], [7], [2], [22], [1], [2], [30], [15], [28], and related references.
+
+To be precise, we base the existence of factorizations on the solution of the following control problem. Assume given a control system
+
+.x = f (x) +
+
+mX
+
+i=1
+
+uig(x) (3)
+
+with f and g1; : : : ; gm smooth, and evolving on IRn. The controls take values in Euclidean space, u(t) = (u1(t); : : :; um(t)) 2 IRm for each t. We use the notation G(x) for the matrix having the columns gi, and write the system also as
+
+.x = f (x) + G(x)u: We assume that 0 is an equilibrium point for the system, f (0) = 0. The problem of interest is then that of finding a control law as in (1) with the property that the resulting regulated system
+
+.x = f (x) + G(x)K(x) + G(x)u (4)
+
+(we write "v" again as "u") be in some sense "bounded input bounded output", "BIBO" for short (or more accurately, bounded input bounded state). We leave the precise technical definition of this concept unstated at this point, details to be included later. But at least this should imply that for initial state 0 and arbitrary bounded controls u, the resulting solution x(\Delta ) should exist for all t ? 0 and in addition that this solution be bounded. Now, the stabilization problem is instead that of finding a control law
+
+u = K(x) (5) such that
+
+.x = f (x) + G(x)K(x)
+
+be globally asymptotically stable (GAS for short). For linear systems, it is well-known that the two problems are equivalent, in the sense that any (linear) stabilizing law (5) will be such that, with the same K, (1) automatically provides BIBO stability. This is basically a restatement of the fact that convolving by an L1 kernel induces a bounded operator on L1. However, for
+
+2
+
+nonlinear systems this equivalence does not necessarily hold. Even for feedback linearizable systems there are counterexamples. For instance, consider the scalar single input (n = m = 1) system
+
+.x = \Gamma x + (x2 + 1)u: (6)
+
+The trivial feedback law u = K(x) j 0 already gives asymptotic stability. But the corresponding system (4), which is the same as the original system, is not BIBO in any sense. Indeed, consider the control u j 1 for t * 0. The resulting equation is
+
+.x = x2 \Gamma  x + 1 whose solution with initial condition x(0) = 0 diverges to +1. This example is however instructive in showing our main point, namely that any stabilizing feedback law can be modified so as to achieve more "robustness" in the sense of the closed loop system being BIBO. For instance, we may use instead
+
+u = \Gamma x + v
+
+which gives
+
+.x = \Gamma 2x \Gamma  x3 + u(x2 + 1):
+
+This new equation is indeed BIBO, since for bounded u and large x the cubic term will dominate and make all solutions approach a bounded set, in fact for arbitrary initial conditions.
+
+The rest of this paper makes the above definitions and claims precise. Other definitions of smooth stabilization than that used in this note are not only possible but even more desirable because they tend to be satisfied more often; in particular requiring just continuity of K at the origin. The reason for such interest is described in detail in [3] and to some extent in [26]. The results given here extend with basically no change to such more general notions. Also, note that reference [8] allows for time-varying systems. For simplicity, here we only talk about the time invariant case. The case of systems that are not necessarily linear in controls needs further study. However as far as Theorem 1 is concerned, an analogue is easily obtained. Indeed, it is only necessary to cascade the system with an integrator, and to apply the results for the new system (which is now linear in controls). The fact that the system enlarged by an integrator is again smoothly stabilizable is a result which can be found for instance in [30], and is related to ideas of generalized PD control for mechanical systems as in [19].
+
+Finally, we wish to point out that the methods described here are currently being extended to deal with the true BIBO problem in which there is an output map involved. In principle, this extension should follow along the lines of the linear case, treated in [18] and independently in [24]. For the particular case of bounded perturbations of linear systems, this work has been pursued already by C. Desoer (personal communication). For related results in the "normal form" feedback linearizable case, see also the independent work [20].
+
+2 State-Space Notions of Stability We first recall some standard concepts from stability theory; any book on Lyapunov stability can be consulted for these; a particularly good reference is [13]. A function fl : IR*0 ! IR*0 is said to be of class K if it is continuous strictly increasing and satisfies fl(0) = 0; it is of class K1 if in addition fl(s) ! 1 as s ! 1. Note that if fl is of class K1 then the inverse function
+
+3
+
+fl\Gamma 1 is well defined and is again of class K1 . A function fi : IR*0 \Theta  IR*0 ! IR*0 is said to be of class KL if for each fixed t the mapping fi(\Delta ; t) is of class K and for each fixed s it is decreasing to zero on t as t ! 1.
+
+We now provide the basic stability definitions for systems in state space form. Our definition of input to state stability is intended to capture the idea of "bounded input bounded output" behavior together with decay of states under small inputs. We chose the strongest concept under which we can prove a positive result; for the application to coprime factorizations using the "S-stability" notion in [8], a weaker concept would be sufficient. We believe that the definition given below will be of some importance in future stability studies.
+
+We make the following convention regarding norms: for any vector , in Euclidean space, j,j is its Euclidean norm. For measurable functions u taking values in such a space, kuk is the sup norm
+
+kuk := ess:sup: fju(t)j; t * 0g:
+
+This may be infinite; it is finite when u is essentially bounded.
+
+Definition 2.1 Consider a system (3). It is globally asymptotically stable (GAS) if there exists a function fi(s; t) of class KL such that, with the control u j 0, given any initial state ,0 the solution exists for all t * 0 and it satisfies the estimate
+
+jx(t)j ^ fi(j,0j; t): The system is input to state stable (ISS) if there is a function fi of class KL and there exists a function fl of class K such that for each measurable essentially bounded control u(\Delta ) and each initial state ,0, the solution exists for each t * 0 and furthermore it satisfies
+
+jx(t)j ^ fi(j,0j; t) + fl(kuk): (7)
+
+The above definition of GAS is of course equivalent to the usual one (stability plus attractivity,) but it is much more elegant and easier to work with. See [13], definition (24.2) and equation (26.2), for the equivalence, as well as lemma 6.1 in section 6 below. The definition of ISS system is a natural generalization of this.
+
+Note the following interpretation of the estimate (7). For a bounded control u, trajectories remain in the ball of radius fi(j,0j; 0) + fl(kuk). Furthermore, as t increases, all trajectories approach (in a Lyapunov stability manner) the smaller ball of radius fl(kuk). Because fl is of class K , this is a small neighborhood of the origin whenever kuk is small. Of course, a maximum could be used instead of a sum in (7), and the definition would not change.
+
+Since fl(0) = 0, an ISS system is necessarily GAS. For linear systems .x = Ax + Bu with asymptotically stable matrix A, an estimate (7) is obtained from the variation of parameters formula, but in general, as remarked above, GAS does not imply ISS.
+
+The notion of ISS is somewhat related to the classical "total stability" notion, but in the latter case one typically studies only the effect of small perturbations (or controls), while here we wish to have bounded behavior for arbitrary bounded controls.
+
+4
+
+Definition 2.2 The system (3) is smoothly stabilizable if there exists a smooth map K : IRn ! IRm with K(0) = 0 such that (4) is GAS. It is smoothly input to state stabilizable if there is such a K so that the system (4) becomes ISS.
+
+Note that systems that are linearizable under feedback are always smoothly stabilizable. Other such systems are described in the currently very active stabilization literature. The main result is:
+
+Theorem 1 Smooth stabilizability implies smooth input to state stabilizability.
+
+The proof of this theorem is given later in the paper. It involves the application of an inverse Lyapunov theorem to the GAS system obtained from the stabilizing feedback, and the use of a "stronger" control law derived from this. In the most general case, the proof is not entirely constructive, because of the need to invoke the inverse theorem; however in most cases of interest the corresponding Lyapunov functions are readily available, since they are used in establishing smooth stabilizability to begin with; see the references quoted earlier for details. Also, in the particular case of systems linearizable under feedback, a Lyapunov function is easy to obtain; this case is later worked out in detail as an illustration.
+
+3 Input/Output Stability Even though in this paper we shall only establish the existence of factorizations for those i/o operators that arise from the input to state behavior of systems given in state space form, it is useful to have a notion of stability that applies to more arbitrary i/o operators. This general notion of i/o stability will be used in the definition of coprime factorizations. Further, it will be related below to stability of input to state maps by showing that the i/o behavior of an ISS system is indeed i/o stable, and that the converse holds under appropriate conditions of reachability and observability.
+
+For each integer m we let Lm1;e denote the set of all measurable maps
+
+u : [0; 1) ! IRm which are locally essentially bounded, that is, such that the restriction of u to each finite subinterval of [0; 1) is essentially bounded. (The subscript "e" stands for "extended".) We let Lm1 be the set of all essentially bounded u, that is the set of all u with kuk ! 1, thought of as a Banach space with this norm.
+
+Given any element u 2 Lm1;e and any T * 0, we consider the truncations uT and uT defined as follows:
+
+uT (t) := ae u(t); if t 2 [0; T ],0; if t 2 (T; 1)
+
+and
+
+uT (t) := ae 0; if t 2 [0; T ],u(t); if t 2 (T; 1).
+
+5
+
+Note that uT 2 Lm1 for each T . Identifying as usual those functions which are almost everywhere equal, we have that u0 j 0 and u0 = u. An i/o operator is a partially defined mapping
+
+F : @(F ) ! Lp1;e with @(F ) ` Lm1;e, which is causal, i.e. it is such that
+
+[F (uT )]T = F (u)T for each T * 0 and each u 2 @(F ). Implicit in this definition is the requirement that uT 2 @(F ) for each T * 0 whenever u is in @(F ).
+
+The first example of i/o operator arises from state space systems (3). Pick a fixed initial state ,0 2 IRn, which for simplicity we always take to be ,0 = 0. Let @ be the set of controls u 2 Lm1;e for which the solution x(\Delta ) of (3) with x(0) = ,0 is defined for all t. Then the map
+
+F (u)(t) := x(t); @(F ) = @; is an i/o operator, the input to state mapping of the system.
+
+Memoryless i/o operators are everywhere defined i/o maps of the form
+
+F (u)(t) := h(u(t)) where h : IRm ! IRp. In order for F to be well defined as a map into Lp1;e, one needs that the following property hold for the mapping h:
+
+supfh(_); j_j ^ ag ! 1 for all a ? 0: (8) If in addition to (8) it holds that h(0) = 0, we shall say that h is K-bounded. The supremum in (8) is a nondecreasing function of a; if it vanishes at a = 0 then it can be majorized by a function of class K . Thus an equivalent definition of K-bounded function h is that there must exist a function ff of class K such that
+
+jh(_)j ^ ff(j_j) for each _ 2 IRm, and hence the terminology. Observe that any continuous map h such that h(0) = 0 is K-bounded. In particular, the feedback laws K in the definition of smooth stabilizability are automatically K-bounded.
+
+More generally, we consider systems with output. These are given by an equation such as (3) together with a K-bounded mapping
+
+h : IRn ! IRp; x(t) 7! y(t) = h(x(t)); (9) with some integer p. Taking the initial state ,0 = 0, the assignment F (u)(t) := h(x(t)) gives the i/o operator of the system. In the particular case when h is the identity, this is the same as the input to state map.
+
+Definition 3.1 The i/o operator F is input/output stable (IOS) if @(F ) = Lm1;e and there exist a function fi of class KL and a function fl of class K such that, for each pair of times 0 ^ T ^ t,
+
+jF (u)(t)j ^ fi(kuT k; t \Gamma  T ) + fl(kuT k) (10) for each u 2 Lm1;e.
+
+6
+
+(More precisely, since we are dealing with measurable functions, the above inequality should be interpreted as holding for almost all pairs T ! t.)
+
+By causality, the norm kuT k in the estimate (10) could be replaced by that of the restriction uTt of u to the interval [T; t].
+
+Applied in particular to each pair with T = 0, the definition implies that kF (u)k ^ fl(kuk) for all u. This definition of IOS seems to be natural from a Lyapunov theoretic point of view. It implies other notions such as that of "S-stability" given in [8]. The latter is the property that for each a ? 0 there should exist a b ? 0 such that if kuk ^ a then kF (u)k ^ b. If F is IOS, we can simply take b := fl(a), so S-stability holds too. But our definition also requires that outputs approach zero if controls do, which is a desirable property associated to the intuitive notion of stability. To prove this convergence, we argue as follows: assume that u(t) ! 0 as t ! 1, and pick pairs (T; t) with T = t=2 in the above definition. Then y = F (u) satisfies
+
+jy(t)j ^ fi(kuk; t=2) + fl(kut=2k) and both terms in the right go to zero.
+
+A memoryless operator corresponding to a K-bounded map h is always IOS. More generally, we have the following observation, a partial converse of which will be given in Proposition 7.1.
+
+Proposition 3.2 If the system (3) is ISS, then the system with output (3)-(9) is IOS. Proof. Assume that there holds an estimate of the type
+
+jx(t)j ^ fi0(j,0j; t) + O/0(kuk) (11) on solutions. Introduce the following function, which is again of class KL :
+
+~fi(s; t) := fi0(O/0(s); t):
+
+Using time invariance, the estimate (11) implies that whenever T ^ t and for each control u,
+
+jx(t)j ^ fi0(jx(T )j; t \Gamma  T ) + O/0(kuT k): Also from (11), and because ,0 = 0, jx(T )j ^ O/0(kuT k). Since since fi0 is increasing in its first argument we conclude that the output y(t) = h(x(t)) satisfies
+
+jx(t)j ^ ~fi(kuT k; t \Gamma  T ) + O/0(kuT k): Thus the input to state mapping is IOS. Since h is K-bounded there is a function O/ of class K such that jh(,)j ^ O/(j,j) for all ,; we conclude that
+
+jy(t)j ^ fi(kuT k; t \Gamma  T ) + fl(kuT k) for y(t) = h(x(t)) along solutions, where
+
+fi(s; t) := O/(2 ~fi(s; t)); fl(s) := O/(2O/0(s)): Here and later we use the following general fact, a weak form of the triangle inequality which holds for any function fl of class K and any a; b 2 IR*0:
+
+fl(a + b) ^ fl(2a) + fl(2b): (12) This is an obvious consequence of the nondecreasing character of fl.
+
+7
+
+4 Coprime Factorizations Given an i/o operator F : @(F ) ! Lp1;e, if it is one-to-one then there exists a well-defined left inverse
+
+F \Gamma 1 : @(F \Gamma 1) ! @(F ) ` Lm1;e; F \Gamma 1F = identity on @(F )
+
+whose domain @(F \Gamma 1) is the image im F of F . In this section, we use simply juxtaposition F G to denote functional composition F ffi G. The operator F is causally invertible if it is one-toone and its inverse F \Gamma 1 is an i/o operator. Causal invertibility is equivalent to the following property holding for all v; ~v in the domain of F and all T * 0:
+
+F (v)T = F (~v)T ) vT = ~vT : (13) Indeed, if F (v) = F (~v) then the left hand side of (13) holds for each T , and hence vT = ~vT for all T , from which it follows that v = ~v and therefore that F is one-to-one. Then causality of the inverse is equivalent to (13).
+
+Given i/o operators
+
+A : Lp1;e ! Lm1;e; B : Lm1;e ! Lm1;e; P : Lm1;e ! Lp1;e; with B one-to-one, we consider the interconnection diagram in Figure 2 (this is the same as Figure (1.1) in [12]). The diagram is said to be well-posed if for each v 2 Lm1;e all internal signals are well-defined and depend causally on v. More precisely, there must exist elements
+
+u; z 2 Lm1;e; y 2 Lp1;e such that
+
+y = P u; (14)
+
+z = Ay; (15) v = Bu + z; (16) so that u is unique and the induced mapping
+
+v 7! Dv := u (17) is an i/o operator (that is, it is causal).
+
+Note that if the diagram is well-posed then it follows also that y and z are unique, because of equations (14) and (15) respectively, that the operator
+
+v 7! N v := y (18) is causal, since N = P D and P is causal, and finally that also v 7! z = AN v is causal, by causality of A.
+
+Definition 4.1 The i/o operator P : @(P ) ! Lp1;e admits a coprime right factorization iff there exist IOS operators A and B with B causally invertible, such that the diagram in Figure 1 is well-posed and so that the induced i/o operators D; N are IOS.
+
+8
+
+Lemma 4.2 The operator P admits a coprime right factorization if and only if there exist IOS operators
+
+A : Lp1;e ! Lm1;e; N : Lm1;e ! Lp1;e; and B; D : Lm1;e ! Lm1;e
+
+such that B and D are causally invertible, @(D\Gamma 1) = @(P ),
+
+P = N D\Gamma 1 (19) and, if I denotes the identity in Lm1;e,
+
+AN + BD = I: (20)
+
+Proof. Assume that a factorization exists, and let A; B; D; N be as in the definition. We shall prove that the above properties hold for these operators. Property (20) follows from (16) together with (17) and (15)-(18).
+
+We next prove that D satisfies (13), so that it is causally invertible. Assume that v; ~v are as there. Let u; y; z; ~u; ~y; ~z be as in the definition of well-posedness, for each of these inputs respectively. From (17) and the causality of D, we know that also uT = ~uT , and from here, causality of P and A, and equations (15) and (14), also that zT = ~zT . Thus vT = ~vT because of (16), as desired.
+
+Finally, we prove that D\Gamma 1 has the same domain as P and that (19) holds. If u 2 @(D\Gamma 1), that is, u = Dv for some v, then by definition of the operator D we have that there is a y so that P u = y, that is u 2 @(P ). Conversely, given any u 2 @(P ), let y := P u, z := Ay and v := Bu \Gamma  z. By the uniqueness part of the well-posedness statement, u = Dv, so that indeed u 2 @(D\Gamma 1) and y = N v = N D\Gamma 1u.
+
+For the converse part of the lemma, assume that A; N; B; D are as in the lemma. Let v be arbitrary, and define y := N v, u := Dv, and z := Ay. Since N; D; A are all IOS, these are all well-defined. Moreover, property (20) implies that (16) holds. To see that the diagram is well-posed, we only need to verify the uniqueness statement. So assume that ~u; ~y; ~z satisfy (14) to (16) with the same v; we wish to show that u = ~u. Since P ~u = ~y, ~u is in the domain of P and hence of D\Gamma 1. Thus there exists some ~v with D~v = ~u. Note that P D~v = N ~v by the decomposition P = N D\Gamma 1. It follows that
+
+v = B ~u + ~z = BD~v + AP ~u = BD~v + AN ~v = ~v: Therefore ~u = D~v = Dv = u, as desired.
+
+The main result about factorizations is as follows:
+
+Theorem 2 If (3) is smoothly stabilizable then its input to state mapping admits a coprime factorization.
+
+Proof. By Theorem 1, we know that there is a smooth feedback law K so that (4) is ISS. By Proposition 3.2 (applied with h = identity,) the input to state mapping of the corresponding closed loop system is IOS. In systems terms, this is the mapping u 7! x in Figure 1, where P is the input to state mapping of the original system (3).
+
+9
+
+The mapping K induces a (memoryless) IOS operator, since it is K-bounded. Call A the negative of this operator, which is still IOS. Let B be the identity operator on Lm1;e. Then, the diagram in Figure 2 is well-posed, by existence and uniqueness of solutions of differential equations, and the stability property of the closed loop system, with in fact y := x and z := v\Gamma u. The system admits a coprime right factorization because N is the same as the input to state mapping of the closed-loop system, and in this particular case one has the equality
+
+D = I \Gamma  AN; so D must also be stable.
+
+The above argument applies also in the more general case in which the plant P is strongly stabilizable, meaning that an IOS operator A exists so that the interconnection in Figure 2 but without the B block is well-posed and stable (y is well defined for each u and the assignment v 7! y is an IOS i/o operator). Again in that case it suffices to define z := Ay and u := v \Gamma  Ay, with B taken as the identity.
+
+5 The Feedback Linearizable Case Feedback linearizable systems have been the object of a fair amount of study recently. Their theory was studied starting with the papers [5], [16], and [14], and many interesting practical systems are of this type, including robotic manipulators with rigid links -in which case feedback linearizability is trivial to establish (the "computed torque" approach.)
+
+Since such systems are obviously smoothly stabilizable, at least in the case in which the linearization can be globally achieved, they provide an immediate illustration of the main result, Theorem 1. As pointed out earlier, there are many other classes of smoothly stabilizable systems, and their characterization is an active research area at present.
+
+By a (globally) feedback linearizable system we shall mean a system of the type (3) for which there exists an invertible coordinate change
+
+z = OE(x); that is, a diffeomorphism OE : IRn ! IRn, as well as an everywhere invertible m \Theta  m matrix of smooth functions fi(x), and an n-vector ff(x) of smooth functions, such that in the z coordinates the equations of the closed loop system under u = ff(x) + fi(x)v,
+
+.x = f (x) + G(x)ff(x) + G(x)fi(x)u become those of a linear controllable system. (In the case of robotic manipulators, for example, fi(x) is the inverse of the inertia matrix, and one reduces to a parallel connection of double integrators.) Thus there must exist a controllable pair (A; B) such that
+
+OE\Lambda (x) (f (x) + G(x)ff(x)) = AOE(x) where OE\Lambda  is the Jacobian of OE, and
+
+OE\Lambda (x)G(x)fi(x) = B:
+
+10
+
+To stabilize such a system, one may choose a linear control law u = K0z so that A + BK0 is asymptotically stable, and then express this in the x coordinates, namely use the control law
+
+u = ff(x) + fi(x)K0OE(x): As remarked in the introduction, though stabilizing in the state space sense, this feedback will in general not produce an ISS system.
+
+We may apply however the construction in the proof of Theorem 1, as follows. First we find a Lyapunov function for the closed loop system. In z coordinates this is done for instance by solving the Lyapunov matrix equation
+
+(A + BK0)0P + P (A + BK0) = \Gamma I (22) (prime indicates transpose) for a symmetric positive definite P . Then
+
+V (x) = OE(x)0P OE(x) is a function as needed in the proof of the theorem. Thus the feedback law finally used is u = K(x) + v, where the i-th entry of the vector K(x) is
+
+ff(x)i + [fi(x)K0OE(x)]i + 12m L ~f V (x)LgiV (x) (23) where we are denoting the first closed-loop dynamics by
+
+~f (x) = f (x) + G(x)ff(x) + G(x)fi(x)K0OE(x):
+
+Because of the choice (22) for P , it holds that L ~f V (x) = \Gamma 2jOE(x)j2, so the above becomes
+
+ff(x)i + [fi(x)K0OE(x)]i \Gamma  2m jOE(x)j2OE(x)0P OE\Lambda (x)gi(x): (24)
+
+As an illustration take the unstable but feedback linearizable system with m = n = 1 with equations
+
+.x = x + u(x2 + 1):
+
+One can easily guess in this case the feedback law u = \Gamma x + v, which gives an ISS system, but we wish to proceed systematically, applying the above formulas. The system can be linearized simply with OE(x) = x, fi(x) = (1 + x2)\Gamma 1, and ff j 0. We get then P = 1=2 and the feedback law becomes
+
+u = \Gamma  2xx2 + 1 \Gamma  x3(x2 + 1) + v
+
+a sum of two terms the first of which is the smoothly stabilizing feedback law and the second being the correction term constructed by our theorem. The final closed loop system is
+
+.x = \Gamma x \Gamma  (x2 + 1)2x3 + u(x2 + 1) which is guaranteed to be ISS.
+
+11
+
+6 Proof of the Main Theorem In this section we wish to establish theorem (1). But first we need to review what is basically the classical result that shows that the definition of GAS via functions of class KL is equivalent to the usual definition. Since its proof is very simple and since we need the result stated in a form which we haven't found explicitly in the literature, we include the details here.
+
+When we say that a function ff defined on IR*0 is smooth we mean that it is smooth at each s ? 0.
+
+Lemma 6.1 Assume that ff is a smooth function of class K , and introduce the strictly decreasing differentiable function on (0; +1) given by
+
+j(s) := \Gamma  Z
+
+s
+
+1
+
+dr ff(r) :
+
+Let 0 ! a := \Gamma  lims!+1 j(s) and 0 ! b := lims!0+ j(s) (these may be +1). Note that the range of j, and hence the domain of j\Gamma 1, is the open interval (\Gamma a; b). For (s; t) 2 IR?0 \Theta  IR*0 define
+
+~fi(s; t) := ae 0; if t + j(s) * b,j\Gamma 1(t + j(s)); if t + j(s) ! b.
+
+(If b = +1, the first case never appears.) Let also ~fi(0; t) j 0, and fi(s; t) := ~fi(s; t) + s1+t. Then (a) fi is of class KL and (b) if y(\Delta ) is a solution of
+
+.y(t) = \Gamma ff(y(t)); y(0) = y0 * 0 (25) defined for t * 0 and with y(t) * 0 for all t then it holds that y(t) ^ fi(y0; t).
+
+Proof. Note first that ~fi, (and hence also fi,) is continuous, since both j and j\Gamma 1 are continuous in their domains and limx!b\Gamma  j\Gamma 1(x) = 0. Further,
+
+@ @s ~fi(s; t) =
+
+ff( ~fi(s; t))
+
+ff(s) ? 0
+
+whenever t + j(s) ! b, and zero for t + j(s) * b, so ~fi(s; t) is nondecreasing in s; it follows that fi is strictly increasing in s. Similarly, from
+
+@ @t ~fi(s; t) = \Gamma ff( ~fi(s; t)) ! 0 (26)
+
+whenever t + j(s) ! b, and zero for t + j(s) * b, we conclude that fi is nonincreasing in t. For t large and fixed s, fi(s; t) either converges to 0 or becomes identically zero (case b finite). Thus fi is of class KL , and claim (a) is proved.
+
+Consider now any solution y of (25). Such a solution is unique; this follows from the fact that one has local uniqueness from each initial condition y0 6= 0 (since ff(s) is Lipschitz about any s 6= 0) and if y0 = 0 then y j 0, by a simple continuity argument and the fact that .y(t) ? 0 whenever y(t) ? 0. Thus for arbitrary y0, while y(t) 6= 0 necessarily
+
+y(t) = ~fi(y0; t) ! fi(y0; t)
+
+12
+
+and if y(T ) = 0 for some T then y(t) = 0 for t ? T . Hence the bound in (b) holds for all t and all initial conditions.
+
+We now prove the theorem. Assume then that K1 is as in the definition of smooth stabilizability. We shall let ~
+
+f := f + GK1;
+
+and build another smooth mapping K, K(0) = 0, so that K2 := K1 + K makes the closed loop system (4) ISS. Replacing f by ~f , we may thus assume without loss of generality that the original system is GAS.
+
+By standard inverse Lyapunov theorems (see for instance [13], [21], Theorem 14 in [23], or as a particular case of the more general constructions in [26] and [3],) there exists a Lyapunov function for the system .x = f (x), that is, a smooth function
+
+V : IRn ! IR*0 which is proper, positive definite, and decreases along trajectories. More precisely, there exist functions ff1; ff2; ff3 of class K1 such that, for each , 2 IRn,
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) (27) and
+
+Lf V (,) ^ \Gamma ff3(j,j); (28)
+
+where Lf V denotes the Lie derivative
+
+Lf V (,) := rV:f (,): Thus, along trajectories x(\Delta ) of .x = f (x), there is an estimate
+
+dV (x(t))
+
+dt = Lf V (x(t)) ^ \Gamma ff3(jx(t)j);
+
+which is negative for x(t) 6= 0 and goes to \Gamma 1 if jx(t)j is large.
+
+The usual statements of Lyapunov inverse theorems do not necessarily provide the estimate (28), with the function ff3 in class K1 , but only ff3 in class K or just the statement that
+
+Lf V (,) ! 0 for , 6= 0: (29) It is easy however to modify any given Lyapunov function V so that there is indeed an ff3 as desired. For completeness, we now give the necessary argument. Assume then that (27) and (29) hold; we shall construct a W satisfying (27) and (28) with respect to some functions ff\Lambda i all of class K1 .
+
+We may assume without loss that ff2 is smooth. Consider now the smooth map
+
+a := \Gamma Lf V : IRn ! IR*0 (30) and let ae be any smooth function of class K1 such that
+
+lim,!1 a(,)ae(j,j) = +1:
+
+13
+
+Such an ae always exists; for instance one may first take the continuous function
+
+ae0(s) := O/(s)inf fa(,); j,j = sg where O/ is any continuous function with lims!1 O/(s) = 1 and O/(s) = 0 for s ^ 1, and then majorize ae0 by a strictly increasing and smooth ae. Now let ff\Lambda 3 be any smooth function of class K1 so that
+
+ff\Lambda 3(s) ^ inf fa(,)ae(j,j); j,j = sg
+
+for all s * 0, and pick
+
+e(s) := Z
+
+s
+
+0 ae(ff
+
+\Gamma 1 1 (r))dr:
+
+Note that e is of class K1 because both ae and ff\Gamma 11 are of class K , so also
+
+ff\Lambda 1 := e ffi ff1 and ff\Lambda 2 := e ffi ff2 are of class K1 . Finally, let W (,) := e(V (,)). Then (27) holds for W and ff\Lambda 1; ff\Lambda 2, and also
+
+Lf W (,) = ae(ff\Gamma 11 (V (,)))Lf V (,) ^ \Gamma ae(j,j)a(,) ^ \Gamma ff\Lambda 3(j,j): In summary, using W if necessary, we may assume that both (27) and (28) hold, with functions of class K1 .
+
+Finally, we construct the feedback law needed in the ISS definition, as follows. Let a be as in (30) and introduce also the functions
+
+bi := LgiV: (31) Letting
+
+K(,) := \Gamma  a(,)2m 0B@
+
+b1(,).
+
+..
+
+bm(,)
+
+1CA
+
+(32)
+
+we shall prove that this K provides input to state stabilizability.
+
+Consider the closed loop system (4), any initial state ,0, any bounded control u, and the corresponding trajectory x(\Delta ) (which is a priori defined at least for small t). Calculate the derivative of the same Lyapunov function V along x:
+
+dV (x(t))
+
+dt = Lf V (x(t)) +
+
+mX
+
+i=1 ^
+
+bi(x(t))ui(t) \Gamma  ` a(x(t))2m ' b2i (x(t))* : (33)
+
+This derivative is defined for almost all t, since V (x(t)) is absolutely continuous. It equals
+
+\Gamma  a(x(t))2 \Gamma  `a(x(t))2m ' c(t) where c(t) is the expression
+
+c(t) :=
+
+mX
+
+i=1 ^
+
+b2i (x(t)) \Gamma  ` 2ui(t)ma(x(t)) ' bi(x(t)) + 1* :
+
+14
+
+Each of its terms is of the form^
+
+bi(x(t)) \Gamma  mui(t)a(x(t))*
+
+2
+
++ "1 \Gamma  ` mui(t)a(x(t))'
+
+2#
+
+;
+
+which is nonnegative whenever
+
+mjui(t)j
+
+a(x(t)) ^ 1 (34)
+
+for all i, in which case also the expression in (33) is bounded above by
+
+\Gamma  a(x(t))2 : A sufficient condition for (34) to hold is that
+
+a(x(t)) * mkuk (35) Using the estimate (28) we conclude that, along this trajectory,
+
+jx(t)j * ff4(kuk) ) .V (x(t)) ^ \Gamma  12 ff3(jx(t)j) (36) where ff4 is the function of class K
+
+ff4(s) := ff\Gamma 13 (ms): Consider the further smooth function of class K
+
+ff5(s) := 12ff3(ff\Gamma 12 (s)): Then, the conclusion is that, for each t,
+
+jx(t)j * ff4(kuk) ) .V (x(t)) ^ \Gamma ff5(V (x(t))): (37) Let c := ff2(ff4(kuk)) and introduce the set
+
+S := f, 2 IRn j V (,) ^ cg: Claim: if x(t0) 2 S for some t0 * 0, then x(t) 2 S for all t * t0. Proof: otherwise, there exists an " ? 0 and some t1 ? t0 such that
+
+V (x(t1)) * c + ": Let t1 be minimal like this (for this fixed "). Therefore V (x(t)) ? c for t in a neighborhood of t1. It follows that the inequality in the left hand side of (37) holds for each t near t1, and therefore that the absolutely continuous function .V (x(t)) has a negative derivative almost everywhere near t1. Thus V (x(t)) ? V (x(t1)) for some t 2 (t0; t1), contradicting minimality of t1. So S must indeed be invariant, as claimed.
+
+Note that when x(t) 2 S, necessarily jx(t)j ^ fl(kuk), where g is the function of class K
+
+fl(s) := ff\Gamma 11 ffi ff2 ffi ff4: Finally, let fi0 be as in lemma 6.1 with respect to the function ff5, and define
+
+fi(s; t) := ff\Gamma 11 (fi0(ff2(s); t)); again a function of class KL . Claim: for each ,0 and each bounded control u as above, there exists for the ensuing trajectory x(\Delta ) a time T ? 0 (possibly T = +1) such that
+
+15
+
+1. jx(t)j ^ fi(j,0j; t) for all t ! T , and 2. x(t) 2 S for all t * T .
+
+(With the understanding that the second case does not happen if T = +1.) Actually, we shall prove that for each t for which the solution exists the above conclusions hold; since the union of S and the ball of radius fi(j,0j; 0) is compact, this means that solutions are in fact defined for all t * 0. The theorem follows from this claim, since then jx(t)j is bounded by the largest of fi(j,0j; t) and fl(kuk).
+
+Since S was proved above to be forward invariant, it is only necessary to prove that if V (x(t)) ? c for all t in some interval [0; T ) then the first case in the claim must hold for such t. But, as before, this will mean that for such t there holds the last inequality in (37). By comparison with the solution of (25), the desired estimate follows from lemma 6.1. This completes the proof of Theorem 1.
+
+7 Further facts about i/o stability We close by showing that the notion of IOS operator is closely related to that of ISS system, in the sense that under certain reachability and observability assumptions the input output notion implies internal stability (a converse of Proposition 3.2,) and by proving that our notion of i/o stability is closed under serial interconnections.
+
+We define a system with outputs (3)-(9) to be strongly observable provided that the following property holds: there must exist two functions ff1; ff2 of class K such that, for each triple of state, control, and output functions on t * 0
+
+(x(\Delta ); u(\Delta ); y(\Delta )) satisfying the equations, the norms of these functions necessarily satisfy
+
+kxk ^ ff1(kuk) + ff2(kyk): (38) This property is equivalent to observability for linear systems, since there exists in that case bounded linear operators L1; L2 such that (for example)
+
+x(0) = L1u1 + L2y1; that is the state at time 0 can be continuously reconstructed from the input and output in the interval [0; 1]. By time invariance, an estimate as (38) results. For nonlinear systems (or for linear infinite dimensional systems,) similar such notions of "well-posed observability" has been studied under various names such as "algebraic observability" or "topological observability" (see for instance [25], [32], [4]).
+
+Analogously, we define a notion of a strongly reachable system (3) as follows. There must be a function ff3 of class K with the following property: for each , 2 IRn there exists a time T ? 0 and a control u so that kuk ! ff3(j,j) and so that the solution x(\Delta ) of (3), x(0) = 0, when applying this control satisfies x(T ) = ,. In informal terms, the energy needed to control from the origin to any given state must be in some sense proportional to how far this state is from the origin. Again, for linear finite dimensional systems this is equivalent to the standard reachability concept.
+
+16
+
+Proposition 7.1 Assume that (3)-(9) is a strongly reachable and strongly observable IOS system with output. Then (3) is ISS.
+
+Proof. Let ff1; ff2; ff3 be as in the above definitions, and let fi; fl be as in the definition of IOS. Define ~
+
+fi(s; t) := ff2(2fi(ff3(s); t)); ~fl(s) := ff1(s) + ff2(2fl(s)): (39)
+
+Now assume given any ,0 2 IRn, and let v be a control with norm bounded by ff3(j,0j) which drives 0 to ,0 in time T . Apply any control w after time T , and let u be the concatenated control uT = v; uT = w. We let x = x(\Delta ) and y = y(\Delta ) be the corresponding state and output trajectories (with control u and x(0) = 0). Pick any fixed t * T . By time invariance, we can apply the strong observability estimate to the restrictions of x(\Delta ); y(\Delta ); u(\Delta ) to o/ * t, to get
+
+jx(t)j ^ ff1(kutk) + ff2(kytk) ^ ff1(kuT k) + ff2(kytk) (40) By the IOS hypothesis, applied to the pair of times 0 ^ T ! o/ , it holds that
+
+jy(o/ )j ^ fi(kuT k; o/ \Gamma  T ) + fl(kuT k): Therefore, since fi is decreasing in its second variable, also
+
+kytk ^ fi(kuT k; t \Gamma  T ) + fl(kuT k): (41) It follows from (40) and (41) that, with the definitions (39),
+
+jx(t)j ^ ~fi(j,0j; t \Gamma  T ) + ~fl(kuT k) for all t * T , which is by time invariance equivalent to the definition of ISS.
+
+A reasonable notion of stability should be closed under composition. We show now that our definition indeed satisfies this property.
+
+Proposition 7.2 Assume that F : Lm1;e ! Lq1;e and G : Lq1;e ! Lp1;e are both IOS i/o operators. Then the composition G ffi F is also IOS.
+
+Proof. Pick any 0 ^ T ^ t, and any u 2 Lm1;e. We let y = F (u); z = G(y). Let fi1; fl1 be the functions associated to F and fi2, fl2 those associated to G. We shall prove that
+
+jz(t)j ^ fi(kuT k; t \Gamma  T ) + fl(kuT k) (42) with the definitions
+
+fi(s; t) := fi2(2fl1(s); t2) + fl2(2fi1(s; t2 ))
+
+and
+
+fl(s) := fi2(2fl1(s); 0) + fl2(2fl1(s)):
+
+Let t1 := t+T2 , so that t \Gamma  t1 = t1 \Gamma  T = t\Gamma T2 . Applying the definition of IOS to the operator G, with the pair of times 0 ^ t1 ! t,
+
+jz(t)j ^ fi2(kyt1k; t \Gamma  t1) + fl2(kyt1k): (43)
+
+17
+
+(Note that by causality, just the norm of the restriction of y to the finite interval [t1; t] could be used in the last term of this inequality.) Now fix any time o/ * t1, and apply the IOS definition to the first operator, F , now with the pair of times 0 ^ T ^ o/ :
+
+jy(o/ )j ^ fi1(kuT k; o/ \Gamma  T ) + fl1(kuT k) ^ fi1(kuT k; t1 \Gamma  T ) + fl1(kuT k); (44) the last inequality because fi is decreasing in the second variable. Thus kyt1k is bounded by the right hand side of (44). It follows that the last term in (43) is bounded as
+
+fl2(kyt1k) ^ fl2(2fi1(kuT k; t1 \Gamma  T )) + fl2(2fl1(kuT k)): (45) Finally, note that
+
+kyt1k ^ fl1(kuk) ^ fl1(kuT k) + fl1(kuT k);
+
+the first inequality from the IOS property applied of F , using pairs 0 ^ 0 ! o/; o/ 2 [0; t1] (note that u0 = 0). So the first term in (43) is bounded by
+
+fi2(2fl1(kuT k); t \Gamma  t1) + fi2(2fl1(kuT k); t \Gamma  t1) ^ fi2(2fl1(kuT k); t \Gamma  t1) + fi2(2fl1(kuT k); 0): Thus equation (42) indeed holds.
+
+18
+
+8 References
+
+1. Abed, E.H., and J-H. Fu, "Local stabilization and bifurcation control, I. Hopf bifurcation,"
+
+Systems and Control Letters 7 (1986): 11-17.
+
+2. Aeyels, D., "Stabilization of a class of nonlinear systems by a smooth feedback control,"
+
+Systems and Control Letters, 5 (1985): 289-294.
+
+3. Artstein,Z., "Stabilization with relaxed controls," Nonl.Anal.,TMA 7 (1983): 1163-1173. 4. Bartosiewicz,Z., "Minimal polynomial realizations," Math.of Control, Signals, and Systems, 1 (1988): 227-238.
+
+5. Brockett,R.W., "Feedback invariants for nonlinear systems," IFAC Congress, Helsinki,
+
+1978.
+
+6. Brockett, R.W., "Asymptotic stability and feedback stabilization," in Differential Geometric Control theory (R.W.Brockett, R.S.Millman, and H.J.Sussmann, eds.), Birkhauser, Boston, 1983.
+
+7. Crouch, P.E., and I.S. Ighneiwa, "Stabilization of nonlinear control systems: the role of
+
+Newton diagrams," preprint, A.S.U., 1987.
+
+8. Desoer, C.A., and M.G. Kabuli, "Right factorization of a class of time varying nonlinear
+
+systems," Memo UCB ERL M87/55, Berkeley, 1987.
+
+9. Desoer, C.A., and M.G. Kabuli, "Nonlinear plants, factorizations, and stable feedback
+
+systems," Proc. IEEE Conf. Decision and Control, Los Angeles, Dec.87, pp. 155-156.
+
+10. Hammer, J., "Nonlinear systems: stability and rationality," Int.J. Control, 40(1984):
+
+1-35.
+
+11. Hammer, J., "On nonlinear systems, additive feedback, and rationality," Int.J. Control,
+
+40(1984): 953-969.
+
+12. Hammer, J., "Fraction representations of nonlinear systems: a simplified approach," Int.J.
+
+Control, 46(1987): 455-472.
+
+13. Hahn, W., Stability of Motion, Springer, N.Y., 1967. 14. Hunt,L.R., R.Su, and G.Meyer, "Design for multi-input nonlinear systems," in Differential Geometric Control theory (R.W.Brockett, R.S.Millman, and H.J.Sussmann, eds.), Birkhauser, Boston, 1983.
+
+15. Isidori, A., and C.I. Byrnes, "Local stabilization of minimum-phase nonlinear systems,"
+
+Systems and Control Letters 11 (1988): 9-17.
+
+16. Jakubczyk, B. and W. Respondek, "On linearization of control systems," Bull. Acad.
+
+Pol. Sci., Ser.Sci.Math.Astr.Phys. 28(1980): 517-522.
+
+17. Jurdjevic, V. and J.P. Quinn, "Controllability and stability," J.of Diff.Eqs. 28 (1978):
+
+381-389.
+
+19
+
+18. Khargonekar, P.P. and E.D. Sontag, "On the relation between stable matrix fraction
+
+decompositions and regulable realizations of systems over rings," IEEE Trans. Autom. Control 27 (1982): 627-638.
+
+19. Koditschek, D.E., "Adaptive techniques for mechanical systems," Proc.5th. Yale Workshop on Adaptive Systems, pp. 259-265, Yale University, New Haven, 1987.
+
+20. Krener, A.J., "Nonlinear controller design via approximate normal forms," in Proc. IMA
+
+Conf.on Signal Processing, Minneapolis, June-Aug 1988, Institute for Mathematics and its Applications, 1989.
+
+21. Kurzweil, J., "On the inversion of Lyapunov's second theorem on stability of motion,"
+
+Am. Math. Soc. Transl., Ser.2, 24 (1956): 19-77.
+
+22. Lee, K.K., and A. Arapostathis, "Remarks on smooth feedback stabilization of nonlinear
+
+systems," Systems and Control Letters, 10 (1988): 41-44.
+
+23. Massera, J.L., "Contributions to stability theory," Annals of Math, 64(1956): 182-206. 24. Nett, C.N., C.A. Jacobson, and M.J. Balas, "A connection between state space and doubly
+
+coprime fractional representations," IEEE Trans. Autom. Control, AC-29 (1984): 831- 832.
+
+25. Sontag, E.D., Polynomial Response Maps, Springer, Berlin-NY, 1979. 26. Sontag, E.D., "A Lyapunov-like characterization of asymptotic controllability," SIAM J.
+
+Control and Opt., 21(1983):462-471.
+
+27. Sontag,E.D., and H.J.Sussmann, "Remarks on continuous feedback," Proc. IEEE Conf.
+
+Dec. and Control, Albuquerque, Dec.1980.
+
+28. Eduardo D. Sontag and H'ector J.Sussmann, "Further comments on the stabilizability of
+
+the angular velocity of a rigid body," Report 88-10, SYCON - Rutgers Center for Systems and Control, Rutgers University, 1988.
+
+29. Sussmann,H.J., "Subanalytic sets and feedback control," J.Diff.Eqs. 31(1979):31-52. 30. Tsinias, J., "Sufficient Lyapunovlike conditions for stabilization," to appear in Mathematics of Control, Signals, and Systems.
+
+31. Viswanadham, N., and Vidyasagar, M., "Stabilization of linear and nonlinear dynamical
+
+systems using an observer-controller configuration," Systems and Control Letters 1 (1981): 87-91.
+
+32. Yamamoto, Y., "Realization theory of infinite dimensional linear systems, Parts I & II,"
+
+Math Systems Theory 15 (1981): 55-77, 169-190.
+
+20</pre>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/art-sycon8903.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/art-sycon8903.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Report SYCON-89-03 A "UNIVERSAL" CONSTRUCTION OF ARTSTEIN'S THEOREM ON
+
+NONLINEAR STABILIZATION 1
+
+Eduardo D. Sontag2 Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+(201)932-3072 E-mail: sontag@fermat.rutgers.edu or sontag@pisces.bitnet
+
+ABSTRACT This note presents an explicit proof of the theorem -due to Artstein- which states that the existence of a smooth control-Lyapunov function implies smooth stabilizability. Moreover, the result is extended to the real-analytic and rational cases as well. The proof uses a "universal" formula given by an algebraic function of Lie derivatives; this formula originates in the solution of a simple Riccati equation.
+
+Rutgers Center for Systems and Control
+
+February 1989
+
+1Keywords: Smooth stabilization, Artstein's Theorem. 2Research supported in part by US Air Force Grant 88-0235
+
+1 Introduction The main object of this note is to provide a simple, explicit, and in a sense "universal" proof of a result due to Artstein ([1]), and to obtain certain generalizations of it. The result concerns control systems of the type
+
+.x(t) = f (x(t)) + u1(t)g1(x(t)) + : : : + um(t)gm(x(t)) (1) with states x(t) 2 IRn and controls u(t) = (u1(t); : : : ; um(t)) 2 IRm, where f as well as the gi's are smooth (i.e., infinitely differentiable,) vector fields and f (0) = 0. It is assumed that there is given a control-Lyapunov function (henceforth just "clf ") V for this system, that is, a smooth, proper, and positive definite function
+
+V : IRn ! IR so that
+
+inf u2IRmfLf V (x) + u1Lg1V (x) + : : : + umLgm V (x)g ! 0 (2)
+
+for each x 6= 0. In other words, V is so that for each nonzero state x one can diminish its value by applying some open-loop control. Recall that positive definite means that V (0) = 0 and V (x) ? 0 for x 6= 0, and proper means that V (x) ! 1 as kxk ! 1.
+
+It is easy to show that the existence of such a clf implies that the system is asymptotically controllable (from any state one can asymptotically reach the origin); in the paper [6] we showed that the existence of a clf is in fact also necessary if there is asymptotic controllability, provided that one does not require smoothness (in which case equation (2) must be replaced by an equation involving Dini derivatives). More relevant to the topic of this paper, it was shown in [1] that if there is a clf, smooth as above, then there must be a feedback law
+
+u = k(x); k(0) = 0;
+
+which globally stabilizes the system and which is smooth on
+
+IRn0 := IRn \Gamma  0 : In general k may fail to be smooth everywhere, but under certain conditions, which we study below, k can be guaranteed to be at least continuous at the origin in addition to being smooth everywhere else. (The conditions are necessary as well as sufficient, the necessity following from the by now standard Lyapunov function inverse theorems due to Massera, Zubov, Kurzweil and others.)
+
+Allowing nonsmoothness at the origin was emphasized in [9], and has since been recognized as desirable by many authors (see e.g. [10], [4], and [2], the first of which in particular also proved a version of Artstein's theorem). From the point of view of Lyapunov techniques, this is more natural than global smoothness, because it can be characterized precisely in terms of Lyapunov functions.
+
+Since (control-) Lyapunov functions are as a general rule easier to obtain than the feedback laws themselves -after all, in order to prove that a given feedback law stabilizes, one often has in addition to provide a suitable Lyapunov function anyway,- Artstein's
+
+2
+
+theorem provides in principle a very powerful approach to nonlinear stabilization. Previous proofs relied on nonconstructive partition of unity arguments. To make it a practical technique, one needs a more explicit construction. In this note we give one such explicit, very elementary, construction of k from V and the vector fields defining the system. A further advantage of our method, in addition to its extreme simplicy and ease of implementation, is that it provides automatically an analytic feedback law if the original vector fields as well as the clf are also analytic. We also provide a (less elementary, and in other senses weaker, as explained later) theorem that shows that if V as well as f; g1; : : : ; gm are rational then k can be chosen also rational.
+
+Our construction is based on the following observation, which for introductory purposes we restrict to single-input (m = 1) systems only. Assume that V is a clf for the system
+
+.x = f (x) + ug(x) :
+
+Denote
+
+a(x) := rV (x):f (x); b(x) := rV (x):g(x) :
+
+The condition that V is a clf is precisely the statement that
+
+b(x) = 0 ) a(x) ! 0 for all nonzero x. In other words, for each such x,
+
+the pair (a(x); b(x)) is stabilizable when seen as a single-input, one-dimensional linear system. On the other hand, giving a feedback law u = k(x) for the original system, with the property that the same V is a Lypaunov function for the obtained closed-loop system
+
+.x = f (x) + k(x)g(x) is equivalent to asking that
+
+rV (x): (f (x) + k(x)g(x)) ! 0 ; that is,
+
+a(x) + k(x)b(x) ! 0 ;
+
+for all nonzero x. In other words, k(x), seen as a 1 \Theta  1 matrix, must be a constant linear feedback stabilizer for (a(x); b(x)), for each fixed x.
+
+We now interpret (a(x); b(x)) as a family of linear systems parameterized by x. This family depends smoothly on x. From the theory of families of systems or "systems over rings" we know that since each such linear system is stabilizable there exists indeed a smoothly dependent k as wanted. Moreover, this k can be chosen to be analytically or rationally dependent if the original family is, that is, if the original system and clf are. The general theory is surveyed in [7], and the result in the smooth and analytic cases is
+
+3
+
+due to Delchamps (see for instance [3]), but in this very simple case (the family is onedimensional), the construction of k can be carried out directly without explicit recourse to the general result. Indeed, one can show directly that the following feedback law:
+
+k := \Gamma  a + pa
+
+2 + b2
+
+b works. This results from the solution of an LQ problem, and is analytic, in fact algebraic, on a; b. (The apparent singularity due to division by b is removable, as discussed later.) Along trajectories of the corresponding closed-loop system, one has that
+
+dV
+
+dt = \Gamma pa
+
+2 + b2 ! 0
+
+as desired. This feedback law may fail to be continuous at zero, however. If one modifies it slightly to
+
+k := \Gamma  a + pa
+
+2 + b4
+
+b then under the natural hypotheses -reviewed later- this does become continuous. Except for the rational case which must be treated separately, and for the multi-input case which is an immediate generalization, this will be the final form of our feedback law which provides a proof of Artstein's theorem.
+
+In the next section we provide precise statements and proofs of results in the smooth and analytic case, and then the rational case is dealt with.
+
+In closing this introduction, we remark that our description of Artstein's result is very incomplete. He proved somewhat stronger results than mentioned here. For instance, the feedback law can still be chosen smooth even if the system satisfies just a Lipschitz condition and V is C1 (which proves that the existence of a weak kind of Lipschitz feedback is in fact equivalent to the existence of smooth feedback), and the result is true for general multi-input systems, not necessarily affine in controls, provided that one allows a certain type of "chattering" feedback law; for details the reader should consult [1]. Perhaps more importantly, his partition of unity construction permits dealing with arbitrary closed control value sets.
+
+Finally, we note that local versions of our results in the smooth and analytic case are also easily obtained by the same construction, as are some other variations of Artstein's result (for instance, that the feedback law may be chosen bounded about the origin provided that bounded open-loop controls exist which make the clf decrease).
+
+2 Stabilizability We start with some definitions for the system (1). Definition 2.1 Let k : IRn ! IRm be a mapping, smooth on IRn0 and with k(0) = 0. This is a smooth feedback stabilizer for the system (1) provided that, with k = (k1; : : : ; km)0, the closed-loop system
+
+.x(t) = f (x(t)) + k1(x(t))g1(x(t)) + : : : + km(x(t))gm(x(t))
+
+4
+
+is globally asymptotically stable. 2
+
+By global asymptotic stability we mean the usual concept: attraction (solutions are defined for t * 0 and every initial state, and converge to 0) plus local asymptotic stability (initial states produce trajectories near the origin). The fact that k may fail to be even continuous at the origin causes no problems regarding uniqueness of solutions, as is easy to verify from the definition of asymptotic stability. A sufficient (as well as necessary) condition for a given k to be a smooth feedback stabilizer is that there exist a Lyapunov function for the closed-loop system, i.e. a smooth, proper, and positive definite function V so that r
+
+V (x): [f (x) + k1(x)g1(x) + : : : + km(x)gm(x)] ! 0
+
+for all nonzero x. Observe that such a Lyapunov function is automatically a clf for the open-loop system (1). Note also that if k happens to be continuous at the origin then the following property holds too (with u := k(x)):
+
+For each " ? 0 there is a ffi ? 0 such that, if x 6= 0 satisfies kxk ! ffi, then there is some u with kuk ! " such that
+
+rV (x):f (x) + u1rV (x):g1(x) + : : : + umrV (x):gm(x) ! 0 :
+
+We shall call this the small control property for the clf V . The existence of a clf with this property is necessary if there is any smooth stabilizer continuous at zero; part of Artstein's theorem is the statement that this is also sufficient. Thus we wish to prove the following result:
+
+Theorem 1 If there is a smooth clf V (respectively, the system as well as V are realanalytic,) then there is a smooth (respectively, real-analytic) feedback stabilizer k. If V satisfies the small control property, then k can be chosen to be also continuous at 0.
+
+Proof. We shall prove the theorem by constructing, once and for all, a fixed real-analytic function ' of two variables, and then designing the feedback law in closed-form, analytically, from the evaluation of this function at a point determined by rV (x):f (x) and ther
+
+V (x):gi(x)'s.
+
+Consider the following open subset of IR2, which can be interpreted as a subset of the set of all stabilizable single-input linear systems of dimension one:
+
+S := f(a; b) 2 IR2 j b ? 0 or a ! 0g Pick any real analytic function q : IR ! IR such that q(0) = 0 and bq(b) ? 0 whenever b 6= 0. (Later we specialize to the particular case q(b) = b.) We now show that the function defined by
+
+'(a; 0) := 0 for all a ! 0
+
+and
+
+'(a; b) := a + qa
+
+2 + bq(b)
+
+b
+
+5
+
+otherwise, is real-analytic on S. For this, consider the algebraic equation
+
+F (a; b; p) = bp2 \Gamma  2ap \Gamma  q = 0 (3) which is satisfied by p = '(a; b) for each (a; b) 2 S. We show that the derivative of F with respect to p is nonzero at each point of the form (a; b; '(a; b)) with (a; b) 2 S, from which it will follow by the implicit function theorem that ' must indeed be real-analytic. Indeed,
+
+(1=2) @F@p = bp \Gamma  a
+
+equals \Gamma a 6= 0 when b = 0 and qa2 + bq(b) 6= 0 otherwise.
+
+Assume that V is a clf. As in the introduction, we let
+
+a(x) := rV (x):f (x); bi(x) := rV (x):gi(x); i = 1; : : : ; m : We also let
+
+B(x) := (b1(x); : : : ; bm(x)); fi(x) := kB(x)k2 =
+
+mX
+
+i=1
+
+b2i (x) :
+
+Then the condition that V is a clf is again equivalent to asking that fi(x) = 0 imply a(x) ! 0, that is, that
+
+(a(x); fi(x)) 2 S
+
+for each nonzero x, or equivalently, that the one-dimensional time-invariant systems with m controls
+
+(a(x); B(x))
+
+be stabilizable, for each such x. Thus we may define the feedback law k = (k1; : : : ; km), where:
+
+ki(x) := \Gamma bi(x) '(a(x); fi(x))
+
+for x 6= 0 and k(0) := 0. This is smooth, and it is also real-analytic if V as well as f; g1; : : : ; gm are. Moreover, at nonzero x we have that
+
+rV (x): [f (x) + k1(x)g1(x) + : : : + km(x)gm(x)] = a(x) \Gamma  '(a(x); fi(x))fi(x)
+
+= \Gamma qa(x)2 + fi(x)q(fi(x)) ! 0
+
+so the original V decreases along trajectories of the corresponding closed-loop system, and is a Lyapunov function for this.
+
+Finally, assume that V satisfies the small control property. We wish to show that the function k is continuous at the origin. Pick any " ? 0. We will find a ffi ? 0 so thatk
+
+k(x)k ! " whenever kxk ! ffi. Since k(x) = 0 whenever fi(x) = 0, we may assume that fi(x) 6= 0 in what follows. We also take
+
+q(b) := b from now on, for simplicity. Let "0 := "=3.
+
+6
+
+Since V is positive definite, it has a minimum at 0, so rV (0) = 0. Since the gradient is continuous, it holds that each of the bi(x) are small when x is small. Together with the small control property, this means that there is some ffi ? 0 such that, if x 6= 0 satisfiesk
+
+xk ! ffi, then there is some u with kuk ! "0 so that
+
+a(x) + B(x)u ! 0 and in addition k
+
+B(x)k ! "0 : (4)
+
+The first of the above implies, by the Cauchy-Schwartz inequality, that
+
+a(x) ! "0kB(x)k if 0 ! kxk ! ffi, and so also j
+
+a(x)j ! "0kB(x)k (5)
+
+in the case when a(x) ? 0. On the other hand, observe that
+
+b'(a; b) = a + pa2 + b2 ^ 2jaj + b for all (a; b) 2 S with b ? 0. Thus, if 0 ! kxk ! ffi and a(x) ? 0, necessarily
+
+'(a(x); fi(x)) ^ 2"
+
+0
+
+kB(x)k + 1
+
+(use (5)) and hence also
+
+kk(x)k = '(a(x); fi(x)) kB(x)k ^ 3"0 = " as desired. There remains the case of those x for which a(x) ^ 0. There,
+
+0 ! a(x) + qa(x)2 + fi(x)2 ^ fi(x) so 0 ^ '(a(x); fi(x)) ^ 1 and therefore
+
+kk(x)k = '(a(x); fi(x))kB(x)k ^ "0 ! " as desired too.
+
+As an example, consider the case of one-dimensional systems with a scalar control (m = n = 1),
+
+.x = f (x) + ug(x) :
+
+This system is stabilizable if the following assumption holds: if g(x) = 0 and x 6= 0 then xf (x) ! 0. The feedback law given by the above construction, using the Lyapunov function V (x) = x2=2, is simply
+
+k(x) = \Gamma  xf (x) + jxjqf (x)
+
+2 + x2g(x)4
+
+xg(x)
+
+7
+
+(which is analytic, even though the absolute value sign appears, because in the one dimensional case there are two connected components of IR \Gamma  f0g,) so that the closedloop system becomes
+
+.x = \Gamma  sign (x)qf (x)2 + x2g(x)4 :
+
+In the case of linear systems, where f (x) = f x and g(x) = g for some constants f; g, the closed-loop equation is
+
+.x = \Gamma cx
+
+where c = pf 2 + g4. (In this case, the term g4 could have been replaced by simply g2 and a continuous stabilizer still results.)
+
+To close this section, we remark how the form of the function ' could be obtained from an optimization problem. For each x 6= 0 one can think of the linear system (writing bi := bi(x) and a := a(x)):
+
+.x = ax +
+
+mX
+
+i=1
+
+biui = ax + Bu
+
+and this is stabilizable in the usual linear sense. One needs a stabilizing feedback law k, thought of now as a constant row vector (for each fixed x), that is a k so that
+
+a +
+
+mX
+
+i=1 b
+
+iki ! 0 :
+
+If we pose the linear-quadratic problem of minimizingZ
+
+1 0 u
+
+2(t) + qx2(t) dt
+
+the solution is given by the feedback law u := \Gamma B0px, where p is the positive solution of the algebraic Riccati equation (3). Thus we recover ki = \Gamma bi'(a; b). The fact that this is analytic on the data is no accident; Delchamp's theorem ([3]) guarantees this even for systems in arbitrary dimensions, essentially by the same argument we gave for scalar equations. The choice q := b is made so that, in the above cost, the u2 term is given more relative weight when b is small, forcing small controls when b is small.
+
+3 The Rational Case Part of Theorem 1 can be extended to the rational case, as follows. The construction is not "universal" in terms of the Lie derivatives of f and the gi's, however, and it blows-up at the origin. (In practice, then, one would only use such a feedback law to guarantee "practical stability", in the sense of controlling merely to a neighborhood of the origin.)
+
+Theorem 2 If there is a rational clf V and the system is given by rational vector fields, then there is a feedback stabilizer k which is rational on IRn0 .
+
+8
+
+Proof. Arguing as before, we look for a feedback k = (k1; : : : ; km)0 of the particular form
+
+ki(x) = \Gamma c(x)bi(x) where bi as well as the rest of the notations are as earlier, and c is a rational function with no poles on IRn0 . Thus we need that
+
+a(x) \Gamma  c(x)fi(x) ! 0 (6) for all x 6= 0, or equivalently, since fi(x) is always nonnegative and a(x) ! 0 when fi vanishes, that
+
+c(x) ? a(x)fi(x)
+
+whenever fi(x) ? 0. Moreover, if c is constructed everywhere positive, it is only necessary to check (6) at those x where a(x) * 0.
+
+Consider the closed semialgebraic set
+
+T := f(x; y) 2 IRn+1 j a(x) * 0 and kxk2y = 1g : Note that fi(x) is never zero if there exists some y so that (x; y) 2 T , since in that case x 6= 0 and therefore a(x) * 0 implies fi(x) 6= 0. Thus the rational function a(x)=fi(x) is well-defined in the set T . The lemma to follow guarantees that there is a polynomial function
+
+d : IRn+1 ! IR
+
+so that d ? 0 everywhere and
+
+d(x; y) * a(x)fi(x)
+
+whenever (x; y) 2 T . We let
+
+c(x) := d(x; 1kxk2 ) :
+
+This has no poles on IRn0 .
+
+Assume that fi(x) ? 0 and a(x) * 0. Then (x; 1kxk2 ) 2 T , so (6) holds and the proof is complete.
+
+The existence of a polynomial d as needed above was shown in the context of establishing a result about familes of systems in the paper [7]. For completeness, we provide here a precise statement and proof.
+
+Lemma 3.1 Assume that T is a closed semialgebraic subset of IRn and that fi and a are (n-variable) polynomials so that fi(x) ? 0 on T . Then exists a polynomial d such that
+
+fi(x)d(x) ? a(x) for all x 2 IRn :
+
+9
+
+Proof. If T is empty, there is nothing to prove, so assume it is not. Let
+
+ae0 := dist (T; 0)2 and consider the function _ : [ae0; +1) ! IR given by
+
+_(ae) := supf a(x)fi(x) j x 2 T and kxk2 ^ aeg : Note that the value is always finite because of the choice of ae0 and continuity of a(x)fi(x) on the (closed set) T . This function is semialgebraic, since it can be defined by a first-order sentence in the theory of real-closed fields (namely, "_(ae) = s iff fi(x)s * a(x) whenever x 2 T and kxk2 ^ s and for every t satisfying these properties, t * s"). Moreover, it holds for each x 2 T that
+
+_(kxk2) * a(x)fi(x) :
+
+It follows from [5], pages 367-368, that
+
+limae!+1 ae\Gamma ff_(ae) = c (7)
+
+for some constant c and rational number ff. So there exists some polynomial q so that q dominates _ for all ae * ae0, and q may be assumed to be everywhere positive (otherwise replace it by q2 + 1, which is positive and dominates q). Then, d(x) := _(kxk2) is as desired.
+
+4 Remarks Note that the form of our feedback law,
+
+k(x) = \Gamma  a + pa
+
+2 + fi2
+
+fi B
+
+0
+
+is closely related to the feedback
+
+k(x) = \Gamma  a + fifi B0 proposed in [10] under the particular assumption that fi never vanishes, as well as the law
+
+k(x) = \Gamma B0
+
+used in [4] (and related papers) when a can be guaranteed to be nonpositive and a certain transversality condition holds.
+
+In [8] we showed that in general it is desirable to study a somewhat different, and more "robust" problem than stabilization, namely the problem of input to state stabilization. This deals with finding feedback laws that have the property that when feeding
+
+u = k(x) + v
+
+10
+
+into the system, where v is a new control, the resulting control system is stable in a "bounded-input bounded-output" sense. This type of design is important in dealing with questions of so-called coprime factorization for control systems, as well as in dealing with possible noise in the implementation of control laws. Even though the notion used in that paper was that of feedback which is smooth everywhere, it is easy to see -and it was remarked in the paper- that all results go through in the more general case of smoothness on IRn0 . The feedback "correction" needed after stabilization was given there by the simple formula
+
+k(x) := \Gamma  ~a(x)2m B(x)0
+
+where ~a is rV: ~f for the closed-loop ~f that resulted from first stabilizing the system in the usual sense. Together with the results in this paper, the following formula is obtained for the input-to-state stabilizer k if a clf V exists:
+
+k := \Gamma   a + pa
+
+2 + fi2
+
+fi +
+
+pa2 + fi2
+
+2m ! B
+
+0
+
+(dropping x's). To be more accurate, a mild technical condition is needed for the result in [8], which in this case becomes the assumption that
+
+limx!1 a2 + fi2 = 1 : If this would not hold, that reference shows how to slightly modify the construction.
+
+11
+
+5 References
+
+1. Artstein, Z., "Stabilization with relaxed controls," Nonl. Anal., TMA 7 (1983):
+
+1163-1173.
+
+2. Dayawansa, W.P., and C.F.Martin, "Asymptotic stabilization of two dimensional
+
+real-analytic systems," preprint, Texas Tech Univ., 1988.
+
+3. Delchamps,D.F., "Analytic stabilization and the algebraic Riccati equation," Proc.
+
+IEEE Conf. Dec. and Control (1983) :1396-1401.
+
+4. Jurdjevic, V. and J.P. Quinn, "Controllability and stability," J.of Diff.Eqs. 28
+
+(1978): 381-389.
+
+Kawski, M., "Stabilization of nonlinear systems in the plane," Systems and Control Letters, 12(1989), Number 2.
+
+5. Hormander,L., The Analysis of Linear Partial Differential Operators II, Springer,
+
+Berlin, 1983.
+
+6. Sontag,E.D., "A Lyapunov-like characterization of asymptotic controllability,"
+
+SIAM J. Control and Opt., 21(1983): 462-471.
+
+7. Sontag, E.D., "Continuous stabilizers and high-gain feedback," IMA Journal of
+
+Mathematical Control and Information, 3(1986): 237-253.
+
+8. Sontag, E.D., "Smooth stabilization implies coprime factorization," to appear in
+
+IEEE Trans. Automatic Control, April 1989.
+
+9. Sontag,E.D., and H.J.Sussmann, "Remarks on continuous feedback," Proc. IEEE
+
+Conf. Dec. and Control, Albuquerque, Dec.1980.
+
+10. Tsinias, J., "Sufficient Lyapunovlike conditions for stabilization," to appear in
+
+Mathematics of Control, Signals, and Systems.
+
+12</pre>
+</body>
+</html>

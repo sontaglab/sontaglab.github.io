@@ -1,0 +1,703 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89cdc-stab.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89cdc-stab.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.9 of July 23, 1990
+Dvi file name: "formatted-89cdc-stab.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Dvi file name: "formatted-89cdc-stab.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+Reprint of: Sontag, E.D., "Remarks on stabilization and input-to-state stability," Proc. IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 1376-1378.
+
+(to be pasted into proceedings paper)Pass1: Page 2
+
+
+ABSTRACT This paper describes how notions of input-to-state stabiliza- tion are useful when stabilizing cascades of systems.
+
+1 Introduction Consider a cascade as follows:
+
+(CAS)
+
+(
+
+.x = f (x; y)
+
+.y = g(y; u)
+
+where f and g are smooth, x and y evolve in IR
+
+n
+
+and IR
+
+m
+
+re-
+
+spectively, and f (0; 0) = g(0; 0) = 0. The input u takes values in IR
+
+k
+
+. It is natural to ask: If the system .x = f (x; y) is stabi-
+
+lizable (with y thought of as a control) and the same is true for
+
+.y = g(y; u), what can one conclude about the cascade? More particularly, what can be said if the "zero-input" system
+
+.x = f (x; 0) (1) is already known to be asymptotically stable? There are many reasons for studying these problems; see the tutorial paper [7] for motivations and references.
+
+The simplest result along these lines is local, and it states that a cascade of locally asymptotically stable systems is again asystable. More precisely, if (1) has the origin as a locally asys- table point, and if in (CAS) the second equation is independent of u, g = g(y), and
+
+.y = g(y) (2)
+
+also has 0 as locally asystable, then the same is true for (0; 0) in (CAS). This follows from classical "total stability" theorems, and was proved for instance in [11] and in a somewhat different manner in [6] using Lyapunov techniques. (An elementary proof is indicated below.) The local stabilization of (CAS) can then be achieved if (1) is already stable and the y-subsystem of (CAS) is stabilizable.
+
+It is easy to see that the same result is not true for global stability, since there is no reason for the first system in (CAS), seen as a system with input y, now denoted "u":
+
+.x = f (x; u) (3) to satisfy the following "converging input converging state" con- dition:
+
+CICS: For each control u(\Delta ) on [0; +1) such that lim
+
+t!1
+
+u(t) =
+
+0 and for each initial state x
+
+0
+
+, the solution of (3) with
+
+x(0) = x
+
+0
+
+exists for all t * 0 and converges to 0.
+
+This research was supported in part by US Air Force Grant AFOSR- 88-0235.Pass1: Page 3
+
+
+"Control" means any measurable function into IR
+
+m
+
+, though for
+
+our application just smooth controls would be enough. Clearly if CICS holds then (0; 0) is a global attractor for the cascade, so together with the local result one can conclude global asymptotic stability.
+
+For instance, consider the one-dimensional system
+
+.x = \Gamma x + (x
+
+2
+
++ 1)u
+
+which is globally asymptotically stable when u j 0. With
+
+u(t) =
+
+1 p
+
+2t + 2
+
+; x
+
+0
+
+=
+
+p
+
+2
+
+there results the unbounded trajectory x(t) =
+
+p
+
+2t + 2. This
+
+is not at all a "pathological" example; it is in fact one of the simplest systems that are linearizable by feedback. This example does not even satisfy the following weaker "converging input bounded state" property:
+
+CIBS: For each control u(\Delta ) on [0; +1) such that lim
+
+t!1
+
+u(t) =
+
+0 and for each initial state x
+
+0
+
+, the solution of (3) with
+
+x(0) = x
+
+0
+
+exists for all t * 0 and is bounded.
+
+Nor, of course, does it satisfy the stronger property that the system be "bounded-input/bounded-output" or "BIBS" stable, where the boundedness property is required to hold for each bounded control u.
+
+Interestingly, property CIBS is the only obstruction. If it is assumed, there is indeed a global version:
+
+Theorem. Assume that both (1) and (2) have the origin as a globally asymptotically stable state and that property CIBS holds. Then the cascade (CAS) has (0; 0) as a globally asymptotically stable state.
+
+Thus, if one can in any way insure that solutions of the first system do not blow up for small controls, then the cascade's global asystability follows from that of its components. This was proved in [6] using a stronger property than CIBS, "input to state stability (ISS)" (see [5] for the definition of the concept of ISS). Comparisons between ISS and BIBS stability are discussed in [6]. Here we show that the same result follows under the weaker hypothesis. The proof is basically the same as in that reference, but it seems appropriate to provide a separate proof that does not involve the terminology used there ("functions of class KL") and the use of Lyapunov inverse theorems, but only elementary notions. Observe also that under extra (and fairly restrictive) hypotheses on the first system, such as that f be globally Lipschitz, the CIBS conditions can be relaxed -the paper [3] provides a detailed discussion of this issue, which was previously considered in [10] and [4].Pass1: Page 4
+
+
+If the system (3) does not satisfy the CIBS property, it can be modified under feedback so that this becomes true. We will discuss that result and its implications for the stabilization of (CAS) in the last section.
+
+2 Proof of the Theorem It will be enough to establish the following lemma. Proposition. If 0 is a globally asymptotically stable state for (1) then CIBS and CICS are equivalent for (3).
+
+Proof. We will denote by single bars "j \Delta  j" norms on IR
+
+n
+
+and IR
+
+m
+
+,
+
+and we will use double bars "k\Delta k" for the sup norm on the spaces of controls (essentially bounded measurable functions from in- tervals into IR
+
+m
+
+) and state trajectories (absolutely continuous
+
+functions into IR
+
+n
+
+). We also let OE(\Delta ; x
+
+0
+
+; u), or just x(\Delta ) if x
+
+0
+
+and
+
+u are clear from the context, be the solution of (3) with control u(\Delta ) and initial condition x
+
+0
+
+. Note that the CIBS property in-
+
+sures that this solution is defined for all t * 0, because on each finite interval [0; T ] it coincides with the solution for a control that converges to zero (namely, truncate u(\Delta ) at T , and continue with zero).
+
+Assuming CIBS, we first show that for each " ? 0 there are some ffi
+
+0
+
+; _ ? 0 with the following property:
+
+(P) If jx
+
+0
+
+j ! ffi
+
+0
+
+and if kuk ! _ is a control on [0; +1) then
+
+jx(t)j ! " for all t * 0.
+
+This will be needed later, but it is also of interest in that it triv- ially implies the local stability theorem for cascades mentioned in the introduction.Pass1: Page 5
+
+
+Take any " ? 0. From the assumption that (1) is (at least locally) asymptotically stable, there are some T; ffi
+
+0
+
+? 0 so that
+
+, 2 B
+
+ffi
+
+0
+
+) jOE(t; ,; 0)j ! "=2 8t 2 [0; T ] and jOE(T; ,; 0)j ! ffi
+
+0
+
+=2:
+
+Necessarily, ffi
+
+0
+
+! ". Consider the map
+
+ff
+
+T
+
+: B
+
+ffi
+
+0
+
+\Theta  L
+
+1
+
+([0; T ]; IR
+
+m
+
+) ! C
+
+0
+
+([0; T ]; IR
+
+n
+
+); (x; u) 7! OE(\Delta ; x; u)
+
+where B
+
+c
+
+denotes the closed ball of radius c. This map is con-
+
+tinuous (and defined on the whole domain as remarked above). For each , 2 B
+
+ffi
+
+0
+
+there is then an open neighborhood V
+
+,
+
+of ,
+
+and a _
+
+,
+
+? 0 such that
+
+z 2 V
+
+,
+
+and k!k ! _
+
+,
+
+) kff
+
+T
+
+(z; !) \Gamma  ff
+
+T
+
+(,; 0)k ! ffi
+
+0
+
+=2
+
+where we use ! to denote controls on the interval [0; T ]. We cover B
+
+ffi
+
+0
+
+with the V
+
+,
+
+'s and extract a finite subcover; let _ be
+
+smaller than all the corresponding _
+
+,
+
+'s. Then, for each x
+
+0
+
+2 B
+
+ffi
+
+0
+
+,
+
+jOE(T; x
+
+0
+
+; !)j ! ffi
+
+0
+
+and also
+
+jOE(t; x
+
+0
+
+; !)j ! "
+
+for each t 2 [0; T ], provided that k!k ! _.
+
+We now prove (P). With these ffi
+
+0
+
+; _, assume that x
+
+0
+
+and u are
+
+as in the property. Then, applying the above arguments using the restriction ! of u to [0; T ] we know that x(t) remains in the "-ball. But at time T , x(T ) is again in B
+
+ffi
+
+0
+
+, so we can repeat the
+
+argument on [T; 2T ], and an induction gives the desired fact.
+
+We now prove the Proposition. Pick any trajectory x(\Delta ) cor- responding to a control u(t) ! 0. Pick any " ? 0. We wish to show that there is some T
+
+"
+
+so that kx(t)k ! " for all t * T
+
+"
+
+.Pass1: Page 6
+
+
+Let K be a compact set so that x(t) 2 K for all t * 0 (CIBS assumption) and let ffi
+
+0
+
+; _ be as in property (P), for the given ".
+
+Using the global asymptotic stability of the origin for (1), there is some T ? 0 so that jOE(T; ,; 0)j ! ffi
+
+0
+
+for all , 2 K. By
+
+a compactness argument identical to the one used to prove (P), we know that there is some * ? 0 so that
+
+jOE(T; ,; !)j ! ffi
+
+0
+
+whenever , 2 K and ! is a control on [0; T ] with k!k ! *. Pick T
+
+0
+
+such that ju(t)j ! min f*; _g for all t * T
+
+0
+
+.
+
+Consider the original trajectory x(\Delta ). At time
+
+T
+
+"
+
+:= T + T
+
+0
+
+this equals OE(T; x(T
+
+0
+
+); !) where ! is the restriction of u to
+
+[T
+
+0
+
+; T
+
+"
+
+], and therefore jx(T
+
+"
+
+)j ! ffi
+
+0
+
+. For any t ? T
+
+"
+
+the control
+
+remains bounded in norm by _, so x(t) remains with jx(t)j ! ", as desired.
+
+Remark. It is sometimes of interest to study asymptotic sta- bility of compact invariant sets different from the origin. The exact same proof, but with distance to the set S used in place of the norm of states, shows that if S is any such set with re- spect to (1), and if the CIBS property holds, then also every trajectory corresponding to convergent controls will converge to S. In terms of cascades, S \Theta  f0g is then a stable attractor for the system (CAS).
+
+3 Stabilization In [6] we proved a stronger version (the one there is for "input to state stability") of this fact:Pass1: Page 7
+
+
+If the system (1) has the origin globally asymptotically sta- ble, then there exists an everywhere nonzero smooth function fi : IR
+
+n
+
+! IR such that the system
+
+.x = f (x; fi(x)u) (4) is CIBS (and hence also CICS) stable.
+
+A sketch of the proof is as follows. Let V be a Lyapunov function for (1), that is, a smooth positive definite and proper function
+
+V : IR
+
+n
+
+! IR
+
+such that rV (,):f (,; 0) ! 0 for all nonzero ,. Then there exists some function fi : IR
+
+n
+
+! IR, smooth and everywhere nonzero,
+
+such that, for each _ ? 0 there is some K so that
+
+rV (,):f (,; fi(,)v) ! 0 whenever jvj ^ _ and j,j ? K. (The existence of fi follows from a simple continuity argument, because
+
+rV (,):f (,; w) ! 0 for all jwj ! j(,) for some function j; see Lemmas 3.1 and 3.2 in [6].)
+
+If u(\Delta ) is any control converging to 0 and x(0) = x
+
+0
+
+is given,
+
+we need to prove that x(t), the trajectory for (4), cannot diverge. Let _ be a bound on u, and pick K as above. Without loss of generality, assume that jx
+
+0
+
+j ! K.
+
+Let c be the largest value of V on the closed ball of ra- dius K, and consider the absolutely continuous function V (x(t)). For those t so that x(t) is outside that closed ball, V (x(t)) has derivative (which exists almost everywhere) negative, and whenPass1: Page 8
+
+
+x(t) is inside, the value of V is bounded by c. It follows that V (x(t)) is everywhere bounded by c, and thus that x(t) remains bounded, since V is proper. Thus the system (4) is CIBS stable, as claimed.
+
+Now we show how this can be used to stabilize systems that appear in what is called the "relative degree one" situation in zero-dynamics studies. Here we assume that g(y; u) = u in (CAS) and that the system (3) is smoothly stabilizable, that is, that there exists some k : IR
+
+n
+
+! IR
+
+m
+
+smooth, with k(0) = 0, so
+
+that
+
+.x = f (x; k(x))
+
+has the origin globally asystable. The claim is that the cascade is again smoothly stabilizable; in other words, integrating the control does not destroy smooth stabilizability. This result was proved before by [2], in the context of "PD control" of mechan- ical systems, as well as [9] and [1]. In [8], an application to rigid body control is given. Here we wish to show how the existence of fi gives a very natural, and alternative, stabilization technique.
+
+Applying the above-cited fact (applied to .x = f (x; k(x)+u)), there is then a smooth everywhere nonvanishing fi so that
+
+.x = f (x; k(x) + fi(x)u) is CIBS. We make in (CAS) the change of variables
+
+y = k(x) + fi(x)z so we can write
+
+.x = f (x; k(x) + fi(x)z)
+
+.z =
+
+1
+
+fi(x)
+
+[h(x; z) + u]Pass1: Page 9
+
+
+where h is some smooth function. Then the control law
+
+u := \Gamma fi(x)z \Gamma  h(x; z) stabilizes the z-subsystem, and thus also the cascade, because the first system is a CICS-stable system, which is asymptotically stable when z j 0.
+
+Take for instance the system
+
+.x = x
+
+2
+
+y
+
+.y = u
+
+for which k(x) = \Gamma x and fi j 1 can be used (since .x = \Gamma x
+
+3
+
++x
+
+2
+
+u
+
+is BIBS, as the cubic term dominates for large x). Then with the change of variables y = \Gamma x + z, the equation for z becomes
+
+.z = u + x
+
+2
+
+y, and therefore
+
+u := \Gamma z \Gamma  x
+
+2
+
+y = \Gamma x \Gamma  y \Gamma  x
+
+2
+
+y
+
+stabilizes the cascade globally.
+
+The fact that in the example we could choose fi j 1 is no accident. In general for systems linear in controls that will be possible, as follows from the main result in [5].
+
+For another example, take the system
+
+.x = \Gamma x
+
+5
+
++ y
+
+2
+
+.y = x
+
+2
+
++ u
+
+considered in [1]. The first system is already BIBS and asystable for y j 0, so the control law u := \Gamma x
+
+2
+
+\Gamma  y stabilizes the cascade.
+
+(This is simpler than the solution given in that reference. Yet another illustration is the satellite with two controls in that same reference, which can easily be brought into a cascade using the same k as there; a simpler control law again results.)Pass1: Page 10
+
+
+4 References
+
+1. Byrnes, C.I. and A. Isidori, "New results and counterex-
+
+amples in nonlinear feedback stabilization," Systems and Control Letters, 12(1989): 437-442.
+
+2. Koditschek, D.E., "Adaptive techniques for mechanical
+
+systems," Proc.5th. Yale Workshop on Adaptive Systems, pp. 259-265, Yale University, New Haven, 1987.
+
+3. Sussmann, H.J., and P.V. Kokotovic, "The peaking phe-
+
+nomenon and the global stabilization of nonlinear sys- tems," Report 89-07, SYCON - Rutgers Center for Sys- tems and Control, March 1989.
+
+4. Sastry, S.I., and A. Isidori, "Adaptive control of lineariz-
+
+able systems," Memo UCB/ERL M87/53, March 1988, U.California, Berkeley.
+
+5. Sontag, E.D., "Smooth stabilization implies coprime fac-
+
+torization," IEEE Trans. Automatic Control, 34(1989): 435-443.
+
+6. Sontag, E.D., "Further facts about input to state stabiliza-
+
+tion", Report 88-15, SYCON - Rutgers Center for Systems and Control, Dec.1988. To appear in IEEE Trans. Auto- matic Control, 1990.
+
+7. Sontag, E.D., "An introduction to the feedback stabiliza-
+
+tion problem," in Mathematical Theory of Networks and Systems, (M.A. Kaashoek et al, eds,.), Birkh"auser, Boston, 1990, to appear.Pass1: Page 11
+
+
+8. Sontag, E.D., and H.J. Sussmann, "Further comments on
+
+the stabilizability of the angular velocity of a rigid body," Systems and Control Letters, 12 (1989): 213-217.
+
+9. Tsinias, J., "Sufficient Lyapunovlike conditions for stabi-
+
+lization," Math. of Control, Signals, and Systems 2(1989): 343-357.
+
+10. Varaiya, P.P. and R. Liu, "Bounded-input bounded-output
+
+stability of nonlinear time-varying differential systems," SIAM J.Control 4(1966): 698-704.
+
+11. Vidyasagar, M., "Decomposition techniques for large-scale
+
+systems with nonadditive interactions: stability and stabi- lizability," IEEE Trans. Autom. Ctr. 25(1980): 773-779.</pre>
+</body>
+</html>

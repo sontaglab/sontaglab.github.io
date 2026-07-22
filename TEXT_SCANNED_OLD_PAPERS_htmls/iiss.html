@@ -1,0 +1,642 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iiss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iiss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Comments on Integral Variants of ISS
+
+Eduardo D. Sontag Dept. of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA
+
+This note discusses two integral variants of the input-to-state stability (ISS) property, which represent nonlinear generalizations of L2 stability, in much the same way that ISS generalizes L1 stability. Both variants are equivalent to ISS for linear systems. For general nonlinear systems, it is shown that one of the new properties is strictly weaker than ISS, while the other one is equivalent to it. For bilinear systems, a complete characterization is provided of the weaker property. An interesting fact about functions of type KL is proved as well.
+
+1 Introduction We deal here with controlled systems of the general form
+
+.x = f (x; u) ; (1)
+
+where f : Rn \Theta  Rm ! Rn is continuous, and locally Lipschitz on x for bounded u, and inputs u(\Delta ) : [0; 1) ! Rm are assumed to be locally essentially bounded. The paper [7] introduced the notion of "input to state stability" (ISS), which roughly states that "no matter what is the initial state, if the inputs are uniformly small, then the state must eventually be small". Some results, applications, and further developments can be found in e.g. [4], [5], [11], [9], and [10], as well as many other recent papers. One frequently-remarked shortcoming of the ISS property is that provides no useful bounds in the situation in which inputs u(\Delta ) are unbounded but have in some sense finite energy. This note deals with two variants of ISS which take into account such "energy" information, and shows that one of them is in fact equivalent to ISS, while the other one is strictly weaker.
+
+1 Supported in part by US Air Force Grant F49620-95-1-0101.
+
+E-mail: sontag@control.rutgers.edu
+
+Preprint submitted to Elsevier Preprint 12 January 1998
+
+Notations: For a vector z in a space Rq, jzj denotes Euclidean norm. If z : I ! Rq is a measurable function defined on an interval containing [0; t], kztk denotes the (essential) supremum of fjz(s)j ; s 2 [0; t]g; for t = 1, we write just kzk.
+
+In order to motivate the definitions, we first review the classical case of linear systems
+
+.x = Ax + Bu :
+
+One often defines input/output stability of such a system in various ways, depending on the norms being used for state and input trajectories. The most common choices are L2 and L1 norms. These can be used in various combinations, one of which ("L1 to L2") is less interesting, being far too restrictive. The three possibilities that remain are defined by requiring the existence of constants c and *, with * ? 0, so that, for each input u(\Delta ) and each initial state ,, the solution x(t) of .x = Ax + Bu, x(0) = ,, satisfies the respective estimate:
+
+jx(t)j ^ ce\Gamma *t j,j + ckutk1 for all t * 0 ; (2) jx(t)j ^ ce\Gamma *t j,j + c
+
+tZ
+
+0
+
+ju(s)j2 ds for all t * 0 ; (3)
+
+tZ
+
+0
+
+jx(s)j2 ds ^ c j,j + c
+
+tZ
+
+0
+
+ju(s)j2 ds for all t * 0 : (4)
+
+It is not difficult to see (and also follows from the more general results given later) that all these three properties are equivalent, and in fact they amount to simply asking that the matrix A be Hurwitz (all eigenvalues have negative real parts).
+
+Our goal is to understand analogues of the above properties for nonlinear systems. We take the point of view that good notions of stability should be invariant under (nonlinear) changes of variables. Suppose that T : Rn ! Rn is a change of variables, by which we mean here that T is continuous, has a continuous inverse, and satisfies T (0) = 0. It is then easy to see that there are two functions \Lambda  ff1; ff2 2 K1 so that
+
+ff1(jxj) ^ jT (x)j ^ ff2(jxj) for all x. Under a coordinate change x(t) = T (z(t)) in states, jx(t)j can be estimated below by ff1(jz(t)j) and above by ff2(jz(t)j), and similarly for any
+
+\Lambda  Recall, cf. [2], that K is the class of functions [0; 1) ! [0; 1) which are zero at zero, strictly increasing, and continuous, K1 is the subset of K functions that are unbounded, and KL is the class of functions [0; 1)2 ! [0; 1) which are decreasing to zero on the second argument and of class K on the first argument.
+
+2
+
+power like jx(t)j2. Therefore, in the new variables, each instance of a norm (or of a power of a norm) of the state becomes an estimate of the type "fl(jx(t)j)", where fl is some function of class K1. Similarly, input norms should be replaced by fl(ju(t)j), as this is the only way to formulate estimates in a fashion that is independent of the choice of coordinates in the input space. Finally, a decay term of the type "ce\Gamma *t j,j" becomes, after a change of variables, e\Gamma *tfl(j,j), which can also be written as fi(j,j ; t), where the function fi 2 KL is fi(s; t) = e\Gamma *tfl(s). (In the definitions to follow, we use arbitrary functions of class KL, in order to stay close to other current literature. See later, cf. Section 3, for a proof that the same definitions would result if had we insisted upon the special form e\Gamma *tfl(s).)
+
+In summary, we have the following nonlinear versions of the respective properties:
+
+"L1 to L1" property (2): This gives rise, under coordinate changes, to:
+
+There exist functions ff; fl 2 K1 and fi 2 KL so that, for all initial states , 2 Rn and all inputs u(\Delta ),
+
+ff(jx(t)j) ^ fi(j,j ; t) + sup
+
+s2[0;t] fl(ju(s)j) for all t * 0 ; (5)
+
+where x(t) is the solution of (1) with this input and with x(0) = ,. Observe that, for any given input u(\Delta ), the solution x(\Delta ) is defined on some maximal interval [0; a), where a priori a could be finite. As sups2[0;a] fl(ju(s)j) ! 1, however, the estimate (5) implies that the maximal trajectory stays bounded, and this, in turn, by standard facts from differential equations, see e.g. [8], Proposition 3.6 in Appendix C, implies that a = +1, that is to say, the solution is defined for all t * 0.
+
+Applying the increasing function ff\Gamma 1 to both sides of the estimate (5), using the facts that ff\Gamma 1(a+b) ^ ff\Gamma 1(2a)+ff\Gamma 1(2b) and that kfl(juj)tk1 = fl(kutk1), and redefining fi and fl, there results the following simpler but equivalent statement: there exist fl 2 K1 and fi 2 KL so that, for all initial states , 2 Rn and all inputs u(\Delta ),
+
+jx(t)j ^ fi(j,j ; t) + fl (kutk1) for all t * 0 : (50) In other words, this property is precisely the input to state stability (ISS) property from [7].
+
+"L2 to L1" property (3): This generalizes as follows:
+
+3
+
+There exist ff; fl 2 K1 and fi 2 KL so that the following estimate holds for all initial states , 2 Rn and all inputs u(\Delta ):
+
+ff (jx(t)j) ^ fi(j,j ; t) +
+
+tZ
+
+0
+
+fl(ju(s)j)ds for all t * 0 : (6)
+
+As before, the solution x(\Delta ) is necessarily defined for all t * 0. We will call a system which satisfies the property defined by estimate (6) an integral-input to state stable (IISS) system.
+
+"L2 to L2" property (4): This becomes:
+
+There exist ff; fl; ^ 2 K1 so that the following estimate holds for all initial states , 2 Rn and all inputs u(\Delta ):
+
+tZ
+
+0
+
+ff(jx(s)j)ds ^ ^(j,j) +
+
+tZ
+
+0
+
+fl(ju(s)j)ds for all t * 0 : (7)
+
+In this case, we assume that the solution is defined for all t * 0, as part of the definition of the property. We do not give a name to property (7), since we will prove as follows:
+
+Theorem 1 A system (1) satisfies the property defined by estimate (7) if and only if it is an ISS system.
+
+Regarding IISS, our objective is to compare it with the ISS property. In order to do this, we will prove the following dissipation-like sufficient condition (the recent work [1] provides a far more complete characterization):
+
+Theorem 2 Consider a system (1), and assume that there exists a positive definite proper smooth function V : Rn ! R*0, a constant q ? 0, and two class K1 functions fl1 and fl2, so that
+
+rV (x):f (x; u) ^ (fl1(juj) \Gamma  q)V (x) + fl2(juj) (8)
+
+for all vectors x 2 Rn and u 2 Rm. Then, the system is IISS For comparison with the ISS property, we recall from [6]: Theorem 3 A system (1) is ISS if and only if there exist a positive definite proper smooth function V : Rn ! R*0 and a class K1 function fl so that
+
+rV (x):f (x; u) ^ \Gamma V (x) + fl(juj) for all vectors x 2 Rn and u 2 Rm. 2
+
+4
+
+From the two results, we have (see also the "exp-ISS"property in [6]): Corollary 4 If the system (1) is ISS, then it is also IISS. 2 Consider the special case of bilinear systems, that is, systems of the following form:
+
+.x = A +
+
+mX
+
+i=1
+
+uiAi! x + Bu ; (9)
+
+where A; A1; : : : ; Am are n \Theta  n matrices and B is n \Theta  m (and ui, i = 1; : : : ; m are the coordinates of u).
+
+Theorem 5 The system (9) is IISS if and only if A is a Hurwitz matrix (all eigenvalues have negative real part).
+
+In contrast to linear systems, for which both notions coincide, the converse does not hold in general: there are systems that are IISS yet are not ISS. Indeed, the one-dimensional bilinear system (with Hurwitz A):
+
+.x = \Gamma x + ux is not ISS, since the constant input u j 2 produces unbounded trajectories. One consequence of the ISS property is that inputs u for which u(t) ! 0 as t ! 1 induce state trajectories with x(t) ! 0 as t ! 1. An analog for IISS systems is as follows:
+
+Proposition 6 If a system satisfies the estimate (6), then, for any control u such that R 10 fl(ju(s)j)ds ! 1, and for any initial state ,, it holds for the corresponding trajectory that x(t) ! 0 as t ! 1.
+
+2 Proofs We prove here the various statements. Proof of Theorem 2 Without loss of generality, we will assume that fl1 = fl2 = fl. (It is enough to find a fl 2 K1 so that fli(s) ^ fl(s) for all s and i = 1; 2, and to observe that (fl1(s) \Gamma  1)V (x) ^ (fl(s) \Gamma  1)V (x) for all s; x, because V * 0.)
+
+Since V is positive definite, continuous, and proper, there exist two functions ff1; ff2 of class K1 so that ff1(jxj) ^ V (x) ^ ff2(jxj) for all x 2 Rn. In terms of
+
+5
+
+these functions, we introduce
+
+fi(s; t) := `\Gamma 12 i`1(e\Gamma qtff2(s))j and
+
+ff(s) := `\Gamma 12 `12 ff1(s)' ;
+
+where
+
+`1(r) := r + 12 r2 ; `2(r) := 12 (er \Gamma  1)2 + err
+
+are both of class K1. Thus fi 2 KL and ff 2 K1. We prove next that the integral-input to state estimate (6) holds with these functions fi, ff, and fl.
+
+Pick any initial state ,, input u(\Delta ), and the solution of the initial value problem
+
+.x = f (x; u), x(0) = ,. Consider the absolutely continuous scalar function v(t) := V (x(t)). We have, using (8):
+
+.v(t) ^ (fl(ju(t)j) \Gamma  q)v(t) + fl(ju(t)j) for (almost all) t * 0. A standard comparison principle applied to the above differential inequality (see e.g. [3], Theorem 6; the assumption in that reference that the right-hand side is continuous in t is not necessary) provides the estimate:
+
+v(t) ^ U (t)e\Gamma qtv(0) +
+
+tZ
+
+0
+
+U (t; s)e\Gamma q(t\Gamma s)fl(ju(s)j)ds
+
+for all t * 0, where we are denoting
+
+U (t; s) := eR
+
+t s fl(ju(o/)j)do/
+
+and U (t) = U (t; 0). Observe that U (t; s) ^ U (t) and e\Gamma q(t\Gamma s) ^ 1 for all s 2 [0; t], so we also have
+
+v(t) ^ U (t)e\Gamma qtv(0) + U (t)
+
+tZ
+
+0
+
+fl(ju(s)j)ds (10)
+
+for all t * 0. Writing
+
+U (t)e\Gamma qtv(0) = e\Gamma qtv(0) + (U (t) \Gamma  1)e\Gamma qtv(0)
+
+^ e\Gamma qtv(0) + 12 ie\Gamma qtv(0)j
+
+2 + 1
+
+2 (U (t) \Gamma  1)
+
+2
+
+we conclude from (10) that
+
+v(t) ^ `1 ie\Gamma qtv(0)j + `2 0@
+
+tZ
+
+0
+
+fl(ju(o/ )j)do/ 1A :
+
+6
+
+From this, and recalling that v(t) = V (x(t)) and v(0) = V (,), there follows the estimate:
+
+ff1(jx(t)j) ^ `1 ie\Gamma qtff2(j,j)j + `2 0@
+
+tZ
+
+0
+
+fl(ju(o/ )j)do/ 1A :
+
+Finally, dividing both sides of this inequality by 2 and applying `\Gamma 12 , the desired conclusion follows from the fact that `\Gamma 12 ((a + b)=2) ^ `\Gamma 12 (a) + `\Gamma 12 (b) for all nonnegative a; b.
+
+Proof of Theorem 5 The necessity part is clear from Proposition 6. Conversely, assume that A is Hurwitz, and pick any symmetric positive definite matrix P 2 Rn\Theta n so that P A+A0P = \Gamma 2I (see e.g. [8]), where we are using primes to denote transposes. Let V (x) := x0P x, and write .V (x; u) for the directional derivative
+
+rV (x): "A +
+
+mX
+
+i=1 u
+
+iAi! x + Bu# :
+
+Then:
+
+.V (x; u) = \Gamma 2x0P Ax +
+
+mX
+
+i=1 2
+
+uix0P Aix + 2x0P Bu
+
+for all t * 0. If p is the induced Euclidean norm of P B, then for all vectors x; u:
+
+2x0P Bu ^ 2 jxj (p juj) ^ jxj2 + p2 juj2
+
+and there is also a constant c ? 0 so thatfifififi
+
+fi
+
+mX
+
+i=1 2
+
+uix0P Aixfififififi ^ c juj jxj2 ;
+
+so we conclude, using 2x0P Ax = \Gamma 2 jxj2, that
+
+.V (x; u) ^ \Gamma  jxj2 + c juj jxj2 + p2 juj2 ^ (cr juj \Gamma  q)V (x) + p2 juj2
+
+for all t * 0, where 1=q is the largest eigenvalue of P and and 1=r is the smallest eigenvalue of P . The proof is completed by appealing to Theorem 2.
+
+Proof of Proposition 6 Pick any " ? 0. We must find a T" so that jx(t)j ! " for all t * T". Pick "0 := ff\Gamma 1(") and a T ? 0 so that R 1T fl(ju(s)j)ds ! "0=2. Such a T exists becauseR
+
+1 T fl(ju(s)j)ds ! 0 as T ! 1. Consider the new initial state ,0 := x(T ) andthe control u0 which is the "tail" of u: u0(t) := u(t + T ) for t * 0. The ensuing
+
+7
+
+trajectory x0 satisfies x0(t) = x(t + T ). Applying the estimates to this new pair (,0; u0), we conclude that, for all t * 0:
+
+ff(jx(t + T )j) ^ fi(j,0j ; t) +
+
+t+TZ
+
+T
+
+fl(ju(s)j)ds ! fi(j,0j ; t) + "0=2 :
+
+If T 0 is so that fi(j,0j ; T 0) ^ "0=2, we conclude that ff(jx(t)j) ! "0, and hence jx(t)j ^ ", for all t * T" := T + T 0.
+
+Proof of Theorem 1 One implication is routine: if the system is ISS, then from Theorem 3 we have a function V with ff1(jxj) ^ V (x) ^ ff2(jxj) (ffi 2 K1) so that, for each initial state , and input u(\Delta ), v(t) = V (x(t)) satisfies .v(t) ^ \Gamma v(t) + fl(ju(t)j) for (almost all) t * 0. Therefore
+
+tZ
+
+0
+
+v(s) ds ^ v(0) \Gamma  v(t) +
+
+tZ
+
+0
+
+fl(ju(s)j) ds
+
+from which one has the estimate R t0 ff1(jx(s)j)ds ^ ff2(j,j) + R t0 fl(ju(s)j)ds : The converse is more interesting. We use a variation of one of the characterizations of ISS given in [10]: A system is ISS if and only if 0 is a stable equilibrium of the unforced system .x = f (x; 0) and the so-called "LIM" property holds, namely there exists a function ` 2 K1 so that, for all initial states , and inputs u(\Delta ), inft*0 jx(t)j ^ `(kuk1). (To be precise, in [10] it is stated that ISS is equivalent to LIM together with asymptotic stability of the origin for
+
+.x = f (x; 0). However, as pointed out to the author by Gene Ryan, the LIM property applied with u j 0 means that every trajectory of .x = f (x; 0) gets arbitrarily close to the origin, so stability implies asymptotic stability when the LIM property holds. This variant should have been stated in [10], and it was an oversight not to have done so.)
+
+Assume system (1) satisfies the property defined by the estimate (7). Then, the LIM property holds with ` = ff\Gamma 1 ffi fl. Indeed, consider any , and u(\Delta ). If it were the case that inft*0 jx(t)j ? `(kuk1) then there is some " ? 0 so that ff(x(t)) * " + fl(u(t)) for (almost) all t ? 0, and thus R t0 ff(x(s))ds * "t + R t0 fl(u(s))ds, which gives the contradiction ^(j,j) ? "t for all t. So we are only left to show that 0 is a stable equilibrium of the unforced system
+
+.x = f (x; 0). Pick any " ? 0. Let K be the set fx j "=2 ^ jxj ^ "g and take c := supx2K jf (x; 0)j. Finally, choose 0 ! ffi ! "=2 so that r ! ffi implies
+
+^(r) ! s0, where s0 := "ff("=2)2c . Let jx(0)j ! ffi. Then jx(t)j ! " for all t * 0. Indeed, suppose that there exists some t ? 0 so that jx(t)j * ". Then there is some interval [t1; t2] so that jx(t1)j = "=2, jx(t2)j = ", and x(t) 2 K for all
+
+8
+
+t 2 [t1; t2]. Thus
+
+1Z
+
+0
+
+ff(jx(s)j) ds *
+
+t2Z
+
+t1
+
+ff(jx(s)j) ds * (t2 \Gamma  t1)ff("=2) :
+
+On the other hand,
+
+"=2 ^ jx(t2) \Gamma  x(t1)j ^
+
+t2Z
+
+t1
+
+jf (x(s); 0)j ds ^ c(t2 \Gamma  t1)
+
+so we conclude
+
+s0 ^
+
+1Z
+
+0
+
+ff(jx(s)j)ds ^ ^(jx(0)j) ;
+
+a contradiction.
+
+3 A Lemma on KL Functions This section has the purpose of showing that, if we were to define the estimates in Equations (5) and (6) using only those functions of class KL which have the particular form fi(s; t) = e\Gamma *tfl(s), with * ? 0 and fl 2 K1, or even functions of this form with * = 1, we would arrive at precisely the same notions. The proof relies upon a lemma involving KL functions which seems not to have been remarked in the literature, and which is of independent interest:
+
+Proposition 7 Assume that fi 2 KL. Then, there exist `1; `2 2 K1 so that
+
+fi(s; t) ^ `1 i`2(s)e\Gamma tj 8 s * 0; t * 0 : (11)
+
+Let us first see how, on the basis of this result, we can show that equivalent stability concepts result. Let fi be given, and find `1 and `2 as in the above statement. Let oe be any function of class K1 with the property that, for all a * 0, oe(a) * maxf2`1(a); 2ag. Since oe\Gamma 1 2 K1, we have, for all p; q * 0:
+
+oe\Gamma 1(`1(p) + q) ^ oe\Gamma 1(2`1(p)) + oe\Gamma 1(2q) ^ p + q ; or, equivalently, `1(p) + q ^ oe(p + q). It follows that, for all s; t; q * 0:
+
+fi(s; t) + q ^ oe i`2(s)e\Gamma t + qj : (12)
+
+Now suppose that a system satisfies the estimate in Equation (6), namely ff (jx(t)j) ^ fi(j,j ; t)+R t0 fl(ju(s)j)ds for all t * 0. Finding, for this fi, functions
+
+9
+
+`1; `2; oe as just discussed, we conclude that solutions must also satisfyb
+
+ff (jx(t)j) ^ e\Gamma t`2(j,j) +
+
+tZ
+
+0
+
+fl(ju(s)j)ds ;
+
+where bff(r) := oe\Gamma 1(ff(r)). In other words, we have proved that there is also an estimate involving the special form fi(s; t) = e\Gamma tfl(s) for the KL function. A similar remark applies to the estimate (5), the ISS property, though in that case, an alternative proof is easy from Theorem 3.
+
+The keys to proving Proposition 7 are two lemmas. Lemma 8 Assume that fi 2 KL. Then, there exist fl 2 K1 and oe 2 K1 so that
+
+fi(s; t) ^ fl(s)oe ie\Gamma tj 8 s * 0; t * 0 : (13)
+
+PROOF. Let fi 2 KL. Define
+
+ffs(t) := fi(s; t)fi(s; 0)1=2 + fi(s; 0)2 for all t * 0 and all s ? 0. Note that
+
+ffs(t) ^ fi(s; 0)fi(s; 0)1=2 + fi(s; 0)2 ^ 1 (14)
+
+for all t * 0 and all s ? 0, and that ffs(t) decreases to zero as t ! 1, for each fixed s. Let
+
+ff(t) := sup
+
+s?0 ffs(t)
+
+for each t * 0. Since each ffs is decreasing, ff is too, and ff(t) ^ 1 for all t.
+
+Claim: ff(t) ! 0 as t ! 1. Indeed, pick any " ? 0. Since fi(s;0)fi(s;0)1=2+fi(s;0)2 = ae(fi(s; 0)), where ae(x) = xx1=2+x2 , fi(\Delta ; 0) 2 K1, and ae(x) ! 0 as x ! 1 or x ! 0+, it follows that
+
+fi(s; 0) fi(s; 0)1=2 + fi(s; 0)2 ! 0
+
+when s ! 1 and when s ! 0+. Thus, there are 0 ! a ! b ! 1 with the property that
+
+s 62 [a; b] ) ffs(t) ! " (15)
+
+10
+
+for all t * 0 (using Equation (14) and the above limit). Pick now any s 2 [a; b]. For such an s,
+
+ffs(t) ^ fi(b; t)fi(a; 0)1=2 + fi(a; 0)2 :
+
+Pick a t0 so that t ? t0 implies
+
+fi(b; t) ! " ifi(a; 0)1=2 + fi(a; 0)2j : Then for all t ? t0 we have that ffs(t) ! ", if s 2 [a; b]. Together with Equation (15), we conclude that ffs(t) ! " for all t ? t0 and all s. Thus ff(t) ! " for such t, and the claim is proved.
+
+Since ff is decreasing to zero, there is some function ` : [0; 1) ! [0; 1) which is continuous and strictly decreasing to zero, so that, for all s ? 0 and all t * 0,
+
+fi(s; t)
+
+fi(s; 0)1=2 + fi(s; 0)2 = ffs(t) ^ ff(t) ^ `(t) and therefore
+
+fi(s; t) ^ fl(s)`(t) ; (16)
+
+where we defined fl(s) := ifi(s; 0)1=2 + fi(s; 0)2j, and fl 2 K1. Note that Equation (16) holds also at s = 0.
+
+Finally, we let oe0(r) := `(\Gamma  ln r) for x 2 (0; 1], and oe0(0) := 0. We have that oe0 : [0; 1] ! R is strictly increasing and continuous at zero, so there exists some oe 2 K1 so that oe0(r) ^ oe(r) for all r 2 [0; 1]. Therefore Equation (13) holds with this choice of fl and oe.
+
+For the next Lemma, we let I be the set of continuous functions k : R ! R which are strictly increasing and satisfy that limr!+1 k(r) = +1 and limr!\Gamma 1 k(r) = \Gamma 1.
+
+Lemma 9 Assume that f 2 I. Then, there exist two functions g; h 2 I so that
+
+f (x + y) ^ g(x) + h(y) (17)
+
+for all x; y 2 R. PROOF. We start by defining a function ' 2 I with the following three properties:
+
+11
+
+- '(x) * 2x for all x * 0; - '(x) * x2 for all x ^ 0; - f (x) \Gamma  f ('(x)) ! \Gamma 1 as x ! +1 and as x ! \Gamma 1.
+
+One way to define ' is by means of the following formula, for all x 2 R:
+
+'(x) = max aef \Gamma 1 ` 12 f (x)' ; f \Gamma 1(2f (x)); 2x; x2 oe : Observe that each of the four functions in the maximum is in I, so ' 2 I. Furthermore, f ('(x)) * f (f \Gamma 1(f (x)=2)) = f (x)=2, and similarly f ('(x)) * 2f (x), for all x. So
+
+f (x) \Gamma  f ('(x)) ^ f (x) \Gamma  12 f (x) = 12 f (x) ! \Gamma 1 as x ! \Gamma 1, and
+
+f (x) \Gamma  f ('(x)) ^ f (x) \Gamma  2f (x) = \Gamma f (x) ! \Gamma 1 as x ! +1. We let g(x) := f ('(x)) and
+
+h0(y) := sup
+
+x2R[f (x + y) \Gamma  g(x)]
+
+for y 2 R.
+
+We claim that h0(y) ! 1 for all y. To prove this, we consider the cases y ^ 0 and y ? 0 separately. Take first y ^ 0. So f (x + y) ^ f (x) for all x. If x ^ 0, then
+
+f (x) ^ f (x=2) ^ f ('(x)) = g(x);
+
+and, if x * 0, then also
+
+f (x) ^ f (2x) ^ f ('(x)) = g(x); so, taking the supremum over x, we have h0(y) ^ 0. Now take the case y ? 0. If x ^ \Gamma 2y, then \Gamma x=2 * y, so '(x) * x=2 * x + y, and therefore
+
+f (x + y) \Gamma  g(x) ^ f (x + y) \Gamma  f ('(x)) ^ 0 : If x * y then x ? 0, so g(x) = f ('(x)) * f (2x) * f (x + y), so again f (x + y) \Gamma  g(x) ^ 0. If instead \Gamma 2y ^ x ^ y, then f (x + y) ^ f (2y) and g(x) = f ('(x)) * f ('(\Gamma 2y)) * f (\Gamma y) (because \Gamma 2y ! 0 implies '(\Gamma 2y) * \Gamma y). Thus in that case
+
+f (x + y) \Gamma  g(x) ^ f (2y) \Gamma  f (\Gamma y) :
+
+12
+
+Therefore
+
+h0(y) ^ maxf0; f (2y) \Gamma  f (\Gamma y)g ! 1
+
+as claimed.
+
+Note that g 2 I and that, from the definition of h0,
+
+f (x + y) ^ g(x) + h0(y) (18)
+
+for all x; y 2 R. Furthermore, h0 is nondecreasing, because, if y0 ? y, then f (x + y0) \Gamma  g(x) ? f (x + y) \Gamma  g(x) for all x 2 R.
+
+Finally, we claim that
+
+h0(y) ! \Gamma 1
+
+as y ! \Gamma 1. Indeed, let K ! 0 be arbitrary. Fix ae so that jxj ? ae implies f (x) \Gamma  g(x) ! K; such a ae exists because of the last property required of '. As f (x + y) ^ f (x) when y ^ 0 (because f is an increasing function), it follows that
+
+f (x + y) \Gamma  g(x) ! K if y ^ 0; jxj ? ae : (19)
+
+Now take any x 2 [\Gamma ae; ae]. Since x + y ^ ae + y and '(x) * '(\Gamma ae),
+
+f (x + y) \Gamma  g(x) ^ f (ae + y) \Gamma  f ('(\Gamma ae)) : (20)
+
+As f (z) ! \Gamma 1 when z ! \Gamma 1, there is some i so that
+
+z ! i ) f (z) ! K + f ('(\Gamma ae)) : It follows that if y ! i \Gamma  ae then f (ae + y) \Gamma  f ('(\Gamma ae)) ! K. So Equations (19)- (20) imply that f (x + y) \Gamma  g(x) ! K for all y ! minf0; i \Gamma  aeg, and all x 2 R. Therefore h0(y) ! K for all y ! minf0; i \Gamma  aeg, proving the claim.
+
+As h0 : (\Gamma 1; 1) ! R is nondecreasing and has h0(y) ! \Gamma 1 when y ! \Gamma 1, there is some h 2 I so that h0(y) ^ h(y) for all y. The conclusion follows then from Equation (18).
+
+Although not needed here, it is worth stating the "exponential" version of the above Lemma:
+
+Corollary 10 For each fl 2 K1 there exist oe1 and oe2 in K1 so that
+
+fl(rs) ^ oe1(r)oe2(s) for all r; s * 0.
+
+13
+
+PROOF. Consider f (x) := ln fl(ex). Since fl 2 K1, f 2 I. Thus there exist g and h as in Lemma 9. We then let oe1(r) := eg(ln r) and oe2(r) := eh(ln r).
+
+Remark 11 The functions g and h in Lemma 9 can be chosen to be the same. Indeed, given g and h from the Lemma, we have that
+
+f (x + y) ^ g(x) + h(y) ^ maxfg(x); h(x)g + maxfg(y); h(y)g ; so f (x + y) ^ k(x) + k(y), where k(z) := maxfg(y); h(y)g defines also a function in I. Similarly, the functions oe1 and oe2 in Corollary 10 can also be chosen equal. 2
+
+Proof of Proposition 7 Let fi 2 KL. By Lemma 8, there exist fl 2 K1 and oe 2 K1 so that fi(s; t) ^ fl(s)oe (e\Gamma t) for all s * 0 and t * 0. We apply Lemma 9 with
+
+f (u) := \Gamma  ln oe\Gamma 1(e\Gamma u) It is clear that f 2 I. So there exist g and h in I so that Equation (17) holds for all reals x; y.
+
+We define
+
+ff1(r) := exp(\Gamma g(\Gamma  ln r))
+
+for r 2 (0; 1), and ff1(0) := 0. Because g 2 I, it follows that ff1 2 K1. Note for future reference that
+
+g(x) = \Gamma  ln ff1(e\Gamma x) for all x 2 R: (21)
+
+Finally, we define
+
+ff2(r) := exp(h(ln r))
+
+for r 2 (0; 1), and ff2(0) := 0. Since h 2 I, it follows that ff2 2 K1 as well, and we note that
+
+h(y) = ln ff2(ey) for all y 2 R: (22)
+
+Pick now any t 2 [0; 1) and any s 2 (0; 1). Let
+
+x := \Gamma  ln fl(s) \Gamma  ln oe(e\Gamma t) and y := ln fl(s) : Observe that
+
+\Gamma (x + y) = ln oe(e\Gamma t)
+
+so
+
+f (x + y) = \Gamma  ln oe\Gamma 1(exp(ln oe(e\Gamma t))) = t ;
+
+14
+
+g(x) = \Gamma  ln ff1(exp(ln fl(s) + ln oe(e\Gamma t))) = \Gamma  ln ff1(fl(s)oe(e\Gamma t)) ; and
+
+h(y) = ln ff2(exp(ln fl(s))) = ln ff2(fl(s)) :
+
+Therefore, Equation (17), applied with these x and y, gives
+
+t ^ \Gamma  ln ff1(fl(s)oe(e\Gamma t)) + ln ff2(fl(s)) : Taking exp(\Gamma \Delta ) in both sides, we conclude that
+
+e\Gamma t * ff1(fl(s)oe(e
+
+\Gamma t))
+
+ff2(fl(s)) :
+
+Thus ff1(fl(s)oe(e\Gamma t)) ^ ff2(fl(s))e\Gamma t, and hence
+
+fl(s)oe(e\Gamma t) ^ ff\Gamma 1 iff2(fl(s))e\Gamma tj : This equation holds for s = 0 as well. Taking `1 := ff\Gamma 11 and `2 := ff2 ffi fl, the theorem is proved. 2
+
+4 Remark The proof of Theorem 3 in [6] relies upon a sharpening of the dissipation characterization obtained in [9], which gave only an estimate of the type rV (x):f (x; u) ^ \Gamma ff(V (x)) + fl2(juj), where ff is of class K, not necessarily the identity. One might conjecture, in view of this fact, that it may be possible to weaken the assumption in Equation (8) to asking merely that rV (x):f (x; u) ^ (fl1(juj) \Gamma  q)ff(V (x)) + fl2(juj), where ff is some function of class K. This, however, will not be a sufficient condition: consider as an illustration the system .x = (u2 \Gamma  1)x3 and V (x) = x2; then .V = (u2 \Gamma  1)(2V 2), but the system is not IISS, since for , = 1 and any input with u(t) j 1 for t 2 [0; 1=6], x(1=6) is undefined.
+
+References
+
+[1] D. Angeli, E.D. Sontag, and Y. Wang, A characterization of integral input to
+
+state stability, in preparation.
+
+[2] W. Hahn, Stability of Motion, Springer-Verlag, Berlin, 1967. [3] J. Hale, Ordinary Differential Equations, Second Edition, Krieger, Malabar,
+
+1980.
+
+15
+
+[4] A. Isidori, Global almost disturbance decoupling with stability for non minimumphase single-input single-output nonlinear systems, Systems & Control Letters, 28 (1996), pp. 115-122.
+
+[5] M. Krsti'c, I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive
+
+Control Design, John Wiley & Sons, New York, 1995.
+
+[6] L. Praly and Y. Wang, Stabilization in spite of matched unmodelled dynamics
+
+and an equivalent definition of input-to-state stability, Math. of Control, Signals, and Systems, 9 (1996): 1-33.
+
+[7] E.D. Sontag, Smooth stabilization implies coprime factorization, IEEE Trans.
+
+on Automatic Control, AC-34 (1989), pp. 435-443.
+
+[8] , Mathematical Control Theory: Deterministic Finite Dimensional
+
+Systems, Springer-Verlag, New York, 1990.
+
+[9] E.D. Sontag and Y. Wang, On characterizations of the input-to-state stability
+
+property, Systems & Control Letters, 24 (1995), pp. 351-359.
+
+[10] , New characterizations of the input to state stability property, IEEE Trans.
+
+on Automatic Control, 41(1996), pp. 1283-1294.
+
+[11] J. Tsinias, Sontag's "input to state stability condition" and global stabilization
+
+using state detection, Systems & Control Letters, 20 (1993), pp. 219-226.
+
+16</pre>
+</body>
+</html>

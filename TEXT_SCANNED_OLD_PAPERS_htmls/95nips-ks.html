@@ -1,0 +1,242 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nips-ks.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nips-ks.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Neural Networks with Quadratic VC
+
+Dimension
+
+Pascal Koiran\Lambda  Lab. de l'Informatique du Parall'elisme Ecole Normale Sup'erieure de Lyon - CNRS
+
+69364 Lyon Cedex 07, France
+
+Eduardo D. Sontagy Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903, USA
+
+Abstract This paper shows that neural networks which use continuous activation functions have VC dimension at least as large as the square of the number of weights w. This result settles a long-standing open question, namely whether the well-known O(w log w) bound, known for hard-threshold nets, also held for more general sigmoidal nets. Implications for the number of samples needed for valid generalization are discussed.
+
+1 Introduction One of the main applications of artificial neural networks is to pattern classification tasks. A set of labeled training samples is provided, and a network must be obtained which is then expected to correctly classify previously unseen inputs. In this context, a central problem is to estimate the amount of training data needed to guarantee satisfactory learning performance. To study this question, it is necessary to first formalize the notion of learning from examples.
+
+One such formalization is based on the paradigm of probably approximately correct (PAC) learning, due to Valiant (1984). In this framework, one starts by fitting some function f, chosen from a predetermined class F, to the given training data. The class F is often called the "hypothesis class", and for purposes of this discussion it will be assumed that the functions in F take binary values f0; 1g and are defined on a common domain X. (In neural networks applications, typically F corresponds to the set of all neural networks with a given architecture and choice of activation functions. The elements of X are the inputs, possibly multidimensional.) The training data consists of labeled samples (xi; "i), with each xi 2 X and each "i 2 f0; 1g, and
+
+\Lambda koiran@lip.ens-lyon.fr.
+
+ysontag@hilbert.rutgers.edu.
+
+"fitting" by an f means that f(xi) = "i for each i. Given a new example x, one uses f(x) as a guess of the "correct" classification of x. Assuming that both training inputs and future inputs are picked according to the same probability distribution on X, one needs that the space of possible inputs be well-sampled by the training data, so that f is an accurate fit. We omit the details of the formalization of PAC learning, since there are excellent references available, both in textbook (e.g. Anthony and Biggs (1992), Natarajan (1991)) and survey paper (e.g. Maass (1994)) form, and the concept is by now very well-known.
+
+After the work of Vapnik (1982) in statistics and of Blumer et. al. (1989) in computational learning theory, one knows that a certain combinatorial quantity, called the Vapnik-Chervonenkis (VC) dimension VC(F) of the class F of interest completely characterizes the sample sizes needed for learnability in the PAC sense. (The appropriate definitions are reviewed below. In Valiant's formulation one is also interested in quantifying the computational effort required to actually fit a function to the given training data, but we are ignoring that aspect in the current paper.) Very roughly speaking, the number of samples needed in order to learn reliably is proportional to VC(F). Estimating VC(F) then becomes a central concern. Thus from now on, we speak exclusively of VC dimension, instead of the original PAC learning problem.
+
+The work of Cover (1988) and Baum and Haussler (1989) dealt with the computation of VC(F) when the class F consists of networks built up from hard-threshold activations and having w weights; they showed that VC(F)= O(w log w). (Conversely, Maass (1993) showed that there is also a lower bound of this form.) It would appear that this definitely settled the VC dimension (and hence also the sample size) question.
+
+However, the above estimate assumes an architecture based on hard-threshold ("Heaviside") neurons. In contrast, the usually employed gradient descent learning algorithms ("backpropagation" method) rely upon continuous activations, that is, neurons with graded responses. As pointed out in Sontag (1989), the use of analog activations, which allow the passing of rich (not just binary) information among levels, may result in higher memory capacity as compared with threshold nets. This has serious potential implications in learning, essentially because more memory capacity means that a given function f may be able to "memorize" in a "rote" fashion too much data, and less generalization is therefore possible. Indeed, Sontag (1992) showed that there are conceivable (though not very practical) neural architectures with extremely high VC dimensions. Thus the problem of studying VC(F) for analog networks is an interesting and relevant issue. Two important contributions in this direction were the papers by Maass (1993) and by Goldberg and Jerrum (1995), which showed upper bounds on the VC dimension of networks that use piecewise polynomial activations. The last reference, in particular, established for that case an upper bound of O(w2), where, as before, w is the number of weights. However it was an open problem (specifically, "open problem number 7" in the recent survey by Maass (1993) if there is a matching w2 lower bound for such networks, and more generally for arbitrary continuous-activation nets. It could have been the case that the upper bound O(w2) is merely an artifact of the method of proof in Goldberg and Jerrum (1995), and that reliable learning with continuous-activation networks is still possible with far smaller sample sizes, proportional to O(w log w). But this is not the case, and in this paper we answer Maass' open question in the affirmative.
+
+Assume given an activation oe which has different limits at \Sigma 1, and is such that there is at least one point where it has a derivative and the derivative is nonzero (this last condition rules out the Heaviside activation). Then there are architectures with arbitrary large numbers of weights w and VC dimension proportional
+
+to w2. The proof relies on first showing that networks consisting of two types of activations, Heavisides and linear, already have this power. This is a somewhat surprising result, since purely linear networks result in VC dimension proportional to w, and purely threshold nets have, as per the results quoted above, VC dimension bounded by w log w. Our construction was originally motivated by a related one, given in Goldberg and Jerrum (1995), which showed that real-number programs (in the Blum-Shub-Smale (1989) model of computation) with running time T have VC dimension \Omega (T 2). The desired result on continuous activations is then obtained, approximating Heaviside gates by oe-nets with large weights and approximating linear gates by oe-nets with small weights. This result applies in particular to the standard sigmoid 1=(1 + e\Gamma x). (However, in contrast with the piecewise-polynomial case, there is still in that case a large gap between our \Omega (w2) lower bound and the O(w4) upper bound which was recently established in Karpinski and Macintyre (1995).) A number of variations, dealing with Boolean inputs, or weakening the assumptions on oe, are discussed. The full version of this paper also includes some remarks on thresholds networks with a constant number of linear gates, and threshold-only nets with "shared" weights.
+
+Basic Terminology and Definitions Formally, a (first-order, feedforward) architecture or network A is a connected directed acyclic graph together with an assignment of a function to a subset of its nodes. The nodes are of two types: those of fan-in zero are called input nodes and the remaining ones are called computation nodes or gates. An output node is a node of fan-out zero. To each gate g there is associated a function oeg : R ! R, called the activation or gate function associated to g.
+
+The number of weights or parameters associated to a gate g is the integer ng equal to the fan-in of g plus one. (This definition is motivated by the fact that each input to the gate will be multiplied by a weight, and the results are added together with a "bias" constant term, seen as one more weight; see below.) The (total) number of weights (or parameters) of A is by definition the sum of the numbers ng, over all the gates g of A. The number of inputs m of A is the total number of input nodes (one also says that "A has inputs in Rm"); it is assumed that m ? 0. The number of outputs p of A is the number of output nodes (unless otherwise mentioned, we assume by default that all nets considered have one-dimensional outputs, that is, p = 1).
+
+Two examples of gate functions that are of particular interest are the identity or linear gate: Id(x) = x for all x, and the threshold or Heaviside function: H(x) = 1 if x * 0, H(x) = 0 if x ! 0.
+
+Let A be an architecture. Assume that nodes of A have been linearly ordered as ss1; : : : ; ssm; g1; : : :; gl, where the ssj's are the input nodes and the gj's the gates. For simplicity, write ni := ngi, for each i = 1; : : : ; l. Note that the total number of
+
+parameters is n = Pli=1 ni and the fan-in of each gi is ni \Gamma  1. To each architectureA
+
+(strictly speaking, an architecture together with such an ordering of nodes) we associate a function
+
+F : Rm \Theta  Rn ! Rp ;
+
+where p is the number of outputs of A, defined by first assigning an "output" to each node, recursively on the distance from the the input nodes. Assume given an input x 2 Rm and a vector of weights w 2 Rn. We partition w into blocks (w1; : : : ; wl) of sizes n1; : : : ; nl respectively. First the coordinates of x are assigned as the outputs of the input nodes ss1; : : : ; ssm respectively. For each of the other gates gi, we proceed as follows. Assume that outputs y1; : : :; yni\Gamma 1 have already
+
+been assigned to the predecessor nodes of gi (these are input and/or computation nodes, listed consistently with the order fixed in advance). Then the output of gi is by definition
+
+oegi (wi;0 + wi;1y1 + wi;2y2 + : : : + wi;ni\Gamma 1yni\Gamma 1) ; where we are writing wi = (wi;0; wi;1; wi;2; : : :; wi;ni\Gamma 1). The value of F (x; w) is then by definition the vector (scalar if p = 1) obtained by listing the outputs of the output nodes (in the agreed-upon fixed ordering of nodes). We call F the function computed by the architecture A. For each choice of weights w 2 Rn, there is a function Fw : Rm ! Rp defined by Fw(x) := F (x; w); by abuse of terminology we sometimes call this also the function computed by A (if the weight vector has been fixed).
+
+Assume that A is an architecture with inputs in Rm and scalar outputs, and that the (unique) output gate has range f0; 1g. A subset A ` Rm is said to be shattered by A if for each Boolean function fi : A ! f0; 1g there is some weight w 2 Rn so that Fw(x) = fi(x) for all x 2 A. The Vapnik-Chervonenkis (VC) dimension of A is the maximal size of a subset A ` Rm that is shattered by A. If the output gate can take non-binary values, we implicitly assume that the result of the computation is the sign of the output. That is, when we say that a subset A ` Rm is shattered by A, we really mean that A is shattered by the architecture H(A) in which the output of A is fed to a sign gate.
+
+2 Networks Made up of Linear and Threshold Gates Proposition 1 For every n * 1, there is a network architecture A with inputs in R2 and O(pN) weights that can shatter a set of size N = n2. This architecture is made only of linear and threshold gates.
+
+Proof. Our architecture has n parameters W1; : : : ; Wn; each of them is an element of T = f0:w1 : : : wn; wi 2 f0; 1gg: The shattered set will be S = [n]2 = f1; : : :; ng2.
+
+For a given choice of W = (W1; : : : ; Wn), A will compute the boolean function fW : S ! f0; 1g defined as follows: fW (x; y) is equal to the x-th bit of Wy. Clearly, for any boolean function f on S, there exists a (unique) W such that f = fW .
+
+We first consider the obvious architecture which computes the function:
+
+f1W (y) = W1 +
+
+nX
+
+z=2
+
+(Wz \Gamma  Wz\Gamma 1)H(y \Gamma  z + 1=2) (1)
+
+sending each point y 2 [n] to Wy. This architecture has n \Gamma  1 threshold gates, 3(n \Gamma  1) + 1 weights, and just one linear gate.
+
+Next we define a second multi-output net which maps w 2 T to its binary representation f2(w) = (w1; : : : ; wn). Assume by induction that we have a net N 2i that maps w to (w1; : : : ; wi; 0:wi+1 : : : wn). Since wi+1 = H(0:wi+1 : : : wn \Gamma  1=2) and 0:wi+2 : : : wn = 2 \Theta  0:wi+1 : : : wn \Gamma  wi+1, N 2i+1 can be obtained by adding one
+
+threshold gate and one linear gate to N 2i (as well as 4 weights). It follows that N 2n has n threshold gates, n linear gates and 4n weights.
+
+Finally, we define a net N 3 which takes as input x 2 [n] and w = (w1; : : : ; wn) 2f
+
+0; 1gn, and outputs wx. We would like this network to be as follows:
+
+f3(x; w) = w1 +
+
+nX
+
+z=2
+
+wzH(x \Gamma  z + 1=2) \Gamma 
+
+nX
+
+z=2
+
+wz\Gamma 1H(x \Gamma  z + 1=2):
+
+This is not quite possible, because the products between the wi's (which are inputs in this context) and the Heavisides are not allowed. However, since we are dealing with binary variables one can write uv = H(u + v \Gamma  1:5). Thus N3 has one linear gate, 4(n \Gamma  1) threshold gates and 12(n \Gamma  1) + n weights. Note that fW (x; y) = f3(x; f2(f1W (y)): This can be realized by means of a net that has n + 2 linear gates, (n\Gamma 1)+n+4(n\Gamma 1) = 6n\Gamma 5 threshold gates, and (3n\Gamma 2)+4n+(12n\Gamma 11) = 19n\Gamma 13 weights. 2
+
+The following is the main result of this section: Theorem 1 For every n * 1, there is a network architecture A with inputs in R and O(pN ) weights that can shatter a set of size N = n2. This architecture is made only of linear and threshold gates.
+
+Proof. The shattered set will be S = f0; 1; : : :; n2 \Gamma  1g. For every x 2 S, there are unique integers x; y 2 f0; 1; : : :; n \Gamma  1g such that u = nx + y. The idea of the construction is to compute x and y, and then feed (x + 1; y + 1) to the network constructed in Proposition 1. Note that x is the unique integer such that u \Gamma  nx 2f
+
+0; 1; : : :; n \Gamma  1g. It can therefore by computed by brute force search as follows:
+
+x =
+
+n\Gamma 1X
+
+k=0
+
+kH[H(u \Gamma  nk) + H(n \Gamma  1 \Gamma  (u \Gamma  nk)) \Gamma  1:5]:
+
+This network has 3n threshold gates, one linear gate and 8n weights. Then of course y = u \Gamma  nx. 2
+
+A Boolean version is as follows. Theorem 2 For every d * 1, there is a network architecture A with O(pN ) weights that can shatter the N = 22d points of f0; 1g2d. This architecture is made only of linear and threshold gates.
+
+Proof. Given u 2 f0; 1g2d, one can compute x = 1 + Pdi=1 2i\Gamma 1ui and y = 1 +P
+
+d i=1 2
+
+i\Gamma 1ui+d with two linear gates. Then (x; y) can be fed to the network of
+
+Proposition 1 (with n = 2d). 2
+
+In other words, there is a network architecture with 2d weights that can compute all boolean functions on 2d variables.
+
+3 Arbitrary Sigmoids We now extend the preceding VC dimension bounds to networks that use just one activation function oe (instead of both linear and threshold gates). All that is required is that the gate function have a sigmoidal shape and satisfy a very weak smoothness property:
+
+1. oe is differentiable at some point x0 (i.e., oe(x0 +h) = oe(x0)+oe0(x0)h+o(h))
+
+where oe0(x0)6= 0.
+
+2. limx!\Gamma 1 oe(x) = 0 and limx!+1 oe(x) = 1 (the limits 0 and 1 can be
+
+replaced by any distinct numbers).
+
+A function satisfying these two conditions will be called sigmoidal. Given any such oe, we will show that networks using only oe gates provide quadratic VC dimension.
+
+Theorem 3 Let oe be an arbitrary sigmoidal function. There exist architectures A1 and A2 with O(pN ) weights made only of oe gates such that:
+
+ffl A1 can shatter a subset of R of cardinality N = n2; ffl A2 can shatter the N = 22d points of f0; 1g2d. This follows directly from Theorems 1 and 2, together with the following simulation result:
+
+Theorem 4 Let oe be a an arbitrary sigmoidal function. Let N be a network of T threshold and L linear gates, with a threshold gate at the output. Then N can be simulated on any given finite set of inputs by a network N 0 of T + L gates that all use the activation function oe (except the output gate which is still a threshold). Moreover, if N has n weights then N 0 has O(n) weights.
+
+Proof. Let S be a finite set of inputs. We can assume, by changing the thresholds of threshold gates if necessary, that the net input Ig(x) to any threshold gate g of N is different from 0 for all inputs x 2 S.
+
+Given ffl ? 0, let Nffl be the net obtained by replacing the output functions of all gates by the new output function x 7! oe(x=ffl) if this output function is the sign function, and by x 7! oeffl(x) = [oe(x0 +fflx)\Gamma oe(x0)]=[ffloe0(x0)] if it is the identity function. Note that for any a ? 0, limffl!0+ oe(x=ffl) = H(x) uniformly for x 2] \Gamma  1; \Gamma a] [ [a; +1] and limffl!0 oeffl(x) = x uniformly for x 2 [\Gamma 1=a; 1=a].
+
+This implies by induction on the depth of g that for any gate g of N and any input x 2 S, the net input Ig;ffl(x) to g in the transformed net Nffl satisfies limffl!0 Ig;ffl(x) = Ig(x) (here, we use the fact that the output function of every g is continuous at Ig(x)). In particular, by taking g to be the output gate of N , we see that N andN
+
+ffl compute the same function on S if ffl is small enough. Such a net Nffl can betransformed into an equivalent net N 0 that uses only oe as gate function by a simple
+
+transformation of its weights and thresholds. The number of weights remains the same, except at most for a constant term that must be added to each net input to a gate; thus if N has n weights, N 0 has at most 2n weights. 2
+
+4 More General Gate Functions The objective of this section is to establish results similar to Theorem 3, but for even more arbitrary gate functions, in particular weakening the assumption that limits exist at infinity. The main result is, roughly, that any oe which is piecewise twice (continuously) differentiable gives at least quadratic VC dimension, save for certain exceptional cases involving functions that are almost everywhere linear.
+
+A function oe : R ! R is said to be piecewise C2 if there is a finite sequence a1 ! a2 ! : : : ! ap such that on each interval I of the form ] \Gamma  1; a1[, ]ai; ai+1[ or ]ap; +1[, oejI is C2.
+
+(Note: our results hold even if it is only assumed that the second derivative exists in each of the above intervals; we do not use the continuity of these second derivatives.)
+
+Theorem 5 Let oe be a piecewise C2 function. For every n * 1, there exists an architecture made of oe-gates, and with O(n) weights, that can shatter a subset of R2 of cardinality n2, except perhaps in the following cases:
+
+1. oe is piecewise-constant, and in this case the VC dimension of any architecture of n weights is O(n log n);
+
+2. oe is affine, and in this case the VC dimension of any architecture of n
+
+weights is at most n.
+
+3. there are constants a6= 0 and b such that oe(x) = ax + b except at a finite
+
+nonempty set of points. In this case, the VC dimension of any architecture of n weights is O(n2), and there are architectures of VC dimension \Omega (n log n).
+
+Due to the lack of space, the proof cannot be included in this paper. Note that the upper bound of the first special case is tight for threshold nets, and that of the second special case is tight for linear functions in Rn.
+
+Acknowledgements Pascal Koiran was supported by an INRIA fellowship, DIMACS, and the International Computer Science Institute. Eduardo Sontag was supported in part by US Air Force Grant AFOSR-94-0293.
+
+References M. Anthony and N.L. Biggs (1992) Computational Learning Theory: An Introduction, Cambridge U. Press.
+
+E.B. Baum and D. Haussler (1989) What size net gives valid generalization?, Neural Computation 1, pp. 151-160.
+
+L. Blum, M. Shub and S. Smale (1989) On the theory of computation and complexity over the real numbers: NP-completeness, recursive functions and universal machines, Bulletin of the AMS 21, pp. 1-46.
+
+A. Blumer, A. Ehrenfeucht, D. Haussler, and M. Warmuth (1989) Learnability and the Vapnik-Chervonenkis dimension, J. of the ACM 36, pp. 929-965.
+
+T.M. Cover (1988) Capacity problems for linear machines, in: Pattern Recognition, L. Kanal ed., Thompson Book Co., pp. 283-289.
+
+P. Goldberg and M. Jerrum (1995) Bounding the Vapnik-Chervonenkis dimension of concept classes parametrized by real numbers, Machine Learning 18, pp. 131-148.
+
+M. Karpinski and A. Macintyre (1995) Polynomial bounds for VC dimension of sigmoidal neural networks, in Proc. 27th ACM Symposium on Theory of Computing, pp. 200- 208.
+
+W. Maass (1993) Bounds for the computational power and learning complexity of analog neural nets, in Proc. of the 25th ACM Symp. Theory of Computing, pp. 335-344.
+
+W. Maass (1994) Perspectives of current research about the complexity of learning in neural nets, in Theoretical Advances in Neural Computation and Learning, V.P. Roychowdhury, K.Y. Siu, and A. Orlitsky, editors, Kluwer, Boston, pp. 295-336.
+
+B.K. Natarajan (1991) Machine Learning : A Theoretical Approach, M. Kaufmann Publishers, San Mateo, CA.
+
+E.D. Sontag (1989) Sigmoids distinguish better than Heavisides, Neural Computation 1, pp. 470-472.
+
+E.D. Sontag (1992) Feedforward nets for interpolation and classification, J. Comp. Syst. Sci 45, pp. 20-48.
+
+L.G. Valiant (1984) A theory of the learnable, Comm. of the ACM 27, pp. 1134-1142 V.N. Vapnik (1982) Estimation of Dependencies Based on Empirical Data, Springer, Berlin.</pre>
+</body>
+</html>

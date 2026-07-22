@@ -1,0 +1,940 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/complex_systems.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/complex_systems.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+BACKPROPAGATION CAN GIVE RISE TO SPURIOUS LOCAL MINIMA EVEN FOR NETWORKS WITHOUT HIDDEN LAYERS
+
+Eduardo D. Sontag H'ector J. Sussmann Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 (201)932-3072 (Sontag), (201)932-5407 (Sussmann) E-mail: sontag@fermat.rutgers.edu, sussmann@math.rutgers.edu
+
+ABSTRACT We give an example of a neural net without hidden layers and with a sigmoid transfer function, together with a training set of binary vectors, for which the sum of the squared errors, regarded as a function of the weights, has a local minimum which is not a global minimum. The example consists of a set of 125 training instances, with four weights and a threshold to be learnt. We do not know if substantially smaller binary examples exist.
+
+Sussmann's work was partially supported by NSF grant DMS83-01678-01, and by the CAIP Center, Rutgers University, with funds provided by the New Jersey Commission on Science and Technology and by CAIP's industrial members
+
+Sontag's work was partially supported by NSF grant DMS88-03396, by US Air Force grants AFOSR-85-0247 and AFOSR-88-0235, and by the CAIP Center, Rutgers University, with funds provided by the New Jersey Commission on Science and Technology and by CAIP's industrial members.
+
+1 Introduction Backpropagation (bp) is one of the most widely used techniques for neural net learning. (Cf. Rumelhart and Hinton [PDP], Hinton [Hi87] for an introduction and references to current work.) The method attempts to obtain interconnection weights that minimize missclassifications in pattern recognition problems.
+
+Though there are many variants of the basic scheme, they are all based on the minimization of a cost function through the use of gradient descent for a particular nonlinear least squares fitting problem. Thus bp is subject to the usual problems associated to local minima, and indeed many experimenters have found training instances in which bp gets stuck in such minima. It is often asserted, however, that even when these minima do occur their domain of attraction is small, or that even if not true minima, the obtained networks tend nonetheless to classify correctly. In addition, it seems to be "folk knowledge" that no spurious local minima can happen when there are no hidden neurons. (The argument made in this last case is roughly that the problem should be analogous to the standard quadratic least squares problem, in which neurons have a linear response map.)
+
+We approach the problem from a purely mathematical point of view, asking what are the constraints that the local minima structure will ultimately impose on any bplike method. In [So88] we remarked that even for the case of no hidden neurons there may be "bad" solutions of the gradient descent algorithm, and this point was also raised by Brady, Raghavan, and Slawny in the last section of [BRS88]. The main point of the latter reference is to deal with the second of the above assertions. Through a careful and rigorous analysis they show that even if a training set is separable, that is, if it is recognizable by a perceptron, weights obtained through bp may not classify the data correctly. (A modification of the cost function, as described in [SoSu88] and discussed below, allows one to avoid this problem, however.) In addition, the domain of attraction of such "bad" weight configurations is very large. So neither of the above three assertions is in fact correct in general. Of course, it is entirely possible that "real" problems -as opposed to mathematically constructed ones- will not share these pathologies. In that case, it becomes even more urgent to characterize those features of such real problems that are not included in the present formulation.
+
+The constructions of spurious local minima that existed until now did not use binary but rather real-valued inputs. Further, in one case ([BRS88]) the fact that outputs are not allowed to take limiting values (f\Gamma 1; 1g, or f0; 1g, depending on the conventions,) is critical. Our main result will show that there are indeed counterexamples with binary inputs and outputs, which a situation often encountered in practice.
+
+Precisely, we consider a network with n input neurons and one output neuron.
+
+2
+
+We let x1; : : : ; xn be the connection weights, so that the output b computed by the net for an input vector a = (a1; : : : ; an) is given by
+
+b = `(a1x1 + a2x2 + : : : + anxn) : (1) Here ` : IR ! IR is a sigmoid function, i.e. a strictly increasing smooth function such that `(u) goes to \Gamma 1 as u ! \Gamma 1 and to 1 as u ! +1.
+
+Suppose we are given a finite sequence c = (c1; c2; : : : ; cm) of input-ouput pairs cj = (aj; bj), where the aj are vectors in IRn, and the bj are real numbers belonging to the closed interval [\Gamma 1; 1]. We then want to choose the weights xj so as to minimize the error function
+
+E(x1; x2; : : : ; xn) =
+
+mX
+
+j=1h
+
+`(aj1x1 + aj2x2 + : : : + ajnxn) \Gamma  bji
+
+2 : (2)
+
+We will give an example showing that the function E can have local minima that are not global minima. This will show, in particular, that any algorithm for minimizing E which is based on some version of gradient descent may get stuck in a local minimum of E which is not the desired solution. This situation is in marked contrast with the case of Boltzmann machines, where the "folk fact" that, if there are no hidden neurons, then there are no spurious local minima, actually is a true theorem. (Cf., e.g. [Su88].)
+
+In our example, all the components of the aj, and all the bj, will be binary (i.e. equal to 1 or \Gamma 1). If, as is sometimes the case, one wishes to consider outputs bj that satisfy jbjj ! 1 rather than jbjj = 1, then it is easy to construct an example for this situation as well, since the property that E has local minima that are not global minima is stable under small perturbations of the function E.
+
+This latter remark is of interest because of the recent result obtained by the authors (see [SoSu88]) where it is proved that if (1) one modifies the cost function to be of a threshold-LMS type, i.e. one does not penalize "overclassification," and (2) the training data is separable in the sense of perceptrons, then it is true indeed that there are no local minima that are not global. Moreover, if (1) and (2) hold, then the gradient descent procedure converges globally, from any initial condition and in finitely many steps, to the minimum. But stability under small perturbations allows us to conclude that even if a threshold-LMS criterion is used, there still will in general exist badly behaved local minima (if (2) does not hold).
+
+In the example we use the sigmoid function tanh(u), which is up to a simple rescaling the logistic function 1
+
+1 + e\Gamma u ; (3)
+
+3
+
+which is routinely used when the binary values are taken to be f0; 1g rather thanf
+
+1; \Gamma 1g. We prefer the latter convention, since the mathematics becomes much more symmetric.
+
+Remark 1.1 As described, our setting does not involve thresholds. However, it is easy to transform our example with n input neurons and no thresholds into an example with n \Gamma  1 input neurons and thresholds. Indeed, it is well known that the presence of a threshold is equivalent to having one neuron who activation is always equal to 1. Since the sigmoid function is odd, we can always change the sign of an input vector, so as to make sure that the first component is 1, and leave the error function unchanged, provided that we also change the sign of the output.
+
+The example given is rather complicated, and it is very possible that a simpler one exists. However, we have been unable so far to simplify our construction.
+
+Intuitively, the existence of local minima is due to the fact that the error function E is the superposition of functions that may have minima at different points. In the more classical case of linear response units, each of these terms is a convex function, so no difficulty arises, because a sum of convex functions is again convex. In contrast, sigmoidal units give rise to nonconvex functions, and so there is no guarantee that the sum will have a unique minimum. In order to actually exhibit such an example, it is necessary to obtain terms whose minima are far appart, and to control the second derivatives in such a way that the effect of such minima is not cancelled by the other terms (as happens in the case of convex functions). The calculations are rather involved, and we base them upon a change of variables which converts the function E into a rational function. Properties of local minima of rational functions are decidable (theory of real-closed fields), so in principle this change of variables is of some interest besides the role that it plays in the present paper.
+
+2 The example We let ` : IR ! IR be the function `(u) = tanh (u), i.e.
+
+`(u) = e
+
+u \Gamma  e\Gamma u
+
+eu + e\Gamma u : (4)
+
+We will take n = 5. (As indicated above in Remark 1.1, an obvious modification of our example will then yield an example with four input neurons plus a threshold.) The inputs will be the following 11 vectors:
+
+4
+
+v1 = (1; 1; 1; \Gamma 1; \Gamma 1) ; v2 = (1; 1; \Gamma 1; 1; \Gamma 1) ; v3 = (1; \Gamma 1; 1; \Gamma 1; 1) ; v4 = (\Gamma 1; 1; 1; \Gamma 1; 1) ; v5 = (\Gamma 1; 1; 1; 1; \Gamma 1) ; v6 = (\Gamma 1; \Gamma 1; \Gamma 1; 1; 1) ; v7 = (\Gamma 1; \Gamma 1; 1; \Gamma 1; 1) ; v8 = (\Gamma 1; 1; \Gamma 1; 1; \Gamma 1) ; v9 = (1; \Gamma 1; \Gamma 1; 1; \Gamma 1) ; v10 = (1; \Gamma 1; \Gamma 1; \Gamma 1; 1) ; v11 = (1; 1; 1; 1; 1) :
+
+The first five vectors will be repeated 15 times. The sixth to tenth vectors are repeated just once, and the eleventh vector is repeated 45 times. The outputs bj are always equal to 1.
+
+We will show:
+
+Theorem 1 With the above choice of inputs and outputs and of the sigmoid function `, the error function E has local minima that are not global minima.
+
+3 Proof of Theorem 1 If x = (x1; : : : ; xn), y = (y1; : : : ; yn), are vectors in IRn, we use hx; yi denote the inner product of x and y, i.e. hx; yi = Pni=1 xiyi. We use I to denote the set f1; \Gamma 1g, so In is the set of all vectors of length n all whose components are equal to 1 or \Gamma 1.
+
+If a = (a1; : : : ; am) is a finite sequence of vectors in In, we let 'a : IRn ! IR be the function given by
+
+'a(x) =
+
+mX
+
+j=1i
+
+`(haj; xi) \Gamma  1j
+
+2 : (5)
+
+Our goal is to produce an example of a sequence a such that the function 'a has a local minimum which is not a global minimum.
+
+In order to simplify our calculations, let us rewrite the function 'a in the form
+
+'a(x) = X
+
+a2In
+
+ffai`(ha; xi) \Gamma  1j
+
+2 ; (6)
+
+5
+
+where the numbers ffa are nonnegative integers. (Precisely, each ffa is the number of times that the vector a ocurs in the sequence a.)
+
+It is easy to verify that i
+
+`(u) \Gamma  1j
+
+2 = 4
+
+(1 + e2u)2 : (7)
+
+Let us make the transformation T given by ,i = e2xi (so that ,i takes values in IR+, the set of positive real numbers), and use , to denote a vector (,1; : : : ; ,n) 2 IRn+. Write
+
+,a = ,a11 ,a22 : : : ,ann : (8)
+
+Then we have 'a(x) = 4a(,), where
+
+a = X
+
+a2In
+
+ffa (1 + ,a)2 : (9)
+
+So it suffices find an a such that a has a local minimum that is not a global minimum.
+
+Now pick, once and for all, a subset A of In such that no vector a 2 In satisfies a 2 A and \Gamma a 2 A. Suppose we are given a collection fl of nonnegative integers fla for a 2 A. Then we can consider the function
+
+A;fl(,) = X
+
+a2A
+
+fla (1 + ,a)2 +
+
+fl\Gamma a (1 + ,\Gamma a)2 ! : (10)
+
+It is clear that every such function is of the form a for some appropriate choice of a.
+
+It is convenient to rewrite (10) in the simpler form
+
+A;fl(,) = X
+
+a2A
+
+fla + fl\Gamma a,2a
+
+(1 + ,a)2 ; (11)
+
+i.e.
+
+A;fl(,) = X
+
+a2A
+
+h(fla; fl\Gamma a; ,a) ; (12)
+
+where
+
+h(p; q; u) = p + qu
+
+2
+
+(1 + u)2 : (13)
+
+It will be useful to understand the behavior of the function h(p; q; \Delta ) for a particular pair p, q of nonnegative integers. Let us use 0 to denote differentiation with respect to u. Then an easy computation shows that
+
+h0(p; q; u) = 2(qu \Gamma  p)(1 + u)3 : (14) Therefore, we have
+
+6
+
+Lemma 3.1 If p ? 0 and q ? 0, then the function h(p; q; \Delta ) is globally minimized at u = pq , and the minimum value is pqp+q . Moreover, h(p; q; \Delta ) is strictly decreasing for u ! pq , and strictly increasing for u ? pq . In particular, u = pq is the only critical point of h(p; q; \Delta ).
+
+On the other hand, it is clear that, if p or q (but not both) vanishes, then the function h(p; q; \Delta ) does not have a minimum. Lemma 3.1 shows that one can place this minimum at any rational point _u of IR+ by suitably choosing p and q.
+
+If we now choose an a 2 In and positive integers p, q, and consider the function , ! h(p; q; ,a), we see that this function is globally minimized at all points , in the set S(a; p; q) of those , 2 IRn+ such that ,a = pqp+q .
+
+Now suppose we choose n linearly independent vectors a1; : : : ; an in In, and positive numbers pi, qi, i = 1; : : : ; n. Then the sets S(ai; pi; qi) intersect at exactly one point. (To see this, just notice that, under the transformation T , the set S(a; p; q) corresponds to the hyperplane ha; xi = 12 log ( pqp+q ).) This point is then the global minimum of the function. So we have established:
+
+Lemma 3.2 Let a1; : : : ; an be linearly independent members of In, and let p1; : : : ; pn, q1; : : : ; qn be positive numbers. Then the function \Psi  given by
+
+\Psi (,) =
+
+nX
+
+i=1
+
+pi + qi,2a
+
+i
+
+(1 + ,a
+
+i )2 (15)
+
+has a unique global minimum at the point _,\Psi  characterized by ( _,\Psi )a
+
+i = pi
+
+qi for i =
+
+1; 2; : : : ; n, and the value of \Psi ( _,\Psi ) is equal to v\Psi , where
+
+v\Psi  = p1q1p
+
+1 + q1 +
+
+p2q2 p2 + q2 + : : : +
+
+pnqn pn + qn : (16)
+
+We now specialize even further, and choose n = 5. Moreover, we choose the five vectors ai to be such that three of their components are equal to 1, and the other two equal to \Gamma 1. For instance, we can choose a1, a2, a3, a4, a5 to be, respectively, the vectors (1; 1; 1; \Gamma 1; \Gamma 1), (1; 1; \Gamma 1; 1; \Gamma 1), (1; \Gamma 1; 1; \Gamma 1; 1), (\Gamma 1; 1; 1; \Gamma 1; 1) and (\Gamma 1; 1; 1; 1; \Gamma 1). From now on it will be assumed that n = 5 and the ai are the five vectors listed above. Finally, we choose all the pi to be equal to a number p, and all the qi equal to 1. Then it is clear that the point ~,p = (p; p; p; p; p) is none other than _,\Psi . So we have:
+
+Lemma 3.3 The function \Psi  has a unique global minimum at ~,p, and its value there is equal to 5pp+1 .
+
+7
+
+Notice that this value is very close to 5 if p is very large. On the other hand, if~ ,1 denotes the point (1; 1; 1; 1; 1) (i.e. the point of IR5+ that corresponds to the origin under the transformation T ), then \Psi ( ~,1) = 54 (p + 1). Since pp+1 ^ p+14 , with equality
+
+holding only if p = 1, we see that \Psi ( ~,p) ! \Psi ( ~,1) unless p = 1, in which case the points~ ,p and ~,1 coincide. Moreover, when p is very large the value v\Psi  is approximately equal to 5, whereas \Psi ( ~,1) = 54(p + 1).
+
+We now let ^\Psi  be the function
+
+^\Psi (,) = h(^p; ^q; ,^a) ; (17)
+
+where the vector ^a 2 In and the numbers ^p, ^q are chosen so that the minima of ^\Psi  (i.e. the points in the set S(^a; ^p; ^q)) are very far from ~,p. This can be achieved by
+
+taking ^a = (1; 1; 1; 1; 1) to begin with, so that the value of ^\Psi  at ~,p is ^p+^qp
+
+10
+
+(1+p5)2 , whereas
+
+the value at ~,1 is ^p+^q4 . Notice that the condition on ^p, ^q that would make ~,p belong to S(^a; ^p; ^q) would be ^p = p5 ^q, so in particular ^p would have to be much larger than
+
+^q, since we are going to choose p large. We will choose ^p, ^q so that we are very far from this situation, by taking ^q much larger than ^p. Actually, to make matters even easier, we will take ^p to be 0, and choose ^q "sufficiently large." (Precisely how large will be seen below.)
+
+We now let \Psi \Lambda  = \Psi  + ^\Psi . In particular,
+
+\Psi \Lambda ( ~,p) = 5p1 + p + ^qp
+
+10
+
+(1 + p5)2 ; (18)
+
+and
+
+\Psi \Lambda ( ~,1) = 5p4 + ^q4 + 54 : (19)
+
+It is then clear that \Psi \Lambda ( ~,p) ? \Psi \Lambda ( ~,1) if p and ^q are large enough. For instance, one can easily verify that
+
+Lemma 3.4 If p * 2 and ^q * 2p then \Psi \Lambda ( ~,p) ? \Psi \Lambda ( ~,1).
+
+Now let us use B(ae; p) to denote the closed ball with center ~,p and radius ae, provided that 0 ! ae ! p5p, so that B(ae; p) ` IR5+. Then it is clear that the inequality
+
+\Psi \Lambda (,) ? \Psi \Lambda ( ~,1) (20) will hold for , 2 B(ae; p) if ae is sufficently small, In particular, this will imply that, if the function has a local minimum in the interior of B(ae; p), then this is not a global minimum.
+
+8
+
+We need to know how ae can be chosen so that 20 will hold on B(ae; p). We have
+
+\Psi \Lambda (,) = \Psi (,) + ^\Psi (,) (21)*
+
+\Psi ( ~,p) + ^\Psi (,) (22)
+
+= 5pp + 1 + ^\Psi (,) (23)
+
+= 5pp + 1 + ^q ,
+
+2^a
+
+(1 + ,^a)2 (24)
+
+= 5pp + 1 + ^qj(,^a)2 ; (25)
+
+where
+
+j(u) = u1 + u = 1 \Gamma  11 + u: (26)
+
+Clearly, j is an increasing function of u for u 2 IR+. On the other hand, the function ,^a = ,1,2,3,4,5 is bounded below on B(ae; p) by (p \Gamma  ae)5, so the lower bound
+
+\Psi \Lambda (,) * 5pp + 1 + ^q"1 \Gamma  11 + (p \Gamma  ae)5 #
+
+2
+
+(27)
+
+holds thoughout B(ae; p). Suppose we choose ae, p such that p * 2 and 4ae ! p. Then
+
+5p p+1 ?
+
+1 4 . Also, (p \Gamma  ae)
+
+5 ? 7, and so \Psi \Lambda (,) * 1
+
+4 +
+
+49^q
+
+64 throughout B(ae; p). If we choose^q = kp, then 20 will hold for , 2 B(ae; p) as long as k * 3. So we have shown
+
+Lemma 3.5 If p * 2, ^q * 3p, 0 ! ae ! p4 , then Inequality 20 holds throughout the ball B(ae; p).
+
+We now have to show that, by suitably choosing p, ae and ^q, we can satisfy the hypotheses of the previous lemma and also guarantee that \Psi \Lambda  will have a local minimum in the interior of B(ae; p). The crucial point here is that \Psi  has a minimum at ~,p. The addition of ^\Psi  should not disturb this fact too much, because ^\Psi  is nearly constant in the neighborhood of ~,p, and the Hessian matrix of \Psi  at ~,p is nondegenerate. To make this precise, we need to have an upper bound on the gradient of ^\Psi  and a lower bound on the second derivative of \Psi . Indeed, once we have established those bounds, the following lemma gives us the desired result. In the statement, k : : : k denotes the usual Euclidean norm, and Dvf , D2vf denote, respectively, the first and second directional derivatives of the function f in the direction of the unit vector v 2 IRn.
+
+Lemma 3.6 Let f , g be C2 functions on a closed ball B ` IRm of radius r centered at a point _x 2 IRm. Assume that A, C are constants such that krg(x)k ^ A for all x 2 B, and D2v f (x) * C for all x 2 B and all unit vectors v 2 IRm. Then, ifr
+
+f (_x) = 0, and Cr ? 2A, it follows that the function f + g has a local minimum in the interior of B.
+
+9
+
+Proof. Let F = f + g. Let S be the boundary of B. We show that F (x) ? F (_x) for all x 2 S. The bound on rg implies that jg(x) \Gamma  g(_x)j ^ Ar for x 2 S, so g(x) * g(0) \Gamma  Ar for all such S. If x 2 S, write x = _x + rv with v a unit vector. Let ~f (t) = f (_x + tv) for 0 ^ t ^ r. Then the derivative ~f 0(t) vanishes at t = 0 and has a derivative bounded below by C. So ~f 0(t) * Ct for 0 ^ t ^ r. But then~ f (r) * ~f (0) + Cr
+
+2
+
+2 , i.e. f (x) * f (_x) +
+
+Cr2
+
+2 . We then get F (x) * F (_x) +
+
+Cr2
+
+2 \Gamma  Ar.Since Cr ? 2A, we have shown that F (x) ? F (0) for all x 2 S.
+
+Lemma 3.6 enables us to get an a priori idea on how large one has to take r. Suppose we compute D2vf (_x) for all v, and rg(_x), and we find that _C = inffD2v f (_x) :k
+
+vk = 1g, _A = krg(_x)k. Then it is clear that, no matter how we choose r, the constants A and C are going to satisfy C ^ _C, A * _A, so the smallest r can possibly be is r = 2 _A_C . In the case of interest to us, the functions f , g and the point _x depend on the parameter p, and the numbers _A, _C behave like p\Gamma 5 and p\Gamma 3, respectively. So r should be chosen so that r , p\Gamma 2.
+
+We want to apply Lemma 3.6 with n = 5, _x = ~,p, f = \Psi , g = ^\Psi  and r = ae. The hypothesis that rf (_x) = 0 holds since f has a minimum at _x. Naturally, the bounds on rg and D2v hold for some choice of the constants A, C, with C not necessarily positive. We have to show that, by suitably choosing p, ^q and ae, we can satisfy the condition Cr ? 2A. (This will imply in particular that C ? 0.) Obviously, the condition that C ? 0 is related to the fact that the vectors ai are linearly independent so that, in each direction, at least one of the five functions whose sum is \Psi  is strictly convex near ~,p. To make this precise, we must study the quadratic form Q given by
+
+Q(v) =
+
+5X
+
+i=1h
+
+ai; vi2 for v 2 IR5 : (28)
+
+Then Q is clearly nonnegative. Since the ai form a basis of IR5, Q(v) can never vanish unless v = 0. So there exists a constant c ? 0 such that Q(v) * ckvk2 for all v. It will be useful to know an explicit value of c. A crude estimate, which will be sufficient for our purposes, is the bound (cf. Appendix A):
+
+Q(v) * 13 kvk2 for v 2 IR5 : (29)
+
+We now get a lower bound for the second derivative of \Psi  on some neighborhood of ~,p. An elementary calculation gives the formula (cf. Appendix B):
+
+D2v \Psi (,) = U (p; v; ,) \Gamma  V (p; v; ,) ; (30) where
+
+U (p; v; ,) = 2
+
+5X
+
+j=1D
+
+v
+
+, ; a
+
+jE2 \Delta  " 2(p + 1),2
+
+aj \Gamma  ,3aj \Gamma  p,aj
+
+(1 + ,a
+
+j )4 # ; (31)
+
+10
+
+and
+
+V (p; v; ,) = 2
+
+5X
+
+j=1D
+
+v2
+
+,2 ; a
+
+jE \Delta  " ,2
+
+aj \Gamma  p,aj
+
+(1 + ,a
+
+j )3 # ; (32)
+
+where v, denotes the vector
+
+v
+
+, = i
+
+v1
+
+,1 ;
+
+v2
+
+,2 ; : : : ;
+
+v5
+
+,5 j ; (33)
+
+and v
+
+2
+
+,2 is defined similarly.
+
+Now assume that v is a unit vector. We will get a lower bound for D2v \Psi (,) on a ball B(ae; p) by getting a lower bound for U and an upper bound for the absolute value of V . Notice that, near ~,p, ,a
+
+j is approximately equal to p, and all the components
+
+of , are also approximately equal to p. So, if p is large enough so that we can ignore the "1" in 1 + p, then U (p; v; ,) is approximately equal to 2Q(v)p\Gamma 3. So we have an approximate bound U (p; v; ,) * 23p\Gamma 3. On the other hand, V (p; v; ,) is a difference of two expressions, each of which is bounded in absolute value by a constant times p\Gamma 3. However, these two expressions are equal at ~,p, which means in particular that the leading powers of p cancel, and V (p; v; ,) is actually O(p\Gamma 4) for , near ~,p. To make all this precise, notice that on B(ae; p) we have the bounds
+
+(p \Gamma  ae)3 (p + ae)2 ^ ,
+
+aj ^ (p + ae)3
+
+(p \Gamma  ae)2 : (34)
+
+Using this, we easily get:
+
+2(p + 1),2a
+
+j \Gamma  ,3aj \Gamma  p,aj * 2 (p + 1)(p \Gamma  ae)6
+
+(p + ae)4 \Gamma 
+
+(p + ae)9 (p \Gamma  ae)6 \Gamma  p
+
+(p + ae)3 (p \Gamma  ae)2 (35)
+
+for , 2 B(ae; p). So, if we write u = aep , we have
+
+2(p + 1),2a
+
+j \Gamma  ,3aj \Gamma  p,aj * p3*
+
+1(u) (36)
+
+where
+
+*1(u) = 2 (1 +
+
+u
+
+ae )(1 \Gamma  u)
+
+6
+
+(1 + u)4 \Gamma 
+
+(1 + u)9 (1 \Gamma  u)6 \Gamma 
+
+u(1 + u)3
+
+ae(1 \Gamma  u)2 : (37) Also,
+
+(1 + ,a
+
+j )4 ^ 1 + (p + ae)3
+
+(p \Gamma  ae)2 !
+
+4
+
+; (38)
+
+so that
+
+(1 + ,a
+
+j )4 ^ p4*
+
+2(u) ; (39)
+
+where
+
+*2(u) = " uae + (1 + u)
+
+3
+
+(1 \Gamma  u)2 #
+
+4
+
+: (40)
+
+11
+
+We therefore have the bound
+
+2(p + 1),2a
+
+j \Gamma  ,3aj \Gamma  p,aj
+
+(1 + ,a
+
+j )4 * 1p *i aep j ; (41)
+
+where the function * is given by
+
+*(u) = *1(u)*
+
+2(u) : (42)
+
+Notice that *(0) = 1, so the bound (41) says that the left-hand side of (41) is approximately bounded below by p\Gamma 1 if aep is small. Then
+
+U (p; v; ,) * 2p *i 1p jQiv, j (43) if , 2 B(ae; p). In view of the lower bound for Q, we have
+
+Qiv, j * 13 flflfl v, flflfl
+
+2 ; (44)
+
+so that
+
+Qiv, j * 13(p \Gamma  ae)2 : (45)
+
+Therefore
+
+U (p; v; ,) * \Lambda (
+
+ae p )
+
+p3 ; (46)
+
+for , 2 B(ae; p), where
+
+\Lambda (u) = 2*(u)3(1 \Gamma  u)2 : (47)
+
+We now get an upper bound for jV (p; v; ,)j on B(ae; p). Clearly,fifififi
+
+fiD
+
+v2
+
+,2 ; a
+
+jEfififififi^ kvk2
+
+(p \Gamma  ae)2 : (48)
+
+Also, we can write fifififi
+
+fi
+
+,2a
+
+j \Gamma  p,aj
+
+(1 + ,a
+
+j )3 fififififi = ,
+
+aj fififififi ,
+
+aj \Gamma  p
+
+(1 + ,a
+
+j )3 fififififi (49)
+
+^ j,
+
+aj \Gamma  pj
+
+(1 + ,a
+
+j )2 (50)
+
+^ j,
+
+aj \Gamma  pj
+
+,2a
+
+j (51)
+
+^ (p + ae)
+
+4
+
+(p \Gamma  ae)6 j,
+
+aj \Gamma  pj (52)
+
+= 1p2 *1i aep jj,a
+
+j \Gamma  pj ; (53)
+
+12
+
+where
+
+*1(u) = (1 + u)
+
+4
+
+(1 \Gamma  u)6 : (54) On the other hand, the inequality
+
+(p \Gamma  ae)3 (p + ae)2 ^ ,
+
+aj ^ (p + ae)3
+
+(p \Gamma  ae)2 (55)
+
+yields
+
+(p \Gamma  ae)3
+
+(p + ae)2 \Gamma  p ^ ,
+
+aj \Gamma  p ^ (p + ae)3
+
+(p \Gamma  ae)2 \Gamma  p (56)
+
+so that j
+
+,a
+
+j \Gamma  pj ^ p*
+
+2iaep j ; (57)
+
+where
+
+*2(u) = max (1 + u)
+
+3
+
+(1 \Gamma  u)2 \Gamma  1; 1 \Gamma 
+
+(1 \Gamma  u)3 (1 + u)2 ! : (58)
+
+Combining all these bounds we get
+
+jV (p; v; ,)j ^ *(
+
+ae p )
+
+p3 ; (59)
+
+where
+
+*(u) = 2*1(u)*2(u)(1 \Gamma  u)2 : (60)
+
+Finally, we get
+
+D2v \Psi (,) * \Lambda (
+
+ae p) \Gamma  *(
+
+ae p )
+
+p3 ; (61)
+
+as long as , 2 B(ae; p).
+
+Since \Lambda (0) = 23 ? 0 and *(0) = 0, the lower bound for D2v\Psi (,) given by the preceding formula is positive if aep is small enough.
+
+Next we need an upper bound for r ^\Psi . We have (cf. Appendix B):
+
+@ ^\Psi 
+
+@,i =
+
+2^q,2^a ,i(1 + ,^a)3 ; (62)
+
+so that fififififi
+
+@ ^\Psi 
+
+@,i fififififi ^
+
+2^q
+
+,i ,
+
+^a : (63)
+
+In particular, if , 2 B(ae; p), and ^q = kp, we have the bound
+
+kr ^\Psi (,)k ^ 2kp5 _i aep j ; (64)
+
+13
+
+where
+
+_(u) = 1(1 \Gamma  u)6 : (65)
+
+If we let
+
+C = \Lambda (
+
+ae p ) \Gamma  *(
+
+ae p )
+
+p3 ; (66)
+
+A = 2kp5 _i aep j ; (67) and
+
+K = Cae2A ; (68)
+
+then the hypothesis of Lemma 3.6 will be satsified if K ? 1. On the other hand,
+
+K = p
+
+2aeh\Lambda ( ae
+
+p ) \Gamma  *(
+
+ae p )i
+
+2k_i aep j : (69)
+
+Since \Lambda (0) = 23 , *(0) = 0, _(0) = 1, it is clear that, for any fixed ae and k, the inequality K ? 1 will hold if p is sufficiently large. Moreover, if one chooses k = 3, then the conditions of 3.5 will also hold if p is sufficiently large.
+
+To prove Theorem 1, all we need to do is to verify that the conditions of 3.5 as well as the inequality K ? 1 hold for k = 3 for some choice of ae, not just for p sufficiently large, but for p = 15. So all we need is to find a value of ae such that 4ae ! 15, with the property that, if we plug in p = 15 and k = 3 in Equation 69, then K ? 1. For each ae, it is clear that there is a smallest p such that K ? 1. Let this p be denoted by p(ae). Then a direct computation shows that, for ae in the range between 0:08 and 0:14, the value of p(ae) is equal to 15. (As a function of ae, p(ae) decreases for ae ! 0:08 and increases again for ae ? 0:14, so p = 15 is the best value that can be obtained from our estimates.) This completes the proof of Theorem 1.
+
+4 REFERENCES
+
+[BRS88] Brady, M., R. Raghavan and J. Slawny, "Gradient descent fails to separate," in Proc. IEEE International Conference on Neural Networks, San Diego, California, July 1988, Vol. I, pp.649-656.
+
+[Hi87] Hinton, G.E., "Connectionist learning procedures," Technical Report CMUCS-87-115, Comp.Sci. Dept., Carnegie-Mellon University, June 1987.
+
+14
+
+[PDP] Rumelhart, D.E., and J.L. McClelland, Parallel Distributed Processing: Explorations in the Microstructure of Cognition, MIT Press, 1986, volume 1.
+
+[So88] Sontag. E.D., Some remarks on the backpropogation algorithm for neural net learning, Rutgers Center for Systems and Control Technical Report 88-07, August 1988.
+
+[SoSu88] E.D. Sontag and H.J. Sussmann, Backpropagation Separates when Perceptrons Do, Rutgers Center for Systems and Control Technical Report 88-12, November 1988.
+
+[Su88] Sussmann, H.J., On the convergence of learning algorithms for Boltzmann machines, Rutgers Center for Systems and Control Technical Report 88-03, August 1988. Submitted to Neural Networks.
+
+A Appendix: Derivation of Formula (29) The bound we seek is the smallest singular value of A (where A is the matrix whose rows are the vectors a1; : : : ; a5), i.e. the smallest eigenvalue of AyA. It can be computed numerically, and turns out to be approximately 1=2:52. The following simple argument gives the bound used in the text.
+
+Set uj = haj; vi. Using the explicit formulas for the aj we find that
+
+u1 = v1 + v2 + v3 \Gamma  v4 \Gamma  v5 ; (70) u2 = v1 + v2 + v4 \Gamma  v3 \Gamma  v5 ; (71) u3 = v1 + v3 + v5 \Gamma  v2 \Gamma  v4 ; (72) u4 = v2 + v3 + v5 \Gamma  v1 \Gamma  v4 ; (73) and
+
+u5 = v2 + v3 + v4 \Gamma  v1 \Gamma  v5 : (74)
+
+This system can easily be inverted, resulting in the following expressions for the v's in terms of the u's:
+
+2v1 = u2 + u3 ; (75)
+
+2v2 = u2 + u4 ; (76) 2v3 = u3 + u5 ; (77)
+
+15
+
+2v4 = u2 + u3 + u5 \Gamma  u1 ; (78) 2v5 = u2 + u3 + u4 \Gamma  u1 : (79) If we now square each equation and sum, we get
+
+4kvk2 = 2u21 + 4u22 + 4u23 + 2u24 + 2u25 + S ; (80) where S is the sum of the cross terms, which turns out to be given by
+
+S = \Gamma 4u1u2 \Gamma  4u1u3 \Gamma  2u1u4 \Gamma  2u1u5 + 6u2u3 + 4u2u4 + 2u2u5 + 2u3u4 + 4u3u5 : (81) Using the bound ab ^ a
+
+2+b2
+
+2 for each of the terms in the above sum, we get
+
+4kvk2 ^ 8u21 + 12u22 + 12u23 + 6u24 + 6u25 (82)
+
+so 4kvk2 ^ 12kuk2, i.e. kvk2 ^ 3Q(v).
+
+B Appendix: Derivation of Formulas (30) and (62) We use the identity @,
+
+a
+
+@,i =
+
+ai
+
+,i ,
+
+a ; (83)
+
+valid if a = (a1; : : : ; an) 2 IRn.
+
+If f is a function
+
+f (,) = p + q,
+
+2a
+
+(1 + ,a)2 (84) then
+
+@f @,i =
+
+2ai
+
+,i q,
+
+2a(1 + ,a)2 \Gamma  2ai
+
+,i ,
+
+a(1 + ,a)(p + q,2a)
+
+(1 + ,a)4 = 2ai,
+
+i
+
+q,2a \Gamma  p,a
+
+(1 + ,a)3 : (85)
+
+Setting p = 0, q = ^q, a = ^a, we get (62).
+
+If we now multiply (85) by vi and sum over i, we get
+
+Dvf = 2D v, ; aE 2ai,
+
+i
+
+q,2a \Gamma  p,a
+
+(1 + ,a)3 : (86)
+
+16
+
+Differentiation with respect to ,i yields
+
+@ @,i (Dvf ) = 2D
+
+v
+
+, ; aE"
+
+i 2a
+
+i ,i q,
+
+2a \Gamma  ai
+
+,i p,
+
+aj(1 + ,a)3 \Gamma  3iq,2a \Gamma  p,aj(1 + ,a)2 ai
+
+,i ,
+
+a
+
+(1 + ,a)6 #
+
+\Gamma  2viai,2
+
+i "
+
+q,2a \Gamma  p,a
+
+(1 + ,a)3 #
+
+= 2D v, ; aE ai,
+
+i " \Gamma 
+
+q,3a + 2(p + q),2a \Gamma  p,a
+
+(1 + ,a)4 #\Gamma 
+
+2viai
+
+,2i "
+
+q,2a \Gamma  p,a
+
+(1 + ,a)3 # : (87)
+
+If we multiply by vi and add over i, we get
+
+D2vf = 2D v, ; aE
+
+2" \Gamma q,3a + 2(p + q),2a \Gamma  p,a
+
+(1 + ,a)4 #\Gamma 2D
+
+v2
+
+,2 ; aE"
+
+q,2a \Gamma  p,a
+
+(1 + ,a)3 # : (88)
+
+If we now set q = 1, a = aj, and sum over j, we obtain Formula (30).
+
+17</pre>
+</body>
+</html>

@@ -1,0 +1,296 @@
+OCR of paper; see pdf file 2D.pdf for viewwable/printable page
+
+481
+480 IEEE TRANSACTIONS ON ACOUSTICS, SPEECH, AND SIGNAL PROCESSING, VOL. ASSP-26, NO. 5, OCTOBER 1978
+degree of a polynomial p = p(zl, z7) in zi be denoted by dip.
+The degree of p is then dp: = (d, p, d2p). A rational function
+W(ZI, Z2) ~ P(ZI, Z2) q(zl, Z2) ' is causal iff dip '% diq, i = 1,2
+d1q d q
+andq=zl Z22 +---. Denote then d1w: = diq, dw: = (d1w,
+d2 w). A transfer function is a matrix
+W(ZI,Z2) =(W1J(Z1,Z2))Ck(z1,z2)'X'
+where each wo is causal.
+A system Z of dimension (n I, n2) is given by four matrices
+xn Xm rXn
+(F, G, H, J) where F E kn , G E kn HEk JE ktxt
+(n: = n I + n2)-
+Introduce the polynomial matrix
+A,,,n 2
+: = lz,,O Z2 In, I
+where I, is the identity matrix of dimension r. Then, for each
+Z of dimension (n I, n2), let
+WE(zl, z2): = H(An,n, - F)-G.
+It is easy to verify that WZ is a transfer function. When
+m = t = 1, di WE < n 1. The realization problem that we wish
+to consider is: "given a transfer function W, find 2; with
+Wr = W." The motivation for this problem is the following.
+A transfer function describes a recursive "northeast causal"
+two-dimensional filter, and a system realization 2; corresponds
+to a set of first-order equations realizing the corresponding
+filter; specifically, denoting
+F: =: I F11 F12 1, G = [G,I, H= (H1. H2), 0. 1)
+LF21 F22i G,
+then Z corresponds to a system of equations
+x I (h + 1, k) = F, Ix, (h, k) + F12x2(h, k) + GI u(h, k)
+X2(h, k + 1) = F21xI (h, k) + F22X2(h, k) + G2 u(h, k) (1.2)
+y(h, k) = H1x1 (h, k) + H2X2 (h, k) +Ju(h, k)
+On First-Order Equations for Multidimensional Filters
+EDUARDO D. SONTAG
+Abstract-A construction is given to obtain first-order equation
+representations of a multidimensional filter, whose dimension is of the
+order of the degree of the transfer function.
+1. INTRODUCTION
+Let k be any field, m, t, integers. Let k[zl, Z21 [respectively,
+k(z, , Z2 )] denote the ring of polynomials (respectively, field
+of rational functions) in two indeterminates ZI , Z2. Let the
+Manuscript received March 16, 1977; revised July 25, 1977. This
+work was supported in part by U.S. Army Grant DA-ARO-D-31-124-
+7 2-G 114 through the Center for Mathematical System Theory, Univer-
+sity of Florida, Gainesville, FL 32611.
+The author was with the Department of Mathematics, Center for
+Mathematical System Theory, University of Florida, Gainesville FL
+32611. He is now with the Department of Mathematics, Ruigers
+University, New Brunswick, NJ 08903.
+where xi(-, -): Z X Z - 01.
+Generalizations to transfer functions in three or more vari-
+ables z, , z,. are straightforward and will not be discussed
+here.
+Models of the above type were independently suggested by
+Roesser 81 and Sontag [ 91 ; the latter reference also explains
+how the same mathematical problem appears in modeling
+neutral delay-differential systems.
+In the present paper we expand in detail the realization
+method outlined in [9, disgression (5.6)]. The results were
+presented at the Amherst Workshop on Algebraic System
+Theory, held at the University of Massachusetts, June 14-19,
+1976.
+If. MAIN RESULTS
+Theorem (2. 1): Every W(zl, z2) has a realization.
+Theorem (2.2): Let m - t = 1, dW = (nl, n2).
+Then
+a) there is a realization Z of dimension (n I , 2n2
+b) if q(ZI, Z2 ) = q, (z, ) q2(Z2), there is a realization Z of
+dimension (n 1, n2)-
+Analogous conclusions hold, of course, by reversing the roles
+of z, and Z2.
+Note that b) deals with what are usually called "separable"
+transfer functions. We shall prove both of the above theorems
+as corollaries of a general construction, outlined in the rest of
+this section. It is this construction, rather than the theorems
+themselves, which we consider to be the main contribution of
+this work. In the next section we shall present a conjecture
+for the case when k is algebraically closed, and in the last
+0096-3518/78/1000-0480$00.75 Q 1978 IEEE
+<<PAGE-DIVIDER>>
+CORRESPONDENCE
+section we indicate the connection between certain realiza-
+tions of "separable" transfer functions and the theory of "rec-
+ognizable" power series as developed by Fliess J 3 1.
+Let k[(z,2)] denote the set of causal transfer functions in
+the variable z2 only, i.e., the set of all p(z-1 ) q(z2 )_1 with deg
+q > deg p. We introduce the notion of a
+system Rover k [(z2)] of dimension r:
+this is just a 4-tuple of matrices
+R = (A(Z2), B(Z2), C(Z2), D(Z2)),
+where A, B, C, and D are matrices over k[(z,2)] of dimensions
+r by r, r by m, t by r, and t by m, respectively. (This is a par-
+ticular case of a system over a commutative ring; the general
+concept is studied in I 10).)
+A system R as above induces a transfer function
+1
+WR(ZI,Z2): =C(z2)(ziI, - A(Z2))- B(z2)+D(z2).
+Conversely, each W(Z I , Z2 ) has an R-realization, i.e., is of the
+form WR for some R. Indeed, given W there is some r such
+that we may write
+)Zr
+W(Z1, Z2) = VAZ2 I + + PO(Z2))
+X (qr(Z2)Z'1 + - + qo(z2))-'
+)Zr-,
+= Pr(Z2 )qr(22 Y' + (Tr-, (Z2 I + + TO(Z2))
+)Zr-i +. + Uo
+X (Z r + Ur-i (Z2 1 (Z2))-1
+where the Pi are polynomial matrices, q, are polynomials, and
+Ui(Z2): = qi(Z2)qr(Z2 Y'
+Ti(Z2): = (Pj(Z2 ) - Pr(Z2 )Vj(Z2))qr(Z2)_'
+Then W = WR where R = (A, B, C, D) is the rt-dimensional
+system over kl(Z2)) given by
+0 0 ... 0 -VoIt
+It 0 ... 0 -V,It
+0 It ... 0 -V2Ir TO
+A: B:
+Tr -'I
+0 0 0 0
+LO 0 It -v,-,ItJ
+C: = [0 ... OIJ, D: = Prq_1
+r
+481
+matrix (in z2 ) in the left-hand side of (2.4). It is well known
+from linear system theory (see, for instance, (2, p. 219] ) that
+the minimal possible dimension n2 is given by
+n,2 = M.d. ~VR (z2) = McMillan degree of i~ (Z~)
+where
+M.d. WR(z2) = degree of the least common denominator of
+all minors of WR (Z2)-
+The problem of finding Z can thus be decomposed into two
+parts: first find R, for instance (but not necessar~fly!), via (2.3),
+obtaining n, -, then construct I with n-2 = M.d. WR(z2). There
+are well-known algorithms for such a construction [2, p.
+235 ff. I . It must be noted that different R can lead to differ-
+ent ]~R (z2 ), so both n I and n2 depend on the construction.
+Moreover, one may instead first "extract" z2 and then z1,
+obtaining a different result. Although the method can be
+expected to give realizations of rather low dimensions, it is
+clear that much more research is needed before the situation
+becomes well understood.
+In any case, the bounds of Theorem (2.2) are easily proved
+from the above construction via (2.3) and (2.4). Indeed,
+-uo To
+~R(Z2) = constants
+-ur-i Tr-1
+I Prqr
+2 2
+since -uiTi - Ti(-vi) = Piqilqr,it follows that q. is a common
+denominator for all minors, so
+M.d. ~V, (z, ) < 2 deg qr = 2n,,
+proving a). And b) is clear since it means that all ut are
+constant.
+Example (2.5): Let
+W(Z1 , Z2 Z1 +Z2
+ZJZ2 - I'
+(2.3) k = real numbers. Then an R-realization is
+ZJX = Z2 IX+ (I +Z 22)U
+Y = X Z'21U
+The proof of Theorems (2.1) and (2.2) will be completed
+upon finding, for each R, a suitable Z with WI: = WR. We
+study then the possible passages from WR to Wl:. To study
+this, we note that for any Y, = (F, G, H), WE = WR when R is
+defined by [using the notations (1.1)]
+A(z2)=Fll +F12(Z2I., -F22)-'F2,
+B(z2)=Gl +F,2(z2I,, -F-22)-IG2
+Qz2) = H, + H2(z2I., - F22)-'F21
+D(z2 ) = J + H2 U21n, - F22 )-'G2.
+Equivalently, denoting
+F 121
+~R (Z2 ) = U24, - F22)-'(F2 1, G-2),
+I H2
+we see that
+A(Z2) B(Z2) F11 Gi
+I - [ + ~VR (Z -1 (2.4)
+1QZ2) DU2)] H, J I
+Therefore, if we begin with R = (A, B, C, D), finding 2; is
+equivalent to obtaining a decomposition (2.4). In other words,
+we must solve a "minimal realization problem" for the transfer
+and a (1, 2)-dimensiona.1 I-realization is
+x1(h + 1, k) =X2(h, k) + u(h, k)
+X2(h, k + 1) = x, (h, k) + x3(h, k)
+X30, k + 1) = u(h, k)
+y = Xi + X3.
+111. A CONJECTURE
+Conjecture (3.1): Let k be algebraically closed (for instance,
+kcomplex numbers), Let W(zl, z2) be a scalar (i.e., m = t =
+Itransfer function of degree (n I n2 ). Then there exists a
+realization I of W such that dim E (n I , n2 ).
+When n I (or n 2 ) = I, this conjecture is true, since one may
+always factor To = (Poq;l (qoq-,' as a product of ca 'usal
+Z2-transfer functions, so R (-qoqr', Poqr', qoq;', P,,qr 1)
+gives rise to a I~R (Z2 ) with McMillan degree n2 .
+Example (3.2): Consider again the W in (2.5), but this time
+let k = complex numbers. A direct calculation shows that a
+2; of dimension (1, 1) realizes W if and only if
+x I (h + 1, k) = ax2 (h, k) + bu(h, k)
+X2 (h, k + I ) = a-1 x I (h, k) + cu(h, k)
+y = b_1x1 + C_IX2
+and (abc )2 + I = 0.
+<<PAGE-DIVIDER>>
+482 IEEE TRANSACTIONS ON ACOUSTICS, SPEECH, AND SIGNAL PROCESSING, VOL. ASSP-26, NO. 5, OCTOBER 1978
+Remarks (3.3):
+a) There can be no rational procedure for finding realiza-
+tions of minimal dimensions. Indeed, such a procedure,
+involving only additions and multiplications, would give the
+same result independently of the field of definition. But
+Examples (2.5) and (3.2) show that minimality is field-
+dependent. This situation is completely at variance with the
+ordinary linear system case.
+b) If the conjecture is true, one may expect also, by an
+algebraic-geometric argument, generically finitely many reali-
+zations under the group GL(n, ) X GL(n2) acting in the
+obvious way.
+IV. RECOGNIZABLE TRANSFER FUNCTIONS
+A transfer function is recognizable iff every entry has the
+form P(Zi, Z2)q(zl)-'q(z2)-'. We now show how some
+results of (4] can be translated into the context of two-
+dimensional filters by looking at another type of first-order
+difference equations.
+We consider in this section systems r = (FI, F2, G, H) of
+dimension n given by equations of type
+ACKNOWLEDGMENT
+The author wishes to express his gratitude to Dr. E. W.
+Kamen for introducing him to the operator study of delay-
+differential systems, and hence, indirectly, to the present
+topic, and to Prof. M.A. Arbib and Dr. E. G. Manes for the
+opportunity of presenting his results at the Amherst Workshop.
+REFERENCES
+(61
+x(h, k) = F, x(h - 1, k) + F2x(h, k - 1) + Gu(h, k) 17)
+y = HX
+where x(h, k) is in k' and F, F2 = F2 F, .
+Theorem (4. 1): W(z I , z 2 ) has a r-realization if and only if [8]
+W(z, z,2) is recognizable. Furthermore, expanding
+Aliz-1 iz 2-/, 191
+W(zi, Z2 ) =
+Q> 0 [101
+the dimension ofa minimal r-realization is equal to the rank n
+of the block Hankel matrix H(W) which has rows and columns
+indexed by the pairs (i, j) and the (i, j)th block is
+i + i IA
+i Y
+(
+Any two realizations of this dimension n are equal except for
+a change of basis in kn.
+Proof: Easy consequence of [4]. The proof by Fliess
+provides an explicit r-realization of dimension n = rank H(W).
+Remarks (4.2):
+a) Representations of "separable," i.e., recognizable, trans-
+fer functions by systems somewhat similar to our r were given
+by Attasi (I I and Fornasini and Marchesini [ 51, [ 6 1, adding a
+term of the form -FIF2x(h - 1, k - 1) to the right side. This
+minor variation of the above can be treated also via the theory
+of recognizable series.
+b). In general, there are E-realizations of dimension (n, +
+n2), much less than the dimensions of possible r-realizations.
+For instance, a straightforward modification of an example of
+[61 is W(zi, z2) = (z, + z2 + 2)zl- Z2 which has a (1, 1
+dimensional E-realization [by Theorem (2.2)], but rank
+H(W) = 4.
+V. FINAL REMARKS
+S. Attasi, "Systimes liniaires hornogines i deux indices," IRIA
+Lab. Rep. 31, 1973.
+C. T. Chen, Introduction to Linear System Theory. New York:
+Holt, Reinhart and Winston, 1970.
+M. Fliess, "S6ries reconnaissables, rationnelles et algibriques,"
+Bull. Sci. Math., vol. 94, pp. 231-239, 1970.
+-, "Matrices de Hankel," J. Math. Pures. Appl., vol. 53, pp.
+197-224,1974.
+E. Fornasini and G. Marchesin~ "Algebraic realization theory
+of two-dimensional filters," in Variable Structure Systems, A.
+Ruberti and R. Mohler, Eds., Springer L.N. Econ. and Math.
+Systems.
+-, "State-space realization theory of two-dimensional filters,"
+IEEE Trans. Automat. Contr., vol. AC-21, pp. 484-492, 1976.
+S. K. Kung, B. Levy, M. Morf, and T. Kailath, "New results in
+2-D systems theory, 2-D state-space models - Realization and the
+notions of controllability, observability and minimality," in
+hoc. IEEE (Special Issue on Multidimensional Systems), June
+1977.
+R. P. Roesser, "A discrete state-space model for linear image pro-
+cessing," IEEE Trans. Automat. Contr., vol. AC-20, pp. 1-10,
+1975.
+E. D. Sontag, "On linear systems and noncommutative rings,"
+Math. Syst, Theory, vol. 9, no. 4, pp. 327-344, 1975.
+-, "Linear systems over commutative rings: A survey,"
+RicerchediAutomatica,vol. 7, no. 1, pp. 1-34, 1976.
+The bound given in Theorem (2.2a) improves considerably
+that given by 151, 16 1, in which the dimension of Z is of the
+order of n I - n2 rather than n I + n.2.
+In an interesting recent paper, Kung et al. ( 7 ] have indepen-
+dently arrived at Theorem (2.2).

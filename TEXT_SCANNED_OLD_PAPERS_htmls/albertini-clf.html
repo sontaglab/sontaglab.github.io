@@ -1,0 +1,920 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/albertini-clf.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/albertini-clf.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Continuous Control-Lyapunov Functions for Asymptotically Controllable Time-Varying Systems
+
+Francesca Albertini Dipartimento di Matematica
+
+Universit`a di Padova Via Belzoni 7, 35100, Italy tel +39-049-8275966, fax +39-049-8758596
+
+albertin@galileo.math.unipd.it
+
+E. D. Sontag* Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903, USA tel +1-732-4453072, fax +1-732-4455530
+
+sontag@hilbert.rutgers.edu
+
+Abstract This paper shows that, for time varying systems, global asymptotic controllability to a given closed subset of the state space is equivalent to the existence of a continuous control-Lyapunov function with respect to the set.
+
+1 Introduction We will study continuous-time systems with dynamics given by differential equations of the type:
+
+.x(t) = f(t, x(t), u(t)), (1) where x(t) 2 Rn represents the state variable and u(t) 2 U is the control variable. (Technical assumptions on f and U are described below.)
+
+We are interested in questions of stabilization relative to a subset A of the state space Rn. For example, the set A may be just an equilibrium point, or it may represent a target subset of a different kind. This target set might be a desired periodic orbit, or, in the context of designing observers, the Equations (1) might represent a composite state x = (x1, x2), consisting of the state x1 of the original system together with the state x2 of an observer; in that case, A would be the set of states x for which identification has been achieved, that is, the set consisting of those x for which x1 = x2. (Note that in this last example, the set A is not bounded.) There are several motivations for considering time-varying dynamics. For instance,
+
+*Supported in part by US Air Force Grant F49620-98-1-0242
+
+1
+
+in this manner one may encompass problems of tracking, in which the difference between some variables and a signal to be followed evolves according to a differential equation which depends explicitly in t. The purpose of this paper is to generalize the results of the paper [9], which dealt only with A = {0} and time-invariant systems, to the general model (1).
+
+A classical technique for stabilization is to look for Lyapunov-type functions, which play the role of abstract "energy" or "cost" functions that can be made to decrease in directions corresponding to possible controls, as long as the state is away from A. For smooth such functions V , and taking for simplicity the case when V and f are time-invariant, and A = {0}, this amounts to the requirement that, for each nonzero state x, there must be some control value u = ux so that rV (x).f(x, u) < 0. One uses the generic term "control-Lyapunov function" (clf) for such a function. The clf approach, assuming a V has been found, allows the search for stabilizing inputs by iteratively solving a static nonlinear programming problem: when at state x, find u such that this inequality holds. Recent expositions of results about (smooth) clf's can be found in the textbooks [5, 6, 7, 10]. An obvious question is whether the existence of a continuously differentiable clf is equivalent to the possibility of driving every state asymptotically to the set A (zero in this particular case). The answer is negative; for instance, if controls are in Rm, and f(x, u) = f0 + Pmi=1 uifi(x) is affine in u, the existence of a (smooth) V would imply that there is some feedback law u=k(x) so that the origin is a globally asymptotically stable state for the closed-loop system
+
+.x = f(x, k(x)) and k is continuous on Rn \ {0}. This was proved by Artstein in [2]; see also [10] for an exposition. But continuous feedback may fail to exist, even for very simple controllable systems (see e.g. [10], Section 5.9). Thus smooth clf's do not always exist, even if the system is asymptotically controllable.
+
+However, it was shown in [9] that continuous clf's do exist. Of course, one must modify the statement of the clf condition, since the gradient is not well-defined if V is not differentiable. This modification can be done in various ways. Here, we proceed as in [9], asking basically that that for each state x 6= 0 (or rather, for each state not in A, in the general case) there exist a trajectory which is defined on a small interval of time and which decreases the value of V . (An additional technical condition, insuring that controls do not "blow up" as one approaches the set A, is also imposed.)
+
+The proofs are in general based on the ideas in [9], but when dealing with time varying systems, and especially with possibly non-compact sets A, many technical complications arise. (Of course, one must allow now for time-dependent V , and the definition of asymptotic controllability must be in some sense uniform on time, in order to obtain a necessary and sufficient result.) Although not at all surprising, the results in this paper are relevant in so far the elucidation of the precise technical assumptions and constructions needed in the generalization are concerned. We also employ several ideas from the paper [8], which dealt with set stability but only for systems with no controls (which allows constructing smooth V 's).
+
+The existence of continuous clf's is a basic ingredient in the construction of stabilizing feedbacks with
+
+2
+
+respect to the origin for time-invariant systems, as done in [3] and in [11]. We expect to obtain generalizations of these stabilization results, to time varying systems and general attractor sets, in future work, using the result from this paper in the same role that [9] is used in [3].
+
+2 Basic Definitions and Main Results We take U to be a locally compact metric space, with a distinguished "0" element. We denote Ur = {u | d(u, 0) <= r}. The map f is supposed to be measurable in t, and locally Lipschitz in (x, u) uniformly for t in a bounded interval. The set of control maps u 2 U are measurable essentially bounded functions u : [t0, 1) ! U , with t0 2 R. We denote by kuk the essential supremum of the map u. Notice that with these assumptions we guarantee the local existence and uniqueness of solutions of (1). For a given (t0, x0) 2 R * Rn, and a control map u : [t0, 1) ! U , we denote by x(t; t0, x0, u) the maximal solution of (1) with initial condition x(t0, t0, x0, u) = x0. In general this solution will be defined on an interval of the form [t0, _t).
+
+A function fl : R>=0 ! R>=0 is called a K-function if it is continuous, strictly increasing, and fl(0) = 0; a K-map fl is called a K1-function if lims!1 fl(s) = 1. A function fi : R>=0 * R>=0 ! R>=0 is said to be a KL-function if for each fixed t >= 0 the map fi(*, t) is a K-function, and if for each fixed s the map fi(s, *) is decreasing to zero as t ! 1. Given a non-empty closed set A ae Rn, we denote by |x|A the distance from x to A.
+
+Definition 2.1 Given a non-empty closed set A ae Rn, we say that A is weakly invariant if there exists a positive constant u such that for all x0 2 A and all t0 2 R, there exists a control map u0 with ku0k <= u such that x(t; t0, x0, u0) is defined and lies in A for all t >= t0.
+
+Definition 2.2 Let A ae Rn be a closed, weakly invariant, and nonempty set. We say that (1) is globally asymptotically controllable (gac) to A if there exist a KL-function fi(*, *), and a continuous, positive and increasing function fl(*) such that: for each (t0, x0) 2 R*Rn there exists a control function u : [t0, 1) ! U , with kuk <= fl(|x0|A), such that the corresponding trajectory x(t) = x(t, t0, x0, u) exists for all t >= t0 and satisfies:
+
+|x(t)|A <= fi(|x0|A , t - t0) for all t >= t0. (2)
+
+In the previous definition, the KL-function fi(*, *) captures both the stability and the attraction properties of the invariant set A. An equivalent way to define gac is given by the following proposition, whose proof is postponed to section 4.
+
+Proposition 2.3 Let A ae Rn be a closed, weakly invariant, and nonempty set. The system (1) is gac to A if and only if there exists a continuous, positive and increasing function fl1 such that:
+
+3
+
+1. there exists a K1-map fl2 such that for all " > 0, if |x0|A <= fl2(") and t0 2 R, then there exists
+
+u : [t0, +1) ! U , with kuk <= fl1(|x0|A) such that |x(t, t0, x0, u)|A <= " for all t >= t0;
+
+2. for any r, " there exists a nonnegative T 2 R such that given (t0, x0) 2 R * Rn, with |x0|A <= r, then
+
+there exists u : [t0, 1) ! U as in 1 such that |x(t, t0, x0, u)|A <= " for all t >= T + t0.
+
+We now recall some standard notions regarding relaxed controls. The set of relaxed controls W is the set of measurable functions w : [t0, 1) ! P (U ) where P (U ) is the set of probability measures on U equipped with the weak topology. We let Wr denote the set of those relaxed controls w such that w(t) has support on Ur for almost all t. An ordinary control u 2 U can be seen as a relaxed one if u(t) is identified with the Dirac measure concentrated in u(t). One defines a topology on W characterized by weak convergence: wk ! w if and only if Z
+
+T ZU g(t, u)dw
+
+k(u)dt ! Z
+
+T ZU g(t, u)dw(u)dt
+
+for all functions g : T * U ! R which are continuous in u, measurable in t, and such that max{|g(t, u)|, u 2
+
+U } is integrable on T , where T is a bounded interval. With this topology Ur is dense in Wr, and Wr is sequentially compact. We let
+
+kwk = inf{r | w(t) 2 P (Ur) for a.e. t}
+
+(notice that for ordinary controls this is the essential supremum). Given w 2 P (Ur), one extends f to relaxed controls by defining
+
+f(t, x, w) := Z
+
+Ur f(t, x, s)dw(s) .
+
+As for ordinary controls, given (t0, x0) 2 R * Rn, and a relaxed control w : [t0, 1) ! P (U ), we denote
+
+by x(t; t0, x0, w) the solution of (1) with initial condition x(t0; t0, x0, w) = x0. For more details on relaxed controls see [1].
+
+Definition 2.4 A continuous function V : R * Rn ! R>=0 is a control-Lyapunov function for the model (1) with respect to the closed, weakly invariant, and non-empty set A if the following two properties hold:
+
+1. There exist two K1-maps ff1, ff2 such that, for all (t, x) 2 R * Rn:
+
+ff1(|x|A) <= V (t, x) <= ff2(|x|A).
+
+2. There exist a continuous, positive and increasing map OE, and a K-function ff3, such that for each
+
+(t0, x0) 2 R * Rn, there exist t1 > t0, and w : [t0, t1) ! P (U ) with kwk <= OE(|x0|A) and:
+
+lim inf
+
+t!t+0
+
+V (t, x(t)) - V (t0, x0)
+
+t - t0 <= -ff3(|x0|A), (3)
+
+where x(t) = x(t, t0, x0, w).
+
+An alternative manner to define control-Lyapunov functions is via an integral inequality, as follows.
+
+4
+
+Definition 2.5 A continuous function V : R * Rn ! R>=0 is a control-Lyapunov integral function for the model (1) with respect to the closed, weakly invariant, and non-empty set A if property 1 of definition 2.4 holds, and there exist a continuous, positive and increasing map OE, and a K-function ff3, such that for each (t0, x0) 2 R * Rn there exists a relaxed control w : [t0, +1) ! P (U ) with kwk <= OE(|x0|A) such that x(t) = x(t, t0, x0, w) is defined for all t >= t0 and it satisfies, for all t >= t0:
+
+V (t, x(t)) - V (t0, x0) <= - Z
+
+t
+
+t0 ff
+
+3(|x(s)|A)ds. (4)
+
+Definition 2.6 Given a closed and non-empty set A, we say that the function f(t, x, u) satisfies the boundedness assumption with respect to A if it holds that, for each r1, r2 > 0 there exists a positive constant Mr1,r2 2 R such that:
+
+sup| x|A <= r1
+
+d(u, 0) <= r2
+
+|f(t, x, u)| <= Mr1,r2 a.e. t 2 R. (5)
+
+Notice that, for example, if f is independent of t and A is compact, then (5) holds. Theorem 1 Let \Sigma  be a given model of type (1), and A ae Rn be a closed, weakly invariant, and non-empty set. Assume that the model satisfies the boundedness assumption with respect to A (definition 2.6). Then the following are equivalent:
+
+1. \Sigma  is gac to A. 2. There exists a control-Lyapunov function V for (1) with respect to A (definition 2.4). 3. There exists a control-Lyapunov integral function V for (1) with respect to A (definition 2.5). Remark 2.7 Assume that we give a new definition of control-Lyapunov function which is equal to definition 2.4 except from the fact that we use in equation (3) the "limsup" instead of "liminf". Then it follows from Theorem 1 that this new definition is indeed equivalent to the one given in 2.4. To see this it is sufficies to notice that if V is a control-Lyapunov integral function then obviously V is control-Lyapunov function which satisfies inequality (3) even if the "limsup" is used.
+
+The next section is devoted to the proof that 1 and 3 are equivalent. It is obvious that 3 implies 2, while the proof that 2 implies 3 is given in section 4.
+
+3 Control-Lyapunov function characterization 3.1 Sufficiency part In this section, we assume given a system \Sigma  of type (1), a closed, weakly invariant, and non-empty set A ae Rn, and a control-Lyapunov integral function V (together with the maps ff1, ff2, OE, and ff3). Our aim
+
+5
+
+is to prove that \Sigma  is gac to A.
+
+Fix any "0 > 0, and construct a decreasing sequence {"p}p2Z such that limp!+1 "p = 0, limp!-1 "p = +1, and for all p 2 Z, 2ff-11 (ff2("p+1)) < "p. For each fixed p 2 Z, let tp > 0 be defined by:
+
+tp = ff2("p-1) - ff1("p+1)ff
+
+3("p+1) .
+
+Lemma 3.1 Fix any p 2 Z. Assume given any (t0, x0), with x0 62 A. If |x0|A < "p-1, then there exists a relaxed control w : [t0, +1) ! P (U ) with kwk <= OE(|x0|A) such that:
+
+1. |x(t)|A <= ff-11 (ff2(|x0|A)) for all t 2 [t0, +1); 2. there exists _t 2 [t0, t0 + tp], such that |x(_t)|A < "p+1. Proof. Our assumption implies in particular that for any (t0, x0) there exists a relaxed control w : [t0, +1) ! P (U ) with kwk <= OE(|x0|A) such that:
+
+|x(t)|A <= ff-11 `ff2(|x0|A) - Z
+
+t
+
+t0 ff
+
+3(|x(o/ )|A)do/ ' . (6)
+
+For this particular control w the first requirement of the lemma clearly holds, since ff3 is a positive function. Assume, by the way of contradiction, that for all t 2 [t0, t0 + tp], |x(t)|A >= "p+1. Then, since ff3 is an increasing function, we have ff3(|x(t)|A) >= ff3("p+1). This fact, together with equation (6), implies:
+
+|x(t0 + tp)|A <= ff-11 (ff2(|x0|A) - ff3("p+1)tp) < ff-11 (ff2("p-1) - ff3("p+1)tp) = "p+1, which gives a contradiction.
+
+For each p 2 Z, let
+
+T (p) = X
+
+k>=p
+
+tk.
+
+Notice that T (p) 2 R>=0 [ {+1}. Lemma 3.2 Given any (t0, x0), with x0 62 A. If |x0|A < "p-1, then there exists an ordinary control u : [t0, +1) ! U with kuk <= OE(|x0|A) + u such that:
+
+for all k >= p, and for all t 2 [t0 + Pk-1j=p tj, t0 + Pkj=p tj):
+
+|x(t)|A <= 2ff-11 (ff2("k-1)) . (7) Moreover if T (p) < +1, then for all t >= t0 + T (p), we have x(t) 2 A. Proof. Assume that we have already constructed a control u(t) for t 2 [t0, t0 + Pk-1j=p tj], with kuk <= OE(|x0|A) + u and such that for all p <= h <= k - 1 we have:
+
+(a) |x(t)|A <= 2ff-11 (ff2("h-1)) , for all t 2 [t0 + Ph-1j=p tj, t0 + Phj=p tj],
+
+6
+
+(b) fififix(t0 + Phj=p tj)fififiA < "h. We want to extend this control to the interval [t0 + Pk-1j=p tj, t0 + Pkj=p tj]. Let ~t = t0 + Pk-1j=p tj, then by property (b) we have that fifix(~t)fifiA < "k-1. By applying lemma 3.1 with initial condition (~t, x(~t)), we get a relaxed control ~w : [~t, +1) ! P (U ) such that: k ~wk <= OE(fifix(~t)fifiA) <= OE(|x0|A), and, for all t >= ~t:
+
+|x(t)|A <= 2ff-11 \Gamma ff2(fifix(~t)fifiA)\Delta  <= 2ff-11 (ff2("k-1)) . Moreover there exists _t 2 [~t, ~t + tk] such that |x(_t)|A < "k+1. Now, we apply again lemma 3.1 with initial condition (_t, x(_t)). Since |x(_t)|A < "k+1, there exists another relaxed control ^w : [_t, +1) ! P (U ) such that k ^wk <= OE(|x(_t)|A) <= OE(|x0|A), and, for all t >= _t:
+
+|x(t)|A <= 2ff-11 (ff2(|x(_t)|A)) <= 2ff-11 (ff2("k+1)) < "k, where the last inequality holds by construction. So, in particular, concatenating the two relaxed controls
+
+~w and ^w, we get a relaxed control w : [~t, +1) ! P (U ) such that:fifi
+
+x(~t)fifiA <= 2ff-11 (ff2("k-1)) , and fifix(~t + tk)fifiA < "k. Now, since 8 r > 0 Ur is dense in Wr, it is clear that we can extend the control u to the interval [t0 + Pk-1j=p tj, t0 + Pkj=p tj] preserving the required properties.
+
+If T (p) = +1 we have finished our construction. Assume that T (p) < +1. Then, since kuk <= OE(|x0|A) + u and |x(s)|A <= 2ff-11 (ff2("p-1)), for all s 2 [t0, t0 + T (p)), from the boundedness assumption we have that there exists L > 0 such that:
+
+|f(s, x(s), u(s))| <= L, 8 s 2 [t0, t0 + T (p)); which implies, for all t 2 [t0, t0 + T (p)):
+
+|x(t)| <= |x0| + LT (p). So we can extend our trajectory to the endpoint ^t = t0 + T (p). Moreover, we have:
+
+limt!t
+
+0+T(p) |x(t)|A = 0,
+
+which implies that x(t0 + T (p)) 2 A. Thus, for t > t0 + T (p) we may extend the control u by using the control u0 given by the weakly invariant assumption which is in norm <= u.
+
+Lemma 3.3 There exists a KL-function fi(*, *) such that, for each p 2 Z, if "p <= s < "p-1, then:
+
+1. fi(s, 0) >= 2ff-11 (ff2("p-1)); 2. if t 2 [Pk-1j=p tj, Pkj=p tj), then fi(s, t) >= 2ff-11 (ff2("k-1)).
+
+7
+
+Proof. Let lp = 2ff-11 (ff2("p), and, for k >= i, let si,k = Pkj=i tj. First, for i 2 Z, we let:
+
+~fi("i, t) = 8???!???:
+
+li-1 t 2 [0, ti)
+
+lk-1 t 2 [si,k, si,k+1) 0 t >= T (i)
+
+Then clearly limt!+1 ~fi("i, t) = 0, and ~fi("i, t) is decreasing as a function of t. Moreover it holds that, if "i < "j then
+
+~fi("i, t) <= ~fi("j, t). (8)
+
+To prove (8) we argue as follows. If t >= T (i) then the inequality is obvious. If t 2 [0, ti) then t < tj +. . .+ti thus
+
+~fi("j, t) >= ~fi("j, sj,i) = li-1 = ~fi("i, t).
+
+Otherwise, there exists k >= i such that t 2 [si,k, si,k+1). In particular t < sj,k+1, thus, again we have:
+
+~fi("j, t) >= ~fi("j, sj,k+1) = lk-1 = ~fi("i, t).
+
+So (8) is proved. Now we let:
+
+~fi(s, t) = 8!: 0 if s = 0 ;~
+
+fi("i, t) s-"i-1"i-"i-1 + ~fi("i-1, t) s-"i"i-1-"i "i <= s < "i-1.
+
+Clearly the function ~fi(s, t) satisfies both required properties 1 and 2. Moreover, it satisfies all the requirements of being a KL-function, except possibly for the fact that it is only non-decreasing in the s variable and it can be zero. So, to have the desired KL-function, we define:
+
+fi(s, t) = ~fi(s, t) + ^fi(s, t), where ^fi(s, t) is any KL-function.
+
+Proof of Sufficiency Let \Sigma  be a model of type (1), and V be a control-Lyapunov integral function for \Sigma  with respect to the closed, weakly invariant, and non-empty set A ae Rn. Let fi(s, t) be the KL-function given by lemma 3.3, and let fl(p) = OE(p) + u. Then, combining together the results given by lemmas 3.2 and 3.3, we conclude that \Sigma  is gac to A.
+
+3.2 Necessity part In this section, we assume given a model \Sigma  of type (1) and a closed, weakly invariant, and non-empty set A ae Rn. Moreover we assume \Sigma  to be gac to A. Our aim is to construct a control-Lyapunov integral function for \Sigma  with respect to the set A. The idea of the construction is similar to the one given in [9]. The next proposition establishes a technical property of KL-functions.
+
+8
+
+Proposition 3.4 Let fi(*, *) be KL-function, and choose a strictly increasing sequence of positive real numbers, {"i}i>=0, such that limi!+1 "i = +1. Then there exists a continuous, strictly decreasing function g : R>=0 ! R>=0, and a strictly increasing sequence {Ti}i>=0, with T0 = 0, such that:
+
+i) limt!+1 g(t) = 0; ii) limi!+1 Ti = +1; iii) if p < "i then fi(p, t) <= g(t) for all t >= Ti. Proof. Let T0 = 0 and, for i >= 1, define, inductively on i:
+
+ffi = fi("i-1, Ti-1 + 1/i), and Ti be such that fi("i, Ti) <= ffi/2 = gi. Note that such a Ti exists since fi(s, *) is decreasing to zero as t ! 1. Since fi("i, Ti-1 + 1/i) > ffi, it holds that:
+
+Ti > Ti-1 + 1/i ) Ti >
+
+iX
+
+j=1 1
+
+/j, for i >= 1.
+
+Thus the sequence {Ti}i>=0 is strictly increasing and satisfies ii). Moreover, since:
+
+ffi+1 = fi("i, Ti + 1i + 1 ) < fi("i, Ti) <= ffi2 , we have:
+
+ffi+1 <= ff12i 8 i >= 1, ) limi!+1 ffi = 0. (9)
+
+Let g-1 and g0 be two constants such that g-1 > g0 > 2g1, and, for i >= 0, let Pi be the point (Ti, gi-1). Let lPiPi+1 (*) be the linear function such that lPiPi+1 (Ti) = gi-1, and lPiPi+1 (Ti+1) = gi. It is easy to see that, by choosing g-1 sufficiently large, we may assume:
+
+fi(x, t) < lP0P1 (t) 8 t 2 [T0, T1], 8 x < "0. (10) Now let:
+
+g(t) = lPiPi+1 (t) for t 2 [Ti, Ti+1].
+
+Then clearly the map g(*) is continuous and strictly decreasing. Moreover, by equation (9), we have limt!+1 g(t) = 0 (thus i) holds). Now we establish iii). Let p 2 R, and assume p < "i. If i = 0 and t 2 [T0, T1], then property iii) holds by construction (equation (10)). So we may assume t >= T1. Let t >= Ti, then t 2 [Tj, Tj+1] with j >= i >= 1. Then we have:
+
+g(t) >= gj = ffj/2 >= fi("j , Tj). On the other hand, if x < "i and t 2 [Tj, Tj+1], we also have:
+
+fi(x, t) < fi("i, t) <= fi("j , t) <= fi("j , Tj) <= gj <= g(t);
+
+9
+
+so iii) holds.
+
+Let fl(*) and fi(*, *) be respectively the continuous, positive and increasing, and KL maps given by definition 2.2. Choose any "0 > 0, and let {"i}i>=0 be any strictly increasing sequence such that:
+
+limi!+1 "i = +1, "i+1 > min{fi("i, 0), fl("i)}, and "i+2 > 2"i+1 - "i. Now let {Ti}i>=0, and g(*) be the sequence and the function given by proposition 3.4. Since the map g is strictly decreasing, and g : R>=0 ! (0, g(0)], we may let:
+
+h(p) = 8!: g-
+
+1(p) if p 2 (0, g(0)],
+
+0 if p > g(0). Notice that h : R>0 ! R>=0 is decreasing, continuous, and limp!0+ h(p) = +1. Now we define:
+
+N (p) = 8!: 0 if p = 0,
+
+p exp{-h(p)} if p > 0. (11)
+
+Notice that:
+
+i) N is a continuous and strictly increasing map; ii) limp!+1 N (p) = +1; iii) if p <= ff then N (p) <= ff. For each i >= 0, let Mi = M ("i+2, "i+2), where M ("i+2, "i+2) are the constants given by the boundedness assumption, i.e.:
+
+sup| x|A <= "i+2
+
+d(u, 0) <= "i+2
+
+|f(t, x, u)| <= Mi for a.e. t 2 R.
+
+Clearly Mi <= Mi+1.
+
+Now let M : R>=0 ! R>=0 and ffi : R>=0 ! R>=0 be any two continuous and increasing maps such that:
+
+M (p) >= 8!: M0 if p <
+
+"0
+
+2 ,
+
+Mi if "i-12 <= p < "i2 , (12)
+
+ffi(p) >= fl(p) for all p >= 0. (13) Moreover, for i >= 1, we require that, if "i+1 < p <= "i+2, then:
+
+ffi(p) > ffi(fl("i)) + M (fi("i, 0)) [N (fi("i, 0))Ti + fi("i, 0)] (14) and, for i >= 0,:
+
+M ("i+1) > ` 2MiN ("
+
+i+1)
+
+1 "i+2 - "i+1 ' {M (fi("i, 0)) [N (fi("i, 0))Ti + fi("i, 0)] + ffi(fl("i))} . (15)
+
+10
+
+Notice that, since min{fi("i, 0), fl("i)} < "i+1, one shows easily that two continuous and increasing functions satisfying inequalities (12), (13), (14), and (15) exist.
+
+Finally, we let:
+
+F (p) = M (p)N (p) = M (p)p exp{-h(p)}. (16)
+
+Fix (t0, x0) 2 R * Rn. For each relaxed control w, denote by x(t) = x(t; t0, x0, w) and let:
+
+Q(t0, x0, w) = Z
+
++1
+
+t0 F (|x(t)|A)dt + max{ffi(kwk) - ffi(fl("
+
+0)), 0}, (17)
+
+if x(t) exists for all t >= t0, let Q(t0, x0, w) = +1 otherwise. Then we let
+
+V (t0, x0) = infw2W Q(t0, x0, w). (18) We want to prove that the function V defined above is a control-Lyapunov integral function for the model (1) with respect to the set A.
+
+Lemma 3.5 Let (t0, x0) 2 R * Rn, and i >= 0 be the first index such that |x0|A < "i. Then there exists an ordinary control u, with kuk <= fl(|x0|A), such that:
+
+Q(t0, x0, u) <= F (fi(|x0|A , 0))Ti + M (fi(|x0|A , 0))fi(|x0|A , 0) + max{ffi(fl(|x0|A)) - ffi(fl("0)), 0}, (19) and |x(t)|A < "i+2 for all t >= t0. Proof. Given (t0, x0) 2 R * Rn with |x0|A < "i, let u be the control function given by the gac property. Then kuk <= fl(|x0|A), moreover the corresponding trajectory x(t) is defined for all t >= t0 and satisfies
+
+|x(t)|A <= fi(|x0|A , t - t0) < fi("i, 0) < "i+2. Moreover, for t >= Ti + t0, we have:
+
+|x(t)|A <= fi(|x0|A , t - t0) < fi("i, t - t0) < g(t - t0). Thus, for all t >= Ti + t0, h(|x(t)|A) >= h(g(t - t0)) = t - t0. So we have:
+
+Q(t0, x0, u) = Z
+
+t0+Ti
+
+t0 F (|x(t)|A)dt + Z
+
++1 t0+Ti F (|x(t)|A)dt + max{ffi(kuk) - ffi(fl("
+
+0)), 0}
+
+<= F (fi(|x0|A , 0))Ti + M (fi(|x0|A , 0))fi(|x0|A , 0)) + max{ffi(fl(|x0|A)) - ffi(fl("0)), 0}. Thus the lemma is proved.
+
+Remark 3.6 Notice that, from the previous lemma, we have in particular: (a) if |x0|A < "0, then T0 = 0 and the max is also zero, so: V (t0, x0) <= M (fi(|x0|A , 0))fi(|x0|A , 0), (b) if "i-1 <= |x0|A < "i, with i >= 1, then
+
+V (t0, x0) <= ffi(fl("i)) - ffi(fl("0)) + M (fi("i, 0)) [N (fi("i, 0))Ti + fi("i, 0)] .
+
+11
+
+Lemma 3.7 There exists a K1-map ff2(*) such that, for all (t0, x0) 2 R * Rn, it holds that:
+
+V (t0, x0) <= ff2(|x0|A). (20)
+
+Proof. For "i-1 <= p < "i ("-1 = 0), let
+
+~ff2(p) = F (fi(p, 0))Ti + M (fi(p, 0))fi(p, 0)) + max{ffi(fl(p)) - ffi(fl("0)), 0}. Then ~ff2(*) is increasing and ~ff2(0) = 0. Now let ff2(*) be any K1-function such that ~ff2(p) <= ff2(p). For each (t0, x0) 2 R * Rn, let u be the control map given by lemma 3.5. Then, from equation (19), it follows that:
+
+V (t0, x0) <= Q(t0, x0, u) <= ~ff2(|x0|A) <= ff2(|x0|A).
+
+Lemma 3.8 For each (t0, x0) 2 R * Rn, let i >= 0 be the first index such that |x0|A < "i, and let u0 be the control map given by lemma 3.5. If w is any control such that:
+
+Q(t0, x0, w) <= Q(t0, x0, u0), then kwk <= "i+2, and the corresponding trajectory x(t) is such that:
+
+|x(t)|A < "i+2. (21) Proof. First notice that if Q(t0, x0, w) < +1, then, in particular x(t) is defined for all t >= t0. Assume that kwk > "i+2. Then it holds that:
+
+Q(t0, x0, w) >= ffi(kwk) - ffi(fl("0)) >= ffi("i+2) - ffi(fl("0)) > F (fi("i, 0))Ti + M (fi("i, 0))fi("i, 0)) + ffi(fl("i)) - ffi(fl("0)),
+
+where, to get the last inequality, we have used (14). This last inequality contradicts the assumption Q(t0, x0, w) <= Q(t0, x0, u0). Now, assume that kwk <= "i+2, but that the inequality (21) is not satisfied. Then there exist T1 < T2 such that:
+
+|x(T1)|A = "i+1, |x(t)|A <= "i+2 8 t 2 [t0, T2],
+
+and |x(T2)|A = "i+2, |x(t)|A >= "i+1 8 t 2 [T1, T2].
+
+It must hold that
+
+T2 - T1 >= "i+2 - "i2M
+
+i , (22)
+
+otherwise
+
+|x(T2)|A <= |x(T1)|A + |x(T1) - x(T2)| < "i+1 + "i+2 - "i2 < "i+2.
+
+12
+
+So, we have:
+
+Q(t0, x0, w) >= R T2T1 F (|x(t)|A)dt >= M ("i+1)N ("i+1) "i+2-"i+12Mi >=
+
+F (fi("i, 0))Ti + M (fi("i, 0))fi("i, 0) + ffi(fl("i)), where the last inequality holds by equation (15). Thus, the assumption that
+
+Q(t0, x0, w) <= Q(t0, x0, u0) is again contradicted.
+
+Remark 3.9 Fix any (t0, x0) 2 R * Rn and let i >= 0 be the first index such that |x0|A < "i. From the result proved in the previous lemma, we get:
+
+V (t0, x0) = infw2W Q(t0, x0, w) = inf
+
+w 2 W"i+2 ,
+
+|x(t)|A < "i+2
+
+Q(t0, x0, w). (23)
+
+Lemma 3.10 There exists a K1-map ff1(*) such that, for all (t0, x0) 2 R * Rn, it holds that:
+
+ff1(|x0|A) <= V (t0, x0). (24) Proof. Fix any (t0, x0) 2 R * Rn, and let i >= 0 be the first index such that |x0|A < "i. Let w be any control function such that kwk <= "i+2 and the corresponding trajectory is defined for all t >= t0 and satisfies |x(t)|A <= "i+2. Let:
+
+ffix0 = |x0|A2M
+
+i .
+
+Fact. If t 2 [t0, t0 + ffix0), then |x(t)|A > |x0|A /2.
+
+Proof of Fact. If the conclusion does not hold, then, by continuity, there exists a _t 2 [t0, t0 + ffix0 ), such that |x(_t)|A = |x0|A /2. However, we have:
+
+|x(_t) - x0| <= Mi(_t - t0) < Miffix0 = |x0|A /2, which implies:
+
+|x0|A <= |x(_t)|A + |x(_t) - x0| < |x0|A2 + |x0|A2 = |x0|A .
+
+So the fact is established.
+
+Now we have:
+
+Q(t0, x0, w) >= Z
+
+t0+ffix0
+
+t0 M (|x(t)|A)N (|x(t)|A)dt >= M (|x
+
+0|A /2)N (|x0|A /2) |x0|A2Mi .
+
+Next, by combining equation (12) with the previous inequality, one gets:
+
+Q(t0, x0, w) >= |x0|A2 N (|x0|A /2). (25)
+
+13
+
+So, by using equation (23), we conclude:
+
+|x0|A
+
+2 N (|x0|A /2) <= infw 2 W
+
+"i+2,
+
+|x(t)|A < "i+2
+
+Q(t0, x0, w) = V (t0, x0).
+
+Thus, by letting ff1(p) = p/2N (p/2), the conclusion follows.
+
+Thus the function V (*, *) satisfies property 1 of Definition 2.4. It remains to show that V is continuous and that equation (4) holds. First, we prove continuity at the points (t0, x0) 2 R * A.
+
+Lemma 3.11 The function V (*, *) is continuous at (t0, x0) 2 R * A. Moreover it holds that for each " > 0 there exists a ffi > 0 such that if |x|A <= ffi then
+
+|V (t, x)| <= " 8 t 2 R. (26)
+
+Proof. It is clear that it is suffices to prove (26), since V (t0, x0) = 0 for all (t0, x0) 2 R * A. Given " > 0, choose 0 < ffi < "0 such that M (fi(p, 0))fi(p, 0) <= " for all p <= ffi. Now if |x|A <= ffi, then by Remark 3.6, property (a), we have:
+
+V (t, x) <= M (fi(|x|A , 0))fi(|x|A , 0) <= ";
+
+as desired.
+
+Lemma 3.12 Let tn ! t0, xn ! x0, and wn ! w0, be such that kwnk <= r1, and all the solutions xn(t) = x(t; tn, xn, wn) exist for all t >= tn and satisfy |xn(t)|A <= r2, where r1, r2 are two positive real constants. Then the solution x(t) = x(t; t0, x0, w0) exists for all t >= t0, it is such that:
+
+xn(t) ! x(t) as n ! 1, and |x(t)|A <= r2, again for all t >= t0. Proof. Since xn ! x0, we have |x0|A <= r2. Given w0, by local existence of solutions, there exists a maximal interval [t0, _t), in which x(t) is defined. Moreover, we may assume that xn 2 clos B(x0, 1), and tn 2 [t0 - 1, t0 + 1] for all n >= 1. For each t > t0, we let:
+
+A(t) = { xn(o/ ) | o/ 2 [tn, t] } ae Rn. Then A(t) is bounded, and in fact:
+
+|xn(o/ )| <= |xn| + Z
+
+t
+
+tn |f(s, x
+
+n(s), u(s))|ds <= |xn| + Mr1r2(o/ - t) <= |x0| + 1 + Mr1r2 ffi(t),
+
+where Mr1r2 = sup |f(t, x, u)| for |x|A <= r2, and kuk <= r1, and ffi(t) = (t - t0 + 1). First we prove the following fact. Fact. If x(t) exists for all t 2 [t0, t0], then xn(t) ! x(t) as n ! 1 for all t 2 [t0, t0].
+
+14
+
+Proof of Fact. Let:
+
+K = clos A(t0) [ { x(t) | t 2 [t0, t0] },
+
+then K is a compact set. Let LK,r1 , and ~M be the Lipschitz constant and a bound for f with x 2 K, kuk <= r1, and t 2 [t0 - 1, t0]. Then one gets:
+
+|xn(t) - x(t)| <= |xn - x0| + ~M |tn - t0| + Lk,r1 Z
+
+t0
+
+t0.tn kw
+
+n(s) - w0(s)k + |xn(s) - x(s)|ds,
+
+where t0 . tn indicates max{t0, tn}. Using the Bellman-Gronwall inequality, one gets:
+
+|xn(t) - x(t)| <= i|xn - x0| + ~M|tn - t0| + Lk,r1 Z
+
+t0
+
+t0.tn kw
+
+n(s) - w0(s)k dsjeLk,r1(t0-t0.tn).
+
+From this last inequality the fact easily follows.
+
+Now we prove that x(t) exists for all t >= t0. Assume that x(t) exists only for t 2 [t0, _t). Since, for t 2 [t0, _t), we have xn(t) ! x(t) (from the previous fact), it holds that:
+
+x(t) 2 clos A(_t). Since clos A(_t) is a compact set, this contradicts the fact that x(t) does not exist for t = _t.
+
+Lemma 3.13 Let (tn, xn) ! (t0, x0), and wn ! w0. Let i >= 0 be the first index such that |x0|A < "i. Assume that all Q(tn, xn, wn) are finite, that kwnk <= "i+2, and that |xn(t)|A <= "i+2. Then:
+
+Q(t0, x0, w0) <= lim infn!+1 Q(tn, xn, wn).
+
+Proof. From lemma 3.12, it holds that x0(t) is defined for all t >= t0. Moreover it is also true that:
+
+F (|xn(t)|A) ! F (|x0(t)|A). Given " > 0 there exists ffi > 0 such that:Z
+
+t0+ffi
+
+t0 F (|x
+
+0(t)|A)dt < ".
+
+By Fatou's Lemma, we get (notice that for n large tn <= t0 + ffi):Z
+
+1
+
+t0+ffi F (|x
+
+0(t)|A)dt <= lim infn!1 Z
+
+1
+
+t0+ffi F (|x
+
+n(t)|A)dt.
+
+On the other hand, one easily sees that:
+
+max{ffi(kw0k) - ffi(fl("0)), 0} <= lim infn!+1 max{ffi(kwnk) - ffi(fl("0)), 0}. Summing up, we conclude:
+
+Q(t0, x0, w0) <= " + Z 1
+
+t0+ffi F (|x
+
+0(t)|A)dt + max{ffi(kw0k) - ffi(fl("0)), 0},
+
+15
+
+which is upper bounded by
+
+" + lim infn!1 Z 1
+
+t0+ffi F (|x
+
+n(t)|A)dt + lim infn!+1 max{ffi(kwnk) - ffi(fl("0)), 0}
+
+and is itself bounded by
+
+" + lim infn!+1 Q(tn, xn, wn).
+
+From which the conclusion follows since " was arbitrary.
+
+The arguments used in the proofs of next lemmas are similar to the one used in [9] to prove the corresponding results.
+
+Lemma 3.14 For each (t0, x0) 2 R * Rn there exists w0 such that:
+
+V (t0, x0) = Q(t0, x0, w0).
+
+Proof. Assume that i >= 0 is the first index such that |x0|A < "i. Let wn be a minimizing sequence, then, by lemma 3.8, it must holds that kwnk <= "i+2 and |xn(t)|A < "i+2. Thus, by sequential compactness of W"i+2 , we may assume that wn ! w0 (possibly extracting a subsequence). From lemma 3.13, we have:
+
+Q(t0, x0, w0) <= lim infn!1 Q(t0, x0, wn) = V (t0, x0) <= Q(t0, x0, w0).
+
+Lemma 3.15 The function V (*, *) is lower semicontinuous. Proof. Let (tn, xn) ! (t0, x0). Then if i >= 0 is the first index such that |x0|A < "i, we may also assume that |xn|A < "i. Let wn be such that V (tn, xn) = Q(tn, xn, wn), then, by lemma 3.8, kwnk <= "i+2 and |xn(t)|A < "i+2. Since W"i+2 is sequentially compact, we may assume that wn ! w0. By applying lemma 3.12, we know that the trajectory x0(t) = x(t; t0, x0, w0) exists for all t >= t0 and it is the limiting trajectory. Moreover by lemma 3.13, we have:
+
+V (t0, x0) <= Q(t0, x0, w0) <= lim infn!1 Q(tn, xn, wn) = lim infn!1 V (tn, xn).
+
+Lemma 3.16 The function V (*, *) is continuous. Proof. We need only to prove upper semicontinuity. Fix " > 0, and let 0 < ffi < "0 be such that if |x|A <= ffi then V (t, x) <= "/3 for all t 2 R (use lemma 3.11). Fix any (t0, x0) 2 R * Rn. Let i >= 0 be the first index such that |x0|A < "i, and w0 be such that V (t0, x0) = Q(t0, x0, w0). Then kw0k <= "i+2 (lemma 3.8). Denote by x(t) = x(t; t0, x0, w0), then there exists T such that |x(T )|A < ffi. By continuity, there exist a
+
+16
+
+neighborhood J * H of (t0, x0) such that, for all (t0, z) 2 J * H, |z|A < "i, z(t) = x(t; t0, z, w0) exists for all t 2 [t0, T ], |z(T )|A < ffi, and Z
+
+T
+
+t0 F (|z(t)|A) < Z
+
+T t0 F (|x(t)|A) + "/3. Now we have:
+
+V (t0, z) <= "/3 + Z
+
+T
+
+t0 F (|z(t)|A) + max{ffi(kw
+
+0k) - ffi(fl("0)), 0}
+
+< Z
+
+T
+
+t0 F (|x(t)|A) +
+
+2"
+
+3 + max{ffi(kw0k) - ffi(fl("0)), 0} <= V (t0, x0) + ".
+
+Thus V is upper semicontinuous.
+
+Lemma 3.17 The function V (*, *) is a control-Lyapunov integral function. Proof. We have already shown that V is continuous and satisfies property 1. of Definition 2.4. We need only to prove that equation (4) holds. Fix any (t0, x0) 2 R * Rn. Let i >= 0 be the first index such that |x0|A < "i, and w0 be such that V (t0, x0) = Q(t0, x0, w0). Let fl1 be any continuous, positive and increasing map such that fl1(p) >= "i+2 for "i-1 <= p < "i, for i >= 0 (set "-1 = 0). Then kw0k <= "i+2 <= fl1(|x0|A). Denote by x(t) = x(t; t0, x0, w0), and by w00 the translation of w0 by (-t). It holds:
+
+V (t, x(t)) <= Z 1
+
+t F (|x(s)|A)ds + max{ffi(kw
+
+00k) - ffi(fl("0)), 0},
+
+thus (notice that kw00k <= kw0k):
+
+V (t, x(t)) - V (t0, x0) <= - Z
+
+t
+
+t0 F (|x(s)|A)ds. So also property 2. holds with ff3 = F , and OE = fl1.
+
+4 Remaining Proofs, and Comments To prove proposition 2.3 the following technical lemma is needed. Although not explicitly stated in this form, this is what was being proved in Section 3 of [8].
+
+Lemma 4.1 Let \Phi (r, t) : (R>=0)2 ! R>=0 be a map such that
+
+(a) for all " > 0 there exists ffi > 0 such that if r <= ffi then \Phi (r, t) < " for all t >= 0, (b) for all " > 0 and for all R > 0 there exists T such that \Phi (r, t) < " for all 0 <= r <= R and for all t >= T .
+
+Then there exists a KL-function fi(*, *) such that
+
+\Phi (r, t) <= fi(r, t) 8 r, t.
+
+17
+
+Proof of proposition 2.3. We need to establish only the sufficiency part, the necessity part being obvious. We assume given a model \Sigma  of type (1) satisfying properties 1 and 2.
+
+Fix (t0, x0) 2 R * (Rn \ A). Let "0 > 0 be such that |x0|A = fl2("0) (such an "0 exists, fl2 being a K1-map). Then, by property 1, we may choose a control ut0,x0 such that kut0,x0k <= fl1(|x0|A) and |x(t, t0, x0, ut0,x0)|A <= "0 for all t >= t0. Let
+
+\Psi t0(r, t) = sup|
+
+x0|A <= r
+
+t - t0 >= 0
+
+|x(t, t0, x0, ut0,x0)|A , 8 r >= 0, 8 t >= t0,
+
+and
+
+\Phi (r, t) = sup
+
+t0 \Psi t0(r, t + t0), 8 r >= 0, 8 t >= 0.
+
+Assume that \Phi (r, t) satisfies both requirements (a) and (b) of lemma 4.1, and let fi(*, *) be the KL-function
+
+given by the same lemma. Then we have that for all (t0, x0) 2 R * (Rn \ A) there exists a control ut0,x0, with kut0,x0k <= fl1(|x0|A) such that
+
+|x(t, t0, x0, ut0,x0)|A <= \Psi t0(|x0|A , t) <= \Phi (|x0|A , t - t0) <= fi(|x0|A , t - t0). Thus \Sigma  is gac to A. So, to conclude, we just need to show that both requirements (a) and (b) are satisfied.
+
+(a) Fix any " > 0. Let ffi = fl2("). Then for all |x0|A <= ffi and for all t0 2 R, by property 1, we know that
+
+|x(t, t0, x0, ut0,x0)|A <= " 8 t >= t0.
+
+which clearly implies
+
+\Phi (r, t) <= ", 8r <= ffi, 8 t >= 0.
+
+(b) Fix any " > 0 and any R > 0. By property 2, we know that there exists T > 0 such that, for all |x0|A <= R, for all t0 2 R,
+
+|x(t, t0, x0, ut0,x0)|A <= " 8 t >= T + t0.
+
+thus also
+
+\Phi (r, t) <= ", 8r <= R, 8 t >= T,
+
+as desired.
+
+Remark 4.2 Observe that, in order to conclude the equivalence between definition 2.2 of gac and properties 1, 2 of proposition 2.3, it is essential that the control realizing the stability part (property 1) and the one realizing the attraction part (property 2) can be chosen to be the same. In fact, it is possible to give examples of systems (even time-invariant and with A = {0}) where both properties 1 and 2 of proposition 2.3 hold but with different control maps, and the system is not gac. We do not provide all the details here,
+
+18
+
+but merely sketch the construction of such an example, as follows. It is possible to build an autonomous two-dimensional model in which the origin is an attractor but not a stable point. In particular, there exist two C1-functions f1, f2 : R2 ! R such that if we look at the system (without control):
+
+.x1 = f1(x1, x2), .x2 = f2(x1, x2),
+
+it has the following properties.
+
+(a) The origin is an attractor point, i.e. for all x0 2 R2 the corresponding trajectory x(t) is defined for
+
+all t >= 0 and it is such that limt!+1 x(t) = 0.
+
+(b) The origin is an unstable point, i.e. there exists \Delta  > 0 such that, for all n >= 1, there exist xn 2 R2
+
+with |xn| < 1/n and tn > 0 such that, if we denote by xn(t) the trajectory with initial state xn, it holds
+
+|xn(tn)| > \Delta . (27)
+
+For the precise expression of the two functions f1, f2 and for the proof of properties 1, 2 we refer to [4] (Chapter 5, page 191), where such an example studied in detail. Now we look at the system:
+
+\Sigma  = 8!: .x1 = f1(x1, x2)u,.
+
+x2 = f2(x1, x2)u,
+
+with state space R2 and control space U = {0, 1}. Since this is an autonomous model, we may set t0 = 0 in the definitions. Since for this model A = {0}, we will use | * | instead of |*|A.
+
+By choosing u j 0 all the states are equilibria, thus property 1 of proposition 2.3 clearly holds with fl2 equal to the identity function. Now for any fixed r, ", if we choose u j 1, by property (a) of the uncontrolled dynamics, for all x 2 R2 with |x| <= r there exists Tx > 0 such that |x(Tx)| < ". By continuity of trajectories with respect to the initial state, there exists a neighborhood Ux of x such that, for all y 2 Ux, the corresponding trajectory, again with u j 1, is such that y(Tx)| < ". As S|x|<=r Ux is an open covering of the closed ball of radius r, by compactness there exists a finite subcovering by sets Ux1, . . . , Uxp. Now letting Tr," = max{Tx1 , . . ., Txp}, for this constant Tr," property 2 of proposition 2.3 holds. In fact if |x0| <= r then |x0| 2 Uxi for some i = 1, . . ., p. Choose
+
+u(t) = 8!: 1 for t 2 [0, Tx
+
+i),
+
+0 for t >= Txi,
+
+then, clearly, the corresponding trajectory is such that x0(t) < " for all t >= Tr,". However \Sigma  is not gac. To see this we argue as follows. If the model would be gac, then for each initial state x 2 R2 there would exist a control map u(t) such that the corresponding trajectory would satisfy
+
+|x(t)| <= fi(|x0|, t). (28)
+
+19
+
+for a given KL-function.
+
+Fix r > 0 small enough such that fi(r, 0) < \Delta . Then, by property (b) there exists xn, with |xn| <= r, such that the corresponding trajectory with u j 1 satisfies |xn(tn)| > \Delta . Let L = min{|xn(t)|, t 2 [0, tn]}, then there exists T > 0 such that fi(r, T ) < L. Since the trajectories of \Sigma  either follow the trajectories of the uncontrolled dynamics or stay in equilibrium, it is clear that for xn it is impossible to find a control maps such that the corresponding trajectory satisfies equation (28) for t >= T .
+
+We now conclude the proof of theorem 1 by showing that if V is a control-Lyapunov function, then V is also an integral control-Lyapunov function (i.e. we prove that 2 ) 3).
+
+Assume given a control-Lyapunov function V , together with maps ff1, ff2, ff3, and OE satisfying properties 1 and 2 of definition 2.4. Let ^OE be any continuous positive and increasing function such that ^OE(0) >= u and
+
+^OE(r) >= 8!: OE(r)
+
+ff-11 (ff2(r))
+
+Fix any (t0, x0) 2 R * (Rn \ A). Define
+
+M (t0, x0) = 8???!???:t > t0 fififififififififi
+
+9 w : [t0, t) ! P (U ) such that kwk <= ^OE(|x0|A) and 8 s 2 [t0, t) (?) V (s, x(s)) - V (t0, x0) <= - R st0 ff3(|x(o/)|A)8 do/
+
+9???=? ??; , (29) where x(s) = x(s, t0, x0, w). Notice that M (t0, x0) ` R>=0 [ {+1}. We will prove:
+
+(a) M (t0, x0) 6= ;, (b) sup M (t0, x0) 2 M (t0, x0),
+
+(c) sup M (t0, x0) = +1.
+
+Properties (b) and (c) clearly imply that V is also an integral control-Lyapunov function (using the maps ff1, ff2, 1/8ff3, and ^OE).
+
+(a) By property 2 of definition 2.4 there exists a relaxed control w : [t0, ~t) ! P (U ) with kwk <= OE(|x0|A) <= ^OE(|x0|A) such that equation (3) holds. In particular, this fact implies the existence of a sequence tk ! t+0 such that
+
+V (tk, x(tk)) - V (t0, x0) <= - ff3(|x0|A)2 (tk - t0). (30) By continuity there exists _t > t0 (we may assume _t <= ~t) such that for all r, s 2 [t0, _t) we have:
+
+ff3(|x(s)|A)
+
+2 < ff3(|x0|A), (31)
+
+|V (r, x(r)) - V (s, x(s))| < ff3(|x0|A)4 . (32)
+
+20
+
+Choose t0 < ^t <= _t such that for some index _k it holds t_k < _t and ^t - t0 < t_k - t0 < 1. Then for all t 2 [t0, ^t) we have:
+
+V (t, x(t)) - V (t0, x0) <= |V (t, x(t)) - V (t_k, x(t_k))| + V (t_k, x(t_k)) - V (t0, x0)
+
+< ff3(|x0|A)4 (t_k - t0) - ff3(|x0|A)2 (t_k - t0) < - ff3(|x0|A)4 (t - t0). Thus, by equation (31) we have:
+
+V (t, x(t)) - V (t0, x0) <= - Z
+
+t
+
+t0
+
+ff3(|x0|A)
+
+4 ds <= - Z
+
+t
+
+t0
+
+ff3(|x(s)|A)
+
+4 ds.
+
+Therefore ^t 2 M (t0, x0).
+
+(b) Let T = sup M (t0, x0), then either T 2 R or T = +1. In any case there exists a sequence tn 2 M (t0, x0) such that tn ! T . Thus for all n > 0 there exists wn : [t0, tn) ! P (U ) with kwnk <= ^OE(|x0|A) and such that xn(t) = x(t, t0, x0, wn) satisfies equation (?) for all t 2 [t0, tn). By sequential compactness of W^OE(|x0|A) we may assume that wn ! w0, where w0 is defined for all t 2 [t0, T ) and kw0k <= ^OE(|x0|A). Let x0(t) = x(t, t0, x0, w0), which by local existence is defined on an interval of the type [t0, _t). We want to prove:
+
+_t = T and xn ! x0. (33)
+
+From equation (33) we may conclude T 2 M (t0, x0) since equation (?), which holds for all n > 0, will still hold after having taken the limit as n ! +1.
+
+The proof of (33) is only sketched since the arguments are quite similar to the one used to prove lemma 3.12. Let
+
+A(t) = {xn(o/ ) | t < tn, o/ 2 [t0, t]},
+
+it is not hard to prove that A(t) is bounded. Then one proves that:
+
+if x0(t) exists 8 t 2 [t0, t0] then xn(t) ! x0(t) 8 t 2 [t0, t0]. (34) Let K = clos A(t0) [ {x0(t) | t 2 [t0, t0]}; then K is compact. Let L be a Lipschitz constant for f with x 2 K and ||u|| <= ^OE(|x0|A). Then one has:
+
+|xn(t) - x0(t)| <= L Z
+
+t
+
+t0 [||w
+
+n(s) - w0(s)|| + |xn(s) - x0(s)|] ds,
+
+from which, using the Bellman-Gronwall inequality equation (34) follows. Now to prove _t = T one argues as follows. Assume _t < T . Then for all t 2 [t0, _t), by (34), xn(t) ! x0(t) thus x0(t) 2 clos A(_t) which is compact, so the trajectory may be extended also to t = _t.
+
+(c) Now we want to prove that T = sup M (t0, x0) = +1. Assume that T < +1. Since T 2 M (t0, x0) by (b), there exists a relaxed control w : [t0, T ) ! P (U ) which satisfies all the requirements of equation (29) (call x(t) its corresponding trajectory). Let M be a bound for f when |x|A <= ff-11 (V (t0, x0)) and ||u|| <= ^OE(|x0|A). Then it holds that |x(t)| <= |x0| + M (T - t0). So the trajectory can be extended to
+
+21
+
+the endpoint T . Now if x(T ) 2 A, then we are done, since we may extend the control map w with the one given by the gac assumption and all the requirements of (29) continue to be satisfied. On the other hand, if x(T ) 62 A, then by what we have seen in part (a), there exists T1 > T with T1 2 M (T, x(T )) and a corresponding control w1 : [T, T1) ! P (U ) with kw1k <= OE(|x(T )|A) such that the corresponding trajectory satisfies equation (?). Since |x(T )|A <= ff-11 (ff2(|x0|A)), we have kw1k <= OE(|x(T )|A) <= ^OE(|x0|A), thus by concatenating the two control maps w and w1 we get that T1 2 M (t0, x0) contradicting the fact that T = sup M (t0, x0).
+
+References [1] Z. Arstein, Relaxed controls and dynamics of control systems, SIAM J. Control and Optimization, 16
+
+(1978), 689-701.
+
+[2] Z. Arstein, Stabilization with relaxed controls, Nonl. Anal., TMA 7 (1983), 1163-1173. [3] Clarke, F.H., Yu. S. Ledyaev, E.D. Sontag, and A.I. Subbotin, Asymptotic controllability implies
+
+feedback stabilization, IEEE Trans. Automat. Control, 42(1997): 1394-1407.
+
+[4] W. Hahn, 1967, Stability of Motion (Springer-Verlag, Berlin Heidelberg New York). [5] A. Isidori, 1989, Nonlinear Control Systems, Third Edition (Springer-Verlag, London). [6] M. Krsti'c, I. Kanellakopoulos, and P. Kokotovi'c, 1995, Nonlinear and Adaptive Control Design (John
+
+Wiley & Sons, New York).
+
+[7] Krsti'c, M. and H. Deng, 1998, Stabilization of Uncertain Nonlinear Systems Springer-Verlag, London,
+
+1998.
+
+[8] Lin, Y., E.D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust stability, SIAM
+
+J. Control and Optimization, 34(1996): 124-160.
+
+[9] E.D. Sontag, A Lyapunov-like characterization of asymptotic controllability, SIAM J. Control and
+
+Optimization, 21 (1983), 462-471.
+
+[10] Sontag, E.D., 1998, Mathematical Control Theory, Deterministic Finite Dimensional Systems (Second
+
+Edition, Springer-Verlag, New York).
+
+[11] Sontag E.D., Stability and stabilization: Discontinuities and the effect of disturbances, Proceedings of
+
+NATO Advanced Study Institute "Nonlinear Analysis, Differential Equations, and Control", Montreal, Jul/Aug 1998, Kluwer, 1999, to appear.
+
+22</pre>
+</body>
+</html>

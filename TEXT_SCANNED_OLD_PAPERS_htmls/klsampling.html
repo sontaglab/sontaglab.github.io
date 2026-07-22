@@ -1,0 +1,772 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/klsampling.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/klsampling.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Formulas relating KL stability estimates of discrete-time and
+
+sampled-data nonlinear systems
+
+D. Ne^si'c\Lambda  Department of Electrical and Electronic Engineering, The University of Melbourne, Parkville, 3052, Victoria, Australia
+
+A. R. Teely CCEC, Electrical and Computer Engineering Department, University of California,
+
+Santa Barbara, CA, 93106-9560, USA
+
+E. D. Sontagz, Department of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA
+
+Abstract We provide an explicit KL stability or input-to-state stability (ISS) estimate for a sampled-data nonlinear system in terms of the KL estimate for the corresponding discrete-time system and a K function describing inter-sample growth. It is quite obvious that a uniform inter-sample growth condition, plus an ISS property for the exact discrete-time model of a closed-loop system, implies uniform ISS of the sampled-data nonlinear system. Our results serve to quantify these facts by means of comparison functions. Our results can be used as an alternative to prove and extend results in [1] or extend some results in [4] to a class of nonlinear systems. Finally, the formulas we establish can be used as a tool for some other problems which we indicate.
+
+1 Introduction There is a strong motivation for the investigation of sampled-data systems due to the prevalence of computer controlled systems (see [4, 5, 6]). Moreover, very often linear theory does not suffice and we need to deal with nonlinear sampled-data systems (see [3, 9, 10]). Although the topic is very old there does not appear to be a comprehensive theory even for analysis of properties of sampled-data nonlinear systems. For instance, Lp stability properties of linear sampled-data systems were completely characterized recently in [4], whereas such a characterization is still lacking for nonlinear sampled-data systems.
+
+The ideas of "sampling", which are related to Poincare maps, can be used to analyze properties of continuous-time systems (see [1, 2, 16, 24, 20, 21]). Recently, a Lyapunov type theorem was proved in [1] to show uniform local asymptotic stability of time-varying nonlinear systems by using a Lyapunov function whose value decreases along the solutions only at sampling instants. This result was used in [2, 16] to prove several new results on averaging of nonlinear systems. A generalization of the stability result from [1] was presented in [24] where it was shown that global asymptotic stability of the averaged system implies semi-global-practical stability of the original nonlinear system.
+
+\Lambda This work was performed while the author was visiting CCEC, Electrical and Computer Engineering Department, University of California, Santa Barbara. Research supported by National Science Foundation under grant ECS 9528370. Email: dragan@gibran.ece.ucsb.edu
+
+yThis work was supported in part by AFOSR grant F49620-98-1-0087 and in part by National Science Foundation grant
+
+ECS-9896140. Email: teel@ece.ucsb.edu
+
+zThis work was supported in part by US Air Force Grant F49620-98-1-0242. Email: sontag@hilbert.rutgers.edu
+
+1
+
+An important method in stability and ISS analysis of continuous-time systems is based on the use class-KL and class-K functions (for classical results on KL functions see [12, pp. 135-139] or [8, pp. 7-8 and 95-101]; for new results on KL functions see [18]; for ISS see [19]). We give precise definitions of these functions in the preliminaries section. By using this method, definitions and often some proofs are simplified and more obvious (for instance, see [12, Section 5.3] or [8, 18, 19]). However, the theory that would allow the use of class-KL and class-K functions in the context of sampled-data nonlinear systems seems to be lacking.
+
+It is the purpose of this paper to relate discrete-time and sampled-data KL stability or ISS estimates. The explicit formulas that we present are a tool which allows us to prove new results as well as provide alternative proofs for some old results. A consequence of the established bounds is that stability or ISS of the exact discrete-time model of the system implies the same (equivalent) property of the sampleddata model, under a uniform inter-sample growth condition. Some of our results generalize the result on L1 stability of linear systems in [4] to a class of nonlinear systems. It is possible to use our method as an alternative to prove results of [1]. Moreover, in Section 4 we generalize the main result of [1] to cover the ISS property. The formulas we establish provide the last technical step in the proof of the main result in [15] where we presented conditions which guarantee that the controller that globally stabilizes an approximate discrete-time model of the plant also semi-globally practically stabilizes the sampled-data system. Also, the results in [13, 17] can be alternatively proved using the results of our paper and the approach in [15]. We introduce a new property of class-KL functions (the UIB property, defined below), that is very useful when relating discrete-time and sampled-data estimates. Finally, we prove a comparison theorem for discrete-time systems based on the use of an auxiliary scalar differential equation. We emphasize that our results hold for a large class of nonlinear systems and for arbitrary fixed sampling periods (this is not a fast sampling result).
+
+As an example of the relationship we obtain, suppose that there exist rs; rb ? 0, fi 2 KL and ~fl 2 K1, such that: 1.) the discrete-time model satisfies the estimate
+
+jx(k0)j ^ rs ) jx(k)j ^ fi(jx(k0)j ; k \Gamma  k0); k * k0 * 0; where k; k0 2 N; and 2.) the inter-sample behavior is characterized in the following way:
+
+8t0 * 0; jx(t0)j ^ rb ) jx(t)j ^ ~fl(jx(t0)j); t 2 [t0; t0 + T ]; where T ? 0 is the sampling period. Then the sampled-data model satisfies the bound
+
+jx(t0)j ^ rx ) jx(t)j ^ _fi(jx(t0)j ; t \Gamma  t0); t * t0 * 0; where rx := minf~fl\Gamma 1(rs); ~fl\Gamma 1 ffifi\Gamma 10 (rb)g; fi0(s) = fi(s; 0) (it is safe to assume that fi0 2 K1, see Remark 1 below) and _fi is as follows: If ~fl( fi(~fl(s); o/ ) ) 2 KL satisfies a property that we precisely define later (uniform incremental boundedness), then
+
+_fi(s; o/ ) := maxf ~fl(s)eT\Gamma o/ ; P ~fl( fi(~fl(s); o/T ) )g;
+
+where P ? 0. Otherwise, we show that in general _fi(s; o/ ) 2 KL can be constructed as:
+
+_fi(s; o/ ) := maxf ~fl(s)eT \Gamma o/ ; 4 max
+
+j2[0;o/] 2
+
+\Gamma j~fl( fi(~fl(s); o/ \Gamma  j
+
+T ) ) g:
+
+Similar formulas are derived for ISS and also under stronger hypotheses we obtain global estimates.
+
+The paper is organized as follows. In Section 2 we introduce the class of systems we consider and present definitions and notation. In Sections 3 and 4 we present, respectively, main results and applications of main results. A summary is given in the last section. An important technical lemma is proved in the appendix.
+
+2 Preliminaries We concentrate on the class of nonlinear sampled-data systems (see, for example, [9]). The model given below represents a continuous-time plant (Sct) controlled in a closed-loop by a digital controller (Sdt),
+
+2
+
+the two being interconnected via the sampler (S) and the zero order hold (H). The system is described by the equations:
+
+Sct : .x1(t) = f1(t; x1(t); ~y2(t); d1(t)); t * 0; t 2 R
+
+y1(t) = h1(x1(t)); S : y1(k) = y1(kT ); k * 0; k 2 N Sdt : x2(k + 1) = f2(k; y1(k); x2(k); d2(k));
+
+y2(k) = h2(x2(k); y1(k)); H : ~y2(t) = y2(k); t 2 [kT; (k + 1)T [: (1)
+
+where T ? 0 is a fixed sampling period. The following notation is used: x1 2 Rn1 ; y1 2 Rp1 and x2 2 Rn2 ; y2 2 Rp2 represent respectively the states and outputs of the plant and controller; d1 2 Rs1 ; d2 2 Rs2 are exogenous disturbances. The vector disturbance is denoted as d(t) = (dT1 (t) dT2 (k))T ; t 2 [kT; (k + 1)T [, where d1 is measurable and essentially bounded and d2 is bounded, and its infinity norm kdk1 = ess supt*0 jd1(t)j + supk*0 jd2(k)j. It is assumed that h1(0) = 0; h2(0; 0) = 0 and all of the functions are continuous.
+
+A function fl : R*0 ! R*0 is of class-G (fl 2 G) if it is continuous, zero at zero and nondecreasing. It is of class-K if it is of class-G and strictly increasing. It is of class-K1 if it is of class-K and is unbounded. A continuous function fi : R*0 \Theta R*0 ! R*0 is of class-KL if fi(\Delta ; o/ ) is of class-K for each o/ * 0 and fi(s; \Delta ) is monotonically decreasing to zero for each s ? 0 (not all papers assume monotonicity as a property of KL functions). A class-KL function fi(s; o/ ) is called exponential if fi(s; o/ ) ^ Kse\Gamma co/ ; K ? 0; c ? 0. We introduce a new property which plays an important role in relating discrete-time and sampled-data stability estimates: A class-KL function fi(s; o/ ) is called uniformly incrementally bounded (UIB) if there exists a number P ? 0 such that fi(s; o/ ) ^ P fi(s; o/ + 1); 8s * 0; 8o/ 2 N. Note that since fi 2 KL we actually have P ? 1. For instance, given positive numbers B; ff and fi(s; o/ ) = Bse\Gamma ffo/ , then fi 2 KL is UIB and P = eff. The following lemma, whose proof is given in the appendix, and the corollary are two of the most important properties of UIB class-KL functions that we use in the sequel:
+
+Lemma 1 Given an arbitrary class-KL function fi(s; o/ ), there exists a class-KL function ~fi(s; o/ ), which is UIB, such that fi(s; o/ ) ^ ~fi(s; o/ ); 8s * 0; 8o/ * 0. More precisely, we can always take
+
+~fi(s; o/ ) := max
+
+j2[0;o/] 2
+
+\Gamma jfi(s; o/ \Gamma  j); (2)
+
+and P = 2.
+
+The proof of the corollary below follows immediately by induction: Corollary 1 Given an arbitrary UIB function fi(s; o/ ) 2 KL and any integer l * 0, we have that:
+
+fi(s; o/ ) ^ P lfi(s; o/ + l); 8o/ 2 N; s * 0:
+
+The system (1) is considered on the time interval t * 0 for continuous-time part of the system and k * 0 for discrete-time part of the system. Let x1(0); x2(0) be specified. We choose the state of the sampled-data system xsd(t) at time t to be (see also [4]):
+
+xsd(t) := (xT1 (t) h1(x1(kT )) xT2 (k))T ; t 2 [kT; (k + 1)T [; k 2 N: (3) Our choice is motivated by the fact that having xsd(t0) we can compute all signals in the system forward in time. Indeed, suppose that for some t1 2 [kT; (k + 1)T [ we know xsd(t1); d[t1; 1). Then we can solve the following equations in order:
+
+y1(k) = h1(x1(kT )) y2(k) = h2(x2(k); y1(k))
+
+~y2(t) = y2(k); t 2 [t1; (k + 1)T ]
+
+.x1(t) = f1(t; x1(t); ~y2(t); d1(t)); x1(t1); d1[t1; (k + 1)T ] x2(k + 1) = f2(k; h1(x1(kT )); x2(k); d2(k)); x2(k); d2(k) (4)
+
+3
+
+to obtain the value of xsd(t); t 2 [t1; (k + 1)T ], assuming no finite escape time within this interval. By repeating similar calculations over successive sampling intervals we can find xsd(t); 8t * t1, which shows that xsd(t) is an appropriate choice for the state of the system. Moreover, xsd(t) is, in a sense, a minimal choice since dropping either x1(t1), h1(x1(kT )) or x2(k) from the definition of xsd(t1) proves insufficient to compute all variables for t * t1.
+
+The sampled-data system (1) is time-varying even without explicit dependence of f1 and f2 on t and k respectively (since trajectories starting at x(t0) = x\Lambda ; t0 = kT do not coincide in general with trajectories starting at x(t1) = x\Lambda ; t1 6= kT ) and we investigate the following properties:
+
+Definition 1 The system (1) is called
+
+1. uniformly locally asymptotically stable (ULAS) (uniformly globally asymptotically stable (UGAS))
+
+if there exist fi 2 KL, and rx ? 0 (there exists fi 2 KL) such that for any t0 * 0 the following holds:
+
+jxsd(t0)j ^ rx (8xsd(t0) 2 Rn ) ) jxsd(t)j ^ fi(jxsd(t0)j ; t \Gamma  t0); 8t * t0; (5)
+
+2. uniformly locally exponentially stable (ULES) if it is ULAS with an exponential estimate fi(s; o/ ) =
+
+Bse\Gamma ffo/ ; ff; B ? 0; uniformly globally exponentially stable (UGES) if it is UGAS with an exponential estimate fi.
+
+3. uniformly locally input-to-state stable (ULISS) (uniformly input-to-state stable (UISS)) if there
+
+exist fi 2 KL, fl 2 K and rx; rd ? 0 (there exist fi 2 KL and fl 2 K) such that for any t0 * 0 the following holds:
+
+jxsd(t0)j ^ rx; kdk1 ^ rd (8xsd(t0) 2 Rn ; kdk1 ! 1) )
+
+jxsd(t)j ^ fi(jxsd(t0)j ; t \Gamma  t0) + fl(kdk1); 8t * t0: (6)
+
+Remark 1 We note that fi0(s) := fi(s; 0) can be assumed to belong to class-K1 since necessarily fi(s; 0) * s; 8s ^ rx (just take t = t0 and kdk1 = 0).
+
+We will also consider the behavior of (1) at sampling instants only xsd(kT ) = xsd(k). If there are no disturbances, the exact discrete-time model of (1) is obtained by integrating the plant equations over one sampling interval. If there are some disturbances it is standard to assume that they are constant over sampling intervals. We do not necessarily take this approach in the sequel and we refer to the exact discrete-time model for (1) meaning the discrete-time model whose solutions coincide at sampling instants kT with solutions of (1) for the same initial states and inputs. We remark that if the plant and controller equations in (1) are time invariant, the exact discrete-time model is time invariant. For the stability properties of the exact discrete-time model of (1) we use Definition 1 where t and t0 are respectively replaced by k and k0, where k; k0 2 N.
+
+Before we present main results we note that in [9] the "state" vector xrsd(t) = (xT1 (t) xT2 (k))T ; t 2 [kT; (k + 1)T [ was used to prove a stability result for (1). We show below that the discrepancy with (3) is not important for the stability or ISS analysis. Denote xsd(kT ) = xsd(k) and xrsd(kT ) = xrsd(k).
+
+Lemma 2 Consider the system (1). The following statements are equivalent:
+
+1. there exist fi 2 KL and fl 2 K1 such that
+
+8xsd(0) 2 Rn1 \Theta p1\Theta n2 ; kdk1 ! 1 ) jxsd(k)j ^ fi(jxsd(k0)j ; k \Gamma  k0) + fl(kdk1); 8k * k0 * 0:
+
+2. there exist fir 2 KL and flr 2 K1 such that
+
+8xrsd(0) 2 Rn1 \Theta n2; kdk1 ! 1 ) jxrsd(k)j ^ fir(jxrsd(k0)j ; k) + flr(kdk1); 8k * k0 * 0:
+
+4
+
+Proof: The norm of a vector x = (x1 : : : xn)T in this proof is taken as jxj = Pi jxij. By assumption h1 is continuous and zero at zero and hence it is K-bounded; that is, there exists flh1 2 K1 such that jh1(x1)j ^ flh1(jx1j). Both cases follow by direct computations and the relationship between the estimates is:
+
+1 ) 2: Given fi and fl we compute fir(s; o/ ) = fi(s + flh1(s); o/ ), flr(s) = fl(s). 2 ) 1: Given fir and flr we compute fi(s; o/ ) = fir(s; o/ ) + flh1(2fir(s; o/ )), fl(s) = flr(s) + flh1 (2flr(s)). By equivalence of norms, we can write the result for any other norm. Q.E.D.
+
+From Lemma 2 it follows that to conclude discrete-time stability or ISS of the whole system, we can use only part of the state vector. A straightforward consequence of the proof of Lemma 2 is:
+
+Corollary 2 Consider the system (1) and suppose that there exists Kh1 ? 0 such that
+
+jh1(x1)j ^ Kh1 jx1j ; 8x1: (7) Then if one of the conditions in Lemma 2 holds with an exponential class-KL function, then the other condition also holds with an exponential class-KL function.
+
+Local versions of Lemma 2 and Corollary 2 can be easily formulated and details are omitted. Note that besides exponential convergence of xrsd at sampling instants we need also the condition (7) to guarantee exponential convergence of xsd at sampling instants.
+
+Remark 2 In the sequel we use the discrete-time KL estimates on xsd to state main results. However, by exploiting respectively Lemma 2 and Corollary 2 we can restate the results on asymptotic stability and exponential stability using the discrete-time estimates on the vector xrsd. These statements are omitted for space reasons.
+
+The following definition is used in statements of our results. Definition 2 Given a sampling period T ? 0, we say that the solutions of (1) are uniformly bounded over T (UBT) if there exist numbers rb ? 0 and rb1 ? 0 and class-K1 functions ~fl; ~fl1 such that given any t0 * 0, jxsd(t0)j ^ rb and disturbance d(t) such that kdk1 ^ rb1, the solution of the system (1) exists on [t0; t0 + T ] and satisfies the bound:
+
+jxsd(t)j ^ ~fl(jxsd(t0)j) + ~fl1(kdk1); t 2 [t0; t0 + T ]: (8)
+
+If the given bounds hold for all x(t0) (and for all disturbances such that kdk1 ! 1) then we say that the solutions are uniformly globally bounded over T (UGBT). Also, in the second case if the function ~fl above can be over bounded by a linear function, we say that the solutions are linearly uniformly bounded over T (LUBT) or linearly uniformly globally bounded over T (LUGBT).
+
+When there are no disturbances we understand that ~fl1, r1 and kdk1 are omitted from the above definition. This form of Definition 2 is used when we state stability results. The following two sufficient conditions for UBT and UGBT follow directly from continuity of solutions and can be easily proved using the same proof technique as in Theorems 2.5 and 2.6 in [12] (see also Lemma 1 in [1]):
+
+Lemma 3 Suppose that there exist k1; R ? 0 and fli 2 K1; i = 1; : : : ; 5 such that if
+
+R * maxfjx1j ; jx2j ; j~y2j ; jh1(x1)j ; jd1j ; jdj2g then f1 and f2 in (1) satisfy
+
+jf1(t; x1; ~y2; d1)j ^ k1 jx1j + fl1(j~y2j) + fl2(jd1j); 8t * 0; jf2(k; h1(x1); x2; d2)j ^ fl3(jx2j) + fl4(jh1(x1)j) + fl5(jd2j); 8k * 0; (9)
+
+Then given any T ? 0 the solutions of (1) are UBT.
+
+Lemma 4 Suppose that f1 and f2 in (1) satisfy (9) for all x1; x2 and all d1; d2. Then given any T ? 0 the solutions of (1) are UGBT.
+
+5
+
+3 Main results We present below conditions that guarantee ULAS, UGAS, ULES, UGES, ULISS and UISS property for the sampled-data system. Moreover, we give the explicit formulas for computing the sampled-data KL estimates using such estimates for the discrete-time system, and the class-K1 functions given in Definition 2.
+
+Theorem 1 (sampled-data ULAS , discrete-time ULAS + UBT)
+
+The sampled-data system (1) is ULAS if and only if the following conditions hold:
+
+1. the discrete-time model is ULAS 2. the solutions are UBT. In particular, if there exist rs; rb ? 0, fi 2 KL and ~fl 2 K1, such that
+
+(DT \Gamma  U LAS) jxsd(k0)j ^ rs ) jxsd(k)j ^ fi(jxsd(k0)j ; k \Gamma  k0); k * k0 * 0
+
+(U BT ) 8t0 * 0; jxsd(t0)j ^ rb ) jxsd(t)j ^ ~fl(jxsd(t0)j); t 2 [t0; t0 + T ]; (10)
+
+then
+
+(SD \Gamma  U LAS) jxsd(t0)j ^ rx ) jxsd(t)j ^ _fi(jxsd(t0)j ; t \Gamma  t0); 8t * t0 * 0; (11) where _fi 2 KL is given by
+
+1. when ^fi(s; o/ ) := ~fl( fi(~fl(s); o/ ) ) is UIB with P ? 1 we can take
+
+_fi(s; o/ ) = maxf ~fl(s)eT\Gamma o/ ; P 2 ^fi(s; o/T ) ) g; (12)
+
+2. in general we can take
+
+_fi(s; o/ ) = maxf ~fl(s)eT \Gamma o/ ; 4 max
+
+j2[0;o/] 2
+
+\Gamma j ^fi(s; o/ \Gamma  j
+
+T )g; (13)
+
+and rx = minf~fl\Gamma 1(rs); ~fl\Gamma 1 ffi fi\Gamma 10 (rb)g; fi0(s) = fi(s; 0); fi0 2 K1.
+
+Proof: Necessity is obvious and we address only sufficiency. The proof is constructive and we show that (10) implies (11) with (12) or (13). Let rx = minf~fl\Gamma 1(rs); ~fl\Gamma 1ffi fi\Gamma 10 (rb)g, where fi0(s) = fi(s; 0) is a class-K1 function. Note that ~fl(s) * s; fi0(s) * s so rx ^ minfrs; fi\Gamma 10 (rb)g ^ minffi0(rs); rbg.
+
+With this choice for rx ? 0, the following holds: given any t0 * 0 and N 2 N such that t0 2 [N T; (N + 1)T [, we have
+
+jxsd(t0)j ^ rx ) jxsd(t)j ^ ~fl(jxsd(t0)j); 8t 2 [t0; (N + 1)T ]: (14) From (14) and the first condition in (10) we have:
+
+jxsd(t0)j ^ rx ) jxsd(N + 1)j ^ minfrs; fi\Gamma 10 (rb)g
+
+) jxsd(k)j ^ minffi0(rs); rbg; 8k * N + 1: (15)
+
+The UBT property implies then that if jxsd(t0)j ^ rx then xsd(t) exists and is bounded for all t * t0. We consider below only initial states such that jxsd(t0)j ^ rx.
+
+Also, since eT \Gamma o/ * 1; 8o/ ^ T , we can write using (14):
+
+jxsd(t)j ^ ~fl(jxsd(t0)j)
+
+^ ~fl(jxsd(t0)j)eT \Gamma (t\Gamma t0); =: fi1(s; t \Gamma  t0); 8t 2 [t0; (N + 1)T ]: (16)
+
+6
+
+On the other hand, we can also write:
+
+jxsd(t)j ^ ~fl(jxsd(k + N + 1)j); t 2 [(N + 1 + k)T; (N + 2 + k)T ]; k * 0: Then given any t0 * 0 and N 2 N such that t0 2 [N T; (N + 1)T [, from ULAS of the discrete-time model we have that for any k * 0 and t 2 [(N + 1 + k)T; (N + 2 + k)T [ the following holds:
+
+jxsd(t)j ^ ~fl(fi(jxsd(N + 1)j ; k))
+
+^ ~fl(fi(~fl(jxsd(t0)j); k)) =: ^fi(jxsd(t0)j ; k): (17)
+
+If ^fi is UIB class-KL function (see Corollary 1), we can write:
+
+jxsd(t)j ^ ^fi(jxsd(t0)j ; k)
+
+^ P 2 ^fi(jxsd(t0)j ; k + 2); t 2 [(N + 1 + k)T; (N + 2 + k)T [; k * 0: (18)
+
+Now note that with the above defined t0; N; t we have t\Gamma t0T ! (N+2+k)T \Gamma NTT = k + 2; 8k * 0 and since
+
+^fi is class-KL, we can rewrite (18):
+
+jxsd(t)j ^ P 2 ^fi(jxsd(t0)j ; k + 2)
+
+! P 2 ^fi(jxsd(t0)j ; t \Gamma  t0T ) =: fi2(jxsd(t0)j ; t \Gamma  t0); t * (N + 1)T: (19) Introduce a new class-KL function _fi:
+
+_fi(s; o/ ) := maxffi1(s; o/ ); fi2(s; o/ )g
+
+and from (16) and (19) we can write
+
+jxsd(t0)j ^ rx ) jxsd(t)j ^ _fi(jxsd(t0)j ; t \Gamma  t0); t * t0; where t0 * 0 is arbitrary.
+
+If ^fi is not UIB, we majorize it using Lemma 1 with a UIB class-KL function ~fi (P = 2 in this case):
+
+~fi = max
+
+j2[0;o/] 2
+
+\Gamma j~fl( fi(~fl(s); o/ \Gamma  j
+
+T ) );
+
+and repeat all the calculations, which completes the proof. Q.E.D.
+
+Remark 3 We note that the above proof may be carried out without resorting to the UIB property. Indeed, what we really need in the proof is that given an arbitrary class-KL function fi(s; o/ ), we can find another class-KL function fi1(s; o/ ) such that
+
+fi(s; o/ ) ^ fi1(s; o/ + 2); 8s; o/ * 0: Another way to see that we can find such fi1 in addition to using Lemma 1 and Corollary 1 is to use Lemma 8 of [18] which states that given any fi 2 KL, we can always find u; v 2 K1 such that
+
+fi(s; o/ ) ^ u(s)v(e\Gamma o/ ); 8 s * 0; o/ * 0: Also, using Corollary 10 in [18] we can always find v1; v2 2 K1 such that v(cd) ^ v1(c)v2(d); 8c; d * 0, which implies
+
+v(e\Gamma o/ ) = v(e2 e\Gamma o/\Gamma 2) ^ v1(e2)v2(e\Gamma o/\Gamma 2):
+
+We define fi1(s; o/ ) := u(s)v1(e2)v2(e\Gamma o/ ) and it follows that fi(s; o/ ) ^ fi1(s; o/ + 2); 8s; o/ * 0.
+
+We presented the UIB property for the following reasons: it allowed us to obtain more explicit formulas which relate the original fi with its UIB over bound fi1; the construction we just showed may lead to a more conservative fi1 when compared to the approach we took in the paper; UIB is a new property of class-KL functions which seems to be of interest in its own right.
+
+7
+
+Note that formula (13) in Theorem 1 holds in general. In the results to follow, instead of stating separately formulas for KL functions depending on whether ^fi is UIB or not, we only state the formulas that hold in general. The changes in statements when ^fi is UIB are obvious. The following three results are proved in a similar manner and proofs are omitted.
+
+Theorem 2 (sampled-data UGAS , discrete-time UGAS + UGBT)
+
+The sampled-data system (1) is UGAS if and only if:
+
+1. the discrete-time model is UGAS 2. the solutions of (1) are UGBT
+
+In particular, if there exist fi 2 KL and ~fl 2 K1, such that
+
+(DT \Gamma  U GAS) jxsd(k)j ^ fi(jxsd(k0)j ; k \Gamma  k0); k * k0 * 0; 8xsd(k0)
+
+(U GBT ) jxsd(t)j ^ ~fl(jxsd(t0)j); 8t0 * 0; t 2 [t0; t0 + T ]; 8xsd(t0) (20)
+
+then, 8xsd(t0)
+
+(SD \Gamma  U GAS) jxsd(t)j ^ _fi(jxsd(t0)j ; t \Gamma  t0); 8t * t0 * 0; (21) where _fi 2 KL is given by (13).
+
+Theorem 3 (discrete-time ULES + LUBT , sampled-data ULES)
+
+The sampled-data system is ULES if and only if
+
+1. the discrete-time model is ULES, 2. the solutions of (1) are LUBT,
+
+In particular, if there exist rs; rb ? 0; B ? 0; ff ? 0 such that
+
+(DT \Gamma  U LES) jxsd(k0)j ^ rs ) jxsd(k)j ^ Be\Gamma ff(k\Gamma k0) jxsd(k0)j ; k * k0 * 0 (LUBT ) 8t0 * 0; jxsd(t0)j ^ rb ) jxsd(t)j ^ ~K jxsd(t0)j ; t 2 [t0; t0 + T ]; (22)
+
+then
+
+(SD \Gamma  U LES) jxsd(t0)j ^ rx ) jxsd(t)j ^ Ke
+
+\Gamma ff(t\Gamma t0)
+
+T jxsd(t0)j ; 8t * t0 * 0;
+
+where K := ~K2e2ffB, rx := minf r
+
+s
+
+~K ; r
+
+b ~KB g.
+
+Theorem 4 (discrete-time UGES + LUGBT , sampled-data UGES) The sampled-data system is UGES if and only if
+
+1. the discrete-time model is UGES, 2. the solutions of (1) are UGBT,
+
+In particular, if there exist B ? 0; ff ? 0 such that
+
+(DT \Gamma  U GES) jxsd(k)j ^ Be\Gamma ff(k\Gamma k0) jxsd(k0)j ; k * k0 * 0; 8xsd(k0)
+
+(LU GBT ) jxsd(t)j ^ ~K jxsd(t0)j ; t 2 [t0; t0 + T ]; 8t0 * 0; 8xsd(t0) (23)
+
+then, 8xsd(t0)
+
+(SD \Gamma  U GES) jxsd(t)j ^ Ke
+
+\Gamma ff(t\Gamma t0)
+
+T jxsd(t0)j ; 8t * t0 * 0;
+
+where K := ~K2e2ffB.
+
+8
+
+Remark 4 Under the conditions of Lemma 3 (respectively Lemma 4), namely a sector bound on f , it can be shown that if jh2(x2; y1)j ^ flh2(jxj) then the solutions of (1) are UBT (respectively GUBT) with ~fl(s) / flh2(s). Hence, if flh2 is locally (or globally) linearly bounded, ~fl is also locally (globally) linearly bounded and exponential convergence of xsd at sampling instants implies ULES (UGES) of the sampled-data system. Without the liner bound on flh2, and therefore on ~fl, it is not clear whether ULES (UGES) of the discrete-time model implies ULES (UGES) of the sampled-data model.
+
+Using a proof similar to that of Theorem 1, we can prove the following two results: Theorem 5 (sampled-data ULISS , discrete-time ULISS + UBT)
+
+The sampled-data system (1) is ULISS if and only if the following conditions hold:
+
+1. the discrete-time model is ULISS, and 2. the solutions are UBT.
+
+In particular, if there exist rs; rs1; rb; rb1 ? 0, fi 2 KL and ~fl; ~fl1; fl1 2 K1, such that (DT \Gamma  U LISS) jxsd(k0)j ^ rs kdk1 ^ rs1 ) jxsd(k)j ^ fi(jxsd(k0)j ; k \Gamma  k0) + fl1(kdk1); k * k0 * 0
+
+(U BT ) 8t0 * 0; jxsd(t0)j ^ rb kdk1 ^ rb1 ) jxsd(t)j ^ ~fl(jxsd(t0)j) + ~fl1(kdk1); t 2 [t0; t0 + T ]; (24)
+
+then
+
+(SD \Gamma  U LISS) jxsd(t0)j ^ rx; kdk1 ^ rd ) jxsd(t)j ^ _fi(jxsd(t0)j ; t \Gamma  t0) + fld(kdk1); 8t * t0 * 0;
+
+(25)
+
+where we can take
+
+_fi(s; o/ ) := maxf ~fl(s)eT \Gamma o/ ; 4 max
+
+j2[0;o/] 2
+
+\Gamma j ~fl( 4 fi( 2~fl(s); o/ \Gamma  j
+
+T ) ) g;
+
+fld(s) := ~fl( 4fi(2~fl1(s); 0) ) + ~fl(2fl1(s)) + ~fl1(s)
+
+rx := max ae~fl\Gamma 1 ` (1 \Gamma  ffl)r
+
+s
+
+2 ' ; ~fl
+
+\Gamma 1 `fi\Gamma 10 ` (1 \Gamma  ffl)rb
+
+2 ''oe
+
+rd := min ae~fl\Gamma 11 ` fflr
+
+s
+
+2 ' ; fl
+
+\Gamma 11 ` fflrb
+
+2 ' ; r
+
+b1; rs1oe (26)
+
+and ffl is an arbitrary number 0 ! ffl ! 1. We note that there is some freedom in choosing rx and rd in (26) since we can choose the number ffl. Hence, we can decrease (increase) rx while increasing (decreasing) rd.
+
+Theorem 6 (sampled-data UISS , discrete-time UISS + UGBT) The sampled-data system (1) is UISS if and only if the following conditions hold:
+
+1. the discrete-time model is UISS, and 2. the solutions are UGBT.
+
+In particular, if there exist fi 2 KL and ~fl; ~fl1; fl1 2 K1, such that for kdk1 ! 1 we have
+
+(DT \Gamma  U ISS) jxsd(k)j ^ fi(jxsd(k0)j ; k \Gamma  k0) + fl1(kdk1); k * k0 * 0; 8xsd(k0)
+
+(U GBT ) jxsd(t)j ^ ~fl(jxsd(t0)j) + ~fl1(kdk1); t 2 [t0; t0 + T ]; 8t0 * 0; 8xsd(t0); (27)
+
+then, 8xsd(t0); kdk1 ! 1 we have
+
+(SD \Gamma  U ISS) jxsd(t)j ^ _fi(jxsd(t0)j ; t \Gamma  t0) + fld(kdk1); 8t * t0 * 0; (28) where _fi 2 KL and fld 2 K1 are given in (26).
+
+9
+
+4 Applications of main results In this section we show how our results can be applied to some problems. We indicate some results from the literature that either become corollaries of our results or for which our method provides an alternative proof.
+
+4.1 Relations between discrete-time stability and sampled-data ISS As a first illustration of the utility of our results we consider the relationship between the stability and ISS properties of the sampled-data system. The classical approach to this problem is to use an appropriate converse stability theorem and some assumptions which are then exploited to show the robustness, that is an appropriate ISS property (see Theorem 6.1 in [12]). We are not aware of any converse stability theorems for sampled-data systems. However, such theorems are available for discrete-time systems, see [14, 7]. Our results allow us to exploit the following implications in proving UISS or ULISS of sampleddata systems:
+
+discrete-time stability + assumptions ) discrete-time ULISS (UISS) + UBT ) sampled-data ULISS (UISS),
+
+the last implication being proved in the previous section. In this way, classical results on total stability (ULISS) of discrete-time systems, together with our results, give total stability results for the sampled-data systems.
+
+As a simple illustration of this approach we provide conditions that guarantee that discrete-time UGES implies sampled-data UISS. The result is based on the converse Lyapunov theorem for UGES of time-invariant discrete-time systems in [14]. A converse theorem for ULAS of time-varying discrete-time systems in [7] can be used in a similar way to show ULISS of sampled-data systems. For another result on discrete-time ULISS (total stability) see Theorem 2.3.7 in [22, pp.98].
+
+Suppose that the exact discrete-time model of the system (1) is time invariant:
+
+x(k + 1) = Fe(x(k); d[k]) (29) where Fe(0; 0) = 0 and d[k] := fd(t); t 2 [kT; (k + 1)T ]g. We take the norm of d[k] to be the supremum of d(t) over [kT; (k + 1)T ]. If d[k] = fd(k)g; d(k) = const: then we obtain the more familiar discrete-time model
+
+x(k + 1) = F \Lambda e (x(k); d(k)):
+
+Lemma 5 Suppose that Fe is globally Lipschitz for d[k] j 0 and there exists Kd ? 0 such that
+
+jFe(x; d[k]) \Gamma  Fe(x; 0)j ^ Kd jd[k]j ; 8x; jd[k]j ! 1; 8k * 0: Under these conditions, if (29) with d[k] j 0; 8k * 0 is GES, then the discrete-time model (29) is ISS.
+
+Proof: From the converse Lyapunov theorem in [14] for global exponential stability, we know that if
+
+x(k + 1) = Fe(x(k); 0) is GES, then we can find a Lyapunov function V (x), such that
+
+V (0) = 0 V (x) * jxj ; 8x 2 Rn 9L1 ? 0; jV (x) \Gamma  V (x1)j ^ L1 jx \Gamma  x1j ; 8x; x1 2 Rn V (Fe(x(k); 0)) \Gamma  V (x(k)) ^ (* \Gamma  1)V (x(k)); 8x(k) 2 Rn ; * 2]0; 1[ (30)
+
+We add and subtract V (Fe(x(k); d[k])) to the last condition and can write: V (Fe(x(k); d[k]))\Gamma V (x(k)) ^ (*\Gamma 1)V (x(k))+V (Fe(x(k); d[k]))\Gamma V (Fe(x(k); 0)); 8x(k) 2 Rn ; jd[k]j ! 1
+
+10
+
+and using the second condition we obtain: V (Fe(x(k); d[k]))\Gamma V (x(k)) ^ (*\Gamma 1)V (x(k))+L1 jFe(x(k); d[k]) \Gamma  Fe(x(k); 0)j ; 8x(k) 2 Rn ; jd[k]j ! 1: Finally, define Vk+1 := V (Fe(x(k); d[k]); Vk := V (x(k)) and from the conditions of theorem we have:
+
+Vk+1 ^ *Vk + L1Kd kdk1 ; 8x 2 Rn ; kdk1 ! 1: Using the discrete Gronwall lemma [23, pp. 9] we obtain:
+
+jx(k)j ^ L1*k jx(0)j + 1 \Gamma  *
+
+k
+
+1 \Gamma  * L1Kd kdk1 ^ L1*
+
+k jx(0)j + L1Kd
+
+1 \Gamma  * kdk1 ; 8x(0); 8d 2 L1
+
+which establishes the UISS of the discrete-time system (29). Q.E.D.
+
+A simple consequence of Theorem 6 is:
+
+Corollary 3 If the conditions of Lemma 5 are satisfied and the solutions are UGBT, then the sampleddata system (1) is UISS.
+
+In the case of linear systems controlled with linear controllers, we can easily see that the conditions of Corollary 3 are always satisfied and we recover Theorem 5 in [6] on L1 stability of sampled-data linear systems.
+
+4.2 A test for ISS of time-varying systems As a second application of our results we note that they can be used as an alternative to prove Theorem 1 in [1] (see also [24]), where a new Lyapunov type theorem was presented to test ULAS of time-varying nonlinear systems given by
+
+.x(t) = f (t; x(t)) (31) by using an appropriate "discrete-time" condition. By using our approach we can prove the following generalized result on ULISS (UISS):
+
+Theorem 7 Consider the system
+
+.x(t) = f (t; x(t); d(t)) (32) and suppose that there exists Td ? 0 such that the following conditions hold:
+
+1. There exist ~fl; ~fl1 2 K1 and rb ? 0; rb1 ? 0 such that for any t0 2 R; jx(t0)j ^ rb; kdk1 ^ rb1 the
+
+solutions of (32) exist on [t0; t0 + Td] and satisfy
+
+jx(t)j ^ ~fl(jx(t0)j) + ~fl1(kdk1); t 2 [t0; t0 + Td]: (33)
+
+2. There exist rs; rs1 ? 0, fi 2 KL and fl 2 K1 and a positive number Td ? 0 such that for any
+
+(x(t0); t0; d(t)) such that jx(t0)j ^ rs; kdk1 ^ rs1 there exists an increasing sequence ftig1i=0 with ti ! +1 as i ! 1 and ti+1 \Gamma  ti ^ Td; 8i * 0 such that
+
+jx(ti)j ^ fi(jx(t0)j ; ti \Gamma  t0) + fl(kdk1); i * 0: (34)
+
+Then the time-varying system (32) is ULISS. Moreover, if all the assumptions hold globally, the system (32) is UISS.
+
+11
+
+Proof: We show that there exist r ? 0; r1 ? 0 and fi\Lambda  2 KL; fl\Lambda  2 K1 such that for arbitrary t0 * 0 and jx(t0)j ^ r; kdk1 ^ r1 we have
+
+8t0 * 0; jx(t0)j ^ r; kdk1 ^ r1 ) jx(t0 + kTd)j ^ fi\Lambda (jx(t0)j ; k) + fl\Lambda (kdk1); k * 0; (35) and once this is established, the proof follows from Theorem 5.
+
+Introduce r := max n~fl\Gamma 1 i (1\Gamma ffl)r
+
+s
+
+2 j ; ~fl
+
+\Gamma 1 ifi\Gamma 10 i(1\Gamma ffl)r
+
+b
+
+2 jjo ; r1 := min n~fl
+
+\Gamma 11 \Gamma  fflrs
+
+2 \Delta  ; fl
+
+\Gamma 11 i fflrb
+
+2 j ; rb1; rs1o,
+
+where ffl is an arbitrary number 0 ! ffl ! 1. Using the same argument as in Theorem 5 it can be shown
+
+that jx(t0)j ^ r; kdk1 ^ r1 imply jx(ti)j ^ minffi0(rs); rbg; 8i, and using (33), we conclude that the solutions exist and satisfy the inequalities (33) and (34) respectively for all t0 * 0 and 8i * 0.
+
+Consider an arbitrary t0 * 0, jx(t0)j ^ r and kdk1 ^ r1. Consider the corresponding sequence ftig1i=0 and introduce a subsequence ftik g1k=0 such that ti0 = t0 and tik := maxfti : t0 + (k \Gamma  1)Td ^ ti ^ t0 + kTdg; k * 1, for which we can write for all k * 1:
+
+jx(t0 + kTd)j ^ ~fl(jx(tik )j) + ~fl1(kdk1)
+
+^ ~fl(fi(jx(t0)j ; tik \Gamma  t0) + fl(kdk1)) + ~fl1(kdk1) ^ ~fl(2fi(jx(t0)j ; tik \Gamma  t0)) + ~fl(2fl(kdk1)) + ~fl1(kdk1): (36)
+
+Since tik \Gamma  t0 ^ (k \Gamma  1)Td; 8k * 0 and fi 2 KL, we have that
+
+fi(jx(t0)j ; tik \Gamma  t0) ^ fi(jx(t0)j ; (k \Gamma  1)Td); 8k * 0: (37) We introduce fi1(s; o/ ) := fi(s; Td o/ ) using Lemma 1 we find ~fi1 2 KL such that fi1(s; o/ ) ^ ~fi1(s; o/ ) ^ 2 ~fi(s; o/ + 1). Hence, we can write that:
+
+~fl(2fi1(jx(t0)j ; k \Gamma  1)) ^ ~fl(2 ~fi1(jx(t0)j ; k \Gamma  1)) ^ ~fl(4 ~fi1(jx(t0)j ; k)); which, together with (36) and (37), proves (35) with fi\Lambda (s; o/ ) := ~fl(4 ~fi1(s; o/ )); fl\Lambda (s) := ~fl(2fl(s)) + ~fl1(s). Q.E.D.
+
+Theorem 1 in [1] is a corollary of Theorem 7 when d(t) j 0. Indeed, Lemma 1 in [1] follows from Lemmas 3 and 4 with d(t) j 0. Moreover, the existence of a positive definite, decrescent Lyapunov function which decreases at sampling instants along the solutions of (31) (see Theorem 1 in [1]) implies the existence of a class-KL function satisfying the second condition of Theorem 7 (more precisely (35) holds with kdk1 = 0) as we show below. The result is interesting since we obtain a discrete-time KL estimate by using a KL function obtained from an auxiliary continuous-time differential equation.
+
+Theorem 8 Let V : Rn ! R*0 and suppose that
+
+V (k + 1) \Gamma  V (k) ^ \Gamma ff(V (k)); V (k0) = V0 (38) where ff 2 K is defined on [0; b[; b ? 0. Then there exists fi 2 KL such that for any 0 ^ V0 ! b we have:
+
+V (k) ^ fi(V0; k \Gamma  k0); 8k * k0: (39) More specifically, the solution of the auxiliary scalar differential equation1
+
+.y = \Gamma ff(y); y(t0) = y0 (40) is class-KL in initial condition and elapsed time, i.e. we can write 0 ^ y0 ! b ) y(t) = fi1(y0; t \Gamma  t0), where fi1 2 KL and we can take fi(s; o/ ) := fi1(s; o/ ).
+
+1It can be assumed without loss of generality that ff is locally Lipschitz since if it is not we can always find a locally Lipschitz class-K function ff1 defined on [0; b[ such that \Gamma ff(s) ^ \Gamma ff1(s); s 2 [0; b[. Hence, we can assume uniqueness of solutions of the scalar differential equation (40).
+
+12
+
+Proof: We introduce a variable t 2 R and define y(t) := V (k) + (t \Gamma  k)(V (k + 1) \Gamma  V (k)); t 2 [k; k + 1]; k * 0. Note that 0 ^ y(k) = V (k); k * 0 and y(t) is a continuous function of "time" t. Moreover, it is absolutely continuous in t (in fact, piecewise linear) and we can write for almost all t:
+
+d dt y(t) = V (k + 1) \Gamma  V (k); t 2 [k; k + 1]; k * 0
+
+^ \Gamma ff(V (k)); t 2 [k; k + 1]; k * 0
+
+^ \Gamma ff(y(t)): (41)
+
+Let v(t) = fi(v0; t) be the (unique) solution of .v = \Gamma ff(v); v(t0) = v0. It is shown in Lemma 6.1 in [19] that fi 2 KL. By standard comparison theorems (see for instance [11, Theorem 1.10.2]) we have for y0 = v0 that
+
+y(t) ^ v(t) = fi(y0; t \Gamma  t0); 8t * t0
+
+which implies using V (k) = y(k) with t = k; t0 = k0; y0 = V0 that
+
+V (k) ^ fi(V0; k \Gamma  k0); k * k0; and this completes the proof. Q.E.D.
+
+4.3 On practical stability As we indicated, our results require the knowledge of stability or ISS properties of the exact discretetime model. The exact discrete-time model of (1) is difficult to obtain in general and especially when d1(t) 6= 0. However, it is often possible to conclude about stability properties of the exact model by using an approximate discrete-time model, such as Euler approximation. For instance, the results of [15] draw conclusions about stability for a family of exact discrete-time control systems based on stability and other properties assumed for a family of approximate discrete-time control systems. The family of exact discrete-time control systems is shown to be practically stable. Thus, the stability bounds involve positive offsets like:
+
+jx(k0)j ^ r ) jx(k)j ^ fi(jx(k0)j ; k \Gamma  k0) + R; k * k0 * 0: (42) While we have not explicitly stated results with offsets here, they can be handled in the same way that disturbances are handled. In particular, under the condition (42) and UBT (in fact, an offset is now allowed in the UBT definition) and if R is sufficiently small we can show that there exists _fi 2 KL and rx; _R ? 0 such that the solutions of the sampled-data system satisfy:
+
+jx(t0)j ^ rx ) jx(t)j ^ fi(jx(t0)j ; t \Gamma  t0) + _R; t * t0 * 0: (The proof of this result is the same as that of Theorem 5.) Hence, our results provide the last technical step in proving (practical) stability of a sampled-data system in the following way: approximate discretetime model stability + assumptions ) exact discrete-time model (practical) stability ) sampled-data model (practical) stability.
+
+5 Summary We presented formulas that relate KL stability and ISS estimates between the discrete-time and sampleddata models for a large class of systems. The estimates are very important in the analysis of sampleddata nonlinear systems and they allowed us to recover or generalize some results from the literature. We showed that ULISS (total stability) and UISS results for the sampled-data system can be deduced from the corresponding results for the discrete-time model. A new result on ULISS and UISS for time-varying nonlinear systems also follows from our approach. A new property of KL functions was presented and used to prove the results.
+
+13
+
+6 Appendix Proof of Lemma 1: Let ~fi(s; o/ ) be given by (2). This function satisfies the UIB property with P = 2:
+
+~fi(s; o/ ) = max
+
+j2[0;o/] 2
+
+\Gamma jfi(s; o/ \Gamma  j) = max
+
+R2[1;o/+1] 2
+
+\Gamma (R\Gamma 1)fi(s; o/ \Gamma  (R \Gamma  1))
+
+= 2 maxR
+
+2[1;o/+1] 2
+
+\Gamma Rfi(s; o/ + 1 \Gamma  R)
+
+^ 2 maxj
+
+2[0;o/+1] 2
+
+\Gamma jfi(s; o/ + 1 \Gamma  j)
+
+= 2 ~fi(s; o/ + 1) : We also have
+
+~fi(s; o/ ) * 2\Gamma jfi(s; o/ \Gamma  j)fifij=0 = fi(s; o/ ): (43)
+
+Now we show that ~fi is a class-KL function. K property: Since fi 2 KL, for arbitrary o/ * 0, ~fi(\Delta ; o/ ) is continuous and we have ~fi(0; o/ ) = 0. For arbitrary fixed o/ , consider s2 ? s1 * 0. Since fi 2 KL, for arbitrary o/ and j 2 [0; o/ ] we have that 2\Gamma jfi(s2; o/ \Gamma  j) ? 2\Gamma jfi(s1; o/ \Gamma  j) which implies ~fi(s2; o/ ) ? ~fi(s1; o/ ).
+
+L property: Given arbitrary fixed s ? 0, consider o/2 ? o/1. Introduce ffi := o/2 \Gamma  o/1 ? 0. Then we can write:
+
+~fi(s; o/2) = max
+
+j2[0;o/2] 2
+
+\Gamma jfi(s; o/2 \Gamma  j)
+
+= maxf maxj
+
+2[0;ffi] 2
+
+\Gamma jfi(s; o/2 \Gamma  j); max
+
+j2[ffi;o/1+ffi] 2
+
+\Gamma ffi2\Gamma (j\Gamma ffi)fi(s; o/1 \Gamma  (j \Gamma  ffi))g
+
+= maxf maxj
+
+2[0;ffi] 2
+
+\Gamma jfi(s; o/2 \Gamma  j); max
+
+h2[0;o/1] 2
+
+\Gamma ffi2\Gamma hfi(s; o/1 \Gamma  h)g
+
+=: maxffi1(s; o/2); 2\Gamma ffi ~fi(s; o/1)g (44) Obviously we have that 2\Gamma ffi ~fi(s; o/1) ! ~fi(s; o/1). Moreover, by considering cases 0 ^ j ^ ffi=2 and ffi=2 ! j ^ ffi we can write:
+
+fi1(s; o/2) = maxf max
+
+j2[0; ffi2 ] 2
+
+\Gamma jfi(s; o/2 \Gamma  j); max
+
+j2[ ffi2 ;ffi] 2
+
+\Gamma jfi(s; o/2 \Gamma  j)g
+
+^ maxffi(s; o/1 + ffi=2); 2\Gamma ffi=2fi(s; o/1)g (45) and using (43) and the fact that fi 2 KL we can write fi(s; o/1 + ffi=2) ! fi(s; o/1) ^ ~fi(s; o/1) and 2\Gamma ffi=2fi(s; o/1) ! fi(s; o/1) ^ ~fi(s; o/1), which shows that ~fi(s; o/2) ! ~fi(s; o/1).
+
+Finally we show that for arbitrary s * 0 we have that limo/!1 ~fi(s; o/ ) = 0. If we take the two cases j ^ o/2 and j ? o/2 , we have
+
+~fi(s; o/ ) ^ max nfi is; o/2 j ; 2\Gamma 
+
+o/
+
+2 fi(s; 0)o
+
+and the conclusion follows by letting o/ ! 1. This shows that ~fi 2 KL, which completes the proof. Q.E.D.
+
+References
+
+[1] D. Aeyels and J. Peuteman, A new asymptotic stability criterion for nonlinear time-variant differential equations, to appear IEEE Trans. Automat. Contr.
+
+[2] D. Aeyels and J. Peuteman, On exponential stability of nonlinear time-variant differential equations,
+
+submitted for publication, 1998.
+
+14
+
+[3] B. Castillo, S. Di Gennaro, S. Monaco and D. Normand-Cyrot, On regulation under sampling, IEEE
+
+Trans. Automat. Contr., 42 (1997), pp. 864-868.
+
+[4] T. Chen and B. A. Francis, Input-output stability of sampled-data systems, IEEE Trans. Automat.
+
+Contr., 36 (1991), pp. 50-58.
+
+[5] T. Chen and B. A. Francis, Optimal sampled-data control systems. Springer-Verlag: London, 1995. [6] B. A. Francis and T. T. Georgiou, Stability theory for linear time-invariant plants with periodic
+
+digital controllers, IEEE Trans. Automat. Contr., vol. 33 (1988), pp. 820-832.
+
+[7] S. P. Gordon, On converses to the stability theorems for difference equations, SIAM J. Contr., 10
+
+(1972), pp. 76-81.
+
+[8] W. Hahn, Stability of motion. Springer-Verlag: Berlin, 1967. [9] L. Hou, A. N. Michel and H. Ye, Some qualitative properties of sampled-data control systems, IEEE
+
+Trans. Automat. Contr., 42 (1997), pp. 1721-1725.
+
+[10] B. Jakubczyk and E.D.Sontag, Controllability of nonlinear discrete-time systems: A Lie-algebraic
+
+approach, SIAM J. Contr. Opt., 28 (1990), pp. 1-33.
+
+[11] V. Lakshmikantham and S. Leela, Differential and integral inequalities, vol. 1. Academic Press: New
+
+York, 1969.
+
+[12] H. K. Khalil, Nonlinear systems. Prentice-Hall: New Jersey, 1996. [13] I.M.Y.Mareels, H.B.Penfold and R.J.Evans, Controlling nonlinear time-varying systems via Euler
+
+approximations, Automatica, 28 (1992), pp. 681-696.
+
+[14] M. S. Mousa, R. K. Miller and A. N. Michel, Stability analysis of hybrid composite dynamical
+
+systems: descriptions involving operators and difference equations, IEEE Trans. Automat. Contr., 31 (1986), pp. 603-615.
+
+[15] D. Ne^si'c, A. R. Teel and P. V. Kokotovi'c, On the design of a controller based on the discrete-time
+
+approximation of the nonlinear plant model , submitted, 1998.
+
+[16] J. Peuteman and D. Aeyels, Averaging results and the study of uniform asymptotic stability of
+
+homogeneous differential equations that are not fast time varying, accepted for publication, 1998.
+
+[17] E.Skafidas, A.Fradkov, R.J.Evans and I.M.Y.Mareels, Trajectory-approximation-based adaptive control for nonlinear systems under matching conditions, Automatica, 34 (1998), pp. 287-299.
+
+[18] E. D. Sontag, Comments of integral variants of ISS, Syst. Contr. Lett., 34 (1998), pp. 93-100. [19] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Trans. Automat. Contr., 34
+
+(1989), pp. 435-443.
+
+[20] E. D. Sontag, An eigenvalue condition for sampled weak controllability of bilinear systems, Syst.
+
+Contr. Lett., 7 (1986), pp. 313-316.
+
+[21] E. D. Sontag, Mathematical control theory, finite dimensional systems. Second Edition. Springer
+
+Verlag: New York, 1998.
+
+[22] H. J. Stetter, Analysis of discretization methods for ordinary differential equations. Springer-Verlag:
+
+New York, 1973.
+
+[23] A. M. Stuart and A. R. Humphries, Dynamical systems and numerical analysis. Cambridge University Press: New York, 1996.
+
+[24] A. R. Teel, J. Peuteman and D. Aeyels, Global asymptotic stability for the averaged implies semiglobal practical asymptotic stability for the actual, to appear in Proc. CDC, 1998.
+
+15</pre>
+</body>
+</html>

@@ -1,0 +1,1500 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/stab-survey98.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/stab-survey98.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Stability and stabilization: discontinuities and the effect of disturbances
+
+Eduardo D. SONTAG* Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+USA
+
+Abstract This expository paper deals with several questions related to stability and stabiliza-tion of nonlinear finite-dimensional continuous-time systems. The topics covered include
+
+a review of stability and asymptotic controllability, an introduction to the problem ofstabilization and obstructions to continuous stabilization, the notion of control-Lyapunov functions, and a discussion of discontinuous feedback and methods of nonsmooth analysis.An emphasis is placed upon relatively new areas of research which concern stability with respect to noise, including the notion of insensitivity to small measurement and actuatorerrors as well as the more global notion of input-to-state stability.
+
+1 Introduction In this expository paper, we deal with several questions related to stability and stabilization of nonlinear finite-dimensional continuous-time systems. We review the basic problem of feedback stabilization, placing an emphasis upon relatively new areas of research which concern stability with respect to "noise" (such as errors introduced by actuators or sensors). The topics covered are as follows:
+
+1. Review of stability and asymptotic controllability. 2. The problem of stabilization. 3. Obstructions to continuous stabilization. 4. Control-Lyapunov functions and Artstein's theorem. 5. Discontinuous feedback. 6. Nonsmooth CLF's. 7. Insensitivity to small measurement and actuator errors. 8. Effect of large disturbances: input-to-state stability. 9. Comments on notions related to ISS. *The research was supported in part by Grant F49620-98-1-0242.
+
+551
+
+552 E. D. Sontag The discussion will be largely conceptual. Most technical details are left out, but links to precise statements in the literature are given. As a general reference, we direct the reader to the following Web site:
+
+http://www.math.rutgers.edu/~sontag
+
+1.1 Classes of systems considered We deal with rather general nonlinear finite-dimensional control systems of the following form:
+
+.x(t) = f (x(t), u(t)) (1)
+
+where states x(t) 2 Rn for all t (the integer n is the dimension of the system), and controls (or "inputs") are measurable locally essentially bounded maps
+
+u(*) : [0, 1) ! U = Rm into the control-value set, which we take here, for simplicity of presentation, to be simply an Euclidean space. (However, many of the results generalize easily to more general subsets U ` Rm.) We assume that f is locally Lipschitz on (x, u), and f (0, 0) = 0. In particular, we often consider systems with no inputs:
+
+.x(t) = f (x(t)) . (2) All definitions for such systems are implicitly applied as well to systems with inputs (1) by setting u j 0; for instance, we define the global asymptotic stability (GAS) property for (2), but we say that (1) is GAS if .x = f (x, 0) is.
+
+The maximal solution x(*) of (1), corresponding to a given initial state x(0) = x0, and to a given control u, is defined on some maximal interval [0, tmax(x0, u)) and is denoted by x(t, x0, u). For systems with no inputs (2) we write just x(t, x0). In general, we use the notation |x| for Euclidean norms, and use kuk, or kuk1 for emphasis, to indicate the essential supremum of a function u(*). For basic terminology and facts about control systems, we rely upon [36].
+
+1.2 Stability and asymptotic controllability The use of "comparison functions" has become widespread in stability analysis, as this formalism allows elegant formulations of most concepts. We recall the relevant definitions here. The class of K1 functions consists of all ff : R>=0 ! R>=0 which are continuous, strictly increasing, unbounded, and satisfy ff(0) = 0, cf. Figure 1. The class of KL functions consists
+
+Figure 1: A function of class K1 of those fi : R>=0 * R>=0 ! R>=0 with the properties that (1) fi(*, t) 2 K1 for all t, and (2) fi(r, t) decreases to zero as t ! 1. (It is worth remarking, cf. [38], that for each fi 2 KL,
+
+Stability, stabilization, and disturbances 553 there exist two functions ff1, ff2 2 K1 so that fi(r, t) <= ff2 \Gamma ff1(r)e-t\Delta  for all s, t. Thus, as every function of the latter form is in KL, and since KL functions are only used in order to express upper bounds, in a sense there is no need to introduce the class KL.) We will also use N to denote the set of all nondecreasing functions oe : R>=0 ! R>=0.
+
+Expressed in this language, the property of global asymptotic stability (GAS) for a system with no inputs (2) becomes:
+
+(9 fi 2 KL) |x(t, x0)| <= fi (|x0|, t) 8 x0 , 8 t >= 0 . It is an easy exercise to show that this definition is equivalent to the usual "" - ffi" definition; for one implication, simply observe that
+
+|x(t, x0)| <= fi (|x0|, 0) provides the stability (or "small overshoot") property, while
+
+|x(t, x0)| <= fi (|x0|, t) -!t!10 gives attractivity.
+
+More generally, we define what it means for the system with inputs (1) to be (open loop, globally) asymptotically controllable (AC). The definition amounts to requiring that for each initial state x0 there exists some control u = ux0(*) defined on [0, 1), such that the corresponding solution x(t, x0, u) is defined for all t >= 0, and converges to zero as t ! 1, with "small" overshoot. Moreover, we wish to rule out the possibility that u(t) becomes unbounded for x near zero. The precise formulation is as follows.
+
+(9 fi 2 KL) (9 oe 2 N ) 8 x0 2 Rn 9 u(*) , kuk1 <= oe(|x0|) ,
+
+|x(t, x0, u)| <= fi (|x0|, t) 8 t >= 0 . Finally, we say that k : Rn ! U is a feedback stabilizer for the system with inputs (1) if k is locally bounded (that is, k is bounded on each bounded subset of R), k(0) = 0, and the closed-loop system
+
+.x = f (x, k(x)) (3)
+
+is GAS, i.e. there is some fi 2 KL so that |x(t)| <= fi (|x(0)| , t) for all solutions and all t >= 0. Obviously, if there exists a feedback stabilizer for (1), then (1) is also AC (just use u(t) := k(x(t, x0)) as ux0 ). A most natural question is to ask if the converse holds as well, namely: is every asymptotically controllable system also feedback stabilizable? We will see that the answer is "yes", provided that we allow discontinuous feedbacks k, which in turn leads to the technical problem of defining precisely what one means by a "solution" of an initial value problem for (1) when f (x, k(x)) is not continuous (since, in that case, the standard theorems on existence do not apply). This is a question that is very much central to the rest of the paper.
+
+1.3 Why stabilization? In control problems, there are often ultimate objectives other than stabilization. For example, one might merely be interested in making a subset of the state variables (as opposed to the full
+
+554 E. D. Sontag state) approach a desired set point, in which case (after translation of the origin of coordinates so as to make the desired values zero) one deals with partial or "output" stability: there is a given function y = h(x) and one wishes to make y(t) ! 0 using suitable control actions. A variation of this idea is the formulation of tracking problems, where one wishes the output y(t) to follow a predetermined path y*(t); this can be seen as an output stability problem for an "error" signal e(t) = y(t) - y*(t). Yet another variation consists in studying stability of invariant sets (as opposed to equilibria); for instance, one may be given a periodic orbit, and a feedback is sought so that for the closed-loop system it becomes a limit cycle. Finally, one may wish to allow for uncertainties in plant description (adaptive and/or robust control). Many such other objectives can be treated using the techniques that we shall describe; we focus on stabilization to an equilibrium because this is the simplest problem in which the main technical difficulties can be understood.
+
+1.4 Regularity of feedback As already mentioned, one of the central issues with which we will be concerned is that of dealing with possibly discontinuous feedback laws k. Before addressing that subject, however, we will study what can be done with continuous feedback.
+
+It turns out that requirements away from 0, say asking whether k is continuous or smooth, are not very critical; it is often the case that one can "smooth out" a continuous feedback (or, even, make it real-analytic, via Grauert's Theorem) away from the origin. So, in order to avoid unnecessary complications in exposition due to nonuniqueness, let us call a feedback k regular if it is locally Lipschitz on Rn \ {0}. For such k, solutions of initial value problems
+
+.x = f (x, k(x)), x(0) = x0, are well defined (at least for small time intervals [0, ")) and, provided k is a stabilizing feedback, are unique (cf. [36], Exercise 5.9.9).
+
+On the other hand, behavior at the origin cannot be "smoothed out" and, at zero, the precise degree of smoothness plays a central role in the theory. For instance, consider the system
+
+.x = x + u3 .
+
+The continuous (and, in fact, smooth away from zero) feedback u = k(x) := - 3p2x globally stabilizes the system (the closed-loop system becomes .x = -x). However, there is no possible stabilizing feedback which is differentiable at the origin, since u = k(x) = O(x) implies that
+
+.x = x + O(x3) about x = 0, which means that the solution starting at any positive and small point moves to the right, instead of towards the origin. (A general result, assuming that A has no purely imaginary eigenvalues, cf. [36], Section 5.8, is that if -and only if- .x = Ax + Bu + o(x, u) can be locally asymptotically stabilized using a feedback which is differentiable at the origin, the linearization .x = Ax + Bu must be itself stabilizable. In the example that we gave, this linearization is just .x = x, which is not stabilizable.)
+
+2 Nonexistence of regular feedback We now turn to the question of existence of regular feedback stabilizers. We first study a comparatively trivial case, namely systems with one state variable and one input. After that, we turn to multidimensional systems.
+
+Stability, stabilization, and disturbances 555 2.1 The special case n = m = 1 There are algebraic obstructions to the stabilization of .x = f (x, u) if the input u appears nonlinearly in f . Ignoring the requirement that there be a oe 2 N so that controls can be picked with kuk <= oe(|x0|), asymptotic controllability is, for n = m = 1, equivalent to:
+
+(8 x 6= 0) (9 u) xf (x, u) < 0 (4) (this is proved in [39]; it is fairly obvious, but some care must be taken to deal with the fact that one is allowing arbitrary measurable controls; the argument proceeds by first approximating such controls by piecewise constant ones). Let us introduce the following set:
+
+O := {(x, u) | xf (x, u) < 0} , and let ss : (x, u) 7! x be the projection into the first coordinate in R. Then, (4) is equivalent to:
+
+ssO = R \ {0} .
+
+(One can easily include the requirement "kuk <= oe(|x0|)" by asking that for each interval [-K, K] ae R there must be some compact set CK ae R2 so that [-K, K] ` ss(CK). For simplicity, we ignore this technicality.) In these terms, a stabilizing feedback is nothing else than a locally bounded map k : R ! R such that k(0) = 0 and so that k is a section of ss onR \ {
+
+0}:
+
+(x, k(x)) 2 O 8 x 6= 0 .
+
+For a regular feedback, we ask that k be locally Lipschitz on R \ {0}.
+
+Clearly, there is no reason for Lipschitz, or for that matter, just continuous, sections of ss to exist. As an illustration, take the system
+
+.x = x \Theta (u - 1)2 - (x - 1)\Lambda  \Theta (u + 1)2 + (x - 2)\Lambda  . Let O
+
+1 = {(u + 1)2 < (2 - x)} and O2 = {(u - 1)2 < (x - 1)}
+
+(see Figure 2). Here, O has three connected components, namely O2 and O1 intersected
+
+x u
+
+O1
+
+O2
+
+Figure 2: Two regions with x > 0 and x < 0. It is clear that, even though ssO = R, there is no continuous curve
+
+556 E. D. Sontag (graph of u = k(x)) which is always in O and projects onto R \ {0}. On the other hand, there exist many possible feedback stabilizers provided that we allow one discontinuity (e.g., dotted curve in figure). It is also possible to provide examples, even with f (x, u) smooth, for which an infinite number of switches are needed in any possible stabilizing feedback law. The set O could be like the (non-shaded) set in Figure 3 (with an accumulation of smaller
+
+x u
+
+Figure 3: Infinitely many discontinuities required and smaller holes as we approach the origin). Finally, it may even be possible to stabilize semiglobally with a regular feedback, meaning that for each compact subset K of the statespace there is a regular, even smooth, feedback law u = kK(x) such that all states in K get driven asymptotically to the origin, but yet it may be impossible to find a single u = k(x) which works globally. This illustrated by an example where the set O could be like the (nonshaded) set in Figure 4 (one may give explicit equations using trigonometric functions). The
+
+Figure 4: Semiglobal but no global continuous stabilizers figure shows graphs of two stabilizers, which work with respect to two possible intervals inR
+
+, and for any such interval one may clearly find such a (continuous) curve; however, there
+
+Stability, stabilization, and disturbances 557 is no curve which is the graph of a function u = k(x) and which stays in the non-shaded area while projecting onto R \ {0}.
+
+Time-varying feedback Although our interest here is primarily in time-invariant feedback u = k(x), it is worth pointing out that it is often possible to overcome obstructions to regular feedback stabilization by means of the use of time-varying feedback u = k(t, x). A general result in that direction was proved in [39], which established that every one-dimensional system can be stabilized using k(t, x) continuous (it is not difficult to see that the proof can be adapted to obtain k(t, x) periodic in t, for each x). The intuitive idea of the construction can be perhaps understood by looking at Figure 2.1. Two feedback laws, regular but not stabilizing (because
+
+0
+
+BB
+
+Figure 5: Time-varying feedback their graphs intersect the shaded area which indicates the complement of O) are shown in the figure. The "bad" set B = Bt := {x | xf (x, k(t, x)) > 0} where the closed-loop behavior is undesirable moves with time t. The idea is to oscillate now between laws whose graphs are between these two graphs, moving slowly in the "" direction and faster to the left. The effect will be that states to the right of B move to the left until they hit B (and if B moves slowly enough, never actually hit while B is moving to the left), but when B moves back to the right, the effect on any given state is very short (and hence only a small backwards movement happens). More recently, a very different construction of time-varying feedbacks was accomplished by Coron, cf. [8], who established a general result valid in any dimension, but restricted to systems with no drift, and by Coron and Rosier, cf. [9], for systems for which smooth clf's (see later) exist. We will not look into time-varying feedback in this paper, however.
+
+2.2 Obstructions When feedback laws are required to be continuous at the origin, new obstructions arise. The case of systems with n = m = 1 is also a good way to introduce this subject. The first observation is that stabilization about the origin (even if just local) means that we must
+
+558 E. D. Sontag have, near zero:
+
+f (x, k(x)) 8!:
+
+> 0 if x < 0 < 0 if x > 0 = 0 if x = 0 .
+
+In fact, all that we need is that f (x1, k(x1)) < 0 for some x1 > 0 and f (x2, k(x2)) > 0 for some x2 < 0. This guarantees, via the intermediate-value theorem that, if k is continuous, the projection
+
+(-", ") ! R, x 7! f (x, k(x))
+
+is onto a neighborhood of zero, for each " > 0, see Figure 6. It follows, in particular, that
+
+x f(x,k(x))
+
+Figure 6: Onto projection, for case n = m = 1 the image of
+
+(-", ") * (-", ") ! R, (x, u) 7! f (x, u)
+
+also contains a neighborhood of zero, for any " > 0 (that is, the map (x, u) 7! f (x, u) is open at zero). This last property is intrinsic, being stated in terms of the original data f (x, u) and not depending upon the feedback k. Brockett's condition, to be described next, is a far-reaching generalization of this argument; in its proof, degree theory replaces the use of the intermediate value theorem.
+
+Logical decisions are often necessary If there are global obstacles in the state-space (that is, if the state-space is a proper subset ofR
+
+n), discontinuities in feedback laws cannot in general be avoided. Even if it is in principle
+
+possible to reach the origin, it may not be possible to find a regular feedback stabilizer. Actually, this is fairly obvious, and is illustrated in intuitive terms by Figure 7. We think of the position of the (immobile) cat as the origin. In deciding in which way to move, as a function of its current position, the dog must at some point in the state-space make a discontinuous decision: move to the left or to the right of the obstacle (represented by the shaded rectangle)? Formally, this setup can be modeled as a problem in which the state-space is the complement in R2 of the obstacle, and the fact that discontinuities are necessary is a particular case of a general fact (a theorem of Milnor's), namely that the domain of attraction of an asymptotically stable vector field must be diffeomorphic to Euclidean space (which the complement of the rectangle is not); see [36] for more on the subject.
+
+The interesting point is that even if, as in this exposition, we assume that states evolve in Euclidean spaces, similar obstructions may arise. These are due not to the topology of the
+
+Stability, stabilization, and disturbances 559
+
+?
+
+Figure 7: At some point, a discontinuous decision is necessary state space, but to "virtual obstacles" implicit in the form of the system equations. These obstacles occur when it is impossible to move instantaneously in certain directions, even if it is possible to move eventually in every direction ("nonholonomy").
+
+Nonholonomy and Brockett's theorem As an illustration, let us consider a model for the "shopping cart" shown in Figure 8 ("knifeedge" or "unicycle" are other names for this example). The state is given by the orientation `, together with the coordinates x1, x2 of the midpoint between the back wheels. The front
+
+6
+
+@@@\Gamma \Gamma \Gamma \Gamma 
+
+@@@\Gamma \Gamma \Gamma \Gamma  \Gamma \Gamma 
+
+\Gamma \Gamma \Gamma  @@
+
+@
+
+\Gamma \Gamma 
+
+\Gamma \Gamma 
+
+x`
+
+x2
+
+x1 Figure 8: Shopping cart
+
+wheel is a castor, free to rotate. There is a non-slipping constraint on movement: the velocity ( .x1, .x2)0 must be parallel to the vector (cos `, sin `)0. This leads to the following equations:
+
+.x1 = u1 cos ` .x2 = u1 sin `
+
+.` = u2
+
+where we may view u1 as a "drive" command and u2 as a steering control; in practice, one would implement these controls by means of differential forces on the two back corners of the cart. The feedback transformation z1 := `, z2 := x1 cos ` + x2 sin `, z3 := x1 sin ` - x2 cos `, v1 := u2, and v2 := u1 - u2z3 brings the system into the system with equations .z1 = v1,
+
+.z2 = v2, .z3 = z1v2 known as "Brockett's example" or "nonholonomic integrator" (yet another
+
+560 E. D. Sontag change can bring the third equation into the form .z3 = z1v2 - z2v1). We view the system as having state space R3. Although a physically more accurate state space would be the manifold R2 * S1, the necessary condition to be given is of a local nature, so the global structure is unimportant.
+
+This system is (obviously) completely controllable (in any case, controllability can be checked using the Lie algebra rank condition, as in e.g. [36], Exercise 4.3.16), and in particular is AC. But we may expect that discontinuities are unavoidable due to the non-slip constraint, which does not allow moving from, for example the position x1 = 0, ` = 0, x2 = 1 in a straight line towards the origin. This is illustrated intuitively by Figure 9 (we use a line to indicate the orientation of the cart). Depending on the initial angle, we may start by rotating
+
+0 0
+
+? 0
+
+Figure 9: Which way to turn? either clockwise or counterclockwise (and then moving in a straight line towards 0). But a discontinuous decision is necessary somewhere. This impossibility is established rigorously by means of:
+
+Theorem A (Brockett [4]) If there is a stabilizing feedback which is regular and continuous at zero, then the map (x, u) 7! f (x, u) is open at zero.
+
+The test fails here, since no points of the form (0, ", *) belong to the image of the map
+
+R5 ! R3 : (x1, x2, `, u1, u2)0 7! f (x, u) = (u1 cos `, u1 sin `, u2)0 for ` 2 (-ss/2, ss/2), unless " = 0.
+
+More generally, it is impossible to continuously stabilize any system without drift
+
+.x = u1g1(x) + . . . + umgm(x) = G(x)u if m < n and rank[g1(0), . . ., gm(0)] = m (this includes all totally nonholonomic mechanical systems). Indeed, under these conditions, the map (x, u) 7! G(x)u cannot contain a neighborhood of zero in its image, when restricted to a small enough neighborhood of zero. Indeed, let us first rearrange the rows of G:
+
+G(x) ; ` G1(x)G
+
+2(x) '
+
+so that G1(x) is of size m * m and is nonsingular for all states x that belong to some neighborhood N of the origin. Then,`
+
+0 a ' 2 Im [N * R
+
+m ! Rn : (x, u) 7! G(x)u] ) a = 0
+
+(since G1(x)u = 0 ) u = 0 ) G2(x)u = 0 too).
+
+If the condition rank[g1(0), . . ., gm(0)] = m is violated, we cannot conclude a negative result. For instance, the system .x1 = x1u, .x2 = x2u has m = 1 < 2 = n but it can be stabilized by means of the feedback law u = -(x21 + x22).
+
+Stability, stabilization, and disturbances 561
+
+Observe that for linear systems, Brockett's condition says that
+
+rank [A, B] = n which is the Hautus controllability condition (see e.g. [36], Lemma 3.3.7) at the zero mode.
+
+Idea of the proof One may prove Brockett's condition in several ways. A proof based on degree theory is probably easiest, and proceeds as follows (for details see for instance [36], Section 5.9). The basic fact, due to Krasnosel'ski, is that if the system .x = F (x) = f (x, k(x)) has the origin as an asymptotically stable point and F is regular (since k is), then the degree (index) of F with respect to zero is (-1)n, where n is the system dimension. In particular, the degree is also nonzero with respect to points p near enough 0, which means that the equation F (x) = p can be solved for small p, and hence f (x, u) = p can be solved as well. The proof that the degree is (-1)n follows by exhibiting a homotopy, namely
+
+Ft(x0) = 1t ^x ` t1 - t , x0' - x0* , between F0 = F and F1(x) = -x, and noting that the degree of the latter is obviously (-1)n. An alternative (and Brockett's original) proof uses Lyapunov functions. Asymptotic stability implies the existence of a smooth Lyapunov function V for .x = F (x) = f (x, k(x)), so, on the boundary @B of a sublevel set B = {x | V (x) <= c} we have that F points towards the interior of B, Figure 10. So for p small, F (x) - p still points to the interior, which means
+
+V(x) = cF(x)-pF(x) F(x)F(x)-p
+
+Figure 10: Perturbations of F still point inside B that B is invariant with respect to the perturbed vector field .x = F (x) - p. Provided that a fixed-point theorem applies to continuous maps B ! B, this implies that F (x) - p must vanish somewhere in B, that is, the equation F (x) = p can be solved. (Because, for each small h > 0, the time-h flow OE of F - p has a fixed point xh 2 B, i.e. OE(h, xh) = xh, so
+
+picking a convergent subsequence xh ! _x gives that 0 = OE(h,xh)-xhh ! F (_x) - p.) A fixed point theorem can indeed be applied, because B is a retract of Rn (use the flow itself); note that this argument gives a weaker conclusion than the degree condition.
+
+Another example There is another nice example of these ideas, which will also be useful later when illustrating Lyapunov techniques (see [2]). It is closely related to the shopping-cart example; in fact, it arises when we control the cart by this procedure: first, we rotate the cart until tangent to, either a circle centered on the x2-axis and tangent to the x1-axis (see Figure 11), or the x1- axis if we started there; next, we move only with velocities tangential to this circle (steering
+
+562 E. D. Sontag
+
+Figure 11: Cart tangent to circle so as to maintain invariance of the circle). In summary, one obtains a system with state-spaceR
+
+2, input space R, and equations
+
+.x = g(x)u , where g(x) = ` x
+
+21 - x22
+
+2x1x2 ' .
+
+The vector field g and typical orbits of g are shown in Figure 12. In this system, all motions
+
+Figure 12: (x21 - x22) @@x1 + 2x1x2 @@x2 with typical integral manifolds along the integral curves of g are allowed (clockwise, counterclockwise, or staying at one point). The Brockett condition is satisfied; this is clear if one views the system as a system with complex state space (write z = x1 + ix2) with equations:
+
+.z = z2u . The map (x, u) 7! g(x)u is (z, u) 7! z2u, which is clearly onto any neighborhood of zero, even when restricted to any neighborhood of z=u=0 (take square roots). However, the degree condition fails, as for any continuous feedback one would have k(x) 6= 0 for all x 6= 0 (otherwise, an equilibrium results), so one obtains degree 2 for f (x, k(x)) = g(x)k(x), and not (-1)2 = 1.
+
+Actually, for this example it is easy to see directly that no regular stabilizing feedback can exist. One proof is by noticing that circles would have to be invariant, so motions restricted to them would result in globally asymptotically stable vector fields in manifolds not diffeomorphic to Euclidean space, contradicting Milnor's theorem. Another proof is even easier: take any path fl : [0, 1] ! R2 with fl(0) = (1, 0)0 and fl(1) = (-1, 0)0 and so that fl(r) 6= 0 for all r. Consider the function ^(r) := k(fl(r)), which is continuous if k was assumed continuous. Since ^(0) < 0 (because, otherwise, trajectories of .x = g(x)k(x) starting at (1, 0)0 cannot converge to zero, since the positive axis is invariant and g points towards the right there) and ^(1) > 0 (analogous argument), it follows that ^(r0) = 0 for
+
+Stability, stabilization, and disturbances 563 some r0 2 (0, 1). Therefore, the point _x = fl(r0) 6= 0 is such that k(_x) = 0 and is therefore an equilibrium point, contradicting the fact that u = k(x) is a stabilizer. We shall return to this example when discussing control-Lyapunov functions.
+
+2.3 Control-Lyapunov functions The method of control-Lyapunov functions ("clf's") provides a powerful tool for studying stabilization problems, both as a basis of theoretical developments and as a method for actual feedback design.
+
+Before discussing clf's, let us quickly review the classical concept of Lyapunov functions, through a simple example. Consider first a damped spring-mass system "y + .y + y = 0, or, in state-space form with x1 = y and x2 = .y, .x1 = x2, .x2 = -x1 - x2. One way to verify global asymptotic stability of the equilibrium x = 0 is to pick the (Lyapunov) function V (x1, x2) := 32 x21 + x1x2 + x22, and observe that rV (x).f (x) = - |x|2 < 0 if x 6= 0, which means that dV (x(t))
+
+dt = - |x(t)|
+
+2 < 0
+
+along all nonzero solutions, and thus the energy-like function V decreases along all trajectories, which, since V is a nondegenerate quadratic form, implies that x(t) decreases, and in fact x(t) ! 0. Of course, in this case one could compute solutions explicitly, or simply note that the characteristic equation has all roots with negative real part, but Lyapunov functions are a general technique. (In fact, the classical converse theorems of Massera and Kurzweil show that, whenever a system is GAS, there always exists a smooth Lyapunov function V .)
+
+Now let us modify this example to deal with a control system, and consider a forced (but undamped) harmonic oscillator "x + x = u, i.e. .x1 = x2, .x2 = -x1 + u. The damping feedback u = -x2 stabilizes the system, but let us pretend that we do not know that. If we take the same V as before, now the derivatives along trajectories are, using " .V (x, u)" to denoter
+
+V (x).f (x, u) and omitting arguments t in x(t) and u(t):
+
+.V (x, u) = -x21 + x1x2 + x22 - (x1 + 2x2)u .
+
+This expression is affine in u. Thus, if x is a state such that x1 + 2x2 6= 0, then we may pick a control value u (which depends on this current state x) such that .V < 0. On the other hand, if x1 + 2x2 = 0, then the expression reduces to .V = -5x22 (for any u), which is negative unless x2 (and hence also x1 = -2x2) vanishes.
+
+In conclusion, for each x 6= 0 there is some u so that .V (x, u) < 0. This is, except for some technicalities to be discussed, the characterizing property of control-Lyapunov functions. For any given compact subset B in Rn, we now pick some compact subset U0 ae U so that
+
+8 x 2 B, x 6= 0, 9 u 2 U0 such that .V (x, u) < 0 . (5) In principle, then, we could then stabilize the system, for states in B, by using the steepest descent feedback law:
+
+k(x) := argmin
+
+u2U0 rV (x) * f (x, u) (6)
+
+("argmin" means "pick any u at which the min is attained"; we restricted U to be assured that .V (x, u) attains a minimum). Note that the stabilization problem becomes, in these terms, a set of static nonlinear programming problems: minimize a function of u, for each x.
+
+564 E. D. Sontag Global stabilization is also possible, by appropriately picking U0 as a function of the norm of x; later we discuss a precise formulation.
+
+Control-Lyapunov functions, if understood non-technically as the basic paradigm "look for a function V (x) with the properties that V (x) ss 0 if and only if x ss 0, and so that for each x 6= 0 it is possible to decrease V (x) by some control action," constitute a very general approach to control (sometimes expressed in a dual fashion, as maximization of some measure of success). They appear in such disparate areas as A.I. game-playing programs (position evaluations), energy arguments for dissipative systems, program termination (Floyd/Dijkstra "variant"), and learning control ("critics" implemented by neural-networks). More relevantly to this paper, the idea underlies much of modern feedback control design, as illustrated for instance by the books [11, 17, 24, 23, 36].
+
+Differentiable clf 's: precise definition We say that a continuous function
+
+V : Rn ! R>=0 is positive definite if V (x) = 0 only if x = 0, and it is proper (or "weakly coercive") if for each a >= 0 the set {x | V (x) <= a} is compact, or, equivalently, V (x) ! 1 as |x| ! 1 (radial unboundedness). A property which is equivalent to properness and positive definiteness together is:
+
+(9 ff, ff 2 K1) ff(|x|) <= V (x) <= ff(|x|) 8 x 2 Rn . (7)
+
+A differentiable control-Lyapunov function (clf) is a differentiable function V : Rn ! R>=0 which is proper, positive definite, and infinitesimally decreasing, meaning that there exists a positive definite continuous function W : Rn ! R>=0, and there is some oe 2 N , so that
+
+sup x2Rn min|u|<=oe(|x|) rV (x) * f (x, u) + W (x) <= 0 . (8)
+
+This is basically the same as condition (5), with U0 = the ball of radius oe(|x|) picked as a function of x. The main difference is that, instead of saying "rV (x) * f (x, u) < 0 for x 6= 0" we write rV (x) * f (x, u) <= -W (x), where W is negative when x 6= 0. The two definitions are equivalent, but the "Hamiltonian" version used here is the correct one for the generalizations to be given, to nonsmooth V .
+
+Theorem B (Artstein [2]) A control-affine system .x = g0(x)+P uigi(x) admits a differentiable clf if and only if it admits a regular stabilizing feedback.
+
+The proof of sufficiency is easy: if there is such a k, then the converse Lyapunov theorem, applied to the closed-loop system F (x) = f (x, k(x)), provides a smooth V such that
+
+LF V (x) = rV (x) F (x) < 0 8x 6= 0 . This gives that for all nonzero x there is some u (bounded on bounded sets, because k is locally bounded by definition of feedback) so that .V (x, u) < 0; and one can put this in the form (8).
+
+Stability, stabilization, and disturbances 565
+
+The necessity is more interesting. The original proof in [2] proceeds by a nonconstructive argument involving partitions of unity, but it is also possible to exhibit explicitly a feedback, written as a function
+
+k (rV (x) * g0(x) , . . . , rV (x) * gm(x))
+
+of the directional derivatives of V along the vector fields defining the system (universal formulas for stabilization). Taking for simplicity m = 1, one such formula is:
+
+k(x) := - a(x) + pa(x)
+
+2 + b(x)4
+
+b(x) (0 if b = 0)
+
+where a(x) := rV (x) * g0(x) and b(x) := rV (x) * g1(x). (The expression for k is analytic in a, b when x 6= 0, because the clf property means that a(x) < 0 whenever b(x) = 0, see [36] for details.)
+
+Thus, the question of existence of regular feedback, for control-affine systems, reduces to the search for differentiable clf's, and this gives rise to a vast literature dealing with the construction of such V 's, see [11, 24, 23, 36] and references therein. Many other theoretical issues are also answered by Artstein's theorem. For example, via Kurzweil's converse theorem one has that the existence of k merely continuous on Rn \ {0} suffices for the existence of smooth (infinitely differentiable) V , and from here one may in turn find a k which is smooth on Rn \ {0}. In addition, one may easily characterize the existence of k continuous at zero as well as regular: this is equivalent to the small control property: for each " > 0 there is some ffi > 0 so that 0 < |x| < ffi implies that min|u|<=" rV (x) * f (x, u) < 0 (if this property holds, the universal formula automatically provides such a k). We should note that Artstein provided a result valid for general, not necessarily control-affine systems .x = f (x, u); however, the obtained "feedback" has values in sets of relaxed controls, and is not a feedback law in the classical sense. Later, we discuss a different generalization.
+
+Differentiable clf's will in general not exist, because of obstructions to regular feedback stabilization. This leads us naturally into the twin subjects of discontinuous feedbacks and non-differentiable clf's.
+
+3 Discontinuous feedback The previous results and examples show that, in order to develop a satisfactory general theory of stabilization, one in which one proves the implication "asymptotic controllability implies feedback stabilizability," we must allow discontinuous feedback laws u = k(x). But then, a major technical difficulty arises: solutions of the initial-value problem .x = f (x, k(x)), x(0) = x0, interpreted in the classical sense of differentiable functions or even as (absolutely) continuous solutions of the integral equation x(t) = x0 + R t0 f (x(s), k(x(s))) ds, do not exist in general. The only general theorems apply to systems .x = F (x) with continuous F . For example, there is no solution to .x = -sign x, x(0) = 0, where sign x = -1 for x < 0 and sign x = 1 for x >= 0. So one cannot even pose the stabilization problem in a mathematically consistent sense.
+
+There is, of course, an extensive literature addressing the question of discontinuous feedback laws for control systems and, more generally, differential equations with discontinuous right-hand sides. One of the best-known candidates for the concept of solution of (3) is that
+
+566 E. D. Sontag of a Filippov solution [12, 13], which is defined as the solution of a certain differential inclusion with a multivalued right-hand side which is built from f (x, k(x)). Unfortunately, there is no hope of obtaining the implication "asymptotic controllability implies feedback stabilizability" if one interprets solutions of (3) as Filippov solutions. This is a consequence of results in [32, 9], which established that the existence of a discontinuous stabilizing feedback in the Filippov sense implies the Brockett necessary conditions, and, moreover, for systems affine in controls it also implies the existence of regular feedback (which we know is in general impossible).
+
+A different concept of solution originates with the theory of discontinuous positional control developed by Krasovskii and Subbotin in the context of differential games in [21], and it is the basis of the new approach to discontinuous stabilization proposed in [7], to which we now turn.
+
+3.1 Limits of high-frequency sampling By a sampling schedule or partition ss = {ti}i>=0 of [0, +1) we mean an infinite sequence
+
+0 = t0 < t1 < t2 < . . . with limi!1 ti = 1. We call
+
+d(ss) := sup
+
+i>=0 (ti+1 - ti)
+
+the diameter of ss. Suppose that k is a given feedback law for system (1). For each ss, the ss-trajectory starting from x0 of system (3) is defined recursively on the intervals [ti, ti+1), i = 0, 1, . . ., as follows. On each interval [ti, ti+1), the initial state is measured, the control value ui = k(x(ti)) is computed, and the constant control u j ui is applied until time ti+1; the process is then iterated. That is, we start with x(t0) = x0 and solve recursively
+
+.x(t) = f (x(t), k(x(ti))) , t 2 [ti, ti+1) , i = 0, 1, 2, . . . using as initial value x(ti) the endpoint of the solution on the preceding interval. The ensuing ss-trajectory, which we denote as xss(*, x0), is defined on some maximal nontrivial interval; it may fail to exist on the entire interval [0, +1) due to a blow-up on one of the subintervals [ti, ti+1). We say that it is well defined if xss(t, x0) is defined on all of [0, +1).
+
+Definition The feedback k : Rn ! U stabilizes the system (1) if there exists a function fi 2 KL so that the following property holds: For each
+
+0 < " < K there exists a ffi = ffi(", K) > 0 such that, for every sampling schedule ss with d(ss) < ffi, and for each initial state x0 with |x0| <= K, the corresponding ss-trajectory of (3) is well-defined and satisfies |
+
+xss(t, x0)| <= max {fi (K, t) , "} 8 t >= 0 . (9)
+
+In particular, we have
+
+|xss(t, x0)| <= max {fi (|x0| , t) , "} 8 t >= 0 (10) whenever 0 < " < |x0| and d(ss) < ffi(", |x0|) (just take K := |x0|).
+
+Stability, stabilization, and disturbances 567
+
+Observe that the role of ffi is to specify a lower bound on intersampling times. Roughly, one is requiring that
+
+ti+1 <= ti + ` (|x(ti)|)
+
+for each i, where ` is an appropriate positive function.
+
+Our definition of stabilization is physically meaningful, and is very natural in the context of sampled-data (computer control) systems. It says in essence that a feedback k stabilizes the system if it drives all states asymptotically to the origin and with small overshoot when using any fast enough sampling schedule. A high enough sampling frequency is generally required when close to the origin, in order to guarantee small displacements, and also at infinity, so as to preclude large excursions or even blow-ups in finite time. This is the reason for making ffi depend on " and K.
+
+This concept of stabilization can be reinterpreted in various ways. One is as follows. Pick any initial state x0, and consider any sequence of sampling schedules ss` whose diameters d(ss`) converge to zero as ` ! 1 (for instance, constant sampling rates with ti = i/`, i = 0, 1, 2, . . .). Note that the functions x` := xss`(*, x0) remain in a bounded set, namely the ball of radius fi(|x0| , 0) (at least for ` large enough, for instance, any ` so that d(ss`) < ffi(|x0| /2, |x0|)). Because f (x, k(x)) is bounded on this ball, these functions are equicontinuous, and (ArzelaAscoli's Theorem) we may take a subsequence, which we denote again as {x`}, so that x` ! x as ` ! 1 (uniformly on compact time intervals) for some absolutely continuous (even Lipschitz) function x : [0, 1) ! Rn. We may think of any limit function x(*) that arises in this fashion as a generalized solution of the closed-loop equation (3). That is, generalized solutions are the limits of trajectories arising from arbitrarily high-frequency sampling when using the feedback law u = k(x). Generalized solutions, for a given initial state x0, may not be unique - just as may happen with continuous but non-Lipschitz feedback - but there is always existence, and, moreover, for any generalized solution, |x(t)| <= fi(|x0| , t) for all t >= 0. This is precisely the defining estimate for the GAS property. Moreover, if k happens to be regular, then the unique solution of .x = f (x, k(x)) in the classical sense is also the unique generalized solution, so we have a reasonable extension of the concept of solution. (This type of interpretation is somewhat analogous, at least in spirit, to the way in which "relaxed" controls are interpreted in optimal trajectory calculations, namely through high-frequency switching of approximating regular controls.)
+
+Remark The definition of stabilization was given in [7] in a slightly different form. It was required there that there exist for each R > 0 a number M (R) > 0, with limR & 0 M (R) = 0, and, for each 0 < r < R, numbers ffi0(r, R) > 0 and T (r, R) >= 0, such that the following property holds: for each sampling schedule ss with d(ss) < ffi0(r, R), each x0 with |x0| <= R, and each t >= T (r, R), it holds that |xss(t, x0)| <= r, and, in addition, |xss(t, x0)| <= M (R) for all t >= 0. This definition is equivalent to the definition that we gave, based on an estimate of the type (9). See Section 5.1 for a proof.
+
+3.2 Stabilizing feedbacks exist In the paper [7], the following result was proven by Clarke, Ledyaev, Subbotin, and the author:
+
+Theorem C The system (1) admits a stabilizing feedback if and only if it is asymptotically controllable.
+
+568 E. D. Sontag
+
+Necessity is clear. The sufficiency statement is proved by construction of k, and is based on the following ingredients:
+
+* Existence of a nonsmooth control-Lyapunov function V .
+
+* Regularization on shells of V .
+
+* Pointwise minimization of a Hamiltonian for the regularized V
+
+In order to sketch this construction, we start by quickly reviewing a basic concept from nonsmooth analysis.
+
+Proximal subgradients Let V be any continuous function Rn ! R (or even, just lower semicontinuous and with extended real values). A proximal subgradient of V at the point x 2 Rn is any vector i 2 Rn such that, for some oe > 0 and some neighborhood O of x,
+
+V (y) >= V (x) + i * (y - x) - oe2 |y - x|2 8y 2 O . In other words, proximal subgradients are the possible gradients of supporting quadratics at the point x. The set of all proximal subgradients at x is denoted @pV (x). For example (see Figure 13), the function V (x) = |x| admits any i 2 [-1, 1] as a proximal subgradient at
+
+Figure 13: @p |x| (0) = [-1, 1] @p(- |x|)(0) = ; x = 0 (elsewhere, @pV (x) = {rV (x)}), while for V (x) = - |x| we have @pV (0) = ; (because there are no possible quadrics that fit inside the graph and touch the corner).
+
+Nonsmooth control-Lyapunov functions A continuous (but not necessarily differentiable) V : Rn ! R>=0 is a control-Lyapunov function (clf) if it is proper, positive definite, and infinitesimally decreasing in the following generalized sense: there exist a positive definite continuous W : Rn ! R>=0 and a oe 2 N so that
+
+sup x2Rn maxi2@pV (x) min|u|<=oe(|x|) i * f (x, u) + W (x) <= 0 . (11)
+
+This is the obvious generalization of the differentiable case in (8); we are still asking that one should be able to make rV (x) * f (x, u) < 0 by an appropriate choice of u = ux, for each x 6= 0, except that now we replace rV (x) by the proximal subgradient set @pV (x). An equivalent property is to ask that V be a viscosity supersolution of the corresponding Hamilton-Jacobi-Bellman equation.
+
+In the paper [34], the following result was proven by the author:
+
+Stability, stabilization, and disturbances 569 Theorem D The system (1) is asymptotically controllable if and only if it admits a continuous clf.
+
+Not surprisingly, the proof is based on first constructing an appropriate W , and then letting V be the optimal cost (Bellman function) for the problem min R 10 W (x(s)) ds. However, some care has to be taken to insure that V is continuous, and the cost has to be adjusted in order to deal with possibly unbounded minimizers. Actually, to be precise, the result as stated here is really a restatement (cf. [40], [7]) of the main theorem given in [34]. See Section 5.2 for the details of this reduction.
+
+Regularization Once V is known to exist, the next step in the construction of a stabilizing feedback is to obtain Lipschitz approximations of V . For this purpose, one considers the Iosida-Moreau inf-convolution of V with a quadratic function:
+
+Vff(x) := infy2
+
+Rn ^V (y) +
+
+1 2ff2 |y - x|
+
+2*
+
+where the number ff > 0 is picked constant on appropriate regions. One has that Vff(x) % V (x), uniformly on compacts. Since Vff is locally Lipschitz, Rademacher's Theorem insures that Vff is differentiable almost everywhere. The feedback k is then made equal to a pointwise minimizer kff of the Hamiltonian, at the points of differentiability (compare with (6) for the case of differentiable V ):
+
+kff(x) := argmin
+
+u2U0 rVff(x) * f (x, u) ,
+
+where ff and the compact U0 = U0(ff) are chosen constant on certain compacts and this choice is made in between level curves, see Figure 14. The critical fact is that Vff is itself a
+
+kff
+
+Vff = ck ff0
+
+Vff00 = c00
+
+Vff0 = c0
+
+Figure 14: k = kff on {x | Vff(x) <= c, Vff0(x) > c0} clf for the original system, at least when restricted to the region where it is needed. More precisely, on each shell of the form
+
+C = {x 2 Rn | r <= |x| <= R} , there are positive numbers m and ff0 and a compact subset U0 such that, for each 0 < ff <= ff0, each x 2 C, and every i 2 @pVff(x),
+
+minu2
+
+U0 i * f (x, u) + m <= 0 .
+
+570 E. D. Sontag See Section 5.3.
+
+Actually, this description is oversimplified, and the proof is a bit more delicate. One must define, on appropriate compact sets
+
+k(x) := argmin
+
+u2U0 iff(x) * f (x, u) ,
+
+where iff(x) is carefully chosen. At points x of nondifferentiability, iff(x) is not a proximal subgradient of Vff, since @pVff(x) may well be empty. One uses, instead, the fact that iff(x) happens to be in @pV (x0) for some x0 ss x.
+
+An example As a simple example, we consider the system that was obtained from the two-dimensional reduction of the "shopping cart" problem, cf. Figure 12. For this example, continuous stabilization is not possible, and so no differentiable clf's can exist. On the other hand, the system is AC, so one can stabilize it using the techniques just described. A clf for this problem was obtained in [25]:
+
+V (x1, x2) =
+
+x21 + x22p
+
+x21 + x22 + |x1| ( 0 if x1 = x2 = 0) and its level sets are as shown in Figure 15. Note that the nonsmoothness
+
+Figure 15: Clf level sets for system in Figure 12 happens exactly on the x2 axis (one has an empty subgradient at those points), and the clf inequality follows from the fact that
+
+infu rV (x1, x2) * f ((x1, x2), u) <= - 12 (x21 + x22) at points with x1 6= 0 (the proximal subgradient set is empty otherwise). The stabilizing feedback that results is the obvious one: if to the right of the x2 axis, move clockwise, if to the left counterclockwise, and make an arbitrary decision (this arbitrariness corresponds to the choice of "iff(x)" in the theory) on the x2-axis.
+
+4 Sensitivity to small measurement errors We have seen that every asymptotically controllable system admits a feedback stabilizer k, generally discontinuous, which renders the closed-loop system .x = f (x, k(x)) GAS. On the
+
+Stability, stabilization, and disturbances 571 other hand, one of the main reasons for using feedback is to deal with uncertainty, and one possible source of uncertainty are measurement errors in state estimation. The use of discontinuous feedback means that undesirable behavior -chattering- may arise. In fact, one of the main reasons for the focus on continuous feedback is precisely in order to avoid such behaviors. Thus, we turn now to an analysis of the effect of measurement errors.
+
+Suppose first that k is a continuous function of x. Then, if the error e is small, using the control u0 = k(x + e) instead of u = k(x) results in behavior which remains close to the intended one, since k(x + e) ss k(x); moreover, if e o/ x then stability is preserved. This property of robustness to small errors when k is continuous can be rigorously established by means of a Lyapunov proof, based on the observation that, if V is a Lyapunov function for the closed-loop system, then continuity of f (x, k(x + e)) on e means that
+
+rV (x) * f (x, k(x + e)) ss rV (x) * f (x, k(x)) < 0 . Unfortunately, when k is not continuous, this argument breaks down. However, it can be modified so as to avoid invoking continuity of k. Assuming that V is continuously differentiable, one can argue that
+
+rV (x) * f (x, k(x + e)) ss rV (x + e) * f (x, k(x + e)) < 0 (using the Lyapunov property at the point x + e instead of at x). This observation leads to a theorem, formulated below, which says that a discontinuous feedback stabilizer, robust with respect to small observation errors, can be found provided that there is a C1 clf.
+
+In general, as there are no C1, but only continuous, clf's, one may not be able to find any feedback law that is robust in this sense. We can see this fact intuitively with an example. Let us take once more the two-dimensional problem illustrated in Figure 12, and let us suppose that we are using the following control law: if to the right of, or exactly on, the x2 axis, move clockwise, and if to the left move counterclockwise. See Figure 16, which indicates what happens on any circle. The main point that we wish to make is that this feedback law
+
+Figure 16: Feedback k on a typical integral manifold is extremely sensitive to measurement errors. Indeed, if the true state x is slightly to the left of the top point, but we mistakenly believe it to be to the right, we use a clockwise motion, in effect bringing the state towards the top, instead of downwards towards the target (the origin); see Figure 17. It is clear that, if we are unlucky enough to consistently make
+
+#u #u
+
+?#
+
+Figure 17: True state; measured state; erroneous motion commanded
+
+572 E. D. Sontag measurement errors that place us on the opposite side of the true state, the result may well be an oscillation (chattering) around the top.
+
+We might say, then, that the discontinuous feedback laws which are guaranteed to always exist by the general theorem in [7] lead to fussy control * -not to be confused, of course, with "fuzzy" control.
+
+There are many well-known techniques for avoiding chattering, and a very common one is the introduction of deadzones where no action is taken. Indeed, in the above example, one may adopt the following modified control strategy: stay in the chosen direction (even if it might be "wrong") for some minimal time, until we are guaranteed to be far enough from the discontinuity; only after this minimal amount of time, we sample again. At this point, we know for sure on which side of the top we are. (This assumes that we have an upper bound on the magnitude of the error. Also, of course, observation errors when close to the origin will mean that we can only expect "practical" stability, meaning that we cannot be assured of convergence to the origin, but merely of convergence to a neighborhood of the origin whose size depends on the size of the observation errors.)
+
+Such a control strategy is not a pure "continuous time" one, in that a minimum intersample time is required. It can be interpreted, rather, as constructing a hybrid (different time scales needed) and dynamic (requiring memory) controller. The paper [26] proves a general result showing the possibility of stabilization of every AC system, using an appropriate definition of general hybrid dynamic controllers. The controller given there incorporates an internal model of system. It compares, at appropriate sampling times, the state predicted by the internal model with the -noisy- observations of the state; whenever these differ substantially, a "reseting" is performed in the state of the controller.
+
+Actually, already the feedback constructed in [7], with no modifications needed, can always be used in a manner robust with respect to small observation errors, using the idea illustrated with the circle of not sampling again for some minimal period. Roughly speaking, the general idea is as follows.
+
+Suppose that the true current state, let us say at time t = ti, is x, but that the controller uses u = k(~x), where ~x = x + e, and e is small. Call x0 the state that results at the next sampling time, t = ti+1. By continuity of solutions on initial conditions, |x0 - ~x0| is also small, where ~x0 is the state that would have resulted from applying the control u if the true state had been ~x. By continuity, it follows that Vff(x) ss Vff(~x) and also Vff(x0) ss Vff(~x0). On the other hand, the construction in [7] provides that Vff(~x0) < Vff(~x) - d(ti+1 - ti), where d is some positive constant (this is valid while we are far from the origin). Hence, if e is sufficiently small compared to the intersample time ti+1 - ti, it will necessarily be the case that Vff(x0) must also be smaller than Vff(x). See Figure 18. Thinking of Vff as a Lyapunov function, this means that x0 is made "smaller", even if the wrong control u = k(~x), rather than k(x), is applied.
+
+This discussion may be formalized in several ways. We limit ourselves here to a theorem assuring semiglobal practical stability (i.e., driving all states in a given compact set of initial conditions into a specified neighborhood of zero). For any sampling schedule ss, we denote
+
+d(ss) := infi>=0(ti+1 - ti) .
+
+If e : [0, 1) ! Rn is any function (e(t) is to be thought of as the state estimation error at
+
+*Fussy (adjective): ". . . requiring . . . close attention to details" (Webster).
+
+Stability, stabilization, and disturbances 573
+
+CC
+
+CC
+
+CC
+
+CC
+
+CCW
+
+CC
+
+CC
+
+CC
+
+CC
+
+CW
+
+x
+
+~x = x+ error
+
+x0
+
+~x0
+
+Vff = ~c Vff = c
+
+Vff = c0 Vff = ~c0
+
+Figure 18: ti+1 AE ti ) ~c0 o/ ~c ) c0 < c
+
+time t), k is a feedback law, x0 2 Rn, and ss is a sampling schedule, we define the solution of
+
+.x = f (x, k(x + e)) , x(0) = x0 (12) as earlier, namely, recursively solving
+
+.x(t) = f (x(t), k(x(ti) + e(ti))) with initial condition x(ti) on the intervals [ti, ti+1]. The feedback stabilizer that was constructed in [7] was defined by patching together feedback laws, denoted there as k* (where * = (ff, r, R) is a triple of positive numbers, with r < R). We use these same feedbacks in the statement of the result.
+
+Theorem E Suppose that the system (1) is asymptotically controllable. Then, there exists a function \Gamma  2 K1 with the following property. For each 0 < " < K, there is a feedback of the type k*, and there exist positive ffi = ffi(", K), ^ = ^(", K), and T = T (", K), such that, for each sampling schedule ss with d(ss) <= ffi, each e : [0, 1) ! Rn so that
+
+|e(t)| <= ^ d(ss) 8 t >= 0 , and each x0 with |x0| <= K, the solution of the noisy system (12) satisfies
+
+|x(t)| <= \Gamma (K) 8 t >= 0 and |
+
+x(t)| <= " 8 t >= T .
+
+See Section 5.4.
+
+4.1 A necessary condition Theorem E insures that stabilization is possible if we sample "just right" (not too slow, so as to preserve stability, but also not too fast, so that observation errors do not cause chattering). It leaves open the theoretical question of precisely under what conditions is it possible to find a state feedback law which is robust with respect to small observation errors and which, on the other hand, is a continuous-time feedback, in the sense of arbitrarily fast sampling. The discussion preceding Theorem E suggests that this objective cannot always be met (e.g., for
+
+574 E. D. Sontag the circle problem), but that the existence of a C1 clf might be sufficient for guaranteeing that it can. Indeed, this is what happens, as was proved in the recent paper [27]. We next present the main result from that paper.
+
+We consider systems
+
+.x(t) = f (x(t), k(x(t) + e(t)) + d(t)) (13) in which there are observation errors as well as, now, possible actuator errors d(*). (Actually, robustness to just small actuator errors is not a serious issue; the original paper [7] showed that the feedback laws obtained there stabilize even in the presence of such errors, or even model errors.) We assume that actuator errors d(*) : [0, 1) ! U are Lebesgue measurable and locally essentially bounded, and that observation errors e(*) : [0, 1) ! Rn are locally bounded.
+
+We wish to define what it means for a feedback k to stabilize (13); roughly, we will ask that, for some fi 2 KL, and for some "tolerance" function ` : R>=0 ! R>=0, we have an estimate |x(t, x0)| <= fi (|x0|, t) provided that |e(t)| <= `(|x(t)|) and |d(t)| <= `(|x(t)|) for all t (small enough errors). However, the definition is somewhat complicated by the need to appropriately choose sampling frequencies.
+
+We define solutions of (13), for each sampling schedule ss, in the usual manner, i.e., solving recursively on the intervals [ti, ti+1), i = 0, 1, . . ., the differential equation
+
+.x(t) = f (x(t) , k(x(ti) + e(ti)) + d(t)) (14) with x(0) = x0. We write x(t) = xss(t, x0, d, e) for the solution, and say it is well-defined if it is defined for all t >= 0.
+
+Definition The feedback k : Rn ! U stabilizes the system (13) if there exists a function fi 2 KL so that the following property holds: For each
+
+0 < " < K there exist ffi = ffi(", K) > 0 and j = j(", K) such that, for every sampling schedule ss with d(ss) < ffi, each initial state x0 with |x0| <= K, and each e, d such that |e(t)| <= j for all t >= 0 and |d(t)| <= j for almost all t >= 0, the corresponding ss-trajectory of (13) is well-defined and satisfies |
+
+xss(t, x0, d, e)| <= max {fi (K, t) , "} 8 t >= 0 . (15)
+
+In particular, taking K := |x0|, one has that
+
+|xss(t, x0, d, e)| <= max {fi (|x0| , t) , "} 8 t >= 0 whenever 0 < " < |x0|, d(ss) < ffi(", |x0|), and for all t, |e(t)| <= j(", |x0|), and |d(t)| <= j(", |x0|).
+
+The main result in [27] is as follows.
+
+Theorem F There is a feedback which stabilizes the system (13) if and only if there is a C1 clf for the unperturbed system (1).
+
+This result is somewhat analogous to a result obtained, for classical solutions, by Hermes in [14]; see also [13].
+
+Stability, stabilization, and disturbances 575
+
+It is interesting to note that, as a corollary of Artstein's Theorem, for control-affine systems .x = g0(x) + P uigi(x) we may conclude that if there is a discontinuous feedback stabilizer that is robust with respect to small noise, then there is also a regular one, and even one that is smooth on Rn \ {0}.
+
+For non control-affine systems, however, there may exist a discontinuous feedback stabilizer that is robust with respect to small noise, yet there is no regular feedback. For example, consider the following system with n = 3 and m = 1:
+
+.x1 = u2u3 .x2 = u1u3 .x3 = u1u2 .
+
+Here, there is a C1 clf, namely the squared norm (x21 +x22 +x23), but there is no possible regular feedback stabilizer, since Brockett's condition fails because points (0, 6= 0, 6= 0) cannot be in the image of (x, u) 7! f (x, u). (Because this is a homogeneous system with no drift, Brockett's condition rules out even feedbacks that are not continuous at the origin, see [27] for a remark to that effect.)
+
+The sufficiency part of Theorem F proceeds by taking a pointwise minimization of the Hamiltonian, for a given C1 clf, i.e. k(x) is defined as any u with |u| <= oe(|x|) which minimizesr
+
+V (x) * f (x, u). The necessity part is based on the following technical fact: if the perturbed system can be stabilized, then the differential inclusion
+
+.x 2 F (x) := "
+
+">0 co
+
+f (x, k(x + "B))
+
+(where B denotes the unit ball in Rn) is strongly asymptotically stable. One may then apply the recent converse Lyapunov theorem of [5] for upper semicontinuous compact convex differential inclusions (which generalized to differential inclusions the theorem from [28] characterizing uniform asymptotic stability of systems with disturbances .x = f (x, d)) to deduce the existence of V .
+
+We can now summarize exactly which implications hold. We write "robust" to mean stabilization of the system subject to observation and actuator noise:C
+
+1 V () 9 robust k+ +
+
+C0 V () 9 k () AC Remark The definition of stabilization of (13) was given in [27] in a slightly different form than here. There, it was required that for each 0 < r < R there exist M = M (R) > 0 with limR & 0 M (R) = 0, ffi = ffi(r, R) > 0, T = T (r, R) > 0, and j = j(r, R), such that, for every partition ss with d(ss) < ffi, each initial state with |x0| <= R, and each e, d such that |e(t)| <= j for all t >= 0 and |d(t)| <= j for almost all t >= 0, the ss-trajectory of
+
+.x = f (x, k(x + e) + d) is defined for all t >= 0 and
+
+|x(t)| <= r 8 t >= T and |x(t)| <= M (R) 8 t >= 0 . This definition is equivalent to the definition that we just gave. The same proof as in Section 5.1 applies.
+
+576 E. D. Sontag 5 Some proofs We fill-in here the proofs of several technical points regarding stabilization.
+
+5.1 Estimates for stabilization We prove here that if a feedback k stabilizes in the sense of the definition of stabilization given in [7], then it is also stabilizing in the sense of the definition given here, by means of an estimate of the type (9). (The converse implication is obvious.) Suppose M (R) > 0, ffi0(r, R) > 0, and T (r, R) >= 0, are such that limR & 0 M (R) = 0, and whenever d(ss) < ffi0(r, R) and |x0| <= R, necessarily |xss(t, x0)| <= M (R) for all t >= 0 and |xss(t, x0)| <= r for all t >= T (r, R). We first define ffi = ffi(", R) > 0, for each 0 < " < R, as follows: pick the smallest positive integer k (necessarily >= 2) such that Rk <= ", and let
+
+ffi(", R) := min aeffi0 ` R2 , R' , . . . , ffi0 ` Rk , R'oe . Next, we define a function
+
+' : R>=0 * R>=0 ! R>=0
+
+as follows. Pick any R > 0 and any t >= 0. Let 0 < t1 < t2 < . . . be a sequence of real numbers (depending on R) so that ti ! 1 as i ! 1 and such that
+
+ti >= T ` Ri + 1 , R' , i = 1, 2, . . . . Now define '(R, t) := M (R) for t 2 [0, t1) and '(R, t) := Ri+1 if t 2 [ti, ti+1) for some i >= 1.
+
+We claim now: for each 0 < " < R, each |x0| <= R, each t >= 0, and each sampling schedule such that d(ss) <= ffi(", R), |
+
+xss(t, x0)| <= max{'(R, t), "} .
+
+Pick any such ", R, x0, ss. Define the sequence {ti} as above, for this R. Let k be the smallest positive integer such that Rk <= ". By definition of ffi, ffi(", R) <= ffi0(R/j, R) for all j = 2, . . ., k. We consider three cases: (i) t < t1, (ii) t 2 [t1, tk-1), and (iii) t >= tk-1. In the first case, we know that |xss(t, x0)| <= M (R) = '(R, t). In the last case, we know that |xss(t, x0)| <= ", because d(ss) <= ffi0(R/k, R) implies that |xss(t, x0)| <= R/k <= " for all t >= T (R/k, R), and tk-1 >= T (R/k, R) by definition of the ti's. In case (ii), we have that there is some j 2 {2, . . . , k - 1} so that t 2 [tj-1, tj). Since tj-1 >= T (R/j, R) and d(ss) <= ffi0(R/j, R), |xss(t, x0)| <= R/j = '(R, t). The claim is then established.
+
+It only remains to show that there is some function fi 2 KL so that '(s, t) <= fi(s, t) for all s, t. The constructions given in the first section of [28] show that there exists such a fi, provided that the following properties hold for ':
+
+1. For some fl 2 K1, sup
+
+t>0 '(R, t) <= fl(R) for all R > 0.
+
+2. For each " > 0 and each R > 0 there is some T (", R) such that
+
+t >= T (", R) ) '(R, t) <= " .
+
+Stability, stabilization, and disturbances 577 The first property is satisfied because M could, without loss of generality, be taken to be of class K1 (if necessary, first use a step function M ; then majorize it by a K1 function). The second property holds as well: take without loss of generality " < R, then pick a positive integer k minimal with R/k <= ", let the sequence {ti} be as in the construction of ', and define T (", R) := tk-1. Observe that t >= tk-1 implies, by definition of ', that '(R, t) <= R/k <= ", as wanted.
+
+5.2 Proximal form of clf theorem We fill-in the details here to show how the proximal subgradient form of the continuous clf existence Theorem D follows from the result in [34]. Before stating the original form of the result, we recall the notion of relaxed control. For each real s > 0, let us denote by Us the radius-s ball in U = Rm. A relaxed Us-valued control is a measurable map ! : I ! P(Us), where I is an interval containing zero and P(Us) denotes the set of all Borel probability measures on Us. Note that ordinary controls can be seen also as relaxed controls, via the natural embedding of Us into P(Us) (map any point u 2 Us into the Dirac delta measure supported at u). Given any u 2 P(Us), we write RUs f (x, u) du(u) simply as f (x, u). As with ordinary controls, we also denote by x(t, x0, !) the solution of the initial value problem that obtains from initial state x0 and relaxed control !, and we consider the supremum norm k!k, defined as the infimum of the set of s such that !(t) 2 P(Us) for almost all t 2 I.
+
+The main result in [34] says that if (and only if) a system is AC, there exist two continuous, positive definite functions V, W : Rn ! R, with V proper, and a nondecreasing function oe : R>=0 ! R>=0, so that the following property holds: for each x0 2 Rn there are a T > 0 and a relaxed control ! : [0, T ) ! P(Uoe(|x0|)), so that x(t) := x(t, x0, !) is defined for all 0 <= t < T and
+
+V (x(t)) - V (x0) <= - Z
+
+t
+
+0 W (x(o/ )) do/ 8 t 2 [0, T ) . (16) To simplify notations, let us write s := oe(|x0|). In order to obtain the proximal version of the result, we show that
+
+min|u|<=s i * f (x0, u) <= -W (x0) (17)
+
+for all i 2 @pV (x0).
+
+As in [40], we first make an intermediate reduction, showing that
+
+minv2F (x0,s) DV (x0; v) <= -W (x0) , (18)
+
+where F (x0, s) denotes the (closed) convex hull of {f (x0, u), u 2 Us}, and DV (x0; v) is the directional subderivate, or contingent epiderivative, of V in the direction of v at x0, defined as
+
+DV (x0; v) := lim inft & 0
+
+v0 ! v
+
+1
+
+t [V (x
+
+0 + tv0) - V (x0)] .
+
+(The minimum in (18) is achieved, because the map v 7! DV (x0; v) is lower semicontinuous, see e.g. [6], ex.3.4.1e.) So, let x(t) = x(t, x0, !) be as above, and consider for each t 2 [0, T ) the vectors
+
+rt := 1t (x(t) - x0) = 1t Z
+
+t
+
+0 f (x(o/ ), !(o/ )) do/ = q
+
+t + pt ,
+
+578 E. D. Sontag with
+
+pt := 1t Z
+
+t
+
+0 f (x
+
+0, !(o/ )) do/ ,
+
+where qt ! 0 as t & 0 (the existence of such a qt, for each t, is an easy consequence of the fact that f is locally Lipschitz on x, uniformly on u 2 Us). Moreover, pt 2 F (x0, s) for all t (because F (x0, s) is convex, so f (x0, !(o/ )) 2 F (x0, s) for each o/ , and then using convexity once more). By compactness, we have that there is some v 2 F (x0, s) and some subsequence ptj ! v with tj & 0; as qt ! 0, also vj := rtj ! v. For this v,
+
+DV (x0; v) <= lim inf
+
+j!1
+
+1 tj [V (x
+
+0 + tj vj) - V (x0)]
+
+= lim inf
+
+j!1
+
+1 tj [V (x(tj)) - V (x
+
+0)] <= -W (x0)
+
+(using (16)), so (18) indeed holds.
+
+Finally, we show that (18) implies (17). Let v 2 F (x0, s) achieve the minimum, and pick any i 2 @pV (x0). By definition of proximal subgradient, there is some u > 0 so that, for each v0 2 F (x0, s) and each small t >= 0,
+
+i * v0 <= 1t [V (x0 + tv0) - V (x0)] + u t fifiv0fifi2 so taking limits along any sequence t & 0 and v0 ! v shows that i * v <= DV (x0; v) <= -W (x0). By definition of F (x0, s), this means that there must exist a u 2 U0 so that also i * f (x0, u) <=-
+
+W (x0), as desired.
+
+Observe that the proximal condition (17), being linear on the velocities f (x, u), has the great advantage of not requiring convex hulls in order to state, and in that sense is far more elegant than (18).
+
+5.3 Vff is a (local) clf We prove here that, on each set Cr,R = {x 2 Rn | r <= |x| <= R}, there is an ff0(r, R) > 0 such that, for each positive ff <= ff0(r, R), the (locally Lipschitz) function Vff behaves like a clf on the set Cr,R. In order to simplify referencing, we write "([7]n)" to refer to Equation (n) in [7] and do not redefine notations given there. Let U0 be a compact subset so that minu2U0 i * f (x, u) <= -W (x) for every i 2 @pV (x) and every x in the ball of radius R + p2fi(R). Let mr,R := 12 min{W (x) | x 2 Cr,R}, and let ` be so that |f (x, u) - f (x0, u)| <= ` |x - x0| for all u 2 U0 and all x in the ball of radius R + p2fi(R). (This is almost as in ([7]29), except that, there, ` was a Lipschitz constant only with respect to |x| <= R.) Finally, as in [7], !R (*) denotes the modulus of continuity of V on the ball of radius R + p2fi(R).
+
+Proposition Let ff 2 (0, 1] satisfy 2` !R iffp2fi(R)j <= mr,R. Then, for all x 2 Cr,R and all i 2 @pVff(x),
+
+minu2
+
+U0 i * f (x, u) <= -mr,R .
+
+Proof We start by remarking that, for all ff 2 (0, 1] and all x 2 BR,
+
+|yff(x) - x|2 <= 2ff2 !R iffp2fi(R)j . (19)
+
+Stability, stabilization, and disturbances 579 This follows from (cf. ([7]19)):
+
+1 2ff2 |yff(x) - x|
+
+2 <= V (x) - V (yff(x)) <= !R (|yff(x) - x|)
+
+and using that |yff(x) - x| <= ffp2fi(R) (cf. Lemma III.3 in [7]) plus the fact that !R (*) is nondecreasing. So
+
+|iff(x)| * |yff(x) - x| = |yff(x) - x|
+
+2
+
+ff2 <= 2 !R iffp2fi(R)j and hence
+
+iff(x) * [f (yff(x), u) - f (x, u)] <= ` |iff(x)| * |yff(x) - x| <= 2` !R iffp2fi(R)j
+
+for all u 2 U0 and all x 2 BR, because yff(x) 2 BR+p2fi(R) (cf. ([7]20)). Thus,
+
+iff(x) * f (x, u) <= iff(x) * f (yff(x), u) + 2` !R iffp2fi(R)j . For each x 2 Cr,R, we have that yff(x) 2 BR+p2fi(R) and (cf. ([7]12)) iff(x) 2 @pV (yff(x)), so we can pick a ux 2 U0 so that iff(x) * f (yff(x), ux) <= -W (x) <= -2mr,R. Using now the fact that 2` !R iffp2fi(R)j <= mr,R, we conclude that
+
+iff(x) * f (x, u) <= -mr,R . So we only need to prove that @pVff(x) ` {iff(x)} for all x. This is given in [6], Theorem 1.`5.1, but is easy to prove directly: pick any i 2 @pVff(x); by definition, this means that exists some oe > 0 such that, for all y near x, i * (y - x) <= Vff(y) - Vff(x) + oe |y - x|2, so
+
+i * (y - x) <= Vff(y) - Vff(x) + fl (|y - x|) (20) for some fl(r) = o(r). Adding
+
+-iff(x) * (y - x) <= -Vff(y) + Vff(x) + 12ff2 |y - x|2 (cf. ([7]13)), we conclude
+
+(i - iff(x)) * (y - x) <= o (|y - x|) . Substituting y = x + h(i - iff(x)) and letting h & 0 shows that i = iff(x). (Observe that we have proved more that claimed: Equation (20) is satisfied by any viscosity subgradient i; in particular, the gradient of V , if V happens to be differentiable at the point x, must coincide with iff(x).)
+
+Observe that the feedback constructed in [7] was k(x) = any u 2 U0 minimizing iff(x) * f (x, u) (where ff and U0 are chosen constant on certain compacts). As Vff is locally Lipschitz, it is differentiable almost everywhere. Thus, the Proposition (see the end of the proof) insures that iff(x) = rVff(x) for almost all x. So k(x) = u is, at those points, the pointwise minimizer of the Hamiltonian rVff(x) * f (x, u) associated to the regularized clf Vff.
+
+580 E. D. Sontag 5.4 Proof of Theorem E We will prove the following more precise result. All undefined notations, including the definitions of the functions fl and ae, can be found in [7].
+
+Theorem G Pick any 0 < r < R so that 2fl(r) < fl(R). Then there exist positive numbers ff, ffi, ^, T such that, for each partition ss with d(ss) <= ffi, and each e : [0, 1) ! Rn which satisfies |e(t)| <= ^ d(ss) for all t, the following property holds: if x(*) satisfies
+
+.x = f (x, k(x + e)) , |x(0)| <= 12 ae(R) , (21) where k is the feedback kff,r,R, then
+
+x(t) 2 BR 8t >= 0 (22) and
+
+x(t) 2 Br 8t >= T . (23)
+
+Theorem E is a corollary: we first pick any \Gamma  such that s <= (1/2)ae(\Gamma (s)) for all s >= 0. Then, given " and K, we can let R := \Gamma (K) (so, K <= (1/2)ae(R)), we then take any 0 < r < " such that 2fl(r) <= fl(R), and apply the above result to 0 < r < R.
+
+We prove Theorem G through a series of technical steps. Let 0 < r < R be given, with 2fl(r) < fl(R). In order to simplify referencing, we write "([7]n)" to refer to Equation (n) in [7].
+
+We start by picking ff as any positive number which satisfies ([7]23), ([7]30), and, also, instead of ([7]40), the slightly stronger condition
+
+!R ip2fi(R)ffj < 116fl(r) . (24) The function Vff is defined as in ([7]9); because of ([7]13), ([7]11), and ([7]19), the number
+
+c := p2fi(R)ff + Rff2 is a Lipschitz constant for Vff on the set BR. Without loss of generality, we assume c >= 2. We let U0 be as in [7], and take the feedback k = kff,r,R. The numbers `, m, and \Delta  are as in ([7]29) and the equation that follows it.
+
+Next, we pick any "0 > 0 so that all the following - somewhat redundant - properties hold:
+
+B 1
+
+2 ae(R) + "0B ` G
+
+ffR (25)
+
+(this is possible because Bae(R) ` GffR by ([7]22)),
+
+GffR + 2"0B ` BR (26) (possible because GffR ` int BR by ([7]24)),
+
+"0 <= fl(r)8c <= fl(r)16 , (27)
+
+Stability, stabilization, and disturbances 581
+
+fl(r) + c "0 < 12fl(R) (28) (recall that 2fl(r) < fl(R)), and
+
+Gffr + 2"0B ` GffR . (29)
+
+We let ffi0 be any positive number so that, for every initial state x0 in the compact set GffR, and for each control u : [0, ffi0] ! U0, the solution of .x = f (x, u) with x(0) = x0 is defined on the entire interval [0, ffi0] and satisfies x(t) 2 GffR + "0B for all t.
+
+Finally, we pick any ffi > 0 which satisfies ([7]33), ([7]41), as well as
+
+ffi <= min ae1 , ffi0 , 2\Delta  "0 , fl(r)8cm oe , (30) and we let
+
+^ := \Delta 4ce-` (31)
+
+and
+
+T := fl(R)\Delta  (32)
+
+(this is twice the value used in ([7]39)).
+
+The main technical fact needed is as follows.
+
+Proposition 5.4.1 Let 0 < r < R satisfy 2fl(r) < fl(R). Let ff, ffi, ^, T be defined as above, and k be the feedback kff,r,R. Pick any " > 0, and consider the following set:
+
+P = Pr,R," := {x | x + "B ` GffR} . Let ss be a partition which satisfies
+
+" ^ <= ti+1 - ti <= ffi 8 i = 0, 1, . . . (33) (that is, d(ss) <= ffi and " <= ^ d(ss)). Then, for any e : [0, 1) ! Rn such that |e(t)| <= " for all t, and any x0 2 P , the solution of .x = f (x, k(x + e)) is defined for all t >= 0, it satisfies (22) and (23), and x(ti) 2 P for all i.
+
+We will prove this via a couple of lemmas, but let us first point out how Theorem G follows from Proposition 5.4.1. Suppose given a partition ss with d(ss) <= ffi, an error function e so that|
+
+e(t)| <= ^ d(ss) for all t, and an initial state x0 with |x0| <= 12 ae(R). Let " := supt>=0 |e(t)| <= ^ d(ss). Note that
+
+" <= ^ d(ss) <= ^ d(ss) <= ^ ffi <= ^ 2\Delta  "0 <= ^ 4c\Delta  e`"0 = "0 . (34) Thus, by (25),
+
+B 1
+
+2 ae(R) ` P , (35)
+
+so x0 2 P . Therefore, (22) and (23) hold for the solution of .x = f (x, k(x + e)), as wanted for Theorem G.
+
+We now prove Proposition 5.4.1. Observe that (33) implies " <= ^ d(ss), so, arguing as in (34), " <= "0. It is useful to introduce the following set as well:
+
+Q = Qr,R," := Gffr + "B . Observe that Q ` P , by (29).
+
+We start the proof by establishing an analogue of Lemma IV.2 in [7]:
+
+582 E. D. Sontag Lemma 5.4.1 If, for some index i, xi := x(ti) 2 P \ Q, then x(t) is defined for all t 2 [ti, ti+1],
+
+x(t) 2 BR 8t 2 [ti, ti+1] , (36)
+
+Vff(x(t)) <= Vff(xi) + "0 8t 2 [ti, ti+1] , (37) and, letting xi+1 := x(ti+1):
+
+xi+1 2 P , (38)
+
+Vff(xi+1) - Vff(xi) <= - \Delta 2 (ti+1 - ti) . (39)
+
+Proof By definition of P , we have that ~xi := xi + e(ti) 2 GffR. Also, ~xi /2 Gffr , since otherwise xi would belong to Q. In particular, ~xi /2 Bae(r). Let ~x(*) be the solution of .x = f (x, k(~xi)) with ~x(ti) = ~xi on [ti, ti+1]. By Lemma IV.2 in [7], this solution is well-defined and it holds that ~x(ti+1) 2 GffR and Vff(~x(t)) - Vff(~xi) <= -\Delta  (t - ti) for all t. As xi 2 P ` GffR, and ti+1 - ti <= d(ss) <= ffi <= ffi0, the definition of ffi0 insures that the solution x(*) of .x = f (x, k(~xi)) with x(ti) = xi is indeed well-defined, and it stays in GffR + "0B ` BR for all t. So, by Gronwall's inequality, we know that
+
+|x(t) - ~x(t)| <= e(t-ti)` |xi - ~xi| <= effi`" for all t 2 [ti, ti+1]. Since Vff has Lipschitz constant c on BR, we have
+
+Vff(x(t)) - Vff(xi)
+
+= Vff(x(t)) - Vff(~x(t)) + Vff(~x(t)) - Vff(~xi) + Vff(~xi) - Vff(xi)<=
+
+ceffi`" - \Delta  (t - ti) + c"
+
+<= \Delta 2 (ti+1 - ti) - \Delta  (t - ti)
+
+for all t 2 [ti, ti+1], where we have used that ffi <= 1, " <= ^ d(ss), the definition ^ = (\Delta /4c)e-`, and the fact that d(ss) <= ti+1 -ti. In particular, the estimate (39) results at t = ti+1, and (37) holds because (\Delta /2)ffi <= "0 by (30).
+
+We are only left to prove that xi+1 2 P . By definition of P , this means that for any given j 2 Rn with |j| <= " it must hold that
+
+j + xi+1 2 GffR = {x | Vff(x) <= (1/2)fl(R)} . Pick such an j; then |j + xi+1 - ~x(ti+1)| <= " + effi`" <= 2e`", and so, since j + xi+1 2 GffR + 2"0B ` BR,
+
+Vff(j + xi+1) <= 2ce`" + Vff(~x(ti+1))<=
+
+2ce`" + Vff(~xi) - \Delta  (ti+1 - ti)
+
+<= Vff(~xi) - \Delta 2 (ti+1 - ti) <= 12 fl(R)
+
+where we again used " <= ^ d(ss) as well as the fact that Vff(~xi) <= (1/2)fl(R) (since ~xi 2 GffR).
+
+We also need another observation, this one paralleling the proof of Lemma IV.4 in [7].
+
+Stability, stabilization, and disturbances 583 Lemma 5.4.2 If, for some index i, xi := x(ti) 2 Q, then x(t) is defined for all t 2 [ti, ti+1],
+
+Vff(x(t)) <= 34 fl(r) 8t 2 [ti, ti+1] , (40) and
+
+V (x(t)) <= 78 fl(r) 8t 2 [ti, ti+1] . (41)
+
+In particular, x(t) 2 Br for all t 2 [ti, ti+1] and x(ti+1) 2 P . Proof The fact that x is defined follows from the choice of ffi0, and we know that x(t) 2 BR for all t 2 [ti, ti+1]. So |
+
+x(t) - xi| <= mffi 8t 2 [ti, ti+1] . (42)
+
+By definition of Q, we may write xi = x0 + j, for some x0 2 Gffr and some |j| <= ". Thus, Vff(xi) <= Vff(x0) + c"0 <= 12 fl(r) + c"0 (second inequality by definition of Gffr ). Together with (42), this gives
+
+Vff(x(t)) <= 12 fl(r) + c"0 + cmffi <= 34fl(r) 8t 2 [ti, ti+1] (using (27) and (30)). So, using (24) and ([7]21),
+
+V (x(t)) <= Vff(x(t)) + !R ip2fi(R)ffj <= 34 fl(r) + 116fl(r) < 78 fl(r) for all t 2 [ti, ti+1], as wanted. By the definition of fl (see [7]), this means that x(t) 2 Br for all t 2 [ti, ti+1]. Finally, if |j| <= " then
+
+Vff(x(ti+1) + j) <= c" + 34 fl(r) <= 12 fl(R) (the last inequality by (28)), which means that x(ti+1)+j 2 GffR; this implies that x(ti+1) 2 P .
+
+Back to the proof of Proposition 5.4.1, since x0 2 P , Lemmas 5.4.1 and 5.4.2 guarantee that the solution exists for all t and remains in BR, and that xi := x(ti) 2 P for all i.
+
+Moreover, if there is some j so that x(tj ) 2 Q, then it holds that Vff(xi) <= 34fl(r) for all i > j. This is because on intervals in which xi-1 2 Q, we already know that Vff(x(ti)) <= 34 fl(r), and if instead xi-1 2 P \ Q, then we have Vff(xi) < Vff(xi-1). So, for any such i > j, either x(t) 2 Br for all t 2 [ti, ti+1] (first case) or Vff(x(t)) <= 34 fl(r) + "0 for all t 2 [ti, ti+1] (second case). Actually, in this last case we also have
+
+V (x(t)) <= Vff(x(t)) + !R ip2fi(R)ffj
+
+<= 34 fl(r) + "0 + !R ip2fi(R)ffj <= 34 fl(r) + 116fl(r) + 116fl(r) < fl(r), (using (27) and (24)), so, again by definition of fl, also x(t) 2 Br for all t 2 [ti, ti+1]. In conclusion, trajectories stay in Br after the first time that x(tj) 2 Q. So we only need to show that there is such a j, with tj <= T .
+
+584 E. D. Sontag
+
+Suppose instead that for i = 0, . . ., k it holds that x(ti) /2 Q, and tk > T . Applying (39) repeatedly,
+
+0 <= Vff(x(tk)) <= Vff(x0) - \Delta 2 tk < fl(R)2 - \Delta 2 T ,
+
+(recall that x0 2 P implies that x 2 GffR), and this contradicts (32). The proof of Proposition 5.4.1 is then complete.
+
+This completes the proof. We remark that a more global result is also possible, as follows. We start by picking two sequences {rj, j 2 Z} and {Rj, j 2 Z} such that rj, Rj ! 0 as j !-1
+
+, rj, Rj ! 1 as j ! 1, and 2Rj <= ae(Rj+1), 2fl(rj) < fl(Rj), and 2rj <= ae(Rj-1) for all j. Next we pick, for each j, positive numbers ffj, ffij, ^j, Tj associated as per Proposition 5.4.1 to rj and Rj, and let kj := kffj,rj,Rj. (We may assume that values of kj belong to some fixed U0 for all j <= 0, and to Uj for j > 0, with all the Uj compact and forming an increasing sequence.) Since GffjRj ` int Gffj+1Rj+1 for all j (this is proved just as in ([7]48)), there is some
+
+sequence of positive numbers {"j, j 2 Z} so that "j < ^j ffij for all j and also, denoting Pj := Prj,Rj,"j , so that Pj ` Pj+1 for all j. Note that the choice of the rj's and Rj's assures that S Pj = Rn \ {0}. Since 2rj <= ae(Rj-1) for all j, and using (35), we know that Brj ` Pj-1 for all j.
+
+Finally, we define the feedback k : Rn ! Rm via:
+
+k(x) := kj(x) if x 2 Pj \ Pj-1 (and k(0) = 0), and let "(x) := "j , u(x) := "j^j , and ffi(x) := ffij for x 2 Pj \ Pj-1, for each j (let "j (0) = 0 and 0 < m(0) < ffi(0) be arbitrary). Observe that, since "j < ^jffij for all j, it holds that u(x) < ffi(x) for all x.
+
+Now suppose that x0 is given, and a partition ss and a function e(*) are given so that, recursively along the solution of .x = f (x, k(x + e)),
+
+u(x(ti)) <= ti+1 - ti <= ffi(x(ti)) and
+
+e(ti) <= "(x(ti))
+
+for all i. Note that, if for some i and j, x(ti) 2 Pj \ Pj-1, then the inequality in (33) holds with " = "j , ^ = ^j , ffi = ffij , and this i.
+
+Let j 2 Z be maximal so that x0 2 Pj. Then, it will hold that the solution stays in the bounded set BRj , and every x(ti) is again in Pj, until the first sampling time ti that x(ti) 2 P` for some ` < j. This first time, say tq, is at most Tj, because Brj ` Pj-1. If x(tq) = 0, then the solution stays there forever (since f (0, 0) = 0). Otherwise, x(tq) 2 P` \ P`-1 for some ` < j, and we may repeat the argument. The conclusion is that the trajectory keeps visiting smaller sets P` (or it becomes 0 in finite time), with an upper bound T (i, j) (the sum of the corresponding T`'s) on the time required for entering a given Pi, if the initial state x0 was in a given Pj. Furthermore, given any 0 < r < R, there are i < j so that Pi ` Br ` BR ` Pj. Thus, all trajectories in BR are taken into Br in a uniform time T (r, R), with bounded overshoot (since trajectories stay in BRj ).
+
+Stability, stabilization, and disturbances 585 6 Stability with respect to disturbances One of the conclusions from the preceding discussion is that, provided that there is a C1 clf, the closed-loop system .x = f (x, k(x+e)+d) in Equation (13) is "stable" in a certain precisely defined sense. If we view the measurement and actuator error functions e and d as external inputs to the system, we may write .x = g(x, v) to represent this closed-loop system (13), where v = (e, d). Interpreted in these terms, the previous discussion dealt with the effect of small "inputs" v on the system .x = g(x, v).
+
+In many control problems, on the other hand, one wishes to understand the effect of large external inputs. This interest might be due to the need to quantity the effect of large errors in measurements or actuators, but there are many other motivations as well. For example, in disturbance rejection problems, one may wish to cancel the effect of an input to the system (such as wind acting on an aircraft). In tracking problems, a desired path r(t) may be given and we might want to make the tracking error x(t) - r(t) ! 0 as t ! 1, which can be interpreted loosely as the stabilization of the signal x - r. (More generally, we may want a subset of the coordinates, or even an arbitrary function of the state, to follow a desired behavior; see [36] for a discussion of some tracking problems.) We are thus led to the study of the general question: how does the state trajectory x(t) = x(t, x0, u) depend on u and x0? More precisely, we would like to compare the global behavior of x and u, asking questions such as: does boundedness of u imply boundedness of x?, or does u(t) ! 0 as t ! 1 imply x(t) ! 0 as t ! 1? And if yes, how does the initial state affect the bounds or convergence rates, respectively?
+
+There are two very conceptually different ways of formulating the notion of stability of control systems. One of them, which we may call the input/output approach, relies on operator-theoretic techniques. Among the main contributions to this area, one may cite the foundational work by Zames, Sandberg, Desoer, Safanov, Vidyasagar, and others, starting in the 1960s. In this approach, a "system" is a causal operator F between spaces of signals, and "stability" is taken to mean that F maps bounded inputs into bounded outputs, or finiteenergy inputs into finite-energy outputs. More stringent typical requirements in this context are that the gain of F be finite (in more classical mathematical terms, that the operator be bounded), or that it have finite incremental gain (mathematically, that it be globally Lipschitz). The input/output approach has been extremely successful in the robustness analysis of linear systems subject to nonlinear feedback and mild nonlinear uncertainties, and in general in the area that revolves around the various versions of the small-gain theorem. Moreover, geometric characterizations of robustness (gap metric and the like) are elegantly carried out in this framework. Finally, i/o stability provides a natural setting in which to study the classification and parameterization of dynamic controllers.
+
+On the other hand, there is the model-based, or state-space approach, to systems and stability, where the basic object is a forced dynamical system, typically described by differential or difference equations. In this approach, which is consistent with the way we have treated systems in the first part of this paper, there is a standard notion of stability, namely Lyapunov asymptotic stability of the unforced system (GAS). Associated to such a system, there is an operator F mapping inputs (forcing functions) into state trajectories (or into outputs, if partial measurements on states are of interest). It becomes of interest then to ask to what extent Lyapunov-like stability notions for a state-space system are related to the stability, in the senses discussed in the previous paragraph, of the associated operator F . It
+
+586 E. D. Sontag is well known that, in contrast to the case of linear systems, where there is -subject to mild technical assumptions- an equivalence between state-space and i/o stability, for nonlinear systems the two types of properties are not so closely related. Even for the very special and comparatively simple case of "feedback linearizable" systems, this relation is far more subtle than it might appear at first sight: if one first linearizes a system and then stabilizes the equivalent linearization, in terms of the original system one does not in general obtain a closed-loop system that is input/output stable in any reasonable sense. (However, it is always possible to make a choice of a --usually different-- feedback law that achieves such stability, in the linearizable case as well as for all other stabilizable systems; see [35].)
+
+The work initiated in [35] elucidates the links between the two alternative paradigms of stability, i/o and state-space, through the systematic use of the notion of "input to state stability" (ISS). This notion differs fundamentally from the operator-theoretic ones that have been classically used in control theory, first of all because it takes account of initial states in a manner fully compatible with Lyapunov stability. Second, boundedness (finite gain) is far too strong a requirement for general nonlinear operators, and it must be replaced by "nonlinear gain estimates," in which the norms of output signals are bounded by a nonlinear function of the norms of inputs; the definition of ISS incorporates such gains in a natural way.
+
+The ISS concept has already proven useful in many applications; see e.g. [3, 10, 16, 18, 19, 20, 24, 23, 29, 30, 31, 33, 46]. Moreover, this concept has many equivalent versions, which indicates that it is mathematically natural: there are characterizations in terms of dissipation, robustness margins, and classical Lyapunov-like functions; see e.g. [42, 43].
+
+Informally, the ISS property translates into the statement: "no matter what is the initial state, if the inputs are uniformly small, then the state must eventually be small". It gives no useful bounds in the situation in which inputs u(*) are unbounded but still have in some sense "finite energy". In [37], a new notion, that of integral input to state stability, iISS for short, was introduced, to model the statement: "no matter what is the initial state, if integrals of the inputs are small, then the state must eventually be small". In this part of the paper, we will briefly survey both the ISS and iISS properties.
+
+Bounded inputs may give unbounded states To appreciate the type of problem that one may encounter, consider the following issue. Suppose that (1) is GAS, meaning, more precisely, that the trivial solution x j 0 of the differential equation
+
+.x = f0(x) = f (x, 0) (43)
+
+is globally asymptotically stable. Then one would like to know if, for solutions of (1) associated to nonzero controls, it holds that
+
+u(*) & 0 ) x(*) & 0 (the "converging input converging state" property) or that
+
+u(*) bounded ) x(*) bounded (the "bounded input bounded state" property). Of course, for linear systems .x = Ax + Bu these implications are always true. Not only that, but one has explicit estimates
+
+|x(t)| <= fi(t) |x0| + flkutk1
+
+Stability, stabilization, and disturbances 587 where
+
+fi(t) = ketAk ! 0 and fl = kBk Z 1
+
+0 ke
+
+sAkds
+
+for any Hurwitz matrix A, where ut is the restriction of u to [0, t], thought of as a measurable bounded function which is zero for s > t. From these estimates both properties can be easily deduced, see e.g. [36].
+
+These implications fail in general for nonlinear systems, however, as has been often pointed out in the literature (see for instance [47]). As a trivial illustration, take the system
+
+.x = -x + (x2 + 1)u (44) and the control u(t) = (2t + 2)-1/2. With x0 = p2 there results the unbounded trajectory x(t) = (2t + 2)1/2. This is in spite of the fact that the unforced system is GAS. Thus, the converging input converging state property does not hold. Even worse, the bounded input u j 1 results in a finite-time explosion. This example is not artificial, as it arises from the simplest case of feedback linearization design. Indeed, given the system
+
+.x = x + (x2 + 1)u , the obvious stabilizing control law (obtained by first canceling the nonlinearity and then assigning dynamics .x = -x) is
+
+u := -2xx2 + 1 + v
+
+where v is the new external input. In terms of this new control (which might be required in order to meet additional design objectives, or may represent the effect of an input disturbance), the closed-loop system is as in (44), and thus is ill-behaved. Observe, however, that if instead of the obvious law just given one would use:
+
+u := -2xx2 + 1 - x + v , then the closed-loop system becomes instead (calling "v" again "u"):
+
+.x = -2x - x3 + (x2 + 1)u . This is still stable when u j 0, but in addition it tolerates perturbations far better, since the term -x3 dominates u(x2 + 1) for bounded u and large x. The behavior with respect to such u is characterized qualitatively by the notion of ISS system, to be discussed below.
+
+Motivation: finite-gain under coordinate changes The notions of ISS and iISS arise naturally when one attempts to generalize linear gain analysis to nonlinear systems. In order to motivate the definitions, we first review the classical case of linear systems
+
+.x = Ax + Bu .
+
+There are two main norms which one usually imposes on input functions and state trajectories, namely square norms (to quantify energy) or supremum norms (to study worst-case
+
+588 E. D. Sontag behavior). This gives rise to the following three possible estimates (the case "L1 ! L2" is less interesting, being too restrictive):
+
+[L1 ! L1] |x(t)| <= c |x(0)| e-*t + c sup
+
+s2[0,t] |u(s)| for all t >= 0 , (45)\Theta 
+
+L2 ! L1\Lambda  |x(t)| <= c |x(0)| e-*t + c Z
+
+t
+
+0 |u(s)|
+
+2 ds for all t >= 0 , (46)\Theta 
+
+L2 ! L2\Lambda  Z
+
+t
+
+0 |x(s)|
+
+2 ds <= c |x(0)| + c Z t
+
+0 |u(s)|
+
+2 ds for all t >= 0 . (47)
+
+(To be precise: there exist positive constants c and * so that, for each measurable essentially bounded control u and each initial condition, the solution of .x = Ax + Bu is defined for all t and it satisfies the indicated estimates. Actually, most textbooks omit the initial states, but these are the appropriate formulations when nonzero initial states are taken into account.) It is not difficult to see that all these three properties are equivalent for linear systems, and in fact they amount to simply asking that the matrix A be Hurwitz (all eigenvalues have negative real parts).
+
+One may argue, however, that notions of stability should be invariant under changes of variables. Let us see what this requirement leads us to. Suppose that we take an originpreserving state change of coordinates x = T (z) and an origin-preserving change of input variables u = S(v). That is, T : Rn ! Rn and S : Rm ! Rm are continuous and invertible, have continuous inverses, and T (0) = 0 and S(0) = 0. Then, there are two functions ff, ff 2K
+
+1 so that
+
+ff(|z|) <= |T (z)| <= ff(|z|)
+
+for all z 2 Rn, and, similarly, we can write |S(v)| <= fl(|v|) for each v 2 Rm, for some fl 2 K1. For any input u and initial state x0, and the corresponding trajectory x(t) = x(t, x0, u), let us write x(t) = T (z(t)) and u(t) = S(v(t)) for all t, and z0 = z(0) = T -1(x0). Let us rewrite each of the estimates in terms of the z and v variables.
+
+Estimate (45) translates into:
+
+ff(|z(t)|) <= c e-*tff(|z0|) + c sup
+
+s2[0,t] fl(|v(s)|) for all t >= 0 .
+
+If we use again "x" and "u" for state and input variables, and we let fi(s, t) := ce-*tff(s) and fl(s) := cfl(s), we are led to an estimate as follows, where fi 2 KL, fl 2 K1:
+
+ff (|x(t)|) <= fi(|x(0)| , t) + sup
+
+s2[0,t] fl(|u(s)|) . (48)
+
+(This would appear to be less general, because fi has a very special form. Surprisingly, however, any KL function fi can be majorized by a function of the special form c e-tff(s), with ff 2 K1; see [37].) On the other hand, estimate (46) translates into:
+
+ff(|z(t)|) <= c e-*tff(|z0|) + c Z
+
+t
+
+0 fl(|v(s)|)
+
+2 ds for all t >= 0 .
+
+With fi(s, t) := ce-*tff(s) and fl(s) := cfl(s)2, we have now an estimate as follows::
+
+ff (|x(t)|) <= fi(|x(0)| , t) + Z
+
+t
+
+0 fl(|u(s)|) ds . (49)
+
+Stability, stabilization, and disturbances 589 Finally, estimate (47) translates into:Z
+
+t
+
+0 ff (|z(s)|)) ds <= cff(|z
+
+0|) + c Z t
+
+0 fl(|v(s)|)
+
+2 ds for all t >= 0 .
+
+With fl(s) := cfl(s)2 and ^(s) := cff(s), invariance under change of variables in (47) leads to an estimate of the form: Z
+
+t
+
+0 ff(|x(s)|)ds <= ^(|x
+
+0|) + Z t
+
+0 fl(|u(s)|)ds . (50)
+
+We now define any system (1) to be input to state stable (ISS) if there exist functions fi 2 KL and ff, fl 2 K1 so that, for each initial state x0 and input u (measurable and locally essentially bounded), the solution x(t) = x(t, x0, u) is defined for all t >= 0, and the estimate (48) holds.
+
+Similarly, we say that a system (1) is integral input to state stable (iISS) provided that there exist functions fi 2 KL and ff, fl 2 K1 so that, for each initial state x0 and input u (measurable and locally essentially bounded), the solution x(t) = x(t, x0, u) is defined for all t >= 0, and the estimate (49) holds.
+
+Regarding the last estimate, that in Equation (50) (what one might call a "nonlinear H1 estimate" in analogy to the linear case), we do not give it a name, because, as remarked below, it is the same as ISS.
+
+In summary, we have seen that the notions of ISS and iISS arise most naturally when one starts from standard stability notions for linear systems and applies nonlinear changes of variables. (Analogously, although this is not usually mentioned, Lyapunov's asymptotic stability can be seen as the notion which arises, via change of state variables, from exponential stability.)
+
+6.1 ISS Note that the estimate (48) can be rewritten as follows: there exist fl 2 K1 and fi 2 KL such that, for all inputs and initial states,
+
+|x(t)| <= fi(|x(0)| , t) + sup
+
+s2[0,t] fl(|u(s)|) (51)
+
+or, equivalently (with slightly different comparison functions),
+
+|x(t)| <= max (fi(|x(0)|, t) , sup
+
+s2[0,t] fl(|u(s)|)) . (52)
+
+(The equivalences follow from elementary properties of K1 functions; for example, ff(r) <= fi(s, t) + fl(t) implies r <= ff-1(fi(s, t) + fl(t)) <= ff-1(2fi(s, t)) + ff-1(2fl(t)). Note that ff-1(2fi(*, *)) 2 KL and ff-1(2fl(*)) 2 K1.)
+
+Asymptotic gain characterization of ISS The estimate (52) implies that an ISS system must have a well-defined asymptotic gain, that is, there is some fl 2 K1 so that
+
+limt!+1 |x(t, x0, u)| <= fl (kuk1)
+
+590 E. D. Sontag
+
+x(0)
+
+x(t) (||u||)g
+
+Figure 19: Asymptotic gain: all trajectories tend to ball of radius determined by kuk1 for all x0 and u; see Figure 19. When u j 0, (52) reduces to |x(t)| <= fi(|x(0)|, t), a GAS estimate, so an ISS system has the property that the zero-input system (43) is GAS. Thus, an ISS system implies the properties: the zero-input system is GAS and there is an asymptotic gain. The first property is independent of inputs, and the second property involves no estimates on initial states. It is then surprising that ISS is in fact equivalent to the conjunction of these two properties, which represents a superposition principle for nonlinear control. Moreover, one can weaken the GAS assumption to simply (neutral) stability of the zeroinput system (43), because the asymptotic gain property, when applied to the special case u j 0, already implies that all trajectories of (43) converge to zero (attractivity property). The result, which is nontrivial, is as follows, see [43]:
+
+Theorem H The system (1) is ISS if and only if it admits an asymptotic gain and the unforced system (43) is stable.
+
+We remark that the basic difficulty is in establishing uniform convergence estimates for the states (i.e., constructing the fi function). If the system were affine in u, the proof would follow from a more or less standard weak compactness argument; however, for general systems, the proof is far more delicate.
+
+Dissipation characterization of ISS Another characterization of ISS is via Lyapunov-like notions. Let us say that a smooth V : Rn ! R is an ISS-Lyapunov function for the system (1) if V is proper and positive definite, and, for some fl, ff 2 K1,
+
+.V (x, u) <= -ff(|x|) + fl(|u|) 8 x, u . (53)
+
+(Recall that we use the notation " .V (x, u)" to denote rV (x).f (x, u).) In other words, along all trajectories of the system, we have the dissipation inequality
+
+V (x(t2)) - V (x(t1)) <= Z
+
+t2
+
+t1 w(u(s), x(s)) ds where, using the terminology of [48, 15], the "supply" function is w(u, x) = fl(|u|) - ff(|x|). The following fundamental result is from [42]:
+
+Stability, stabilization, and disturbances 591 Theorem I The system (1) is ISS if and only if it admits an ISS-Lyapunov function.
+
+It is trivial to see that, if there is an ISS-Lyapunov function, then there is also one which satisfies an estimate of the type (with different comparison functions, of course):
+
+.V (x, u) <= -ff(V (x)) + fl(|u|) (54)
+
+or even (cf. [31], and also [36], Exercise 5.7.17) one of this form with ff(r) = r, due to Praly and Wang: .
+
+V (x, u) <= -V (x) + fl(|u|) . (55)
+
+The proof of one implication in Theorem I is not hard. If we are given a dissipation estimate (54), then either ff(V (x)) <= 2fl(|u|) or .V <= -ff(V )/2, and from here one deduces by a comparison theorem that
+
+V (x(t)) <= max \Phi fi(V (0), t) , ff-1(2fl(kuk))\Psi  where fi(s, t) = y(t) and y is obtained by solving the scalar initial value problem
+
+.y = - 12 ff(y) + fl(u) , y(0) = s . An estimate of the type (52) is immediate from here.
+
+The other implication takes a bit more effort. The critical observation is that ISS implies "small gain robustness": if u(t) is for all t sufficiently small compared to x(t), then the term involving u can be dropped from the right-hand side of (52). This leads to the property that there is some ae 2 K1 so that, defining g(x, d) := f (x, dae(x)), the system .x = g(x, d) is asymptotically stable uniformly with respect to all measurable d(*) : R>=0 ! Rm with values in a ball of radius one. One may then invoke the converse Lyapunov theorem for robust stability proved in [28] to obtain a smooth V so that
+
+rV (x) * g(x, d) <= -ff(x) for all x and d, and an ISS-Lyapunov function can be obtained by slightly modifying this V .
+
+ISS behaves well under series connections As a further motivation for the concept of ISS, and as an illustration of the characterizations given, we remark that any cascade (series connection) of ISS systems is again ISS. Consider a cascade connection .z = f (z, x)
+
+.x = g(x, u) as in Figure 20. If each system is separately ISS (the z system having x as its input), then
+
+- - zx
+
+Figure 20: Cascade
+
+592 E. D. Sontag we know that there are ISS-Lyapunov functions for each. Moreover, one can find matching such functions Vi, in the sense that we have estimates:
+
+.V1(z, x) <= `(|x|) - ff(|z|) .V2(x, u) <= ~`(|u|) - 2`(|x|)
+
+(see [41]) and from here one has that W (x, z) := V1(z) + V2(x) is an ISS-Lyapunov function for the composite system:
+
+.W (x, z) <= ~`(|u|) - `(|x|) - ff(|z|) .
+
+More generally, if the input u is fed back with "small gain", for instance if u = k(z) is so that~ `(|u|) <= (1 - ")ff(|z|), then .W (x, z) <= -`(|x|) - "ff(|z|) and thus for such feedback the closedloop system is GAS. This type of reasoning leads to the Small-Gain Theorem for ISS systems due to Jiang, Praly, and Teel, cf. [19], which implies that, under suitable conditions on gains, the closed loop system obtained from an interconnection of two ISS systems .x = f (x, z, u) and .z = g(z, x, v), see Figure 21, is itself ISS with respect to (u, v).
+
+-
+
+oe oe
+
+vz xu
+
+Figure 21: Feedback interconnection An example As an example, we look at the problem of angular momentum stabilization of a rigid body controlled by two torques acting along principal axes (for instance, a satellite controlled by two opposing jet pairs). Using ! = (!1, !2, !3) to denote the angular velocity of a bodyattached frame with respect to inertial coordinates, and I = diag(I1, I2, I3) to denote the principal moments of inertia, we obtain the equations:
+
+I .! = 0@
+
+0 !3 -!2-
+
+!3 0 !1 !2 -!1 0 1A
+
+I! + 0@
+
+0 0 1 0 0 1 1A
+
+v
+
+We assume I2 6= I3; then, introducing new state and input coordinates via (I2 - I3)x1 = I1!1, x2 = !2, x3 = !3, I2u1 = (I3 - I1)!1!2 + v1, and I3u2 = (I1 - I2)!1!3 + v2, we obtain a system on R3, with controls in R2:
+
+.x1 = x2x3 .x2 = u1 .x3 = u2 .
+
+Stability, stabilization, and disturbances 593 We claim that the following feedback law globally stabilizes the system:
+
+u1 = -x1 - x2 - x2x3 u2 = -x3 + x21 + 2x1x2x3 .
+
+This feedback was obtained in this way: with z2 := x1 + x2, z3 := x3 - x21, the system becomes:
+
+.x1 = -x31 + ff(x1, z2, z3)
+
+.z2 = -z2 .z3 = -z3
+
+The x1-subsystem is easily seen to be ISS, because degx1 ff <= 2 and hence the cubic term dominates for large x1. Thus the cascade, which is the original system that we wanted to stabilize, is also ISS, and, in particular, is GAS when there are no inputs. (In fact, we proved a stronger result, in establishing the ISS property, providing a global robustness result with respect to actuator noise.)
+
+6.2 The H1-like property Recall that the "L2 ! L2" stability property in (47) led to an estimate of the form (50), more precisely, for each x0 and u the solution is well-defined for all t >= 0 and (50) holds. (Actually, a weaker notion is obtained if one merely asks that the estimate should hold in the maximal interval of existence.) It is shown in [38] that this property holds if and only if the system is ISS. A sketch of a proof is as follows. If the system is ISS, then there is an ISS-Lyapunov function satisfying .V (x, u) <= -V (x) + fl(|u|) (cf. Equation (55)), so, integrating, we obtainZ
+
+t
+
+0 V (x(s)) ds <= Z
+
+t 0 V (x(s)) ds + V (x(t)) <= V (x(0)) + Z
+
+t 0 fl(|u(s)|) ds and an estimate of the form (50) holds. Conversely, if such an estimate holds, ons can prove that .x = f (x, 0) is stable and that an asymptotic gain exists. We show here just the "limit property" inft>=0 |x(t)| <= `(kuk1). Indeed, let ` := ff-1 ffi fl. Suppose that inft>=0 |x(t)| > (ff-1 ffi fl)(kuk), so that there is some " > 0 so that ff(x(t)) >= " + fl(u(t)) for all t >= 0. Then,R t
+
+0 ff(x(s))ds >= "t + R
+
+t 0 fl(u(s))ds, which implies ^(|x
+
+0|) > "t for all t, a contradiction.
+
+6.3 Integral input-to-state stability The "L2 ! L1" linear stability property (46) led us to the iISS estimate (49). As with the ISS property, there is an elegant dissipation characterization. Let us call a smooth V : Rn ! R is an iISS-Lyapunov function for the system (1) if V is proper and positive definite, and, for some fl 2 K1 and some positive definite ff,
+
+.V (x, u) <= -ff(|x|) + fl(|u|) 8 x, u (56)
+
+(the difference with (53) is that here we do not require ff to be class K1). A recent result, obtained in [1] by Angeli, Wang, and the author, is as follows:
+
+Theorem J The system (1) is iISS if and only if it admits an iISS-Lyapunov function.
+
+594 E. D. Sontag
+
+Notice that this implies (since a K1 function is in particular positive definite) that every ISS system is also i ISS, but the converse is false, because for bounded but large u's one may well have .V > 0. (Intuitively, on the other hand, fl(u) 2 L1 means that .V is "often" negative.) As an example, take the system .x = -tan-1x + u. This is i ISS: take for instance V (x) = x tan-1x, so .V <= -(tan-1 |x|)2 + 2 |u|, but it is not ISS, since u(t) j ss/2 results in unbounded trajectories.
+
+Several properties are known for the iISS property. For instance, a bilinear system .x = (A + Pmi=1 uiAi)x + Bu is iISS if and only if A is a Hurwitz matrix, see [38]. Many more properties are given in [1]. We pick just one of the most interesting ones here.
+
+A system (1) together with an output function y = h(x) (where h : Rn ! Rp is a continuous map, for some p, with h(0) = 0) will be said here to be h-dissipative if there exists a smooth, positive definite, and proper function V : Rn ! R such that
+
+.V (x, u) <= -ff(h(x)) + oe(|u|)
+
+for all x, u, and weakly h-detectable if, for all trajectories, y(t) = h(x(t)) j 0 implies that x(t) ! 0 as t ! 1.
+
+Theorem K The system (1) is iISS if and only if there is some output h so that the system is weakly h-detectable and h-dissipative.
+
+7 Other notions related to ISS There are several notions, all of great interest in control, which arise when applying coordinate changes to classical linear concepts. We very briefly mention some of them here.
+
+Consider first systems .x = f (x), y = h(x) with outputs but no inputs. Dualizing ISS by simply replacing "u" by "y", there results the following estimate:
+
+|x(t, x0)| <= fi(|x0|, t) + sup
+
+s2[0,t] fl(|y(s)|) .
+
+A system for which this property holds (along all maximal solutions) is said to be output to state stable (OSS). This property is precisely the appropriate version of detectability with respect to zero states, see [44]. More generally, one could have inputs and outputs, considering systems .x = f (x, u), y = h(x). The obvious notion of detectability is then given by estimates of the type
+
+x(t) <= fi(|x0|, t) + sup
+
+s2[0,t] fl
+
+1(|u(s)|) + sup
+
+s2[0,t] fl
+
+2(|y(s)|)
+
+("IOSS", for input/output to state stability). Several dissipation characterizations are discussed in [44, 22].
+
+A different notion is that of input-to-output stability (IOS), where we ask that all trajectories of a system with outputs must satisfy
+
+h(x(t, x0, u)) <= fi(|x0|, t) + sup
+
+s2[0,t] fl(|u(s)|)
+
+and |
+
+x(t, x0, u)| <= max noe(|x0|) , sups2[0,t]oe(u(s))o
+
+Stability, stabilization, and disturbances 595 for all t, u, and x0, and for appropriate comparison functions. This is closely related to the concept of partial stability in differential equations (special case, when h is a projection). It is the correct notion, it would appear, for formulating regulation and tracking problems. See [45] for Lyapunov-like dissipation characterizations.
+
+Acknowledgements I wish to thank Francesca Albertini, Misha Krichman, Daniel Liberzon, Gene Ryan, and Yuan Wang, for many useful comments and suggestions.
+
+References
+
+[1] Angeli, D., E.D. Sontag, and Y. Wang, A characterization of integral input to state
+
+stability, submitted. (Summary as " Remarks on integral input to state stability", in Proc. IEEE Conf. Decision and Control, Tampa, Dec. 1998, IEEE Publications, 1998, to appear.)
+
+[2] Artstein, Z., Stabilization with relaxed controls, Nonlinear Anal. 7(1983), 1163-1173. [3] Battilotti, S., Robust stabilization of nonlinear systems with pointwise norm bounded
+
+uncertainties: A control Lyapunov approach, to appear in IEEE Trans. Automat. Control.
+
+[4] Brockett, R.W., Asymptotic stability and feedback stabilization, in Differential Geometric Control Theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkh"auser, Boston, 1983, 181-191.
+
+[5] Clarke, F.H., Yu.S. Ledyaev, and R.J. Stern, Asymptotic stability of differential inclusions, submitted.
+
+[6] Clarke, F.H., Yu.S. Ledyaev, R.J. Stern, and P. Wolenski, Nonsmooth Analysis and
+
+Control Theory, Springer-Verlag, New York, 1998.
+
+[7] Clarke, F.H., Yu. S. Ledyaev, E.D. Sontag, and A.I. Subbotin, Asymptotic controllability
+
+implies feedback stabilization, IEEE Trans. Automat. Control 42(1997), 1394-1407.
+
+[8] Coron, J-M., Global asymptotic stabilization for controllable systems without drift,
+
+Math. Control Signals Systems 5(1992), 295-312.
+
+[9] Coron, J.-M., and L. Rosier, A relation between continuous time-varying and discontinuous feedback stabilization, J. Math. Systems Estim. Control 4(1994), 67-84.
+
+[10] Christofides, P.D., and A.R. Teel, Singular perturbations and input-to-state stability,
+
+IEEE Trans. Automat. Control 41(1996), 1645-1650.
+
+[11] Freeman, R., and P. V. Kokotovi'c, Robust Nonlinear Control Design, Birkh"auser, Boston,
+
+1996.
+
+[12] Filippov, A.F., Differential Equations with Discontinuous Right-Hand Side, Nauka,
+
+Moscow, 1985 (in Russian), and Kluwer, Dordrecht, 1988 (English translation).
+
+596 E. D. Sontag [13] H'ajek, O., Discontinuous differential equations. I, II , J. Differential Equations 32 (1979),
+
+149-170, 171-185.
+
+[14] Hermes, H., Discontinuous vector fields and feedback control, in: Differential Equations
+
+and Dynamical Systems, Academic Press, New York, 1967, 155-165.
+
+[15] Hill, D.J., Dissipative nonlinear systems: Basic properties and stability analysis, Proc.
+
+31st IEEE Conf. Decision and Control , Tucson, Arizona, 1992, 3259-3264.
+
+[16] Hu, X.M., On state observers for nonlinear systems, Systems Control Lett. 17 (1991),
+
+645-473.
+
+[17] Isidori, A., Nonlinear Control Systems, 3rd ed., Springer-Verlag, Berlin-Heidelberg, 1995. [18] Isidori, A., Global almost disturbance decoupling with stability for non minimum-phase
+
+single-input single-output nonlinear systems, Systems Control Lett. 28 (1996), 115-122.
+
+[19] Jiang, Z.-P., A. Teel, and L. Praly, Small-gain theorem for ISS systems and applications,
+
+Math. Control Signals Systems 7 (1994), 95-120.
+
+[20] Khalil, H.K., Nonlinear Systems, Prentice-Hall, Upper Saddle River, NJ, 2nd ed., 1996. [21] Krasovskii, N.N., and A.I. Subbotin, Positional differential games, Nauka, Moscow,
+
+1974 [in Russian]. French translation Jeux differentiels, Editions Mir, Moscou, 1979. Revised English translation Game-Theoretical Control Problems, Springer-Verlag, New York, 1988.
+
+[22] Krichman, M., E.D. Sontag, and Y. Wang, Input/output to state stability, in preparation.
+
+[23] Krsti'c, M., I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive Control
+
+Design, John Wiley & Sons, New York, 1995.
+
+[24] Krsti'c, M. and H. Deng, Stabilization of Uncertain Nonlinear Systems, Springer-Verlag,
+
+London, 1998.
+
+[25] Lafferriere, G.A., and E.D. Sontag, Remarks on control lyapunov functions for discontinuous stabilizing feedback, Proc. IEEE Conf. Decision and Control, San Antonio, IEEE Publications, 1993, 306-308.
+
+[26] Ledyaev, Yu.S., and E.D. Sontag, A remark on robust stabilization of general asymptotically controllable systems, in: Proc. Conf. Information Sciences and Systems (CISS 97), Johns Hopkins, Baltimore, MD, March 1997, 246-251.
+
+[27] Ledyaev, Yu.S., and E.D. Sontag, A Lyapunov characterization of robust stabilization,
+
+J. Nonlinear Analysis, to appear. Summarized version in " Stabilization under measurement noise: Lyapunov characterization", Proc. American Control Conf., Philadelphia, June 1998, 1658-1662.
+
+[28] Lin, Y., E.D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust
+
+stability, SIAM J. Control Optim. 34(1996), 124-160.
+
+Stability, stabilization, and disturbances 597 [29] Lu, W.M., A class of globally stabilizing controllers for nonlinear systems, Systems
+
+Control Lett. 25 (1995), 13-19.
+
+[30] Lu, W..M., A state-space approach to parameterization of stabilizing controllers for
+
+nonlinear systems, IEEE Trans. Automat. Control 40 (1995), 1576-1588.
+
+[31] Praly, L., and Y. Wang, Stabilization in spite of matched unmodelled dynamics and an
+
+equivalent definition of input-to-state stability, Math. Control Signals Systems 9 (1996), 1-33.
+
+[32] Ryan, E.P., On Brockett's condition for smooth stabilizability and its necessity in a
+
+context of nonsmooth feedback, SIAM J. Control Optim. 32(1994), 1597-1604.
+
+[33] Sepulchre, R., M. Jankovic, and P.V. Kokotovic, Integrator forwarding: a new recursive
+
+nonlinear robust design, Automatica 33(1997), 979-984.
+
+[34] Sontag E.D., A Lyapunov-like characterization of asymptotic controllability, SIAM J.
+
+Control Optim. 21(1983), 462-471.
+
+[35] Sontag, E.D., Smooth stabilization implies coprime factorization , IEEE Trans. Automat.
+
+Control 34(1989), 435-443.
+
+[36] Sontag, E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems,
+
+2nd ed., Springer-Verlag, New York, 1998.
+
+[37] Sontag, E.D,. Comments on integral variants of ISS, Systems Control Lett. 34(1998),
+
+93-100.
+
+[38] Sontag, E.D., Comments on integral variants of ISS, Systems Control Lett. 34(1998),
+
+93-100.
+
+[39] Sontag, E.D., and H.J. Sussmann, Remarks on continuous feedback, in: Proc. IEEE
+
+Conf. Decision and Control, Albuquerque, Dec. 1980, IEEE Publications, Piscataway, NJ, 916-921.
+
+[40] Sontag, E.D., and H.J. Sussmann, Nonsmooth Control Lyapunov Functions, in Proc.
+
+IEEE Conf. Decision and Control, New Orleans, IEEE Publications, 1995, 2799-2805.
+
+[41] Sontag, E.D., and A. Teel, Changing supply functions in input/state stable systems,
+
+IEEE Trans. Automat. Control 40(1995), 1476-1478.
+
+[42] Sontag, E.D., and Y. Wang, On characterizations of the input-to-state stability property,
+
+Systems Control Lett. 24 (1995), 351-359.
+
+[43] Sontag, E.D., and Y. Wang, New characterizations of the input to state stability property, IEEE Trans. Automat. Control 41 (1996), 1283-1294.
+
+[44] Sontag, E.D., and Y. Wang, Output-to-state stability and detectability of nonlinear
+
+systems, Systems Control Lett. 29(1997), 279-290.
+
+598 E. D. Sontag [45] Sontag, E.D., and Y. Wang, A notion of input to output stability, Proc. European Control Conf., Brussels, July 1997, Paper WE-E A2, CD-ROM file ECC958.pdf, 6 pages. (Journal version in preparation.)
+
+[46] Tsinias, J., Input to state stability properties of nonlinear systems and applications
+
+to bounded feedback stabilization using saturation, ESAIM Control Optim. Calc. Var. 2(1997), 57-85.
+
+[47] Varaiya, P.P. and R. Liu, Bounded-input bounded-output stability of nonlinear timevarying differential systems, SIAM J. Control 4(1966), 698-704.
+
+[48] Willems, J.C., Mechanisms for the stability and instability in feedback systems, Proc.
+
+IEEE 64 (1976), 24-35.</pre>
+</body>
+</html>

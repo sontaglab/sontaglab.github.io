@@ -1,0 +1,274 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nips-ds.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nips-ds.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Sample Complexity for Learning
+
+Recurrent Perceptron Mappings
+
+Bhaskar Dasgupta Department of Computer Science
+
+University of Waterloo Waterloo, Ontario N2L 3G1
+
+CANADA bdasgupt@daisy.uwaterloo.ca
+
+Eduardo D. Sontag Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+USA sontag@control.rutgers.edu
+
+Abstract Recurrent perceptron classifiers generalize the classical perceptron model. They take into account those correlations and dependences among input coordinates which arise from linear digital filtering. This paper provides tight bounds on sample complexity associated to the fitting of such models to experimental data.
+
+1 Introduction One of the most popular approaches to binary pattern classification, underlying many statistical techniques, is based on perceptrons or linear discriminants; see for instance the classical reference (Duda and Hart, 1973). In this context, one is interested in classifying k-dimensional input patterns
+
+v = (v1; : : : ; vk) into two disjoint classes A+ and A\Gamma . A perceptron P which classifies vectors into A+ and A\Gamma  is characterized by a vector (of "weights") ~c 2 Rk, and operates as follows. One forms the inner product
+
+~c:v = c1v1 + : : : ckvk: If this inner product is positive, v is classified into A+, otherwise into A\Gamma . In signal processing and control applications, the size k of the input vectors v is typically very large, so the number of samples needed in order to accurately "learn" an appropriate classifying perceptron is in principle very large. On the other hand, in such applications the classes A+ and A\Gamma  often can be separated by means of a dynamical system of fairly small dimensionality. The existence of such a dynamical system reflects the fact that the signals of interest exhibit context dependence and
+
+correlations, and this prior information can help in narrowing down the search for a classifier. Various dynamical system models for classification appear from instance when learning finite automata and languages (Giles et. al., 1990) and in signal processing as a channel equalization problem (at least in the simplest 2-level case) when modeling linear channels transmitting digital data from a quantized source, e.g. (Baksho et. al., 1991) and (Pulford et. al., 1991).
+
+When dealing with linear dynamical classifiers, the inner product ~c:v represents a convolution by a separating vector ~c that is the impulse-response of a recursive digital filter of some order n o/ k. Equivalently, one assumes that the data can be classified using a ~c that is n-recursive, meaning that there exist real numbers r1; : : : ; rn so that
+
+cj =
+
+nX
+
+i=1
+
+cj\Gamma iri ; j = n + 1; : : :; k :
+
+Seen in this context, the usual perceptrons are nothing more than the very special subclass of "finite impulse response" systems (all poles at zero); thus it is appropriate to call the more general class "recurrent" or "IIR (infinite impulse response)" perceptrons. Some authors, particularly Back and Tsoi (Back and Tsoi, 1991; Back and Tsoi, 1995) have introduced these ideas in the neural network literature. There is also related work in control theory dealing with such classifying, or more generally quantized-output, linear systems; see (Delchamps, 1989; Koplon and Sontag, 1993).
+
+The problem that we consider in this paper is: if one assumes that there is an n-recursive vector ~c that serves to classify the data, and one knows n but not the particular vector, how many labeled samples v(i) are needed so as to be able to reliably estimate ~c? More specifically, we want to be able to guarantee that any classifying vector consistent with the seen data will classify "correctly with high probability" the unseen data as well. This is done by computing the VC dimension of the related concept class and then applying well-known results from computational learning theory. Very roughly speaking, the main result is that the number of samples needed is proportional to the logarithm of the length k (as opposed to k itself, as would be the case if one did not take advantage of the recurrent structure). Another application of our results, again by appealing to the literature from computational learning theory, is to the case of "noisy" measurements or more generally data not exactly classifiable in this way; for example, our estimates show roughly that if one succeeds in classifying 95% of a data set of size log q, then with confidence ss 1 one is assured that the prediction error rate will be ! 90% on future (unlabeled) samples.
+
+Section 5 contains a result on polynomial-time learnability: for n constant, the class of concepts introduced here is PAC learnable. Generalizations to the learning of real-valued (as opposed to Boolean) functions are discussed in Section 6. For reasons of space we omit many proofs; the complete paper is available by electronic mail from the authors.
+
+2 Definitions and Statements of Main Results Given a set X, and a subset X of X, a dichotomy on X is a function
+
+ffi : X ! f\Gamma 1; 1g: Assume given a class F of functions X! f\Gamma 1; 1g, to be called the class of classifier functions. The subset X ` X is shattered by F if each dichotomy on X is the restriction to X of some OE 2 F. The Vapnik-Chervonenkis dimension vc (F) is the supremum (possibly infinite) of the set of integers ^ for which there is some subset
+
+X ` X of cardinality ^ which can be shattered by F. Due to space limitations, we omit any discussion regarding the relevance of the VC dimension to learning problems; the reader is referred to the excellent surveys in (Maass, 1994; Tur'an, 1994) regarding this issue.
+
+Pick any two integers n?0 and q*0. A sequence
+
+~c = (c1; : : : ; cn+q) 2 Rn+q is said to be n-recursive if there exist real numbers r1; : : :; rn so that
+
+cn+j =
+
+nX
+
+i=1
+
+cn+j\Gamma iri ; j = 1; : : : ; q :
+
+(In particular, every sequence of length n is n-recursive, but the interesting cases are those in which q 6= 0, and in fact q AE n.) Given such an n-recursive sequence ~c, we may consider its associated perceptron classifier. This is the map
+
+OE~c : Rn+q ! f\Gamma 1; 1g : (x1; : : : ; xn+q) 7! sign 
+
+n+qX
+
+i=1
+
+cixi!
+
+where the sign function is understood to be defined by sign (z) = \Gamma 1 if z ^ 0 and sign (z) = 1 otherwise. (Changing the definition at zero to be +1 would not change the results to be presented in any way.) We now introduce, for each two fixed n; q as above, a class of functions:
+
+Fn;q := \Phi  OE~c j ~c 2 Rn+q is n-recursive\Psi  :
+
+This is understood as a function class with respect to the input space X= Rn+q, and we are interested in estimating vc (Fn;q).
+
+Our main result will be as follows (all logs in base 2):
+
+Theorem 1
+
+max \Phi n; nblog(b1 + q\Gamma 1n c)c\Psi  ^ vc (Fn;q) ^ min fn + q ; 18n + 4n log(q + 1)g :
+
+Note that, in particular, when q ? maxf2 + n2; 32g, one has the tight estimates
+
+n
+
+2 log q ^ vc (Fn;q) ^ 8n log q :
+
+The organization of the rest of the paper is as follows. In Section 3 we state an abstract result on VC-dimension, which is then used in Section 4 to prove Theorem 1. Finally, Section 6 deals with bounds on the sample complexity needed for identification of linear dynamical systems, that is to say, the real-valued functions obtained when not taking "signs" when defining the maps OE~c.
+
+3 An Abstract Result on VC Dimension Assume that we are given two sets Xand \Lambda , to be called in this context the set of inputs and the set of parameter values respectively. Suppose that we are also given a function
+
+F : \Lambda  \Theta  X! f\Gamma 1; 1g :
+
+Associated to this data is the class of functions
+
+F := fF (*; \Delta ) : X! f\Gamma 1; 1g j * 2 \Lambda g
+
+obtained by considering F as a function of the inputs alone, one such function for each possible parameter value *. Note that, given the same data one could, dually, study the class
+
+F\Lambda  : fF (\Delta ; ,) : \Lambda  ! f\Gamma 1; 1g j , 2 Xg
+
+which obtains by fixing the elements of Xand thinking of the parameters as inputs. It is well-known (and in any case, a consequence of the more general result to be presented below) that vc (F) * blog(vc (F\Lambda ))c; which provides a lower bound on vc (F) in terms of the "dual VC dimension." A sharper estimate is possible when \Lambda  can be written as a product of n sets
+
+\Lambda  = \Lambda 1 \Theta  \Lambda 2 \Theta  : : : \Theta  \Lambda n (1) and that is the topic which we develop next. We assume from now on that a decomposition of the form in Equation (1) is given, and will define a variation of the dual VC dimension by asking that only certain dichotomies on \Lambda  be obtained from F\Lambda . We define these dichotomies only on "rectangular" subsets of \Lambda , that is, sets of the form
+
+L = L1 \Theta  : : : \Theta  Ln ` \Lambda  with each Li ` \Lambda i a nonempty subset. Given any index 1 ^ ^ ^ n, by a ^-axis dichotomy on such a subset L we mean any function ffi : L ! f\Gamma 1; 1g which depends only on the ^th coordinate, that is, there is some function OE : L^ ! f\Gamma 1; 1g so that ffi(*1; : : : ; *n) = OE(*^) for all (*1; : : :; *n) 2 L; an axis dichotomy is a map that is a ^-axis dichotomy for some ^. A rectangular set L will be said to be axisshattered if every axis dichotomy is the restriction to L of some function of the form F (\Delta ; ,) : \Lambda  ! f\Gamma 1; 1g, for some , 2 X.
+
+Theorem 2 If L = L1 \Theta  : : : \Theta  Ln ` \Lambda  can be axis-shattered and each set Li has cardinality ri, then vc (F) * blog(r1)c + : : : + blog(rn)c.
+
+(In the special case n=1 one recovers the classical result vc (F) * blog(vc (F\Lambda ))c.) The proof of Theorem 2 is omitted due to space limitations.
+
+4 Proof of Main Result We recall the following result; it was proved, using Milnor-Warren bounds on the number of connected components of semi-algebraic sets, by Goldberg and Jerrum:
+
+Fact 4.1 (Goldberg and Jerrum, 1995) Assume given a function F : \Lambda  \Theta  X ! f\Gamma 1; 1g and the associated class of functions F := fF (*; \Delta ) : X! f\Gamma 1; 1g j * 2 \Lambda g. Suppose that \Lambda  = Rk and X= Rn, and that the function F can be defined in terms of a Boolean formula involving at most s polynomial inequalities in k + n variables, each polynomial being of degree at most d. Then, vc (F) ^ 2k log(8eds). 2
+
+Using the above Fact and bounds for the standard "perceptron" model, it is not difficult to prove the following Lemma.
+
+Lemma 4.2 vc (Fn;q) ^ min fn + q ; 18n + 4n log(q + 1)g Next, we consider the lower bound of Theorem 1. Lemma 4.3 vc (Fn;q) * maxfn; nblog(b1 + q\Gamma 1n c)cg
+
+Proof. As Fn;q contains the class of functions OE~c with ~c = (c1; : : :; cn; 0; : : :; 0), which in turn being the set of signs of an n-dimensional linear space of functions, has VC dimension n, we know that vc (Fn;q) * n. Thus we are left to prove that if q ? n
+
+then vc (Fn;q) * nblog(b1 + q\Gamma 1n c)c.
+
+The set of n-recursive sequences of length n + q includes the set of sequences of the following special form:
+
+cj =
+
+nX
+
+i=1
+
+lj\Gamma 1i ; j = 1; : : :; n + q (2)
+
+where ffi; li 2 R for each i = 1; : : :; n. Hence, to prove the lower bound, it is sufficient to study the class of functions induced by
+
+F : Rn \Theta  Rn+q ! f\Gamma 1; 1g ; (*1; : : :; *n; x1; : : : ; xn+q) 7! sign 0@
+
+nX
+
+i=1
+
+n+qX
+
+j=1
+
+*j\Gamma 1i xj1A :
+
+Let r = b q+n\Gamma 1n c and let L1; : : : ; Ln be n disjoint sets of real numbers (if desired, integers), each of cardinality r. Let L = Sni=1 Li. In addition, if rn ! q+n\Gamma 1, then select an additional set B of (q+n\Gamma rn\Gamma 1) real numbers disjoint from L.
+
+We will apply Theorem 2, showing that the rectangular subset L1 \Theta  : : : \Theta  Ln can be axis-shattered. Pick any ^ 2 f1; : : :; ng and any OE : L^ ! f\Gamma 1; 1g: Consider the (unique) interpolating polynomial
+
+p(*) =
+
+n+qX
+
+j=1
+
+xj*j\Gamma 1
+
+in * of degree q + n \Gamma  1 such that
+
+p(*) = ae OE(*) if * 2 L^0 if * 2 (L [ B) \Gamma  L^. Now pick , = (x1; : : : ; xn+q\Gamma 1). Observe that
+
+F (l1; l2; : : : ; ln; x1; : : : ; xn+q) = sign 
+
+nX
+
+i=1
+
+p(li)! = OE(l^)
+
+for all (l1; : : : ; ln) 2 L1 \Theta : : :\Theta Ln, since p(l) = 0 for l 62 L^ and p(l) = OE(l) otherwise. It follows from Theorem 2 that vc (Fn;q) * nblog(r)c, as desired.
+
+5 The Consistency Problem We next briefly discuss polynomial time learnability of recurrent perceptron mappings. As discussed in e.g. (Tur'an, 1994), in order to formalize this problem we need to first choose a data structure to represent the hypotheses in Fn;q. In addition, since we are dealing with complexity of computation involving real numbers, we must also clarify the meaning of "finding" a hypothesis, in terms of a suitable notion of polynomial-time computation. Once this is done, the problem becomes that of solving the consistency problem:
+
+Given a set of s * s("; ffi) inputs ,1; ,2; : : : ; ,s 2 Rn+q, and an arbitrary dichotomy \Delta  : f,1; ,2; : : : ; ,sg ! f\Gamma 1; 1g find a representation of a hypothesis OE~c 2 Fn;q such that the restriction of OE~c to the set f,1; ,2; : : : ; ,sg is identical to the dichotomy \Delta  (or report that no such hypothesis exists).
+
+The representation to be used should provide an "efficient encoding" of the values of the parameters r1; : : : ; rn; c1; : : : ; cn: given a set of inputs (x1; : : : ; xn+q) 2 Rn+q, one should be able to efficiently check concept membership (that is, compute
+
+sign (Pn+qi=1 cixi)). Regarding the precise meaning of polynomial-time computation, there are at least two models of complexity possible: the unit cost model which deals with algebraic complexity (arithmetic and comparison operations take unit time) and the logarithmic cost model (computation in the Turing machine sense; inputs (x1; : : : ; xn+q) are rationals, and the time involved in finding a representation of r1; : : : ; rn; c1; : : : ; cn is required to be polynomial on the number of bits L.
+
+Theorem 3 For each fixed n ? 0, the consistency problem for Fn;q can be solved in time polynomial in q and s in the unit cost model, and time polynomial in q, s, and L in the logarithmic cost model.
+
+Since vc (Fn;q) = O(n + n log(q + 1)), it follows from here that the class Fn;q is learnable in time polynomial in q (and L in the log model). Due to space limitations, we must omit the proof; it is based on the application of recent results regarding computational complexity aspects of the first-order theory of real-closed fields.
+
+6 Pseudo-Dimension Bounds In this section, we obtain results on the learnability of linear systems dynamics, that is, the class of functions obtained if one does not take the sign when defining recurrent perceptrons. The connection between VC dimension and sample complexity is only meaningful for classes of Boolean functions; in order to obtain learnability results applicable to real-valued functions one needs metric entropy estimates for certain spaces of functions. These can be in turn bounded through the estimation of Pollard's pseudo-dimension. We next briefly sketch the general framework for learning due to Haussler (based on previous work by Vapnik, Chervonenkis, and Pollard) and then compute a pseudo-dimension estimate for the class of interest.
+
+The basic ingredients are two complete separable metric spaces X and Y (called respectively the sets of inputs and outputs), a class F of functions f : X ! Y (called the decision rule or hypothesis space), and a function ` : Y\Theta  Y! [0; r] ae R (called the loss or cost function). The function ` is so that the class of functions (x; y) 7! `(f(x); y) is "permissible" in the sense of Haussler and Pollard. Now, one may introduce, for each f 2 F, the function
+
+Af;` : X\Theta  Y\Theta  R ! f\Gamma 1; 1g : (x; y; t) 7! sign (`(f(x); y) \Gamma  t) as well as the class AF;` consisting of all such Af;`. The pseudo-dimension of F with respect to the loss function `, denoted by pd [F; `], is defined as:
+
+pd [F; `] := vc (AF;`) : Due to space limitations, the relationship between the pseudo-dimension and the sample complexity of the class F will not be discussed here; the reader is referred to the references (Haussler, 1992; Maass, 1994) for details.
+
+For our application we define, for any two nonnegative integers n; q, the class
+
+F0n;q := n bOE~c fififi ~c 2 Rn+q is n-recursiveo
+
+where bOE~c : Rn+q ! R : (x1; : : : ; xn+q) 7! Pn+qi=1 cixi . The following Theorem can be proved using Fact 4.1.
+
+Theorem 4 Let p be a positive integer and assume that the loss function ` is given by `(y1; y2) = jy1 \Gamma  y2jp. Then, pd \Theta F0n;q; `\Lambda  ^ 18n + 4n log(p(q + 1)) :
+
+Acknowledgements This research was supported in part by US Air Force Grant AFOSR-94-0293.
+
+References A.D. Back and A.C. Tsoi, FIR and IIR synapses, a new neural network architecture for time-series modeling, Neural Computation, 3 (1991), pp. 375-385.
+
+A.D. Back and A.C. Tsoi, A comparison of discrete-time operator models for nonlinear system identification, Advances in Neural Information Processing Systems (NIPS'94), Morgan Kaufmann Publishers, 1995, to appear.
+
+A.M. Baksho, S. Dasgupta, J.S. Garnett, and C.R. Johnson, On the similarity of conditions for an open-eye channel and for signed filtered error adaptive filter stability, Proc. IEEE Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991, pp. 1786-1787.
+
+A. Blumer, A. Ehrenfeucht, D. Haussler, and M. Warmuth, Learnability and the Vapnik-Chervonenkis dimension, J. of the ACM, 36 (1989), pp. 929-965.
+
+D.F. Delchamps, Extracting State Information from a Quantized Output Record, Systems and Control Letters, 13 (1989), pp. 365-372.
+
+R.O. Duda and P.E. Hart, Pattern Classification and Scene Analysis, Wiley, New York, 1973.
+
+C.E. Giles, G.Z. Sun, H.H. Chen, Y.C. Lee, and D. Chen, Higher order recurrent networks and grammatical inference, Advances in Neural Information Processing Systems 2, D.S. Touretzky, ed., Morgan Kaufmann, San Mateo, CA, 1990.
+
+P. Goldberg and M. Jerrum, Bounding the Vapnik-Chervonenkis dimension of concept classes parameterized by real numbers, Mach Learning, 18, (1995): 131-148.
+
+D. Haussler, Decision theoretic generalizations of the PAC model for neural nets and other learning applications, Information and Computation, 100, (1992): 78-150.
+
+R. Koplon and E.D. Sontag, Linear systems with sign-observations, SIAM J. Control and Optimization, 31(1993): 1245 - 1266.
+
+W. Maass, Perspectives of current research about the complexity of learning in neural nets, in Theoretical Advances in Neural Computation and Learning, V.P. Roychowdhury, K.Y. Siu, and A. Orlitsky, eds., Kluwer, Boston, 1994, pp. 295-336.
+
+G.W. Pulford, R.A. Kennedy, and B.D.O. Anderson, Neural network structure for emulating decision feedback equalizers, Proc. Int. Conf. Acoustics, Speech, and Signal Processing, Toronto, Canada, May 1991, pp. 1517-1520.
+
+E.D. Sontag, Neural networks for control, in Essays on Control: Perspectives in the Theory and its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+Gy"orgy Tur'an, Computational Learning Theory and Neural Networks:A Survey of Selected Topics, in Theoretical Advances in Neural Computation and Learning, V.P. Roychowdhury, K.Y. Siu,and A. Orlitsky, eds., Kluwer, Boston, 1994, pp. 243-293.
+
+L.G. Valiant A theory of the learnable, Comm. ACM, 27, 1984, pp. 1134-1142. V.N.Vapnik, Estimation of Dependencies Based on Empirical Data, Springer, Berlin, 1982.</pre>
+</body>
+</html>

@@ -1,0 +1,5688 @@
+\documentclass[12pt]{article}
+\usepackage{latexsym, amssymb}
+
+\usepackage{psfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+
+
+\parskip=2pt plus 1pt minus 1pt
+%\parskip=3pt plus 1pt minus 1pt
+\topmargin -0.5in
+\textheight 9.5in
+\oddsidemargin 0.25in
+\evensidemargin 0.25in
+\textwidth 6.25in
+
+\newcommand{\spp}{\medskip}
+\newcommand{\sppp}{\medskip\medskip}
+
+
+\parindent0pt
+
+\pagestyle{myheadings}
+\markboth{\hbox to \textwidth{\hfill\huge\thepage}}{}
+
+\newcommand{\comment}[1]{}
+\newcommand{\psp}{\;}
+\newcommand{\pspp}{\;\;}
+\newcommand{\nsp}{}         %{\!}
+
+\newcommand{\forconf}[1]{}
+\newcommand{\forpaper}[1]{#1}
+\newcommand{\forthesis}[1]{}
+
+
+\def\restriction{\,|}  %I had an error - unknown
+
+\newcommand{\R}{{\mathbb R}}  %ams bold
+\newcommand{\X}{{\mathbb X}}  %ams bold
+
+%\newcommand{\R}{{\bf R}}  
+%\newcommand{\X}{{\bf X}}  
+
+\newcommand{\maxint}{[0,\tmax)}
+\newcommand{\tmax}{t_{{\rm max}}}
+\newcommand{\states}{{\X}}
+\newcommand{\controls}{{\mathbb U}} 
+\newcommand{\maxints}{[0,\smax)}
+\newcommand{\smax}{s_{{\rm max}}}
+\newcommand{\ioss}{IOSS}  %{{\sc ioss}}  %%% CHANGED AT COPY EDIT--ADG %%%
+\newcommand{\ios}{IOS}  %{{\sc ios}}	 %%% CHANGED AT COPY EDIT--ADG %%%
+\newcommand{\newf}{\widehat{f}}
+%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\io}[1]{@l_{#1}}
+\newcommand{\dbio}[1]{\tilde @l_{#1}}
+\newcommand{\rref}[1]{{\rm (\ref{#1})}}
+\newcommand{\res}[1]{\!\restriction_{[#1]}}
+\newcommand{\restr}[1]{\!\!\restriction_{#1}}
+\newcommand{\kk}{!K}
+\newcommand{\kl}{!K!L}
+\newcommand{\ki}{{\cal K_\infty}}
+\newcommand{\lem}{!L^m_{!8,e}}
+\newcommand{\lep}{!L^p_{!8,e}}
+\newcommand{\Rpos}{\R_{!>0}}
+\newcommand{\mhat}{\widehat{@m}}
+\newcommand{\xhat}{\widehat{@x}}
+\newcommand{\uhat}{\widehat{u}}
+\newcommand{\yhat}{\widehat{y}}
+\newcommand{\htheta}{\hat@q}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\normi}[1]{\norm{#1}_{!8}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+
+\newcommand{\gapply}{\odot}
+\newcommand{\bapply}{\odot}
+\newcommand{\traj}[2]{#2!.#1}
+
+\newcommand{\oc}{ONAC}
+\newcommand{\ocword}{ouput null asymptotically controllable under disturbances}
+\newcommand{\oss}{OSS} %%{{\sc oss}}   %%% CHANGED AT COPY EDIT--ADG %%%
+\newcommand{\iss}{ISS}  %{{\sc iss}}    %%% CHANGED AT COPY EDIT--ADG %%%
+\newcommand{\ve}{@e}
+\newcommand{\vf}{@j}
+\newcommand{\ga}{{@g}}
+\newcommand{\ts}{@l}
+\newcommand{\I}{!I}
+\newcommand{\J}{{\cal J}}
+\newcommand{\D}{!D}
+\newcommand{\E}{!E}
+\newcommand{\T}{!T}
+\newcommand{\U}{!U}
+\newcommand{\V}{!V}
+\newcommand{\K}{!K}
+\newcommand{\M}{!M}
+\newcommand{\B}{!B}
+\newcommand{\G}{{\cal G}}
+\newcommand{\GO}{{\cal G}_1}
+\newcommand{\GT}{{\cal G}_2}
+\newcommand{\A}{!A}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\edo}{\end{document}}
+\renewcommand{\tilde}{\widetilde}
+
+\overfullrule=0pt %no dark lines if overfull
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{itlemma}{Lemma}[section] %number by section (set in \em by default)
+%same numbering counter as itlemmas:
+\newtheorem{itproposition}[itlemma]{Proposition}
+\newtheorem{itcorollary}[itlemma]{Corollary}
+\newtheorem{itremark}[itlemma]{Remark}
+\newtheorem{itdefinition}[itlemma]{Definition}
+\newtheorem{itexample}[itlemma]{Example}
+\newenvironment{lemma}{\begin{itlemma}\rm}{\end{itlemma}} %no-italics
+\newenvironment{remark}{\begin{itremark}\rm}{\end{itremark}} %no-italics
+\newenvironment{corollary}{\begin{itcorollary}\rm}{\end{itcorollary}}
+\newenvironment{proposition}{\begin{itproposition}\rm}{\end{itproposition}}
+\newenvironment{definition}{\begin{itdefinition}\rm}{\end{itdefinition}}
+\newenvironment{example}{\begin{itexample}\rm}{\end{itexample}}
+
+\def\bi{\begin{itemize}}
+\def\ei{\end{itemize}}
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+\def \beq {\begin{eqnarray}}
+\def \eeq {\end{eqnarray}}
+\def \beqn {\begin{eqnarray*}}
+\def \eeqn {\end{eqnarray*}}
+\def\st{\, | \,}
+\newcommand{\twoif}[4]{
+\left\{ \begin{array}{ll}#1&#2\\#3&#4\end{array}\right.
+}
+\newcommand{\rf}[1]{[\ref{#1}]} %bibliographical references
+\newcommand{\text}[1]{\hbox{\rm \ #1\ \/}}
+
+
+\newcommand{\be}[1]{\begin{equation}\label{#1}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\beo}[1]{\[}  % optional equation - delete numbers unless needed
+\newcommand{\eeo}{\]}     % optional equation
+
+%\newcommand{\bl}[1]{\begin{lemma}\label{#1}}
+%\newcommand{\el}{\end{lemma}}
+%\newcommand{\els}{\end{lemma}}
+
+\newcommand{\bll}[1]{\begin{lemma}\label{#1}}
+%\newcommand{\el}{\end{lemma}}
+\newcommand{\ells}{\end{lemma}}
+\newcommand{\elll}{\end{lemma}}
+
+\newcommand{\bl}[1]{\noindent{\bf Lemma:}}
+\newcommand{\el}{}
+\newcommand{\els}{}
+
+%\newcommand{\br}[1]{\begin{remark}\label{#1}}
+%\newcommand{\er}{\end{remark}}
+%\newcommand{\ers}{\end{remark}}
+
+\newcommand{\br}[1]{\noindent{\bf Remark:}}
+\newcommand{\er}{}
+\newcommand{\ers}{}
+
+
+\newcommand{\bt}[1]{\begin{theorem}\label{#1}}
+
+%\newcommand{\bd}[1]{\begin{definition}\label{#1}}
+%\newcommand{\eds}{\end{definition}}
+%\newcommand{\ed}{\end{definition}}
+\newcommand{\bd}[1]{{\noindent{\bf Definition:}}}
+\newcommand{\eds}{}
+\newcommand{\ed}{}
+
+%\newcommand{\bp}[1]{\begin{proposition}\label{#1}}
+%\newcommand{\ep}{\end{proposition}}
+%\newcommand{\eps}{\end{proposition}}
+\newcommand{\bp}[1]{{\noindent{\bf Proposition:}}}
+\newcommand{\ep}{}
+\newcommand{\eps}{}
+
+%\newcommand{\bpr}{\begin{proof}}
+%\newcommand{\epr}{\qquad \end{proof}}
+\newcommand{\bpr}{{\noindent{\bf Proof: }}}
+\newcommand{\epr}{}
+\newcommand{\eprr}{\qed}
+
+\newcommand{\bc}[1]{\begin{corollary}\label{#1}}
+
+\newcommand{\bfact}[1]{\begin{fact}\label{#1}}
+\newcommand{\bex}[1]{\begin{example}\label{#1}}
+\newcommand{\bem}[1]{\begin{example}\label{#1}}  %Yes, 2 different ones...
+\newcommand{\ec}{\end{corollary}}
+\newcommand{\efact}{\end{fact}}
+\newcommand{\eex}{\end{example}}
+\newcommand{\eem}{\end{example}}
+\newcommand{\ele}{\end{lemmaex}}
+\newcommand{\et}{\end{theorem}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  These are just for statements, no "qed" box is put in.
+%%  (Also for when I have to finish something after a displayed equation
+%%        or itemized.)
+\newcommand{\ecs}{\end{corollary}}
+\newcommand{\eers}{\end{exercise}}
+\newcommand{\eexs}{\end{example}}
+\newcommand{\eems}{\end{example}}
+\newcommand{\eles}{\end{lemmaex}}
+\newcommand{\ets}{\end{theorem}}
+
+\newcommand{\qed}{\hfill \halmos} %put !#at right margin
+
+\newcommand{\mybox}{\hfill \mbox{$\Box$}} %put !#at right margin (white square)
+
+\newenvironment{proof}{\noindent {\em Proof}.\ }{\hspace*{\fill}$\halmos$\medskip}
+\newcommand{\halmos}{\rule{1ex}{1.4ex}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+\newcommand{\optbreak}[1]{{{#1} \nonumber \\ && {#1}}}
+\newcommand{\ulevel}{{@g_1}}
+\newcommand{\ylevel}{{@g_2}}
+\newcommand{\ydissip}{{@g}}
+\newcommand{\xdissip}{{@a_3}}
+\newcommand{\ygdissip}{{@s_2}}
+\newcommand{\ugdissip}{{@s_1}}
+\newcommand{\xyrel}{{@c_2}}
+\newcommand{\xurel}{{@c_1}}
+\newcommand{\om}{{[-1, 1]^m}}
+\newcommand{\fhat}{\widehat{f}}
+\newcommand{\tslow}[2]{{@s_{#1,#2}}}
+\newcommand{\That}{\hat{T}}
+\newcommand{\precomp}{{@X}}
+\newcommand{\ioslow}{{@q}}
+\newcommand{\norma}[2]{{\norm{{#1}|_{#2}}}}
+\newcommand{\Z}{{\mathbb Z}}  %ams bold
+\newcommand{\sm}{{\vf}}
+\newcommand{\qixdissip}{\tilde{@a}_3}
+\newcommand{\floor}{{\underline@a}}
+\newcommand{\pot}{{\bar@a}} 
+\newcommand{\newprop}{{GASMO}}
+\newcommand{\klfun}{{@l}}
+\newcommand{\newklfun}{{\hat{\klfun}}}
+\newcommand{\ix}{{@c}}
+\newcommand{\iy}{{@g}}
+\newcommand{{\rd}}{{\rm d}}
+\newcommand{\rv}{{\rm v}}
+\newcommand{\iini}{{@k}}
+\newcommand{\hbound}{{\vartheta}}
+\newcommand{\mix}{{@f}}
+\newcommand{\tf}{{\tilde f}}
+\newcommand{\relaxed}{!S}
+\newcommand{\rpm}{!P}
+\newcommand{\sqb}[1]{\left[ #1 \right]}
+\newcommand{\cbrace}[1]{\left\{ #1 \right\}}
+\newcommand{\rb}[1]{\left( #1 \right)}
+\newcommand{\prosub}{{\partial_P}}
+\newcommand{\prosuper}{{\partial^P}}
+\newcommand{\abso}[1]{{\abs{#1}}}
+\newcommand{\sign}{{\mbox{sign}}}
+\newcommand{\mi}{{\setminus}}
+\newcommand{\vr}{{\varrho}}
+\newcommand{\ra}{{\to}}
+\newcommand{\any}{{\forall}}
+\newcommand{\deq}{{:=}}
+\newcommand{\sub}{{\subseteq}}
+\newcommand{\inter}{{\mbox{int}}}
+\newcommand{\si}[1]{{\left\lfloor #1 \right\rfloor}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\dist}{\mbox{dist}}
+\newcommand{\pcow}{!W}
+
+
+\newcommand{\dfun}{{\bf d}}
+\newcommand{\ddfun}{{\bf w}}  % {{\bf d}^d}
+\newcommand{\dd} {w}          % {{d^d}}
+\newcommand{\du}  {{d_u}}
+\newcommand{\dufun}  {{\bf d}_u}
+\newcommand{\uc}{{\bf u}}
+\newcommand{\vc}{{\bf v}}
+\newcommand{\yc}{{\bf y}}
+
+\newcommand{\omd}{{[-1, 1]^{m_w}}} %{{[-1, 1]^{m_d}}}
+\newcommand{\omu}{\controls_1}
+\newcommand{\Omegad}{{@G}}   %{{@W^d}}
+\newcommand{\Omegau}{{[-1, 1]^{m_u}}}  %   {{@W^u}}
+\newcommand{\xlevel}{{@a_x}}
+\newcommand{\iu}{{@g_1}}
+\newcommand{\UintIOSS}{U(iI)OSS}
+\newcommand{\nobserver}{@S_{n.o}}
+\newcommand{\uobs}{\hat @g_1}
+\newcommand{\yobs}{\hat @g_2}
+\newcommand{\outputs}{!Y}
+
+\newcommand{\intEO}{{\E_1}}
+\newcommand{\precompone}{@X_1}
+
+\newcommand{\Lyapunovlike}{Lyapunov-like}
+
+\newcommand{\myboxineq}{\eqno\Box} %put !#at margin (white square) in eqn
+
+
+
+\newcommand{\Arr}{$\leadsto\;$}
+\newcommand{\xo}{x^{\scriptscriptstyle 0}}
+\newcommand{\xtnou}{x(t,\xo)}
+\newcommand{\tzz}{\tlim 0}
+\newcommand{\tlim}{\raisebox{-1.5ex}{$\stackrel{\longrightarrow}%
+{{\scriptstyle t->!8}}$}}
+\newcommand{\afunction}{}
+\newcommand{\function}{}
+\newcommand{\functions}{}
+
+\newcommand{\Therefore}{\therefore}  %in case want to put words back
+
+\newcommand{\includepicx}[2]{\includegraphics[scale=#1]{FIGS-04NONLINEAR/#2}}
+
+\begin{document}
+
+{\Large
+
+``Input-Output-to-State Stability''\\
+
+Mikhail Krichman, Eduardo D. Sontag, Yuan Wang
+
+SIAM J. Control and Optimization {\bf 39}(2001): 1874--1928\\
+
+Lyapunov characterizations of input-output-to-state stability (IOSS)\\
+
+
+(a type of ``well-posed detectability'')\\
+
+equivalence IOSS \& existence of smooth IOSS-Lyapunov function\\
+
+Corollaries:\\
+
+\bi
+\item
+existence of ``norm-estimators''
+\item
+characterize IOSS in terms of ``relative stability''
+\item
+or via finite-energy estimates
+\item
+characterization of ISS (special case)
+\ei
+
+\spp
+
+proof uses many interesting techniques \& concepts
+
+
+\newpage
+
+\section{Introduction} 
+
+{\em observers: estimate, on the basis of external information 
+
+provided by past input and output signals, 
+
+the internal state $x(t)$ at time $t$}
+
+\begin{center}
+\setlength{\unitlength}{0.012500in}%
+\begin{picture}(310,65)(340,660)
+\thinlines
+\put(400,660){\framebox(100,40){}}
+\put(340,680){\vector(1,0){60}}
+\put(500,680){\vector(1,0){60}}
+\put(370,680){\line(0,1){35}}
+\put(370,715){\vector(1,0){190}}
+\put(560,670){\framebox(50,55){}}
+\put(610,695){\vector(1,0){30}}
+\put(350,690){$u$}
+\put(515,690){$y$}
+\put(445,678){$x$}
+\put(650,695){$\hat x$}
+\end{picture}
+\end{center}
+
+``algorithm'' (dynamical systems) that converges to an estimate
+
+$\hat x(t)$ of the state $x(t)$ of the system of interest, 
+
+using information $\{u(s), s!<t\}$ (set of past input values)
+
+and $\{y(s), s!<t\}$ (set of past output measurements)\\
+
+
+State estimation central to control theory: 
+
+signal processing applications (Kalman filters); 
+
+stabilization based on partial information (observers)
+
+well understood for linear systems, still poorly developed in general\\
+
+
+when interested in stabilization to an equilibrium, 
+
+e.g. zero state $x=0$ in Euclidean space, 
+
+weaker type of estimate sometimes enough; {\em norm-estimators:}
+
+require only bound $\hat x(t)$ on {\em norm}
+$\abs{x(t)}$ of the state $x(t)$, cf.:
+
+{\sc L. Praly and Y. Wang}, {\em Stabilization in spite of matched unmodelled
+  dynamics and an equivalent definition of input-to-state stability},
+  MCSS 9 (1996) pp. 1--33
+
+\spp
+
+{\sc Z.-P. Jiang and L. Praly}, {\em Preliminary results about robust
+  Lagrange stability in adaptive nonlinear regulation}, IJC 6 (1992), pp. 285--307
+
+\newpage
+
+to understand issues, start by considering special case:
+
+when the external data ($u$ and $y$) vanish identically,
+
+obvious estimate (assuming $x=0$ equilibrium for unforced system 
+
+and output is zero when $x=0$) is $\hat x(t)==0$
+
+if this estimate bounds norm of true state as $t->!8$, $\therefore$ $x(t)->0$
+
+i.e. necessary property for the possibility of norm-estimation:
+
+origin must be a globally asymptotically stable state wrt
+
+``subsystem'' consisting of those states for which
+
+$u==0$ produces output $y==0$: system is {\em zero-detectable}
+
+\spp
+
+[ for {\em linear systems}, zero-detectability $==$ detectability
+
+(two trajectories produce $=$ output $=>$ they approach each other)
+
+but not in general (``incremental'' notion $!=$)]
+
+\spp
+
+but: zero-detectability not ``well-posed'' enough:
+
+ask also: \ inputs and outputs small $=>$ states small, and
+
+inputs and outputs converge to zero as $t->!8$ $=>$ states do too
+
+\begin{center}
+%\setlength{\unitlength}{0.012500in}%
+\setlength{\unitlength}{0.02in}%
+\begin{picture}(220,45)(340,660)
+\thinlines
+\put(400,660){\framebox(100,40){}}
+\put(340,680){\vector( 1, 0){ 60}}
+\put(500,680){\vector( 1, 0){ 60}}
+\put(350,690){$u->0$}
+\put(420,678){$=>\;\; x->0$}
+\put(515,690){$y->0$}
+\end{picture}
+\end{center}
+
+also natural: asymptotic bounds on states as function of i/o bounds
+
+and quantify ``overshoot'' (transient behavior)
+
+\spp
+
+system $@.x=f(x,u)$ with measurement (output) map $y=h(x)$
+
+is {\em input-output-to-state stable\/} (\ioss)
+
+if $\exists$
+$@b!e\kl$ and $\ulevel, \ylevel !e\ki$ s.t. 
+the estimate
+\[
+ \abs{x(t)} !<\max \left\{ @b(\abs{x(0)}, t), 
+\ulevel\left(\norma{u}{[0, t]}\right), 
+\ylevel\left(\norma{y}{[0, t]}\right)\right\}
+\]
+holds for any initial state $x(0)$ and any input $u(!.)$,
+
+where $x(t) = x(t,x(0),u(!.))$ and $y(t)=h(x(t))$
+
+(precise defs later)
+
+\newpage
+
+terminology \ioss:
+
+``stability from the input/output data to the state''\\
+
+term introduced in 
+
+{\sc E. D. Sontag and Y. Wang}, {\em Output-to-state
+ stability and detectability of nonlinear systems}, SCL 29 (1997), pp. 279--290
+
+\spp
+
+combines ``strong'' observability (TAC 89) and ISS;
+
+called simply ``detectability'' in
+
+{\sc E. D. Sontag}, {\em Some connections between stabilization and
+  factorization}, in CDC89, pp. 990--995
+
+(stated there in i/o terms, applied to controller parameterization)
+
+\spp
+
+and called ``strong unboundedness observability'' in
+
+{\sc Z.-P. Jiang, A. Teel, and L. Praly}, {\em Small-gain theorem for ISS
+  systems and applications}, MCSS 7(1994), pp. 95--120
+
+(more precisely, allowing additive nonnegative constant in rhs)
+
+and related to other ISS-like formalism for observers, e.g.:
+
+\spp
+
+{\sc D. J. Pan, Z. Z. Han, and Z. J. Zhang}, {\em Bounded-input-bounded-output
+  stabilization of nonlinear systems using state detectors}, SCL 21 (1993), pp. 189--198
+
+{\sc W. M. Lu}, {\em A class of globally stabilizing controllers for nonlinear
+  systems}, SCL 25 (1995), pp. 13--19
+
+\newpage
+
+
+will show \ioss\ iff $\exists$ norm-estimator, using nec \& suf. 
+
+characterization of \ioss\ by smooth dissipation functions: 
+
+\spp
+
+$\exists$ proper (radially unbounded) positive definite
+
+smooth function $V$ of states (``storage function'' [Willems])
+
+s.t. {\em dissipation inequality\/}:
+\beo{diss-intro}
+\frac{d}{dt}V(x(t))\;!<\;
+-@s_1(\abs{x(t)}) +  @s_2(\abs{y(t)}) + @s_3(\abs{u(t)})
+\eeo
+
+\spp
+
+holds along all trajectories, with the functions $@s_i$ $!e\ki$
+
+\spp
+
+this provides an ``infinitesimal'' description of \ioss
+
+and a norm-observer is easily built from $V$
+
+\spp
+
+earlier several independent suggestions that
+
+one should {\em define} ``detectability'' in dissipation terms, e.g. in:
+
+{\sc W. M. Lu}, {\em A state-space
+  approach to parameterization of stabilizing controllers for nonlinear
+  systems}, IEEE TAC 40 (1995), pp. 1576--1588
+
+\spp
+
+detectability defined by the requirement that $\exists$
+differentiable storage function $V$ as above, but with
+special choice $@s_2(r):=r^2$ and no inputs
+
+or weaken the dissipation inequality, to merely require:
+\[
+ x!=0 \;=>\; \frac{d}{dt}V(x(t))< @s_2(\abs{y(t)})
+\]
+(again, with no inputs), as in:
+
+{\sc A. S. Morse}, {\em Control using logic-based switching}, in Trends in
+  Control: A European Perspective, A. Isidori, ed., Springer-Verlag, London, 1995,
+  pp. 69--114
+
+\spp
+
+(no ``margin'' of stability $-@s_1(\abs{x(t)})$)
+
+\newpage
+
+note: asking that along all trajectories there holds
+\[
+\frac{d}{dt}V(x(t))\;!<\;
+-@s_1(\abs{x(t)}) +  @s_2(\abs{y(t)}) + @s_3(\abs{u(t)})
+\]
+means $V$ satisfies partial differential inequality (PDI):
+\[
+\max_{u\in\R^m} \left\{\nabla V(x) !.f(x,u) + @s_1(\abs{x}) 
+-  @s_2(\abs{h(x)}) -  @s_3(\abs{u}) \right\} \;\leq\; 0
+\]
+which is same as Hamilton--Jacobi inequality
+\[
+g_0(x) + \frac{1}{4}\sum_{i=1}^m (\nabla V(x)!.g_i(x))^2 
+  + @s_1(\abs{x}) - @s_2(\abs{h(x)}) \;\leq\; 0 \,.  
+\]
+in special case of quadratic input ``cost'' $@s_3(r)=r^2$ and\\
+systems $@.x = f(x,u)$ affine in controls
+\[
+@.x \;=\; g_0(x) \,+\, \sum_{i=1}^m \,u_i \,g_i(x) 
+\] 
+(just replace RHS in (PDI) by max value,
+obtained at $u_i = (1/2)\nabla V(x)!.g_i(x)$)
+
+so converse result amounts to providing nec \& sufft conds
+
+for $\exists$ smooth (and proper and positive definite) solution $V$ to PDI
+
+\sppp
+
+remark: $\exists$  lower semicontinuous $V$ $=>$ $\exists$ $!C^!8$
+(possibly $!=$ $@s_i$'s)
+
+(``solution'' interpreted in a weak sense, e.g. viscosity):
+
+Mikhail Krichman, Eduardo D. Sontag
+
+{\em Characterizations of detectability notions in terms of discontinuous
+dissipation functions},
+IJC 75 (2002): 882--900
+
+\newpage
+
+
+key preliminary step in the construction of $V$
+
+(just as it was for the analogous result for ISS)
+
+is characterization of \ioss\ property in robustness terms
+
+by means of a ``small gain'' argument:
+
+\spp
+
+\ioss\ equivalent to the existence of ``robustness margin'' $@r!e\ki$
+
+i.e. every system obtained under a feedback law $@D$
+
+(even dynamic and/or time-varying) 
+
+for which $\abs{@D(t)}!<@r(\abs{x(t)})$ for all $t$
+
+must be \oss\ (i.e., is \ioss\ as a system with no inputs)
+
+\begin{center}
+\setlength{\unitlength}{0.012500in}%
+\begin{picture}(135,90)(190,570)
+\thinlines
+\put(220,620){\framebox(80,40){}}
+\put(240,570){\framebox(40,30){}}
+\put(260,620){\vector( 0,-1){ 20}}
+\put(240,585){\line(-1, 0){ 40}}
+\put(200,585){\line( 0, 1){ 55}}
+\put(200,640){\vector( 1, 0){ 20}}
+\put(300,640){\vector( 1, 0){ 20}}
+\put(257,635){$x$}
+\put(190,645){$u$}
+\put(325,645){$y$}
+\put(257,580){$@D$}
+\end{picture}
+\end{center}
+
+\Arr ``systems with disturbances'' (diff. inclusions)
+
+\spp
+
+since such systems must be introduced anyhow,
+
+we present all our results (and definitions)
+
+for systems with disturbances
+
+\spp
+
+core of proof is construction of $V$ for ``robustly detectable'' 
+
+(more precisely, ``robust \oss'') 
+
+for $@.x=g(x,d)$ obtained when $u=d@r(\abs{x})$ in original
+
+with $d=d(!.)$ $=$ measurable \function w/values in unit ball
+
+function $V$ must satisfy PDI:
+\[
+\nabla V (x) !. g(x,d) \;!<\; -@s_1(\abs{x})+@s
+_2(\abs{y})
+\]
+for some \functions $@s_1$ and $@s_2$ $!e\ki$
+
+\newpage
+
+further reduction: ``relatively asymptotically stable'' systems:
+
+if $@.V(x(t))!< -@s _1(\abs{x(t)})+@s_2(\abs{y(t)})$, then
+
+\spp
+
+$V$ {\em must decrease along trajectories as long as $y(t)\ll x(t)$}
+
+\spp
+
+\Arr ``global asymptotic stability modulo outputs''
+
+\spp
+
+construction of $V$ relies upon solution of an appropriate 
+
+optimal control problem, for which $V$ is the value function\\
+
+and first ``fuzzifying'' the dynamics near the set where $y\ll x$,
+
+so as to obtain a problem whose value function is continuous
+
+\spp
+
+followed by use of techniques from nonsmooth analysis 
+
+to obtain Lipschitz, and $\therefore$ by regularization argument $!C^!8$ $V$
+
+starting from the $!C^0$ $V$ obtained from the OC problem
+
+\newpage
+
+``energy'' estimates for detectability also of interest; e.g.:
+
+\spp
+
+{\sc J. W. Helton and M. R. James}, {\em Extending $H_\infty$ Control to Nonlinear
+  Systems}, SIAM, Philadelphia, 1999.
+
+\spp
+
+defined ``$L^2$-detectability'' by a requirement that 
+
+state trajectory in $L^2$ if observations are
+
+\sppp
+
+we'll show: integral variant of \oss\ $\iff$ \oss\ \& UO
+
+where UO = ``unboundedness observability'' (UO)
+
+\spp
+
+($\sim$ ``forward completeness modulo outputs'', due to:
+
+{\sc F. Mazenc, L. Praly, and W. Dayawansa}, {\em Global stabilization by
+  output feedback: Examples and counterexamples}, Systems Control
+  Lett., 23 (1994), pp. 119--125)\\
+
+\newpage
+
+\section{Definitions \& Statements of Main Results}
+
+\subsection{systems}
+
+study systems w/2 types of inputs: 
+{\em controls} and {\em disturbances}
+\beo{udsystem}
+ @.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \;\;\; y(t)=h(x(t)).
+\eeo
+%
+
+\spp
+
+states evolve in $\states = \R^n$
+
+controls: measurable,
+ess bounded $\uc: \I =\R_{!>0} ->\controls := \R^{m_u}$
+
+disturbances: measurable \functions $\ddfun: \I \to \Omegad$
+%11/26
+
+where $\Omegad$ $=$ compact, convex subset of $\R^{m_w}$
+
+denote set of such functions by $\M_\Omegad$
+
+\spp
+
+if different interval 
+$\I \subset \R_{!>0}$ of definition for control $\uc$,
+
+apply definitions to extension of $\uc$ to $\R_{!>0}$ \ ($\uc ==0$ on $\R_{!>0} \setminus \I$)
+
+\sppp
+
+$f: \states !p\controls !p\Omegad \to \states$ locally Lipschitz in $(x, u)$ uniformly on $\dd$
+
+jointly continuous in $x$, $u$, and $\dd$
+
+and  s.t. $f(0, 0, \dd) = 0$ for any $\dd !e\Omegad$
+
+$h: \states \to \outputs := \R^p$ is smooth ($C^1$) 
+and vanishes at 0
+
+\sppp
+
+given state $@x!e\states$ and pair  $(\uc, \ddfun)$
+
+denote $x(t, @x, \uc, \ddfun)=$ unique maximal solution
+
+defined on maximal interval $[0, \tmax(@x, \uc, \ddfun))$
+
+denote $y(t,@x, \uc, \ddfun):=h(x(t, @x, \uc, \ddfun))$
+
+\spp
+
+if clear, just ``$\tmax$'' \ ``$x(t)$'' \ ``$y(t)$''
+
+\newpage
+
+\subsection{comparison functions}
+
+recall {\em global asymptotic stability (GAS)} of origin means:
+\[
+\abs{\xtnou} \;!<\; @b\left(\abs{\xo},t\right)
+\]
+($\forall\,\xo\,,\;\forall\,t!>0$)
+
+for some  $@b(\nearrow,\searrow)!e\kl$ \ \ ($@b(0,!.)=0$, $!C^0$)
+
+\beqn
+\abs{\xtnou} &!<& @b\left(\abs{\xo},0\right)
+\ \text{\Arr stab (small overshoot)}\\
+\abs{\xtnou} &!<&  @b\left(\abs{\xo},t\right) \tzz
+\ \text{\Arr \ attractivity}
+\eeqn
+
+\sppp
+
+$@a:\R_{!>0}->\R_{!>0}$ {\em class $\kk$} if $!C^0$, pos def, strictly increasing
+
+and {\em class $\ki$} if also unbounded
+
+\begin{center}
+\includegraphics[scale=0.01]{FIGURES/ki-fig}
+\end{center}
+%
+\function $@b: \R_{!>0} !p\R_{!>0} \to \R_{!>0}$ {\em class $\kl$} if:
+
+ $\forall$  $t !>0$, $@b(!., t)$ $!e\kk$,
+
+ and $\forall$ $s !>0$, $@b(s,t)\searrow0$ as $t \to \infty$
+
+\sppp
+
+
+%remark: \ 
+%$\forall\,@b!e\kl$, $\exists$ $@a_1,@a_2!e\ki$ s.t.\\
+%$@b(r,t) \,!< \, @a_2\left(@a_1(r)e^{-t}\right)$ $\forall$
+%$s!>0, t!>0$
+%
+%so could also write
+%$\abs{\xtnou} !< @a_2\left(@a_1(\absn{\xo})e^{-t}\right)$
+
+\newpage
+
+\subsection{definition of uniform IOSS}
+
+\sppp
+
+$\forall$ $z(!.)$ measurable,
+$\norma{z}{[t_1, t_2]}$ $:=$
+$L_\infty$ norm of restriction
+to $[t_1, t_2]$
+
+\bd{def:UIOSS}
+{\em uniformly input-output-to-state stable (UIOSS)}
+
+system if $\exists$ $@b!e\kl$ and $\ulevel, \ylevel !e\kk$ s.t. estimate holds:
+\beo{eq:UIOSS}
+ \abs{x(t, @x, \uc, \ddfun)} !<\max \left\{ @b(\abs{@x}, t), 
+\ulevel\left(\norma{\uc}{[0, t]}\right), 
+\ylevel\left(\norma{y}{[0, t]}\right)\right\}
+\eeo
+$\forall$ initial state 
+$@x!e\states$, control $\uc$, disturbance $\ddfun$\\
+$\forall$ $t!e[0,\tmax(@x,\uc,\ddfun))$  
+\eds
+
+\spp
+
+\bd{def:UIOSS-lyap}
+$C^{\infty}$ $V: \states \to \R_{!>0}$ {\it UIOSS-Lyapunov function} if:
+%add ''for above system'' if in paper
+\bi
+\item
+$\exists$ $\ki$-functions $@a_1$, $@a_2$ s.t.:
+\beo{V_proper}
+@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})
+\;\;\mbox{\small$\forall\,@x!e\states$}
+\eeo
+\item
+$\exists$ $@a!e\ki$ and $\ugdissip,\ygdissip!e\kk$ s.t.:
+\beo{pqUIOSS-dissip} 
+\!\!\!\!\!\!\!\!
+\nabla V(@x) !.f(@x, u, \dd)
+ !< -@a(\abs @x)
+        + \ugdissip(\abs{u}) + \ygdissip(\abs{h(@x)}) 
+\;\mbox{\small$\forall\,@x!e\states,\,u !e \controls,\,\dd !e\Omegad$}
+\eeo
+\ei
+\eds
+
+\spp
+
+note: first condition is just positive definiteness and properness
+
+($\exists$ $@a_2$ is just $V(0) = 0$ (use $V$ $!C^0$), but convenient notation)
+
+second is a {\em dissipation inequality} in Willems' sense
+
+\spp
+
+also note: IOSS, ISS, ISS-Lyap are particular cases
+
+\newpage
+
+\br{non-dissip}
+if $V: \states \to \R_{!>0}$ 
+smooth s.t. $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$,
+
+$V$ is UIOSS-Lf iff $\exists$ $\xdissip$ $!e\ki$, and 
+ $\ydissip$ and $\xurel$ $!e\kk$ s.t.
+\be{eq:non-dissip}
+\abs @x!>\xurel(\abs u) \;=>\;
+\nabla V(@x) !.f(@x, u, \dd) !< -\xdissip(\abs @x) + 
+ \ydissip(\abs{h(@x)})
+%\;\mbox{\small$\forall\,@x!e\states,\,u !e \controls,\,\dd !e\Omegad$}
+\ee
+%for any  $@x!e\states$, $\dd !e\Omegad$,  and 
+%$u !e\controls$ s.t.
+%$\abs @x!>\xurel(\abs u)$.
+
+\noindent{\bf Proof:}
+if
+\be{pqUIOSS-dissip} 
+\nabla V(@x) !.f(@x, u, \dd)
+ !< -@a(\abs @x)
+        + \ugdissip(\abs{u}) + \ygdissip(\abs{h(@x)}) 
+\ee
+then~\rref{eq:non-dissip} holds with
+ $\xdissip(!.):=@a(!.)/2$,
+ $\ydissip ==\ygdissip$, and 
+$\xurel:= @a^{-1} \circ(2\ugdissip)$
+
+\spp
+
+converse:
+% To prove the other implication, assume now that~\rref{eq:non-dissip} holds
+% with some $\xdissip !e\ki$ and $\ydissip, \,\xurel !e\kk$. 
+define $\ugdissip(!.) = \max\cbrace{0, \hat{\ugdissip}(!.)}$, where
+$\hat{\ugdissip}(r)$
+is
+\[
+\max\cbrace{\nabla V(@x)!.f(@x, u, \dd) +  
+             \xdissip(\xurel(\abs u))}
+\]
+over all
+\[
+             \abs u !<r\,, \;\; \abs@x!<\xurel (r)\,,\;\; \dd !e\Omegad
+\]
+$\ugdissip!e!C^0$, $\ugdissip(0) = 0$, and w.l.o.g. $\ugdissip!e\ki$ (majorize if not)
+\spp
+
+claim:~\rref{pqUIOSS-dissip} holds with $@a==\xdissip$ and $\ygdissip ==\ydissip$:
+
+if $\abs @x!>\xurel (\abs {u})$, then~\rref{eq:non-dissip} holds, from which 
+\rref{pqUIOSS-dissip} trivially follows
+
+\spp
+if $\abs @x< \xurel (\abs { u})$, then, by definition of $\ugdissip$,
+%
+\[
+\ugdissip(\abs { u}) !> \nabla V(@x) !.f(@x,  u, \dd) 
+ + \xdissip(\xurel(\abs { u}))
+\]
+%
+for every $ \dd$, which, in turn, implies~\rref{pqUIOSS-dissip}
+\er  
+
+\newpage
+
+%A few particular cases of the UIOSS property have been studied in the 
+%literature.  
+%If the system~\rref{udsystem} in consideration has no
+%outputs and no disturbances, UIOSS reduces to the well-known ISS
+%property, whose Lyapunov characterization was obtained in
+%~\cite{ywscl}. In case~\rref{udsystem} is autonomous, UIOSS becomes
+%OSS. This property was introduced in~\cite{ref8}
+% where Lyapunov-type necessary and
+%sufficient conditions were obtained. Finally, for systems with no 
+%disturbances, UIOSS is just IOSS. This property was introduced 
+%in~\cite{oss-scl}, where it was conjectured that any IOSS control 
+%system admits a  smooth IOSS-Lyapunov 
+%function. This conjecture will be proven here 
+%in a more general setting,  for systems forced by both controls
+%and disturbances. A few interesting applications of this Lyapunov 
+%characterization were also discussed in~\cite{oss-scl}, one of them 
+%to be defined next.
+
+\subsection{norm-estimators}
+
+\bd{norm-observer:def}
+{\em state-norm-estimator} (or {\em state-norm-observer}):
+\beo{norm-observer:eq}
+\left(\nobserver\right)\quad
+@.{p}=g(p,u, y)\,,
+%\eqno(\nobserver)
+\quad\quad k : \R^\ell !p\outputs \to \R_{!>0}
+\eeo
+%
+evolving in $\R^\ell$, driven by the controls \& outputs of $@S$, s.t.:
+\bi
+\item
+$\exists$ $\uobs,\yobs!e\kk$, $\hat @b!e\kl$ s.t. $\forall$
+initial state $@z!e\R^\ell$, inputs $\uc$ and ${\bf y}$, $t$ in interval of
+definition of solution $p(!., @z, \uc, {\bf y})$:
+\beo{nobs-ios}
+k\Bigg(p(t, @z, \uc, \yc), \yc(t)\Bigg) !<\hat @b(\abs @z, t) +
+\uobs\rb{\norma{\uc}{[0, t]}} + \yobs \rb{\norma{\yc}{[0, t]}}
+\eeo
+
+\item $\exists$ $@r!e\kk$, $@b!e\kl$ s.t.
+
+$\forall$ initial states $@x$ and $@z$ of system \& observer,
+control
+$\uc : \R_{!>0} \to \controls$ and 
+disturbance $\ddfun !e\M_\Omegad$:
+%
+\beo{norm-estimate}
+\abs{x(t, @x, \uc, \ddfun)} !<@b(\abs@x+ \abs@z, t) +
+  @r\left({k\bigg(p(t, @z, \uc, \yc_{@x,\uc, \ddfun}),
+                                  \yc_{@x,\uc, \ddfun}(t) \bigg)}\right)
+\eeo
+%
+$\forall$ $t !e[0, \tmax(@x, \uc, \ddfun))$
+
+($\yc_{@x,\uc, \ddfun}$ is output trajectory of $@S$, i.e.
+$\yc_{@x, \uc, \ddfun}(t)
+= y(t, @x, \uc, \ddfun)$)
+\end{itemize}
+\eds
+
+\spp
+
+observer output is IOS [stable] wrt the inputs $u$ and $y$
+
+and true state asymptotically bounded in norm 
+
+by function of norm of estimator
+
+with transient (overshoot) depending on initial states of both
+
+\newpage
+
+
+\subsection{statement of the main theorem}
+      
+\bt{main_thm:UIOSS}
+%Let $@S$ be a system of type~\rref{udsystem}. 
+\ The following are equivalent:
+\begin{enumerate}
+\item[$1$.] \label{item1} 
+ $@S$ is UIOSS. 
+\item[$2$.] \label{item2}
+ $@S$ admits a UIOSS-Lyapunov function. 
+\item[$3$.] \label{item3}
+ $\exists$ state-norm-estimator for $@S$.
+\end{enumerate}
+\ets
+
+The main contribution is in showing that 1 implies 2; 
+
+the remaining implications are much easier.
+
+\newpage
+
+\subsection{simple example: linear systems}
+\renewcommand{\A}{{\bf A}}
+\newcommand{\C}{{\bf C}}
+\renewcommand{\B}{{\bf B}}
+\renewcommand{\L}{{\bf L}}
+\renewcommand{\P}{{\bf P}}
+
+%A particular class of systems~\rref{udsystem} is as follows.
+%A {\em linear}, time-invariant system $@S_{lin}$ with outputs is one for
+%which $f$ and $h$ are linear, that is,
+\beqn
+@.x &=& \A x + \B u,\label{lsystem}\\ 
+     y &=& \C x \nonumber
+\eeqn
+where $\A !e\R^{n !pn}$, $\B !e\R^{n !pm}$, 
+and $\C !e\R^{p !pn}$ \ \ (assume $m_w=0$)
+
+\spp
+
+Recall:
+{\em detectable}, or {\em asymptotically observable}, if
+implication 
+\beo{e-detect}
+\C x(t) ==0  \;\; \Longrightarrow \;\;x(t) \to 0
+\eeo   
+holds for any  trajectory $x(t)$, corresponding to zero control $\uc ==0$
+\ed
+%
+%The following result is a totally routine linear systems theory fact, but we include
+%the proof as a motivation for the nonlinear material to follow.
+
+\spp
+
+\bp{detectimpliesIOSS}
+for linear systems, detectable $=>$ IOSS
+\eps
+
+\spp
+
+\bpr
+ pick $\L!e\R^{n !pp}$ s.t. $\A + \L\C$ is Hurwitz, so observer:
+\beo{observer}
+@.z(t) = \A z(t) + \B \uc(t) + \L (\C z(t) -y(t)),
+\eeo
+is s.t. $\abs{x(t) - z(t)} \to 0$ (in particular
+$x(0) = z(0)$ $=>$ $x(t) == z(t)$)
+
+fix an initial state $@x$ and a control $\uc$
+
+soln $x(t, @x, \uc)$ of system is also solution of observer with $z(0)=@x$,
+
+so that 
+\[
+x(t, @x, \uc)= e^{t(\A+\L\C)}@x+ 
+\int_0^t e^{s(\A+\L\C)}[\B \uc(t-s) - \L y(t-s)]ds
+\]
+
+choose two positive numbers $@d'$ and $@d$ 
+so that $\Re @l!< - @d' < -@d$ 
+
+for every 
+eigenvalue $@l$ of $\A + \L \C$
+
+then $\exists$ polynomial 
+$P(!.)$ and $\therefore$ a constant $K$ s.t. $\abs{x(t, @x, \uc)} !<$
+\[
+P(t) e^{- @d' t} \abs @x+
+  \int_0^t P(s)e^{-@d' s}
+\sqb{\norm \B \abs{\uc(t-s)} + \norm \L \abs{y(t-s)}}ds
+\]
+\[
+!< \; K e^{-@dt} \abs @x+ 
+K \frac{\norm \B}{@d} \norma{\uc}{[0, t]} 
++ K \frac{\norm \L}{@d} \norma{y}{[0, t]}\label{obs-x}.
+\]
+%
+thus IOSS estimate holds with the linear gains 
+
+$@b(r,t) := K e^{-@dt} r$ and $\ulevel(r)=\ylevel(r):= K\frac{\norm\B}{@d} r$
+\epr
+
+\newpage
+
+{\bf Remark:} observer is in particular a norm estimator:
+
+solution $z(!., @z, \uc, \yc)$ of observer satisfies estimate 
+\[
+\abs{z(t,@z, \uc,\yc)}\le  K e^{-@dt} \abs @x+ 
+K \frac{\norm \B}{@d} \norma{\uc}{[0, t]} 
++ K \frac{\norm \L}{@d} \norma{y}{[0, t]}
+\]
+where $K, @d$ are same as above; and with $e:= x-z$, we have:
+\[
+@.e(t) = (A+LC)e(t).
+\]
+so along any trajectory $(x(t), z(t))$:
+\[
+\abs{x(t)} \le K \abs{@x- @z}e^{-@dt} + \abs{z(t)}
+\]
+$\forall$ $t\ge 0$, where $K, @d$ are again as before
+
+\spp
+
+{\bf Remark:} IOSS-Lyapunov function is $V(x):= x'\P x$
+
+where $\P !e\R^{n !pn}$ symmetric matrix s.t.:
+\[
+\P(\A+\L\C) + (\A+\L\C)' \P = -I
+\]
+since $\P(\A + \L\C) = ((\A + \L\C)'\P)'$,
+
+$x'\P(\A +\L\C)x = x'(\A + \L\C)'\P x$; $\therefore$ $\nabla V(x) !.f(x, u) =$
+\begin{eqnarray*}
+%\nabla V(x) !.f(x, u) 
+&=& 2 x' \P\, (\A x +\B u) \\
+                          &=& 2 x' \P\, ((\A + \L\C)x + \B u - \L y)\\
+                          &=& 2 x' \P (\A + \L\C)x + 2 x' \P \B u - 2x'\P\L y\\
+                          &=& x' (\P (\A + \L\C) +(\A + \L\C)'\P) x  +
+                                        2 x' \P \B u - 2x'\P\L y \\
+                          &\leq& -\abs x^2 + 2 \norm \P \norm \B \abs u \abs x 
+                                        + 2 \norm \P \norm \L \abs y \abs x\\
+                          &\leq& -\abs x^2 + {\abs x}^2 /4 + 
+                                        4\norm \P^2 \norm \B^2 {\abs u}^2 +
+                           {\abs x}^2 /4 + 4\norm \P^2 \norm \L^2 {\abs y}^2\\
+                          &\leq& -\abs x^2/2 
+                                + 4\norm \P^2 \norm \B^2 {\abs u}^2
+                                + 4\norm \P^2 \norm \L^2 {\abs y}^2.
+\end{eqnarray*}
+$\therefore$ UIOSS dissipation inequality holds for $V$ with gains defined by
+
+$@a(r) = r /2$, $\ugdissip(r) = 4\norm \P^2 \norm \B^2 r^2$, $\ygdissip(r) = 4\norm \P^2 \norm \L^2 r^2$.
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\A}{!A}
+\renewcommand{\C}{!C}
+\renewcommand{\B}{!B}
+\renewcommand{\L}{!L}
+\renewcommand{\P}{!P}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{systems without controls}
+
+$@W$  compact metric space ($=\om$ unless specified otherwise)
+
+consider systems of the type
+%
+\be{dsystem}
+ @.{x}=f(x(t), \dfun(t)), \;\;\; y(t)=h(x(t))
+\ee
+
+where $f: \states !p@W$ is locally Lipschitz in $x$ uniformly on $d$ 
+
+jointly continuous in $(x,d)$, $f(0, d) =0$ for any $d !e@W$
+
+inputs: measurable \functions $\dfun: \I \to @W$, 
+
+``{\em disturbances}'': $@W$-valued inputs
+
+$\M_@W=$ collection of all such functions
+
+is particular case of $@.{x}(t)=f(x(t),\uc(t),\ddfun(t))$
+
+ (ignoring controls and driven only by disturbances)
+
+for convenience, specialize definitions:
+%
+
+\bd{UOSS}
+system UOSS (uniformly output-to-state stable) if $\exists$ $@b!e\kl$ and 
+$\ylevel !e\kk$ s.t.
+\beo{eq:UOSS}
+ \abs{x(t, @x, \dfun)} !<\max \left\{ @b(\abs{@x}, t), 
+\ylevel
+\left(\norma{y}{[0, t]}\right)\right\}
+\eeo
+for any disturbance $\dfun$, initial state $@x\in\states$, and
+$t\in\maxint$. 
+\eds
+
+\bd{def:UOSS-Lyap-smooth}
+{\it UOSS-Lyapunov function} for~\rref{dsystem} is smooth 
+
+\function $V: \states\to \R_{!>0}$ satisfying
+$@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$ and
+\beo{UOSS-dissip-smooth}
+\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) 
++ \ydissip(\abs{h(x)}) \quad \forall\,x !e\states, \; \forall\,d 
+!e@W,
+\eeo 
+with \functions $@a_i!e\ki$, \function $\ydissip!e\kk$
+
+for systems with no disturbances, just ``$V$ is OSS-Lyap
+function''
+\ed
+
+\newpage
+\subsection{``Modulo outputs'' relative stability} \label{sec:GASMO}
+
+classical uniform global asymptotic stability (GAS) for $@.{x}=f(x(t), \dfun(t))$
+
+asks all sols $->$ equilibrium, short excursions
+
+\spp
+
+suppose does not matter how system behaves when information provided by output
+is adequate (norm of output dominates norm of current state)
+
+but want nice decay when the output does not help 
+in determining how large the state is
+
+ \bd{newprop:def}
+ \newprop\  (global asymptotic stab modulo output):
+
+if
+ $\exists$ \function $@r$ $!e\ki$ and  {\afunction} 
+$\klfun$ $!e\kl$ s.t., $\forall$ 
+  $@x!e\states$, $\dfun !e\M_@W$, and any $T < \tmax(@x, \dfun)$,
+if 
+\[\abs{x(t, @x, \dfun)} !>@r(\abs{h(x(t, @x, \dfun))}) 
+\quad \forall \; 0 !<t !<T,
+\]
+then the estimate
+\beo{GASMO-est}
+\abs{x(t, @x, \dfun)} !<\klfun (\abs{@x}, t) \quad \forall\; 0 !<t
+!<T  
+\eeo
+holds
+\ed
+
+\br{} 
+if a system has no outputs, then \newprop\ $==$ GAS
+\er
+
+\newpage
+\subsection{``$\ve$-$@d$'' characterization of the \newprop\ property}
+
+\bp{prop:newprop}
+a system satisfies \newprop\ 
+iff $\exists$ $@r!e\ki$ so that the 
+following  two properties hold.
+\begin{enumerate}
+\item[$1$.]
+ $\forall$ $\ve > 0$ and any $r > 0$, $\exists$ $T_{r, \ve}$ s.t. $\forall$ $\abs{@x}\le r$, any $\dfun$, 
+  and any $T !e[0, \tmax(@x, \dfun))$ s.t.  $T \ge T_{r, \ve}$, if
+\[
+ \abs{x(t, @x, \dfun )} \;!>\;@r(\abs{y(t, \; @x, \dfun)})\;
+\; \forall \ 0!< t!<T \,,
+\]
+then
+\[
+\abs{x(t,\; @x, \dfun )} \;< \;\ve\;
+\; \forall \; t\in[T_{r,\ve}, T]\,.
+\]
+\item[$2$.] 
+$\exists$  $\hbound!e\kk$ s.t. $\forall$ $@x\in
+\states$, any disturbance $\dfun$, and any $T < \tmax(@x, \dfun)$ s.t.
+\[
+\abs{x(t,@x, \dfun )} \;!>\;@r(\abs{y(t,@x, \dfun)})\;
+\; \forall \;0 !<t !<T\,,
+\]
+the following ``bounded overshoot'' estimate holds:
+\[
+\abs{x(T,@x, \dfun)} \;\leq\;\hbound(\abs@x)\,.
+\]
+\end{enumerate}
+\eps
+
+necessity obvious; for sufficiency use (from Lin/Wang/EDS SIAM96)
+
+\bl{from_LSW_2}
+if $@F(r, t) \,: \,(\R_{!>0})^2 \to \R_{!>0}$ s.t.
+\begin{enumerate}
+\item[$1$.] $\forall$ $\ve > 0$ and $\forall$ $R > 0$ $\exists$ $T$ s.t. 
+$@F(r, t) < \ve$ $\forall$ $0 !<r !<R$ and $\forall$ $t !>T$,
+\item[$2$.]  $\forall$ $\ve > 0$ $\exists$ $@d> 0$ s.t. if 
+$r !<@d$, then $@F(r, t) < \ve$ $\forall$ $t > 0$. 
+\end{enumerate}
+then $@F$ can be majorized by a $\kl$-function
+\el
+
+now consider the function $@F(r, t):= \sup \{\abs{x(t, @x, \dfun)}\}$
+over all
+\[
+\abs @x!<r,  \;
+   \dfun !e\M_@W, \;\abs{x(s, @x, \dfun)}\ge@r(\abs{y(s, @x, \dfun)})
+\,\forall s!e[0, t].
+\]
+then lemma applies by assumptions 1 and 2 of the proposition, so that one can
+majorize  $@F$ by a $\klfun!e\kl$
+
+\newpage
+\subsubsection{integral/integral UOSS}
+
+the UOSS property gives uniform estimates on states as a function of
+uniform bounds on outputs
+
+$\exists$ ``finite energy output implies
+finite energy state'' version as well.
+
+\bd{iiUOSS}
+system  {\em integral-to-integral
+uniformly output-to-state stable (iiUOSS)} if $\exists$ \functions $\iy$,
+$\iini$ $!e\kk$, and $\ix !e \ki$ s.t.
+%
+\beo{eq:iiUOSS}
+\int_0^t \ix(\abs{x(s, @x, \dfun)})\,ds \psp !<\psp \iini(\abs@x) + 
+          \int_0^t \iy (\abs{h(x(s, @x, \dfun))})\,ds
+\eeo
+$\forall$ initial state $@x$, disturbance $\dfun !e\M_@W$, and
+time $t !e[0, \tmax(@x, \dfun))$
+\ed
+
+w.l.o.g., $\iy$ and $\iini$ can be assumed to be of class
+$\ki$.
+
+\newpage
+\subsection{unboundedness observability}
+
+\bd{fc} 
+system {\em forward complete}
+ if for $\forall$ initial 
+condition $@x$, input $\uc$,  disturbance
+$\dfun$ defined on $[0, +\infty)$, trajectory 
+$x(t, @x, \uc, \dfun)$  
+defined $\forall$ $t !>0$, i.e., $\tmax(@x, \uc, \dfun) = + \infty$
+\ed
+
+\spp
+
+strictly weaker property, introduced by Mazenc et.al.:
+
+\bd{uo} 
+{\em unboundedness observability} property (UO) if
+\beo{uo:eq}
+\limsup_{t\nearrow \tmax(@x, \dfun)}\abs{y(t, @x, \dfun)} = + \infty
+\eeo
+holds for $\forall$ initial state
+$@x$ and disturbance $\dfun$ with $\tmax(@x, \dfun) < \infty$
+\ed
+
+\spp
+notice that UOSS $=>$ UO
+
+(UOSS: $\abs{x(t, @x, \dfun)} !<\max \left\{ @b(\abs{@x}, t), 
+\ylevel
+\left(\norma{y}{[0, t]}\right)\right\}$)
+
+\spp
+%
+following characterization of UO is from:
+
+{\sc D. Angeli and E. D. Sontag}, {\em Forward completeness, unboundedness
+  observability, and their Lyapunov characterizations}, Systems
+  Control Lett., 38 (1999), pp. 209--217.
+
+\spp
+%
+\bp{prop:UO}
+UO iff $\exists$
+$@r_1, @c_1, @c_2 !e\kk$ and $c!>0$ s.t.:
+% the following implication holds: 
+\beqn
+\abso{h(x(t, @x, \dfun))} &\leq& @r_1(\abs{x(t, @x, \dfun)}) \quad 
+\forall\,t !e[0, T]\nonumber\\[3mm]
+& =>&  \abs{x(t, @x, \dfun)} !<@c_1(t) + @c_2(\abs @x) + c
+ \quad \forall t !e[0, T]\label{eq:UO}
+\eeqn
+$\forall$ $@x!e\states$, $\dfun !e\M_@W$, $T !e[0, \tmax(@x, \dfun))$
+\ep
+
+gives uniform bound on states that can
+be reached in given time, from a given bounded set, via 
+a trajectory {\em not dominated by the output}
+
+\spp
+{\em note: in particular, characterization of forward completeness}
+
+\newpage
+\subsection{MAIN RESULTS SUMMARY}
+
+\bt{main_thm:UOSS}
+equivalent for $@.{x}=f(x(t), \dfun(t)), \; y(t)=h(x(t))$:
+%\vspace{-0.2 in}
+\begin{enumerate}
+\item[$1$.]  $@S$ is UOSS. \label{item1:UOSS}
+\item[$2$.]  $@S$ is \newprop. \label{item2:UOSS}
+\item[$3$.]  $@S$ is iiUOSS and UO. \label{item3:UOSS}
+\item[$4$.]  $@S$ admits a UOSS-Lyapunov function. \label{item4:UOSS}
+%\item  $@S$ admits an UOSS-Lyapunov-like function.
+%\item  $\exists$ state-norm estimator for $@S$.
+\end{enumerate}
+\ets
+
+recall
+\noindent{\bf Theorem 1}, for
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$,
+states equivalence of:
+\begin{enumerate}
+\item[$1$.] \label{item1} 
+ $@S$ is UIOSS. 
+\item[$2$.] \label{item2}
+ $@S$ admits a UIOSS-Lyapunov function. 
+\item[$3$.] \label{item3}
+ $\exists$ state-norm-estimator for $@S$.
+\end{enumerate}
+
+\spp
+\noindent{\bf organization of proof:}
+
+Theorem~\ref{main_thm:UIOSS}:  1 $=>$ 2 will be reduced via a
+``small gain argument'' (sections~\ref{ROSS:section},~\ref{nec})
+to Theorem~\ref{main_thm:UOSS}: 2 $=>$ 4
+
+%(which is proved in section~\ref{no_controls})
+
+\spp
+
+Theorem~\ref{main_thm:UIOSS}: 2 $=>$ 3 $=>$ 1 
+in section~\ref{nobservers}
+
+\spp
+
+implications Theorem~\ref{main_thm:UOSS}: 3 $=>$ 2, 1 $=>$ 2, and 4 $=>$ 3, in
+ section~\ref{impliesgasmo}
+
+\spp
+
+finally, Theorem~\ref{main_thm:UOSS}: 4 $=>$ 1 follows from
+Theorem~\ref{main_thm:UIOSS}: 2 $=>$ 1 
+
+\newpage
+\section{reduction to the case of no controls}
+
+we show reduction to particular case of systems with no controls
+
+$\controls_1 =$ closed unit ball 
+$\cbrace {u !e\controls : \abs u !<1}$  in $\controls$
+
+\subsection {robust output-to-state stability} \label{ROSS:section}
+
+\bd{ROSS}
+system
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+{\em robustly output-to-state stable 
+(ROSS) } if $\exists$ locally Lipschitz $\sm!e\ki$
+(``{\em stability margin}'') s.t. system 
+\be{ROSSsystem}
+@.{x}(t)= g(x(t),\dfun(t)) := f(x(t), \dufun(t)\sm(\abs{x(t)}),\ddfun(t))
+\ee
+w/disturbances 
+$d:= [\du, \dd] !e\controls_1 !p\Omegad$,
+  outputs $y=h(x)$,
+ is UOSS
+\eds
+
+\spp
+notice $\controls_1 !p\Omegad$ is compact, convex subset of $\R^{m_u + m_w}$
+
+denote it by $@W$ in this section
+
+dynamics $g$ of system~\rref{ROSSsystem} 
+locally Lipschitz in $x$ uniformly in $d$
+
+and also $g(0, d) = 0$ $\forall$ $d !e@W$
+
+\spp
+
+\bl{IOSSimpliesROSS}
+for $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \, y(t)=h(x(t))$
+
+UIOSS $=>$ ROSS
+\els
+
+%The proof will follow from a few preliminary lemmas
+
+\bpr
+let $@b!e\kl$ and $\ulevel$, $\ylevel !e\ki$ be s.t.
+
+$\abs{x(t, @x, \uc, \ddfun)} !<\max \left\{ @b(\abs{@x}, t), 
+\ulevel\left(\norma{\uc}{[0, t]}\right),
+\ylevel\left(\norma{y}{[0, t]}\right)\right\}$
+
+\spp
+let $\vartheta(r) = @b(r, 0)$
+
+w.l.o.g.  $\vartheta$ is $\ki$ and
+$\vartheta(r) !>r$ (s.t. $\vartheta^{-1}(r)!<r$)
+
+\spp
+main point is showing that $\sm$ is stability margin, where
+
+$\sm$ is any locally Lipschitz $\ki$-function $!<
+\ulevel^{-1}(\frac{1}{4}\vartheta^{-1}(!.))$ 
+
+%and can be extended as Lipschitz function to neighborhood of $[0, \infty)$
+
+\newpage
+\subsection{details of proof IOSS implies ROSS}
+
+\bp{p:x(t)<x/2}
+Fix a $@x!e\states$, a control $\uc$, and a
+disturbance  $\ddfun$,
+and let $x(!.):= x(!., @x, \uc, \ddfun)$ be the corresponding solution 
+of the system
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+ 
+Let $T !e[0, \tmax(@x, \uc, \ddfun))$. 
+Then
+if $\abs{\uc(t)} !<\sm(\abs{x(t)})$ for almost all 
+$t!e[0, T]$,
+the estimate
+\be{e:x(t)<x/2}
+\abs{x(t)} !<\max\left\{@b(\abs{@x}, t),\;
+\ylevel(\norma{y}{[0, t]}), \; \frac{\abs{@x}}{4}\right\}
+\ee
+holds $\forall$ $t !e[0, T]$.
+\eps
+
+\bpr
+
+{\em Claim $1$.} Suppose $T < \tmax(@x, \uc, \ddfun)$. If 
+\be{u<sm}
+\abs{\uc(t)} !<\sm(\abs{x(t)}) \mbox{ for almost all }
+t!e[0, T),
+\ee
+ then, $\forall$  $ t!e[0, T)$,
+\be{est1}
+\abs{x(t)} !<\max \left\{\vartheta(\abs{@x}), 
+2\ylevel(\norma{y}{[0,t]})\right\}.
+\ee
+
+{\em Proof of the claim.} 
+Suppose first that $@x= 0$. In this case 
+$x(t) ==0$. Indeed,  define $\dufun(!.)$ on $[0, \tmax(@x, \uc, \ddfun))$ 
+by
+\[
+\dufun(t) = \twoif{0}{ \mbox{ if } x(t) = 0,}
+{\uc(t)/\sm(\abs{x(t)})}{\mbox{ if } x(t) \neq 0.}
+\]
+Then~\rref{u<sm} implies that $\dufun !e\M_{\controls_1}$ and that 
+$x(!.)$ is the solution of~\rref{ROSSsystem} with $@x= 0$, $\ddfun$
+as we picked, and 
+$\dufun(!.)$ as we defined. Noticing that the constant function equal to $0$ 
+is also a solution of this system, with the same initial state and the 
+same disturbance, we conclude by  uniqueness of solutions that 
+$x(t) = 0$ $\forall$ nonnegative $t$, so that~\rref{est1} trivially holds.  
+  
+ Suppose now that $@x\neq 0$.   
+Fix $\ve$, s.t. $1<\ve<2$. We will first show
+that if $\abs{\uc(t)} !<\sm(\abs{x(t)})$
+ for almost all $t < T$,
+then the estimate
+%
+\be{est2}
+\abs{x(t)} !<\max\left\{\ve\vartheta(\abs{@x}),
+ 2\ylevel(\norma{y}{[0, t]})\right\}
+\ee
+%
+holds $\forall$ $t !e[0, T)$.
+Indeed, notice that~\rref{est2} is true as a strict inequality at
+$t=0$ because 
+$\abs{@x} !<\vartheta(\abs{@x}) < \ve \vartheta(\abs{@x})$. 
+ If~\rref{est2} 
+fails at some $t !e[0, T)$, then $\exists$   
+\[
+t_0=\min \left\{t < T \;:\; x(t)=\max\left\{\ve\vartheta(\abs{@x}),
+2\ylevel(\norma{y}{[0, t]})\right\}\right\}.
+\]
+Note that $t_0  >0$ because at $t = 0$ we have a strict inequality 
+in~\rref{est2}.
+So,~\rref{est2} holds $\forall$ $t !e[0, t_0)$ and  
+$ x(t_0)=\max\left\{\ve\vartheta(\abs{@x}), 2\ylevel(\norma{y}{[0, t_0]})\right\}$.
+$\therefore$ for almost all $t !e[0, t_0)$ we have
+\begin{eqnarray*}
+\lefteqn{\ulevel(\norma{\uc}{[0,t]})\leq
+\ulevel(\norma{\sm(\abs{x(!.)})}{[0, t]})}\\ 
+ & & !<\max\left\{\frac{1}{4}\vartheta^{-1}(\ve\vartheta(\abs{@x})), 
+\frac{1}{4}\vartheta^{-1}(2\ylevel(\norma{y}{[0, t]}))\right\}\\
+& & !<\max\left\{\frac{1}{4}\ve\vartheta(\abs{@x}),
+\frac{1}{4}2\ylevel(\norma{y}{[0, t]})\right\}  \\
+ & & !<\max\left\{\vartheta(\abs{@x}),\ylevel(\norma{y}{[0, t]})\right\}.
+\end{eqnarray*}
+Then, since our system is UIOSS and $x(!.)$ is continuous, $\forall$
+ $t !e[0, t_0]$ we have 
+%
+\begin{eqnarray*}
+\abs{x(t)}&\leq& \max\left\{\vartheta(\abs{@x}), 
+\ulevel(\norma{\uc}{[0, t]}),
+\ylevel(\norma{y}{[0, t]}) \right\} \\
+& = &\max\left\{\vartheta(\abs{@x}), \ylevel(\norma{y}{[0, t]}) \right\}.
+\end{eqnarray*}
+%
+On the other hand, $\abs{x(t_0)}= \max\left\{\ve\vartheta(\abs{@x}),
+2\ylevel(\norma{y}{[0, t_0]})\right\}$ by definition of $t_0$.
+%
+The contradiction proves the estimate~\rref{est2}. Letting $\ve$ tend to $1$,
+we conclude that estimate~\rref{est1} holds 
+$\forall$ $t !e[0, T)$, completing the proof of Claim 1.
+
+Hence, under the assumption of Claim 1, we have
+\begin{eqnarray*}
+\ulevel\rb{\norma{\uc}{[0, t]}} &\leq& 
+\ulevel\rb{\norma{\sm(\abs{x(!.)})}{[0, t]}}\\
+&\leq&\max \cbrace{\frac{\abs{@x}}{4}, 
+\frac{1}{4}\vartheta^{-1}\rb{2\ylevel\rb{\norma{y}{[0,
+t]}}}}
+\end{eqnarray*}
+$\forall$ $t$ in $\maxint$. So,
+\[
+\abs{x(t)} !<\max\left\{@b(\abs{@x}, t),\;
+\ylevel\rb{\norma{y}{[0, t]}}, \; \frac{\abs{@x}}{4}, \;
+\frac{1}{4}\vartheta^{-1}\left(2\ylevel\left(\norma{y}{[0, t]}\right)
+\right)\right\}
+\] 
+$\forall$ $t\in\maxint$.
+Noticing that 
+\[
+\frac{1}{4}\vartheta^{-1}\rb{2\ylevel\rb{\norma{y}{[0, t]}}} \leq
+\ylevel\rb{\norma{y}{[0, t]}}
+\]
+(because $\vartheta^{-1}(r) !<r$), we arrive at~\rref{e:x(t)<x/2}. 
+\epr
+
+\bll{lem10} Given any $\hat{@b}!e\kl$, $\exists$ 
+$@b!e\kl$, $@n!e\ki$  s.t. for
+ any $@t> 0$, any continuous 
+\function $@m\,:\,[0, @t] \to \R_{!>0}$, and any nonnegative 
+constant $C$, the following implication holds:
+%
+\be{first}
+\forall t_1, t_2,\;\; 0 !<t_1 < t_2 !<@t, \;\;\;
+@m(t_2) !<\max \left\{ \hat{@b}(@m(t_1), t_2 - t_1), \;
+ \frac{@m(t_1)}{2}, \;
+C \right\}
+\ee
+implies
+\be{second}
+@m(@t) !<\max \left\{ @b(@m(0), @t), \; \;
+@n(C) \right\}.
+\ee
+\ells
+
+{\it Proof}.
+By Proposition 7 in:
+
+{\sc E. D. Sontag}, {\em Comments on integral
+  variants of input-to-state stability}, Systems Control Lett., 34
+  (1998), pp. 93--100
+
+$\exists$ $@m_1$ and $@m_2 !e\ki$ 
+s.t. 
+\[
+\hat{@b}(r, t) !<@m_1(@m_2(r)e^{-t}),
+\] 
+so, by majorizing $\hat @b$ as above if necessary, we can assume
+ w.l.o.g. that  $\hat{@b}$ is
+continuous in its second variable, and
+ $\hat{@b}(r, 0) !>r$ $\forall$ $r$. 
+% 
+$\forall$ $r>0$ define $T_r$ to be the first time when
+ $\hat{@b}(r, T_r) = r/2$.
+%
+By replacing $\hat @b$ with the 
+$\tilde @b!e\kl$, defined by 
+%
+\[
+\tilde @b(r, t) := 
+\max \cbrace{\hat @b(r, t), \, \hat @b(r, 0) e^{-t}},
+\]
+we can assume w.l.o.g. that  the series
+$\sum_{i=0}^{\infty}T_{\frac{r}{2^i}}$ diverges for every $r > 0$.
+
+Define {\afunction} $@f: \R_{!>0} !p\R_{!>0} \to \R_{!>0}$ as follows:
+\[
+@f(r, t) = \twoif {\hat{@b}(r, t)} {\mbox{for $t !e[0, T_r),$}}
+{\hat{@b}\left(\frac{r}{2^k}, t - \sum_{i=0}^{k-1}T_{\frac{r}{2^i}}\right)}
+{\mbox{for } \, t !e\left[\sum_{i=0}^{k-1}T_{\frac{r}{2^i}}, 
+\sum_{i=0}^{k}T_{\frac{r}{2^i}}\right), \ k !> 1}
+\]
+
+Notice that the following two conditions hold for $@f$.
+
+(1) For every $R, \, \ve > 0$, $\exists$ $\tilde t >0$ s.t. 
+$@f(r, t) !<\ve$ $\forall$  $r < R$ and $t > \tilde t$. 
+
+Indeed, fix positive $R$ and $\ve$ and find $k !e\Z$ s.t.
+$\hat @b(R/2^k, 0) < \ve$. 
+Next, by continuity of $\hat @b$ and by compactness of 
+$[0, R]$ we can find a $\tilde t$, s.t. 
+$\sum_{i=0}^{k-1}T_{\frac{r}{2^i}} < \tilde t$ $\forall$ positive $r < R$. 
+Then, if $r< R$ and $t > \tilde t$, then 
+\[
+@f(r, t) =  
+{\hat{@b}\rb{\frac{r}{2^k}, t - \sum_{i=0}^{k-1}T_{\frac{r}{2^i}}}} 
+<  \hat @b\rb{\frac{r}{2^k}, 0} < \ve.
+\]
+
+(2) $\forall$ $\ve > 0$ $\exists$ $@d> 0$ s.t. 
+if $r !<@d$, then $@f(r, t) < \ve$ $\forall$ $t !>0$.
+
+Indeed, $\forall$ $r$ and $t$, $@f(r, t) 
+!<\hat @b_0 (r) := \hat @b(r, 0)$. $\forall$ positive $\ve$, take 
+$@d= @d(\ve) := \hat @b_0^{-1} (\ve)$. Then, $\forall$ 
+$t !>0$ we have 
+\[
+@f(r, t) !<\hat @b\rb{\hat @b_0^{-1} (\ve) , 0} !<\ve.
+\]   
+
+$\therefore$, by Lemma cited from Lin et. al., $@f$ can be majorized by a 
+$@b!e\kl$
+
+Let $@n(r) = \hat@b(2r, 0)$. 
+
+Now pick any $@m$, $C$, and $@t$ satisfying~\rref{first}. 
+Define $T=\min\left\{t:\, @m(t) !<2C \right\}$ and $T=@t$ if
+ $@m(t) > 2C$ $\forall$ $t !>0$. 
+
+$\forall$ $t_1$ and $t_2$ in $[0, @t]$ s.t. 
+$0 !<t_1 !<t_2 !<T$, we have $@m(t_1) >2C$, so that   
+$@m(t_1)/2 > C$, hence 
+%
+\be{est:t<T}
+@m(t_2) !<\max \left\{\hat@b(@m(t_1), t_2-t_1), @m(t_1)/2 \right\}.
+\ee
+
+Suppose now that $@t= T$. If $0!<@t< T_{@m(0)}$, then~\rref{est:t<T}
+ with  $t_1 = 0$, $t_2 = @t$ yields
+%
+\[
+@m(@t) !<\max\left\{\hat@b(@m(0), @t), \frac{@m(0)}{2} \right\}
+= \hat@b(@m(0), @t),
+\]
+where the equality follows from the definition of $T_{@m(0)}$. Likewise,
+if   
+\[
+ @t!e\left[\sum_{i=0}^{k-1}T_{\frac{@m(0)}{2^i}}, 
+\sum_{i=0}^{k}T_{\frac{@m(0)}{2^i}}\right),
+\]
+ then
+%
+\begin{eqnarray*}
+@m(@t) &\leq& \max\left\{\hat@b\left(2^{-k}@m(0), 
+@t- \sum_{i=0}^{k-1}T_{\frac{@m(0)}{2^i}}\right), 2^{-(k+1)}@m(0)\right\}
+ \\
+&=& \hat@b\left(2^{-k}@m(0),
+@t- \sum_{i=0}^{k-1}T_{\frac{@m(0)}{2^i}}\right),
+\end{eqnarray*}
+where the inequality follows from~\rref{est:t<T} and the equality 
+is implied by the definition of $T_{\frac{@m(0)}{2^k}}.$
+$\therefore$ we have 
+\be{BD1}
+@m(@t) !<@f(@m(0), @t).
+\ee
+
+In case $@t> T$, inequality~\rref{first} implies
+\begin{eqnarray}
+@m(@t)& !<& \max\left\{\hat{@b}(2C, @t-T), @m(T)/2, C\right\} 
+\nonumber\\
+&=& \max\left\{\hat{@b}(2C, @t-T), C, C\right\} !<
+\hat{@b}(2C,0) = @n(C). \label{BD2}
+\end{eqnarray}
+Combining~\rref{BD1} and~\rref{BD2} we obtain
+%
+\[
+@m(@t) !<\max\left\{@f(@m(0), @t), @n(C)\right\}
+ \leq\max\left\{@b(@m(0), @t),@n(C)\right\}.\mybox
+\] 
+
+
+{\it Proof of Lemma IOSS implies ROSS}:
+We need to show that the system~\rref{ROSSsystem}, corresponding to
+our system
+
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+
+with the stability margin $\sm$ we have
+ defined, is UOSS
+
+apply Lemma~\ref{lem10} to $\hat @b:= @b!e\kl$
+to find appropriate \functions $@b_1 !e\kl$ and $@n!e\kk$.
+  Assume given any 
+initial state $@x$ and disturbance $\dfun = [\dufun, \ddfun]$, and let
+$x(t):= x(t, @x, \dufun, \ddfun)$ be the corresponding solution.
+  Fix any positive $t < \tmax(@x, \dfun)$, and define $\uc$ by 
+\[
+\uc(s) := \twoif{\sm(\abs{x(s)}) \dufun(s),}{s !<t}{0,}{s > t.}
+\]
+Then, $\forall$ $s !<t$ we have $x(s) = x(s, @x, \uc, \ddfun)$, where the latter
+is the solution of the original system
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+with control 
+$\uc$ and disturbance $\ddfun$.    
+Let $C=\ylevel(\norma{y}{[0, t]})$. Then, $\forall$ $t_1$ and $t_2$ in $[0, t]$
+ we have $C !>\ylevel(\norma{y}{[t_1, t_2]})$. So, since
+$\abs{\uc(s)} !<\sm(\abs{x(s)})$ $\forall$ $s !e[0, t]$, 
+
+the above Proposition will imply that   
+\[
+  \abs{x(t_2)} !<\max \left\{ @b(\abs{x(t_1)}, t_2 - t_1), \; 
+\frac{\abs{x(t_1)}}{2}, \;
+C \right\}.
+\]
+By the choice of $@b_1$ and $@n$ we then have
+\[
+\abs{x(t)} !<\max\left\{@b_1(\abs{@x}, t), 
+@n(\ylevel(\norma{y}{[0, t]})) \right\},
+\]
+proving the UOSS property for system~\rref{ROSSsystem} corresponding 
+to the original UIOSS system. Thus,   
+$\sm$
+ is indeed a stability margin for the original system, and the proof of 
+Lemma IOSS implies ROSS is now complete.
+\mybox
+
+{\bf end of details of proof IOSS implies ROSS}
+
+
+\newpage
+\subsection{a UIOSS system admits a UIOSS-Lyapunov function}\label{nec}
+
+%not sure now if this is exactly what is being proved here:
+%Theorem~\ref{main_thm:UIOSS}:  1 $=>$ 2 reduced to
+%Theorem~\ref{main_thm:UOSS}: 2 $=>$ 4
+
+show now how main implication of Theo~\ref{main_thm:UIOSS}
+follows from Theo~\ref{main_thm:UOSS}
+
+\sppp
+
+(1) showed above: UIOSS $=>$ ROSS
+
+\spp
+
+(2) assume Theo~\ref{main_thm:UOSS}: 2$=>$4 already proved: 
+
+$\exists$ UOSS-Lf $V$ for UOSS auxiliary system
+
+$@.{x}(t)= g(x(t),\dfun(t)) = f(x(t), \dufun(t)\sm(\abs{x(t)}),\ddfun(t))$
+
+\spp
+
+(3) only left to prove that $V$ is 
+UIOSS-Lf for original system
+
+\spp
+%
+%\bl{}
+%%[see Lemma $2.13$ in $\cite{ywscl}$] \label{lem8}
+%
+%if system $@S$ $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+%is ROSS
+%
+%$V$ UOSS-Lf for system
+%
+%$@.{x}(t)= g(x(t),\dfun(t)) = f(x(t), \dufun(t)\sm(\abs{x(t)}),\ddfun(t))$
+%
+%associated to $@S$ $=>$  $V$ UIOSS-Lf for $@S$
+%\els
+%
+
+\spp
+
+%\bpr
+% let $\sm$ be a stability margin for $@S$
+%
+%as $V$ UOSS-Lf for
+%
+%$@.{x}(t)= g(x(t),\dfun(t)) = f(x(t), \dufun(t)\sm(\abs{x(t)}),\ddfun(t))$
+%
+%inequalities 
+%
+%$@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$,
+%$\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) + \ydissip(\abs{h(x)})$
+%
+%hold with some $@a_1$, $@a_2$, $\xdissip$, and $\ydissip$
+
+pick state $@x!e\states$, disturbance value $\dd !e\Omegad$
+and control value $u !e\controls$
+ with $\abs{u} !<\sm(\abs @x)$ 
+
+then $\exists$ $\du !e\controls_1$
+ s.t. $u = \du \sm(\abs @x)$,  so that by the 
+
+dissipation inequality for $V$ 
+(applied with $d:=[\du, \dd]$) we have
+\[
+\nabla V(@x) !.f(@x, u, \dd) = \nabla V(@x) !.g (@x, d)
+!< -\xdissip(\abs @x) + \ydissip(\abs {h(@x)}),
+\]   
+i.e.
+\[
+\abs @x!>\xurel(\abs u) \;=>\;
+\nabla V(@x) !.f(@x, u, \dd) !< -\xdissip(\abs @x) + 
+ \ydissip(\abs{h(@x)})
+%\;\mbox{\small$\forall\,@x!e\states,\,u !e \controls,\,\dd !e\Omegad$}
+\]
+with $\xurel = \sm^{-1}$, so 
+$V$ is UIOSS-Lf by previous Remark
+%\epr
+
+%By  Theorem~\ref{main_thm:UOSS}, the system~\rref{ROSSsystem} admits a
+%UOSS-Lyapunov function $V$. Hence the following corollary follows.
+%\bc{lem8:cor}
+%if system
+%$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$ is ROSS, then it admits a UIOSS-Lyapunov function
+%\ecs
+%
+%\sppp
+%
+%By Lemma~\ref{IOSSimpliesROSS}, every UIOSS system is also ROSS, hence
+%the implication 1 $=>$ 2 
+%of Theorem~\ref{main_thm:UIOSS} follows.     
+%} %end \forpaper
+
+\forthesis{
+   \bl{lem8} (See Lemma 2.13 in \cite{ywscl})
+suppose system $@S$ $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+is ROSS
+
+Let $V$ be a UOSS-Lyapunov-like function for the system~\rref{ROSSsystem}
+ associated with $@S$. Then  $V$
+is an UIOSS-Lyapunov-like function for $@S$. 
+\els
+%
+\bpr
+ Let $\sm$ be a stability margin for $@S$.
+Since $V$ is a UOSS-Lyapunov-like function for~\rref{ROSSsystem},
+inequalities $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ and~\rref{UOSS-dissip} 
+hold with some $@a_1$,
+$@a_2$, $\xdissip$ and $\ydissip$.  Pick an initial state $@x$,
+ control $\uc$, and disturbance $\ddfun$, and write
+$x(t):= x(t, @x, \uc, \ddfun)$. Take $@t$, 
+$@s!e[0, \tmax(@x, \uc, \ddfun))$.
+  If $\forall$ $t !e[@s, @t]$ we have
+ $\abs{x(t)}!>\sm^{-1}(\abs{\uc(t)})$, then 
+$\uc(t) = \sm(\abs{x(t)})\dufun(t)$ for some $\dufun !e\M_{\controls_1}$,
+ that is, $x(t)$
+ is a trajectory
+of the UOSS system~\rref{ROSSsystem} corresponding to $@S$,
+with the disturbance $\dfun=[\dufun, \ddfun]$.
+ Along this trajectory, the
+ estimate~\rref{IOSS-dissip}
+for the function $V$ is the same as~\rref{UOSS-dissip}. So, $V$
+is a UIOSS-Lyapunov-like function for $@S$, with 
+$\xurel = \sm^{-1}$, and $@a_i$ and $\ydissip$ as before.
+\epr
+%
+\bc{lem8:cor}
+if system $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+is ROSS, then it admits a UIOSS-Lyapunov function
+\ecs
+
+\bpr
+By the implication \ref{item1:UOSS} $=>$ \ref{item4:UOSS} 
+of Theorem~\ref{main_thm:UOSS}, the system~\rref{ROSSsystem} admits a
+UOSS-Lyapunov function $V$. So, $V$ is a smooth UOSS-Lyapunov-like function 
+for~\rref{ROSSsystem}, hence, by the previous lemma, it is a smooth 
+UIOSS-Lyapunov-like function for $@S$. Finally, by 
+Proposition~\ref{if_smooth},
+$V$ is an UIOSS-Lyapunov function for $@S$.
+\epr
+
+By Lemma~\ref{IOSSimpliesROSS}, every UIOSS system is also ROSS, hence
+the implication \ref{item1} $=>$ \ref{item2}
+of Theorem~\ref{main_thm:UIOSS} follows.
+}% end \forthesis
+
+\newpage
+\subsection{UOSS or iiUOSS $=>$ \newprop}\label{impliesgasmo}
+
+\bl{lem1} for $@.{x}=f(x(t), \dfun(t)), \, y(t)=h(x(t))$,
+UOSS $=>$ \newprop\
+\els
+
+\spp
+
+\bpr
+have
+$\abs{x(t, @x, \dfun)} !<\max \left\{ @b(\abs{@x}, t),\ylevel\left(\norma{y}{[0, t]}\right)\right\}$
+
+w.l.o.g. 
+$\ylevel!e\ki$, \ $\hbound(s) = @b(s,  0)> s$ $\forall$ $s > 0$
+
+let $@r=$
+any $\ki$-function s.t.
+$@r(s)>\hbound(4\ylevel (s))$ $\forall$ $s > 0$
+
+\spp
+
+{\em Claim:} $\forall$
+  $@x\in\states$,  $\dfun !e\M_@W$,  $@t\in[0,
+  \tmax(@x, \dfun))$,
+\[
+\mbox{ if   }
+\abs{x(t, @x, \dfun )} \geq@r(\abs{y(t, @x, \dfun )}) \quad
+ \mbox{ $\forall$ } 0!<t!<@t,
+\]
+\[
+\mbox{ then   }
+\ylevel(\abs{y(t, @x, \dfun )})\leq
+  \abs{@x}/2 \quad \mbox{ $\forall$ } 0!<t!<@t, 
+\]
+\[
+\mbox{ and hence   } \ \ 
+\abs{x(t, @x, \dfun )}\le@b(\abs{@x}, 0) 
+ = \hbound(\abs{@x}) \quad \mbox{ $\forall$ } 0!<t!<@t. 
+\]  
+ in particular: if $\abs{x(t, \;
+  @x, \dfun )} \geq@r(\abs{y(t, @x, \dfun )})$
+ $\forall$ $t!e[0, \tmax(@x, \dfun))$,
+  then $\tmax(@x, \dfun) = \infty$
+
+\spp
+
+{\em Proof of the claim:}.
+clear for $@x= 0$, so pick $@x\not=0$, $\dfun !e\M_@W$
+%assume that 
+%$\abs{x(t, @x, \dfun )} \geq@r(\abs{y(t, @x, \dfun )})$
+%  $\forall$ $0!<t\leq
+%@t$ for some $@t!e(0, \; \tmax(@x, \dfun))$.  Then, a
+\[
+\mbox{at $t=0$: }
+\ylevel (\abs{y(0, @x, \dfun )})\, \le\,
+\ylevel (@r^{-1}(\abs{@x}))\leq\ylevel (@r^{-1}(\hbound(\abs{@x})))
+< \abs{@x}/4
+\]
+$\therefore$ $\ylevel (\abs{y(t, @x, \dfun )}) < \abs{@x}/4$
+$\forall$ $t\in[0,  @d)$ for some $@d> 0$
+\[
+\mbox{let\ }
+t_1 := \inf\left\{t > 0: \ylevel (\abs{y(t, @x, \dfun )}) \ge
+\abs{@x}/2\right\}
+\;>\;0
+\]
+Assume by contradiction $t_1 \le @t$; $\therefore$
+$\ylevel (\abs{y(t_1, @x, \dfun )}) = \abs{@x}/{2}$,
+\[
+\ylevel (\abs{y(t, @x, \dfun )}) < \abs{@x}/{2}
+\quad\forall\;t!e[0, \, t_1)
+\]
+\[
+=>\quad \abs{x(t, @x,d )} \le \hbound(\abs{@x})
+\quad\forall\;t!e[0, \, t_1)
+\]
+\[
+\therefore
+\ylevel (\abs{y(t, @x, \dfun )}) !<\ylevel (@r^{-1} (\abs{x(t, @x, \dfun )}))
+!<\ylevel (@r^{-1}(\hbound(\abs{@x}))) < \abs{@x}/4
+\]
+so by $!C^0$
+$\ylevel (\abs{y(t_1, @x, \dfun )}) \le \abs{@x}/{4}$, contradicting 
+def of $t_1$
+
+so impossible to have $t_1\leq@t$, and claim proved.
+
+\newpage
+
+
+recall ``$\ve$-$@d$'' characterization of \newprop:
+
+$\exists$ $@r!e\ki$ s.t.
+
+(1) $\forall$ $\ve > 0$, $r > 0$, $\exists$ $T_{r, \ve}$ s.t. $\forall$
+$\abs{@x}\le r$, $\dfun$, $T !e[T_{r,\ve}, \tmax(@x, \dfun))$,
+\[
+ \abs{x(t, @x, \dfun )} \;!>\;@r(\abs{y(t, \; @x, \dfun)})\;
+\; \forall \ 0!< t!<T \,,
+\]
+\[
+=>\;\;\abs{x(t,\; @x, \dfun )} \;< \;\ve\;
+\; \forall \; t\in[T_{r,\ve}, T]\,.
+\]
+(2) $\exists$  $\hbound!e\kk$ s.t. $\forall$ $@x\in
+\states$, $\dfun$, $T < \tmax(@x, \dfun)$ s.t.
+\[
+\abs{x(t,@x, \dfun )} \;!>\;@r(\abs{y(t,@x, \dfun)})\;
+\; \forall \;0 !<t !<T\,,
+\]
+\[
+=>\;\;\abs{x(T,@x, \dfun)} \;\leq\;\hbound(\abs@x)
+\]
+
+\spp
+
+part (2) done; part (1): 
+
+$\forall$ $r > 0$  let
+$T_r!>0$ be s.t.
+$@b(r, t) < r/2$ $\forall$ $t\ge T_r$
+
+\spp
+
+now, given any $r>0$ and any $\ve >0$, 
+
+let $k(@e):=$ any positive integer s.t. $2^{-k(\ve)}r < \ve$
+
+def $T_{r, \ve}:=T_{r_1} + T_{r_2} + !...  + T_{r_{k(\ve )}}$
+\ (where $r_i:=2^{1-i}r$)
+
+\spp
+
+pick any trajectory $x(t, @x, \dfun )$ as in the statement of the
+
+defined
+on an interval of the form $[0,T]$,
+with $T!>T_{r, \ve}$, with initial condition $\abs{@x} !<r$,
+and disturbance $\dfun !e\M_@W$
+
+satisfying $\abs{x(t, @x, \dfun )} \ge @r(\abs{y(t, @x, \dfun )})$
+$\forall$ $t !e [0,T]$
+
+$\Therefore$ the above claim implies that $\ylevel (\abs{y(t, @x, \dfun )})<
+\abs{@x}/2$ $\forall$ such $t$
+
+$\therefore$ $\forall$ $t>T_{r_1}=T_r$,
+\beqn
+\abs{x(t, @x, \dfun )} & \le & \max\left\{@b(\abs{@x}, t), \; \abs{@x}/{2}\right\} \\
+&\le &\max \left\{@b(r,  t), \; r/{2}\right\} \, !< r/2 \,
+\eeqn
+consider now restriction of trajectory to interval $[T_{r_1},T]$
+
+this $=$ trajectory that starts from
+state $x(T_{r_1},@x, \dfun )$, 
+
+which has norm less than $r_1$, so by the same
+argument and the definition of $T_{r_2}$ we have that
+
+$\abs{x(t, @x,d )}!<r/4$ $\forall$ $t!>T_{r_2}$
+
+repeating on each interval $[T_{r_i},T_{r_{i+1}}]$, we conclude
+
+$\abs{x(t,@x, d )} < \ve$ $\forall$ $T_{r,\ve}\le t\le T$
+\eprr
+
+\newpage
+
+\bl{iiUOSSimpliesnewprop}
+for $@.{x}=f(x(t), \dfun(t)), \, y(t)=h(x(t))$,
+
+\ \ \ \ \ \ \ \ \ \ \ iiUOSS and UO $=>$ \newprop
+\els
+
+\spp
+
+recall:
+
+{\bf UO} $=>$ $\exists$ $@r_1, @c_1, @c_2 !e\kk$ and $c!>0$ s.t.:
+% the following implication holds: 
+\beqn
+\abso{h(x(t, @x, \dfun))} &\leq& @r_1(\abs{x(t, @x, \dfun)}) \quad 
+\forall\,t !e[0, T]\nonumber\\[3mm]
+& =>&  \abs{x(t, @x, \dfun)} !<@c_1(t) + @c_2(\abs @x) + c
+ \quad \forall t !e[0, T]
+\eeqn
+%$\forall$ $@x!e\states$, $\dfun !e\M_@W$, $T !e[0, \tmax(@x, \dfun))$
+
+\spp
+
+{\bf iiUOSS:} $\exists$ \functions $\iy$, $\iini$ $!e\kk$, $\ix !e \ki$ s.t.
+%
+\[
+\int_0^t \ix(\abs{x(s, @x, \dfun)})\,ds \psp !<\psp \iini(\abs@x) + 
+          \int_0^t \iy (\abs{h(x(s, @x, \dfun))})\,ds
+\]
+%$\forall$ initial state $@x$, disturbance $\dfun !e\M_@W$, and
+%time $t !e[0, \tmax(@x, \dfun))$
+
+one shows \newprop\ with
+$@r(!.) := \max\cbrace{\ix^{-1}(2\iy(!.)), @r_1^{-1}(!.)}$
+
+
+\newpage
+
+\subsection{details of proof of iiUOSS and UO $=>$ \newprop}
+
+need variant of ``Barb\u{a}lat's lemma'':
+
+\bp{barbalat}
+Let 
+$!X:=\cbrace{x_@a, \; @a!e\A
+}$
+ be a family of absolutely continuous
+curves in $\states$, each of which is defined 
+on an interval $\I_@a$, either half-open 
+($\I_@a= [0, @l_@a)$) or closed 
+($\I_@a= [0, @l_@a]$). Suppose the following. 
+\begin{itemize}
+\item $!X$ is closed with respect to shifts, that is,
+$\forall$ $@a!e\A$ and $T !e\I_@a$, $\exists$
+an $@a' !e\A$ s.t.  
+$x_{@a'} =={x_@a}_T$, where ${x_@a}_T$ is 
+ defined by ${x_@a}_T (t) := x_@a(t +T)$, and 
+$@l_{@a'} = @l_{@a} - T$. 
+%  
+\item $\exists$ nonnegative, increasing \function $@n_3$ s.t. 
+\[
+\abs{@.{x}_@a(t)}
+ !<@n_3(\abs{x_@a(t)}) \;\; 
+\forall \,@a!e\A \;\; 
+\text{{\it for almost all}}
+ \,t !e\I_@a.
+\]
+%
+\item $\exists$ \functions  $@k$ and $@c$ $!e\ki$ s.t.
+\[
+@k(\abs{x_@a(0)}) !>\int_0^t @c(\abs{x_@a(s)})\,ds \quad 
+\forall \, @a!e\A, \; t !e\I_@a.
+\]
+\end{itemize}
+$\Therefore$ $\forall$ two positive numbers $r$ and $\ve$, $\exists$ $T_{r, \ve}$, 
+s.t. $\forall$ $@a!e\A$ and $t !e\I_@a$ the following holds:
+\[
+t !>T_{r, \ve} \mbox{ and } \abs{x_@a(0)} !<r =>
+  \abs{x_@a(t)} < \ve.
+\]      
+\eps
+
+\newpage
+\noindent
+
+\bpr
+
+{\em Claim $1$}. Given any $\ve > 0$, $\exists$ $@d= @d(\ve)$ s.t.
+
+$\abs{x_@a(0)} !<@d \;=>\;\abs{x_@a(t)} < \ve$
+$\forall\,t !eI_@a$
+ 
+{\em Proof of Claim $1$}.  Fix $\ve>0$, and set:
+\[
+@d(\ve) = \min \left\{ \frac{\ve}{2}, 
+ @k^{-1}\left(\frac{\ve@c(\ve/2)}{2@n_3(\ve)}\right)\right\}.
+\]
+pick any $@a!e\A$  s.t. $\abs{x_@a(0)} !<@d$
+ 
+suppose $\abs{x_@a(\tilde t_2)} !>\ve$ for some 
+$\tilde t_2 !e\I_@a$
+
+ $\Therefore$
+$\exists$ $t_1$ and $t_2$ with  $t_1 < t_2 !<\tilde t_2$
+ s.t. 
+
+$\abs{x_@a(t_1)} = \ve/2$
+and $\ve/2 < \abs{x_@a(t)} < \ve$ $\forall$ $t !e(t_1, t_2)$
+\[
+\Therefore\;
+\frac{\ve}{2} = \abs{x_@a(t_2)} - \abs{x_@a(t_1)} \leq
+     \abs{x_@a(t_2)-x_@a(t_1)} 
+\]
+\[
+!< \sup_{t_1 !<t !<t_2}
+\abs{@.x_@a(t)}(t_2 - t_1) \leq     @n_3(\ve)(t_2- t_1).
+\]
+So,     
+\[
+@k(@d) !>@k(\abs @x) \;!>\; 
+\int_{t_1}^{t_2} @c(\abs{x_@a(s)})\,ds 
+> \frac{1}{2} @c\rb{\frac{\ve}{2}} (t_2 -t_1) 
+\]
+\[
+!>\frac{\ve@c(\ve/2)}{2@n_3(\ve)} !>@k(@d).
+\]
+The obtained contradiction proves the claim.   
+ 
+{\em Claim $2$}.  $\forall$ $r,@d>0$, $\exists$
+time $@t(r, @d)$ s.t.    
+
+$\abs{x_@a(0)} !<r$ and $@t(r, @d) !e\I_@a$ $=>$
+$\exists t_0 < @t(r, @d)$ s.t.
+ $\abs{x(t_0, @x, \dfun)} !<@d$
+ 
+\spp
+
+{\em Proof of Claim $2$}.  
+Take $@t(r, @d) = \frac{2@k(r)}{@c(@d)}$. $\Therefore$, if 
+$@t(r, @d) !eI_@a$ and $\abs{x_@a(t)} > @d$ $\forall$ 
+$t !e[0, @t(r, @d))$, $\therefore$ we have 
+%
+\[
+@k(r) !>@k(\abs{x_@a(0)}) !>
+\int_0^{@t(r, @d)} @c(\abs{x_@a(s)})\,ds > 
+@c(@d) \frac{@k(r)}{@c(@d)} = @k(r).
+\]
+The obtained contradiction proves the claim.
+
+\newpage
+
+Fix arbitrary positive $r$ and $\ve$. 
+
+By Claim 1, 
+
+find $@d(\ve)$ s.t.
+$\abs{x_@a(0)} < @d(\ve)$ $=>$  $\abs{x_@a(t)} !<\ve$
+$\forall$ $t !e[0, @l_@a)$
+
+define
+$T_{r, \ve} := @t(r, @d(\ve))$, where $@t(r, @d(\ve))$ is
+as in Claim 2
+
+If $\abs{x_@a(0)} < r$, 
+by Claim 2, $\exists$
+$t_0 < @t(r, @d(\ve))$ with $\abs{x_@a(t_0)} < @d(\ve)$
+
+consider {\afunction} $x_{@a'}(!.):= x_@a(t_0 + !.)$ 
+(it belongs to $\cal X$ by assumption)
+
+since 
+$\abs{x_{@a'}} !<@d(\ve)$, Claim 1 ensures that 
+%
+\[
+\abs{x_{@a}(t)} = \abs{x_{@a'}(t -t_0)} !<\ve \quad \forall \;
+t !>t_0 !>T_{r, \ve}.
+\]  
+$\therefore$ $T_{r, \ve}$  satisfies the
+conclusion of the proposition
+
+
+\epr 
+
+\newpage
+
+We now return to the proof of Lemma iiUOSS $=>$ \newprop
+
+\spp
+
+\bpr
+\[
+\io{@x, \dfun}:= \inf\{t !e[0, \tmax(@x, \dfun)): 
+\abs{x(t,@x, \dfun )} !<@r(\abs{y(t,@x, \dfun)})\}
+\]
+and $\io{@x,\dfun} = \tmax$ if $\abs{x(t,@x, d )} > @r(\abs{y(t,@x, \dfun)})$ $\forall$
+$t !e[0, \tmax)$
+
+note: given $@x$ and $\dfun$, $\forall$ $t < \io{@x, \dfun}$
+we have 
+
+$\ix(\abs{x(t, @x, \dfun)}) > 2 \iy(\abs{h(x(t, @x, \dfun))})$, so
+that:
+%
+\[
+\qquad \iini(\abs @x) !>
+\int_0^t\left(\ix(\abs{x(s, @x, \dfun)}) - \iy(\abs{h(x(s, @x,
+\dfun))})\right)\,ds 
+\]
+\[
+> 
+\frac{1}{2}\int_0^t \ix(\abs{x(s, @x, \dfun)})\,ds.
+\]
+Let $@n_3!e\kk$ s.t.
+$\max_{d\in@W} \abs{f(x, d)} !<@n_3(\abs x)$
+
+Write $x_{@x, \dfun}(!.) := x(!., @x, \dfun)$
+
+family 
+$\cbrace{x_{@x, \dfun}(!.),\; @x!e\states,\, \dfun !e\M_@W}$
+with $\I_{@x, \dfun} := [0, \io{@x, \dfun})$ satisfies all the assumptions
+ of previous Proposition
+(with ``$@k$'' $= 2\iini$)
+
+given any positive $r, \ve$, above Proposition furnishes 
+$T_{r, \ve}$
+
+$T_{r, \ve}$ satisfies first condition in the
+$\ve$-$@d$ characterization of \newprop\
+
+to find {\afunction} $\hbound$ for second part of that
+ characterization, recall that, 
+
+UO $=>$ $\exists$ $\ki$-functions $@r_1$,
+$@m_1$, $@m_2$, and a constant $c > 0$ s.t.
+
+$\forall$ $@x!e\states$, $\dfun !e\M_@W$, $T !e[0, \tmax(@x, \dfun))$:
+% 
+\beqn
+\abso{h(x(t,@x, \dfun))} &\leq& @r_1(\abs{x(t,@x, \dfun)}) \;\; 
+\forall t !e[0, T] \\ 
+&=>&
+\abs{x(t,@x, \dfun)} !<@m_1(t) + @m_2(\abs @x) + c \;\; 
+\forall t !e[0, T].
+\eeqn
+$\therefore$, if $\abs @x!< r$ and  $T_{r, r/2}$ is as defined above, $\therefore$
+$\forall$ $t !e[0, \io{@x, \dfun})$ we have
+%
+\[
+\abs{x(t, @x, \dfun)} !<@m_1(T_{r, r/2}) + @m_2(r) +c
+\;\;\mbox{if } t < T_{r, r/2} 
+\]
+and 
+\[
+\abs{x(t, @x, \dfun)} !<r/2 
+\;\;\mbox{if } t !>T_{r, r/2}. 
+\]
+Thus, the following estimate holds $\forall$ such $t$:
+\[
+\abs{x(t, @x, \dfun)} !<\tilde \hbound(\abs @x) :=
+\max\cbrace{\abs @x/2,\;  
+@m_1(T_{\abs @x, \abs @x/2}) + @m_2(\abs @x) +c}.
+\]
+
+Next, take a sequence $\cbrace{\ve_k}, \; k=0, \,1,\, 2,!...,$ strictly 
+decreasing to $0$, with $\ve_0 = 1$. $\forall$ $\ve_k$, find 
+$@d_k = @d(\ve_k)$ as in the proof of Claim 1. Since 
+$@d_k !<\ve_k/2$,
+the sequence $\cbrace{@d_k}$ converges to $0$ as well. Find {\afunction}
+$\hbound$ $!e\kk$, s.t.
+
+(1) $\hbound(@d_{k+1}) >  \ve_k \;\; \forall k >0,$ \newline
+(this will ensure that 
+$\abs{x(t, @x, \dfun)} !<\hbound(\abs@x) \mbox{ $\forall$ } @x\mbox{ with} 
+\abs @x< @d_0, \mbox{ $\forall$ } t !e[0, \io{@x, \dfun}]$) 
+
+(2) $\hbound(s) !>\tilde \hbound(s) \;\;  \forall s > @d_0$.
+
+$\Therefore$ $\hbound$ satisfies the second condition in the 
+$\ve$-$@d$ characterization of \newprop\
+
+\eprr
+
+\noindent{\bf end of proof iiUOSS and UO $=>$ \newprop}
+
+\newpage
+
+\subsection{UO needed for ii statement}
+
+example of iiOSS system which
+ fails to be OSS 
+
+(equivalently, fails to be \newprop)
+
+%$1_A(!.):=$ indicator function of a set $A$, and let
+ $@f_\ve:=$ $C^\infty$-bump function with support in
+$(-\ve, \ve)$:
+%
+\be{bump}
+@f_\ve(@x):= \twoif{e^{-\frac{\abs @x^2}{\ve^2-\abs @x^2}},}
+{\abs @x< \ve,}{0,}{\abs @x!>\ve.}
+\ee
+%  
+fix an arbitrary positive $\ve < 0.25$ and consider one
+dimensional autonomous system:
+\[
+@S: \quad\quad @.x = f(x) ,\quad y = h(x),
+\] 
+where
+%
+\begin{eqnarray*}
+ f(x)& = &x^3\left[1_{(-\infty, -1]}(x)(1 - @f_\ve(x+1)) + 
+1_{[1, +\infty)}(x)(1 - @f_\ve(x-1)) \right] \\
+&&-x\left[1_{(-1, 1)}(x) (1 - @f_\ve(x+1))(1-@f_\ve(x-1))\right],
+\end{eqnarray*}
+%
+and $h!e!C^!8$ s.t. $h(x) = x$ $\forall$ $x$ in
+ $[-2, 2]$, and $h(x) = 0$ if $\abs{x} !>3$.
+ 
+\includepicx{0.6}{picture1}
+
+\newpage
+
+{\em Claim $1$}. System $@S$ is not OSS. 
+
+{\it Proof}.
+pick initial state $@x>0$ large enough s.t. $h(@x) =0$
+
+$\Therefore$ $h(x(t, @x))=0$ $\forall$ $t < \tmax(@x) =
+@x^{-2}/2$
+
+If $@S$ were OSS, there would exist
+$@b!e\kl$ s.t. 
+$\abs{x(t, @x)} !<@b(\abs@x, t)$, but $\abs{x(t, @x)}$ tends to
+$\infty$ as $t \to \tmax(@x)$, 
+
+whereas 
+$@b(\abs@x, t) !<@b(\abs@x, 0)$. 
+
+This contradiction proves
+the claim.
+
+\newpage
+
+
+{\em Claim $2$}. The system $@S$ is iiOSS.
+
+{\em Proof}. $@S$ has stable equilibrium at $x = 0$ and two
+unstable ones at $1$ and $-1$
+
+if $\abs{x} < 1$, $\sign(x) = - \sign(f(x))$, so, if $\abs @x!<1$, then
+$\abs{x(t, @x)} \leq 1$ $\forall$ nonnegative $t$
+
+Thus, if $@x!e[-1, 1]$, then
+ $\forall$ $t !>0$:
+%
+\be{x=h}
+ \int_0^t \abs{x(s, @x)}\,ds = \int_0^t \abs{h(x(s, @x))}\,ds,
+\ee
+%
+so,  iiUOSS estimate trivially follows $\forall$ $@x!e[-1, 1]$,
+$t !e\tmax(@x)$ with $\iy = Id$, $\iini !e\kk$
+
+\spp
+
+on $\abs@x!>1+\ve$, $f(x) = x^3$, so
+\[
+x(t, @x) = \frac{\sign(@x)}{\sqrt{@x^{-2} -2t}}.
+\]
+Thus, in this
+case the solution $x(t, @x)$ is defined $\forall$ nonnegative
+$t < \tmax(@x)= @x^{-2}/2$ and 
+\[
+\int_0^t \abs{x(s, @x)}\,ds  !<\int_0^{\tmax(@x)} \abs{x(s, @x)} \,ds
+ = \frac{1}{@x} !<\frac{1}{1+\ve}.
+\] 
+and OK again (just $@b$ term used)
+
+\spp
+now suppose $1< \abs{@x}< 1+\ve$. 
+
+let $\iini!e\kk$ s.t.
+$\iini(1) !>(1+\ve)^{-1}$. 
+
+Let $\hat t$ be the time when
+$\abs{x(\hat t, @x)} = 1+\ve$. $\Therefore$ 
+$\tmax(@x) = \hat t + (1+\ve)^{-2}/2$. Also, $x(s, @x) = h(x(s, @x))$ $\forall$ $s !e[0, \hat t]$, so, in particular, equality~\rref{x=h} holds $\forall$ 
+$t < \hat t$, which, again, trivially implies iiUOSS    
+with $\iy = Id$ and any $\iini !e\kk$.
+
+If $t > \hat t$:
+% 
+\begin{eqnarray*}
+\int_0^t \abs{x(s,@x)}ds &=& \int_0^{\hat t}
+\abs{x(s,@x)}ds + \int_{\hat t}^{t} \abs{x(s,@x)}ds  \\
+&\leq& \int_0^{\hat t}
+\abs{x(s,@x)}ds + \int_{\hat t}^{\tmax(@x)} \abs{x(s,@x)}ds  \\ 
+&=& \int_0^{\hat t} \abs{h(x(s,@x))}ds + \int_0^{\tmax(1 +\ve)}
+\abs{x(s,1 + \ve)}ds \\
+&\leq& \int_0^{\hat t} \abs{h(x(s,@x))}ds + \iini(@x)\\
+& !<& \int_0^t \abs{h(x(s,@x))}ds + \iini(@x).
+\end{eqnarray*}
+This shows that $@S$ is iiOSS, as iiOSS estimate holds for 
+$@S$ with the $\iini$ that we constructed and $\iy = Id$.\mybox
+
+\spp
+\er
+
+\noindent{\bf end of counterexample}
+
+\newpage
+
+\subsection{implication 4 $=>$ 3
+of Theorem~\protect{\ref{main_thm:UOSS}}}
+
+i.e. 
+$@S$ admits a UOSS-Lyapunov function $=>$ iiUOSS and UO
+
+\bpr
+already 
+remarked $@S$ must be UO, so need iiUOSS
+
+by 
+assumption $\exists$  smooth \function
+$V$ satisfying
+
+$\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) + \ydissip(\abs{h(x)})$
+
+and $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ with some
+$@a_1$, $@a_2$, $\xdissip$, and $\ydissip$
+
+ pick any $@x$, $\dfun$, and
+$t !e[0, \tmax(@x, \dfun))$
+
+integrating 
+inequality
+$\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) + \ydissip(\abs{h(x)})$
+
+along the trajectory 
+$x(!., @x, \dfun)$ over $[0, t]$ we get
+%
+\begin{eqnarray*}
+&&\int_0^t \xdissip(\abs{x(t, @x, \dfun)})dt \\
+&\leq&
+        V(x(0, @x, \dfun)) -V(x(t, @x, \dfun))+ 
+          \int_0^t \ydissip(\abs{h(x(t, @x, \dfun))})\,dt \\
+&\leq& @a_2(\abs@x) + \int_0^t \ydissip(\abs{h(x(t, @x, \dfun))})\,dt,
+\end{eqnarray*}
+proving the iiUOSS inequality
+with $\ix = \xdissip$ and $\iini = @a_2$
+\eprr
+
+\newpage
+\subsection{a remark on the \newprop\ $=>$ UOSS implication}
+
+\br{alt_proof}
+once Lyapunov characterization for UOSS is proved,
+implication \newprop $=>$ UOSS of
+Theorem~\ref{main_thm:UOSS} will automatically follow by appealing to the
+converse Lyapunov theorem 
+(2~$=>$~4~$=>$~1)
+
+however, \newprop\ $=>$ UOSS 
+can easily be proved directly:
+ 
+fix $@x\in\states$ and
+$\dfun !e\M_@W$
+
+take any $t !e[0, \tmax(@x, \dfun))$. 
+
+$\io{@x, \dfun}= \inf\{t !e[0, \tmax(@x, \dfun)): 
+\abs{x(t,@x, \dfun )} !<@r(\abs{y(t,@x, \dfun)})\}$
+
+If $t !<\io{@x, \dfun}$, 
+\newprop\ property provides estimate
+\be{case_less_io}
+\abs{x(t, @x, \dfun)} !<\klfun(\abs @x, t).
+\ee
+suppose now  $t > \io{@x, \dfun}$. Obviously,
+ at least one of the two following conditions
+must be satisfied:
+
+(1) $\abs{x(t, @x, \dfun)} > 2@r(\abs{h(x(t, @x, \dfun))})$,
+
+(2) $\abs{x(t, @x, \dfun)} !<3@r(\abs{h(x(t, @x, \dfun))})$.
+
+\noindent if condition (2) applies, we have a bound
+\be{if_case_2}
+\abs{x(t, @x, \dfun)} !<3@r(\abs{h(x(t, @x, \dfun))})
+!<3@r(\norma{y}{[0, t]}).
+\ee
+
+\noindent In case condition (1) holds, let
+\[
+\tilde t := \max \cbrace{s, \, \io{@x, \dfun} < s < t\, : \,
+ \abs{x(s, @x, \dfun)} = 2@r(\abs{h(x(s, @x, \dfun))})}.
+\]       
+$\Therefore$ again by the \newprop\ property applied with initial state
+$x(\tilde t, @x, \dfun)$, we have
+\beq
+\abs{x(t, @x, \dfun)} &\leq&
+\klfun(\abs{x(\tilde t, @x, \dfun)}, t - \tilde t)\nonumber\\ &\leq&
+\klfun(2@r(\abs {y(\tilde t, @x, \dfun)}), 0) \leq
+\klfun(2@r(\norma{y}{[0, t]}), 0).\label{if_case_1}
+\eeq
+
+Combining estimates~\rref{case_less_io}, \rref{if_case_2},
+and~\rref{if_case_1}, we conclude:
+
+$\abs{x(t, @x, \dfun)} !<\max \left\{ @b(\abs{@x}, t),
+\ylevel\left(\norma{y}{[0, t]}\right)\right\}$
+
+holds for $@S$ with
+$@b(!.) := \klfun (!.)$ and
+
+$\ylevel(!.) :=
+\max \cbrace{\klfun(2@r(!.), 0), \; 3@r(!.)}$
+\er   
+
+\newpage
+
+\subsection{construction of $V$}
+
+very long and detailed argument, so only brief
+outline provided:
+
+suppose $(@S)$ $@.{x}=f(x(t), \dfun(t)), \, y(t)=h(x(t))$
+\newprop:
+\beqn
+&&
+\hspace{-100pt}
+\abs{x(t, @x, \dfun)} !>@r(\abs{h(x(t, @x, \dfun))}) 
+\,\;\;(\forall \; 0 !<t !<T)
+\\
+&=>&
+\abs{x(t, @x, \dfun)} !<\klfun (\abs{@x}, t) \;\;\; (\forall\; 0 !<t!<T)
+\eeqn
+($@r!e\ki, \;\klfun!e\kl$;
+$\forall$   $@x!e\states$, $\dfun !e\M_@W$, $T < \tmax(@x, \dfun)$)
+
+introduce
+%
+\[
+\D \,:=\;\left\{@x!e\states \colon \;\; \abs{@x} \leq
+@r(\abs{h(@x)})\right\}
+\]
+
+$\forall$ $\dfun !e\M_@W$ and $@x\not!e\D$, define
+\beo{e-d-io}
+\io{@x, \dfun} = \inf \left\{t !e\maxint \;\colon\;
+ x(t, @x, \dfun) !e\D\right\},
+\eeo
+with convention $\io{@x, \dfun} = \tmax(@x, \dfun)$ if 
+trajectory never enters $\D$
+
+The \newprop\ property then implies  
+\beo{e-gasmob}
+\abs{x(t, @x, \dfun)} \le \klfun(\abs{@x}, t) \qquad \forall\,@x\in\E, \
+\forall\, \dfun \in\M_@W, \ \forall\, t!e[0, \io{@x, \dfun})
+\eeo
+for some $\klfun\in\kl$
+
+and this provides the necessary integrability estimates along trajectories,
+needed in what follows, using Proposition 7 in:
+
+{\sc E. D. Sontag}, {\em Comments on integral
+  variants of input-to-state stability}, Systems Control Lett., 34
+  (1998), pp. 93--100.
+
+which says that $\exists$ $\ki$-functions $@m_1$ and $@m_2$ s.t. 
+\beo{mu1mu2} 
+\klfun(r, t) !<@m_1( @m_2(r) e^{-t}) \qquad \forall \, r,\ t !>0.
+\eeo
+(or, redefining $@l$, $\klfun(r, t) !< @m_2(r) e^{-t}$, and hence
+$\klfun(r, t)e^{t}!e!L^1$)
+
+key: find a $V$ which decreases while trajectories are outside $\D$
+
+(but note that $\D$ is not stable, or even invariant)
+
+modify dynamics near $\D$ by making system 
+
+completely controllable (adding controls $u$) 
+
+next define a function $V_0$ by solving an optimal control problem
+
+$\sup_d\inf_u \int L(x(t,d,u))\,dt$ 
+
+along all trajectories that stay outside 
+
+(allow relaxed disturbances to compactify space of disturbances; 
+
+affine in $u$ so also (weak) compactness in $u$)
+
+since system modified, $V_0$ for the original system will only decrease while
+outside a ``thick'' version of $\D$, but this is OK (redefine $@r$)
+
+finally, use nonsmooth analysis techniques (inf-convolution) to 
+
+obtain a locally Lipschitz $V$, and from there 
+
+a smoothing technique via standard convolutions and partition of unity to
+obtain smooth $V$
+
+\newpage
+\section{norm-observers}\label{nobservers}
+
+let ($@S$)\ $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+ 
+$C^1$ $V: \states \to \R_{!>0}$ is
+{\em exponential decay UIOSS-Lf} 
+for $@S$
+
+if  $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ ($@a_1,@a_2!e\ki$) and
+% the following version of inequality~\rref{pqUIOSS-dissip}:
+\beo{exp-pqUIOSS-dissip}
+\nabla V(x) !.f(x, u, \dd) \;!<\; - V(x) + \ugdissip(\abs{u}) + 
+\ygdissip(\abs{h(x)}) 
+\eeo
+
+($\forall x !e\states,  u !e\controls,  \dd !e\Omegad$,
+with $\ugdissip,\ygdissip !e\kk$)
+\eds
+
+\spp
+\bl{IOSS:exp-decay}
+$V$ UIOSS-Lf $=>$ $\exists$ $@r!e\ki$ s.t.
+$W:=@r!oV$ is expo decay UIOSS-Lf
+\els 
+
+then
+\beo{ne} 
+\nobserver: \quad  @.p = -p + \ugdissip(\abs u) + \ygdissip(\abs y),
+\quad
+k(s, r)=\abs{s}
+\eeo
+is a norm-estimator
+
+\eps
+\bpr
+assume w.l.o.g. $@a_2$ in def of $V$
+satisfies $r !<@a_2(r)$
+
+system~\rref{ne} 
+ is ISS w.r.t. $u,y$, since asymptotically
+stable linear system driven by input 
+$(\ugdissip(\abs u),\ygdissip(\abs y))$
+
+\spp
+
+pick any
+initial states $@x$, $@z$,
+control $\uc$, disturbance $\ddfun$;
+
+then for trajectory
+$(x(t), p(t))$ of the composite
+system:
+ \beo{V-z_dissip}
+\frac{d}{dt}(V(x(t))-p(t)) !<
+ - (V(x(t))-p(t))
+\eeo
+for almost all $t !e[0, \tmax(@x, \uc, \ddfun))$.
+Thus
+\[
+V(x(t)) \;!<\;
+p(t) + e^{-t}(V(@x)-@z) \;!<\;
+\abs{p(t)} + 2e^{-t}@a_2(\abs{@x}+\abs{@z})
+\]
+(using $r!<@a_2(r)$)
+
+This can be written in def of estimator
+with $@r:=@a_1^{-1}(2(!.))$
+and $@b(s,t):=@a_1^{-1}(4e^{-t}@a_2(s))$.
+
+\newpage
+
+\subsection{$\exists$ estimator $=>$ UIOSS}
+
+assume that $(\nobserver, k)$ is norm-estimator for $@S$
+
+pick any initial state $@x$ for $@S$, any input $\uc$, 
+disturbance $\ddfun$, and the special initial state $@z= 0$ 
+for $\nobserver$
+
+so
+\be{normeq1}
+ {k(p(t,0,\uc, \yc_{@x,\uc, \ddfun}),  y(t, @x, \uc, \ddfun))}
+\,!<\,
+ \uobs\left(\norma{\uc}{[0,t]}\right) +
+ \yobs\left(\norma{\yc_{@x,\uc, \ddfun}}{[0, t]}\right)
+\ee
+$\forall$ $t!e\maxint$, with some  \functions $\uobs,\yobs!e\kk$
+(the $\kl$-term vanishes because $@z= 0$)
+
+$\Therefore$ combining~\rref{normeq1}
+ with the norm-estimate:
+\[
+\abs{x(t, @x, \uc, \ddfun)} \leq @b(\abs @x, t) + 
+@r({k(p(t,0,\uc, \yc_{@x,\uc, \ddfun}), y(t, @x, \uc, \ddfun) )})
+\]
+\[ !<
+\max\cbrace{ 2@b(\abs@x, t),\, 
+4@r(\uobs(\norma{\uc}{[0, t]})), \,
+4@r(\uobs(\norma{y_{@x, \uc, \ddfun}}{[0, t]}))}
+\]
+showing UIOSS
+\epr
+
+\newpage
+
+\subsection{details of construction of $V$}
+
+By majorizing $@r$ with
+another $\ki$-function if necessary, we will assume that
+$@r$ is smooth
+%
+when restricted to $s>0$
+and also
+  $@r(s) > s$ $\forall$ positive $s$. 
+
+let
+
+\[
+\E \,:=\;\X\backslash \D \,,
+\]
+and
+\[
+\E_1 \,:=\, \left\{@x!e\X \; \colon \; 
+\abs{@x} > 2@r(\abs{h(@x)})\right\} \,.
+\]
+%
+
+%
+If $\D = \states$, $\therefore$ any proper, smooth, and positive definite \function 
+$V :\states \to \R$ is a UOSS-Lyapunov function for~\rref{dsystem}. 
+Indeed, because it is proper and finite,  $V$ obviously 
+satisfies $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ for some $@a_1$ and $@a_2$.
+Since $V$ is smooth, $\abs{\nabla V(@x)}$ is bounded above by a nondecreasing
+continuous \function $@n(\abs{@x})$ and 
+\[
+\frac{d}{dt}V(x(t)) \nsp \psp =\nsp \psp \nabla V(x(t)) !.f(x(t), \dfun(t))
+ \nsp \psp !<\nsp \psp
+@n(\abs{x(t)})@n_3(\abs{x(t)}),
+\]
+where $@n_3(\abs{!.})!e\kk$ majorizes $f(!., d)$ 
+$\forall$ $d !e@W$. 
+$\Therefore$ since $\abs{x} !<@r(\abs{h(x)})$ $\forall$ $x !e\states$,
+we have
+%
+\[
+\frac{d}{dt}V(x(t))
+\;\leq\;
+ - @n(\abs{x(t)})@n_3(\abs{x(t)}) \nsp \psp + \nsp \psp
+2@n(@r(\abs{h(x(t))}))@n_3(@r(\abs{h(x(t))})) \,.
+\]
+So, $V$ satisfies inequality
+\[
+\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) 
++ \ydissip(\abs{h(x)}) \quad \forall\,x !e\states, \; \forall\,d 
+!e@W
+\]
+(with 
+$\xdissip(!.) = @n(!.) @n_3(!.)$ and
+$\ydissip(!.) = [2 @n!o@r(!.)][ @n_3 !o@r(!.)]$),
+which is the same as~\rref{pqUIOSS-dissip} for systems of type~\rref{dsystem}. 
+
+Suppose now that $\D \neq \states$. 
+Recall that we have defined, $\forall$  $@x\not!e\D$ and 
+$d !e\M_@W$,
+$\io{@x, \dfun} = \inf \left\{t !e\maxint \;\colon\;
+ x(t, @x, \dfun) !e\D\right\},$
+with the convention $\io{@x, \dfun} = \tmax(@x, \dfun)$ if the trajectory never 
+enters $\D$.
+
+The \newprop\ property then implies  
+\be{e-gasmob}
+\abs{x(t, @x, \dfun)} \le \klfun(\abs{@x}, t) \qquad \forall\,@x\in\E, \
+\forall\, \dfun \in\M_@W, \ \forall\, t!e[0, \io{@x, \dfun})
+\ee
+for some $\klfun\in\kl$.
+
+Note that, because of property~\rref{e-gasmob}, the system
+cannot have any equilibrium in $\E$, that is, 
+\[
+f(@x,  d) !=0
+\]
+for every $@x!e\E$ and every $ d\in@W$.
+Moreover, replacing $@r(s)$ by $c@r(s)$
+for some $c>1$ if necessary, one may also assume that $f(@x, d)\not=0$
+$\forall$ $@x\in\partial\D\setminus\{0\}$, $d\in@W$
+%
+
+We introduce an auxiliary system $\hat @S$ which 
+slows down the motions of the original one:
+%
+\be{slowsystem}
+@.{z}\;=\;\fhat(z, d)\; =\; \frac{1}{1+\abs{f(z, d)}^2 + @k(z)} f(z, d),
+\ee
+%
+where $@k$ is any smooth \function $\states \to [0, \infty)$ with the 
+property
+that 
+\be{kappa_def}
+@k(@x) \;!>\;2 \max_{d \in@W} 
+\abs{\nabla(@r\circ
+\abs{h})(@x) !.f(@x, d)}
+\ee
+%
+whenever $\abs{h(@x)} !>1$. 
+(Recall that $@r$ was assumed, w.l.o.g., to be smooth for
+positive arguments.)
+$\forall$ disturbance $\hat \dfun$ 
+(defined on $\R_{!>0}$) denote by
+\[
+z(s, @x, \hat{\dfun})
+\]
+the value at time $s$ of the solution
+of the equation $@.{z}=\fhat(z, \hat{\dfun})$ with initial state
+$@x$. Observe that, as $\fhat$ is bounded, this solution exists $\forall$ 
+nonnegative $s$.
+
+
+{\em Claim $1$}. $\forall$ $@x$ and each $\dfun$,
+\be{e-xz}
+x(t, @x, \dfun) = z(\tslow{@x}{\dfun}(t), @x, \dfun \circ\tslow{@x}{\dfun}^{-1})
+\qquad \forall\,t\in[0, \tmax(@x, \dfun)),
+\ee
+where
+$\tslow{@x}{\dfun}: [0, \tmax(@x, \dfun)) \to \R_{!>0}$ is defined by
+%
+\[
+\tslow{@x}{\dfun}(t) = \int_0^t 
+\sqb{1+\abs{f(x(s, @x, \dfun), \dfun(s))}^2 + @k(x(s, @x, \dfun))}ds.
+\]
+Moreover,
+$\tslow{@x}{\dfun}(t)->\infty$ as $t->\tmax(@x,\dfun)$,
+so, we can define $\tslow{@x}{\dfun}(\tmax(@x, \dfun)) := +\infty$ 
+for convenience.
+
+{\it Proof of Claim $1$}.
+Indeed, writing $s = \tslow{@x}{\dfun}(t)$ and computing the derivative
+of $x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun)$ with respect to $s$, one
+has
+\begin{eqnarray*}
+f(x(t, @x, \dfun), \dfun(t)) &=& \frac{d}{dt}x(t, @x, \dfun)
+ = \frac{d}{dt}x(\tslow{@x}{\dfun}^{-1} !o\tslow{@x}{\dfun}(t), @x, \dfun) \\
+& = & \frac{d}{ds}x\rb{\tslow{@x}{\dfun}^{-1}(s), @x, \dfun}!.
+\frac{d}{dt} \tslow{@x}{\dfun}(t)
+\end{eqnarray*} 
+\[ 
+=  \frac{d}{ds}x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun)
+       \sqb{1+\abs{f(x(t, @x, \dfun), \dfun(t))}^2 + @k(x(t, @x, \dfun))}.
+\]
+$=>$
+\begin{eqnarray*}
+& &\frac{d}{ds}x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun)  = 
+\frac{f(x(t, @x, \dfun), \dfun(t))}
+{1+\abs{f(x(t, @x, \dfun), \dfun(t))}^2 + @k(x(t, @x, \dfun))}\\[2mm]
+& &=
+\frac{f \rb{x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun), \dfun !o
+\tslow{@x}{\dfun}^{-1}(s)}}
+{1+\abs{f\rb{x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun), 
+\dfun !o\tslow{@x}{\dfun}^{-1}(s)}}^2 
++ @k\rb{x\rb{\tslow{@x}{\dfun}^{-1}(s), @x, \dfun}}} \\[2mm]
+& &\qquad =\widehat f\rb{x\rb{\tslow{@x}{\dfun}^{-1}(s), @x, \dfun}, \dfun 
+!o\tslow{@x}{\dfun}^{-1}(s)}
+\forall\,0\le s <
+\tslow{@x}{\dfun}(\tmax(@x, \dfun)). 
+\end{eqnarray*}
+Thus, the functions $z(s, @x, \dfun !o\tslow{@x}{\dfun}^{-1})$ and
+$x(\tslow{@x}{\dfun}^{-1}(s), @x, \dfun)$ satisfy the same
+differential equation
+\rref{slowsystem} with initial state $@x$ on $[0,
+\;\tslow{@x}{\dfun}(\tmax(@x, \dfun)))$, $\therefore$ they coincide on
+$[0, \;\tslow{@x}{\dfun}(\tmax(@x, \dfun)))$. 
+
+To show the limit property of $\tslow{@x}{\dfun}$, suppose
+\[
+\lim_{t->\tmax(@x, \dfun)}\tslow{@x}{\dfun}(t) = b < \infty
+\]
+(note that the limit exists because $\tslow{@x}{\dfun}(!.)$ is
+increasing).  Let
+\[
+K=\{z(s, @x, \dfun\circ\tslow{@x}{\dfun}^{-1}):  0\le s < b\}.
+\]
+$\Therefore$ $K$ is bounded, so $\bar K$ is compact,
+ and by~\rref{e-xz}, $x(t, @x, \dfun)!eK !c\bar K$ $\forall$
+$t!e[0, \tmax(@x, \dfun))$, contradicting the maximality of 
+$\tmax(@x, \dfun)$.\mybox
+
+$\forall$ initial state $@x$ and each disturbance \function $\dfun$, define
+\be{e-ioslow}
+\ioslow_{@x, \dfun} = \inf \left\{t \ge 0
+\;\colon\; z(t, @x, \dfun) !e\D\right\}, 
+\ee
+where $\ioslow_{@x, \dfun} = \infty$ if $z(t, @x, \dfun)!ne\D$ $\forall$
+$t\ge 0$. Note that $\ioslow_{@x, \dfun} > 0$ $\forall$ $\dfun !e\M_@W$,
+$@x!e\E$ because $\E$ is open. 
+
+Observe also:  if $\dfun_1 = \dfun!o\tslow{@x}{\dfun}$,
+\[
+\ioslow_{@x, \dfun} = \tslow{@x}{\dfun_1}(\io{@x, \dfun_1}).
+\]
+%
+
+%\noindent
+{\em Claim $2$}. System $\hat @S$ satisfies the \newprop\ property.
+
+{\em Proof}. 
+According to~\rref{e-gasmob} and~\rref{e-xz}, we have, for every
+$@x\in\E$ and each $\dfun$,
+\beqn
+\abs{z(t, @x, \dfun)}& =& \abs{x(\tslow{@x}{\dfun_1}^{-1}(t), @x,
+  \dfun_1)}\\
+&\le& \klfun(\abs{@x}, \tslow{@x}{\dfun_1}^{-1}(t)) \le \hbound(\abs{@x}),
+\eeqn
+$\forall$ $t!e[0, \ioslow_{@x, \dfun})$, where $\hbound(s) = \klfun(s, 0)$,
+and   
+$\dfun_1$ is s.t. $\dfun = \dfun_1\circ\!\tslow{@x}{\dfun_1}^{-1}$.
+Let 
+\[
+M_r = 1 + \max_{d!e@W, |@x| !<\hbound(r)} 
+\abs{f(@x, d)}^2 + \max_{|@x| !<\hbound(r)} @k(@x).
+\]
+$\Therefore$ $\forall$ $@x\in\E$ with $\abs{@x}\le r$, it holds that
+\[
+\tslow{@x}{\dfun_1}(t) = \int_0^t\left[
+1+ \abs{f(x(s, @x, \dfun_1), \dfun_1(s))}^2 + @k(x(s, @x, \dfun_1))
+\right]\,ds \psp \le \psp M_rt
+\]
+$\forall$ $t!e[0, \io{@x, \dfun_1})$,
+and hence, $\tslow{@x}{\dfun_1}^{-1}(t) \ge \frac{t}{M_r}$ $\forall$
+$\abs{@x}\le r$, $t!e[0, \ioslow_{@x, \dfun})$.
+Consequently, we have
+\be{e-slowgasmo}
+\abs{z(t, @x, \dfun)}\le \newklfun(\abs{@x}, t)\qquad \forall\,
+t!e[0, \ioslow_{@x, \dfun}),
+\ee
+where $\newklfun(s, t) = \klfun(s,
+\frac{t}{M_s})$ is clearly $!e\kl$. 
+
+this shows system $\hat@S$ is GASMO
+
+
+
+From now on, let  $\klfun$ $!e\kl$ be as in
+Definition of \newprop\ for the system $\hat @S$, that is, the
+following estimate holds for system~\rref{slowsystem}:
+\be{e-zgasmo}
+\abs{z(t, @x, \dfun)} \le \klfun(\abs{@x}, t) \qquad\forall\,t\in[0,
+@q_{@x, \dfun}), 
+\ee
+$\forall$ $@x\in\E$, $\dfun \in\M_@W$.
+
+According to Proposition 7 in:
+
+{\sc E. D. Sontag}, {\em Comments on integral
+  variants of input-to-state stability}, Systems Control Lett., 34
+  (1998), pp. 93--100.
+
+$\exists$ $\ki$-functions $@m_1$ and $@m_2$ s.t. 
+\be{mu1mu2} 
+\klfun(r, t) !<@m_1( @m_2(r) e^{-t}) \qquad \forall \, r,\ t !>0.
+\ee
+Define 
+\be{precomp_def} 
+\precomp(s) := @m_1^{-1} (s). 
+\ee 
+
+The proof will now develop as follows. We first construct a 
+continuous Lyapunov-like
+\function $V_0$, defined on the set $\E_1$. Next $V_0$ is approximated by a
+ Lipschitz continuous function (by the methods of nonsmooth analysis).
+ The resulting function is then approximated by a smooth \function $V_1$.
+ Finally  we extend $V_1$ to the rest of the state space, obtaining a 
+ Lyapunov-like function, smooth away from the origin, which is then 
+ approximated by a smooth Lyapunov function.
+
+\newpage
+\subsection{definitions and basic facts on relaxed controls}
+
+Recall that our disturbances $\dfun$ are measurable \functions 
+$\R_{!>0} \to  @W$, a compact, convex subset of $\R^m$. 
+ 
+Let  $\rpm\left(@W\right)$ be the set of all Radon probability
+measures on $@W$. Bishop's theorem furnishes a weak norm on 
+$\rpm\left(@W\right)$, whose corresponding metric topology coincides
+ with the weak star topology on 
+$\rpm\left(@W\right)$ (see e.g. Warga). 
+
+$\forall$ $T > 0$, we define
+$\relaxed_T$ to be the set of
+all measurable functions from $[0, T]$ to $\rpm\left(@W\right)$, and
+$\relaxed$ to be the set of all measurable functions from 
+$\R_{!>0}$ to  $\rpm\left(@W\right)$. 
+We topologize $\relaxed_T$  by  weak convergence:
+$\cbrace{@n_k(!.)} \to @n(!.)$ in $\relaxed_T$ if and only if  
+\[
+\int_0^T \int_@Wg(t, @w)d[@n_k(t)](@w)\,dt \to 
+ \int_0^T \int_@Wg(t, @w)d[@n(t)](@w)\,dt 
+\]
+$\forall$ \functions $g: [0, T] !p@W\to \R$ which are continuous in
+$@w$, measurable in $t$, and s.t. 
+\[
+\max\cbrace{\abs {g(t, @w)}, \; @w!e@W}
+\]
+is integrable 
+on $[0, T]$.  We say that $\{@n_k\}->@n$ weakly in
+$\relaxed$ if, for every $T >0$, the sequence 
+$\cbrace{@n_k \vert_{[0, T]}}$ of restrictions of $@n_k$ to $[0, T]$ 
+converges to $@n\vert_{[0, T]}$ in $\relaxed_T$.  
+
+Notice that, since every element of $@W$ can be identified with the
+ $@d$-measure, concentrated in it, $@W$ can be embedded into 
+$\rpm\left(@W\right)$, $\M_@W$ into $\relaxed$, and $\M_@W^T$ into
+$\relaxed_T$ in the obvious way, where $\M_@W^T$ is the set of
+functions in $\M_@W$ restricted to $[0, T]$.
+
+$\forall$ $@n!e\rpm\left(@W\right)$,
+we denote
+\be{rel_f_def}
+f(x, @n) \;=\; \int_{@W}f(x, r) \, d@n(r) \,.
+\ee
+Notice that $\forall$ relaxed control $@n(!.)$, the function 
+$f(!., @n(!.)): \, (x, t) \to f(x, @n(t))$ 
+is Lipschitz in $x$ and measurable in $t$. Moreover, as $\forall$ 
+$x !e\states$, $@n!e\rpm(@W)$, we have a bound
+\[
+\abs {f(x, @n)} !<\max_{d !e@W} \abs{f(x, d)},
+\]
+the solution of the ``system'' $@.x(t) = f(x(t), @n(t))$ exists
+$\forall$ initial condition $@x$ and relaxed control $@n$ on some
+maximal interval $[0, \tmax(@x, @n))$. Write $x(!., @x, @n)$ to
+denote this solution. Just as in the case with ordinary controls, 
+we will define 
+\be{lambda_xi_nu}
+\io{@x, @n} := 
+\inf \cbrace{t !<\tmax \; : \; x(s, @x, @n) !e\D}.   
+\ee
+
+The basic three facts we will be using in the next section are as follows.
+
+{\em Fact $1$}. $\forall$ $T > 0$, the space $\relaxed_T$ is sequentially
+compact (see e.g. Warga).  Consequently,
+$\relaxed$ is sequentially compact by a diagonalization argument. 
+
+{\em Fact $2$}. $\forall$ $T > 0$,  the set $\M_@W^T$ of ordinary controls
+on $[0, T]$  is dense in $\relaxed_T$
+%(see \cite[p.\ 691]{Artstein}, also \cite{Warga}).  
+
+Consequently,
+$\M_@W$ is dense in $\relaxed$. The topology of $\relaxed$ induces a 
+topology on the subspace $\M_@W$. This topology is stronger than the 
+topology of $L^p$ $\forall$ positive $p$: in fact, 
+$\cbrace{\dfun_k(t)} \to \dfun$
+ would imply
+\[
+\int_0^T g(\dfun_k(t)) dt \to \int_0^T g(\dfun(t))\,dt
+\]
+$\forall$ continuous \function $g: \controls \to \R$ and any positive $T$.
+
+{\em Fact $3$}. 
+$\forall$ $T > 0$,
+the mapping $(t, @x, @n(!.)) |->z(t, @x, @n)$ is continuous
+on $[0, T]!p\states!p\relaxed_T$ 
+%(see \cite[Lemma 3.12]{ALS}).
+%
+ 
+Some relevant immediate consequences of Facts 1, 2, and 3
+are as follows.
+ 
+
+{\em Claim $1$}. The function $(@x, @n) \to \io{@x, @n}$, mapping 
+initial states and disturbances to the first hitting times as defined 
+in~\rref{lambda_xi_nu}, is
+ lower semicontinuous on both $@n$ and $@x$.
+% 
+(This easily follows from continuous dependence on initial
+conditions and control, and from the fact that the set $\D$ is
+closed.)
+
+ 
+{\em Claim $2$}.  If system~\rref{dsystem} is \newprop, $\therefore$ $\forall$ initial 
+value $@x!e\E$, a  relaxed disturbance $@n\in\relaxed$, and time 
+$T !<\io{@x, @n}$  
+  we have an estimate
+%
+\[
+ x(T, @x, @n) !<\klfun(|@x|, T).
+\]
+\bpr
+Pick $@x!e\states$ and $@n!e\relaxed$.
+Let $\cbrace{\dfun_k}$ be a sequence of ordinary disturbances, 
+converging to $@n$ in $\relaxed$. $\Therefore$ for large enough $k$ we have
+$\tmax(@x, \dfun_k) > T$, and $x(!., @x, \dfun_k)$ converge  to 
+$x(!., @x, @n)$ uniformly on $[0, T]$. Also, by Claim 1, 
+$\liminf_{k \to \infty} \io{@x, \dfun_k} !>\io{@x, @n}$. 
+Since we assume the system to be 
+\mbox{\newprop,}
+the  estimate
+
+$\abs{x(t, @x, \dfun)} !<\klfun (\abs{@x}, t) \quad \forall\; 0 !<t
+!<T$
+
+holds for $\dfun:= \dfun_k$ $\forall$ large enough $k$ and $\forall$ $t !<T$, so 
+the claim follows.
+\epr  
+
+With the previous claim in mind, we can say that the system~\rref{dsystem} 
+with $d !e\relaxed$ is \newprop\   
+(this is a slight abuse of terminology because, strictly speaking,
+\rref{dsystem} with relaxed disturbances is not really a ``system,''
+as that would mean, by definition, that disturbances take values in a
+finite dimensional space).
+Consequently, the auxiliary 
+system~\rref{slowsystem} is also \newprop\ for $\dfun\in\relaxed$.  
+Thus, we can assume that~\rref{e-zgasmo} holds $\forall$ $@x\in\E$ and
+all $\dfun\in\relaxed$. 
+
+\newpage
+\subsection{constructing a continuous Lyapunov-like function on {\protect\boldmath{$\E_1$}}} \label{dV0}
+\renewcommand{\ioslow}[1]{{@q_{#1}}} 
+
+we introduced the system $\hat @S: $
+$@.z = \hat{f}(z, d):=\frac{f(z, d)}{1+\abs{f(z, d)}^2 +
+@k(z)}$, which slows down the motions of the original system $@S$.
+%
+Recall also that $\D:=\left\{@x: \abs@x\leq
+@r(\abs{h(@x)})\right\}$, and define the set 
+\[
+\B\,:=\;\{@x: @r(\abs{h(@x)}) !<\abs @x!<1.5@r(\abs{h(@x)})\}
+\,.
+\]
+
+Let $f_0:\states->\R$ be defined by 
+\[
+f_0(@x) = \max_{\rd\in@W}\abs{\newf(@x, \rd)}.
+\]
+Note that $f_0$ is locally Lipschitz, and recall that we have assumed 
+with no loss of generality that $@S$ has no equilibria on the set 
+$\cbrace{x !e\states \;:\;\abs x !>@r(\abs{h(x)})}$ 
+(otherwise replace $@r(!.)$ by $c@r(!.)$, where $c > 1$). 
+In particular,  $f_0(@x)\not=0$ $\forall$
+$@x\in\partial\D\setminus\{0\}$. 
+Let $\mix: \states\setminus\{0\} \to [0, 1]$ be smooth and
+\[
+\mix(x) \;=\; \twoif{1,}{x !e\D,}{0,}{x !e\states \setminus (\D \cup \B).}
+\]
+Now introduce another system, on the state space 
+$\states \setminus \cbrace{0}$,  
+\[
+\tilde @S: \;\;\; @.z = \tf(z, d, v),
+\] where
+disturbances $d$ are as before, and auxiliary controls $\vc$ are
+measurable functions of time,  taking values in
+$[-1, 1] ^n$
+(note that the dimension of the control set for $v$'s is the same as
+that of $\states$), where, $\forall$ $i =1, 2, !..., n$,
+\[
+\tf_i(z, d, v) := \newf_i(z, d) + 2\mix(z)f_0(z)v_i.
+\]
+
+$\forall$ $T > 0$, let $\pcow_T$ denote the set of the auxiliary controls
+defined on $[0, T]$
+(i.e., measurable functions $\vc: [0, T] \to [-1, 1]^n$) 
+ equipped with the weak convergence topology; that is, ``$\{\vc_k\}$
+converges weakly to $\vc$ in $\pcow_T$'' means
+\[
+\int_0^T\vf(s)\vc_k(s)\,ds\;->\int_0^T\vf(s)\vc(s)\,ds
+\]
+$\forall$ \functions $\vf$ that are integrable over $[0, T]$.  With the
+weak topology, $\pcow_T$ is sequentially compact 
+%(cf.~\cite[Proposition 10.1.5]{mct}).  
+
+Consequently, given any sequence $\{\vc_k\}$ of 
+controls defined on $[0, \infty)$, $\exists$ control $\vc$ and a
+subsequence $\{\vc_{k_j}\}$ s.t. $\vc_{k_j}->\vc$ weakly on every
+interval $[0, T]$.  
+
+We denote the set of the auxiliary controls defined on $[0, \infty)$ by
+$\pcow$.  Let $\{\vc_k\}\subset\pcow$ and $\vc !e\pcow$.  We say that
+$\{\vc_k\}$ weakly converges to $\vc$ if, for every $T > 0$, the sequence 
+of restrictions $\{\vc_k \vert_{[0, T]}\}$
+weakly converges to $\vc \vert_{[0, T]}$  in $\pcow_T$.
+
+Recall that $z(t, @x, \dfun)$ denotes the solution of $\hat @S$.
+Write $z(t, @x, \dfun, \vc)$ for the value at time $t$ of the solution of 
+$\tilde@S$ with initial state $@x\not=0$, 
+disturbance $\dfun !e\M_@W$, and
+auxiliary control $\vc !e\pcow$.
+
+Observe the following.
+\begin{itemize}
+\item $\tilde @S$ is affine in $v$.
+
+\item since $\forall$ $@x!e\states$ and $d !e[-1, 1]^m$,
+$|{\hat f(@x, d)}| !<1$, we have $|{\tf(@x, d, v)}| !<3$
+$\forall$ $@x$, $d$ and $v$. In particular, this implies that
+$\tilde@S$ is forward complete.
+
+\item Suppose $@x\not!e\D\cup\B$ and pick $\dfun !e\M_@W$ 
+and $\vc !e\pcow$.
+ $\Therefore$ there is some $t_0 > 0$ s.t.   
+$z(t, @x, \dfun) \not!e\D\cup\B$ $\forall$ $t !e [0, t_0]$, and
+$z(t, @x, \dfun, \vc) ==z(t,@x, \dfun)$ on $[0, t_0]$.
+\end{itemize}
+
+To extend the definition of $z(t, @x, \dfun, \vc)$ to the case when 
+$\dfun !e\relaxed$, we let, for a fixed $\dfun !e\relaxed$ and 
+$\vc !e\pcow$, 
+\[
+g_{\dfun, \vc}(z, t):= \hat f(z, \dfun(t)) + 2\mix(z)f_0(z) \vc(t)
+\]
+(where $f(z, \dfun(t))$ is as defined in~\rref{rel_f_def} for 
+$@n:= \dfun(t) !e\rpm(@W)$). $\Therefore$  
+$g_{\dfun, \vc} : 
+\states \setminus \cbrace{0} !p\R_{!>0} \to \states $ 
+is locally Lipschitz in its first variable, and
+$\abs{g_{\dfun, \vc} (z, t)} !<3$ $\forall$ 
+$(z, t) !e\states \setminus \cbrace{0} !p\R_{!>0}$.
+Hence, the solution of 
+\begin{eqnarray*}
+@.z(t) &=& g_{\dfun, \vc}(z, t), \\
+z(0) &=& @x
+\end{eqnarray*}
+exists $\forall$ $@x!e\states \setminus \cbrace{0}$ and $t!>0$. We 
+will denote it by $z(t, @x, \dfun, \vc)$.
+
+Observe that $\tilde f: \states \setminus\cbrace{0}!p@W!p[-1,1]^n
+->\R^n$ is continuous, and $\tilde f(z, d, v)$ is locally Lipschitz
+in  $z$ on $\states\setminus\{0\}$
+uniformly on $(d, v)!e@W!p[-1, 1]^{n}$.  
+The system $\tilde @S$ evolves in the state space 
+$\states \setminus \cbrace{0}$. As $|{\tilde f}| !< 3$ everywhere, 
+trajectories are defined and unique $\forall$ initial value 
+$@x!e\states \setminus \cbrace{0}$
+and each pair of inputs $\dfun, \vc$.
+ Moreover, if $z(!.)$ is a maximal such 
+trajectory, $\therefore$ either $z(t)$ is defined $\forall$ $t !>0$, or there 
+is some $T > 0$ s.t. $\lim_{t \to T} z(t) = 0$. We prove next that 
+this last case cannot happen.
+
+\bll{z>w:lemma}
+For every ball $U$ around $0$, $\exists$ constant
+ $c$ s.t. $\forall$ 
+$@x!eU$, $@x\neq 0$, $\dfun !e\relaxed$, 
+$\vc !e\pcow$, and $t !>0$, we have
+ a lower bound
+\be{z>w}
+\abs{z(t, @x, \dfun, \vc)} > \frac{1}{2}\abs{@x} \,e^{-ct}.
+\ee
+\ells
+
+\bpr 
+Since $\hat f$ is locally Lipschitz in $x$ uniformly in $d$, 
+and 
+$\hat f(0, d) = 0$ 
+$\forall$ $d$,
+we can find a positive constant $c$,
+s.t. $|{\hat f(z, d)}| !<c|z|/3$ $\forall$ $z !eU$,
+$d !e@W$
+
+$\Therefore$ also 
+$|f_0(z)| !<c|z| /3$; $\therefore$
+\[
+\abs {\tilde f(z, d, v)} !<\abs{\hat f(z, d)} + 2\abs{f_0(z)}
+!<c|z|
+\] 
+$\forall$ $v !e[-1, 1]^{n}$, all $d !e@W$, and hence, all 
+$d !e\rpm(@W)$.
+Now fix $@x!eU \setminus \cbrace 0$, $\dfun !e\relaxed$,
+ and $\vc !e\pcow$,
+and write $z(t):=z(t, @x, \dfun, \vc).$
+Note that the inequality~\rref{z>w} holds for $t=0$; $\therefore$ it holds 
+$\forall$ small enough $t>0$. Suppose that~\rref{z>w} fails at some $t_2 >0$,
+s.t. 
+\be{fails_at_t2}
+\abs{z(t_2)} 
+        !<\frac{1}{2}\abs{@x} \,e^{-ct_2} < \abs {@x}.
+\ee
+$\Therefore$ $\exists$  $t_1 < t_2$ s.t. 
+$\abs{z(t_1)}= \abs @x$ and  
+$\abs{z(t)} !<\abs{@x}$ $\forall$ $ t !e[t_1, t_2]$.
+Let 
+\[
+w(t):= \abs{z(t)}^2/2.
+\]
+$\Therefore$ for almost all $t !e[t_1, t_2]$ 
+\[
+\abs{@.w(t)} = \abs {z(t) !.@.z(t)} !< c \abs{z(t)}^2 = 
+2c w(t).
+\]
+In particular, this implies that $@.w(t) + 2cw(t) !>0$. So,
+$\forall$ $t !e[t_1, t_2]$ we have
+\[
+0 !<e^{2ct}(@.w(t) +2cw(t)) = \frac{d(e^{2ct}w(t))}{dt}, 
+\]
+implying that $e^{2ct}w(t) !>e^{2ct_1}w(t_1)$ $\forall$ $t !e[t_1, t_2]$.
+ Thus, 
+\[
+\frac{1}{2}\abs{z(t_2)}^2=w(t_2) !> e^{2ct_1}w(t_1) e^{-2ct_2}
+ = \frac{1}{2}\abs{z(t_1)}^2 e^{-2c(t_2-t_1)}
+!> \frac{1}{2}\abs{@x}^2 e^{-2ct_2},
+\]
+s.t. $\abs{z(t_2)} !> e^{-ct_2} \abs{@x}$, 
+contradicting~\rref{fails_at_t2}.
+\epr
+
+\bc{l-reach0}
+For every $r > 0$ and 
+$T > 0$ $\exists$ $@s= @s(r, T)  > 0$ 
+s.t. $\forall$ $\dfun !e\relaxed$, $\vc !e\pcow$, 
+$\abs {@x} !>r$, and $t !<T$ we have
+%
+\[
+ \abs {z(t, @x, \dfun, \vc)} !>@s.
+\]
+\ec
+
+\bll{uni_con}
+$\forall$ $\dfun\in\relaxed_T$ and each $\vc\in\pcow_T$, if
+$@x_k->@x$ in $\states \setminus \cbrace{0}$, 
+$\dfun_k ->\dfun$ in $\relaxed_T$, and $\vc_k ->\vc$ in $\pcow_T$, 
+$\{z(t, @x_k, \dfun_k, \vc_k)\}$ converges to $z(t, @x, \dfun, \vc)$ uniformly 
+on $[0, T]$.
+\ells
+
+\bpr
+Assume w.l.o.g. that 
+$@x_k !eU := B_{\frac{\abs @x}{2}}(@x)$. Since 
+$|{\tilde f} !<3|$ and by Corollary~\ref{l-reach0}, 
+$!R_T\rb{U} !cB_{1.5 \abs{@x} + 3T}(0) \setminus B_@s(0)$,
+where $@s= @s(\abs{@x}/2, T)$ is as in Corollary~\ref{l-reach0}.
+Let $M_1$ and $M_2$ be Lipschitz constants for 
+$\hat f(!., d)$ (uniformly for $d !e@W$)  and $2 f_0 \, \mix$,
+ respectively, on $B_{1.5 \abs{@x} + 3T}(0) \setminus B_@s(0)$. 
+Write $z(t) := z(t, @x, \dfun, \vc)$, and $z_k(t):= z(t, @x_k, \dfun_k, \vc_k)$.
+Now, $\forall$ $t !e[0, T]$
+we have
+%
+\begin{eqnarray}
+\abs{z(t) -z_k(t)} & = & 
+\abs{@x_k -@x+ 
+\int_0^t\rb{\tilde f(z_k(t), \dfun_k(t), \vc_k(t)) - 
+            \tilde f(z(t), \dfun(t), \vc(t))}dt} \nonumber\\
+& !<& \abs{@x_k -@x} +
+\abs{\int_0^t\rb{\tilde f(z(t), \dfun_k(t), \vc_k(t)) - 
+            \tilde f(z(t), \dfun(t), \vc(t))}dt} \nonumber \\
+&& + \int_0^t\abs{\tilde f(z_k(t), \dfun_k(t), \vc_k(t)) - 
+            \tilde f(z(t), \dfun_k(t), \vc_k(t))}dt \nonumber \\
+& !<& \abs{@x_k -@x} +
+\abs{\int_0^t \rb{\hat f(z(t), \dfun_k(t)) - 
+            \hat f(z(t), \dfun(t))}dt} \label{uni_con:1} \\
+&& + 
+2\abs{\int_0^t \rb{ f_0(z(t))\mix(z(t))\vc_k(t) 
+  - f_0(z(t)) \mix(z(t))\vc(t)}dt} \label{uni_con:2} \\
+&&  + \int_0^t(M_1 +M_2)\abs{z_k(t) -z(t)}dt. \nonumber
+\end{eqnarray} 
+%
+The integrals in~\rref{uni_con:1} and~\rref{uni_con:2} tend to $0$ because
+of the convergence of $\cbrace {\dfun_k(!.)}$ to $\dfun$ in $\relaxed$ 
+and the weak convergence of $\vc_k$ to $\vc$. So, $\forall$ $\ve >0$ we can find 
+a $K$ s.t., $\forall$ $k !>K$, 
+\begin{eqnarray*}
+&&\abs{@x_k -@x} +
+\abs{\int_0^T \rb{\hat f(z(t), \dfun_k(t)) - \hat f(z(t), \dfun(t))}dt} \\
+&+& 2\abs{\int_0^t \rb{ f_0(z(t))\mix(z(t))\vc_k(t) 
+  - f_0(z(t)) \mix(z(t))\vc(t)}dt} !<\ve e^{-(M_1 + M_2)T}.   
+\end{eqnarray*}
+$\Therefore$ $\forall$ $k !>K$ and $t !e[0, T]$ we have, by the Gronwall inequality,
+\[
+\abs{z(t) -z_k(t)} !<\ve e^{-(M_1 + M_2)T} \,e^{(M_1 + M_2)t} !<\ve.
+\]
+As $\ve$ was arbitrary, this proves uniform convergence.
+\epr
+
+Also, since $\forall$ $@x\in!dD\setminus\{0\}$, $f_0(@x)\not=0$,
+and $f_0(@x) \ge |{\hat f(@x,d)}|$ $\forall$ $d\in@W$, we have the
+following controllability property on $\partial\D\setminus\{0\}$.
+\bll{l-contr}
+Let $@x\not=0$ be on $\partial\D$.  $\Therefore$ $\forall$ $@t>0$, $\exists$
+a neighborhood $U$ of $@x$, s.t. $\forall$ $@h!eU$ and any
+$\dfun\in\M_@W$, there is some control $\vc$, and some $0\le t_1\le @t$, 
+s.t. $z(t_1, @h, \dfun, \vc) = @x$  and $z(t, @h, \dfun, \vc)\in
+U$ $\forall$ $0\le t\le t_1$.
+\ells
+
+\bpr
+Since $\mix(@x) \, f_0(@x) \neq 0$ and the function 
+$\mix(!.) \, f_0(!.)$ 
+is continuous, we can find a ball
+$U_1$ centered at $@x$ and a constant $c_1$ s.t. $\mix(z) f_0(z) > c_1$
+for every $z !eU_1$. Since $\mix (@x) = 1$ and $\mix$ is continuous, 
+one could also find a ball $U_2 !cU_1$ centered at $@x$, s.t.
+%
+\[
+\abs{\newf(z, d)} !<1.5 \mix(z) f_0(z) \;\;\forall z !eU_2, \, 
+d !e@W.
+\]
+%
+Fix $@t> 0$ and let $B(@x)$ be the ball of radius $@tc_1/2$ centered
+ at $@x$. Define $U:= B(@x) \cap U_2$. Pick a point $@h!eU$.
+$\Therefore$ $\abs{@x-@h} < @tc_1/2$, so, 
+\[
+\bar v_2 := \frac {2 (@x-@h)}{@tc_1}
+\]
+has norm smaller than $1$.
+Consider the ``feedback law'' 
+\[
+k(z, d) = \frac{1}{2}(1.5 k_1(z, d) + 0.5\bar v_2),
+\] where 
+\[
+k_1(z ,d) := -\frac{\newf(z, d)}{1.5 \mix(z) f_0(z)}.
+\]
+Notice that $\forall$ $z !eU$ and $d !e@W$ we have
+ $\abs {k_1(z, d)} !<1$ and 
+\begin{eqnarray*}
+\tilde f(z, d, k(z, d)) 
+        & = & \newf(z, d) + 2 \mix(z) f_0(z) k(z, d) \\
+        & = & \newf(z, d) + 1.5 \mix(z) f_0(z) k_1(z,d) 
+                        + 0.5 \mix(z) f_0(z) \bar v_2  \\
+        & = & 0.5 \mix(z) f_0(z) \bar v_2 = 
+                \frac{(@x- @h)\mix(z) f_0(z)}{@tc_1}.
+\end{eqnarray*}
+
+Thus, with any initial condition $@h!eU$ and disturbance 
+$\dfun !e\M_@W$, if the control $v(t):= k(z(t), d(t))$ is applied, 
+$\therefore$ the trajectory of the system $\tilde @S$ will be the 
+line segment, connecting $@x$ and $@h$, transversed with a velocity 
+greater than $(@x- @h)/@t$. So, $\exists$  $t_0 !<@t$
+s.t. $z(t_0, @h, \dfun, \vc) = @x$ and, since $U$ 
+is convex, $z(t, @h, \dfun, \vc) !eU$ $\forall$ $t !>t_0$.  
+\epr  
+%
+
+$\forall$ $\dfun !e\relaxed$, let
+ \[
+\ioslow{\dfun}(@x, \vc)=\inf\left\{t\ge 0: z(t, @x, \dfun, \vc) !e\D
+\right\},
+\] 
+where as before, $\ioslow{\dfun}(@x, \vc) = \infty$ if
+the trajectory never reaches $\D$.
+
+\bll{l-ioslowsc}
+The map $(@x, \vc, \dfun) |->\ioslow{\dfun}(!., !.)$ is lower
+semicontinuous on $\E!p\pcow!p\relaxed$.
+\ells
+
+\bpr Let $\{@x_k\}\subset\E$, $\{\vc_k\}\subset \pcow$ and 
+$\{\dfun_k\}\subset\relaxed$
+be s.t. $@x_k->@x, \vc_k->\vc$, and $\dfun_k->
+\dfun$ for some $@x\in\E$, $\vc\in\pcow$, and $\dfun\in\relaxed$.
+We need to show that
+\be{e-someeq}
+\ioslow{\dfun}(@x, \vc) \le \liminf_{k->\infty}\ioslow{\dfun_k}(@x_k, \vc_k).
+\ee
+Let $\ioslow{k} = \ioslow{\dfun_k}(@x_k, \vc_k)$.  Without
+loss of generality, we may assume that
+\[
+\liminf_{k->\infty}\ioslow{k} = \ioslow{0} < \infty.
+\]
+Passing to a subsequence if necessary, we assume that $\ioslow{k}
+->\ioslow{0}$. Thus, $\exists$ $K$ s.t. 
+$\ioslow{k}\le\ioslow{0} + 1$ $\forall$ $k\ge K$.  Since $\{z(t, @x_k, \dfun_k,
+\vc_k)\}$ converges to $z(t, @x, \dfun, \vc)$ uniformly on $[0,
+\ioslow{0}+1]$, it follows that 
+\[
+z(\ioslow{0}, @x, \dfun, \vc) = \lim_{k->\infty}
+z(\ioslow{k}, @x_k, \dfun_k, \vc_k).
+\]
+Since $\D$ is closed and $z(\ioslow{k}, @x_k, \dfun_k, \vc_k)!e\D$ $\forall$
+$k$, we know that $z(\ioslow{0}, @x, \dfun, \vc)!e\D$, and hence,
+$\ioslow{\dfun}(@x, \vc)\le \ioslow{0}$.
+\epr
+
+Define, for $@x\in\E, \dfun\in\relaxed$, and $\vc\in\pcow$,
+%
+\[
+V_\vc(@x, \dfun):= \int_0^{\ioslow{\dfun}(@x, \vc)}\precomp(\abs{z(t, @x, \dfun,
+  \vc)})\,dt
+\]
+(where $\precomp$ is as in~\rref{precomp_def}) and, for $@x\in\E$ 
+and $\dfun\in\relaxed$,
+\[
+\tilde V_0(@x, \dfun):= \inf_{\vc !e\pcow} V_\vc(@x, \dfun).
+\]
+Note that for some $\vc$ and $\dfun$, $V_\vc(@x,\dfun)$ may take $\infty$ as its
+value, but $\tilde V_0(@x, \dfun)$ is always finite, since
+\be{V_0finite1}
+\tilde V_0(@x, \dfun)\le V_O(@x, \dfun),
+\ee
+ where $O(!.)$
+is the control identically equal to $0$. 
+
+Recall that by definition of $\precomp$ we have
+$\therefore$ $\forall$ $@x!e\E_1$ and $\dfun !e\relaxed$,  
+\begin{eqnarray}
+&& V_O(@x, \dfun) = \int_0^{\ioslow{\dfun}(@x, O)}\precomp(\abs{z(t, @x, \dfun,
+O)})\,dt \nonumber \\
+ &=& \int_0^{\ioslow{\dfun}(@x, O)}\precomp(\abs{z(t, @x, \dfun)})\,dt \\
+&!<& 
+\int_0^{\infty} \precomp (@m_1(@m_2(\abs @x) e^{-t}))dt !<@m_2(\abs @x), \label{V_0finite2}
+\end{eqnarray}
+where $@m_1$ and $@m_2$ are as in \rref{mu1mu2}.
+
+\bll{l-lsc} The function $V_{(!.)}(!., !.):\
+\E!p\relaxed!p\pcow \to \R_{!>0}$ is lower semicontinuous.
+\ells
+
+\bpr
+Let $(@x, \dfun, \vc)\in\E!p\relaxed!p\pcow$,
+and let $\{@x_k\}->@x$, $\{\dfun_k\}\to
+\dfun$ and $\{\vc_k\}\to \vc$, where $@x_k\in\E$ $\forall$ $k$.  
+
+{\it Case $1$}. \ $V_\vc(@x, \dfun) < \infty$.  In this case, $\forall$
+$\ve>0$, $\exists$ $0< T <\ioslow{\dfun}(@x, \vc)$ s.t.
+\[
+V_\vc(@x, \dfun) \psp= \psp \int_0^{\ioslow{\dfun}(@x,\vc)}\precomp(\abs{z(t, @x, \dfun,
+  \vc)})\,dt
+\psp \le \psp  \int_0^T\precomp(\abs{z(t, @x, \dfun,  \vc)})\,dt + \ve.
+\]
+w.l.o.g. we can assume that all $@x_k$ are within the unit 
+distance from $@x$. Recall that the reachable set from the unit ball 
+around $@x$ is bounded.
+Since $z(t, @x_k, \dfun_k, \vc_k)$ converges to $z(t, @x, \dfun, \vc)$
+uniformly on $[0, T]$, and 
+$\precomp(!.)$ is uniformly continuous
+on compacts, $\exists$ $K > 0$ s.t.
+\[
+\abs{\precomp(\abs{z(t, @x, \dfun,  \vc)}) - 
+\precomp(\abs{z(t, @x_k, \dfun_k,  \vc_k)})} < \frac{\ve}{1+T} \;\;
+\forall k > K, \; \forall t !e[0, T].
+\]
+This implies that
+\[
+\int_0^T\precomp(\abs{z(t, @x_k, \dfun_k,  \vc_k)})\,dt \psp \ge \psp
+\int_0^T\precomp(\abs{z(t, @x, \dfun,  \vc)})\,dt - \ve
+\]
+$\forall$ $k\ge K$.  By Lemma~\ref{l-ioslowsc}, $\exists$ $K_1\ge
+  K$ s.t. $\ioslow{\dfun_k}(@x_k, \vc_k) > T$ $\forall$ $k\ge K_1$.  Thus,
+  $\forall$ $k\ge K_1$,
+\beqn
+V_{\vc_k}(@x_k, \dfun_k) &\ge&
+\int_0^T\precomp(\abs{z(t, @x_k, \dfun_k,  \vc_k)})\,dt\\
+&\ge&
+\int_0^T\precomp(\abs{z(t, @x, \dfun,  \vc)})\,dt - \ve
+ \psp \ge \psp
+V_\vc(@x, \dfun) - 2\ve.
+\eeqn
+As $\ve$ was arbitrary, we conclude that 
+\[
+V_\vc(@x, \dfun) \le \liminf V_{\vc_k}(@x_k, \dfun_k).
+\]
+
+
+{\it Case $2$}. \ $V_\vc(@x, \dfun) = \infty$.
+
+In this case, $\ioslow{\dfun}(@x, \vc) = \infty$.  Fix an integer
+$k\ge 0$. $\exists$ $T_k$ s.t.
+\[
+\int_0^{T_k}\precomp(\abs{z(t, @x, \dfun,  \vc)})\,dt\ge k.
+\]
+Repeating the same argument used above, one sees that 
+\[
+\int_0^{T_k}\precomp(\abs{z(t, @x_l, \dfun_l,  \vc_l)})\,dt\ge k -1
+\]
+$\forall$ $l\ge L_0$ for some $L_0$.  By Lemma~\ref{l-ioslowsc}, $\exists$
+$L_1\ge L_0$ s.t. $\ioslow{\dfun_l}(@x_l, \vc_l)\ge T_k$ $\forall$
+$l\ge L_1$.  Consequently, $\forall$ $l\ge L_1$,
+\[
+V_{\vc_l}(@x_l, \dfun_l) \ge \int_0^{T_k}\precomp(\abs{z(t, @x_l, \dfun_l,
+  \vc_l)})\,dt\ge k -1. 
+\]
+Since $k > 0$ can be picked arbitrarily, it follows that
+\[
+\liminf\,V_{\vc_l}(@x_l, \dfun_l) = \infty.
+\]
+In both cases, we have shown that $\liminf\,V_{\vc_l}(@x_l, \dfun_l) \ge
+V_\vc(@x, \dfun)$.  The lower semicontinuity property follows readily.
+\epr
+
+\bll{Opt_v_exists}
+For every $@x!e\E$, $\dfun !e\relaxed$, there 
+exists a control $\bar \vc$ s.t.
+\be{e-opt-v_exists}
+V_{\bar \vc}(@x, \dfun) = \tilde V_0(@x, \dfun).
+\ee
+\ells
+
+\bpr
+Let $\vc_k$ be a sequence of controls s.t. 
+$V_{\vc_k}(@x, \dfun)\searrow \tilde V_0(@x, \dfun)$
+
+w.l.o.g. assuming all these controls are defined $\forall$ positive $t$ (by
+letting them equal to $0$ where they are not defined)
+
+Extract from $\{\vc_k\}$
+a subsequence $\{\vc_{k_l}\}$ converging weakly to some limit $\bar v$ in
+$\pcow$.  Without relabeling, we assume that $\vc_k\to \bar \vc$
+
+By Lemma~\ref{l-lsc},
+\[
+V_{\bar \vc}(@x, \dfun)\le \lim_{k->\infty}V_{\vc_k}(@x, \dfun) = \tilde
+V_0(@x, \dfun).
+\]
+Combining this with the fact that $\tilde V_0(@x, \dfun)\le V_\vc(@x, \dfun)$ $\forall$
+$\vc\in\pcow$, one thus proves \rref{e-opt-v_exists}.
+\epr
+
+\bc{from_Opt_v_exists}
+$\forall$
+$@x\in\E, \dfun \in\relaxed, 
+\vc\in\pcow$, and $0\le T < \ioslow{\dfun}(@x, \vc)$, it
+holds that 
+\be{dynprog}
+\tilde V_0(@x, \dfun) \; \le \; \int_0^T\precomp(\abs{z(s, @x, \dfun, \vc)})\,ds +
+\tilde V_0(z(T, @x, \dfun, \vc), \dfun_T),
+\ee
+where $\dfun_T(t) = \dfun(t+T)$ $\forall$ $t\ge 0$.
+\ecs
+
+\bpr
+Suppose the assertion is not true. $\Therefore$ $\exists$ $@x!e\E$, $T >0$, 
+ $\vc !e\pcow$, and $\dfun !e\relaxed$ s.t.~\rref{dynprog} fails. 
+By Lemma~\ref{Opt_v_exists}, one can find a control $ \vc_1$ s.t.
+$\tilde V_0(z(T, @x, \dfun, \vc), \dfun_T) = V_{\vc_1}(z(T, @x, \dfun, \vc), \dfun_T)$.
+Define $\bar \vc$ to be the concatenation of $\vc$ and $\vc_1$. 
+$\Therefore$ letting $@q:= \ioslow{\dfun_T}(z(T, @x, \dfun, \vc), \vc_1)$ and
+noticing that $\ioslow{\dfun}(@x, \bar \vc) = @q+T$, we get, by our
+assumption,
+\begin{eqnarray*}
+\tilde V_0(@x, \dfun)  &>&  \int_0^T\precomp(\abs{z(s, @x, \dfun, \vc)})\,ds +
+\tilde V_0(z(T, @x, \dfun, \vc), \dfun_T) \\
+&=&  \int_0^T \precomp(\abs{z(s, @x, \dfun, \vc)})\,ds +
+ \int_0^@q\precomp(\abs{ z(t, z(T, @x, \dfun, \vc), \dfun_T, \vc_1)}) \,dt \\
+&=& \int_0^{@q+T}\precomp(\abs{z(s, @x, \dfun, \bar \vc)})\,ds,
+\end{eqnarray*}
+which contradicts with the minimality of $\tilde V_0(@x, \dfun)$.
+\epr 
+
+
+\bll{l-VdContD}
+$\forall$ $@x\in!d\D$, the following holds:
+\be{e-Vcb}
+\lim_{{@h->@x}}\tilde V_0(@h, \dfun) = 0
+\ee
+uniformly in $\dfun\in\relaxed$, that is, $\forall$ $\ve > 0$, $\exists$
+neighborhood $U$ of $@x$ s.t. $\tilde V_0(@h, \dfun) < \ve$ $\forall$
+$@h!eU\cap \E$, $\dfun\in\relaxed$
+\ells
+
+\bpr 
+If $@x= 0$, the result follows from~\rref{V_0finite1} and~\rref{V_0finite2}.  Suppose
+now that $@x\not=0$.
+
+Let $\ve>0$ be given.  Let $@t=\frac{\ve}{\precomp(\abs{@x}+1)}$.
+Find a neighborhood $U$ of $@x$ as in Lemma~\ref{l-contr}.  Shrinking
+$U$ if necessary, we assume that $\abs{@x- @h}\le 1$ $\forall$
+$@h!eU$.
+
+Suppose $@h!eU\cap\E$ and  $\dfun\in\M_@W$.  By the controllability
+property, there is some 
+control $v$ s.t. $z(t_1, @h, \dfun, \vc)=@x\in\partial\D$ for some 
+$t_1\in[0, @t]$,
+and that $z(t, @h, \dfun, \vc)!eU$ $\forall$ $t!e[0, t_1]$.  Thus,
+\[
+V_{\vc}(@h, \dfun) \le \int_0^{t_1}\precomp(\abs{z(s, @h, \dfun, \vc)})\,ds
+\le @t!.\precomp(\abs{@x}+1) \le \ve,
+\]
+{} from which it follows that $\tilde V_0(@h, \dfun) \le \ve$.  
+
+The above shows that $\tilde V_0(@h, \dfun)\le \ve$ $\forall$ nonrelaxed
+ $\dfun\in\M_@W$,
+$@h!eU\cap\E$.
+Pick a relaxed $\dfun\in\relaxed$. $\Therefore$ $\exists$
+a sequence 
+$\{\dfun_k\}\subset\M_@W$ s.t. $\dfun_k->\dfun$
+in the topology of relaxed controls.  Let $@h\in
+U\cap\E$.  Let $\vc_k$ be s.t. $\tilde V_0(@h, \dfun_k) = V_{\vc_k}(@h,
+\dfun_k)$.  By weak sequential compactness of $\pcow$, one may assume, 
+after taking a subsequence, that $\vc_k ->
+\bar \vc$ for some $\bar \vc$.   By Lemma~\ref{l-lsc},
+\[
+V_{\bar \vc}(@h, \dfun)\le\liminf_{k\to\infty} V_{\vc_k}(@h, \dfun_k)\le\ve,
+\]
+and consequently, $\tilde V_0(@h, \dfun)\le \ve$.  This shows that
+$\tilde V_0(@h, \dfun)\le \ve$ $\forall$ $@h!eU \cap \E$, $d\in\relaxed$
+\epr
+
+To prove the continuity of $\tilde V_0$, we also need the following
+result.
+\bll{l-sl1}
+Suppose for some $@x\in\E$, $\dfun\in\relaxed$, and $\vc\in\pcow$,
+$V_\vc(@x, \dfun) < \infty$. $\Therefore$ $\exists$ $@x_0!e!d\D$
+s.t.
+\be{e-sl1-liminf}
+\lim_{t->\ioslow{\dfun}(@x, \vc)} z(t,@x,\dfun,\vc) = @x_0. 
+\ee
+\ells
+
+\bpr
+  Suppose $V_\vc(@x, @n) < \infty$.  This means that
+\be{e-sl1-conv}
+\int_0^{\ioslow{@n}(@x, \vc)}\precomp(\abs{z(s,@x,@n, \vc)})\,ds < \infty.
+\ee
+If $\ioslow{\dfun}(@x, \vc) < \infty$, $\therefore$~\rref{e-sl1-liminf} follows from
+the continuity of $z(!., @x, @n, \vc)$ with $@x_0 = z(\ioslow{\dfun}(@x,
+\vc))$.  
+
+Suppose now that
+ $\ioslow{\dfun}(@x, \vc) =  \infty$. 
+Since the integral in~\rref{e-sl1-conv} converges, 
+it follows that
+\[
+\int_t^!8\precomp(\abs{z(s,@x,\dfun, \vc)})\,ds
+->0 \quad \text{as}\ t->\infty.
+\]
+%decreases to $0$ as $t$ tends to $\infty$. 
+Consider the family of functions $\cbrace{x_t(!.), \; t >0}$, defined by
+$x_t(s) := z(t+s, @x, \dfun, \vc)$, $\I_t = [0, \infty)$. 
+%REV1
+By Lemma~\ref{z>w:lemma}, the trajectory $z(s,@x, \dfun, \vc)$
+does not reach the origin in finite time, hence, $\exists$  
+positive, strictly 
+decreasing \function $\vf$ s.t. $\vf(s) < \abs{z(s,@x, \dfun, \vc)}$ $\forall$
+ $s > 0$. Find a $@k!e\ki$ s.t. 
+\[
+@k(\vf(t)) > \int_t^!8\precomp(\abs{z(s,@x,\dfun, \vc)})\,ds=
+ \int_0^!8\precomp(\abs {x_t(s)})\, ds.
+\]
+$\Therefore$ the family $\cbrace{x_t(!.), \; t > 0}$ satisfies all
+the conditions of 
+Proposition~\ref{barbalat} (with $@c:= \precomp$). Take $r := \abs {@x}$.
+$\Therefore$ $\forall$ $\ve > 0$, $\abs{z(t, @x, \dfun, \vc)} < \ve$ $\forall$ 
+$t > T_{r, \ve}$. So, the conclusion of the lemma follows.  
+\epr
+
+
+
+\bp{VdCont}
+The function $\tilde V_0: \ \E!p\relaxed\to\R$ is continuous.
+\eps
+
+\bpr
+Fix $@x\in\E$, $\dfun \in\relaxed$.  
+Suppose $@x_k \to @x, \dfun_k\to \dfun$,
+where $@x_k\in\E$.  Let $\{k_j\}$ be a subsequence of
+$\{k\}$ s.t.
+\be{eq1:VdCont}
+\lim_{j\to\infty}\tilde V_0(@x_{k_j}, \dfun_{k_j}) =
+\liminf_{k\to\infty}\tilde V_0(@x_{k}, \dfun_{k}).
+\ee
+$\forall$ $k$, let $\vc_k$ be s.t.
+$\tilde V_0(@x_k, \dfun_k) = V_{\vc_k}(@x_k, \dfun_k)$. 
+Notice that 
+$\lim_{k\to \infty} V_{\vc_k}(@x_k, \dfun_k)$ exists,
+because  of~\rref{eq1:VdCont}. 
+
+By sequential compactness of $\pcow$, $\exists$
+a subsequence of $\{\vc_{k_j}\}$ converging to some $\bar \vc\in\pcow$.
+Without relabeling, we assume that $\vc_{k_j}\to \bar \vc$.
+It then follows from Lemma~\ref{l-lsc} that
+\[
+V_{\bar \vc}(@x, \dfun) \le \lim\,V_{\vc_{k_j}}(@x_{k_j}, \dfun_{k_j}) = \liminf\,
+\tilde V_0(@x_k, \dfun_k).
+\]
+Consequently, $\tilde V_0(@x, \dfun) \le \liminf\, \tilde V_0(@x_k, \dfun_k)$.  To
+complete the proof, we will show that
+\be{e-upsemi}
+\tilde V_0(@x, \dfun) !>\limsup_{k \to \infty}
+\tilde V_0(@x_k, \dfun_k).
+\ee
+
+Let $\vc$ be a control s.t.
+$\tilde V_0(@x, \dfun) = V_\vc (@x, \dfun)$.
+Let $\ve > 0$ be given.  By Lemma~\ref{l-sl1}, there is some
+$@x_0\in!d\D$ s.t.~\rref{e-sl1-liminf} holds.  
+By Lemma~\ref{l-VdContD}, $\exists$ neighborhood $U$ of $@x_0$ s.t.
+\be{eq2:VdCont}
+\tilde V_0(@h, @n) < \ve/4 \; \mbox{ $\forall$}
+ @h!eU \cap \E, \mbox{ $\forall$}
+@n\in\relaxed. 
+\ee
+Let $0< T <\ioslow{\dfun}(@x, \vc)$ be s.t. 
+$z(T, @x, \dfun, \vc)!eU$.  $\Therefore$ since $\{z(t, @x_k, \dfun_k, \vc)\}$
+converges to $z(t, @x, \dfun, \vc)$ uniformly on $[0, T]$, it follows that
+$z(T, @x_k, \dfun_k, \vc)!eU$ for $k\ge K_1$ for some $K_1$.  By
+Lemma~\ref{l-ioslowsc}, one may assume that $T < \ioslow{\dfun_k}(@x_k, \vc)$
+$\forall$ $k\ge K_1$.  Consequently, $@h= z(T, @x_k, \dfun_k, \vc)$
+is also in $\E$, so, applying~\rref{eq2:VdCont} with $@n= (\dfun_k)_T$, 
+we have 
+\[
+\tilde V_0(z(T, @x_k, \dfun_k, \vc), (\dfun_k)_T) < \ve /4 \qquad 
+\forall\, k\ge K_1,
+\]
+where $(\dfun_k)_T(t) = \dfun_k(T+t)$.
+By the uniform convergence property of $\{z(t, @x_k, \dfun_k, \vc)\}$,
+ it follows that there is some compact set $!K$ s.t.
+$z(t, @x_k, \dfun_k, \vc)!e!K$ $\forall$ $k$, $t!e[0, T]$
+
+ Using also the
+uniform continuity of $\precomp(!.)$ on compacts, one sees that there
+is some $K_2\ge K_1$ s.t.
+\[
+\int_0^T\precomp(\abs{z(s, @x_k, \dfun_k, \vc)})\,ds \psp \le \psp 
+\int_0^T\precomp(\abs{z(s, @x, \dfun, \vc)})\,ds + \ve/2
+\]
+$\forall$ $k\ge K_2$. Thus,  \rref{dynprog} implies 
+\beqn
+\tilde V_0(@x_k, \dfun_k) &\le &
+\int_0^T\precomp(\abs{z(s, @x_k, \dfun_k, \vc)})\,ds + \tilde V_0(z(T, @x_k, \dfun_k,
+\vc), (\dfun_k)_T) \\
+&\le & V_\vc(@x, \dfun) + \ve/2 + \ve/2 \psp =  \psp \tilde V_0(@x, \dfun) + \ve
+\eeqn
+$\forall$ $k\ge K_2$.  From this it follows that
+\[
+\tilde V_0(@x, \dfun) \ge \limsup\,\tilde V_0(@x_k, \dfun_k) -\ve.
+\]
+Letting $\ve\to 0$, one proves~\rref{e-upsemi}. 
+\epr
+
+
+$\forall$ $@x\in\E$, define
+\be{e-vod}
+\displaystyle{V_0(@x) := \sup_{\dfun\in\M_@W} \tilde V_0(@x, \dfun)}.
+\ee
+Note that the supremum is finite $\forall$ $@x\in\E$; in fact, 
+by~\rref{V_0finite1} and~\rref{V_0finite2}, we have the upper bound
+\be{e-V0b}
+V_0(@x) \le @m_2(\abs{@x}) \qquad\forall\,@x\in\E,
+\ee
+where $@m_2$ is as in inequality~\rref{mu1mu2}. 
+Also observe that the same \function $V_0$ results if the supremum
+in~\rref{e-vod} is taken over the set $\relaxed$.  This follows from
+the fact that $\M_@W$ is dense in $\relaxed$ and the continuity
+property of $\tilde V_0$.
+
+By sequential compactness of $\relaxed$ and by continuity of
+$\tilde V_0$, we get the following.
+
+\bc{relaxed_d}
+$\forall$ $@x$ in $\E$ $\exists$  (possibly relaxed)
+disturbance $\dfun$ s.t. $V_0(@x) = \tilde V_0(@x, \dfun)$, that
+is,  $V_0(@x) = \max_{\bar \dfun\in\relaxed}\tilde V_0(@x,\bar \dfun)$.
+  Moreover,
+$V_0: \ \E\to\R$ is continuous.
+\ecs
+
+\bpr
+Fix $@x!e\E$. By definition of $V_0$, $\exists$  sequence of 
+disturbances $\cbrace{\dfun_k(!.)}$ s.t. 
+$\tilde V_0(@x, \dfun_k) \nearrow V_0(@x)$. By sequential compactness of
+ $\relaxed$, we can extract a subsequence $\cbrace{\dfun_{k_i}}$, converging 
+in $\relaxed$ to some $\dfun$. By continuity of $\tilde V_0$,
+\[
+ V_0(@x) = \lim_{i \to \infty} \tilde V_0(@x, \dfun_{k_i}) = 
+\tilde V_0(@x, \dfun),
+\]
+proving the first statement of the corollary.
+
+Now fix $@x!e\E$. Take any sequence $\cbrace{@x_k} !e\E$, 
+converging to $@x$ and s.t. the sequence $\cbrace {V_0(@x_k)}$ 
+converges. Let $\dfun_k(!.)$ and $\dfun !e\relaxed$ be 
+maximizing disturbances for $@x_k$ and $@x$, respectively, that is, 
+\[
+V_0(@x_k) = \tilde V_0(@x_k, \dfun_k) \mbox{  and  }
+V_0(@x) = \tilde V_0(@x, \dfun).
+\]
+Extracting a subsequence if necessary, let $\hat \dfun$ be a limit of 
+$\{\dfun_k\}$ in $\relaxed$. $\Therefore$ by continuity of $\tilde V_0$ and by 
+definition of $V_0$, we have
+\[
+V_0(@x) \psp !>\psp \tilde V_0(@x, \hat \dfun) \psp = \psp  
+\lim_{k \to \infty}  \tilde V_0 (@x_k, \dfun_k) \psp = \psp
+ \lim_{k \to \infty} V_0(@x_k).  
+\]
+Consequently, if $\cbrace{@x_i} \subset \E$ is any sequence, converging to 
+$@x$, $\therefore$ 
+\[
+ V_0(@x) \psp !>\psp  \limsup_{i \to \infty} V_0(@x_i), 
+\]
+proving upper semicontinuity of $V_0$. 
+
+On the other hand, again by continuity of $\tilde V_0$, we have
+ \[
+\liminf_{k \to \infty} V_0 (@x_k) 
+        !>\lim_{k \to \infty} \tilde V_0(@x_k, \dfun) = V_0(@x),
+\]     
+showing the lower semicontinuity of $V_0$. Thus we conclude that $V_0$ is
+continuous on $\E$.
+\epr        
+
+\bll{bounded_below}
+$\exists$  $\floor!e\ki$ s.t.
+\[
+\floor (\abs @x) !<V_0(@x)
+\] 
+$\forall$ $@x!e\E_1$.
+\elll
+
+Notice that if $\abs{@x} !>1.6 @r(\abs{h(@x)})$ and $@x\neq 0$, 
+$\therefore$ $@x!e\E$, because 
+$\abs{@x} > \abs{@x}/1.6 !>@r(\abs{h(@x)}).$
+To prove Lemma~\ref{bounded_below}, we first prove a technical lemma.
+
+\bll{tl}
+ Suppose $@S\,: \, @.z = g(z, d), \; y = h(z)$ is a system
+of type~\rref{dsystem}, and $p(!.)$ is a smooth \function $!e\ki$,
+ s.t. the following conditions hold:
+\begin{itemize}
+\item $\abs{g(@x, d)} !<1 $ $\forall$ $@x!e\states$ and 
+$d !e@W$,
+\item $\abso{\nabla (p !o\abs h ) (@x) !.g(@x, d)} !<1 $ 
+$\forall$ $d !e@W$, $@x$ with $\abs{h(@x)} !>1$,
+\item $p(s) !>s$ $\forall$ $s > 0$.
+\end{itemize}
+%
+Pick any constant $a >0$ and  define $K_0 = p(1) + (2+a)/a + 1$. $\Therefore$
+$\forall$ $@x!e\states$ s.t.   
+\[
+\abs @x!>(1+a) p(\abs{h(@x)}) \mbox{ and } \abs @x!>K_0,
+\] 
+it holds that 
+\[
+\abs {z(t, @x, \dfun)} > p(\abs{h(z(t, @x, \dfun))})
+\]
+ $\forall$
+ $t !e[0, 1)$  and any $\dfun !e\M_@W$.
+\ells
+
+\bpr
+Fix $a$, $@x$, and $\dfun$ as in the formulation of the lemma, and
+define 
+\[
+@q:= \min \cbrace{t \,:\, \abs{z(t, @x, \dfun)} 
+!<p(\abs{h(z(t, @x, \dfun))})}
+\]
+with the convention $@q= +\infty$ if the inequality never holds
+for $t !>0$.
+Assume the lemma is false, s.t. $@q< 1$.       
+
+ Let $@h= z(@q,@x,  \dfun )$, and
+let $\hat{\dfun}$ be the shift of $ \dfun$ by $@q$, that is, 
+$\hat{\dfun}(t) =\dfun(t + @q)$.   Since
+$\abs{g(z, d)}\le 1$ $\forall$ $z \in\states$, $d !e@W$, it
+holds that 
+\[
+\abs{@h} \ge \abs{@x} - @q\ge  K_0 - 1.
+\]
+By the definitions of $@h$ and $@q$,
+one has
+\be{e-eta}
+p (\abs{h(@h)}) = \abs{@h} \ge K_0 - 1 ,
+\ee
+so also $\abs{h(@h)} \ge p ^{-1}(K_0 - 1) > 1$.
+Thus, $|{h(z(s,@h, \hat \dfun ))}|>1$ $\forall$ $s$ near zero.
+
+
+ {\it Claim}. \ $|{h(z(s, @h, \hat \dfun ))}| > 1$ $\forall$ $s\in
+[-1, \; 0]$.
+
+Assume the claim is false.  $\Therefore$ there must exist some $-1\le s_0 < 0$ s.t.
+\[
+s_0 = \max\left\{s\le 0: \ |{h(z(s,  @h, \hat \dfun ))}| \le 1\right\}.
+\]
+We have that $\forall$ $s!e(s_0, \, 0]$,
+$|{h(z(s,  @h, \hat \dfun ))}|  > 1$.
+
+Recall that
+$\abs{\nabla(p !o\abs{h})(z )f(z, d)}!<1$ 
+$\forall$ $z$ with $\abs{h(z )} \ge 1$, $d !e@W$
+
+Thus
+\[
+\abs{
+\frac{d}{ds}p\left(\abs{h(z(s,  @h, \hat \dfun ))}\right)
+}
+\le 1 \quad
+\forall\,s!e(s_0, \, 0].
+\]
+This, in turn, implies that 
+\[
+ p\left(\abs{h(z(s_0,  @h, \hat d ))}\right) \ge p (\abs{h(@h)}) +
+ s_0 \ge 
+K_0 +s_0-1 > p(1),
+\]
+and so, since $p$ is strictly increasing, 
+$|{h(z(s_0,  @h, \hat \dfun ))}| > 1$, thus
+contradicting the definition of $s_0$.  This proves the claim.
+
+It follows from the claim that
+   $\abs{h(z(s, @x,  \dfun))} > 1$ $\forall$ $s\in[0,@q]$.
+Thus,
+\beqn
+p (\abs{h(@h)}) &=&\abs{@h} \;\ge\; \abs{@x} -@q\\
+&\ge& (1+a)p (\abs{h(@x) }) - @q 
+\ge (1+a) p(\abs{h(@h)}) - (1+a)@q- @q.
+\eeqn
+(The last inequality used the fact that 
+$\abs{\frac d{ds}p(\abs{h(z(s, @x,  \dfun))})} !<1$ $\forall$ 
+$s !e[0, @q]$.) 
+  It follows that $p (\abs{h(@h)}) \le \frac{2+a}{a}@q$,
+so from~\rref{e-eta} we know that 
+\[
+K_0!<1 + p(\abs{h(@h)}) !<1+ \frac{2+a}{a}@q,
+\]
+ contradicting the choice of $K_0$.
+This shows that it is impossible to have $@q< 1$.
+\epr
+
+{\it Proof of Lemma~$\ref{bounded_below}$}. 
+Recall that if $@x\not!e\D\cup\B$, $\therefore$ 
+$\tilde f(@x, d, v) = \hat f(@x, d)$ $\forall$ $d$ and $v$, s.t. 
+\[
+\abs{\nabla (1.5 @r!o\abs{h})(@x) !.\tilde f(@x, d, v)}
+ = \frac{1.5 \abs{\nabla(@r!o\abs h)(@x) !.f(@x, d)}}
+        {1 + \abs{f(@x, d)}^2 + @k(@x)} !<1,
+\]
+where the last inequality follows from~\rref{kappa_def}. 
+$\therefore$ the assumptions of Lemma~\ref{tl} are satisfied with $p := 1.5 @r$
+and  $f(@x, d) := \tilde f(@x, d, v) =  \newf (@x, d)$.  
+By Lemma~\ref{tl}, we can find a constant $K_0$ s.t. if
+$\abs @x> K_0$ and  $\abs @x!>1.6 @r(\abs{h(@x)})$, $\therefore$
+$z(t, @x, \dfun, v) \not!e\D\cup\B$ $\forall$ $t !e[0, 1)$. In particular,
+for such a $@x$ we will have $\ioslow{\dfun}(@x, \vc) > 1$ and 
+$\abs{z(t, @x, \dfun, \vc)} > \abs{@x} -1$ $\forall$ positive  $t < 1$ . 
+Hence, the inequality
+\[
+\precomp(\abs {z(t, @x, \dfun, \vc)}) >  \precomp(\abs{@x} -1) 
+\; \;\; \forall t !e[0, 1)
+\]
+holds $\forall$ $\dfun\in\M_@W$, $\vc\in\pcow$, and any $@x$
+s.t. 
+\be{xi_away_from_0} 
+\abs{@x} > \max\cbrace{ K_0 +1, \;1.6 @r(\abs{h(@x)})}.
+\ee
+$\therefore$ $\forall$ $@x$ as in~\rref{xi_away_from_0} and any
+$\dfun \in\M_@W$, the  following estimate holds:
+\[
+V_0(@x) \; !>\; \tilde V_0(@x, \dfun) \;\geq\;
+\int_0^1 \precomp(\abs {z(t, @x, \dfun, \vc)}) dt \;!>\;
+\precomp(\abs @x-1). 
+\]
+Next, notice that $V_0$ is strictly positive on $\E$. Indeed, 
+$|{\tilde f(@x, d, v)}| !<3$ $\forall$ $@x!e\E$, $d !e@W$,
+and $v !e[-1, 1]^n,$  s.t. 
+\[
+\abs{z(s, @x, \dfun, \vc) - @x} !<\frac 1 2 \dist(@x, \D) \quad
+\forall \; s !<\frac{\frac 1 2 \dist(@x, \D)}{3}, \; 
+\dfun !e\M_@W,\; \vc !e\pcow.
+\]
+$\therefore$ 
+$\ioslow{\dfun}(@x, \vc) !>\frac{1}{6}\dist(@x, \D)$ and 
+$\abs{z(s, @x, \dfun, \vc)} !>@x- \frac 1 2 \dist(@x, \D)$
+$\forall$ $s !<\frac{1}{6}\dist(@x, \D)$, all 
+$\dfun !e\M_@W$, and $\vc !e\pcow.$ So, we have
+\[
+V_\vc(@x, \dfun) \;!>\;
+\int_0^{{\rm dist}(@x, \D)/6} \precomp\rb{\abs{z(s, @x, \dfun, \vc)}}\,ds
+\]
+\[
+\;\geq\;
+ \frac{\dist(@x, \D)}{6}\, 
+  \precomp(\abs @x- \dist(@x, \D)/2).
+\]
+%
+This shows that 
+\be{infinf}
+\inf_{\dfun !e\M_@W} \inf_{v !e\pcow} V_\vc(@x, \dfun) 
+!>\frac{\dist(@x, \D)}{6}\, 
+        \precomp \! \rb{\abs @x- \frac{\dist(@x, \D)}{2}}.
+\ee
+Thus also the $\sup_{\dfun !e\M_@W} \inf_{v !e\pcow} V_\vc(@x, \dfun)$
+satisfies~\rref{infinf}, and hence  the same inequality 
+holds for $V_0$.  
+
+Since $V_0$ is lower semicontinuous, it attains its minimum on any 
+compact set. $\forall$ positive $l$ define
+\[
+r_l := \frac 1 l \max\cbrace{ K_0 +1, \;1.6 @r(\abs{h(@x)})} \; \mbox{ and } \;
+\]
+\[
+m_l = \inf \cbrace{V_0(z)\,:\,
+ z !e\E_1, \, r_l !<\abso z !<r_1} \,.
+\]
+Since the sequence $\cbrace{m_l}$ is nonincreasing and positive, and 
+$\precomp$ is $!e\ki$, we can find a $\floor!e\ki$
+ s.t. 
+\[
+\floor(s) < m_l \;\;\forall \, s !e[r_l, r_{l-1}], \ \forall \, l>1
+\]
+and 
+\[
+\floor(s) < \precomp(s - 1) \forall \, s !>\max\cbrace{ K_0 +1, \;1.6 @r(\abs{h(@x)})}.
+\]
+By construction, $\floor$ will be a lower bound for $V_0$ on $\E_1$.  
+\mybox 
+
+Combining Lemma~\ref{bounded_below} with~\rref{e-V0b}, we get the
+following, using $\pot:=@m_2$:
+\be{e-V0bd-2sd}
+\floor(\abs{@x}) \le V_0(@x) !<\pot(\abs{@x})
+\qquad\forall\,@x\in\E_1.
+\ee
+
+The following lemma and corollary  summarize the dissipation properties for
+$V_0$.
+\bll{lem:V0dissip:2}
+$\forall$ $@x!e\states \setminus (\D \cup \B)$ and $\dfun !e\M_@W$, and 
+any $t_0$ s.t. $z(t, @x, \dfun) \not !e\D\cup\B$ $\forall$ 
+$t !e[0, t_0]$,
+the following dissipation inequality holds:
+%
+\[
+ V_0(z(t, @x, \dfun)) -V_0(@x) !< -\int_0^{t_0} \precomp(\abs{z(t,
+@x, \dfun)})\,dt.
+\] 
+\ells
+
+\bpr
+Fix $@x!e\states \setminus(\D \cup \B)$, $\dfun!e\M_@W$,
+ and any positive $t_0$ as in the formulation of the lemma.
+Let $\ve > 0$ be given. Find $\dfun_1$ s.t. 
+%
+\[
+V_0(z(t_0, @x, \dfun)) - \tilde V_0 (z(t_0, @x, \dfun), \dfun_1)<\ve,
+\]
+and let $\vc_1 !e\pcow$ be a control s.t.  
+$\tilde V_0 (z(t_0, @x, \dfun), \dfun_1) = V_{\vc_1}(z(t_0, @x, \dfun), \dfun_1)$.
+%
+Let $\tilde \dfun$ be defined by
+\[
+\tilde \dfun(t) = \twoif{\dfun(t)}{\mbox{if $0\le t\le t_0$,}}
+{\dfun_1(t-t_0)}{\mbox{if $t > t_0$.}}
+\]
+
+$\Therefore$ $z(t, z(t_0, @x, \dfun),  \dfun_1, \vc_1) = z(t + t_0, @x, \tilde \dfun, \tilde \vc)$
+$\forall$ $t !>0$.
+ By assumption,  
+\[
+z(t, @x, \dfun) \not  !e\D \cup \B \quad\quad \forall \;t !e[0, t_0],
+\]
+and $\therefore$ we have
+\be{v_dnm}
+z(t, @x, \dfun) = z(t, @x, \dfun, \vc) \quad\quad \forall \;t !e[0, t_0], \quad \forall \ \vc !e\pcow.
+\ee 
+Notice also that~\rref{v_dnm} implies that $\ioslow{\tilde \dfun}(@x, \vc) > t_0$ $\forall$ 
+$\vc !e\pcow$ and 
+\begin{eqnarray*}
+&& \tilde V_0(@x, \tilde \dfun) =  \min_{\vc !e\pcow} 
+\int_{t_0}^{\ioslow{\tilde \dfun}(@x, \vc)}\precomp\rb{\abs{z(s, @x, \tilde \dfun, \vc)}}\,ds \\
+&=&  \int_0^{t_0}\precomp\rb{\abs{z(s, @x, \tilde \dfun)}}\,ds + \min_{\vc !e\pcow} 
+\int_{t_0}^{\ioslow{\tilde \dfun}(@x, \vc)}\precomp\rb{\abs{z(s, @x, \tilde \dfun, \vc)}}\,ds \\
+&=&  \int_0^{t_0}\precomp(\abs{z(s, @x, \dfun)})ds + \min_{\vc !e\pcow}
+\int_0^{\ioslow{\dfun_1}(z(t_0,@x, \dfun), \vc)} 
+\precomp(\abs{z(s, z(t_0,@x,  \dfun), \dfun_1, \vc)})ds \\
+&=& \int_0^{t_0}\precomp(\abs{z(s, @x, \dfun)})ds + \tilde V_0(z(t_0, @x, \dfun), \dfun_1).
+\end{eqnarray*} 
+Consequently, one has
+\[
+\tilde V_0(z(t_0,@x,\dfun),\dfun_1) = \tilde V_0(@x, \tilde \dfun) - 
+\int_0^{t_0}\precomp\left(\abs{z(s,@x,\dfun)} \right)\,ds.
+\]
+Thus, 
+\beqn
+V_0(z(t_0,@x, \dfun)) &\le& \tilde V_0(z(t_0,@x,\dfun),\dfun_1) + \ve\\
+&=& \tilde V_0(@x, \tilde \dfun) - 
+\int_0^{t_0}\precomp(\abs{z(s,@x,\dfun)})\,ds + \ve\\
+&\le& V_0(@x) -
+\int_0^{t_0}\precomp(\abs{z(s,@x,\dfun)})\,ds + \ve.
+\eeqn
+Letting $\ve->0$, we get the desired inequality.
+\epr
+
+Thus, we have proven that the UOSS dissipation inequality 
+holds for $V_0$ along the trajectories of the slower
+system $\hat @S$ which are entirely contained in 
+$\states \setminus (\D \cup \B)$. It follows
+ immediately that 
+the same estimate holds along the trajectories of the
+original system $@S$.
+
+\bc{cor:V0dissip:2}
+$\forall$ $@x!e\states \setminus (\D \cup \B)$ and $\dfun !e\M_@W$, and 
+any $t_0$ s.t. $x(t, @x, \dfun) \not !e\D\cup\B$ $\forall$ 
+$t !e[0, t_0]$,
+the following dissipation inequality holds:
+\be{V0_dissip3}
+V_0(x(t,@x,\dfun))-V_0(@x) !< -\int_0^{t_0}\precomp(\abs{x(t,@x,\dfun)})\,dt.
+\ee
+\ecs
+
+{\it Proof}.
+Pick an initial state $@x!e\states \setminus (\D \cup \B)$, 
+a disturbance $\dfun !e\M_@W$, and an appropriate $t_0$. $\Therefore$ 
+%
+\begin{eqnarray*}
+\lefteqn{V_0(x(t_0, @x, \dfun))-V_0(x(@x))}\\
+&=& V_0(z(\tslow{@x}{\dfun}(t_0), @x, \dfun 
+!o\tslow{@x}{\dfun}^{-1}  )) 
+  -V_0(z(\tslow{@x}{\dfun}(t_1), @x, \dfun !o\tslow{@x}{\dfun}^{-1} )) \\
+ & \leq&  -\int_{0}^{\tslow{@x}{\dfun}(t_0)}
+ \precomp(\abs{z(s, @x, \dfun !o\tslow{@x}{\dfun}^{-1} )})\,ds \\
+& = & -\int_{0}^{t_0}
+ \precomp(\abs{z(\tslow{@x}{\dfun}(t), @x, \dfun !o\tslow{@x}{\dfun}^{-1}
+ )})\,d\tslow{@x}{\dfun}(t)\\
+ & =& -\int_{0}^{t_0}
+ \precomp(\abs{x(t, @x, \dfun)})\,\frac{d}{dt}{\tslow{@x}{\dfun}}(t)\,dt\\
+&=&  -\int_{0}^{t_0} 
+ \precomp(\abs{x(t, @x, \dfun)})[1+\abs{f(x(t, @x, \dfun), \dfun(t))}^2 
+  + @k(x(s, @x, \dfun))]\, dt \\
+ & \leq& -\int_{0}^{t_0}
+ \precomp(\abs{x(t, @x, \dfun)})\,dt.\mybox
+\end{eqnarray*}
+
+
+\newpage
+\subsection{some definitions and facts from nonsmooth analysis}
+
+\bd{def:prosub-super}
+A vector $@z!e\R^n$ is a {\em proximal subgradient}
+(respectively, {\em proximal supergradient}) of the function $V: \R^n
+\to (-\infty, +\infty]$ at $x$ if $\exists$ positive $@s$
+s.t., $\forall$ $x'$ in some neighborhood of $x$,
+%
+\be{eq:prosub}
+V(x') !>V(x) + @z!.(x' -x) -@s\abso{x'-x}^2
+\ee
+\be{eq:prosuper}
+(\mbox{correspondingly, }\; V(x') !<V(x) + @z!.(x'-x) 
++ @s\abso{x' -x}^2).
+\ee
+
+The (possibly empty) set of all proximal subgradients (respectively,
+supergradients) of $V$ at $x$ is called the {\em proximal subdifferential}
+and is denoted $\partial_P V(x)$ (respectively, {\em proximal
+superdifferential}, denoted $\partial^P V(x)$). Note that the
+definitions imply that if the function $V$ is differentiable at $x$,
+then both the subdifferential and superdifferential sets must be subsets
+ of the 
+$\{\nabla V(x)\}$.
+\ed
+%
+\bll{ipsdissip}
+%
+Let $@S$ be a system of type~\rref{dsystem},  $@x$ be a vector 
+in $\states$, $\bar d !e@W$, and $V  :  \states \to \R$. $\Therefore$ if 
+$\exists$ continuous 
+$@a_@x\,: \, \R_{!>0} \to \R$ and  $\ve > 0$ s.t. 
+the following inequality holds $\forall$ $@t< \ve$,
+%
+\be{alpha_xi_dissip}
+V(x(@t, @x, \dfun)) - V(@x) \psp !<\psp  \int_0^@t@a_@x(t)dt
+\ee
+(where $\dfun$ is the constant disturbance equal to $\bar d$), $\therefore$ 
+$\forall$ $@z!e\partial_P V (@x)$ the proximal form of 
+inequality~\rref{alpha_xi_dissip} holds:
+%
+\be{pro_alpha_xi_dissip}
+ @z!.f(@x, \bar d) !<@a_@x(0).
+\ee
+\ells
+
+\bpr
+It follows from~\rref{eq:prosub} and~\rref{alpha_xi_dissip} that, 
+$\forall$ $@t$ close enough to $0$ we have
+%  
+\[
+\int_0^@t@a_@x(t)dt \psp !> \psp V(x(@t, @x, \dfun)) - V(@x)
+\psp  !> \psp
+@z!.(x(@t, @x, \dfun) - @x) - @s\abso{x(@t, @x, \dfun) -@x}^2.
+\]
+%
+Dividing by $@t$ and passing to the limit as $@t$ tends to $0$, we get
+\rref{pro_alpha_xi_dissip}.
+\epr
+
+
+\newpage
+\subsection{smoothing out a continuous Lyapunov function}
+
+\renewcommand{\xdissip}{{\Theta}}
+\newcommand{\upso}{{\mbox{$\Upsilon_1$}}}
+\newcommand{\upst}{{\mbox{$\Upsilon_2$}}}
+\newcommand{\xddissip}{\xdissip}
+\newcommand{\xddissipx}{\xddissip(x,d)}
+\renewcommand{\GO}{!O}
+
+The next result shows how to approximate a continuous function $V$ by
+a locally Lipschitz one in a weak $C^1$ sense. The function $V$ is
+assumed to be bounded below, or up to a translation by a constant, 
+nonnegative.
+
+\bll{contimplieslipschitz}
+Let $@S:\,@.x = f(x, d)$ be a system,
+with $x\in\states=\R^n$ and $d\in@W$,
+a compact metric space,
+s.t. $f(x, d)$ is locally Lipschitz in $x$ uniformly on
+$d$ and jointly continuous in $x$ and $d$.
+Assume that we are given
+\begin{itemize}
+\item  an open subset $\GO$ of $\states$;
+\item a continuous, nonnegative \function $V: \GO \to \R$ 
+satisfying 
+\be{dissip:loc}
+ @z!.f(x, d) !<\xddissipx
+ \;\;\forall x !e\GO, \;
+@z!e\prosub V(x), \; d \in@W
+\ee
+with some continuous \function $\xddissip \,:\, \GO!p@W\to \R$;
+%
+\item two positive, continuous \functions $\upso$ and $\upst$ on 
+$\GO$.
+\end{itemize}
+
+$\Therefore$ $\exists$ {\afunction} $\tilde V: \GO \to \R$, locally Lipschitz on 
+$\GO$, s.t.
+%
+\be{tilde_V_close_to_V}
+0 !<V(x) -\tilde V(x) !<\upso(x) \;\;\forall x !e\GO
+\ee
+and 
+\be{tilde_V_dissip}
+L_{f_d}\tilde V(x) !< \xddissipx + \upst(x)
+\;\; \mbox{ $\forall$}d \in
+@W\mbox{ and for almost all } x !e\GO,
+\ee
+%
+where $f_d$ is the vector field defined by $f_d = f(!., d)$. 
+\elll
+
+Note that, by Rademacher's theorem, the directional derivative 
+$L_{f_d} \tilde V (x)$, given by $\nabla V(x) !.f(x, d)$,
+is defined for almost all $x$ because $\tilde V$ is locally Lipschitz.  
+The proof will follow closely along the lines of the proof of the similar
+result for CLFs, found in Clarke-Ledyaev-Sontag-Subbotin
+
+We will first prove a ``local'' version of the result.
+$\forall$ $K$ which is
+ a compact subset of $\GO$ and $r>0$,
+we 
+introduce the following notations: 
+\begin{itemize}
+\item $\bar B_r(K) := \cbrace{x!e\states \,:\, \exists @x!eK \mbox{ with }
+\abs{x-@x} !<r}$, the closed $r$-fattening of $K$, for $r > 0$,
+\item $@b(K):=\sup_{x !eK}V(x),$
+
+\item $m_{K} := 
+\frac{1}{4}\min\cbrace{\upst(x): x !eK},$
+
+\item $\ell_K :=$ a  Lipschitz constant for $f$ with respect to $x$
+ in  $K$, that is,
+\[
+|f(x, d) - f(x', d)| !<\ell_K |x -x'| \;\;\forall d !e@W, \;
+         \forall  x !eK,
+\]
+
+\item $@w_K(!.) :=$ the modulus of continuity of $V$ on 
+$K$, that is,
+\[
+@w_K(@d):=\sup\cbrace{V(x)-V(x')\,:\, |x-x'| !<@d; x, x' \in
+K},
+\]
+%
+\item $@p_K(!.) :=$ the modulus of continuity of $\xddissip$
+ on $K!p@W$, that is,
+\beqn
+& &@p_K(@d):=\sup\{\xddissip(x , d)-\xddissip(x',d')\,:
+\, |x-x'| + {\rm dist\,}(d,d') !<@d; \\
+& &\hspace{1.6in} x, x' !eK, d,d'\in@W\}.
+\eeqn
+\end{itemize}
+
+To approximate the given continuous \function $V$ by a locally 
+Lipschitz one, we
+would like to use the
+notion of ``Iosida--Moreau inf-convolution,'' well known in convex analysis.
+ Fix a parameter
+$@a!e(0, 1]$. Suppose for the moment that $V$ is defined on
+the whole $\states$. Define
+%
+\[
+V_@a(x) := \min_{y !e\states}
+\left[V(y) + \frac{1}{2@a^2}|y-x|^2 \right].
+\]
+%
+$\forall$ fixed $x$, the set of points $y$ where the minimum is attained
+is nonempty because $V$ is bounded below. Denote one of them by $y_@a(x)$.
+
+Fix a compact $K$ and  $@a!e(0, 1]$, let 
+\[
+K_{@a} := {\bar B}_{@a\sqrt{2@b(K)}}(K).
+\]
+The following four claims summarize some of the useful properties of
+$V_@a$, proved in Clarke-Ledyaev-Sontag-Subbotin
+
+{\em Claim $1$}.  $\forall$ $x !eK$,
+%
+\[
+\abs{y_@a(x)-x}^2 \psp !< \psp 
+\min \cbrace{2 @a^2 @b(K), \;
+2@a^2 @w_{K_{@a}}
+\left(@a\sqrt{2@b(K)}\right)}.
+\]
+
+{\em Proof of Claim $1$}. By definition of $V_@a$ and $@b(K)$,
+we have
+%
+\be{est_min}
+\frac{1}{2@a^2}\left|y_@a(x)-x \right|^2 !<V(x)-V(y_@a(x))
+!<V(x) !<@b(K), 
+\ee
+s.t. $\left|y_@a(x)-x \right|^2 !<2@a^2@b(K)$.
+On the other hand, the first inequality in~\rref{est_min} implies
+also that 
+\begin{eqnarray*}
+\left|y_@a(x)-x \right|^2 &\leq& 2@a^2 (V(x)-V(y_@a(x))) \\
+&\leq& 2@a^2@w_{K_{@a}}
+\left(\left|y_@a(x)-x \right|\right)
+\psp !<\psp  2@a^2 @w_{K_{@a}}
+\left(@a\sqrt{2@b(K)}\right),
+\end{eqnarray*}
+proving the claim.
+
+Let \[
+@z_@a(x) = \frac{x-y_@a(x)}{@a^2}.
+\]
+
+{\em Claim $2$}.  
+$\forall$ $x !e\states$, 
+\be{zeta_in_prosub}
+@z_@a(x) !e\prosub V(y_@a(x)) \;\;\mbox{and}
+\ee
+\be{zeta_in_prosuper}
+@z_@a(x) !e\prosuper V_@a(x). 
+\ee
+
+{\em Claim $3$}.
+$\forall$ $x !eK$, 
+\[
+ V_@a(x) !<V(x) !<V_@a(x) + 
+@w_{K_{@a}}\left(@a\sqrt{2@b(K)}\right).
+\]
+
+{\em Claim $4$}.
+$V_@a$ is locally Lipschitz.
+%
+
+Now recall that, in our setting, $V$ is defined on an open subset $\GO$
+of $\states$, so,
+we can't minimize the expression in the definition of $V_@a$ over
+the whole state space. However, $\forall$ compact subset $K$ of
+ $\GO$ we
+can choose $@a$ small enough s.t.
+\[
+K_{@a} \subset \GO,
+\]
+ hence, $\forall$ $x$ in $K$
+we could define $V_@a$ minimizing over $y !e\GO$,
+ and the same \function $V_@a$ results on $K$. 
+
+\bll{sub_est}
+Assume that $V$ satisfies~\rref{dissip:loc}, a compact $K$ is fixed, and 
+  $@a!e(0, 1]$ is chosen to
+ satisfy 
+\begin{itemize}
+\item   
+$K_{@a} = {\bar B}_{@a\sqrt{2@b(K)}}(K) \subset \GO$,
+\item $@p_{K_{@a}}\left(@a\sqrt{2@b(K)}\right) !<m_K$, and
+\item $2\ell_{K_{@a}}@w_{K_{@a}}\left(@a\sqrt{2@b(K)}\right)
+ !<m_K$.
+\end{itemize}
+$\Therefore$ the function 
+\be{V_alpha_def}  
+V_@a(x) := \inf_{y !e\GO}
+\left[V(y) + \frac{1}{2@a^2}|y-x|^2 \right]
+\ee
+will possess the following property:
+
+$\forall \ x !eK, \forall \ d !e@W$, and $\forall \  
+@z!e\prosub V_@a(x)$,
+\[
+@z!.f(x, d) !<\xddissipx + 2m_K.
+\]
+\ells
+
+\vspace{-.04pc}
+{\it Proof}.
+Fix any $x !eK$. The choice of $@a$ ensures that the infimum 
+in~\rref{V_alpha_def} is a minimum, and it is achieved at some 
+$y_@a(x) !eK_{@a}$. The
+definition of $@z_@a(x)$ and Claim 1 imply that
+\be{zeta<omega1}
+\abso{@z_@a(x)}\abso{y_@a(x) -x} = 
+\frac{\abso{y_@a(x) -x}^2}{@a^2} !<
+2@w_{K_{@a}}\left(@a\sqrt{2@b(K)}\right).
+\ee
+Using again the fact  that 
+$y_@a(x) !eK_{@a}$, 
+%
+\[
+\abso{f(x, d)-f(y_@a(x), d)} !<\ell_{K_{@a}} \abso{x-y_@a(x)}.
+\]
+Combining the last inequality with~\rref{zeta<omega1} we obtain
+\be{zeta<omega2}
+\abso{@z_@a(x)}\abso {f(x, d)-f(y_@a(x), d)} \leq
+2\ell_{K_{@a}}@w_{K_{@a}}\left(@a\sqrt{2@b(K)}\right).
+\ee
+Now, by Claim 2, $@z_@a(x) !e\prosub V (y_@a(x))$. Hence,
+\begin{eqnarray*}
+@z_@a(x) !.f(y_@a(x), d) &\leq&
+   \xddissip(y_@a(x), d) \\ % + \ydissip(\abs{h(y_@a(x))}))\\
+&\leq& \xddissipx + @p_{K_{@a}}(\abso{x-y_@a(x)})\\ 
+%
+&\leq& \xddissipx + @p_{K_{@a}}\left(@a\sqrt{2@b(K)}\right)\\
+%
+&\leq&  \xddissipx + m_{K}.  %+\ydissip(\abs{h(x)}).
+\end{eqnarray*}
+So, by the last inequality, \rref{zeta<omega2}, and the choice of
+$@a$, we have
+%
+\begin{eqnarray}
+@z_@a(x) !.f(x, d) &= &
+@z_@a(x) !.f(y_@a(x), d) +
+@z_@a(x) !.\rb{f(x, d) -f(y_@a(x), d)} \nonumber \\
+&\leq& 
+ \xddissipx + m_{K}  + m_{K}. \label{V_alpha-dissip}
+\end{eqnarray}
+
+Next, we show that 
+$\prosub V_@a(x) !c\left\{@z_@a\right\}$
+$\forall$ $x !eK$.
+Pick any $@z!e\prosub V_@a(x)$. By definition of the proximal
+subgradient, the inequality
+\be{prosub:eq}
+@z!.(y-x) !<V_@a(y) -V_@a(x) + o(\abso{y-x})
+\ee 
+holds $\forall$ $y$ near $x$.
+Since $@z_@a(x)$ is a proximal supergradient of $V_@a$ at
+$x$, we also have
+\be{prosuper:eq}
+-@z_@a(x) !.(y-x) !< -V_@a(y) + V_@a(x) + o(\abso{y-x}).
+\ee
+Adding \rref{prosub:eq} and \rref{prosuper:eq}, we get
+\be{sub+super}
+(@z-@z_@a(x))!.(y-x) !<o(\abso{y-x})
+\ee
+$\forall$ $y$ sufficiently close to $x$.
+Substituting $y=x+h(@z-@z_@a(x))$ in \rref{sub+super}
+ and letting $h$ tend to $0$, 
+we arrive at   $@z=@z_@a(x)$.
+\mybox
+
+Now we are ready to prove the main lemma of the section.
+
+{\it Proof of Lemma~$\ref{contimplieslipschitz}$}.
+For every $x !e\GO$ find an $r_x > 0$ small enough s.t.
+$\bar B_{r_x}(x) \subset \GO$. $\Therefore$ the collection of open balls
+$\cbrace{B_{r_x} (x), \, x !e\GO}$ forms an open covering of $\GO$.  
+By paracompactness of $\GO$ we can find a locally finite refinement
+$\cbrace{B_i, i !e\N}$ of $\cbrace{B_{r_x} (x), \, x !e\GO}$
+%(cf.~\cite[Lemma 4.1]{boothby}).
+
+Moreover, since
+$\cup_{x !e\GO} B_{r_x} =\GO$, we also have $\cup_{i} B_i =\GO$.
+Let $\cbrace{\vf_i, i !e\N}$ be a partition of unity,
+ subordinate to $\{B_i\}$.
+$\forall$ index $i$, let 
+\[
+\J_i = \cbrace{ j !e\N \,:\, B_i \cap B_j \neq \emptyset }.
+\]
+Notice that $\J_i$ is finite $\forall$ $i$, because of local finiteness of 
+the covering $\{B_i\}$. For every $i !e\N$ define
+%
+\[
+M_i : =  \sup \abso{\nabla \vf_i( x)}\abso{f(x, d)},
+\]
+where the supremum is taken over all 
+$x !e\cup_{j !e\J_i} \bar B_j$, $d !e@W$; and
+\[
+N_i = \max_{j !e\J_i} {\rm card} (\J_j),
+\]
+that is, $N_i$ denotes the maximum
+cardinality of $\J_j$ for $j$ s.t. $B_j$ intersects $B_i$.
+Next, $\forall$ compact $K = \bar B_i, \,i !e\N$, choose an $@a_i$ 
+as in the formulation of Lemma~\ref{sub_est}, satisfying the following
+two additional conditions: 
+\be{add_cond1}
+N_i \,
+@w_{K_{@a_i}}\left(@a_i \sqrt{2@b(\bar B_i)}\right)M_{i} 
+< \frac{1}{2} \inf_{x !e\bar B_i}\upst(x)
+\ee
+and
+\be{add_cond2}
+@w_{K_{@a_i}}\left(@a_i\sqrt{2@b(\bar B_i)}\right) 
+< \frac{1}{2}\inf_{x !e\bar B_i}\upso(x)
+\ee
+(where $K_{@a_i}$ denotes 
+$B_{@a_i\sqrt{2@b(\bar B_i)}}(\bar B_i)$).
+
+Next,  $\forall$ $i !e\N$, define $V_{@a_i}$ on $\bar B_i$ as 
+in~\rref{V_alpha_def} (this can be done, because, by the choice of $@a_i$,
+$K_{@a_i} !c\GO$). Since $V_{@a_i}$ is locally Lipschitz, it is
+differentiable almost everywhere by Rademacher's theorem. 
+Lemma~\ref{sub_est} implies that for almost all $x !e\bar B_i$, $d !e@W$
+\[
+L_{f_d}V_{@a_i}(x) !<\xddissipx + \upst(x)/2.
+\] 
+
+Define \[
+\tilde V:= \sum_{i=1}^{+\infty} V_{@a_i} \vf_i.
+\]
+Strictly speaking, this does not make sense, because $V_{@a_i}$ is
+not defined outside $\bar B_i$, but that does not matter because $\vf_i$
+vanishes outside $B_i$ anyway.
+
+Since each $V_{@a_i}(x) !<V(x)$ $\forall$ $x !eB_i$ and $\vf_i$'s 
+add up to $1$,  the definition of $\tilde V$ shows that 
+$\tilde V(x) !<V(x)$ $\forall$ $x !e\GO$. It is also clear from the 
+definition of $\tilde V$ that $\tilde V$ is locally Lipschitz on $\GO$. 
+ 
+We claim that for almost all $x !e\GO$, $d !e@W$ the
+following hold:
+\begin{enumerate}
+\item $0 !<V(x) - \tilde V(x) !<\upso(x)$;
+
+\item $\nabla \tilde V(x) !.f(x, d) !< \xddissipx + \upst(x).$ 
+\end{enumerate}
+Take any $x !e\GO$ and find $i !e\N$ s.t. $x !eB_i$. 
+Define also $\J_x := \cbrace{j !e\N\,:\, x !eB_j}$. Note that
+$\J_x !c\J_i$ and that 
+ $\tilde V(x):= \sum_{j !eJ_x} V_{@a_j}(x) \vf_j(x).$
+$\Therefore$
+ Claim 3 and  the choice of 
+$@a_j$ (condition~\rref{add_cond2}) imply 
+\[
+V(x) - V_{@a_j} (x) \leq
+ @w_{K_{@a_j}}\left(@a_j\sqrt{2@b(\bar B_j)}\right)
+  !<\upso(x)/2
+\]
+$\forall$ $j !e\J_x$.
+Thus,
+\begin{eqnarray*}
+V (x) - \tilde V(x)
+& =  &  V(x) -  \sum_{j=1}^{+\infty} V_{@a_j} \vf_j \\
+& =  &  V(x) - \sum_{j !e\J_i} V_{@a_j} \vf_j\\
+&\leq&  V(x) - \min_{j !e\J_x}\cbrace{ V_{@a_j}(x)}
+         \rb{\sum_{j !e\J_x}\vf_j(x)}\\  
+& = &   V(x) - \min_{j !e\J_x}\cbrace{ V_{@a_j}(x)} \\
+&!<& \frac{\upso(x)}{2},
+\end{eqnarray*}
+proving the first statement.
+
+To prove the second statement, write
+\begin{eqnarray}
+&&L_{f_d}\tilde V(x) = \sum_{j !e\J_x}L_{f_d}V_{@a_j}(x)\,\vf_j(x) + 
+ \sum_{j !e\J_x} V_{@a_j}(x) \,L_{f_d}\vf_j(x) \nonumber \\
+%
+&=& \sum_{j !e\J_x}L_{f_d}V_{@a_j}(x)\,\vf_j(x) 
++  \sum_{j !e\J_x} V_{@a_j}(x) \,L_{f_d}\vf_j(x) - 
+ V(x)\sum_{j !e\J_x}L_{f_d}\vf_j(x) \label{l2} \\
+%
+&\leq& \max_{j !e\J_x} L_{f_d} V_{@a_j}(x)\sum_{j !e\J_x}\vf_j(x)  
++ \sum_{j !e\J_x} \rb{V_{@a_j}(x) - V(x)} \,L_{f_d}\vf_j(x) \nonumber \\
+%
+&\leq& \xddissipx+  \upst(x)/2 + \sum_{j !e\J_i} 
+\abs{V_{@a_j}(x) - V(x)} \,\abs{L_{f_d}\vf_j(x)} \nonumber \\
+%
+&\leq& \xddissipx+  \upst(x)/2 +
+\sum_{j !e\J_i} M_j @w_{K_{@a_j}}
+\rb{@a_{j}\sqrt{2@b(\bar B_j})}
+\label{nttl} \\
+& !<& \xddissipx + \upst(x)/2 + \sum_{j !e\J_i} \frac{\upst(x)}{2 N_j}
+\label{l3}\\
+&\leq& \xddissipx + \upst(x)/2 + \upst(x)/2 \label{l}\\
+&\leq& \xddissipx + \upst(x),  \nonumber
+\end{eqnarray}
+%
+where the equality~\rref{l2} follows from the fact that
+$ \sum_{j !e\J_x}L_{f_d}\vf_j(x) = 0$,
+inequality~\rref{nttl} follows from Lemma~\ref{sub_est} 
+and Claim 3; 
+ inequality~\rref{l3} follows from the choice of $@a_{i}$
+(condition~\rref{add_cond1});  and~\rref{l} is implied by the fact that 
+\[
+{\rm card} \J_i !<N_j \;\;\;\forall j !e\J_i.
+\]  
+This completes the proof of the lemma.
+\mybox
+
+The lemma we have just proved will provide  the 
+``continuous $=>$ locally Lipschitz away from zero'' step in the 
+smoothing process. To obtain a smooth Lyapunov function, we will
+ use the following simple smoothing result.
+The proof is given, for the special case when $@a$ does not depend on $d$,
+in Lin-Sontag-Wang, but the general case ($@a$ depends on $d$) is proved in
+exactly the same manner, so we omit the proof here.
+
+\newcommand{\Dold}{@W}
+\bll{lipschitzimpliessmooth}
+ Let $\cal O$ be an open subset of $\R^n$, and let $\Dold$ be a compact subset
+of $\R^l$, and assume the following as given:
+\bi
+\item
+a locally Lipschitz \function $@F: \;\cal O \,->\,\R$;
+\item
+a continuous map 
+$f: \; \R^n!p\Dold \;->\; \R^n, \ (x, \, d) \,|->
+f(x, \, d)$ which is locally Lipschitz on $x$ uniformly on $d$;
+\item
+a continuous \function 
+$@a: \,  !O!p@W->\R$ and continuous \functions
+$@m, \, @n: \, !O ->\R_{> 0}$
+\ei
+s.t. $\forall$ $d\in\Dold$,
+\be{e-a-200}
+L_{f_d}@F(@x) \le @a(@x,d)\;\;  \mbox{  almost everywhere} \ @x\in\cal O\,,
+\ee
+where $f_d$ is the vector field defined by 
+$f_d = f(!.,\, d)$
+(recall that $\nabla @F$ is defined almost everywhere, since $@F$ is locally Lipschitz
+by Rademacher's theorem).
+$\Therefore$ $\exists$  smooth \function $@Y: !O->\R$ s.t.
+\[
+\abs{@F(@x) - @Y(@x)} \,< \, @m(@x)\; \ \ 
+\forall\, @x\in\cal O\,
+\]
+and $\forall$ $d\in\Dold$,
+\[
+L_{f_d}@Y(@x) \, \le\, @a(@x,d) \,+ \,@n(@x)\; \ \
+\forall\,@x\in\cal O\,. %\eqno{\Box}
+\]
+\ells
+
+
+The next result immediately follows by Lemma~\ref{lipschitzimpliessmooth}.
+
+\bc{contimpliessmooth}
+Under the assumptions of Lemma~$\ref{contimplieslipschitz}$ there also exists a 
+smooth \function $\hat V$ on $\GO$, 
+satisfying inequalities
+\be{hat_V_close_to_V}
+\abs{ V(x) -\hat V(x)} !<\upso(x) \;\;\forall x !e\GO
+\ee
+and
+\be{hat_V_dissip}
+L_{f_d}\hat V(x) !< \xddissipx + \upst(x)
+\;\; \mbox{ $\forall$}d \in
+@W, 
+\mbox{ $\forall$} x !e\GO.
+\ee  
+\ecs
+
+\bpr
+Suppose that $\GO$, $V$,  $\upso$, $\upst$ are given and the 
+assumptions of
+Lemma~\ref{contimplieslipschitz} hold. Replacing $\upso$ by $\upso/2$ and
+$\upst$ by $\upst/2$, and applying Lemma~\ref{contimplieslipschitz},
+we can find a locally Lipschitz \function $\tilde V$, defined on $\GO$
+and satisfying~\rref{tilde_V_close_to_V} and~\rref{hat_V_dissip} 
+with  $\upso/2$ and  $\upst/2$ instead of $\upso$ and $\upst$. 
+Next, Lemma~\ref{lipschitzimpliessmooth}, applied 
+with the same $\cal O$ and with
+$@F:= \tilde V$, $@a:= \xddissip + \upst/2$,  $@m:= \upso/2$, and 
+$@n:= \upst/4$, furnishes a smooth \function $\hat V := @Y$ as needed.
+\epr
+
+In section~\ref{dV0} we have constructed {\afunction} $V_0$, 
+satisfying inequalities~\rref{e-V0bd-2sd} on $\E_1$ and~\rref{V0_dissip3}
+along all trajectories of $@S$, contained in $\E_1$. 
+$\therefore$ by Lemma~\ref{ipsdissip}, the proximal 
+inequality~\rref{pro_alpha_xi_dissip} holds for $V_0$ at any interior 
+point of $\E_1$. $\Therefore$ Corollary~\ref{contimpliessmooth}, applied with
+$\GO:= {\rm int }\ \E_1$, $\upso(!.) := \floor(\abs !.)/2$,
+ $\upst(!.) := \precomp(\abs !.) /2$, 
+$\xdissip (x,d) := \precomp(\abs x)$, 
+provides a smooth \function
+\[
+V_1 : {\rm int }\ \E_1 \to \R_{>0}; \quad  V_1:= \hat V_0,
+\]
+ satisfying the following two
+ conditions $\forall$ $@x!e{\rm int }\ \E_1$:
+\[
+\floor(\abs @x)/2 !<V_1(@x) !<\pot(\abs @x) +  \floor(\abs @x)/2
+\]
+ (we will replace $\floor(\abs !.)/2$ by $\floor(!.)$ and 
+$\pot(\abs !.) +  \floor(\abs !.)/2$ by $\pot(\abs !.)$ from now 
+on to avoid cluttering the notation),
+\be{V0_dissip3smooth}
+ L_{f_d} V_1(@x) !< - \precomp_1(\abs @x) 
+\quad \forall d !e@W,
+\ee
+ where $\precomp_1(!.) ==\precomp(!.) /2$.
+
+
+\newpage
+\subsection{extending to the rest of $\states$ and smoothing at the origin} \label{dV2}
+\renewcommand{\xdissip}{@a_3}
+To construct a UOSS-Lyapunov-like function defined on the whole
+ $\states$, we must ``patch'' $V_1$ with some smooth, proper, and
+ positive definite function s.t. the dissipation inequality still
+ holds.
+
+\bll{extending}
+Suppose $@S$ is a system of type~\rref{dsystem}, and $@r!e\ki$.
+Define  $\intEO:=\cbrace {x !e\states\,:\, \abs{x} > 2@r(\abs{h(x)})}$ 
+and suppose  that $V_1\,:\, \intEO \to \R_{ !>0}$ is a 
+smooth function satisfying, with some suitable $\ki$ functions,
+the inequality
+\be{floortop}
+\floor(\abs @x) !<V_1(@x) !<\pot(\abs @x) \quad \quad 
+\ee
+and 
+inequality~\rref{V0_dissip3smooth} on $\intEO$. $\Therefore$ $\exists$   
+Lyapunov-like function $V_2$ for $@S$, smooth away from the origin,
+ and a class $\ki$ \function $@F$, 
+s.t. 
+\[
+V_2(x) = @F!oV_1(x) \quad \forall \; x \mbox{ s.t. }
+  \abs{x} > 3@r(\abs{h(x)}),
+\]  
+and the following dissipation inequality holds 
+with some $\check \xdissip !e\ki$, $\check \ydissip !e\kk$: 
+\be{check-dissip}
+\nabla V_2(@x) !.f(@x, d) !< - \check \xdissip(\abs{@x})
+                         + \check \ydissip(\abs{h(@x)}) 
+\quad\quad \forall @x\neq 0, \quad \forall d !e@W.
+\ee
+\ells
+
+\bpr Let
+ \[
+\E_2:=\left\{@x :  \abs{@x} > 3@r(\abs{h(@x)})\right\}.
+\]
+Since the sets $\cbrace{@x\,:\,  \abs{@x} \geq
+3@r(\abs{h(@x)})}$ and $\cbrace{@x\,:\, \abs{@x} \leq
+2@r(\abs{h(@x)})}$ are disjoint and closed in the topology
+ of $\states \setminus \cbrace 0$, one can find a smooth \function
+$@f$ : $\states \setminus \left\{0\right\} \to
+[0, 1]$ with the property that 
+%
+\[@f(@x) = \twoif {1} {\; \mbox{if} \; \abs{@x} \geq
+3@r(\abs{h(@x)}),}
+{0} {\; \mbox{if} \; \abs{@x} \leq
+2@r(\abs{h(@x)})}
+\] 
+and $@f$ is nonzero elsewhere. It is easy to see that
+$\abs{\nabla@f(x)}$ is bounded above by $@n_2!e\kk$ of $\abs{x}$
+outside the unit ball centered at 0. One can also find a smooth,
+strictly increasing \function $@n_1 \;\colon [0,1] \to \R_{!>0}$, s.t.
+$@n_1(0) =0$ and $\abs{\nabla@f(x)} !<\frac{1}{@n_1(\abs{x})}$
+$\forall$ $x$ s.t. $0<\abs x !<1$.
+
+%
+Let $@n_3!e\kk$ s.t. $\max_{d !e@W}
+%11/27                                                            ^^^^^
+\abs{f(@x, d)} !<@n_3(\abs @x)$. Take any smooth
+\function $@p_1 \colon [0, \pot(1)] \to \R_{!>0}$ with 
+$@p_1'(s) > 0$ $\forall$ $s !e(0, \pot(1))$, s.t.
+\[
+\frac {@p_1(\pot(r))}{@n_1(r)} < s(r), \quad 
+\frac {@p_1(r^2)}{@n_1(r)} < s(r) 
+\]
+for some $s!e\kk$ and $\forall$ $0 < r !<1$
+
+Let $@p_2!e\kk$ s.t. $@p_2(r) \leq
+@p_1'(r)$ $\forall$ nonnegative  $r !<1$.
+
+Let $@F(r)= \int_0^r@p_2(r_1)dr_1$. $\Therefore$ $@F(r) !<@p_1(r)$ for
+all $r !<1$, s.t. $\frac {@F(\pot(r))}{@n_1(r)} < s(r)$ and
+$\frac{@F(r^2)}{@n_1(r)} < s(r)$ $\forall$ $r !e(0, 1]$.
+%
+
+Now let 
+\be{def:V2}
+V_2(@x) = @f(@x)@F(V_1(@x)) + (1-@f(@x))@F(\abs@x^2).
+\ee
+
+If $\abs{@x} > 3 @r(\abs{h(@x)})$, $\therefore$ $V_2 ==@F!oV_1$
+ in a neighborhood of $@x$,  s.t., $\forall$ $d !e@W$,
+\be{xi>3rho}
+\nabla V_2(@x) !.f(@x, d) 
+=      @F'(V_1(@x))[\nabla V_1(@x) !.f(@x, d)] 
+!< - @p_2(\floor(\abs @x)) \precompone (\abs @x).
+\ee
+
+On the other hand,  if  
+$ \abs{@x} !< 3@r(\abs{h(@x)})$, $\therefore$ 
+\begin{eqnarray*}
+&&{\nabla V_2(@x) !.f(@x, d)}
+= [\nabla @f(@x) !.f(@x, d)]\, @F(V_1(@x)) +  
+@f(@x)\,@F'(V_1(@x))\, [\nabla V_1(@x) !.f(@x, d)] \\
+& &\;\qquad \quad - [\nabla @f(@x) !.f(@x, d)]\,@F({\abs @x}^2)
++ (1 -@f(@x))\,2@F'({\abs @x}^2)\,[@x!.f(@x, d)]\\
+&\leq& \abs{\nabla @f(@x)}\abs{f(@x, d)}\, @F(V_1(@x)) 
+ + \abs{\nabla @f(@x)} \abs{ f(@x, d)}\,@F({\abs @x}^2) \\
+& &\qquad\quad
+ {}+ 2\abs{(1 -@f(@x))}\,@F'({\abs @x}^2)\,\abs{@x} \abs{f(@x, d)}\\
+&\leq& \abs{\nabla @f(@x)}\abs{f(@x, d)}\, @F(\pot(\abs @x))
+ + \abs{\nabla @f(@x)} \abs{ f(@x, d)}\,@F({\abs @x}^2)\\
+& &\,\qquad \quad + 2@F'({\abs @x}^2)\,\abs{@x} \abs{f(@x, d)},
+\end{eqnarray*}
+where the first inequality follows from the fact that 
+$@f(@x)\,@F'(V_1(@x))\, [\nabla V_1(@x) !.f(@x, d)] !<0$.
+Next, the definition of $@F$ provides the following bounds for the three
+terms in the right-hand side of the last inequality:
+\[
+@F(\pot(\abs @x))
+\abs{\nabla@f(@x)} \abs{f(@x, d)} \leq
+\max \left\{s(\abs @x), @F(\pot (\abs @x))@n_2(\abs @x)
+\right\}@n_3(\abs @x),
+\]
+\[
+2@F'(\abs @x^2)[\abs{@x}\abs{f(@x, d)}] \leq
+ 2@p_2(\abs @x^2) \abs@x@n_3(\abs @x),
+\]
+\[
+@F(\abs{@x}^2) \abs{\nabla @f(@x)} \abs{f(@x, d)}
+!<\max 
+\left\{s(\abs @x), @F(\abs @x^2)@n_2(\abs @x)
+\right\}@n_3(\abs @x).
+\]
+Define $\check \xdissip$,  $\check \ydissip$, $\check @a_1$, 
+and $\check @a_2$ by
+\[
+\check \xdissip(r) := @p_2(\floor(r)) \precompone (r),
+\]
+\begin{eqnarray*}
+\check \ydissip(r) &:=&  2@p_2((3@r(r))^2)  3@r(r) @n_3(3@r(r)) \\
+ && + \max \left\{s(3@r(r)), @F((3@r(r))^2)@n_2(3@r(r))
+\right\}@n_3(3@r(r)) + \check \xdissip(3@r(r)),
+\end{eqnarray*}
+\[
+\check @a_1(r) = \min\left\{@F(r^2), @F!o\floor (r)\right\},
+\]
+ and
+\[
+\check @a_2(r) = \max\left\{@F(r^2), @F!o\pot(r) \right\}.
+\]
+$\Therefore$ inequalities
+\be{check-V_proper}
+\check @a_1(\abs{x}) !<V_2(x) !<\check @a_2(\abs x) \quad
+\forall \,x \neq 0 
+\ee 
+and~\rref{check-dissip} hold for $V_2$. 
+Define $V_2(0):=0$. 
+ $\Therefore$ inequality $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ holds for $V_2$ with 
+$@a_1:=\check @a_1$, $@a_2:=\check @a_2$ on 
+$\states$, and in particular implies that $V_2$ is continuous as $0$.
+$\Therefore$ $V_2$ is a UOSS-Lyapunov-like
+function for $@S$, smooth away from the origin.  
+\epr 
+
+Recall that $V_2(@x) ==@F(V_1(@x))$ $\forall$ $@x$ with 
+$\abs @x> 3@r(\abs{h(@x)})$. $\therefore$  
+inequality~\rref{V0_dissip3smooth} implies that 
+\be{y_term_d.n.m_1}
+\nabla V_2 !.f(@x, d) !< -\xdissip(\abs{@x})
+ \mbox{ $\forall$} \abs @x> 3@r(\abs{h(@x)}), \mbox{ $\forall$} d \in
+ @W.   
+\ee
+
+
+\bp{smooth_V_constr}
+Suppose that a system $@S$ of type~\rref{dsystem} admits a 
+continuous UOSS-Lyapunov-like function $V_2$, smooth away from $0$ 
+and satisfying inequalities~\rref{check-V_proper}, \rref{check-dissip}, 
+and~\rref{y_term_d.n.m_1}. $\Therefore$ $@S$ admits a UOSS-Lyapunov function.   
+\ep
+
+ The basic idea used to obtain a
+Lyapunov function, smooth on the whole $\states$, is  composing
+ $V_2$ with some appropriately chosen 
+ $@b!e\ki$.  This technique was previously utilized
+ in Lin-Sontag-Wang
+
+We will need the
+ following generalization of Lemma 4.3 from there, where this function 
+ $@b$ is constructed. In our setting we also need 
+ the derivative of $@b$ to $!e\ki$, which was not required
+ in Lin-Sontag-Wang.   
+
+The proof is only
+ a slight modification of the proof of the mentioned lemma.
+
+\bll{from_LSW}
+  Assume that
+$
+V : \R^n \longrightarrow \R_{\ge 0}
+$
+is $C^0$, positive definite, and the restriction
+$V|_{\R^n\setminus\cbrace 0}$ is $C^\infty$.
+
+$\Therefore$ given any $m !e\N$ $\exists$  $@b_m!e\ki$,
+smooth on $(0,\infty)$, satisfying the following conditions:
+\begin{itemize}
+\item $@b_m^{(i)} (t) \ra 0$ as $t\ra 0^+$ $\forall$ $i = 0, 1, !...$,
+
+\item $@b_m^{(i)} !e\ki \; \any i !<m$,
+
+\item $W_m \deq  @b!oV$
+is a $C^\infty$ function on all of $\R^n$.
+\end{itemize}
+\ells
+We now return to the proof of Proposition~\ref{smooth_V_constr}. 
+
+\bpr
+Take the function $V_2$, and 
+apply Lemma~\ref{from_LSW} to get {\afunction} $@b_1$,
+with derivative in class $\kk$, s.t. 
+\[
+V_3:= @b_1 !oV_2
+\] 
+is smooth on $\states$. 
+%REV1
+%($\A = \cbrace 0$ in our case)
+ Let $@a_1(!.) := @b_1 (\check @a_1(!.)/2)$,
+$@a_2(!.) := 
+@b_1 (\check @a_2 (!.)+ \check @a_1(!.)/2)$. 
+$\Therefore$ $ @a_i !e\ki$ and 
+\[
+ @a_1(\abs x) !<V_3(x) !<  @a_2(\abs x).
+\]
+
+Furthermore, $\forall$ $x !e\states \setminus \cbrace 0$ we have
+\begin{eqnarray*}
+L_{f_d}V_3(x) &=& @b_1'(V_2(x))\sqb{L_{f_d}V_2}(x) \\
+&\leq& @b_1'(V_2(x))\rb{- \xdissip(\abs x)/2 
+            + \check \ydissip(\abs{h(x)})} \\
+&\leq&  -@b_1'(\check @a_1(\abs x)/2) \check \xdissip(\abs x)/2 + 
+@b_1'(\check @a_2(\abs x) + \check @a_1(\abs x)/2)\check \ydissip(\abs{h(x)}).
+\end{eqnarray*}
+Recall that, because of~\rref{y_term_d.n.m_1},
+ the $\check \ydissip$ term in the last estimate can be dropped if 
+$\abs x > 3@r(\abs{h(x)})$, s.t. we can write
+\[
+L_{f_d}V_3(x) !< -@b_1'(\check @a_1(\abs x)/2) \check 
+\xdissip(\abs x)/2 + 
+@b_1'(\check @a_2(3@r(\abs {h(x)})) + \check @a_1(3@r(\abs {h(x)}))/2)
+ \check \ydissip(\abs{h(x)}).
+\]
+
+Thus $V_3$ is a smooth UOSS-Lyapunov function, satisfying the
+dissipation inequality with 
+\[
+\xdissip(!.): =
+ @b_1'( \check @a_1(!.)/2) \, \check \xdissip(!.)/2
+\] 
+and 
+\[
+\ydissip(!.): =
+ @b_1'(\check @a_2 (3@r(!.))+ \check @a_1(3@r(!.)))/2) \,
+\check \ydissip(!.).
+\]
+This completes the construction.
+\epr
+
+\newpage
+\subsection{Proof of expo decay Lf}
+
+\bpr
+Assume that system
+$@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+admits a UIOSS-Lyapunov function with
+ $@a_i$
+($i=1,2$) as in $@a_1(\abs{@x}) !<V(@x) !<@a_2 (\abs{@x})$
+ and with $@a, \ugdissip, \ygdissip$ as
+in~\rref{pqUIOSS-dissip}. 
+ Replacing $@a$ by $@a\circ@a_2^{-1}$, we
+have
+\be{DVioss1}
+ \frac{d}{dt}V(x(t, @x,\uc))\,\le\, -@a(V(x(t, @x,\uc))) +
+ \ugdissip(\abs{\uc(t)}) + \ygdissip(\abs{y(t,@x,\uc)})
+\ee
+for almost all $t \in[0, \; \tmax(@x, u))$.
+According to Lemma~12 in Praly-Wang, $\exists$ 
+\function $@r\in\ki$ which can be extended as a $C^1$-function to a
+neighborhood of $[0, \, \infty)$ s.t. $@r'(r)\frac{@a(r)}{2}
+\ge @r(r)$ $\forall$ $r\ge 0$.  Consider $W(@x) :=
+@r(V(@x))$.  Observe that $W$ is again proper and positive
+definite.
+Along any trajectory $x(t):= x(t, @x, \uc)$ (with $y(t):=y(t,@x, \uc)$),
+at any point where~\rref{pqUIOSS-dissip} holds, one has
+that $\frac{d}{dt}W(x(t))=@r'(V(x(t)))\frac{d}{dt}V(x(t))$ is upper bounded by
+\[
+-@r'(V(x(t)))\frac{@a(V(x(t)))}{2}+@r'(V(x(t))) !.
+\]
+\[
+\left(-\frac{@a(V(x(t)))}{2}+ \ugdissip(\abs{\uc(t)}) + \ygdissip(\abs{y(t)})\right),
+\]
+which in turn is bounded by
+\begin{equation}
+\label{e-51}
+-@r(V(x(t)) +
+@r'(V(x(t)))\left(-\frac{@a(V(x(t)))}{2}
++ \ugdissip(\abs{\uc(t)}) + \ygdissip(\abs{y(t)})\right) \,.
+\end{equation}
+Observe that when
+$V(x(t)) \ge @a^{-1}(2\ugdissip(\abs{\uc(t)}) + 2\ygdissip(\abs{y(t)}))$
+it holds that
+\be{e-52}
+@r'(V(x(t))) \left(-\frac{@a(V(x(t)))}{2 }
++ \ugdissip(\abs{\uc(t)}) + \ygdissip(\abs{y(t)})\right)\le 0,
+\ee
+while if instead
+$V(x(t))\le @a^{-1}(2\ugdissip(\abs{\uc(t)}) + 2\ygdissip(\abs{y(t)}))$, 
+$\therefore$
+\be{e-53}
+@r'(V(x(t)))\left(
+\ugdissip(\abs{\uc(t)}) + \ygdissip(\abs{y(t)})\right)
+\;!<\; \hat\ugdissip(\abs{\uc(t)}) + \hat\ygdissip(\abs{y(t)})
+\ee
+for some $\ki$-functions $\hat\ugdissip$ and $\hat\ygdissip$
+(using here the fact that $@r'(s)$ is a continuous function).
+Combining~\rref{e-52}
+and~\rref{e-53}, one concludes
+{}from the estimate~\rref{e-51} on $\frac{d}{dt}W(x(t))$ that
+\[
+\frac{d}{dt}W(x(t)) \,\le\,
+-W(x(t)) + \hat\ugdissip(\abs{\uc(t)}) +\hat\ygdissip(\abs{y(t)}) 
+\]
+for almost all $t!e[0, \tmax)$.
+\epr
+
+
+}\edo
+
+%\bibliographystyle{siam}
+%\bibliography{ksw}
+\begin{thebibliography}{10}
+
+\bibitem{ALS}
+{\sc F. Albertini and E. D. Sontag}, {\em Continuous control-Lyapunov functions
+  for asymptotically controllable time-varying systems}, Internat. J.
+ Control, 72 (1999), pp. 1630--1641.
+
+\bibitem{intrinsic}
+{\sc D. Angeli}, {\em Intrinsic robustness of global asymptotic stability},
+  Systems Control Lett., 38 (1999), pp. 297--307.
+
+\bibitem{AS}
+{\sc D. Angeli and E. D. Sontag}, {\em Forward completeness, unboundedness
+  observability, and their Lyapunov characterizations}, Systems
+  Control Lett., 38 (1999), pp. 209--217.
+
+\bibitem{ASW}
+{\sc D. Angeli, E. D. Sontag, and Y. Wang}, {\em A characterization of integral
+  input to state stability}, IEEE Trans. Automat. Control, 45 (2000),
+  pp. 1082--1097.
+
+\bibitem{Artstein}
+{\sc Z. Artstein}, {\em Relaxed controls and the dynamics of control systems},
+  SIAM J. Control Optim., 16 (1978), pp. 689--701.
+
+\bibitem{boothby}
+{\sc W. M. Boothby}, {\em An Introduction to Differentiable Manifolds and
+  Riemannian Geometry}, 2nd ed., Academic Press, Orlando, FL, 1986.
+
+\bibitem{Teel}
+{\sc P. D. Christofides and A. Teel}, {\em Singular perturbations and
+  input-to-state stability}, IEEE Trans. Automat. Control, 41 (1996),
+  pp. 1645--1650.
+
+\bibitem{CLSW}
+{\sc F. Clarke, Y. Ledyaev, R. Stern, and P. Wolensky}, {\em Nonsmooth Analysis
+  and Control Theory}, Springer-Verlag, New York, 1998.
+
+\bibitem{CLSS}
+{\sc F. Clarke, Y. S. Ledyaev, E. Sontag, and A. Subbotin}, {\em Asymptotic
+  controllability implies feedback stabilization}, IEEE Trans.
+  Automat. Control, 42 (1997), pp. 1394--1407.
+
+\bibitem{HJ}
+{\sc J. W. Helton and M. R. James}, {\em Extending $H_\infty$ Control to Nonlinear
+  Systems}, SIAM, Philadelphia, 1999.
+
+\bibitem{morse-iss}
+{\sc J. Hespanha and A. Morse}, {\em Certainty equivalence implies
+  detectability}, Systems Control Lett., 36 (1999), pp. 1--13.
+
+\bibitem{hill-moylan}
+{\sc D. Hill and P. Moylan}, {\em Dissipative dynamical systems: Basic
+  input-output and state properties}, J. Franklin Institute, 5 (1980),
+  pp. 327--357.
+
+\bibitem{hill}
+{\sc D. J. Hill and P. Moylan}, {\em Dissipative nonlinear systems: Basic
+  properties and stability analysis}, in Proc. CDC 1992, pp. 3259--3264.
+
+\bibitem{hu}
+{\sc X. M. Hu}, {\em On state observers for nonlinear systems}, Systems
+Control Lett., 17 (1991), pp. 645--473.
+
+\bibitem{isi-iss}
+{\sc A. Isidori}, {\em Global almost disturbance decoupling with stability for
+  non-minimum-phase single-input single-output nonlinear systems}, Systems
+ Control Lett., 28 (1996), pp. 115--122.
+
+\bibitem{isi-newbook}
+{\sc A. Isidori}, {\em Nonlinear Control
+  Systems {\rm II}}, Springer-Verlag, London, 1999.
+
+\bibitem{James}
+{\sc M. James}, {\em A partial differential inequality for dissipative
+  nonlinear systems}, Systems Control Lett., 21 (1993),
+  pp. 315--320.
+
+\bibitem{Jiang-Praly1}
+{\sc Z.-P. Jiang and L. Praly}, {\em Preliminary results about robust
+  Lagrange stability in adaptive nonlinear regulation}, Internat. J.
+ Control, 6 (1992), pp. 285--307.
+
+\bibitem{JTP}
+{\sc Z.-P. Jiang, A. Teel, and L. Praly}, {\em Small-gain theorem for ISS
+  systems and applications}, Math. Control Signals Systems, 7
+  (1994), pp. 95--120.
+
+\bibitem{Khalil95}
+{\sc H. K. Khalil}, {\em Nonlinear Systems}, 2nd ed., Prentice-Hall, Upper Saddle River,
+  NJ, 1996.
+
+\bibitem{ksw-cdc98}
+{\sc M. Krichman and E. D. Sontag}, {\em A version of a converse Lyapunov
+  theorem for input-output to state stability}, in Proceedings of the 37th IEEE
+  Conference on Decision and Control, Tampa, FL, 1998, IEEE, Piscataway, NJ, 1998,
+  pp. 4121--4126.
+
+\bibitem{krstic-deng}
+{\sc M. Krsti\'{c} and H. Deng}, {\em Stabilization of Uncertain Nonlinear
+  Systems}, Springer-Verlag, London, 1998.
+
+\bibitem{krstic-book}
+{\sc M. Krsti\'{c}, I. Kanellakopoulos, and P. V. Kokotovi\'{c}}, {\em
+  Nonlinear and Adaptive Control Design}, John Wiley and Sons, New York, 1995.
+
+\bibitem{liberzon}
+{\sc D. Liberzon, E. D. Sontag, and Y. Wang}, {\em On integral-input-to-state
+  stabilization}, in Proceedings of the 1999 American Control Conference, San Diego, 
+  1999, pp. 1598--1602.
+
+\bibitem{LSW}
+{\sc Y. Lin, E. D. Sontag, and Y. Wang}, {\em A smooth converse Lyapunov
+  theorem for robust stability}, SIAM J. Control Optim., 34
+  (1996), pp. 124--160.
+
+\bibitem{lu1}
+{\sc W. M. Lu}, {\em A class of globally stabilizing controllers for nonlinear
+  systems}, Systems Control Lett., 25 (1995), pp. 13--19.
+
+\bibitem{lu2}
+{\sc W. M. Lu}, {\em A state-space
+  approach to parameterization of stabilizing controllers for nonlinear
+  systems}, IEEE Trans. Automat. Control, 40 (1995), pp. 1576--1588.
+
+\bibitem{Marino}
+{\sc R. Marino and P. Tomei}, {\em Nonlinear output feedback tracking with
+  almost disturbance decoupling}, IEEE Trans. Automat. Control, 44
+  (1999), pp. 18--28.
+
+\bibitem{MPD}
+{\sc F. Mazenc, L. Praly, and W. Dayawansa}, {\em Global stabilization by
+  output feedback: Examples and counterexamples}, Systems Control
+  Lett., 23 (1994), pp. 119--125.
+
+\bibitem{Morse}
+{\sc A. S. Morse}, {\em Control using logic-based switching}, in Trends in
+  Control: A European Perspective, A. Isidori, ed., Springer-Verlag, London, 1995,
+  pp. 69--114.
+
+\bibitem{Pan}
+{\sc D. J. Pan, Z. Z. Han, and Z. J. Zhang}, {\em Bounded-input-bounded-output
+  stabilization of nonlinear systems using state detectors}, Systems
+  Control Lett., 21 (1993), pp. 189--198.
+
+\bibitem{PW}
+{\sc L. Praly and Y. Wang}, {\em Stabilization in spite of matched unmodelled
+  dynamics and an equivalent definition of input-to-state stability},
+  Math. Control Signals Systems, 9 (1996), pp. 1--33.
+
+\bibitem{Sepulchre}
+{\sc R. Sepulchre, M. Jankovic, and P. V. Kokotovi\'{c}}, {\em Integrator
+  forwarding: A new recursive nonlinear robust design}, Automatica J. IFAC, 33 (1997),
+  pp. 979--984.
+
+\bibitem{EDS-old}
+{\sc E. D. Sontag}, {\em Conditions for abstract nonlinear regulation},
+  Inform. Control, 51 (1981), pp. 105--127.
+
+\bibitem{coprime}
+{\sc E. D. Sontag}, {\em Smooth stabilization
+  implies coprime factorization}, IEEE Trans. Automat. Control, 34
+  (1989), pp. 435--443.
+
+\bibitem{coprime-cdc}
+{\sc E. D. Sontag}, {\em Some connections
+  between stabilization and factorization}, in Proceedings of the  IEEE Conference on Decision and
+  Control, Tampa, FL, 1989, IEEE, Piscataway, NJ, 1989, pp. 990--995.
+
+\bibitem{sontag-ejc}
+{\sc E. D. Sontag}, {\em On the
+  input-to-state stability property}, Euro. J. Control, 1 (1995),
+  pp. 24--36.
+
+\bibitem{iiss-eds}
+{\sc E. D. Sontag}, {\em Comments on integral
+  variants of input-to-state stability}, Systems Control Lett., 34
+  (1998), pp. 93--100.
+
+\bibitem{mct}
+{\sc E. D. Sontag}, {\em Mathematical Control
+  Theory: Deterministic Finite Dimensional Systems}, 2nd ed., Springer-Verlag, New York,
+  1998.
+
+\bibitem{NFSR}
+{\sc E. D. Sontag}, {\em Stability and
+  stabilization: Discontinuities and the effect of disturbances}, in Proceedings of
+  the NAYO ASI Nonlinear Analysis, Differential Equations and Control,
+  Montreal, 1998, F. Clarke and R. Stern, eds., Kluwer, Dordrecht, The Netherlands, 1999,
+  pp. 551--598.
+
+\bibitem{00paris}
+{\sc E. D. Sontag}, {\em The ISS philosophy  
+as a unifying framework for stability-like behavior}, in Nonlinear Control in
+  the Year 2000, A. Isidori, F. Lamnabhi-Lagarrigue, and W. Respondek, eds.,
+  Lecture Notes in Control and Inform. Sci. 258, Springer-Verlag, Berlin,
+  2000.
+
+\bibitem{ywscl}
+{\sc E. D. Sontag and Y. Wang}, {\em On characterizations of the input-to-state
+  stability property}, Systems Control Lett., 24 (1995),
+  pp. 351--359.
+
+\bibitem{ref8}
+{\sc E. D. Sontag and Y. Wang}, {\em Detectability of
+  nonlinear systems}, in Proceedings of the Conference on Information Science and Systems (CISS
+  96), Princeton, NJ, 1996, pp. 1031--1036.
+
+\bibitem{iss-new}
+{\sc E. D. Sontag and Y. Wang}, {\em New
+  characterizations of the input to state stability property}, IEEE
+  Trans. Automat. Control, 41 (1996), pp. 1283--1294.
+
+\bibitem{oss-scl}
+{\sc E. D. Sontag and Y. Wang}, {\em Output-to-state
+  stability and detectability of nonlinear systems}, Systems Control
+  Lett., 29 (1997), pp. 279--290.
+
+\bibitem{ios}
+{\sc E. D. Sontag and Y. Wang}, {\em Notions of input to
+  output stability}, Systems Control Lett., 38 (1999), pp. 351--359.
+
+\bibitem{lios}
+{\sc E. D. Sontag and Y. Wang}, {\em Lyapunov
+  characterizations of input to output stability}, SIAM J. Control
+  Optim., 39 (2000), pp. 226--249.
+
+\bibitem{tsinias-scl}
+{\sc J. Tsinias}, {\em Sontag's ``input to state stability condition'' and
+  global stabilization using state detection}, Systems Control
+  Lett., 20 (1993), pp. 219--226.
+
+\bibitem{Tsinias}
+{\sc J. Tsinias}, {\em Input to state
+  stability properties of nonlinear systems and applications to bounded
+  feedback stabilization using saturation}, ESAIM Control Optim. Calc. Var.,
+  2 (1997), pp. 57--85.
+
+\bibitem{vdS}
+{\sc A. van der Schaft}, {\em ${L}^2$-gain analysis of nonlinear systems and
+  nonlinear state feedback ${H}^\infty$-control}, IEEE Trans.
+  Automat. Control, 37 (1992), pp. 770--784.
+
+\bibitem{Warga}
+{\sc J. Warga}, {\em Optimal Control of Differential and Functional Equations},
+  Academic Press, New York, 1972.
+
+\bibitem{willems-dissipation}
+{\sc J. C. Willems}, {\em Mechanisms for the stability and instability in
+  feedback systems}, Proc.  IEEE, 64 (1976), pp. 24--35.
+
+\end{thebibliography}
+
+\end{document}
+
+{udsystem}
+ $@.{x}(t)=f(x(t), \uc(t),\ddfun(t)), \; y(t)=h(x(t))$
+
+{eq:UIOSS}
+$\abs{x(t, @x, \uc, \ddfun)} !<\max \left\{ @b(\abs{@x}, t), 
+\ulevel\left(\norma{\uc}{[0, t]}\right),
+\ylevel\left(\norma{y}{[0, t]}\right)\right\}$
+
+{ROSSsystem}
+$@.{x}(t)= g(x(t),\dfun(t)) = f(x(t), \dufun(t)\sm(\abs{x(t)}),\ddfun(t))$
+
+{UOSS-dissip-smooth}
+$\nabla V (x) !.f(x, d) !< -\xdissip(\abs x) + \ydissip(\abs{h(x)})$
+
+{dsystem}
+$@.{x}=f(x(t), \dfun(t)), \, y(t)=h(x(t))$
+
+{eq:UOSS}
+$\abs{x(t, @x, \dfun)} !<\max \left\{ @b(\abs{@x}, t), \ylevel\left(\norma{y}{[0, t]}\right)\right\}$
+
+{prop:UO}
+UO iff $\exists$
+$@r_1, @c_1, @c_2 !e\kk$ and $c!>0$ s.t.:
+% the following implication holds: 
+\beqn
+\abso{h(x(t, @x, \dfun))} &\leq& @r_1(\abs{x(t, @x, \dfun)}) \quad 
+\forall\,t !e[0, T]\nonumber\\[3mm]
+& =>&  \abs{x(t, @x, \dfun)} !<@c_1(t) + @c_2(\abs @x) + c
+ \quad \forall t !e[0, T]
+\eeqn
+$\forall$ $@x!e\states$, $\dfun !e\M_@W$, $T !e[0, \tmax(@x, \dfun))$
+
+{eq:UO}
+\beqn
+\abso{h(x(t, @x, \dfun))} &\leq& @r_1(\abs{x(t, @x, \dfun)}) \quad 
+\forall\,t !e[0, T]\nonumber\\[3mm]
+& =>&  \abs{x(t, @x, \dfun)} !<@c_1(t) + @c_2(\abs @x) + c
+ \quad \forall t !e[0, T]
+\eeqn
+
+{iiUOSS}
+$\exists$ \functions $\iy$, $\iini$ $!e\kk$, $\ix !e \ki$ s.t.
+%
+{eq:iiUOSS}
+$\int_0^t \ix(\abs{x(s, @x, \dfun)})\,ds \psp !<\psp \iini(\abs@x) + 
+          \int_0^t \iy (\abs{h(x(s, @x, \dfun))})\,ds$
+$\forall$ initial state $@x$, disturbance $\dfun !e\M_@W$, and
+time $t !e[0, \tmax(@x, \dfun))$
+
+{prop:newprop}
+$\ve$-$@d$ characterization of \newprop\
+
+{main_thm:UOSS}
+\item[$1$.]  $@S$ is UOSS. \label{item1:UOSS}
+\item[$2$.]  $@S$ is \newprop. \label{item2:UOSS}
+\item[$3$.]  $@S$ is iiUOSS and UO. \label{item3:UOSS}
+\item[$4$.]  $@S$ admits a UOSS-Lyapunov function. \label{item4:UOSS}
+
+$\io{@x, \dfun}= \inf\{t !e[0, \tmax(@x, \dfun)): 
+\abs{x(t,@x, \dfun )} !<@r(\abs{y(t,@x, \dfun)})\}$
+
+\newprop:
+$\exists$ $@r!e\ki, \;\klfun!e\kl$ s.t.:
+$\forall$   $@x!e\states$, $\dfun !e\M_@W$, and any $T < \tmax(@x, \dfun)$,
+if 
+\[
+\abs{x(t, @x, \dfun)} !>@r(\abs{h(x(t, @x, \dfun))}) 
+\,(\forall \; 0 !<t !<T)
+\;=>\;
+\abs{x(t, @x, \dfun)} !<\klfun (\abs{@x}, t) \; (\forall\; 0 !<t!<T)
+\]

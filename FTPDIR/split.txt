@@ -1,0 +1,426 @@
+OCR of paper; see pdf file split.pdf for viewwable/printable page
+
+Reprinted from INFORMATION AT-M CONTROL Vol. 37, No. 1. April 1979
+All Rights Reserved by Academic Press, New York and London Printed in Belgium
+On Split Realizations of Response Maps over Rings
+EDUARDO D. SONTAG
+Department of Mathematics, Rutgers University, New Brunswick, New Jersey 08903
+This paper deals with observability properties of realizations of linear response
+maps defined over commutative rings. A characterization is given for those
+maps which admit realizations which are simultaneously reachable and observable
+in a strong sense. Applications are given to delay-differential systems.
+.INTRODUCTION
+Observability is one of the central concepts of system theory (see Kalman,
+Arbib and Falb, 1969). We study here sorne aspects of observability in linear
+dynamical systems defined over commutative rings. For niotivation and for a
+survey of results on Systems over rings, the reader is referred to Sontag (1976);
+for an elementary mathematical introduction the reader is referred to Eilenberg
+(1974, Chapter XVI).
+Let R denote a commutative ring.
+Consider a linear system
+x(t + I) = Fx(t) I
+Gu(t),
+~y(t) ~ lhc(t), t - 0, 1, 2,,..,
+where x(t) is in X RII (n-vectors over R), u(t) is an m-vector and y(t) is a
+p-vector for t ~ 0, 1, 2,..., and where F, G, 11 are matrices of the appropriate
+sizes.
+Intuitively,- observability means the existence of a procedure for determining
+the state x(0) of I from data obtained by experiments of the type: "apply an
+input sequence u(0), u(1), u(2).... beginning in state x(0) and observe the
+corresponding output sequence y(O), y(l), y(2) ....... Since Z is a linear system,
+the effect of nonzero inputs can be substracted from the output sequence. Thus
+we may restrict ourselves to those experiments in which u(t) ~ 0 for all t > 0.
+* This research was supported in part by US Air Force Grant 72-2268 through the
+Center for Mathematical System Theory, 17 nivcrsity of Florida, Gainesville, Florida
+32611.
+23
+001 9-99581781037l-W23$02.00/0
+Copyright (0 1978 by Acadeadc Pres3, rne,
+All rights of reproduction in any form reserved.
+<<PAGE-DIVIDER>>
+24 EDUARDO D. SONTAG
+Let O(x) denote the output sequence Hx, I[Fx, Hpx,... . Then for linear
+systems we have the following characterization of
+(a) Observability: each state x in X can be uniquely determined from O(x)
+This question was studied in Kalman (1968, Definition 10.1) for the case
+R = field. In this case, (a) is equivalent to the possibility of determining x via
+linear data processing schemes. In other words, for each x' in X' (where X'
+denotes the set of costates, i.e., the dual of the state-space X) there exists an
+R-linear procedure V., (i.e., an R-linear map from the set of output sequences
+into R) such that for all states x in X,
+"'(X) = 7.,(O(X)), M
+(see Kalman, 1969, Definition 10.2 and Theorem 10.10). Because of finite
+dimensionality, condition (*) can be also expressed as
+(b) R-linear observability: for every x' in X', there exists in (Rn21)'
+such that x' - y~, - On
+[Here On : X , Rn " is given by
+H
+JI;
+X
+X
+IHF"-Ixj
+The equivalence (a) ---> (b) breaks down when R is an arbitrary ring. Consider
+for instance a system over R : ~ Z with n - p - 1, F ~ 0, G ~ arbitrary and
+Il : = 2. The system will be observable in the sense of (a), since the state x can
+be recovered from the knowledge of the corresponding output y = 2x. On the
+other hand, observability in the sense of (b) does not hold, because division by 2
+cannot be performed when operating over Z. Similar differences among (a) and
+(b) when R -- ring arise in continuous-time situations (for example, for delay-
+differential systems).
+The case R -/~ field is further complicated by the fact that canonical realizations
+are not always free, (unless R - principal ideal domain) i.e., the state space
+cannot be described by independent coordinate functions. We take the position
+that some notion of coordinate system is needed in order for the above problems
+to be manageable. Therefore, we shall only consider response maps for which
+the canonical state space admits (nonindependent) coordinates (projective
+modules).
+Condition (b) is related to such important svstem-theoretic questions as the
+existence of observers with arbitrary dynamics and the problem of regulation.
+Accordingly, we propose to study in this paper conditions under which the
+canonical realization of a given response "wp is observable in the (strong) sense of (b).
+<<PAGE-DIVIDER>>
+SPLIT REALIZATIONS 25
+For integral domains, this is achieved in Theorem (2.1), which gives a necessary
+and'sufficient condition stated in elementary terms. For rings with zero-divisors,
+a similar condition is given in (3.1). The proofs rely heavily on known realization
+results on systems over rings together with some results from commutative
+algebra and an apparently new criterion for the projectivity of the column-
+module of a matrix.
+The results of this paper have applications in the theory of regulation of
+delay- d iffe rential systems; we illustrate how this application comes about
+through an example, a more complete discussion having been already given by
+the author in Sontag (1976, Section 3.D). Consider a delay -differential system
+with equations
+lt,(t) ~ 2x,(t 1) + x,(t) + xjt) + u(t),
+.~Jt) = x,(t - 1) -- 3x,,(t - 5) + u(t - 1), (a)
+Y(O = XAO - X2(t
+If we introduce the delay operator a defined by
+U(X)(t) X(t -
+we can rewrite (a) in matrix form as
+j [2,, + I I j[x,] +
+X2 a -3crl x, 1c,r] U
+I
+X,
+Y [I 1X2i -
+We see then that (a) can be expressed in a form very similar to the ordinary
+finite-dimensional constant linear systems of control theory, the only difference
+being that the matrices (F, G, H) now have polynomial instead of real valued
+entries. When all the delays ai , b) , c, in (*) are integial multiples of a fixed
+delay A, we can apply the same procedure as above, taking now for a a shift of
+A seconds. If, instead, the delays in (*) are not commensurable, we need to
+define a finite set of delay operators a, Crr and then consider systems whose
+matrices have entries in the ring of polynomials in o,, a, I denoted by
+R[-, crd.
+A Luenberger observer, or deterministic Kalman filter, can be constructed
+for (*) formally as in the case of finite -dimensional linear systems, with ar-
+bitrary convergence rates, precisely when the system (*) (with R - polynomial
+ring) is observable in the sense of (b). Given a de I ay- differential system described
+in the input/output sense, the standard construction of a regulator (observer +
+state-feedback) is possible if and only if the canonical realization (in the ring-
+sense) is observable in the sense of (h). In the case of finite-dimensional systems
+such a property is always true; in the delay-differential case a most natural
+<<PAGE-DIVIDER>>
+26 EDUARDO D. SONTAG
+necessary and sufficient condition is given by (2.1) applied to R = polynomial
+ring. It is interesting to remark that the notions of projective and free module
+coincide in this case (Serre's conj ectu re /Quillen's theorem), so the notion of a
+I 'split realization" is very strong here; the application of (2.1) to delay- differential
+systems results then in a result of high intuitive significance whose proof
+depends on rather sophisticated algebra.
+1. DEFINITIONS AND NOTATIONAL CONVENTIONS
+We shall assume throughout this paper that R is a (commutative) Noetherian
+ring, i.e., every ideal of R is finitely generated. For commutative rings this is
+a very weak restriction and it simplifies the exposition considerably.
+We shall use the notation:
+R11 : - free R-module in n generators, i.e., the set of (column) n-vectors;
+Rnx- - set of n x m matrices with entries in R;
+0 :- tensor product of R-modules;
+92 :~ the set of maximal ideals of R;
+7T, : = the canonical map R , RIM, for any M c 92.
+If C is in R--, then Ik(C) : = ideal generated by the set of all. k x k minors
+of C. If u: R S is a ring homomorphism, then aC : = (acjj) e Snx-.
+We shall identify an R-linear map Rn , R- with its matrix when the standard
+bases are used for R11 and R-.
+(1.1) DEFINITION. Let M be an R-module. The dual M' of M is the R-
+module consisting of all R-linear maps from M into R (with the pointwise
+operations). For an R-module homomorphism f: M -* N the transpose f:
+N'-- M' is the R-linear map given byf(u) :- u -f for all u: N, R.
+We shall work with the following definition of a projective module (see
+Bourbaki, Alg6bre, 11.2.2, Proposition 12; Alg6bre Commutative, 11.5.3,
+Theorem 21):
+(1.2) DEFINITION. P is a (finitely generated) projective R-module iff there
+exist elements v . ..... v. in P and linear forms v ....... v,,' in Y such that for
+every v in P,
+v Y vj'(v) - vi.
+i=1
+P has rank s iff, for every M in Q, the vector spaces P (D (RIM) have equal
+dimension s. (Otherwise the rank is not defined.)
+<<PAGE-DIVIDER>>
+SPLIT REALIZATIOM 27
+If R is an integral domain with quotient field Q, the rank of P is always
+) Q. See Bourbaki (Alg6bre,
+defined; it is equal to the Q-dimension of P (?
+11.2.3) for a discussion of these questions. When R is a polynomial ring, pro-
+icctive = free; see Quillen (1976).
+(1.3) Remark. Let P be as in (1.2), and suppose that f: P -~ N is an R-
+homomorphism for which F is surjective. Then f splits, i.e. there exists g:
+N - P such that g - f -- identity on P. Indeed, since f' is onto there exist
+u, : N -~ R, i n, such that ui -f - v,'. It is then enough to define
+n
+A-) Ui(X) - vi
+for all x in N.
+(1.4) DFFINITIONS. An (in, p)-response mapf over R is a sequence (A, A,_.)
+of matrices in RP11-. An (in, p)-systern Z = (X, F, G, H) over R is given by a
+finitely generated R-module X and R-module homomorphisms F: X --* X,
+G: R- X, H: X ~ RP. (If clear from the context, X is not explicitly dis-
+played.) T is projective [free .... ] when X is projective Lfree .... ]; E has rank n if X
+is projective of rank n. Given a response map f, a system Z is a realization of f
+provided that A i -- HFi- IG for all i. The map f is realizable if there exists at
+least one realization off. The rank off is the smallest integer among the ranks of
+projective systems realizing f. Finally, the dual of Z is the (p, m)-system.
+Z' - (X', F', H', G'). I
+For background concerning these definitions, consult Kalman, Falb, and
+Arbib (1969), Eilenberg (1974, Chapter XVI) or Sontag (1976). The terminology
+"input/output map" is sometimes used instead of our "response map."
+Given f = (A, , A, let us define the block matrix
+H. = H.(.f (1.5)
+~Ai ... A2n-,]
+For each n, the nth order reachability [resp. observability] map of Z is defined
+as Rn : Rn- ~ X[rC;P- On : X RnP], where R. is given, in block form, as
+Rn [G, FG,..., 1,n-1G] (1.6)
+and 0. is given, in block form, as
+- H I .
+0, (1.7)
+Observe that Z realizes f iff H, On - R. for all n.
+<<PAGE-DIVIDER>>
+28 EDUARDO D. SONTAG
+Assume X can be generated by n elements. We define Z to be reachable [resp.
+observable, resp. canonical] Iff Rn is surjective [resp. 0. is injective, resp. Z is
+reachable and observable].
+The following is a new
+(1.8) DEFINITION. A system Z is split iff the following three conditions hold:
+(1) X is projective,
+(ii) Z is reachable, and
+(iii) Z' is reachable.
+The response map f splits iff it can be realized by a split system.
+The terminology is motivated by the fact that 0. splits (c.f. (1.3)) for a split.E
+with n generators.
+It is not difficult to prove that a split system is necessarily canonical. When R
+is a field, it is clear that canonical - split.
+(1.9) Remark. When Q is an overring of R, any input/output map f over R
+can be naturally seen as an input/output map over Q. This applies in particular
+to an integral domain R and its quotient field Q. More generally, let S be an
+R-algebra; if Z is a system over R then Z 0 S is defined as the system (X 0 S,
+F q,, Is, G Ox Is, H 0 Is) over S. Iff is a response map over R, therif 0 S is
+defined as the response over S given by {Ai 0 1,1, in other words, by the
+sequence LA, , tA . ..... where t: R , S is the map defining the algebra structure.
+We write f (M), X(M), etc. instead of f (2) (RIM), X (2) (RIM), etc., for
+M in Q.
+One of the main reasons for the restriction on R to be Noetherian is the
+following important result due to Rouchaleau, Wyman, and Kalman (1972):
+(1. 10) THEOREM. Let R be a Noetherian integral domain, Q its quotient field.
+Let f be a response map over R. Suppose that f 0 Q is realizable over Q. Then f
+is realizable over R.
+Proof. See the above reference or the alternative proofs in Eilenberg (1974,
+Chapter XV1, Theorem 12.1) and Sontag (1976, Appendix).
+2. THE MAIN RESULT
+The main result of this paper is Theorem (2 1).
+(2. 1) THEOREM. Let R he a Noetherian integraf domain, Q its quotient field,
+andf a response map over R. Suppose
+rank,f - n.
+Then f splits if and only if In(Hn) - R.
+<<PAGE-DIVIDER>>
+SPLIT REALIZATIONS 29
+For R -- principal-ideal domain, the condition I,,(H.) = R means that the
+greatest common divisor of all n x n minors of H. must be a unit. Further, over
+this R projective modules are free. So (2-1) gives a useful condition for existence
+of free split realizations over principal-ideal domains.
+The proof of (2.1) will be delayed until certain general facts are established.
+The next result is useful in studying questions of reachability.
+(2.2) PROPOSITION. A system Z over R is reachable if and only if for any M
+in S? the system Z(M) over RIM is reachable.
+Proof. If f has n generators then each Z(M) has dimension not greater
+than n. Therefore the problem is to show that
+R. is surjective iff every Rn(M) is surjective.
+This is immediate from Bourbaki (A]g6bre Commutative 11.3.3, Proposition 11).
+1
+(2.3) OBSERVATION. Let C be in R-1 and let n ~~ minfs, t). Then I,,(C) ~ R
+if and only if rank, Im 7T,C ;~: n for all M in S2. Indeed, this condition is equiv-
+alent to the existence, for each M, of a minor of order n of C which is nonzero in
+RIM. In other words, for each M there is some minor of order n of C not in M.
+This can only happen when the ideal I,(C) is not contained in any maximal
+ideal, i.e., if it is not proper. 1
+(2.4) PROPOSITION. Let R be a commutative ring. Suppose that Z - (X, F,
+G, H) is a canonical projective realization of f of rank n. The following statements
+are then equivalent:
+(a) f splits.
+(b) Z is a split system.
+(c) Z' is reachable.
+(d) Z'(M) is reachable for every M in 0.
+(e) Z(M)' is reachable for every M in S2.
+(f) Z(M) is observable for every M in Q.
+(g) Z(M) is canonical for every M in S2.
+(h) rankR Im f (M) = n for every M in S2.
+(i) H~(M) 7T,H. has rank n for every M in 92.
+(j) I.(H.) R.
+(k) 0,(M) has rank n for every M in Q.
+If E isfiree, the above statements are also equivalent to:
+(1) 1,,(0,,) = R.
+<<PAGE-DIVIDER>>
+30 EDUARDO D. SONTAG
+Proof. First observe that since each RIM is a field, the equivalence between
+(c), (f) and (k), and the equivalence among (g), (h) and (i) are all well-known
+facts (see for instance Kalman, Arbib, and Falb 1969, Chapter 10). Observation
+(2.3) proves that (i) is equivalent to (j) and that (k) is equivalent to (1). Therefore
+it will be enough to prove that equivalence of (a), (b), (c), (d), (e) and the equiv-
+alence of (f), (g).
+(a) Equivalent to (b). Any split realization Z, off is in particular canonical.
+By the uniqueness of canonical realizations (see Eilenberg, 1974, p. 419),
+Z _-_ Z, . Therefore Z is also a split system.
+(b) Equivalent to (c). Trivial, because Z is by hypothesis already reachable
+and projective.
+(c) Equivalent to (d). Clear from (2.2).
+(d) Equivalent to (e). Consider M in Q. It follows from the discussion in
+Bourbaki (Alg6bre, 11.5.4) that the state-space P(M)'can be canonically identified
+with P'(M) (here P = projective is essential!). Under this identification, F'(M)
+[resp. G'(M), H'(M)] corresponds to F(M)' [resp. G(M)', H(M)']. Therefore
+.Y(M) is canonically isomorphic to X(M)'. The equivalence is now clear.
+(f) Equivalent to (g). By hypothesis Z is reachable. So by (2.2) all the
+R/M-systems Z(M) are reachable.
+We may now give the
+Proof of (2. 1). Assume that f splits. Then the equivalence of (a) and (j) in
+(2.4) shows that I,,(H.) - R.
+Conversely, suppose that 1,(H.) - R, i.e. 7T,H,, has rank n for all M. To
+prove thatf splits, it is enough to show that (2.4) can be applied. In other words,
+it must be proved that the canonical state space X - Xf is a (finitely generated)
+projective R-module of rank n.
+Since R is Noetherian, f is realizable; see (I. 10). Assume then that X can be
+generated by s elements. Then X is isomorphic to the R-module generated by
+the columns of H, (Rouchaleau, 1972, Section 2.A); see also Sontag (1976,
+Lemma (3.11)).
+Fix a maximal ideal M. Denote by R, the localization of R at M, the local
+ring consisting of all fractions alb with a, b in R and b not in M (see Bourbaki,
+Alg6rc Commutative 11.3.2, Proposition 3). Since Rm is a flat R-module (see
+Bourbaki, Alg6re Commutative 11.2.4, Theorem 1) it follows that the canonical
+state-space of f (~,) Rm is X, : -= X r,;) R,, . Therefore Xm is isomorphic to the
+R-module generated by the columns of H, (viewed as a matrix over R,).
+Since obviously s -,~ n, from the hypothesis on the ranks off over Q and of
+7T.~fHn over R/M it follows that H, has rank n over Q and 7T,H, has rank n over
+R/M - R,IMRm. The lemma in the Appendix can be applied over Rm (with
+A - )111 and K, ~ Q). Therefore X, is free.
+<<PAGE-DIVIDER>>
+SPLIT REALIZATIONS 31
+It follows from Bourbaki (Alg6bre Commutative, 11.5.3, Theorem 2) that X is
+projective of rank n. 1
+(2.5) Remark. In many cases of interest the realizations whose existence is
+claimed (under the stated hypothesis) can in fact be constructed explicitly. For
+principal-ideal domains, for example, it is only necessary to apply the usual
+realization procedure generalizing "Silverman's formulas" (see Rouchaleau
+and Sontag, 1978); the resulting canonical system will be necessarily split. For
+local rings, it is only necessary to find a submatrix C of the Hankel matrix such
+that 7TC is invertible; "Silverman's formulas" can be applied over the field Q
+and the realization obtained will necessarily be over R.
+When f ~ (a, , a,,...) is a scalar response map and the formal power series
+Xaiz-i is expressed 'over R as p1q, where p, q c R[z], we may state a condition
+directly in terms of the "transfer function" p1q. Given two polynomials p, q over
+R we denote by p(p, q) the resultant of p and q (see Lang [ 1965, p. 13 5]). This
+is an element of R. Recall Bourbaki [Alg6bre Commutative, V.1.2]) that an
+integral domain R is integrally closed iff for any equation
+Zn + aZn-1 + +an ~ 0
+(where all ai are in R) every solution in is necessarily in R. (For instance,
+unique factorization domains are integrally closed.)
+A scalar realizable response map f over an integrally closed domain R admits a
+transfer function p1q, where q is in fact the minimal polynomial of f over Q
+(see Eilenberg, 1974, Chapter XVI Section 12; Rouchaleau and Sontag, 1978,
+Lemma (1.2)). We call such a transfer function irreducible. We can then state
+(2.6) PROPOSITION. Let R be an integrally closed integral domain. Let f be a
+(1, I)-response map over R, with irreducible transfer function p1q. Then f splits iff
+p(p, q) is a unit.
+Proof. The condition p(p, q) ~ unit is equivalent to the following require-
+ment: p(p(M), q(M)) =A 0 for all M in Q, where p(M), q(M) are obtained by
+reducing modulo M the coefficients of p, q. But p(p(M), q(M)) ~ 0 precisely
+when p(M), q(M) have a common factor, i.e. when rankf (M) < n. The result
+follows then immediately from (2.1). 1
+3. THE CASE OF REDUCED RINGS
+Recall that a commutative ring R is reduced when R has no nilpotent elements.
+(Example: Z, , the integers modulo 10.) If R is a Noetherian reduced ring, let
+P(R) denote the (finite) set of minimal prime ideals of R. Let Q(R) denote the set
+of quotient fields of the Rlp, p in P(R).
+The following result generalizes (2.1) to the case of reduced rings:
+<<PAGE-DIVIDER>>
+32 EDUARDO D. SONTAG
+(3. 1) THEOREM. Let R be a Noetherian reduced ring. Then the response map f
+splits if and only if:
+(i) the numbers ranko(f Ox Q) ate equalfor all Q in Q(R), anti
+(ii) for every M in S2, rankR/1 H.W) ~ n, where n is the common value of
+ranka(f (D Q).
+Sketch of Proof. ["if"] Let S :~ (Rlp,) x ... x (Rlp,,), where Pi 11*" Pn
+are the elements of P(R). Since each RlPi is a Noetherian integral domain, each
+f (~) (Rlpi) is realizable and hence f is realizable as a map over S. But S is a finite
+extension of R, so f is realizable over R. Therefore the canonical state-space
+X -- ~Vf is a finitely generated R-module. As in (2.1), it must be proved that X
+is projective of rank n.
+Let M be in S?. Then Rm is also reduced (Bourbaki [Alg6re Commutativej
+11.2.7, Proposition 17]). The minimal ideals of Rm correspond to those minimal
+ideals of R which are contained in M and Q(Rm) is a subset of Q(R) (see Bourbaki,
+Alg6bre Commutative, 11.3.1, Proposition 3). Therefore the result in the
+Appendix can be again applied, where the K, are the elements of Q(R,).
+["only if"] This is similar to the proof of (2.1). 1
+APPENDIX. A CRITERION FOR FREENESS
+LEMMA. Let R be a (commutative) local ring and write 7r: R --* k for the
+canonical map into the residue field k of R. Suppose there is given a family of fields
+f K, , A e A) and a family of ring homomorphisms at, : R --* K, such that
+nker a, ~ 0. Let V be in R1x I and let X be the R-module generated by the columns
+of V. Then a sufficient condition for X to be a free module is
+rankK;,(aAV) = rank,(7TV)
+for all A in A.
+Proof. By definition of rank over the field k, 7TV has an n x n nonsingular
+submatrix 7TW, where W is an n x n submatrix of V. Let 8 := det W. Thus
+7r8 -A- 01 i.e. 8 is not in the unique maximal ideal of R. By Bourbaki (Alg&re
+Commutative 11.3.1, Proposition 1), 8 is a unit in R. Let w, ... I w,, denote those
+columns of V which belong to W. Clearly the vectors 1w, wJ are R-linearly
+independent, because 8 ~ unit.
+The proof now reduces to showing that the vectors w, w,, generate X. In
+fact, let v be any other column of V. Let p, --, Pn denote the row indices of the
+submatrix W. Let 8, := dct(al,) where
+i
+al i = if j 1,
+i wo,.j
+= V,i if j 1.
+(wil is the ith entry of wj and vi is the ith entry of v).
+<<PAGE-DIVIDER>>
+SPLIT REALIZATIONS 33
+Consider
+8V - 8,W, C- X.
+Then, c~,x (ot,S)(ozv) - Y_ (cy,8,)(o~jv,) for each A in A. Since ~ is a unit in R,
+it follows that oe,8, which is equal to det(oeAW), is nonzero in K, . By definition
+of rank over a field, aAv is a unique K,-lincar combination of the a,wl , and by
+Cramer's rule this combination has the coefficients Therefore cy,x 0.
+Hence x is in ker a~, for each A. Sincenker a, --- 0, it follows that x 0.
+Therefore v (8,/8) w, . I
+ACKNOWLEDGMENT
+The author wishes to thank Dr. E. Kamen for bringing the problem of existence of
+observers to the author's attention, thus motivating the research reported here and
+Professor R. E. Kalman for numerous suggestions concerning the preparation of this
+paper.
+RECEIVED: July 1976
+REFERENCES
+FiLENBERG, S. (1974), "Automata, Languages, and Machines," Vol. A, Academic Press,
+New York.
+KALMAN, R. E. (1968), "Lectures on Controllability and Observability," CIME Summer
+Course, 1968, Cremonese, Roma.
+KAI.MAN, R. E., FALB, P. L., AND ARBIB, M. A. (1969), "Topics in Mathematical System
+"Flaeory," McGraw-Hill, New York.
+LANG, S. (1965), "Algebra," Addison-Wesley, Mass.
+QUILLEN, D. (1976), Projective modules over polynomial rings, Inv. Math. 36, 167-171.
+RoL C) IALEAU, Y., WYMAN, B. F., AND KALMAN, R. E. (1978), Algebraic structure of linear
+d~narnical systems. 111. Realization theory over a commutative ring, Proc. Nat. Acad.
+Sci. USA 69, 3404-3406.
+RouCHALFAU, Y. (1972), Linear, discrete-time, finite - dimensional dynamical systems
+over some classes of commutative rings, Ph.D. Dissertation, Stanford University,
+Stanford, Calif.
+RoUCIIALEAU, Y., AND SONTAC, E. D. (1978), Minimal realizations of systems over rings,
+to appear in J. Comp. System Sciences.
+SONTAG, E. D. (1976), Linear systems over commutative rings: a survey, Richerche di
+Automatica 7, 1-34.
+Printed by the St Cathcrine Press LH., Tempelhof 37, Bruges, Belgium.

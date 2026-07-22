@@ -1,0 +1,1707 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89mtns-feed.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89mtns-feed.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "formatted-89mtns-feed.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Dvi file name: "formatted-89mtns-feed.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+FEEDBACK STABILIZATION OF NONLINEAR SYSTEMS
+
+Eduardo D. Sontag
+
+Abstract This paper surveys some well-known facts as well as some recent developments on the topic of stabilization of nonlinear systems.
+
+1 Introduction In this paper we consider problems of local and global stabilization of control systems
+
+.x = f (x; u) ; f (0; 0) = 0 (1) whose states x(t) evolve on IR
+
+n
+
+and with controls taking values on IR
+
+m
+
+, for some integers n
+
+and m. The interest is in finding feedback laws
+
+u = k(x) ; k(0) = 0 which make the closed-loop system
+
+.x = F (x) = f (x; k(x)) (2) asymptotically stable about x = 0. Associated problems, such as those dealing with the response to possible input perturbations u = k(x) + v of the feedback law, will be touched upon briefly.
+
+We assume that f is smooth (infinitely differentiable) on (x; u), though much less, -for instance a Lipschitz condition,- is needed for many results.
+
+The discussion will emphasize intuitive aspects, but we shall state the main results as clearly as possible. The references cited should be consulted, however, for all technical details. Some comments on the contents of this paper:
+
+ffl We do not consider control objectives different from stabilization, such as decoupling
+
+or disturbance rejection.
+
+ffl Except for some remarks, we consider only state (rather than output) feedback. ffl The survey talk centers on questions of possible regularity (continuity, smoothness)
+
+of k. This focus leads to natural mathematical questions, and it may be argued that that regular feedback is more "robust" in various senses. But -and to some extent this is emphasized by those negative results that are presented- it is often the case that discontinuous control laws must be considered (sliding mode controllers, or piecewise smooth feedback, for instance). In addition, non-continuous-time feedback (sampled control, pulse-width modulation), is often used in practice and is also not covered here.Pass1: Page 2
+
+
+ffl The assumption that k(0) = 0 is quite natural; it says that no energy should need
+
+to be pumped into the system when it is at rest. The theory that results when this requirement is not imposed is also of great interest, however.
+
+ffl Another related interesting set of problems ("practical" stabilization) deals with bring-
+
+ing states close to certain sets rather than to the particular state x = 0.
+
+Space constraints force us to be selective in our coverage. Such selectivity will imply, as is often the case with surveys, some emphasis towards the speaker's favorite topics. Hopefully the inclusion of an additional bibliography -see the end of the paper- makes up for some of the omitted material.
+
+1.1 What regularity will be imposed on k ? The main questions that we want to address involve, as pointed out above, regularity of k. The requirements away from 0, whether k should be, say, C
+
+0
+
+, C
+
+1
+
+, or C
+
+1
+
+, appear to
+
+be not very critical; as we see later, it is often possible to "smooth out" a feedback law that is merely continuous. (Of course, if k is not smooth enough, questions arise regarding uniqueness of trajectories for the closed-loop system (2).) Much more critical is the behavior of k at the origin. Because of these facts, and in order to simplify the presentation, we shall consider just two types of feedback; the issues arising for these are quite typical of the general problems. We shall say that k : IR
+
+n
+
+! IR
+
+m
+
+, k(0) = 0, is:
+
+ffl smooth: if k 2 C
+
+1
+
+(IR
+
+n
+
+) .
+
+ffl almost smooth: if k 2 C
+
+1
+
+(IR
+
+n
+
+nf0g) and k 2 C
+
+0
+
+(IR
+
+n
+
+) .
+
+The problems of finding stabilizing feedback laws of these two types are very different: consider for instance the system
+
+.x = x + u
+
+3
+
+which can be globally stabilized by the almost smooth law
+
+u := \Gamma 
+
+3 p
+
+2x
+
+resulting in
+
+.x = \Gamma x
+
+but cannot even be locally stabilized by a smooth u = k(x), since for any such k one would necessarily have k(x) = O(x) so that the closed-loop system
+
+.x = x + O(x
+
+3
+
+)
+
+is unstable.
+
+It is probably fair to say that until now the most elegant local theory has been developed for the smooth case, while the most elegant global results are those that have been obtained for almost smooth stabilization.
+
+2 Asymptotic Stability As with regularity, there are also many possible notions of stabilization. These can be classified under two broad categories:Pass1: Page 3
+
+
+ffl State-Space: There is a map k such that the system
+
+.x = f (x; k(x)) has x = 0 as a locally or globally asymptotically stable point. We call this local or global, smooth or almost-smooth, stabilization, depending on the regularity required of k.
+
+FIGURE 1: Pure state-feedback configuration ffl Operator-Theoretic: There is a k so that the initialized system
+
+.x = f (x; k(x) + u) ; x(0) = 0 induces a stable operator u 7! x. There are many possible, nonequivalent, definitions of stability for operators; this point will be discussed again later. This notion is of interest when studying stability under persistent or decaying input perturbations, and when trying to obtain Bezout factorizations for nonlinear systems.
+
+FIGURE 2: Additive state-feedback configuration An alternative is to allow for an additional feedforward term, say with the same regularity as k. Such a variation appears when studying coprime, not necessarily Bezout, factorizations.
+
+FIGURE 3: State-feedback with input weighing We shall concentrate on pure state-feedback problems, but will also explain how some operator-type results can be obtained as a consequence of these.Pass1: Page 4
+
+
+2.1 Asymptotic controllability An obvious necessary condition for state-space stabilizability is the corresponding open-loop property of (null-) asymptotic controllability: for each small x
+
+0
+
+there must exist some
+
+measurable, locally essentially bounded control u(\Delta ) defined on [0; +1) such that, in terms of the trajectory x(\Delta ) resulting from initial x
+
+0
+
+and input u, (a) x(t) is defined for all t and
+
+x(t) ! 0 as t ! 1, (b) this happens with no large excursions (stability), and (c) since k is continuous at the origin, u(t) ! 0. This property can be summarized by the statement: for each " ? 0 there is some ffi ? 0 such that, for each jx
+
+0
+
+j ! ffi there is some u(\Delta ) so that
+
+x(t); u(t) ! 0 and also
+
+jx(t)j + ju(t)j ! " 8t
+
+where x(\Delta ) is the trajectory starting at x
+
+0
+
+and applying u.
+
+(We use bars j,j to denote any fixed norms in IR
+
+n
+
+and IR
+
+m
+
+.)
+
+For global stabilization, one has the additional property that for every x
+
+0
+
+there must
+
+exist a control u so that x(t) ! 0; we call this global asycontrollability.
+
+Observe that, for systems with no controls, classical asymptotic stability is the same as asycontrollability.
+
+For operator-theoretic stabilizability, one has necessary bounded-input bounded- output or "input to state stability" necessary properties. These will be mentioned later.
+
+The main basic questions are, for the various variants of the above concepts:
+
+To what extent does asycontrollability imply stabilizability? Such converse statements hold true for linear finite dimensional time-invariant systems, but are in general false, as we discuss next.
+
+3 Case n = m = 1 To develop some intuition, it is useful to start with the relatively trivial case of single-input one-dimensional systems. Many of the remarks to follow are taken from [28].
+
+For the system (1), asycontrollability means that for each x, or at least for small x in the local case, there must exist some u so that
+
+xf (x; u) ! 0 (see [28] for a detailed proof). Consider the set
+
+O := f(x; u) j xf (x; u) ! 0g and let
+
+ss : (x; u) 7! x
+
+be the projection on the first coordinate. Then, global asycontrollability implies that
+
+ssO = IR
+
+n
+
+nf0g
+
+while local asycontrollability says that this projection contains a neighborhood of zero; in addition, a local property about (0; 0) also holds, since u must be small if x is small.
+
+On the other hand, if k is any feedback law giving asycontrollability, it must hold that k provides a section over IR
+
+n
+
+nf0g of the projection ss, i.e.
+
+(x; k(x)) 2 O 8 x 6= 0Pass1: Page 5
+
+
+Thus the main problem is essentially that of finding regular sections of ss.
+
+Using this geometric intuition, it is easy to construct examples of systems which are asycontrollable but for which there is no possible almost-smooth -or for that matter, not even just C
+
+0
+
+away from zero- feedback stabilizer. For instance
+
+.x = x
+
+h
+
+(u \Gamma  1)
+
+2
+
+\Gamma  (x \Gamma  1)
+
+i h
+
+x \Gamma  2 + (u + 1)
+
+2
+
+i
+
+is so that O consists of the two components
+
+O
+
+1
+
+= f(u \Gamma  1)
+
+2
+
+! x \Gamma  1g
+
+and
+
+O
+
+2
+
+= f(u + 1)
+
+2
+
+! 2 \Gamma  x; x 6= 0g
+
+and hence admits no continuous stabilizer, even though it is clearly asycontrollable. (See Figure 4: darkened area is the complement of O; note that no continuous curve is contained entirely in O and projects onto the x-axis.) On the other hand, in this example it is easy to construct a controller -a section of the projection with k(0) = 0- that is everywhere smooth except for a single discontinuity.
+
+FIGURE 4: No continuous sections FIGURE 5: Semiglobal vs. global
+
+This counterexample is based on the impossibility of choosing controls; the paper [30] provides examples where not even a continuous choice of state trajectories is possible.
+
+The graphical technique allows answering other questions, such as those in [28] regarding the possibility of non-Lipschitz stabilizers even when there are none that are Lipschitz. In [31], the authors discuss "semiglobal" stabilizers in comparison with global ones: The question is whether it may be the case that for each compact subset of the state space there is a feedback stabilizer, but that there is none that works globally. They provide a counterexample analogous to the one illustrated graphically in Figure 5, the darkened area corresponding to the complement of O. Note that for each fixed interval on the x-axis therePass1: Page 6
+
+
+are obviously smooth sections of the projection -as indicated by a curve-, but there can be no global sections.
+
+An interesting fact for one-dimensional systems is that there are always rather regular time-varying feedback stabilizers. For the precise definition of smooth time-varying and more generally dynamic stabilizers see the reference [28]; essentially one obtains a smooth stabilizer for the system obtained by adding a parallel integrator. The idea of the proof in [28] is easier to understand with an example. In Figure 6a, again with the darkened area corresponding to the complement of O, we consider two possible feedback laws, illustrated by their graphs. There is no way to obtain a continuous stabilizing feedback law, i.e. one whose graph stays entirely in O. But the idea is to oscillate very fast between the two indicated (non-stabilizing) laws. Let B = B
+
+t
+
+denote the set of x's where at any given time
+
+t the feedback law satisfies xf (x; k(t; x)) ! 0 (Figure 6b). This set oscillates, and we design the time variation so that it moves to the left slowly but it moves to the right fast (for x ? 0, and the converse for x ! 0). A state x ? 0 to the right of B will continue moving to the left, towards the origin, until it hits the set B. At that point, it will move in an undesired direction, but will do so only for a very small time duration, with a net effect of a leftward move. The above reference provides a complete proof.
+
+FIGURE 6(a): Time-varying continuous example
+
+FIGURE 6(b): Bad set for example in 6(a) A different result on dynamic feedback stabilization of one-dimensional systems holds for analytic f , and is given in the work [8]. It is shown there that asycontrollability is equivalent to almost-smooth stabilization of the enlarged system
+
+.x = f (x; y) ; .y = u : Later we shall see examples of systems (in higher dimensions) for which not even dynamic stabilization can be done continuously.
+
+4 General n; m - Main Techniques The one-dimensional case illustrated that smooth or almost-smooth stabilizers may fail to exist even if the system is asycontrollable. We now survey the more general case, concen- trating on the following techniques:Pass1: Page 7
+
+
+1. First order methods (linearization) 2. Topological techniques 3. Lyapunov functions 4. Relation to operator-theoretic stability 5. Decomposition approaches
+
+We will not cover, due to time and space limitations, the very interesting work being done on special cases such as two-dimensional systems ([5], [4]) and in particular the use of center manifold techniques and perturbation analysis (see e.g. [1],[2]).
+
+5 First-Order Techniques We review here some facts that apply to the problem of local, smooth stabilizability. [The example .x = x + (\Gamma 
+
+3 p
+
+2x)
+
+3
+
+, discussed earlier, shows that these techniques do not say
+
+anything interesting regarding almost smooth feedback.] Write
+
+.x = Ax + Bu + o(x; u) (\Sigma ) and call \Sigma  first-order (or "hyperbolically") stabilizable if the linearized system .x = Ax + Bu is asycontrollable, or equivalently, if there exists a matrix F so that
+
+A + BF is a Hurwitz matrix. This property is also equivalent to the requirement that
+
+rank [sI \Gamma  A; B] = n whenever Re s * 0 (PBH condition).
+
+For each stabilizing feedback matrix F for the linear part, the linear law u = F x is also a local stabilizer for the nonlinear system, and the following classical result is obtained:
+
+Theorem 1. \Sigma  first-order stabilizable ) \Sigma  locally smoothly stabilizable.
+
+Recall that this is proved by showing that a quadratic Lyapunov function for .x = (A + BF )x is also a local Lyapunov function for the closed loop system
+
+.x = (A + BF )x + o(x) -see e.g. [36].
+
+The converse of Theorem 1 is obviously false; for instance the system
+
+.x = u
+
+3
+
+has a non-asycontrollable first-order part .x = 0 but the smooth (even linear) feedback law u = \Gamma x results in .x = \Gamma x
+
+3
+
+which is asymptotically stable. However, this example illustrates
+
+what can be said about the converse. Note that even though the linearized system is not asymptotically stabilizable, its only uncontrollable eigenvalue has zero real part. In addition, the stability that can be achieved is not exponential, but is "slower" than exponential.
+
+One says that the origin is exponentially stable for .x = f (x) if there exist positive constants * and M so that
+
+jx(t)j ^ M e
+
+\Gamma *t
+
+jx(0)jPass1: Page 8
+
+
+for all small enough initial states and all t * 0. By smooth exponential stabilizability we mean that there is a smooth k so that the closed loop system (2) is locally exponentially stable. The next two results then hold:
+
+Theorem 2. \Sigma  is locally smoothly stabilizable ) rank [sI \Gamma  A; B] = n 8Re s ? 0.
+
+Theorem 3. \Sigma  first-order stabilizable () \Sigma  exponentially stabilizable.
+
+The first of these is proved by appealing to the standard controllability decomposition: If the rank condition fails, under the variables in this decomposition the closed-loop system corresponding to any smooth feedback law must result in block equations
+
+.x
+
+1
+
+= (A
+
+1
+
++ B
+
+1
+
+F )x
+
+1
+
++ A
+
+2
+
+x
+
+2
+
++ o(x)
+
+.x
+
+2
+
+= A
+
+3
+
+x
+
+2
+
++ o(x)
+
+where A
+
+3
+
+has some eigenvalue with strictly positive real part . But then Lyapunov's Second
+
+Theorem on Stability, or one of its variants such as Cheataev's Theorem, -applied to the x
+
+2
+
+-equation,- implies that the closed-loop system is unstable, contradicting the assumption.
+
+The second result is "folk" knowledge, and an analogous result for arbitrary-rate stabi- lization was given in [12]. A sketch of its proof is as follows. Sufficiency is proved as with Theorem 1. Conversely, assume that k is a smooth feedback stabilizer, and look at the closed-loop system. Again via the controllability decomposition, the problem reduces to showing that the eigenvalues of the linearization of an exponentially stable equation must have negative real part. Let * be as in the definition of exponential stability, and consider the change of variables z(t) := e
+
+*
+
+2
+
+t
+
+x(t) which results in an equation
+
+.z(t) = (
+
+*
+
+2
+
+I + A)z + g(z; t)
+
+where g(z; t) is o(z) uniformly on t. Since x(t) decays at rate *, it follows that z decays at rate *=2, and hence the z equation is asymptotically stable. From Cheataev's Theorem, one concludes that
+
+*
+
+2
+
+I + A has all eigenvalues with real part ^ 0, from which it follows that
+
+all eigenvalues of A have strictly negative real part, as wanted.
+
+The gap in the characterization of local smooth stabilizability is due to the possible modes corresponding to Re s = 0, i.e. the "critical" cases where rank [sI \Gamma  A; B] ! n for some purely imaginary s. This is precisely the point at which Center Manifold Techniques become important.
+
+6 Topological Techniques In this section we review some topological considerations that establish limitations on what almost smooth feedback can achieve. (In fact, the limitations will apply also to even weaker types of feedback.)
+
+To motivate, let's start with an example due to Brockett. Consider the 3-dimensional 2-control system
+
+.x
+
+1
+
+= u
+
+1
+
+.x
+
+2
+
+= u
+
+2
+
+.x
+
+3
+
+= u
+
+2
+
+x
+
+1
+
+\Gamma  u
+
+1
+
+x
+
+2
+
+for which
+
+[sI \Gamma  A; B] =
+
+0 @
+
+s 0 0 1 0
+
+0 s 0 0 1 0 0 s 0 0
+
+1 APass1: Page 9
+
+
+looses rank at s = 0. First-order tests for smooth stabilization are thus inconclusive, except for the fact that exponential stability can't be achieved. On the other hand, this system is completely controllable, since it is a system of the type
+
+.x = u
+
+1
+
+g
+
+1
+
+(x) + u
+
+2
+
+g
+
+2
+
+(x)
+
+("symmetric" system with "no drift term") and
+
+det (g
+
+1
+
+; g
+
+2
+
+; [g
+
+1
+
+; g
+
+2
+
+]) = 2 6= 0
+
+everywhere, where [g
+
+1
+
+; g
+
+2
+
+] denotes the Lie bracket. The system is in particular asycontrol-
+
+lable, since controllability is preserved using arbitrarily small u
+
+1
+
+; u
+
+2
+
+. This suggests that the
+
+system might be smoothly stabilizable. But in fact it isn't. Consider the mapping
+
+(x; u) 7! f (x; u) (3) which here is
+
+IR
+
+5
+
+! IR
+
+3
+
+: (x
+
+1
+
+; x
+
+2
+
+; x
+
+3
+
+; u
+
+1
+
+; u
+
+2
+
+)
+
+0
+
+7! (u
+
+1
+
+; u
+
+2
+
+; u
+
+2
+
+x
+
+1
+
+\Gamma  u
+
+1
+
+x
+
+2
+
+)
+
+0
+
+:
+
+No points of the form
+
+0
+
+@
+
+0
+
+0 "
+
+1 A
+
+; " 6= 0
+
+are in its image, so the system can't be smoothly stabilizable, by Brockett's necessary condition:
+
+Theorem 4. If \Sigma  is almost smoothly stabilizable then the image of (3) contains some neighborhood of zero.
+
+For linear systems, Brockett's condition is that
+
+rank [A; B] = n which is the case s = 0 of the PBH criterion.
+
+Theorem 4 was given in [6]. It reduces to the purely differential-equation result that the image of F (x) = f (x; k(x)) must contain a neighborhood of zero if the closed-loop vector field F is asymptotically stable. The following elementary proof was suggested to us by Roger Nussbaum (ca. 1982), and is analogous to those proofs given in [38] and [15].
+
+Consider the closed-loop system .x = F (x(t)) and let \Phi  denote the flow associated to this. Then
+
+H(x; t) :=
+
+1
+
+t
+
+^
+
+\Phi 
+
+`
+
+t
+
+1 \Gamma  t
+
+; x
+
+'
+
+\Gamma  x
+
+*
+
+; t 2 [0; 1]
+
+is a homotopy between F (x) and \Gamma x. (As t ! 1
+
+\Gamma 
+
+, the flow converges uniformly to zero by
+
+asymptotic stability, while as t ! 0
+
++
+
+this is F (x) by the definition of flow.) From this and
+
+the fact that F can have no zeroes -equilibria of the ode- outside x = 0, one concludes that F must have topological degree (\Gamma 1)
+
+n
+
+with respect to all points p near 0, and so F (x) = p
+
+is solvable for all such p.
+
+The above proof can be extended to show that not even "practical stability" can be achieved, in the sense that one looks for stabilizers defined away from 0 and with the property that closed-loop trajectories converge to a neighborhood of the origin. Moreover, even arbitrary continuous feedbacks (satisfying conditions of existence and uniqueness of trajectories) are ruled out by the theorem. In [38], it is shown that global attractivity is also ruled out, even if local asymptotic stability is not required to hold.
+
+Note that when a system fails Brockett's test, it cannot be stabilized by almost smooth dynamic feedback either, in the sense that any extended system
+
+.x = f (x; u)
+
+.z = v
+
+where v is a new control, and z is a new state of state variables, will still fail the test.Pass1: Page 10
+
+
+6.1 Other Topological Techniques Consider now the following two-dimensional, single-control system ([3])
+
+. , = g(,)u
+
+where
+
+, =
+
+`
+
+x
+
+y
+
+'
+
+; g(,) :=
+
+`
+
+x
+
+2
+
+\Gamma  y
+
+2
+
+2xy
+
+'
+
+:
+
+(This system represents the real and imaginary parts of the one-dimensional complex system
+
+.z = uz
+
+2
+
+.) For each control, one can move at different velocities along the integral curves of
+
+. , = g(,). These curves are the circles centered on the y-axis and passing through zero, plus
+
+the positive and negative x-axis; see Figure 7. Thus the system is asycontrollable, and in fact every state can be controlled in finite time to the origin. As opposed to the previous example, however, this one does pass Brockett's test, and linear tests are also inconclusive. We now show that this system is not almost-smoothly stabilizable, even locally, and use this to illustrate another technique.
+
+FIGURE 7: Orbits of g FIGURE 8: Clf level sets Assume that there is a feedback law stabilizing this system on some open set U con- taining the origin. Consider the closed-loop system
+
+. , = g(,)k(,)
+
+that results; by assumption the left-hand side is at least Lipschitz away from the origin, so this is a well-posed differential equation.
+
+Choose any circular orbit of g which is entirely contained in U . Then the restriction of the closed-loop equation to this circle provides a differential equation which is globally asymptotically stable on the circle. But this is impossible, because of the following fact:
+
+Theorem 5. If a differential equation on a manifold M , .x = F (x); F (x
+
+0
+
+) = 0, has x
+
+0
+
+as
+
+a globally asymptotically stable state, then M must be contractible.Pass1: Page 11
+
+
+The only property needed for this result is that solutions exist and be unique, plus continuous dependence. The proof is almost trivial; see below. A somewhat stronger state- ment, often refered to as "Milnor's Theorem", asserts that M must in fact be diffeomorphic to an Euclidean space, but the above version seems to be enough for most applications.
+
+To prove the Theorem, just note that the map
+
+H(x; t) := \Phi 
+
+`
+
+t
+
+1 \Gamma  t
+
+; x
+
+'
+
+; t 2 [0; 1]
+
+provides a homotopy between the identity and the constant map H(x; 1
+
+\Gamma 
+
+) j x
+
+0
+
+; here \Phi  is
+
+the flow induced by F as before.
+
+For the particular example that we had above, this is all very intuitive: for y ? 0 and x ? 0 near the origin, we must move to the left -stability part of "asymptotic stability"-, and for x ! 0 to the right. Continuing back along any fixed circle, we reach a point where we must move both to the left and right, which would create a discontinuity of the feedback law, unless we passed first through zero which would create a nonzero equilibrium.
+
+In this example, in fact, not even attractivity (all trajectories converging to zero) can hold with continuous feedback. This is because such a feedback law must satisfy
+
+k
+
+`
+
+\Gamma 1
+
+0
+
+'
+
+? 0 and k
+
+`
+
+1
+
+0
+
+'
+
+! 0
+
+(since on the x-axis the equation is .x = x
+
+2
+
+u; .y = 0). Thus any curve between (\Gamma 1; 0)
+
+0
+
+and
+
+(1; 0)
+
+0
+
+will be so that k has some zero somewhere on it, giving a new equilibrium point of
+
+the closed-loop system.
+
+Theorem 5 implies that mechanical models with a noncontractible phase space -rigid body orientations, for example- give rise to systems that cannot be smoothly, or in any reasonable sense continuously, globally stabilizable.
+
+7 Lyapunov Functions Assume that \Sigma  is globally almost-smoothly stabilizable. The closed-loop system (2) being globally asymptotically stable, standard inverse Lyapunov theorems (see for instance Theo- rem 14 in [18],) can be used to conclude that there exists a proper (V (x) ! 1 as x ! 1), positive definite (V (x) ? 0 for x ? 0, V (0) = 0) function V so that
+
+L
+
+F
+
+V (x) = rV (x)F (x) ! 0 8x 6= 0
+
+which implies in open-loop terms that
+
+(8x 6= 0)(9u) rV (x)f (x; u) ! 0 and in addition, by continuity of k at 0, also
+
+(8" ? 0)(9ffi ? 0)
+
+"
+
+0 ! jxj ! ffi ) min
+
+juj^"
+
+rV (x)f (x; u) ! 0
+
+#
+
+:
+
+We call such a function V a control-Lyapunov function ("clf"). (In the terminology of [26], this would be a clf which satisfies the small control property.) The above-mentioned theorems show that there always exists a smooth clf if \Sigma  is almost-smoothly stabilizable.
+
+Intuitively, a clf is an "energy" function which at each nonzero x can be decreased by applying a suitable open-loop control, and this control can be picked small if x is small.Pass1: Page 12
+
+
+It is not hard to show that the existence of a clf implies asycontrollability. In fact, this implication holds even if we ask only that V be continuous. In that case the gradient may be meaningless, so we replace the defining condition by
+
+(8" ? 0)(9ffi ? 0)
+
+"
+
+0 ! jxj ! ffi ) min
+
+k!k^"
+
+D
+
++
+
+V
+
+!
+
+(x) ! 0
+
+#
+
+where D
+
++
+
+indicates, as usual in the literature on nonsmooth Lyapunov functions, the Dini
+
+derivative
+
+D
+
++
+
+V
+
+!
+
+(x
+
+0
+
+) := lim sup
+
+t!0
+
++
+
+V (x(t)) \Gamma  V (x
+
+0
+
+)
+
+t
+
+and x(t) is the trajectory corresponding to the measurable control ! (the norm is the sup norm).
+
+To state the next two results, we assume for simplicity that the system (1) is affine in controls, a class that includes most examples of interest and which allows us to avoid "relaxed" controls. For
+
+.x = f
+
+0
+
+(x) + G(x)u ; f
+
+0
+
+(0) = 0 ; G(x) 2 IR
+
+n\Theta m
+
+8x
+
+we have:
+
+Theorem 6. \Sigma  is asycontrollable () it admits a C
+
+0
+
+clf.
+
+Theorem 7. \Sigma  is almost smoothly stabilizable () it admits a C
+
+1
+
+clf.
+
+Thus we know that there is no possible smooth clf for the example seen before whose orbits are circles (Figure 7), since there are no almost-smooth stabilizers. But this system is asycontrollable, so we know that there do exist continuous clf's. Figure 8 illustrates what a typical level set for one such clf may look like; note the singularity due to lack of smoothness.
+
+Theorem 6 was proved in [24], and is based on the solution of an appropriate optimal control problem. "Relaxed" controls are used there, because the more general case of systems not affine in controls is treated, but the proof here is exactly the same. Also, the "small-control" property didn't play a role in that reference, but as remarked there -top of page 464-, the proof can be easily adapted.
+
+Theorem 7, which we will refer to as Artstein's Theorem, was originally given in [3], which also discussed the example in Figure 7. It has since been rediscovered by others, most notably in [32] and other work by that same author. In every case, the proof is based on some sort of partition of unity argument, but we sketch below a simple and direct proof. This result is very powerful; for instance, it implies:
+
+Corollary. If there is a continuous function k : IR
+
+n
+
+! IR
+
+m
+
+with k(0) = 0 and such that
+
+.x = f
+
+0
+
+(x) + G(x)k(x)
+
+has the origin as a globally asymptotically stable point then there is also an almost-smooth global stabilizer.
+
+Since solutions may not be unique, the assumption is that for every trajectory the asymptotic stability definition holds. By Kurzweil's Theorem, -see the discussion in [3]- there is a smooth clf, and hence by Theorem 7 there is an almost smooth feedback as desired. This explains our earlier remarks to the effect that the precise degree of regularity away from zero seems to be not very critical, so long as at least continuity holds.
+
+A proof of Artstein's Theorem is as follows. For simplicity, we consider just the case m = 1 and a system .x = f
+
+0
+
+(x) + ug(x), but for m ? 1 the proof is entirely analogous.Pass1: Page 13
+
+
+As explained earlier, one implication is immediate from the converse Lyapunov theorems. Assume then that V is a smooth clf, and let
+
+a(x) := rV (x):f
+
+0
+
+(x) ; b(x) := rV (x):g(x)
+
+Then
+
+the pair (a(x); b(x)) is stabilizable 8x 6= 0
+
+(for each fixed x as an n = m = 1 LTI system). On the other hand, an almost-smooth feedback law that stabilizes and so that the same V is a Lyapunov function for the closed- loop system is a k(\Delta ) so that
+
+a(x) + k(x)b(x) ! 0 8x 6= 0 and is smooth for x 6= 0 and satisfies k(x) ! 0 as x ! 0. This is basically a problem on "Families of Systems", if we think of (a(x); b(x)) as a parameterized set of one-dimensional LTI systems. We use a technique due to Delchamps ([9]) in order to construct k. Consider the LQ Problem
+
+min
+
+u
+
+Z
+
+1
+
+0
+
+u
+
+2
+
+(t) + b
+
+2
+
+y
+
+2
+
+(t) dt
+
+for each fixed x, where the "y" appearing in the integral is a state variable for the system
+
+.y = ay + bu : This results in a feedback law u = ky parameterized by x. Moreover, note that when x is near zero also b = b(x) is small, by continuity and the fact that, because V has a local minimum at the origin, rV (0) = 0. Therefore one may expect that when x is near zero the b
+
+2
+
+term gives more relative weighting to the u
+
+2
+
+term, forcing small controls and thus
+
+continuity of the feedback at the origin.
+
+Explicitely solving the corresponding algebraic Riccati equation results in the feedback law
+
+k := \Gamma 
+
+a +
+
+p
+
+a
+
+2
+
++ b
+
+4
+
+b which is analytic in a; b; the apparent singularity at b = 0 is "removable", and the feedback is 0 at those points with b(x) = 0. Further, as proved in [26], this is C
+
+0
+
+at the origin, as
+
+desired.
+
+The same formula shows how to obtain a feedback law analytic on x 6= 0 provided that f
+
+0
+
+; g; V be analytic. A different construction can be used to prove that there is a rational
+
+feedback stabilizer if f
+
+0
+
+; g; V are given by rational functions, but it is not yet clear if this
+
+rational stabilizer can be made continuous at the origin.
+
+The above formula for a stabilizing feedback law can be compared to the alternative proposed in [32], which is
+
+k(x) = \Gamma O/
+
+a
+
+b
+
+\Gamma  b
+
+where O/ : IR
+
+n
+
+! [0; 1] is any function such that O/ j 1 where a * 0 and O/ j 0 about b = 0.
+
+(Such functions exist, but are hard to construct explicitely.)
+
+Note that when it is known that a ^ 0 for all x, one may try the feedback law k(x) := \Gamma b. If there is sufficient "transversality" between f
+
+0
+
+and g a LaSalle invariance argument
+
+establishes stability. The assumption that for some V there holds a ^ 0 everywhere is valid for instance if one knows that a j 0 for such a V , which in turn happens with conservative systems. This idea, apparently first studied in [11], gave rise to a large literature on feedback stabilization; see for instance [21], [10], [16], and references there. For example, consider the system ([11])
+
+.x
+
+1
+
+= x
+
+2
+
+.x
+
+2
+
+= \Gamma x
+
+1
+
+\Gamma  x
+
+1
+
+uPass1: Page 14
+
+
+for which V := (1=2)(x
+
+2
+
+1
+
++ x
+
+2
+
+2
+
+) satisfies a j 0. The feedback law k(x) := \Gamma b(x) = \Gamma x
+
+1
+
+x
+
+2
+
+leads to a Li'enards-type closed-loop equation, which can be proved asymptotically stable
+
+using the invariance principle. This function V is not a clf in our (strict) sense, since one can not guarantee
+
+(8x 6= 0)(9u) rV (x)f (x; u) ! 0
+
+but just the corresponding weak inequality. However, one can still try to apply the above control law, and the formula gives in this case precisely the same feedback, \Gamma x
+
+1
+
+x
+
+2
+
+(we thank
+
+Andrea Bacciotti for pointing this out to us).
+
+8 Input-to-State Stability The paper [25] studied relations between state-space and operator notions of stabilization. One such notion is that of input to state stabilization, which deals with finding a feedback law k so that, for the system
+
+.x = f (x; k(x) + u) (4)
+
+in Figure 2, a strong type of bounded-input bounded-output behavior is achieved. We do not give here the precise definition of input-to-state stable system (ISS), save to point out that such stability implies asymptotic stability when u j 0 as well as bounded trajectories for bounded controls; see also [27] for related properties. The main Theorem from [25] is:
+
+Theorem 8(a). If the system .x = f
+
+0
+
+(x) + G(x)u is globally smoothly (respectively,
+
+almost smoothly) stabilizable then there exists a smooth (respectively almost smooth) k so that (4) is ISS.
+
+Note that, in general, a different k is needed than the one that stabilizes; for instance
+
+.x = \Gamma x + (x
+
+2
+
++ 1)u
+
+is already asymptotically stable, i.e. k j 0 can be used, but the constant input u j 1 produces an unbounded trajectory -and a finite escape time from every initial state. On the other hand, k(x) = \Gamma x gives an ISS closed-loop system.
+
+The result holds also locally, of course. Further, there is a generalization to systems which are not necessarily linear in controls:
+
+Theorem 8(b). If the system .x = f (x; u) is smoothly (respectively, almost smoothly) stabilizable then there exists a smooth (respectively almost smooth) k and an everywhere nonzero smooth scalar function fi so that the system
+
+.x = f (x; k(x) + fi(x)u) in Figure 3 is ISS.
+
+9 Decomposition Methods Consider a cascade of systems as in Figure 9,
+
+.z = f (z; x) .x = g(x; u)Pass1: Page 15
+
+
+FIGURE 9: Cascade of systems Many authors have studied the following question: If the system .z = f (z; x) is stabiliz- able (with x thought of as a control) and the same is true for .x = g(x; u), what can one conclude about the cascade? More particularly, what if the "zero-input" system .z = f (z; 0) is already known to be asymptotically stable?
+
+There are many reasons for studying these problems ([34], [17], [7]):
+
+ffl They are mathematically natural; ffl In "large scale" systems one can often easily stabilize subsystems; ffl Many systems, e.g. "minimum phase" ones, are naturally decomposable in this form; ffl In "partial linearization" work, one has canonical forms like this; ffl Sometimes two-time scale design results in such systems.
+
+The first result along these lines is local, and it states that a cascade of locally asymp- totically stable systems is again asystable. One can also say this in terms of stabilizability of the x-system, since any stabilizing feedback law u = k(x) can be also thought of as a feedback u = k(x; z):
+
+Theorem 9. If .z = f (z; 0) has 0 as an asymptotically stable state and if .x = g(x; u) is locally smoothly stabilizable then the cascade is also locally smoothly stabilizable.
+
+This follows from classical "total stability" theorems, and was proved for instance in [34] and in a somewhat different manner in [27] using Lyapunov techniques. The same result holds for almost-smooth stabilizability.
+
+There is also a global version of the above: Theorem 10. If .z = f (z; 0) has 0 as a globally asymptotically stable state and if
+
+.x = g(x; u) is globally smoothly stabilizable then the cascade is also smoothly globally stabilizable, provided that the system .z = f (z; x) be ISS.
+
+The last condition can be weakened considerably, to the statement: If x(t) ! 0 as an input to the z-subsystem, then for every initial condition z(0), the trajectory z(\Delta ) is defined globally and it remains bounded. (The theorem shows that in fact it must then also go to zero.)
+
+For a proof, see [27]. Under extra hypotheses on the system, such as that f be globally Liptschitz, the ISS (or the BIBS) conditions can be relaxed -the paper [31] provides a detailed discussion of this issue, which was previously considered in [37] and [19].
+
+Consider now the more general case in which the ISS condition fails. The last statement in Theorem 10 suggests first making the z-system ISS, using Theorem 8(b), and thus proving stabilizability of the composition. The problem with this idea is that the feedback law cannot always be implemented through the first system. One case when this idea works is what is called the "relative degree one" situation in zero-dynamics studies. Given is a system
+
+.z = f (z; x) .x = uPass1: Page 16
+
+
+where x and u now have the same dimensions. Assume that k and fi have been found making the system
+
+.z = f (z; k(z) + fi(z)x)
+
+ISS with x as input. Then, with the change of variables
+
+x = k(z) + fi(z)y (recall that fi(z) is always nonzero), there results a system of the form
+
+.z = f (z; k(z) + fi(z)y) .y =
+
+1
+
+fi(x)
+
+[h(z; y) + u]
+
+with h a smooth function. Then u := \Gamma fi(x)y + h(z; y) stabilizes the y-subsystem, and hence also the cascade by Theorem 10.
+
+Other, previous, proofs of this "relative degree one" result were due to [14], in the context of "PD control" of mechanical systems, as well as [32] and [7]. In [29], an application to rigid body control is given, in which the equations naturally decompose as above. Another such example is the following one. Assume that we wish to stabilize
+
+.z = x
+
+3
+
+.x = u
+
+and note that u := K(z) = \Gamma z stabilizes the first system. Since
+
+.z = (u \Gamma  z)
+
+3
+
+is ISS -because z(u \Gamma  z)
+
+3
+
+! 0 for large z and bounded u,- one can chose fi = 1 in the above
+
+construction. There results the smooth feedback law
+
+u = \Gamma z \Gamma  x \Gamma  x
+
+3
+
+stabilizing the system.
+
+10 Why Continuous Feedback? Since smooth or even continuous feedback may be unachievable, one should also study various techniques of discontinuous stabilization, and this is in our view the most important direction for further work. Here we limit ourselves to a few references:
+
+ffl Techniques from optimal control theory typically result in such stabilizing feedbacks; ffl There are many classical techniques for discontinuous control, such as sliding mode
+
+systems (see e.g. [33]);
+
+ffl A piecewise-analytic synthesis of controllers was shown to be possible under control-
+
+lability and analyticity assumptions on the original system ([30]);
+
+ffl If constant-rate sampling is allowed, piecewise-linear feedback can often be imple-
+
+mented ([22]);
+
+ffl Pulse Width Modulated control is related to sampling and becoming popular (see e.g.
+
+[20]).Pass1: Page 17
+
+
+11 Output Feedback Typically only partial measurements are available for control. Some authors have looked at output stabilization problems, and in particular the separation principle for ob- server/controller configurations; see e.g. [35].
+
+For linear systems, one knows that output (dynamic) stabilizability is equivalent to sta- bilizability and detectability. A generalization of this theorem, when discontinuous control is allowed, was obtained in [23], based on the stability of the subsystem that produces zero output when the zero input is applied, a notion of detectability for nonlinear systems. Very little is still known in this area, however.
+
+12 Additional Bibliography There follow here some additional references related to the general topic of this paper. We'd like to acknowledge Andre Bacciotti's help in compiling this list.
+
+ffl Abed E.H., and Fu J.H., "Local Feedback Stabilization and Bifurcation Control, II.
+
+Stationary Bifurcation," Systems and Control Letters 8(1987): 467-473
+
+ffl Aeyels D., "Stabilization by Smooth Feedback of the Angular Velocity of a Rigid
+
+Body," Systems and Control Letters 5(1985): 59-63.
+
+ffl Aeyels D., "Local and Global Stabilizability for Nonlinear Systems," in Theory and
+
+Applications of Nonlinear Control Systems, C.I. Byrnes and A. Lindquist, Eds, North Holland 1986, pp. 93-106
+
+ffl Aeyels D., and M. Szafranski, "Comments on the Stabilizability of the Angular Ve-
+
+locity of a Rigid Body," Systems and Control Letters, 10(1988): 35-39.
+
+ffl Andreini, A., A. Bacciotti, and G. Stephani, "Global stabilizability of homogeneous
+
+vector fields of odd degree," Systems and Control Letters, 10 (1989): 251-256.
+
+ffl Andreini, A., A. Bacciotti, and G. Stefani, "On the Stabilizability of Homogeneous
+
+Control Systems," Proc.8th Int. Conf. Analysis and Optim. of Systems, Antibes 1988, INRIA, Lect. Notes in Control and Inf. No. 111, Springer Verlag, 1988, pp. 239-248.
+
+ffl Andreini, A., A. Bacciotti, P. Boieri, and G. Stefani, "Stabilization of Nonlinear
+
+Systems by means of Linear Feedbacks," Preprints of Nonlinear Control Conference, Nantes 1988.
+
+ffl Bacciotti A., "Remarks on the Stabilizability Problem for Nonlinear Systems," in
+
+Proc.25th CDC, Athens, IEEE, 1986, pp. 2054-2055.
+
+ffl Bacciotti A., "The Local Stabilizability Problem for Nonlinear Systems," IMA J.Math.
+
+Control and Information 5(1988): 27-39.
+
+ffl Bacciotti, A., and P. Boieri, "An Investigation of Linear Stabilizability of Planar
+
+Bilinear Systems," Proc. IFAC Symposium on Nonlinear Control Systems Design, Capri, 1989.
+
+ffl Banks, S.P., "Stabilizability of finite- and infinite-dimensional bilinear systems, IMA
+
+J. of Math Control and Inf 3(1986): 255-271.
+
+ffl Barmish, B.R., M.J. Corless, and G. Leitmann, "A new class of stabilizing controllers
+
+for uncertain dynamical systems," SIAM J. Control and Opt. 21(1983): 246-255.Pass1: Page 18
+
+
+ffl Bethash S., and S. Sastry, "Stabilization of Nonlinear Systems with Uncontrollable
+
+Linearization," IEEE Trans. Autom. Control AC-33(1988): 585-591.
+
+ffl Bhatia, N.P., and G.P. Szeg"o, Stability Theory if Dynamical Systems, Springer, Berlin,
+
+1970.
+
+ffl Byrnes C.I., and A. Isidori, "Global Feedback Stabilization. of Nonlinear Systems,"
+
+Proc. 24th IEEE CDC, Ft.Lauderdale, IEEE Publications, 1985, pp. 1031-1037
+
+ffl Byrnes, C.I., and A. Isidori, "Local Stabilization of Minimum-Phase Nonlinear Sys-
+
+tems," Systems and Control Letters 11(1988): 9-17.
+
+ffl Chow, J.H., and P.V. Kokotovic, "A two-stage Lyapunov-Bellman design of a class of
+
+nonlinear systems," IEEE Trans. Autom. Cntr. TAC-26 (1981): 656-663.
+
+ffl Corless, M.J., and G. Leitmann, "Continuous state feedback guaranteeing uniform
+
+boundedness for uncertain synamical systems," IEEE Trans. Autom. Control, 26(1981): 1139-1144.
+
+ffl Crouch, P.E., "Spacecraft attitude control and stabilization: applications of geometric
+
+control theory," IEEE Trans. Autom. Control, AC-29(1984): 321-333.
+
+ffl Dayawansa W.P., C.F. Martin, and G. Knowles, "Asymptotic Stabilization of a Class
+
+of Smooth Two Dimensional Systems," to appear in SIAM J.Cntr and Optimization.
+
+ffl Gauthier J.P., and G. Bornard, "Stabilization des systemes non lineaires," in Outils
+
+Mathematiques pour l'Automatique, l'Analyse des Systemes et le Traitement du Signal, Ed. I.D. Landau, vol.1, Publ.CNRS, 1981, Paris, pp. 307-324.
+
+ffl Gauthier J.P., and G. Bornard, "Stabilization of Bilinear Systems, Performance Spec-
+
+ification and Optimality," in Analysis ans Optimization of Systems (INRIA), Ed. Bensoussan and Lions, Lect. Notes Contr. Inf. Sc. No.28, Springer Verlag, Berlin, 1980, pp. 125-140
+
+ffl Glass, M., "Exponential stability revisited," Int.J. Control 46(1987): 1505-1510. ffl Hermes, H., "On the synthesis of a stabilizing feedback control via Lie algebraic
+
+methods," SIAM J.Cntr. and Opt. 18(1980): 352-361.
+
+ffl Hermes, H., "On a Stabilizing Feedback Attitude Control," J. Optim. Theory and
+
+Appl., 31 (1980): 373-384.
+
+ffl Huijberts, H.J.C., and A.J.van der Schaft, "Input-output decoupling with stability
+
+for Hamiltonian systems," to appear in Math. of Control, Signals, and Systems.
+
+ffl Irving, M., and P.E. Crouch, "On Sufficient Conditions for Local Asymptotic Stability
+
+of Nonlinear Systems whose Linearization is Uncontrollable," Control Theory Centre Report No. 114, University of Warwick
+
+ffl Kawski, M., "Stabilizability and Nilpotent Approximations," Proc. 1988 IEEE CDC,
+
+IEEE Publications, 1988.
+
+ffl Koditschek, D.E., and K.S. Narendra, "Stabilizability of Second-Order Bilinear Sys-
+
+tems," IEEE Trans. Autom. Ctr. AC-28(1983): 987-989.
+
+ffl Kokotovic, P.V., and H.J. Sussmann, H.J., "A positive real condition for global sta-
+
+bilization of nonlinear systems," Report 89-01, SYCON - Rutgers Center for Systems and Control, Jan. 1989.Pass1: Page 19
+
+
+ffl Korobov, V.I., "Controllability and Stability of Certain Nonlinear Systems," Differ-
+
+entsial'nye Uranveniya Vol. 9 (1973): 614-619 (in Russian, translation on Differential Equations, pp. 466-469).
+
+ffl Longchamp, R., "State-feedback control of bilinear systems," IEEE Trans. Autom.
+
+Cntr. 25(1980): 302-306.
+
+ffl Longchamp, R., "Controller Design for Bilinear Systems," IEEE Trans. Autom. Ctr.
+
+AC-25(1980): 547-548.
+
+ffl Luesink, R., and H. Nijmeijer, "On the Stabilization of Bilinear Systems via Constant
+
+Feedback," to appear in Linear Algebra and its Applications.
+
+ffl Marino R., "Feedback Stabilization of Single-input Nonlinear Systems," Systems and
+
+Control Letters 10(1988): 201-206.
+
+ffl Pedrycz, W., "Stabilization of Bilinear Systems by a Linear Feedback Control," Ky-
+
+bernetika 16 (1980): 48-53.
+
+ffl Quinn J.P., "On Russell's Method of Controllability via Stabilizability," J. Opt. The-
+
+ory and Appl. 52(1987): 279-291.
+
+ffl Quinn J.P., "Stabilization of Bilinear Systems by Quadratic Feedback Control," J.
+
+Math. Anal. Appl. 75(1980): 66-80.
+
+ffl Roxin, E., "Stability in general control systems," J.of Diff. Eqs. 19(1965): 115-150. ffl Ryan, E.P., and N.J. Buckingham, "On asymptotically stabilizing feedback control of
+
+bilinear systems," IEEE Trans. Autom. Cntr. 28(1983): 863-864.
+
+ffl Saskena, V.R., J.O'Relly, and P.V. Kokotovic, "Singular perturbations and two-scale
+
+methods in control theory: survey 1976-1983," Automatica 20(1984): 273-293.
+
+ffl Singh S.N., "Stabilizing Feedback Control for Nonlinear Hamiltonian Systems and
+
+Nonconservative Bilinear Systems in Elasticity," J. Dyn. Syst., Meas. and Control, Transac. of ASME 104(1982): 27-32.
+
+ffl Tsinias J., "Stabilization of Affine in Control Nonlinear Systems," Nonlinear Analysis
+
+TMA 12(1988): 1283-1296.
+
+ffl Tsinias, J., and N. Kalouptsidis, "Prolongations and stability analysis via Lyapunov
+
+functions of dynamical polysystems," Math. Systems Theory 20(1987): 215-233.
+
+ffl Van der Schaft, A.J., "Stabilization of Hamiltonian Systems," J. Nonlinear Analysis,
+
+MTA 10(1986): 1021-1035.
+
+This Research was supported in part by US Air Force Grant AFOSR-88-0235.
+
+13 References
+
+1. Abed, E.H., and J-H. Fu, "Local stabilization and bifurcation control, I. Hopf bifur-
+
+cation," Systems and Control Letters 7 (1986): 11-17.
+
+2. Aeyels, D., "Stabilization of a class of nonlinear systems by a smooth feedback con-
+
+trol," Systems and Control Letters, 5 (1985): 289-294.
+
+3. Artstein, Z., "Stabilization with relaxed controls," Nonl. Anal., TMA 7 (1983): 1163-
+
+1173.Pass1: Page 20
+
+
+4. Baccioti, A., and P. Boieri, "Linear stabilizability of planar nonlinear systems," to
+
+appear in Math. of Control, Signals, and Systems.
+
+5. Boothby, W.M., and R. Marino, "Feedback stabilization of planar nonlinear systems,"
+
+Systems and Control Letters 12(1989): 87-92.
+
+6. Brockett, R.W., "Asymptotic stability and feedback stabilization," in Differential
+
+Geometric Control theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkhauser, Boston, 1983, pp. 181-191.
+
+7. Byrnes, C.I. and A. Isidori, "New results and counterexamples in nonlinear feedback
+
+stabilization," Systems and Control Letters, 12(1989), Number 5.
+
+8. Dayawansa, W.P., and C.F. Martin, "Asymptotic stabilization of two dimensional
+
+real-analytic systems," Systems Control Lett. 12(1989): 205-211.
+
+9. Delchamps, D.F., "Analytic stabilization and the algebraic Riccati equation," Proc.
+
+IEEE Conf. Dec. and Control (1983) :1396-1401.
+
+10. Gutman, P.O., "Stabilizing controllers for bilinear systems," IEEE Trans. Autom.
+
+Control, 26(1981): 917-922.
+
+11. Jurdjevic, V. and J.P. Quinn, "Controllability and stability," J.of Diff.Eqs. 28 (1978):
+
+381-389.
+
+12. Kalouptsidis, N., and J. Tsinias, "Stability improvement of nonlinear systems by
+
+feedback," IEEE Trans. Autom. Crt. 29(1984): 346-367.
+
+13. Kawski, M., "Stabilization of nonlinear systems in the plane," Systems and Control
+
+Letters, 12(1989): 169-176.
+
+14. Koditschek, D.E., "Adaptive techniques for mechanical systems," Proc.5th. Yale
+
+Workshop on Adaptive Systems, pp. 259-265, Yale University, New Haven, 1987.
+
+15. Krasnoselskii, M.A., and P.P. Zabreiko, Geometric Methods of Nonlinear Analysis,
+
+Springer, Berlin, 1983.
+
+16. Lee, K.K., and Arapostathis, A., "Remarks on smooth feedback stabilization of non-
+
+linear systems," Systems and Control Letters, 10 (1988): 41-44.
+
+17. Marino R., "High-Gain Stabilization and Partial Feedback Linearization," Proceedings
+
+of 25th CDC, Athens, IEEE Publ., 1986, pp.209-213
+
+18. Massera, J.L., "Contributions to stability theory," Annals of Math, 64(1956): 182-206.
+
+Erratum in Annals of Math, 68(1958): 202.
+
+19. Sastry, S.I., and A. Isidori, "Adaptive control of linearizable systems," Memo
+
+UCB/ERL M87/53, March 1988, U.California, Berkeley.
+
+20. Sira-Ramirez, H. "A geometric approach to pulse-width-modulated control in dynam-
+
+ical systems," IEEE Trans. Automatic Control, 34(1989): 184-187.
+
+21. Slemrod, M., "Stabilization of bilinear control systems with applications to noncon-
+
+servative problems in elasticity," SIAM J.Control and Opt. 16(1978): 131-141.
+
+22. Sontag, E.D., "Nonlinear regulation: The piecewise linear approach," IEEE Trans.
+
+Autom. Control AC-26(1981): 346-358.
+
+23. Sontag, E.D., "Conditions for abstract nonlinear regulation," Information and Con-
+
+trol, 51(1981): 105-127.Pass1: Page 21
+
+
+24. Sontag, E.D., "A Lyapunov-like characterization of asymptotic controllability," SIAM
+
+J. Control and Opt., 21(1983): 462-471.
+
+25. Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Trans. Au-
+
+tomatic Control, 34(1989): 435-443.
+
+26. Sontag, E.D., "A `universal' construction of Artstein's theorem on nonlinear stabiliza-
+
+tion," Systems and Control Letters, 13 (1989): No.2.
+
+27. Sontag, E.D., "Further facts about input to state stabilization", to appear in IEEE
+
+Trans. Automatic Control, 1990.
+
+28. Sontag, E.D., and H.J. Sussmann, "Remarks on continuous feedback," Proc. IEEE
+
+Conf. Dec. and Control, Albuquerque, Dec.1980.
+
+29. Sontag, E.D., and H.J. Sussmann, "Further comments on the stabilizability of the
+
+angular velocity of a rigid body," Systems and Control Letters, 12 (1989): 213-217.
+
+30. Sussmann, H.J., "Subanalytic sets and feedback control," J.Diff.Eqs. 31(1979):31-52. 31. Sussmann, H.J., and P.V. Kokotovic, "The peaking phenomenon and the global sta-
+
+bilization of nonlinear systems," Report 89-07, SYCON - Rutgers Center for Systems and Control, March 1989.
+
+32. Tsinias, J., "Sufficient Lyapunovlike conditions for stabilization," Math. of Control,
+
+Signals, and Systems 2(1989): 343-357.
+
+33. Utkin, V.I., Sliding Modes and Their Application in Variable Structure Systems, Mir,
+
+Moscow, 1978.
+
+34. Vidyasagar, M., "Decomposition techniques for large-scale systems with nonadditive
+
+interactions: stability and stabilizability," IEEE Trans. Autom. Ctr. 25(1980): 773- 779.
+
+35. Vidyasagar, M., "On the stabilization of nonlinear systems using state detection,"
+
+IEEE Trans. Autom. Ctr. 25(1980): 504-509.
+
+36. Vidyasagar, M., Nonlinear Systems Analysis, Prentice-Hall, 1978. 37. Varaiya, P.P. and R. Liu, "Bounded-input bounded-output stability of nonlinear time-
+
+varying differential systems," SIAM J.Control 4(1966): 698-704.
+
+38. Zabczyk J., "Some Comments on Stabilizability," Applied Math Optimiz. 19(1989):
+
+1-9.</pre>
+</body>
+</html>

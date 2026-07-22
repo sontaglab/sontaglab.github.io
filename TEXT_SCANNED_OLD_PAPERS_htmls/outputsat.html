@@ -1,0 +1,890 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/outputsat.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/outputsat.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Observability of Linear Systems with Saturated
+
+Outputs
+
+Ren'ee Koplon\Lambda  Dept. of Mathematics
+
+SYCON Center Rutgers University New Brunswick, NJ 08903
+
+Eduardo D. Sontagy
+
+Dept. of Mathematics
+
+SYCON Center Rutgers University New Brunswick, NJ 08903
+
+M.L.J. Hautus
+
+Dept. of Mathematics University of Technology
+
+Eindhoven The Netherlands
+
+Abstract In this paper, we present necessary and sufficient conditions for observability of the class of output-saturated systems. These are linear systems whose output passes through a saturation function before it can be measured.
+
+1 Introduction The question of observability for time-invariant linear systems is certainly a well understood problem. But what happens when the output is not fully available? That is, instead of measuring Cx, we can only measure oe(Cx), where oe is some nonlinear function. If the nonlinearity oe is not injective, it is no longer obvious from the observability matrix [C0 A0C0 \Delta  \Delta  \Delta  (An\Gamma 1)0C0]0 (prime indicates transpose), whether or not the state can be "observed" from the output.
+
+In [3], we answered this question in the case in which oe provided the sign of the output of the linear system. That model was motivated by quantization and pattern recognition. In this paper, we will look at continuous-time sytems in which the function oe is the identity near the origin, but saturates the output values away from 0. (A preliminary version of this was presented at the American Automatic Control Conference, June 1992 [5].)
+
+By an output-saturated system, we mean a continuous-time system
+
+\Sigma  : .x(t) = Ax(t) + Bu(t)
+
+y(t) = oe(Cx(t)) \Lambda Research supported by AFOSR under grant AFOSR-91-0343
+
+yResearch supported by AFOSR under grant AFOSR-91-0343
+
+1
+
+with A 2 IRn\Theta n, B 2 IRn\Theta m, C 2 IRp\Theta n and oe defined by applying the function
+
+oe(x) = 8?!?:
+
+\Gamma 1 x ! \Gamma 1
+
+x \Gamma 1 ^ x ^ 1
+
+1 1 ! x
+
+to each component of the output vector. We denote the above output-saturated system by \Sigma  = (A; B; C)os. This is an effective model for sensor saturation or overflow in the measurement device. A system is observable if given any two initial states, there is a control which provides distinguishing outputs for those two initial states. For linear systems, this definition of observability coincides with saying that for any two initial states the outputs are different, using no controls. However, for output-saturated systems, if the outputs remain large for two distinct states, they may look the same. So it may be necessary to use the control to move the output into the "linear window". It is easy to see that the boundaries of this window are not really relevant for the question of observability. We merely choose [\Gamma 1; 1] for convenience. In fact, oe could be a completely different function in each coordinate, as long as it is one-to-one in a neighborhood of 0 and saturated away from zero.
+
+After introducing some technical definitions and lemmas in Section 2, we proceed in Section 3 to prove a characterization for observability of continuous-time output-saturated systems. Since the conditions are not necessarily easy to check, Section 4 presents some necessary and some sufficient conditions for observability depending only on certain eigenvalues of A. The two sections 5 and 6 focus separately on the cases of one, two, and more than two outputs. Finally, in Section 7 we study output-saturated systems with the added restriction of bounded inputs. We provide a characterization of observability for the class of bounded-input output-saturated systems for which the pair (A; B) is stabilizable.
+
+2 Preliminaries First we give Bohr's definition of almost periodicity (see e.g. [1]) then prove some technical lemmas. Definition 2.1 A function f : IR ! IR is almost periodic if for any " ? 0, there exists a number ` ? 0 such that for every open interval of length ` there exists a number o/ contained in that interval such that
+
+jf (t + o/ ) \Gamma  f (t)j ! "; 8t 2 IR:
+
+This number o/ , which depends on ", is called an "-almost period.
+
+Lemma 2.2 If f : IR ! IR is almost periodic, and t0 2 IR is arbitrary,
+
+lim sup
+
+t!1 f (t) = supt?t0 f (t);
+
+lim inft!1 f (t) = inft?t
+
+0 f (t):
+
+2
+
+Proof. Pick an arbitrary T0 ? t0 and " ? 0. The function f is almost periodic, so there exists an ` such that in every interval of length `, there is an "-almost period, o/ . Suppose we are given a T ? 0. Then there exists a o/ in the interval (T \Gamma  T0; T \Gamma  T0 + `) so that jf (T0 + o/ ) \Gamma  f (T0)j ! ". Let t1 := T0 + o/ ? T . As
+
+f (T0) \Gamma  f (t1) ! ";
+
+we have proved that for all T ? 0 there exists a number t1 ? T such that f (t1) ? f (T0) \Gamma  " and " was arbitrary. This implies that lim sup f (t) * f (T0). This is true for all T0 ? t0, so lim sup t!1 f (t) * supt?t
+
+0 f (t). Also supt?t0 f (t) * lim sup t!1 f (t), so we conclude that
+
+lim sup
+
+t!1 f (t) = supt?t0 f (t):
+
+The second statement follows analogously.
+
+In particular, lim supt!1 f (t) = supt2IR f (t) and lim inft!1 f (t) = inft2IR f (t) for almost periodic functions, so:
+
+Lemma 2.3 If f : IR ! IR is almost periodic, and lim t!1 f (t) = 0, then f (t) j 0.
+
+A function f (t) is called a Bohl function if it is a finite linear combination of functions of the form t`e*t, with ` 2 IN and * 2 C, or equivalently, if the Laplace transform ^f (s) of f (t) is rational. The poles of this rational function ^f (s) are called the exponents of the Bohl function f (t) and the order of a pole is called the index of the corresponding exponent.
+
+A pair (*; i) 2 S ae C \Theta  IN is maximal for the set S if Re(*) * Re(_) for all (_; j) 2 S, and i * j for all other (_; j) with Re(*) = Re(_). We say that (*; i) is an (exponent, index) pair for f if * is an exponent of f of index i. We define E(f ) as the set of exponents, *, of f for which (*; i*) is maximal among all (exponent, index) pairs. We will call E(f ) the set of dominating exponents of f .
+
+Recall that an eigenvalue * of a constant matrix A has index k if k is the size of the largest Jordan block of A corresponding to *, i.e., k is the multiplicity of * as a root of the minimal polynomial of A. We define the dominating eigenvalues of A, E(A), to be the set of eigenvalues * of A for which the (eigenvalue, index) pair (*; i*) is maximal among all (eigenvalue, index) pairs associated to A. Notice that if p = 1 and (A; C) is an observable pair, then A must be cyclic, so in this case, the index of * is equal to the multiplicity of *.
+
+For a matrix of Bohl functions, W (t), we find a minimal realization (Amin; Bmin; Cmin) associated to W (t), and then we define the dominating exponents for W (t) to be
+
+E(W (t)) := E(Amin): This definition does not depend on the particular realization used. Remark 2.4 Let W (t) = (w1(t); : : : ; wm(t)) be a row of Bohl functions. We say that the pair (*; i) is an (exponent, index) pair for W (t) if there is a j so that (*; i) is an (exponent, index) pair for wj(t). Then it follows that E(W (t)) is the set of * so that (*; i) is maximal among all (exponent, index) pairs of W (t).
+
+3
+
+Lemma 2.5 Let f (t) be a Bohl function. Denote C+ := fs 2 C : Re(s) * 0g. If E(f ) ` C+ n IR+, then there exists a sequence ftkg with tk ! 1 so that f (tk) = 0.
+
+Proof. Let ff be the common real part of the dominating exponents, E(f ). We can write
+
+f (t) = X
+
+j
+
+ajt`j effjtfpj sin(!j t) + qj cos(!j t)g
+
+= t`efft X
+
+j a
+
+jt`j\Gamma `e(ffj\Gamma ff)tfpj sin(!j t) + qj cos(!j t)g;
+
+where `j \Gamma  ` ^ 0 and ffj \Gamma  ff ^ 0 for all j. Now let g(t) be the sum of all the terms in which `j \Gamma  ` = 0 and ffj \Gamma  ff = 0. Let h(t) be the sum of the rest of the terms. That is, we may write f (t) = t`efft (g(t) + h(t)) where
+
+g(t) = X
+
+j
+
+ajfpj sin(!jt) + qj cos(!jt)g (1)
+
+h(t) = X
+
+j
+
+ajt\Gamma mj e\Gamma njtfpj sin(!j t) + qj cos(!jt)g: (2)
+
+We are assuming that f has a complex exponent with nonnegative real part equal to ff. Thus, g is not identically zero and the !j's are all nonzero. Any real exponents equal to ff do not have maximal index so they will correspond to terms in h of the form ajqjt\Gamma mj . Note also that mj; nj * 0 and for each j, at least one of mj, nj is nonzero, so limt!1 h(t) = 0. Since g is a continuous function of t, if we prove that lim supt!1 g(t) ? 0 and lim inft!1 g(t) ! 0, then together with h(t) ! 0, it follows that there must exist a sequence tk with tk ! 1 as k ! 1, such that g(tk) = \Gamma h(tk). Thus g + h has infinitely many zeros, and so f does too.
+
+Since g is a linear combination of periodic functions, it is itself an almost periodic function. (See [1], Paragraph 48.) Thus we may apply Lemma 2.2 to the function g. Now suppose that lim inf g(t) = inf g(t) * 0. Then the function G defined by G(t) := R t0 g(o/ )do/ is nondecreasing. By term by term integration it is easily seen that G is almost periodic and bounded (!j 6= 0 for all j, so G(t) looks again like the formula (1), but with different constants). This would imply tha G is convergent. In that case, G must be constant (Lemma 2.3), from which it follows that g is identically zero, a contradiction. So lim inf t!1 g(t) ! 0. Similarly, we may obtain that lim sup t!1 g(t) ? 0.
+
+Let ( ~A; ~C) be the observable pair of submatrices in the Kalman observability decomposition for the pair (A; C) (see [7], Section 5.2): 
+
+~A 0 A1 A2 ! i ~C 0 j : (3)
+
+Let T 2 Gl(n) be the matrix providing the coordinate transformation. Proposition 2.6 Let A 2 IRn\Theta n; C 2 IR1\Theta n. The following statements are equivalent:
+
+1. For all x 2 IRn; inft?0 jCetAxj = 0:
+
+4
+
+2. The function C ! Cn : s 7! C(sI \Gamma  A)\Gamma 1 has no poles on IR+. 3. The matrix ~A, in the Kalman observability decomposition of (A; C), has no eigenvalues on
+
+IR+.
+
+Proof. Note that since
+
+CetAx = i ~Cet ~A 0 j T \Gamma 1x; and C(sI \Gamma  A)\Gamma 1x = i ~C(sI \Gamma  ~A)\Gamma 1 0 j T \Gamma 1x
+
+for each x 2 IRn, it suffices to prove the result for observable pairs (A; C). Thus, for the remainder of this proof, we will assume (A; C) is an observable pair.
+
+We first prove that C(sI \Gamma  A)\Gamma 1 has no poles on IR+ if and only if A has no eigenvalues on IR+. Consider C(sI \Gamma  A)\Gamma 1 = C(sI \Gamma  A)\Gamma 1I as a 1 \Theta  n transfer matrix. As the triple (A; I; C) is canonical (controllable and observable), the eigenvalues of A are precisely the poles of this transfer matrix (see Corollary 5.7.2 in [7]). Thus C(sI \Gamma  A)\Gamma 1 has no poles on IR+ if and only if A has no eigenvalues on IR+, and conditions 2 and 3 are equivalent.
+
+To prove that condition 1 implies condition 3, suppose A has an eigenvalue * 2 IR+. Let v be a corresponding eigenvector. Then
+
+inft?0 jCetAvj = inft?0 e*tjCvj = jCvj ? 0;
+
+because (A; C) is observable, contradicting statement 1.
+
+Next we prove that the third condition implies the first. If A has no eigenvalues on IR+, then f (t) = CetAx is a Bohl function with no exponents on IR+, so, in particular, E(f ) T IR+ = ;. If E(f ) ` C n C+, we have f (t) ! 0 as t ! 1 and so inft?0 jf (t)j = 0. If E(f ) ` C+ n IR+, apply Lemma 2.5. Then there is a t ? 0 so that f (t) = 0, so clearly inft?0 jf (t)j = 0.
+
+3 Property Q In this section we introduce a property which, together with observability of the pair (A; C), will serve to characterize output-saturated observability. This property will be used repeatedly in later sections.
+
+Let K be any subset of f1; : : : ; pg and define NK by
+
+NK := "
+
+i62K
+
+O(A; Ci)
+
+where O(A; Ci) = Tk=0;:::;n\Gamma 1 ker(CiAk). If K = f1; : : : ; pg, then NK = IRn, the whole state space. If K = ;, then NK = O(A; C), thus N; = f0g if the pair (A; C) is observable. The states in NK are those that cannot be distinguished from 0 for the linear system (A; B; C) using outputs not in K. Note that NK is an A-invariant subspace since each O(A; Ci) is. So we may define ANK to be the operator A restricted to the subspace NK.
+
+5
+
+For an output-saturated system \Sigma  = (A; B; C)os, the sequence of p \Theta  m matrices
+
+A := fCB; CAB; CA2B; : : :g is called the Markov parameter sequence. Let I := I(A) ae f1; : : : ; pg be the indices of the nonzero rows of A, J := J (A) ae f1; : : : ; pg be the indices of the zero rows of A and define N := NJ .
+
+For any index set K ` f1; : : : ; pg, we let Q(K) be the following property:
+
+For all ,; and for all nonzero v 2 NK; there exists a j = j(,; v) 2 K so that
+
+oe(CjetA,) 6j oe(CjetA, + CjetAv): (Q(K))
+
+(If NK = f0g, Q(K) automatically holds since there are no nonzero v 2 NK.) Using this notation, we let Q = Q(J ) for K = J as defined above, and provide a necessary and sufficient characterization for observability of continuous-time output-saturated systems.
+
+Lemma 3.1 If \Sigma  = (A; B; C)os is a continuous-time output-saturated system, then \Sigma  is observable if and only if
+
+1. (A; C) is an observable pair, and 2. Property Q holds.
+
+Proof. Necessity: Clearly (A; C) is an observable pair. For the second condition, assuming \Sigma  is observable, we must show that property Q holds. If NJ = f0g, then there is nothing to prove. So assume NJ 6= f0g. Pick any , and any nonzero v 2 NJ . Let j := , + v. Then j \Gamma  , 2 NJ . By definition of NJ ,
+
+CietA(j \Gamma  ,) j 0 8i 62 J: (4)
+
+Since \Sigma  is observable, there must exist some j 2 f1; : : : ; pg and a control u so that, for some t * 0,
+
+oe `CjetA, + Z
+
+t
+
+0 Cje
+
+(s\Gamma t)ABu(s)ds' 6= oe `CjetAj + Z t
+
+0 Cje
+
+(s\Gamma t)ABu(s)ds' : (5)
+
+By (4), it cannot happen that such a j 62 J . Thus, there is a j 2 J which satisfies (5). Since Aj (the jth row of A) j 0 for j 2 J , this implies that
+
+oe(CjetA,) 6= oe(CjetAj); i:e: oe(CjetA,) 6= oe(CjetA, + Cj etAv):
+
+Sufficiency: Given , 6= j, we must show that they can be distinguished. Let
+
+~J := fj : CjetA, 6j CjetAjg
+
+= fj : , \Gamma  j 62 O(A; Cj)g:
+
+Note that the set ~J is nonempty, by condition 1. If there is any j 2 ~J so that Aj 6j 0, then ,; j can be distinguished with an argument as that used for sign-linear systems (see [4]). Otherwise, for all
+
+6
+
+j 2 ~J, Aj j 0, so ~J ` J . For each i 62 ~J , v = j \Gamma  , 2 O(A; Ci), so v 2 N ~J ` NJ , v 6= 0 and Q(J ) can be applied. So there is a j 2 J and a t so that
+
+oe(CjetA,) 6= oe(CjetAj); and indeed , and j can be distinguished. (Note that when J = f1; : : : ; pg then NJ = IRn in the above argument.)
+
+Of course property Q is not always an easy property to check, but we can use this property to simplify the proofs of the observability theorems of the next section. First we state some results about property Q .
+
+Remark 3.2 For any K ae f1; : : : ; pg, if (A; C) is an observable pair and v 2 NK is nonzero, then CjetAv 6j 0 for some j 2 K. This is because, otherwise, v 2 Tj2K O(A; Cj). Together with v 2 NK = Ti62K O(A; Ci), this implies that v 2 O(A; C) = f0g, a contradiction.
+
+Lemma 3.3 If (A; C) is an observable pair and for every j 2 J , the row vector of functions Cj(sI \Gamma  A)\Gamma 1 has no poles on IR+, then Q holds.
+
+Proof. By Proposition 2.6, if Cj(sI \Gamma  A)\Gamma 1 has no poles on IR+, then
+
+inft?0 jCjetAxj = 0; for all x 2 IRn: (6)
+
+The assumptions of this Lemma then imply that for every j 2 J , (6) holds. By Remark 3.2, for each nonzero v 2 NJ , there is a j 2 J so that CjetAv 6j 0. Then for all , 2 IRn and all nonzero v 2 NJ , choose a j 2 J so that CjetAv 6j 0. For that j, pick a t so that jCjetA,j ! 1=2. Without loss of generality, we may assume CjetAv 6= 0 for this t. Then
+
+oe(CjetA,) 6= oe(CjetA, + Cj etAv); and Q holds.
+
+Lemma 3.4 If Q holds, then for all nonzero v in NJ , there is a j in J so that CjetAv 6j 0 and inft?0 jCjetAvj = 0.
+
+Proof. Suppose not. Then there would exist a v 2 NJ ; v 6= 0 so that for all j 2 J either Cj etAv j 0 or inft?0 jCjetAvj 6= 0. Multiplying v by a scalar, we may assume that either CjetAv j 0 or CjetAv * 1 for all t ? 0. Let , = v. Then for all j 2 J ,
+
+oe(CjetA,) j oe(CjetA, + CjetAv); contradicting Q.
+
+The next example shows that these necessary conditions are not sufficient.
+
+7
+
+Example 3.5 Let \Sigma  be the output-saturated system defined by the following observable triple.
+
+A = 0B@
+
+2 0 0 0 \Gamma 1 0 0 0 1
+
+1CA
+
+; B = 0B@
+
+0 0 1
+
+1CA
+
+; C =  1 1 01 0 1 ! :
+
+Then J = f1g, NJ = f(x1; x2; x3)0 : x1 = x3 = 0g, and
+
+CetA =  e
+
+2t e\Gamma t 0
+
+e2t 0 et ! :
+
+For any v = (0; a; 0)0 2 N , a 6= 0,
+
+C1etAv = ae\Gamma t 6j 0 inft?0 jae\Gamma tj = 0:
+
+So this system satisfies the conditions of Lemma 3.4. But \Sigma  is not observable. For example, the states , = (1; 0; 0)0 and j = (1; 1; 0)0 are indistinguishable. Since K1(t) j 0, the first component of the output saturates at 1 for both initial states , and j. The second component of the output is exactly the same for both initial states.
+
+4 Observability: Necessity and Sufficiency Property Q is not an easy property to check. In this section we will give some conditions which can be checked by looking at the eigenvalues of the matrix A. For the general multiple output case, we have the following necessary conditions for observability. Recall that IR+ denotes the nonnegative real axis fs 2 IR : s * 0g.
+
+Theorem 1 If \Sigma  = (A; B; C)os is a continuous-time observable system, then
+
+1. (A; C) is an observable pair, and 2. AN has no eigenvalues on IR+. Proof. Let x be an eigenvector of AN corresponding to an eigenvalue * 2 IR+. Then x 2 N , so CietAx j 0 for all i 62 J . Let
+
+J0 := fj 2 J : CjetAx 6j 0g:
+
+Then for all j 2 J0, , = x, j = 2x, satisfy
+
+CjetA, = e*tCj x; and (7) CjetAj = 2e*tCjx: (8)
+
+Clearly the signs of (7) and (8) are always the same, and x can be scaled so that both functions are outside the linear window [\Gamma 1; 1] for all t, contradicting observability.
+
+In the particular case in which J = f1; : : : ; pg, N = IRn, so A = AN . Thus:
+
+8
+
+Corollary 4.1 If \Sigma  = (A; B; C)os is a continuous-time observable system and A j 0, then A has no eigenvalues on IR+.
+
+The above conditions are not in general sufficient for observability in the multiple output case. Example 4.2 Let \Sigma  = (A; B; C)os where
+
+A = 0B@
+
+2 1 1 0 1 2 0 0 \Gamma 1
+
+1CA
+
+; B = 0B@
+
+1 0 0
+
+1CA
+
+;
+
+y1(t) = oe(x1), and y2(t) = oe(x2). We next check that \Sigma  satisfies the necessary conditions of Theorem 1. The pair (A; C) is an observable pair. The second row of A is 0 so J = f2g and N = f(x1; x2; x3)0 2 IR3 : x1 = 0; x2 = \Gamma x3g. The restriction of A to N is AN = \Gamma I, which has no eigenvalues on IR+. But this system is not observable. Indeed, the states , = (1; 2; 1)0 and j = (1; 1; 2)0 are indistinguishable. To see this, note that K2(t) j 0. The first component of the output is
+
+y1(t) = oe `4e2t \Gamma  3et + Z
+
+t
+
+0 K1(t \Gamma  s)u(s)ds' ; for both , and j. The second component is y2(t) = oe(3et + e\Gamma t) for the initial state , and y2(t) = oe(3et + 2e\Gamma t) for j. In both cases, y2(t) j 1.
+
+Remark 4.3 Let M = Ti2J O(A; Ci) and let AM be the operator induced by A on the quotient space IRn=M . Then Lemma 3.3 is equivalent to saying that if (A; C) is an observable pair, and AM has no eigenvalues on IR+, then property Q holds.
+
+To see this let  ~
+
+AJ 0
+
+A1 A2 ! i ~CJ 0 j
+
+be the Kalman decomposition for the pair (A; CJ ) where CJ consists of just the rows of C indexed by J . Let r be the dimension of the observable component ~AJ . In this new basis, M is the subspace of states whose first r components are zero. Then A2 = AM (the restriction of A to M ) and ~AJ is a matrix representation for AM . Note that statements 2 and 3 in Proposition 2.6 are equivalent even in the case of arbitrary p. That is, AM has no eigenvalues on IR+ if and only if CJ (sI \Gamma  A)\Gamma 1 has no poles on IR+. 2
+
+The next Theorem, giving sufficient conditions for observability, follows directly from the preceeding Remark and Lemma 3.3.
+
+Theorem 2 The system \Sigma  = (A; B; C)os is observable if
+
+1. (A; C) is an observable pair, and 2. AM has no eigenvalues on IR+.
+
+9
+
+Notice the subtle, but real difference between the conditions of Theorem 2 and those of Theorem 1. Recall N = Ti2I O(A; Ci), so if we assume (A; C) is an observable pair, then N " M = f0g. Also, N and M are both A-invariant subspaces. Thus N can be naturally identified with (N + M )=M , so the eigenvalues of AN are included among those of AM . Equivalently, in matrix theoretic terms, there is a basis for IRn in which A has the form0
+
+B@ AM 0 \Lambda 0 A
+
+N \Lambda 
+
+0 0 \Lambda 
+
+1CA
+
+:
+
+Then  A
+
+N \Lambda  0 \Lambda  !
+
+is a matrix representation for AM , from which it is obvious that
+
+oe(AM) ' oe(AN): (9) Observe that for the special case p = 1, the inclusion (9) is trivial. In fact, for p = 1, AM = AN . Indeed, if I = f1g (A 6j 0), then M = IRn and N = f0g so AM = AN = 0. If instead J = f1g (A j 0), then M = f0g and N = IRn so AM = AN = A.
+
+Thus, this sufficient condition is stronger than the necessary conditions in Theorem 1 which stated that if \Sigma  is observable, then (A; C) is an observable pair and oe(AN )"IR+ = ;: The conditions are the same when p = 1. The following is an example of an observable output-saturated system which does not satisfy the stated sufficient conditions.
+
+Example 4.4 Let \Sigma  be an output-saturated system with associated triple
+
+A = 0BBB@
+
+2 0 0 0 0 3 \Gamma 1 0 0 1 3 0 0 0 0 1
+
+1CCC A ; B =
+
+0BBB @
+
+0 0 0 1
+
+1CCC A ;
+
+C =  1 1 0 01 0 0 1 ! : (This triple is observable.) Then J = f1g, and the poles of C1(sI \Gamma  A)\Gamma 1 are: 2; 3 + i; 3 \Gamma  i. Thus, C1(sI \Gamma  A)\Gamma 1 has a pole on IR+, so the sufficient conditions of Lemma 3.3 (and hence of Theorem 2) are not satisfied. However, property Q still holds. Note that NJ = f(x1; x2; x3; x4)0 : x1 = x4 = 0g and
+
+CetA =  e
+
+2t e3t cos t \Gamma e3t sin t 0
+
+e2t 0 0 et ! :
+
+Now take any , = (a; b; c; d)0 2 IR4, v = (0; v1; v2; 0)0 2 N , v 6= 0. If b 6= 0 or c 6= 0, then
+
+C1etA, = ae2t + be3t cos t \Gamma  ce3t sin t
+
+= e3t(ae\Gamma t + b cos t \Gamma  c sin t):
+
+10
+
+In this case, applying Lemma 2.5, inft?0 jC1etA,j = 0. Otherwise, if b = c = 0,
+
+C1etA(, + v) = ae2t + v1e3t cos t \Gamma  v2e3t sin t
+
+= e3t(ae\Gamma t + v1 cos t \Gamma  v2 sin t):
+
+Since v 6= 0, at least one of v1; v2 is not zero, so again applying Lemma 2.5, inft?0 jC1etA(, + v)j = 0.
+
+5 Corollaries: One and Two Outputs 5.1 The single output case In the case of a single output system, AM = AN . In fact, if A 6j 0, then AM = AN = 0, and if A j 0, then AM = AN = A. Thus, Theorems 1 and 2 may be combined into the following result. Note that under the assumption that (A; C) is an observable pair, A 6j 0 and B 6= 0 are equivalent, so condition 1 is equivalent to A 6j 0.
+
+Theorem 3 Let \Sigma  = (A; B; C)os be a single output continuous-time output-saturated system. Then \Sigma  is observable if and only if (A; C) is an observable pair, and either
+
+1. B 6= 0, or 2. A has no eigenvalues on IR+ := f* 2 IR; * * 0g.
+
+An easy corollary is the following. Corollary 5.1 The single output system \Sigma  = (A; B; C)os is observable if (A; C) is an observable pair and rank [sI \Gamma  A; B] = n for all s 2 IR+.
+
+Since stabilizability of the pair (A; B) is a particular case of the rank condition in the corollary, we see that observability plus stabilizability of the triple (A; B; C) is sufficient for observability of the output-saturated system (A; B; C)os.
+
+5.2 The case of two outputs If J consists of only one element (that is, only one row of the Markov sequence is zero), we have necessary and sufficient conditions for Q(J ) to hold which depend only on certain eigenvalues of A. This theorem suffices to characterize observability for output-saturated systems with two outputs. Assuming (A; C) is an observable pair, which is a necessary condition for observability, there are three cases. Either both rows of the Markov sequence are nonzero, so that the system is automatically observable, both rows are zero, so that Q is equivalent to A having no eigenvalues on IR+, or exactly one row of the Markov sequence is zero, in which case the following proposition applies.
+
+We first give some definitions, as the results are more general than what we actually need. Let N ae IRn be any A-invariant subspace, N 6= f0g, and N T O(A; C) = f0g. That is, N is some
+
+11
+
+subspace of states which are distinguishable from 0 for the linear system (A; B; C). Let ~A be defined as in the Kalman observability decomposition for the pair (A; C) (see equation (3)). We denote the set of eigenvalues of the matrix ~A by oe( ~A). For the purposes of the next proposition, we will understand Q to be the property that, with respect to such a space N ,
+
+For all ,; and for all nonzero v 2 N;
+
+oe(CetA,) 6j oe(CetA, + CetAv):
+
+Proposition 5.2 Assume p = 1. Let AN be the restriction of A to N , and let
+
+~* := maxf* 2 IR+; * 2 oe( ~A)g
+
+(~* := \Gamma 1 if this set is empty). Property Q holds if and only if
+
+1. oe(AN ) T IR+ = ;, and 2. (~*I \Gamma  AN ) is Hurwitz. Proof. Assume Q holds. The necessity of condition 1 follows from Theorem 1. Next we prove that condition 2 holds. Suppose otherwise that ~A has an eigenvalue * 2 IR+ and AN has an eigenvalue _ with Re(_) = ff ^ *. Since * 2 IR+ is an eigenvalue of ~A, there is an x = (~x0; 0)0 so that ~x is an eigenvector of ~A. Since ( ~A; ~C) is an observable pair, ~C ~x 6= 0. Without loss of generality, assume~ C ~x ? 0. (If not, choose \Gamma ~x.)
+
+Let v 2 N be an eigenvector of A corresponding to _. The function jCe(_\Gamma *)tvj is bounded. Let M be an upper bound, which we may take to be greater than 1. Choose , as follows. Let
+
+r ? (2M )=( ~C ~x); and , = rx. Then
+
+CetA, = e*t( ~Cr~x) ? 2M ? 2
+
+for all t, and
+
+CetA, + CetAv = e*t ir ~C ~x + Ce(_\Gamma *)tvj
+
+? e*t(2M \Gamma  M ) = M e*t * M ? 1
+
+for all t, contradicting Q .
+
+Now we assume that the two conditions hold and prove that Q must hold. Given any x 2 IRn; and v 6= 0; v 2 N , it suffices to show that CetAv 6j 0 and either inft?0 jCetAxj = 0 or inft?0 jCetA(x + v)j = 0. By assumption, N T O(A; C) = f0g, so CetAv 6j 0 for all such nonzero v 2 N . If inft?0 jCetAxj = 0 then we are done. Now suppose inft?0 jCetAxj 6= 0. Then by Proposition 2.6, ~A must have an eigenvalue * 2 IR+. Since N 6= f0g, AN has at least one eigenvalue. By assumption, Re(_) ? ~* for all such _ 2 oe(AN ). Condition 1 states oe(AN ) T IR+ = ;, so any such _ has nonzero imaginary part.
+
+Any exponent, _, of CetAv for v 2 N satisfies Re(_) ? ~*. Suppose first that _ is not an exponent of CetA(x + v). This can happen only if the terms of CetAv having _ as an exponent
+
+12
+
+are exactly cancelled by similar terms in CetAx. In that case, CetAx has _ as an exponent. But then f (t) = CetAx is a Bohl function with E(f ) T IR+ = ;. As in the proof of Proposition 2.6, either E(f ) ` C n C+, in which case CetAx ! 0 as t ! 1, or E(f ) ` C+ n IR+ and we may apply Lemma 2.5. In either case, inft?0 jCetAxj = 0; a contradiction. Thus _ must be an exponent of CetA(x + v) which implies, exactly as we argued above, that inft?0 jCetA(x + v)j = 0, and Q holds.
+
+The following Theorem is simply a corollary of 5.2. For each j 2 J , let ~Aj be defined by the observability decomposition for (A; Cj):
+
+~Aj 0 Aj1 Aj2 ! i ~Cj 0 j : (10) Theorem 4 If \Sigma  = (A; B; C)os is a continuous-time output-saturated system and J = fjg, then \Sigma  is observable if and only if
+
+1. (A; C) is an observable pair,
+
+2. oe(AN ) " IR+ = ;, and 3. (~*I \Gamma  AN ) is Hurwitz, where ~* := maxf* 2 IR+; * 2 oe( ~Aj)g: Proof. Use N = NJ and C = Cj in 5.2.
+
+In the single output case this Theorem reduces to the following. A single output system \Sigma  = (A; B; C)os with A j 0 is observable if and only if (A; C) is an observable pair and oe(A) " IR+ = ;. Lemmas 3.3 and 3.1 together add the fact that if A 6j 0 then observability is equivalent to observability of the pair (A; C). This yields another proof of Theorem 3.
+
+We now use Theorem 4 to present a complete characterization of observability for the case p = 2.
+
+Proposition 5.3 Suppose \Sigma  = (A; B; C)os is a continuous-time output-saturated system with p = 2. Assume (A; C) is an observable pair.
+
+1. If jI(A)j = 0, \Sigma  is observable if and only if A has no eigenvalues on IR+.
+
+2. If jI(A)j = 1, \Sigma  is observable if and only if AN has no eigenvalues on IR+ and (~*I \Gamma  AN ) is
+
+Hurwitz.
+
+3. If jI(A)j = 2, then \Sigma  is observable. Proof. 1. In this case, J = f1; : : : ; pg, so M = f0g, N = IRn and so AM = AN = A. Thus, Theorems 1 and 2 imply that A having no eigenvalues on IR+ is necessary and sufficient for observability.
+
+2. This is exactly Theorem 4. 3. If both rows of the Markov sequence are nonzero, then M = IRn, N = f0g and so AM = AN = 0. Once again the necessary conditions of Theorem 1 are identical to the sufficient conditions of Theorem 2 and in this case the conditions are trivially satisfied. So certainly \Sigma  = (A; B; C)os is observable.
+
+As an illustration, applying this result to the system in Example 4.2, we obtain that (~*I \Gamma  AN ) is not Hurwitz, and so (using statement 2) the system is not observable.
+
+13
+
+6 Observability for the general multiple output case In this section, we will generalize Theorem 4. We will look at a rational matrix W (s), defined below, which is closely related to the matrix ~*I \Gamma  AN which was used in the previous case. Recall J is the set of the k indices of the zero rows of A and for each j 2 J , ~Aj and ~Cj are defined by the observability decomposition for (A; Cj). Note that if we let vj(s) = Cj(sI \Gamma  A)\Gamma 1 and
+
+~vj(s) = ~Cj (sI \Gamma  ~Aj)\Gamma 1, then for some constant matrix Tj,
+
+vj(s) = [ ~vj(s) 0 ]Tj: Thus, vj(s) and ~vj(s) have the same poles (seen as functions: C ! Cn and C ! Cr respectively, where r is the size of ~Aj). But the poles of ~vj(s) are exactly the eigenvalues of ~Aj, because the
+
+triple ( ~Aj; I; ~Cj) is canonical, for all j. Thus the exponents of ~Cjet ~Aj , coincide with the eigenvalues of ~Aj, which are exactly the poles of vj(s). For each j 2 J , define
+
+~*j := maxf* 2 IR+; * 2 oe( ~Aj)g = maxf* 2 IR+; * pole of vj(s)g Aj := (~*j I \Gamma  A)jN CNj := Cj jN :
+
+If vj(s) has no poles on IR+, we define ~*j to be \Gamma 1. Then, reordering the rows of C if necessary so that J = f1; : : : ; kg, let
+
+W (s) := 0BB@
+
+CN1 (sI \Gamma  A1)\Gamma 1.
+
+..
+
+CNk (sI \Gamma  Ak)\Gamma 1
+
+1CCA
+
+:
+
+Theorem 5 Let \Sigma  be the output-saturated system .x = Ax + Bu; y = oe(Cx), with (A; C) an observable pair. Then \Sigma  is observable if
+
+1. oe(AN ) T IR+ = ;, and 2. for each nonzero v 2 N ,
+
+some component of W (s)v has a pole with negative real part: (11)
+
+Note that if there is a j so that ~*j = \Gamma 1 and W (s)jv 6j 0 for some v, then the poles of W (s)jv all have negative real part, and (11) is satisfied for that v. Proof. The output-saturated system is observable if and only if Q holds (Lemma 3.1). Thus, it is enough to show that the given conditions are sufficient for property Q .
+
+We basically follow the same argument as in the proof of Proposition 5.2. Recall that if N = f0g, then Q holds automatically, so we may assume there exists some nonzero v 2 N . For any such nonzero v 2 N and any ,, we must find a j 2 J so that
+
+oe(CjetA,) 6j oe(CjetA, + CjetAv):
+
+14
+
+Choose a row of W (s)v which has a nice pole. For that row j, some nonreal pole of CNj (sI \Gamma AN )\Gamma 1v has real part greater than all possible real poles of Cj (sI \Gamma  A)\Gamma 1. First note that this implies CjetAv 6j 0, since CNj (sI \Gamma  AN )\Gamma 1v has some nonzero pole. So CjetA, 6= CjetA(, + v). Thus, it suffices to show that either
+
+inft jCjetA,j = 0; or inft jCjetA(, + v)j = 0:
+
+If inft jCjetA,j = 0, then Q clearly holds. Otherwise, suppose inft jCjetA,j 6= 0. Then ~*j ? 0, but CjetAv has a nonreal exponent with real part strictly greater than ~*j . Thus, just as we argued in the proof of Proposition 5.2, the dominating exponents in CjetA(, +v) are not on IR+, so Lemma 2.5 implies that inft jCjetA(, + v)j = 0, and Q holds.
+
+This Theorem is an improvement over the sufficient conditions of Theorem 2. Example 4.4 is an observable system which was not included in the sufficient conditions of Theorem 2, but is included in the conditions of this Theorem. If IR4 = f(x1; x2; x3; x4)0g, then in that example, N is just the x2 \Gamma  x3 plane, so oe(AN ) = f3 \Sigma  ig, and oe(AN ) " IR+ = ;. The pair (A; C) is already in the decomposition form, so it is easy to see that oe( ~A1) = f2; 3 \Sigma  ig and ~*1 = 2. Then
+
+Aj =  \Gamma 1 \Gamma 11 \Gamma 1 ! CN1 =  10 ! W (s) = 1s2 + 2s + 2  s + 1\Gamma 1 ! : The poles of W (s) are \Gamma 1\Sigma i, which both have negative real part. In this case there is no v = (v1; v2)0 (nonzero) for which
+
+(s + 1)v1 \Gamma  v2
+
+cancels out either of the poles of W (s). That is, for every nonzero v 2 N , W (s)v has a pole with negative real part. In the case of 2 outputs, the conditions of this Theorem are also necessary, as they are equivalent to the conditions in Theorem 4.
+
+7 Small input observability In this section, we investigate the observability of a class of output-saturated systems for which the inputs are restricted to be bounded. Unlike the case for linear systems, observability of an outputsaturated system is intimately related to controllability. Thus, it is natural to ask what additional conditions are required for observability if controllability is restricted. We first give some general characterizations of observability for this class of bounded-input output-saturated systems. In the case in which the pair (A; B) is already known to be stabilizable we will be able to provide an explicit criterion for observability.
+
+15
+
+We will use the following notations for a (single output) bounded-input output-saturated system defined by the triple (A; B; C):
+
+\Sigma ios : .x = Ax + Bu
+
+y = Cx
+
+z = oe(y)
+
+and kuk1 := supt*0 ju(t)j ^ 1. (This restriction could be replaced by u(t) 2 U , where U ` IRm is any bounded, convex set which contains the origin of IRm in its interior. One could even dispose of the convexity condition using the bang-bang principle.) If u(\Delta ) is a measurable function satisfying kuk1 ^ 1, we will simply say that u is a small input (or "small control").
+
+The following lemma gives a characterization of observability for single output, continuoustime output-saturated systems with bounded inputs. The term small-input "less-than-1" output controllable means that for any initial state, the output of the linear system can be controlled to inside the interval (\Gamma 1; 1) using small inputs. This is the same as saying that the state of the system can be controlled to a band around ker C using small inputs.
+
+Lemma 7.1 The bounded-input output-saturated system \Sigma ios := (A; B; C)ios is observable if and only if (A; C) is an observable pair and (A; B; C) is small-input "less-than-1" output controllable.
+
+Proof. For the necessity, suppose the conclusion does not hold. Then there is some x0 so that the output, if starting from the initial state x0, can not be controlled to (\Gamma 1; 1). That is, for any small control u of any length t,
+
+jyu(t; x0)j = fifififiCeAtx0 + Z
+
+t
+
+0 Ce
+
+A(t\Gamma s)Bu(s)dsfifififi * 1:
+
+Then the same is true of ffx0 for any ff ? 1. Otherwise there would exist an admissible control such that fifififi
+
+CeAtffx0 + Z
+
+t
+
+0 Ce
+
+A(t\Gamma s)Bu(s)dsfifififi ! 1:
+
+But then, fififififi
+
+CeAtx0 + Z
+
+t
+
+0 Ce
+
+A(t\Gamma s)B u(s)
+
+ff dsfififififi !
+
+1 ff ! 1;
+
+and the input is still admissible, contradicting our assumption. Thus, the entire line segment from x0 to 2x0 has the property that for any initial state in that line segment, there is no control which can force the output inside the "linear window" jCxj ! 1. It follows by continuity of y(t; ffx0) on t and ff that sign (y(t; ffx0)) is independent of ff. That is, for all initial states in that line segment, the outputs are on the same side of the hyperplane ker C. (We may assume C 6= 0; otherwise the system is not observable.) Thus any two points x10; x20 on the segment are indistinguishable since
+
+oe iCOE(0; t; x10; u)j = oe iCOE(0; t; x20; u)j for any u; t, where OE(0; t; x0; u) denotes the state of the system after time t starting at initial state x0 and applying the control u.
+
+16
+
+For the sufficiency, we simply note that given any two states x; z, we can control the output corresponding to one of them (say x) to a point inside (\Gamma 1; 1) at some time t. By observability of the pair (A; C), at some time t \Sigma  ffi, for ffi small enough, the outputs for the two initial states will be different and by continuity, the output for the initial state x will still be inside the interval.
+
+The next lemma uses Lemma 7.1 to prove a characterization of observability which is independent of the control u.
+
+Lemma 7.2 The system \Sigma ios is observable if and only if (A; C) is an observable pair and
+
+8x0 2 IRn; 9T * 0; jCeT Ax0j ! 1 + Z
+
+T
+
+0 jCe
+
+tABj1dt; (12)
+
+where the norm j \Delta  j1 is the sum of the absolute values of the components of the vector. Proof. Using Lemma 7.1, it is enough to show that (12) is equivalent to saying that for every x0 2 IRn, there exists o/ * 0 and an input function u such that, jyu(o/; x0)j ! 1.
+
+First assume that Cx0 ? 0. In this case, observability implies that there exists a u and a o/ such that
+
+yu(o/; x0) = Ceo/Ax0 + Z
+
+o/
+
+0 Ce
+
+(o/\Gamma t)ABu(t)dt ! 1:
+
+Let ^u(t) = \Gamma sign (Ce(o/\Gamma t)AB), where the sign function is applied componentwise. After a change of variables in the integral, we get
+
+y^u(o/; x0) = Ceo/Ax0 \Gamma  Z
+
+o/
+
+0 jCe
+
+tABj1dt:
+
+Since ku(t)k1 ! 1, it follows that
+
+\Gamma jCetABj1 ^ CetABu(o/ \Gamma  t) for all t, so
+
+y^u(t; x0) ^ yu(t; x0);
+
+for all t ? 0. Thus, y^u(o/; x0) ! 1: Also, y^u(0; x0) ? 0, so by continuity, there exists a T 2 [0; o/ ] so that
+
+0 ! y^u(T; x0) ! 1:
+
+In particular, CeT Ax0 ? 0 so CeT Ax0 = jCeT Ax0j. Thus,
+
+jCeT Ax0j ! 1 + Z
+
+T
+
+0 jCe
+
+tABj1dt:
+
+In the case Cx0 ! 0 a similar argument (starting with yu(o/; x0) and applying now ^u(t) = sign (Ce(o/\Gamma t)AB)) proves the result.
+
+Condition (12) is also sufficient. If Cx0 ? 0, it amounts to saying that there exists a T and a control, namely ^u(t) = \Gamma sign (Ce(T \Gamma t)AB), so that
+
+y^u(T; x0) ^ jCetAx0j \Gamma  Z
+
+T
+
+0 jCe
+
+tABj1dt ! 1:
+
+17
+
+Since y^u(0; x0) ? 0, there must be a o/ 2 [0; T ] so that
+
+0 ! y^u(o/; x0) ! 1: If instead Cx0 ! 0, we use ^u(t) = sign (Ce(T \Gamma t)AB) and the argument is similar.
+
+An explicit criterion for the observability of \Sigma ios can be given if we assume that (A; B) is stabilizable. Let IR++ := f* 2 IRj* ? 0g. Recall that E(A) is the set of dominating eigenvalues of A as defined in Section 2.
+
+Theorem 6 Let (A; B) be stabilizable. Then \Sigma ios is observable if and only if (A; C) is an observable pair and E(A) " IR++ = ;.
+
+For the proof we will need the following auxiliary results. Lemma 7.3 If p = 1, (A; C) is an observable pair, and (12) holds, then
+
+E(A) " IR++ = ;: Proof. Assume that there exists * 2 E(A)"IR++. Let the index of * be k. Since (A; C) is observable, A0 is cyclic which implies that A is also cyclic. Thus there is a vector b so that (A; b) is a controllable pair. Then E(A) = E(CetAb) and there is a term in the function CetAb which has exponent * with index k. If we let x0 := b, then CetAx0 contains nontrivially the term tk\Gamma 1e*t. So
+
+CeT Ax0 = T k\Gamma 1e*T (ff + o(1)) T ! 1 for some ff 6= 0. Without loss of generality we assume that ff ? 0. Otherwise we replace x0 by \Gamma x0. Note that we can make ff arbitrarily large by choosing jx0j large. On the other hand, the dominating term of CetAB has exponent at most equal to * with index k, soZ
+
+T 0 jCe
+
+tABj1dt ^ fiT k\Gamma 1e*T
+
+for some fi. Hence, by a suitable choice of x0 we can achieve that condition (12) is not satisfied for any T ? 0.
+
+Lemma 7.4 Suppose p = 1, (A; B) is stabilizable, and (A; C) is observable. If Re(*) * 0 for all eigenvalues in E(A), then
+
+E(A) ` E(CetAB):
+
+Proof. Let * be an eigenvalue 2 E(A) with multiplicity k. If we perform a Kalman controllability decomposition on the triple (A; B; C), we can easily see by stabilizability that * is an eigenvalue of A1 (with the same multiplicity), where (A1; B1; C1) is a canonical triple. The poles of the transfer function for (A1; B1; C1) (which are the same as the exponents of CetAB) are exactly equal to the eigenvalues of A1, with the same multiplicities, by Remark 2.4. Hence * 2 E(CetAB) with the same multiplicity k.
+
+18
+
+Lemma 7.5 Let f be an almost periodic function which is not identically zero. Then there exist fl ? 0 and ` ? 0 such that for all t0 2 IR,Z
+
+t0+` t0 jf (t)jdt * fl:
+
+Proof. Let ff := supt2IR jf (t)j. We will first prove that for every t0, there exists a t1 in the interval [t0; t0 + `] so that
+
+jf (t1)j ? ff=2:
+
+There is a T0 so that
+
+jf (T0)j ? 3ff4 : (13)
+
+Since f is almost periodic, there is an ` such that every interval of length ` contains an ff=4-almost period. In particular, for every t0, the interval
+
+[T0 \Gamma  t0 \Gamma  `; T0 \Gamma  t0] contains an ff=4-almost period. Call it o/ := o/ (t0). By the definition of almost periodic,
+
+jf (T0) \Gamma  f (T0 \Gamma  o/ )j ^ ff=4: (14) From (13) and (14) it follows that
+
+jf (t1)j ? ff=2;
+
+where t1 = T0 \Gamma  o/ , so
+
+t1 2 [t0; t0 + `]:
+
+Since f is almost periodic, it is uniformly continuous. So, in fact, there exists a positive number ffi such that for each t0 2 IR, there is a t1 in [t0; t0 + `] so that for all t in a neighborhood of t1 (t1 \Gamma  ffi ! t ! t1 + ffi)
+
+jf (t)j * ff=3:
+
+Without loss of generality, ` ? ffi (otherwise we increase `), soZ
+
+t0+` t0 jf (t)jdt ? `ff=3 * ffiff=3 =: fl
+
+for all t0.
+
+Lemma 7.6 Assume that E(A) " IR++ = ;. If E(A) ` E(CetAB), then (12) holds. Proof. Let the common index of the eigenvalues in E(A) be k. Since * 2 E(CetAB) with index k, we can write
+
+CetAB = tk\Gamma 1efft(f (t) + o(1)) t ! 1; (15)
+
+where ff is the real part of the eigenvalues in E(A) and f is an almost periodic function, not identically equal to 0.
+
+19
+
+Let ` and fl be as in Lemma 7.5, pick any T ? `, and denote T0 := T \Gamma  `. ThenZ
+
+T 0 jCe
+
+tABj1dt * Z T
+
+T0 jCe
+
+tABj1dt (16)
+
+Next we replace CetAB with its expression given in (15) and factor out a lower bound for the polynomial and exponential terms. Notice that the integral of the convergent term is still o(1) because the length of the integration interval remains constant as T ! 1. That is, (16) is
+
+* Z
+
+T
+
+T0 t
+
+k\Gamma 1efft(jf (t)j + o(1))dt
+
+* T k\Gamma 10 effT0(Z
+
+T
+
+T0 jf (t)jdt + o(1)) as T ! 1: (17)
+
+The interval (T0; T ) is of length `, so we may apply Lemma 7.5 andZ
+
+T T0 jf (t)jdt * fl: (18)
+
+Now we show that there is a constant fi ? 0 so that
+
+T k\Gamma 10 * fiT k\Gamma 1 for T large enough. If T * 2`, then ` ^ T =2 so
+
+T0 = T \Gamma  `
+
+* T \Gamma  T2 = T2 :
+
+Thus, if fi := 2\Gamma k (remember, k is fixed),
+
+T k\Gamma 10 * fiT k\Gamma 1: (19) Also for the term effT0,
+
+effT0 = eff(T \Gamma `)
+
+= effT e\Gamma ff` = effT C (20)
+
+for some constant C ? 0.
+
+Using (18), (19) and (20), we see that (17) is
+
+* fiCT k\Gamma 1effT (fl + o(1))
+
+= T k\Gamma 1effT (ae + o(1))
+
+for some ae ? 0 and T sufficiently large.
+
+20
+
+On the other hand,
+
+CeT Ax0 = T k\Gamma 1effT (g(T ) + o(1))
+
+where, depending on x0, either g(t) j 0, or g(t) is almost periodic. If g(t) is almost periodic, then CetAx0 is a Bohl function with dominating exponents all in C+ n IR++. Then Lemma 2.5 implies that CeT Ax0 has an infinite sequence of zeros ftkg with tk ! 1. In either case, there is a T as large as necessary so that
+
+g(T ) = 0:
+
+In particular, we may choose a T ? 2` so that
+
+jCeT Ax0j = T k\Gamma 1effT jo(1)j
+
+! T k\Gamma 1effT (ae + o(1))
+
+! 1 + Z
+
+T
+
+0 jCe
+
+tABj1dt:
+
+In other words, we may choose T so that (12) holds.
+
+We may now prove Theorem 6. Proof. (Theorem 6) First assume that there exists * 2 E(A) " IR++. Then Lemma 7.3 proves that (12) is not satisfied and so \Sigma ios is not observable.
+
+Next we prove the converse. If Re(*) ^ 0 for all * 2 oe(A), then there exists an admissible control function u such that x(t) ! 0 as t ! 1. (See [6].) In this case, it is obvious that for any x0 there is a control u and a time T such that jyu(T; x0)j ! 1 so Lemma 7.1 implies observability.
+
+Assume now that E(A) " IR++ = ; and Re(*) ? 0 for * 2 E(A). Then Lemma 7.4 implies that the conditions of implies that (12) holds. Hence \Sigma ios is observable.
+
+21
+
+References
+
+[1] Bohr, H., Almost Periodic Functions, Chelsea Publishing Company, New York, 1947. [2] Delchamps, David F., State Space and Input-Output Linear Systems, Springer-Verlag, New
+
+York, 1988
+
+[3] Koplon, Ren'ee, and Eduardo D. Sontag, "Linear Systems with Sign-Observations," SIAM
+
+Journal of Control and Optimization, To appear September 1993.
+
+[4] Schwarzschild (Koplon), Ren'ee, and Eduardo D. Sontag, "Algebraic Theory of Sign-Linear
+
+Systems," in Proc. Amer. Automatic Control Conference, Boston, June 1991, pp. 799-804.
+
+[5] Schwarzschild (Koplon), Ren'ee, Eduardo D. Sontag, and M.L.J. Hautus, "Output-Saturated
+
+Systems," in Proc. Amer. Automatic Control Conference, Chicago, June 1992, pp. 2504- 2509.
+
+[6] Sontag, Eduardo D., "An algebraic approach to bounded controllability of linear systems,"
+
+Int. J. Control, 1984, Vol. 39, No. 1, pp. 181-188.
+
+[7] Sontag, Eduardo D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990.
+
+22</pre>
+</body>
+</html>

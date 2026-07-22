@@ -1,0 +1,595 @@
+OCR of paper; see pdf file  obs.pdf  for viewable/printable page
+
+SIAM I CONTROL AND OPTIMIZATION 0c 1979 Societ~ for Industrial and Applied Matherpatics
+Vol 17, No, 1, 1979 0036-0129/79/1701-0011 SOL00/0
+ON THE OBSERVABILITY OF POLYNOMIAL SYSTEMS,
+1: FINITE-TIME PROBLEMS*
+EDUARDO D. SONTAG
+Abstract. Different notions of observability are compared for systems defined by polynomial
+difference equations. The main result states that, for systems having the standard property of (multiple-
+experiment initial-state) observability, the response to a generic input sequence is sufficient for final-state
+determination. Some remarks are made on results for nonpolynomial and/or continuous-time systems. An
+identifiability result is derived from the above.
+Introduction. This paper deals with observability problems for (deterministic)
+control systems defined by simultaneous polynomial difference equations, and for
+other related classes of systems. These problems are natural from a (mathematical)
+system -theoretic viewpoint, and a strong motivation for their study is a!so provided by
+the goal of obtaining explicit sollitions to filtering and regulation problems for rather
+general, yet tractable, classes of nonlinear systerns,
+Roughly, questions of observability deal with determining the internal state of a
+(known) dynamical system on the basis of available input/output data. , "Obser-
+vability" is a fundamental system property, due, among others, to the following
+reasons:
+(a) The modern "state -variable" approach to regulator construction is based
+upon the possibility of feeding back a function of (good estimates of) the state, which
+must be obtained via "observers" operating on input/output data (in the linear case,
+"Luenberger observers").
+(b) In the stochastic version of the above, the only known effective solution of the
+optimal nonlinear filtering problem, the Kalman filter, consists precisely of an
+effective observer construction (for a deterministic system), with parameters opti-
+mized on the basis of the available statistical data. This view of Kalman filtering as
+"deterministic system theory plus elementary theory of Gaussian processes" strongly
+suggests that a solution in the nonlinear case may be conditional upon a better
+understanding of nonlinear observers. Moreover, for the known cases, estimation is
+feasible (in the sense that the error covariance can be made small) only when the
+system has suitable observability characteristics, as is known for finite-dimensional
+linear systems (see, e.g., Kwakernaak and Sivan (1972,  4.4)) and as recently found
+for infinite-dimensional linear systems (Vinter (1977)).
+(c) Observability is one of the main concepts in realization theory, where it
+appears, under various technical variants, as a characterizing property of canonical
+systems.
+(d) Even in problems not explicitly involving outputs, observability may appear
+as an important question. To insure the stability of the optimal state regulator, the
+unstable states must be "observed" by the performance index, as explained intui-
+tively-and proved rigorously in the linear case-in Anderson and Moore (1971,
+ 3.2).
+(e) Problems of identification, i.e., the possibility of determining the input/out-
+put behavior of an unknown system on the basis of a limited number of experiments,
+are closely related to observability questions, as further discussed below.
+* Received by the editors April 24, 1977, and in revised form January 31, 1978. This research was
+supported in part by U.S. Army Grant DA-ARO-D-31-124-72-GI14 and by U.S. Air Force GTant
+72-2268 through the Center for Mathematical System Fheory, University of Florida.
+Department of Mathematics, Rutgers University, New Brunswick, New Jersey 08903.
+139
+<<PAGE-DIVIDER>>
+140 EDUARDO 1) SONTAG
+The above rough description of observability as a specific property of systems is
+highly ambiguous, even at an intuitive, nontechnical, level. This ambiguity arises
+mainly in the following senses: it is not clear whether the state to be determined is that
+which existed before or after experimentation, nor whether simple or multiple
+experimentation is allowed, nor whether the steps in the experiments can be modified
+according to partial information (open- vs. closed-loop observation). Finally, other,
+rather different, interpretations are possible; for instance, state determination may be
+only "asymptotic" in that an infinite procedure permits obtaining progressively better
+estimates of the internal state, as opposed to the above "finite-time" interpretation,
+where states are precisely determined after experimentation.
+As an example of the different possibilities, the canonical realization of any given
+input/output behavior is multiple-experiment initial-state observable, while an
+observer is a device solving a single -experiment final-state problem. Thus, for
+instance, regulator synthesis via the design philosophy "obtain a canonical realiza-
+tion/build an observer/feed-back 'observed* variables" presupposes a positive answer
+to the question: "is a canonical realization necessarily final-state observable ("recon-
+structible'j)"
+Possible observability notions. The main variations on the notions of obser-
+vability to be studied and compared are, at an intuitive level:
+(a) Observability: this terminology is reserved for the standard multiple-experi-
+ment initial-state notion. A system is observable when any two states can be dis-
+tinguished by some input/output experiment. Since the experiment (i.e., the input to
+be applied) depends on the pair of states to be distinguished, practical determination
+of an initial state assumes the possibility of somehow resetting the system to this
+(unknown) state after experimentation, or alternatively having a number of copies of
+the original system, all in the same initial state. This notion of observability appears
+naturally in realization theory, since "canonical" or "minimal" realizations usually
+exhibit technical variants of this property (e.g., "algebraic observability," when each
+coordinate of the initial state can be obtained by algebraic manipulations-additions
+and multiplications-of input data; this property characterizes "canonical" poly-
+nomial systems, as discussed in Sontag and Rouchaleau (1975), Sontag (1976a)).
+(b) Single -experiment observability: there exists a single input (over some finite
+time interval) which by itself permits the determination, through measurement of
+ensuing outputs, of the initial state. Clearly this is a much more desirable property
+than (a); it turns out to be, however, rather restrictive for discrete-time systems. (This
+is not surprising; already Moore (1956) showed that (a) and (b) are far from
+equivalent, at least for finite automata. For linear systems (a) is equivalent to (b), and
+in fact any long-enough input distinguishes any pair of states, as discussed for instance
+in Kalman (1968) or Wonham (1974).)
+(c) Final-state determ inability: there is an input sequence w which permits
+determination of the state of the system resulting after w is applied. (In other words, if
+two states produce the same output sequence under input w, then these two states are
+necessarily sent into the same state under the action of w.) This property is of interest
+from a control viewpoint, since control actions can be taken after the state of the
+system is determined, independently of the state before experimentation. Of course,
+(b) implies (c). What is not clear is what arc the relations, if any, between (a) and (c),
+since in the former case multiple experimentation is required. It is known that, for
+finite automata, (a) (called in automata theory a "diagnosing" problem) implies (c)
+("homing" problem). This was proved by Moore (1956); expositions are given by Gill
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILITY OF POLYNOMIAL SYSTFIVIS 141
+(1962) and Conway (1971); applications to regulation are given by Gatto and Guar-
+dabassi (1976). The same result holds for certain types of finite -dimensional systems-
+e.g., Theorem 4.8 below-; proofs are in fact totally analogous to the finite automata
+case, with a new type of finiteness (algebraic, linear, or analytic) replacing a set-
+theoretic finiteness.
+(d) Generic final-state determinability: while (c) concerns the existence of an
+input such that final states can be determined by testing the system with this input, (d)
+concerns the much more desirable case when no "experimentation" is needed, but,
+strictly speaking, "observation" of the input/output behavior is enough. The extreme
+case of (d) would correspond to that case in which any (long-enough) input permits
+final-state determination. This extreme case is easily seen to be too restrictive, but it
+may be weakened to only requiring that "almost any" (i.e., a "generic") long-enough
+input permits this determination. (The rigorous definition of "generic" is a purely
+technical question, to be discussed later.) In other words, real-time observation of a
+system, not influencing it in any way (or even, observation of data from past behavior)
+should be enough for final-state determination. This property is totally different from
+(c), except in the very special case of linear systems, where (c) = (d). In Elie automata-
+theoretic case, "genericity" cannot be even defined in a satisfactory way, so this is a
+genuinely new system-theoretic concept.
+The main result of this paper states that (a) implies (d) for polynomial systems.
+Thus, for instance, final states can be determined for canonical realizations of poly-
+nomial systems, just observing the "generic" input/output behavior. The proof of the
+main result uses some elementary notions from algebraic geometry. Since all results
+remain true when system parameters are not necessarily real or complex but belong to
+an arbitrary field, everything is stated for arbitrary infinite fields (the finite field case
+belongs properly to finite automata theory; infinite fields permit identifying poly-
+nomials and polynomial functions). Some technical variants of the above observability
+properties are also discussed and relations between all such notions are clarified.
+The last section deals with (i) the particular case of state-affine systems, (ii)
+generalizations to related classes of systems, in particular state-analytic and continu-
+ous-time analytic, and (iii) a restatement of the main result as a system identification
+problem.
+This paper does not treat questions of closed-loop and/or asymptotic obser-
+vability (closely related to problems of stability), nor the effective construction of
+"observers." Another interesting set of problems left open is that of finding numerical
+values for smallest lengths of observability experiments; except for the state-affine
+case, only qualitative results are given (even for the case of finite automata many of
+these problems are still unresolved; see Conway (1971)).
+The results of this paper strongly suggest that the proper definition of "observer"
+in the nonlinear context may be that of a dynamical system which determines the state
+of the "observed" system on the basis of a generic set of data.
+1. Definitions and characterizations. Let k be an arbitrary but fixed infinite field,
+and m, n, p arbitrary positive integers. Recall that an algebraic subset S of the affine
+space V, q 2t 0, is a set defined by polynomial equations S = JQj(xI, - - - , x,,) = 0). An
+irreducible algebraic set is one which cannot be expressed as the union of two proper
+algebraic subsets. In this context, a Subset R of an irreducible algebraic set S is generic
+when its complement is contained in a proper algebraic subset of S. (These definitions
+are justified by the fact that for k = R or C, a proper algebraic set is "thin" in most
+possible senses, including Baire category and measure -theoretic.)
+<<PAGE-DIVIDER>>
+142 EDUARDO D. SONTAG
+DEFINITION I.I. A (discrete-time) polynomial system I is given by a set of
+equations
+x (t + 1) = P(x (t), u (t)), y (t) = h (x (t)), t = 0, 1, 2,. - -
+where inputs u(t), states x(t) and outputs y(t) belong to algebraic subsets U of k-, X
+of V, and Y of k' respectively, U is irreducible, and P: X x U -* X and h: X - Y are
+polynomial maps.
+Allowing proper algebraic subsets, rather than insisting on finite dimensional
+spaces, for U, X, Y, permits increasing the generality of the results to include input or
+state constraints of a polynomial type. The irreducibility assumption on U is made
+purely for technical convenience. For instance, the unit real circle U =
+IX2+y2_ I = 01, as well as any space k -, are admissible input sets. Nonpolynomial
+systems will be considered later.
+Some extra notation will be useful. The extension of P to input sequences is also
+denoted by P: X x U* - X (for the empty sequence e, P(x, e) = x). Applying an input
+sequence w = u, u, to a system in state x produces an output sequence
+I-I ' (x) = (h (x), h (P(x, u h (P(x, w)))
+in Y"'.
+In what follows, 2 is a fixed polynomial system. The input sequence w distin-
+guishes between the states x and z iff Hw(x)?~H'(z). The following are several
+possible definitions of "observability":
+(A) Single -experiment observability: there exists an input sequence w which
+distinguishes every pair of states.
+(B) Single -experiment observability with a generic input: there are a positive
+integer r and a generic subset R of Ur such that any w in R distinguishes every pair of
+states.
+(C) Observability: each pair of states can be distinguished by some input
+sequence.
+(D) Finite observability: there are a positive integer r and input sequences
+w1, - - - , w, of length r such that each pair of states x, z is distinguished by some wi.
+(E) (Finite) observability with generic inputs: there are integers r, s and a proper
+generic subset R of U" such that (D) holds for any set wl, w, of inputs of length r
+for which (w1, - - - , w,) is in R.
+(F) Algebraic observability: foroach polynomial function 4: X - k there are. input
+sequences w 1, , * * , w, and a polynomial function q: Y' - k such that 4 (x)
+q (h (P(x, wi)), - - - , h (P(xg ws))) for all x in X.
+(G) Final-state determ inability: there is an input sequence w such that for each
+pair of states x, z either H'(x)?, H-(z) or P(x, w) = P(z, w).
+(H) Final-state determinability with generic inputs: there are a positive integer r
+and a generic subset R of U' such that (G) holds for all w in R.
+The characterizations below are useful in checking observability. They are stated
+in terms of the polynomial functions h, defined as follows by induction on i. First, an
+(infinite) basis B is chosen for the vector space of all polynomial functions on U.
+(If U = k -, the natural choice is the set of all m -variable monomials; if U is a proper
+algebraic set one may choose a linearly independent subset of such monomials.) The
+polynomial map h : X -* Y c: kp gives rise to p polynomial functions
+hol, * * * , hop
+by composing with the coordinate projections. If the h,j have been defined for some i
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILITY OF POLYNOMIAL SYSTEMS 143
+and 1, - q,, one may express
+(1.2) hi,(P(x, u)) a,,(x)g,(u), r qj
+for some finite subset gj, of B. The hi,,.i are then given by the a,,, r = 1, qj, all
+s, listed in any order except that an a, is dropped if it is redundant, i.e., if a, is in the
+algebra generated by the previous h,'s.
+LEMMA 1.3. (a) Y. is observable iff the map
+(1.4) x-(hii(x), hl2(X),' h2l(X),' -
+is one-to-one.
+(b) I is algebraically observable iff each coordinate function xj: X - k, i
+1, - , n, is a polynomial combination of the hii(x).
+Proof. Observability clearly implies that (1.4) is one-to-one, since the functions
+x -o h (P(x, w)) are combinations of the hij. Conversely, from Sontag (I 976a, "Main
+lemma" (10.7)), the hij-) are linear combinations of the functions h(P(-, w)); it
+follows that if x, z are indistinguishabie then hjj(x) ~ hij(z) for all i, j. The proof of (b)
+is similar.
+The above result permits checking observability without having to consider, for
+each pair of states, if there is an input sequence separating them. The result can be
+tightened considerably, in that it is theoretically possible to specify an integer s (which
+depends only on the degrees of the polynomials defining Y.) such that it is enough to
+check, in order to determine (algebraic) observability, if the map
+(1.5) X --* Y",: x --* (h, I(x), - - - , h,,,(x))
+is one-to-one (or if each coordinate function is a combination of the hij's); this follows
+from the decidability theory in commutative algebra, as remarked in Sontag and
+Rouchaleau (1975). The problem of checking if (1.5), or a general polynomial map, is
+one-to-one is very difficult, and it appears also in trying to determine if a system is
+observable with respect to a fixed input w = u u, since one must then check
+X ~4 (h (x), h (P(x, u 1)), h (P(x, w)));
+in that context, sufficient conditions for one-to-oneness (with k = reals) were surveyed
+by Fitts (1972).
+As a very simple illustration of Lemma 1. 3, take the polynomial system 11 with equa-
+tions
+XI(t + 1) = X2(t), X2(t 4- 1) = X 1(t), X3(t + 1) = X3(t),
+(t)U 2
+X4(t + 1 ) = X I (t)U'l W + X2 2 (t) + X3(t),
+Y (t) = X4 W,
+2 4
+where U = k ,X=k , Y = k. Then hol = the coordinate function X4. From the fourth
+2 2
+equation, and noting that U I, U2,I are linearly independent functions, one has xj, X2,
+x3 for the h1j. Thus I is algebraically observable, and in particular observable.
+U2 + U2 = = I _ U 2
+If, instead, now U is the circle 1 2 1 , then u 2, 1 as functions on U, so
+2 U 2 )U2
+X I U I + X2 2 + X3 = (X I - X2 I + (X2 + XA
+so h I I = X2 +X3, h12 = X~ - X2. Now, in obtaining the h2, x, - x2 yields X2 - X I (from the
+first two equations), which is -(X I - X2) and hence belongs to the algebra generated by
+previous h,'s. On the other hand, X2+X3 yields Xl+X3, which is equal to (x,_X2)+
+<<PAGE-DIVIDER>>
+144 EDUAKDO D. SONTAG
+(X2_ + X3), hence in the algebra generated by previous hjj's. Thus no hi, are added for
+i = 2, 3, The system is therefore not observable, since
+(X1, X2, X3, X-0(X4,X1_X2,X_2+X3)
+is not one-to-one. In fact, the indistinguishable pairs of states are those in the lines
+parallel to tX4=0, X1_X2=0,X2+X3=01.
+When k = reals or complexes, observability can be checked using on],. inputs of
+arbitrarily small amplitude; this is easily derived from the above characterization using
+Sontag (1976a, Lemma (2.11)).
+2. Implications among observability notions.
+THEOREm 2. 1. With the notations in the previous section, the only implications are
+those indicated by the following diagram:
+F
+(2.2) 1
+B --> A -* C = D = E - H --* G.
+Proof. The following implications are immediate from the definitions: E - D - C,
+B - A - C, H --> G, and F - C. That C - D is proved in Sontag and Rouchaleau (1975,
+Prop. 7.2). Proofs are given below for D - E (2.4) and C -- H (Theorem 3.5). To
+complete the proof of 2. 1, counterexamples must be given to B --> F, A - B, F - A,
+G --> H and H --> C. For the latter it is sufficient to consider the trivial system with both
+transition and output maps equal to zero: after one step, the state is known (zero), no
+matter which input was "applied", but the initial state cannot be determined. The
+remaining counterexamples are given by:
+B - F: let k = R, X = Y = k, U = arbitrary, P(x, u) = 0 for all x, u, and h (x) = x'.
+A-B: let U= Y=k,X=k', andy-2givenby
+l)=Xj(t)+X2(t)U(t),
+XI(t+ 1)=O, X2(t + I Y(t) = X2(t)-
+An input w = u I . . . u, distinguishes initial states if and only if u 1 0. But the set of all
+such inputs is not generic in U', for any r.
+F-A: let U= Y=k,X=k 2 , and 1, given by
+X1 (t + 1) = 0, X2(t + 1) = XI(t)U(t)- X'1 (t), Y(t) X2(t).
+Algebraic observability follows from criterion 1.3: recursively, one generates x-, and
+2
+then x, (and X I,which is redundant). But no single sequence w serves to distinguish
+every pair of states: let w = uw', with u ir, U; if u = 0 then (1 0)' and (- 1 0)' are not
+distinguished by w, while if u ;4 0 then (u 0)' is indistinguishable from (0 0)
+G-H: let U=X=k and
+X(t + 1) = X(t)u(t), U(t) = 0.
+Then w = u, u, determines the final state if and only if some ui = 0. The set of ail
+such w is not generic.
+It will be now proved that finite observability (D) implies, for polynomial systems,
+generic finite observability (E). This is somewhat surprising because the corresponding
+implication for single-experiment observability (A --)- B) is false. (13 above is. however,
+generically finitely observable: any two length-one inputs u, u permit observing
+X, +X1u, x, + x2lu, hence also
+X 1 = j(X 1 + X2U)t, _ (X I + X 2V)U I(V _ Uy I
+I I
+is known. Thus the generic set R of all (u, v) in [j2 = k 2with 14 - v ;,~ 0 satisfies definition
+E.)
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILITY OF POLYNOMIAL SYSTEMS 145
+The following algebraic result is needed; its proof is essentially the same as that in
+Sontag (1976a, Lemma (10.6)):
+LEMMA 2.3. Let V, W be algebraic sets, W irreducible, and f : V X W -+ k a
+polynomial function. There exists then an integer s and a nonzero polynomial function
+d: W' - k such that, for each w, w - - , w, in W there are a 1, - . . , a, in k with
+d (w w~)f (v, w) = Y- aif (v, wi).
+i
+One can now give the
+(2.4) Proof of D -* E. Assume that Y- is finitely observable, and let t-V1, w-, be
+such that x 54' z implies h (P(x, Oi)) 5,1- h (P(z, Oi)) for some i. For each i, let f =
+h - P: x X U'i --* k. Applying 2.3 with V = X, W = U'-, f = fi, a di: U"'i - k is obtained
+for each i. Let q:=Iargest of the si. In the definition of generic observability, take
+r:= largest of the ri and s:=t.q. An element of Ur' can be written as
+(W11, ' ' ' , Wth W12, ' '.I M2, * ' ' , Wq),
+with each wq in U. Defin,~ the proper algebraic subset F of U" by the equations
+di (w, I, ' ' ' , Wisi) ~ 0, i ~ 1, - - - , t.
+Then generic observability holds with R = complement of F.
+3. Proof of the main result.
+LEMMA 3. 1. For any polynomial system I there exists an integer r -~: 0 and a proper
+algebraic subset Fof U'such that, for every w = (u 1, u,) not in F, and for any x, z in
+X,
+H'(x) = H(z)
+implies that
+P(x, w) is indistinguishable from P(z, w).
+Proof. Since Y c-~ kP for some integer p and since a union of proper algebraic
+subsets of U' is again a proper algebraic subset, it is sufficient to prove the lemma with
+Y = k. The general case can be reduced to this by considering the p projections Y - k.
+Let s 2!! 0 be such that any pair of distinguishable states is already distinguished by
+inputs of length ---5s (Sontag and Rouchaleau (1975, Cor. 7.3)).
+For any algebraic set Z, let A(Z) denote the algebra of polynomial functions on
+Z. Irreducibility of U means that A(U) is an integral domain for all t. Let D be the
+direct limit of the sequence of k-algebras
+A(U)- - -A(U')-A(U'+')-+.
+where
+A (U) , A (U'~') = A (U')(D A (U): f - f 0 1.
+Let K be the quotient field of D (which is an integral domain, being a direct limit of
+integral domains); K contains all A (U).
+Since Y = k, a polynomial map X x X x U--* Y is an element of A(X X
+X)SA(U'); in particular the functions h, defined by
+h,(x, z, ul, - - . I U,):= h(P(x, ul, - - - , u,))- h(P(z, ul, u,))
+are in A(X XX)(DK. The latter is a finitely generated algebra over the field K, hence
+Noetherian. Thus there is some integer r such that all h, are in the ideal of A(X x
+X)Ox K generated by ho, h,. In particular, there are therefore equations
+r
+(3.2) chr+, = Y- ai,h,, S,
+1-0
+<<PAGE-DIVIDER>>
+146 EDUARDO D SON YAG
+with all ap in A (X xX)(~)D and c a nonzero element of D. Since D is the union of the
+~ (U'), there is some integer q such that all aj, are in A (X x X)~~)A (U') and c is in
+~ (U'). Without loss of genera I ity, we shal I assume that q -;;!!r+s.
+Define the proper algebraic set
+F:= ~(uj, - - ' , Ur) in U' such that c(ul, UFI U,)= 0 for all (u,,,, uol-
+Claim: F satisfies the requirements of the lemma. Indeed, assume that w =
+(u 1, - - - , u,) is not in F. Take x, z in X such that h (P(x, u u,)) =
+h(P(z, u u,)) for all t = 0, - - - , r, i.e.,
+(3.3) h, (x, z, u...... u,) = 0, t = 0, - - - , r.
+Denote x:= P(x, w), := P(z, w). It must be proved that x, z are indistinguishable.
+Assume that x, z are distinguished by an input sequence v, which can be taken of
+length j, 0:-!:-: j -_ s, by definition of s. let
+Fi:= ~w in U' such that hr1j(X, Z, W- W) = 01;
+this is an algebraic set, proper because v is not in Fl. Let
+1;1,:= 1w in U' such that c(~v, w, w')= 0 for all w' in U'-_'j;
+this is also an algebraic set, and it is proper because w was taken not in F
+It follows that F, UF2 is also a proper algebraic set. Let then w be in neither F,
+nor 1;1,. Then c(~v, w, w') ?~E 0 for some w', so
+(3.4) c(~v, w, w')h,,j(x, z, w, w);,4- 0.
+But (3.2), (3.3) and (3.4) taken together are contradictory.
+THEOREm 3.5. Observability implies, for polynomial systems, final-state deter-
+minability with generic inputs.
+Proof. Immediate from the lemma.
+Remark 3.6. As shown in Sontag (1976), canonical realizations If of polynomial
+response maps are not, in general, polynomial systems. So the Theorem above is not
+applicable directly (A(Xf) is not Noetherian). However, if f admits a polynomial
+realization I, then the reachable states of If form a set which is a quotient of the
+reachable set of 1. Then Lemma 3.1 can be applied to 1, implying that the reachable
+part of If does satisfy Theorem 3.5. Another generalization regards the case in which X
+is a nonaffine variety: taking an affine cover of X, equations as in (3.2) result on each
+piece of the corresponding decomposition of X x X, and Lemma 3.1 is again true. This
+generalization is of interest in identifiability questions, with nonaffine parameter spaces.
+4. Particular cases, applications, generalizations.
+(Polynomial) State-affine systems. For this class of systems, whose realization
+theory was studied in Sontag (1976b), most of the implications among observability
+properties are easy generalizations of the linear case.
+DEFINITION 4. 1. A polynomial system 1 is state-affine iff X = k", U = k ', P is
+affine (linear+ translation) in states, and h is linear.
+Fixing a basis in X, the equations for a state-affine system have the form
+x(t + 1) = F(u (t))x (t)+ G(u (t)),
+y (t) = HX (t),
+where F(. ) is a (polynomial) matrix function of u, G(- ) is a vector function of 14. and H
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILFIY OF POLYNOMIAL SYSTEMS 147
+is a constant matrix. A particular case is that of intern ally- bilinear systems (see, e.g.,
+Brockett (1972), D'Aicssandro, Isidori and Ruberti (1974), Fliess (1973)), when F
+and G are themselves linear or affine in u.
+For state-affine systems the table of implications given in  2 collapses to
+A = B --* C = D = E = F-* H - G.
+It must be proved that C -~, F and A - B. That C - F is clear from (1.3), since the h, are
+linear functions of x, observability thus meaning that the coordinates x, are linear
+combinations of the hij. (An explicit matrix criterion for observability is described in
+Sontag (1976b, Lemma 1.32).) That A - B follows from the following characterization,
+which can be also generalized to the case U = proper algebraic set by considering a
+basis of functions U - k instead of all monomials u,:
+PROPOSITION 4.2. The state-affine system Y, is single -experiment observable iff
+~H I
+I
+HF(U,)
+(4.3) rank n
+HF(U~ ... F(U,)
+over the field K = k (Ul, U, - 1) of rational functions in m (n - I ) variables.
+Moreover, if (4.3) holds, then any w u I - - - u.- I such that the rank in (4.3) remains n
+after specializing U, = u I, * *', U-1 Un solves the single -experiment observation pro -
+blem. (The set of all such w is generic.)
+For example, consider the three-dimensional state-affine system 14:
+xj(t + 1 ) = Xl(t)Ul(t)+X2(t)U2(t)+X3(t)U3(t) X2(t + 1) = 0, X3(t + 0= 0,
+y W = x, (t).
+This system is observable, but (withUl = [U1 1, U21, U311, U2 = [U12, U22, U321) the
+matrix in (b) is
+1 0 0
+U11 U21 U31
+IU12U11 U12U21 U12U3
+which has rank two, so the system is not single-experiment observable.
+Proof of Proposition 4.2. Single -experiment observability with an input W
+Ul ... U, is equivalent to the map x - H ' (x) being one-to-one. Since
+H ' (x) = (Hx, - - - , HF (u,) ... F(u,)x) + translation,
+H' is one-to-one if and only if the rank of
+H
+HF(ul)
+-HF(u,) ... F(ui)-
+is n. Being full rank means that some n X n minor is nonzero, so the same minor is
+nonzero as a polynomial in u I = U1. - - - , u, = U, (variables) over K. Thus the rank of
+this matrix is also n. Consider the chain of subspaces V, of K" defined by
+1/,:= span over K of F'Wi) - - - F'(U.)Hj, I < r, i = 1, - - - , p,
+<<PAGE-DIVIDER>>
+148 EDUARDO D. SONTAG
+where Hj is the jth column of H. It is easy to see that if V, = V,_1 for some r then
+V,= Thus V,=V,,,= ... = V, This proves that the rank in (4.3) is n.
+The rest of the statement is clear from the proof.
+The proof of Lemma 3.1 can be rederived for the state-affine case, using only
+I i near- algebraic methods (over rational function fields). A constructive proof is thus
+obtained, with the precise value r = n.
+Parametric identification. The result in  3 can be applied to the following
+identification problem: a family of polynomial systems is given, parametricized by
+polynomial functions. It follows that, if the output is known for a generic input, then
+the future input/output behavior of the system is completely determined. Specifically,
+considering a family (or "structure"-see Bellman and Astr6m (1970)):
+(4.4) x (t + 1) = P(A, x (t), u (t)) = P, (x (t), u (t)).
+y (t) = h (A, x (t)) = hA (x (t)),
+where P: A x X x U -+ x and h: A x X -- y are polynomial maps and A, X, U, Y are
+algebraic subsets of V, V, k-, V respectively, U irreducible. The input/output map
+of 1, for initial state x is
+fk,: w - Hw (x).
+THEOREm 4.5. There is a positive integer r and a generic subset R of U'such that,
+for each input sequence w = u u, in R,
+f".. W = f,,~ (W)
+implies that
+f.,..(wv)=f,,,.(wv) for all input sequences v.
+Proof. Let i be the polynomial system with '~ :1- A x X," U, Y and
+equations
+A (t + 1) = A (t), x (t + I P(A (t), x (t), u (1)),
+y (t) = It (A (t), x (t)).
+Then Lemma 3.1 applied to ñ gives an r and an R such that A1w(A,x)=f,.jw)
+determines the final state (A,x(r)) up to indistinguishability, i.e., all future outputs
+coincide.
+For instance, the future input/output behavior of the system 15 (with U = Y
+k, X = k 3):
+Xj(t+0=X3(4 X2(t+l)=Axj(t)+X2(0, X3(t+1)=X2(t)U(0+X2(t),
+Y (t) = X3(t)
+is uniquely determined once that the output corresponding to a W = U I U2143, Uj ?~ -1 is
+known, since X3(0), X2(0), Axj(0), and AX3(0) are successively obtained. (Note that the
+parameter A itself is in general not determinable, for instance if X3(0) is zero; an
+additional "parameter-identifiability" condition is needed on the given family in order
+to determine A.)
+The above definition of family of systems includes the case in which the
+identification is desired of a system of which one only has a bound on dimension and a
+bound on the degree of the polynomials in its defining equations: it is then obviously
+enough to add one parameter for each unknown coefficient and one for each coor-
+dinate of the (unknown) initial state. (Such a parametrization is of course highly
+redundant; realization theory may give lower order ones, see Remark 3.6.).
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILIFY OF POLYNOMIAL SNSIE.',IS 149
+Nonpolynomial systems. Many of the remarks and results of previous sections
+apply to more general finite-dimensional systems than polynomial systems, i.e.,
+systems
+(4.6) x (t -+- I) ~ P (x (t), u (1)), (t) = h (x (t))
+where, say, U, X, Y are subsets of R"', R", R' (or corresponding complex spaces) and
+P, h are analytic, infinitely differentiable, or just continuous, either in both x and u, or
+only in x. The "generic" conditions, defined in terms of algebraic sets, should of
+course, be redefined according to the category to be worked on (analytic sets, nowhere
+dense sets, etc.). We conjecture, but have not yet proved, that Theorem 3.5 is true in
+the analytic case. (In certain cases this is trivially true, e.g. for "analytic state-affine
+systems," when P, G are analytic in u and linear in x.) The weaker result C --> G:
+observability implies final-state de term inability, holds for the following kind of system
+(analogovs definitions for the complex case):
+DFFINITION 4.7. A state-analytic system I has equations (4.6) with X an open
+subset of H", Y a subset of R', and both P and h analytic in x.
+(U, and the dependence of P on inputs u, are completely arbitrary.)
+THF-op,F-m 4.8. Let the state-analytic system Y. be observable. Let K be any
+compact subset of X. Then there exists an input sequence w such that, for each pair of
+states x, z in K, either H'(x),,, H'(z) or P(x, w) = P(x, z).
+Proof. For each input sequence w, let
+K~, := J(x, z) in K x K IH '(x) = H '(z)J.
+Each K, is a subset of the compact set K x K, defined by analytic equations in X X X.
+It can be proved, using compactness and applying the generalized form of the Weir-
+strass preparation theorem given by Herv6 [1963, Thm. 2.7, Cor. 31, that sets defined
+by analytic equations satisfy a descending chain condition on compact sets. Thus,
+there is a minimal K..
+Then w satisfies the conclusion of the theorem. Indeed, assume that, on the
+contrary, there is a pair (x, z) in K X K with H'(x)= H'(z) but P(x, w),4 P(z, w). By
+observability of 1, there is an input sequence v such that
+H"(x) = H"(P(x, u)) -?- H'(P(z, u))= H-(z).
+So K., is properly contained in K_ contradicting minimality of the latter.
+Except for our use of the result from analytic functions, the above is essentially
+the standard proof of C - G for automata (all sets finite, so there is again a minimal
+K.) and for I nternally- bi linear systems (all sets are linear subspaces), in particular as
+given by Muchnik (1973) and independently (strictly speaking, for continuous-time)
+by Grasselli and Isidori (1977).
+The compactness assumption cannot be dropped: the one-dimensional state-
+anaiytic system 16 with equations
+x (t + I)= 2'x (t), y(t) = sin x(t)
+is observable but is not final-state determinable with any (finite length) input.
+Similarly, infinite differentiability (instead of analyticity) will not be sufficient:
+consider the one-dimensional system 1-7 with X:= (-1, 1) and
+x(t + I ) = a(x(t)), y (t) = b (x (t)),
+where a, b are i n fi n itel y d i ff e re nt iable with a (x ) = 2 x on [ - 4', '41 (arbitrary otherw ise),
+and b(,x) - 0 on [-.11, 4'] and hijective in the complement. Then 17 is observable, but
+<<PAGE-DIVIDER>>
+150 EDUARDO D. SONTAG
+pairs of states in K = [-14, '41 do not satisfy the conclusion of Theorem 4.8. (It is
+interesting to remark that in both these examples there is an "asymptotic" final-state
+determinability; infinite-time conditions are more appropriate for nonpolynomial
+systems.)
+Continuous-time. Many of the previous results can be generalized to continuous-
+time finite -dimensional systems
+(4.9) i (t) = P(x (t), u (t)), y (t) = h (x (1)),
+where appropriate restrictions are placed on the state-space, input set, spaces of input
+functions, and P, h. The continuous case is simpler than the discrete one, due to the
+time-reversibility of (finite dimensional) differential equations. This implies that no
+information is lost when an experiment is performed on such a system, i.e., the maps
+X --~, P(X, W)
+are homeomorphisms for all w (P(x, w) = solution of (4.9) at time T with x (0) = x and
+input w ( - ) on [0, TI). It follows that final-state-detf-rminatioti is equivalent to single-
+experiment observability. If P is analytic in both x, u and h is analytic in x (so that the
+maps (*) are analytic), and under suitable technical assumptions insuring existence and
+uniqueness of solutions of (4.9) for admissible input functions w, it follows by essen-
+tially the same argument as in Theorem 4.8 that observability implies single -experiment
+observability. (The intern ally-bili near case of this result was proved via linear-alge-
+braic techniques by Grasselli and Isidori (1977).) When P, h are polynomial in x, the
+methods in Sontag and Rouchaleau (1975) can be applied to jets of outputs cor-
+responding to smooth inputs, resulting in finiteness results for the continuous case.
+REFERENCES
+B. D. 0. ANDERSON AND J. B. MOORE (197 1), Linear Optimal Control, Prentice-Hall, Englewood Cliffs,
+NJ.
+R. BELLMAN AND K. J. ASTROM (1970), On structural identifiability, Math. Biosci., 7, pp. 329-339.
+R. W. BROCKET-r (1972), On the algebraic structure of bilinear systems, Theory and Applications of
+Variable Structure Systems, R. Mohler and A. Ruberti, eds., Academic Press, New York.
+J. H. CONWAY (197 1), Regular Algebra and Finite Machines, Chapman and Hall, London.
+P. D'ALESSANDRo, A. ISIDORI AND A. RUBERTI (1974), Realization and structure theory of bilinear
+systems, this ;ournal, 12, pp. 517-535,
+S. EILENDERG (1974), Automata, Languages, and Machines, vol. A, Academic Press, New York.
+J. M. Fi-r-rs (1972), On the observability of non-linear systems with applications to non-linear regression
+analysis, Information Sci., 4, pp. 129-156.
+M. FLIESS (1973), Sur la rialisation des systimes dynamiques biliniaires, C. R. Acad. Sci. Paris, S6r. A, 277,
+pp.243-247.
+M. GATTO AND G. GUARDAHASSI (1976), The regulator theory of finite automata, Information and
+Control, 3 1, pp. 1- 16.
+A. GiLL (1962), Introduction to the Theory ofFinite-State Machines, McGraw-Hill, new York.
+0. M. GRASSFLLI AND A. ISIDOR] (1977), Deterministic state reconstruction and reachability of bilinear
+control processes, Proc. J.A.C.C. (San Francisco, June 22-25).
+M. HERVt (1963), Several Complex Variables, Local Theory, Oxford University Press, London.
+R. E. KALMAN (1968), Lectures in Controllability and Observability, Cremonese, Rome.
+R. E. KALMAN, P. FALB AND M. A. ARBIB (1969), Topics in Mathematical System Theory, McGraw-Hill,
+New York.
+H. KWAKERNAAK AND R. SIVAN (1972), Linear Optimal Control Systems, John Wiley, New York.
+E. F. MOORE (J 956), Gedanken experiments on sequential machines, Automata Studies, Princeton Uni-
+versity Press, Princeton, NJ.
+A. A. MUCHNIK (1973), General Linear Automata, Sy,.~tcms Theory Research, A. A. Lyapunov, ed., 23,
+pp. 179-218, Consu.1tants Bureau, New York.
+<<PAGE-DIVIDER>>
+ON THE OBSERVABILITY OF: POLYNOMIAL SYSTEMS 151
+E. D. SONTAG (I 976a), On the internal realization of polynomial response maps, Doctoral Dissertation,
+University of Florida.
+(1976b), Realization theory of discrete - time nonlinear systems. L The bounded case, Proc. IEEE Dec.
+and Control Conf. Clearwater, FL, Dec. 1976. Full paper submitted to IEEE Trans. Circuits and
+Systems.
+E. D. SONTAG AND Y. ROUCHALEAU (1975), On discrete-time polynomial systems, CNR-CISM
+Symposium on Algebraic System Theory (Udine, Italy, June 1975). It appeared in revised form in
+J. Nonlinear Analysis, Methods, Theory Appl., 1 (1976), pp. 55-64.
+R. B. VINTER (1977), Filter stability for stochastic evolution equations, this Journal, 15, pp. 465-485.
+W. M. WONHAM (1974), Linear multivariable control, Economics and Math. Systems, Springer, New York.

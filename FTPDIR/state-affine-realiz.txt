@@ -1,0 +1,1613 @@
+OCR of paper; see pdf file state-affine-realiz.pdf for viewable/printable page
+
+
+342
+Im TRANsAcnoNs oN cutcurrs AND symms, voL. cAs-26, No. 4, Apiut. 1979
+Realization Theory of Discrete-Time Nonlinear
+Systems: Part I - The Bounded Case
+EDUARDO D. SONTAG
+Abs&act-A state-space regizolon theory is presented for a wide class
+of discrete thne Input/output behaviors. Although In many ways restrlcted~
+this class does Inclu& as particular cases those treated in the literature
+Olnear, multillneer, Internally bilinear, homogeneous), as well ss certaln
+nonanalytic nonflnearlties. Tlbe theory is conceptually simple, mw ma&ix-
+theoretic *orlthms are straightforward. Flnite-reanzahility of these be-
+havlors by state-affine systems is shown to be equivalent both to the
+existence of Mo-order Input/output equadons mW to realizability by
+more general types of systems.
+INTRODUCTION
+HIS WORK deals with some aspects of realization
+heory of deterministic nonlinear discrete-time sys-
+T
+tems. The realization theory of linear systems is by now a
+Manuscript received September 11, 1977; revised July 6, 1978. This
+research was supported in part by U. S. Army Research Grant DAH
+C04-74-G-0153 through the Center for Mathematical System Theory,
+Gainesville, FL 32611.
+The author is with the Department of Mathematics, Rutgers Univer-
+sity, New Bnms,%rick, NJ 08903.
+successful part of system theory, which has resulted in a
+deep understanding of behavior and has permitted the
+application of state-space methods of analysis and synthe-
+sis. It may be reasonable to expect, then, that a corre-
+sponding theory will eventually derive analogous benefits
+for nonlinear systems.
+For the most part, this paper presents a "linearized"
+realization theory via systems which are linear in state
+variables but arbitrarily nonlinear in inputs, state-affine
+systems. While such systems are highly restrictive vis i vis
+general nonlinear models, they do include those for which
+a detailed realization theory has been developed, in partic-
+ular, linear, internally bilinear, and multilinear systems.
+The importance of S-A representations in the analysis of
+certain nuclear reactors, heat-transfer processes, and
+population models, among others, has been made explicit
+by various authors (see, for instance, [34]); other applica-
+tions being currently explored are in the areas of image
+processing and in stochastic filtering. Moreover, in some
+0098-4094/79/0500-0342$00.75 019781EEE
+<<PAGE-DIVIDER>>
+SONTAG: REALIZATION T14EORY OF DISCRETE-TIME SYSTEMS: PART 1
+cases the canonical realization of a given input/output
+behavior admits a S-A structure; this is the case with
+bounded polynomial responses, those whose output values
+at any given instant are arbitrary sums and products of
+previous input values, subject only to the restriction that
+there is a bound-hence the name-to the exponents to
+which each single input can be raised in calculating out-
+puts.
+Bounded rcsponses were originally defined in a poly-
+nomial context, but the present work treats directly a
+more general case, which has the advantage of including
+many types of nonanalytic nonlinearitites (piecewise poly-
+nomial, in particular).
+The first part of this paper deals with an abstract
+realization theory, while the second presents a concrete
+matrix realization algorithm which both generalizes and
+unifies those known in the literature for the various
+classes of systems. These two parts result in particular in a
+self-contained realization methodology for S-A systems,
+and serve also as an introduction to a more general (and
+strictly nonlinear) realization theory. Part three provides
+further finiteness results, including a generalization of the
+linear system fact that finite realizability is equivalent to
+the existence of a (high-order) input/output difference
+equation, and studying the relationship between state-
+affine realizability and more general realizability of a
+bounded response. The paper closes with some remarks in
+part four.
+1. ABSTRACT REALIZATION THEORY
+This section develops a realization theory which will
+give the theoretical basis for the algorithms presented
+later. The following notational conventions will hold
+throughout this work.
+For any set S and integer I > 0, S' will be the set of all
+sequences w=(w,,- - -,w) of length t, wi in S; note So=
+set containing only the empty sequence e. The set S*
+(resp. S ') is the union of all S, I > 0 (resp. t > 1); 1 w I
+denotes the length of w. For notational convenience, a
+w = (w , - - - , s.) will be also denoted as W I W2 * * - W1 - (This
+should not be confused with the product of the w,, when
+such a product would be also defined.) The expression a'
+will, correspondingly, mean a... a (t times). The con-
+catenation of two sequences v = v, - - - v, and w = w I ... w,
+is VW: = V, - - - vw, ... w, of length s + 1. For any function f
+defined on S ', the restriction of f to sequences in S' is f,
+while the maps v"f(wv) (w in U ') are denoted by f,
+and the maps v"f(vw) are denoted by J'.
+An arbitrary field k will be fixed throughout the discus-
+sion; "vector space" will mean k-vector space, "linear"
+will mean k-linear, etc. (Some results will be stated only
+for k = reals or complexes, but most are valid without any
+restrictions on k.) Recall that affine manifold =translate of
+a subspace, and affine map= linear+ translation. Unless
+otherwise stated, U will denote an arbitrary set (of input
+values) and Y an arbitrary vector space (of output values).
+343
+When U is a subset of a vector space k-, the notation u(i)
+for the vector u in U will mean the ith coordinate of
+u-the notation ui being reserved for the ith element of a
+sequence of vectors. If A, B are sets, [A, B J will denote the
+set of all mapsf:A--*B. When B is a vector space, [A,B)
+will denote the corresponding vector space, with the
+pointwise operations: (f + rg)(a): =f(a) + rg(a).
+A. Response Maps
+An "input/output map" sends input sequences into
+output sequences. When such a map is causal, it can be
+equivalently specified by its associated "response map,"
+which describes how past inputs affect present outputs;
+this latter object is defined directly,
+Definition 1. 1: A response is a map f U Y. A
+strictly causal response has, for each 1, f, (u , - - , u,) inde-
+pendent of u,; for a memoryless response, Mu 1, - - - , u)
+depends only on u,; an equilibrium response is one for
+which there is some ii in U with f(iiw) =f(w) for all w in
+U '. A response is polynomial (resp. analytic) iff U is a
+subset of k ', Y = kP, and f, is a polynomial I unction in mt
+variables (resp. k=R or C, U is an analytic manifold,
+Y = kP, and each f, is analytic), for all t > 1.
+The interpretation of the above is that output valuesy,
+at time t are functions of inputs u, - - - , u, at times 1, - - - , t,
+.strictly" causal meaning that present inputs cannot affect
+present outputs. "Equilibrium" is equivalent te "shift in-
+variance" of the corresponding input/output map, where
+the "equilibrium input value" u plays the role of a "zero
+input."
+When U is Euclidean space R' (or an open set thereof),
+Y is just R, and each f, is a real analytic map, it is
+customary to represent f by a "Volterra series"
+cc
+At) 4i(u,,, u) (1.2)
+where L, is a homogeneous degree i polynomial in the
+coordinates of (ul'. . . 'u,). Other representations in this
+case are the "multidimensional z-transform" [1] and the
+"regular transfer function" [8]. Each of these alternative
+representations has its computational advantages depend-
+ing on the problem to be solved. Since they all give the
+same information aboutf, and since the passage between
+them is well understood, this paper uses the more abstract
+definition in (1.1), which has the advantage of allowing
+for nonanalytic nonlinearities in f.
+A Systems
+Definition 1. 3: A system 2; = (X, P, Q, x-) is defined by a
+vector space X, maps P: X X U--->X and Q: X X U_* Y
+and an jE in X (called, respectively, the state space, next
+state, transition or control map, output or measurement
+map, and the initial state). The dimension of 2: is the
+(possibly infinite) dimension of X; zero-dimensional sys-
+tems are called memoryless. A state-output system has Q
+independent of inputs U. When there is an 9 in U with
+<<PAGE-DIVIDER>>
+W
+IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS, VOL. cAs-26, NO. 5, MAY 1979
+P(5F,u_)=JF, Z has equilibrium initial state (EIS). When P
+and Q are affine in x, I is a state-affine (S-A) system.
+When P and Q are linear, Y_ is state-linear. A polynomial
+(resp. analytic) system has X = k", U a subset of some k ',
+Y=kP, and P,Q polynomial (resp. k=R or C, U a
+manifold, X = k n, Y = kP, P, and Q analytic).
+A system as defined above corresponds to a set of
+difference equations
+X, + I = P(x,, u)
+y,=Q(x,u), t=1,2,3,--. (1.4)
+with the initial condition x, = 5~. State-output systems, in
+which y, is a function of x, alone, are the ones found most
+frequently in the control literature, and are called "Moore
+machines" in automata theory. In the state-affine case one
+has equations
+X, + F(u,) x, + G(u)
+y, H(u,)x, + I(u) (1.5)
+with F(u), G(u) linear maps and G(u), I(u) vectors for
+each u in U. The notations F, G, H, I will be used freely
+instead of P, Q. The symbolic notation x'= P(x, u), y =
+Q(x,u) (where the prime indicates a time-shift operator)
+will be used freely.
+The extended transition map P*: X X U*--*X is defined
+recursively by P*(x, e): = x, P*(x, wu): = P(P*(x, w), u); P'
+is the restriction to sequences of length t. With a slight
+abuse of notation, P* will be denoted also by P. For any
+w=vu in U', where v is in U* and u in U, one writes
+Q '(x,w) (or just Q(x,w)): = Q(P(x,v),u), and Q' for the
+restriction to X X U'. The reachability map of Y_ is g: U* --- >
+X where g(w): = P(5E, w); the reachable states are those in
+its image. I is said to realize its response fx: U Y: w-
+Q(i, W).
+Definition 1.6: Y_ is span-reachable iff X is the smallest
+affine manifold containing the reachable states, observable
+iff the functions Q(x, -): U ' ---> Y. x in X, are all distinct,
+and span-canonical iff both span-reachable and observ-
+able.
+Definition 1. 7: An (affine) system morphism T: Yl --->7'2
+is an affine map T: XI __*X2 satisfying TY, =5F2 and, for all
+x, u, T(P,(x,u))= P2(T(x),u) and QI(X,U)= Q2(T(X),U)'
+The above definitions are useful in the context of the
+S-A realization problem, but "span-reachability" and
+"affine system morphism" are of course too weak in a
+purely nonlinear context (see [421, [461). When systems are
+normalized (by a translation) to have initial state 5E = 0,
+span reachability is of course the same as requiring that X
+be the smallest subspace containing reachable states, and
+system morphisms become linear maps. Since a transla-
+tion is required when normalizing, it is clear that a defini-
+tion of morphism should include translations when the
+category of all S-A systems is considered; otherwise, no
+uniqueness can be expected (as with the internally bilineaT
+counterexamples in [52].
+Existance of a morphism Y-1__+y-2 forces equality of
+responses; the following is a partial converse to this fact.
+Theorem 1.8.- Let 2, and 7-2 be S-A systems having the
+same response map. Assume that E, is span reachable and
+12 is observable. Then there is a unique morphism
+T: 21 --- >E,. Furthermore, T is onto if 22 is also span
+reachable, and one-to-one if 1, is observable.
+Proof.- By span reachability, any state x in X, can be
+written as Erigi(wi), Er, = 1, for some finite set of input
+sequences w, and scalars r, Write T(x): = Eri&(wi). To see
+that this gives a well-defined map T:Xl--+X2, consider
+any other expression x = Xsig,(wi), Esi = I (for the same set
+of wi's, adding zeroes if necessary to the ri,si). Since
+Ql(.,w) is affine, Y-rQ,(g,(wi),w)=EsQ,(g,(wi,w)), i.e.,
+XrJ(wiw) = Zsj(w, w), for any w in U '. This implies that
+Q2(y-r,92(Wi),W)=Q2(2:Sig2(W,),W) for all w in U' and
+thus, by observability of 2:2, that 2ri92(Wd=1:Si92(Wd-
+Thus T is well defined, and it is clearly affine. Uniqueness
+is clear, since T( g, (wi)) = 92(W,) is forced by the definition
+of morphism. The last two statements follow by analogous
+arguments.
+Remark 1.9: If -a given S-A system 2 is not span reach-
+able, one may of course restrict P and Q to the affine
+span X of the reachable states (considered as a vector
+space in itself, once that an arbitrary x in X is choosen as
+origin), resulting in a span-reachable realization of the
+same response. If Y_ is not observable, a dual construction
+gives an observable realization: it is sufficient to form the
+quotient of X by the subspace of all states indistinguish-
+able from zero (I.e., all x with Q(x, -) = Q(O, -)); P and Q
+naturally induce maps in the quotient. Thus existence of a
+single S-A realization of an f already implies existence of a
+span-canonical one. Such a realization is constructed be-
+low, for any f.
+Definition LI 0: The image realization of the response f
+has X: = [ U ', Y ], 5F: = f, P(b, u): = b., and Q(b, u): = b(u).
+The above realization is an S-A, in fact state-linear,
+system. This is clear from the definition of the vector
+space structure on X. Moreover, it is observable. Indeed,
+if Q(b, w) = b(w) is known for all w in U ', then b is
+determined uniquely, as an element of X. By Remark
+(1.9), a span-canonical S-A realization can be obtained by
+restriction to the af fine span Lf of the reachable set {f., w
+in U ' ). Thus from (1.8) and (1.9) the following theorem
+results.
+Theorem 1.11: Any response f has a span-canonical
+S-A realization If, unique up to isomorphism.
+Definition 1.12: f is S-A finitely realizable iff there ex-
+ists some finite-dimensional S-A system realizing f; a
+minimal realization is then one whose dimension is smal-
+lest among all possible S-A realizations of f.
+From (1.8) and (I. 11) the next theorem results.
+Theorem 1. 13: Let f be S-A finitely realizable. Then a
+S-A realization of f is minimal iff it is span-canonical.
+It is important to remark that the above minimality
+holds only with respect to the class of S-A realizations. An
+extreme case of this is illustrated by the one-dimensional
+system 1, with U = Y = k and equations x'= x + u,y = x'
+<<PAGE-DIVIDER>>
+SONTAG: REAL17AIlON THEORY OF DISCRETE-TIME SYSTEMS: PART 1
+(s = positive integer), jE = 0. The response fo of this system
+is also realizable by an S-A system, since polynomial
+nonlinearities can be replaced by equations in the powers
+of state variables. But it follows from latter results that fo
+admits no S-A realizations of dimension less than s. (A
+fuller discussion of this issue, along with some more
+remarks on the example 20, which is completely reachable
+and observable, can be found in [42].)
+A responsef is strictly causal (resp. equilibrium) iff its
+span-canonical realization is state-output (resp. has EIS).
+Proposition 1.14: For any response f, the following
+statements are equivalent: a)f is strictly causal, b)f has a
+state-output realization, c) any span-reachable S-A reali-
+zation of f is state-output. Similarly, there is equivalence
+of: a')f is an equilibrium response, b')f has a realization
+with EIS, c') any observable realization of f has EIS.
+Proof: Both c) implies b) implies a), and c') implies b')
+implies a') are trivial.
+Assume now that f is strictly causal, so f(wu) =f(wv)
+for all w in U*, u, v in U. Thus Q(g(w), u) = Q(g(w), v) for
+all w in U*. Since Q is affine, Q(Xrig(w), u) =
+Q(Xrig(wi),v) for all affine combinations of reachable
+states, i.e., for all states. So Q is independent of inputs,
+i.e., a) implies c).
+If f is an equilibrium response then, for any I realizing
+f, Q(-Z, W) =AW) =Aiiw) = QOF, iiw) = Q(P(-Z, u-), w) for all
+w in U '. If I is observable, jE = P(jE, u). So a') implies c').
+C. Bounded Responses and Finite- Type Systems
+For any set 8i, i = 0, s of functions from U into k,
+any w=ul ... u, in U', and any multiindex a= a I ... a,
+(each ai an integer between 0 and s,) 8,(w) denotes the
+product a. (UIA (U2) ... 8,,,(U,)' ne "tensors" on such a
+set give rise to bounded responses.
+Definition 1.15: A response f is bounded, of type J=
+[So,- - - 8J, where the 8i are functions U--*k, iff for each
+t > I there are (finitely many) vectors a. in Y with
+f(w) = Z8.(w) a. (1.16)
+for all w in U.
+Conventions 1.17: Without loss of generality it will be
+always assumed that 3. is the unit constant function:
+80(u) =I for all u in U. This will greatly simplify nota-
+tions. Furthermore, the family of functions J will be
+assumed linearly independent (i.e., if there are scalars r,
+with Xri6i(u)=0 identically on U then all r,=0); if this
+were not the case, a maximal linearly independent set can
+be extracted from a given J. For a type J B,,, a.,),
+[J] denotes the set of integers (0,. - - s).
+An obvious and trivial example of bounded response is
+just any map 8 1: U--* Y, inducing a memoryless response
+RU2... UI) = 60(U 1) ... 80(U,-1)81(Ud- More interesting ex-
+amples follow.
+Exan,Vle 1. 18.- As explained in the introduction, the
+terminology "bounded" has its origins in the main (and
+motivating) example: polynomial bounded responses. This
+case corresponds to U = a subset of k ', m > 1, and the 8i
+345
+being a set of possible monomials in the m input variables
+(for instance, J = all monomials of degree < d, for some
+d). Those classes of responses for which a satisfactory
+realization theory is (at least partially) developed are an
+bounded. They are as follows. a) Linear responses: U=
+k ' and each f, : k '--* Y is linear; in particular, these are
+of typeJL=(80,- - -,S ) with So= I and 3i = ith projection
+k'--+k=mononiial u(i), b) Internally biaffine responses
+[41, [11], [171, [18], [25]-[271, [50], [52]: U=k' and no
+inputs at any given instant appear multiplied among
+themselves in future outputs; alternatively, these are pre-
+cisely all those responses of type JL. c) Multilinear re-
+sponses [21, [3],1201, [21], [28], [291, [32], [38]: U= k' and,
+indentifying U' with (k')'=set of m-vectors of length-1
+scalar sequences, the map f,: (k')'--+ Y is a m-linear for
+each t; alternatively, these are responses of type J =
+( ui(J)... ui-), ji = 0 or 1) and each monomial 8,,(w) in
+(M
+(1.16) for which a,,=# 0 has total degree exactly m. (More
+generally, ~ne may consider "vectoe r-linear responses
+with U= U, X ... X U, and each U,=k"~, i=1,- --,r,
+m, + - - - + mr = m; these result also in bounded re-
+sponses.) d) Homogeneous (degree-d) responses 18], [22],
+[42]: U= k' and each f, is a homogeneous polynomial of
+degree d; alternatively, these are the responses of type
+Jh,d W(1)... U(m), j, + +jm <d) such that SJw) has
+total degree exactly d whenever a,,:~& 0.
+It should be carefully noted that b) and c) above give
+different, incomparable, classes of responses.
+Example 1.19: Another rich source of examples is pro-
+vided by bounded piecewise linear responses. A simple
+example is given by U = Y = R and J,,,P: = ( 80 = 1, 6 1 ),
+with 3, = the step function 8,(x) = 0 for x < 0 and I for
+x > 0; then a response like f with f(u * * * u,) = 0 if all ui < 0
+and= 2(u I + - - - + u,) otherwise, is of type J; indeed,
+f(u, - u,) equals
+2 [ 61 (UI)80(U2) ... 60(U) + 80(U1)61(U2) ... 60(U,)
++ - - - + 80(ul)... 8 1 (U)
+A more interesting example has U= the interval [0, 1],
+Y = R, and, for r a positive integer, J, = {So =
+6, - - - , 6, - , ), where 8i: = characteristic function of
+- I)1r, i1r). The responses of type J, are given, for
+each 1, by the step functions on [0, 11', constant on hyper-
+cubes with sides of length 11r. Even more interesting
+types of responses appear when adding monornials to the
+above: piecewise linear and, more generally, piecewise
+polynomial responses are obtained.
+Realizations of bounded responses will have themselves
+a special structure.
+Definition 1.20: The S-A system 2 is of finite type
+J= (80... 8,) iff there are aff ine maps Pi, Qi with P(x, u)
+= 2 Si(u)Pi(x) and Q(x, u) = 2 Si(u) Qi(x).
+In terms of linear maps and translations, in the above
+case there are linear maps Fi : X--+X, Hi : X--+ Y, and vec-
+tors G, in X, I, in Y, such that system equations become
+<<PAGE-DIVIDER>>
+34
+S S
+X, = I 8,(u)Fx + 2 Si(u) G,
+i-0 i=0
+5 S
+y = 2 6,(u)Hix+ E 6i(u)I,.
+i-0 i=0
+IEEE TRANSAcTIONS ON CIRCUITS AND SYSTEMS, VOL. cAs-26, NO. 5, MAY 1979
+than in (1.7). Adding zero matrices and vectors if neces
+sary, it may be assumed that both systems are of the same
+type J. It is easy to verify then that an affine map
+T = A x + b mapping X into )~ induces a morphism from Y_
+into ñ iff T.Z = j^F, A,~ = F, A, A G, =P, tF, b for i =# 0, and
+AGo=Go+Fob-b, HA =H,, and I,+Hb=I,.
+Notation 1. 26: For each multiindex a = a, ... a, in [Jl*
+(J =type of X), G,, in X is defined by
+Example 1.21: a) A linear system has type J, (cf.,
+(1.18a)) and equations
+x'= 80(u)Fx + Si(u) Gi
+y = 80(u)Hx + 6i(u)li
+with 5~ = 0; usually one assumes all Ii = 0. b) An
+internally biaffine system is any system of type JL; (these
+systems are sometimes called "internally bilinear" or just
+"bilinear" in the references in (I. 18b), especially in the
+EIS case; the latter terminology is misleading, since it is
+also used for the next example). c) A standard multilinear
+system is best described by a "wiring diagram" as in the
+references in (I. 18c); in the bilinear (m = 2) case, these are
+state-affine systems with U = k 2 and of type J =
+(I,u(1)1U(2)1U(1)U(2)) whose equations can be decomposed
+into three blocks:
+x'1~A,1x1+u(I)B,
+X~ ~ A 22X2 + U(2) B2
+x'~ADX3+ U(2)A3,X, + U(I)A32X2+ U(I)U(2)B
+3 3
+y = CX3
+where the Aij,Bi,C are matrices and vectors of ap-
+propriate sizes. These systems are clearly of finite type.
+Example 1.22: Piecewise linear and step-function
+types are useful in modeling "logical" controls. For ins-
+tance, a system with transitions x' = A x if u is positive but
+x'-Bx otherwise, is of type J.,,,
+,P: x'= 6,(u)(A - B)x +
+80(u)Bx.
+Remark 1.23: Every finite- dimensional S-A system is
+obviously of finite type, when Y is finite dimensional.
+Indeed, it is only necessary to choose bases for X and Y;
+if dim X--n, dim Y=p this results in n 2 +nm+np . +p
+functions 8,(u) as entries of the corresponding matrices
+F, G, H, I. Adding So = I if necessary, the given system is
+clearly of finite type.
+The connection between bounded responses and finite
+type systems is given in the following theorem.
+Theorem 1.24: A response f is bounded, of type J, iff
+its span-canonical realization Ef is of finite type J.
+Proof.- If f has any realization 2 of type J, the defini-
+tion of fy shows that f has type J. The converse statement
+will be immediate from the construction to be given in
+(2.9).
+D. Some Useful Formulas
+Explicit formulas can be given in the finite-type case for
+reachability maps, responses, morphisms, etc; these will
+be used later.
+Remark 1.25: A morphism between two finite-type sys-
+tems 7-,ñ can be described somewhat more explicitely
+G.: = F~, - - - F.,G.,.
+The vectors W, a in [J]*, are defined by W,,: = G~ if
+a, *0, a in [J]', W,: = 0, and W,.: = Go. + W. otherwise.
+Finally, the vectors V, a= a, - - - a, in [J I' are defined as
+Va: = F.~ ... F~,.jF + W,
+A straightforward induction gives
+Lemma 1.27.- With the above notations,
+g(u, ud = I SJUI ... u,) V.
+and
+A(u, ... u,)= E 8.(u, ... u) H., V.,...~ _, + I(u,)
+(1.28)
+both sums over all a in [J]'.
+The following algebraic facts will be needed.
+Lemma 1.29: a) If (8i,i in [J]) is a linearly indepen-
+dent set of functions U--->k then, for each t > 1, the set
+(8,,,a in [J]') of functions U'--*k is also linearly indepen-
+dent.
+b) Let 8,, 8, be a family of linearly independent
+functions U--+ k and let X be a vector space, b 1, - - - , b,,
+vectors in X. Consider X,: = subspace generated by the b,,
+and X2:=subspace generated by the vectors (X8,(u)b,,
+u in U). Then X, = X2-
+Proof.- a) For t = I this is true by hypothesis. If true for
+t but not for I + 1, there is some relation Y_ r. S. = 0, the a
+in [J Ilen, for each w in U' and u in U:
+ai(w) 6i(u) = 0, for all u in U
+with the a, in the subspace generated by the 8., a in [J]'.
+Independence of the Bi forces ai(w) = 0 for all i and all w
+in U', so by induction all r,, = 0.
+b) Clearly X2 is included in X,. Let L: X--*k be any
+linear functional such that L(X2) = 0. Dien, for any u in
+U,
+0= L(J Si(u)bi) = E 6i(u)L(b).
+By linear independence of the 8i, all L(b,) = 0. Thus L(X,)
+is also zero. So X, is included in X2.
+The following lemma permits checking span reachabil-
+ity. A system with 3F~#O can always be transformed by a
+translation into one with j~ = 0. The original system is
+span-reachable iff the second one is. The advantage of
+this normalization is that since.~=O is now always in the
+affine span of the reachable set, this span is a subspace
+and span-reachability means X=subspace generated by
+g(U*).
+<<PAGE-DIVIDER>>
+SONTAG: REALIZATION THEORY OF DISCRETE-TMff SYSTEMS: PART 1
+Proposition 1.30: With JE=0, an S-A system is span-re-
+achable iff
+span G,,a in [J] +
+span V.,a in [J]+)=X.
+Proof: Consider the affine manifolds
+X,: =affine span of (g(w),JwJ<1).
+Here these are just the subspaces generated by the
+g(w), I w t, since g(ii... u-)=JE=0 is in every generatiilg
+set. But the subspace generated by X, is the sum of the X.
+J,
+i = 0, t, where ii: = subspace generated by g( V). By
+(1.27) and (1.29), each of the 1, is generated by the V., a
+in [J 1'. Since here V. = W,, and by definition V,, = G. if
+a,:# 0 and Voa = Go~ + V, the result follows.
+Since equality X,=X,+, clearly implies X,+I=X,+2
+= ...
+, a dimensionality argument gives the following
+corollary.
+Corollary 1.31: An n-dimensional system is span-reach-
+able iff X,, = X. If J~ = 0, this is equivalent to X = span of
+all G, a in P, t < n.
+Since a S-A system is observable iff there are not states
+x with Q(x, -)= Q(O, -), observability becomes also a lin-
+ear condition. Denoting for a in [J)+:
+an argument analogous to the preceeding ones gives.
+Proposition 1.32: A S-A system is observable iff the
+intersection of the kernels of the H, a in [J]+, is zero.
+When the system is n-dimensional, it is sufficient to form
+the intersections of the ker H., a in [J Y, t < n.
+Notational Conventions 1.33: A few normalizations will
+simplify notations considerably. First, it may be assumed
+that, if a response f, or a system X, is of type J =
+( 80, - 8,), with U a subset of k ', then 8,(0) = 0 for all
+i = 1, , s: if this were not the case, it is enough to
+replace 8, by 8j': = 8i - r80, where r = 8,(0); the new J is
+again linearly independent and the class of responses, and
+systems, of type J is unchanged. (In the polynomial case,
+the 8, are nonconstant monomials in the input variables
+for i=#O, so 8i(0)=0 is always satisfied.) When f is an
+equilibrium response, or I has EIS, a coordinate transla-
+tion can be effected in the input space U resulting in ii = 0.
+Similarly, a translation in X gives 5E = 0. These nonnaliza-
+tions will be assumed when dealing then with the
+equilibrium case.
+The set of all those multiindexes a in JJJ' for which
+a 1:# 0 will be denoted by [J I +. Then, f is an equilibrium
+response iff a,,, = a. for all a in [J ] +, and I has EIS iff
+Go= 0. Thus (1.30) simplifies to the following lemma.
+Lemma 1.34: An EIS system is span-reachable iff X=
+span (G., a in [J]+).
+Remark 1.35: The given span reachability and observ-
+ability conditions reduce to the well-known ones for linear
+and internallybiaffine systems. As in those examples,
+these conditions result for EIS systems in a "duality"
+between span reachability and observability. It is as yet
+347
+unclear whether these dualities have any system-theoretic
+meaning in the S-A case.
+Numerical ExanWles 1.36: Consider a system 2, with
+3
+U = R, X = R , 5~ = 0, and transitions
+X'I=X2 if U<O, X,+X2+1 otherwise
+'=X3 otherwise
+X2 if U<O, XJ+X3
+' = X2
+X3 X3-
+This system is of type J,,,,p (cf., (1.19)), where
+0 01.
+G 1 01 F, I
+1 101 F0= ~00 0 1 1 0 0
+0 0 1 1 0 0 0
+Since G,,Gll=(l 1 0)' and G110=(I 0 1)' span X,
+1, is span reachable. Similarly, consider 12 with same
+UIX,5F, and transitions
+X, UX2+ U2
+, = U2X, +
+X~ = U2X,
++ UX3
+- UX3
+X3 = UX2
+This system is of type (80, 61, 82) with 8,(u) = u and 82M
+= u 2, and with G, = 0, G2 - the above G, F0 = 0, Fi - the
+above Fi - 1, i = 1, 2. So G21 G22, and G221 span X, and 22 'S
+also span-reachable. Finally, consider 13 with UX as
+above, ~ -(1 2 0)' and
+x,=u2x,+ux2-2u-I
+X, = U2X 2
+2 I+UX3-U -2
+- UX3 - 2u.
+X3 = UX2
+Normalizingto Y=0 byx--+x-jF, 1:2 isobtained. So 23 is
+span reachable too.
+11. MATPux MwPAAL REm-izAnoN ALGoRrmms
+This part introduces a general matrix mathod for
+minimal S-A realization of bounded responses. A reduc-
+tion is first carried out, which allows restricting attention
+to the case of equilibrium responses without any loss of
+generality. Notations introduced in previous sections are
+freely utilized.
+A. Reduction to the Equilibrium Case
+For any response f of type J = (80, - 8,), a new re-
+spor~se f will be derived from f as follows. The new input
+set U will be U X k, fto be interpreted as "addin& a~ new
+input channel") and f will be of type j= {go, - as, 8J+ 1b
+where 8,(u,v):=8,(u) for all (u,v) in UXk, i=O,-..'s,
+and 9, + 0, v): = v. Clearly, i is linearly independent since
+J was. Using the notation in (1.16), for a in [j]':
+do.: = J., for all a in +
+a(,+ a0. - a,, if a in 1J1+
+do: = a., if a in [J]+ with a1*0
+J.: = 0, if a,=#O but ai=s+l forsome i=2,...,t.
+(2.1)
+<<PAGE-DIVIDER>>
+348
+IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS, VOL. cAs-26, No. 5, MAY 1979
+For any w = u, ... u, in U, vD in 0' is the sequence with
+ai: = (ui, 1)'. A straightforward calculation shows the
+following lemma.
+Lemma 2.2: f(w)=f(iv') for all w in U'.
+For.any system I of type J having J~ = 0, a system 7, of
+type J and input set U can be derived as follows (with
+j~: = 0, i: = X):
+F resp. Hi, Ii Fi [ resp. Hi, Ii if i=O,---,s
+zero, if i=s+l;
+Gi: = Gi i= I,- - -,s GO: = 0 G., , 1: = Go
+(2.3)
+rows and columns of B(J) is irrelevant for the validity of
+the algorithm to be described; in fact different orderings
+may be useful for various purposes, as described later. It
+will be convenient however to assume that they are
+ordered lexicographically, i.e., (block) rows are ordered as
+0,1,2,3,---,s,00,01,.-.,Os,10,---,ss,000,---, etc., and
+columns are ordered as 1,2,- - - s,10, ll,- - -, Is,20,- - -,ss,
+100, 101, - - - , etc.
+Realization Algorithm 2.8: Assume that f is an S-A
+finitely realizable response or, equivalently, that B(J) has
+a finite rank n. Then B(J) already has rank n. Pick a
+nonsingular n by n submatrix (D of B(J),.. Let B.,, - - - , B,,
+be the columns, and B,8 - - - , B the rows, defining 40
+(B #,'means the ith entry in the block row of index fl). Let
+ibi be the submatrix of B,,,,, defined by the same rows
+but with columns B..,, B..i, i 0, s. Then
+then X has EIS b definition. Since G. = G. whenever a is
+y
+in [J I ' with a, =# 0, s + 1, G(S + I)a = GOa if a is in [J and
+G. = 0 otherwise, the following lemma follows from (1.30).
+Lemma 2.4: 2 is span-canonical iff ñ is.
+This result is in fact also a consequence of the following
+lemma.
+Lemma 2.5: f has an S-A realization of dimension n
+and type J iff f has an EIS S-A realization of dimension n
+and type
+Proof: Given I realizing f, realizes f. Indeed, using
+A
+the notations in (1.26), V~ = G.~,= G~ = V~ if a , 0 0, s + 1,
+A
+V0. = Go. + V. = V. (since all Go. = 0), and V(s + 1)", = Go,,
+VW - V,,; this implies the formulas in (2. 1).
+Conversely, if E* realizes then a system 2: can be
+defined setting v = 1, i.e., F: = f1i for i = 1, - - - , s, FO: = T3*
++ F, , , similarly for G, H, I. By (2.2), E realizes f.
+The conclusion from the above results is that it is
+enough to develop a minimal realization algorithm for
+equilibrium responses. If a given f is not such a response,
+then f can be constructed and a minimal realization of f
+can be obtained from one for f (System-theoretically, the
+addition of an input channel corresponds to adding a
+"reset control"; in fact, 0= U X (0, 1) would have worked
+equally well)
+Further SiWlification 2.6: If E has EIS 5F=O, clearly
+fl(u) = I(u) for all u in U. Given an equilibrium response
+f, the responsef' with
+Pul ... u): =Au. u) -f(u,)
+satisfies f'(u)=O. A realization E' of f' will thus have
+I'(u)=O, and will give rise to a realization E of f by
+adding 1(u): =f(u). It will therefore be assumed that f(u)
+0 for all u in U.
+R The Algorithm
+A bounded equilibrium response of type J = (,50,. 8 ")
+will be fixed. For the explicit matrix calculations it will be
+assumed that Y = k P, some p > I -
+Definition 2.7.- The behavior (or generalized Hankell
+matrix B(f) of f is the doubly infinite block matrix con-
+structed as follows. Rows of Bff) are indexed by [J ] ' and
+columns are indexed by [J I, The (,8,a)th block entry of
+B(J), P in [J]-, a in [J]+, is the vector a,,,,. The submatrix
+obtained by restricting to those rows with indexes I #I < r
+and columns I a I < t is denoted by B(J), The order of the
+'), i=O,.--,s (2-9)
+Hi: = (a.,i, a.
+define a minimal S-A realization of f (of dimension n
+Proof of Correctness: In general, a span-canonical reali-
+zation Z of any bounded f can be constructed as follows.
+The state-space X is the linear span of the columns of
+B(f) (seen as infinite vectors), Gi is the ith column,
+i = 1, - - - , s, Fi is the linear map induced by the column
+shifts B. , B.0 i = 0, - - - , s, and H, is the map X--* Y in-
+duced by restricting a column to its ith row block, i =
+0, - s. Ile maps F, are well defined, since any relation
+among columns F, ra B. = 0 (finite sum), r. in k, implies
+EraBj=0 for all i in J. Indeed, the jth (block) row of
+Zr.B, is Eraaj, which is also the iith row of lraB.,
+hence zero. Let 5F=O.
+Clearly, G. = B. for every a in [J I, so E is span-reach-
+able. For any x = Era Ba in the intersection of all the ker
+H0, P in [J]+,
+0= Hax r.H,,B. ra.,,
+is the 8th row of x. Tlius x = 0, and 2 is observable.
+It only remains to prove that 2: is indeed a realiza-
+tion of f. Pick t > 1, w in U. By (1.27), fj:(w) =
+E 8,(w)H,, V-, E 8-(w)H, G-, E S-Ma- =f(w)l
+as wanted.
+Thus 2 is a span-canonical realization of f, and the
+latter is S-A finitely realizable iff I is finite dimensional.
+Further, E is a minimal S-A realization of f, and its
+dimension n is the dimension of X, i.e., the rank of Bff).
+B Iy (1.31), (1.32), the rank of B(J). is also n, so the latter
+has a nonsingular 0 as claimed. The explicit formulas are
+just the expressions of the F, Gi, Hi using the columns
+defining 4) as a basis of X.
+Remarks 2.10: a) The above is a minor variation of the
+algorithm given by [411 for linear systems, and for repre-
+senting power series in noncommutative variables given
+by [ 15]; the method of proof is analogous to the one given
+<<PAGE-DIVIDER>>
+SONTAG: REALIZATION THEORY OF DISCRETE-TIME SYSTEMS: PART 1
+by [391 for linear systems over rings. Alternatively, the
+algorithm for linear systems given by HO (see [30, ch. 10])
+could be also easily generalized-here one factors B,,.
+rather than finding a full submatrix. It is as yet unclear
+which of the alternatives provides a "better" algorithm. A
+theory of partial realizations can be also derived from the
+above constructions, again by generalizing the linear case.
+In fact, this has already been done by [251 for the (EIS)
+internally biaffine case. It is interesting to remark that,
+since I in (2.9) is span canonical, it follows that the
+column space X is isomorphic to Lf (by (1.10), (1.11)).
+Generalizations of behavior-like matrices to the non-
+bounded case, (such that finite rank be equivalent to some
+sort of realizability), can be found in (421, 146] where a
+Jacobian matrix of differentials of f replaces B(J).
+b) When restricting attention to a particular class C of
+responses, it is to be expected that many, if not most,
+columns of Bff) will be zero independently of the particu-
+lar f. Thus, for computational purposes one orders col-
+umns in suitable ways, dropping those which are zero
+(examples below).
+c) Tle application of the above algorithm to noisy data
+is a problem which should be more carefully studied, since
+(2.9) is numerically unstable as given. It is, however,
+possible to modify the algorithm such as to achieve stabil-
+ity, at the cost of an increase in its computational com-
+plexity; for the HO version of (2.9) (cf., Remark a)), this
+modification follows along the lines of the work (in the
+linear case) of [131.
+d) A serious practical question concerns the coefficients
+a,, themselves (B. involves those a,, with jal < 2n). In the
+polynomial case, a least squares fitting of the polynomial
+f2, may be needed, given a bound on the dimension t of a
+S-A realization of f; alternatively, f, could be obtained
+from the corresponding Volterra or other series, if such
+data is available. It is interesting to remark thatf2,, is itself
+determined by a restriction f2,, where r is the (usually
+much smaller) dimension of the reachable set of If . ([481,
+theorem 6.1) in the EIS case; it would be interesting to
+have an algorithm which makes efficient use of this fact.
+Besides its generality, the above algorithm (and its
+variation mentioned in a) above) serves to unify the
+literature.
+Example 2.11: For linear responses (1.18a), the only
+nonzero columns of B(J) are those with indexes iW, with
+i = 1, - - - , m and j > 0; the only nonzero rows are those
+with indexes U, i > 1. Ordering the columns as
+l,2,---,m,l0,20,-,m0,l00,-.., and the rows as
+0, 00, 000, - - - , Bff) is precisely the Hankel matrix (Ai,j),
+where the A,, are the "impulse response" or "Markov"
+parameters A,, = (a,(,, a,,0,)'. Then (2.9) reduces to the
+algorithm of [41].
+Example 2.12: For internally biaffine responses
+(1.18b), B(J) is essentially the "generalized Hankel
+matrix" given independently by [251 and [161. In particu-
+lar, the matrix given by Isidori [25] is B(J) with columns
+ordered lexiocographically but with rows ordered as
+follows: first, all rows of indexes in [J], then all those with
+349
+indexesin [jj2, [j13, etc.; for each index length r, the rows
+are ordered as a,, - - - a, t 2*, where, if i has the binary
+expansion 2 bj2j -' (j = 0, - , r - 1), then, ai is the binary
+expression of the integer 2r- 1(lbj2-j). (The above expres-
+sion for the c~. can be inductively proved from Isidori's
+algorithm.)
+Example 2.13: For m-linear responses (1.18c), the algo-
+rithm coincide's with the one given by [29]. For simplicity,
+let m = 2. Thus f is of type J = (80 = 1, 81 = u(01 82 = U(2)163
+=U O)U(2)). Ile nonzero columns of B(f) can be parti-
+tioned into three sets: first, all those with indexes 10'; then
+all NY; finally all (Y 2W I 1Y, Ol CV 21Y and 030i. The nonzero
+rows are partitioned into three sets: all 0, all 0'10i, and all
+020i. Then B(J) has the block structure
+0 0 B12
+0 B2 0 (2.14)
+Bi 0 0
+where the indicated submatrices are those obtained in the
+above reference. Since F, and F2 shift columns in the first
+two blocks into the third, it follows that in a suitable basis
+the equations of If have the standard bilinear form in
+(1.21c)-
+C State-Linear Models
+The response of any S-A system I can be also realized
+by a state- linear system (P, Q linear). It is enough for this
+to enlarge the .state-space to X: = X X k and to add a
+constant equation z(t + I I = z(t): defining .6((X, Z)', U): =
+(F(u)x+zG(u),z)' and Q((x,z)',u)-H(u)x+zI(u) with
+Z - (.W, 1) gives a state-linear 2 realizing fl. Moreover, I
+is finite dimensional or of finite type iff ñ is. The reahza-
+tion theory of state-linear systems can be of course devel-
+oped independently from that of S-A systems. Defining
+L_span reachable to mean that X is the smallest subspace
+(rather than affine manifold) generated by reachable
+states and defining L-span canonical: = L-span reachable
++ observable, L-morphism: = linear T as in (1.7), the
+proofs in the previous sections can be repeated with minor
+modifications to yield the following theorem.
+Theorem 2.15: Amy response f has a span-canonical
+state-linear realization, unique up to isomorphism. If f is
+(S-A) finitely realizable, a state-linear realization is
+minimal (among all state-linear realizations) iff it is L-
+span canonical.
+Remark 2.16: A Hankel of Behavior matrix BL(J) can
+be defined in a way suitable for constructing minimal
+state-linear realizations, by letting (block) rows be induced
+by [J]', columns by [J]*, and writing a., in the (#,a)-the
+position (thus B(J) is a submatrix of BL(J) when f has
+EIS). A minimal realization is now obtained letting X=
+column space of BL(J), k: =column of index e =empty
+word, and Fj = shifts, H, = restrictions, as before. Thus the
+rank of BL(j) gives the dimension of a minimal state-hn-
+ear realization. (Since the affine span of reachable states
+<<PAGE-DIVIDER>>
+350
+does not in general contain the origin-the normalization
+3F: = 0 destroys the state-linear form-this dimension is in
+general one more than the dimension of If, the minimal
+S-A realization.)
+Definition 2.17.- The exponent series of of a bounded
+response f of type J = ( 60, - - - , 6,) is a power series in
+noncommutative variables zo, - - - , z, defined by taking a.,
+a=a, ... a, as the coefficient of the monomial z., - - - z. .
+For instance, the first response in (1. 19) has series
++ ZJZ 2+ Z0Z izo + 4Z I +
+2(z, + ZJZ0+ Z0Z 1 0
+Recall that a power series is rational iff it can be expressed
+in terms of polynomials using a finite number of sums,
+products and inversions.
+Theorem 2.18: A bounded responsef is S-A (or state-
+linear) finitely realizable iff (py is rational.
+Proof.- The Hankel matrix BAP is precisely the Hankel
+matrix of of, as defined in [171. Rationality is then equiv-
+alent to finite rank of BL(J), by the results there.
+For example, the system of type J 1, u, u2)
+xl=X,+2xlu-X2U 2
+X' = x 1112
+2 +X2
+Y=xl
+IEEE TRANSACTIONS ON CIRCVM AND SYSTEKS, VOL. cAs-26, NO. 5, MAY 1979
+Definition 3.4: A bounded response f of type J = (So=
+1, 8 1, - - - , SJ is finite iff there exists some integer K, which
+depends only on f, such that ao is zero whenever more
+than d of the entries a, are nonzero.
+For instance (cf. (1. 18)), linear and multilinear re-
+sponses are always finite, while internally biaffine ones in
+general are not. The main result here is as follows.
+Theorem 3.5: The span-canonical S-A realization of a
+finite response f is (isomorphic to) a cascade of linear
+systems. Conversely, the response of a cascade of linear
+systems with polynomial interconnections is finite.
+Proof.- Since the construction in (2. 1) and (2.2) pre-
+serves finiteness, it is enough to treat the EIS case. In the
+proof of algorithm (2.8) let Xj be the subspace of X
+generated by all those columns B., a in [J],, for whichj
+or more of the ai are nonzero. Then the shift F0 maps Xj
+into itself, while the shift Fi maps Xj into Xi+,, for
+i= I,. - .,s. If K is as in (2.2), then XK,, =0. A basis
+v v,, of X can be chosen by letting v ..... v,, be a
+basis of XK, completing this to a basis v ..... v ..... v,, of
+XK_ 1, etc. This results in transition equations which can
+be arranged in blocks as follows:
+x, =Aix, + B,(u)
+x' = A 2X2 + BAX 1, U)
+2
+has a responsef with rational exponent series
+(I - zo-2z, +(I - ZO)-IZ2)-l
+This is calculated easily using the methods in [14]. In
+general, automata-theoretic techniques (the "regular
+calculus") result in a calculus for state-linear realizations.
+An application is given in (3.10) below.
+III. 0-rHER FimTENEss REsum
+A. ConWositions of Systems; Finite Responses
+Realizations of finite Volterra series, and of their non-
+analytic analogues, require introducing some new notions.
+Definition 3.1: The series conWosition or cascade of two
+systems I with Y, = U2 is the system 1: = 7 with
+11712 ' I - 12
+X: = X1 X X2, U: = UP Y: = Y2, 5E: = (jEl, jF2) and
+P((X I I X2), U): = (PI (X I I U), PAX2, Q I (x 1, UM
+Q((X11X2)1U): = Q2(X21 QI(XIIU))- (3.2)
+It is easy to verify that series composition defines an
+associative operation on systems, the input/output map of
+1,.22 being the composition of the corresponding in-
+put/output maps.
+Definition 3.3: Y, is a cascade of linear (resp. S-A, inter-
+nally biaffine) systems 'ff 2 = 20'2 1 ... 71r, where I, is
+memory-free and, for each i = 1, - - - , r, Y_ j has P,(x, u)
+linear in both x and u (resp. affine in x, affine in x and u).
+The cascade has polynomial interconnections iff the maps
+Qi are polynomial (and each Ui, Yi is a finite-dimensional
+vector space), and 10 is polynomial.
+x~ = A KXK + BK(X I I X21 I XK - I I U)
+y = 2 Ci(u)xi + AU) (3.6)
+where the Bi are affine in the xj and of type J in the u.
+Defining 10 as the zero-dimensional map B,(u), 21 as
+x'=A Ix, + u, y =(x1,B2(X,1u)), and in general Ii as x,=
+Aixi+Gi(u), yi=(xl,.,,,xi,Bi+,(xl,***,xi,u)) with Gi=
+projection in last block entry of input, permits expressing
+(3.6) as in (3.3).
+The converse is an easy induction.
+In the polynomial case a degree d(a) is well defined for
+each B., a in [J]', and a response of type J is bounded if
+and only if there is some d such that all monomials 8,, of
+degree greater than d appear with zero coefficient in f. In
+terms of the Volterra representation (2.1), this amounts to
+Li = 0 for i > d. T'hus one says that "f has a finite Volterra
+series;" this is in fact the motivation for the terminology.
+(It should be noted that "finite" is relatim to the type of f;
+for example, every memory-free response is finite as a
+response of type f(u), so for instance y, = exp, (u,) is finite
+in this sense although it gives rise to an "infinite Volterra
+series" in the classical sense.) In the polynomial case,
+then, the proof of (3.5) can be repeated but letting now Xi
+be instead the span of the columns B,, with d(a) =j. Then
+F. maps Xj into Xj+d(.), and the equations (3.6) can be
+simplified even further. For example, if m =I and J =
+(l,u,u 2'..., U d), the span-canonical realization of a finite
+f of type J can be written in the following block form:
+<<PAGE-DIVIDER>>
+SONTAG: REALIZATION THEORY OF DISCRETE-TMM SYSTEMS: PART I
+X-',=F,l,lx +uG,,,
+0 1
+x'= FO'Jx, + u F,',jx -I +
+j-1 j=1
++UI-1
+F,'-,'] X+ UG, I + - + u'G,,,
+d d-1
+Y= Hoj X E H d- 1Hd
+2 j + U ljxj+ + u 1, JXJ
+j-1 j-1
+(3.7)
+When f is, further, homogeneous of degree d (cf. (I. 18d)),
+the above equations have
+Gij = 0, if i:7Lj Fi',j = 0, if i+j=#t
+and Hij = 0, if i+j=#d. (3.8)
+Definition 3.9: The dth truncation of the polynomial
+responsef is the finite response f(d) obtained by dropping
+all terms a. with d(a) > d.
+Proposition 3.10.- If f is an S-A finitely realizable
+bounded polynomial response, then f(d) is also S-A finitely
+realizable, for each d.
+Proof: By (2.18), 40f is rational. Let Sd be the power
+series in z0, - - - , z, which has a. = I when d(a) < d and
+aa = 0 otherwise; Sd is easily seen to be rational. For
+example, if J 80 = 1, 8, = u) then S2 is
+(I - Z0)_, + (I - zo)-,Zl(l - Zor,
++ zo) z z0) -'z I - z0)
+But the exponent series of f(") is the coefficientwise or
+"Hadamard" product of (py and Sd. By the results of [15] it
+is itself rational, being a Hadamard product of rational
+series. Thus f(d) is finitely realizable.
+Corollary 3. 11: If k = R or C and f is realizable by an
+analytic system with EIS, then f(d) is S-A finitely realiz-
+able.
+Proof.- Let I be an analytic realization off, and assume
+without loss of generality that jE=O, ii=O. Introducing if
+necessary new state variables for the monornials in state
+variables with total degree <d, it may be assumed that all
+terms in the power series expansions of P, Q are either
+line~rjn x (or constant) or of total degree greater than d.
+If P, Q are obtained from P and Q by dropping III terms
+of total degree greater than d, an S-A system 2 is ob-
+tained whose (necessarily bounded) response j coincides
+with f on all terms of degree < d (the EIS hypothesis is
+crucial here, since it implies that P has no constant term
+and hence that no term of degree more than d in state
+variables can contribute a term of degree <d when iterat-
+ing P). Then Pd)=pd) is S-A realizable by (3.10) applied
+to j
+351
+Remark 3.12: Corollary (3.11) is false without the EIS
+assumption. For instance, the finite (d= 1) response with
+f(u)= I and f(u, - - - u,)=2 2" is realizable by the
+(analytic but not S-A) system
+X1 X2U
+X, X 2
+2 2
+y=X1 (3.13)
+with jE=(l 2)'. But P)=f has exponent series -of=
+(12 2~,)Zj, which is not rational. Thus f admits no finite-
+0
+dimensional S-A realization. (Note that (3.13) could be
+interpreted, however, as a "time varying" S-A system,
+with the X2-coordinate corresponding to time evolution.)
+Although cascades of linear systems with polynomial
+interconnections give rise to reasonably well-behaved
+maps, it should be remarked that a simple cascade of a
+linear and an internally biaffine system, with linear int 'er-
+connections, already may give rise to rather complicated
+responses. For example, if E, and X2 are systems with
+X= U= Y: =k, 5E: =0, and X, has X'=X+ U,Y =X, 22 has
+x'=xu+x+u, y=x, the response of Y-,_X2 does not
+admit any polynomial realization with desirable observa-
+bility properties (see [46, example (18.1)]). In general,
+cascades of polynomial S-A systems with polynomial in-
+terconnections give rise to responses for which the degree
+of f, in each fixed ui, I < i < t, grows polynomially in t. (So,
+for example, the response of x'= x2u, W = 1, y = x, cannot
+be realized in that way.) Cascades of S-A systems can be
+characterized slightly more abstractly introducing some
+further concepts.
+Definition 3.14: The graph G(Y-) of a system 2 with
+X = k n and equations xi = Pi(x, u), y = Q(x, u), has n nodes
+( 1, - - - , n) and an arc from i into j iff Pj is a nonconstant
+function of x,. The system 7- has no nonlinear feedback iff
+the following condition holds for each i = 1, - - - , n: if
+il, - - - J, are the nodes which can be reached from i by a
+path in G(E), then Pi is Oointly) affine in xj,, - - - , xj ,.
+Proposition 3.15: The following statements are equiv-
+alent for a response f. a) f is realizable by a cascade of
+(finite-dimensional) state-affine systems, b) f is realizable
+by a cascade of (finite-dimensional) internally biaffine
+systems, and c) f is realizable by a system with no nonlin-
+ear feedback.
+Proof., It is trivial to prove that b) implies a) implies c).
+To prove that a) implies b), note that any type-J state
+affine x'=Y_8j(u)Pj(x), y=j8j(u)Qj(x) can be written
+as a cascade of a memory-free system Q(O, u) =
+(80(u), - - - , 6,(u)) and the internally biaffine system x'=
+Y, uWpi(x), y=y-U0) Qi(x). To prove that c) implies a),
+assume that f is realizable by 2 as in (2.3 1) and define an
+equivalence relation on t 1, - - - , n) by: i equivalent to j iff
+both i is reachable in G(1) from j and vice versa. Let " < "
+be the partial order induced on equivalence classes by:
+Ci < Cj iff nodes in Cj can be reached from the ones in C,.
+Extend < to a total order, and relabeling classes if
+necessary, suppose C I < C2 < - - - . Letting Xj: =subset of
+<<PAGE-DIVIDER>>
+352
+mEiB ntANsAcnom oN cntcurrs AND sysrims, voL. cAs-26, No. 59 mAY IM
+variables with indexes in C,, it follows that 1) P, is
+constant in the variables in Xj, j > i, and 2) Pi is affine on
+the variables in X, A permutation of the variables gives
+then the required decomposition.
+B. Non-S-A Realizability of Bounded Responses
+It is conceivable that an analytic bounded response f
+not be S-A finitely realizable but that there may exist a
+more general, for instance analytic, system 1: realizing f.
+In fact, this may happen even for a linear response , as in
+(3.12). It is clear from (3.11) however, that for a poly-
+nomial finite f, 7, analytic and EIS, f is S-A finitely
+realizable. Although the method of proof utilized in (3.11)
+does not generalize to the bounded nonfinite case, the
+result will still be true, as proved below.
+Definition 3.16: For each w in U ' the corresponding
+observable f' is the map J(v): =f(vw). The observation
+space L-f of f is the affine span of ff, w in U*) in
+[U-, Y].
+The observation space is an object dual to the span-
+canonical state space Lf generated by the f, (recall f.(v) =
+f(wv)). More precisely, if Lf (resp. Lf) is the subspace of
+[ U +, Y ] generated by the f,, (resp. f) then the nondegen-
+erate bilinear map
+Lf X Lf -, Y (3.17)
+defined on generators by
+induces one-to-one linear maps if,W), and L^f--*(L^f)'
+(where M'= space of all linear M--). Y). Thus if Y is
+finite dimensional (so that M' is finite dimensional for
+any finite dimensional M), Lf is finite dimensional iff Lf
+is. Since Lf (resp. Lf) has finite dimension iff Lf (resp. Lf)
+does (e.g., dim Lf -~; dim Lf < dim Lf + 1), the following
+lemma is concluded.
+Lemma 3.18.- The response f, with Y= kP, is S-A
+finitely realizable iff Lf, or equivalently Lf, is finite
+dimensional.
+The restriction L,~ t = 1, 2, - - - is the subspace of [ U', YJ
+generated by ( f, w in U*). In other words if R, : [ U +, YJ
+--),[U',Y] is the restriction operator b~-+b, then Lf=
+R,(Lf). When f is a bounded response of type j=
+(So, 8,) all Lf are finite dimensional, since Lf is in-
+cluded in the space generated by all S., a in [J]. Thus if
+some R, is one-to-one on Lf, the latter is finite dimen-
+sional. The kernels K, of the R, I Lf give subspaces K, :D K2
+D ... the intersection of all of which is zero.
+Lemma 3.19.- Lf is finite dimensional iff there is some I
+with K, = K, + 1,
+Proof.- If Lf is finite dimensional, the chain of sub-
+spaces K,K2, - - - must be finite.
+Conversely, it is enough to prove that K, = K, + , implies
+K, I - K, 12; an inductive argument will then give that all
+Y,, i > t are equal to K, and hence K, is their intersection,
+i.e., zero, so R, is one-to-one on L~ Let then I rfwj be in
+K,,,. Thus Jr. j(v)=0 for v U". r. (w)
+~J' all in So 2 _,f'j
+I rXj(uw) = 0 for all u in U and w in U '. Thus I r. , is
+,,.f'
+in K, and hence also in K, for all u in U. So 2 rfw,(
+., UQ')
+r..f,(iv) = 0 for all u in U and w in U", i.e., X r. is
+also in K,,2, as wanted.
+Theorem 3.20: Assume that f is a bounded response
+having an EIS realization I such that either a) I is
+analytic and U is connected, or b) 2 is polynomial and U
+is an irreducible algebraic set (i.e., a subset of k', defined
+by polynomial equations, which cannot be written as a
+union of two proper such sets; for instance k=R, U=
+R '); then f is S-A finitely realizable.
+Proof. Both cases will be proved by using Lemma
+(3.19). To prove a), consider the t-step reachability maps
+9t: U'--+X. The rank r, of g, will mean the maximal
+possible value of the differential dg, of g at all possible
+points w in U'. Since all g(U')C_g(U"'), it follows that
+r, < r, , , for all t. Thus there is some t < n = dim 2 with
+r,=r,,,=r. Let w in U' be such that rank dg,(w)=r.
+Since g, is the composition of g, , and the map U'--+
+U" 1 - &-4 iiv (ii = equilibrium input), it follows that rank
+dg,+,(5w)=r. It follows from the rank theorem (see, e.g.,
+[ 12, ch. 81) that there is an open neighborhood V = V, X V2
+of (ii, w) in U", and an r-dimensional submanifold M of
+X suc
+h that g,+,(V)=M. Since g,(V2)CM and rank
+dg,(w) = r, by the inverse function theorem V2 contains an
+open neighborhood V3 of w with 93(V3) open in M. It
+follows that V4:=g,+',(V3)) is an open subset of V, and
+hence of U` 1.
+Now let Erj-', be in K, Then, for each v in V4,g,,I(v)
+=&(iZ) for some ~v' in U'; thus 2rJwo(v)=
+2riQ(9,,.(v), wi) = Eri&&Ov'), wi) = Y_rJw,(Q^) = 0. This
+means that XrJm is zero in the open subset V4 of the
+connected set U` Since this map is analytic, it must be
+zero on all of U` as wanted.
+In the polynomial case, it follows from [48, prop. 5.4]
+that g.(U") and & + I (U'+ 1) have the same closure in the
+Zariski topology of X. Thus 2rJ,i=0 implies that
+XriQ(-,wi) is zero on g,(U") and hence, by continuity, on
+its closure, which includes g,, + (U"'). 71us I rj.,' , 0,
+as before.
+It is clear that a stronger version of a) above is valid: if
+Y_ is only assumed to have P, Q differentiable, but f is
+assumed analytic, thenf is again S-A finitely realizable.
+C Inputl Output Equations
+A fundamental result in linear system theory states that
+a linear response is finitely realizable iff its transfer matrix
+is rational. In other words, finite realizability is equivalent
+to inputs and outputs being related by a (high-order)
+difference equation. This result can be generalized to
+bounded maps. For simplicity, only polynomial maps will
+be treated, and Y = k will be assumed. The input set U
+will be taken to be an irreducible algebraic set (cf. 3.20 b).
+Definition 3.21: An (output-affine) difference equation
+(of order r) for the response f is an equation
+<<PAGE-DIVIDER>>
+50brrAG: UALJZAnON TMORY OF DISCRM-MM SYSTO": PART 1
+E(y, * 1Y1 - r, U11 ... IUI-,)
+r
+2 bi(u ..... u,_,)y,_j+b,+j(u,,-,u,_,)=0 (3.22)
+i-O
+with the b, polynomial in U11... IUI-r, bo=#O, which is
+understood to hold for all input/output pairs (u( ),Y( ))
+with y, =f(ul, u), t > r. The equation is output linear iff
+br, I =0.
+Numerical ExanWle 3.23: Let U = k and f the response
+of the system
+x'=x+u, 5E=0
+Y = X2.
+For any state x x and any input sequence U I U2U3 the
+resulting outputs are y I = x2, Y2=(X+ U 1)2, Y3 = (X + U I +
+U2)2 . This gives a relation between U I I U21 Y I IY21Y3 in which
+no x appears. Indeed,
+_ U2
+2 u , U2X = U2 Y2 - U2 Y I IU2
+and
+2
+Y 3 = Y2 + 2x I U2 + 2 u I U2 + U2
+imply the second order difference equation
+2 2 3
+U2 Y3 + 2 U2 Y2 - U2 Y I - U I U2 + 2 u , u2 + U2 U2 = 0-
+(3.24)
+It should be observed that for the f in this example (as in
+general for nonlinear responses) there exists no possible
+,.regression" y, = R(u, - , - - - , ut,y, - , - - - y, 1): if there
+would exist such an R, application of w = u ... u, I with
+u1: = 1, uj: =0 for i = 2, - - -, r, u,,, : = 1, and application of
+W'= UIU2 ... U,1 , with u,: = - 1, results in a contradiction
+in calculating Yr+,. Furthermore, note that (3.24) does not
+uniquely determine f, since the response obtained by
+beginning in any other initial state also satisfies (3.24).
+Theorem 3.25: A polynomial response satisfies an out-
+put-affine equation iff it is S-A finitely realizable. If this is
+the case, f satisfies also an output-linear equation.
+("Only if"): For an n-dimensional S-A system 2 there
+are functions Qi'.: U--). Y, i = 0, - - - , n, t = 1, 2, - - - such that
+Q'(x, w) = Q'(w) + Qf(w)x, + + Q,,(w)x,, (3.26)
+0 1
+for all x in X and w in U. By abuse of notation,
+Qi'(ul ... u.,) will mean Qi'(ul ... u,) if t <s. When 2 is
+polynomial, the Qj' are all polynomial. Denoting Q,:-
+(Q01, - - - , Q,'), the n + 2 vectors Q I I ... Q,,12 all belong to
+the (n + ])-dimensional vector space K" 1 over the field K
+of rational functions on U,+2 (irreducibility of U implies
+that K is well defined). Thus there exists a relation among
+these vectors, or componentwise:
+n+2
+j(W)Q,n+2-j=o, i=O,-..,n (3.27)
+b
+j-0
+with the bi(w) rational and not all bi = 0. Without loss of
+generality, b0=#0. Multiplying by a common denominator,
+353
+the b,(w) may be assumed polynomials. From (3.26) and
+(3.27),
+n+2
+I bj(w)Q"-j(x,w)=0 (3.28)
+j-0
+for all x in X and w in U1+2 . Letr:=n+2. Then if
+u u, is any input sequence with t > r, yj =
+U I. - - u,) = j2j(P(-jF, u, ... for j=
+I - - - , r. So (3.28) becomes I bj(u, u,)y, _j = 0,
+an output-linear equation as wanted.
+("Ir'): Assume thatf satisfies an output-affine equation.
+In terms of the observables J', (3.22) translates into the
+statement
+bO(W)fv r -I b,
+i10 _j(w)fu, + b,, (w) (3-29)
+for all w- u, ... u, in Ur. Let V be the subset of all w in
+U" with bo(w) =# 0 and S the subspace of [ U +, Y1. gener-
+ated by all [ r, I wl < r) and the constant function 1. The
+space S is finite dimensional. To see this, it is sufficient to
+prove that each subspace S, generated by those f' with w
+in U' is finite dimensional, for all t. Indeed, for each fixed
+I and v in U +, w in U', f(v) =f(vw) is a polynomial in
+the variables w (because, by induction on (3.22),
+f,(ul ... u) has a degree in u,-j bounded independently of
+j,) so there are functions d. : U + -_- Y with
+fw=28jw)d. (finitesum) (3.30)
+for linearly independent monomials 3, Then the d,, gener-
+ate S,
+To complete the proof, it will be enough to show that S,
+is included in S, sinoe then an inductive arpment gives
+that S. + 1, Sr + 21 ... arc all in S, hence that Lf in included
+in S and is therefore finite dimensional. But (3.29) says
+that J' is in S whenever v is in V. Thus it will be enough
+to prove that the span of the ( J', w in V) is all of Sr. Let
+da, Sa be as in (3.30), for t = r. Then the span of the (f, w
+in V) already includes all the d.: if this were not the case,
+there is an a0 and a linear T: [ U ', Yl--).k with T(d.) =# 0
+but T(J') = 0 for all w in V. So
+0 = T( ESjw) d.) = Y, Sa(W) T(da) (3.31)
+for all w in the open dense set V. By continuity (Weyl's
+principle), (3.3 1) holds for all w in U'. But this contradicts
+the linear independence of the 8, since T(d.):#~O.
+Numerical ExaWle 3.23: Applying the above proce-
+dure in (3.23) results in an output-linear equation
+bOY4 + b, Y3 + b2Y2 ~ 0
+where b 0= (U1 +Y2)2 _ (Ul + U2), b, = U01 + U2+ U3) - (Ul +
+)2, and b =bl-bo.
+U2 + U3 2
+Remark 3.33: It is easy to generalize (3.25) to the case
+Y = V. Then finitely realizability becomes equivalent to
+the existence of an equation as in (3.22) with all bi being
+now p by p matrices, i = 0, - - - , r, and b, I a p-vector,
+<<PAGE-DIVIDER>>
+354
+det bo*=O. It is also possible to give generalizations to the
+analytic case (U connected, K=field of meromorphic
+functions) and to the case of algebraic input/output dif-
+ference equations which are not output-affine (see [42,
+section 16], [46]).
+IV. DiscussiON
+IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS, VOL. cAs-26, NO. 5, MAY 1979
+[241, who uses a totally different approach, based on
+variations of f, which results in a non-S-A cascade. The
+statement of (3.11) was suggested by an analogue in
+continuous-time proved by Brockett [51; the proof in
+continuous-time is based upon factorizations (of Volterra
+kernels) whose existance is due to reversibility properties
+of differential (as opposed to difference) equations.
+Various questions can be raised regarding the suitability
+of a S-A realization theory, even in the bounded case.
+Although for equilibrium responses, bounded implies
+(3.20) S-A realizability, it was already remarked that lower
+dimensional representations will in general result when
+more general classes of systems are considered; a tradeoff
+between dimensionality and complexity of transition and
+output maps is often involved. S-A realizations have an
+obvious advantage from an analysis viewpoint-the more
+general polynomial theory in [42], for example, lacks the
+straightforward algorithms found here. From a control-
+theoretic viewpoint, on the other hand, S-A realizations
+do not have desirable controllability properties. It is inter-
+esting to speculate on the impact of microprocessor tech-
+nology, which may very well render attractive the concept
+of a high-order realization where each component (state-
+variable) computes a relatively simple function, as with
+S-A systems.
+Regarding alternative system configurations, it should
+be pointed out that the "naive" definitions of analytic and
+polynomial systems should be in general refined in order
+to account for state-space constraints (e.g., X=manifold,
+algebraic variety, etc.). An interesting question regarding
+such realizations is that of constructing minimal ones
+(with respect to those classes). Although an abstract treat-
+ment of this problem can be given, only in a few very
+special cases are there constructions of minimal poly-
+nomial realizations: the linear case, the bilinear case (Kal-
+man [281, [29] and Pearlman [381), and the degree two
+homogeneous case (Gilbert [23]). (By contrast, in the
+continuous-time, finite Volterra series case, the recent work
+of Crouch [101-proving that the canonical realizations of
+Sussman [51] are Euclidean-may eventually provide
+effective minimal realization procedures.)
+There are many open problems suggested by this work.
+No topological considerations have been made except at
+various technical points. Certain statements can be proved
+easily (e.g., if U is a topological space, K = R or C, and
+each f, is continuous, then the image realization has P, Q
+separately continuous), but deeper issues still await a
+careful study. Somewhat related are questions of ap-
+proximation. It follows from the Stone-Weirstrass theo-
+rem that, if each f, is continuous and U is compact, there
+are S-A finitely realizable responses arbitrarily approxi-
+mating f on finite-time intervals, in fact, a linear system
+cascaded with a memory-free one suffice for this purpose
+(this is, via the bilinearization of Brockett [41, the gist of
+the continuous-time results of Fliess [181 and -Sussmann
+[501). For the more important case of infinite-interval
+The abstract realization theory in the first part of this
+paper, including the construction of the span-canonical
+state-space Lf, is mostly a rather immediate adaptation of
+standard automata-theoretic constructions, as found for
+instance in Padulo and Arbib [36, ch. 81. Although the
+terminology "state-affine system" was apparently first
+used in Sontag and Rouchaleau [481, these models had
+already appeared in the literature under the name "vari-
+able structure systems." The notion of bounded response
+and the terminology "span-canonical" were introduced in
+1431 and [44] but the latter concept-and its importance
+for uniqueness-was well known (see Brockett's paper
+[4)). The uniqueness part of (1.11) was proved in [48,
+corollary 8.4] as a corollary of a more general uniqueness
+result (statements are made there in the general context of
+EIS, but this hypothesis is not needed in proving them
+(see [421 and 145)).
+Mathematically, the state-linear realization problem has
+the same structure as the question of representing power
+series in noncommuting variables. This notion was in-
+troduced by Schutzenberger [401 as a generalization of
+automaton-theoretic ideas, and has been rediscovered
+since by many authors, notably in the context of
+stochastic automata. Representations are called sequential
+systems by Turakainen 153], generalized linear automata by
+Muchnik [351, and automata with multiplicities by Eden-
+berg [14]. The Hankel matrix results for noncommutative
+power series were obtained by Fliess [151 and [17] as a
+generalization of well-known linear-system results. As an
+application of his own results on representations, Much-
+nik [351 seems to mention in passing internally bilinear
+systems, but does not develop his ideas further. Indepen-
+dently, Fliess 116), [18), and 119) discovered, and carried
+out in detail, this application to internally bilinear sys-
+tems. Simultaneous with this, Isidori [251 arrived at a
+similar algorithm for internally bilinear systems. The
+matrix procedure given here should be regarded as a
+generalization of the last two references. The reduction to
+the equilibrium case allowed reducing the complexity of
+this generalization, but it is clear that a matrix procedure
+could be also given directly; the formulas then resemble
+those given by Tam and Nonoyama [521 for internally bi-
+affine systems.
+The results in Section III (except (3.10), (3.11)) were
+announced in Sontag [43] and 144] and proved in Sontag
+[42]. A (weaker) analytic case of Theorem (3.5), and
+Corollary (3.11), can be obtained also as immediate con-
+sequences of the work done independently by Gilbert [221,
+<<PAGE-DIVIDER>>
+SONTAG: REALIZATION THEORY OF DISCRETE-TIME SYSTEMS: PART 1
+approximations, however, it appears that results like (3.11)
+will be more relevant. We conjecture (see [46], for ins-
+tance, that truncations of a finitely realizable response f
+can be themselves "realized approximately" (in some pre-
+cise sense) by systems of dimension n + 1, where n is the
+dimension of the canonical realization of f.
+It is interesting to note that in the case k =finite field
+any response with U=k' is polynomial, and in fact
+bounded. This brings up the possibility of applying the
+results above to the state-assignment problem for au-
+tomata; the research here remains to be done. A possible
+generalization deals with k = ring (e.g., the integers); some
+preliminary results are given in Fliess 117] and Sontag and
+Rouchaleau [49] which are applicable to the internally bi-
+linear case.
+The results on realization may be extended to the
+consideration of S-A systems in which P, Q depend ex-
+plicitly of time; with was done by Fliess [181 for intern-
+ally bilinear systems. A deeper understanding will have to
+make explicit consideration of the allowed time-variations.
+Another set of open problems deals with "real-time"
+identification and realization, when no "resetting" to ini-
+tial states is needed; some work in this direction can be
+found in Sontag [47].
+Applications of results and methods of (a previous
+version of) this paper can be found in Marcus [331 and
+Kamen [311.
+AcKNowLEDGmENT
+Most of the material in this paper was part of the
+author's doctoral dissertation under Prof. R. E. Kalman,
+who arranged for long-term support making it possible,
+and who directed the author's attention to the work of M.
+Fliess and others. Many thanks are also due to the refer-
+ees of this paper, who suggested the detailed exposition of
+the nonstrictly causal and/or nonequilibrium cases, as
+opposed to just mentioning these as possible generaliza-
+tions of the basic framework, and who also suggested
+proving in detail (3.20) and (3.25), independently of the
+material in [42].
+[1)
+[2]
+[31
+[4]
+151
+161
+[71
+REFERENCES
+P. Alper, "A consideration of the discrete Volterra series," IEEE
+Tram. Automar. Contr., vol. AC-10, pp. 322-327, 1%5.
+B. D. 0. Anderson, M. A. Arbib, and E. G. Manes, "Realization of
+multilinear and multidecomposable machines," in Lecture Notes in
+Computer Science, vol. 25, Ed. E. Manes. Berlin: Springer, 1975.
+M. A. Arbib, "A characterization of multilinear systems," IEEE
+Trans. Autoinat. Contr., vol. AC-14, pp. 699-702, 1969.
+R. W. Brockett, "On the algebraic structure of bilinear systems," in
+Theory and Applications of Variable Structure Systems, Eds. R,
+Mohler and A. Ruberti. New York: Academic, 1972.
+-, "Volterra series and geometric control theory," Proc. IFAC
+Int. Congress, Boston, MA, 1975. (Appeared in revised form in
+Automatica, vol. 12, pp. 167-176, 1976.)
+-, "Convergence of Volterra series on infinite intervals and
+bilinear approximations," Harvard Univ. preprint, 1976.
+J. W. Carlyle and A. Paz, "Realizations by stochastic finite au-
+tomata," J. Conw. Syst. Sci., Vol. 5, pp. 26-40, 1971.
+S. J. Clancy and W. J. Rugh, "On the realization problem for
+stationary homogeneous discrete-time systems," Autonuitica, 1978.
+355
+[91 -, "Me regular transfer function and bilinear and state-affine
+realizations for stationary, homogeneous, discrete-time system,"
+in Proc. 1978 Conf. Inf. Sci. and Syst., The John Hopkins Univ.,
+pp. 167-172, 1978.
+[101 P. E. Crouch, "Finite Volterra series," Ph.D. dissertation, Harvard
+Univ., Cambridge, MA, 1977.
+[11] P. D'Alessandro, A. Isidori, and A. Ruberti, "Realization and
+structure theory of bihnear dynamical systems," SIAM J. Contr.,
+vol. 12, pp. 517-535, 1974.
+[12) J. Dieudonnee, Foundations of Modern Analysis. New York:
+Academic, 1%9.
+[131 L. S. de Jong, "Numerical aspects of realization algorithms in
+linear system theory," Ph.D. dissertation, Technological Univ.,
+Eindhoven, The Netherlands, 1975. (Also in SIAM J. Contr., vol.
+16, pp. 646-665, 1978.)
+[141 S. Eilenberg, Automata, Languages, and Machines, vol. A. New
+York: Academic, 1974.
+[151 M. Fliess, "Sur certaines familles de siries formelles," These de
+Doctorat d'Etat, Universiti Paris VII, 1972.
+[16] -, "Sur la realization des systemes dynamiques bihneaires," C.
+R. Acad. Sci. Paris, Series A, 277, pp. 243-247, 1973.
+[17] -, "Matrices de Hankel," J. Math. Pures Appl., vol. 53, pp.
+197-224,1974.
+[18] -, "Un outil algebrique: Les series formelles noncommuta-
+tives," Preprints of CNR-CISM Symp., Algebraic System Theory,
+Udine, Italy. (In Lecture Notes in Economics and Mathematical
+Systems, Eds. G. Marchesini and S. Mitter. Berlin: Springer,
+1975, p. 131.)
+1191 -, "Un codase non commutatif pour certains systernis ichan-
+tillonnes non lineaires," Inf. Conir., 1978.
+[201 E. Fornasini and G. Marchesini, "On the internal structure of
+bilinear input/output maps," in Geometric Methods in System
+Theory, Eds. D. Q. Maine and R_ W. Brockett. Boston, MA:
+Reidel, 1973.
+[211 -, "Algebraic realization theory of bilinear discrete-time in-
+put/output maps," J. Franklin Inst., vol. 301, pp. 143-159, 1976.
+(221 E. GilbeM "Functional Expansions for the response of nonlinear
+differential systems" IEEE Trans. A utomat. Contr., vol. AC-20,
+pp. 909-921, 1977. '
+[23] -, Minimal realizations for nonlinear I-0 maps: The contmu-
+ous-time, two-power case," presented at Proc. 1976 Conf. Inf. Sci.
+Syst., T'he John Hopkins Univ., 1977.
+124] -, "Bilinear and 2-power input-output maps: Finite-dimen-
+sional realizations and the role of functional series," IEEE Tram.
+Automat. Contr., vol. AC-23, pp. 418-425, June 1978.
+j251 A- Isidori~ "Direct construction of minimal bilinear realizations
+from nonlinear input/output maps," IEEE Tram. Automat.
+Contr., vol. AC-18, pp. 626-631, 1973.
+126) -, New results on the abstract realization theory of nonlinear
+input/output functions," Ricerche & Automatica, Vol. 5, pp. 1-10,
+1974.
+[271 ~k. Isidori and A. Rugerti, "Realization theory of bilinear systems,"
+in Geometric Methods in System Theory, Eds. D. 0. Mayne and R_
+W. Brockett. Boston, MA: D. Reidel, 1973.
+[28] R_ E. Kalinan "Pattern recognition properties of multitinear
+machines," presented at IFAC Syrrp. Yerevan, Armenian SSR,
+1968.
+[291 -, "On the realization of multilinear response maps," in
+Ricerehe & Autornatica. 1979.
+[301 R_ E. Kalman P. L. Falb, and M. A- Arbib, Topics in Mathemati-
+cal System Theory. New York: McGraw-Hill, 1969.
+[31] E. W, Kamen, "On the relation between bilinear maps and linear
+2-D maps," 1978.
+1321 G. Marchesini and G. Picci, -Some results on the abstract realiza-
+tion theory of multilinear systems," in Theory and Applications of
+Variable Structure System, Eds. R. Mohler and A. Ruberti. New
+York: Academic, 1972.
+[331 S. 1. Marcus, -Discrete time optimal nonlinear estimation," IEEE
+Tram. Automat. Con1r., to be published.
+[34] R. R. Mohler, Bilinear Control Processes. New York: Academic,
+1973.
+[35] A- A. Muchnik, "General linear automata," (in Russian) in Prob-
+lemy Kibernetiki. Moscow: Nauka, 1970. (Trans.. in Systems
+Theory Research, vol. 23, Ed. A. A. Lyapunov. Consultants
+Bureau, 1973.)
+(36] L. Padulo and M. A. Arbib, System Theory. Washington, DC:
+Hemisphere, 1974.
+[371 A. Paz, Introduction to Probabilistic Automata. New York:
+Academic, 1971.
+[381 J. G. Pearlman, "Internal properties of multilinear systems," Ph.D.
+dissertation, Imperial College, London, 1977.
+[391 Y. Rouchaleau, "Linear, discrete time, finite dimensional dynami-
+cal systems over some classes of commutative rings," Ph.D. dis-
+sertation, Stanford Univ., Palo Alto, CA, 1972.
+<<PAGE-DIVIDER>>
+356
+[401
+[41]
+[42]
+[43]
+[44)
+[451
+[46]
+[47)
+[48)
+[49]
+[50]
+[51]
+M. P. Schutzenberger, "On the definition of a family of automata,"
+Inf. Contr., vol. 4, pp. 245-270, 1961.
+L. M. Silverman, "Realization of linear dynamical systems," IEEE
+Trans. Automat. Contr., vol. AC-16, pp. 554-567, 1971.
+E. D. Sontag, "On the internal realization of polynomial response
+maps," Ph.D. dissertation, Univ of Florida, Gainesville, Fl, 1976.
+-, "On the internal realization of nonlinear behaviors," pre-
+sented at Int. Symp. Dynamical Syst., Univ. of Florida, Gainesville,
+FL, in Dynamical Systems, Eds. A. Bednarek and L. Cesari. New
+York: Academic, 1977, pp. 493-497.
+-, "On realizations of discrete-time nonlinear systems," Notices
+A.M.S., vol. 23, p. A-419, 1976.
+-, "Algebraic-geometric methods in realization of discrete-time
+nonlinear systems," Proc. 1978 Conf. Inf. Sci. Syst., (Me John
+Hopkins University, Baltimore, MD), pp. 159-161, 1978.
+Polynomial Response Maps. Berlin: Springer, 1979.
+"On the observability of polynomial systems, 1: Finite-time
+problems," SIAM J. Contr., Opt., vol. 17, pp. 133-151, 1979.
+E. D. Sontag and Y. Rouchaleau, "On discrete-time polynomial
+systems," Preprints of CNR-CISM Symp. Algebraic Syst. 7heory,
+Udine, Italy, 1975. (Appeared in revised form in J. Nonlinear
+Analysis, Methods, Theory and Applications, vol. 1, pp. 55-64,
+1976.)
+"Sur les anneaux de Fatou forts," C. R. Acad. Sci. Paris, vol. 284
+A, pp. 331-333, 1979.
+H. J. Sussmann, "Semigroup representations, bilinear approxima-
+tion of input-output maps, and generalized inputs," Preprints of
+CNR-CISM Symp. Algebraic System Theory, Udine, Italy. (Ap--
+peared in Lecture Notes in Economics and Mathematical Systems,
+Eds. G. Marchesini and S. Mitter. Berlin: Springer, 1976.)
+-, "Existence and uniqueness of minimal realizations of nonlin-
+ear systems," Math. Syst. Theory, vol. 10, pp. 263-284, 1976.
+IEEE TRANSACTIONS ON CIRCUTIS AND SYSTEMS, VOL. CAs-26, NO. 5, MAY 1979
+[521 T. J. Tam and S. Nonoyama, -Realization of discrete-time bilinear
+systems," Proc. IEEE Conf. Decision and Control (Clearwater, FL),
+pp. 125-133, 1976.
+[531 P. Turakainen, "On the minimization of linear space automata,"
+Ann. Acad. Sci. Fen., vol. 506-A, pp. 1-14, 1972.
+Eduardo D. Sontag was born in Buenos Aires,
+Argentina, on April 16, 1951. He received the
+Licenciado degree in mathematics from the Uni-
+versity of Buenos Aires, and the Ph.D. degree in
+mathematics from the Center for Mathematical
+System Theory at the University of Florida,
+Gainesville.
+From 1976 to 1977, he held a postdoctoral
+fellowship at the University of Florida, Gaines-
+ville. In 1977, he was appointed Assistant Pro-
+Rutgers-The State
+of mathematics
+at
+fessor
+University, New Brunswick, NJ. He has also worked in nonacademic
+computer-related positions. His major research interests he in mathe-
+matical system theory, applied algebra, and theoretical computer science.
+He is the author of various papers in system theory and algebra, and has
+also written survey papers and a book on artificial intelligence.
+Dr. Sontag is a member of Phi Beta Kappa and of the American
+Mathematical Society.

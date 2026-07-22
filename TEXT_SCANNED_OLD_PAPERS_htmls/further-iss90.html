@@ -1,0 +1,382 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/further-iss90.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/further-iss90.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Report SYCON-88-15 FURTHER FACTS ABOUT INPUT TO STATE STABILIZATION
+
+Eduardo D. Sontag Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 (201)932-3072; E-mail: sontag@fermat.rutgers.edu
+
+ABSTRACT Previous results about input to state stabilizability are shown to hold even for systems which are not linear in controls, provided that a more general type of feedback be allowed. Applications to certain stabilization problems and coprime factorizations, as well as comparisons to other results on input to state stability, are also briefly discussed.
+
+Appeared as: "Further facts about input to state stabilization", IEEE Trans. Automatic Control, 35(1990): 473-476.
+
+Rutgers Center for Systems and Control
+
+December, 1988 - Revised April 89
+
+1 Introduction In a previous paper [3] we studied the problem of when a system on IRn,
+
+.x = f (x) + G(x)u (1) with f and the entries of the n \Theta  m matrix G being smooth, can be made input to state stable (ISS) in a rather strong sense to be reviewed below. Our main result there was that this system is smoothly input to state stabilizable, that is, there exists a smooth (i.e., infinitely differentiable) map K : IRn ! IRm with K(0) = 0 and such that under the control law u = K(x) + v the new system
+
+.x = (f (x) + G(x)K(x)) + G(x)u
+
+is ISS, if and only if the system (1) is smoothly stabilizable, that is, there exists an (in general different) K so that
+
+.x = f (x) + G(x)K(x)
+
+is globally asymptotically stable (GAS). The necessity is a trivial consequence of our definition of ISS, which implies GAS, but the converse is somewhat harder to establish.
+
+It is natural to ask if the same result can be proved for the more general system
+
+.x = f (x; u) (2) which is not necessarily linear in u. More precisely, we assume that x(t) 2 IRn, u(t) 2 IRm, that f is a differentiable (much less is needed) function from IRn+m into IRn, and that 0 is an equilibrium point for the system, f (0; 0) = 0. Unfortunately, the result does not generalize. As a counterexample, let m = n = 1 and consider the system
+
+.x = \Gamma x + u2x2 : We claim that for no possible feedback law K can there hold for
+
+.x = \Gamma x + (K(x) + u)2x2 (3) that: (a) for u j 0 the system is GAS, and (b) for u j 1 and initial condition x(0) = 4 the solution remains bounded. Indeed, property (a) implies that jK(x)j ! 1=px for all x ? 0, but then this implies that the right-hand side of (3) is positive for all x * 4, so the solution with x(0) = 4 diverges to +1. So not even a very weak notion of input to state stability can be obtained for this example.
+
+However, if one allows instead more general feedback laws, of the type
+
+u = K(x) + G(x)v (4) where G is an n \Theta  n matrix of smooth functions invertible for all x, not necessarily the identity, then the theorem can be proved for the larger class of systems. This more general class of feedback laws is of some interest, -for instance, it is the class used in most modern "geometric" nonlinear control,- although it is not appropriate for solving the type of problem (Bezout-type coprime factorizations) that was of interest in [3]. One may weaken the concept of coprimeness, however, and then the generalized theorem becomes applicable in this area as well; this will be discussed later.
+
+1
+
+In this note we establish the generalized result, for (2) under feedback laws (4). As an application, we give an alternative proof of a "folk" fact about dynamic extensions and a result which shows that GAS by itself is sufficient to guarantee a notion of ISS with "small controls". Applications to coprime factorizations and the local stabilization of cascaded systems are also given. As a corollary we show how to conclude from here that any cascade of locally asymptotically stable systems is again asymptotically stable ([7]); no assumptions need to be made, as would be the case with center-manifold type of arguments.
+
+It should be remarked that global smoothness of control laws is in general a restrictive requirement; see [4] for a discussion of this point and references to the literature.
+
+2 Definitions and Statement of Results We recall the basic terminology from [3]. The function fl : IR*0 ! IR*0 is of class K if it is continuous strictly increasing and satisfies fl(0) = 0; it is of class K1 if in addition fl(s) ! 1 as s ! 1. If fl is of class K1 then the inverse function fl\Gamma 1 is well defined and is again of classK
+
+1 . A function fi : IR*0 \Theta  IR*0 ! IR*0 is of class KL if for each fixed t the mapping fi(\Delta ; t) is of class K and for each fixed s it is decreasing to zero on t as t ! 1. We use single barsj
+
+,j to denote Euclidean norm of states and controls, and use kuk := ess:sup: fju(t)j; t * 0g for measurable essentially bounded controls.
+
+The system (2) is globally asymptotically stable (GAS) if there exists a function fi(s; t) of class KL such that, with the control u j 0, given any initial state ,0 the solution exists for all t * 0 and it satisfies the estimate j
+
+x(t)j ^ fi(j,0j; t):
+
+The system is input to state stable (ISS) if there is a function fi of class KL and there exists a function fl of class K such that for each measurable essentially bounded control u(\Delta ) and each initial state ,0, the solution exists for each t * 0 and furthermore it satisfies
+
+jx(t)j ^ fi(j,0j; t) + fl(kuk): (5)
+
+Since fl(0) = 0, an ISS system is necessarily GAS; the later is equivalent to the usual notion of asymptotic stability ("" \Gamma  ffi" stability plus attractivity). The former says basically that for bounded initial state and control, a bounded trajectory results, and further (since fi decays) that eventually the state is bounded by a function of the control alone (and this bound is small if the control is small). This is much stronger that asking GAS plus "bounded-input bounded-state" stability. To see this, take the system
+
+.x = (sin2 u \Gamma  1)x : This is "BIBS", and with control u j 0 one has .x = \Gamma x which is globally stable. However, with u j ss=2 trajectories do not become ultimately bounded by a constant independent of ,0. Since we prove mainly positive results, chosing such a strong notion of stability makes the results more informative. (The one negative example given earlier, dealing with restrictive types of feedback laws, was such that not even the weakest possible version of these properties holds.)
+
+We shall say that the system (2) is weakly input to state stabilizable if there exists a continuously differentiable map K : IRn ! IRm with K(0) = 0 and an n \Theta  n matrix G of continuously
+
+2
+
+differentiable functions, invertible for each x, such that under the control law (4) (and replacing v by u,) the system
+
+.x = f (x; K(x) + G(x)u) (6)
+
+is ISS. We say that the system is stabilizable if there is a differentiable K such that this new system (with G j 0) is GAS. The first property implies the second. The next result shows they are equivalent. The terminology "weak" is used to avoid confusion with the notion in [3], where G = identity is required.
+
+Theorem 1 For (2) under control laws of the type (4), stabilizability implies weak input to state stabilizability.
+
+To prove this theorem we may assume that the original system is already GAS, and we look for a G so that .x = f (x; G(x)u) is ISS. The idea of the proof can be easily understood in the case of one-dimensional systems (n = 1): Since the system is GAS, it is necessary in that case that
+
+xf (x; 0) ! 0
+
+for all nonzero x. Thus by continuity also xf (x; u) ! 0 for small u. So it is only necessary to multiply controls by a very small number in order to have states approach the origin. The same idea works in higher dimensions, using Lyapunov functions, but working out the details takes some effort. The proof is given in the next section; it is far less constructive than the result given in [3].
+
+The one dimensional case also suggests that as long as the controls remain small, ISS may hold. This idea gives rise to our other result:
+
+Theorem 2 If the system (2) is GAS then there exist a function fi of class KL , a function fl of class K, and a continuous function oe : IR*0 ! IR*0, oe(s) 6= 0 if s 6= 0, such that, for each initial state ,0 and for each measurable essentially bounded control u(\Delta ) for which
+
+kuk ^ oe(j,0j) the solution of (2) exists for each t * 0 and it satisfies (5).
+
+This theorem is not at all surprising, and it is probably a particular case of some result on "total stability," but we haven't found it stated in this form, and in any case it is very easy to establish once that we have the proof of the first result. In the case of exponential stability, where a Lyapunov function of quadratic growth exists (see e.g. [6], [1]) it is much easier to prove.
+
+3 Proof of Main Results We first prove a technical lemma needed later.
+
+3
+
+Lemma 3.1 Assume that ffi : IR2*0 ! IR*0 is a continuous mapping such that ffi(s; 0) ! 0 for all s ? 0. Then, there exist
+
+ffl A smooth function g : IR*0 ! IR*0 ; ffl A function ff4 of class K1 ; and ffl A continuous function ` : IR*0 ! IR*0, with `(s) 6= 0 for every s 6= 0 and decreasing on
+
+[1; +1) ;
+
+such that
+
+1. g(s) 6= 0 for all s, and g(s) j 1 for s 2 [0; 1] ; 2. For each pair (s; r) 2 IR2*0 for which r ! `(s), necessarily ffi(s; r) ! 0 ; and 3. For each pair (s; r) 2 IR2*0 for which ff4(r) ! s and each v ^ g(s)r, necessarily ffi(s; v) ! 0.
+
+Proof. First observe that, for each closed and bounded interval I ` IR*0, there exists some r0 ? 0 such that
+
+s 2 I ) ffi(s; r) ! 0 for all r 2 [0; r0] : (7)
+
+This follows from the uniform continuity of ffi on (for instance) the interval I \Theta  [0; 1]. Now consider the intervals [1; 2]; [2; 3]; : : : and pick for each of these an ri ? 0; i = 1; 2; : : : so that (7) holds; without loss of generality, take r1 ! 1 and assume that the ri decrease with i. Similarly, choose a sequence of decreasing positive numbers r0i, with r01 ! r1, corresponding to the intervals [1=2; 1]; [1=3; 1=2]; [1=4; 1=3]; : : :. We also assume (changing the ri's if necessary) that r01 ? r2.
+
+Now define the piecewise constant function ae as follows: on each interval of the form [k; k+1) (integer k ? 0,) let ae j rk, and on each interval [1=(k + 1); 1=k) let ae j r0k. By construction, it holds that, for each (s; r) 2 IR2*0,
+
+r ! ae(s) ) ffi(s; r) ! 0 : (8) We next define g; ff4; `.
+
+Let g be any smooth function, never zero, which is identically 1 on the interval [0; 1] and which satisfies the inequalities
+
+g(s) ! ae(s)s if s * 2 (9)
+
+g(s) ^ 1 for all s : (10) Such a g can always be defined: simply pick a function on each interval [k; k + 1], k * 2 which has all derivatives equal to zero at the endpoints and so that rkk+1 = g(k) ^ g(s) ^ g(k + 1) on each such interval, pick a similar function on [1; 2] with values ^ 1 and g(1) = 1, and then patch these together with g j 1 on [0; 1]. Clearly this g satisfies the conditions in the first conclusion of the lemma.
+
+Let ff be any function of class K1 which satisfies
+
+ff(s) ! ae(s) if s ^ 2 (11)
+
+4
+
+ff(s) ! s for all s * 2 : (12) For instance, one may take ff piecewise linear, with linear values on each interval of the type [1=(k + 1); 1=k], as well as on [1; 2], and interpolating ff(1=k) = r0k=2, ff(2) = r1=2, and linear on [2; +1) with ff(s) = s + r1=2 \Gamma  2 there. Let then ff4 := ff\Gamma 1.
+
+Finally, let ` be defined just as ff on [0; 1] but piecewise linear interpolating ff(k) = rk=2 for k = 2; 3; : : :. Since `(s) ! ae(s) for all s, the second property in the statement is a consequence of (8).
+
+We must prove that the third property in the statement of the lemma holds. Pick then a pair (s; r) 2 IR2*0 for which ff4(r) ! s, and any v ^ g(s)r. Note that r ! ff(s) for such pairs, so v ^ g(s)ff(s). In case s ^ 2, (11) together with (10) imply that
+
+v ^ ae(s) while for s * 2 the same conclusion follows from (9) and (12). Then ffi must be negative, again by (8).
+
+Assume that the system .x = f (x; u) is GAS. As in [3], we know that there exists a Lyapunov function for the system .x = f (x; 0), that is, there is a smooth function V : IRn ! IR*0 and functions ff1; ff2; ff3 of class K1 such that, for each , 2 IRn,
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) (13) and r
+
+V (,):f (,; 0) + ff3(j,j) ! 0 : (14)
+
+With respect to these functions we have:
+
+Lemma 3.2 There exist a function ff4 2 K1 and an m\Theta m matrix G of infinitely differentiable functions on IRn, G(x) invertible for each x, such that for each ,0 2 IRn and each essentially bounded measurable u(\Delta ), the following property holds for the solution of
+
+.x = f (x; G(x)u) (15) with x(0) = ,0: for each t * 0 for which the solution is defined,
+
+jx(t)j ? ff4(kuk) ) rV (x(t)):f (x(t); G(x(t))u(t)) + ff3(jx(t)j) ! 0 : (16)
+
+(To be more precise, this holds for almost all t, since u is merely assumed to be measurable.) Proof. We define the (continuous) function ffi : IR2*0 ! IR*0:
+
+ffi(s; r) := maxj
+
+,j=s;j_j=r rV (,):f (,; _) + ff3(j,j) :
+
+Note that for s ? 0 it holds that ffi(s; 0) ! 0, because of (14) and compactness of the sphere of radius s. Apply lemma 3.1 to obtain functions ff4 and g, and let
+
+G(,) := g(j,j):I
+
+5
+
+which is smooth because g is smooth and constant near 0. We must prove that (16) holds. So assume that jx(t)j ? ff4(kuk) * ff4(ju(t)j), and let s := jx(t)j and r := ju(t)j. By definition of ffi, r
+
+V (x(t)):f (x(t); G(x(t))u(t)) + ff3(jx(t)j) ^ ffi(s; v)
+
+where
+
+v = jG(x(t))u(t)j ^ g(s)r :
+
+Since s ? ff4(r), ffi must be negative because of the third conclusion in lemma 3.1.
+
+The proof of theorem 1 is now completed precisely as that of the main result in [3]: the above lemma gives equation (36) in that paper, and the rest of the proof goes through word by word (with the same notation).
+
+We now prove theorem 2. Let ffi be as above, and assume that ff4 and ` are as in lemma 3.1. The functions fi and fl constructed in [3] from ff1 to ff4, together with the function oe to be constructed below, satisfy the conclusion of the theorem. To see this, we first establish two facts.
+
+Assume that x(\Delta ) is a solution of (2) with initial condition x0 and with a control u which satisfies the inequalities
+
+kuk ^ 8?!?:
+
+ff\Gamma 14 (ff\Gamma 12 (ff1(1))) (i) `(ff\Gamma 11 (ff2(jx0j))) (ii) `(jx0j) (iii)
+
+Let S be the closed set
+
+S := f, 2 IRn j V (,) ^ ff2(ff4(kuk))g
+
+and let
+
+\Delta  := f(,; v) 2 IRn+m j rV (,):f (,; v) + ff3(j,j) * 0g
+
+which is also closed.
+
+Fact 3.3 If for some t it holds that V (x(t)) ! V (x0) and that (x(t); _) 2 \Delta  for some _ so that _ ^ kuk, then x(t) 2 S.
+
+Proof. From equation (13) and the first assumption, it follows that
+
+jx(t)j ! ff\Gamma 11 (ff2(jx0j)) : Assume that it where the case that jx(t)j ? 1. Then it would follow (because ` decreases on [1; +1),) that `(jx(t)j) ? `(ff\Gamma 11 (ff2(jx0j))), which is greater than kuk because of (ii) above, and hence
+
+`(jx(t)j) ? j_j
+
+which implies because of the second conclusion in lemma 3.1 that (x(t); _) =2 \Delta , a contradiction. Thus jx(t)j ^ 1.
+
+If it were the case that
+
+ff4(j_j) ! jx(t)j (17)
+
+then jx(t)j ^ 1 would again imply the contradiction (x(t); _) =2 \Delta  (since g j 1 for s 2 [0; 1]).
+
+6
+
+So we need only prove that if x(t) =2 S then (17) must hold. In other words, that
+
+V (x(t)) ? ff2(ff4(kuk)) implies (17). But this is clear from (13) and the fact that ff2 is strictly increasing.
+
+Fact 3.4 For the above trajectory, the set S is invariant; that is, if x(t0) 2 S for some t0 then x(t) 2 S for all t * t0.
+
+Proof. Let , := x(t0) be like this. Note that
+
+j,j ^ ff\Gamma 11 (V (,)) ^ ff\Gamma 11 (ff2(ff4(kuk))) ^ 1 by definition of S and because of (i) above. Without loss of generality, if the fact is false we may assume that there is a sequence tk ! t+0 such that ,k := x(tk) =2 S (otherwise pick a larger t0). So V (,k) ? ff2(ff4(kuk)) for each k, and by continuity of V it follows that V (,) * ff2(ff4(kuk)) and therefore that j
+
+,j ? ff4(kuk) :
+
+Again because of the third conclusion in lemma 3.1, this essentially implies that (x(t); u(t)) =2 \Delta , so dV (x(t))=dt is negative at t0. But then V (,k) ! V (,) for all large k, contradicting the fact that ,k := x(tk) =2 S, and the proof is complete. (The precise argument is a bit more subtle: it may happen that the absolutely continuous function V (x(\Delta )) is not differentiable at t0. However, the fact that (x(t); _) =2 \Delta  for all _ ^ kuk means that, by continuity of x(\Delta ) and openness of the complement of \Delta , this derivative is negative for almost all t in a neighborhood of t0.)
+
+We now complete the proof of theorem 2. We define
+
+oe(s) := min fff\Gamma 14 (ff\Gamma 12 (ff1(1))); `(ff\Gamma 11 (ff2(s))); `(s)g The same proof (discussion after equation (36)) as in [3] works again, for controls satisfyingk
+
+uk ^ oe(j,0j). It is only necessary to show that for each such trajectory either
+
+(x(t); u(t)) =2 \Delta  for almost all t (18) or there is some t0 such that
+
+(x(t); u(t)) =2 \Delta 
+
+for almost all t ! t0 and x(t0) 2 S (and hence also x(t) 2 S for all t * t0, by fact 3.4). So assume that (18) would not hold. Let
+
+t0 := supfo/ j (x(t); u(t)) =2 \Delta  for almost all t ! o/ g ! 1 : Then also (x(t); u(t)) =2 \Delta  for almost all t ! t0, so V (x(t)) ! V (x0). (Note also that, because oe(s) ! `(s) for all s, it holds that t0 ? 0.) From the definition of t0, continuity of x(\Delta ), and closedness of \Delta , it follows that there is some _ ! kuk such that (x(t); _) 2 \Delta . The desired consusion follows then from fact 3.3
+
+7
+
+4 Coprime Factorizations We refer the reader to [3] for the definitions of input/output stable (IOS) operators, and the basic properties of this concept. We now modify Definition 4.1 (more precisely, its equivalent formulation via Lemma 4.2) in the above reference, to weaken the concept of coprimeness. See e.g. [2] for this more general definition, which is not of a "Bezout" type as the one given in [3].
+
+Definition 4.1 The i/o operator P : D(P ) ! Lp1;e admits a weakly coprime right factorization if there exist IOS operators A : Lm1;e \Theta  Lp1;e ! Lm1;e, N : Lm1;e ! Lp1;e, and D : Lm1;e ! Lm1;e, such that D is causally invertible, D(D\Gamma 1) = D(P ), P = N D\Gamma 1 and, if I denotes the identity in Lm1;e,
+
+A ffi ` DN ' = I :
+
+Theorem 3 If (2) is stabilizable then its input to state mapping admits a weak coprime right factorization.
+
+Proof. We first use Theorem 1 to obtain G and k. Now, let P be the operator defined as follows:
+
+P ` v(\Delta )x(\Delta ) ' (t) := G\Gamma 1(x(t))[\Gamma k(x(t)) + v(t)] : Since it is memoryless, and G and k are continuous everywhere, it follows that P is IOS. The operators N and D are chosen precisely as in [3], that is, N is the input to state mapping of the closed-loop system (6), and D is the resulting mapping u 7! k(x) + G(x)u, which is itself stable (for the same reason that P is) and invertible.
+
+5 Further Remarks In [6] (see also e.g. [1]) it is proved that under certain hypotheses GAS implies ISS (or more precisely, a notion of bounded-input bounded-state stability). The hypotheses are basically that the map f be globally Lipschitz on x, uniformly in u, (if the system has the form .x = f (x) + G(x)u this is insured provided that the control term G(x) is bounded,) and that stability be exponential. Our first remark is that no such result holds if one has only non-exponential stability. To illustrate this point it is sufficient to consider the system
+
+.x = \Gamma  tanh x + u : This is GAS, and f (x; u) is globally Lipschitz, but with u j 1 one has that all trajectories diverge to +1.
+
+It was remarked in [3] that a cascade composition of what are there called "input/output stable" maps is again of that kind. In terms of state-space notions only, this translates into
+
+8
+
+the fact that cascading a GAS system with an ISS one gives a GAS system. More precisely, consider the composite system
+
+.x = f (x; z) (19)
+
+.z = g(z) (20)
+
+where the second is GAS and the first is ISS (with z as control). The claim is that the composite system is GAS. Indeed, if fi1 and fl are as in the definition of ISS for the first system, and fi2 is as in the definition of GAS for the second, then for each trajectory necessarily
+
+jx(t)j + jz(t)j ^ fi(jx(0)j + jz(0)j; t) where
+
+fi(s; t) := fi2(s; t) + fi1(fi1(s; t2) + fl(fi2(s; t2 )); t2 ) + fl(fi2(s; t2 )))
+
+is again of class KL .
+
+If the first system is just GAS rather than ISS, there is no reason for the cascade to be again GAS. One possibility is require less than ISS, for instance a "bounded-input bounded-state" condition in addition to GAS, which as remarked earlier is weaker. Another possibility is to give only a local result, as provided below. However, it is often possible to apply feedback so that this cascade does become stable. This is based on the above discussion, as follows.
+
+The proof of theorem 1 gives some G(x) so that .x = f (x; G(x)u) is ISS. Changing coordinates
+
+(x; z) 7! (x; y) ; y := G(x)\Gamma 1z
+
+there results a new composite system
+
+.x = f (x; G(x)y)
+
+.y = ~g(x; y)
+
+where the first system is now ISS. If it were possible to modify ~g in some manner so that it becomes independent of x and the second system is GAS, then the above argument gives that the composite system (even in the original coordinates) is GAS. This program can be carried out in the following situation: Assume that z has dimension 1 and one considers the cascade
+
+.x = f (x; z)
+
+.z = u
+
+(a "dynamic extension" of the first system). Then the above change of coordinates results in a second equation of the type
+
+.z = h(x; z)u + k(x; z)
+
+where h is always nonzero. Applying the feedback law
+
+u = 1h(x; z)(\Gamma k(x; z) \Gamma  z) results then in a composite GAS system. We thus recover the folk result (see e.g. [5] for an application and references) that if a system is smoothly stabilizable then adding an integrator does not change this property.
+
+9
+
+Finally, we give an application of theorem 2 to show that, for each compact subset of the state space, small enough controls tending to zero give rise to trajectories that also converge to zero. This is a local version of the corresponding global result given in [3], with basically the same proof.
+
+Corollary 5.1 With the notations in theorem 2, for each real number k ? 0 the following property holds. For each control u ! 0 such that kuk ! oe(k) and each initial jx0j ^ k, the solution of (2) exists for all t ? 0 and it satisfies limt!0 x(t) = 0.
+
+Proof. Let l := fi(k; 0) + fl(oe(k)) ^ k, and pick any u and x(\Delta ) as above. We claim that jx(t)j ^ l for all t (and in particular then, the trajectory is defined globally). Indeed, if the trajectory ever exits the ball of radius k then there is a first T so that jx(T )j = k. Consider in that case the restriction of u to times t * T ,
+
+v := uj[T;+1) (21)
+
+which has norm again ! oe(k). Then, by theorem 2,
+
+jx(t)j ^ fi(jx(T )j; t \Gamma  T ) + fl(kvk) (22) which is less than l for all t.
+
+Pick any " ? 0; we wish to show that jx(t)j ! " for all large t. Let c ? 0 be the minimum of oe on the interval ["; l]. Since u(t) ! 0, there is some t0 such that fl(kvk) ! " and also kvk ! c for all restrictions v as in (21) and all T * t0. If it happens that jx(t)j ! " for all t * t0 then there is nothing left to prove. Otherwise, there is some T * t0 so that " ^ jx(T )j ^ l. For this T , equation (22) holds. Since the first term tends to zero and the second is less than ", it follows that jx(t)j ! " for large t, as desired.
+
+Together with the argument used in proving the stability of the cascade composition (19)- (20), it follows then that, if (19) is GAS when z j 0 and (20) is locally asymptotically stable (LAS), then the composed system (19)-(20) is also LAS. Indeed, we may fix any k, and then pick a 0 ! ffi ! oe(k) for which all trajectories of (20) starting at every jz0j ! ffi necessarily satisfy z(t) ! 0 and jz(t)j ! oe(k). Then the corollary guarantees that x also goes to zero, and moreover that it remains bounded by l = l(k), which is small for small k. In fact, (we owe this observation to H'ector Sussmann), it is enough to suppose that the first system (19) is itself locally stable because one can just restrict the system to the domain of attraction of the origin (which is diffeomorphic to Euclidean space). We conclude the following fact, proved using very elementary techniques (see also [7]):
+
+Corollary 5.2 If (19) is LAS when z j 0, and if (20) is also LAS, then the composite system (19)-(20) also is.
+
+10
+
+6 References
+
+1. Koditschek, D.E., "Adaptive techniques for mechanical systems," Proc.5th. Yale Workshop on Adaptive Systems, pp. 259-265, Yale University, New Haven, 1987.
+
+2. Krener, A.J., "Nonlinear controller design via approximate normal forms," in Proc. IMA
+
+Conf.on Signal Processing, Minneapolis, June-Aug 1988, Institute for Mathematics and its Applications, 1989.
+
+3. Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Trans. Automatic Control 34(1989): 435-443.
+
+4. "A `universal' construction of Artstein's theorem on nonlinear stabilization," Report 89-
+
+03, SYCON - Rutgers Center for Systems and Control, Feb 89. Submitted to Systems and Control Letters.
+
+5. Sontag, E.D. and H.J. Sussmann, "Further comments on the stabilizability of the angular
+
+velocity of a rigid body," to appear in Systems and Control Letters, 12 (1989): No.3.
+
+6. Varaiya, P.P. and R. Liu, "Bounded-input bounded-output stability of nonlinear timevarying differential systems," SIAM J.Control 4(1966): 698-704.
+
+7. Vidyasagar, M., "Decomposition techniques for large scale systems with nonadditive interactions: Stability and stabilizability," IEEE Trans. Automatic Control 25(1980): 773- 779.
+
+11</pre>
+</body>
+</html>

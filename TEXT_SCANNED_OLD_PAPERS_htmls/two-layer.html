@@ -1,0 +1,656 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/two-layer.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/two-layer.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+IEEE Trans. Neural Networks 3 (1992): 981-990.
+
+FEEDBACK STABILIZATION USING TWO-HIDDEN-LAYER NETS
+
+Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+ABSTRACT This paper compares the representational capabilities of one hidden layer and two hidden layer nets consisting of feedforward interconnections of linear threshold units.
+
+It is remarked that for certain problems two hidden layers are required, contrary to what might be in principle expected from the known approximation theorems. The differences are not based on numerical accuracy or number of units needed, nor on capabilities for feature extraction, but rather on a much more basic classification into "direct" and "inverse" problems. The former correspond to the approximation of continuous functions, while the latter are concerned with approximating one-sided inverses of continuous functions --and are often encountered in the context of inverse kinematics determination or in control questions.
+
+A general result is given showing that nonlinear control systems can be stabilized using two hidden layers, but not in general using just one.
+
+Key words : Neural nets, nonlinear control systems, feedback
+
+1 Introduction This paper concerns itself with the global stabilization of nonlinear systems
+
+x(t + 1) = P (x(t); u(t)) (1) by means of state feedback laws u(t) = K(x(t)) which can be implemented using neural networks. Such control laws have attracted some interest lately (see e.g. [7] and references there). Our objective here is not to provide a practical stabilization technique, but rather to explore the capabilities and the ultimate limitations of alternative network architectures. We do so by showing that, contrary to what might be expected from the well-known representation theorems [4], [3], [6], single hidden layer nets are not sufficient for stabilization, but two hidden layer nets are enough --assuming that threshold processors are used.
+
+The basic reason underlying the lack of sufficiency of one hidden layer is that, often, control laws for nonlinear systems require the use of discontinuous mappings, and these cannot be wellapproximated as superpositions of maps which are constant on halfspaces.
+
+In fact, the same phenomenon appears in a more general class of nonlinear questions, not necessarily in control theory, questions that deal with inverse or indirect problems. In these, one is interested in obtaining a one-sided inverse to a continuous map. For instance, inverse kinematics calculations in robotics are of this type. Other authors, most notably [2] and [1], had previously noted the need for two hidden layers; while they stated their results mostly in terms of numerical accuracy and numbers of neurons, the underlying reasons also had to do with limitations of superpositions. This difference in capabilities was also implicit --but expressed in the language of piecewise linear maps-- in the algebraic reference [8].
+
+1
+
+The remarks in this paper suggest that one could roughly classify learning problems into "direct" and "indirect" ones, the former being more suitable for solution by one hidden layer nets, and the latter by two hidden layer nets. Of course, a particular inverse or indirect problem may well be solvable using one hidden layer nets; certainly linear problems are like that. But our rough classification might be still helpful in dealing with the difficult issue of selection of architectures.
+
+Mathematically, the main results are quite simple, and they are to be expected in view of the older work by the author which dealt with piecewise linear sets and systems. The only difficulties are in generalizing the arguments in [9] to deal with a slightly more restrictive class of feedback laws than in [9], and in proving the negative result. The exposition here is self-contained, however, and no use is made of the results in [9] and [8]. Moreover, we organized the paper in such a manner that readers not familiar with the control application will still be able to read the sections on direct and indirect problems independently of the rest.
+
+1.1 Summary of Results on Representability We will deal with functions that can be computed by nets consisting of feedforward interconnections, via additive links, of processors ("neurons") each of which has a scalar response `. In our positive results we take this processing element to be the standard "hardlimiter" function from the neural net and perceptron literature: ` = H, where H(x) = 0 for x ^ 0 and H(x) = 1 for x ? 0. In negative results, more general functions ` can be used. The ouput is not passed through a final neuron, as done in some studies of feedforward nets, as this would limit the range of values that can be computed.
+
+It is by now well-known --see e.g. [4], [3], [6]-- that functions computable by nets with a single hidden layer can approximate continuous functions, uniformly on compacts, under only weak assumptions on `. Consider now the following inversion problem: Given a continuous function f : IRm ! IRp, a compact subset C ` IRp included in the image of f , and an " ? 0, find a function OE : IRp ! IRm so that kf (OE(x)) \Gamma  xk ! " for all x 2 C. It is trivial to see that in general discontinuous functions OE are needed. We show later that nets with just one hidden layer are not enough to guarantee the solution of all such problems, but nets with two hidden layers are. The basic obstruction is due, in essence, to the impossibility of approximating by single-hidden-layer nets the characteristic function of any bounded polytope, while for some (non one-to-one) f the only possible one-sided inverses OE must be close to such a characteristic function. On the other hand, it is fairly trivial to get these approximations with two hidden layers.
+
+1.2 Summary of Control Results We assume that system (1) is so that states x(t) evolve in IRn, controls u(t) take values in IRm, and that P : IRn+m ! IRn is continuous and has P (0; 0) = 0.
+
+The system (1) is asymptotically controllable if for each state x0 there is some infinite control sequence u(0); u(1); : : : such that the corresponding solution with x(0) = x0 satisfies that x(t) ! 0 as t ! 1. This condition is obviously the weakest possible one if any type of controller is to stabilize the system; see [12], in particular Chapter 4, for a discussion of such issues.
+
+The main objective is to find a map (feedback law)
+
+K : IRn ! IRm ; computable by a net, which stabilizes any given compact subset of the state space C ` IRn to x = 0, that is, so that the closed-loop system
+
+x(t + 1) = P (x(t); K(x(t)) (2)
+
+2
+
+(denoted also x+ = P (x; K(x))) is asymptotically stable and contains C in the domain of attraction. (In general, for different C, a different K may be needed; this is due to the limitations imposed by having only a finite number of simple processing elements in the net.) As we are interested in global behavior, we make the simplifying assumption that the system can be locally stabilized with linear feedback, i.e. there is some matrix F so that the closed loop system with right-hand side P (x(t); F x(t)) is locally asymptotically stable.
+
+We will show that asymptotic controllability is then not only necessary but also sufficient in order to guarantee the existence of a two-hidden-layer net that stabilizes any given compact. On the other hand, we will construct an example of a system which satisfies all the assumptions --in fact, it is so that F = 0 locally stabilizes and so that every state can be driven in two time steps to the origin-- but for which every one-layer net results in some nontrivial periodic orbit.
+
+The discussion is entirely in terms of discrete-time systems (1). However, just as in [9], one may immediately apply all results to continuous-time systems
+
+.x = f (x; u) (3) through the use of sample-and-hold control. Thus, given an asymptotic controllable system (3) which satisfies the first-order stability condition, and given any compact subset C of the state space, there is a sampling period ffi ? 0 and a two-hidden-layer net K so that the controls u(t) = constant value K(x(kffi)) on each sampling interval t 2 [kffi; (k + 1)ffi) stabilize states in C. See for instance [13] or [12], Section 4.8, for more on the topic of nonlinear stabilizability for continuoustime systems.
+
+Also, only the full state feedback problem is treated in detail, but [9] shows how to deal with partial observations in the analogous case of piecewise linear feedback (in fact, the main results in that reference are for the partially observed case).
+
+2 Definitions and Results In this section we give the basic definitions, discuss elementary properties, and provide precise statements of results. Proofs are deferred to Section 3, which deals with properties of certain sets of functions, including those associated to nets, and Section 4, which develops the material on stabilization.
+
+2.1 Feedforward Nets We will find it more convenient not to define a "net" but rather a "function computed by a net," because different sets of net parameters (weights, thresholds) may give rise to the same behavior --for instance, permuting the neurons and all incoming and outgoing weights results in the same map. The functions so defined will correspond to the nets discussed in the Introduction.
+
+A function ` : IR ! IR is assumed given. In neural net practice, one often takes ` to be the standard sigmoid `(x) = oe(x) = 11+e\Gamma x or equivalently, up to translations and change of coordinates, the hyperbolic tangent `(x) = tanh(x). Another usual choice is the hardlimiter, Heaviside, or threshold function
+
+`(x) = H(x) = ( 0 if x ^ 01 if x ? 0
+
+which can be approximated well by oe(flx) when the "gain" fl is large. The main results given will be for ` = H.
+
+3
+
+Definition 2.1 A function f : IRp ! IR is computable by a strict zero-hidden-layer net if it is an affine function, that is, there exist a vector v 2 IRp and a scalar o/ 2 IR such that f (u) = v:u + o/ , where the dot indicates inner product. For any integer d * 1, the function f : IRp ! IR is computable by a strict d-hidden-layer net (with processsors of type `) if there exist an integer l, constants w1; : : :; wl 2 IR, and functions f1; : : : ; fl so that
+
+f (u) =
+
+lX
+
+i=1
+
+wi`(fi(u)) (4)
+
+and each fi is computable by a strict (d \Gamma  1)-hidden-layer net. 2
+
+In other words, the functions computable by nets with no hidden layers are those in the span of the coordinate functions and the constants, and those computable by d layers constitute the span of the functions `(f (x)), for f computable with one less layer. Note that constant terms (or "biases" in neural net terminology) can always be included in the sum in (4), as one could take one of the fi's to be constant. A d-hidden-layer net is sometimes called a "(d + 2)-layer net" if one counts the inputs and outputs as a layer. We prefer the hidden-layer terminology, as less ambiguous.
+
+In particular, a function f is computable by a strict one-hidden-layer net if there are real numbers w1; : : : ; wl; o/1; : : : ; o/l and vectors v1; : : :; vl 2 IRp such that, for all u 2 IRp,
+
+f (u) =
+
+lX
+
+i=1
+
+wi `(vi:u + o/i) : (5)
+
+Most results mentioned here will deal with d = 1 or d = 2. For fixed `, and under mild assumptions on `, nets with one hidden layer can be used to approximate arbitrary continuous functions uniformly on compacts sets; see for instance [3], [6]. For other problems, as discussed below, two hidden layers are needed.
+
+Definition 2.2 A function computable by a strict net with possible direct input to output connections (and d hidden layers) is by definition a function g : IRp ! IR of the form F u + f (u), where F is linear and f is computable by a strict d-hidden-layer net as above. 2
+
+For multivariable maps f : IRp ! IRm, "computable by a d-hidden-layer net" means by definition that each coordinate function fi : IRp ! IR, i = 1; : : : ; p is so computable, and similarly when direct connections are allowed.
+
+Remark 2.3 We use the terminology "strict" to differentiate from the case in which one would also allow in the sum (4) terms of the form wifi(u), where fi is computable with d \Gamma  1 layers. In graph-theoretic terms, such more general functions are computable by nets in which forward connections are allowed between arbitrary intermediate nodes (not necessarily in adjacent layers). With the possible exception of direct connections from inputs to outputs, however, we will not need such "nonstrict" nets. The positive results will hold already for strict nets, while the negative result, for d = 1, will show that certain problems cannot be solved by one-layer nets with possible i/o conections, which in that case (d = 1) are the same as nonstrict nets. For simplicity, from now on we drop the word "strict." 2
+
+4
+
+2.2 Certain Properties of Classes of Functions To explain the different approximation capabilities of one- and two-hidden layer nets, we first consider, in general, the following properties on classes of functions.
+
+Suppose given, for each positive integer p, an IR-linear space of functions Fp from IRp into IR, so that for each f 2 Fp, each constant c 2 IR, and every k = 1; : : :; p, the function
+
+g(u1; : : : ; up\Gamma 1) := f (u1; : : : ; uk\Gamma 1; c; uk; : : : ; up\Gamma 1) obtained by setting the kth coordinate to c belongs to Fp\Gamma 1.
+
+For each positive integers p and m, we denote F mp := (Fp)m, thought of as a linear space of maps IRp ! IRm. Thus, by definition, if f = (f1; : : : ; fm)0 : IRp ! IRm is any map, then f 2 F mp if and only if each coordinate function fi is in Fp. We call any F = fF mp gp;m obtained in this fashion a compatible class of functions. Consider the following possible properties of such an F :
+
+(INV) For any m; p, any continuous function f : IRm ! IRp, any compact subset C ` IRp included
+
+in the image of f , and any " ? 0, there exists some OE 2 F mp so that kf (OE(x)) \Gamma  xk ! " for all x 2 C.
+
+(SEC) For any open subset U ` IRp \Theta  IRm and every compact subset C ` IRp included in
+
+the projection ss1(U ) of U on the first p coordinates, there exists some OE 2 F mp so that (x; OE(x)) 2 U for all x 2 C.
+
+(SEC0) For any open subset U ` IRp \Theta  IRm and every compact subsets C ` ss1(U ) and C0 so that
+
+C0 \Theta  f0g ` U there exists some OE 2 F mp so that (x; OE(x)) 2 U for all x 2 C and also OE(x) = 0 for all x 2 C0.
+
+The first of these corresponds to approximations of (one-sided) inverses of continuous maps, the second to finding sections of projections, and the last to finding sections of such projections which are guaranteed to vanish in a prescribed compact. It turns out that the last property is sufficient for solving stabilization problems for nonlinear control systems, while the first is necessary if such problems are to be solved.
+
+Clearly (SEC0) implies (SEC). It is also true that (SEC) implies (INV): indeed, assume given any continuous f : IRm ! IRp, " ? 0, and C ` f (IRp) as in the statement of (SEC), and let U be defined as the subset of IRp \Theta  IRm consisting of all pairs (x; y) such that kf (y) \Gamma  xk ! ". This is open, by continuity of f , and a section of ss1 provides an "-approximation to the inverse of f .
+
+2.3 Results for Nets From Lemma 3.6 and Proposition 3.5 (see Section 3 below), we will derive the following fact:
+
+Proposition 2.4 Let F = fF mp gp;m be the set of maps computable by two-hidden-layer nets with processsors of type H. Then, F satisfies (SEC0) (and hence also (SEC) and (INV)).
+
+The proof will be based on the identification of maps computable by such two-hidden-layer nets with maps that are piecewise constant on each element of a finite polyhedral partition, and the proof that the latter type of maps form what we will call a "complete" compatible class of functions, therefore satisfying (SEC0).
+
+On the other hand, we will have the following:
+
+5
+
+Proposition 2.5 The set of functions computable by one-hidden-layer nets with ` = H, even with possible direct input to output connections, does not satisfy (INV) (nor, therefore, (SEC) or (SEC0)).
+
+The same negative result holds with any continuous ` such as the standard sigmoid. The proof of Proposition 2.5 is based on a more general argument that shows that solving (INV) implies being able to find a certain type of approximation to a characteristic function of a bounded polyhedron, and these approximations cannot be formed out of "ridge" functions, those otained as linear combinations of scalar functions of linear combinations.
+
+2.4 Results for Feedback We say that a subset C ` IRn is asymptotically stable for the closed-loop system (2) if (2) is locally asymptotically stable about x = 0 and C is included in the domain of attraction.
+
+Let F = fF mp gp;m be a compatible class of functions. The system (1) is F -stabilizable on compacts if for each compact subset C ` IRn there exists some K 2 F mn so that C is asymptotically stable for the closed-loop system (2).
+
+The two main technical results on stabilization, proved in Section 4, are as follows.
+
+Theorem 1 Assume that (1) is an asymptotically controllable system so that the origin x = 0 is locally asymptotically stable for the zero-input equation
+
+x(t + 1) = P (x(t); 0) : Let F = fF mp gp;m be a class of functions satisfying (SEC0). Then (1) is F -stabilizable on compacts.
+
+If F = fF mp gp;m is a compatible class of functions, we denote F + L = fF mp + Lgp;m the new compatible class of functions obtained by taking as F mp + L the set of all the maps of the form f + L, with f 2 F mp and L : IRp ! IRm a linear map.
+
+Theorem 2 Assume that (1) is an asymptotically controllable system, and that P is differentiable about x = 0; u = 0. Let P (x; u) = Ax + Bu + o(x; u). Assume further that the pair (A; B) is stabilizable in the linear systems sense:
+
+rank [zI \Gamma  A; B] = n for all z 2 C; jzj * 1 : Let F = fF mp gp;m be a compatible class of functions satisfying (SEC0). Then (1) is F +L-stabilizable on compacts.
+
+Because of Proposition 2.4, from these follow the main positive results for nets: Corollary 2.6 If (1) is asymptotically controllable and x = 0 is locally asymptotically stable for the zero-input equation x+ = P (x; 0), then (1) is stabilizable on compacts using two-hidden-layer nets with processors of type H. 2
+
+Corollary 2.7 If (1) is asymptotically controllable and its linearization x+ = Ax+Bu at the origin is stabilizable, then (1) is stabilizable on compacts using two-hidden-layer nets with processors of type H and possible direct input to output connections. 2
+
+6
+
+While these Corollaries could also be proved directly, it is far more interesting to see them as consequences of the possibility of constructing sections of maps. In particular, it is then not hard to see that the stabilization property is robust under small perturbations in the feedback law.
+
+In Section 4 we also prove that the conclusions of these Corollaries cannot hold for singlehidden-layer nets, as well as many other sets of functions. This follows from:
+
+Theorem 3 Assume that F is a compatible class of functions which does not satisfy property (SEC). Then there exists a system (1) which:
+
+ffl is asymptotically controllable, and ffl is so that the origin is locally asymptotically stable for the zero-input dynamics x+ = P (x; 0)
+
+but is not F -stabilizable on compacts.
+
+From Proposition 2.5 we are then able to conclude: Proposition 2.8 There exists a system (1) which is asymptotically controllable, and is so that the origin is locally asymptotically stable for the zero-input dynamics, but which is not stabilizable on compacts using nets with one hidden layer, ` = H, and possible direct input to output connections.
+
+The rest of the paper will develop the technical details and provide proofs.
+
+3 The Property (SEC0) One way of generating classes of functions satisfying property (SEC0) is through certain types of piecewise constant functions.
+
+Definition 3.1 Let p be a positive integer. A class of subsets B of IRp will be said to be a Boolean basis if B is a Boolean algebra (B is closed under finite intersections and complements) and it contains a basis of open sets (every open subset of IRp is a union of open sets belonging to B). 2
+
+Definition 3.2 Let F = fF mp gp;m be a compatible class of functions. The class F will be said to be complete if for each p there exists a Boolean basis Bp such that Fp contains the characteristic functions of all the elements of Bp. 2
+
+Note that if v = (v1; : : :; vm)0 is any element in IRm and O/ is the characteristic function of any set W 2 Bp, then O/ v, seen as the map IRp ! IRm : x 7! O/(x)v, is in F mp , because each of its coordinates x 7! viO/(x) belongs to Fp, which is closed under scalar multiplications. More generally, if v1; : : : ; vk are elements in IRm, and O/1; : : : ; O/k are characteristic functions of disjoint sets Wi 2 Bp, the map
+
+kX
+
+i=1
+
+vi O/i(\Delta ) ;
+
+which takes the constant value vi on Wi, is in F mp .
+
+As an illustration of the above concepts, the class of all those subsets of IRp which can be written as a finite union of intersections of closed and open sets forms a Boolean basis in our sense, and the same is true for the Boolean algebra generated by all the open spheres --related to the "radial
+
+7
+
+basis functions" used in some neural network applications. Another, more relevant, example, is as follows.
+
+Consider, for each fixed p, the open halfspaces in IRp, i.e. the sets defined by inequalities of the type v:u ? o/ , for some o/ 2 IR and v 2 IRp. Now take the Boolean algebra generated by all such halfspaces. This defines a class of subsets Bp each of which is a finite union of intersections of finitely many open and closed subspaces (v:u * o/ ). Since every open cube is an intersection of open halfspaces, and cubes form a basis for the topology of IRp, Bp is a Boolean basis.
+
+As each closed halfspace can be written as the union of a hyperplane and an open halfspace, every element of Bp can also be written as a finite disjoint union of sets of the form
+
+H " P (6) where H is an affine manifold (possibly the whole space) and P is an open polyhedron, that is, a set defined by finitely many affine inequalities of the type v:u ? o/ . Sets of the form (6) are called relatively open polyhedra. As in [8] and [9], we define:
+
+Definition 3.3 Elements of Bp are called piecewise linear sets. The linear span of the characteristic functions of such piecewise linear sets is the set of (polyhedrally) piecewise constant functions from IRp into IR. More generally, a map f : IRp ! IRm is said to be piecewise constant if each coordinate function fi is. 2
+
+It follows from the preceeding discussion that the piecewise constant functions are also spanned by the characteristic functions of the relatively open polyhedra. The set of piecewise constant maps is complete, because each Bp is a Boolean algebra by definition.
+
+Remark 3.4 In [8] and [9], one also defines more generally piecewise linear maps, as those whose graphs are piecewise linear sets, or equivalently, maps that are affine (rather than constant) on each element of a finite polyhedral partition. For such maps one may develop a fairly elegant algebraic theory, and various computational complexity issues have been studied too (see [10]). Their study is conveniently carried out by introducing the first-order logical theory of real numbers with addition, and studying elimination of quantifier issues for it. Of course, piecewise linear maps also constitute a Boolean complete set. It is easy to see that in order to represent general piecewise linear maps one will need richer structures than feedforward nets. Essentially, what are needed are pairs of nets, one for partitioning the state space and the other for implementing an affine function in each; the two nets interact multiplicatively. Such pairs of nets may be more useful in practice -in particular, they are better suited for modeling gain-scheduling approaches to control; see [9]. On the other hand, the subset of piecewise constant maps, and the maps obtained by adding to them a fixed linear map, are enough for establishing a general existence result, and hence we restrict atention to them in this paper. 2
+
+The main property of complete sets of functions that we need is the following trivial observation: Proposition 3.5 If F is complete, then it satisfies property (SEC0). Proof. Let U , C, and C0 be as in the statement of the property, and let Bp be as in the definition of completeness. Consider the open set
+
+V := fx 2 IRm j (x; 0) 2 U g :
+
+8
+
+For each x 2 C0, we pick a neighborhood Ox of x contained in V . Since Bp is a Boolean basis, we may take Ox 2 Bp for all such x. We write ux := 0 for each x 2 C0.
+
+Now consider any x 2 CnC0. As C ` ss1(U ), there is some ux 2 IRp so that (x; ux) 2 U , and thus we may pick some neighborhood Ox 2 Bp of x with the property that (z; ux) 2 U for all z 2 Ox. Moreover, as C0 is closed, we may take Ox to be disjoint from C0.
+
+The sets Ox cover the compact C; choose a finite subcover, say corresponding to points x1; : : : ; xk, and write Oi instead of Oxi and ui instead of uxi . Without loss of generality, we assume that x1; : : : ; xl are in C0 and xl+1; : : : ; xk are in CnC0. Note that by construction, none of Ol+1; : : : ; Ok intersect C0, so the union of O1; : : : ; Ol must cover C0, and that ui = 0 for i = 1; : : : ; l. Define W1 := O1 and for each i = 1; : : : ; k \Gamma  1:
+
+Wi+1 := Oi+1n 0@ [
+
+j^i
+
+Oj1A
+
+so that the Wj's are disjoint and still cover C. Since Bp is a Boolean algebra, each Wj belongs again to it, and thus the linear combination of characteristic functions OE := Pki=1 ui O/i(\Delta ) is in F mp . This combination OE satisfies OE(x) = 0 for all x 2 C0 because C0 is included in the union of W1; : : : ; Wl, and also (x; OE(x)) 2 U for all x 2 C by construction.
+
+The next remark relates Definitions 2.1 and 3.3.
+
+Lemma 3.6 A function f : IRN ! IR is piecewise constant if and only if it is computable by a two-hidden-layer net with processsors of type H.
+
+Proof. Let f be piecewise constant. By definition, f is a linear combination of characteristic functions of open polyhedra (6). Thus in order to show that f is computable by a two-hidden-layer net it is sufficient to prove that such characteristic functions are. Let H be the set of solutions of _i:u = ci, i = 1; : : :; k, and let P be defined by the inequalities *i:u ? di, i = 1; : : : ; l. Then
+
+H \Gamma 
+
+kX
+
+i=1
+
+[H(_i:u \Gamma  ci) + H(\Gamma _i:u + ci)] \Gamma 
+
+lX
+
+i=1
+
+[1 \Gamma  H(*i:u \Gamma  di)] + 12 !
+
+is the characteristic function of H T P .
+
+Conversely, assume that f is computable by a d-hidden-layer net, for any d ? 0. We prove by induction on d that f is piecewise constant. As f is a linear combination of terms of the form H(g(x)), with g computable with d \Gamma  1 hidden layers, it is sufficient to show the result for one such term. If d = 1 then f (x) = H(v:u + o/ ) is the characteristic function of the half-space v:u + o/ ? 0. Now let d * 2, so by induction we may assume that g is constant on each of the relatively open polyhedra P1; : : : ; Pk. It follows that f is constant on each of the same polyhedra.
+
+From Lemma 3.6 and Proposition 3.5 applied to the (polyhedrally) piecewise constant functions, we have the desired conclusion, Proposition 2.4.
+
+3.1 A Necessary Condition We show here that property (INV) --and therefore also (SEC) and (SEC0)-- does not hold for certain classes of functions F , including those computed by single-layer nets.
+
+Lemma 3.7 Assume that F satisfies (INV). Then, there exists some  2 F 12 such that
+
+9
+
+ffl (x) 2 (\Gamma 1; 0) S (2; 4) for all x with kxk ! 3=2. ffl (x) ? 2 for kxk ! 1=2. ffl \Gamma 1 ! (x) ! 0 for 5=4 ! kxk ! 3=2.
+
+Proof. Let S be the open unit ball in IR3 centered at (0; 0; 3)0, that is the set where x21+x22+(x3\Gamma 3)2 ! 1, and let T be the solid torus in IR3 obtaining by rotating about the x3-axis the disk in the x2; x3- plane with x1 = 0 and (x2 \Gamma  5=4)2 + (x3 + 1=2)2 ! 1=4. Observe that S projects along the x3 axis onto the unit disk
+
+D = fx 2 R2 j kxk ! 1g
+
+and that T projects onto the annulus
+
+A = fx 2 R2 j 3=4 ! kxk ! 7=4g : Let C0 be the closed disk in IR2 of radius 3=2 centered at zero, which is included in A S D.
+
+As S S T is open, there exists some continuous map ae : IR3 ! IR so that ae(x) 2 (0; 1=4) if x 2 S S T , and which is identically = 1=4 outside S S T . (For instance, one may take ae = (4 + 4d2)\Gamma 1, where d(x) is the distance to the complement of S S T . One may even take an infinitely differentiable function d whose zero set is this complement; see Exercise 2.2.1 in [5].)
+
+Finally, let m = p = 3 in property (INV), applied with " = 1=4,
+
+f (x1; x2; x3) := (x1; x2; ae(x1; x2; x3)) ; and the set C := C0 \Theta  f0g. Thus there is some OE = (OE1; OE2; OE3)0 2 F 33 so that
+
+kf (OE(x)) \Gamma  xk ! 1=4 whenever x 2 C. From this inequality, it holds then that ae(OE(x)) ! 1=4 for such x, so necessarily
+
+OE(x) 2 S [ T (7) for all x 2 C. Let (x1; x2) := OE3(x1; x2; 0). Then, (7) implies that (x1; x2) 2 (2; 4) when OE(x1; x2; 0) 2 S, and (x1; x2) 2 (\Gamma 1; 0) when OE(x1; x2; 0) 2 T , so always (x1; x2) 2 (\Gamma 1; 0) S(2; 4) for (x1; x2) 2 C0.
+
+It also follows that
+
+k(OE1(x); OE2(x)) \Gamma  (x1; x2)k ! 1=4 (8)
+
+for all x = (x1; x2; x3) 2 C. In the particular case in which k(x1; x2)k ! 1=4, (8) implies that k(OE1(x); OE2(x))k ! 1=2, which together with (7) implies that OE(x) 2 S, and therefore that (x1; x2) ? 2. Similarly, if k(x1; x2)k ? 5=4 then (8) implies that k(OE1(x); OE2(x))k ? 1, and this together with (7) gives that OE(x) 2 T , and hence that \Gamma 1 ! (x1; x2) ! 0.
+
+We next prove that single-layer nets cannot satisfy the above properties. In order to do so, it is convenient to prove something a bit more general. Let Q be any class of functions from IR2 into IR which satisfies the following three properties, where Sq := fu j q(x) = 0g:
+
+1. Each q 2 Q is continuous, and if q is not constant then it satisfies the following openness
+
+condition: If u 2 Sq for some u 2 IR2, and if f"ng is any sequence converging to zero, then there is some sequence uk ! u and a subsequence f"nk g such that q(uk) = "nk for all k. (Note that if rq(u) 6= 0 for each u for which q(u) = 0, then the openness condition is satisfied.)
+
+10
+
+2. If q and eq are any two nonconstant elements in Q then either Sq T Seq is finite (possibly empty)
+
+or there is some * 2 IR such that eq(u) = *q(u) for all u (and in particular Sq = Seq).
+
+3. Each set Sq is connected and unbounded.
+
+For instance, the set Q consisting of all affine functions q(u) = v:u + o/ satisfies the above properties.
+
+If Q is as above, we will say that f : IR2 ! IR is a Q-superposition if it can be written in the form
+
+f (u) =
+
+kX
+
+i=1
+
+ffi(qi(u)) + g(u) (9)
+
+where the functions qi are in Q, k is some positive integer, each function ffi : IR ! IR is continuous except possibly at x = 0, and g is continuous.
+
+As an example, any f : IR2 ! IR computable by a single-hidden layer net with processors of type H is such a superposition, with Q being the set of affine functions. When possible direct input to output connections are allowed, the function is still a superposition: one may include the linear term F u, either by taking an extra ffi equal to the identity, or taking g(u) = F u. Note also that functions computable by nets with any number of hidden units but ` continuous are also superpositions (just use the "g" term).
+
+Together with Lemma 3.7, the following implies Proposition 2.5.
+
+Proposition 3.8 Let Q be as above, and let f : IR2 ! IR and R ? 0 be so that:
+
+(a) f (u) 2 (\Gamma 1; 0) S (2; +1) for all kuk ! R. (b) f (u) ? 2 on some disk kuk ! ".
+
+(c) f (u) 2 (\Gamma 1; 0) on some annulus R \Gamma  " ! kuk ! R. Then, f cannot be a Q-superposition.
+
+Proof. Assume that f would be a superposition, as in (9). The functions qi may be taken to be all nonconstant; otherwise a constant term can be added to g. Let Si := Sqi, i = 1; : : : ; k (it may be the case that Si = Sj for some i 6= j). The only possible discontinuities of f are on the Si's.
+
+Let F be the set of points that are in the intersection of two or more distinct sets of the type Si. By the second property of Q, F is known to be finite. We claim now that there exists some point u1 with ku1k ! R which is not in F and is such that there exist two sequences
+
+y1n ! u1 and z1n ! u1 (10) with f (y1n) ? 2 and f (z1n) ! 0 for all n.
+
+Indeed, consider for each u0 of norm R the function s(_) := _u0, _ 2 (0; 1). For small _, s(_) ? 2, by part (b) in the statement, and for large _ part (c) implies that s(_) ! 0. On the other hand, s(_) is always either ? 2 or ! 0, by part (a). Let _0 be the supremum of the values _ for which s(_) ? 2. Then, u1 = _0u0 is so that two sequences as above exist. As a different point is obtained for each different u0, and we only need to avoid the finite set F , one can take u1 62 F , as claimed.
+
+Note that f is discontinuous at u1, so u1 2 Si for at least one i. After reordering terms if necessary, assume that
+
+u1 2 S = S1 = : : : = Sl
+
+11
+
+and u1 62 Sj for j = l + 1; : : :; k. As the sets Sj are closed (each qi is continuous), there is a neighborhood of u1 disjoint from all such Sj's. We write
+
+f (u) = f1(u) + f2(u) where f1(u) := Pli=1 ffi(qi(u)). Then, f2 is continuous at u = u1, and therefore the last term in
+
+jf1(y1n) \Gamma  f1(z1n)j * jf (y1n) \Gamma  f (z1n)j \Gamma  jf2(y1n) \Gamma  f2(z1n)j
+
+? 2 \Gamma  jf2(y1n) \Gamma  f2(z1n)j
+
+tends to zero, which implies that jf1(y1n) \Gamma  f1(z1n)j ? 3=2 for all large n.
+
+The set S is connected and unbounded, and it contains some point in the interior of the disk kuk ! R. Therefore it contains points of the form kuk = R \Gamma  ", for every " small. Together with the fact that F is finite, this means that there must exist some u2 2 S such that f (u) 2 (\Gamma 1; 0) for all u near u2 and so that f2 is continuous at u2.
+
+By the third property of Q, there is a fixed q 2 Q and real numbers *i so that qi = *iq for all i = 1; : : : ; l. Now we use the openness property for the function q: after choosing if necessary a subsequence of fy1ng, as q(u2) = 0 and q(y1n) ! 0, there exists some sequence y2n ! u2 so that q(y2n) = q(y1n) for all n. Using now that also q(z1n) ! 0, and picking yet another subsequence if necessary, there also exists some sequence z2n ! u2 so that q(z2n) = q(z1n). Thus also *iq(y2n) = *iq(y1n) and *iq(z2n) = *iq(z1n) for all n, so f1(y1n) = f1(y2n) and f1(z1n) = f1(z2n) for all n and each i = 1; : : : ; l. We conclude that
+
+jf (y2n) \Gamma  f (z2n)j * jf1(y1n) \Gamma  f1(z1n)j \Gamma  jf2(y2n) \Gamma  f2(z2n)j
+
+? 3=2 \Gamma  jf2(y1n) \Gamma  f2(z1n)j :
+
+Since the last term tends to zero, by continuity of f2 at u2, it follows that jf (y2n) \Gamma  f (z2n)j ? 1 for all large n, contradicting the fact that f (u) 2 (\Gamma 1; 0) for all u near u2.
+
+4 Stabilization Given any system (1) and an input sequence ! = (u1; : : : ; uk) 2 (IRm)k, we use the notation P (x; !) to denote the state reached after applying !, that is,
+
+P (x; !) := P (P (: : : (P (P (x; u1); u2); : : :); uk\Gamma 1); uk) : The notation includes the empty sequence !, for which P (x; !) = x. For any subset S ` IRn, we denote by
+
+C1(S) := fx 2 IRn j P (x; u) 2 S for some u 2 IRmg (11)
+
+the set of states which can be controlled to S in one step.
+
+The notation kxk is used for Euclidean norm in the state space IRn or in control-value space IRm, IB(x; ") denotes the open ball of radius " centered at x, and IB(x; ") is the closure of IB(x; "). More generally, IB(S; ") is the open "-neighborhood of a set S, that is, the set of points x so that kx \Gamma  sk ! " for some s 2 S.
+
+We start with a simple consequence of local stability.
+
+Lemma 4.1 Assume given a control system (1) for which the origin x = 0 is a locally asymptotically stable state for the zero-input equation
+
+x(t + 1) = Q(x(t)) ; (12) where Q(x) := P (x; 0). Then, there exist:
+
+12
+
+ffl a compact set A0 included in the domain of attraction of the origin in (12) and invariant
+
+under Q,
+
+ffl bounded open sets B0 and L0 so that
+
+A0 ` L0 ` clos L0 ` B0 ; and ffl a real number " ? 0 and an integer s ? 0,
+
+such that the following two properties hold:
+
+(i) If x 2 B0 and u 2 IRm has norm kuk ! " then P (x; u) 2 L0. (ii) If x 2 B0 and (u1; : : :; us) 2 (IRm)s is a sequence that satisfies kuik ! " for all i = 1; : : : ; s,
+
+then there is some i 2 f1; : : : ; sg so that P (x; (u1; : : : ; ui)) 2 A0.
+
+Proof. Pick any bounded open set V which contains 0 and whose closure F is contained in the domain of attraction of 0 in (12). By asymptotic stability, there is then some integer s so that Qs(F ) ` V . (This is a well-known consequence of stability, and can be proved first locally as in [12], Lemma 4.8.10, and then following by a standard compactness argument.) Let
+
+A0 := F [ Q(F ) [ : : : [ Qs\Gamma 1(F ) : Note that A0 is invariant under Q, and it is compact because each Qi(F ) is. Moreover, as Q(Qs\Gamma 1(F )) ` V by the choice of s, it is also true that for each x0 2 A0 there is some i ^ s so that Qi(x0) 2 V . In particular, this implies that A0 is in domain of attraction of the origin, because V is in the domain of attraction.
+
+We now claim that there are positive real numbers "i, i = 0; : : :; s \Gamma  1 and bounded open sets N0; : : : ; Ns and M0; : : :; Ms with the properties that:
+
+Qi(F ) ` Mi ` clos Mi ` Ni (13) and
+
+P (Ni \Theta  IB(0; "i)) ` Mi+1 (14)
+
+for each i = 0; : : :; s \Gamma  1. Let Ms = Ns := V , and define the Ni; Mi; "i recursively for decreasing i = s \Gamma  1; : : : ; 0 as follows. Assume that Ni+1; Mi+1 have been defined, and i * 0. Then, since
+
+P iQi(F ) \Theta  f0gj = Qi+1(F ) ` Mi+1 it follows by continuity of P and openness of Mi+1 that there is a bounded open set Ni and an "i ? 0 so that (14) holds and Qi(F ) ` Ni. As Qi(F ) is a compact set and Ni is open, there is some open set Mi so that (13) holds. This completes the recursive construction.
+
+Let " ? 0 be the smallest of the "i's, and denote
+
+B0 := N0 [ N1 [ : : : [ Ns\Gamma 1 and
+
+L0 := M0 [ M1 [ : : : [ Ms\Gamma 1 :
+
+13
+
+These are bounded sets and, because of (13), they satisfy A0 ` L0 ` clos L0 ` B0. Note also that
+
+Ms = V ` F ` M0 ` L0 : (15) Let x 2 B0 and kuk ! ". By definition of B0, x 2 Ni for some i = 0; : : : ; s \Gamma  1. Then (14) implies that P (x; u) 2 Mi+1 ` L0, the last inclusion by definition of L0 and by (15) when i = s \Gamma  1. Thus conclusion (i) holds.
+
+Pick now any x 2 B0 and any control sequence (u1; : : : ; us) with kuik ! " for all i. Assume that x 2 Nj, where j 2 f0; : : :; s \Gamma  1g. Then applying repeatedly (14) there results that P (x; (u1; : : : ; us\Gamma j)) 2 Ms ` F ` A0, and this proves (ii).
+
+Lemma 4.2 Assume that the compact C ` IRn is in the domain of null-asycontrollability for the system (1), and let A0 be a compact neighborhood of the origin. Then, there exists an integer r * 1 and a sequence of compact sets
+
+A0; A1; : : : ; Ar
+
+so that C ` A0 S : : : S Ar and Ai ` C1(Ai\Gamma 1) for each i = 1; : : :; r.
+
+Proof. Pick any x 2 C. By definition of null-asycontrollability, there must exist some input sequence ! so that P (x; !) 2 int A0, and hence so that also some neighborhood Vx of x is controlled into int A0 by !. Covering C by such Vx's, and using compactness, we conclude that there is some integer r * 1 and some finite subset U ` IRm so that every element of C can be controlled to int A0, and hence also into A0, using inputs with values in U and of length at most r. Without loss of generality, we may assume that 0 2 U . We let
+
+Al := fx 2 C j P (x; (u1; : : :; ul)) 2 A0 for some (u1; : : : ; ul) 2 U lg for each l = 1; : : : ; r. Note that C is covered by the Al's, by choice of r and U . Moreover, if l * 1 then, for each x 2 Al and each (u1; : : :; ul) as in the definition of Al, it holds that P (x; u1) 2 Al\Gamma 1.
+
+It only remains to prove that each Al is compact. For this, note that
+
+Cl := f(x; u1; : : : ; ul) j x 2 C; (u1; : : : ; ul) 2 U l; P (x; (u1; : : : ; ul)) 2 A0g is compact for each l, since C; A0; U are all compact and P is continuous, and Al is the projection of Cl on the x coordinates.
+
+Lemma 4.3 Assume that (1) is a given system, and A0; : : :; Ar is a sequence of nonempty compact sets so that Ai ` C1(Ai\Gamma 1) for each i = 1; : : : ; r. Let B0 and L0 be bounded open sets with A0 ` L0 ` clos L0 ` B0. Then, there exist two sequences of bounded open sets B1; : : : ; Br and L1; : : :; Lr so that the following properties hold for each i; j 2 f0; : : :; rg:
+
+1. Ai ` Li ` clos Li ` B0 S : : : S Bi : 2. Li T Bj = ; if i ! j : 3. Bj ` C1(Li) if j = i + 1 :
+
+Proof. We assume that B0; : : :; Bl and L0; : : : ; Ll have been already obtained, so that the desired properties hold for all i; j 2 f0; : : : ; lg. (Note that when l = 0, property 1 holds by hypothesis, and 2 and 3 are vacuous.) We need to construct Bl+1 and Ll+1 so that the following are verified:
+
+14
+
+(a) Al+1 ` Ll+1 ` clos Ll+1 ` B0 S : : : S Bl+1 : (b) Li T Bl+1 = ; for each i = 0; : : : ; l :
+
+(c) Bl+1 ` C1(Ll) :
+
+Let
+
+G := (B0 [ : : : [ Bl)c
+
+(superscript denotes complement), a closed set, and introduce the compact set
+
+F := clos iL0 [ : : : [ Llj : Note that by property 1, F is contained in the union of B0; : : : ; Bl, so F T G = ;. Thus there exists some ffi ? 0 so that
+
+d(F; G) ? ffi ; (16)
+
+where d denotes distance between sets, d(D; E) = inffkx \Gamma  yk; x 2 D; y 2 Eg, d = +1 if either of D or E is empty. Now pick any x in the compact set
+
+E := Al+1 " G : Since x 2 Al+1 and by hypothesis Al+1 ` C1(Al), there is some ux 2 IRm so that P (x; ux) 2 Al ` Ll. Therefore by continuity of P (\Delta ; ux) there is some "(x) ? 0 so that P (z; ux) 2 Ll whenever kx \Gamma  zk ! "(x), and we may take "(x) ! ffi. Take the open set
+
+Bl+1 := [
+
+x2E
+
+IB(x; "(x))
+
+and observe that
+
+E ` Bl+1 ` IB(E; ffi) (17)
+
+so in particular Bl+1 is bounded. By construction (inputs ux above), property (c) holds. Furthermore,
+
+Al+1 ` iB0 [ : : : [ Blj [ (Al+1 " G) ` iB0 [ : : : [ Blj [ Bl+1 ; (18)
+
+the last inclusion by (17). Since the complement of B0 S : : : S Bl S Bl+1 is closed and disjoint from the compact Al+1 (by (18)), there is some open set Ll+1 which contains Al+1 and so that (a) holds.
+
+We still need to establish (b). For this, it is sufficient to show that Bl+1 does not intersect F . Assume otherwise that would be some x 2 Bl+1 T F . Hence x 2 IB(E; ffi) (by (17)), so there is some y 2 E ` G with kx \Gamma  yk ! ffi, but together with x 2 F this would contradict the inequality (16).
+
+Proof of Theorem 1.
+
+First apply Lemma 4.1, to obtain A0; B0; "; s as there. Now let C be any compact set in IRn which is to be stabilized, and apply Lemma 4.2 to this C and the A0 just obtained. Let r and A1; : : : ; Ar be as in this second Lemma. Next apply Lemma 4.3, with these data, to obtain B1; : : : ; Br as well as L1; : : : ; Lr. Observe that
+
+C ` A0 [ : : : [ Ar ` B0 [ : : : [ Br by property 1 in Lemma 4.3. We now define a set U ` IRn \Theta  IRm, to be used when applying the definition of property (SEC0), as follows:
+
+U := U0 [ : : : [ Ur ;
+
+15
+
+where
+
+U0 := f(x; u) j x 2 B0; kuk ! "g
+
+and
+
+Ui := f(x; u) j x 2 Bi; u 2 IRm; P (x; u) 2 Li\Gamma 1g
+
+for all i = 1; : : :; r. By property 3 in Lemma 4.3, Bi is included in the projection ss1(Ui) for each i = 1; : : : ; r, and the same is true obviously for i = 0. Note that each Ui, and hence also U , is open, because the sets Bi and Li are open.
+
+We will take C0 in the definition of property (SEC0) to be equal to A0. Note that then C0 ` B0, which means that C0 \Theta  f0g ` U0 ` U , as needed in applying (SEC0) with this C0. As C is included in the union of the Bi's, it is a subset of ss1(U ). So we can apply the property, to obtain the desired feedback K 2 F mp .
+
+We now prove that this feedback law provides stability. For each x 2 IRn define
+
+_(x) := maxfi j x 2 Big with _(x) := +1 if x 62 B0 S : : : S Br. Note that _(x) ^ r for all x 2 C.
+
+Claim: Pick any x 2 B0 S : : : S Br, and let u := K(x) and y := P (x; u). Then:
+
+_(y) ^ maxf_(x) \Gamma  1; 0g : Indeed, let k := _(x), so x is in none of the Bj , j ? k, and thus necessarily (x; u) 2 U0 S : : : S Uk. Let (x; u) 2 Uj, where j ^ k.
+
+If j = 0 then x 2 B0 and kuk ! ", so conclusion (i) in Lemma 4.1 implies that y 2 Lt, where t = 0. If j ? 0 then the definition of Uj implies that y 2 Lt, where t = j \Gamma  1 ^ k \Gamma  1. In either case, property 2 in Lemma 4.3 implies that y 62 Bh for all h ? t, so _(y) ^ t. This proves the claim.
+
+Pick now any initial state x0 in C and consider the trajectory xi+1 := P (xi; K(xi)); i = 1; 2; : : :. From the above claim, we conclude that the sequence _(xi) becomes identically zero after at most r steps. At that point xi is in L0, so after at most s more steps it enters A0, by conclusion (ii) in Lemma 4.1, after which, since K(x) j 0 on C0 = A0, the dynamics is that of x+ = P (x; 0), which is asymptotically stable by hypothesis. This proves that C is in the domain of attraction. Local asymptotic stability also follows from the fact that K(x) j 0 about x = 0. This completes the proof of Theorem 1.
+
+Proof of Theorem 2.
+
+This is an immediate consequence of Theorem 1: it is only necessary to first apply a linear stabilizing feedback u = F x, and then apply the previous result to the new system
+
+x+ = P (x; F x + u) which is now locally asymptotically stable for u = 0. There results a feedback K 2 F mn stabilizing this new system, which is the equivalent to saying that K + F stabilizes the original system.
+
+4.1 One Hidden Layer is Not Enough Theorem 3 is an immediate consequence of the following more precise result: Proposition 4.4 Let F be a compatible class of functions that does not satisfy property (SEC). Then, there exists a system (1), for which the origin is locally asymptotically stable for the zeroinput dynamics, and for which every state can be controlled to zero in at most two steps (hence asymptotically controllable), and there is a compact subset C of the state space, so that the following happens:
+
+16
+
+For every feedback law K 2 F mn , the closed-loop system (2) has a nontrivial periodic orbit that intersects C.
+
+Proof. Let U ` IRn \Theta  IRq be open and let C ` IRn be a compact subset included in the projection ss1(U ) of U on the first n coordinates, for which there exists no OE 2 F qn so that (x; OE(x)) 2 U for all x 2 C.
+
+We first claim that we can assume 0 62 C. This is because one may always consider the compact set eC := f(1; x) j x 2 Cg ` IRn+1 and the open set eU := IR \Theta  U ` IRn+1 \Theta  IRq, for which eC is included in the projection of eU in the first n + 1 coordinates. If there would be a  2 F qn+1 so that
+
+((1; x); (1; x)) 2 eU for all x 2 C (property (SEC) for eC and eU ) then (x; OE(x)) 2 U for all x 2 C, where OE(\Delta ) := (1; \Delta ) 2 F qn, contradicting the above. Thus we assume from now on that 0 62 C.
+
+Let * ? 0 be a real number chosen in such a manner that the set
+
+D := 1* C = ae 1* x fifififi x 2 Coe does not intersect C. Such a * exists because 0 62 C and C is compact. Consider the following two disjoint closed subsets of IRn \Theta  IRq:
+
+F1 := f(x; u) j x 2 C and (x; u) 62 U g and
+
+F2 := f(x; u) j x 2 Dg :
+
+Now let fl and  be continuous functions IRn \Theta  IRq ! IR chosen as follows (if desired, they can also picked infinitely differentiable, by Exercise 2.2.1 in [5]):
+
+(x; u) = 8?!?:
+
+1 if (x; u) 2 F1 0 if (x; u) 2 F2 2 (0; 1) otherwise
+
+and fl(x; u) = 0 on F1 S F2 and ? 0 otherwise. Finally, let
+
+ff(x; u1; u2) := fl(x; u1)u2 + * + ` 1* \Gamma  *' (x; u1) for any x 2 IRn; u1 2 IRq; u2 2 IR. Observe that, for all x; u1; u2:
+
+ff(x; u1; u2) = 1=* if (x; u1) 2 F1 ; (19)
+
+ff(x; u1; u2) = * if x 2 D (20) and
+
+ff(x; u1; u2) = a(x; u1)u2 + b(x; u1); a(x; u1) 6= 0; if (x; u1) 62 F1 [ F2 : (21)
+
+As (0; 0) 62 F1 S F2 (because x = 0 is in neither C nor D), we may pick, because of (21), some u02 so that ff(0; 0; u02) = 0.
+
+Consider now the system with input space IRm = IRq+1, state space IRn, and equations
+
+x+ = P (x; (u1; u2)) := ff(x; u1; u2 + u02) x : Note that P (0; (0; 0)) = 0, as needed for the definition of system. Moreover, the Jacobian of P with respect to x, evaluated at x = 0; u1 = 0; u2 = 0 is zero, so the linearization of this system
+
+17
+
+at the origin has asymptotically stable dynamics x+ = 0. It follows that the origin is locally asymptotically stable for the zero-input dynamics.
+
+We claim that every state can be controlled to zero in at most two steps. Take any state x 2 IRn. If x 62 C S D then for any u1 2 IRq one may find, by (21), an u2 so that ff(x; u1; u2 + u02) = 0, and any such pair (u1; u2) drives the state to zero in one step. If x 2 C then by the assumption C ` ss1(U ) there is some u1 so that (x; u1) 2 U . It follows that (x; u1) 62 F1 S F2, so again it is possible to control to 0 in one step. Finally, assume that x 2 D. Pick any u1; u2. Then (20) gives that z := P (x; (u1; u2)) = *x 2 C. Thus in one more step z can be controlled to zero, as wanted.
+
+Take any K 2 F mn , and write K(\Delta ) = (OE(\Delta ); ae(\Delta )), with OE 2 F qn. Then there must exist some x 2 C so that (x; OE(x)) 62 U (by the choice of C; U contradicting property (SEC)). Consider this x, and take u1 := OE(x); u2 := ae(x). As (x; u1) 62 U , it follows that (x; u1) 2 F1, so by (19) it follows that
+
+P (x; K(x)) = 1* x :
+
+Now z := (1=*)x 2 D, so as in the previous paragraph it follows that P (z; K(z)) = *z = x. In conclusion, the closed-loop system (2) has a periodic orbit x; z; x; z; : : : with x 6= z and x 2 C. This completes the proof of the Proposition, and hence also of Theorem 3.
+
+References
+
+[1] Blum, E.K., and L. Kwan Li, "Approximation theory and feed-forward networks," Neural
+
+Networks 4(1991): 511-516.
+
+[2] Chester, D., "Why two hidden layers and better than one," Proc. Int. Joint Conf. on Neural
+
+Networks, Washington, DC, Jan. 1990, IEEE Publications, 1990, p. I.265-268.
+
+[3] Cybenko, G., "Approximation by superpositions of a sigmoidal function," Math. Control,
+
+Signals, and Systems 2(1989): 303-314.
+
+[4] Funahashi, K., "On the approximate realization of continuous mappings by neural networks," Neural Networks 2(1989): 183-192.
+
+[5] Hirsch, M.W., Differential Topology, Springer-Verlag, NY, 1976 [6] Hornik, K.M., M. Stinchcombe, and H. White, "Multilayer feedforward networks are universal approximators," Neural Networks 2, 1989, p. 359-366.
+
+[7] Narendra, K.S., and K. Parthasarathy, "Identification and control of dynamical systems
+
+using neural networks," IEEE Trans. Neural Nets 1(1990): 4-27.
+
+[8] Sontag, E.D., "Remarks on piecewise-linear algebra," Pacific J.Math., 98(1982): 183-201. [9] Sontag, E.D., "Nonlinear regulation: The piecewise linear approach," IEEE Trans. Autom.
+
+Control AC-26(1981): 346-358.
+
+[10] Sontag, E.D., "Real addition and the polynomial hierarchy," Inform. Proc. Letters
+
+20(1985): 115-120.
+
+[11] Sontag, E.D., "Feedforward nets for interpolation and classification," J. Comp. Syst. Sci.,
+
+to appear.
+
+18
+
+[12] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+[13] Sontag, E.D., "Feedback stabilization of nonlinear systems," in Robust Control of Linear
+
+Systems and Nonlinear Control (M.A. Kaashoek, J.H. van Schuppen, and A.C.M. Ran, eds,.) Birkh"auser, Cambridge, MA, 1990, pp. 61-81.
+
+19</pre>
+</body>
+</html>

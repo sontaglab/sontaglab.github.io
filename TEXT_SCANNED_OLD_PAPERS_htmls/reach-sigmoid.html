@@ -1,0 +1,450 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/reach-sigmoid.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/reach-sigmoid.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Complete Controllability of Continuous-Time Recurrent Neural Networks
+
+\Lambda 
+
+Eduardo Sontag Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903
+
+sontag@control.rutgers.edu
+
+H'ector Sussmann Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903 sussmann@hamilton.rutgers.edu
+
+Abstract This paper presents a characterization of controllability for the class of control systems commonly called (continuous-time) recurrent neural networks. The characterization involves a simple condition on the input matrix, and is proved when the activation function is the hyperbolic tangent.
+
+1 Introduction This paper continues the study of system-theoretic properties of recurrent networks. Assume given a locally Lipschitz map oe : R ! R. By an n-dimensional, m-input (recurrent) oe-net we mean a continuous-time control system of the form
+
+.x(t) = ~oe(n) (Ax(t) + Bu(t)) ; (1) where A 2 Rn\Theta n and B 2 Rn\Theta m. Here, for each map oe : R ! R and each positive integer n, we use ~oe(n) to denote the diagonal mapping
+
+~oe(n) : Rn ! Rn : 0B@
+
+x1.
+
+..
+
+xn
+
+1CA
+
+7! 0B@
+
+oe(x1).
+
+..
+
+oe(xn)
+
+1CA
+
+: (2)
+
+(Sometimes one includes, in addition, an observation or measurement function y = Cx, but this paper will not deal with observation issues.) The spaces Rm and Rn are called respectively the input-value space and the state space of the net. Observe that the linear systems customarily studied in control theory are precisely the oe-nets for which oe is the identity function. Our main result will be for the special case of the hyperbolic tangent oe = tanh, the "sigmoid" function used in neural nets theoretical as well as experimental work.
+
+\Lambda Supported in part by US Air Force Grant AFOSR-94-0293
+
+1
+
+In the area of neural networks, one interprets the vector equations for x in (1) as representing the evolution of an ensemble of n "neurons," where each coordinate xi of x is a real-valued variable which represents the internal state of the ith neuron, and each coordinate ui; i = 1; : : : ; m of u is an external input signal. The coefficients Aij; Bij denote the weights, intensities, or "synaptic strengths," of the various connections. The transformation oe : R ! R is called the "activation function". Systems of this type have been employed in areas as varied as digital signal processing (see for instance [6], [5], [10]), control (see e.g. [14], [18], [11], [17]), the design of associative memories ("Hopfield nets"), language inference, and sequence extrapolation for time series prediction. Special purpose chips are being built to implement recurrent nets directly in hardware; for instance, Hitachi's Wafer Scale Integration chips have been designed to implement Hopfield nets with over 500 neurons and 30,000 synaptic connections.
+
+In past work we have studied, for such models, questions of parameter identifiability ([3]), observability ([4]), system approximation ([13]), computability ([12]), parameter reconstruction ([9]), and sample complexity for learning and generalization ([7], [8]).
+
+Here we focus on problems of controllability. The fundamental contribution in this area was a recent paper by Albertini and Dai Pra, cf. [1]. This paper dealt with the study of the forward accessibility property. Recall that a system such as (1) is said to be forward accessible if from each initial state it is possible to reach, by using appropriate inputs u(\Delta ), an open subset of the state space Rn. Albertini and Dai Pra showed that forward accessibility holds provided that
+
+ffl the "independence property" (cf. [16], [2]) holds for oe, and ffl B is in a certain class Bn;m of matrices which was introduced in [2] and [4] and is reviewed
+
+below.
+
+(For the special but most important case of single input systems, m = 1, the condition B 2 Bn;m means that the entries of the vector B are all nonzero and have different absolute values. The independence property asserts that distinct dilations and translates of oe must be linearly independent.)
+
+An extremely surprising aspect of this result is that for matrices B 2 Bn;m, accessibility holds independently of the choice of the matrix A. This is in sharp contrast with linear systems, for which the only B's so that the system .x = Ax + Bu is accessible no matter what A is are those B's of full rank n. Thus we were motivated to ask if the same condition B 2 Bn;m which Albertini and Dai Pra used to guarantee forward accessibility also ensures controllability. Controllability means that from each initial state it is possible to reach, by using appropriate inputs u(\Delta ), the entire state space, not just some -- potentially very small -- open subset. Naturally, this is a much more interesting property. Surprisingly, the answer turns out to be yes, for the standard sigmoidal function oe = tanh which is ubiquitous in neural network practice. Adding to the unexpected developments, it turns out that the use of tanh is essential: there are other functions oe for which the independence property holds, so that in particular a oe-net is accessible for every B 2 Bn;m, but controllability fails for some B 2 Bn;m. We provide a counterexample with oe = arctan.
+
+1.1 Definitions and Statements of the Main Results For any measurable (essentially) bounded control u : [0; T ] ! Rm and any state , we use OE(t; ,; u) to denote the solution x(t) of (1) having initial condition x(0) = ,. The function x(\Delta ) is defined on some maximal subinterval of [0; T ], and if oe is globally Lipschitz, which is the case
+
+2
+
+with our main example given below, then it is defined on the entire interval. Given ,; i 2 Rn, we say that , can be steered, or controlled, to i if there is some T * 0 and some control u on [0; T ] such that the solution is defined for all t 2 [0; T ] and OE(T; ,; u) = i. The system (1) is controllable if every , 2 Rn can be steered to every i 2 Rn. (See [15] for generalities and basic facts about control systems.)
+
+For each pair of positive integers n and m, we let
+
+Bn;m := \Phi B 2 Rn\Theta m ; (8 i) rowi(B) 6= 0 and (8 i 6= j) rowi(B) 6= \Sigma rowj(B)\Psi  where rowi(\Delta ) denotes the ith row of the given matrix. In the special case m = 1, a vector b 2 Bn;1 if and only if all its entries are nonzero and have different absolute values. The complement of Bn;m is an algebraic subset of Rn\Theta m, so Bn;m is generic in every possible sense (full measure, open dense).
+
+We let \Sigma  be the class of maps oe : R ! R which are locally Lipschitz and have the following properties:
+
+1. oe is an odd function, i.e. oe(\Gamma r) = \Gamma oe(r) for all r 2 R; 2. oe1 = lims!+1 oe(s) exists and is ? 0; 3. oe(r) ! oe1 for all r 2 R; 4. for each a; b 2 R, b ? 1,
+
+lims!+1 oe1 \Gamma  oe(a + bs)oe
+
+1 \Gamma  oe(s) = 0 : (3)
+
+Remark 1.1 The requirement that oe be odd is merely imposed for convenience, and can be weakened in many of the results. The most critical assumption on elements of the class \Sigma  is the last one. This is a nontrivial requirement; note for instance that the function oe = arctan does not satisfy it, since the limit is in that case 1=b. 2
+
+We now list our main results; proofs are given in later sections. Lemma 1.2 The function tanh 2 \Sigma . Theorem 1 Assume that oe 2 \Sigma , B 2 Bn;m, and A is arbitrary. Then the system (1) is controllable.
+
+A trivial converse of Theorem 1 is as follows: Lemma 1.3 If B 2 Rn\Theta m and the odd function oe : R ! R are such that for all A 2 Rn\Theta n the system (1) is controllable, then B 2 Bn;m.
+
+However, we give also the following example to show that when B 62 Bn;m, it may still be the case that the system (1) is controllable, provided A is appropriately chosen.
+
+Lemma 1.4 The following system in dimension two:
+
+.x = oe(y)
+
+.y = oe(u)
+
+where oe(s) = tanh s, is controllable.
+
+3
+
+Observe that B = col(0; 1) 62 Bn;1, and
+
+A = ` 0 10 0 ' but with A = 0 the system would not be controllable.
+
+Finally, one may ask what happens if oe 62 \Sigma  but oe is still a "sigmoidal" type function, with a graph qualitatively similar to that of tanh. Specifically, one may consider the nonlinearity oe = arctan, which has also appeared, albeit much less often, in the neural network literature. We have the following counterexample.
+
+Proposition 1.5 Let oe = arctan. Then the 4-dimensional, single-input system
+
+.x1 = oe(x1 + x2 + x3 + x4 + 2u) .x2 = oe(x1 + x2 + x3 + x4 + 12u) .x3 = oe(\Gamma 3u) .x4 = oe(\Gamma 4u)
+
+is not controllable.
+
+Observe that this system is forward accessible, because it satisfies the conditions in [1]. Indeed, the nonlinearity oe = arctan satisfies the "independence property" (cf. [2]), and clearly the matrix B = col(2; 12; \Gamma 3; \Gamma 4) belongs to Bn;1.
+
+2 Proof of the Main Results We first prove Lemma 1.2. Proof. The first three properties are clear, with oe1 = 1, so we need to prove the limit property (3). Note that `(x) = (1 + e\Gamma x)\Gamma 1 satisfies
+
+`(r)
+
+`(t) = `(r) + e
+
+r\Gamma t`(\Gamma r) (4)
+
+for all r; t, and that 1 \Gamma  tanh x = 2`(\Gamma 2x) for all x 2 R. Thus
+
+1 \Gamma  tanh(a + bs)
+
+1 \Gamma  tanh s = `(\Gamma 2a \Gamma  2bs)-- -z ""
+
+!0
+
++ e\Gamma 2a e2(1\Gamma b)s-- -z ""
+
+!0
+
+`(2a + 2bs)-- -z ""
+
+!1
+
+! 0
+
+as desired. 2.1 A Result on Convex Hulls Let oe be a map R ! R. For each vector a 2 Rn and matrix B 2 Rn\Theta m, we write
+
+Sa;B := n~oe(n)(a + Bu) ; u 2 Rmo : We use int(S) and co(S) to denote, respectively, the interior and the convex hull of a set S.
+
+4
+
+Lemma 2.1 Pick oe 2 \Sigma , B 2 Bn;m, and arbitrary a 2 Rn. Then 0 2 int (co (Sa;B))). Proof. Since B 2 Bn;m, there is some u 2 Rm such that the numbers bi := rowi(B)u are all nonzero and have distinct absolute values. (Because the set of u's that satisfy at least one of the equations rowi(B)u = 0, rowi(B)u + rowj(B)u = 0, or rowi(B)u \Gamma  rowj(B)u = 0, is a finite union of hyperplanes in Rm.) As Sa;Bu ` Sa;B, it is enough to show the result for Bu instead of B. So we assume from now on that B = col(b1; : : : ; bn) and the bi are all nonzero and have distinct absolute values.
+
+Assume by way of contradiction that 0 62 int (co (Sa;B)). Using a separating hyperplane, we know that there is a nonzero vector c = (c1; : : : ; cn) such that c~oe(n)(a + Bu) * 0 for all u 2 R. Writing a = col(a1; : : : ; an), this means that
+
+nX
+
+i=1
+
+cioe(ai + biu) * 0 8 u 2 R: (5)
+
+We now prove that such an inequality cannot hold, if oe 2 \Sigma  and the bi are nonzero and have distinct absolute values, unless all the ci are equal to 0. Since oe is odd, we may assume that each bi ? 0, since any term cioe(ai + biu) with bi ! 0 can be rewritten as (\Gamma ci)oe(\Gamma ai + (\Gamma bi)u). Thus, reordering if needed, we assume that 0 ! b1 ! : : : ! bn. Finally, dropping all those terms in the sum for which ci = 0, we may assume that c1 6= 0. Taking the limit in (5) as u ! \Gamma 1 we obtain Pni=1 ci(\Gamma oe1) * 0. So may rewrite (5) as
+
+nX
+
+i=1
+
+ci (oe1 \Gamma  oe(ai + biu)) ^ 0 8 u 2 R: (6)
+
+Therefore
+
+c1 +
+
+nX
+
+i=2
+
+ci oe1 \Gamma  oe(ai + biu)oe
+
+1 \Gamma  oe(a1 + b1u) ^ 0 8 u 2
+
+R: (7)
+
+If we prove that each term in the sum converges to zero as u ! +1 then it will follow that c1 ^ 0. But this fact follows from property (3) (applied with a = ai \Gamma  bia1=b1, b = bi=b1, and noting that s = a1 + b1u ! 1 as u ! 1).
+
+If we take instead the limit in (5) as u ! +1, we find that Pni=1 cioe1 * 0. We may therefore also rewrite (5) in the form:
+
+nX
+
+i=1
+
+ci (oe1 + oe(ai + biu)) * 0 8 u 2 R: (8)
+
+Letting v = \Gamma u and a0i = \Gamma ai, and using that oe is odd,
+
+c1 +
+
+nX
+
+i=2
+
+ci oe1 \Gamma  oe(a
+
+0i + biv)
+
+oe1 \Gamma  oe(a01 + b1v) * 0 8 v 2
+
+R: (9)
+
+Taking the limit as v ! +1 and appealing again to property (3), we conclude that also c1 * 0. Thus c1 = 0, contradicting the assumption made earlier.
+
+5
+
+2.2 A Local Controllability Lemma Lemma 2.2 Let \Omega  be an open subset of Rn, let U be a finite set, and let f : \Omega  \Theta  U 7! Rn be a map such that f (x; u) is continuous in x for each u 2 U . Let \Sigma  be the control system
+
+.x = f (x; u). Let x0 2 \Omega  be a point such that 0 is an interior point of the convex hull of the set of vectors ff (x0; u) : u 2 U g. Then there exists a neighborhood W of x0, contained in \Omega , such that for every x 2 W there are trajectories of \Sigma  going from x to x0 and from x0 to x.
+
+Proof. We may obviously assume, without loss of generality, that x0 = 0. Let
+
+S = fv 2 Rn : kvk = 1g : Define a function ' : \Omega  7! R by letting
+
+'(x) = maxf(v; x) : v 2 Sg ; where
+
+(v; x) = minfhv; f (x; u)i : u 2 U g :
+
+The function  is a minimum of a finite collection of continuous functions, so  is continuous. Then ' is well-defined and continuous as well.
+
+Since 0 is an interior point of the convex hull of the set ff (0; u) : u 2 U g, we can find a ffi ? 0 such that for every v 2 S the vector \Gamma 4ffiv is a convex combination of the f (0; u), u 2 U . Given any v 2 S, the number \Gamma 4ffi is equal to hv; \Gamma 4ffivi, which is a convex combination of the numbers hv; f (0; u)i, u 2 U . So at least one of these numbers is ^ \Gamma 4ffi. So (v; 0) ^ \Gamma 4ffi. Since this is true for all v 2 S, we conclude that '(0) ^ \Gamma 4ffi. Since ' is continuous, there exists ff ? 0 such that, if B = fx 2 Rn : kxk ^ ffg, then B ` \Omega  and '(x) ^ \Gamma 2ffi whenever x 2 B.
+
+Now fix a point _x 2 B, and let T be the set of all triples (I; j; ,) such that (i) I is an interval, (ii) I ` [0; 1[ , (iii) 0 2 I, (iv) j : I ! U is measurable, (v) , : I ! \Omega  is a trajectory of \Sigma  corresponding to the control j (that is, , is absolutely continuous on [0; T ] for every T 2 I, and. ,(t) = f (,(t); j(t)) for almost all t 2 I), (vi) ,(0) = _x, and (vii) the derivative of the function t 7! k,(t)k is ^ \Gamma ffi for almost every t 2 I.
+
+If (I; j; ,) 2 T , then , is locally absolutely continuous on I, by the definition of trajectory, so the map t 7! k,(t)k is also locally absolutely continuous. Then condition (vii) implies that the inequality k,(t)k ^ k,(0)k \Gamma  ffit holds for all t 2 I. Therefore k,(t)k ^ ff for all t 2 I, so , is entirely contained in B. It follows that , is Lipschitz (with Lipschitz constant C = maxfC(u) : u 2 U g, where C(u) = supfkf (x; u)k : x 2 Bg). Moreover, the interval I must be bounded, since t 2 I implies t ^ ffffi . Therefore, if I is not compact then the map , extends to the closure _I of I, which is compact. It is clear that the extension is also a trajectory of \Sigma .
+
+Order T in the obvious way, by letting (I1; j1; ,1) _ (I2; j2; ,2) iff I1 ` I2 and j1, ,1 are the restrictions to I1 of j2, ,2. It is then obvious that every totally ordered nonempty subset of T has an upper bound in T . So T has a maximal element (I; j; ,) by Zorn's lemma. In view of the Lipschitz property discussed in the previous paragraph, I = [0; T ] for some T .
+
+We now show that ,(T ) = 0. Suppose this is not true. Let ,(T ) = ^x, so ^x 2 B and k^xk ? 0. Since '(^x) ^ \Gamma 2ffi, we have (^v; ^x) ^ \Gamma 2ffi, where ^v = \Gamma  ^xk^xk. So there exists u 2 U such that
+
+h^v; f (^x; u)i ^ \Gamma 2ffi. Let ,0 : [T; T + fi] ! \Omega  be an integral curve of the vector field x 7! f (x; u), such that ,0(T ) = ^x. (Such a curve exists, for some fi ? 0, by the existence theorem for ordinary
+
+6
+
+differential equations with a continuous right-hand side.) The function x 7! kxk is smooth on a neighborhood of ^x, and its derivative along the curve ,0 is given by
+
+ae(t) = ddt i flfl,0(t)flfl j = hv(t); f (,(t); u)i ; where
+
+v(t) = ,
+
+0(t)
+
+k,0(t)k : (Here we have used the chain rule, together with the facts that the gradient of x 7! kxk is
+
+xk xk and the derivative of t 7! ,0(t) is t 7! f (,0(t); u).) It is clear that v(t) is continuous as a
+
+function of t, and v(T ) = ^v. Since ae(T ) = h^v; f (^x; u)i ^ \Gamma 2ffi, we can assume, by taking fi small
+
+enough, that ae(t) ^ \Gamma ffi for t 2 [T; T + fi]. So, if we let ~I = [0; T + fi], we can extend j to a control ~j : ~I ! U by letting ~j(t) = u for t 2 ]T; T + fi], and define ~, : ~I ! \Omega  to be the curve whose restrictions to [0; T ] and [T; T + fi] are ,, ,0. It is clear that the triple ( ~I; ~j; ~,) is in T , and (I; j; ,) OE ( ~I; ~j; ~,) but (I; j; ,) 6= ( ~I; ~j; ~,). This contradicts the maximality of (I; j; ,). This contradiction proves that ,(T ) = 0, as stated.
+
+We have thus shown that for an arbitrary point _x 2 B there is a trajectory of \Sigma  that goes from ^x to 0. We may also apply this argument to the reversed system .x = \Gamma f (x; u), whose trajectories are those of \Sigma  run backwards in time. Indeed, if the convex hull of the set ff (x0; u) : u 2 U g contains zero in its interior, then the same is true for the convex hull of f\Gamma f (x0; u) : u 2 U g. Thus, we find some other ball B0 with the property that every x 2 B0 can be reached from x0 by a trajectory of \Sigma . Then the neighborhood W = B " B0 has the desired property.
+
+2.3 Proof of Theorem 1 We first show that if x0 2 Rn then the set R(x0) of points reachable from x0 is open. To see this, let _x 2 R(x0). By Lemma 2.1, with a = A_x, there exists a finite subset U of Rn such that 0 is an interior point of the convex hull of the set of vectors f~oe(n)(A_x + Bu) ; u 2 U g. If we define f (x; u) = ~oe(n)(Ax + Bu) for u 2 U , Lemma 2.2 tells us that there is a neighborhood W of _x all whose points are reachable from _x by trajectories of .x = f (x; u). Clearly, every trajectory of .x = f (x; u) is a trajectory of the system (1). So W ` R(x0). This proves that R(x0) is open.
+
+We now prove that R(x0) is closed. To show this, pick _x in the closure of R(x0). Applying Lemmas 2.1 and 2.2, we find a neighborhood W of _x such that every x 2 W can be steered to
+
+_x by a trajectory of (1). Since W " R(x0) 6= ;, we can find a point ^x which is reachable from x0 and can be steered to _x. Therefore _x 2 R(x0). So R(x0) is closed, as stated.
+
+Since Rn is connected, and R(x0) is open, closed, and nonempty (because x0 2 R(x0)), we conclude that R(x0) = Rn. Since x0 is an arbitrary point of Rn, the system (1) is controllable, and our proof is complete.
+
+2.4 Proof of Lemma 1.3 Take any B 2 Rn\Theta m and any odd function oe : R ! R. Assume that B 62 Bn;m. We show that the system (1) is not controllable when A = 0. Note that the system equations are now
+
+.x = ~oe(n)(Bu). Since B 62 Bn;m, either one of its rows is zero or some two rows are equal
+
+7
+
+up to a sign change. Assume first that the ith row is zero. Then the equation for the ith coordinate of x is .xi = 0; this implies that xi(t) is constant along all trajectories and hence the system cannot be controllable. Assume instead that rowi(B) = rowj (B) for some i 6= j. In that case, .xi \Gamma  .xj = oe(rowi(B)u) \Gamma  oe(rowj(B)u) = 0, no matter what the control u(\Delta ) is, so the quantity xi(t) \Gamma  xj(t) is constant along trajectories, again contradicting controllability. Finally, if rowi(B) = \Gamma rowj (B), then since oe is odd we have that xi(t) + xj(t) is constant along trajectories, and once more the system cannot be controllable.
+
+3 Proof of Lemma 1.4 Here we prove Lemma 1.4, which is an example to illustrate that the controllability of system (1) depends on the form of A, when B 62 Bn;m. We will prove controllability for more general oe than the specific example tanh of interest. The assumptions made here (much more than necessary, but enough to make the proof almost trivial) are as follows: oe : R ! (\Gamma 1; 1) is locally Lipschitz, odd, strictly increasing, onto, and there exists oe0(0) = c 6= 0.
+
+Proof. There is a neighborhood U of (x; y) = (0; 0) such that each pair of states in U can be steered to each other (local controllability about x = y = 0, because the linearized system is
+
+.x = cy; .y = cu).
+
+We claim that for each , 2 R2 there is some i 2 U which , can be steered into. Once this claim is proved, controllability follows. Indeed, assume given any two states ,1 and ,2. Then there is a control u1 steering ,1 to some i1 2 U , by the claimed property. Similarly, there is a control u3 which steers some i2 2 U to ,2. (Proof: we must show that ,2 can be controlled to some i2 2 U with respect now to the time-reversed system .x = \Gamma oe(y); .y = \Gamma oe(u), cf. Lemma 2.6.8 in [15]. With the new variable z := \Gamma y, the equations become .x = oe(z); .z = oe(u), which coincide with those of the original system.) Finally, there is a control u2 taking i1 to i2. Then the concatenation of u1; u2; u3 steers ,1 to ,2.
+
+To prove the claim, it is sufficient to exhibit a continuous function k : R2 ! R with the property that every trajectory of .x = y, .y = oe(k(x; y)) is defined on [0; 1) and converges to zero (k is a continuous feedback stabilizer). We take k(x; y) := oe\Gamma 1(\Gamma oe(x)=2 \Gamma  oe(y)=2). Thus, it suffices to show that the system
+
+.x = oe(y)
+
+.y = \Gamma  12 oe(x) \Gamma  12 oe(y)
+
+is globally asymptotically stable. For this we take the Lyapunov function
+
+V (x; y) := 12 Z
+
+x
+
+0 oe(s) ds + Z
+
+y 0 oe(s) ds : This function is positive definite and proper, because of the assumptions made on oe. Its derivative along trajectories is \Gamma [oe(y)]2=2 ^ 0 and only vanishes along trajectories for which y(t) j 0. Along such trajectories 0 j .y = (\Gamma 1=2)oe(x) implies that also x j 0. By the LaSalle invariance principle, the system is indeed globally asymptotically stable.
+
+4 Proof of Proposition 1.5
+
+8
+
+Lemma 4.1 Suppose that oe : R ! R is any continuous function, and bi; i = 1; 2; 3; 4 are real numbers, so that
+
+oe(a + b1_) + oe(a + b2_) + oe(b3_) + oe(b4_) ? 0 8 _ 2 R; 8 a * 1 : (10) Consider any measurable u : [0; T ] ! R and assume that (x1(\Delta ); x2(\Delta ); x3(\Delta ); x4(\Delta )) is an (absolutely continuous) solution of the system
+
+.x1 = oe(x1 + x2 + x3 + x4 + b1u) .x2 = oe(x1 + x2 + x3 + x4 + b2u) .x3 = oe(b3u) .x4 = oe(b4u)
+
+defined on [0; T ]. Along this solution, let
+
+ff(t) := x1(t) + x2(t) + x3(t) + x4(t) : Then, if ff(0) ? 1 it must hold that ff(t) ? 1 for all t 2 [0; T ].
+
+Proof. If the conclusion is false, there is a t0 so that ff(t0) = 1 and ff(t) ? 1 for all t 2 [0; t0). But Property (10) says that ff0(t) ? 0 for almost all t 2 [0; t0), which means that ff(t0) * ff(0) ? 1, a contradiction.
+
+Note that in this case the system cannot be completely controllable; for instance, the initial state (1; 1; 1; 1) (ff(0) = 4) cannot be controlled to the origin (ff(0) = 0).
+
+The Lemma given below says that Property (10) is satisfied when oe = arctan, b1 = 2, b2 = 12, b3 = \Gamma 3, and b4 = \Gamma 4. This establishes the validity of Proposition 1.5.
+
+Lemma 4.2 The function
+
+fa(_) = arctan(a + 2_) + arctan(a + 12_) \Gamma  arctan(3_) \Gamma  arctan(4_) is positive for all _ 2 R and all a * 1.
+
+Proof. Since fa(u) is increasing as a function of a, it suffices to prove the result for the special case a = 1. We write f = f1. Note that
+
+q(_)f 0(_) = \Gamma _p(_) where
+
+q(_) = (1 + 2_ + 2_2)(1 + 9_2)(1 + 16_2)(1 + 12_ + 72_2)
+
+is always positive, and
+
+p(_) = 74 + 511_ + 1752_2 + 6132_3 + 10656_4 : The polynomial p has just two real roots, both in the interval I = [\Gamma 0:32; \Gamma 0:26] (the roots are approximately at \Gamma :3136; \Gamma :2657), and it is positive outside I. It follows that f 0(_) ? 0 if _ ! 0; _ 62 I and f 0(_) ^ 0 if _ * 0, which together with
+
+lim_!1 _2f (_) = lim_!\Gamma 1 _2f (_) = 37144 ? 0 ;
+
+9
+
+and f (\Gamma 0:26) ? 0 implies that f (_) ? 0 whenever _ 62 I. Thus we only need to prove that f ? 0 on I. Write f (_) = f1(_) \Gamma  f2(_), where
+
+f1(_) = arctan(1 + 2_) + arctan(1 + 12_) : Note that both f1 and f2 are strictly increasing functions. For _ 2 I, f1(_) * f1(\Gamma 0:32) ? \Gamma 0:9 and f2(_) ^ f2(\Gamma 0:26) ! \Gamma 1:4, so indeed f1(_) \Gamma  f2(_) ? \Gamma 0:9 + 1:4 ? 0 on this interval.
+
+References
+
+[1] Albertini, F., and Dai Pra, P., "Forward accessibility for recurrent neural networks," IEEE
+
+Trans. Automat. Control 40 (1995): 1962-1968
+
+[2] Albertini, F., E.D. Sontag, and V. Maillot, "Uniqueness of weights for neural networks,"
+
+in Artificial Neural Networks for Speech and Vision (R. Mammone, ed.), Chapman and Hall, London, 1993, pp. 115-125.
+
+[3] Albertini, F., and E.D. Sontag, "For neural networks, function determines form," Neural
+
+Networks 6(1993): 975-990.
+
+[4] Albertini, F., and E.D. Sontag, "State observability in recurrent neural networks," Systems
+
+& Control Letters 22(1994): 235-244.
+
+[5] Back, A.D., and A.C. Tsoi, "FIR and IIR synapses, a new neural network architecture for
+
+time-series modeling," Neural Computation 3 (1991): 375-385.
+
+[6] Bengio, Y., Neural Networks for Speech and Sequence Recognition, Thompson Computer
+
+Press, Boston, 1996.
+
+[7] Dasgupta, B., and E.D. Sontag, "Sample complexity for learning recurrent perceptron
+
+mappings," IEEE Trans. Inform. Theory 42 (1996): 1479-1487.
+
+[8] Koiran, P., and E.D. Sontag, "Vapnik-Chervonenkis dimension of recurrent neural networks," submitted.
+
+[9] Koplon, R., and E.D. Sontag, "Using Fourier-neural recurrent networks to fit sequential
+
+input/output data," Neurocomputing, to appear.
+
+[10] Matthews, M., "A state-space approach to adaptive nonlinear filtering using recurrent
+
+neural networks," Proc. 1990 IASTED Symp. on Artificial Intelligence Applications and Neural Networks, Z"urich, pp. 197-200, July 1990.
+
+[11] Polycarpou, M.M., and P.A. Ioannou, "Neural networks and on-line approximators for
+
+adaptive control," in Proc. Seventh Yale Workshop on Adaptive and Learning Systems, pp. 93-798, Yale University, 1992.
+
+[12] Siegelmann, H.T., and E.D. Sontag, "On the computational power of neural nets," J.
+
+Comp. Syst. Sci. 50( 1995): 132-150.
+
+[13] Sontag, E.D., "Neural nets as systems models and controllers," in Proc. Seventh Yale
+
+Workshop on Adaptive and Learning Systems, pp. 73-79, Yale University, 1992.
+
+[14] Sontag, E.D., "Neural networks for control," in Essays on Control: Perspectives in the
+
+Theory and its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+[15] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+10
+
+[16] Sussmann, H.J., "Uniqueness of the weights for minimal feedforward nets with a given
+
+input-output map," Neural Networks 5 (1992): 589-593.
+
+[17] Zbikowski, R., "Lie algebra of recurrent neural networks and identifiability," Proc. Amer.
+
+Automatic Control Conference, San Francisco, 1993, pp. 2900-2901.
+
+[18] Zbikowski, R., and K.J. Hunt, eds., Neural Adaptive Control Technology World Scientific
+
+Publishing, 1996.
+
+11</pre>
+</body>
+</html>

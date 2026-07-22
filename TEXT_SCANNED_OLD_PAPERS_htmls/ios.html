@@ -1,0 +1,808 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ios.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ios.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Notions of Input to Output Stability Eduardo Sontag\Lambda  Dept. of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+Yuan Wangy Dept. of Mathematics Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@math.fau.edu
+
+Abstract This paper deals with concepts of output stability. Inspired in part by regulator theory, several variants are considered, which differ from each other in the requirements imposed upon transient behavior. The main results provide a comparison among the various notions, all of which specialize to input to state stability (iss) when the output equals the complete state.
+
+Keywords. input/output stability, ISS, nonlinear control, robust stability, partial stability, regulation
+
+1 Introduction This paper addresses questions of output stability for general finite-dimensional control systems
+
+.x(t) = f (x(t); u(t)); y(t) = h(x(t)) : (1) (Technical assumptions on f , h, and admissible inputs, are described later.) Roughly, a system (1) is "output stable" if, for any initial state, the output y(t) converges to zero as t ! 1. Inputs u may influence this stability in different ways; for instance, one may ask that y(t) ! 0 only for those inputs for which u(t) ! 0, or just that y remains bounded whenever u is bounded. Such behavior is of central interest in control theory. As an illustration, we will review below how regulation problems can be cast in these terms, letting y(t) represent a quantity such as a tracking error. Another motivation for studying output stability arises in classical differential equations: "partial" asymptotic stability (cf. [26]) is nothing but the particular case of our study in which there are no inputs u and the coordinates of y are a subset of the coordinates of x (that is to say, h is a projection on a subspace of the state space Rn ). The notion of output stability is also related to that of "stability with respect to two measures", cf. [9].
+
+The main starting point for our work is the observation that there are many different ways of making mathematically precise what one means by "y(t) ! 0 for every initial state" (and, when there are inputs, "provided that u(t) ! 0"). These different definitions need not result in equivalent notions; one must decide how uniform is the rate of convergence of y(t) to zero, and precisely how the magnitudes of inputs and initial states affect convergence.
+
+Indeed, our previous work on input-to-state stability (iss, for short) was motivated in much the same way. The concept of iss was originally introduced in [16] to address the problem when y = x. Major theoretical results were developed in [19] and [22], and applications to control design can be found in, among others, [4], [6], [7], [8], [12], [15], [22], and [25], as well as in the recent work [13] as a foundation for the formulation of robust tracking.
+
+Actually, the original paper [16] had already introduced a notion of input/output stability (ios), but the theoretical effort until now was almost exclusively directed towards the iss special
+
+\Lambda This research was supported in part by US Air Force Grant F49620-98-1-0242
+
+yThis research was supported in part by NSF Grant DMS-9457826
+
+1
+
+case. (There are two ways to formulate the property of input/output stability and its variants. One is in purely input/output terms, where one uses past inputs in order to represent initial conditions. Another is in state space terms, where the effect of past inputs is summarized by an initial state. In [16] an i/o approach was used, but here, because of our interest in initial-state dependence, we adopt the latter point of view. The relations between both approaches are explained in [16] and in more detail in [10] and [5].)
+
+It turns out that the ios case is substantially more complicated than iss, in the sense that there are subtle possible differences in definitions. One of the main objectives of this paper is to elaborate on these differences and to compare the various definitions; the companion paper [24] provides Lyapunov-theoretic characterizations of each of them.
+
+A second objective is to prove a theorem on output redefinition which (a) extends one of the main steps in linear regulation theory to general nonlinear systems, and (b) provides one of the main technical tools needed for the construction of Lyapunov functions in [24].
+
+The organization of this paper is as follows. Section 1.1 starts with the review of certain facts from regulation theory; this material is provided merely as an additional motivation for our study, and is not required in order to follow the paper. Because of the technical character of the paper, it seems appropriate to provide an intuitive overview; thus, the rest of that section describes the main results in very informal terms. After that, in Section 2, we define our notions carefully and state precisely the main results. The rest of the paper contains the proofs. A preliminary version of this paper appeared in [23].
+
+1.1 Additional Motivation and Informal Discussion Output regulation problems encompass the main typical control objectives, namely, the analysis of feedback systems with the following property: for each exogenous signal d(\Delta ) (which might represent a disturbance to be rejected, or a signal to be tracked), the output y(\Delta ) (respectively, a quantity being stabilized, or the difference between a certain variable in the system and its desired target value) must decay to zero as t ! 1. Typically (see e.g. [18], Section 8.2, or [14], Chapter 15 for linear systems, and [3], Chapter 8, for nonlinear generalizations), the exogenous signal is unknown but is constrained to lie in a certain prescribed class (for example, the class of all constant signals). Moreover, this class can be characterized through an "exosystem" given by differential equations (for example, the constant signals are precisely the possible solutions of .d = 0, for different initial conditions).
+
+In order to focus on the questions of interest for this paper, we assume that we already have a closed-loop system exhibiting the desired regulation properties, ignoring the question of how an appropriate feedback system has been designed. Moreover, let us, for this introduction, restrict ourselves to linear time-invariant systems (local aspects of the theory can be generalized to certain nonlinear situations employing tools from center manifold theory, see [3]). The object of study becomes:
+
+.z = Az + P w .w = Sw y = Cz + Qw ;
+
+seen as a system .x = f (x), y = h(x), where the extended state x consists of z and w; the z-subsystem incorporates both the state of the system being regulated (the plant) and the state of the controller, and the equation .w = Sw describes the exosystem that generates the
+
+2
+
+disturbance or tracking signals of interest. This is a system without inputs; later we explain how inputs may be introduced into the model as well.
+
+As an illustration, take the stabilization of the position y of a second order system "y \Gamma  y = u + w under the action of all possible constant disturbances w. The conventional proportionalintegral-derivative (PID) controller uses a feedback law u(t) = c1q(t) + c2y(t) + c3v(t), for appropriate gains c1; c2; c3, where q = R y and v = .y. Let us take c1 = \Gamma 1, c2 = c3 = \Gamma 2. If we view the disturbances as produced by the "exosystem" .w = 0, the complete system becomes
+
+.q = y ; .y = v ; .v = \Gamma q \Gamma  y \Gamma  2v + w ; .w = 0 with output y. That is, the plant/controller state z is col (q; y; v), and
+
+S = Q = 0 ; A = 0@
+
+0 1 0 0 0 1 \Gamma 1 \Gamma 1 \Gamma 2 1A
+
+; C = ( 0 1 0 ) ; P = 0@
+
+0 0 1 1A
+
+:
+
+In linear regulator theory, the routine way to verify that the regulation objective has been met is as follows. Suppose that the matrix A is Hurwitz and that there is some matrix \Pi  such that the following two identities ("Francis' equations") are satisfied:
+
+\Pi S = A\Pi  + P
+
+0 = C\Pi  + Q :
+
+(The existence of \Pi  is necessary as well as sufficient for regulation, provided that the problem is appropriately posed, cf. [2] and [3].) Consider the new variable by := z \Gamma  \Pi w. The first identity for \Pi  allows decoupling by from w, leading to .by = Aby. Since A is a Hurwitz matrix, one concludes that by(t) ! 0 for all initial conditions. As the second identity for \Pi  gives that y(t) = C by(t), one has the desired conclusion that y(t) ! 0.
+
+Let us now express this convergence in a much more informative form. For that purpose, we introduce the map bh : x = (z; w) 7! jz \Gamma  \Pi wj = jbyj. We also denote, for ease of future reference, O/(r) := r= jCj and fi(r; t) = r fifietAfifi = jCj, using j\Delta j to denote Euclidean norm of vectors and also the corresponding induced matrix norm. So, y = C by gives
+
+O/(jyj) = O/(jh(x)j) ^ bh(x) = jbyj (2) for all x, and we also have jy(t)j ^ fi(jby(0)j ; t) and in particular
+
+jy(t)j ^ fi(jx(0)j ; t) ; 8 t * 0 (3) along all solutions. This estimate quantifies the rate of decrease of y to zero, and its overshoot, in terms of the initial state of the system. For the auxilliary variable by, we have in addition the following "stability" property:
+
+jby(t)j ^ oe(jby(0)j) ; 8 t * 0 (4) where oe(r) := r supt*0 fifietAfifi.
+
+The use of by (or equivalently, finding a solution \Pi  for the above matrix identities) is a key step in the analysis of regulation problems. Note the fundamental contrast between the behaviors of by and y: because of (4), a zero initial value by(0) implies by j 0, which in regulation problems corresponds to the fact that the initial state of the "internal model" of the exosignal matches exactly the one for the exosignal; on the other hand, for the output y, typically an
+
+3
+
+error signal, it may very well happen that y(0) = 0 but y(t) is not identically zero. The fact about by which allows deriving (3) is that by dominates the original output y, in the sense of (2). One of the main results in this paper provides an extension to very general nonlinear systems of the technique of output redefinition.
+
+To illustrate again with the PID example: one finds that \Pi  = col (1; 0; 0) is the unique solution of the required equations, and the change of variables consists of replacing q by q \Gamma  w, the difference between the internal model of the disturbance and the disturbance itself, andb h(q; y; v; w) = (jq \Gamma  wj2 + jyj2 + jvj2)1=2. For instance, with x(0) = y(0) = v(0) = 0 and w(0) = 1 we obtain the output y(t) = 12 t2e\Gamma t. Notice that this output has y(0) = 0 but is not identically zero, which is consistent with an estimate (3). On the other hand, the dominating output by = (q \Gamma  w; y; v)) cannot exhibit such overshoot.
+
+The discussion of regulation problems was for systems .x = f (x) which are subject to no external inputs. This was done in order to simplify the presentation and because classically one does not consider external inputs. In general, however, one should study the effect on the feedback system of perturbations which were not exactly represented by the exosystem model. A special case would be, for instance, that in which the exosignals are not exactly modeled as produced by an exosystem, but have the form w + u, where w is produced by an exosystem. Then one may ask if the feedback design is robust, in the sense that "small" u implies a "small" asymptotic (steady-state) error for y, or that u(t) ! 0 implies y(t) ! 0. Experience with the notion of iss then suggests that one should replace (3) by an estimate as follows:
+
+(ios) jy(t)j ^ fi(jx(0)j ; t) + fl(kuk) : By this we mean that for some functions fl of class K and fi of class KL which depend only on the system being studied, and for each initial state and control, such an estimate holds for the ensuing output. We suppose as a standing hypothesis that the system is forward-complete, that is to say, solutions exist (and are unique) for t * 0, for any initial condition and any locally essentially bounded input u. (Recall that a function fl : [0; 1) ! [0; 1) is of class K if it is strictly increasing and continuous, and satisfies fl(0) = 0, and of class K1 if it is also unbounded, and that KL is the class of functions [0; 1)2 ! [0; 1) which are of class K on the first argument and decrease to zero on the second argument.) The reason that inputs u are not usually incorporated into the regulation problem statement is probably due to the fact that for linear systems it makes no difference: it is easy to see, from the variation of parameters formula, that ios holds for all inputs if and only if it holds for the special case u j 0.
+
+Property (4) generalizes when there are inputs to the following "output Lagrange stability" property:
+
+(ol) jy(t)j ^ oe1(jy(0)j) + oe2(kuk) : As mentioned earlier when discussing the classical tools of regulation theory, one of our main results is this: if a system satisfies ios, then we can always find another output, let us call it by, which dominates y, in the sense of (2), and for which the estimate ol holds in addition to ios.
+
+As .by = Aby and A is a Hurwitz matrix, in the case of linear regulator theory the redefined output by satisfies a stronger decay condition, which in the input case leads naturally to an estimate as follows:
+
+(siios) jy(t)j ^ fi(jy(0)j ; t) + fl(kuk) (we write y instead of by because we wish to define these notions for arbitrary systems). We will study this property as well. For linear systems, the conjunction of ios and ol is equivalent
+
+4
+
+to siios. (Sketch of proof: with zero input and any initial state x such that Cx = 0, ol gives us that CetAx j 0, which means that the kernel of C coincides with the unobservable subspace O(A; C). Therefore, referring once again to the Kalman observability decomposition and the notations in [18], Equation (6.8), now y can be identified to the first r coordinates of the state, which represent a stable system.) Remarkably, this equivalence breaks down for general nonlinear systems, as we will show.
+
+Finally, as in the corresponding iss paper [19], there are close relationships between output stability with respect to inputs, and robustness of stability under output feedback. This suggests the study of yet another property, which is obtained by a "small gain" argument from ios: there must exist some O/ 2 K1 so that
+
+(ros) jy(t)j ^ fi(jx(0)j ; t) if ju(t)j ^ O/(jy(t)j) 8 t : For linear systems, this property is equivalent to ios, because applied when u j 0 it coincides with ios. One of our main contributions will be the construction of a counterexample to show that this equivalence also fails to generalize to nonlinear systems.
+
+In summary, we will show that precisely these implications hold:
+
+siios ) ol & ios ) ios ) ros and show that under output redefinition the two middle properties coincide.
+
+1.2 Related Notions We caution the reader not to confuse ios with the notion named input/output to state stability (ioss) in [21] (also called "detectability" in [17], and "strong unboundedness observability" in [5]). This other notion roughly means that "no matter what the initial conditions are, if future inputs and outputs are small, the state must be eventually small". It is not a notion of stability; for instance, the unstable system .x = x, y = x is ioss. Rather, it represents a property of zero-state detectability. There is a fairly obvious connection between the various concepts introduced, however: a system is iss if and only if it is both ioss and ios. This fact generalizes the linear systems theory result "internal stability is equivalent to detectability plus external stability" and its proof follows by routine arguments ([16, 10, 5]).
+
+2 Definitions, Statements of Results We assume, for the systems (1) being considered, that the maps f : Rn \Theta  Rm ! Rn and h : Rn ! Rp are locally Lipschitz continuous. We also assume that f (0; 0) = 0 and h(0) = 0. We use the symbol j\Delta j for Euclidean norms in Rn , Rm , and Rp .
+
+By an input we mean a measurable and locally essentially bounded function u : I ! Rm , where I is a subinterval of R which contains the origin. Whenever the domain I of an input u is not specified, it will be understood that I = R*0 . The Lm1-norm (possibly infinite) of an input u is denoted by kuk, i.e. kuk = (ess) supfju(t)j ; t 2 Ig. Given any input u and any , 2 Rn , the unique maximal solution of the initial value problem .x = f (x; u), x(0) = , (defined on some maximal open subinterval of I) is denoted by x(\Delta ; ,; u). When I = R*0 , this maximal subinterval has the form [0; tmax), where tmax = tmax(,; u). The system is said to be forward complete if for every initial state , and for every input u defined on R*0 , tmax = +1. The corresponding output is denoted by y(\Delta ; ,; u), that is, y(t; ,; u) = h(x(t; ,; u)) on the domain of definition of the solution.
+
+5
+
+2.1 Main Stability Concepts Definition 2.1 A forward-complete system is:
+
+ffl input to output stable (ios) if there exist a KL-function fi and a K-function fl such that
+
+jy(t; ,; u)j ^ fi(j,j ; t) + fl(kuk); 8 t * 0 ; (5)
+
+ffl output-Lagrange input to output stable (olios) if it is ios and there exist some K-functions
+
+oe1; oe2 such that
+
+jy(t; ,; u)j ^ maxfoe1(jh(,)j); oe2(kuk)g; 8 t * 0 ; (6)
+
+ffl state-independent ios (siios) there exist some fi 2 KL and some fl 2 K such that
+
+jy(t; ,; u)j ^ fi(jh(,)j ; t) + fl(kuk); 8 t * 0 : (7)
+
+In each case, we interpret the estimates as holding for all inputs u and initial states , 2 Rn . 2
+
+To each given system (1) and each smooth function * : R*0 ! R, we associate the following system with inputs d(\Delta ):
+
+.x = g(x; d) := f (x; d*(jyj)) ; y = h(x) ; (8) where d 2 MB, where B denotes the closed unit ball fj_j ^ 1g in Rm , and where, in general, M\Omega  denotes a system with controls restricted to take values in some subset \Omega  ` Rm . For a given function *, we let x*(\Delta ; ,; d) (and y*(\Delta ; ,; d), respectively) denote the trajectory (and the output function, respectively) of (8) corresponding to each initial state , and each input d(\Delta ). Note that the system need not be complete even if the original system (1) is, but on the domain of definition of the solution, one has that x*(t; ,; d) = x(t; ,; u), where u(t) = *(x*(t; ,; d)). Also note that, for system (8), , = 0 is an equilibrium for every d.
+
+Definition 2.2 A forward-complete system (1) is robustly output stable (ros) if there exists a smooth K1-function * such that the corresponding system (8) is forward complete, and there exists some fi 2 KL such that
+
+jy*(t; ,; d)j ^ fi(j,j ; t); (9)
+
+for all t * 0; , 2 Rn ; d 2 MB. 2
+
+The function * in (9) represents a robust output gain margin. It quantifies the magnitude of output feedback that can be tolerated by the system without destroying output stability.
+
+Remark 2.3 Suppose system (8) is forward complete. Then, the existence of a fi as in Property (9) is equivalent to the following:
+
+1. there is a K1-function ffi(\Delta ) such that for any " ? 0, it holds that
+
+jy*(t; ,; d)j ^ "; 8 t * 0; 8 d; whenever j,j ^ ffi("); and
+
+6
+
+2. for any r * 0 and any " ? 0, there exists some Tr;" ? 0 such that
+
+jy*(t; ,; d)j ^ " for all t * Tr;", all d, and all j,j ^ r. This can be shown by following exactly the same steps as done in the proof of Proposition 2.5 of [11]. 2
+
+The following implications hold:
+
+siios ) olios ) ios ) ros and all the reverse implications are false. The first two implications are clear from the definitions, and, not surprisingly, they cannot be reversed, as shown by counterexamples in Section 2.2. The last implication follows from this result, whose proof is provided in Section 3.2:
+
+Lemma 2.4 If a system is ios, then it is ros.
+
+This lemma is a generalization of a "small gain" argument for iss (for systems with full outputs y = x, ios and iss coincide), and its proof is analogous, although technically a bit more complicated, to the one given for the iss case in [19]. Since in the special case of iss the converse is true, it would be reasonable to expect that ros and ios be equivalent. Thus, the following result is surprising, cf. Section 4:
+
+Lemma 2.5 There is a ros system which is not ios.
+
+As explained in the introduction, we will prove the following result. We say that a system (1) is olios under output redefinition if there exist a locally Lipschitz map h0 : Rn ! R*0 with h(0) = 0, and a O/ 2 K1, such that
+
+h0(,) * O/(jh(,)j) for all ,, so that the system
+
+.x = f (x; u) ; y = h0(x) (10)
+
+is olios.
+
+Theorem 2.1 The following are equivalent for a system (1):
+
+1. The system is ios. 2. The system is olios under output redefinition.
+
+2.2 Some Remarks The estimate (5) can be restated in various equivalent ways. By causality, one may write fl(kuk[0;t]) instead of fl(kuk), where kuk[0;t] denotes the L1 norm of u restricted to the interval [0; t]. Similarly, the sum fi(j,j ; t) + fl(kuk) could be replaced by maxffi(j,j ; t); fl(kuk)g (just use 2fi and 2fl).
+
+When h is the identity, ios coincides with the by know well-known iss property.
+
+7
+
+It is an easy exercise to show that for any class-KL function fi and any class-K function fl there are a function bfi and a class-K function bfl so that minfoe(s); fi(r; t)g ^ bfi is; t1+bfl(r) j for all s; r; t. It follows that a system is olios if and only if there exist fi 2 KL, ae 2 K, and fl 2 K such that
+
+jy(t; ,; u)j ^ fi `jh(,)j ; t1 + ae(j,j) ' + fl(kuk); 8 t * 0;
+
+holds for all trajectories of the system. Note that this property nicely encapsulates both the ios and output-Lagrange aspects of the olios notion.
+
+The paper [24] provides necessary and sufficient characterizations for each of the properties studied here, for systems that are uniformly bounded-input bounded-state (ubibs), i.e., systems for which there exists some K-function oe such that the solution x(t; ,; u) is defined for all t * 0 and jx(t; ,; u)j ^ maxfoe(j,j); oe(kuk)g for all t * 0, every input u, and every initial state ,. Among many other results, an equivalence is established between ios and the existence of some smooth function V : Rn ! R*0 such that, for some ff1; ff2 2 K1, ff1(jh(,)j) ^ V (,) ^ ff2(j,j) for all states , and, for some O/ 2 K, DV (,)f (,; _) ! 0 whenever V (,) * O/(j_j) (for all states , and control values _). Such a V can be alternatively interpreted as a new output by, which dominates the original output y, and which has the property that by(t) converges to zero monotonically (at least while it is larger than a certain function of the current input). One obtains in this manner another output redefinition result. This appears to be the best possible result, since it follows from a counterexample given in [24] that, for systems with inputs, it is in general impossible to make a system siios under output redefinition. (For systems without inputs, a redefinition result does hold.)
+
+As promised, here are simple counterexamples to the first two implications. Consider the following system:
+
+.x1 = \Gamma x1 + x2 + u; .x2 = \Gamma x1 \Gamma  x2 + u; y = x2: (11) System (11), being linear and stable, is iss, and hence, it is ios. However, this system is not olios because x2(0) = 0 and u j 0 do not imply x2(t) j 0.
+
+For an example of a olios yet not siios system, we consider:
+
+.x1 = 0; .x2 = \Gamma  2x2 + u1 + x2
+
+1 ; y = x
+
+2 ; (12)
+
+System (12) is olios. This can be shown by a Lyapunov approach. Let V (,) = ,22=2. Then, along any trajectory x(t) of the system,
+
+.V (x(t)) = \Gamma x2(t) 2x2(t) + u(t)1 + x2
+
+1(t) ^ \Gamma 
+
+V (x(t)) 1 + x1(0)2
+
+whenever kuk ^ pV (x(t)). Using a standard comparison argument, (c.f. p441 of [16]), one can show that
+
+V (x(t)) ^ max aeV (x(0))e
+
+\Gamma t 1+x1(0)2 ; kuk2oe ; 8 t * 0:
+
+Consequently, the system is olios. But this system is not siios, as the decay rate of x2(t) depends on x1(0).
+
+Finally, we remark that, for any linear system (not merely for those arising in regulation problems), the olios output redefinition can be done in terms of linear functions. Indeed, suppose that the output y = Cx of a linear system .x = Ax satisfies y(t) ! 0 for all initial
+
+8
+
+states, and let by denote the states of the "observable part" of the system. Then by is a stable variable and there is also a function O/ so that (2) holds. (Sketch of proof, using the Kalman observability decomposition and the notations in [18], Equation (6.8): let by denote the first r coordinates of the state, so that .by = A1 by. By detectability of (A1; C1), y(t) ! 0 implies thatb y(t) ! 0 for all solutions. Moreover, y = C1by.)
+
+3 Proofs We will first prove Theorem 2.1, and then we will prove Lemma 2.4.
+
+3.1 Proof of Theorem 2.1 An outline of the proof is as follows. It is natural, if we wish for future outputs to be small when the initial output is small and small inputs are applied, to start by defining a map h0(,) as the supremum, over all future inputs, of the difference kyk \Gamma  fl(kuk) (this is basically the value function for an L1 differential game). After showing that the required estimates are satisfied, the next step is to show that h0 is locally Lipschitz, and then to smooth-out h0 away from the set where h0 = 0. The final step is to "flatten" h0 near the latter set.
+
+Assume that system (10) with y = h(x) is ios. Thus, for all , and u,
+
+jy(t; ,; u)j ^ max ffi(j,j ; t); fl(kuk)g ; 8 t * 0; where fi 2 KL and, without loss of generality, fl 2 K1. Let h0 : Rn ! R*0 be defined by
+
+h0(,) = sup
+
+t*0;u fmaxfjy(t; ,; u)j \Gamma  fl(kuk); 0gg : (13)
+
+Observe that forward completeness is being used in this definition. Since jy(0; ,; u)j \Gamma  fl(kuk) = jh(,)j * 0 for u j 0, the above is equivalent to
+
+h0(,) = sup
+
+t*0;u fjy(t; ,; u)j \Gamma  fl(kuk)g :
+
+It is clear that
+
+jh(,)j ^ h0(,) ^ fi0(j,j); 8 , 2 Rn ;
+
+where fi0(s) = fi(s; 0). Since, for any u0 with fl(ku0k) * fi0(s),
+
+maxffi(j,j ; t); fl(ku0k)g \Gamma  fl(ku0k) ^ maxffi0(j,j); fl(ku0k)g \Gamma  fl(ku0k) = 0; it follows that
+
+h0(,) = sup
+
+t*0;kuk^fl\Gamma 1(fi0(j,j)) fjy(t; ,; u)j \Gamma  fl(kuk)g : (14)
+
+Also note that for any o/ * 0 and any v,
+
+h0(x(o/; ,; v)) = sup
+
+t*0;ufjy(t; x(o/; ,; v); u)j \Gamma  fl(kuk)g
+
+= sup
+
+t*0;ufjy(t + o/; ,; v]o/ u)j \Gamma  fl(kv]o/ uk[o/;1))g
+
+^ sup
+
+t*0;uffi(j,j ; t + o/ ) + fl(kv]o/ uk) \Gamma  fl(kv]o/ uk[o/;1))g
+
+^ fi(j,j ; o/ ) + fl(kvk[0;o/)); (15)
+
+9
+
+where v]o/ u is the concatenation of v and u defined by
+
+v]o/ u(t) = ae v(t); if 0 ^ t ! o/ ;u(t \Gamma  o/ ); if t * o/ : This shows that the system (10) with the output map y = h0(x) satisfies an ios-type estimate (5), with the same functions fi and fl as the original system.
+
+Next, let us show that (10) with y = h0(x) also satisfies an output Lagrange estimate (6), with oe1(r) = 2r and oe2(r) = 2fl(r). Indeed, for any input v and any o/ * 0, we have
+
+h0(x(o/; ,; v)) = sup
+
+t*0;ufjy(t; x(o/; ,; v); u)j \Gamma  fl(kuk)g
+
+= sup
+
+t*0;ufjy(t + o/; ,; v]o/ u)j \Gamma  fl(kv]o/ uk[o/;1))g
+
+^ sup
+
+s*0;ufjy(s; ,; v]o/ u)j \Gamma  fl(kv]o/ uk) + fl(kvk)g
+
+^ sup
+
+s*0;eufjy(s; ,; eu)j \Gamma  fl(keuk) + fl(kvk)g
+
+= h0(,) + fl(kvk) ^ maxf2h0(,); 2fl(kvk)g ; (16)
+
+as desired.
+
+Define C := f, : h0(,) = 0g. Then for any , =2 C, it holds that
+
+h0(,) = sup
+
+0^t^t,;kuk^fl\Gamma 1(fi0(j,j))fjy(t; ,; u)j \Gamma  fl(kuk)g;
+
+where t, = Tj,j(h0(,)=2), and Tr(s) is associated with fi defined as in Lemma A.1.
+
+Lemma 3.1 The function h0 is locally Lipschitz on the set where h0(,) 6= 0 and continuous everywhere.
+
+Proof. We first remark that
+
+lim ,!,0 h0(,) * h0(,0); 8 ,0 2 R
+
+n ; (17)
+
+that is, h0(,) is lower semi-continuous on Rn . Indeed, pick ,0 and let c := h(,0). Take any " ? 0. Then there are some u0 and t0 so that jy(t0; ,0; u0)j \Gamma  fl(ku0k) * c \Gamma  "=2. By continuity of y(t0; \Delta ; u0), there is some neighborhood eU0 of ,0 so that jy(t0; ,; u0)j \Gamma  fl(ku0k) * c \Gamma  " for all , 2 eU0. Thus h0(,) * c \Gamma  " for all , 2 eU0, and this establishes (17).
+
+Fix any ,0 62 C, and let c0 = h0(,0)=2. Then there exists a bounded neighborhood U0 of ,0 such that
+
+h0(,) * c0; 8 , 2 U0:
+
+Let s0 be such that j,j ^ s0 for all , 2 U0. Then
+
+h0(,) = sup fjy(t; ,; u)j \Gamma  fl(kuk) : t 2 [0; t1]; kuk ^ bg ; 8 , 2 U0; where t1 = Ts0(c0=2), and b = fl\Gamma 1(fi0(s0)). By [11, Proposition 5.5], one knows that x(t; ,; u) is Lipschitz in , uniformly on the set kuk ^ b, , 2 U0, and t 2 [0; t1], and therefore, so is y(t; ,; u). Let L1 be a constant such that
+
+jy(t; ,; u) \Gamma  y(t; j; u)j ^ L1 j, \Gamma  jj ; 8 ,; j 2 U0; 8 0 ^ t ^ t1; 8 kuk ^ b:
+
+10
+
+For any " ? 0 and any , 2 U0, there exist some t,;" 2 [0; t1] and some u,;" such that
+
+h0(,) ^ jy(t,;"; ,; u,;")j \Gamma  fl(ku,;"k) + ": It then follows that, for any ,; j 2 U0, for any " ? 0,
+
+h0(,) \Gamma  h0(j) ^ jy(t,;"; ,; u,;")j \Gamma  fl(ku,;"k) + " \Gamma  (jy(t,; "; j; u,;")j \Gamma  fl(ku,;"k))
+
+^ L1 j, \Gamma  jj + ":
+
+Consequently,
+
+h0(,) \Gamma  h0(j) ^ L1 j, \Gamma  jj ; 8 ,; j 2 U0:
+
+By symmetry,
+
+h0(j) \Gamma  h0(,) ^ L1 j, \Gamma  jj ; 8 ,; j 2 U0:
+
+This proves that h0 is locally Lipschitz on Rn n C.
+
+We now show that h0 is continuous on C. Fix ,0 2 C. One would like to show that
+
+lim,!,
+
+0 h0(,) = 0: (18)
+
+Assume that this does not hold. Then there exists a sequence f,kg with ,k ! ,0 and some "0 ? 0 such that h0(,k) ? "0 for all k. Without loss of generality, one may assume that
+
+j,kj ^ s1; 8 k; for some s1 * 0. It then follows that
+
+h0(,k) = sup fjy(t; ,k; u)j \Gamma  fl(kuk) : t 2 [0; t2]; kuk ^ b1g ; where t2 = Ts1("0=2), and b1 = fl\Gamma 1(fi0(s1)). Hence, for each k, there exists some uk with kukk ^ b1 and some o/k 2 [0; t2] such that
+
+jy(o/k; ,k; uk)j \Gamma  fl(kukk) * h0(,k) \Gamma  "0=2 * "0=2: (19) Again, by the locally Lipschitz continuity of the trajectories, one knows that there is some L2 ? 0 such that
+
+jy(t; ,k; u) \Gamma  y(t; ,0; u)j ^ L2 j,k \Gamma  ,0j ; 8 k * 0; 8 0 ^ t ^ t2; 8 kuk ^ b1: Hence,
+
+jy(o/k; ,0; uk)j \Gamma  fl(kukk) * jy(o/k; ,k; uk)j \Gamma  "0=4 \Gamma  fl(kukk) * "0=4
+
+for k large enough, contradicting the fact that h0(,) = 0. This shows that (18) holds on C.
+
+Now we show how to modify h0 to get an output function eh that is locally Lipschitz everywhere so that system (10) with eh is olios.
+
+We first pick a function h(,) that is smooth on Rn n C with the property
+
+h0(,)
+
+2 ^ h(,) ^ 2h0(,); 8 , 2
+
+Rn :
+
+This can be done according to, e.g., Theorem B.1 in [11]. According to Lemma 4.3 in [11], there exists a K1-function ae such that ae ffi h is smooth everywhere. Let eh = ae ffi h. Note then that
+
+ae(h0(,)=2) ^ eh(,) ^ ae(2h0(,)): (20)
+
+11
+
+Combining this with the fact that h0(,) * jh(,)j, one sees thate
+
+h(,) * O/(jh(,)j); 8 ,; where O/(s) = ae(s=2). Because of (15), one hase
+
+h(x(t; ,; u)) ^ efi(j,j ; t) + efl(kuk); 8 t * 0; where efi(s; t) = O/(8fi(s; t)), and efl(s) = O/(8fl(s)), and because of (20) and (16), one hase
+
+h(x(t; ,; u)) ^ ae(2h0(x(t; ,; u))) ^ maxfae(4h0(,)); ae(4fl(kuk))g
+
+^ maxfae(8ae\Gamma 1(eh(,))); ae(4fl(kuk))g; 8 t * 0;
+
+that is, e
+
+h(x(t; ,; u)) ^ maxfeoe1(eh(,)); eoe2(kuk)g; 8 t * 0;
+
+for all , and all u, where eoe1(s) = ae(8ae\Gamma 1(s)) and eoe2(s) = ae(4fl(s)). We conclude that system (10) with the output function y = eh(x) is olios.
+
+3.2 Proof of Lemma 2.4 An outline of the proof is as follows. After providing a generalization of the "small-gain" result for iss given in [19], we show that any olios system is ros. Then, we use an output redefinition in order to transform our ios system into a olios one, and finally apply the result to the transformed system.
+
+3.2.1 Output Lagrange Stability Under Small Output Feedback Lemma 3.2 Assume that the system (1) is forward complete and admits an output-Lagrange estimate as in (6). Then, there is a smooth K1 function * such that the resulting system (8) is forward complete and
+
+oe2i jd(t)j *(jy*(t; ,; d)j)j ^ 12 jh(,)j (21)
+
+holds a.e. on [0; 1).
+
+Proof. Let oe1; oe2 be K-functions such that (6) holds. Without loss of generality, we assume that both are in K1 and that oe1(s) * s for all s * 0. Hence, oe\Gamma 11 (s) ^ s for all s * 0. Let * be any smooth K1-function such that
+
+oe2(*(s)) ! 14 oe\Gamma 11 (s); 8 s ? 0 : Below we show that with such a choice of *, the resulting system (8) satisfies the desired properties.
+
+Recall that we use x*(t; ,; d) and y*(t; ,; d) denote the trajectory and the output for system (8) corresponding to the initial state , and the input function d. To show that system (8) is complete, we first prove that (21) holds a.e. on the maximal interval of definition [0; tmax) of the solution.
+
+Pick any , and any d, and use simply x*(t) and y*(t) to denote x*(t; ,; d) and y*(t; ,; d) respectively. To prove (21) on [0; tmax), it is enough to show that
+
+oe2(*(jy*(t)j)) ^ 12 jh(,)j (22)
+
+12
+
+for such t.
+
+Case 1: h(,) 6= 0. Since oe2(*(jy*(0)j)) = oe2(*(jh(,)j)) ! 14 oe\Gamma 11 (jh(,)j) ^ 14 jh(,)j, it follows that oe2(*(jy*(t)j)) ^ 14 jh(,)j for t small enough. Let
+
+t1 = inf aet 2 (0; tmax) : oe2(*(jy(t)j)) ? 12 jh(,)joe with t1 = tmax if the set is empty. Suppose by way of contradiction that t1 ! tmax. Then (22) holds on [0; t1), and hence, (21) holds a.e. on [0; t1). Note that on [0; tmax), y*(t) = y(t; ,; u) with u(t) = d(t)*(jy*(t)j). With (6), one sees that jy*(t)j ^ oe1(jh(,)j) for all 0 ^ t ^ t1, and in particular, jy(t1)j ^ oe1(jh(,)j). Consequently,
+
+oe2(*(jy(t1)j)) ^ 14 oe\Gamma 11 (jy(t1)j) ^ 14 jh(,)j ; contradicting the definition of t1. Thus, (22) holds for all t 2 [0; tmax).
+
+Case 2: h(,) = 0. In this case, it is enough to show that y*(t) = 0 for all t 2 [0; tmax). Suppose this is not true. Then there exists some " ? 0 and some t2 2 (0; tmax) such that jy*(t2)j * ". Let 0 ! "0 ! " be such that *\Gamma 1(oe\Gamma 12 ("0)) ! "=2. Then there is some o/ 2 (0; t2) such that jy*(o/ )j = "0. Applying (22) proved for case 1 to the new initial state ,1 := x*(o/ ), one sees that
+
+jy*(t)j ^ *\Gamma 1 `oe\Gamma 12 ` 12 jy*(o/ )j'' ^ *\Gamma 1 \Gamma oe\Gamma 12 ("0)\Delta  ! "=2
+
+for all t 2 [o/; tmax), and in particular, jy*(t2)j ! "=2, a contradiction. This shows that y*(t) = 0 for all t 2 [0; tmax).
+
+We have showed that in both cases, (22) holds for all t 2 [0; tmax), which implies that, for any , and any d, the function u(t) := d(t)*(jy*(t; ,; d)j) remains essentially bounded on [0; tmax). Suppose tmax ! 1, then, by the forward completeness property of system (1), the trajectory x*(t; ,; d) (which is in fact x(t; ,; u) with u(t) = d(t)*(jy*(t; ,; d)j)) is bounded on [0; tmax). This contradicts the maximality of tmax. Therefore, tmax = 1 for every , and every d. Consequently, (21) holds for all t 2 [0; 1).
+
+3.2.2 Output Asymptotic Stability Under Small Output Feedback Lemma 3.3 If a system (1) is olios, then it is ros.
+
+Proof. Estimates as in (5) and (6) hold. Without loss of generality, we assume that the functions appearing in the latter satisfy oe1(r) * r for all r and oe2 2 K1. Furthermore, redefining if necessary fi and fl, we replace (5) by a maximum, and use the same oe2 function, so that the following estimate holds:
+
+jy(t; ,; u)j ^ maxffi(j,j ; t); oe2(kuk)g; 8t * 0 : (23) Let the function * be as in Lemma 3.2 so that system (8) is forward complete and (21) holds for almost all t * 0. By [1, Lemma 2.3], there exist some K-functions %1; %2 and some c * 0 such that
+
+jx*(t; ,; d)j ^ %1(t) + %2(j,j) + c (24)
+
+for all ,, all d, and all t * 0.
+
+13
+
+Below we will show that system (8) satisfies the two properties listed in Remark 2.3. First, by (21) and (6), one has:
+
+jy*(t; ,; d)j ^ max aeoe1(jh(,)j); 12 jh(,)joe = oe1(jh(,)j) ^ eoe(j,j); 8 t * 0; where eoe is any K-function such that oe1(jh(,)j) ^ eoe(j,j) for all ,. Property 1 follows readily. To prove Property 2, we first show the following:
+
+Claim. For each r ? 0, s ? 0, there is some Tr;s ? 0 such that
+
+t * Tr;s; j,j ^ r; jh(,)j ^ s ) jy*(t; ,; d)j ^ s=2: (25) To prove the claim, note that by (23) and (21), one has, for all , as in (25),
+
+jy*(t; ,; d)j ^ max aefi(j,j ; t); jh(,)j2 oe ^ max nfi(r; t); s2 o ; 8 t * 0: Since fi 2 KL, there is some Tr;s ? 0 such that fi(r; t) ^ s=2 for all t * Tr;s, and consequently,
+
+jy(t; ,; u)j ^ s2 ; 8 t * Tr;s: This Tr;s satisfies the requirements of the claim.
+
+Let ^ be a K-function such that jh(,)j ^ ^(j,j) for all ,. Let " ? 0 be given. Pick any , 6= 0. Let r = j,j. Then jh(,)j ^ ^(r). Let l ? 0 be such that 2\Gamma l^(r) ! ". Let s1 = ^(r) and si = si\Gamma 1=2 for i * 2. By (25), there is some Tr;s1 ? 0 such that
+
+jy*(t; ,; d)j ^ s1=2; 8 t * Tr;s1; 8 d: By (24), one has
+
+jx*(Tr;s1; ,; d)j ^ %1 (Tr;s1) + %2(r) + c := r2; 8 d: Applying (25) to r2 and s2, one sees that there is some Tr2;s2 such that the following holds:
+
+jy*(t + Tr;s1; ,; d)j ^ s2=2; 8 t * Tr2;s2; 8 d: Inductively, letting eTk = Pki=1 Tri;si (where r1 = r) and applying (25) to sk+1 and
+
+rk+1 := %1 i eTkj + %2(r) + c; one sees that there is some Trk+1;sk+1 such thatfififi
+
+y*(t + eTk; ,; d)fififi ^ sk2 ; 8 t * Trk;sk; 8 d: Finally, we let T = eT1 + eT2 + : : : + eTl. Then, for any t * T and any d,
+
+jy*(t; ,; d)j ^ s2l ! " : Observe that in the above argument, T only depends on j,j and ". Thus, the system satisfies Property 2 of Remark 2.3. Consequently, system (8) admits an estimate (9).
+
+14
+
+3.2.3 Proof of Lemma 2.4 Lemma 2.4 follows easily from Theorem 2.1 and Lemma 3.3. Suppose system (1) is ios. By Theorem 2.1, there is some locally Lipschitz function h0 and some K1-function O/ as in Theorem 2.1 such that system (10) with y = h0(x) as output is olios. By Lemma 3.3, there is some smooth *0 2 K1 such that the system
+
+.x = f (x; d*0(jh0(x)j)); y = h0(x); d 2 MB; is forward complete, and there is some fi0 2 KL such that
+
+jh0(x*0 (t; ,; d))j ^ fi0(j,j ; t); 8 t * 0; 8 d: (26) Recall that O/ 2 K1 such that O/(jh(,)j) ^ h0(,) for all ,. Let * = *0 ffi O/ 2 K1. Then, *(jh(,)j) ^ *0(jh0(,)j) for all ,.
+
+Consider the system
+
+.x = f (x; d*(jh(x)j)); y = h(x); d 2 MB: (27) Pick any , and any d. Suppose the corresponding solution x*(t; ,; d) is defined on [0; T ) for some T ^ 1. For t 2 [0; T ), let
+
+d0(t) = *(jh(x*(t; ,; d))j)*
+
+0(jh0(x*(t; ,; d))j) d(t)
+
+if h(x*(t; ,; d)) 6= 0, and d0(t) = 0 otherwise. Extend d0 to [0; 1) by letting d0(t) = 0 if t * T in case T ! 1. Observe that d0 2 MB, and by the uniqueness property,
+
+x*(t; ,; d) = x*0 (t; ,; d0); 8 t 2 [0; T ): (28) Suppose T ! 1. Then x*0 (t; ,; d0) remains bounded on [0; T ), and hence, x*(t; ,; d) remains bounded on [0; T ). This contradicts the maximality of T . Consequently, T = 1. This shows that system (27) is forward complete, and thus, (28) holds on [0; 1). Observe that
+
+jh(x*(t; ,; d))j ^ O/\Gamma 1 (h0(x*0 (t; ,; d0))) ; from which it follows by (26) that
+
+jy*(t; ,; d)j ^ fi(j,j ; t); 8 t * 0; 8 d; where fi(s; t) := O/\Gamma 1(fi0(s; t)). This shows that system (1) is ros.
+
+4 Example In this section we show, by means of a counterexample, that ros and ios are not equivalent. We will then modify the example to get a system which is in addition bounded-input boundedoutput stable (ubibs), thus showing that even under this very strong stability assumption, ros does not imply ios.
+
+Consider the following two-dimensional system:
+
+.x = ae(juj \Gamma  1 \Gamma  jyj)x \Gamma  yoe(x; y);
+
+.y = ae(juj \Gamma  1 \Gamma  jyj)y + xoe(x; y); (29)
+
+15
+
+with output y (we write x and y instead of x1 and x2), where ae is defined by
+
+ae(s) = 8!:
+
+\Gamma 1 if s ! \Gamma 1; s if jsj ^ 1; 1 if s ? 1,
+
+and oe(x; y) is defined by
+
+oe(x; y) = oe0(jyj \Gamma  4) + (1 \Gamma  oe0(jyj \Gamma  4))
+
+1ss + jyj
+
+maxf1; jxjg ;
+
+and oe0 is any smooth function such that oe0(s) = 1 if s * 0, oe(s) = 0 if s ^ \Gamma 2 and 0 ! oe0(s) ^ 1 for s 2 (\Gamma 2; 0).
+
+First observe that the system is forward complete. This is because for the function V (x; y) := (x2 + y2)=2, it holds that
+
+DV (x; y)f (x; y; u) = ae(juj \Gamma  1 \Gamma  jyj)(x2 + y2) ^ 2ae(juj)V (x; y) ^ 2 juj V (x; y); which implies that, along any trajectory (x(t); y(t)), one has V (x(t); y(t)) ^ V (x(0); y(0))e2kukt: This shows that all trajectories corresponding to (locally) bounded inputs are defined for all t * 0. Also note that DV (x; y)f (x; y; u) = ae(juj \Gamma  1 \Gamma  jyj)(x2 + y2) implies that
+
+jyj * juj ) DV (x; y)f (x; y; u) ^ \Gamma (x2 + y2): (30) This means that every solution of the system (8), with * the identity function, satisfies the estimate x(t)2 + y(t)2 ^ (x(0)2 + y(0)2)e\Gamma t. In particular, the output y(t) satisfies a decay estimate (9), and in fact much more holds, since the origin of the system is globally asymptotically stable. Next, we show that property (5) fails to hold for the system. We do this by finding a bounded control (namely, u j 5) and an initial state such that y(t) is unbounded.
+
+Pick the input function u0 j 5. For this input, the system satisfies the equations
+
+.x = ae(4 \Gamma  jyj)x \Gamma  yoe(x; y);
+
+.y = ae(4 \Gamma  jyj)y + xoe(x; y): (31)
+
+Using polar coordinates, on R2 n f0g, the equations can also be written as
+
+.r = ae(4 \Gamma  jyj)r;
+
+.` = oe0(jyj \Gamma  4) + (1 \Gamma  oe0(jyj \Gamma  4))
+
+1ss + jyj
+
+maxf1; jxjg :
+
+Note that .r ? 0 when jyj ! 4 and .r ! 0 when jyj ? 4. Also note that .` ? 0, and .` = 1 when jyj * 4.
+
+Pick a point z0 = (x0; y0) with x0 ? 0 large enough and y0 = 4, and consider the trajectory &(t) = (x(t); y(t)) with the initial state &(0) = z0. Let D0 denote the region fy ? 4g. Since
+
+.y ? 0 at z0 and .` = 1 on D0, there exists 0 ! t1 ^ ss such that &(t) 2 D0 for all t 2 (0; t1), and y(t1) = 4. Let p = (x(t1); y(t1)), and for any point a 2 R2 , let ra = jaj, and let xa (ya, respectively) denote the x-coordinate (y-coordinate, respectively) of a. Since .r * \Gamma r in D0, one sees that rp * rz0 e\Gamma t1 * rz0e\Gamma ss: Suppose x0 is large enough such that jxpj ? 5 (this is possible because r2p = x2p + 16 * r2z0e\Gamma 2ss). Since .y ? 0 on any point where x ? 0 and y = 4, it is impossible to have xp ? 0. Hence, xp ! \Gamma 5 (cf. figure 1). Let D1 = f(x; y) : x ! \Gamma 5; 2 !
+
+16
+
+y ! 4g, and let D2 = f(x; y) : x ! \Gamma 5; 0 ! y ! 2g. Since .y ! 0 on the line y = 4 where x ! 0, and in D1 [ D2, .x ! 0 and
+
+.y ^ y + xoe0(jyj \Gamma  4) \Gamma  x(1 \Gamma  oe0(jyj \Gamma  4))
+
+1 ss + y
+
+x
+
+^ y + maxfx; \Gamma ( 1ss + y)g ^ \Gamma  1ss ;
+
+it follows that there exist t1 ! t2 ! t3 ! 1 such that &(t) 2 D1 for t 2 (t1; t2), &(t) 2 D2 for
+
+y=-4 y=-2
+
+y=2
+
+y=4z1z0y0
+
+y1
+
+p q s
+
+w
+
+D0 D1 D2
+
+D3 x
+
+y
+
+Figure 1: The trajectory of (31) starting from z0 t 2 (t2; t3), and y(t3) = 0. Furthermore, on D2, .r = r and .y = y + x
+
+1 ss +y\Gamma x = \Gamma 1=ss: This implies
+
+that t3 \Gamma  t2 = 2ss, and hence, rs = rqe2ss, where q = &(t2); s = &(t3). Combining this with the fact that .r * 0 in D1, one sees that rs * rpe2ss * rz0 ess.
+
+Let D3 denote the region f(x; y) : x ! \Gamma 5; \Gamma 4 ! y ! 0g. Then in D3, .r ? 0, .x = ae(4 \Gamma  jyj)x \Gamma  yoe(x; y) ^ jyj maxf1; 1ss + jyjg ^ 20; and,
+
+.y ^ xoe0(jyj \Gamma  4) + x(1 \Gamma  oe0(jyj \Gamma  4))
+
+1 ss \Gamma  y
+
+\Gamma x
+
+^ maxfx; \Gamma ( 1ss \Gamma  y)g ^ \Gamma  1ss ;
+
+it follows that if jxsj is large enough, then there exists t4 2 (t3; t3 + 4ss] such that &(t) 2 D3 for all t 2 (t3; t4) and y(t4) = \Gamma 4. We assume that x0 is large enough such that this happens
+
+(again, this is possible because jxsj * jxpj = qr2p \Gamma  16 and r2p * (x20 + 16)e\Gamma ss). Let w = &(t4). Since in D3 .r * 0, rw * rs * rz0ess. Also observe that jxwj * x0 (because rw ? rz0, which implies \Gamma xw ? x0, and jywj = jy0j).
+
+By symmetry, one can show that there exists T1 ? 0 such that x(T1) ? 0 and y(T1) = 4 (i.e., at some moment T1, &(t) returns to the line y = 4), and moreover, with z1 = &(T1); rz1 * rwess * rz0 e2ss.
+
+Remark 4.1 In the above we have seen that .` = 1 on D0, and .y ^ \Gamma 1=ss on D1 [ D2 [ D3. Thus, t4 ^ t1 + 8ss ^ 9ss. By symmetry, one concludes that T1 ^ 18ss. 2
+
+Let z0; z1; z2; : : : be the consecutive points where &(t) intersects the line y = 4 where x ? 0. The above argument shows that rzk * rz0e2kss. Let y0; y1; y2; : : : be the consecutive points where
+
+17
+
+&(t) intersects the y-axis in the upper half plane. Then (using once more that .r * \Gamma r and .` = 1 on D0) yk * rzk e\Gamma ss=2 * rz0e2kss\Gamma ss=2 ! 1: This shows that the output y(t) corresponding to the initial state z0 and the bounded input u j 5 is unbounded, contradicting property (5).
+
+Finally, we modify the above example in the following way to get a ubibs system. Consider the two-dimensional system:
+
+.x = ae('(x; y) juj \Gamma  1 \Gamma  jyj)x \Gamma  yoe(x; y);
+
+.y = ae('(x; y) juj \Gamma  1 \Gamma  jyj)y + xoe(x; y); (32)
+
+where oe; ae are still defined the same as before, and the function ' is a smooth function defined in the following way. For any point z = (x; y) 2 C := f(x; y) : x ? 0; y = 4g with x large enough, let Tz = infft ? 0 : &(t; z) 2 Cg; where &(t; z) denotes the trajectory of (31) with &(0; z) = z. It was shown that j&(Tz)j * jzj e2ss. Now for each k ? 0, let Ak be the set fz 2 R2 : rk ^ jzj ^ r0kg, where 0 ! r1 ! r01 ! r2 ! r02 ! r3 ! r03 ! : : : ! 1 are such that, for any k, there exists some zk 2 Ak "C so that for the trajectory &(t; zk) of (31), it holds that &(t; zk) 2 Ak for all t 2 [0; Tzk ]. Then ' can be taken as any smooth function such that '(x; y) = 1 on Ak, '(x; y) = 0 for all z = (x; y) such that jzj = (r0k + rk+1)=2 for all k * 1, and 0 ^ '(x; y) ^ 1 everywhere else. In addition, we assume '(x; y) = 0 on the set A0 := fjzj ^ r1=2g.
+
+To show that the system is ubibs, we still let V (x; y) = (x2 + y2)=2. Pick any input u and any initial point z0 = (x0; y0). Let (x(t); y(t)) denote the corresponding trajectory. Let eAk be the set fjzj ^ r00k := (r0k +rk+1)=2g. Then eAk is forward invariant because on the set fjzkj = r00kg, DV (x; y)f (x; y; u) = 2ae(\Gamma 1 \Gamma  jyj)V (x; y) ! 0: Hence, if jz0j ^ r00k, then j(x(t); y(t))j ^ r00k for all t * 0. Observe that A0 is also forward invariant, and if (x(0); y(0)) 2 A0, ddt V (x(t); y(t)) ^ 2ae(\Gamma 1 \Gamma  y(t))V (x(t); y(t)) ^ 0; which implies that V (x(t); y(t)) ^ V (x(0); y(0)) for all t * 0. Now let oe be any K1-function such that oe(s) * s for 0 ^ s ^ r000 , and oe(s) * r00k+1 for r00k ^ s ^ r00k+1 for all k * 0. Then V (x(t); y(t)) ^ oe(jz(0)j) for all t * 0. This shows that the system is ubibs. It can also be seen that V still satisfies (30) for system (32), and hence, arguing as before, system (32) is ros.
+
+To show that the system fails to be ios, we again pick the input function u0 j 5. With this input, the system satisfies the equations
+
+.x = ae(5'(x; y) \Gamma  1 \Gamma  jyj)x \Gamma  yoe(x; y); .y = ae(5'(x; y) \Gamma  1 \Gamma  jyj)y + xoe(x; y): (33)
+
+Observe that, for each k * 1, equations in (33) are the same as in (31) on Ak. For each z 2 R2 , let #(t; z) denote the trajectory of (33) with the initial state #(0; z) = z. Then, for each k * 1, #(t; zk) = &(t; zk) for all t 2 [0; Tzk ]. Let Dk be the complement of the region enclosed by the curve f#(t; zk) : 0 ^ t ^ Tzk g and the line segment Lk between zk and #(Tzk ) on the line y = 4. Then Dk is forward invariant by uniqueness and the fact that .y ? 0 on Lk. This implies that for all t ? Tzk , j#(t; zk)j * rk.
+
+For each k * 1, let (xk(t); yk(t)) = #(t; zk). Below we will show that, for each k, there exists t1 ! t2 ! t3 ! : : : ! 1 such that yk(tl) * rk for all l * 1. It then will follow that
+
+lim t!1yk(t) * rk. For this purpose, we consider the angular movement `k(t) of #(t; zk). It can beseen that `
+
+k(t) satisfies the equation
+
+.` = oe0(jyj \Gamma  4) + (1 \Gamma  oe0(jyj \Gamma  4))
+
+1 ss + jyj
+
+maxf1; jxjg :
+
+Since eAk is forward invariant, it holds that j#(t; zk)j ^ r00k for all t * 0, and hence,
+
+d dt `k(t) * min (1;
+
+1 ss + jyk(t)j
+
+maxf1; jxk(t)jg ) * min (1;
+
+1 ss
+
+maxf1; r00kg ) :
+
+18
+
+From this, we know that `k(t) ! 1. This shows that there exist 0 ! t1 ! t2 ! t3 ! : : : ! 1 such that `k(tl) = 2lss + ss=2. Hence, jyk(tl)j = j#(tl; zk)j * rk for all l * 1. This shows that it
+
+is impossible to have some fl 2 K such that limt!1 jyk(t)j ^ fl(ku0k) = fl(5) for all k. We conclude that the system is not ios.
+
+A A Lemma Regarding KL Functions Lemma A.1 For any KL-function fi, there exists a family of mappings fTrgr*0 such that
+
+ffl for each fixed r ? 0, Tr : R?0 onto\Gamma ! R?0 is continuous and strictly decreasing, and T0(s) j 0; ffl for each fixed s ? 0, Tr(s) is strictly increasing as r increases, and is such that fi(r; Tr(s)) !
+
+s, and consequently, fi(r; t) ! s for all t * Tr(s).
+
+Proof. For each r * 0 and each s ? 0, let bTr(s) := infft : fi(r; t) ^ sg: Then bTr(s) ! 1, for any r; s ? 0, fi(r; bTr(s)) ^ s for all r * 0, all s ? 0, and it satisfiesb
+
+Tr(s1) * bTr(s2); if s1 ^ s2; and bTr1(s) ^ bTr2(s); if r1 ^ r2: Note also that bT0(s) = 0 for all s ? 0. Following exactly the same steps as in the proof of [11, Lemma 3.1], one can modify bTr(s) to obtain eTr(s) so that for each fixed r * 0, eTr(\Delta ) is decreasing and continuous; and for each fixed s, eT(\Delta )(s) is increasing. Finally, one lets Tr(s) = bTr(s) + r1+s : Then Tr(s) satisfies all conditions required in Lemma A.1.
+
+References
+
+[1] D. Angeli and E. D. Sontag, Forward completeness, unboundedness observability, and their
+
+Lyapunov characterizations, Systems & Control Letters, to appear.
+
+[2] B.A. Francis, The linear multivariable regulator problem, SIAM J. Control & Opt. 15
+
+(1977), pp. 486-505.
+
+[3] A. Isidori, Nonlinear Control Systems, Third Edition, Springer-Verlag, London, 1995. [4] , Global almost disturbance decoupling with stability for non minimum-phase singleinput single-output nonlinear systems, Systems & Control Letters, 28 (1996), pp. 115-122.
+
+[5] Z.-P. Jiang, A. Teel, and L. Praly, Small-gain theorem for ISS systems and applications,
+
+Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[6] H.K. Khalil, Nonlinear Systems (Second Edition), Macmillan, New York, 1996. [7] M. Krsti'c and H. Deng, Stabilization of Uncertain Nonlinear Systems, Springer-Verlag,
+
+London, 1998.
+
+[8] M. Krsti'c, I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive Control
+
+Design, John Wiley & Sons, New York, 1995.
+
+[9] V. Lakshmikantham, S. Leela, and A. A. Martyuk, Practical Stability of Nonlinear Systems, World Scientific, New Jersey, 1990.
+
+19
+
+[10] Y. Lin, Lyapunov Function Techniques for Stabilization, PhD thesis, Rutgers, The State
+
+University of New Jersey, New Brunswick, New Jersey, 1992.
+
+[11] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust
+
+stability, SIAM Journal on Control and Optimization, 34 (1996), pp. 124-160.
+
+[12] W. M. Lu, A class of globally stabilizing controllers for nonlinear systems, Systems &
+
+Control Letters, 25 (1995), pp. 13-19.
+
+[13] Marino, R., and P. Tomei, Nonlinear output feedback tracking with almost disturbance
+
+decoupling. IEEE Trans. Automat. Control 44(1999). pp. 18-28.
+
+[14] W.J. Rugh, Linear System Theory, Prentice-Hall, Englewood Cliffs, 1993. [15] R. Sepulchre, M. Jankovic, and P.V. Kokotovic, Integrator forwarding: a new recursive
+
+nonlinear robust design, Automatica 33(1997): 979-984.
+
+[16] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Transactions on
+
+Automatic Control, AC-34 (1989), pp. 435-443.
+
+[17] , Some connections between stabilization and factorization, in Proc. IEEE Conf.
+
+Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 990-995.
+
+[18] , Mathematical Control Theory, Deterministic Finite Dimensional Systems, Second
+
+Edition, Springer-Verlag, New York, 1998.
+
+[19] E. D. Sontag and Y. Wang, On characterizations of the input-to-state stability property,
+
+Systems & Control Letters, 24 (1995), pp. 351-359.
+
+[20] , Detectability of nonlinear systems, in Proc. Conf. on Information Science and Systems (CISS 96), Princeton, NJ, 1996, pp. 1031-1036.
+
+[21] , Output-to-state stability and detectability of nonlinear systems. Systems & Control
+
+Letters, 29 (1997), pp. 279-290.
+
+[22] , New characterizations of the input to state stability property, IEEE Transactions
+
+on Automatic Control, 41 (1996), pp. 1283-1294.
+
+[23] , A notion of input to output stability, Proc. European Control Conf., Brussels, July
+
+1997, Paper WE-E A2, CD-ROM file ECC958.pdf, 6 pages.
+
+[24] , Lyapunov characterizations of input to output stability, submitted. [25] Tsinias, J., Input to state stability properties of nonlinear systems and applications to
+
+bounded feedback stabilization using saturation, ESAIM Control Optim. Calc. Var. 2(1997): 57-85.
+
+[26] V. I. Vorotnikov, Stability and stabilization of motion: Research approaches, results, distinctive characteristics, Automation and Remote Control, 54 (1993).
+
+[27] F.W. Wilson, Jr., Smoothing derivatives of functions and applications, Transactions of the
+
+American Mathematical Society, 139 (1969), pp. 413-428.
+
+[28] T. Yoshizawa, Stability Theory and the Existence of Periodic Solutions and Almost Periodic Solutions, Springer-Verlag, New York, 1975.
+
+20</pre>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/uo.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/uo.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Forward Completeness, Unboundedness Observability,
+
+and their Lyapunov Characterizations
+
+David Angeli a Eduardo D. Sontag b
+
+a Dip. Sistemi e Informatica,
+
+Universit`a di Firenze, Via di Santa Marta 3,
+
+50139 Firenze, Italy b Dep. of Mathematics,
+
+Rutgers University, New Brunswick, NJ 08903
+
+A finite-dimensional continuous-time system is forward complete if solutions exist globally, for positive time. This paper shows that forward completeness can be characterized in a necessary and sufficient manner by means of smooth scalar growth inequalities. Moreover, a version of this fact is also proved for systems with inputs, and a generalization is also provided for systems with outputs and a notion (unboundedness observability) of relative completeness. We apply these results to obtain a bound on reachable states in terms of energy-like estimates of inputs.
+
+Key words: stability properties, Lyapunov methods, global existence of solutions, observability, control systems
+
+1 Introduction We consider general nonlinear systems of the type
+
+.x = f (x; u) y = h(x)
+
+(1)
+
+with states x in Rn , inputs u taking values in Rm , and outputs y in Rp , but our results will be novel even for classical differential equations, that is, in the
+
+1 E-mail: angeli@dsi.unifi.it, sontag@control.rutgers.edu. Research supported in part by US Air Force Grant F49620-98-1-0242
+
+Preprint submitted to Elsevier Preprint 18 May 1999
+
+cases when controls do not appear in the system description and there is no output map.
+
+We assume that the maps f : Rn \Theta  Rm ! Rn and h : Rn ! Rm are locally Lipschitz continuous. (Later we remark that the assumption on h can be relaxed to continuity.) We use the symbol j\Delta j for Euclidean norms in Rn , Rm , and Rp , and k\Delta k1 for essential supremum. By an input signal or control for (1) we mean any measurable locally essentially bounded function of time, u(\Delta ) : R ! Rm . For any such u and any , 2 Rn , there exists a unique maximally extended solution of the initial value problem:
+
+.x = f (x; u) x(0) = , : (2)
+
+Such a solution is defined over some open interval (oemin,;u ; oemax,;u ) where oemin,;u ! 0 ! oemax,;u and is denoted as x(\Delta ; ,; u). We also write y(t; ,; u) := h(x(t; ,; u)) for all ,, u, and each t 2 (oemin,;u ; oemax,;u ).
+
+A system is called forward complete if for every initial condition , and every input signal u, the corresponding solution is defined for all t * 0, i.e. oemax,;u = +1.
+
+A strictly weaker property is that of unboundedness observability, introduced in [5]. The system (1) has the unboundedness observability property (or just "uo") if, for each state , and control u such that oe = oemax,;u ! 1, necessarily
+
+lim sup
+
+t%oe jy(t; ,; u)j = +1 : (3)
+
+In other words, it is possible to "observe" any unboundedness of the state. The contrapositive statement of this property says that, if supt2[0;T ) jy(t)j ! 1 then x(T ) is defined.
+
+Remark 1.1 Notice that for systems with a bounded output function (for example, if h j 0), the property of unboundedness observability is equivalent to forward completeness. Notice that in general uo does not imply forward completeness; for instance every system is uo taking as the output the whole state x. 2
+
+Our main result is the following Lyapunov characterization of unboundedness observability.
+
+Theorem 1 The system (1) has the unboundedness observability property if and only if there exist a proper and smooth function V : Rn ! R*0 such that
+
+DV (x) f (x; u) ^ V (x) + oe1(juj) + oe2(jh(x)j) 8x 2 Rn ; 8u 2 Rm (4)
+
+2
+
+holds for some oe1; oe2 of class K1. We will study also systems for which all inputs are required to take values in a fixed compact set, typically the unit ball in Rm . Such inputs can be interpreted in our context as "disturbances" and we use therefore the notation "d" instead of "u" for them. In general, if D ae Rm is compact, we denote by MD the set of all measurable functions d : R ! D. Consider a system
+
+.x = g(x; d) (5)
+
+with inputs in MD. The following Lyapunov characterization of forward completeness is a particular consequence of Theorem 1, but it is of interest in itself (and also, will be proved first, as part of the proof of Theorem 1).
+
+Theorem 2 System (5) is forward complete if and only if there exists a proper and smooth function V : Rn ! R*0 such that the following exponential growth condition is verified:
+
+DV (x)g(x; d) ^ V (x) 8x 2 Rn ; 8d 2 D : (6)
+
+It would appear that even the special case when there are no disturbances d is a new result. Most of the literature in differential equations is in fact concerned with sufficient conditions for the global existence of solutions, (see [1-3,10]), with the remarkable exception of [8], where a converse Lyapunov condition for forward completeness of time-varying systems without inputs is proved. Nevertheless, in that paper, only a continuous function is obtained, and in addition, due to the particular construction and the unusual notion of radial unboundedness adopted, the resulting Lyapunov function turns out to be time-dependent even in the special case of autonomous systems.
+
+Besides the main results, this paper contains several intermediate estimates for completeness and unboundedness observability, which may be of independent interest. Finally, as an application, we obtain a bound on reachable states in terms of energy-like estimates of inputs (cf. Corollary 2.13).
+
+2 Proofs The proofs are organized as follows. We first provide growth estimates for solutions, then construct V for forward completeness, and finally apply this to the general problem by means of a combination of a "small gain" (for handling inputs) and an "output injection" (for outputs) trick.
+
+3
+
+2.1 Bounded Reachable Sets The result which we prove first will be a critical step in our constructions; it shows that the set of states reachable from any compact set, in bounded time and using bounded controls, is bounded, provided that the outputs remain bounded. When there are no outputs (h j 0), this fact amounts to the statement that reachable states from compact sets, in bounded time and using bounded controls are bounded, a fact which was proved in [7]; we shall prove the result by a reduction to that special case. (Note that when there are also no controls and we have just a differential equation .x = f (x), the statement is an easy consequence of continuous dependence of solutions on initial conditions.)
+
+For each nonnegative real numbers _, j, ae, T , and o/ , and each state , 2 Rn , we let:
+
+U (,; _; j; o/ ) := nu j kuk1 ^ _; oemax,;u * o/; and jy(t; ,; u)j ^ j 8 t 2 [0; o/ ]o ;
+
+R(,; _; j; o/ ) := fx(o/; ,; u) j u 2 U (,; _; j; o/ )g ;
+
+and
+
+R^T (ae; _; j) := [
+
+j,j^ae ; o/2[0;T ]
+
+R(,; _; j; o/ ) :
+
+Note that a state i belongs to the reachable set R^T (ae; _; j) if and only if there is some state , with j,j ^ ae, some time o/ ^ T , and some input u bounded by _ such that i = x(o/; ,; u), where the solution x(\Delta ; ,; u) is defined on the interval [0; o/ ] and has jy(t; ,; u)j ^ j for all t 2 [0; o/ ].
+
+Observe that U (,; _; j; o/ ) increases with each of _ and o/ , so R(,; _; j; o/ ) does, too. Therefore the sets R^T (ae; _; j) are also increasing, and thus the function
+
+fl(T; ae; _; j) := sup njij j i 2 R^T (ae; _; j)o
+
+(possibly taking infinite values) is nondecreasing separately on each of the variables T; ae; _; j.
+
+Lemma 2.1 If the system (1) is uo, then fl(T; ae; _; j) ! 1 for all T; ae; _; j. Proof. The idea of the proof is this: since we are interested in sets of states which can be reached with output bounded by j, the dynamics of the system in the part of the state-space where the outputs become larger than j do not
+
+4
+
+affect the value of fl; thus, we modify the dynamics for those states, using a procedure motivated by the standard "output injection" construction in control theory. The modified system will be forward complete, and previously known results will be then applicable. Take any T; ae; _; j.
+
+We start by picking any smooth function R ! [0; 1] with the following properties:
+
+OEj(r) = 8?!?: 1 if r ^ j
+
+0 iff r * j + 1 :
+
+Next, we introduce the following auxiliary system:
+
+.x = f (x; u) OEj(jh(x)j) y = h(x) :
+
+(7)
+
+Observe that the function f (x; u) OEj(jh(x)j) is still locally Lipschitz because h is such. The set R^T (ae; _; j) for this new system is equal to the respective one defined for the original system. So, if we prove that system (7) is forward complete, then Proposition 5.1 in [7] will give that R^T (ae; _; j) is bounded, since that reference states that the reachable sets for forward complete systems (in bounded time, starting from a compact set, and using bounded controls) are bounded.
+
+Suppose that the system (7) would not be forward complete, and pick an initial condition , and an input v such that the maximal solution of .z = f (z; v)OEj(jh(z)j) with z(0) = , has
+
+jz(s)j ! 1 as s % S ! 1 : (8)
+
+We claim that jh(z(s))j ! j + 1 for all s. If this were not the case, then there would be some s0 2 [0; S) so that i0 := z(s0) has jh(i0)j * j + 1. But then ^z j i0 is a solution of the same equation (because i0 is an equilibrium, since OEj(jh(i0)j) = 0), and hence by uniqueness we have that ^z = z, and thus z is bounded, contradicting (8). We conclude that OEj(jh(z(s))j) ? 0 for all s 2 [0; S). So, the function
+
+'(s) :=
+
+sZ
+
+0
+
+OEj(jh(z(o/ ))j) do/
+
+is strictly increasing, and maps [0; S) onto an interval [0; T ) (with, in fact, T ^ S, because OEj ^ 1 everywhere). We let x(t) := z('\Gamma 1(t)) for all t 2 [0; T ).
+
+5
+
+This is an absolutely continuous function, and it satisfies .x = f (x; u) on [0; T ), where u is the input u(t) = v('\Gamma 1(t)). Note that x(0) = , and (8) says that x(t) ! 1 as t % T , so T = oemax,;u . The unboundedness observability property says then that y(t; ,; u) is unbounded on [0; T ). But y(t; ,; u) = h(x(t)) = h(z(s)), where s = '\Gamma 1(t), and we already proved that this last expression always has norm ^ j + 1, so we arrived at a contradiction.
+
+2.2 Estimates for states Lemma 2.2 System (1) has the uo property if and only if there exists K functions O/1; O/2; O/3; O/4 and a constant c such that
+
+jx(t; ,; u)j ^ O/1(t) + O/2(j,j) + O/3(flflflu[0;t]flflfl1) + O/4(flflfly[0;t]flflfl1) + c (9)
+
+holds for all , 2 Rn , all input signals u, and all t 2 [0; oemax,;u ). In order to keep notations simple, if the initial state , and input u are clear from the context, we use the convention that when we write "y", or "y[0;t]" as above, we mean the output function y(\Delta ; ,; u), or its restriction to the interval [0; t] respectively.
+
+Proof. Let us assume that (9) holds, and let us take any state , and input signal u. If it were the case that jy(t; ,; u)j remains bounded, say by L, then jx(t; ,; u)j ^ O/1(oemax,;u ) + O/2(j,j) + O/3(M ) + O/4(L) ! 1 for all t 2 [0; oemax,;u ),
+
+where M := flflflu[0;t)flflfl1, and this contradicts the definition of oemax,;u (see e.g. [9], exercise C.3.14). This proves the sufficiency part of the Lemma.
+
+To prove the converse implication, assume the system is uo. By Lemma 2.1, fl(t; ae; _; j) ! 1 for all t; ae; _; j. Pick any , 2 Rn , input signal u, and t 2 [0; oemax,;u ), and let ae := j,j, _ := flflflu[0;t]flflfl1, and j := flflfly[0;t]flflfl1. Then x(t; ,; u) 2 R^t(ae; _; j), so
+
+jx(t; ,; u)j ^ fl(t; ae; _; j) ^ O/(t) + O/(ae) + O/(_) + O/(j) ;
+
+where O/(r) := fl(r; r; r; r). The function O/ : R*0 ! R*0 is nondecreasing, because fl is nondecreasing in each variable, as remarked earlier. Thus, there exist a function ~O/ 2 K1 and a constant c0 such that O/(r) ^ ~O/(r) + c for all r, and therefore (9) is valid with all O/i = ~O/ and c = 4c0.
+
+By Remark 1.1, we have the following Corollary of Lemma 2.2.
+
+6
+
+Corollary 2.3 System (1) is forward complete if and only if there exists K functions O/1; O/2; O/3 and a constant c such that
+
+jx(t; ,; u)j ^ O/1(t) + O/2(j,j) + O/3(flflflu[0;t)flflfl1) + c (10)
+
+holds for all , 2 Rn , all input signals u, and all t 2 [0; oemax,;u ). (And thus, oemax,;u = +1.) 2
+
+Consider now systems (5) with inputs in MD. Taking O/3(D) + c instead of c, where D is an upper bound on the elements of D, Corollary 2.3, implies:
+
+Corollary 2.4 A system (5) with inputs in MD is forward complete if and only if there exist functions O/1; O/2 of class K and a constant c such that
+
+jx(t; ,; d)j ^ O/1(t) + O/2(j,j) + c (11)
+
+holds for all , 2 Rn , all d(\Delta ) 2 MD, and all t 2 [0; oemax,;d ). (And thus, oemax,;d = +1.) 2
+
+Finally, the following result provides a "relative forward completeness" characterization of unboundedness observability, and is stated here for ease of future reference.
+
+Corollary 2.5 A system (5) with inputs in MD, and with an output function y = h(x), has the uo-property if and only if there exist class K1 functions ae; O/1; O/2 such that the following implication holds for all , 2 Rn and all T 2 [0; oemax,;d ):
+
+jh(x(t; ,))j ^ ae(jx(t; ,)j) 8t 2 [0; T ] ) jx(t; ,)j ^ O/1(t) + O/2(j,j) + c(12)
+
+for all t 2 [0; T ]. Proof. One direction of the result follows simply considering separately the two cases kyk1 ^ ae(kxk1) and kyk1 ? ae(kxk1). For the converse implication, we first absorb O/3(D) into c, as before; then, by a standard small-gain argument, it is enough to let ae(r) = O/\Gamma 14 (r=2) in (9) having assumed without loss of generality O/4 2 K1 (otherwise just take ~chi4(r) = O/4(r) + r).
+
+7
+
+2.3 Margins We start by choosing a fixed smooth function ` : R*0 ! [0; 1] such that
+
+`(r) = 8?!?: 1 if r ^ 0
+
+0 iff r * 1 :
+
+Given a system (1) and a function ae 2 K1, we introduce the following auxilliary system, with inputs in MD, where D is the closed unit ball in Rm :
+
+.x = g(x; d) = f (x; dae(jxj)) `(jh(x)j\Gamma ae(jxj)) : (13)
+
+Observe that g(x; d) is still locally Lipschitz, because h is. Since every state i with jh(i)j * ae(jij) + 1 is an equilibrium state for the system (13), it follows, by uniqueness of solutions, that for each initial state with jh(,)j ! ae(j,j) + 1 and each d 2 MD, the trajectory x(t; ,; d) never enters the set where jh(x)j * ae(jxj) + 1.
+
+Lemma 2.6 Suppose that system (1) has the unboundedness observability property. Then, there exists a function ae 2 K1 (called a "margin") such that the system (13) is forward complete.
+
+Proof. We define
+
+ae(r) = minfO/\Gamma 13 (r=4); O/\Gamma 14 (r=4)=2g
+
+in terms of comparison functions as in Lemma 2.2, assuming without loss of generality that they are of class K1. Let us pick any state , and input d 2 MD, and consider the maximal solution z of .z = g(z; d) with z(0) = ,, defined on [0; S). We want to show that S = +1. If jh(,)j * ae(j,j) + 1 then, as pointed out above, z j ,, so indeed S = +1. So we may suppose that the trajectory has `(jh(z(s))j) \Gamma  ae(jz(s)j) ? 0 for all s. As in the proof of Lemma 2.1, we consider the time reparametrization ' : [0; S) ! [0; T ) defined by
+
+'(s) :=
+
+sZ
+
+0
+
+`(jh(z(o/ )j\Gamma ae(jz(o/ )j) ds :
+
+Note that T ^ S because ` ^ 1 everywhere, and that ' is strictly increasing. Letting x(t) := z('\Gamma 1(t)), we have that .x = f (x; u), where we are defining the input u(t) = d('\Gamma 1(t))ae(jx(t)j), and x(0) = ,. Thus, applying the estimate in
+
+8
+
+Lemma 2.6 and the supremum of x(t) over an interval [0; t] with t ! T , we obtain, for all such t:flflfl
+
+x[0;t]flflfl1 ^ O/1(t) + O/2(j,j) + O/3(flflflu[0;t]flflfl1) + O/4(flflfly[0;t]flflfl1) + c : (14)
+
+On the other hand, flflflu[0;t]flflfl1 ^ ae(flflflx[0;t]flflfl1), so O/3(flflflu[0;t]flflfl1) ^ flflflx[0;t]flflfl1=4 because of the choice of ae, and, since jh(x(t))j \Gamma  ae(jx(t)j) ! 1 for all t,
+
+O/4(flflfly[0;t]flflfl1) ^ O/4 0@ 12 O/\Gamma 14 0@flflflx
+
+[0;t]flflfl1
+
+4 1A + 11A ^ flflfl
+
+x[0;t]flflfl1
+
+4 + O/4(2)
+
+and we conclude from (14) thatflflfl
+
+x[0;t]flflfl1 ^ 2O/1(t) + 2O/2(j,j) + 2c + 2O/4(2)
+
+for all t 2 [0; oemax,;u ), so it follows that the trajectory is bounded by 2O/1(T ) + 2O/2(j,j) + 2c + 2O/4(2), which is a contradiction if T ! 1. So the system is indeed complete.
+
+2.4 Lyapunov functions for forward completeness Given a forward complete system (5), we associate to it the following function W : R* 0 \Theta  Rn ! R*0 :
+
+W (t; ,) := inf\Gamma t^o/^0; d2M
+
+D jx(o/; ,; d)j : (15)
+
+As the system is not assumed to be backward complete, the solution x(t; ,; d) might fail to exist for some o/ ! 0 and d; in that case, we make the convention that jx(o/; ,; d)j = +1 when defining the infimum. We have:
+
+0 ^ W (t; ,) ^ j,j 8t * 0; 8, 2 Rn :
+
+Conversely, W is bounded below by , in the following sense. Let O/1; O/2 2 K and c be as in (11).
+
+Lemma 2.7 For each t * 0 and , 2 Rn , j,j ^ O/1(t) + O/2(W (t; ,)) + c.
+
+9
+
+Proof. Pick any " ? 0. There is some o/ 2 [\Gamma t; 0] and some d 2 MD such that i := x(o/; ,; d) satisfies
+
+jij ^ W (t; ,) + " :
+
+Letting ~d(s) := d(s + o/ ), we have , = x(\Gamma o/; i; ~d), so forward completeness gives that
+
+j,j ^ O/1(\Gamma o/ ) + O/2(jij) + c ^ O/1(t) + O/2(W (t; ,) + ") + c
+
+and taking limits as " & 0 gives the conclusion. The Lemma tells us that W (t; x) is radially unbounded, in the sense that W (t; x) ! +1 as x ! +1, uniformly in t for t in any compact subset of R*0 . This latter property was first introduced in [8], with the name "mild radial unboundedness."
+
+Lemma 2.8 The function W (t; x) : R*0 \Theta  Rn ! R*0 is locally Lipschitz continuous.
+
+Proof. We pick an M ? 0, and our goal is to find an L = LM ? 0 so that
+
+jW (t; ,) \Gamma  W (_t; i)j ^ Li j, \Gamma  ij + jt \Gamma  _tj j
+
+holds for all j,j ; jij ^ M and all 0 ^ t; _t ^ M . We let
+
+K = KM := O/1(M ) + O/2(M + 1) + c ;
+
+and, in general, use Br ` Rn be the ball of radius r centered at the origin. Note that
+
+i 2 BM+1 ) x(o/; i; d) 2 BK (16)
+
+for all d 2 MD and all o/ 2 [0; M ]. Claim. If
+
+.x = eg(x; d) (17)
+
+is any other system with the property that g(x; d) = eg(x; d) for all x 2 BK, then, if we let fW be the function analogous to W , but defined for this other system, it holds that W (t; ,) = fW (t; ,) for all , 2 BM and all t 2 [0; M ].
+
+10
+
+Proof of Claim. Pick any , 2 BM and t 2 [0; M ], and any " 2 (0; 1). By definition of W , there is some s 2 [\Gamma t; 0] and some input d such that
+
+jx(s; ,; d)j ^ W (t; ,) + " :
+
+Since W (t; ,) ^ j,j ^ M and " ! 1, we have i := x(s; ,; d) 2 BM+1. Thus (16) gives us x(o/; ,; d) 2 BK for each o/ 2 [s; 0]. Since the equations coincide for states in BK , x(s; ,; d) = ex(s; ,; d), where we are using "ex" for the solutions of (17). Therefore, fW (t; ,) ^ jex(s; ,; d)j ^ W (t; ,) + ", and taking " & 0 we conclude that fW (t; ,) ^ W (t; ,).
+
+Conversely, pick any ,, t, " as before, and some s 2 [\Gamma t; 0] and d such that jij ^ fW (t; ,) + " ^ M + 1, where i := ex(s; ,; d). Property (16) says that x(o/; i; ed) 2 BK for each o/ 2 [0; \Gamma s], where ed(a) = d(a + s). Define ,0 := x(\Gamma s; i; ed) 2 BK . Since x(`; i; ed) 2 BK for all intermediate times `, and the equations coincide on BK , we have that
+
+,0 = x(\Gamma s; i; ed) = ex(\Gamma s; i; ed) = , :
+
+Therefore i = x(s; ,; d), from which it follows by definition of W (t; ,) that W (t; ,) ^ jx(s; ,; d)j ^ fW (t; ,) + ", and, once more letting " & 0, we have that also the reverse inequality W (t; ,) ^ fW (t; ,) holds, establishing the claim.
+
+We may apply the conclusion of this claim to the new system
+
+.z = eg(z; d) = '(z)g(z; d)
+
+where ' : Rn ! [0; 1] is smooth and has '(z) = 1 when z 2 BK and '(z) = 0 if z =2 BK+1. This system is complete (in negative as well as positive time), because the right-hand side vanishes outside a ball. To prove a Lispchitz estimate for W restricted to x 2 BM and t ^ M it is enough, in view of the claim, to study this system. Thus, from now on we assume, without loss of generality, that the given system (5) is complete.
+
+Pick any ,; i 2 BM and any positive t; _t such that 0 ^ t; _t ^ M , and let " 2 (0; 1). By definition of W , we have that there are some d";i;t and some o/";i;t 2 [\Gamma t; 0] such that
+
+jx(o/";i;t; i; d";i;t)j ^ W (t; i) + " : (18)
+
+Taking increments of W yields:
+
+W (t; ,) \Gamma  W (_t; i) = [W (t; ,) \Gamma  W (t; i)] + [W (t; i) \Gamma  W (_t; i)] : (19)
+
+11
+
+The first term in (19) can be estimated by virtue of (18) according to:
+
+W (t; ,) \Gamma  W (t; i) ^ info/2[\Gamma t;0] jx(o/; ,; d";i;t)j \Gamma  jx(o/";i;t; i; d";i;t)j + " : (20)
+
+Since the system is backwards complete, there is some K = K(M ) with the property that x(s; ,; d) 2 BK for all s 2 [\Gamma M; 0] and all , 2 BM (just reverse time and apply the forward completeness results). By Lipschitz continuity of f , we have that there is some G such that
+
+jf (x; d) \Gamma  f (y; d)j ^ G jx \Gamma  yj
+
+for all x; y 2 BK. So, by Gronwall's lemma:
+
+info/2[\Gamma t;0] jx(o/; ,; d";i;t)j \Gamma  jx(o/";i;t; i; d";i;t)j + "
+
+^ jx(o/";i;t; ,; d";i;t)j \Gamma  jx(o/";i;t; i; d";i;t)j + " ^ jx(o/";i;t; ,; d";i;t) \Gamma  x(o/";i;t; i; d";i;t)j + " ^ eGM j, \Gamma  ij + " : (21)
+
+From (20) and letting " & 0, we conclude that have
+
+W (t; ,) \Gamma  W (t; i) ^ eGM j, \Gamma  ij : (22)
+
+Similarly, there are o/";i;_t 2 [\Gamma _t; 0] and d";i;_t so that,assuming without loss of generality _t ? t the second contribution in (19) can be estimated as follows:
+
+W (t; i) \Gamma  W (_t; i) ^ info/2[\Gamma t;0] jx(o/; i; d";i;_t)j \Gamma  jx(o/";i;_t; i; d";i;_t)j + "
+
+^ 8?!?: " if o/";i;
+
+_t 2 [\Gamma t; 0]
+
+jx(t; i; d";i;_t) \Gamma  x(o/";i;_t; i; d";i;_t)j + " if o/";i;_t 2 [\Gamma _t; \Gamma t] ^ R jt \Gamma  _tj + " ; (23)
+
+where R is an upper bound for jf (x; d)j when x 2 BK (for instance take R = GM ). Letting " & 0 and combining the inequalities, we obtain
+
+W (t; ,) \Gamma  W (_t; i) ^ eGM (j, \Gamma  ij + jt \Gamma  _tj) :
+
+By a symmetric argument, we can find a similar estimate for W (_t; i)\Gamma W (t; ,); thus, we conclude that W is locally Lipschitz.
+
+Recall that, from Lemma 2.7, we know that j,j ^ O/1(t) + O/2(W (t; ,)) + c for each t * 0 and , 2 Rn . We assume, without loss of generality, that O/1; O/2 2
+
+12
+
+K1. This gives that
+
+O/\Gamma 11  j,j2 ! ^ t + O/\Gamma 11 (O/2(W (t; ,)) + c)
+
+and thus, taking exponentials of both sides,
+
+fl(j,j)e\Gamma t=2 ^ ff(W (t; ,)) (24)
+
+for all ,; t, where
+
+fl(r) := exp 24 O/
+
+\Gamma 11 i r
+
+2 j
+
+2 35
+
+and
+
+ff(r) := exp " O/
+
+\Gamma 11 (O/2(r) + c)
+
+2 # :
+
+Note that fl and ff are both strictly increasing and continuous, and fl(0) = exp[O/\Gamma 11 (0)=2] = 1 ? 0. Without loss of generality (just replacing ff by a suitable upper bound), we may also assume that ff is locally Lipschitz. Consider now the function U (,) defined by the formula:
+
+U (,) := inft*0 ff(W (t; ,))et:
+
+Since, by equation (24), U (,) * inft*0 fl(j,j)et=2, and also U (,) ^ ff(W (0; ,)), we have that
+
+fl(j,j) ^ U (,) ^ ff(j,j) : (25)
+
+for all ,, and, in particular, U is proper (radially unbounded). Lemma 2.9 The function U is locally Lipschitz. Proof. Pick any M ? 0. Because of (25), there is some T ? 0 such that
+
+U (,) = mint2[0;T ] ff(W (t; ,))et
+
+for all , 2 BM . So, for all ,; i 2 BM , we have
+
+13
+
+U (,) \Gamma  U (i) = mint2[0;T
+
+M ] ff(W (t; ,))e
+
+t \Gamma  ff(W (o/i; i))eo/i
+
+^ ff(W (o/i ; ,))eo/i \Gamma  ff(W (o/i; i))eo/i ^ C j, \Gamma  ij ;
+
+where we let C := KeT M , where K is a Lipschitz constant for ff(W (\Delta ; \Delta )) and by continuity
+
+o/i := arg mint2[0;T
+
+M] ff(W (t; i))e
+
+t :
+
+By symmetry, U is indeed Lipschitz. We consider the upper Dini derivatives along trajectories:
+
+.U (,; d) = lim sup
+
+h!0+
+
+U (x(h; ,; d)) \Gamma  U (,)
+
+h : (26)
+
+As a consequence of definition (15), W is non-increasing along trajectories of (5), in the following sense:
+
+W (t + h; x(h; ,; d)) ^ W (t; ,) 8d; 8h * 0; 8, : (27)
+
+Then, by definition of U we obtain:
+
+.U (,; d) = lim sup
+
+h!0+
+
+1 h aeinft*0 [ff(W (t; x(h; ,; d))) e
+
+t] \Gamma  inf
+
+t*0 [ff(W (t; ,)) e
+
+t]oe
+
+^ lim sup
+
+h!0+
+
+1 h aeinft*h [ff(W (t; x(h; ,; d))) e
+
+t] \Gamma  inf
+
+t*0 [ff(W (t; ,)) e
+
+t]oe
+
+^ lim sup
+
+h!0+
+
+1 h aeinft*h [ff(W (t \Gamma  h; ,)) e
+
+t] \Gamma  inf
+
+t*0 [ff(W (t; ,)) e
+
+t]oe
+
+= lim sup
+
+h!0+
+
+1 h aee
+
+h inf
+
+t*0 [ff(W (t; ,)) e
+
+t] \Gamma  inf
+
+t*0 [ff(W (t; ,)) e
+
+t]oe
+
+^ lim sup
+
+h!0+
+
+eh \Gamma  1
+
+h inft*0 [ff(W (t; ,)) e
+
+t] = inf
+
+t*0 [ff(W (t; ,)) e
+
+t] = U (,)(28)
+
+where the second inequality follows by (27). Proof of Theorem 2 By Theorem B.1 in [7], there exists a smooth function V : Rn ! R which satisfies the following properties:
+
+14
+
+jV (,) \Gamma  U (,)j ! U (,)=2 8, 2 Rn
+
+DV (,)f (,; d) ^ U (,) + U (,)=2 8, 2 Rn 8d 2 D: (29)
+
+It follows by (29) that V (,) * U (,)=2, and hence V is proper. Further,
+
+DV (,)f (,; d) ^ 3V (,) 8, 2 Rn ; 8 d 2 D: (30)
+
+Notice that, V (,) * U (,)=2 * fl(j,j)=2 * fl(0)=2 ? 0; as a consequence, V (,)1=3 is a smooth Lyapunov function satisfying (6). 2
+
+2.5 Proof of Theorem 1 Sufficiency is obvious, since the differential inequality for V (x(t)) along trajectories is linear on V (x(t)). To show necessity, we use, by Lemma 2.6 and Proposition 2, that there exists a proper and smooth function V : Rn ! R such that
+
+DV (x) f (x; ae(jxj)d) `(jh(x)j\Gamma ae(jxj)) ^ V (x)
+
+holds for each x 2 Rn and each d 2 D. Hence,
+
+jh(x)j ^ ae(jxj) and juj ^ ae(jxj) ) DV (x) f (x; u) ^ V (x) :
+
+Then, letting oe1 and oe2 be defined by:
+
+oe1(r) = r + maxjxj^ae
+
+\Gamma 1(juj);juj^r jDV (x)f (x; u)j (31)
+
+oe2(r) = r + maxjxj^ae
+
+\Gamma 1(jh(x)j);jh(x)j^r jDV (x)f (x; u)j ; (32)
+
+(the additive r's are just to insure that the maps are strictly increasing) we obtain
+
+DV (x)f (x; u) ^ V (x) + oe1(juj) + oe2(jh(x)j) (33)
+
+thus finishing the proof. 2 Remark 2.10 Notice that, as far as the sufficiency part of Theorem 1 is concerned, it is enough to check for satisfaction of (4) outside a ball of arbitrarily large radius (basically we only need the inequality to be satisfied in a neighborhood of 1). Hence, unboundedness observability is equivalent to the existence
+
+15
+
+of a proper and smooth function V (x) such that, for some oe1; oe2 of class K1, there is some M ? 0 so that
+
+DV (x)f (x; u) ^ V (x) + oe1(juj) + oe2(jh(x)j) (34)
+
+holds for all jxj * M and u 2 Rm . 2 2.6 Some restatements and consequences There are several interesting ways to restate our results, and also some consequences worth pointing out. (As a matter of fact, trying to prove these consequences was the motivation behind this work.) As a corollary of the previous Theorem and by virtue of Remark 1.1, we have the following Lyapunov characterization of forward completeness:
+
+Corollary 2.11 System (1) is forward complete if and only if there exists a smooth and proper function V : Rn ! R*0 and such that
+
+DV (x)f (x; u) ^ V (x) + oe(juj) 8x 2 Rn ; 8u 2 Rm
+
+holds for some oe of class K1. 2 It is an easy consequence of Theorem 1, taking as a function W (x) = log(1 + V (x)), that the following Lyapunov characterizations of unboundedness observability and forward completeness are also true:
+
+Corollary 2.12 System (1) is forward complete if and only if there exists a smooth and proper function W : Rn ! R*0 such that
+
+DW (x)f (x; u) ^ 1 + oe(juj) 8x 2 Rn ; 8u 2 Rm ; (35)
+
+for some oe of class K1. Similarly, system (1) has the unboundedness observability property if and only if there exists a smooth and proper function W : Rn ! R*0 such that
+
+DW (x)f (x; u) ^ 1 + oe1(juj) + oe2(jh(x)j) 8x 2 Rn ; 8u 2 Rm (36)
+
+holds for some oe1; oe2 in K1. 2 By properness of the function W in Corollary 2.12, we know that there exists a class K1 function ff such that ff(jxj) ^ W (x) for all x 2 Rn . It is
+
+16
+
+straightforward from (35) and (36) that the following inequalities are equivalent respectively to forward completeness and unboundedness observability:
+
+ff(jx(t; ,; u)j) ^ W (x(t; ,; u)) ^ W (,) + t +
+
+tZ
+
+0
+
+oe(ju(s)j) ds
+
+ff(jx(t; ,; u)j) ^ W (x(t; ,; u)) ^ W (,) + t +
+
+tZ
+
+0
+
+oe1(ju(s)j) ds +
+
+tZ
+
+0
+
+oe2(jy(s)j) ds:
+
+Hence, recalling that the inverse of a K1 function is still of class K1 and exploiting continuity of W , we have proved the following result.
+
+Corollary 2.13 System (1) is forward complete if and only if there exist functions O/1; O/2; O/3; oe of class K1, and a constant c * 0, such that
+
+jx(t; ,; u)j ^ O/1(t) + O/2(j,j) + O/3 0@
+
+tZ
+
+0
+
+oe(ju(s)j) ds1A + c
+
+holds for all t ? 0, all , 2 Rn , and all input signals u. Similarly, system (1) has the unboundedness observability property, if and only if there exist functions O/1; O/2; O/3; O/4; oe1; oe2 of class K1 and a positive constant c * 0 such that
+
+jx(t; ,; u)j ^ O/1(t) + O/2(j,j) + O/3 0@
+
+tZ
+
+0
+
+oe1(ju(s)j)ds1A + O/4 0@
+
+tZ
+
+0
+
+oe2(jy(s)j)ds1A+c
+
+holds for all t ? 0, all , 2 Rn , and all input signals u. 2 Remark 2.14 Notice that, while the two estimates in Corollary 2.13 imply respectively (10) and (9) (with possibly different comparison functions), it was not obvious that the converse implications should also be true. 2
+
+Remark 2.15 The assumption that h is locally Lipschitz can be relaxed to simply continuity, while preserving all the results given. Indeed, suppose that h is continuous. Pick any locally Lipschitz function h0 : Rn ! R*0 such that jh(x)j ! h0(x) ! jh(x)j + 1 for all x 2 Rn (such functions always exist; in fact, one could even pick h0 smooth). Clearly, if the original system is uo, then the system .x = f (x; u) with output y = h0(x) also is. Applying the various results to this new system then gives the desired results for the original one. 2
+
+Remark 2.16 One may wonder if it is possible to always pick oe = Id, thus reducing the energy oe to an L1 norm of the input. This cannot be achieved in general, as illustrated by the forward complete system .x = u3. Choosing as
+
+17
+
+an input sequence un(t) = n when t 2 [0; 1=n] and equal to zero elsewhere, we have that R 10 jun(t)jdt ^ 1; on the other hand, there is no uniform bound for jx(1; 0; un)j. 2
+
+References
+
+[1] J. Haddock, "Liapunov functions and boundedness and global existence of
+
+solutions", Applicable Analysis, 2 (1972/73), pp. 321-330.
+
+[2] T. Iwamiya, "Global existence of solutions to nonautonomous differential
+
+equations in Banach spaces", Hiroshima Mathematical Journal, 13 (1983), no. 1, pp. 65-81.
+
+[3] A. Juscenko, "Necessary and Sufficient conditions for the global existence of
+
+solutions of systems of differential equations", Doklady Akademii Nauk BSSR, 11 (1967), pp. 867-869, in Russian.
+
+[4] F. Mazenc, R. Sepulchre and M. Jankovic, "Lyapunov functions for stable
+
+cascades and applications to global stabilization", submitted
+
+[5] F. Mazenc, L. Praly, and W.P. Dayawansa, "Global stabilization by output
+
+feedback: examples and counterexamples," Systems Control Lett. 23 (1994), pp. 119-125.
+
+[6] F. Mazenc and L. Praly, "Adding integrations, saturated controls, and
+
+stabilization for feedforward systems", IEEE Trans. Automat. Control, 41 (1996), no. 11, pp. 1559-1578.
+
+[7] Y. Lin, E. Sontag and Y. Wang, "A smooth converse Lyapunov theorem for
+
+robust stability", SIAM Journal on Control and Optimization, 34 (1996), pp. 124-160.
+
+[8] J. Kato and A. Strauss, "On the global existence of solutions and Lyapunov
+
+functions", Annali di Matematica pura e applicata, 77 (1967), pp. 303-316.
+
+[9] E. Sontag, Mathematical Control Theory, Deterministic Finite Dimensional
+
+Systems, Second Edition, Springer-Verlag, New York, 1998.
+
+[10] T. Taniguchi, "Global existence of solutions of differential inclusions", Journal
+
+of Mathematical Analysis and Applications, 166 (1992), no. 1, pp. 41-51.
+
+18</pre>
+</body>
+</html>

@@ -1,0 +1,363 @@
+OCR of paper; see pdf file finitary.pdf for viewable/printable page
+
+
+
+KYBERNETIKA -VOLUME 15 (1979), NUMBER 5
+On Finitary Linear Systems
+EDUARDO D. SONTAG*
+An abstract operator approach is introduced, permitting a unified study of discrete- and
+continuous-time linear systems. As an application, an algorithm is given for deciding if a linear
+system can be built from any fixed linear component. Finally, a criterion is given for reachability
+of the abstract systems introduced, giving thus a unified proof of known reachability results for
+discrete-time, continuous-time, and delay-differential systems.
+INTRODUCTION
+We give in this paper an abstract operator approach which permits a unified study
+of some problems, like realization, for various kinds of linear systems. This approach
+improves the one presented in Sontag [7].
+Systems will be defined as interconnections of a basic systemo - e.g., an integrator,
+unit delay, or any fixed linear system - with coefficients in a fixed operator ring -
+representing themselves lumped or distributed elements. A general realization theo-
+rem: "finitely realizable = 'rational' " is proved in this context.
+Assuming that both a desired linear behavior (input/output map) f and a fixed
+system I are given, a natural question is: can f be realized using I as a basic com-
+ponent? We give in Section B.2 an algorithm which serves to answer this question.
+Refining the definition of systems allows the explicit consideration of "time" and
+t4 pointwise states". We prove in such a context a general criterion of pointwise
+reachability.
+The problems in this paper are directly related to the theory of linear systems over
+commutative rings; for instance, the characterization of finitely realizable behaviors
+* This research was supported in part by US Army Research Grant DA-ARO-D-31-124-72-
+G 114 and by US Air Force Grant 72-2268 through the Center for Mathematical System Theory,
+University of Florida, Gainesville, FL 32611, USA.
+<<PAGE-DIVIDER>>
+350 as rational implies the possibility of effectively constructing realizations, e.g. via
+Hankel-matrix techniques. See Sontag [8] for a survey of the topic of systems over
+rings, and Kamen [5] for previous work on the application of systems over rings
+to the study of distributed systems.
+A. ADMISSIBLE TRIPLES
+1. Definitions and Elementary Properties
+(1.1) Definition. A triple (A, B, e), where B is a commutative ring, A is a B-module
+and o is a B-endomorphism of A, is called admissible if the following conditions
+hold:
+(a) g is transcendental (over B), i.e., for all b,, ..., b,, in B, Ybia' * 0 in EndB A.
+(b) Given any b b. in B and any u in A, there is one and only one y in A satisfying
+y + bley + ... + b.e'y = ou .
+Assume (A, A Q) is admissible. Denote by LoA the image of 12; it is clearly a B-
+module. The restriction of Q (which we shall denote also by Lo) is a B-endomorphism
+of gA. It follows from uniqueness in (b) above that (eA, B,,o) is also admissible.
+The smallest subring of EndB (A) containing L9 is (isomorphic to) the polynomial
+ring in Q, and we denote it by B[g]. By restriction, we also write B[e] for the cor-
+responding subring of End, (QA).
+(1.2) Lemma. Assume that B is a commutative ring, A is a B-module and '0 is
+a transcendental B-endomorphism of A. Then the following statements are equi-
+valent:
+(a) (A, B, e) is admissible.
+(b) For all n in N, all F in B"", and all v in A", the equation
+X = e(FX + v)
+has a unique solution X in A', where e : A" --* A' is the coordinatewise extension
+of 0.
+(c) There is a subring B[(Q)] of End, (gA), containing B[g], which can be naturally
+identified to the ring of rational power series in 0.
+P r o o f. (a) => (c). Observe that condition (b) in (1. 1) asserts that all polynomials
+in Lo having the identity as independent term are bijective on 12A. Indeed, given v = Qu
+in A, there is a unique y in A with y + b,Qy + ... + b,,L)"y = v; but y = Lo(u -
+- bly - ... - b.e"-'y) E eA, so unique solutions exist in aA. The meaning as
+a map of rational series p1q with p, q in B[q] and q(0) = unit is then clear.
+<<PAGE-DIVIDER>>
+(c) =, (b). The given equation is equivalent to finding X in (I - LOF) X = L9V C_ 351
+c- (LoA)'. As det (I - pF) is invertible in B[(efl, it is a unit in EndB (gA). So I - QF
+is an invertible matrix and there is a unique solution, as wanted.
+(b) => (a). As in ordinary differential equations, given the equation y +
++ b~L?"y = Lqu, solve for y, in the simultaneous equations
+Y1 =Q(- bly, b.y. + u)
+Y2 =QYI ,
+Yn =Un- I
+The elements of B[(L))] will be called rational maps.
+El
+(1.3) Definition. The subring of B[(e)] corresponding to those power series of
+Order > 0 will be called the ring of causal rational endomorphisms. It will be denoted
+by B,[(efl.
+(1.4) Observation. Causal rational maps s are then those which admit a factoriza-
+tion s = pq-', with p(O) = 0, q(O) = unit. Also, any such s admits a factorization
+s, . e, with s, a rational map. But then, we can define an 9 in End, (A) by the same
+formula (where now e : A - eA), and 9 clearly extends s. By abuse of notation,
+we shall identify s and 9, and hence think also of B,[(12)] as a subring of EndB (A),
+the precise meaning being clear from the context. Accordingly, a B-homomorphism
+f : Am -+ AP will be called causal rational when each coordinate map belongs to
+(the set of extensions of) Bc[(Q)].
+2. Substitution of Rational Maps
+We shall assume throughout this section that B is an integral domain. By (A, B, q)
+we shall denote always an arbitrary admissible triple.
+Given s = b,Lg + b2Q2+ ... in B,[(Q)] and p = a. + a,Q + ... + a,,Lo" in
+B[o] g EndB (j2A), denote by ps = ao + a js + ... + a,s" the substitution of s in p.
+Observe that p(O) = a. = p,;(O), so (in B,[(g)]) p is invertible if and only if p, is
+a unit. Given an arbitrary f = pq-' in B[(g)], define p.,q-'. It is easy to see
+o2 + 2 2
+that iff = a, + a,e + a2 thenf, = a0 + alb,Q + (a,b2 + a2b,) Q +
+The assignment a :f ~-4f, is a ring endomorphism of B[(a)]. in fact, it is injective,
+because B has no zero divisors. Moreover, if f is in B~[(e)], f., is also causal, so a
+induces an endomorphism of B,[(e)]. If f : A' -+ A" is causal rational, define
+by substituting in each coordinate.
+<<PAGE-DIVIDER>>
+352 (2.1) Lemma. Assume s is in B,[(efl. Then (A, B, s) is an admissible triple.
+Proof. Algebraic independence of s is clear. Let now p in B[e] be such that the
+element p(0) is a unit. Then (b) in (1.1) amounts to proving that for every u in A
+there is a unique y with p,y = su. But this follows from the fact that su is in eA
+and p, is an isomorphism in End, (oA). El
+(2.2) Definition. Given f in B,[(efl, define the rank of f, r(f), as the smallest of
+the numbers max [deg p, deg qj for all possible factorizations f = pq -' with p, q
+in Ble], P(0) = 0.
+If B is a unique factorization domain, then the above minimum can be found
+directly from an irreducible factorization off.
+(2.3) Observation. Assume now that f pq _' e B,[(Q)], with p = a,,e" +
++ a,Q and q = b~Q' + ... + 1, a.b. 0. Given u rs-' with r(0) = 0,
+k
+s(0) = 1, define P := a,,r"s'-" + ... + a,rs'-' and Q b.r'sk-' + ... + S ,
+where k is the greatest of m and n. It is clear thatf, = PQ-', and a simple calculation
+shows that max I deg P, deg Q I = k . max I deg r, deg s 11 -
+We have proved then that r(f.) ::~ r(f) r(u)- Actually, more is true in an important
+special case:
+(2.4) Proposition. Suppose B is a field. Then, for any f, u in B&,ofl, r(f.) =
+= r(f) r(u).
+P r o o f. The result will follow if we prove that for p, q, r, s as in (2.3), if (p, q) =
+= (r, s) = I then also (P, Q) = 1. Assume on the contrary that there is some poly-
+nomial t dividing both P and Q. Let K be an algebraic extension of B containing
+a root a of t. Then P(a) = Q(a) = 0.
+Claim: s(a) * 0. Indeed, assume s(a) = 0 and suppose that m > n. Then Q
+b,r' + s(b,,,_,rm-' + ...), so 0 = Q(a) = b. r(a)~ and r(a) = 0. But (r, s) = I
+implies that they can not have common roots on any extension. A contradiction is also
+arrived at if n > m.
+Write b : = r(a)ls(a) E K. Then 0 = P(a) = s(a)' p(b), so p(b) = 0. Also, 0
+Q(a) = s(a)' q(b), so q(b) = 0. As before, this contradicts the fact that (p, q) = 1.
+El
+The main result is:
+(2.5) Theorem. Assume that B is a field. Given (say, as quotients of polynomials)
+f : A' --+ AP and s : A --* A both causal rational, there is an algorithm which will
+either find a g : A' --+ AP causal rational satisfying f = g, or it will decide that no
+such g exists.
+<<PAGE-DIVIDER>>
+Proof. It is enough to prove the theorem for rn = p = 1. Observe also that if g 353
+as above exists, then it is unique: indeed, this is merely another way of saying that the
+map h -+ h., is injective. Denote m : = ~f)' n : = ~s); both numbers are calculated
+by standard methods from the representations of f and s. Denote k m1n. From
+(2.4) it follows that, if a g exists, we must have ~g) = k.
+Assume f = Y c,o', s = Edjoi. We are trying to find g = Y_x jLo' satisfying
+C, = xd, ,
+C2 = xd, + X2d2j,
+etc.
+Denote by C the column vector with the entries C11 C2. and by D the (triangular)
+matrix for the corresponding di, so that the 2m first rows of (*) correspond to the
+equation C = DX, with X a 2rn-vector.
+Claim: g exists if and only if both (a) there is a solution X of C = DX, and (b)
+this solution satisfies rank H.,,,,, = rank H.,, = k, where
+IX1 X2 X3 ... Xi
+~X2 X3 .......
+H j,j X3
+Xi ........ X
+i+j-1
+Proof of necessity. If there is such a g, then condition (a) is obviously satisfied;
+(b) follows from the fact that the rank of Hj,,k is k < rn, and is equal to the rank of
+the (infinite) Hankel matrix of g.
+Sufficiency. Assume there is an X satisfying (a) and (b). By Kalman, Falb and
+Arbib [3, p. 331], there is (and one can construct) a (unique) g of rank k with first 2m
+coefficients equal to X1, - - -, X2,. We are only left to prove that f = g,. But r(g.) =
+= kn = rn = r(f), and from C = DX it follows that the first 2m terms of g., and f
+coincide. Equality is then a consequence of well-known facts from realization theory
+over fields. 0
+It is not claimed, of course, that the previous algorithm is efficient, but only that
+it gives the required answer.
+(2.6) Corollary. Theorem (2.5) holds for B an arbitrary completely integrally
+closed domain.
+P r o o f. If K is the field of fractions of B, view f, s as elements of K,[(g)] and solve
+for a g via (2.5). Then there will be a solution in B,[(e)] if and only if g itself is in
+B,[(L,)], by uniqueness.
+From Eilenberg [2, Th. 12.2], it is easy to show that this will happen if and only
+if the coefficients of the minimal polynomial of g (over k) and the entries of X are
+all in B. 0
+<<PAGE-DIVIDER>>
+354 3. Examples
+(3.1) Finite dimensional constant linear systems. In this case let A consist of all
+locally integrable functions f : [0, oo) -* R with f(0) = 0. For any such f, let O(f)
+in A be given by g(f) (t) = f' f(s) ds- Then, with the pointwise R-space structure
+0
+for A, it follows from basic theorems in differential equations that (A, R, o) is admis-
+sible. This example shows the improvement over the setup in Sontag [7], where C',
+had to be used for A.
+(3.2) Variations of (3.1). It might be wanted to allow for impulses as inputs, but
+still essentially use functions for the states. For example, in the context of Mikusifiski's
+operational calculus, define C : = the convolution algebra of continuous real (or
+complex)-valued functions with domain [0, oo). Define o := s-' (the "integration"
+operator), and A := s'C. Observe that the elements of QA can be identified with
+(equivalence classes of) piecewise continuous locally integrable functions. Admis-
+sibility is well-known (see for example Brand [1, p. 545]).
+(3.3) Compositions of a fixed Volterra operator. Here define A as in (3.1). Assume
+k(s, 1) is a (fixed) continuous real valued function for all 0 :5; t s. Define p by
+(ex) (s) : = f' k(s, t) x(t) dt, for all x in A. We claim that (A, R, is admissible.
+0
+As B is here a field, we only need to check (b) in (1.1). Write H -(b,,o +
+... + b,Q"), then it is known that H is also a Volterra operator, say with kernel h(s, t)-
+Given u in A, let v : = eu; then v is continuous. The conclusion in (1.1.6) is equivalent
+to proving that, for all positive a, there is a unique solution, in C[O, a], of the equa-
+tion y(s) - S' h(s, t) y(t) dt = v(s). But this last fact follows from Taylor [9, p. 168].
+0
+(3.4) Certain infinite dimensional systems. Let X be a real Banach space, and B
+a commutative algebra of linear bounded operators X X. Define A as the additive
+group of locally Bochner-integrable functions [0, cc) X (see Ladas, Lakshmikan-
+than [4, p. 10]). Let e be the operator f ~~* f' f(s) ds. Admissibility follows from
+0
+local existence of solutions of differential equations plus the fact that LOA consists
+entirely of (strongly) continuous functions.
+(3.5) All the examples (discrete-time, cellular, delay-differential, etc.) in Sontag
+[7], with e here corresponding to a-' there. For instance, retarded delay-differential
+equations are introduced as follows. Let A consist of all locally integrable functions
+f : R -4 R with support bounded to the left, i.e. with f(-r) = 0 for all r sufficiently
+small. Let Lo(f) (t) : = f_ . f(. T) dT, U. : = a-second shift operator a,, u(t) : = u(t - a),
+and let B : = Rlaaj, ..., crj, for some fixed set of positive rationally independent
+real numbers a,, ..., a,.. Admissibility is a consequence of the theory of delay
+equations; note that the definition of A is equivalent to setting initial conditions
+equal to zero in a suitably chosen interval.
+<<PAGE-DIVIDER>>
+B. FINITARY LINEAR SYSTEMS
+1. Definitions and Realization Theorem
+We shall assume throughout that (A, B, Lq) is a fixed (but arbitrary) admissible
+triple.
+(1.1) Definition. An (A, B, o)-system 2: is given by a triple of B-matrices (F, G, H)
+of dimensions n x n, n x m and p x n respectively. The input map L: A' - A"
+is the group homomorphism which assigns to each u in A' the unique solution x
+in A" of the equation x = e(Fx + Gu). The result is f, : = H . L: A' -+ AP.
+We can interpret E as given by an interconnection of "black boxes" with input-
+output functionso (for example, integrators), interconnected via adders and operators
+in B (e.g. amplifiers or delays). The inputs act via similar connections, and outputs
+of X are obtained by forming suitable combinations of the outputs of these "black
+boxes". Other very different interpretations are possible in the case of "cellular
+systems", etc.
+(1.2) Definition. The rank of X, r(-Y) is, by definition, the integer n. A system 2: is
+said to be of minimal rank when it has smallest rank among all Z with the same
+result.
+(1.3) Theorem. Assume f : A' --~ A". Then f is the result of some (A, B, o)-systern
+if and only iff is causal rational.
+Proof. The problem is that of proving there is a one-to-one correspondence
+between elements of B,[(e)]Px- and maps of the form
+Y H(I - gF) L) G Y, HF"GLo"+
+" >= 0 n~o
+But the results in realization theory for discrete-time B-systems give the theorem. El
+2. Substitution of Systems
+Given an (A, B, j2)-system. Z, we want to define the substitution of a scalar (i.e.
+M = p = 1) system 1, into f as that system obtained by replacing all "black boxes"
+marked "e" in E by copies of X, In other words, I should consist of suitable con-
+nections of the basic system Ey, For simplicity, we shall assume m = p = 1 for all
+systems in this section.
+355
+(2.1) Definition. If 11 = (F, G, H) and I = (U, V, W) are two (A, B, 0-systems,
+the (A, B, Q)-system E(-Y,) = (C, D, E), of rank = r(EY). r(-F,), is defined as follows.
+<<PAGE-DIVIDER>>
+356 For notational convenience, let the indices run over all pairs (i, j) with 1 :!~ i :!~ r(Z,),
+1 :5 r(E). Then, let
+C(ij)(r,s) GAA, if i r
+GjUi,H, + Fjs if i r
+D01j) Gj Vi
+E01j) WHj
+(2.2) Lemma. Letf be the result of -Y and s the result of Z,. Then the result of -r(-rl)
+is f, = W(I - SU)-' SV.
+Proof. Assume u is in A; we want to find the output of Z(E,) given that the input
+is u. By definition of Z(Z,), for each (i, j) we have for x = Lu:
+X(i'j) LO( I Cu,j)(r,s)X(r,s) + D(i,j)u)
+(r,s)
+Q (yFj,x(,,,) + Gj(yUi,z, + Viu)),
+S r
+where we have denoted z, YH,x(,,,) = Hx, and x,. is the column vector in A",
+n = r(-Y,), with entries X(,, x(,,,). With the further notation vi Y_UirZr +
++ Vu, the equations above can be written: r
+Xi Q(Fx, + Gvj).
+Solving for xi, we have xi = (I QF)- 1 QGvi, hence for every i, z, Hxj = SVj.
+Denote by z the column vector in A, q = r(-Y), with entries zi, ..., z.. Then it follows
+from the definition of the v, that z satisfies the equation z s(UZ + VU), so z
+(I - sU)-' sVu. The output of is then
+y = Ex = Y E(j,j)x(j,j) = ZWj(YHjx(j,j))
+01j) i i
+= ywizi = Wz = W(I - SU)-' SVU = f~u
+i
+as wanted.
+E-1
+(2.3) Theorem. Assume that B is a field and that 2:, 11 are minimal rank (A, B, Q)-
+systems. Then, -Y(-Y,) is also minimal.
+P r o o f. It is well known that minimality for any system 2: over a field is equivalent
+to the relation r(X) = r(f,). But, by definition of 2:(2:,), we have
+r(Z(11)) = r(f) r(T,) = r(f) r(s) = r(f.)
+using (A.2.4). El
+(2.4) Theorem. Assume B is a completely integrally closed domain. Given the
+(A, B, Q)-systems 2:1, Z2, there is an algorithm which either constructs a 2: such that
+-Y(-Y,) has the same input/output behavior as -Y, or decides that no such Ey exists.
+<<PAGE-DIVIDER>>
+Proof. A direct consequence of Corollary (A.2.6): if g is found, any realization 357
+algorithm gives a I with f, = g. El
+(2.5) Observation. In some cases, we might want a stronger result. For example,
+take the delay-differential case, where B is a finitely generated algebra over a field K
+(here, the reals). From (2.4) we know how to decide if a given delay-differential
+system 2:, can be "simulated" by the use of a system -y, and connections in B, i.e.
+admitting other delays. But we might want to ask whether the same result can be
+achieved using only scalar interconnections (i.e. amplifiers). This is readily solved:
+from the fact that a field is (trivially) completely integrally closed, it must only be
+checked that the g found is in K,[(Q)], and for this it is enough to check its minimal
+polynomial. El
+C. TIME-SYSTEMS
+The system descriptions in the previous sections do not allow explicit consideration
+of time, so many properties, like reachability, cannot be even defined in that generality.
+We show now one way of introducing time into our framework.
+(1.1) Definition. A monoid T has left common divisors iff for each t, t' in T there
+are a T in Tand a, b in Tsuch that t = ra, I' = -rb.
+(1.2) Examples. (i) T:= any group.
+(ii) T: = any A -semilattice, with xy X A y; in particular any totally-ordered
+set T, like the reals or the integers.
+In what follows, T is an arbitrary but fixed monoid as above, and k is a fixed
+field. Let kTdenote the set of all functions T -+ k; this set has a natural k[TI-module
+structure, namely, each t in T acts as a shift a, : a,(w) (a) : = w(at).
+(1.3) Definition. (A, B, Q) is a time triple iff it is admissible and A is a k[T]-sub-
+module of V and B[Q] is a subring of Endk[T] (A)-
+The above is of course just a way of stating that Q and all operators in B are shift-
+invariant. We fix now (A, B, 2) as above.
+(1.4) Definition. Given an (A, A o) system I = (F, G, H), let
+REACH, ~x in k", x = (Ljiv) (t), w in A-, t in T)
+t
+f is pointivise reachable iff REACH, = k".
+n
+(1.5) Lemma. REACH, is a subspace of k
+P r o o f. Let x = L(w) (t), y = L(w') (t'). Choose T, a, b as in (1. 1). Then rx + y
+L(ru.(w) + u,(w')) (,r), for any r in k.
+<<PAGE-DIVIDER>>
+358 (1.6) Theorem. -Y is pointwise reachable if and only if there is no v in k' such that
+v'[G, FG, ..., Fn-'GI = 0 .
+Proof. Assume that REACH,- * V. Then there exists a v in k" such that
+REACH,: ~=- ker v, when v is regarded as a map k" -+ k. Let v be the constant
+function v, i.e. v : A' -+ A, (vx) (t) : = t, x(t). Then
+0 = v'L = v'(1 - eF)-' eG .
+Expanding (I in powers of o-' gives the result
+The converse is equally clear, since (*) implies (**) via the Cayley-Hamilton
+Theorem. 0
+(1.7) Applications. The above theorem gives a unified proof of the well-known
+reachability criteria for both continuous- and discrete-time finite-dimensional linear
+systems. In the delay-differential case, introduced in example A.3.5, F and G are
+polynomial matrices. Since a polynomial is zero iff each of its coefficients is zero, (.)
+can also be expressed - in a rather involved way! as a rank condition on constant
+real matrices. In the latter form, a special case (r 1, only one delay in F, and no
+delays in G) was known before; see Kirillova and Curakova [6]. The general result
+was announced with an outline of its proof in Sontag [7].
+(Received November 6, 1978.)
+REFERENCES
+[11 L. Brand: Differential and Difference Equations. Wiley, 1966.
+[2] S. Eilenberg: Automata, Languages, and Machines. Vol. A, Academic Press, 1974.
+131 R. E. Kalman, P. L. Falb, M. A. Arbib: Topics in Mathematical System Theory. McGraw-
+Hill, 1969.
+[41 G. Ladas, V. Lakshmikanthan: Differential Equations in Abstract Spaces. Academic Press
+1972.
+[51 E. Kamen: On an algebraic theory of systems defined by convolution operators. Math.
+Systems Theory 9 (1975), 57-74.
+[6] F. M. Kirillova, S. V. lNrakova: On the problem of controllability of linear systems with
+aftereffect. Div. Urav. 3 (1967), 436-445.
+[7] E. D. Sontag: On linear systems and noncommutative rings. Math. System Theory 9 (1975),
+327-344.
+[8] E. D. Sontag: Linear systems over commutative rings: A survey. Ricerche di Automatica 7
+(1976), 1-33.
+[9] A. E. Taylor: Introduction to Functional Analysis. Wiley, 1958.
+Prof. Eduardo D. Sontag, Rutgers University, Department of Mathematics, Hill Center for the
+Mathematical Sciences, University Heights Campus, New Brunswick, New Jersey 08903. U.S.A.

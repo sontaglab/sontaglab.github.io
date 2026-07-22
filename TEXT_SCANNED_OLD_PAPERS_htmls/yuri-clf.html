@@ -1,0 +1,966 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yuri-clf.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yuri-clf.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A Lyapunov Characterization
+
+of Robust Stabilization
+
+Yuri S. Ledyaev\Lambda  Department of Mathematics and Statistics
+
+Western Michigan University Kalamazoo, MI 49008-5112, USA
+
+ledyaev@math-stat.wmich.edu
+
+Eduardo D. Sontagy Department of Mathematics - Hill Center Rutgers, The State University of New Jersey
+
+Piscataway, NJ 08854-8019, USA
+
+sontag@control.rutgers.edu
+
+November 4, 1997
+
+Abstract One of the fundamental facts in control theory (Artstein's theorem) is the equivalence, for systems affine in controls, between continuous feedback stabilizability to an equilibrium and the existence of smooth control Lyapunov functions. This equivalence breaks down for general nonlinear systems, not affine in controls. One of the main results in this paper establishes that the existence of smooth Lyapunov functions implies the existence of, in general discontinuous, feedback stabilizers which are insensitive (or robust) to small errors in state measurements. Conversely, it is shown that the existence of such stabilizers in turn implies the existence of smooth control Lyapunov functions. Moreover, it is established that, for general nonlinear control systems under persistently acting disturbances, the existence of smooth Lyapunov functions is equivalent to the existence of (in general, discontinuous) feedback stabilizers which are robust with respect to small measurement errors and small additive external disturbances.
+
+\Lambda Supported in part by Russian Fund for Fundamental Research Grant 96-01-00219 and by the Rutgers Center for Systems and Control (SYCON). Work done while visiting Rutgers University, Mathematics Department. On leave from Steklov Institute of Mathematics, Moscow 117966, Russia
+
+ySupported in part by US Air Force Grant AFOSR-94-0293
+
+1
+
+1 Introduction This paper concerns problems of feedback stabilization for general nonlinear control systems of the type
+
+.x = f (x; u); x 2 Rn; u 2 U; (1)
+
+where U is a locally compact metric space and f : Rn \Theta  U! Rn is a continuous function.
+
+The problem of continuous stabilizability The feedback stabilization problem is that of finding a feedback control k : Rn ! U such that the origin in Rn is asymptotically stable with respect to the trajectories of the closed-loop system
+
+.x = f (x; k(x)) : (2)
+
+A powerful and popular technique for this purpose relies on smooth control Lyapunov functions (clf 's); see e.g. [1, 19, 21, 30]. We review some basic definitions. A function V : Rn ! R*0 is said to be positive (definite) if
+
+V (x) ? 0 8 x 6= 0; V (0) = 0; (3) and it is proper if the sublevel set
+
+fx j V (x) ^ ag is compact 8a ? 0 (4) The function V is said to be infinitesimally decreasing if there exists a continuous positive function W : Rn ! R*0 such that, for each compact set Xae Rn, there exists a compact set U0 ae U so that
+
+infu2
+
+U0hrV; f (x; u)i ^ \Gamma W (x) 8 x 2 X; x 6= 0 : (5)
+
+Definition 1.1 A C1-smooth function V : Rn ! R*0 is called a smooth control Lyapunov function if it is positive, proper and infinitesimally decreasing. 2
+
+Remark 1.2 The definition is slightly complicated because of the need to adequately deal with noncompact U. In the case of U compact, which may be considered in a first reading, in the definition of infinitesimal decrease the set U0 would be taken to be Uitself. 2
+
+Traditionally, techniques based on control Lyapunov functions exploit the following natural observation. Let us assume given a smooth clf V together with a ("selection") function k : Rn ! U which is continuous on Rn n f0g, bounded near the origin in Rn, and satisfies hr
+
+V (x); f (x; k(x))i ^ \Gamma W (x) 8x 6= 0 : (6)
+
+Then k is a stabilizing feedback, which means that the origin in Rn is globally asymptotically stable with respect to solutions of the closed-loop system (2).
+
+2
+
+Thus, at first glance, if there exists a smooth control Lyapunov function then the construction of stabilizing feedback is reduced to the problem of finding a continuous function k : Rn n f0g ! U, bounded near zero, and satisfying (6). Indeed, if the control system system (1) is affine in controls, that is to say it has the form
+
+f (x; u) = f (x) + g(x)u ; and U ae Rm is a convex set, then by Artstein's theorem [1] such a continuous feedback does exist. Unfortunately this is not true for the general (nonaffine) case.\Lambda  One of the objectives of this paper is to show that, for general nonlinear systems, a stabilizing feedback law, in general discontinuous, always exists, provided that there is a smooth control Lyapunov function. To illustrate, we consider next a very simple example.
+
+Example 1.3 Let us consider the three-dimensional control system
+
+.x1 = u2u3 .x2 = u1u3 (7) .x3 = u1u2
+
+with U := fu 2 R3 j juij ^ 1; i = 1; 2; 3g. A straightforward calculation shows that the quadratic function
+
+V (x) = x21 + x22 + x23 (8)
+
+is a smooth clf for (7), with W (x) = 2p3 V (x)
+
+1 2 . In general, if there is a stabilizing
+
+feedback that is continuous away from zero and bounded around zero, then there exists a smooth positive function ff : R ! R so that so that .x = ff(jxj)f (x; k(x)) is continuous at zero, and then a time-reparametrization argument shows that the system
+
+.x = ff(jxj)f (x; k(x)) has again the origin as an asymptotically stable equilibrium. Equivalently, for our example, there exists a stabilizing feedback with is continuous also at zero (namely, ff(jxj)k(x)). Now we invoke the Brockett necessary condition [2] (see e.g. [30], Theorem 15), which asserts that if for the nonlinear control system (1) there exists a continuous stabilizing feedback, then for some positive \Delta  and fl, it must be the case that
+
+flB ae f (\Delta B; U); (9)
+
+where B denotes closed unit ball in Rn. Our example fails this test, since there is no u 2 U such that 0B@ 0
+
+" "
+
+1CA
+
+= 0B@
+
+u2u3 u1u3 u1u2
+
+1CA
+
+for arbitrary " 6= 0. 2
+
+\Lambda However, Artstein's theorem does provide always for the existence of relaxed or chattering feedback laws; alternatively, a theorem of Coron and Rosier [10] shows in the general case that stabilizing timevarying feedback laws k(t; x) also exist, if there is a smooth control Lyapunov function.
+
+3
+
+This example shows the need, in general, for discontinuous feedback. In this paper, by a feedback we mean simply any function k : Rn ! U which is bounded on bounded sets. Of course, the use of discontinuous feedback poses immediately a question: in what sense should one define "solutions" of the differential equation (2) with discontinuous right-hand side? That question, including a precise definition of stabilizability under discontinuous feedback, is addressed next. After that, we describe in informal terms another aspect of this paper, which turns out to be closely related to the above considerations.
+
+The definition of solution, under discontinuous feedback We next define what we mean by a trajectory of the closed-loop system (2) under the action of a possibly discontinuous feedback k. We use the notion introduced by Clarke, Ledyaev, Sontag, and Subbotin in [8]. It was exploited in [8] to show that every asymptotically controllable system can be stabilized by means of some (probably discontinuous) feedback. Its predecessor is the concept of discontinuous positional control developed by Krasovskii and Subbotin in the context of differential games [22].
+
+Let ss = ftigi*0 be any partition of [0; +1)
+
+0 = t0 ! t1 ! : : : with limi!1 ti = +1. The ss-trajectory of system (2) for the feedback k is defined recursively on the intervals [ti; ti+1], i = 0; 1; : : :, as follows: at moment ti the initial state x(ti) is measured, the value ui = k(x(ti)) is computed, and x(t) is defined on the interval [ti; ti+1] by solving the differential equation
+
+.x = f (x(t); ui) i 2 [ti; ti+1]; (10) with x(0) = x0. Of course, this ss-trajectory may fail to exist on the entire interval [0; +1) due to its blow-up on one of the intervals [ti; ti+1]. If it exists on [0; +1), then the ss-trajectoryis said to be well defined . We also use the same definition for finite intervals [0; T ] and partitions 0 = t0 ! t1 ! : : : ! tk = T .
+
+This concept of solution is physically meaningful, and is natural in the context of computer control. We call the moments ti "sampling moments". The sampling rate is estimated by the diameter of the partition ss
+
+diam (ss) := sup
+
+i*0 (ti+1 \Gamma  ti) :
+
+A sampling is faster if the diameter of partition is smaller. Then a (discontinuous) stabilizing feedback is defined as a feedback law which drives all states asymptotically to the origin, with bounded overshoot, for all fast enough sampling. This overshoot should be arbitrary small if initial states are close enough to the origin and sampling is fast enough. Of course, due to sampling, it is impossible to guarantee arbitrary small displacements near the origin, unless a faster sampling rate is used. Also, one may well need
+
+4
+
+to sample faster for large states, due to the possibility of the blow-up in finite time of trajectories. It was shown in [8] that for every asymptotically controllable system there exists a discontinuous stabilizing feedback in this sense. The proof was based on a Lyapunov characterization of asymptotic controllability [29] in terms of continuous control Lyapunov functions, nonsmooth analysis methods [3, 4, 8], and techniques developed in differential game theory [22].
+
+Remark 1.4 Note that the differential equation
+
+.x = g(t; x) (11) with discontinuous right-hand side g can be seen as control system
+
+.x = u with a feedback control u = g(t; x). Then a ss-trajectory for this system coincides with the Euler polygon solution of the differential equation (11) [6]. 2
+
+Robustness with respect to measurement errors Let us assume that there exists a smooth clf V for the control system (1), and let us consider an arbitrary (discontinuous) function k : Rn ! U satisfying (6). Any such feedback k will turn out to be stabilizing in the sense just explained. Here we wish to focus on a most important fact, namely that this feedback is automatically robust with respect to measurement errors. In general, one of the most important reasons for using feedback (as opposed to open-loop) control lies in feedback's robustness properties. In the current context, by robustness we mean that for the perturbed closed-loop system
+
+.x = f (x; k(x + e(t))) + w(t) ; (12) the feedback k drives the state of the system to a small neighborhood of the origin, even in the presence of (small enough) external disturbance w(\Delta ) and measurement error e(\Delta ). (Evidently, the size of this neighborhood will in general become large when the magnitudes of the disturbances are larger.)
+
+In the case when k is continuous and stabilizing, classical results of stability theory [16, 20] immediately establish that k is robustly stabilizing in this sense; in the discontinuous case, the proof is more delicate. This fact is established in the current paper.
+
+Moreover, one of our main results shows that, for general nonlinear control systems (1), the existence of a discontinuous stabilizing feedback control which is robust with respect to measurement errors and external disturbances is equivalent to the existence of a smooth control Lyapunov function. In that sense, this result plays the same role for general nonlinear control systems as Artstein's Theorem does for affine control systems; they both give the characterization of the existence of a smooth clf in terms of existence of a robustly stabilizing feedback.
+
+5
+
+Actually, the above mentioned Lyapunov characterization is derived from a somewhat more general theorem on robust stabilization, which applies to control systems under persistently acting disturbances
+
+.x = f (x; u; d); (13)
+
+where the "disturbance" d(\Delta ) is a measurable function taking values in some compact metric space D . In order to explain this result, we need a concept, analogous to that of control Lyapunov function, which is of interest in the context of stabilization under persistent disturbances: a uniform control Lyapunov function (uclf) (cf. [25] and [15], the terminology in the latter reference is "robust control-Lyapunov function (rclf)").y
+
+Definition 1.5 A smooth function V : Rn ! R*0 is said to be a smooth uniform control Lyapunov function for the system (13) if V is positive (3), proper (4), and satisfies the following infinitesimal decrease condition: There exists a continuous positive function W : Rn ! R*0 such that, for any bounded set X ae Rn, there is a compact set U0 ae U such that
+
+minu2
+
+U0 maxd2D hrV (x); f (x; u; d)i ^ \Gamma W (x) 8x 2 X; x 6= 0 (14)
+
+2
+
+It follows from the infinitesimal decrease condition (14) that there always exists a feedback k which satisfies
+
+maxd2
+
+D hrV (x); f (x; k(x); d)i ^ \Gamma W (x) 8x 6= 0: (15)
+
+Of course, such a feedback k will in general be discontinuous, so we must clarify also in this case the meaning of trajectory, for the closed-loop system
+
+.x = f (x; k(x); d) (16) driven by k. This notion is analogous to the definition of trajectory for the control system (1), discussed above, and will be formulated precisely in Section 2. It will be shown that a feedback k satisfying (15) will drive the state of the system (16) to the origin in Rn and, moreover, this stabilizing feedback is robust with respect to measurement errors e(\Delta ) and external disturbances w(\Delta ) in the perturbed system
+
+.x = f (x; k(x + e(t)); d(t)) + w(t): (17) Informally, this means that such a feedback k drives all states to a small neighborhood of the origin provided that the sampling be fast enough and that measurement errors and external disturbances are small enough. The size of this neighborhood will depend upon
+
+yIt is common in modern control literature to use the term "robust" in the context of stability of control systems under persistence disturbances, as in (13). In order to avoid confusions, in this paper we only use the term "robust" when referring to the insensitivity of a feedback controller's performance with respect to small measurement errors and small additive external disturbances in dynamics, and use this term both in the case of traditional control systems as in (1) as well as in the case of control system under persistent disturbances as (13).
+
+6
+
+the sampling rate as well as the magnitudes of the external disturbances and measurement errors. Thus, the existence of a smooth uclf implies the existence of a stabilizing feedback for system (13) which is robust with respect to small measurement errors and external disturbances. We call such a feedback a robustly stabilizing one.
+
+The main result of this paper is that the converse is true too, namely, if there exists a robustly stabilizing (probably discontinuous) feedback, then there exists a smooth uniform control Lyapunov function. We leave the precise definitions until Section 2 and state here the following main theorem.
+
+Theorem 1 The control system (13) admits a smooth uniform control Lyapunov function if and only if there exists a robustly stabilizing feedback for it. Moreover, for any uclf V , every feedback k satisfying (6) is a robustly stabilizing one.
+
+Since the control system (1) is the particular case of the control system under disturbances (13) that obtains when D is a singleton, we have from Theorem 1 the following obvious corollary.
+
+Corollary 1.6 For the control system (1), there exists a smooth control Lyapunov function if and only if there exists a robustly stabilizing feedback. 2
+
+Discussion of results These results can be viewed from two points of view. Firstly, in the case of existence of a smooth uniform control Lyapunov function, Theorem 1 determines a procedure for stabilizing feedback design: to determine a feedback law it is enough to find for every x a value k(x) satisfying (15). This can be done for example by solving the mathematical programming problem of minimizing the function
+
+u ! maxd2
+
+D hrV (x); f (x; u; d)i
+
+with respect to u on some appropriate set U0 for every x 6= 0. It is important to emphasize that we don't need to make an additional effort to insure that the function k is continuous, since it follows from Theorem 1 that an arbitrary feedback k satisfying (15) is robustly stabilizing with respect to measurement errors. Secondly, we have the converse result which tells that the existence of a stabilizing feedback which is robust with respect to measurement errors and external disturbances implies the existence of a smooth robust or control Lyapunov function.
+
+It should be emphasized that the robustness of a stabilizing feedback with respect to measurement errors is essential for this converse result. In an example given in Section 4, a control system is exhibited with does not admit a smooth clf. We construct a stabilizing feedback for this system which is not robust with respect to measurement errors but which is robust with respect to external disturbances. Note that in general the existence of a smooth control Lyapunov function is the exception rather than the
+
+7
+
+rule. Even for such a simple asymptotically controllable nonlinear system as the `nonholonomic integrator" [2]
+
+.x1 = u1 .x2 = u2 .x3 = x1u2 \Gamma  x2u1
+
+there is no smooth clf. Nevertheless, it was shown in [29] (see also [31]) that for any asymptotically controllable system there exists a continuous control Lyapunov function. This fact was used by Clarke, Ledyaev, Sontag and Subbotin in [8] to establish that general nonlinear asymptotically controllable systems can be stabilized by some (discontinuous) feedback which is robust with respect to external disturbances. The results of the current paper assert that, in general, the stabilizing feedback constructed in [8] cannot be robust with respect to measurement errors, and a special effort should be made to ensure these robustness properties. (A "hybrid dynamical" feedback controller, which is robust with respect to small measurement errors and external disturbances, was suggested recently by Ledyaev and Sontag [24]. Its design incorporates an "internal model" of the control system (1) driven by the discontinuous stabilizing feedback constructed in [8]. Such a feedback does not fit the hypotheses of the main result in this paper, in particular because of its use of memory in the feedback loop, so there is no contradiction with the results presented here.)
+
+Although the proof of the "if" part of Theorem 1 is straightforward and self-contained, the "only if" part of this Theorem requires the use of a recent converse Lyapunov function theorem for strongly asymptotically stable differential inclusions with upper semicontinuous right-hand side [9]. It is shown below that if for the control system (13) there exists a stabilizing feedback k which is robust with respect to measurement errors and external disturbances, then the differential inclusion
+
+.x 2 F (x) (18) with multivalued right-hand side
+
+F (x) := "
+
+"?0 cof (x; k(x + "B);
+
+D) (19)
+
+is strongly asymptotically stable. Since the multifunction F given by (19) is upper semicontinuous, we may invoke the above mentioned converse Lyapunov function theorem from [9] for such differential inclusions, in order to obtain the existence of a smooth strong Lyapunov function for the differential inclusion (18)-(19), and then observe that this function is a smooth uniform control Lyapunov function for control system (13).
+
+Remark 1.7 In the case of the control system (1), the differential inclusion (18)-(19) reduces to this one:
+
+.x 2 "
+
+"?0 cof (x; k(x + "B)): (20)
+
+2
+
+8
+
+Note that solutions of the differential inclusion (20) are what are known as Krasovskii solutions of the differential equation (2) for the discontinuous feedback k. In [17], H'ajek demonstrated that for large class of discontinuous feedbacks k, Krasovskii solutions coincide with the more widely known Filippov solutions [13] of (2) (see also Deimling's book [11] for related discussions, and also for general information on differential inclusions). Hermes [18] was the first to consider the concept of (classical) solution of a differential equation with discontinuous right-hand side which is robust with respect to measurement errors. He established the relation between such solutions and Filippov solutions for this differential equation assuming that measurement errors can be discarded on sets of Lebesgue measure zero. H'ajek [17] dropped this assumption and established that "Hermes solutions" coincide with Krasovskii solutions in the general case.
+
+It was mentioned before that the concept of ss-trajectory for discontinuous feedback was introduced originally in context of differential games by Krasovskii and Subbotin [22]. The coincidence of on the one hand sets of limits of ss trajectories (defined on finite intervals), for a control system under disturbances and discontinuous feedback which is robust with respect to measurement errors, and on the other Krasovskii solutions (namely, solutions of the differential inclusion (18)-(19)) was studied, for differential games, by Dzhafarov [12]. His result was obtained under assumptions of local Lipschitzness of f in x, compactness of U and D , and existence of all solutions of the control system (13) on finite time intervals. In the present paper, a to some extent analogous relation between limits of ss-trajectories of the perturbed system (17) and solutions of (18)-(19) is obtained, but only under the assumption of continuity of f . The omission of compactness requirements on U and of an a priori existence of solution requirement looks rather natural for the control stabilization problem. We obtain this relation from a general result establishing the tracking of solutions of relaxed differential inclusions by approximate solutions of the original one, assuming that its right-hand side is only bounded on bounded sets. This result generalizes one due to Clarke et al. [7]. We use the concept of approximate weak invariance of sets, from [7], and derive necessary and sufficient conditions for approximate weak invariance by using the proximal aiming technique from [6]. These invariance conditions are applied to obtain the above mentioned tracking result.
+
+Finally, we need to point out in this context the generalization of Artstein's theorem, for the case of stabilization under persistent disturbances, obtained by Freeman and Kokotovic [15]. They proved, in the case of a control system (13) under persistent disturbances, that if this system is affine in u, then the existence of smooth uclf implies the existence of a continuous stabilizing feedback. To prove a converse theorem, they imposed additional restriction that, for a stabilizing feedback k, the function (x; d) ! f (x; k(x); d) is locally Lipschitz. (On the other hand, the setup in [15] is somewhat more general than ours in another aspect, namely in that it allows for state-dependent input and disturbance constraints.)
+
+In the present paper, Theorem 1 asserts the existence of a smooth uniform control Lyapunov function for a general nonlinear control system (13) if and only if there exists a robustly stabilizing feedback. In fact, any discontinuous function k satisfying (15) will be robustly stabilizing.
+
+9
+
+This paper is organized as follows. Section 2 contains precise statements of robust stabilizability by feedback, and the converse Lyapunov function theorem from [9] for differential inclusions with upper semicontinuous right-hand side. The notion of approximate weak invariance of sets with respect to approximate solutions of differential inclusions, with a right-hand side which is bounded on bounded sets, is studied here too. These results are used to establish that a feedback k is robustly stabilizing if and only if the differential inclusion (19) is strongly asymptotically stable. This result is then used in Section 3 in the proof of our main Theorem 1. Section 4 contains an example illustrating how the robustness of feedback with respect to measurement errors is essential for the existence of a smooth Lyapunov function.
+
+In what follows h\Delta ; \Delta i denotes inner product in Rn, j\Delta j Euclidean norm, B the closed unit ball, coS the closure of the convex hull of a set S, and k \Delta  k1 the norm in L1([0; T ]; Rn). For any function g and any the set S, we use the notation
+
+g(S) := [
+
+s2S
+
+g(s) :
+
+2 Definitions and auxiliary results We start with the definition of ss-trajectory for the perturbed system (17), under a possibly a discontinuous feedback k and in the presence of disturbances d(\Delta ), measurement errors e(\Delta ), and external disturbance w(\Delta ). For any given partition ss = ftigi*0, the sstrajectory of (17) starting from x0 is defined recursively on the intervals [ti; ti+1], i = 0; 1; : : :, as the solution of the differential equation
+
+.x(t) = f (x(t); ui; d(t)) + w(t); a:a:t 2 [ti; ti+1] (21) where ui := k(x(ti) + e(ti)), x(0) = x0. Of course, x(\Delta ) may fail to exist on one of the intervals [ti; ti+1]. This means that there exists a T ! +1 such that x(\Delta ) exists on [0; T ) and limt"T jx(t)j = +1. Such trajectory is said to blow-up or to be a "blown-up" trajectory.
+
+Definition 2.1 The feedback k is said to be robustly sampling-stabilizing (robustly sstabilizing, for brevity) if for any
+
+0 ! r ! R
+
+there exist positive T = T (r; R), ffi = ffi(r; R), j = j(r; R), and M (R) such that, for any measurement errors e(\Delta ) (arbitrary bounded function e : [0; +1) ! Rn) and external disturbances w(\Delta ) (measurable essentially bounded function w : [0; +1) ! Rn) for which
+
+je(t)j ^ j 8t * 0; kw(\Delta )k1 ^ j ; (22) and any partition ss with diam (ss) ^ ffi, every ss-trajectory with jx(0)j ^ R does not blow-up and satisfies the following relations:
+
+1. (uniform attractivity)
+
+jx(t)j ^ r 8t * T ; (23)
+
+10
+
+2. (bounded overshoot)
+
+jx(t)j ^ M (R) 8t * 0; (24)
+
+3. (Lyapunov stability)
+
+limR#0 M (R) = 0: (25)
+
+2
+
+This definition has natural physical meaning: Given any pair of positive r ! R, for arbitrary sufficiently fast sampling, and small enough measurement errors and external disturbances, all states in the ball of radius R are driven by a robust feedback into the ball of radius r, and stay there after moment T .
+
+The main Theorem 1 asserts that a robustly s-stabilizing feedback exists if and only if there exists a smooth uniform control Lyapunov function. We discuss now some results which are used in the proof of that theorem.
+
+Converse Lyapunov function theorem for differential inclusions The first result concerns a converse Lyapunov function theorem for a strongly asymptotically stable differential inclusion (18). This theorem was obtained in [9] under rather mild assumptions on the multifunction F in (18).
+
+Hypothesis (H). The multifunction F is upper semicontinuous, namely, for any x 2 Rn and any " ? 0, there is a ffi ? 0 such that for any x0 2 x + ffiB,
+
+F (x0) ae F (x) + "B; and F (x) is compact convex subset of Rn for each x 2 Rn.
+
+Remark 2.2 It is easy to prove that the differential inclusion (18) satisfies hypothesis (H) (see e.g. [11], Example 1.2). 2
+
+It is well known [3, 11] that, under assumption (H), for any x0 there exists a solution x(\Delta ) of (18) with x(0) = x0, which is defined on [0; T ) for some T ? 0. If such a solution satisfies the property limt"T jx(t)j = +1 for T ! +1, then the solution x(\Delta ) is said to be blown-up.
+
+In the following notion of strong asymptotic stability of the differential inclusion (18) (or, the multifunction F ), the word "strong" is intended to emphasize that all (as opposed to some) solutions are attracted to the origin in Rn in a (uniformly) stable way.
+
+Definition 2.3 The differential inclusion (18) (or, the multifunction F ) is strongly asymptotically stable if it has no blown-up solutions and:
+
+1. (attractivity) for any solution x(\Delta ),
+
+limt!+1 x(t) = 0 ;
+
+11
+
+2. (strong Lyapunov stability) for any " ? 0, there exists ffi ? 0 such that every solution of (18) with jx(0)j ! ffi satisfies
+
+jx(t)j ! " 8t * 0 :
+
+2
+
+It was shown in [9] that strong asymptotic stability of (18) under Hypothesis (H) is equivalent to the following uniform stability concept: there are no blown-up solutions of the differential inclusion (18), and for any positive r ! R there exist T = T (r; R) and M (R) such that any solution x(\Delta ) of (18) with jx(0)j ^ R satisfies (23) and (24), and (25) holds.
+
+The smooth function V : Rn ! R*0 is said to be a smooth strong Lyapunov function for the differential inclusion (18) if it is positive (3), proper (4) and satisfies the following infinitesimal decrease condition:
+
+maxf2F (x)hrV (x); f i ^ \Gamma W (x) ; (26)
+
+where W is some positive continuous function. It is easy to show, by means of standard Lyapunov function techniques, that the existence of a smooth strong Lyapunov function implies strong asymptotic stability of F . The converse result, namely that for strongly asymptotically stable F under Hypothesis (H) there must exist a smooth strong Lyapunov function, is less traditional. The following theorem was proved in [9].
+
+Theorem 2 Under Hypothesis (H), the multifunction F is strongly asymptotically stable if and only if there exists a smooth strong Lyapunov function for F .
+
+Note that well-known concepts of generalized solutions of differential equations with discontinuous right-hand side, such as Filippov or Krasovskii solutions [11, 17, 13], are formulated in terms of solutions of appropriate differential inclusions with upper semicontinuous right-hand side. Theorem 2 provides a Lyapunov function characterization of asymptotic stability of these solutions. For instance, the solutions of the differential inclusion (18) with F given by (19), are by definition the Krasovskii solutions for the control system (16) driven by (possibly discontinuous) feedback k. The relation between robustly stabilizing feedback k and stability of Krasovskii solutions is established in the following result.
+
+Proposition 2.4 The feedback k is robustly s-stabilizing if and only if the differential inclusion (18)-(19) is strongly asymptotically stable. 2
+
+We postpone the proof of this Proposition until the exposition of the following two results.
+
+12
+
+Approximate weak invariance The first result is connected with a well-known fact in the theory of differential inclusions, which asserts that, for a Lipschitz multifunction F , any solution of the relaxed the differential inclusion
+
+.x(t) 2 coF (x(t)) (27)
+
+is uniformly approximated by solutions of the differential inclusion (18) on any finite interval [0; T ]. Namely, for any " ? 0 there exists a solution x0(\Delta ) of (18) with x0(0) = x(0) such that j
+
+x(t) \Gamma  x0(t)j ^ " 8 t 2 [0; T ]: (28)
+
+When (28) holds, we say that x0(\Delta ) tracks x(\Delta ) with error ".
+
+To some extent, an analogous approximation result was obtained in [7] in the infinitedimensional case, for multifunctions F which are merely upper semicontinuous and for which values of F are arbitrary bounded subsets of some Hilbert space. Of course, even in finite-dimensional spaces, an exact solution of the differential inclusion (18) with such F can fail to exist. Nevertheless, it was shown that it is possible to approximate solutions of the relaxed differential inclusion (27) by "-solutions x(\Delta ) of (18). An absolutely continuous function x : [0; T ] ! Rn is said to be an "-solution of (18) if it satisfies, for a.a. t 2 [0; T ], the differential inclusion
+
+.x(t) 2 F"(x(t)); (29)
+
+where
+
+F"(x) := F (x + "B) :
+
+Here we need a more refined finite-dimensional version of this result, assuming only that the multifunction F is bounded on bounded sets. Let x(\Delta ) satisfy the relaxed differential inclusion (27). The next Lemma asserts that, for each " ? 0, it is possible to find some "-solution x0(\Delta ) of (18) tracking x(\Delta ) with error ". Moreover, such a x0(\Delta ) can be defined as a ss-trajectory for the differential equation with discontinuous right-hand side (11), where g is some function satisfying
+
+g(t; x) 2 F (x + (jx \Gamma  x(t)j + "=2)B): (30) (Observe that if x0(\Delta ) is a ss-trajectory of (30), and if diam (ss) is small enough, then x0(\Delta ) is an "-solution of (18) approximating x(\Delta ).)
+
+Lemma 2.5 Let the multifunction F be bounded on bounded sets and pick any "0 ? 0. Let x(\Delta ) be any solution of the relaxed differential inclusion (27) defined on [0; T ], and let " ? 0. Then, there exists a function g satisfying (30) such that, for any partition ss of the interval [0; T ] with sufficiently small diameter, any ss-trajectory x0(\Delta ) of (11) with x0(0) = x(0) is an "-solution of (18) such that (28) holds.
+
+The proof of this result relies on the notion of approximately weakly invariant set introduced in [7] and the technique of proximal aiming [6, 5].
+
+13
+
+Definition 2.6 The set S ae Rn is said to be approximately weakly invariant with respect to the differential inclusion (18) if for each x 2 S there exists a T ? 0 such that for any " ? 0 there exists an "-solution x(\Delta ) of (18) with x(0) = x which is defined on [0; T ] and satisfies
+
+dS (x(t)) ^ " t 2 [0; T ]: (31)
+
+2
+
+This definition is different from the one given in [7], since we don't assume here a linear growth condition on F . To formulate the infinitesimal conditions characterizing approximate weak invariance of the set S, we need to appeal to the notion of proximal normal to the set S at a point x. This concept plays an important role in nonsmooth analysis [3, 4, 5]. Pick any point z 62 S; then any point x 2 S which is closest to z is said to be a projection of z onto S. Note that, in finite-dimensional spaces, at least one such projection always exists, for any z, if S is closed. Any positive multiple of z \Gamma  x is called a proximal normal to the set S at the point x. The cone consisting of all proximal normals to S at x is called the proximal normal cone to S at x, and is denoted as N PS (x). (We define N PS (x) := f0g if there is no point z such that x is a projection of z on S.) It follows directly from the definition of closest point that i 2 N PS (x) if and only if there exists some M ? 0 such that
+
+hi; y \Gamma  xi ^ M jy \Gamma  xj2 : (32) Define the lower Hamiltonian
+
+hF (x; p) := infv2F (x)hv; pi :
+
+Then we have the following sufficient conditions for approximate weak invariance of closed sets S, which, in the case of upper semicontinuous compact convex valued multifunctions F , turns out to be a necessary and sufficient condition for weak invariance of S, as shown in [6]. It was shown in [7] that, for differential inclusions in Hilbert space with an upper semicontinuous multifunction F satisfying a linear growth condition, the condition below is necessary and sufficient for approximate weak invariance.
+
+Lemma 2.7 Let the multifunction F be bounded on bounded sets, S be a closed subset of Rn, and
+
+hF (x; i) ^ 0 8i 2 N PS (x); x 2 S : (33)
+
+Then S is approximately weakly invariant.
+
+Proof. The proof follows the proximal aiming construction from [6, 5]. Choose for any x 2 Rn a closest point s(x) from S. Let us fix " ? 0 and R ? 0 and pick some point x0 2 S. Define
+
+m := supfjvj j v 2 F (x); jx \Gamma  x0j ^ 2Rg; T := R=m :
+
+14
+
+Because of (33), for every x there exists a g(x) 2 F (s(x)) such that
+
+hx \Gamma  s(x); g(x)i ^ "2=16T: We consider the partition ss of [0; T ] and a ss-trajectory of the differential equation (see Remark 1.4)
+
+.x = g(x); x(0) = x0 :
+
+It is clear that such x(\Delta ) exists on some interval [0; T 0] . Define ~T as a supremum of all T 0 ? 0 such that x(\Delta ) exists on [0; T 0] and satisfies
+
+js(x(t)) \Gamma  x0j ! 2R 8t 2 [0; T 0]: Note that x(\Delta ) is defined on the interval [0; ~T ], and g(x(t)) is bounded by m for all t 2 [0; ~T ]. This implies, in particular, that .x(t) is bounded by m, and that jx(t) \Gamma  x0j ^ mT ^ R on [0; ~T ].
+
+By a straightforward calculation similar to one made in [6] we obtain that, for t 2 [ti; ti+1] ae [0; ~T ],
+
+d2S(x(t)) ^ jx(ti) + (t \Gamma  ti)g(x(ti)) \Gamma  s(x(ti))j2 ^ ^ d2S(x(ti)) + 2(t \Gamma  ti)hg(x(ti)); x(ti)) \Gamma  s(x(ti))i + (t \Gamma  ti)2jg(x(ti))j2: We have, from the previous relations, that
+
+d2S(x(t)) ^ t("2=8T + m2 diam (ss)) 8t 2 [0; ~T ]: By choosing ss with diam (ss) ! minf"2=8m2T; "=2mg, we obtain that dS (x(t)) ! "=2 on [0; ~T ]. This means that, for " ! R, we have
+
+js(x(t)) \Gamma  x0j ^ jx(t) \Gamma  x0j + dS(x(t)) ! R + " : Due to the definition of ~T , this implies that ~T coincides with T , and hence (31) holds. Since j
+
+x(t) \Gamma  s(x(ti))j ^ "=2 + m diam (ss) ! " t 2 [ti; ti+1] ;
+
+we obtain that x(\Delta ) is an "-solution of (18).
+
+It is easy to derive necessary conditions for approximate invariance of a closed set S. Recall that the multifunction F" was defined in (29).
+
+Lemma 2.8 Let the multifunction F be bounded on bounded sets and the closed set S be approximately weak invariant. Then, for any " ? 0,
+
+hF"(x; i) ^ 0 8 i 2 N PS (x); x 2 S: (34)
+
+15
+
+Proof. Let i 2 N PS (x) for some x 2 S. Choose a sequence "j # 0, let Tj := p"j, and find a sequence of "j-solutions xj(\Delta ) with xj(0) = x such that xj(Tj) + zj 2 S for some sequence zj, jzjj ^ "j. Such sequences exist due to the approximate weak invariance of S. Let vj := (x(Tj) \Gamma  x)=Tj. We substitute y in the characterization (32) of proximal normal by x + Tjvj + zj to obtain
+
+Tjhi; vji ^ M jTj vj + zjj2 + jijT 2j : (35) We show below that, for all j large enough,
+
+vj 2 coF"(x) : (36) Observe that coF"(x) is a convex compact set. Thus, we may assume that vj ! v for some v 2 coF"(x). Dividing (35) by Tj, and taking limit as j goes to 1, we obtain thath
+
+i; vi ^ 0, which implies that hcoF"(x; i) ^ 0). Since
+
+hF" = hcoF" ; (34) is valid. To finish the proof of the Lemma, we need to prove (36). But we have
+
+vj = 1T
+
+j (x(T
+
+j) \Gamma  x) 2 1T
+
+j Z
+
+Tj 0 F (xj(t) + "jB) dt ;
+
+where the integral of the multifunction is understood as the Aumann integral, namely the set of all integrals of measurable selectors of the multifunction (see [3], Theorem 3.13). Since jxj(t) \Gamma  xj ^ mt for all t 2 [0; Tj] and for some constant m, we obtain thatZ
+
+Tj 0 F (xj(s) + "jB)dt ae Z
+
+Tj 0 F (x + (mTj + "j)B)dt ae TjcoF (x + "B) for all j large enough. We have used the fact that for any bounded set A ae RN, and any t,h ? 0, Z
+
+t+h
+
+t Ads ae h coA : (37) Then, (36) follows from the two previous inclusions.
+
+Proof of Lemma 2.5. Let x(\Delta ) be an absolutely continuous function satisfying the relaxed differential inclusion (27) on [0; T ]. Let R denote the radius of an open ball containing x(\Delta ), and let m denote the radius of an open ball containing F (x), for allj
+
+xj ^ R. It is convenient to consider the extended space R \Theta  Rn with the scalar product of vectors ^x = (t; x) and ^y = (o/; y) given by
+
+h^x; ^yi := to/ + hx; yi: Define b
+
+S := f^x = (t; x) : x = x(t); t 2 [0; T ]g
+
+and consider the multifunctionb
+
+F (^x) := ( f1g \Theta  F (x); t 2 [0; T 0); jxj ! R;f0g \Theta  mB; otherwise .
+
+16
+
+It is obvious that the multifunction bF is bounded, and that the absolutely continuous function ^x(\Delta ), ^x(t) = (t; x(t)), is a solution of the relaxed differential inclusion
+
+.^x 2 co bF (^x)
+
+on [0; T ]. This implies that the set bS is approximately weakly invariant with respect to solutions of this relaxed differential inclusion. In accordance with Lemma 2.8, and due to the coincidence of hF and hcoF , we obtain that for any " ? 0,
+
+h bF"=
+
+2(^x; i) = h(cobF )"=2(^x; i) ^ 0 8 i 2 N
+
+Pb S (^x); ^x 2 bS:
+
+We apply Lemma 2.7 to obtain that bS is approximately weakly invariant for the multifunction bF"=2. It follows from the proof of this Lemma that there exists a function ^g so that
+
+^g(^x) 2 bF"=2(^s(^x)) 8 ^x
+
+and such that for any partition ss of [0; T ], diam (ss) small enough, and any ss-trajectory
+
+^x0(\Delta ), ^x0(t) = (t; x0(t)), of the differential equation
+
+.^x = ^g(^x)
+
+with ^x0(0) = (0; x(0)), the following holds:
+
+dbS (^x0(t)) ! "=4m 8 t 2 [0; T ] : Note that such ^x0(\Delta ) is defined on the entire interval [0; T ], due to the boundedness of bF .
+
+Since the function x(\Delta ) is Lipschitz with constant m, we have
+
+jx0(t) \Gamma  x(t)j ^ mino/2[0;T ](jx0(t) \Gamma  x(o/ )j + mjt \Gamma  o/ j) ^ p2mbS(^x0(t))
+
+for t 2 [0; T ]. The last two relations imply (28).
+
+It is obvious that x0(\Delta ) is a ss-trajectory of the differential equation (11), where the function g(t; x) is the second component of ^g(^x). But for any ^x = (t; x),
+
+j^x \Gamma  ^s(^x)j = dbS(^x) ^ jx \Gamma  x(t)j which means that g satisfies (30) and x0(\Delta ) is an "-solution of (18).
+
+The next Lemma establishes the relation between solutions of the differential inclusion (18)-(19) and limits of ssj-trajectories xj(\Delta ) of the perturbed system
+
+.xj = f (xj; k(xj + ej(t)); dj(t)) + wj(t)) (38) with measurement error ej(\Delta ) and external disturbance wj (\Delta ) satisfying
+
+jej(t)j ^ jj; t 2 [0; T ]; jwj(t)j ^ jj a.a. t 2 [0; T ]: (39) This Lemma generalizes the result by Dzhafarov [12] mentioned in the Introduction.
+
+17
+
+Lemma 2.9 The absolutely continuous function x : [0; T ] ! Rn is a solution of the differential inclusion (19) if and only if there exists a sequence of ssj-trajectories xj(\Delta ) of the perturbed system (38) with xj(0) = x(0), diam (ssj) # 0, jj # 0, which converges uniformly to x(\Delta ) on [0; T ].
+
+Proof. Let xj(\Delta ) be a sequence of ssj-trajectories as in the Lemma. It is obvious that all xj(\Delta ), x(\Delta ) lie in a ball of some fixed radius R. We define ffij := diam (ssj) and
+
+m := supfjf (x; k(x0); d)j + 1 j jxj ^ R + 1; jx0j ^ R + 1; d 2 D g: It is clear that all xj(\Delta ) for j large enough, and consequently x(\Delta ), are Lipschitz on [0; T ] with constant m. It follows immediately from the definition of ss-trajectory and (39) that xj(\Delta ) is a solution of the following differential inclusion:
+
+.xj(t) 2 cof (xj(t); k(xj(t) + (jj + mffij)B; D) + jj B: Since xj(\Delta ) converges uniformly to x(\Delta ) on [0; T ], we obtain that for any " ? 0 and for all j large enough, xj(\Delta ) is a solution of the following differential inclusion on [0; T ]:
+
+.xj(t) 2 cof (x(t); k(x(t) + "B); D) + "B: Let us choose arbitrary t 2 [0; T ) and any h ? 0 such that t + h ! T . Then, integrating the previous inclusion, we obtain
+
+xj(t + h) \Gamma  xj(t)
+
+h 2
+
+1 h Z
+
+t+h t cof (x(s); k(x(s) + "B);
+
+D)ds + "B:
+
+By taking a limit as j ! 1, we have for all h small enough, (so that all s's can be replaced by t's,)
+
+x(t + h) \Gamma  x(t)
+
+h 2
+
+1 h Z
+
+t+h t cof (x(t); k(x(t) + 2"B);
+
+D)ds + 2"B:
+
+Let t be a differentiability point of x(\Delta ). Then, taking a limit as h # 0, and using (37), we obtain that x(\Delta ) is a solution of the differential inclusion
+
+.x(t) 2 cof (x(t); k(x(t) + 2"B); D) + 2"B: Since " was arbitrary, the last relation implies that x(t) satisfies the inclusion (18)-(19). This concludes the sufficiency part of the Lemma.
+
+Conversely, let us assume that x(\Delta ) is a solution of the differential inclusion (18)-(19). Then it follows from (19) that for any " ? 0
+
+.x(t) 2 cof (x(t); k(x(t) + "B); D): Let us consider F (x) := f (x; k(x + "B); D) and use Lemma 2.5 to obtain that there exists a function g satisfying, due to (30),
+
+g(t; x) 2 f (x + 2"B; k(x + 3"B); D) 8x 2 x(t) + "B
+
+18
+
+such that for any partition ss of [0; T ] with small enough diameter, for the ss-trajectory x0(\Delta ) with x0(0) = x(0) of the differential equation (11), the relation (28) holds.
+
+Note that we can assume that for any " ! 1 any such ss-trajectory lies in the same open ball of radius fl as x(\Delta ) does. This means that all such x0(\Delta ) can be taken to be Lipschitz with the same constant m on [0; T ]. It follows from the definition of ss-trajectory and g that for any ti 2 ss there exists a vector e(ti) 2 3"B such that
+
+.x0(t) 2 f (x0(ti) + 2"B; k(x0(ti) + e(ti)); D ) t 2 [ti; ti+1]: Let, in addition, diam (ss) ^ "=m. Then, there exists an j(") ? 0 such that any sstrajectory x0(\Delta ) satisfies
+
+.x0(t) 2 f (x0(t); k(x0(ti) + e(ti)); D ) + j(")B a:a: t 2 [ti; ti+1] ; where lim"#0 j(") = 0 because of uniform continuity of the function x ! f (x; u; d) on flB \Theta  k(2flB) \Theta  D . Thus, for any " ? 0 there exists a partition ss and a corresponding x0(\Delta ) satisfying (28) as well as the previous relation.
+
+Now we choose a sequence jj # 0, and for each jj find an " ? 0 and a ss-trajectory x0(\Delta ) as above such that
+
+3" ! jj ; j(") ! jj:
+
+We denote this ss-trajectory by xj(\Delta ). Then we have that
+
+.xj(t) 2 f (xj(t); k(xj(ti) + ej(ti)); D) + jj B a:a: t 2 [ti; ti+1] and kx(\Delta ) \Gamma  xj(\Delta )k ^ jj. Using the measurable selector theorem in [3], Theorem 3.1.1, this implies that there exists a measurable disturbance dj(\Delta ) with values in D , and an external disturbance wj(\Delta ), such that xj(\Delta ) is a ssj-trajectory of (38) for some partition ssj, measurement error ej(\Delta ), and external disturbance wj(\Delta ) satisfying (39), and xj(\Delta ) converges uniformly to x(\Delta ).
+
+Proof of Proposition 2.4. Let us suppose that k is a robustly s-stabilizing feedback and show that the differential inclusion (18)-(19) is strongly asymptotically stable. Take arbitrary positive r ! R, pick r0 ! r such that M (r0) ! r and define T = T (r0; R) for the functions M , T given in Definition 2.1. Let x(\Delta ) be solution of the differential inclusion (18)-(19) defined on some interval [0; T 0] with jx(0)j ^ R. Then by Lemma 2.9 there is a sequence of ssj-trajectories xj(\Delta ) of the perturbed system (38),(39), with diam (ssj) # 0, jj # 0, converging uniformly to x(\Delta ) on [0; T 0]. Since jxj(0)j ^ R, the xj(\Delta ) satisfy relation (24), and we obtain that x(\Delta ) satisfies (24) on [0; T 0] too. This implies that x(\Delta ) can not blow-up at finite time, is defined on the entire [0; +1) and is bounded by M (R). We have that jxj(T )j ^ r0 which implies that jx(T )j ^ r0. We repeat the previous argument for the solution of the differential inclusion starting from the point x(T ) and obtain thatj
+
+x(t)j ^ M (r0) for all t * T . Due to the choice of r0, this implies that x(\Delta ) satisfies (23). This proves that (18)-(19) is strongly asymptotically stable.
+
+Conversely, we assume that (18)-(19) is strongly asymptotically stable. This means that there exist functions T (r; R) and M (R) such that any solution of (18)-(19) does not
+
+19
+
+blow-up and satisfies (23) and (24), and (25) holds. For any positive r ! R choose positive r0 = r0(r) such that M (r0) ! r=2, and define T := T ( r
+
+0
+
+2 ; R), M 0(R) := 2M (R). Let usshow that there exist positive ffi = ~ffi(r; R) and j = ~j(r; R) such that, for any ss-trajectory
+
+x(\Delta ) of the perturbed system (17) with jx(0)j ^ R, diam (ss) ^ ffi, measurement error e(\Delta ), and external disturbance w(\Delta ) satisfying (22), the following holds:
+
+jx(t)j ! M 0(R) 8t 2 [0; T ]; (40)
+
+jx(T )j ^ r0: (41) If (40) is not true, then there exist sequences jj # 0 and Tj ^ T , and ssj-trajectories of (38) with jxj(0)j ^ R, diam (ssj) # 0, and measurement errors and external disturbances satisfying (22) with j = jj, such that
+
+jxj(t)j ! 2M (R) 8t 2 [0; Tj); jxj(Tj)j = 2M (R) : Without loss of generality we may assume that Tj ! ~T and xj(\Delta ) ! x(\Delta ) uniformly on [0; ~T ]. Then, by Lemma 2.9, we have that x(\Delta ) is a solution of the differential inclusion (19) and jx( ~T )j = 2M (R). This contradicts (24). Now let us assume that for some sequences jj # 0 and ssj-trajectories of (38) with jxj(0)j ^ R, diam (ssj) # 0, we have that jxj(T )j ? r0. As above, this implies that there exists a solution x(\Delta ) of the differential inclusion (19) such that jx(T )j * r0 but, in accordance with the choice of T , we havej
+
+x(T )j ^ r
+
+0
+
+2 .
+
+Thus, (40) and (41) are valid for any ss-trajectory with diam (ss) ^ ~ffi(r; R), and having initial state jx(0)j ^ R, and any measurement error and external disturbance of magnitude bounded by ~j(r; R). In particular, this means that such ss-trajectories do not blow-up, and are bounded by M 0(R) on the interval [0; T ].
+
+Define the two functions
+
+ffi(r; R) := min ae~ffi ` 12 r0; r0' ; ~ffi(r0; R)oe ; j(r; R) := min ae~j ` 12 r0; r0' ; ~j(r0; R); 1oe :
+
+It is clear that any ss-trajectory of the perturbed system (17) with diam (ss) ^ ffi(r; R),j x(0)j ^ R, measurement error e(\Delta ), and external disturbance w(\Delta ) bounded by j(r; R) , does not blow-up, and also satisfies (40) for all t 2 [0; T ] and (41). Let T 0 := T ( 12r0; r). Then, because of (41) and definition of the functions ffi, j, we have that x(\Delta ) does not blow-up on the interval [T; T + T 0], and
+
+jx(t)j ^ M (r0) on this interval. Since jx(T + T 0)j ^ r0=2, we can apply the previous arguments, starting from the initial point x(T + T 0). By repeating this argument for the consecutive intervals [t + jT 0; T + (j + 1)T 0] we obtain that x(\Delta ) does not blow-up in finite time, is bounded by M 0(R), and satisfies the uniform attractivity condition (23) due to the choice of r0. Thus, we obtain that the feedback k is robustly stabilizing. (Observe that, from the definition of ~ffi(r; R), we have that jx(t)j ^ 2M (R) on the interval [0; T ], and jx(T )j ^ r. So solutions remain bounded in between sampling times.)
+
+20
+
+3 Proof of the Main Theorem Let us assume that there exists a smooth uniform control Lyapunov function V . If the control set U is compact, then for every x 2 Rn n f0g, the vector k(x) is defined as an arbitrary vector from U satisfying (15), and k(0) can be chosen as an arbitrary fixed vector from U. In case of non-compact U, we can modify this simply by considering the partition Xj ; j = 0; \Sigma 1; : : : of Rn n f0g,
+
+Xj := fx 2 Rn j 2j ^ jxj ! 2j+1g : Then, in accordance with the definition of uclf, for any j there exists a compact set Uj ae U such that
+
+minu2
+
+Uj maxd2D hrV (x); f (x; u; d)i ^ \Gamma W (x) x 2 Xj :
+
+Note that we may assume that Uj ae U0 for all j ! 0. Then k(x) can be chosen as one of minimizing vectors u 2 Uj for x 2 Xj , and k(0) can be an arbitrary fixed vector from U. This function k is bounded on bounded sets, and satisfies (15). To prove that such a k is a robustly stabilizing feedback, we use the following Lemma.
+
+Lemma 3.1 There exist continuous functions ~ffi : Rn n f0g ! R?0 and ~j : Rn n f0g ! R?0 such that, for any partition ss satisfying
+
+ti+1 \Gamma  ti ^ ~ffi(x(ti)); i = 0; 1; : : : ; (42) and any disturbance d(\Delta ), as well as any measurement error and external disturbance satisfying
+
+je(ti)j ^ ~j(x(ti)); jw(t)j ^ ~j(x(ti)); a.a. t 2 [ti; ti+1]; i = 0; 1; : : : ; (43) every ss-trajectory x(\Delta ) of (21) does not blow-up, and satisfies
+
+dV (x(t))
+
+dt ^ \Gamma 
+
+1 2 W (x(t)) a.a. t 2 [ti; ti+1]; i = 0; 1; : : : : (44)
+
+Remark 3.2 The proof will show that, in the case of compact U, the functions ffi; j can be chosen to be the same, independently of which particular feedback k is picked satisfying (15). In the general case, these functions depend only on the growth rate of the feedback k. 2
+
+We proceed with the proof that k is a robustly stabilizing feedback and postpone the proof of this Lemma until the end of this proof.
+
+Let us choose any positive r ! R, and define
+
+VR := maxjyj^R V (y); M (R) := maxfjxj j V (x) ^ VRg:
+
+21
+
+It is easy to see that VR # 0 and M (R) # 0 as R # 0. Thus, M (R) satisfies (25). To show that any ss-trajectory of (17) with jx(0)j ^ R is bounded by M (R) if the sampling rate is high, and the measurement errors and external disturbances are small, we define r0 ? 0 such that M (r0) ! r, and quantities T = T (r; R), ffi = ffi(r; R), and j = j(r; R) as follows:
+
+T (r; R) = VR=W0; ffi(r; R) := min ( minr
+
+0=2^jxj^R ~ffi(x); r0=2m0) ; j(r; R) := minr0=2^jxj^R ~j(x)
+
+where
+
+W0 := minr
+
+0=2^jxj^R W (x)=2; m0 := maxfjf (x; k(x0); d)j + ~j(x) : jx0 \Gamma  xj ^ ~ffi(x); jxj ^ rg
+
+Let x(\Delta ), with jx(0)j ^ R, be a ss-trajectory for the partition ss with diam (ss) ^ ffi, and measurement error and external disturbance satisfying (22). Then it follows from Lemma 3.1 and (44) that
+
+V (x(t)) ^ V (x(0)) \Gamma  W0t ! VR t 2 [0; tN ] ; where N is defined as the least integer such that there exists a t0 2 (tN ; tN+1] satisfying
+
+jx(t0)j ^ r0=2: (45) Due to this inequality, we obtain that jx(t)j is bounded by M (R) on the interval [0; TN ], and tN ! T (otherwise, we would have V (x(T )) ! 0, which would contradict the positive definiteness of V ).
+
+Let t0 be the first moment in [ti; ti+1], i * N , such that the inequality (45) holds. Then we have
+
+V (x(t)) ^ V (x(ti)) \Gamma  W0(t \Gamma  ti); t 2 [ti; t0]
+
+and j
+
+x(t)j ^ jx(t0)j + m0ffi ! r0 t 2 [ti; ti+1]:
+
+This implies that jx(ti)j ! r0 (in particular, this is true for i = N ), jx(t)j is bounded by M (r0) on the interval [ti; ti+1] and x(ti+1) ! r0. Repeating this argument for the consecutive intervals [ti; ti+1], we obtain that jx(t)j ! M (r0) all t * tN . But due to the choice of r0, this means that x(\Delta ) satisfies the uniform attractivity condition (23) and overshoot boundedness condition (24). Thus, k is a robustly stabilizing feedback.
+
+Proof of Lemma 3.1. Let x(\Delta ) be a ss-trajectory
+
+.x(t) = f (x(t); k(x(ti) + e(ti)); d(t)) + w(t) t 2 [ti; ti+1] for some partition ss, disturbance d(\Delta ), and measurement error e(\Delta ), and suppose that for some ffi ? 0, j ? 0,
+
+ti+1 \Gamma  ti ^ ffi; je(ti)j ^ j; jw(t)j ^ j a.a. t 2 [ti; ti+1] : We show that the function V (x(t)) is decreasing on the fixed interval [ti; ti+1] if ffi and j are small enough. Due to the properness of the function V , this will imply that x(\Delta ) does not blow-up on [ti; ti+1] and exists on this entire interval.
+
+22
+
+Indeed, denote x0 := x(ti) + e(ti); then for a.a. t 2 [ti; ti+1]
+
+dV (x(t))
+
+dt = hrV (x(t)); f (x(t); k(x0); d(t)) + w(t)i =
+
+= hrV (x0); f (x0; k(x0); d(t))i + hrV (x(t)) \Gamma  rV (x0); f (x0; k(x0); d(t))i+
+
++hrV (x(t); f (x(t); k(x0); d(t)) \Gamma  f (x0; k(x0); d(t))i + hrV (x(t)); w(t)i: This implies that
+
+dV (x(t)))
+
+dt ^ \Gamma W (x0) + jrV (x(t)) \Gamma  rV (x0)jjf (x0; k(x0); d(t))j+
+
++jrV (x(t))jjf (x(t); k(x0); d(t)) \Gamma  f (x0; k(x0); d(t))j + jrV (x(t))jj: It is clear that by choosing ffi and j small enough we have vectors x0; x(ti); x(t) close to each other which implies that (44) holds on [ti; ti+1]. We need some additional notation to make this statement precise.
+
+Let us choose some point in U, denote it by _0, and define
+
+Uae := fu 2 U j dist (_0; u) ^ aeg: Since k is bounded on bounded sets, there exists a continuous function ae : R*0 ! R?0 such that
+
+k(x) 2 Uae(jxj):
+
+For any arbitrary continuous function g : Rn \Theta  U\Theta  D ! Rl, we define functions mg amd !g characterizing locally the magnitude of jgj and modulus of continuity of g, as follows:
+
+mg(x) := maxfjg(y; u; d)j + 1 j jy \Gamma  xj ^ 1; u 2 Uae(jxj+1); d 2 Dg
+
+!g(x; fl) := maxfjg(x1; u; d) \Gamma  g(x2; u; d)j jj
+
+x1 \Gamma  x2j ^ fl; jxi \Gamma  xj ^ 1; i = 1; 2; u 2 Uae(jxj+1); d 2 D g:
+
+It is easy to verify that these functions are upper semicontinuous at any point x and (x; fl),fl ? 0, respectively as the maximum of continuous functions on compact sets which depend continuously upon x and (x; fl). Note that the function fl ! !g(x; fl) is monotone increasing. Let j ^ 1, ffi ^ ffi0(x(ti)), where
+
+ffi0(x) := 1=mf (x) : Then we have that
+
+jx(t) \Gamma  x(ti)j ^ 1; jx(t) \Gamma  x(ti)j ^ mf (x(ti))ffi on [ti; ti+1]. From now on, we denote x(ti) as x. By using the previous estimates, we obtain that dV (x(t)))
+
+dt ^ \Gamma 
+
+1 2 W (x(t)) + \Omega (x; ffi; j) \Gamma 
+
+1 2 W (x) ;
+
+23
+
+where \Omega (x; ffi; j) denotes the expression
+
+mf (x)!rV (x; mf (x)ffi + j) + mrV (x)!f (x; mf (x)ffi + j)
+
++ mrV (x)j + !W (x; j) + 12 !W (x; mf (x)ffi)
+
+Let us choose ffi = j=mf (x). Then it follows from the above relations that (44) holds for all positive j satisfying the inequality
+
+\Omega 1(x; j) ^ 12 W (x) ; where
+
+\Omega 1(x; j) := \Omega (x; j=mf (x); j):
+
+Let us define the function j1(x) as the maximal value of j ^ 1 satisfying the previous inequality. Now we show that j1 is lower semicontinuous at any point x 6= 0. Since \Omega  is strictly monotone increasing, we have that for any " ? 0
+
+\Omega (x; j1(x) \Gamma  ") ! 12 W (x): Due to the upper semicontinuity of \Omega  and the continuity of W in x, we obtain that for all y near x,
+
+\Omega (y; j1(x) \Gamma  ") ! 12 W (y):
+
+This implies that j1(y) ? j1(x) \Gamma  " for all y near x. Thus, the function j1 is lower semicontinuous, and the function
+
+ffi1(x) := minfffi0(x); j1(x)=mf (x)g is lower semicontinuous too. To finish the proof of the Lemma, it is enough to show that there exist continuous positive functions ~ffi ^ ffi1 and ~j ^ j1. It is obvious that the following functions
+
+~ffi(x) := inf
+
+y2Rn(ffi1(y) + jy \Gamma  xj); ~j(x) := infy2Rn(j1(y) + jy \Gamma  xj)
+
+satisfy these requirements.
+
+Now we can conclude the proof of the main theorem. Assume that there is a robustly stabilizing feedback k. By Proposition 2.4 this implies that the differential inclusion (19) is strongly asymptotically stable. Recall that this differential inclusion satisfies assumption (H). It follows from Theorem 2 that there exists a smooth strong Lyapunov function V which satisfies the infinitesimal decrease condition (26). Note that, for any d 2 D ,
+
+f (x; k(x); d) 2 "
+
+"?0 cof (x; k(x + "B);
+
+D) ;
+
+which implies, due to (26), that
+
+hrV (x); f (x; k(x); d)i ^ \Gamma W (x) 8d 2 D : Since k is bounded on bounded sets, this relation implies that V satisfies (14) and is a robust Lyapunov function for the control system under disturbances (13).
+
+24
+
+4 Examples We study now a simple example of a control system which has the following property: there is no possible s-stabilizing feedback that is robust with respect to measurement errors, but one can find an s-stabilizing feedback that is robust with respect to external disturbances.
+
+The system is given by the following equations:
+
+.x1 = (x21 \Gamma  x22)u .x2 = 2x1x2u : (46)
+
+We show next that the particular feedback
+
+k(x) = ( +1; if x1 * 0\Gamma 1; if x
+
+1 ! 0 (47)
+
+is s-stabilizing feedback and is robust with respect to external disturbances, but it is not robustly s-stabilizing because it fails to be robust with respect to measurement errors. Moreover, we show that no possible s-stabilizing feedback can be robust with respect to such errors. (The nonexistence of robust feedback means, by Theorem 1, that there is no smooth control Lyapunov function for this example, a fact which was already known, cf. [1].)
+
+It is easy to verify that the circles
+
+x21 + (x2 \Gamma  a)2 = a2 are integral manifolds for the trajectories of the unperturbed system (46) and, consequently, for the ss-trajectories of (46) under any feedback as well. Take, in particular, the circle
+
+C := f(x1; x2) j x21 + (x2 \Gamma  1)2 = 1g:
+
+We consider the angle ' 2 [\Gamma ss=2; 3ss=2) between the x1-axis and the radius-vector from (0; 1) to (x1; x2). If (x1; x2) satisfies (46), then ' satisfies the following differential equation:
+
+.' = (1 + sin ')u :
+
+It is clear that if u = \Gamma 1 then the point x moves clockwise on C, and u = +1 then the point moves counterclockwise on C. Let k be any s-stabilizing feedback, and express the restriction of k to the circle C as a function k = k('). This function cannot have constant sign, nor can k(') vanish for any ' 6= \Gamma ss=2, since otherwise k would not be s-stabilizing. We fix any ff 2 (\Gamma ss=2; 3ss=2) so that k(ff) ? 0, and define:
+
+'1 := min f' ^ ff : k('0) ? 0 for all '0 2 ['; ff]g : It is clear that '1 ? \Gamma ss=2 and that in every neighborhood of '1 there exist points where k takes values of opposite signs.
+
+25
+
+Pick any initial point x(0) 2 C whose coordinate in terms of ' is '1. Assume that we measure x with error j. Then, for any partition ss with diameter sufficiently small, the fact that (' \Gamma  j; ' + j) has points with k(') ? 0 as well as points with k(' ! 0 means that there are ss-trajectories of the perturbed system which stay in the interval (' \Gamma  j; ' + j) forever, contradicting s-stabilization.
+
+Next, we show that the feedback (47) does provide, at least, s=stabilization which is robust with respect to external disturbances (w1; w2), i.e., for the system
+
+.x1 = (x21 \Gamma  x22)u + w1 .x2 = 2x1x2u + w2 : (48)
+
+It is convenient for this purpose to introduce polar coordinates (r; ') centered at the origin. In these coordinates, Equation (48) takes the following form:
+
+.r = ur2 cos ' + wr
+
+.' = ur sin ' + 1r w' ; (49)
+
+where
+
+wr = w1 cos ' + w2 sin ' ; w' = \Gamma w1 sin ' + w2 cos ' :
+
+Finally, we introduce
+
+V := r(2 \Gamma  j cos 'j) :
+
+We show that this is a nonsmooth clf for the system, and the feedback k exhibits the decrease of V . Indeed, the derivative of V along an arbitrary ss-trajectory of the system (49) is:
+
+.V = \Gamma r2 hj cos 'j(2 \Gamma  j cos 'j) + sin2 'i + (2 \Gamma  j cos 'j)wr + sign (cos ') sin 'w' :
+
+Since j cos 'j(2 \Gamma  j cos 'j) + sin2 ' * j cos 'j + sin2 * 1, we obtain that
+
+.V ^ \Gamma r2 + 4(jw1j + jw2j) ^ \Gamma r2 + 8jwj ^ \Gamma  14 V 2 + 8jwj :
+
+It now follows from standard estimates with differential inequalities that, under the assumption that the external disturbance is bounded in sup norm, that is, kwk1 ! +1:
+
+r(t) ^ max ( 8r(0)4 + r(0)t ; 8qkwk1) : (50) (Just consider any t so that 18 V 2(x(t)) * kwk1; then .V ^ \Gamma  18 V 2 and therefore
+
+V (r(t); '(t)) ^ 8V (0)8 + V (0)t : The moment T is defined as the first time so that V 2(x(T )) = 8 kwk1, so V 2(x(t)) ^ 8 kwk1 for all t * T . Then the estimate follows from the fact that r ^ V (r; ') ^ 2r.)
+
+To conclude the discussion, we only need to remark that the estimate (50) implies practical semiglobal stability of the system in the presence of external disturbances but the absence of measurement errors.
+
+26
+
+5 Acknowledgements The authors are grateful to Francis H. Clarke and to Andrei I. Subbotin for interesting and fruitful discussions.
+
+References
+
+[1] Z. Artstein, Stabilization with relaxed controls, Nonl. Anal. TMA 7 (1983),
+
+1163-1173.
+
+[2] R.W. Brockett, Asymptotic stability and feedback stabilization, Differential
+
+Geometric Control Theory (Edited by R. W. Brockett, R. S. Millman and H. J. Sussmann). Progress in Mathematics, 27. Birkhauser, Boston, 1983.
+
+[3] F. H. Clarke , Optimization and Nonsmooth Analysis, Wiley-Interscience, New
+
+York, 1983. Third edition as Vol. 5 of Classics in Applied Mathematics, S.I.A.M., Philadelphia, 1990.
+
+[4] F. H. Clarke, Methods of Dynamic and Nonsmooth Optimization. Volume 57 of
+
+CBMS-NSF Regional Conference Series in Applied Mathematics, S.I.A.M., Philadelphia, 1989.
+
+[5] F.H. Clarke ,Yu.S. Ledyaev, R.J. Stern, and P. Wolenski, Nonsmooth
+
+Analysis and Control Theory, Springer-Verlag, New York, 1997.
+
+[6] F.H. Clarke, Yu.S. Ledyaev, R.J. Stern and P. Wolenski, Qualitative
+
+Properties of Trajectories of Control Systems: A Survey, J. Dynamical and Control Systems, 1 (1995), 1-48.
+
+[7] F.H. Clarke, Yu.S. Ledyaev and M. Radulescu, Approximate invariance
+
+and differential inclusions in Hilbert spaces, J. Dynamical & Control Systems, 3 (1997).
+
+[8] Clarke, F.H., Yu.S. Ledyaev, E.D. Sontag, and A.I. Subbotin, Asymptotic stabilization implies feedback stabilization, IEEE Trans. Automat. Control (1997), to appear. (Preliminary version: Asymptotic controllability and feedback stabilization," Proc. Conf. on Information Sciences and Systems (CISS 96), Princeton, NJ, 1996, 1232-1237.)
+
+[9] F.H. Clarke, Yu.S. Ledyaev and R.J. Stern, Asymptotic stability of differential inclusions, J. Diff. Equations, (1997) to be submitted.
+
+[10] J.-M. Coron and L. Rosier, A relation between continuous time-varying and
+
+discontinuous feedback stabilization, J. Math. Systems Estim. Control 4 (1994), 67-84.
+
+[11] K. Deimling, Multivalued Differential Equations, de Gruyter, Berlin, 1992.
+
+27
+
+[12] V.Ya. Dzhafarov, Stability of a guaranteed result in the problem of positional
+
+control. Dokl. Akad. Nauk SSSR 285:27-31 (1985).
+
+[13] A.F. Filippov, Differential equations with discontinuous right-hand side, Matem.
+
+Sbornik 5(1960), 99-127 (in Russian). English trans. in:Amer. Math. Translations 42(1964), 199-231.
+
+[14] A.F. Filippov, Differential Equations with Discontinuous Right-Hand Side, Nauka,
+
+Moscow, 1985 (in Russian). English transl.: Differential Equations with Discontinuous Right-Hand Side Kluwer Academic Publishers Group, Dordrecht, 1988.
+
+[15] R.A. Freeman and P.V. Kokotovic , Inverse optimality in robust stabilization,
+
+SIAM J. Control Optim. 34:1365-1391 (1996).
+
+[16] W. Hahn, Theory and Application of Lyapunov's Direct Method , Springer, Heidelberg, 1959 (in German). English Translation: Theory and Application of Liapunov's Direct Method , Prentice-Hall, Englewood Cliffs, NJ, 1963
+
+[17] O. H'ajek, Discontinuous differential equations. I, II. J. Diff. Equations 32 (1979),
+
+149-170, 171-185.
+
+[18] H. Hermes, Discontinuous vector fields and feedback control. Differential Equations
+
+and Dynamical Systems (Proc. Internat. Sympos., Mayaguez, P.R., 1965), 155-165 Academic Press, New York, 1967.
+
+[19] Krstic, M., I. Kanellakopoulos, and P. Kokotovic, Nonlinear and adaptive control design, John Wiley & Sons, New York, 1995.
+
+[20] N.N. Krasovskii, Certain Problems in Theory of Stability of Motion, Gos. Izdat.
+
+Fiz. -Mat. Lit., Moscow, 1959 (in Russian). English translation: Stability of Motion, Stanford University Press, Stanford, 1963.
+
+[21] A. Isidori, Nonlinear Control Systems, Third Edition, Springer-Verlag, London,
+
+1995.
+
+[22] N.N. Krasovskii and A.I. Subbotin, Positional differential games, Nauka,
+
+Moscow, 1974 [in Russian]. French translation Jeux differentiels, Editions Mir, Moscou, 1979. Revised English translation Game-Theoretical Control Problems, Springer-Verlag, New York, 1988.
+
+[23] J. Kurzweil , On the reversibility of the first theorem of Lyapunov concerning
+
+the stability of motion, Czechoslovak Math. J. 5(80) (1955), 382-398 (in Russian). English translation in: Amer. Math. Soc. Translations, Series 2 , 24 (1956), 19-77.
+
+[24] Yu.S. Ledyaev and E.D. Sontag, A remark on robust stabilization of general asymptotically controllable systems, Proc. Conf. on Information Sciences and Systems (CISS 97), John Hopkins University, Baltimore, March 1997, pp. 246-251.
+
+28
+
+[25] Y. Lin and E.D. Sontag Control-Lyapunov universal formulae for restricted
+
+inputs, Control: Theory and Advanced Technology 10(1995): 1981-2004.
+
+[26] Y. Lin, E.D.Sontag and Y. Wang, A smooth converse Lyapunov theorem for
+
+robust stability. SIAM J. Control Optim., 34 (1996), 124-160.
+
+[27] L. Rosier , Inverse of Lyapunov's second theorem for measurable functions, Proceedings of IFAC-NOLCOS 92 (M. Fliess, Ed.), 655-660.
+
+[28] E.P. Ryan, On Brockett's condition for smooth stabilizability and its necessity in
+
+a context of nonsmooth feedback, SIAM J. Control Optim. 32 (1994) 1597-1604.
+
+[29] E.D. Sontag, A Lyapunov-like characterization of asymptotic controllability,
+
+SIAM J. Control Optim.21 (1983), 462-471.
+
+[30] E.D. Sontag, Mathematical Control Theory. Deterministic Finite-Dimensional
+
+Systems, Springer-Verlag, New York, 1990.
+
+[31] E.D. Sontag and H.J. Sussmann, Nonsmooth Control Lyapunov Functions,
+
+Proceedings of IEEE Conf. Decision and Control, New Orleans, Dec. 1995 , IEEE Publications, 1995, pp. 2799-2805.
+
+29</pre>
+</body>
+</html>

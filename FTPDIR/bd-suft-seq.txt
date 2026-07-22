@@ -1,0 +1,785 @@
+OCR of paper; see pdf file bd-suft-seq.pdf.pdf for viewable/printable page
+
+
+
+670 IEEE TRANSACTIONS ON INFORMATION THEORY, VOL. IT-31, No. 5, SEPTEMBER 1985
+Dynamic Realizations of
+Sufficient Sequences
+BRADLEY W. DICKINSON, SENIOR MEMBER, IEEE, AND EDUARDO D. SONTAG
+Abstract- Let (Ul, U2, be a sequence of observed random variables
+and (T1(U1), T2(Ul, U2), be a corresponding sequence of sufficient
+statistics (a sufficient sequence). Under certain regularity conditions, the
+sufficient sequence defines the input/output map of a time-varying,
+discrete-time nonlinear system. This system provides a recursive way of
+updating the sufficient statistic as new observations are made. Conditions
+are provided assuring that such a system evolves in a state space of minimal
+dimension. Several examples are provided to illustrate how this notion of
+dimensional minimality is related to other properties of sufficient se-
+quences. The results can be used to verify the form of the minimum
+dimension (discrete-time) nonlinear filter associated with the autoregres-
+sive parameter estimation problem.
+1. INTRODUCTION
+NTARIOUS inference problems in time series analysis
+(I. e., discrete-time signal processing) involve growing
+subsequences of an infinite sequence of random variables,
+say (Ul, U2,. - -, UN, - - - ). The theory of sufficient statistics
+has been applied to this sort of situation in the following
+way. Let U(k ), k ~! I be the sample space for the first k
+random variables, (Ul, U2, - - -, Qk), and let F (') designate
+the Borel sigma field on V). We suppose that p (k) is a
+family of probability measures on (Q(k ), F (k) ) and that for
+each k ~!! I the family p(k ) admits a sufficient statistic, say
+Tk(Ul, U2,. - -, UJ The sequence (Ti, T2,.. -, TA, .. . ) is
+called a sufficient sequence. Tk summarizes all of the infor-
+mation contained in the first k observations in the sense
+that statistical inferences concerning p(k ) based on
+(Ul, - - -, Uk) can be no better than ones based on Tk.
+In the applications that provide the motivation for this
+work certain simplifying assumptions may be added to this
+general framework. We assume that each random variable
+U, takes its values in R' and that the sufficient sequence
+(T,, T, - - - ) obeys the following regularity conditions.
+Condition 1: Tk takes values in R d for some fixed d,
+independent of k.
+Condition 2: The functions Tk: R k, - R d are continu-
+ously differentiable.
+A final assumption concerns the sequential structure of
+the sufficient sequence. We are concerned with statistical
+models where recursive inference techniques may be ex-
+ploited, so we introduce a dynamic realizability assumption
+to be made precise later. Informally, we assume that the
+sufficient sequence may be generated as the output of a
+discrete-time system whose input is the sequence of ob-
+served random variables. If its state vector is finite dimen-
+sional, such a system provides a practical means of com-
+puting the sufficient statistic from the observations,
+eliminating the need to store a growing observation se-
+quence by exploiting a recursive implementation. The pur-
+pose of this paper is to present a suitable formulation of
+realizability and then to characterize minimal dimension
+systems associated with realizable sufficient sequences. The
+tools employed are those of mathematical system theory.
+The results will be illustrated by examples, and the notion
+of realizability will be related to a property of sequences of
+statistics known as transitivity, introduced by Bahadur [1].
+We will also describe a connection with nonlinear filtering.
+11. A MOTIVATING ExAmPLE
+Before presenting out technical results, we will introduce
+an example that led to our study. We consider the problem
+of parameter estimation for a pth-order autoregressive
+process. Let (U,, U2, - - - ) be successive random variables
+from the stationary, zero-mean, Gaussian process that
+satisfies the stochastic difference equation
+U, + a1U,_1 + +apU, W
+where ( Wt ) is a sequence of independent, identically dis-
+tributed Gaussian random variables with mean 0 and
+Variance a'. The parameters 0 = (a,, a 2,' - -, ap, c, 2) be-
+long to the open set E) C_ RP" defined by a > 0 and the
+requirement that the polynomial I + a,X + . . . + a PXP has
+all of its zeros outside the unit circle in the complex
+X-plane.
+The joint density function for (U,, - - -, Qk) may be writ-
+ten, for k > 2p, in the form [21
+P( U1, - - ' , Ukl'O) Ck(15) exp ( -ASkA*12 02), (2)
+Manuscript received August 20, 1984; revised October 19, 1984. This
+work was supported by the National Science Foundation under Grants
+ECS82-05772 and ECS84-OWO, and by the US Air Force under Grants
+AFOSR-84-0381 and AFOSR-80-0196.
+B. W. Dickinson is with the Department of Electrical Engineering,
+Princeton University, Princeton, NJ 08544, USA.
+E. D. Sontag is with the Department of Mathematics, Rutgers Univer-
+sity, New Brunswick, NJ 08903, USA.
+where the superscript " indicates transposition, Ck(O) is
+a normalizing constant, independent Of (Ul,- - -, UJ A =
+(1, a,, - - -, ap), and the (p + 1) by (p + 1) matrix Sk has
+elements (SA,j, 0 :5 i, j :5 p, given by
+k-r-j
+(SA,j ~ E U1+iUr+j, (3)
+t-1
+0018-9448/85/0900-0670$01.00 (D1985 IEEE
+<<PAGE-DIVIDER>>
+DICKINSON AND SONTAG: REALIZATIONS OF SUFFICIENT SEQUENCES
+It follows from the Fisher-Neyman factorization theo-
+rem [11, [3] that the statistic composed of the (p + 2)
+( p + 1)/2 distinct elements of the symmetric matrix S, is
+sufficient. This statistic is also necessary in the sense of
+Dynkin [41, as noted by Arato 151; hence it is a minimal
+sufficient statistic, meaning that it is a function of every
+other sufficient statistic. (We refer the reader to Zacks [61
+and Lehmann [7] for a discussion of these concepts.)
+The structure of the matrix Sk may be exploited to
+simplify this statistic [51, [81, [9]. From (3) we have
+Sk K (Sk I,j - I - U,tlj - Uk + I -Uk I 1 (4)
+for I :!~ I, j p. Thus the statistic composed of the first
+row of Sk together with the (p + I)p/2 quantities (UU) +
+Uk+I -,Uk+l -,), 1 :!~ " i :!~ p, is also (nTinimal) sufficient.
+For later use, we give this statistic explicitly:
+Tk = ((Sk)1,01 ... I (Sk)O,pl
+U'2 + Uk2' UIU2 + UkUk-11. -
+X U, U, + UkUk +I_ P, U22 + U 2
+k-1,
+UIU3 + Uk-A-21 ...
+2 2
+U
++ Uk + I-P). (5)
+P
+However, it is also clear that the statistic composed of the
+first row Of Sk and the end segments of the observation
+sequence,
+Tk' ~ ((SJ1,1,- (Sk)0,p,UI,* Up, Uk,' Uk-,',)
+(6)
+is also sufficient. Notice that Tk' is not minimal; for
+example, it is not a function of Tk.
+The importance of the statistic T~ arises from its use in
+constructing a system whose output is the sufficient se-
+quence (T, T2, when its input is the sequence
+(U, U2, - - - )_ (Tk and Tk' are defined in the following way
+for k :!~ 2p. For p + 1 :!~ k :!~ 2p, (3), (5), and (6) are used
+directly. For 1 i~ k :!~ p, (5) and (6) are used with the
+understanding that variables with subscripts outside the
+range of I to k are set equal to zero, and (3) is used with
+the understanding that sums whose upper limits are non-
+positive are equated to zero.) The desired system is easily
+constructed by choosing a state vector Xk = Tk'- I and
+using (3) and (5) to obtain recursive equations of the form
+Xk + I ~ Pk (Xk I Uk), k ~: 1, x, = 0 (7a)
+Tk = qk (Xk, Uk) (7b)
+We will return to this example after presenting our main
+result in order to show that no well-behaved system having
+smaller state dimension can duplicate the input/output
+mapping of the system of (7).
+111. SOME SYSTEm THEORY
+In this section we will develop the system-theoretic re-
+sults that will enable us to make the discussion in the
+introductory section precise. We start with some defini-
+671
+tions. Throughout we assume that the space of input values
+U and the space of output values Y are fixed finite-dimen-
+sional differentiable manifolds.
+Definition 1: A (finite-dimensional) system I is a tuple
+(X,(Pk)k.1,(qk1k>I10j, where: X is a finite-dimen-
+sional differentiable manifold (of states); 0, the initial
+state, is an element of X; Pk: X X U - X is a continu-
+ously differentiable map for all k ~!! 1; and qk: X X U - y
+is a continuously differentiable map for all k ~: 1.
+This definition specifies precisely the nature of the non-
+linear, time-varying, discrete-tIme systems under considera-
+tion. The state equations are given by
+= Pk(Xk,Uk), k ~: 1, x, = 0 (8a)
+Xk+1
+Yk = qk(Xk,Uk)- (8b)
+Some related maps will also be useful. Let P,.j: X X UJ
+X denote the j-step state transition map for the system
+starting in state x at time t. This is defined for j 2: 0 by
+P"~(X) = X, (9a)
+P'.i(X' U) = P'(X' U), (9b)
+Pt,)+ ,(x, ui,* u., 1) ~ P,+j(P,,)(x, UI" 14j), Uj+ 1),
+j ~~! 1. (9c)
+The corresponding output map is Q,,,: X X U1 - Y, de-
+fined for j I by
+Q,,,(x, u1, uj) = qt+j- j(Pt'j- I(X' U1, U-1- I), 14j),
+j ~!! 1. (10)
+The family of maps, MU11- _', Uk) = Q1,k(01 Ul,'* *, Uk),
+constitutes an external, or input/output, description of the
+system.
+Definition 2: The inpulloutput map of the system E,
+denoted fl, is the family of continuously differentiable
+maps f MUD ' ' 'I UJ k ~!! 1). We say that 2 is a realiza-
+tion of the input/output map fl.
+We now introduce our definition of realizability for
+sufficient sequences, using the system theoretic concepts
+defined previously.
+Definition 3: A sufficient sequence (TI, T2, - is real-
+izable if the functions (Tl(ul), T2(u,, U2), Comprise
+the input/output map of some system 2.
+If a sufficient sequence is realizable, then there is a
+finite-dimensional recursive procedure for computing the
+sufficient statistic as data are sequentially processed. In
+cases where a fixed, finite-dimensional sufficient statistic
+can be found, it is usually easy to see how the sufficient
+sequence can be realized as the input/output map of some
+system; recall the example already described. There is no
+completely general realization theory for the class of sys-
+tems described above yet available in the systems litera-
+ture. However, there are results that seem adequate for
+applications like those discussed in this paper. If the in-
+put/output map takes the following homogeneous form,
+<<PAGE-DIVIDER>>
+672
+given here for scalar inputs
+k A k
+Yk = Y_ Y_ - - - Y_ h _(k, i, - - ij
+11 12
+IEEE TRANSACTIONS ON INFORMATION THEORY, VOL. IT-31, NO. 5, SEPTEMBER 1985
+g~,(U,1) ... g,,(u,_)
+(or takes a polynomial form, a linear combination of
+homogeneous terms of various orders), then a certain sep-
+arable structure of the so-called Volterra kernel h, will
+assure existence of a state-affine realization, which takes
+the form
+Xk,l Y_ A,(k)xg.,(Uk) + Y_ b,(k)g~'JUk)
+1=0
+(12a)
+Yk Y_ c,(k)x,g.',(Uk) + dJk)g`"(u,). (12b)
+1=0
+Conditions assuring state-affine realizability of input/out-
+put maps described by Volterra series have been given in
+various forms (see [101-[121 for stationary series and [13]
+for the time-varying case). Linear analytic realizability of
+stationary input/output maps has been discussed in [14].
+Our goal is to provide conditions assuring that a given
+system E is the most succinct realization of its input/out-
+put map, in the sense that its state space X has minimum
+dimension. This is a standard problem in system theory,
+although no result in the literature is directly applicable to
+the class of systems defined above. (Specifically, we need a
+result that applies to time-varying, nonlinear systems).
+Therefore, we formulate conditions and prove the ap-
+propriate theorem here. Roughly speaking, a state space of
+minimum dimension is one consisting of only "reachable"
+and "observable" states. These fundamental system-theo-
+retic concepts must be suitably framed for the class of
+systems under consideration. For a system E the image of
+the map Pi, I- J0, ul, * , *, uj- 1): UJ - 1 ~ X, denoted by
+REACH,(E), is called the reachable set at time j. Observa-
+bility, which reflects how the state space X and the output
+space Y are coupled, will be expressed in terms the Jacobian
+of the map Q-1,W2, ~,: X --,, yr, sending x to the vector
+(Q1,1" Q1. I evaluated at the points (X, W I (XI Wr),
+respectively. Aere the fixed input sequences w, have lengths
+1,, i.e., w, E-= U1,. We make a final definition to combine the
+appropriate reachability and observability conditions.
+Definition 4: A system E is weakly canonical if and only
+if there exists an element xo G: X and a time I, > 1, such
+that: (1) x0 belongs to the interior Of REACH,,(E); (2) there
+exists an integer r and input sequences col 'or
+U',, such that the Jacobian of the map Q',,* ~', has
+rank n = dim X at xo. to
+Our main result states that a weakly canonical system
+has minimal state dimension. As we will see, this is a useful
+result because it allows this conclusion to be based on
+straightforward Jacobian calculations,
+Theorem 1: Let Y, be a weakly canonical realization of
+the input/output map f=fy. Then dimX is minimal
+among all possible realizations of fl.
+Proof.- We must establish that if E' is any system with
+= f, and if dim E' = n', then n' ~! n. By assumption, E
+is weakly canonical, so there exist x0, to, r and input
+sequences W1, , , " w,, as above. Let Q denote the map
+Q~--,~,. The observability assumption implies that xo is a
+regular point of Q, so Q is an immersion when restricted to
+a small enough neighborhood of xo. Thus, locally Q is
+equivalent to a standard injection R" - R' X R'. This
+implies the existence of an open neighborhood V of x, an
+open subset W of Y', and a continuously differentiable
+map R: W - V, such that Ro Q restricts to the identity
+map on V. Since xo is in the interior of the reachable set at
+time to, we may assume (taking a smaller U if necessary)
+that U is included in REACH,o(E).
+Now let Q' be the map Q'1, -,', obtained for the system
+10
+I' when using the same inputs w w,, as above. Let V'
+be the inverse image of W under Q'; this is open (in X')
+by continuity of Q'. Denote by T the composition of maps
+R - Q': V' - V. Since V' is a manifold of dimension n', V
+of dimension n, and T is smooth, it will be enough to show
+that T is onto in order to conclude that n' ~!: n.
+Pick any x in V. We need to find an x' in V' with
+Tx' = x. Since x is in REACH,., there is some input w of
+length to - I with x = Pl,,o -1(0,w). Consider the state
+x' = I
+P"'o- J0, w), obtained by applying the same input to
+the system E'. We first claim that x' is in V' For any I,
+:!~ r,
+x', w, Q
+1 -1(0, wJ J0,
+(13)
+where the colon denotes concatenation of the input strings,
+and the second equality follows because From the
+definition of w the last expression equals (x, wi). Thus
+Q'(x') = Q(x), so in particular Q'(x') is in Q(V), and
+hence in W, and we have verified the claim that x' is in V'.
+Then T(x') = R - Q'(x') = R - Q(x) = x, and the proof is
+complete.
+IV. APPLICATIONS
+The simplest application of the theorem proved above
+is to a sequence of independent random variables,
+(Ul, U2, - - - ), identically distributed according to an n-
+parameter exponential family. The form of the common
+density function is
+n
+P(ul,01,- h(u)c(,,. 4.) exp - Y_ 4igi(u).
+(14)
+We assume that the parameter space contains n linearly
+independent vectors, that the density function is strictly
+positive, and that the functions gi(u) are continuously
+differentiable. Then
+E giw),-
+Ti ( UI, U.) ~~g,,(Uj)~ (15)
+i-1
+is a sufficient statistic, and (TI, T2, is a sufficient
+sequence. Choosing as a state vector X k Tk - 1, we obtain
+<<PAGE-DIVIDER>>
+DICKINSON AND SONTAG: REALIZATIONS OF SUFFICIENT SEQUENCES
+the obvious corresponding realization
+XA+ I ~ Xk +(91(Uk), ... I 9JUJ) (16a)
+Yk ~ Xk + (91(Uk),- 9JUM- (I 6b)
+Notice that this realization is time-invariant; the families
+P k (X, u)) and ( qk (XI u) I do not depend on k.
+We suppose that the Jacoblan of the functions
+(gl(ul),- - -, g,(u,)) has rank n at some point (uo ... 0)
+I , , un
+E=- R'. This is the Jacoblan of the map P,,,(O, u,,. - .1 Un
+0
+and by the implicit function theorem, (u1,. uo) is in the
+interior of the image of this map, REACH., nJI). The
+o ibservability condition is trivially satisfied by choosing a
+single input u of length I and noting that for every t ~!~ 1,
+Q,,,(x, u) = x + (gl(u),- - .. g,(u)), whose Jacobian is the
+identity matrix. Thus, the system is weakly canonical and
+so has minimum dimension by Theorem 1.
+This example is universal, since for independent, identi-
+cally distributed random variables with a marginal density
+function satisfying certain regularity properties, a fixed-
+d Iimension sufficient statistic will exist only when the den-
+s ty belongs to an exponential family [41, [151-[18]. The
+sufficient statistic for such a class is minimal sufficient, and
+under the Jacobian condition described above, it may be
+used as the state vector in a minimal-dimension realization
+of the sufficient sequence.
+We now complete the example introduced earlier con-
+cerning autoregressive processes to show that these two
+properties do not always coincide when we have a sequence
+of dependent random variables. We first describe the reali-
+zation in (7) in greater detail so that Theorem I may be
+applied. The state at time k > 2p, Xk (=- R 3p + 1, takes the
+form
+Xk ~ (ao,, ap, #I, - - -yi, - - -, -y), (17)
+where
+-1-1
+k
+a, = utut+i' 0 :!~ i P (18a)
+18, = U, :5 j P (I 8b)
+'yj = Uk-j, j P. (I 8c)
+The state equations will be written with superscript " + "
+denoting time instant k + 1. From (3), (4), and (6)
+a + ao + U2,
+0 a al + Uk'yl -,a+ = a _yp
+k I p p + U k
+(19a)
+4 +
+fip fip (19b)
++
+_y I' Y21. - -, ' (19c)
+^yp - 'yp I Tp = Uk-
+The reachability condition will now be verified. Let
+to = 3p + 2. The map PI, 3p I I sends (u,, U3p + 1) to the
+point
+3p~l 3p 2p+l
+2, UJUJ+ 1', UtUt+
+u P~ u1"
+t I
+UP, u3p+l,, U2p+2~ I
+673
+and by the implicit function theorem, it suffices to show
+that the Jacobian of this map has rank 3p + I for some
+(u1,- 3p + 0, taking x. as the image of this point under
+p1,3p+l, The Jacoblan is easily calculated, and the task
+reduces to showing that the following (square) matrix has
+rank p + I for some(u,,- ..'~3p+l):
+uP+l uP+2 u2p+ I
+u P+ uP+2 up+I + up+3
+ul +U2p+l U2 + U2p+2 ... Up+] + U3p+1 -
+(20)
+It is sufficient to show that the determinant of A, a
+polynomial, is not identically zero; this is easily done by
+noting that the variable up+, appears only in the diagonal
+entries of A and that its determinant thus takes the form
+UIP+l plus lower degree terms in u
+p+I P+ 1,
+To check observability note that the output maps into
+t e space Y = R(P - 2)(p + 1)/2 From (5) the coordinates of
+Yk are given by
+2 + U,-Yp, # 2 + U 2
+(ao + uk ,a, + Uk'yl, a p I k
+-81 #2 + U Jl Ifip + U k'yp - 1,
+.82 +y 2, 2 -Y 2
+2 192 P3 + 7172, Bp + p-,). (21)
+As before, let to = 3p + 2. Choose two input sequences of
+length 1: w, =0 and CJ2 = 1. Then consider only the
+following 3p + I coordinates of the map Q'I,'2:
+( ao, al,, ap, p 2, p 2 + _y 2, "8 2 + 2 10
+I I 1 1 'y; and (a, + -y,,
+a2 + 721 ap + -yp 1. The first group corresponds to w,
+and the second to cj2. Writing these coordinates as a
+column vector and computing the Jacobian (with respect to
+a0'. ap, fill ... I P, 1 71 1 - - -, -yp) gives
+0 01,
+J= ~01 B G (22)
+S 0 1
+where 0 denotes a matrix of all zeros, I is an identity
+matrix of appropriate size, and B is a diagonal matrix
+having Pi as its ith diagonal entry. The exact forms of
+matrices G and S are not important since it is clear that
+the matrix J has rank 3p + I if and only if fli * 0 for
+1 :!!:- i :!~ p, or, equivalently, u, * 0, 1 :!~ i ~~ p. This condi-
+tion is easily incorporated in the construction of x as a
+0
+point in the image of the map Pl,3p+,, as above. This
+completes our verification that the system in (7), defined
+by (17)-(19), is weakly canonical and hence, by our theo-
+rem, it has a state space of minimum dimension.
+V. REALIZABILITY AND TRANSITIVITY
+In sequential decision problems involving the models
+(Q(k ), F (k), p(k)), k ~!: 1, both a stopping rule and an
+action rule must be determined for each k ~~ 1. Bahadur [11
+showed that it suffices to consider sequential decision rules
+based only on a sequence of statistics, provided that the
+sequence is both sufficient and transitive. A sequence
+(HJUI), H2(U,, U2), - .. ), where Hk is F (k )-measurable
+for each k, is called transitive if for every k ~! I and for
+<<PAGE-DIVIDER>>
+674
+IELE TRANSACTIONS ON INFORMATION THEORY, VOL. IT-31, No. 5, SEPTEMBER 1995
+any function 4, on Ul' 1, P ")-integrable, and measurable
+with respect to the sigma field F,',') induced by 11,
+E, (Ul, U4 ) IF'
+= E, ~ (U1, - - -, U, FIk - 1) a.s. I P 1, (23)
+for all P (=- P(k). In words the statistic H, depends on the
+past, Ul' 1), only through H,-,. As illustrated by our
+autoregressive process example, a sufficient sequence con-
+sisting of minimal sufficient statistics in generally not
+transitive. For instance, the component Ult~, + U4.U, 1 of
+T~ from (5) does not depend on U only through T,
+When a realization for a sufficient sequence is given in
+the form of (7), a realizable, sufficient sequence is easily
+obtained by appending the observations (11, ~ (x,, U,),
+H, = (x,, U,), - - - ); this sequence will be transitive if
+E,( U, IF" - " ) ~ E,f UkIF,11'-') ). a-s- [P]. This condition
+ensures that the realization incorporates the innovations
+representation [19] for the process ( U,, i ~~! I I in the sense
+that the state must contain all past information in the
+process needed to compute the minimum mean-square
+error ' one-step prediction of U, given any para-
+metric model. For example, EptU,IF(' '~J -_
+Ep(UAIL)k I,. - -, U, P I, a.s. [P I for a pth-order autore-
+gressive process, and the transitivity condition holds in this
+case (Cf. (18c)).
+This discussion suggests an example showing that not all
+finite-dimensional sufficient sequences are realizable by a
+finite-dimensional systems. Let (U, i ~I 1) be a sequence of
+observations from a purely nondeterministic, stationary,
+Gaussian random process with unknown mean 1i and
+known, smooth spectral density function. The joint density
+function for (U1, U,,) takes the form
+p( u,.. u,,) = h( u,,. u,,)c(u)
+exp - ttig,(u,- uJ) . (24)
+where the sufficient statistic is given explicitly by
+g,,(u,,. u.) = (u,,- u,,)R-'X,,, (25)
+where R,, is the covariance matrix of (Ul, - U.) and X,,
+denotes the n-vector whose entries are all 1.
+For analytical purposes, it is convenient to use the
+innovations representation of the process t W, i ~! 11,
+where w, ~ L~ - ju, i ~~! 1. Specifically, for each n > I the
+sequence (W, Wn) may be represented as an invertible
+linear transformation of the first n terms of a process of
+independent Gaussian random variables, say ( v, i ~!! 1).
+The innovations sequence is obtained by applying the
+C,
+Gram-Schmidt procedure to the original sequence t W,
+The form of the representation is [19], [201:
+Pi ~ W, (26a)
+W I > 1.
+P = W, + a', -J1 (26b)
+It follows that the innovations sequence is obtained as the
+output sequence of a time-varying invertible linear system
+whose input sequence is f Wj). The coefficients in (26b)
+and the variances of the P, random variables are determined
+by the projection theorem of linear least-squares estimation
+theory and may be efficiently computed from the covari-
+ance sequence using the Levinson-Durin recursions (see
+[21] for further discussion).
+Let ( _P, I ~~ 1) be the sequence of random variables
+obtained from (26) when the input sequence is changed
+from ( W,) to f UJ. Using some simple algebra as in [91, it
+may be shown that the sufficient statistic 9n of (25) is given
+by
+P
+Oull ... I UJ (27)
+The yi coefficients are all positive and may be given
+explicitly in terms of the partial correlation sequence of the
+process; again see [9]. Here it suffices to note that the
+computation required to update the sufficient statistic in a
+recursive way as more observations are made is equivalent
+to computation of the output of a system that generates the
+process The system is the innovations representation
+for t WJ, a process having the same spectral density as the
+process I U, ). When this spectral density function does not
+determine a finite-dimensional innovations representation,
+the sufficient sequence ( g.) does not admit a finite-dimen-
+sional realization. A necessary condition for the existence
+of a finite-dimensional system (linear or nonlinear) that
+provides an innovations representation is that the process
+have a rational spectral density function [22]. A particular
+example arises from the choice of the covariance function
+E((Uk - )u)(U, - ~t)j = pl'-J", for p satisfying -I <
+P < 1.
+Lauritzen [23] has introduced another notion, related to
+transitivity, in order to study prediction problems in sto-
+chastic processes whose probabilistic structure is unknown.
+A sufficient sequence (G1(U,),G2(U11U2)1 ... ) is called
+totally sufficient if for every k ~!! I the (marginal) sigma
+field induced by U., say a(UJ, and F (k -') are condition-
+ally independent, given F,~`), the sigma field induced by
+Gk-1, for all pEp(k~. This condition implies that
+U, I Flk - 1)
+E,(UkIF Ik-11) = E,f ), a.s. [P], which is the
+condition introduced above to obtain transitivity of the
+Sufficient sequence of augmented states from a realization.
+These ideas are illustrated in the following example, due
+to D. Basu [241, where it turns out to be necessary to
+increase the dimension of a transitive sufficient sequence in
+order to achieve totality; as a result, the di mension of the
+corresponding realization must also increase. Let U, and
+U2 be independent, identically distributed Gaussian ran-
+dom variables with unknown mean ju and variance 1. For
+j > 2 let U = U2 + W, where the (WJ a sequence of
+-1 1
+independent, identically distributed Gaussian random vari-
+ables with mean 0 and variance 1. The sequence (U, U, +
+U2, U, + U2, is a transitive sufficient sequence with an
+obvious I-dimensional realization: X1 = 0; X2 ~ Ul; X1
+X2 + U2; and Xk-1 = Xk for k > 3. The sequence is not
+totally sufficient because U, is not independent of
+(Ul, U given U, + U2 for j > 2. However, U. is
+i
+independent of (U,, U - 1) given U2. Hence the se-
+i
+quence ((U,, 0), (U1, U2), (U1, U2), is totally sufficient
+<<PAGE-DIVIDER>>
+DICKINSON AND SONTAG: REALIZATIONS OF SUFFICIENT SEQUENCES
+675
+(and transitive). This sequence requires a realization of rule required for compatability:
+dimension 2. Viewed another way, the one-dimensional Pk1101Yk1I) = C0)P(Uk1I1Yk1 0)Pk01Yk)1
+realization of the original sufficient sequence does not
+incorporate the innovations representation of the U, pro-
+cess, because E(UIF (k - 1) ) = U2 =0 UI+ U2=Xk for
+k > 2. After expanding the state space to include U2, a
+totally sufficient sequence is obtained.
+VI. REALIZABILITY AND DISCRETE-TiME
+NONLINEAR FILTERING THEORY
+Our autoregressive process example is also a convenient
+setting to illustrate a connection with (discrete-time) non-
+finearfiltering theory, by which we mean the theory of state
+estimation in nonlinear stochastic dynamical systems of the
+form
+~kll =Mk"k) (28a)
+'qk = h(~k'Wk), (28b)
+where ~I and Wk, k ~!! 1, are random variables with known
+statistics. It is desired to find a recursion for computing the
+sequence of conditional densities Wk + 11'qI1 - - -, 71k), k ~! 1.
+The autoregressive process of (1) is transformed into this
+framework by adopting a Bayesian viewpoint and regard-
+ing the parameter vector s as a random quantity. Then by
+choosing the 2p + I dimensional state vector ~k =
+(Uk - 1, Uk -,, 4), and observations 'qk = Uk, state equa-
+tions are found by using (1) and the time invariance of 4.
+Explicitly,
+Z 01 + 71k
+~k+l = ~k 10 1 el (29a)
+% = -15(Uk-11 ... I Uk -,, 0) * + Wk, (29b)
+where 0 denotes a matrix of zeros of appropriate dimen-
+sions, I is the (p + I)-dimensional identity matrix, e1 is
+the first unit vector of dimension 2p + 1, and the matrix
+Z = (z, j), I :!~ i, p is given by zi, 8, , 1 _J, where 8
+is the Kronecker symbol.
+Note that after p observations are made, i.e., k ~~! p, the
+filter need generate only the posterior density function for
+0, namely p (41 ul, - - -1 UJI or by sufficiency of the statistic
+Tk from (5) p (0 1 Tk (u1, - - - I Uk))- We can give a useful form
+for this family of density functions for 0 by employing
+natural conjugate density functions [251 or any reproducing
+family of densities [261 corresponding to the conditional
+density function (2). Specifically, we rewrite (2) using the
+functions comprising the sufficient statistic Tk:
+P(Ul" UkIO ~ 9k(Tk(Ui,' U01 (30)
+Let Yk be the value of Tk obtained from observations of
+Wi, - - -, Uk) as the output of the system (7). A family Of
+densities for 0 is obtained by taking
+Pk (51Y) = 9k (Y' 0 9k (y, -p) dp, (31)
+for all y in the image of the map Tk(.). By the reproducing
+property of this family [26], t PkOIYO) is a sequence of
+density functions obeying the sequential form of Bayes'
+(32)
+where c(*) is the appropriate normalizing constant. Thus,
+the system (7) Is naturally regarded as a nonlinear filter
+generating the conditional density functions for the state of
+the system (29). From our previous analysis we may con-
+clude that the minimum-dimension nonlinear filter associ-
+ated with the autoregressive parameter estimation problem
+has dimension 3p + 1. For applications of reproducing
+densities to sequential decision problems involving simulta-
+neous estimation and hypothesis testing, see the work of
+Birdsall and Gobien [26], who clearly recognized the im-
+portance of realizable sufficient sequences.
+Our results on n-tinimum-dimension realizations for suf-
+ficient sequences may be applied to a more general class of
+discrete-time nonlinear filtering problems that includes the
+autoregressive parameter estimation problem. Suppose that
+there is a underlying Markovian state process and that the
+observation at each instant is conditionally independent of
+past states and observations given the present state. Then
+under suitable regularity conditions, there exists a finite-
+dimensional transitive sufficient sequence for the condi-
+tional distribution of the state given the observation se-
+quence, if and only if this distribution and the conditional
+distribution of an observation given the state both have the
+exponential family form [27], [281. (This is a significant
+generalization of the situation in the case of independent
+observations mentioned above in connection with the first
+example of Section IV.) Sawitzki [29] considered the con-
+structIon of realizations using a transitive sufficient se-
+quence as a state, but he did not attempt to study any of
+the associated system theoretic issues such as minimum
+dimensionality.
+VII. CONCLUDING REmARKs
+As a final point, we will compare our result with the
+local results on minimum-dimension sufficient statistics of
+Barankin and Katz [301, [31]. Thanks to our assumptions
+about the regularity of the functions that comprise a suffi-
+cient sequence, realizability is divorced from probabilistic
+considerations. However, various probabilistic properties
+of the state space of a stochastic system of the form (7)
+may be investigated. A particular example from [30], [311
+(see also [6]) illustrates the character of our notion of
+system dimension. Consider the bivariate random variables
+Uk = W, U")k belonging to the 2-parameter exponential
+family of density functions
+f(U" U"11~1 I t$2) = C01 I t~2) exp - ( 419) (u) + 1~'(P (U")),
+(33)
+where the parameters 0, and t$2 are positive, C011 1~2) is a
+normalizing constant, and the function 9? is defined by
+W 2, if W < 0
+'P(W) = 0, if 0 :!~ W :!~ 1 (34)
+~( W _ 1)2, if W > I
+<<PAGE-DIVIDER>>
+676
+ILLE TRANSACTIONS ON INFORMATION THEORY, VOL. 1T-31, No. 5, SEPTEMBER 1995
+In the notation of Section IV we have g,(u) = q)(u') and
+g,(u) = (p(u"). The Jacobian of these functions vanishes
+only on the set given by f(u', u"): 0 ~-, u' :~~ I or 0 !~ u" :!~
+11. so the corresponding system (16) has minimum dimen-
+sion 2. Yet for every j ~! 1, there is a subset of 2(l) having
+nonzero probability where the sufficient statistic T, from
+(15) is identically zero.
+Such local phenomena are incorporated into our theory
+in a straightforward way and will be important in a formu-
+lation of a realization theory for stochastic nonlinear sys-
+tems. However, we believe our result will be adequate in
+many statistical applications, because the conditions re-
+quired for a system to be weakly canonical will turn out to
+be generic, in a suitable sense. In the strongest sense, for all
+k sufficiently large, they will be satisfied P-almost surely
+for all P E P('). Even in contrived examples like the one
+of (33 and 34), the probability of observing an exceptional
+sequence decreases geometrically, and our system- theoretic
+approach gives generic results in the weak (Chebyshev)
+sense.
+The same kind of local phenomena were treated by
+Barankin and Katz [30], 1311 in their study of minimum-
+dimensioii, continuously differentiable sufficient statistics.
+Viewed in terms Of sufficient sequences and realizations,
+the Barankin- Katz work deals with constructing an output
+space Y") of minimum dimension at a fixed time instant
+k. This static problem is much earlier than the problem we
+have addressed. Indeed, Jacobian conditions provide ex-
+istence results by application of the implicit function
+theorem.
+REFERENCES
+15)
+[0)
+[71
+181
+R. R. Bahadur, "Sufficiency and statistical decision functions,"
+Ann. Math. Statist., vol. 25, pp. 423-462, 1954.
+G~ E, P. Box and (i. M. Jenkins, Time Series Analois: Fore~asting
+and Control, re, ed. San Francisco: Holden-Day, 1976.
+J. Newman. "Su un teorema concernente 1e co,,iddettc statisfiche
+sufficienti," Giornale Inst. Attauri, vol. 6, pp. 320-344, 1935.
+F., B. Dvnkin, "Necessary and sufficient statistics for a family of
+probability distributions,"~ in Selected Translations in Mathernati(al
+Statistic ~ and Probabilit -v, vol. 1. Providence, RI: Amer. Math.
+Soc.. 1961, pp. 17-40,
+'A. Arato, "On the sufficient statistics for stationar Gaussian
+random processes." Theorv Probah. Appl_ ~ol~ 6, pp. 199-210,
+1961
+S. Zacks, The Theon of Statistit at Infereiv e. NeA York: Wiley,
+1971.
+L L. Lehmann, Testing Statistical Hipothe.ses. NeA York: Wiley.
+1959.
+T. W, Anderson, " Deteri ni nation of the order of dependence in
+normally distributed time series," in Proc. Simp. Time Series
+Analisis. 1902, M. Rosenblatt, Ed. New York~ Wiley, 1963.
+[9] B. W. Dickinson, "Theory and application of Gaussian autoregres-
+sive processes in detection theory," IEEE Trans. Inform. Theon,,
+vol. IT-27, pp. 343-347, 1981.
+[10] F. D. Sontag, PolVriomial Response Maps, vol. 13, Lecture Notes in
+Control and Information Sciences. Berlin: Springer-Verlag, 1979.
+[111 -, "Realization theory of discrete time nonlinear svstemsi Part I
+-The bounded case," IkEE Trans. Circuits S-vst., voi. CAS-26, pp.
+342-356,1979.
+[12] S. J. Clancy and W. J. Rugh, "The regular transfer function and
+bilinear and state-affine realizations for stationary, homogeneous,
+discrete-time systems," in Proc. Conf. Information Sciences and
+Systems, Johns Hopkins University, Baltimore, MD, 1979, pp.
+167-172.
+[13] C. A. Schwartz, "Topics in finite dimensional realization theory,"
+PILD. dissertation, Princeton University, Princeton, NJ, 1984.
+[14] S. Monaco and D. Normand-Cyrot, "On the realization of nonlin-
+car discrete-time systems," Svst. Contr. Lett., vol. 5, pp. 145-152,
+1994.
+[15] L. D. Brown, "Sufficient statistics in the case of independent
+random variables," Ann. Math. Statist., vol. 35, pp. 1456-1474,
+1964~
+[161 J. L. Denny, "Sufficient conditions for a family of distributions to
+be exponential," in Proc. Nat. Acad. Sci., vol. 57, 1967, pp~
+1184-1187.
+[171 -, "Note on a theorem of Dynkin on the dimension of sufficient
+statistics," Ann. Math. Statist., vol. 40, pp. 1474-1476, 1968.
+[18] R. Shimizu, "Remarks on sufficient statistics," Ann. Inst. Statist.
+Math., vol. 18, pp. 49-66, 1966.
+1191 MR. 6evUs and T. Kailath, "An innovations approach to least-
+squares estimation-Part VI: Discrete-time innovations representa-
+tions and recursive estimation," IEEE Trans. Automat. Contr., vol.
+AC-18, pp. 588-600, 1973.
+1201 P. Whittle, Prediction and the Regulation by Linear Least-Squares
+Methods. New York: Van Nostrand Reinhold, 1963.
+[21] T. Kailath, "A view of three decades of linear filtering theory,"
+IEEE Trans. Inform. Theorv, vol. 1T-20, pp. 146-181, 1974.
+[221 C. A. Schwartz, B. W. Dickinson, and E. D. Sontag, "Characteriz-
+ing innovations realizations for random processes," Sto(hastics, vol.
+11, pp. 159-172, 1984.
+[231 S. L. Lauritzen, "Sufficiency, prediction and extreme models,"
+Scand. J. Statist., vol. 1, pp. 128-134, 1974.
+124] D. Basu, Comments on (231, in Proc. Conf. Foundational Quemons
+in Statistical Inference, 0. Barndorff- Nielsen, P. Blaesild, and G.
+Schou, Eds. Aarhus, Denmark; also Memoirs, vol. 1, Dept. of
+Theoretical Statistics, Univ, of Aarhus, 1974, p. 269.
+(251 H. Raiffa and R. Schlaiffer, Applied Statistical Decision Theorv,
+Cambridge, MA: Mass. Inst. Tech., 1961.
+[261 T. G. Birdsall and J. 0. Gobien, "Sufficient statistics and reproduc-
+ing densities in simultaneous sequential detection and estimation,"
+IEEE Trans. Inform. Theorv, vol. 1T-19, pp. 760-768. 1973.
+[27] J. A. Bather, "Invariant conditional distributions," Ann. Math.
+Statist., vol. 36, pp, 829-W, 1975.
+[28] G Sawitzki, "Finite dimensional filter systems in discrete time,"
+Stochastics, vol. 5, pp. 107-114, 1981.
+f29] G. Sawitzki, "Exact filtering in exponential families: discrete time,"
+in Stochastic Control Theory and Stochastic Differential Svstems, vol.
+16, Lecture Notes in Control and Information Sciences, M. Kohl-
+mann, W. Vogel, Eds. Berlin: Springer-Verlag, 1979, pp. 554-558.
+[30] E. W. Barankin and M. Katz, "Sufficient statistics of minimal
+dimension," Sankhi,Fj, voi. 21, pp. 217-246, 1959.
+[31] E. W. Barankin. "Application to exponential families of the solu-
+tion of the minimal dimension problem of sufficient statistics," Bull.
+Inst. Int. Statist., vol. 38, pp~ 141-150, 1961.

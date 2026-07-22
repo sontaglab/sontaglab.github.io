@@ -1,0 +1,12169 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-gains.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-gains.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "liu-chitour-paper1.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Pass0: Page 22
+Pass0: Page 23
+Pass0: Page 24
+Pass0: Page 25
+Pass0: Page 26
+Pass0: Page 27
+Pass0: Page 28
+Pass0: Page 29
+Pass0: Page 30
+Pass0: Page 31
+Pass0: Page 32
+Dvi file name: "liu-chitour-paper1.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+On Finite Gain Stabilizability of Linear Systems Subject to Input Saturation
+
+\Lambda 
+
+Wensheng Liu Yacine Chitour Eduardo Sontag Dept. of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+abstract This paper deals with (global) finite-gain input/output stabilization of linear systems with satu- rated controls. For neutrally stable systems, it is shown that the linear feedback law suggested by the passivity approach indeed provides stability, with respect to every L
+
+p
+
+-norm. Explicit bounds on
+
+closed-loop gains are obtained, and they are related to the norms for the respective systems without saturation.
+
+These results do not extend to the class of systems for which the state matrix has eigenvalues on the imaginary axis with nonsimple (size ? 1) Jordan blocks, contradicting what may be expected from the fact that such systems are globally asymptotically stabilizable in the state-space sense; this is shown in particular for the double integrator.
+
+Keywords: input saturations, linear systems, finite gain stability, Lyapunov functions, passivity
+
+1 Introduction In this work we are interested in those nonlinear systems which are obtained when cascading a linear system with a memory-free input nonlinearity:
+
+.x = Ax + Boe(u); y = Cx : (\Sigma ) The nonlinearity oe is of a "saturation" type (definitions are given later). Figure 1 shows the type of system being considered, where the linear part has transfer function W (s) and the function oe shown is the standard semilinear saturation (results will apply to more general oe's).
+
+\Gamma 
+
+\Gamma 
+
+---
+
+yu
+
+W (s)
+
+\Sigma 
+
+Figure 1: Input-Saturated Linear System Linear systems with actuator saturation constitute one of the most important classes of nonlinear systems encountered in practice. Surprisingly, until recently few general theoretical results were avail- able regarding global feedback design problems for them. One such general result was given in [14], which showed that global state-space stabilization for such systems is possible under the assumptions
+
+\Lambda 
+
+This research was supported in part by US Air Force Grant AFOSR-91-0346.
+
+E-mail addresses: fwliu,chitour,sontagg@math.rutgers.edu
+
+1Pass1: Page 2
+
+
+that all the eigenvalues of A are in the closed left-hand plane, plus stabilizability and detectability of (A; B; C). (These conditions are best possible, since they are also necessary. The controller consists of an observer followed by a smooth static nonlinearity.) For more recent work, see [20], which showed --based upon techniques introduced in [16] for a particular case-- how to simplify the controller that had been proposed in [14]. See also [8] for closely related work showing that such systems can be semiglobally (that is, on compacts) stabilized by means of linear feedback.
+
+In this paper, we are interested in studying not merely closed-loop state-space stability, but also stability with respect to measurement and actuator noise. This is the notion of stability that is often found in input/output studies. The problem is to find a controller C so that the operator (u
+
+1
+
+; u
+
+2
+
+) 7! (y
+
+1
+
+; y
+
+2
+
+) defined by the standard systems interconnection
+
+y
+
+1
+
+= P (u
+
+1
+
++ y
+
+2
+
+)
+
+y
+
+2
+
+= C(u
+
+2
+
++ y
+
+1
+
+)
+
+is well-posed and finite-gain stable, where P denotes the input/output behavior of the original plant \Sigma . See Figure 1.
+
+m
+
+moe -
+
+6
+
+oe
+
+?
+
+-
+
+C P
+
+y
+
+2
+
+u
+
+2
+
+y
+
+1 u
+
+1
+
+Figure 2: Standard Closed-Loop (In our main results, we will take for simplicity the initial state to be zero. However, nonzero initial states can be studied as well, and some remarks in that regard are presented in a latter section of the paper.) Once that such i/o stability is achieved, geometric operator-theoretic techniques can be applied; see for instance [3] and references there. For other work on computing norms for nonlinear systems in state space form, see for instance [18] and the references given there.
+
+We focus in this paper in a case which would be trivial if one would only be interested in state stability, namely that in which the original matrix A is stable, that is, there are no nontrivial Jor- dan blocks for eigenvalues in the imaginary axis. (The whole point of [14] and [20] was of course to deal with such possible nontrivial blocks, e.g. multiple integrators.) In this case, a standard pas- sivity approach suggests the appropriate stabilization procedure. For instance, assume that oe is the identity (so the original system is linear), A + A
+
+T
+
+^ 0, and C = B
+
+T
+
+. Then the system is passive,
+
+with storage function V (x) = kxk
+
+2
+
+=2, since integrating the inequality dV (x(t))=dt ^ y(t)
+
+T
+
+u(t) gives
+
+R
+
+t
+
+0
+
+y(s)
+
+T
+
+u(s)ds * V (x(t)) \Gamma  V (x(0)). Thus the negative feedback interconnection with the identity
+
+(strictly passive system), that is, u = \Gamma y, results in finite gain stability. For this calculation, and more on passivity, see for instance [7] and the references given there. (For the use of the same formulas for just state-space stabilization, but applying to linear systems with saturations, see [5] and [9]; see also the discussion on the "Jurdevic-Quinn" method in [13].)
+
+2Pass1: Page 3
+
+
+In this paper, we essentially generalize the passivity technique to systems with saturations. We first establish finite gain stability in the various p-norms, using linear state feedback stabilizers. Then we show how outputs can be incorporated into the framework. Our work is very much in the spirit of the well-known "absolute stability" area, but we have not been able to find a way to deduce our results from that classical literature.
+
+These results do not extend to the class of systems for which the state matrix has eigenvalues on the imaginary axis with nonsimple (size? 1) Jordan blocks, contradicting what may be expected from the fact that such systems are globally asymptotically stabilizable in the state-space sense; this is shown in particular for the double integrator.
+
+One remark on terminology. In the operator approach to nonlinear systems, see e.g. [19], a "system" is typically defined as a partially defined operator between normed spaces, and "stability" means that the domain of this operator is the entire space. In that context, finite gain stability is the requirement that the operator be everywhere defined and bounded; the norm of the operator is by definition the gain of the system. In this paper, we use simply the term L
+
+p
+
+-stability to mean this stronger finite gain
+
+condition.
+
+The reader is referred to the companion paper [2] for complementary results to those in this paper, dealing with Lipschitz continuity ("incremental gain stability") and continuity of the operators in question. The two papers are technically independent.
+
+Organization of Paper Section 2 provides definitions and statements of the main results, as well as some related comments. Section 3 discusses the meaning of the assumptions on saturations. Proofs of the main results are given in Section 4. Section 5 estimates gains in terms of the corresponding gains for systems without saturation, in particular for p=2 (H
+
+1
+
+-norms). Results regarding nonzero initial states and global
+
+asymptotic stability of the origin are collected in Section 6. Section 7 shows how to enlarge the class of input nonlinearities even more, so as to include in one result non-saturations as well. The paper closes with Section 8, which contains the double integrator counterexample.
+
+2 Statements of Main Results We introduce now the class of saturation functions to be considered, and state the main results on finite-gain stability. Some remarks are also provided. Proofs are deferred to a later section.
+
+2.1 Saturation Functions We next formally define what we mean by a "saturation." Essentially, we ask only that this be a function which has the same sign as its argument, stays away from zero at infinity, is bounded, is not horizontal near zero, and has a derivative that goes to zero at infinity at a rate at least 1=t:
+
+Definition 1 We call oe : IR ! IR a saturation function if it satisfies the following two conditions:
+
+(i) oe is absolutely continuous, bounded and (1 + jtj)joe
+
+0
+
+(t)j is bounded for almost all t 2 IR;
+
+(ii) toe(t) ? 0 if t 6= 0, lim inf
+
+t!0
+
+oe(t)
+
+t
+
+? 0 and lim inf
+
+jtj!1
+
+joe(t)j ? 0.
+
+3Pass1: Page 4
+
+
+For convenience we will simply call a saturation function oe an S-function. We say that oe is an IR
+
+n
+
+-valued S-function if oe = (oe
+
+1
+
+; : : : ; oe
+
+n
+
+)
+
+T
+
+where each component oe
+
+i
+
+is an S-function and
+
+oe(x)
+
+def
+
+= (oe
+
+1
+
+(x
+
+1
+
+); : : : ; oe
+
+n
+
+(x
+
+n
+
+))
+
+T
+
+for x = (x
+
+1
+
+; : : : ; x
+
+n
+
+)
+
+T
+
+2 IR
+
+n
+
+. Here we use (\Delta  \Delta  \Delta )
+
+T
+
+to denote the transpose of the vector (\Delta  \Delta  \Delta ).
+
+Remark 1 It follows directly from Definition 1 as well as the characterizations to be given in Section 3 that most reasonable saturation-type functions are indeed S-functions in our sense. Included are arctan(t), tanh(t), and the standard saturation function oe
+
+0
+
+(t) = sign(t) minfjtj; 1g, i.e.,
+
+oe
+
+0
+
+(t) =
+
+8 ? !
+
+? :
+
+1 if t ? 1 ; t if jtj ^ 1 ; \Gamma 1 if t ! \Gamma 1 :
+
+2.2 L
+
+p
+
+-Stability
+
+Consider the initialized control system (\Sigma ) given by
+
+.x = f (x; u) ; x(0) = 0 ;
+
+where the state x and the control u take respectively values in IR
+
+n
+
+and IR
+
+m
+
+. As this is not restrictive
+
+for our purposes, and it simplifies matters, we assume that the function f : IR
+
+n
+
+\Theta  IR
+
+m
+
+! IR
+
+n
+
+is globally
+
+Lipschitz with respect to (x; u). (Most results will still be valid under Carath'eodory-type assumptions.) Terminology for systems will be as in any standard reference, such as [13]. Notice that under the above Lipschitz condition, the solution x of (\Sigma ) corresponding to any input u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+) for 1 ^ p ^ 1
+
+is well defined for all t 2 [0; 1), as an absolutely continuous function.
+
+Throughout this paper, if , is a point in IR
+
+n
+
+, we use k,k = (
+
+P
+
+n
+
+i=1
+
+,
+
+2
+
+i
+
+)
+
+1=2
+
+to denote the usual
+
+Euclidean norm. For each matrix S, the norm kSk is the Frobenius norm given by kSk=Tr(SS
+
+T
+
+)
+
+1=2
+
+,
+
+where Tr(\Delta ) denotes trace.
+
+For each 1 ^ p ^ 1 and each p-th integrable (essentially bounded, for p = 1) vector-valued function x 2 L
+
+p
+
+([0; 1); IR
+
+n
+
+), we let kxk
+
+L
+
+p
+
+denote the usual L
+
+p
+
+-norms:
+
+kxk
+
+L
+
+p =
+
+i
+
+Z
+
+1
+
+0
+
+kx(t)k
+
+p
+
+dt
+
+j
+
+1=p
+
+if p ! 1 and
+
+kxk
+
+L
+
+1 = ess sup
+
+0^t!1
+
+kx(t)k :
+
+Definition 2 Let 1 ^ p ^ 1 and 0 ^ M ^ 1. We say that (\Sigma ) has L
+
+p
+
+-gain less than or equal to M
+
+if for any u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+), the solution x of (\Sigma ) corresponding to u satisfies
+
+kxk
+
+L
+
+p
+
+^ M kuk
+
+L
+
+p
+
+:
+
+The infimum of such numbers M will be called the L
+
+p
+
+-gain of (\Sigma ). We say that system (\Sigma ) is L
+
+p
+
+-stable
+
+if its L
+
+p
+
+-gain is finite.
+
+4Pass1: Page 5
+
+
+By a neutrally stable n \Theta  n matrix A we mean one for which all solutions of .x = Ax are bounded; equivalently, A has no eigenvalues with positive real part and each Jordan block corresponding to a purely imaginary eigenvalue has size one. Another well-known characterization of such matrices is that they are the ones for which there exists a symmetric positive definite matrix Q such that A
+
+T
+
+Q + QA ^ 0.
+
+We now state our main result:
+
+Theorem 1 Let A; B be n\Theta n; n\Theta m matrices respectively. Let oe be an IR
+
+m
+
+-valued S-function. Assume
+
+that A is neutrally stable. Then there exists an m \Theta  n matrix F such that the system
+
+.x = Ax + Boe(F x + u) ; x(0) = 0 ;
+
+(1)
+
+is L
+
+p
+
+-stable for all 1 ^ p ^ 1.
+
+Theorem 1 is an immediate consequence of the more general technical result contained in The- orem 2. In order to state that theorem in great generality, we recall first a standard notion. Let (\Sigma ) .x = Ax + Bu be a linear system, where x and u take values in IR
+
+n
+
+and IR
+
+m
+
+respectively. For
+
+each measurable and locally essentially bounded u : [0; 1) ! IR
+
+m
+
+and each x
+
+0
+
+2 IR
+
+n
+
+, let x
+
+u
+
+(t; x
+
+0
+
+)
+
+be the solution of (\Sigma ) corresponding to u with x
+
+u
+
+(0; x
+
+0
+
+) = x
+
+0
+
+. Following the terminology of [6], the
+
+stabilizable subspace S(A; B) of (A; B) is the subspace of IR
+
+n
+
+which consists of all those initial states
+
+x
+
+0
+
+2 IR
+
+n
+
+for which there is some u so that x
+
+u
+
+(t; x
+
+0
+
+) ! 0 as t ! 1. In other words, S(A; B) is the
+
+subspace of IR
+
+n
+
+made up of all the states that can be asymptotically controlled to 0 (so this includes
+
+in particular the reachable subspace). Observe that the pair (A; B) is stabilizable (asymptotically null controllable) iff S(A; B) = IR
+
+n
+
+.
+
+Theorem 2 Let A and B be n \Theta  n and n \Theta  m matrices respectively. Let S(A; B) be the stabilizable subspace of (A; B). Let oe be an IR
+
+m
+
+-valued S-function and let ` : IR
+
+k
+
+! S(A; B) ` IR
+
+n
+
+be a globally
+
+Lipschitz and bounded function with `(0) = 0, where k ? 0 is some integer. Assume that A is neutrally stable. Then there exist an m \Theta  n matrix F and an " ? 0 such that the system
+
+.x = Ax + Boe(F x + u) + "`(v) ; x(0) = 0 ;
+
+(2)
+
+is L
+
+p
+
+-stable for each 1 ^ p ^ 1, i.e. there exists a finite constant M
+
+p
+
+? 0 such that for any
+
+u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+); v 2 L
+
+p
+
+([0; 1); IR
+
+k
+
+),
+
+kxk
+
+L
+
+p ^ M
+
+p
+
+(kuk
+
+L
+
+p + kvk
+
+L
+
+p) :
+
+The proof is given later.
+
+Theorem 2 implies Theorem 1 (just take ` j 0) as well as a result dealing with small "nonmatching" state perturbations. It is possible to make the result even more general, by weakening the Lipschitz assumption on `, but there does not appear to be a need for that generality.
+
+2.3 Output Stabilization Consider the initialized linear input=output system
+
+(\Sigma 
+
+ao
+
+) .x = Ax + Boe(u) ;
+
+x(0) = 0 ;
+
+y = Cx ;
+
+5Pass1: Page 6
+
+
+where A; B; C are respectively n\Theta n, n\Theta m, r \Theta n matrices. Assume that system (\Sigma 
+
+ao
+
+) is asymptotically
+
+observable (that is, it is detectable). Our main result for input/output systems is as follows:
+
+Theorem 3 Assume that system (\Sigma 
+
+ao
+
+) is asymptotically observable and A is neutrally stable. Then
+
+there exist an m \Theta  n matrix F and an n \Theta  r matrix L such that the following property holds. Let 1 ^ p ^ 1. Pick any u
+
+1
+
+2 L
+
+p
+
+([0; 1); IR
+
+m
+
+) and u
+
+2
+
+2 L
+
+p
+
+([0; 1); IR
+
+r
+
+), and consider the solution
+
+x = (x
+
+1
+
+; x
+
+2
+
+) of
+
+.x
+
+1
+
+= Ax
+
+1
+
++ Boe(y
+
+2
+
++ u
+
+1
+
+) ; y
+
+1
+
+= Cx
+
+1
+
+;
+
+.x
+
+2
+
+= (A + LC)x
+
+2
+
++ Boe(F x
+
+2
+
+) \Gamma  L(y
+
+1
+
++ u
+
+2
+
+) ; y
+
+2
+
+= F x
+
+2
+
+;
+
+with x(0) = 0. Consider the total output function y = (y
+
+1
+
+; y
+
+2
+
+) = (Cx
+
+1
+
+; F x
+
+2
+
+). Then y is in
+
+L
+
+p
+
+([0; 1); IR
+
+r+m
+
+) and
+
+kyk
+
+L
+
+p ^ M
+
+p
+
+(ku
+
+1
+
+k
+
+L
+
+p + ku
+
+2
+
+k
+
+L
+
+p)
+
+for some constant M
+
+p
+
+? 0.
+
+2.4 Not Every Feedback Stabilizes One may ask if any F which would stabilize when the saturation is not present also provides finite gain for (1). Not surprisingly, the answer is negative. In order to give an example, we need first a simple technical remark.
+
+Lemma 1 Consider the system .x = Ax + Boe(F x + u), where the matrix A is assumed to have all eigenvalues in the imaginary axis and where each component of oe is a continuous function whose range contains a neighborhood of the origin (this holds, for instance, if it is an S-function). Furthermore, assume that the pair (A; B) is controllable. Then, given any state x
+
+0
+
+2 IR
+
+n
+
+, there is some measurable
+
+essentially bounded control u steering the origin to x
+
+0
+
+in finite time.
+
+PROOF: Since all eigenvalues of A have zero real part and the pair (A; B) is controllable, for each " ? 0 there is some control v
+
+0
+
+for the system .x = Ax + Bu so that jv
+
+0
+
+(t)j ! " for all t and which
+
+drives in finite time the origin to x
+
+0
+
+(see e.g. [12]). Since the range of oe contains a neighborhood of the
+
+origin, and using a measurable selection (Fillipov's Theorem), it is also true that there is a measurable control v which achieves the same transfer, for the system .x = Ax + Boe(u). Now let, along the corresponding trajectory, u(t) = v(t) \Gamma  F x(t). It follows that this achieves the desired transfer for
+
+.x = Ax + Boe(F x + u),
+
+The next two examples show that even if A is neutrally stable, Theorem 1 may not be true if F only satisfies the condition that A + BF is Hurwitz.
+
+Example 1 Let
+
+A =
+
+i
+
+0 \Gamma 1
+
+1 0
+
+j
+
+; B =
+
+i
+
+0
+
+1
+
+j
+
+; F = \Gamma 
+
+i
+
+1=2 ; 1
+
+j
+
+;
+
+and any oe so that oe(1=2) = 1. Then both the origin and (\Gamma 1; 0) are equilibrium points of the system
+
+.x = Ax + Boe(F x): By Lemma 1, there is some input u
+
+0
+
+which steers the origin to (\Gamma 1; 0) in some finite time T
+
+0
+
+. Consider
+
+the input u
+
+1
+
+equal to u
+
+0
+
+for 0 ^ t ^ T
+
+0
+
+and to 0 for t ? T
+
+0
+
+. Then if x is the trajectory of (2)
+
+corresponding to u
+
+1
+
+, we have that x(t) = (\Gamma 1; 0) for all t * T
+
+0
+
+. Clearly, for any 1 ^ p ! 1,
+
+u
+
+1
+
+2 L
+
+p
+
+([0; 1); IR) and x 62 L
+
+p
+
+([0; 1); IR
+
+2
+
+). Therefore, system (2) is not L
+
+p
+
+-stable for any 1 ^ p ! 1.
+
+6Pass1: Page 7
+
+
+If we use multiple inputs, a different example that includes p = 1 is as follows. Example 2 Assume that m = n = 2. Let
+
+A =
+
+
+
+0 0
+
+0 0
+
+!
+
+; B =
+
+
+
+1 0
+
+0 1
+
+!
+
+; F =
+
+
+
+\Gamma 3 7
+
+\Gamma 1 2
+
+!
+
+:
+
+Then A + BF = F is Hurwitz. Let oe = (oe
+
+0
+
+; oe
+
+0
+
+)
+
+T
+
+, where oe
+
+0
+
+is the standard saturation function. Then
+
+the system
+
+.x = oe(F x + u) ; x(0) = (0; 0)
+
+T
+
+(3)
+
+is not L
+
+p
+
+-stable for any 1 ^ p ^ 1. To see this, take a control v on some interval [0; T ] that steers
+
+(0; 0)
+
+T
+
+to (1; 1)
+
+T
+
+. Let u = v on [0; T ] and u = (0; 0)
+
+T
+
+on (T; 1). Let x = (x
+
+1
+
+; x
+
+2
+
+)
+
+T
+
+be the solution of
+
+(3) corresponding to u. Then on [T; 1), we have x
+
+1
+
+(t) = x
+
+2
+
+(t) = t \Gamma  T + 1. Thus (3) is not L
+
+p
+
+-stable
+
+for any 1 ^ p ^ 1. (In fact, the trajectory is not even bounded for a bounded input.)
+
+3 Some Characterizations of S-functions Lemma 2 A function oe : IR ! IR satisfies Condition (i) in Definition 1 if and only if it satisfies the following two conditions:
+
+(a) oe is globally Lipschitz; (b) there exists C
+
+1
+
+* 0 such that for all t; s 2 IR,
+
+jtj joe(t + s) \Gamma  oe(t)j ^ C
+
+1
+
+jsj : (4)
+
+PROOF: First Condition (a) implies that oe is absolutely continuous and joe
+
+0
+
+(t)j is bounded for almost
+
+all t 2 IR. Assume that oe satisfies (b). Letting s = \Gamma t in (4) we get that joe(t)j ^ joe(0)j + C
+
+1
+
+. On the
+
+other hand, since for s 6= 0
+
+jtj
+
+fi fi fi fi
+
+oe(t + s) \Gamma  oe(t)
+
+s
+
+fi fi fi fi
+
+^ C
+
+1
+
+;
+
+letting s ! 0, we see that jtoe
+
+0
+
+(t)j ^ C
+
+1
+
+for almost all t 2 IR, and then conclude that Condition (i)
+
+holds.
+
+Conversely assume that Condition (i) holds. Since oe is absolutely continuous and oe
+
+0
+
+(t) is bounded
+
+for almost all t 2 IR, we see that oe is globally Lipschitz. To see that (b) holds, we consider two cases.
+
+(1): If jtj ^ 2jsj, since oe is bounded, (b) is clearly true. (2): If jtj ? 2jsj, then t(t + s) ? 0. Condition (i) implies that there exists a constant
+
+~ C
+
+1
+
+? 0 such
+
+that joe
+
+0
+
+(t)j ^
+
+~ C
+
+1
+
+=jtj for almost all t 2 IR. We have (assume that s 6= 0),
+
+jtj joe(t + s) \Gamma  oe(t)j = jtj
+
+fi fi fi
+
+Z
+
+t+s
+
+t
+
+oe
+
+0
+
+(o/ ) do/
+
+fi fi fi
+
+^
+
+~ C
+
+1
+
+jtj
+
+fi fi fi
+
+Z
+
+t+s
+
+t
+
+1 o/
+
+do/
+
+fi fi fi
+
+=
+
+~ C
+
+1
+
+jtj
+
+fi fi fi
+
+log(1 +
+
+s
+
+t
+
+)
+
+fi fi fi
+
+=
+
+~ C
+
+1
+
+jsj
+
+fi fi fi fi fi
+
+log(1 +
+
+s
+
+t
+
+)
+
+s
+
+t
+
+fi fi fi fi fi
+
+:
+
+7Pass1: Page 8
+
+
+Now since the function
+
+fi fi fi
+
+log(1+,)
+
+,
+
+fi fi fi is bounded for j,j ^ 1=2, we conclude that (b) holds.
+
+Remark 2 It is easy to see that if oe satisfies a bound joe(t)j ^ M jtj in a neighborhood of 0 (in particular if (i) in Definition 1 holds), then Condition (ii) in Definition 1 is equivalent to the following condition:
+
+(c) There exist positive numbers a; b; K and a measurable function o/ : IR ! [a; b] such that for all
+
+t 2 IR we have joe(t) \Gamma  o/ (t)tj ^ Ktoe(t).
+
+It is clear that (c) implies (ii). To see the converse, let ffi ? 0 be such that joe(t)j ^ M jtj for jtj ^ ffi. Then just let
+
+o/ (t) =
+
+8 ? ? ? !
+
+? ? ? :
+
+1 if t = 0 ;
+
+oe(t)
+
+t
+
+if t 2 [\Gamma ffi; ffi]=f0g ;
+
+oe(ffi)
+
+ffi
+
+if t ? ffi ;
+
+\Gamma 
+
+oe(\Gamma ffi)
+
+ffi
+
+if t ! \Gamma ffi ;
+
+It is easily verified that there exist positive constants a; b; K such that (c) holds for this o/ .
+
+Definition 3 We say that a constant K ? 0 is an S-bound for oe if there exist a; b ? 0 and a measurable function o/ : IR ! [a; b] such that
+
+(i) joe(t) \Gamma  oe(s)j ^ Kjt \Gamma  sj, (ii) jtjjoe(t + s) \Gamma  oe(t)j ^ Kjsj, (iii) joe(t) \Gamma  o/ (t)tj ^ Ktoe(t).
+
+The above discussion shows that such (finite) S-bounds always exist. Note that if K is an S-bound for oe, then joe(t)j ^ maxfK; Kjtjg. A constant K ? 0 is called an S-bound for a vector valued S-function oe if K is an S-bound for each component of oe.
+
+4 Proofs of the Main Results For notational convenience (to avoid having too many negative signs in the formulas) we will prove the main theorem for systems written in the form
+
+.x = Ax \Gamma  Boe(F x + u) + "`(v) ; x(0) = 0 :
+
+(5)
+
+A trivial remark is needed before we start. Remark 3 Assume that oe
+
+1
+
+: IR
+
+k
+
+1
+
+! IR
+
+m
+
+and oe
+
+2
+
+: IR
+
+k
+
+2
+
+! IR
+
+n
+
+each satisfies a growth estimate of the
+
+type koe
+
+1
+
+(u)k ^ Ckuk, koe
+
+2
+
+(v)k ^ Ckvk for u 2 IR
+
+k
+
+1
+
+; v 2 IR
+
+k
+
+2
+
+. It follows from classical linear systems
+
+theory that if the system .x = Ax is globally asymptotically stable -that is, A is a Hurwitz matrix- then the controlled system .x = f (x; u; v) = Ax + Boe
+
+1
+
+(u) + oe
+
+2
+
+(v) is automatically also L
+
+p
+
+-stable for
+
+all 1 ^ p ^ 1. We will be interested in the case in which A is merely stable, but this remark will be used at various points.
+
+We now prove Theorem 2. First we note that we can assume that (A; B) is controllable.
+
+8Pass1: Page 9
+
+
+4.1 Proof of Theorem 1 Assuming Controllability Suppose Theorem 2 is already known to be true for controllable (A; B); we show how the general case follows. It is an elementary linear systems exercise to show that the stabilizable subspace S(A; B), for any two A; B, is invariant under A; this follows for instance from its characterization as a sum of the reachable subspace and the space of stable modes. Thus the restriction of A to S(A; B) is well-defined, and it is again neutrally stable. Now since ` takes values in S(A; B), the trajectories of (5) lie in S(A; B). So we may assume that (A; B) is stabilizable, i.e. S(A; B) = IR
+
+n
+
+, since otherwise
+
+we can restrict ourselves to S(A; B). Then, up to a change of coordinates, we may assume that
+
+A =
+
+
+
+A
+
+1
+
+A
+
+2
+
+0 A
+
+3
+
+!
+
+; B =
+
+
+
+B
+
+1
+
+0
+
+!
+
+;
+
+where (A
+
+1
+
+; B
+
+1
+
+) is controllable and A
+
+1
+
+is neutrally stable. (Since we are assuming that (A; B) is
+
+stabilizable, we also know that A
+
+3
+
+is Hurwitz, but we do not need that additional fact here.) Assume
+
+that A
+
+1
+
+is an r \Theta  r matrix and B
+
+1
+
+is an r \Theta  m matrix.
+
+Let
+
+~ ` : IR
+
+r
+
+! IR
+
+r
+
+be given by
+
+~ `(,) = (
+
+~ `
+
+0
+
+(,
+
+1
+
+); : : : ;
+
+~ `
+
+0
+
+(,
+
+r
+
+))
+
+T
+
+for , 2 IR
+
+r
+
+where
+
+~ `
+
+0
+
+is the standard
+
+saturation function, i.e.
+
+~ `
+
+0
+
+(t) = sign (t) minf1; jtjg.
+
+By our assumption that the result is known in the controllable case, there exists an m \Theta  r matrix F
+
+1
+
+and "
+
+1
+
+? 0 so that the system
+
+.x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
+\Gamma  B
+
+1
+
+oe(F
+
+1
+
+x
+
+1
+
++ u) + "
+
+1
+
+~ `(w) ;
+
+x
+
+1
+
+(0) = 0
+
+(6)
+
+is L
+
+p
+
+-stable for all 1 ^ p ^ 1. Let \Gamma 
+
+p
+
+be the L
+
+p
+
+-gain of this system, so kx
+
+1
+
+k
+
+L
+
+p
+
+^ \Gamma 
+
+p
+
+(kuk
+
+L
+
+p
+
++ kwk
+
+L
+
+p
+
+)
+
+for all u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+) and w 2 L
+
+p
+
+([0; 1); IR
+
+r
+
+).
+
+Since (A; B) is stabilizable, we can find an m \Theta  n matrix E such that A + BE is Hurwitz. Then the system
+
+.y = (A + BE)y + v ; y(0) = 0 :
+
+(7)
+
+is L
+
+p
+
+-stable for any 1 ^ p ^ 1. Let fl
+
+p
+
+be the L
+
+p
+
+-gain of (7), so kyk
+
+L
+
+p
+
+^ fl
+
+p
+
+kvk
+
+L
+
+p
+
+.
+
+From the properties of `, we know that there is some L ? 0 so that k`(,)k ^ minfL; Lk,kg for all , 2 IR
+
+k
+
+. (In fact, this is the only property of ` that is really needed.) Take an " ? 0 such that
+
+"Lfl
+
+1
+
+kBEk ^ "
+
+1
+
+. Let F = (F
+
+1
+
+; 0). We show that for this choice of F and ", system (5) is L
+
+p
+
+-stable for
+
+any 1 ^ p ^ 1. For this purpose, let u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+); v 2 L
+
+p
+
+([0; 1); IR
+
+k
+
+). Let x be the solution of
+
+(5) corresponding to u; v. Let y be the solution of
+
+.y = (A + BE)y + "`(v) ; y(0) = 0 :
+
+(8)
+
+Then we have kyk
+
+L
+
+1 ^ "Lfl
+
+1
+
+and kyk
+
+L
+
+p ^ "Lfl
+
+p
+
+kvk
+
+L
+
+p. Let z = x \Gamma  y. Then z satisfies
+
+.z = Az \Gamma  Boe(F z + F y + u) \Gamma  BEy ; z(0) = 0 :
+
+Write z = (z
+
+1
+
+; z
+
+2
+
+)
+
+T
+
+. Then we have z
+
+2
+
+j 0 and z
+
+1
+
+satisfies
+
+.z
+
+1
+
+= A
+
+1
+
+z
+
+1
+
+\Gamma  B
+
+1
+
+oe(F
+
+1
+
+z
+
+1
+
++ F y + u) \Gamma  B
+
+1
+
+Ey ;
+
+z
+
+1
+
+(0) = 0 :
+
+9Pass1: Page 10
+
+
+Since kB
+
+1
+
+Eyk
+
+L
+
+1
+
+^ kB
+
+1
+
+Ek kyk
+
+L
+
+1
+
+^ "Lfl
+
+1
+
+kB
+
+1
+
+Ek ^ "
+
+1
+
+, we have
+
+\Gamma 
+
+B
+
+1
+
+Ey
+
+"
+
+1
+
+=
+
+~ `
+
+i
+
+\Gamma 
+
+B
+
+1
+
+Ey
+
+"
+
+1
+
+j
+
+;
+
+So z
+
+1
+
+satisfies
+
+.z
+
+1
+
+= A
+
+1
+
+z
+
+1
+
+\Gamma  B
+
+1
+
+oe(F
+
+1
+
+z
+
+1
+
++ F y + u) + "
+
+1
+
+~ `(\Gamma B
+
+1
+
+Ey="
+
+1
+
+) ;
+
+z
+
+1
+
+(0) = 0 :
+
+By the L
+
+p
+
+-stability of (6) we get that
+
+kzk
+
+L
+
+p
+
+= kz
+
+1
+
+k
+
+L
+
+p
+
+^ \Gamma 
+
+p
+
+i
+
+kF y + uk
+
+L
+
+p
+
++
+
+fl fl fl
+
+B
+
+1
+
+Ey
+
+"
+
+1
+
+fl fl fl
+
+L
+
+p
+
+j
+
+^ \Gamma 
+
+p
+
+i
+
+kF k kyk
+
+L
+
+p
+
++ kuk
+
+L
+
+p
+
++
+
+kB
+
+1
+
+Ekkyk
+
+L
+
+p
+
+"
+
+1
+
+j
+
+^ \Gamma 
+
+p
+
+`
+
+kuk
+
+L
+
+p +
+
+`
+
+kB
+
+1
+
+Ek
+
+"
+
+1
+
++ kF k
+
+'
+
+"Lfl
+
+p
+
+kvk
+
+L
+
+p
+
+'
+
+:
+
+This shows that (5) is L
+
+p
+
+-stable, which concludes the proof that we may assume that (A; B) is con-
+
+trollable.
+
+4.2 Proof in the Controllable Case From elementary linear algebra, we know that any neutrally stable matrix A is similar to a matrix
+
+
+
+A
+
+1
+
+0
+
+0 A
+
+2
+
+!
+
+; (9)
+
+where A
+
+1
+
+is an r \Theta  r Hurwitz matrix and A
+
+2
+
+is an (n \Gamma  r) \Theta  (n \Gamma  r) skew-symmetric matrix. So, up to
+
+a change of coordinates, we may assume that A is already in the form (9). In these coordinates, we write
+
+B =
+
+
+
+B
+
+1
+
+B
+
+2
+
+!
+
+where B
+
+2
+
+is an (n \Gamma  r) \Theta  m matrix, and we write vectors as x = (x
+
+1
+
+; x
+
+2
+
+)
+
+T
+
+and also ` = (`
+
+1
+
+; `
+
+2
+
+)
+
+T
+
+.
+
+Consider the feedback law F = (0; B
+
+T
+
+2
+
+). Then system (5), with this choice of F , can be written as
+
+.x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
+\Gamma  B
+
+1
+
+oe(B
+
+T
+
+2
+
+x
+
+2
+
++ u) + "`
+
+1
+
+(v) ;
+
+.x
+
+2
+
+= A
+
+2
+
+x
+
+2
+
+\Gamma  B
+
+2
+
+oe(B
+
+T
+
+2
+
+x
+
+2
+
++ u) + "`
+
+2
+
+(v) ;
+
+x
+
+1
+
+(0) = 0; x
+
+2
+
+(0) = 0 :
+
+(10)
+
+Since A
+
+1
+
+is Hurwitz, it will be sufficient to show that there exists an " ? 0 such that the x
+
+2
+
+-subsystem
+
+is L
+
+p
+
+-stable (we may think of x
+
+2
+
+as an additional input to the first subsystem, and apply Remark 3).
+
+The controllability assumption on (A; B) implies that the pair (A
+
+2
+
+; B
+
+2
+
+) is also controllable. Since
+
+A
+
+2
+
+is skew-symmetric, the matrix
+
+~ A := A
+
+2
+
+\Gamma  B
+
+2
+
+B
+
+T
+
+2
+
+is Hurwitz. (Just observe that the Lyapunov
+
+equation
+
+~ A
+
+T
+
+I
+
+n\Gamma r
+
++ I
+
+n\Gamma r
+
+~ A = \Gamma 2B
+
+2
+
+B
+
+T
+
+2
+
+holds, and the pair (
+
+~ A; B
+
+2
+
+) is controllable; see [13], Exercise
+
+4.6.7.) Therefore, the theorem is a consequence of the following lemma. This is where the main parts of our argument lie.
+
+10Pass1: Page 11
+
+
+Lemma 3 Let oe; ` be as in Theorem 2. Let A be a skew-symmetric matrix. Assume that
+
+~ A :=
+
+A \Gamma  BB
+
+T
+
+is Hurwitz. Then there exists an " ? 0 such that the system
+
+.x = Ax \Gamma  Boe(B
+
+T
+
+x + u) + "`(v) ;
+
+x(0) = 0 ;
+
+(11)
+
+is L
+
+p
+
+-stable for all 1 ^ p ^ 1.
+
+PROOF: Assume that oe = (oe
+
+1
+
+; : : : ; oe
+
+m
+
+)
+
+T
+
+. Let 0 ! a ^ b ! 1; K ? 0 be constants and o/
+
+i
+
+:
+
+IR ! [a; b]; i = 1; : : : ; m; be measurable functions so that the components oe
+
+i
+
+of oe satisfy (i), (ii)
+
+and (iii) in Definition 3 with the respective o/
+
+i
+
+'s. We may assume that K is large enough such that
+
+k`(,)k ^ minfK; Kk,kg for all , 2 IR
+
+k
+
+. Let
+
+\Gamma 
+
+def
+
+= min
+
+i=1;:::;m
+
+lim inf
+
+j,j!1
+
+joe
+
+i
+
+(,)j:
+
+Then \Gamma  ? 0. Let " ? 0 satisfy
+
+" !
+
+\Gamma 
+
+Kfl
+
+1
+
+p
+
+mkBk
+
+; (12)
+
+where fl
+
+1
+
+is the L
+
+1
+
+-gain of the initialized linear control system
+
+.y = (A \Gamma  BB
+
+T
+
+)y + u ;
+
+y(0) = 0:
+
+(13)
+
+By (12) there exists a ffi 2 (0; 1=2] such that
+
+" ^
+
+(1 \Gamma  2ffi)\Gamma 
+
+Kfl
+
+1
+
+p
+
+mkBk
+
+:
+
+Let u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+); v 2 L
+
+p
+
+([0; 1); IR
+
+k
+
+). Let y be the solution of
+
+.y = (A \Gamma  BB
+
+T
+
+)y + "`(v) ;
+
+y(0) = 0:
+
+(14)
+
+Let x be the solution of (11) corresponding to u; v and let z = x \Gamma  y. Then z satisfies
+
+.z = Az \Gamma  Boe(B
+
+T
+
+z + u + B
+
+T
+
+y) + BB
+
+T
+
+y ;
+
+z(0) = 0:
+
+(15)
+
+Let ~u = u + B
+
+T
+
+y and ~v = B
+
+T
+
+y. Then we get
+
+k~vk
+
+L
+
+1 ^ kBk kyk
+
+L
+
+1 ^ "kBkfl
+
+1
+
+k`k
+
+L
+
+1 ^
+
+(1 \Gamma  2ffi)\Gamma 
+
+p
+
+m
+
+: (16)
+
+Now (15) can be written as
+
+.z = Az \Gamma  B
+
+i
+
+oe(B
+
+T
+
+z + ~u) \Gamma  ~v
+
+j
+
+;
+
+z(0) = 0:
+
+(17)
+
+(We have brought the problem to one of a "matched uncertainty" type, in robust control terms, if we think of ~v as representing a source of uncertainty.)
+
+11Pass1: Page 12
+
+
+For each 1 ^ p ! 1, consider the following function:
+
+V
+
+0;p
+
+(z) =
+
+kzk
+
+p+1
+
+p + 1
+
+:
+
+Along the trajectories of (17), we have
+
+. V
+
+0;p
+
+(z(t)) = \Gamma kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)B
+
+i
+
+oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+j
+
+\Gamma  ~v(t)
+
+j
+
+= \Gamma kz(t)k
+
+p\Gamma 1
+
+`
+
+z
+
+T
+
+(t)B
+
+h
+
+oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+j
+
+\Gamma  oe(B
+
+T
+
+z(t))
+
+i
+
++ z
+
+T
+
+(t)B
+
+i
+
+oe(B
+
+T
+
+z(t)) \Gamma  ~v(t)
+
+j
+
+'
+
+:
+
+Since K is an S-bound for oe, we know that
+
+fi fi fiz
+
+T
+
+(t)B
+
+i
+
+oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+j
+
+\Gamma  oe
+
+i
+
+B
+
+T
+
+z(t)
+
+jj
+
+fi
+
+fi fi ^ K
+
+m X
+
+i=1
+
+j~u
+
+i
+
+(t)j ^ K
+
+p
+
+mk~u(t)k (18)
+
+for all t 2 [0; 1). Therefore we have the following decay estimate:
+
+. V
+
+0;p
+
+(z(t)) ^ \Gamma kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)B
+
+i
+
+oe(B
+
+T
+
+z(t)) \Gamma  ~v(t)
+
+j
+
++ K
+
+p
+
+mkz(t)k
+
+p\Gamma 1
+
+k~u(t)k: (19)
+
+We next need to bound the first term in this estimate. For that purpose, we will partition [0; 1) into two subsets. By the definition of \Gamma , there is some M
+
+1
+
+* 1 so that
+
+min i=1;\Delta \Delta \Delta ;m
+
+inf
+
+j,j*M
+
+1
+
+joe
+
+i
+
+(,)j * (1 \Gamma  ffi)\Gamma :
+
+The first subset consists of those t for which kz(t)
+
+T
+
+Bk ^ M
+
+1
+
+p
+
+m. For such t, trivially:
+
+z(t)
+
+T
+
+B
+
+i
+
+oe(B
+
+T
+
+z(t)) \Gamma  ~v(t)
+
+j
+
+* z(t)
+
+T
+
+Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+\Gamma  M
+
+1
+
+p
+
+mk~v(t)k : (20)
+
+Next we consider those t for which kz(t)
+
+T
+
+Bk ? M
+
+1
+
+p
+
+m. First we note some general facts for any
+
+vector , 2 IR
+
+m
+
+for which
+
+k,
+
+T
+
+Bk ? M
+
+1
+
+p
+
+m : (21)
+
+If we pick i
+
+0
+
+so that j(,
+
+T
+
+B)
+
+i
+
+0
+
+j = max
+
+i=1;:::;m
+
+fj(,
+
+T
+
+B)
+
+i
+
+jg, then j(,
+
+T
+
+B)
+
+i
+
+0
+
+j ? M
+
+1
+
+, and therefore, by the
+
+choice of M
+
+1
+
+,
+
+fi fi fioe
+
+i
+
+0
+
+i
+
+(B
+
+T
+
+,)
+
+i
+
+0
+
+j
+
+fi
+
+fi fi * (1 \Gamma  ffi)\Gamma . (Here (,
+
+T
+
+B)
+
+i
+
+denotes the i-th component of ,
+
+T
+
+B.) We
+
+conclude that if , satisfies (21) then
+
+,
+
+T
+
+Boe(B
+
+T
+
+,) * (,
+
+T
+
+B)
+
+i
+
+0
+
+oe
+
+i
+
+0
+
+i
+
+(B
+
+T
+
+,)
+
+i
+
+0
+
+j
+
+*
+
+k,
+
+T
+
+Bk
+
+p
+
+m
+
+(1 \Gamma  ffi)\Gamma 
+
+or equivalently
+
+k,
+
+T
+
+Bk ^
+
+p
+
+m ,
+
+T
+
+Boe(B
+
+T
+
+,)
+
+(1 \Gamma  ffi)\Gamma 
+
+:
+
+From this and (16), if kz
+
+T
+
+(t)Bk ? M
+
+1
+
+p
+
+m, we have
+
+z
+
+T
+
+(t)B
+
+i
+
+oe(B
+
+T
+
+z(t)) \Gamma  ~v(t)
+
+j
+
+* z
+
+T
+
+(t)Boe(B
+
+T
+
+z(t)) \Gamma  kz
+
+T
+
+(t)Bk k~v(t)k
+
+* z(t)
+
+T
+
+Boe(B
+
+T
+
+z(t)) \Gamma 
+
+p
+
+mk~vk
+
+L
+
+1
+
+(1 \Gamma  ffi)\Gamma 
+
+z
+
+T
+
+(t)Boe(B
+
+T
+
+z(t))
+
+*
+
+i
+
+1 \Gamma 
+
+1 \Gamma  2ffi
+
+1 \Gamma  ffi
+
+j
+
+z
+
+T
+
+(t)Boe(B
+
+T
+
+z(t))
+
+=
+
+ffi
+
+1 \Gamma  ffi
+
+z
+
+T
+
+(t)Boe(B
+
+T
+
+z(t)): (22)
+
+12Pass1: Page 13
+
+
+Note also that
+
+ffi
+
+1\Gamma ffi
+
+^ 1 for 0 ! ffi ^ 1=2. Combining (20) and (22) we have a common estimate valid
+
+for all t * 0:
+
+z(t)
+
+T
+
+B
+
+i
+
+oe(B
+
+T
+
+z(t)) \Gamma  ~v(t)
+
+j
+
+*
+
+ffi
+
+1 \Gamma  ffi
+
+z(t)
+
+T
+
+Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+\Gamma  M
+
+1
+
+p
+
+mk~v(t)k :
+
+Using this and (19) we get
+
+. V
+
+0;p
+
+(z(t)) ^ \Gamma 
+
+ffi
+
+1 \Gamma  ffi
+
+kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)Boe(B
+
+T
+
+z(t)) +
+
+p
+
+mkz(t)k
+
+p\Gamma 1
+
+(Kk~u(t)k + M
+
+1
+
+k~v(t)k): (23)
+
+Let o/ = diag(o/
+
+1
+
+; : : : ; o/
+
+m
+
+) with o/ (,) = diag(o/
+
+1
+
+(,
+
+1
+
+); : : : ; o/
+
+m
+
+(,
+
+m
+
+)) for , 2 IR
+
+m
+
+. Then aI ^ o/ (,) ^ bI
+
+for all , 2 IR
+
+m
+
+. Thus for any , 2 IR
+
+m
+
+,
+
+ko/ (,), \Gamma  oe(,)k =
+
+i
+
+m
+
+X
+
+i=1
+
+jo/
+
+i
+
+(,
+
+i
+
+),
+
+i
+
+\Gamma  oe
+
+i
+
+(,
+
+i
+
+)j
+
+2
+
+j
+
+1=2
+
+^ K
+
+i
+
+m
+
+X
+
+i=1
+
+,
+
+2
+
+i
+
+(oe
+
+i
+
+(,
+
+i
+
+))
+
+2
+
+j
+
+1=2
+
+^ K,
+
+T
+
+oe(,): (24)
+
+For each 1 ! p ! 1, introduce now the following new function:
+
+V
+
+1;p
+
+(x) =
+
+kxk
+
+p
+
+p
+
+:
+
+Along the trajectory of (17), we have, at each t so that z(t) 6= 0:
+
+dV
+
+1;p
+
+i
+
+z(t)
+
+j
+
+dt
+
+= kz(t)k
+
+p\Gamma 2
+
+z
+
+T
+
+(t)B
+
+n
+
+\Gamma  oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+j
+
++ ~v(t)
+
+o
+
+= kz(t)k
+
+p\Gamma 2
+
+z
+
+T
+
+(t)B
+
+n
+
+\Gamma  o/
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+B
+
+T
+
+z(t) +
+
+i
+
+o/
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+B
+
+T
+
+z(t) \Gamma  oe
+
+i
+
+B
+
+T
+
+z(t)
+
+jj
+
++
+
+i
+
+oe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+\Gamma  oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+jj
+
++ ~v(t)
+
+o
+
+^ \Gamma akz(t)k
+
+p\Gamma 2
+
+kB
+
+T
+
+z(t)k
+
+2
+
++ KkBk kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
++KkBk kz(t)k
+
+p\Gamma 1
+
+k~u(t)k + kBkkz(t)k
+
+p\Gamma 1
+
+k~v(t)k : (25)
+
+This calculation can be justified also for z(t) = 0, since V
+
+1;p
+
+is differentiable and vanishes at zero; in
+
+that case one should interpret kz(t)k
+
+p\Gamma 2
+
+z
+
+T
+
+(t) as zero.
+
+Since
+
+~ A is Hurwitz, for each 1 ! p ! 1 there exist a differentiable function V
+
+2;p
+
+and positive real
+
+numbers a
+
+p
+
+, b
+
+p
+
+and c
+
+p
+
+such that for all x 2 IR
+
+n
+
+,
+
+(P
+
+1
+
+) a
+
+p
+
+kxk
+
+p
+
+^ V
+
+2;p
+
+(x) ^ b
+
+p
+
+kxk
+
+p
+
+;
+
+(P
+
+2
+
+) kDV
+
+2;p
+
+(x)k ^ c
+
+p
+
+kxk
+
+p\Gamma 1
+
+;
+
+(P
+
+3
+
+) DV
+
+2;p
+
+(x)
+
+~ Ax ^ \Gamma 2kxk
+
+p
+
+;
+
+Moreover, we may choose V
+
+2;p
+
+so that
+
+(P
+
+4
+
+) lim sup
+
+p!1+
+
+c
+
+p
+
+= c
+
+1
+
+! 1, and the limit V
+
+2;1
+
+(x) := lim
+
+p!1+
+
+V
+
+2;p
+
+(x) exists for all x 2 IR
+
+n
+
+.
+
+(For instance, one may take V
+
+2;p
+
+(x) = ff
+
+p
+
+(x
+
+T
+
+P x)
+
+p=2
+
+, where ff
+
+p
+
+? 0 is a proper constant and P ? 0
+
+satisfies P
+
+~ A +
+
+~ A
+
+T
+
+P = \Gamma I.)
+
+13Pass1: Page 14
+
+
+Rewriting (17) in the form
+
+.z =
+
+~ Az + B
+
+i
+
+B
+
+T
+
+z \Gamma  oe(B
+
+T
+
+z + ~u) + ~v
+
+j
+
+;
+
+z(0) = 0 ;
+
+(26)
+
+we can compute the derivative of V
+
+2;p
+
+along its trajectories as:
+
+dV
+
+2;p
+
+i
+
+z(t)
+
+j
+
+dt
+
+^ \Gamma 2kz(t)k
+
+p
+
++ c
+
+p
+
+kBkkz(t)k
+
+p\Gamma 1
+
+n
+
+fl
+
+fl flB
+
+T
+
+z(t) \Gamma  o/ (B
+
+T
+
+z(t))B
+
+T
+
+z(t)
+
+fl fl fl
+
++
+
+fl fl flo/ (B
+
+T
+
+z(t))B
+
+T
+
+z(t) \Gamma  oe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+fl
+
+fl fl +
+
+fl fl floe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
+\Gamma  oe
+
+i
+
+B
+
+T
+
+z(t) + ~u(t)
+
+j
+
+fl
+
+fl fl + k~v(t)k
+
+o
+
+^ \Gamma 2kz(t)k
+
+p
+
++ c
+
+p
+
+kBkkz(t)k
+
+p\Gamma 1
+
+n
+
+(b + 1)kB
+
+T
+
+z(t)k + Kz
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
++ K k~u(t)k + k~v(t)k
+
+o
+
+: (27)
+
+For 1 ^ p ! 1, let
+
+*
+
+p
+
+=
+
+(b + 1)
+
+2
+
+c
+
+2
+
+p
+
+kBk
+
+2
+
+4a
+
+; (28)
+
+e
+
+p
+
+=
+
+KkBk(*
+
+p
+
++ c
+
+p
+
+)(1 \Gamma  ffi)
+
+ffi
+
+: (29)
+
+(Observe that these constants do not depend on the particular u and v being considered, but only on the system and on p.) Finally, consider, for each 1 ^ p ! 1, the following function
+
+V
+
+p
+
+= e
+
+p
+
+V
+
+0;p
+
++ *
+
+p
+
+V
+
+1;p
+
++ V
+
+2;p
+
+; (30)
+
+where e
+
+p
+
+; *
+
+p
+
+are given in (28), (29). Using (23), (25) and (27), for 1 ! p ! 1, we have along trajectories
+
+of (17),
+
+dV
+
+p
+
+i
+
+z(t)
+
+j
+
+dt
+
+^ \Gamma 
+
+ffie
+
+p
+
+1 \Gamma  ffi
+
+kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
++ e
+
+p
+
+p
+
+mkz(t)k
+
+p\Gamma 1
+
+(Kk~u(t)k + M
+
+1
+
+k~v(t)k)
+
+\Gamma a*
+
+p
+
+kz(t)k
+
+p\Gamma 2
+
+kB
+
+T
+
+z(t)k
+
+2
+
++ K*
+
+p
+
+kBk kz(t)k
+
+p\Gamma 1
+
+z
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+z(t)
+
+j
+
++K*
+
+p
+
+kBk kz(t)k
+
+p\Gamma 1
+
+k~u(t)k + *
+
+p
+
+kBk kz(t)k
+
+p\Gamma 1
+
+k~v(t)k \Gamma  2kz(t)k
+
+p
+
++c
+
+p
+
+kBkkz(t)k
+
+p\Gamma 1
+
+n
+
+(b + 1)kB
+
+T
+
+z(t)k + Kz(t)B
+
+T
+
+oe
+
+i
+
+B
+
+T
+
+z(t)
+
+jo
+
++Kc
+
+p
+
+kBk kz(t)k
+
+p\Gamma 1
+
+k~u(t)k + c
+
+p
+
+kBk kz(t)k
+
+p\Gamma 1
+
+k~v(t)k
+
+^ \Gamma kz(t)k
+
+p
+
++ kz(t)k
+
+p\Gamma 2
+
+n
+
+\Gamma  kz(t)k
+
+2
+
++ (b + 1)c
+
+p
+
+kBkkz(t)k kB
+
+T
+
+z(t)k \Gamma  a*
+
+p
+
+kB
+
+T
+
+z(t)k
+
+2
+
+o
+
++K(
+
+p
+
+me
+
+p
+
++ kBk(c
+
+p
+
++ *
+
+p
+
+))kz(t)k
+
+p\Gamma 1
+
+k~u(t)k + (
+
+p
+
+mM
+
+1
+
+e
+
+p
+
++ kBk(c
+
+p
+
++ *
+
+p
+
+))kz(t)k
+
+p\Gamma 1
+
+k~v(t)k :
+
+For each 1 ^ p ! 1 denote:
+
+^
+
+p
+
+= maxfK(
+
+p
+
+me
+
+p
+
++ kBk(c
+
+p
+
++ *
+
+p
+
+));
+
+p
+
+mM
+
+1
+
+e
+
+p
+
++ kBk(c
+
+p
+
++ *
+
+p
+
+)g :
+
+From all the above, we conclude for each 1 ! p ! 1:
+
+dV
+
+p
+
+i
+
+z(t)
+
+j
+
+dt
+
+^ \Gamma kz(t)k
+
+p
+
++ ^
+
+p
+
+kz(t)k
+
+p\Gamma 1
+
+(k~u(t)k + k~v(t)k) : (31)
+
+14Pass1: Page 15
+
+
+For any t * 0, integrating (31) from 0 to t, we have:
+
+V
+
+p
+
+i
+
+z(t)
+
+j
+
++
+
+Z
+
+t
+
+0
+
+kz(s)k
+
+p
+
+ds ^ ^
+
+p
+
+Z
+
+t
+
+0
+
+kz(s)k
+
+p\Gamma 1
+
+(k~u(s)k + k~v(s)k)ds :
+
+When p = 1, this inequality is also true as an easy consequence of the Lebesgue Dominated Convergence Theorem (applied to a sequence fp
+
+j
+
+g
+
+1
+
+j=1
+
+decreasing to 1). Thus the inequality is true for all 1 ^ p ! 1.
+
+Applying first H"older's inequality to
+
+R
+
+t
+
+0
+
+kz(s)k
+
+p\Gamma 1
+
+(k~u(s)k + k~v(s)k)ds, we conclude that for all
+
+1 ^ p ! 1 and t * 0,
+
+V
+
+p
+
+i
+
+z(t)
+
+j
+
++ kzk
+
+p
+
+L
+
+p
+
+[0;t]
+
+^ ^
+
+p
+
+kzk
+
+p\Gamma 1
+
+L
+
+p
+
+[0;t]
+
+(k~uk
+
+L
+
+p + k~vk
+
+L
+
+p) : (32)
+
+Since V
+
+p
+
+* 0, we get that z 2 L
+
+p
+
+([0; 1); IR
+
+n
+
+) and
+
+kzk
+
+L
+
+p ^ ^
+
+p
+
+(k~uk
+
+L
+
+p + k~vk
+
+L
+
+p) : (33)
+
+Now since z = x \Gamma  y, ~u = u + B
+
+T
+
+y; ~v = B
+
+T
+
+y, we have
+
+k~vk
+
+L
+
+p
+
+^ kBk kyk
+
+L
+
+p
+
+^ "Kfl
+
+p
+
+kBkkvk
+
+L
+
+p
+
+k~uk
+
+L
+
+p ^ kuk
+
+L
+
+p + "Kfl
+
+p
+
+kBkkvk
+
+L
+
+p ;
+
+kzk
+
+L
+
+p
+
+* kxk
+
+L
+
+p
+
+\Gamma  kyk
+
+L
+
+p
+
+* kxk
+
+L
+
+p
+
+\Gamma  "Kfl
+
+p
+
+kvk
+
+L
+
+p
+
+;
+
+where fl
+
+p
+
+is the L
+
+p
+
+-gain of (13). Combining this with (33) we have
+
+kxk
+
+L
+
+p ^ ^
+
+p
+
+kuk
+
+L
+
+p + "Kfl
+
+p
+
+(1 + 2^
+
+p
+
+kBk)kvk
+
+L
+
+p :
+
+This finishes the proof of the Lemma, and hence our main theorem, for the case when 1 ^ p ! 1.
+
+We now prove the case p = 1. This means that we need to show that system (11) has the uniform bounded input bounded state property, i.e., there exists a finite constant M such that kxk
+
+L
+
+1
+
+^
+
+M (kuk
+
+L
+
+1 + kvk
+
+L
+
+1) for all u 2 L
+
+1
+
+([0; 1); IR
+
+m
+
+) and v 2 L
+
+1
+
+([0; 1); IR
+
+k
+
+). It will be useful to use the
+
+function V
+
+2
+
+which was also used for p = 2. Letting p = 2, from (31) we have
+
+dV
+
+2
+
+i
+
+z(t)
+
+j
+
+dt
+
+^ \Gamma kz(t)k
+
+i
+
+kz(t)k \Gamma  ^
+
+2
+
+(k~uk
+
+L
+
+1
+
++ k~vk
+
+L
+
+1
+
+)
+
+j
+
+: (34)
+
+Let fi = k~uk
+
+L
+
+1 + k~vk
+
+L
+
+1. Thus,
+
+. V
+
+2
+
+is negative outside the ball of radius ^
+
+2
+
+fi centered at the origin. It
+
+follows that
+
+V
+
+2
+
+i
+
+z(t)
+
+j
+
+^ sup
+
+k,k^^
+
+2
+
+fi
+
+V
+
+2
+
+(,) ^
+
+e
+
+2
+
+^
+
+3
+
+2
+
+3
+
+fi
+
+3
+
++ (b
+
+2
+
+^
+
+2
+
+2
+
++
+
+*
+
+2
+
+^
+
+2
+
+2
+
+2
+
+)fi
+
+2
+
+:
+
+First assume that fi ^ 1. Then we have
+
+a
+
+2
+
+kz(t)k
+
+2
+
+^ V
+
+2
+
+i
+
+z(t)
+
+j
+
+^
+
+i
+
+e
+
+2
+
+^
+
+3
+
+2
+
+3
+
++
+
+*
+
+2
+
+^
+
+2
+
+2
+
+2
+
++ b
+
+2
+
+^
+
+2
+
+2
+
+j
+
+fi
+
+2
+
+;
+
+which implies that
+
+kzk
+
+L
+
+1
+
+^
+
+n
+
+2e
+
+2
+
+^
+
+3
+
+2
+
++ 6b
+
+2
+
+^
+
+2
+
+2
+
++ 3*
+
+2
+
+^
+
+2
+
+2
+
+6a
+
+2
+
+o
+
+1
+
+2
+
+fi :
+
+If fi ? 1, we have
+
+e
+
+2
+
+kz(t)k
+
+3
+
+3
+
+^ V
+
+2
+
+i
+
+z(t)
+
+j
+
+^
+
+i
+
+e
+
+2
+
+^
+
+3
+
+2
+
+3
+
++
+
+*
+
+2
+
+^
+
+2
+
+2
+
+2
+
++ b
+
+2
+
+^
+
+2
+
+2
+
+j
+
+fi
+
+3
+
+;
+
+15Pass1: Page 16
+
+
+We then get that
+
+kzk
+
+L
+
+1 ^
+
+n
+
+2e
+
+2
+
+^
+
+3
+
+2
+
++ 6b
+
+2
+
+^
+
+2
+
+2
+
++ 3*
+
+2
+
+^
+
+2
+
+2
+
+2e
+
+2
+
+o
+
+1
+
+3
+
+fi :
+
+Let
+
+_ G
+
+1
+
+= max
+
+ae
+
+n
+
+2e
+
+2
+
+^
+
+3
+
+2
+
++ 6b
+
+2
+
+^
+
+2
+
+2
+
++ 3*
+
+2
+
+^
+
+2
+
+2
+
+6a
+
+2
+
+o
+
+1
+
+2
+
+;
+
+n
+
+2e
+
+2
+
+^
+
+3
+
+2
+
++ 6b
+
+2
+
+^
+
+2
+
+2
+
++ 3*
+
+2
+
+^
+
+2
+
+2
+
+2e
+
+2
+
+o
+
+1
+
+3
+
+oe
+
+:
+
+We have kzk
+
+L
+
+1 ^
+
+_ G
+
+1
+
+fi. Now
+
+fi = k~uk
+
+L
+
+1 + k~vk
+
+L
+
+1 ^ kuk
+
+L
+
+1 + 2"Kfl
+
+1
+
+kBk kvk
+
+L
+
+1 :
+
+and
+
+kzk
+
+L
+
+1
+
+* kxk
+
+L
+
+1
+
+\Gamma  "Kfl
+
+1
+
+kvk
+
+L
+
+1
+
+:
+
+We conclude that
+
+kxk
+
+1
+
+^
+
+_ G
+
+1
+
+kuk
+
+L
+
+1
+
++ "Kfl
+
+1
+
+(1 + 2
+
+_ G
+
+1
+
+kBk)kvk
+
+L
+
+1
+
+:
+
+Now the proof of Lemma 3 is complete.
+
+4.3 Proof of the Output Feedback Theorem We now provide a proof of Theorem 3. We will show a somewhat stronger statement, namely, that the state trajectory x also satisfies an estimate as required. The proof will be the usual Luenberger- observer construction, but a bit of care has to be taken because of the nonlinearities.
+
+Asymptotic observability means that there is some n \Theta  r matrix L such that A + LC is Hurwitz. Pick F be as in Theorem 2. Let e = x
+
+1
+
+\Gamma  x
+
+2
+
+. Then (x
+
+1
+
+; e) satisfies
+
+.x
+
+1
+
+= Ax
+
+1
+
++ Boe(F x
+
+1
+
+\Gamma  F e + u
+
+1
+
+) ;
+
+.e = (A + LC)e + B
+
+i
+
+oe(F x
+
+1
+
+\Gamma  F e + u
+
+1
+
+) \Gamma  oe(F x
+
+1
+
+\Gamma  F e)
+
+j
+
++ Lu
+
+2
+
+:
+
+Let ~v = oe(F x
+
+1
+
+\Gamma  F e + u
+
+1
+
+) \Gamma  oe(F x
+
+1
+
+\Gamma  F e). Since k~v(t)k ^ Kku
+
+1
+
+(t)k and A + LC is Hurwitz, we know
+
+that e is in L
+
+p
+
+([0; 1); IR
+
+n
+
+) and kek
+
+L
+
+p ^ M
+
+0
+
+(ku
+
+1
+
+k
+
+L
+
+p + ku
+
+2
+
+k
+
+L
+
+p) for some constant M
+
+0
+
+? 0. Then the
+
+conclusion follows from Theorem 2 applied to the x
+
+1
+
+-subsystem.
+
+Note that the conclusion of this Theorem can be restated in terms of the finite gain stability of a standard systems interconnection
+
+y
+
+1
+
+= P (u
+
+1
+
++ y
+
+2
+
+)
+
+y
+
+2
+
+= C(u
+
+2
+
++ y
+
+1
+
+)
+
+where P denotes the input/output behavior of the original system \Sigma  and C is the input/output behavior of the controller with state space x
+
+2
+
+and output y
+
+2
+
+.
+
+4.4 Operator Stability Among Different Norms We can actually prove a stronger result than that stated in Theorem 2, namely that the input to state operator (u; v) ! x from L
+
+p
+
+([0; 1; IR
+
+m
+
+) \Theta  L
+
+p
+
+([0; 1); IR
+
+k
+
+) to L
+
+p
+
+([0; 1); IR
+
+n
+
+) is a bounded operator from
+
+L
+
+p
+
+([0; 1; IR
+
+m
+
+) \Theta  L
+
+p
+
+([0; 1); IR
+
+k
+
+) to L
+
+q
+
+([0; 1); IR
+
+n
+
+), for any q * p.
+
+16Pass1: Page 17
+
+
+Remark 4 Let A be skew-symmetric and
+
+~ A = A \Gamma  BB
+
+T
+
+be Hurwitz. Then from (32), (33) we get
+
+that, for u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+); v 2 L
+
+p
+
+([0; 1); IR
+
+k
+
+) and t * 0,
+
+a
+
+p
+
+kz(t)k
+
+p
+
+^ V
+
+p
+
+i
+
+z(t)
+
+j
+
+^ ^
+
+p
+
+kzk
+
+p\Gamma 1
+
+L
+
+p
+
+k (k~uk
+
+L
+
+p
+
++ k~vk
+
+L
+
+p
+
+) ^ ^
+
+p
+
+p
+
+(k~uk
+
+L
+
+p
+
++ k~vk
+
+L
+
+p
+
+)
+
+p
+
+;
+
+and then, kzk
+
+L
+
+1 ^ C
+
+1
+
+(k~uk
+
+L
+
+p + k~vk
+
+L
+
+p) with C
+
+1
+
+= ^
+
+p
+
+a
+
+\Gamma 1=p
+
+p
+
+. Therefore we obtain for q * p,
+
+kzk
+
+q
+
+L
+
+q
+
+^ kzk
+
+q\Gamma p
+
+L
+
+1
+
+kzk
+
+p
+
+L
+
+p
+
+^ C
+
+q\Gamma p
+
+1
+
+^
+
+p
+
+p
+
+(k~uk
+
+L
+
+p + k~vk
+
+L
+
+p)
+
+q
+
+: (35)
+
+From this one can easily deduce that for any q * p the solution x of (11) satisfies
+
+kxk
+
+L
+
+q ^ M
+
+p;q
+
+(kuk
+
+L
+
+p + kvk
+
+L
+
+p)
+
+for some constants M
+
+p;q
+
+? 0. The same results then hold for the original system in Theorem 2, as is
+
+clear from the reduction to (11). That is, for any u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+); v 2 L
+
+p
+
+([0; 1); IR
+
+k
+
+), the solution
+
+x of (5) satisfies a similar inequality.
+
+4.5 A Remark on Robustness of a Linear Feedback It is worth pointing out that the same method used to prove Lemma 3 allows establishing a result regarding time-varying multiplicative uncertainties on a linear feedback law u = \Gamma B
+
+T
+
+x:
+
+Lemma 4 Let A be an n \Theta  n skew-symmetric matrix and B an n \Theta  m matrix. Assume that A \Gamma  BB
+
+T
+
+is Hurwitz. Let D(t) be an m \Theta  m matrix with bounded entries. Assume also that there exists a constant a ? 0 such that D(t) + D
+
+T
+
+(t) * aI for almost all t in [0; 1). Then the following initialized
+
+system
+
+(
+
+~ \Sigma ) .x =
+
+_ A(t)x + u ;
+
+x(0) = 0;
+
+where u 2 L
+
+p
+
+([0; +1); IR
+
+n
+
+) and
+
+_ A(t) := A\Gamma BD(t)B
+
+T
+
+, is finite gain L
+
+p
+
+-stable, and the L
+
+p
+
+-gain depends
+
+only on p; a; A B and M , where M = supfkD(t)k : t 2 [0; 1)g.
+
+PROOF: Let V
+
+p
+
+= *
+
+p
+
+V
+
+1;p
+
++ V
+
+2;p
+
+with *
+
+p
+
+=
+
+2(M+1)
+
+2
+
+c
+
+2
+
+p
+
+kBk
+
+2
+
+a
+
+, where V
+
+1;p
+
+; V
+
+2;p
+
+are defined in the proof of
+
+Lemma 3. Then one can show that along the trajectories of (
+
+~ \Sigma )
+
+. V
+
+p
+
+(x(t)) ^ \Gamma kx(t)k
+
+p
+
++ _^
+
+p
+
+kx(t)k
+
+p\Gamma 1
+
+ku(t)k ;
+
+for some constant _^
+
+p
+
+? 0. Then everything else follows exactly the same as in the proof of Lemma 3.
+
+5 Comparison with Linear Gains From the proof of Lemma 3, we can also obtain explicit bounds for the L
+
+p
+
+-gain for (11). For simplicity,
+
+we deal only with the case ` j 0, as in Theorem 1. Specifically, we will compare these bounds with the L
+
+p
+
+-gain of the linear control system
+
+.x =
+
+~ Ax + Bu ;
+
+x(0) = 0 ;
+
+(36)
+
+where
+
+~ A = A \Gamma  BB
+
+T
+
+. For the cases p = 1; 2 we have the following:
+
+17Pass1: Page 18
+
+
+Corollary 1 Let A; B; oe be as in Lemma 3. Let G
+
+1
+
+and G
+
+2
+
+be respectively the L
+
+1
+
+and L
+
+2
+
+-gains of the
+
+system
+
+.x = Ax \Gamma  Boe(B
+
+T
+
+x + u) ;
+
+x(0) = 0 :
+
+(37)
+
+Let fl
+
+1
+
+and fl
+
+2
+
+be respectively the L
+
+1
+
+and L
+
+2
+
+-gains of (36). Then we have
+
+1. G
+
+1
+
+^ K(1 +
+
+p
+
+mK)fl
+
+1
+
+,
+
+2. G
+
+2
+
+^ 2
+
+p
+
+nK(1 +
+
+p
+
+mK)fl
+
+2
+
+.
+
+(In the literature, fl
+
+2
+
+is called the "H
+
+1
+
+-norm" of (36) and is usually denoted by kW k
+
+1
+
+, where W (s)
+
+is the transfer matrix for system (36).)
+
+PROOF: For p = 1 one can easily get from (19)
+
+Z
+
+1
+
+0
+
+x
+
+T
+
+(s)Boe
+
+i
+
+B
+
+T
+
+x(s)
+
+j
+
+ds ^ K
+
+p
+
+mkuk
+
+L
+
+1
+
+: (38)
+
+(This also follows by integrating (55) below from 0 to 1.) Let v(t) = B
+
+T
+
+x(t) \Gamma  oe
+
+i
+
+B
+
+T
+
+x(t) + u(t)
+
+j
+
+.
+
+Then, we have
+
+Z
+
+1
+
+0
+
+kv(s)kds ^
+
+Z
+
+1
+
+0
+
+n
+
+fl
+
+fl fl
+
+B
+
+T
+
+x(s) \Gamma  oe
+
+i
+
+B
+
+T
+
+x(s)
+
+j
+
+fl
+
+fl fl
+
++
+
+fl fl fl
+
+oe
+
+i
+
+B
+
+T
+
+x(s)
+
+j
+
+\Gamma  oe
+
+i
+
+B
+
+T
+
+x(s) + u(s)
+
+j
+
+fl
+
+fl fl
+
+o
+
+ds
+
+^ K
+
+Z
+
+1
+
+0
+
+n
+
+x
+
+T
+
+(s)Boe
+
+i
+
+B
+
+T
+
+x(s)
+
+j
+
++ ku(s)k
+
+o
+
+ds
+
+^ K(
+
+p
+
+mK + 1)kuk
+
+L
+
+1 :
+
+Now (37) can be written as
+
+.x =
+
+~ Ax + Bv(t) ;
+
+x(0) = 0 :
+
+By the definition of fl
+
+1
+
+we have kxk
+
+L
+
+1
+
+^ fl
+
+1
+
+kvk
+
+L
+
+1
+
+^ K(
+
+p
+
+mK + 1)fl
+
+1
+
+kuk
+
+L
+
+1
+
+. Therefore
+
+G
+
+1
+
+^ K(
+
+p
+
+mK + 1)fl
+
+1
+
+;
+
+and Conclusion 1 is then proved.
+
+Now we show Conclusion 2. Since
+
+~ A is Hurwitz, we can choose the explicit V
+
+1;2
+
+= x
+
+T
+
+P x where P
+
+is the positive definite symmetric matrix, satisfying
+
+~ A
+
+T
+
+P + P
+
+~ A = \Gamma I : (39)
+
+Take
+
+V
+
+2
+
+(x) =
+
+ckxk
+
+3
+
+3
+
++ x
+
+T
+
+P x
+
+with c = 2KkP Bk. Similar to the proof of Lemma 3, we can show that
+
+G
+
+2
+
+^ 2KkP Bk(1 +
+
+p
+
+mK) : (40)
+
+Therefore we need to compare kP Bk with kW k
+
+1
+
+. For this purpose we consider the Hankel norm
+
+for system (36). The matrix P is also called the observability Gramian for (36) in the literature (the
+
+18Pass1: Page 19
+
+
+output is just the state in our case). The controllability Gramian for system (36) is defined to be the symmetric matrix that satisfies
+
+~ AQ + Q
+
+~ A
+
+T
+
++ BB
+
+T
+
+= 0 : (41)
+
+We know that the Hankel norm for (36) is equal to
+
+kW k
+
+hankel
+
+=
+
+i
+
+*
+
+max
+
+(P Q)
+
+j
+
+1
+
+2
+
+; (42)
+
+where *
+
+max
+
+(\Delta ) denotes the largest eigenvalue, cf. [1]. We also know that the H
+
+1
+
+-norm for (36) is
+
+related to the Hankel norm by the following inequalities:
+
+kW k
+
+1
+
+^ (2n + 1)kW k
+
+hankel
+
+^ (2n + 1)kW k
+
+1
+
+: (43)
+
+Now in our case, since
+
+~ A = A \Gamma  BB
+
+T
+
+and
+
+~ A
+
+T
+
+= \Gamma A \Gamma  BB
+
+T
+
+, the controllability Gramian Q is equal to
+
+1 2
+
+I. Therefore the Hankel norm for (36) is just
+
+kW k
+
+hankel
+
+=
+
+i
+
+*
+
+max
+
+(P=2)
+
+j
+
+1
+
+2
+
+:
+
+Since P satisfies
+
+(A
+
+T
+
+\Gamma  BB
+
+T
+
+)P + P (A \Gamma  BB
+
+T
+
+) + I = P A \Gamma  AP \Gamma  BB
+
+T
+
+P \Gamma  P BB
+
+T
+
++ I = 0 ;
+
+multiplying to the right by P to both sides, we get
+
+P AP \Gamma  AP P \Gamma  BB
+
+T
+
+P P \Gamma  P BB
+
+T
+
+P + P = 0 : (44)
+
+Now taking trace to both sides of (44), we get that
+
+kP Bk
+
+2
+
+= T r(P=2) :
+
+On the other hand we know that T r(P=2) is equal to the sum of all the eigenvalues of P=2. Therefore we have kP Bk ^
+
+p
+
+n*
+
+1 2 max
+
+(P=2) =
+
+p
+
+nkW k
+
+hankel
+
+^
+
+p
+
+nkW k
+
+1
+
+. We end up with
+
+G
+
+2
+
+^ 2
+
+p
+
+nK(1 +
+
+p
+
+mK)kW k
+
+1
+
+= 2
+
+p
+
+nK(1 +
+
+p
+
+mK)fl
+
+2
+
+:
+
+Remark 5 If we use the classical L
+
+1
+
+-norm, i.e., kxk
+
+1
+
+def
+
+=
+
+P
+
+n
+
+i=1
+
+R
+
+1
+
+0
+
+jx
+
+i
+
+(s)jds for functions x 2
+
+L
+
+1
+
+([0; 1); IR
+
+n
+
+), and for controls u 2 L
+
+1
+
+([0; 1); IR
+
+m
+
+) too, then the estimate in Conclusion 1 of Corol-
+
+lary 1 can be replaced by K(1 + K)fl
+
+1
+
+. In this manner, the dimension of the control space does
+
+not appear in the bound. We suspect also that the estimate for G
+
+2
+
+should be independent of the
+
+dimensions of both the state and the control spaces.
+
+6 Nonzero Initial States We now turn to nonzero initial states. We start with an easy observation. Remark 6 Consider systems as in Theorem 2, but without controls, that is, any system (S) given by
+
+.x = Ax + Boe(F x), where A; B; oe are as in Theorem 2 and F is chosen as in its proof. It is well-known that the origin is globally asymptotically stable, assuming for instance controllability of the matrix pair (A; B). It is interesting to see that this fact also can be shown as a consequence of our arguments. From the proof of Theorem 2, it is enough to show that the system .x = Ax \Gamma  Boe(B
+
+T
+
+x), with A skew-
+
+symmetric and (A; B) controllable, is globally asymptotically stable with respect to the origin. But this follows trivially from (31), since we have along the trajectories of (S
+
+0
+
+) that dV
+
+2
+
+(x(t))=dt ^ \Gamma kx(t)k
+
+2
+
+.
+
+Thus V
+
+2
+
+is a strict Lyapunov function for this system without controls.
+
+19Pass1: Page 20
+
+
+The previous remark suggests the study of relationships between L
+
+p
+
+-stability and global asymptotic
+
+stability of the origin. We prove below that, even for nonlinear feedback laws, L
+
+p
+
+-stability for finite p
+
+implies asymptotic stability.
+
+6.1 Relations Between State-Space Stability and L
+
+p
+
+-Stability
+
+Lemma 5 Let A be an n \Theta  n matrix, B an n \Theta  m matrix, oe an IR
+
+m
+
+-valued S-function and f a
+
+locally Lipschitz continuous function from IR
+
+n
+
+to IR
+
+m
+
+such that f (0) = 0. We assume that (A; B) is
+
+controllable. Consider the system of differential equations
+
+.x = Ax + Boe(f (x)) (45) and the control system
+
+.x = Ax + Boe(f (x) + u) ; x(0) = 0 :
+
+(46)
+
+We have the following conclusions:
+
+(i) if system (46) is L
+
+p
+
+-stable for some p 2 [1; 1), then system (45) is locally asymptotically stable
+
+with respect to the origin;
+
+(ii) if the reachable set from 0 of (46) is equal to IR
+
+n
+
+and if system (46) is L
+
+p
+
+-stable for some p 2 [1; 1),
+
+then system (45) is globally asymptotically stable with respect to the origin;
+
+(iii) if oe and f are differentiable at 0, let F = D(oe ffi f )(0). Then, if system (46) is L
+
+p
+
+-stable for some
+
+p 2 [1; 1), A + BF is a Hurwitz matrix.
+
+The proof of this Lemma uses the following result, which is of independent interest. Lemma 6 Let f : IR
+
+n
+
+\Theta  IR
+
+m
+
+! IR
+
+n
+
+be a locally Lipschitz continuous function such that kf (x; u)k ^
+
+K
+
+1
+
++ K
+
+2
+
+kxk for all (x; u) 2 IR
+
+n
+
+\Theta  IR
+
+m
+
+, where K
+
+1
+
+; K
+
+2
+
+are some positive constants. Assume that the
+
+system
+
+.x = f (x; u); x(0) = 0 (47)
+
+is L
+
+p
+
+-stable for some p 2 [1; 1). Then there exists a constant C
+
+p
+
+? 0 so that for any u 2
+
+L
+
+p
+
+([0; 1); IR
+
+m
+
+), if x
+
+u
+
+is the corresponding solution of (47),
+
+kx
+
+u
+
+k
+
+L
+
+1
+
+^ C
+
+p
+
+max
+
+n
+
+kuk
+
+L
+
+p
+
+; kuk
+
+p p+1
+
+L
+
+p
+
+o
+
+: (48)
+
+Moreover, x
+
+u
+
+(t) ! 0 as t ! 1.
+
+If in addition the following conditions hold:
+
+(A) f (x; 0) is differentiable at 0 and
+
+~ A = D
+
+x
+
+f (0; 0) is Hurwitz, and
+
+(B) there exists M ? 0 such that kf (x; u) \Gamma  f (x; 0)k ^ M kuk for all (x; u) 2 IR
+
+n
+
+\Theta  IR
+
+m
+
+,
+
+then we can conclude
+
+kx
+
+u
+
+k
+
+L
+
+1 ^ C
+
+p
+
+kuk
+
+L
+
+p; (49)
+
+and therefore for any q * p, kx
+
+u
+
+k
+
+L
+
+q
+
+^
+
+~ C
+
+p;q
+
+kuk
+
+L
+
+p
+
+for some constants C
+
+p
+
+;
+
+~ C
+
+p;q
+
+? 0.
+
+20Pass1: Page 21
+
+
+PROOF: For each T ? 0, let fi
+
+T
+
+= supfkx
+
+u
+
+(t)k j t 2 [0; T ]g. By the continuity of x
+
+u
+
+, there exist
+
+t
+
+1
+
+^ t
+
+2
+
+2 [0; T ] such that kx
+
+u
+
+(t
+
+1
+
+)k =
+
+fi
+
+T
+
+2
+
+; kx
+
+u
+
+(t
+
+2
+
+)k = fi
+
+T
+
+, and
+
+fi
+
+T
+
+2
+
+^ kx
+
+u
+
+(t)k ^ fi
+
+T
+
+for t 2 [t
+
+1
+
+; t
+
+2
+
+]. Then
+
+from (47) we have
+
+fi
+
+T
+
+2
+
+^
+
+Z
+
+t
+
+2
+
+t
+
+1
+
+(K
+
+1
+
++ K
+
+2
+
+kx
+
+u
+
+(s)k)ds ^ (K
+
+1
+
++ K
+
+2
+
+fi
+
+T
+
+)jt
+
+2
+
+\Gamma  t
+
+1
+
+j :
+
+Therefore jt
+
+2
+
+\Gamma  t
+
+1
+
+j *
+
+fi
+
+T
+
+2(K
+
+1
+
++K
+
+2
+
+fi
+
+T
+
+)
+
+. Then, if G
+
+p
+
+is the L
+
+p
+
+-gain of (46), we have
+
+fi
+
+p+1
+
+T
+
+2
+
+p+1
+
+(K
+
+1
+
++ K
+
+2
+
+fi
+
+T
+
+)
+
+^
+
+Z
+
+t
+
+2
+
+t
+
+1
+
+kx
+
+u
+
+(s)k
+
+p
+
+ds ^ G
+
+p
+
+p
+
+kuk
+
+p
+
+L
+
+p
+
+:
+
+From this we can get
+
+fi
+
+T
+
+^ C
+
+p
+
+maxfkuk
+
+L
+
+p
+
+; kuk
+
+p p+1
+
+L
+
+p
+
+g
+
+for some constant C
+
+p
+
+? 0 independent of u. Letting T ! 1, we obtain (48).
+
+Pick now any u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+). From the above conclusion, x
+
+u
+
+is bounded. From the systems
+
+equations, it follows that also k .x
+
+u
+
+k is bounded. Thus, if y(t) = x
+
+p
+
+u;i
+
+is a power of the ith coordinate of
+
+x
+
+u
+
+, we know also that .y is bounded, from which it follows that y is uniformly continuous. Since also
+
+by assumption the system is L
+
+p
+
+-stable, y 2 L
+
+1
+
+([0; 1)). By Barbalat's Lemma, lim
+
+t!1
+
+y(t) = 0 and
+
+hence also x
+
+u
+
+(t) ! 0.
+
+Now assume that (A) and (B) hold. We can rewrite system (47) as follows:
+
+.x =
+
+~ Ax + H(x) + L(x; u) ;
+
+x(0) = 0 ;
+
+(50)
+
+where the continuous functions H and L satisfy
+
+lim kxk!0
+
+kH(x)k
+
+kxk
+
+= 0 (51)
+
+and kL(x; u)k = kf (x; u) \Gamma  f (x; 0)k ^ M kuk for all x; u.
+
+Let V
+
+2;p
+
+be the function defined in the proof of Lemma 3 with this matrix
+
+~ A. Then (51) implies
+
+that there exists a ffi ? 0 such that kDV
+
+2;p
+
+(x)H(x)k ^ kxk
+
+p
+
+if kxk ^ ffi. On the other hand, (48)
+
+implies that there exists an ff ? 0 such that if kuk
+
+L
+
+p ^ ff, the solution of (50) satisfies kx
+
+u
+
+(t)k ^ ffi for
+
+all t * 0. Thus, if kuk
+
+L
+
+p ^ ff, we have
+
+. V
+
+2;p
+
+(x
+
+u
+
+(t)) = \Gamma 2kx
+
+u
+
+(t)k
+
+p
+
++ DV
+
+2;p
+
+(x
+
+u
+
+(t))
+
+i
+
+H(x
+
+u
+
+(t)) + L(x
+
+u
+
+(t); u(t))
+
+j
+
+^ \Gamma kx
+
+u
+
+(t)k
+
+p
+
++ c
+
+p
+
+M kx
+
+u
+
+(t)k
+
+p\Gamma 1
+
+ku(t)k :
+
+Integrating, and using that V
+
+2
+
+(x
+
+u
+
+(0)) = 0 and V
+
+2
+
+is nonnegative, we conclude that kx
+
+u
+
+k
+
+L
+
+p
+
+^ c
+
+p
+
+M kuk
+
+L
+
+p
+
+provided that kuk
+
+L
+
+p ^ ff. Now if kuk
+
+L
+
+p * ff we have kuk
+
+p p+1
+
+L
+
+p
+
+^ kuk
+
+L
+
+pff
+
+\Gamma 
+
+1
+
+p+1
+
+. Then from (48) we have
+
+kx
+
+u
+
+k
+
+L
+
+1 ^ C
+
+p
+
+max
+
+n
+
+1; ff
+
+\Gamma 
+
+1
+
+p+1
+
+o
+
+kuk
+
+L
+
+p :
+
+The fact that (49) implies kx
+
+u
+
+k
+
+L
+
+q ^
+
+~ Ckuk
+
+L
+
+p now follows trivially, as in Equation (35) in the proof of
+
+Remark 4. This completes the proof of the Lemma.
+
+We now return to the proof of the claims made in Lemma 5. PROOF OF (i): Fix a u 2 L
+
+p
+
+([0; 1); IR
+
+m
+
+). Let x
+
+u
+
+be the solution of (46) corresponding to u. From
+
+Lemma 6 we know that x
+
+u
+
+(t) ! 0 as t ! 1.
+
+21Pass1: Page 22
+
+
+To prove stability, we need some elementary reachability results for linear systems. By our as- sumption we know that the system
+
+.x = Ax + Bu (52)
+
+is controllable. Any point x
+
+0
+
+2 IR
+
+n
+
+can be reached from 0 by trajectories of (52) at time 1. Moreover
+
+we can choose a u
+
+x
+
+0
+
+on [0; 1] that steers 0 to x
+
+0
+
+and satisfies ku
+
+x
+
+0
+
+k
+
+L
+
+1
+
+[0;1]
+
+^ Ckx
+
+0
+
+k, where C ? 0 is a
+
+constant depending on A; B (cf. e.g. [13]). By a measurable selection it is also true that there is a measurable control v that steers 0 to x
+
+0
+
+for the system .x = Ax + Boe(v), provided that x
+
+0
+
+is small
+
+enough. Moreover kvk
+
+L
+
+1
+
+[0;1]
+
+can be made small if kx
+
+0
+
+k is small. So if we let u = v(t) \Gamma  f (x(t)) on
+
+[0; 1], where x is the solution of (52), then u steers 0 to x
+
+0
+
+for (46) at time 1. Let U be an open
+
+neighborhood of 0. For each ffi ? 0, let `(ffi) be small enough such that, for each x
+
+0
+
+with kx
+
+0
+
+k ^ `(ffi),
+
+there exists a u
+
+x
+
+0
+
+that steers 0 to x
+
+0
+
+for (46) with ku
+
+x
+
+0
+
+k
+
+L
+
+p
+
+[0;1]
+
+! ffi. If x is the solution of (45) starting
+
+at x
+
+0
+
+, and if we let u(t) = u
+
+x
+
+0
+
+(t) on [0; 1] and u(t) = 0 on (1; 1), then the solution x
+
+u
+
+of (46) satisfies
+
+x
+
+u
+
+(t) = x(t \Gamma  1) on [1; 1). By (48) we can take a ffi ? 0 small enough such that for any x
+
+0
+
+with
+
+kx
+
+0
+
+k ^ `(ffi), the solution x of (45) starting at x
+
+0
+
+stays in U . So system (45) is locally stable.
+
+PROOF OF (ii): Local stability follows as in (i). To prove global attraction, note that the reach- ability assumption implies that any trajectory of (45) can be seen as a part of a trajectory of (46) corresponding to a control in L
+
+p
+
+. Now Lemma 6 provides that x(t) ! 0.
+
+PROOF OF (iii): By (i), we know that A + BF cannot have eigenvalues with positive real part. We show that A + BF cannot have purely imaginary eigenvalues either.
+
+Assume that A + BF has an eigenvalue on the imaginary axis. Let G
+
+p
+
+be the L
+
+p
+
+-gain for (46). Fix
+
+any " ? 0 so that "G
+
+p
+
+! 1. Then there is some m \Theta  n matrix F
+
+"
+
+so that kF
+
+"
+
+k ^ " and A + B(F + EF
+
+"
+
+)
+
+has an eigenvalue with positive real part, where E = diag(oe
+
+0
+
+1
+
+(0); : : : ; oe
+
+0
+
+m
+
+(0)). (This follows as in [12],
+
+or by noticing that one may first use a small F to make the system reachable from one input -cf. [13], Remark 4.1.13- and then using Ackermann's formula for pole-shifting.) By the Small-Gain Theorem, the system
+
+.x = Ax + Boe(f (x) + F
+
+"
+
+x + u) ;
+
+x(0) = 0 ;
+
+(53)
+
+obtained by feeding back F
+
+"
+
+x, is again L
+
+p
+
+-stable. Now from (i) we know that .x = Ax+Boe(f (x)+F
+
+"
+
+x)
+
+is locally asymptotically stable. But this is impossible since the linearized system is unstable (see e.g. [13], Corollary 4.8.8). This contradiction shows that A + BF is Hurwitz.
+
+6.2 Dissipation Inequality and Input to State Stability Next we give a slightly different proof of Theorem 2, which results in a weaker statement (we now allow " to depend on p) but which is somewhat simpler. Moreover, it results in a simple dissipation-type inequality, from which conclusions about nonzero initial states will be evident. We will only sketch the steps, as they parallel those in the previous proofs.
+
+Assume that A is skew-symmetric and A \Gamma  BB
+
+T
+
+is Hurwitz. Fix a 1 ^ p ! 1 first. Let o/; a; b; K,
+
+V
+
+0;p
+
+; V
+
+1;p
+
+; V
+
+2;p
+
+be as in the proof of Lemma 3. Let
+
+*
+
+p
+
+=
+
+(b + 1)
+
+2
+
+c
+
+2
+
+p
+
+kBk
+
+2
+
+4a
+
+;
+
+e
+
+p
+
+= KkBk(*
+
+p
+
++ c
+
+p
+
+) ;
+
+"
+
+p
+
+=
+
+1
+
+2Ke
+
+p
+
+:
+
+22Pass1: Page 23
+
+
+Consider the system
+
+.x = Ax \Gamma  Boe(B
+
+T
+
+x + u) + "
+
+p
+
+`(v) (54)
+
+where the initial states are now arbitrary. Along the trajectories of (54),
+
+. V
+
+0;p
+
+(x(t)) = \Gamma kx(t)k
+
+p\Gamma 1
+
+x
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+x(t) + u(t)
+
+j
+
++ "
+
+p
+
+kx(t)k
+
+p\Gamma 1
+
+x
+
+T
+
+(t)`(v(t))
+
+^ \Gamma kx(t)k
+
+p\Gamma 1
+
+x
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+x(t)
+
+j
+
++ K
+
+p
+
+mkx(t)k
+
+p\Gamma 1
+
+ku(t)k + K"
+
+p
+
+kx(t)k
+
+p
+
+: (55)
+
+(Compare this with (23).) Similar to (25) and (27) we can get (for p ? 1)
+
+. V
+
+1;p
+
+(x(t)) ^ \Gamma akx(t)k
+
+p\Gamma 2
+
+kB
+
+T
+
+x(t)k
+
+2
+
++ KkBk kx(t)k
+
+p\Gamma 1
+
+x
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+x(t)
+
+j
+
++KkBk kx(t)k
+
+p\Gamma 1
+
+ku(t)k + "
+
+p
+
+Kkx(t)k
+
+p\Gamma 1
+
+kv(t)k : (56)
+
+and
+
+. V
+
+2;p
+
+(x(t)) ^ \Gamma 2kx(t)k
+
+p
+
++ c
+
+p
+
+kBk kx(t)k
+
+p\Gamma 1
+
+n
+
+(b + 1)kB
+
+T
+
+x(t)k + Kx
+
+T
+
+(t)Boe
+
+i
+
+B
+
+T
+
+x(t)
+
+j
+
+g
+
++ c
+
+p
+
+kx(t)k
+
+p\Gamma 1
+
+i
+
+KkBk ku(t)k + K"
+
+p
+
+kv(t)k
+
+j
+
+: (57)
+
+Again letting V
+
+p
+
+(x) = e
+
+p
+
+V
+
+0;p
+
+(x) + *
+
+p
+
+V
+
+1;p
+
+(x) + V
+
+2;p
+
+(x), we obtain
+
+. V
+
+p
+
+(x(t)) ^ \Gamma (1 \Gamma  K"
+
+p
+
+e
+
+p
+
+)kx(t)k
+
+p
+
++ kx(t)k
+
+p\Gamma 1
+
+i
+
+(K
+
+p
+
+m + 1)e
+
+p
+
+ku(t)k + K"
+
+p
+
+(c
+
+p
+
++ *
+
+p
+
+)kv(t)k
+
+j
+
+= \Gamma 
+
+1
+
+2
+
+kx(t)k
+
+p
+
++ kx(t)k
+
+p\Gamma 1
+
+i
+
+(K
+
+p
+
+m + 1)e
+
+p
+
+ku(t)k + K"
+
+p
+
+(c
+
+p
+
++ *
+
+p
+
+)kv(t)k
+
+j
+
+:
+
+Let
+
+^
+
+p
+
+= maxf(K
+
+p
+
+m + 1)e
+
+p
+
+; K"
+
+p
+
+(c
+
+p
+
++ *
+
+p
+
+)g :
+
+Thus, for p ? 1,
+
+. V
+
+p
+
+(x(t)) ^ \Gamma 
+
+1
+
+2
+
+kx(t)k
+
+p
+
++ ^
+
+p
+
+kx(t)k
+
+p\Gamma 1
+
+(ku(t)k + kv(t)k) : (58)
+
+Arguing as in the proof of Lemma 3, this provides L
+
+p
+
+-stability provided that x(0) = 0. But we also
+
+note in this case that it is possible to rewrite (58) in a "dissipation inequality" form, as follows. First, by Young's inequality, we have for any ff; _; * ? 0 and p ? 1,
+
+_
+
+p\Gamma 1
+
+* ^
+
+p \Gamma  1
+
+p
+
+ff
+
+p p\Gamma 1
+
+_
+
+p
+
++
+
+*
+
+p
+
+pff
+
+p
+
+:
+
+Let
+
+ff
+
+p
+
+=
+
+h
+
+p
+
+4(p \Gamma  1)^
+
+p
+
+i
+
+p\Gamma 1
+
+p
+
+:
+
+Then (58) can be written as
+
+. V
+
+p
+
+(x(t)) ^ \Gamma 
+
+1
+
+4
+
+kx(t)k
+
+p
+
++
+
+^
+
+p
+
+pff
+
+p
+
+p
+
+(ku(t)k + kv(t)k)
+
+p
+
+:
+
+So if we let
+
+~ V
+
+p
+
+= 4V
+
+p
+
+, r
+
+p
+
+=
+
+4^
+
+p
+
+pff
+
+p
+
+p
+
+, we finally conclude, along all solutions of (54):
+
+. ~ V
+
+p
+
+(x(t)) ^ \Gamma kx(t)k
+
+p
+
++ r
+
+p
+
+(ku(t)k + kv(t)k)
+
+p
+
+: (59)
+
+This is sometimes called a dissipation inequality; see [7].
+
+23Pass1: Page 24
+
+
+Take in particular p = 2 and write V =
+
+~ V
+
+p
+
+. The estimate (59) shows that V (x(t)) must decrease
+
+if kx(t)k is larger than d times the input magnitude, d =
+
+p
+
+r
+
+2
+
+. Thus, irrespective of the initial state,
+
+the state trajectory is ultimately bounded, assuming that the inputs u and v are bounded, and this asymptotic bound depends on an asymptotic bound on u and v. One way to summarize this conclusion is by means of the estimate
+
+kx(t)k ^ fi(kx(0)k; t) + fl
+
+\Gamma 
+
+k(u; v)k
+
+L
+
+1
+
+[0;t]
+
+\Delta 
+
+(60)
+
+valid for all x(0), all t * 0, and all essentially bounded u; v, where fl is a function of class K and fi is a class-KL function (that is, fi : IR
+
+*0
+
+\Theta  IR
+
+*0
+
+! IR
+
+*0
+
+is so that for each fixed t * 0, fi(\Delta ; t) is a
+
+class-K function, and for each fixed s * 0, fi(s; \Delta ) is decreasing to zero as t ! 1). This is the notion of ISS-stability discussed in e.g. [11, 10, 17, 15]; Equation (60) is a consequence of (59), which says that V is a Lyapunov-ISS function. In fact, in our case one can say more about the function fl, namely: it can be taken to be linear . Indeed, from the proof (p. 441) in [11] one can take any fl * ff
+
+\Gamma 1
+
+1
+
+ffi ff
+
+2
+
+ffi ff
+
+4
+
+,
+
+where ff
+
+4
+
+(l) = dl and where the ff
+
+i
+
+'s are class-K functions so that
+
+ff
+
+1
+
+(kxk) ^ V (x) ^ ff
+
+2
+
+(kxk)
+
+for all x 2 IR
+
+n
+
+. Here we can choose ff
+
+2
+
+= cff
+
+1
+
+, for some c ? 1, where ff
+
+1
+
+is of the form ff(l) =
+
+a
+
+1
+
+l
+
+2
+
++ a
+
+2
+
+l
+
+3
+
+, and is thus a convex function. Since for any convex function ff and c ? 1, and any d ? 0,
+
+ff
+
+\Gamma 1
+
+(cff(dl)) ^ cdl for all l, this gives a linear fl as claimed.
+
+7 More General Input Nonlinearities Now we consider a broader class of input nonlinearities, allowing unbounded functions as well. The main result will be extended to this case.
+
+Definition 4 We call \Sigma  : IR ! IR an
+
+e S-function if it can be written as \Sigma (t) = fftg(t) + oe(t), where
+
+ffl ff * 0 is a constant; ffl g : IR ! [a; b] is measurable and a, b are strictly positive real numbers; and ffl oe : IR ! IR is an S-function.
+
+We say that \Sigma  = (\Sigma 
+
+1
+
+; : : : ; \Sigma 
+
+m
+
+)
+
+T
+
+is an IR
+
+m
+
+-valued
+
+e S-function if each \Sigma 
+
+i
+
+is an
+
+e S-function. As before if
+
+, = (,
+
+1
+
+; : : : ; ,
+
+m
+
+)
+
+T
+
+2 IR
+
+m
+
+, then \Sigma (,) = (\Sigma 
+
+1
+
+(,
+
+1
+
+); : : : ; \Sigma 
+
+m
+
+(,
+
+m
+
+)).
+
+With this definition we have the following generalization of Theorem 1. Theorem 4 Let A; B be n\Theta n; n\Theta m matrices respectively and \Sigma  be an IR
+
+m
+
+-valued
+
+e S-function. Assume
+
+that A is neutrally stable. Then there exists an m \Theta  n matrix F such that the system
+
+.x = Ax + B\Sigma (F x + u) ; x(0) = 0 ;
+
+(61)
+
+is L
+
+p
+
+-stable for all 1 ^ p ^ 1.
+
+24Pass1: Page 25
+
+
+PROOF: As in the proof of Theorem 2, we can assume without loss of generality that A is skew- symmetric and (A; B) is controllable.
+
+Assume that \Sigma  = (\Sigma 
+
+1
+
+; : : : ; \Sigma 
+
+m
+
+)
+
+T
+
+with \Sigma 
+
+i
+
+= ff
+
+i
+
+tg
+
+i
+
+(t) + oe
+
+i
+
+(t). Let oe = (oe
+
+1
+
+; : : : ; oe
+
+m
+
+) and G =
+
+diag(ff
+
+1
+
+g
+
+1
+
+; : : : ; ff
+
+m
+
+g
+
+m
+
+) with G(,) = diag(ff
+
+1
+
+g
+
+1
+
+(,
+
+1
+
+); : : : ; ff
+
+m
+
+g
+
+m
+
+(,
+
+m
+
+)) for , 2 IR
+
+m
+
+, then \Sigma (,) = G(,), +
+
+oe(,).
+
+The ff
+
+i
+
+'s split into two sets, \Lambda 
+
+1
+
+= fff
+
+i
+
+; ff
+
+i
+
+? 0g and \Lambda 
+
+2
+
+= fff
+
+i
+
+; ff
+
+i
+
+= 0g. We can assume without loss
+
+of generality that
+
+\Lambda 
+
+1
+
+= fff
+
+1
+
+; : : : ; ff
+
+r
+
+g and \Lambda 
+
+2
+
+= fff
+
+r+1
+
+; : : : ; ff
+
+m
+
+g r ^ m:
+
+Therefore system (61) becomes
+
+.x = Ax + B
+
+0 B B B B B B B @
+
+ff
+
+1
+
+g
+
+1
+
+.
+
+.
+
+.
+
+O O
+
+O
+
+.
+
+.
+
+.
+
+ff
+
+r
+
+g
+
+r
+
+O O
+
+1 C C C C C C C A
+
+(F x + u) + Boe(F x + u):
+
+Consider B = (B
+
+1
+
+; B
+
+2
+
+), F =
+
+`
+
+F
+
+1
+
+F
+
+2
+
+'
+
+, u =
+
+`
+
+u
+
+1
+
+u
+
+2
+
+'
+
+, oe =
+
+`
+
+oe
+
+1
+
+oe
+
+2
+
+'
+
+, and G
+
+1
+
+= diag(ff
+
+1
+
+g
+
+1
+
+; : : : ; ff
+
+r
+
+g
+
+r
+
+). The
+
+sizes of the matrices B
+
+1
+
+; B
+
+2
+
+; F
+
+1
+
+; F
+
+2
+
+are respectively, n \Theta  r; n \Theta  (m \Gamma  r); r \Theta  n; (m \Gamma  r) \Theta  n. As for
+
+u
+
+1
+
+; u
+
+2
+
+, they are respectively elements of IR
+
+r
+
+and IR
+
+m\Gamma r
+
+. The S-functions oe
+
+1
+
+; oe
+
+2
+
+are respectively IR
+
+r
+
+and
+
+IR
+
+m\Gamma r
+
+-valued. We rewrite (61) as
+
+.x = Ax + B
+
+1
+
+G
+
+1
+
+(F
+
+1
+
+x + u)(F
+
+1
+
+x + u
+
+1
+
+) + B
+
+1
+
+oe
+
+1
+
+(F
+
+1
+
+x + u
+
+1
+
+) + B
+
+2
+
+oe
+
+2
+
+(F
+
+2
+
+x + u
+
+2
+
+);
+
+x(0) = 0:
+
+(62)
+
+Let R(A; B
+
+1
+
+) : IR
+
+rn
+
+! IR
+
+n
+
+be the reachability matrix of (A; B
+
+1
+
+). (Here and below we will identify
+
+matrices with the corresponding linear maps.)
+
+Let D = ImR(A ; B
+
+1
+
+) and H = D
+
+?
+
+. We have D \Phi  H = IR
+
+n
+
+. Clearly the subspace D is invariant
+
+under A and Im(B
+
+1
+
+) ` D. Since A is skew-symmetric, the subspace H is also invariant under A. So
+
+there exists an orthogonal n \Theta  n matrix U such that
+
+U AU
+
+T
+
+=
+
+i
+
+A
+
+1
+
+O
+
+O A
+
+2
+
+j
+
+(63)
+
+where A
+
+1
+
+and A
+
+2
+
+are skew-symmetric and are restrictions of A to G and H respectively. So, up to
+
+an orthonormal change of basis, we can assume that A is already of the form (63). According to this decomposition, D = Im R(A; B
+
+1
+
+). Let s = dim D = rank R(A; B
+
+1
+
+). Consider now
+
+x =
+
+i
+
+x
+
+1
+
+x
+
+2
+
+j
+
+; B
+
+1
+
+=
+
+i
+
+B
+
+11
+
+B
+
+12
+
+j
+
+; B
+
+2
+
+=
+
+i
+
+B
+
+21
+
+B
+
+22
+
+j
+
+;
+
+F
+
+1
+
+= (F
+
+11
+
+; F
+
+12
+
+); and F
+
+2
+
+= (F
+
+21
+
+; F
+
+22
+
+):
+
+Here, x
+
+1
+
+2 IR
+
+s
+
+; x
+
+2
+
+2 IR
+
+n\Gamma s
+
+and the sizes of B
+
+11
+
+; B
+
+12
+
+; B
+
+21
+
+; B
+
+22
+
+and F
+
+11
+
+; F
+
+12
+
+; F
+
+21
+
+; F
+
+22
+
+are respectively
+
+s \Theta  r; (n \Gamma  s) \Theta  r; s \Theta  (m \Gamma  r); (n \Gamma  s) \Theta  (m \Gamma  r) and r \Theta  s; r \Theta  (n \Gamma  s); (m \Gamma  r) \Theta  s; (m \Gamma  r) \Theta  (n \Gamma  s).
+
+Since ImB
+
+1
+
+ae D, we have B
+
+12
+
+= 0. Now system (62) becomes
+
+.x
+
+1
+
+= A
+
+1
+
+x
+
+1
+
++ B
+
+11
+
+G
+
+1
+
+(F
+
+11
+
+x
+
+1
+
++ F
+
+12
+
+x
+
+2
+
++ u
+
+1
+
+)(F
+
+11
+
+x
+
+1
+
++ F
+
+12
+
+x
+
+2
+
++ u
+
+1
+
+)
+
++ B
+
+11
+
+oe
+
+1
+
+(F
+
+11
+
+x
+
+1
+
++ F
+
+12
+
+x
+
+2
+
++ u
+
+1
+
+) + B
+
+21
+
+oe
+
+2
+
+(F
+
+21
+
+x
+
+1
+
++ F
+
+22
+
+x
+
+2
+
++ u
+
+2
+
+);
+
+.x
+
+2
+
+= A
+
+2
+
+x
+
+2
+
++ B
+
+22
+
+oe
+
+2
+
+(F
+
+21
+
+x
+
+1
+
++ F
+
+22
+
+x
+
+2
+
++ u
+
+2
+
+) :
+
+25Pass1: Page 26
+
+
+Choose now F
+
+12
+
+= F
+
+21
+
+= 0, F
+
+11
+
+= \Gamma B
+
+T
+
+11
+
+, and F
+
+22
+
+= \Gamma B
+
+T
+
+22
+
+. We obtain
+
+.x
+
+1
+
+=
+
+i
+
+A
+
+1
+
+\Gamma  B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)B
+
+T
+
+11
+
+j
+
+x
+
+1
+
++ B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)u
+
+1
+
++B
+
+11
+
+oe
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+) + B
+
+21
+
+oe
+
+2
+
+(\Gamma B
+
+T
+
+22
+
+x
+
+2
+
++ u
+
+2
+
+);
+
+.x
+
+2
+
+= A
+
+2
+
+x
+
+2
+
++ B
+
+22
+
+oe
+
+2
+
+(\Gamma B
+
+T
+
+22
+
+x
+
+2
+
++ u
+
+2
+
+):
+
+In the previous system, replacing oe(\Delta ) by \Gamma oe(\Gamma \Delta ) (still denoted by oe), the system becomes
+
+.x
+
+1
+
+=
+
+i
+
+A
+
+1
+
+\Gamma  B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)B
+
+T
+
+11
+
+j
+
+x
+
+1
+
++ B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)u
+
+1
+
+\Gamma  B
+
+11
+
+oe
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+\Gamma  u
+
+1
+
+) \Gamma  B
+
+21
+
+oe
+
+2
+
+(B
+
+T
+
+22
+
+x
+
+2
+
+\Gamma  u
+
+2
+
+);
+
+.x
+
+2
+
+= A
+
+2
+
+x
+
+2
+
+\Gamma  B
+
+22
+
+oe
+
+2
+
+(B
+
+T
+
+22
+
+x
+
+2
+
+\Gamma  u
+
+2
+
+):
+
+Since (A; B) is controllable, (A
+
+2
+
+; B
+
+22
+
+) is also controllable. It follows from Theorem 2 that the x
+
+2
+
+-
+
+subsystem is L
+
+p
+
+-stable for all 1 ^ p ^ 1. So there exists C
+
+1
+
+p
+
+? 0 such that kx
+
+2
+
+k
+
+L
+
+p ^ C
+
+1
+
+p
+
+ku
+
+2
+
+k
+
+L
+
+p.
+
+Let
+
+v = B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)u
+
+1
+
+\Gamma  B
+
+11
+
+i
+
+oe
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+\Gamma  u
+
+1
+
+) \Gamma  oe
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+)
+
+j
+
+\Gamma  B
+
+21
+
+oe
+
+2
+
+(B
+
+T
+
+22
+
+x
+
+2
+
+\Gamma  u
+
+2
+
+):
+
+We have
+
+kvk ^ C(ku
+
+1
+
+k + kx
+
+2
+
+k + ku
+
+2
+
+k)
+
+for some C ? 0. Now for i = 1; : : : ; r, let d
+
+i
+
+(t) = oe
+
+1
+
+i
+
+(t)=t if t 6= 0 and d
+
+i
+
+(t) = 0 if t = 0. Let
+
+~ G
+
+1
+
+(,) = diag(d
+
+1
+
+(,
+
+1
+
+); : : : ; d
+
+r
+
+(,
+
+r
+
+)). Then we can rewrite the x
+
+1
+
+-subsystem as
+
+.x
+
+1
+
+=
+
+i
+
+A
+
+1
+
+\Gamma  B
+
+11
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+)B
+
+T
+
+11
+
+j
+
+x
+
+1
+
+\Gamma  B
+
+11
+
+oe
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+) + v
+
+=
+
+h
+
+A
+
+1
+
+\Gamma  B
+
+11
+
+i
+
+G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
++ u
+
+1
+
+) +
+
+~ G
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+)
+
+jj
+
+B
+
+T
+
+11
+
+i
+
+x
+
+1
+
++ v:
+
+If we let
+
+e D(t) = G
+
+1
+
+(\Gamma B
+
+T
+
+11
+
+x
+
+1
+
+(t) + u
+
+1
+
+(t)) +
+
+~ G
+
+1
+
+(B
+
+T
+
+11
+
+x
+
+1
+
+(t)), then the above equation can be written as
+
+.x
+
+1
+
+(t) =
+
+i
+
+A
+
+1
+
+\Gamma  B
+
+11
+
+e D(t)B
+
+T
+
+11
+
+j
+
+x
+
+1
+
+(t) + v(t) :
+
+By definition of an S-function and an
+
+e S-function, there exist two real numbers ffi
+
+1
+
+and ffi
+
+2
+
+such that
+
+0 ! ffi
+
+1
+
+^ ffi
+
+2
+
+and if
+
+e D(t) =diag(
+
+~ d
+
+1
+
+(t); \Delta  \Delta  \Delta  ;
+
+~ d
+
+r
+
+(t)), then
+
+ffi
+
+1
+
+^
+
+~ d
+
+i
+
+(t) ^ ffi
+
+2
+
+for i = 1; \Delta  \Delta  \Delta  ; r. Since (A; B) is controllable, (A
+
+1
+
+; B
+
+11
+
+) is controllable too. Then it follows from
+
+Lemma 4 that
+
+kx
+
+1
+
+k
+
+L
+
+p ^
+
+_ C
+
+2
+
+p
+
+kvk
+
+L
+
+p ;
+
+for some
+
+_ C
+
+2
+
+p
+
+? 0 depending on A
+
+1
+
+; B
+
+11
+
+; ffi
+
+1
+
+; ffi
+
+2
+
+and p. But we know that
+
+kvk
+
+p
+
+^ C(ku
+
+1
+
+k
+
+L
+
+p
+
++ ku
+
+2
+
+k
+
+L
+
+p
+
++ kx
+
+2
+
+k
+
+L
+
+p
+
+) ^ Cku
+
+1
+
+k
+
+L
+
+p
+
++ C(1 + C
+
+1
+
+p
+
+)ku
+
+2
+
+k
+
+L
+
+p
+
+:
+
+Therefore we have kx
+
+1
+
+k
+
+L
+
+p ^ C
+
+2
+
+p
+
+kuk
+
+L
+
+p for some constant C
+
+2
+
+p
+
+? 0.
+
+26Pass1: Page 27
+
+
+8 Counterexample: The nth Order Scalar Integrator The next result is a negative one, and it concerns systems such as those in equation (1), except that the matrix A is not neutrally stable but instead is assumed to have a non-simple Jordan block for the zero eigenvalue. In that case, we show that for any possible F which stabilizes the corresponding linear control system
+
+.x = Ax + B(F x + u) ; x(0) = 0 ;
+
+the resulting system (\Sigma 
+
+u
+
+) is not in general L
+
+p
+
+-stable for any 1 ^ p ^ 1. We first consider the simplest
+
+case, namely the double integrator. The proof is of interest because the origin of the corresponding system without inputs (but with the saturation) is globally asymptotically stable. Thus the result is quite surprising. In the end we discuss the n-integrator for n * 3.
+
+Proposition 1 Let 1 ^ p ^ 1. Consider the following 2-dimensional initialized control system
+
+(S
+
+a;b
+
+) .x = y ;
+
+.y = \Gamma oe(ax + by + u) ; x(0) = y(0) = 0 ;
+
+where a; b ? 0, oe is a scalar S-function and inputs u belong to L
+
+p
+
+([0; 1); IR). Then (S
+
+a;b
+
+) is not
+
+L
+
+p
+
+-stable.
+
+PROOF: Up to a reparametrization of the time and a linear change of variables, it is enough to show that the initialized control system
+
+.x = y ;
+
+.y = \Gamma *oe(x + y + u) ; x(0) = y(0) = 0 ;
+
+where * ? 0, is not L
+
+p
+
+-stable. Now replacing *oe by oe (note *oe is still an S-function) we may assume
+
+that * = 1. Therefore all needed is to show that the system
+
+(S) .x = y ;
+
+.y = \Gamma oe(x + y + u) ;
+
+with x(0) = y(0) = 0 is not L
+
+p
+
+-stable. The proof is quite technical, but the idea is not difficult to
+
+understand. It is based on the fact that the feedback u = \Gamma y makes the system (S) have periodic trajectories, with a control u whose norm is proportional to that of the y coordinate. But the x coordinate is the integral of y, so the ratio between the p-norms of x and u can be made to be large for p ! 1. (For p = 1, one modifies the argument to reach states of large magnitude.)
+
+Let us first fix a p in [1; 1). Assume that (S) is L
+
+p
+
+-stable. Then the following holds: There exists
+
+C
+
+p
+
+? 0 so that, if u 2 L
+
+p
+
+([0; +1); IR), then
+
+ky
+
+2
+
+u
+
+k
+
+L
+
+p ^ C
+
+p
+
+kuk
+
+L
+
+p; (64)
+
+where y
+
+u
+
+is the second coordinate of (x
+
+u
+
+; y
+
+u
+
+), the solution of (S) associated to u.
+
+27Pass1: Page 28
+
+
+To see this, let q = 2(p \Gamma  1) * 0 and
+
+V
+
+q
+
+(x; y) = \Gamma 
+
+xyjyj
+
+q
+
+q + 1
+
+:
+
+Then along the trajectory (x
+
+u
+
+; y
+
+u
+
+) of (S) we have
+
+. V
+
+q
+
+= \Gamma 
+
+1
+
+q + 1
+
+jy
+
+u
+
+j
+
+q+2
+
++ x
+
+u
+
+oe(x
+
+u
+
++ y
+
+u
+
++ u)jy
+
+u
+
+j
+
+q
+
+:
+
+Therefore,
+
+. V
+
+q
+
++
+
+1
+
+q + 1
+
+jy
+
+u
+
+j
+
+q+2
+
+^ Kjx
+
+u
+
+jjy
+
+u
+
+j
+
+q
+
+; (65)
+
+where K is an S-bound for oe. From Lemma 6 we know that lim
+
+t!1
+
+(x
+
+u
+
+; y
+
+u
+
+) = (0; 0). Integrating (65)
+
+from 0 to t and letting t ! 1, we end up with
+
+1 q + 1
+
+Z
+
+1
+
+0
+
+jy
+
+u
+
+j
+
+q+2
+
+^ K
+
+Z
+
+1
+
+0
+
+jx
+
+u
+
+jjy
+
+u
+
+j
+
+q
+
+:
+
+Therefore if p = 1 we get that ky
+
+2
+
+u
+
+k
+
+L
+
+1 ^ Kkxk
+
+L
+
+1. If p ? 1, applying H"older's inequality, we get
+
+1 q + 1
+
+Z
+
+1
+
+0
+
+jy
+
+u
+
+j
+
+2p
+
+^ Kkx
+
+u
+
+k
+
+L
+
+p
+
+i
+
+Z
+
+1
+
+0
+
+jy
+
+u
+
+j
+
+qp p\Gamma 1
+
+j
+
+p\Gamma 1
+
+p
+
+:
+
+But q
+
+p
+
+p\Gamma 1
+
+= 2(p \Gamma  1)
+
+p
+
+p\Gamma 1
+
+= 2p. Therefore
+
+ky
+
+2
+
+u
+
+k
+
+L
+
+p ^ (2p \Gamma  1)Kkx
+
+u
+
+k
+
+L
+
+p: (66)
+
+Since (S) is L
+
+p
+
+-stable, kx
+
+u
+
+k
+
+L
+
+p
+
+^ G
+
+p
+
+kuk
+
+L
+
+p
+
+, where G
+
+p
+
+is the L
+
+p
+
+-gain of (S). So (64) indeed holds.
+
+Now we will construct trajectories of (S) which contradict (64). We consider the level sets of the following Lyapunov function:
+
+V (x; y) = y
+
+2
+
++ G(x);
+
+where G(x) = 2
+
+R
+
+x
+
+0
+
+oe(s)ds.
+
+Let ae
+
+1
+
+= 2 inf
+
+jtj*1
+
+joe(t)j ? 0 and define H : IR ! IR by
+
+H(x) =
+
+(
+
+0 if jxj ^ 1;
+
+ae
+
+1
+
+i
+
+jxj \Gamma  1
+
+j
+
+if jxj ? 1 :
+
+We have
+
+y
+
+2
+
++ H(x) ^ V (x; y) ^ y
+
+2
+
++ 2Kjxj: (67)
+
+Note that along trajectories of
+
+(S
+
+0
+
+) .x = y ;
+
+.y = \Gamma oe(x);
+
+V is constant.
+
+Let us fix a constant V
+
+0
+
+* maxf1; 2Kg and let x
+
+\Gamma 
+
+! 0 and x
+
++
+
+? 0 be such that G(x
+
++
+
+) = G(x
+
+\Gamma 
+
+) =
+
+V
+
+0
+
+. Since (S) is controllable, there exists a u
+
+0
+
+in L
+
+p
+
+([0; 1); IR) such that for some time T
+
+1
+
+? 0
+
+(x
+
+u
+
+0
+
+(T
+
+1
+
+); y
+
+u
+
+0
+
+(T
+
+1
+
+)) = (0;
+
+p
+
+V
+
+0
+
+). We can also assume that u
+
+0
+
+(t) = 0 for t ? T
+
+1
+
+. For t * 0, consider
+
+28Pass1: Page 29
+
+
+(_x
+
+0
+
+(t); _y
+
+0
+
+(t)), the solution of (S
+
+0
+
+) starting at the point (0;
+
+p
+
+V
+
+0
+
+). Note that V (_x
+
+0
+
+(t); _y
+
+0
+
+(t)) j V
+
+0
+
+.
+
+Clearly this trajectory is periodic, since it lies in the closed curve V (x) j V
+
+0
+
+and there are no equilibria
+
+there. Assume that the period is T .
+
+Consider the sequence fu
+
+n
+
+g
+
+1
+
+n=1
+
+of inputs defined as follows,
+
+u
+
+n
+
+(t) =
+
+8 ? !
+
+? :
+
+u
+
+0
+
+(t) on [0; T
+
+1
+
+];
+
+\Gamma _y
+
+0
+
+(t \Gamma  T
+
+1
+
+) on (T
+
+1
+
+; T
+
+1
+
++ nT ];
+
+0 on (T
+
+1
+
++ nT; 1) :
+
+Then if (x
+
+n
+
+; y
+
+n
+
+) denotes the solution of (S) associated to u
+
+n
+
+, we have for t 2 [T
+
+1
+
+; T
+
+1
+
++ nT ],
+
+i
+
+x
+
+n
+
+(t); y
+
+n
+
+(t)
+
+j
+
+=
+
+i
+
+_x
+
+0
+
+(t \Gamma  T
+
+1
+
+); _y
+
+0
+
+(t \Gamma  T
+
+1
+
+)
+
+j
+
+:
+
+In this case,
+
+Z
+
+1
+
+0
+
+ju
+
+n
+
+(s)j
+
+p
+
+ds =
+
+Z
+
+T
+
+1
+
+0
+
+ju
+
+0
+
+(s)j
+
+p
+
+ds + n
+
+Z
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+p
+
+ds;
+
+Z
+
+1
+
+0
+
+jy
+
+2
+
+n
+
+(s)j
+
+p
+
+ds =
+
+Z
+
+1
+
+0
+
+jy
+
+2
+
+u
+
+0
+
+(s)j
+
+p
+
+ds + n
+
+Z
+
+T
+
+0
+
+j_y
+
+2
+
+0
+
+(s)j
+
+p
+
+ds :
+
+We conclude that
+
+lim n!1
+
+ky
+
+2
+
+n
+
+k
+
+L
+
+p
+
+ku
+
+n
+
+k
+
+L
+
+p
+
+=
+
+i
+
+R
+
+T
+
+0
+
+j_y
+
+2
+
+0
+
+(s)j
+
+p
+
+ds
+
+j
+
+1
+
+p
+
+i
+
+R
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+p
+
+ds
+
+j
+
+1
+
+p
+
+def
+
+= L
+
+p;V
+
+0
+
+:
+
+According to (64), this quotient should be bounded independently of the choice of V
+
+0
+
+. We next derive
+
+a contradiction by showing that this is not so.
+
+Notice that for any r * 1, since
+
+. _x(t) = _y(t), we have
+
+Z
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+r
+
+ds =
+
+Z
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+r\Gamma 1
+
+j
+
+. _x
+
+0
+
+(s)jds:
+
+Since V (x; y) = V (x; \Gamma y), we have
+
+Z
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+r\Gamma 1
+
+j
+
+. _x
+
+0
+
+(s)jds = 2
+
+Z
+
+x
+
++
+
+x
+
+\Gamma 
+
+j_y(x)j
+
+r\Gamma 1
+
+dx ; (68)
+
+where j_y(x)j =
+
+p
+
+V
+
+0
+
+\Gamma  G(x) for x between x
+
+\Gamma 
+
+and x
+
++
+
+. (Note that the curve V (x) = V
+
+0
+
+can be written
+
+as the union of the graphs of the functions y(x) = \Sigma 
+
+p
+
+V
+
+0
+
+\Gamma  G(x). Thus we can reparameterize the
+
+orbit in each of these two parts in terms of the variable x.
+
+Considering (67), we have jx
+
+\Gamma 
+
+j * V
+
+0
+
+=(2K) and x
+
++
+
+^ V
+
+0
+
+=ae
+
+1
+
++ 1. Then it follows from (68) that
+
+R
+
+T
+
+0
+
+j_y
+
+0
+
+(s)j
+
+p
+
+ds ^ 4
+
+i
+
+R
+
+1
+
+0
+
+V
+
+p\Gamma 1
+
+2 0
+
+dx +
+
+R
+
+V
+
+0
+
+=ae
+
+1
+
++1
+
+1
+
+i
+
+V
+
+0
+
+\Gamma  ae
+
+1
+
+(x \Gamma  1)
+
+j
+
+p\Gamma 1
+
+2
+
+dx
+
+j
+
+^ C
+
+1
+
+V
+
+p+1
+
+2 0
+
+;
+
+R
+
+T
+
+0
+
+j_y
+
+2
+
+0
+
+(s)j
+
+p
+
+ds * 4
+
+R
+
+V
+
+0
+
+=(2K)
+
+0
+
+i
+
+V
+
+0
+
+\Gamma  2Kx
+
+j
+
+p\Gamma 
+
+1
+
+2
+
+dx * C
+
+2
+
+V
+
+p+1=2
+
+0
+
+;
+
+where C
+
+1
+
+; C
+
+2
+
+? 0 are some constants. Finally, we get L
+
+p;V
+
+0
+
+* CV
+
+1=2
+
+0
+
+for some C ? 0. But according
+
+to (64), L
+
+p;V
+
+0
+
+^ C
+
+p
+
+. Therefore, for V
+
+0
+
+large enough we get a contradiction. So (S) cannot be L
+
+p
+
+-stable
+
+for 1 ^ p ! 1.
+
+29Pass1: Page 30
+
+
+There remains to establish the special case p = 1. We use again the level sets of V . Let u
+
+0
+
+on
+
+[0; T
+
+0
+
+] for some T
+
+0
+
+? 0 be an input such that
+
+i
+
+x
+
+u
+
+0
+
+(T
+
+0
+
+); y
+
+u
+
+0
+
+(T
+
+0
+
+)
+
+j
+
+= (0;
+
+p
+
+V
+
+0
+
+), for some V
+
+0
+
+? 0 that will
+
+be fixed below.
+
+From (0;
+
+p
+
+V
+
+0
+
+), follow the trajectory of
+
+(I) .x = y;
+
+.y = ae
+
+2
+
+;
+
+on [T
+
+0
+
+; T
+
+0
+
++ 1], where ae
+
+2
+
+= \Gamma oe(\Gamma 1) ? 0. The trajectory of (I), hence, reaches (
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+=2;
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+).
+
+Let
+
+V
+
+1
+
+= (
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+)
+
+2
+
++ G(
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+=2) * V
+
+0
+
++ 2ae
+
+2
+
+p
+
+V
+
+0
+
+:
+
+Note that also V
+
+1
+
+^ V
+
+0
+
++ C(
+
+p
+
+V
+
+0
+
++ 1) for some C ? 0. Furthermore, the trajectory of (I) can be viewed
+
+as a trajectory of (S) with u
+
+1
+
+(t) = \Gamma 1 \Gamma  x(t) \Gamma  y(t) for T
+
+0
+
+! t ^ T
+
+0
+
++ 1. Let
+
+u
+
+1
+
+= \Gamma u
+
+1
+
+(T
+
+0
+
++ 1) = 1 +
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+=2 +
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+= 2
+
+p
+
+V
+
+0
+
++ 3=2ae
+
+2
+
++ 1:
+
+Then, for T
+
+0
+
++ 1 ! t ^ T
+
+1
+
+, follow the trajectory of (S
+
+0
+
+) from (
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+=2;
+
+p
+
+V
+
+0
+
++ ae
+
+2
+
+) until the resulting
+
+trajectory reaches (0;
+
+p
+
+V
+
+1
+
+) at t = T
+
+1
+
+. This trajectory can also be considered as a trajectory of (S)
+
+with u
+
+1
+
+(t) = \Gamma _y(t) on (T
+
+0
+
++ 1; T
+
+1
+
+]. Note that ju
+
+1
+
+(t)j ^
+
+p
+
+V
+
+1
+
+for T
+
+0
+
++ 1 ! t ^ T
+
+1
+
+. Fix V
+
+0
+
+such that
+
+p
+
+V
+
+1
+
+^ u
+
+1
+
+^ 3
+
+p
+
+V
+
+0
+
+. It is clear that on [T
+
+0
+
+; T
+
+1
+
+] ju
+
+1
+
+(t)j ^ u
+
+1
+
+.
+
+If we iterate the above construction, we can build three sequences fV
+
+n
+
+g
+
+1
+
+n=0
+
+, fu
+
+n
+
+g
+
+1
+
+n=1
+
+and fT
+
+n
+
+g
+
+1
+
+n=0
+
+such that
+
+(1): V
+
+n+1
+
+= (
+
+p
+
+V
+
+n
+
++ ae
+
+2
+
+)
+
+2
+
++ G(
+
+p
+
+V
+
+n
+
++ ae
+
+2
+
+=2) * V
+
+n
+
++ 2ae
+
+2
+
+p
+
+V
+
+n
+
+;
+
+(2): u
+
+n
+
+= 2
+
+p
+
+V
+
+n\Gamma 1
+
++ 3=2ae
+
+2
+
++ 1 ^ 3
+
+p
+
+V
+
+n\Gamma 1
+
+;
+
+(3): on [T
+
+n\Gamma 1
+
+; T
+
+n
+
+], there exists an input u
+
+n
+
+such that supfju
+
+n
+
+(t)j : t 2 [T
+
+n\Gamma 1
+
+; T
+
+n
+
+]g = u
+
+n
+
+and the
+
+trajectory of (S) associated to u
+
+n
+
+goes from (0;
+
+p
+
+V
+
+n\Gamma 1
+
+) to (0;
+
+p
+
+V
+
+n
+
+).
+
+Clearly lim
+
+n!1
+
+V
+
+n
+
+= 1 and then lim
+
+n!1
+
+u
+
+n
+
+= 1. Furthermore let x
+
+\Gamma 
+
+n
+
+! 0 be such that G(x
+
+\Gamma 
+
+n
+
+) = V
+
+n
+
+.
+
+Then jx
+
+\Gamma 
+
+n
+
+j * 1=(2K)V
+
+n
+
+for n large enough, which implies that lim
+
+n!1
+
+jx
+
+\Gamma 
+
+n
+
+j = 1.
+
+Let f_u
+
+n
+
+g
+
+1
+
+n=0
+
+be the sequence of inputs which equals to the concatenation of u
+
+0
+
+; u
+
+1
+
+; \Delta  \Delta  \Delta  ; u
+
+n
+
+on [0; T
+
+n
+
+]
+
+and 0 for t ? T
+
+n
+
+. For n large enough, we have
+
+k(x
+
+_u
+
+n; y
+
+_u
+
+n)k
+
+1
+
+* jx
+
+\Gamma 
+
+n
+
+j;
+
+k_u
+
+n
+
+k
+
+1
+
+= u
+
+n
+
+:
+
+Since
+
+fi fi fi
+
+x
+
+\Gamma 
+
+n
+
+u
+
+n
+
+fi fi fi
+
+* 1=(2K)
+
+p
+
+V
+
+n
+
+for n large enough, (S) is not L
+
+1
+
+-stable.
+
+For n integrators and n ? 2, the proof that L
+
+p
+
+-stabilization is not possible is simpler (but the
+
+result is far less interesting). We can argue as follows. Let oe be a scalar S-function. It was proved in [4, 21] that, if n * 3, the n-integrator
+
+.x
+
+1
+
+= x
+
+2
+
+;
+
+. . .
+
+.x
+
+n\Gamma 1
+
+= x
+
+n
+
+;
+
+.x
+
+n
+
+= \Gamma oe(u)
+
+30Pass1: Page 31
+
+
+is not globally asymptotically stabilizable by any possible linear feedback. With this, it follows from Lemma 5 that, if n * 3, the system
+
+.x
+
+1
+
+= x
+
+2
+
+;
+
+. . .
+
+.x
+
+n\Gamma 1
+
+= x
+
+n
+
+;
+
+.x
+
+n
+
+= \Gamma oe(F x + u) ;
+
+x(0) = 0
+
+is not L
+
+p
+
+-stable for any 1 ^ p ! 1 and any row vector F .
+
+31Pass1: Page 32
+
+
+References
+
+[1] Boyd, S.P. and Barratt, C.H., Linear Controller Design, Limits of Performance, Prentice Hall,
+
+Englewood Cliffs, NJ, 1991.
+
+[2] Chitour, Y., W. Liu, and E. Sontag, "On the continuity and incremental-gain properties of certain
+
+saturated linear feedback loops," submitted for publication. [3] Doyle, J.C., T.T. Georgiou, and M.C. Smith, "The parallel projection operators of a nonlinear
+
+feedback system," Proc. IEEE Conf. Dec. and Control , Tucson, 1992, pp. 1050-1054. [4] Fuller, A.T., "In the large stability of relay and saturated control systems with linear controllers,"
+
+Int. J. Control , 10(1969): 457-480. [5] Gutman, P.-O., and P. Hagander, "A new design of constrained controllers for linear systems,"
+
+IEEE Trans. Autom. Control 30(1985): 22-23.
+
+[6] Hautus, M., "(A; B)-Invariant and Stabilizability Subspaces, a Frequency Domain Description,"
+
+Automatica, Vol. 16, 1980, pp. 703-707. [7] Hill, D.J., "Dissipative nonlinear systems: Basic properties and stability analysis," Proc. 31st
+
+IEEE Conf. Dec. and Control , Tucson, Arizona, 1992, pp. 3259-3264.
+
+[8] Lin, Z., and A. Saberi, "Semiglobal exponential stabilization of linear systems subject to `input
+
+saturation' via linear feedbacks," preprint, Wash. State U., 1993. [9] Slemrod, M., "Feedback stabilization of a linear control system in Hilbert space," Math. Control
+
+Signals Systems 2(1989): 265-285.
+
+[10] Praly, L., and Z.-P. Jiang, "Stabilization by output feedback for systems with ISS inverse dynam-
+
+ics," Systems & Control Letters 21(1993): 19-34. [11] Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Transactions on Auto-
+
+matic Control AC-34(1989): 435-443.
+
+[12] Sontag, E.D., "An algebraic approach to bounded controllability of nonlinear systems," Int. J.
+
+Control 39(1984):181-188. [13] Sontag, E.D., Mathematical Control Theory, Springer-Verlag, New York, 1990. [14] Sontag, E.D., and H.J. Sussmann, "Nonlinear output feedback design for linear systems with
+
+saturating controls," Proc. IEEE Conf. Decision and Control, Honolulu, Dec. 1990, IEEE Pub- lications, 1990, pp. 3414-3416. [15] Sontag, E.D., and Y. Wang, "On characterizations of the input-to-state stability property," sub-
+
+mitted.
+
+[16] Teel, A.R., "Global stabilization and restricted tracking for multiple integrators with bounded
+
+controls," Systems and Control Letters 18(1992): 165-171. [17] Tsinias, J., "Sontag's `input to state stability condition' and global stabilization using state
+
+detection," Systems & Control Letters 20(1993): 219-226.
+
+[18] Van Der Schaft, A.J., "L
+
+2
+
+-gain analysis of nonlinear systems and nonlinear state feedback H
+
+1
+
+-
+
+control," IEEE Trans. Automatic Control 37(1992): 770-784. [19] Willems, J.C., The Analysis of Feedback Systems, MIT Press, Cambridge, MA, 1971. [20] Yang, Y., H.J. Sussmann, and E.D. Sontag, "Stabilization of linear systems with bounded con-
+
+trols," in Proc. Nonlinear Control Systems Design Symp., Bordeaux, June 1992 (M. Fliess, Ed.), IFAC Publications, pp. 15-20. Journal version to appear in IEEE Trans. Autom. Control . [21] Yang, Y., and H.J. Sussmann, "On the stabilizability of multiple integrators by means of bounded
+
+feedback controls" Proc. IEEE Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991: 70-73.
+
+32</pre>
+</body>
+</html>

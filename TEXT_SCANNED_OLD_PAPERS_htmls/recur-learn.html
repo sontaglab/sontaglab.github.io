@@ -1,0 +1,500 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/recur-learn.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/recur-learn.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A Learning Result for Continuous-Time Recurrent Neural Networks
+
+\Lambda 
+
+Eduardo Sontag Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903
+
+sontag@control.rutgers.edu
+
+Abstract The following learning problem is considered, for continuous-time recurrent neural networks having sigmoidal activation functions. Given a "black box" representing an unknown system, measurements of output derivatives are collected, for a set of randomly generated inputs, and a network is used to approximate the observed behavior. It is shown that the number of inputs needed for reliable generalization (the sample complexity of the learning problem) is upper bounded by an expression that grows polynomially with the dimension of the network and logarithmically with the number of output derivatives being matched.
+
+1 Introduction This paper is concerned with systems defined by equations of the following type:
+
+.x(t) = ~oe(n) (Ax(t) + Bu(t)) ; y(t) = Cx(t) ; (1) where A 2 Rn\Theta n, B 2 Rn\Theta m, C 2 Rp\Theta n, and ~oe(n) : Rn ! Rn is the diagonal map
+
+~oe(n) : 0B@
+
+x1.
+
+..
+
+xn
+
+1CA
+
+7! 0B@
+
+oe(x1)
+
+...
+
+oe(xn)
+
+1CA
+
+; (2)
+
+and oe : R ! R is a Lipschitz continuous mapping (soon to be specialized to oe = tanh, the function that most often appears in neural network theory and practice). The dot indicates time-derivative; for simplicity, we later omit the arguments t and the superscript (n), writing just .x = ~oe(Ax + Bu) and y = Cx. We call any system of this general form an n-dimensional, m-input, p-output recurrent net with activation oe, or, sometimes, just a "net". The spaces Rm, Rn, and Rp are called respectively the input-value, state, and output-value spaces. In system-theoretic terms, we may represent a net by means of a block diagram as in Figure 1.
+
+Recurrent nets -- sometimes in their discrete-time variant in which one has a difference equation x(t + 1) = ~oe(Ax(t) + Bu(t)) instead of a differential equation, or with extra linear terms such as in an equation of the form .x = F x+~oe(Ax+Bu) -- have been proposed as models
+
+\Lambda Supported in part by US Air Force Grant AFOSR-94-0293
+
+1
+
+u - B - h+ - ~oe - R - C - y
+
+xr
+
+oeA 6
+
+Figure 1: Block diagram of net for control, computation, and signal processing by many researchers, see e.g. [12, 14, 13, 15, 3, 16, 4, 21, 22], as well as in optimization and associative memory design ("Hopfield nets"), language inference, and sequence extrapolation for time series prediction. In neural network studies, each coordinate xi of x is thought of as the internal state of the ith "neuron" in a network. Partial mathematical justification for the interest in the class of systems represented by (1) lies in the fact that they can, in a certain sense, approximate arbitrary nonlinear systems, they provide universal models of digital as well as analog computation, and their system-theoretic properties (controllability, observability, minimality, parameter identifiability, etc) can be quite elegantly characterized (see e.g. [1, 2, 19, 18]).
+
+The Learning Problem We formulate the problem of identification from input/output data in the paradigm of uniform convergence of empirical probabilities due to Vapnik and Chervonenkis and, independently in the computer science context ("probably approximately correct" (PAC) learning) to Valiant. An excellent reference is the recent monograph [20].
+
+The question that we address can be described in very intuitive terms as follows. Given is a "black box" or "plant" as in Figure 2. This represents a system (for example, an object to be
+
+- - y(\Delta )?u(\Delta ) Figure 2: "Black box" or "plant" controlled) whose structure is unknown, but on which it is possible to perform experiments, by applying various inputs u and observing the ensuing outputs y. Assume that we first collect a finite amount of experimental input/output data in this manner, and we subsequently "fit" some net \Sigma 0 as well as possible to this data, through minimization of a least-squares error criterion E(\Sigma ) which penalizes the lack of agreement between the outputs produced by a candidate net \Sigma  and the experimental ("training") data. The main question here is: how accurate is the obtained \Sigma 0 as a behavioral model of the plant? In other words, how reliable is \Sigma 0 as a predictor of the output y that the plant would produce in response to a randomly chosen future input u? We assume stationarity: both the training samples and the data seen in the future (testing data) are randomly drawn according to the same probability distribution.
+
+Since it may be impossible to model the plant behavior exactly by a net, the least-squares minimization of E(\Sigma ) will result in some minimal error value E0 = E(\Sigma 0). If the training data was sufficiently rich, we may then expect the error on future inputs u to be, on the average, close to E0 (by the law of large numbers applied to the error on each data point, seen as a random variable). One of the main questions in PAC learning is that of quantifying what is
+
+2
+
+a "sufficiently rich" set of training data so that the expected error is indeed "close" (also in a precisely quantified sense) to the training error. Mathematically, the techniques involve uniform laws of large numbers, providing an elegant generalization of classical questions regarding the uniform convergence of empirical probabilities of sets, and in particular the Glivenko-Cantelli Lemma, and more generally the uniform convergence of empirical means of random variables.
+
+Actually, rather than dealing only with the case where the training data pairs (u(\Delta ); y(\Delta )) are generated by a (deterministic) plant, one allows as well a more general setup in which it is only postulated that there is a probability distribution P on the possible pairs which may appear. If, as in the previous discussion, there is a plant, let's call it H, which generates the data, and inputs u are generated randomly according to a probability distribution P0, there is a natural probability P induced on pairs (u; y): (u; y) has the same probability as u if y = H(u), and has zero probability otherwise (of course, we are being extremely informal right here, and one must argue in terms of measures). The framework allows, in addition, for stochastic plants as well noisy measurements. These issues are discussed at length in [20].
+
+We will state and prove a precise result on learning in the sense just described. The criterion we use penalizes the differences between the first k derivatives of outputs at time t = 0 (corresponding very roughly to "fitting" a model to order O(T k) on an interval of length T ). The estimates of the amount of training data required for reliable prediction grow with the state-space dimension of the nets used as models as well as with the number k of derivatives. (Intuitively, if we use nets of larger dimension, we will be able to fit the training data better, but prediction ability will decrease, as we are essentially memorizing all data, with no "smoothing". Likewise, if we want to accurately predict more derivatives, we need more data.) For simplicity of exposition, we take the input and output dimensions m and p to be both equal to one, but the statements and proofs can be easily generalized to arbitrary m and p. Pick any infinitely differentiable function oe (soon we will specialize to the case oe = tanh).
+
+Let \Sigma  be a net with activation oe and let , 2 Rn be any state. For any input function u : [0; T ] ! Rm and any initial state , 2 Rn, there is a unique solution x : [0; T ] ! Rn of
+
+.x = ~oe(Ax + Bu) with x(0) = ,; this solution will be denoted as x(t; ,; u). (By "input function" we mean, as usual, cf. [17], a measurable essentially bounded function, but for the purposes of this paper, differentiable inputs would suffice.) We also consider the ensuing output function y(t; ,; u) := Cx(t; ,; u). Observe that the kth derivative of the output at time 0 is a function only of the first k\Gamma 1 derivatives of the input; for instance, y0(0; ,; u) = C~oe(n)(A, + Bu(0)). That is, there is for each k a map
+
+yk;\Sigma ;, : Rk ! R (3)
+
+such that
+
+y(k)(0; ,; u) = yk;\Sigma ;,(u(0); u0(0); : : :; u(k\Gamma 1)(0))
+
+for every (k\Gamma 1)-times differentiable input u. (For k = 0, y0;\Sigma ;, = C, is a constant.) We also introduce, for each k, the vector of derivatives of order ^ k, writing
+
+Yk;\Sigma ;,(_0; : : : ; _k\Gamma 1) := (y0;\Sigma ;,; y1;\Sigma ;,(_0); : : : ; yk;\Sigma ;,(_0; : : : ; _k\Gamma 1)) :
+
+For each k, we let Zk = Rk \Theta  Rk+1 (if k = 0, just R); thus, if _ 2 Rk then (_; Yk;\Sigma ;,(_)) 2 Zk. For each pair (_; j) 2 Zk, we denote
+
+Loss\Sigma ;,;k[_; j] := kYk;\Sigma ;,(_) \Gamma  jk
+
+2
+
+1 + kYk;\Sigma ;,(_) \Gamma  jk2 :
+
+3
+
+This penalizes the mismatch between the data point (_; j) (which we may interpret as an input/output pair associated to the plant in Figure 2) and the output that the net \Sigma , initialized at the state ,, produces in response to the input whose first k\Gamma 1 derivatives are specified by the vector _. (The error is normalized, for technical reasons, to the range [0; 1].)
+
+Two quantities are of special interest, still for any fixed initialized net (\Sigma ; ,). The first is the "empirical risk" or "average training error" obtained by averaging over a finite set of data: for each positive integer s and each ~z = (z1; : : : ; zs) 2 Zsk:
+
+EmpLoss\Sigma ;,;k[~z] := 1s
+
+sX
+
+i=1
+
+Loss\Sigma ;,;k[zi] :
+
+The second is defined once that a probability measure P has been fixed on (Zk; Bk), where Bk is the algebra of Borel sets in Zk: it is the P -expectation of the error (viewing Loss\Sigma ;,;k as a random variable on Zk):
+
+ExpLoss\Sigma ;,;k := E(Loss\Sigma ;,;k) :
+
+We let Sn denote the set of all n-dimensional initialized nets with activation oe = tanh (and m = p = 1). For any integers n * 5 and k and any two real numbers "; ffi 2 (0; 1), we denote the "sample complexity":
+
+S(n; k; "; ffi) := 640"2 in6 + n3 log2 kj `4 + ln ` 1"ffi '' : For n ! 5, we define S(n; k; "; ffi) using "5" instead of n in the expression above. This is proved later in the paper (P s means probability with respect to the product measure P s on Zsk, corresponding to independent identically distributed choices for the input/output pairs z1; : : : ; zs):
+
+Theorem 1 For each n; k; "; ffi ? 0 and each s * S(n; k; "; ffi),
+
+P s i fififiEmpLoss\Sigma ;,;k[~z] \Gamma  ExpLoss\Sigma ;,;kfififi ! " ; 8 (\Sigma ; ,) 2 Sn j * 1 \Gamma  ffi :
+
+One interpretation of this result is as follows. Assume that we are trying to obtain a simulation model for the unknown plant in Figure 2, assumed to be strictly causal. We use as models n-dimensional nets, and are able to experiment by applying polynomial inputs of degree ! k, and collecting data on the first k derivatives, at t=0, of the output. Let's write H(_) for the vector of output derivatives corresponding to an input whose derivatives are given by _. A set of s = S(n; k; "; ffi) i.i.d. inputs are generated at random, according to some probability distribution P0 on Rk, and the derivatives j = H(_) are obtained for each input in this set of s inputs. There results a vector of observations, or "training set" ~z. Note that the distribution P0 induces a probability measure P on the set of derivatives of input/output pairs Zk in a natural way: it is concentrated on those pairs (_; j) for which j = H(_), and P (f(_; H(_)); _ 2 U g) = P0(U ). The training set ~z is distributed according to P . Suppose that we next minimize, over all n-dimensional nets and all possible initial states, the quantity EmpLoss\Sigma ;,;k[~z], obtaining a "best possible fit" (\Sigma ; ,), which produces a minimal error E0. (Of course, this minimization is itself a hard numerical problem, viz. methods for so-called "recurrent backpropagation" in the neural net literature.) Assume that we next generate a new input u, with derivatives _, again according to P0, and calculate the error Loss\Sigma ;,;k[_; H(_)], which penalizes the mismatch with the prediction that (\Sigma ; ,) would make. With high confidence (namely, better than 1 \Gamma  ffi), we can say that the expected value of Loss\Sigma ;,;k[_; j] is at most " + E0. In particular, if we had managed to fit the data perfectly (E0 = 0), then we are assured, with high confidence, that the expected value of the error is at most ".
+
+4
+
+2 Proof of Theorem Fix two positive integers n and k, to be used for dimension of nets and number of output derivatives to be matched, respectively. We let oe = tanh and m = p = 1.
+
+2.1 Formulas for Output Derivatives We will be thinking of the kth derivative of the output at time 0, y(k)(0; ,; u), as a function of the first k\Gamma 1 derivatives of the input at t=0 as well as those parameters (entries of A, B, and C, and coordinates of the initial state ,) which characterize the particular n-dimensional initialized net (\Sigma ; ,) being considered. We next formalize this functional dependence. As a first step, we consider the following question: if x(\Delta ) satisfies (1), what differential equations do the derivatives of x(\Delta ) satisfy? In order to answer this question, we next define certain polynomials X ij , in terms of which the derivatives will be expressed.
+
+We introduce indeterminates *r; r * 1, aer; r 2 f1; : : :; ng, fir; r 2 f1; : : :; ng, and ffrs; (r; s) 2 f1; : : :; ng2, and define polynomials X ij , for j 2 f1; : : : ; ng and i * 0, as follows, inductively on i:
+
+X 1j := aej (4)
+
+and for i * 1:
+
+X i+1j := `1 + : : : + `n + j1 + : : : + ji\Gamma 1 (5)
+
+where we are denoting:
+
+`l = @X
+
+ij
+
+@ael \Delta  (1 \Gamma  ae
+
+2l ) \Delta  
+
+nX
+
+h=1
+
+fflhaek + fil*1!
+
+and
+
+jl = @X
+
+ij
+
+@*l \Delta  *l+1 : If A 2 Rn\Theta n, B 2 Rn\Theta 1, , 2 Rn, and v0; : : : ; vi\Gamma 1 are real numbers, we denote by
+
+X ij (A; B; ,; v0; v1; : : :; vi\Gamma 1) the number obtained by substituting into the polynomial X ij :
+
+aes 7! oe(As, + bsv0); ffrs 7! ars; fis 7! bs; 8 r; s 2 f1; : : :; ng ; *s 7! vs; 8 r * 1 ; where ars, bs, and As denote, respectively, the (r; s)th entry of A, the sth entry of the column vector B, and the sth row of the matrix A. The following Lemma provides an interpretation of the polynomials X ij ; it is easily verified by induction, using the chain rule and the fact that oe0(a) = 1 \Gamma  (oe(a))2 when oe = tanh:
+
+Lemma 2.1 If \Sigma  is an n-dimensional net with m = 1 and oe = tanh, and x is a solution of
+
+.x(t) = ~oe(Ax(t) + Bu(t)), for some input u which is i \Gamma  1 times differentiable, then the ith derivative of the coordinate xj satisfies:
+
+x(i)j (t) = X ij (A; B; x(t); u(t); u0(t); : : : ; u(i\Gamma 1)(t)) for all t. 2
+
+5
+
+Now introduce additional indeterminates fl1; : : :; fln and let
+
+Yi :=
+
+nX
+
+j=1
+
+fljX ij ; i * 1 :
+
+Finally, if C 2 R1\Theta n and A; : : : are as earlier, we denote by
+
+Yi(A; B; C; ,; v0; v1; : : : ; vi\Gamma 1) :=
+
+nX
+
+j=1
+
+cjX ij (A; B; ,; v0; v1; : : : ; vi\Gamma 1)
+
+the substitution into these variables. Clearly: Corollary 2.2 If \Sigma  is an n-dimensional net with m = p = 1 and oe = tanh, and u is an input which is k\Gamma 1 times differentiable, k * 1, then the kth derivative of the output y at t = 0 satisfies:
+
+y(k)(0; ,; u) = Yk(A; B; C; ,; u(0); u0(0); : : : ; u(k\Gamma 1)(0))
+
+for each initial state x(0) = , 2 Rn. 2
+
+For example, Y2 = Pnj=1 flj(1 \Gamma  ae2)(Pnh=1 ffjhae + fij*1); so
+
+y00(0; ,; u) =
+
+nX
+
+j=1
+
+cj i1 \Gamma  (oe(Aj, + bju(0))2j 
+
+nX
+
+h=1
+
+ajhoe(Ah, + bhu(0)) + bju0(0)! :
+
+Observe that
+
+Yk(A; B; C; ,; u(0); u0(0); : : :; u(k\Gamma 1)(0))
+
+is the same as what we earlier called
+
+yk;\Sigma ;,(u(0); u0(0); : : : ; u(k\Gamma 1)(0)) ; if \Sigma  is the net whose matrices are (A; B; C).
+
+Since, from the recursive definition, the degree of X i+1j equals (deg X ij \Gamma  1) + 4, the degree of X ij is 3i \Gamma  2 for i * 1. Thus:
+
+Lemma 2.3 The degree of Yk is 3k \Gamma  1 for each k * 1. 2 Remark 2.4 Note that the degree of Yk with respect to the "input" variables *l is k \Gamma  1 for each k * 1 because, inductively,
+
+deg*1;:::;*i X i+1j = deg*1;:::;*i X ij + 1 : Also, the degree of Yk with respect to the "sigmoid" variables aej is 2k \Gamma  1 because, inductively,
+
+degae
+
+1;:::;aen X
+
+i+1 j = (degae1;:::;aen X
+
+ij \Gamma  1) + 3 :
+
+We do not use these estimates in what follows, but it is likely that the upper bounds to be given later could be made less conservative when using this additional information. 2
+
+6
+
+2.2 Pseudo-Dimension Estimates We first recall the concepts of Vapnik-Chervonenkis (VC) dimension and, more generally, pseudo- (or Vapnik-subgraph, or Pollard) dimension. Given a set U0 and a class F0 of functions U0 ! f0; 1g (which we think of as a family of binary classifiers), a dichotomy on a subset V of U0 is any function ffi : V ! f0; 1g; and the subset V ` U0 is shattered by F0 if each dichotomy on V is the restriction to V of some f 2 F0. The Vapnik-Chervonenkis (VC) dimension vc (F0) is the supremum (possibly infinite) of the set of integers ^ for which there is some subset V ` U0 of cardinality ^ which can be shattered by F0. We let H be the Heaviside function: H(x) = 1 if x ? 0 and 0 if x ^ 0. Given now a class of functions F from U to R, we introduce, for each f 2 F , the function
+
+qf : U0 = U \Theta  R ! f0; 1g : (u; y) 7! H(f (u) \Gamma  y) as well as the class F0 consisting of all such qf . The pseudo-dimension of F is defined by:
+
+pd (F ) := vc (F0) : (This definition is equivalent to the one in [7].)
+
+We now review a basic pseudodimension estimate from [9], specialized to a form useful for our purposes. Let oe = tanh. Assume given a function
+
+' : Rl \Theta  Rh ! R*0 which can be expressed as:
+
+'(*; z) = P (oe(R1(*; z)); : : :; oe(Rn(*; z)); *; z) ; (6) where R1(*; z); : : :; Rn(*; z) are polynomials each of (total) degree at most r \Gamma  1 and P is a polynomial of degree at most q \Gamma  1. We view vectors * 2 Rl as parameters, and for each * let
+
+'* : Rh ! R*0 : z 7! '(*; z) :
+
+Lemma 2.5 Let
+
+F := ae '*1 + '
+
+* ; * 2
+
+Rloe :
+
+Then,
+
+pd (F ) ^ b + 2(1 + log2 e)l ; (7)
+
+where
+
+b ^ (ln)2 \Gamma  ln + 2[l log2 q + l log2 l + l log2(q + r) + ln log2(l2(q + r))] : (8)
+
+Proof. By definition, pd (F ) equals the VC dimension of the class of binary functions
+
+(z; z0) 7! H('*(z)=(1 + '*(z)) \Gamma  z0) ; * 2 Rl : Since 1 + '*(z) is always positive, we can write this latter expression also as H((z; z0)), where
+
+(z; z0) := '*(z) \Gamma  z0(1 + '*(z)) :
+
+7
+
+Observe that  is a polynomial of total degree ^ (q \Gamma  1) + 1 = q on *; z; z0 and the expressions oe(Ri(*; z)). On the other hand,
+
+@oe(Ri(*; z))
+
+@*j = (1 \Gamma  (oe(Ri(*; z)))
+
+2) @Ri(*; z)
+
+@*j
+
+for each coordinate *j of *, and a similar expression holds for partial derivatives with respect to the coordinates of z. Thus, each oe(Ri(*; z)) is a Pfaffian function of degree ^ 2 + (r \Gamma  2) = r. The result then follows from [20], Theorem 10.7 and Lemma 10.6, which provide an upper bound for the VC dimension of binary function classes defined by polynomials expressions involving Pfaffian functions, in terms of the degree of the polynomials and the degree and length of the Pfaffian chains involved. Precisely, we apply Theorem 10.7 with "b" instead of "2 log2 B" and Lemma 10.6 with q; d; D respectively equal to our n; q; r, to obtain respectively equations (7) and (8). (The results cited from the book [20] are based on the paper [9]; the only minor difference is in the slight improvement in (7), which the original paper had given as b + 16l.)
+
+Some algebraic manipulation gives:
+
+Corollary 2.6 When r = 3, l ^ 3n + n2, n * 5, and q ^ 6k, pd (F ) ^ 3n6 + 5n3 log2 k. 2
+
+2.3 Uniform Approximation of Expected Loss The last ingredient is a theorem on approximation of means by empirical means, which we quote from [7] (see also [20] for an exposition).
+
+Let (Z; A) be a set together with a oe-algebra of subsets of Z, and let ' : Rl \Theta  Z ! [0; 1], where l is some positive integer, be a function measurable with respect to B \Theta  A, where B is the Borel oe-algebra on Rl. Write F := f'(*; \Delta ); * 2 Rlg. Assume that d = pd (F ) ! 1.
+
+Then, applying Corollary 2 in Section 4 of [7]:
+
+Proposition 2.7 Let ~z be generated by s independent draws according to any distribution P on (Z; A). Pick any "; ffi 2 (0; 1). Then, provided
+
+s * 64"2 `2d ln ` 16e" ' + ln `8ffi '' ;
+
+P i8 ' 2 F : fififi bE~z(') \Gamma  E(')fififi ! "j * 1 \Gamma  ffi ; where b
+
+E~z(') := 1s
+
+sX
+
+i=1
+
+'(zi)
+
+and E(') denotes the expectation of ' 2 F . 2
+
+2.4 Proof of Theorem 1 Theorem 1 is an immediate consequence of Proposition 2.7 and Corollary 2.6, as we discuss now.
+
+The set of all nets of dimension n and activation tanh, together with initial states, may be parameterized by * 2 Rl, where l := 3n + n2, after listing in some specific order the entries of
+
+8
+
+A, B, C, and ,. Hence we can write, if u is an input which is i\Gamma 1 times differentiable, and i * 1,
+
+y(i)(0; ,; u) = yi;\Sigma ;,(u(0); u0(0); : : :; u(i\Gamma 1)(0))
+
+as
+
+'i(*; u(0); u0(0); : : : ; u(i\Gamma 1)(0)) ;
+
+for some function 'i : Rl \Theta  Ri ! R. We introduce ' : Rl \Theta  Zk ! R*0 defined by:
+
+'(*; ((_0; : : : ; _k\Gamma 1); (j0; : : : ; jk))) =
+
+kX
+
+i=0
+
+('i(*; _0; : : :; _i\Gamma 1) \Gamma  ji)2
+
+and note that this equals kYk;\Sigma ;,(_) \Gamma  jk2 if (\Sigma ; ,) is the initialized system corresponding to the parameter *. Let, for each 1 2 f1; : : : ; ng,
+
+Ri(*; z) :=
+
+nX
+
+h=1
+
+(ffih,h + fii_0) :
+
+Thus we have the situation in Equation (6),
+
+'(*; z) = P (oe(R1(*; z)); : : :; oe(Rn(*; z)); *; z) ; where P has degree 6k \Gamma  2 (by Lemma 2.3), and each Ri has degree 2. So, in the notations there, we may take r = 3, q = 6k \Gamma  1. Corollary 2.6 then gives the estimate d ^ 3n6 + 5n3 log2 k to be used in Proposition 2.7, and the bound for s can then be estimated to give the simpler expression in Theorem 1.
+
+3 Some Remarks It should be possible to improve considerably on the learning result, which should be only seen as a first step in the development of a serious study of identification complexity using the computational learning theory paradigm. It is too conservative not only in the numeric constant (see other estimates in [20]) but also in the fact that it is a "worst possible case" result, valid with respect to all possible probability distributions, and in its use of pseudodimension estimates, which are in general conservative.
+
+More General Models A variant is that of systems of the form .x = F x + ~oe(Ax + Bu), y = Cx, that is, when there is an additional linear term in the dynamics. (Such extra terms can be used to insure global boundedness of solutions; for instance, F = \Gamma I guarantees that each component of .x(t) has negative derivative when the component is ? 1 and positive derivative when the component is ! 1, as done with "Hopfield nets".) The same learning results apply in this case. The only needed modification in the proof is that in Equation (4) we must add a sum Pnk=1 OEjkO/k, where the OEjk's and O/k's are a new set of variables (to be specialized later to entries of F and coordinates of the initial state, respectively), and in Equation (5) one should add a sumP
+
+nk=1 @X ij
+
+@O/k X 1k . The rest of the computations are the same.
+
+9
+
+Linear Systems, and Other Activation Functions It is worth remarking that it is also possible to give a simple sample complexity estimate for linear systems identification, i.e., the case when oe is the identity, as well as some other nonlinear situations (e.g., if oe is a piecewise-polynomial function). All these follow from pseudodimension estimates. For example, for the class of minimal linear systems of dimension n, we obtain
+
+pd (F ) = O(n log k) : This follows from the estimates for VC dimension of algebraic concept classes given in [6] (see [20], Theorem 10.5 or Corollary 10.2), since  in the proof of Lemma 2.5 has degree 2k + 5 and one may take l = 2n (because, by linear systems theory, reachable and observable systems can be parameterized linearly using that many parameters).
+
+In general, however, many other activations, even with "sigmoidal" shape, may give rise to infinite pseudo-dimension. Note that y0(0; ,; u) = C~oe(A, + Bu(0)) is a "single-hidden layer neural net" as a function of the inputs at time zero. Examples leading to infinite VC dimension are well-known (see e.g. [20], Section 10.3.2).
+
+Discrete Time We have avoided discussion of discrete-time networks. For discrete-time systems there exist lower bounds on pseudodimension; see [5] for the case of linear systems and [10] for discrete time nonlinear nets. Interestingly enough, for oe = tanh, the lower bounds are at least linear (rather than logarithmic) in k, for discrete-time systems. This surprising difference is related to the fact that, in discrete-time, outputs at time k require k compositions of sigmoids, while in continuous time, using derivatives of outputs as data, we were able to avoid compositions.
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "For neural networks, function determines form," Neural
+
+Networks 6(1993): 975-990.
+
+[2] Albertini, F., and E.D. Sontag, "State observability in recurrent neural networks," Systems
+
+& Control Letters 22(1994): 235-244.
+
+[3] Back, A.D., and A.C. Tsoi, "FIR and IIR synapses, a new neural network architecture for
+
+time-series modeling," Neural Computation 3 (1991): 375-385.
+
+[4] Bengio, Y., Neural Networks for Speech and Sequence Recognition, Thompson Computer
+
+Press, Boston, 1996.
+
+[5] Dasgupta, B., and E.D. Sontag, "Sample complexity for learning recurrent perceptron
+
+mappings," IEEE Trans. Inform. Theory 42 (1996): 1479-1487.
+
+[6] Goldberg, P., and M. Jerrum, "Bounding the Vapnik-Chervonenkis dimension of concept
+
+classes parametrized by real numbers," Machine Learning 18(1995): 131-148.
+
+[7] Haussler, D., "Decision theoretic generalizations of the PAC model for neural nets and
+
+other learning applications", Information and Computation 100(1992): 78-150.
+
+10
+
+[8] Hautus, M., "A set of IP-functions," unpublished manuscript, Eindhoven University, August 1993.
+
+[9] Karpinski, M., and A. Macintyre, "Polynomial bounds for VC dimension of sigmoidal
+
+and general Pfaffian neural networks," J. Computer Sys. Sci., to appear. (Summary in "Polynomial bounds for VC dimension of sigmoidal neural networks," in Proc. 27th ACM Symposium on Theory of Computing, 1995 , pp. 200-208.)
+
+[10] Koiran, P., and E.D. Sontag, "Vapnik-Chervonenkis dimension of recurrent neural networks," Proceedings of Third European Conference on Computational Learning Theory, Jerusalem, March 1997, to appear.
+
+[11] Leshno, M., V.Ya. Lin, A. Pinkus, and S. Schocken, "Multilayer feedforward networks with
+
+a non-polynomial activation function can approximate any function," Neural Networks 6(1993): 861-867.
+
+[12] Matthews, M., "A state-space approach to adaptive nonlinear filtering using recurrent
+
+neural networks," Proc. 1990 IASTED Symp. on Artificial Intelligence Applications and Neural Networks, Z"urich, July 1990, pp. 197-200.
+
+[13] Polycarpou, M.M., and P.A. Ioannou, "Neural networks and on-line approximators for
+
+adaptive control," in Proc. Seventh Yale Workshop on Adaptive and Learning Systems, pp. 93-798, Yale University, 1992.
+
+[14] Siegelmann, H.T., and E.D. Sontag, "Turing computability with neural nets," Appl. Math.
+
+Lett. 4(6)(1991): 77-80.
+
+[15] Sontag, E.D., "Neural nets as systems models and controllers," in Proc. Seventh Yale
+
+Workshop on Adaptive and Learning Systems, pp. 73-79, Yale University, 1992.
+
+[16] Sontag, E.D., "Neural networks for control," in Essays on Control: Perspectives in the
+
+Theory and its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+[17] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+[18] Sontag, E.D., "Recurrent neural networks: Some systems-theoretic aspects," in Dealing
+
+with Complexity: a Neural Network Approach (M. Karny, K. Warwick, and V. Kurkova, eds.), Springer-Verlag, London, 1997, to appear.
+
+[19] Sontag, E.D., and H.J. Sussmann, "Complete controllability of continuous-time recurrent
+
+neural networks," Systems and Control Letters, 1997, to appear.
+
+[20] Vidyasagar, M., A Theory of Learning and Generalization: With Applications to Neural
+
+Networks and Control Systems, Springer, London, 1997.
+
+[21] Zbikowski, R., "Lie algebra of recurrent neural networks and identifiability," Proc. Amer.
+
+Automatic Control Conference, San Francisco, 1993, pp. 2900-2901.
+
+[22] Zbikowski, R., and K.J. Hunt, eds., Neural Adaptive Control Technology World Scientific
+
+Publishing, 1996.
+
+11</pre>
+</body>
+</html>

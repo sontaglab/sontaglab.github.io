@@ -1,0 +1,444 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converge-nn.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converge-nn.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+BACKPROPAGATION SEPARATES WHERE PERCEPTRONS DO1
+
+Eduardo D. Sontag H'ector J. Sussmann Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+ABSTRACT Feedforward nets with sigmoidal activation functions are often designed by minimizing a cost criterion. It has been pointed out before that this technique may be outperformed by the classical perceptron learning rule, at least on some problems. In this paper, we show that no such pathologies can arise if the error criterion is of a threshold LMS type, i.e., is zero for values "beyond" the desired target values. More precisely, we show that if the data are linearly separable, and one considers nets with no hidden neurons, then an error function as above cannot have any local minima that are not global. Simulations of networks with hidden units are consistent with these results, in that often data which can be classified when minimizing a threshold LMS criterion may fail to be classified when using instead a simple LMS cost. In addition, the proof gives the following stronger result, under the stated hypotheses: the continuous gradient adjustment procedure is such that from any initial weight configuration a separating set of weights is obtained in finite time. This is a precise analogue of the Perceptron Learning Theorem. The results are then compared with the more classical pattern recognition problem of threshold LMS with linear activations, where no spurious local minima exist even for nonseparable data: here it is shown that even if using the threshold criterion, such bad local minima may occur, if the data are not separable and sigmoids are used.
+
+1 Introduction This paper deals with the behavior of the so-called backpropagation technique (Hinton, 1987; Rumelhart & McClelland, 1986) used in training feedforward nets for pattern classification. This technique is based on (1) proposing an error function that penalizes missclassifications and then (2) attempting to minimize this function using a gradient descent method (the name "backpropagation" arises from the use of the chain rule to compute partial derivatives recursively through the network's layers). In (Wittner & Denker, 1987; Brady, Raghavan, & Slawny, 1989), examples are given illustrating the fact that even if the training data are linearly separable -a case already treated satisfactorily by linear programming techniques as well as the classical "perceptrons"-, a net performing gradient search may get stuck in a solution which fails to classify correctly. The first of these papers (see also Shrivastava & Dasgupta, 1987) pointed out that (a) it might be possible to overcome these difficulties by using a threshold LMS procedure, where one does not penalize numerical values which are already beyond the
+
+1This work was partially supported by NSF grants DMS88-03396 and DMS89-02994, and by the CAIP Center, Rutgers University. Keywords: Backpropagation, pattern classification, nonlinear least squares, neural networks Phone: (908)932-3072; email: sontag@hilbert.rutgers.edu
+
+1
+
+targets, and (b) in the threshold case one indeed has, under certain assumptions on the activation functions, a convergence theorem that closely parallels that for perceptrons. The apparent contradiction with the title of (Brady, Raghavan, & Slawny, 1989) is explained by the fact that this latter reference did not use threshold but rather "exact" LMS.
+
+In this paper, we extend the result in (Wittner & Denker, 1987) so as to include sigmoidal neurons, which were excluded by their assumptions. To be precise, we show that if the data are linearly separable and one considers nets with no hidden neurons and monotonic non-linear output units, then the threshold error function has no non-global local minima and in fact the continuous gradient adjustment procedure is such that from any initial weight configuration a separating set of weights is obtained in finite time. The main result is stated in terms of the convergence of gradient procedures for the minimization of a general class of cost functions that includes this and other examples of interest in neural networks. The technique of proof involves some elementary stability arguments. We also show how our result is an analogue of the Perceptron Learning Theorem.
+
+The paper is organized as follows. First we give an intuitive discussion of the problem, including a comparison with perceptrons, and we see how a threshold LMS criterion is suggested by this comparison. After that, we describe the type of error function to be considered and state the main theorem, discussing its application to sigmoidal nets. Then we provide some examples, and in particular we show that if the training set is not separable, there may be nonglobal local minima even if a threshold LMS is used. We also compare the situation with the case of linear response units (Duda & Hart, 1973, pp.148-149), and remark that a basic difference with that case is due to the lack of convexity in the cost function: for linear activations, there are no spurious local minima even for nonseparable data, in contrast to sigmoidal nets. In the final section we prove the theorem.
+
+Although the results in this paper are mathematically quite straightforward, they do serve to emphasize the need for care in the choice of error function. Obviously, it would be far better to have a positive result for more general nets than those with no hidden layers, since after all the need for extra layers justifies considering sigmoidal nets to begin with. An analogous result cannot hold in that generality, as spurious local minima can occur for multilayer-classifiable data, but one can expect at least the domains of attraction to be larger when using threshold errors, and this is confirmed easily by computer simulations. For more on the rigorous analysis of local minima in the multilayer case, the reader is referred to (Blum, 1989).
+
+2 Perceptrons Versus Error Minimization Neural nets are typically applied to solve binary classification problems. In these, labeled examples and counterexamples are presented during a training stage, and weights are adjusted so as to make the network's numerical output match in some sense the desired classification.
+
+Assume that we are given a data sequence of labeled n-vectors
+
+w1; ffl1; w2; ffl2; : : : ; wm; fflm (1) where ffli = + or ffli = \Gamma  for each i. We say that the data are linearly separable in case there exists a hyperplane H in IRn such that all the points wi with ffli = + are on an opposite side of H than the points with ffli = \Gamma . Adding a coordinate equal to one to each wi, and writing vi := (wi; 1), the condition is that there must exist a vector x\Lambda  in dimension n + 1 such that
+
+hvi; x
+
+\Lambda i ! 0 and hvj; x\Lambda i ? 0 for each vi 2 S
+
+\Gamma  and each vj 2 S+ ; (2)
+
+2
+
+where we use the standard inner product notation
+
+hx; yi =
+
+nX
+
+i=1
+
+xiyi
+
+and we denote by S+ the set of all vectors vi such that ffli = + and S\Gamma  the set of those with ffli = \Gamma . An x\Lambda  as in (2) is called a separating vector. The problem of determining if there exists such an x\Lambda  is a simple linear programming question, and there are very efficient methods for solving it as well as for finding explicit solutions x\Lambda . More in connection with nets, the classical perceptron learning procedure (see e.g. Duda & Hart, 1973) provides a recursive rule for finding one such solution provided that any exist.
+
+Although the perceptron rule is very simple, we will briefly recall it, so we can compare it with error minimization. First an arbitrary starting value is selected as an estimate for x\Lambda . Then, the vectors vi are presented one after the other in an infinite sequence, with the only restriction that every element must appear infinitely often. For each element of this sequence, the corresponding inequality is tested. If the sign of the inequality is wrong, the estimate for x\Lambda  is updated as follows:
+
+x
+
+\Lambda  := x\Lambda  + vi
+
+if vi is in S+, and
+
+x\Lambda  := x\Lambda  \Gamma  vi
+
+if vi is in S\Gamma ; if the sign was right, no change is made. It is well-known (see e.g. Duda & Hart, 1973) that this procedure converges in finitely many steps to a solution x\Lambda  if the original data are linearly separable.
+
+To compare this with the error minimization technique, we consider a fixed differentiable function
+
+` : IR ! IR
+
+with the property that `(0) = 0 and `0(a) ? 0 for all a (and, for technical reasons, such that the derivative `0 is locally Lipschitz). Let t+ := lima!+1 `(a) and t\Gamma  := lima!\Gamma 1 `(a), where \Gamma 1 ^ t\Gamma  ! t+ ^ 1. We pick two real numbers
+
+t\Gamma  ! ff ! 0 ! fi ! t+ in the range of ` --the "target values" for the negative and positive examples, respectively; see for instance (Blum, 1989; Brady, Raghavan, & Slawny, 1989; Wittner & Denker, 1987). Often in neural net research one uses `(u) = tanh(u) or, equivalently under a simple coordinate rescaling, the logistic function 1=(1 + e\Gamma u). If x\Lambda  is as in (2) then there exists some fl ? 0 so that flhvi; x\Lambda i ^ `\Gamma 1(ff) and flhvj; x\Lambda i * `\Gamma 1(fi) respectively. That is,
+
+`(hvi; x
+
+\Lambda i) ^ ff and `(hvj; x\Lambda i) * fi for each vi 2 S
+
+\Gamma  and each vj 2 S+ ; (3)
+
+after redefining x\Lambda  as flx\Lambda . Conversely, if an x\Lambda  exists so that (3) holds, then the data must be linearly separable and this same x\Lambda  is a separating vector. Now consider the cost
+
+E(x) :=
+
+mX
+
+i=1 i
+
+ffii \Gamma  `(hvi; xi)j
+
+2 (4)
+
+where ffii equals fi if vi 2 S+ and equals ff otherwise. One now minimizes E as a function of x. If a small value results, it follows that each `(hvi; xi) is approximately equal to ffii, and
+
+3
+
+the classification problem is solved. Unfortunately, there are local minima problems associated to this procedure; see for instance, (Wittner & Denker, 1987; Brady, Raghavan, & Slawny, 1989; Sontag, 1988). Spurious (i.e., non-global) local minima can occur even if the data are separable. Moreover, even when there happens to be only one local (and thus necessarily global) minimum, the resulting solution may fail to separate (hence the title of Brady, Raghavan, & Slawny, 1989). As this general error-minimization procedure is in principle exactly the same that is used when dealing with the far more interesting case of networks with hidden layers and data that is classifiable to higher order than linear, it is of interest to study the problem in this simpler case, where a comparison with the perceptron is possible. One may expect that the same pathologies will arise in the more general case; indeed, this has recently been shown by (Blum, 1989).
+
+There are two very different reasons for the above local minima to appear. One of the reasons has to do with the highly nonconvex nature of the problem, when using nonlinear functions `. We discuss this in Section 4. Another reason, and the one that interests us more in this note, is as follows. When minimizing E, one is trying to fit the values ff and fi exactly, whereas it would obviously be sufficient for classification that `(hvi; xi) be less than ff for vi in S\Gamma , and bigger than fi for vi in S+. The precise fitting may force the parameters x to be chosen so as to make most terms small at the cost of leaving one term large. This can be illustrated with a simple example. Assume that n = 1 and the data consists of five points wi so that w1 and w2 are very close to \Gamma 1, w3 and w4 are very close to 1, and w5 = \Gamma 0:9. One desires for fw1; w2g to be classified as "\Gamma " and fw3; w4; w5g as "+". Obviously this data are linearly separable (pick x\Lambda  = (1; 0:95)). We now pose the minimization problem, using ` = tanh and the target values ff := \Gamma 0:6, fi := 0:6. That is, we must minimize the error
+
+(0:6 \Gamma  `(\Gamma 0:9x1 + x2))2 + 2 (0:6 \Gamma  `(x1 + x2))2 + 2 (\Gamma 0:6 \Gamma  `(\Gamma x1 + x2))2 as a function of x = (x1; x2). There is a unique local (and global) minimum, attained at the unique value of (approximately) x = (0:4855; 0:258). It turns out that this vector does not separate: for v = (\Gamma 0:9; 1), hv; xi = (\Gamma 0:9)0:4855 + 0:258 ! 0. Therefore, in minimizing E, the classification of w5 has been traded-off for a better fit of the rest of the data. Note that the cutoff between classes happens approximately at w = \Gamma 1=2. On the other hand, with x\Lambda  = (13:863; 13:17), equation (3) does hold, as the values of for (\Gamma 1; 1), (\Gamma 0:9; 1) and (1; 1) are approximately at \Gamma 0:6, 0:6, and 1, respectively; the cutoff happens at w = \Gamma 0:95. This x\Lambda  does not arise from the minimization of E, but it can be obtained by not adding to the error if `(hvi; xi) is already less than ff and x 2 S\Gamma , and similarly for x 2 S+ if the value exceeds fi. In other words, the corresponding term in Equation (4) is taken to be zero. So one must minimize instead
+
+E
+
+\Lambda (x) :=
+
+mX
+
+i=1
+
+hi(hvi; xi) (5)
+
+where
+
+hi(a) := (`(a) \Gamma  ff)2+ if ffli = \Gamma 
+
+and
+
+hi(a) := (fi \Gamma  `(a))2+ if ffli = +
+
+and we are denoting
+
+(u)2+ := 12 (u + juj) = ( 0 if u ^ 0u if u ? 0
+
+4
+
+for all numbers u. The new error function E\Lambda  is differentiable, but in general is not second-order differentiable. (However, its partial derivatives are locally Lipschitz, which is all that will be needed in order to have a well-posed gradient differential equation.) Note that for separable data the global minimum of E\Lambda  is zero and it is achieved at any x\Lambda  that satisfies (3); conversely, if the data are not separable then the global minimum is strictly positive.
+
+We now compare minimization of E\Lambda  to the perceptron procedure. A discrete gradient descent step (with stepsize ae) for minimizing E\Lambda  takes the form of updating x by:
+
+x := x + ~aevi ; where
+
+~ae = (ffii \Gamma  `(hvi; xi)) `
+
+0(hvi; xi) ae (6)
+
+if the current classification of vi is incorrect and ~ae = 0 otherwise. This is the precise analogue of the perceptron rule (for which ~ae is always either zero or \Sigma 1). When using E instead of E\Lambda  one would use Equation (6) always, even if the classification was correct. The parameters x\Lambda  = (13:863; 13:17) were obtained numerically by minimizing E\Lambda ; alternatively, they can be found in closed form by first fitting exactly the values at \Gamma 1 and \Gamma 0:9 to obtain x1 = 10 ln 4 and x2 = 9:5 ln 4; the value at 1 turns out to be about 1, which is greater than 0:6 but still contributes zero error in E\Lambda . The use of E\Lambda  was first suggested in (Wittner & Denker, 1987), who also proved a convergence result under somewhat restrictive hypotheses which do not allow for sigmoids. Below, we prove that there are no spurious local minima for E\Lambda  if the data are separable, and that the gradient descent differential equation converges in finite time to a separating solution, from any initial state. Moreover, we give a version that applies to a wider class of optimization problems. The only difficulty in the proof has to do with the fact that ~ae will tend to zero; one has to use an argument involving LaSalle invariance, but this is standard in dynamical systems theory. Thus we conclude that the use of E\Lambda  provides the correct generalization of the perceptron learning rule, and this provides strong evidence that one should always use such threshold-LMS procedures.
+
+3 Penalty Functions and Examples We give a general definition that captures what is needed in order to prove the result for threshold LMS cost functions.
+
+Definition 3.1 A differentiable function h : IR ! IR, with locally Lipschitz derivative h0, is a penalty function if there is some nonempty interval I ` IR so that:
+
+1. a 2 I ) h(a) = 0 2. a =2 I ) h(a) ? 0 and h0(a) 6= 0 : 2
+
+By "interval" we mean infinite or finite, or even just one point. Observe that the hypotheses imply that
+
+I = fa j h(a) = 0g = fa j h
+
+0(a) = 0g
+
+and in particular that I must be closed.
+
+5
+
+Definition 3.2 An E : IRn ! IR is a cost function if it has the form
+
+E(x) =
+
+mX
+
+i=1
+
+hi(hvi; xi) (7)
+
+where hi is a penalty function and vi 2 IRn, for each i = 1; : : : ; m. 2
+
+Our main result, to be proved in Section 5, is as follows. Theorem 1 Let E be a cost function, and assume that there exists at least one x\Lambda  for which E(x\Lambda ) = 0. Then, for each x0 the unique solution x(\Delta ) of the gradient differential equation
+
+.x = \Gamma rE(x)t (8) with x(0) = x0 is defined for all t * 0,
+
+~x = limt
+
+!1 x(t)
+
+exists, and E(~x) = 0. In particular, every local minimum of E is global (E = 0).
+
+3.1 The Example of Threshold LMS Threshold LMS problems for neural nets with no hidden neurons and linear or nonlinear monotone response characteristics give rise to the cost functions E = E\Lambda  introduced in Section 2 (we state everything in terms of the vectors (wi; 1), and for notational simplicity we write n instead of n + 1). There is given a sequence of n-vectors v1; : : : ; vm together with a sequence of desired signs fffli = \Sigma g, as well as a map ` : IR ! IR as there, and any two values ff ! fi in the range of `. Associated to these is the error function E\Lambda  given in (5). Observe that the functions hi are penalty functions; for instance for ffl = \Gamma  we have that
+
+I = fa j a ^ `
+
+\Gamma 1(ff)g
+
+and therefore
+
+h
+
+0(a) = 2(`(a) \Gamma  ff)`0(a) ? 0
+
+when a =2 I.
+
+In general (see Section 4), E\Lambda  may have spurious (non-global) locally minima. However, if the data happen to be linearly separable then we do know from the Theorem that such local minima do not exist. This is because, as discussed earlier, the data are separable if and only if there exists some x\Lambda  for which E\Lambda (x\Lambda ) = 0. Note that this holds for any choice of the target values ff; fi, independently of the actual training data. Furthermore, one has the following observation:
+
+Corollary 3.3 If E\Lambda  is as above, then, solving the differential equation (8) with an arbitrary initial state x0, there is some t0 so that x(t) is a separating vector, for each t * t0.
+
+Proof. Let ~x be as in the Theorem, so that (3) holds at ~x. By continuity, `(hvi; xi) ! ff=2 for each vi 2 S\Gamma  and `(hvj; xi) ? fi=2 and each vj 2 S+, for any x near ~x. Thus, for t large enough, x\Lambda  = x(t) separates.
+
+6
+
+As stated, the convergence result applies only to continuous gradient descent. One might ask about the recursive discrete version
+
+xk+1 := xk \Gamma  aerE(xk)t; x0 = x0 (9) where ae ? 0 is a "learning rate." The following says that, for the example of interest, this will also converge to a solution, provided that ae be small enough.
+
+Corollary 3.4 If E\Lambda  is as above, then for each initial vector x0 there exists a real number ae so that the solution of the iteration (9) is so that xK separates, for some integer K * 0.
+
+Proof. Consider the solution of the differential equation (8). By Corollary 3.3, there is some t0 so that x(t0) satisfies (3). The difference equation (9) is nothing more than the Euler algorithm for calculating the solution of (8) and one knows that, if xaek denotes the solution of the Euler iteration at time k using ae := t0=k, then
+
+kx(t0) \Gamma  xaekk = O( t0k ) which goes to zero as k ! 1 (Isaacson & Keller, 1966, chapter 8). As before, any point close enough to x(t0) still separates, so for ae = t0=k small it indeed holds that xaek separates.
+
+3.2 Exact LMS Instead of a threshold LMS one could also use an "exact" LMS criterion, leading to a different kind of error function. With the same notations as above, this would be the case when one employs hi(a) := (ffii \Gamma  `(a))2, where ffii equals fi if vi 2 S+ and equals ff otherwise. While Theorem 1 still guarantees global convergence to a solution of E(x) = 0 provided that one such solution exists, and in that case the corresponding vector x will indeed separate, in this example separability is not in general equivalent to the existence of an x\Lambda  so that E(x\Lambda ) = 0 (when the targets ff; fi have been chosen a priori, independently of the actual training data), and the (even global) minima of E need not separate, as discussed in Section 2.
+
+4 Some Remarks If the hypothesis that E(x\Lambda ) = 0 for some x\Lambda  is dropped, there may exist local minima of E which fail to be global, even in the situation of threshold LMS, and even if the vectors vi are restricted to be binary, as in many applications. For instance, in (Sontag & Sussmann, 1989), the following labeled sequence of m = 125 vectors is given:
+
+w1; : : : ; w15 = (\Gamma 1; \Gamma 1; 1; \Gamma 1) ; \Gamma  w16; : : : ; w30 = (\Gamma 1; \Gamma 1; \Gamma 1; 1) ; \Gamma 
+
+w31 = (1; 1; \Gamma 1; \Gamma 1) ; \Gamma  w32 = (1; \Gamma 1; 1; \Gamma 1) ; \Gamma  w33 = (\Gamma 1; 1; \Gamma 1; 1) ; \Gamma  w34; : : : ; w48 = (1; 1; \Gamma 1; \Gamma 1) ; + w49; : : : ; w63 = (1; \Gamma 1; 1; \Gamma 1) ; +
+
+7
+
+w64; : : : ; w78 = (\Gamma 1; 1; \Gamma 1; 1) ; +
+
+w79 = (\Gamma 1; \Gamma 1; 1; \Gamma 1) ; + w80 = (\Gamma 1; \Gamma 1; \Gamma 1; 1) ; + w81; : : : ; w125 = (1; 1; 1; 1) ; +
+
+for which, with "i = \Gamma 1 for i ^ 33 and "i = 1 otherwise,
+
+E(x) =
+
+mX
+
+i=1
+
+(`(hvi; xi) \Gamma  "i)2
+
+has a local minimum which is not global, when ` = tanh. (Note that one must use the examples from (Sontag & Sussmann, 1989) rather than those from (Brady, Raghavan, & Slawny, 1989) or (Sontag, 1988), not just because of the interest in binary examples, but also because in the latter references outputs are not allowed to take limiting values f\Gamma 1; 1g, which will be critical below.)
+
+The main result from (Sontag & Sussmann, 1989) is then: The above error function E has at least one local minimum which is not a global minimum.
+
+The proof gives a somewhat stronger conclusion than stated, in that the local minimum in question is strict in the following sense: there exists a vector y0 and a closed ball B not containing y0 so that E(y0) ! E(x) for all x in B, and so that the minimum of E on B is attained only in the interior of B.
+
+We will next show how to obtain particular values ff and fi so that, for this same example and the threshold LMS cost, E\Lambda  has spurious local minima. Consider
+
+F (x; ff; fi) :=
+
+33X
+
+i=1
+
+(`(hvi; xi) \Gamma  ff)2+ +
+
+125X
+
+i=34
+
+(fi \Gamma  `(hvi; xi))2+
+
+as a function of x and the real numbers ff; fi. Since (u)+ is continuous in u, F is too. From the previous discussion, it follows that there exists some number " ? 0 and some x0 in the interior of B, so that F (x; \Gamma 1; 1) ? f0 + " for all x 2 S, where S is the boundary of the ball B and f0 := F (x; \Gamma 1; 1). Moreover, this " can be chosen so that also F (y0; \Gamma 1; 1) ! f0 \Gamma  ". Note that F (x; \Gamma 1; 1) * f0 for all x in B.
+
+By uniform continuity of F on compacts, for all ff ? \Gamma 1 and fi ! 1 sufficiently close to \Gamma 1; 1 it will hold that
+
+F (x; ff; fi) ? f0 + "
+
+for all x in S as well as
+
+F (y0; ff; fi) ! f0 \Gamma  "
+
+and
+
+F (x; ff; fi) ? f0 \Gamma  "
+
+for all x in B. Furthermore, we may assume that
+
+F (x0; ff; fi) ! f0 + " so that the minimum of F (x; ff; fi) on B must be achieved only in the interior of B. For any such (ff; fi) 6= (\Gamma 1; 1) it then holds for E\Lambda (x) := F (x; ff; fi) that E\Lambda  has a local minimum on B which cannot be global.
+
+8
+
+4.1 Comparison With Other Results Th above discussion serves also to illustrate the substantial difference that exists between the case of interest in neural nets, when a nonlinear function ` is used, and a standard case in pattern recognition, that of threshold cost functions as before but with `(a) = a. (The "relaxation case" in (Duda & Hart, 1973, pp.147ff).) In that case, there are no nonglobal local minima even if the data are not separable. This is proved as follows. Each term
+
+hi(hvi; xi) in equation (7) is a convex function of x, since along each line x + ry; r 2 [0; 1] the second derivative d2
+
+dr2 hi(hv
+
+i; xi + rhvi; yi)
+
+is nonnegative: it equals
+
+2hvi; yi2 h00i (hvi; xi + rhvi; yi)
+
+and the second derivative of hi is always nonnegative, because hi is quadratic in one interval and constant in another. It follows that the cost function E is also convex, since it is the sum of convex functions, and therefore E has no bad local minima.
+
+There is yet another important difference with the case `=identity. In the above reference a result is proved which is somewhat analogous to Corollary 3.4, but which establishes instead (with a different proof, for the "online" version where each term in the cost function is used one at a time, and with a small modification if the vi's are not unit vectors) that the discrete scheme (9) monotonically diminishes the distance to any fixed separating vector, for every fixed choice of ae 2 (0; 2). This will not happen in general in the nonlinear case.
+
+As we pointed out, the convergence result for the threshold-LMS problem is the one that has more interest. For the non-threshold case, the authors of the paper (Shrivastava & Dasgupta, 1987) already had established a related convergence result for nonlinear units. They dealt with discrete stochastic approximation rather than the gradient descent differential equation itself, which makes the techniques quite different. In addition certain hypotheses are made in that paper (binary inputs and a linear independence assumption on the data) that make their result somewhat more restricted, but a general proof based on their ideas (for the difference equation case) may be possible also.
+
+Finally, we compare with the results in (Wittner & Denker, 1987). The authors here define a class of functions h called well-formed functions, which play the same role in the total cost as our penalty functions, and a result (not convergence of weights, but decrease of the error function to zero) is proved for the gradient differential equation. However, the definition of well-formed function does not include sigmoidal nonlinearities, since it requires that h have a derivative bounded away from zero while there are missclassifications.
+
+5 Proof of Main Result The following simple lemma will be useful in the proof. Lemma 5.1 If h is any penalty function and if b =2 I then
+
+(b \Gamma  a)h0(b) ? 0 for all a 2 I.
+
+9
+
+Proof. We assume that I is bounded above, that is
+
+I = [a0; b0] or I = (\Gamma 1; b0] and b ? b0; if instead b is to the left of I the proof is entirely analogous. Since b \Gamma  a ? 0 for all a 2 I, we must show that h0(b) ? 0.
+
+Since h0 is known to be nonzero outside I, it has constant sign on (b0; +1). So if h0(b) ! 0 then it would have to be always negative in that interval, from which it would follow that
+
+0 ^ h(b) ! h(b0) = 0 ; a contradiction.
+
+To prove the theorem we first establish the following facts:
+
+8x 2 IRn; E(x) 6= 0 ) rE(x):(x \Gamma  x\Lambda ) ? 0 (10) and
+
+8x 2 IRn; rE(x):(x \Gamma  x\Lambda ) * 0 (11)
+
+where x\Lambda  is any vector satisfying E(x\Lambda ) = 0. Note that
+
+rE(x)(x \Gamma  x\Lambda ) = dd r jr=1 E(x\Lambda  + r(x \Gamma  x\Lambda )) so this expression equals
+
+mX
+
+i=1
+
+(bi \Gamma  ai)h
+
+0(bi) (12)
+
+where
+
+ai = hvi; x
+
+\Lambda i
+
+and
+
+bi = hvi; xi
+
+for each i = 1; : : : ; m. Since E(x\Lambda ) = 0, it follows that all ai 2 I. The terms for which bi 2 I all vanish, because h0 is zero on I, while the terms with bi =2 I are positive by Lemma 5.1. Thus (11) holds. If E(x) 6= 0 then not all bi can be in I, from which it follows that at least one term is positive; so (10) holds too.
+
+With respect to any fixed x\Lambda  for which E(x\Lambda ) = 0 we define the function
+
+V (x) := 12kx \Gamma  x
+
+\Lambda k2
+
+to play the role of a Lyapunov function for the gradient system (8). Along its trajectories, we have that dV (x(t))
+
+dt = .V (x(t)) (13) where we are denoting .
+
+V (x) := \Gamma rE(x):(x \Gamma  x
+
+\Lambda )
+
+as is usually done in qualitative ODE theory. From (11) we know that
+
+.V (x) ^ 0
+
+10
+
+for all x, so V decreases along trajectories. Furthermore, from (10) we also know that
+
+.V (x) = 0 ) E(x) = 0 (14)
+
+for all x.
+
+For any initial condition x(0), the trajectory x(\Delta ) exists at least locally, and is unique by the Lipschitz hypotheses made. Furthermore, it remains in the compact set
+
+fx j V (x) ^ V (x(0))g so it is defined for all t * 0. (See for instance (Sontag, 1990), Proposition C.3.9.)
+
+The LaSalle Invariance Principle (see for instance (LaSalle, 1976), Theorem 6.4, or the particular case in (Sontag, 1990), Lemma 4.6.6) says that if the trajectory is bounded and V is nonincreasing along this trajectory, then there is some real number _ such that the solution x(t) converges to the set where .V (x) = 0 and V (x) = _. Because of (14), we conclude that
+
+x(t) ! E\Gamma 1(0) " V \Gamma 1(_) (15) for this trajectory. Observe that this does not yet say that the solution is converging. If _ = 0 this set does reduce to one point, and the theorem is proved for that trajectory. But this value may not be zero. However, we next prove that by modifying V (that is, chosing a V corresponding to a different x\Lambda ,) it can be made zero. Once that this is established, the theorem will be proved.
+
+Suppose then that x(\Delta ) is a trajectory for which _ ? 0, and pick any !-limit point ~x of this trajectory, that is to say some point to which a subsequence x(ti); ti ! 1, converges. By (15), E(~x) = 0. So we can repeat the above argument using ~x as the new "x\Lambda ". Now necessarily _ = 0, and we are done.
+
+6 Acknowledgments The authors wish to thank Geoff Hinton for many useful comments and for asking the questions that led to this note, and Ed Blum as well as an anonymous referee, for many useful suggestions.
+
+7 References Blum, E.K. (1989) Approximation of Boolean functions by sigmoidal networks: Part I: XOR
+
+and other two-variable functions. Neural Computation, 1, 532-540.
+
+Brady, M., Raghavan, R., and Slawny, J. (1989) Backpropagation fails to separate where
+
+perceptrons succeed. IEEE Trans. Circuits and Systems, 36, 665-674.
+
+Duda, R.O., and Hart, P.E. (1973) Pattern Classification and Scene Analysis, New York:
+
+Wiley.
+
+Hinton, G.E. (1987) Connectionist learning procedures (Technical Report CMU-CS-87-115,
+
+Comp.Sci. Dept.), Pittsburg: Carnegie-Mellon University.
+
+Isaacson, E., and Keller, H.B. (1966) Analysis of Numerical methods, New York: Wiley.
+
+11
+
+LaSalle, J.P. (1976) The Stability of Dynamical Systems, Philadelphia: SIAM Publications. Rumelhart, D.E., and McClelland, J.L. (1986) Parallel Distributed Processing: Explorations in the Microstructure of Cognition, volume 1. Cambridge: MIT Press.
+
+Shrivastava, Y., and S. Dasgupta (1987) Convergence issues in perceptron based adaptive neural network models. In Proc.25th. Allerton Conf. Comm. Contr. and Comp. (pp. 1133-1141), Urbana: U.of Illinois.
+
+Sontag, E.D. (1988) Some remarks on the backpropagation algorithm for neural net learning, (Report SYCON-88-02, Rutgers Center for Systems and Control), New Brunswick: Rutgers University.
+
+Sontag, E.D. (1990) Mathematical Control Theory: Deterministic Finite Dimensional Systems, New York: Springer-Verlag.
+
+Sontag, E.D. and H.J. Sussmann (1989) Backpropagation can give rise to spurious local
+
+minima even for networks without hidden layers. Complex Systems, 3, 91-106.
+
+Wittner, B.S., and J.S. Denker (1987) Strategies for teaching layered networks classification tasks. In Dana Anderson (Ed.), Proc. Conf. Neural Info. Proc. Systems New York: American Institute of Physics.
+
+12</pre>
+</body>
+</html>

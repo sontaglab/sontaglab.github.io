@@ -1,0 +1,1342 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/net-ident.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/net-ident.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+FOR NEURAL NETWORKS, FUNCTION DETERMINES FORM
+
+Francesca Albertini(*)
+
+Eduardo D. Sontag Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+E-mail: albertin@pdmat1.unipd.it, sontag@hilbert.rutgers.edu
+
+(*)Also: Universita' degli Studi di Padova, Dipartimento di Matematica Pura ed Applicata,
+
+Via Belzoni 7, 35100 Padova, Italy.
+
+Research supported in part by US Air Force Grant AFOSR-91-0343, and in part by an INDAM (Istituto Nazionale di Alta Matematica F. Severi) fellowship.
+
+Running head: FUNCTION DETERMINES FORM
+
+1
+
+FOR NEURAL NETWORKS, FUNCTION DETERMINES FORM
+
+ABSTRACT This paper shows that the weights of continuous-time feedback neural networks are uniquely identifiable from input/output measurements. Under very weak genericity assumptions, the following is true: Assume given two nets, whose neurons all have the same nonlinear activation function oe; if the two nets have equal behaviors as "black boxes" then necessarily they must have the same number of neurons and --except at most for sign reversals at each node-- the same weights. Moreover, even if the activations are not a priori known to coincide, they are shown to be also essentially determined from the external measurements.
+
+Key words: Neural networks, identification from input/output data, control systems
+
+1 Introduction Many recent papers have explored the computational and dynamical properties of systems of interconnected "neurons." For instance, Hopfield ([7]), Cowan ([4]), and Grossberg and his school (see e.g. [3]), have all studied devices that can be modelled by sets of nonlinear differential equations such as
+
+.xi(t) = \Gamma xi(t) + oe 0@
+
+nX
+
+j=1
+
+aijxj (t) +
+
+mX
+
+j=1
+
+bij uj(t)1A ; i = 1; : : :; n ; (1)
+
+or
+
+.xi(t) = \Gamma xi(t) + oe 0@
+
+nX
+
+j=1
+
+aij xj(t)1A +
+
+mX
+
+j=1
+
+bijuj (t) ; i = 1; : : : ; n : (2)
+
+Here each xi; i = 1; : : : ; n, is a real-valued variable which represents the internal state of the ith "neuron," and each ui; i = 1; : : :; m, is an external input signal. The coefficients aij ; bij denote the weights, intensities, or "synaptic strengths," of the various connections. The function oe : IR ! IR, which appears in all the equations, is called the "activation function" and is often taken to be a sigmoidal-type map. It characterizes how each neuron responds to its aggregate input. Some authors assume that a different external signal can control each neuron, but it seems reasonable, from a systems-theoretic perspective, to expect that the number of such inputs is far smaller than the number of state variables, that is, m o/ n. Electrical circuit implementations of these equations, employing resistively connected networks of n identical nonlinear amplifiers, and adjusting the resistor characteristics to obtain the desired weights, have been proposed as models of analog computers, in particular in the context of constraint satisfaction problems and in content-addressable memory applications (see e.g. [7]).
+
+We also assume given a certain number p of probes, or measurement devices, whose outputs signal to the environment the collective response of the net to the stimuli presented in the channels ui. Each such device averages the activation values of many neurons. Mathematically, this is modelled by adding a set of functions
+
+yi(t) =
+
+nX
+
+j=1
+
+cijxj(t) ; i = 1; : : :; p : (3)
+
+2
+
+The coefficient cij represents the effect of the jth neuron on the ith measurement.
+
+In vector terms, and omitting from now on the t arguments, we can write the above equations (1) and (2) respectively as
+
+.x = \Gamma x + ~oe (Ax + Bu) (4)
+
+and
+
+.x = \Gamma x + ~oe (Ax) + Bu ; (5)
+
+where A is an n \Theta  n matrix and B is an n \Theta  m matrix, and where we use the notation ~oe(x) to denote the application of the nonlinear function oe to each coordinate of the vector x. We also write the output equation (3) as
+
+y = Cx ; (6)
+
+where C is a p \Theta  n matrix. Note that, once the nonlinearity oe is specified, and the choice of model (4) or (5) is made (that is, once the architecture of the network has been fixed), the triple of matrices (A; B; C) uniquely determines the network dynamics. The entries of these matrices are usually referred to collectively as the "weights" of the network.
+
+Closely related to the above models are those for which the neurons evolve according to
+
+.x = ~oe (Ax + Bu) : (7) Again with outputs (6), they are a very natural generalization of the linear systems that appear in control theory (namely, those for which ~oe is the identity mapping). Such generalized linear systems are of interest for many reasons besides neural network applications. They provide a class of "semilinear" systems, for which one might expect a theory closer to that of linear systems than is the case for general nonlinear smooth systems. Moreover, for suitably sharp nonlinearities oe, they are approximate models of discontinuous equations such as .x = sign(Ax+ Bu). (See [12] for related work on systems that mix linear dynamics and sign functions.) In discrete-time, systems of the type (7) have been recently shown to be at least as powerful as any possible digital computational device (see [13], [14]) when all weights are rational numbers, and a general model of analog computers when the weights are allowed to be real ([15]).
+
+1.1 Uniqueness of Weights Stability properties, memory capacity, and other characteristics of the above types of systems have been thoroughly investigated by many authors; see for example [6], [9], and references there. In this paper, we are interested in studying a somewhat different issue, namely: To what extent does the function of the net, that is to say, the "black box" behavior mapping external inputs to output signals, uniquely determine the coefficients aij; bij; cij defining the network? A precise formulation is as follows. Assume that the network is started at the relaxed state
+
+x(0) = 0 ; and an input signal u(\Delta ) is applied. Under appropriate technical assumptions, a solution x(t) exists for the differential equation --respectively, (4), (5), or (7)-- and an output signal y(t) = Cx(t) is thus generated. In this manner, and for any fixed architecture, for each triple (A; B; C) there is an input-output mapping
+
+*(A;B;C) : u(\Delta ) 7! y(\Delta ) : (8)
+
+3
+
+Our main question is to decide to what extent are the matrices A; B; C determined by the i/o mapping *(A;B;C). In the very special case when oe is the identity, classical linear realization theory --see for instance [17], Chapter 5-- implies that, generically, the triple (A; B; C) is determined only up to an invertible change of variables in the state space. That is, except for degenerate situations that arise due to parameter dependencies ("non-controllability" or "non-observability"), if two triples (A; B; C) and (A; B; C) give rise to the same i/o behavior then there is an invertible matrix T such that
+
+T \Gamma 1AT = A ; T \Gamma 1B = B ; CT = C : (9) This is the same as saying that the two systems are equivalent under a linear change of variables x(t) = T x(t). Conversely, still in the classical case oe = identity, any such T gives rise to another system with the same i/o behavior, when starting with any given triple (A; B; C).
+
+These classical facts essentially apply only when oe is linear, as we will discuss in this paper. We will show that for nonlinear activations (under very weak assumptions), the natural group of symmetries is far smaller than that of arbitrary nonsingular matrices, being instead just a finite group. We will prove that if two nets give rise to the same i/o behavior, then a matrix T will exist, satisfying (9), but having the special form of a permutation matrix composed with a diagonal matrix performing at most a sign reversal at each neuron. (Moreover, the activation function itself is identifiable, up to certain symmetries, in a precise sense.) In concrete terms, this will mean that the input/output behavior uniquely determines all the weights, except for a reordering of the variables and, for odd activation functions, sign reversals of all incoming and outgoing weights at some units.
+
+After some thought, this result is not surprising --see the intuitive discussion given below for the single-neuron case-- but technically it requires a certain amount of effort to establish.
+
+1.2 Intuition Behind the Results It is useful to consider our results in trivial situations (one neuron) in order to develop an intuition as to their nature.
+
+Consider first the case of two one-neuron, one-input, one-output systems (that is, n = p = m = 1) with zero A matrix, as follows:
+
+.x = oe(bu); y = cx .x = oe(bu); y = cx
+
+(models of type (7)). For the first equation, the zero-initial-state i/o behavior takes the form u(\Delta ) 7! y(\Delta ) where:
+
+y(t) = Z
+
+t
+
+0 coe(bu(s)) ds ; and similarly for the second. Note that in the case in which oe is an odd function (which is the case studied most often in applications) reversing the signs of weights leaves the i/o behavior invariant: Z t
+
+0 (\Gamma c)oe(\Gamma bu(s)) ds = Z
+
+t 0 coe(bu(s)) ds for all u(\Delta ). Thus both systems have the same i/o behavior if it holds that:
+
+b = \Gamma b ; c = \Gamma c : (10)
+
+4
+
+Assume conversely that the zero-state i/o behaviors coincide; we wish to prove now that either both systems are the same or (10) holds.
+
+Of course, the desired implication will not be true unless suitable nondegeneracy assumptions are made; for instance, if c = c = 0 then both give the same i/o behavior but b and b may be very different. Moreover, the case in which oe is linear must also be ruled out, since otherwise coe(b) = cboe(1) and the only constraint for equality is that cb = cb.
+
+Note that the assumption of identical i/o behavior is equivalent to
+
+coe(b_) = coe(b_) for all _ 2 IR (11) (equality as functions IR ! IR). If oe has three derivatives at zero, and if we assume that
+
+oe0(0) 6= 0 and oe000(0) 6= 0 (12) then taking first and third order derivatives with respect to _ in (11), and evaluating at _ = 0, we conclude that
+
+cb = cb and cb3 = cb3 ; (13)
+
+from which it follows, if cb 6= 0, that b2 = b2, and hence that jbj = jbj. Thus, either (10) holds or b = b, c = c, as desired. Instead of oe000(0) 6= 0 we could have assumed merely that some derivative oe(q)(0) 6= 0, for some q ? 1, since this would give by taking enough derivatives in
+
+(11) that cbq = cbq and hence that b(q\Gamma 1) = b(q
+
+\Gamma 1) and again jbj = jbj. (For analytic functions,
+
+oe(q)(0) 6= 0 for some q ? 1 is equivalent to nonlinearity of oe.)
+
+For models of type (4), the equations in this special case of A = 0 and p = m = n = 1 become
+
+.x = \Gamma x + oe(bu); y = cx :
+
+Here the output for control u(\Delta ) is
+
+y(t) = Z
+
+t
+
+0 e
+
+t\Gamma scoe(bu(s)) ds ;
+
+so again the assumption of identical i/o behavior is equivalent to (11), and the result is as before.
+
+The same result is valid for models of type (5) as well, except that now the nondegeneracy assumptions must be slightly different, since merely requiring cb 6= 0 is not sufficient to force uniqueness up to sign. Indeed, for A = 0 the system (5) is linear, and thus the only invariant for i/o behavior is the matrix product CB, so B and C are highly nonunique. For instance, b = 1; c = 2 gives the same zero initial state i/o behavior as b = 2; c = 1, for
+
+.x = \Gamma x + oe(ax) + bu; y = cx (14) when a = 0. But under suitable nondegeneracy of A, the result is still true. As an illustration, take the p = m = n = 1 case, but now with a = 1, in (14). Looking at the derivative y0(0), we know that two systems of this form with same i/o behavior must have cb = cb. Arguing purely formally, now take an impulsive control of the type u = _ffi, starting at x(0) = 0. This results in x(0+) = b_ and x(0+) = b_. Applying now a further control identically equal to zero, and taking derivative with respect to time, we obtain the value \Gamma cx(0+)+coe(x(0+))+cb:0 = \Gamma cb_+coe(b_) for the first system, and similarly for the second. This implies that (11) again holds, and the argument is completed as above. Without using delta functions, we can argue as follows:
+
+5
+
+consider the control u(t) j 1 and the derivative at t = 0 of the resulting output y(t). Under the assumptions that oe has three derivatives, oe(0) = 0, oe0(0) = 1, and oe000(0) 6= 0, one obtains that
+
+y(4)(0) = cb3oe000(0)
+
+and similarly for the second system, from which it again follows that jbj = jbj, as desired.
+
+1.3 Other Motivations for This Study There are many motivations besides mathematical interest for posing the questions that we study in this work. In many applications feedback neural nets, or "recurrent nets" as they are also called, are used as models whose parameters are fit to input/output data. (The purpose may be to use these models instead of a real plant, for purposes of control, or for predictive purposes.) This is done, for instance, in certain approaches to grammatical inference and speech processing; see for instance [2], [11]. Typically, gradient descent algorithms are used in order to fit parameters thorugh the minimization of an error functional that penalizes mismatches between the desired outputs and those that a candidate net produces (the term "continuous backpropagation" is sometimes used for the gradient descent procedure). Our results imply that a dimensionality reduction of the parameter space --as is the case with linear systems, where canonical forms are ubiquitous in identification methods-- is, perhaps surprisingly, not possible for neural nets. In terms of the error function being minimized, the set of global minima is finite.
+
+For precisely the above reasons, but restricted to the particular case of feedforward (that is, nondynamic) nets, the question of deciding if the only possible symmetries are indeed the ones that we find was asked by Hecht-Nielsen in [5]. The question was partially answered (for so-called "single-hidden layer" nets, and using a particular activation function) by Sussmann in [20], who established a uniqueness result which, in our setting, would apply to systems of the special type .x = ~oe(Bu); y = Cx, with oe = tanh(x). (That is, there is no "A" matrix; the result does allow for a constant bias vector inside the sigmoid, however. Sussmann's result can be generalized to a somewhat more general classes of activations than tanh(x), by means of an analysis based on complex variables techniques and residue computations.)
+
+A different, though related motivation for studying the problem that we consider in this paper originates from synthesis considerations rather than identification. Given a specified i/o behavior, it is of interest to know how many possible different networks can be built that achieve the design objective. Our results show that there is basically only one way to do so, as long as this objective is specified in terms of a desired input/output map. In this sense, structure (weights) is uniquely determined by function (desired i/o behavior).
+
+1.4 Remarks Note that nonlinear realization theory, as described for instance in [8], [10], [19], can be also applied to the problem considered here. This theory would allow us to conclude that, under suitable assumptions of controllability and observability, there is some abstract diffeomorphism which relates two networks having the same i/o behavior. It is not clear how to exploit the special structure of neural nets to obtain, using these tools, the more precise result that we give; on the other hand, the techniques that are used in the standard geometric theory of nonlinear systems --such as the systematic use of Lie derivatives-- are also central to the proof of our result.
+
+6
+
+2 Definitions and Statements of Results In general, we define a system \Sigma  to be a continuous-time time-invariant system:
+
+.x = f (x; u) (15) y = h(x)
+
+where x(t) 2 IRn, u(t) 2 IRm, and y(t) 2 IRp for all t. We assume that f is at least differentiable on (x; u). For any measurable essentially bounded control u(\Delta ) : [0; T ] ! IRm, we denote by OE(t; ,; u) the solution at time t of (15) with initial state x(0) = ,; this is defined at least on a small enough interval [0; "), " ? 0. For the systems of interest in neural network theory, f (x; u) is always uniformly Lipschitz with respect to x, so " = T . (All results that we use on existence of solutions and continous dependence are included in standard texts such as [17].)
+
+For each control, we let *(u) = *\Sigma (u) be the output function corresponding to the initial state x(0) = 0, that is,
+
+*(u)(t) := h(OE(t; 0; u)) ;
+
+defined at least on some interval [0; ").
+
+Given two systems \Sigma  and \Sigma  with the same numbers of input and output channels, i.e. with p = p and m = m, we say that \Sigma  and \Sigma  are i/o equivalent if it holds that
+
+*\Sigma  = *\Sigma  : To be more precise, we require that for each u the domains of definition of *\Sigma (u) and *\Sigma (u) coincide, and their values be equal for all t in the common domain. As mentioned above, in the network application these functions are most often everywhere defined.
+
+Fix an infinitely differentiable function oe : IR ! IR which satisfies the following basic assumptions:
+
+oe(0) = 0 ; oe
+
+0(0) 6= 0 ; oe00(0) = 0 (\Lambda )
+
+As before, we let ~oe(x) denote the application of oe to each coordinate of the vector x.
+
+We let S1(n; m; p) (respectively, S2(n; m; p) and S3(n; m; p),) denote the class of all systems of type (4) (respectively, types (5) and (7)), with fixed n; m; p.
+
+Given two systems \Sigma  and \Sigma  in S1(n; m; p) and S1(n; m; p) respectively --note that we assume m = m and p = p-- defined by the triples of matrices (A; B; C) and (A; B; C), we will say that \Sigma  and \Sigma  are sign-permutation equivalent if the dimensions of the state spaces are the same, that is n = n, and there exists a matrix T such that (9) holds and T has the following special form:
+
+T = P D
+
+where P is a permutation matrix and D = diag(*1; : : :; *n), where each *i = \Sigma 1.
+
+The systems \Sigma  and \Sigma  are just permutation equivalent if the above holds with D = I, that is, T is a permutation matrix.
+
+We also define equivalence in an analogous manner among systems of type (5) or systems of type (7).
+
+Later, in the process of establishing the main results, we introduce a more general class of systems which includes systems of the types (4), (5), and (7); we will also define a notion of equivalence, "oe-equivalence," which will encompass both permutation and sign-permutation equivalence.
+
+7
+
+We call a subset C of S1(n; m; p) generic if there exists a nonempty subset
+
+G ` IRn
+
+2+nm+mp ;
+
+whose complement is the set of zeroes of a finite number of polynomials in n2 + nm + mp variables, so that \Sigma  is in C if and only if its defining triple (A; B; C) is in G. Observe that such a set G is open and dense, and its complement has measure zero. (In the results to be given, the polynomials defining the complement of G are given explicitely, and they correspond to the vanishing of appropriate determinants.) We also define generic subsets of S2(n; m; p) and S3(n; m; p) in the same manner.
+
+Now we are ready to state the main results. We assume that oe : IR ! IR satisfies the above assumptions (*), and also that there exists some integer q ? 2 such that oe(q)(0) 6= 0.
+
+The assumptions are extremely weak and include a large class of interesting nonlinearities. Observe that, for instance, if oe is odd (oe(\Gamma x) = \Gamma oe(x)), analytic, nonlinear, and it satisfies oe0(0) 6= 0, then it satisfies all hypotheses (so the standard nonlinearity tanh(x) is included).
+
+Theorem 1 Assume that oe is odd. For each m; n; p there exist generic subsets
+
+~S1(n; m; p) ` S1(n; m; p)
+
+~S2(n; m; p) ` S2(n; m; p) ~S3(n; m; p) ` S3(n; m; p)
+
+such that, for any two systems
+
+\Sigma  2 ~S1(n; m; p) and \Sigma  2 ~S1(n; m; p) (respectively, \Sigma  2 ~S2(n; m; p); \Sigma  2 ~S2(n; m; p) or \Sigma  2 ~S3(n; m; p); \Sigma  2 ~S3(n; m; p)) it holds that
+
+\Sigma  and \Sigma  are i/o equivalent if and only if \Sigma  and \Sigma  are sign-permutation equivalent. Theorem 2 Assume that oe is not odd. Then, there are generic subsets as in Theorem 1, so that:
+
+\Sigma  and \Sigma  are i/o equivalent if and only if \Sigma  and \Sigma  are permutation equivalent. The rest of this paper presents a far stronger technical result, and then shows how to derive these Theorems as simple consequences. The more general result will deal also with systems of the type .x = Dx + oe(Ax + Bu) + Gu, y = Cx. Also, Theorem 6 will extend the results to the case when the nonlinearities are not apriori known to be the same.
+
+3 The General Setup We consider an infinitely differentiable function oe : IR ! IR which satisfies the basic assumptions (*), namely oe(0) = 0, oe
+
+0(0) 6= 0, and oe00(0) = 0. We will see later (c.f. Remark 3.4) that for our
+
+purposes we may always assume oe
+
+0(0) = 1 in (*).
+
+At various parts we will also impose one or both of the following conditions on the function oe, the second of which is assumed for Theorems 1 and 2:
+
+oe0(x) ! 0 as jxj ! 1 (A1)
+
+9 q ? 2 such that oe(q)(0) 6= 0 (A2)
+
+8
+
+Remark 3.1 As mentioned earlier, any function oe which is nonlinear, odd, and analytic (such as tanh(x)) satisfies our requirements (*) and also assumption (A2). Property (A1) is often satisfied in examples of interest, as well. However, property (A1) is needed mainly to deal with the very general class of systems we will introduce (see equation (19)). Notice that this assumption on oe is not necessary to prove Theorems 1 and 2.
+
+Remark 3.2 We will remark later that for most results only infinite differentiability of oe in a neighbourhood of zero is needed, as opposed to globally.
+
+If oe satisfies (A2) then the following property is an immediate consequence:
+
+If oe(ax) = aoe(x) for all x in a neighbourhood of 0 then a 2 f\Sigma 1; 0g (P ) We will denote by \Lambda oe the following set:
+
+\Lambda oe = f* 2 IR j * 6= 0 and oe(*x) = *oe(x) for all x 2 IRg (16) Note that \Lambda oe is a subgroup of (IR n f0g; \Delta ). The fact that inverses are again in \Lambda oe follows from the defining equation in (16), applied to 1*x instead of x. Moreover, when property (P) holds we have that:
+
+\Lambda oe ` f1; \Gamma 1g:
+
+Given any function oe : IR ! IR and any positive integer n, we define ~oe as follows (more precisely, we should denote this as ~oen, but we omit the n for simplicity):
+
+~oe : IRn ! IRn; ~oe(x) = col (oe(x1); \Delta  \Delta  \Delta ; oe(xn)) (17) That is,
+
+~oe(
+
+nX
+
+i=1
+
+aiei) :=
+
+nX
+
+i=1
+
+oe(ai)ei for all a1; \Delta  \Delta  \Delta ; an 2 IR (18)
+
+where fe1; \Delta  \Delta  \Delta  ; eng is the canonical basis in IRn.
+
+From now on, we fix one such oe.
+
+3.1 Systems We will study continuous-time systems whose state space, input-value space, and output-value space are IRn, IRm, and IRp respectively, and for which the dynamics are given by equations of the type: (
+
+.x = f (x; u) = Dx + ~oe(Ax + Bu) + Gu y = Cx (19)
+
+for some matrices A 2 Rn\Theta n; D 2 Rn\Theta n; B 2 Rn\Theta m; G 2 Rn\Theta m; and C 2 Rp\Theta n: These are continuous time systems in the sense of [17]. We will call such a system a oe-system, and denote it by \Sigma  = (D; A; B; G; C)oe.
+
+Observe that in the special case in which oe is the identity, or more generally is linear, we have a linear system in the usual sense. The same holds if oe is arbitrary but A = B = 0. This is useful to keep in mind when understanding the conditions to be imposed later in order for the various conclusions to hold.
+
+9
+
+Remark 3.3 Different matrices (D; A; B; G) may give rise to the same function f (x; u) = Dx + ~oe(Ax + Bu) + Gu, and thus to the same system. (C, on the other hand, is uniquely defined.) For instance, if oe is the identity, f depends only on the sums D + A and B + G. But for the type of functions oe that we consider, this ambiguity will in general not happen. Indeed, assume that
+
+(D1; A1; B1; G1; C)oe = (D2; A2; B2; G2; C)oe:
+
+Then:
+
+(a) if D1 = D2 and G1 = G2 then A1 = A2 and B1 = B2; (b) if oe satisfies (A1) then D1 = D2 and G1 = G2 (and hence also A1 = A2 and B1 = B2). To prove these facts we can argue as follows. Taking x = fiej and u = 0 we have:
+
+D1fiej + ~oe(A1fiej ) = D2fiej + ~oe(A2fiej) for all fi 2 IR; which implies, denoting (Al)i;j by ali;j; and (Dl)i;j by dli;j:
+
+d1i;jfi + oe(a1i;jfi) = d2i;jfi + oe(a2i;jfi) (20) for all fi real and all indices i; j. After taking the derivative with respect to fi in the previous equation we have:
+
+d1i;j + a1i;joe0(a1i;jfi) = d2i;j + a2i;joe0(a2i;jfi): (21)
+
+If D1 = D2 then evaluating (21) at fi = 0 and we have:
+
+a1i;j oe0(0) = a2i;j oe0(0); which implies A1 = A2.
+
+Denoting (Bl)i;j by bli;j ; and (Gl)i;j by gli;j, and using x = 0 and u = fiej we can conclude, by the same arguments, that:
+
+b1i;joe0(b1i;jfi) + g1i;j = b2i;j oe0(b2i;j fi) + g2i;j: (22) Thus, arguing as before, if G1 = G2 we have B1 = B2.
+
+Note that, in general, when (A1) holds, limfi!1 aoe0(afi) = 0 for every a 2 IR (either a = 0 and this is identically zero, or we use (A1)). So, by taking the limit as fi ! 1 in (21) and in (22), we conclude D1 = D2 and G1 = G2 if (A1) holds.
+
+We will focus our attention on the following question: when are two given oe-systems \Sigma 1, \Sigma 2 i/o equivalent (in the sense defined in Section 2)?
+
+Remark 3.4 We now explain why oe0(0) 6= 0 can be replaced by the stronger assumption that oe0(0) = 1 without loss of generality. Let oe : IR ! IR be a differentiable function which satisfies the basic assumptions (*), and let a = oe0(0) 6= 0. Consider the function ~oe : IR ! IR defined by:
+
+~oe(x) = oe(x=a). Then also ~oe satisfies the basic assumptions (*), and moreover ~oe0(0) = 1.
+
+Now, if \Sigma  = (D; A; B; G; C)oe is a oe-system, we may define the new system having ~\Sigma  = (D; ~A; ~B; G; C)~oe to be the ~oe-system with ~A = aA and ~B = aB. Notice that if u(t) is a control function defined on the interval [0; T ], and x(t) is the corresponding trajectory of \Sigma  starting at x(0) = 0, then the trajectories and outputs in ~\Sigma , corresponding to the any given control will be the same.
+
+10
+
+If \Sigma 1 and \Sigma 2 are to oe-systems, and we construct ~\Sigma 1 and ~\Sigma 2 in this manner, we have that \Sigma 1 and \Sigma 2 are i/o equivalent if and only if ~\Sigma 1 and ~\Sigma 2 are i/o equivalent. Since our interest is in establishing the existence of various linear equations relating A1 and A2, B1 and B2, and so forth, and since these equations are not changed under multiplication by a scalar, it is clear that we can assume, without loss of generality, that oe0(0) = 1. So, from now on, when we consider a differentiable function oe, we implicit assume that oe0(0) = 1.
+
+4 Equivalence In this section, we give a straightforward sufficient condition for equivalence, which will also turn out to be necessary in a generic sense. We again fix a function oe : IR ! IR, though for now we do not need to assume that assumptions (*) hold. Let ss be any permutation of f1; \Delta  \Delta  \Delta ; ng and P be the permutation matrix which represents ss; i.e.
+
+Pi;j = ffii;ss(i); (23) where ffii;k is the Kronecker delta. In other words, P ej = ess(j), for the canonical basis fe1; \Delta  \Delta  \Delta ; eng in IRn. Note that
+
+~oe(P x) = P ~oe(x) for all x 2 IRn; (24) because
+
+~oe(P x) = ~oe(
+
+nX
+
+i=1
+
+aiess(j)) =
+
+nX
+
+i=1
+
+oe(aj)ess(j)
+
+and
+
+P ~oe(x) = P (
+
+nX
+
+i=1
+
+oe(aj)ej) =
+
+nX
+
+i=1
+
+oe(aj)ess(j):
+
+Let Q be any diagonal matrix such that:
+
+Qej = *j ej; where *j 2 \Lambda oe for all j = 1; \Delta  \Delta  \Delta  ; n: (25) Then we also have that:
+
+~oe(Qx) = Q~oe(x) for all x 2 IRn: (26)
+
+We let
+
+\Lambda noe := fT 2 Gl(n) j ~oe(T x) = T ~oe(x) for all x 2 IRn g:
+
+The following Lemma follows trivially from (24) and (26).
+
+Lemma 4.1 Let oe; P; Q be as above. Then both T = P Q and T = QP are in \Lambda noe.
+
+Observe that \Lambda noe is a subgroup of Gl(n). When oe is linear, obviously \Lambda noe = Gl(n). Otherwise, this group is proper, and if (A2) holds, it has cardinality at most 2nn!, as follows from the following result.
+
+Lemma 4.2 If oe is differentiable but it is not a linear function, then every element of \Lambda noe is of the form P Q, with P a permutation matrix (as in (23)), and Q = Diag (*1; \Delta  \Delta  \Delta  ; *n) with each *i 2 \Lambda oe (as in (25)).
+
+11
+
+Proof. Assume that ~oe(T x) = T ~oe(x) for all x 2 IRn. Consider the ffth-row of T and denote this as (t1; \Delta  \Delta  \Delta ; tn). Then,
+
+oe(
+
+nX
+
+i=1
+
+tixi) =
+
+nX
+
+i=1
+
+tioe(xi) (27)
+
+for all (x1; \Delta  \Delta  \Delta  ; xn). Since T is invertible, there exists an index l such that tl 6= 0. Taking the derivative in (27) with respect to xl, we have:
+
+tloe0(
+
+nX
+
+i=1
+
+tixi) = tloe0(xl): (28)
+
+Picking any j 6= l, and taking the derivative in (27) with respect to xj , we get:
+
+tj oe0(
+
+nX
+
+i=1
+
+tixi) = tj oe0(xj): (29)
+
+Multiplying both sides of (28) by tj=tl; and comparing (28) with (29) we have:
+
+tj oe0(xj) = tj oe0(xl): This must hold for all choices of xj and xl in IR. Since oe is not a linear function, oe0 is not constant, so, we must have tj = 0. The index j was arbitrary, thus we have that, in the ffth-row of T , there exists only one index l such that tl 6= 0. Since also ff was arbitrary, the matrix T has at most one nonzero entry in each row, and, by (27), this entry is in \Lambda oe; thus the conclusion follows.
+
+Definition 4.3 Let \Sigma 1 = (D1; A1; B1; G1; C1)oe; \Sigma 2 = (D2; A2; B2; G2; C2)oe be two oe-systems, and n1; n2 be the dimensions of the state spaces in \Sigma 1, \Sigma 2 respectively. We say that \Sigma 1 and \Sigma 2 are oe-equivalent if n1 = n2 = n, and if there exists an invertible matrix T 2 \Lambda noe such that:
+
+A2 = T \Gamma 1A1T; D2 = T \Gamma 1D1T;
+
+C2 = C1T; B2 = T \Gamma 1B1; G2 = T \Gamma 1G1:
+
+The next property is trivial, but we state it for further reference. Proposition 4.4 Let \Sigma 1 = (D1; A1; B1; G1; C1)oe; \Sigma 2 = (D2; A2; B2; G2; C2)oe be two oesystems. If they are oe-equivalent then they are also i/o-equivalent.
+
+Proof. Denote by x the state variable for \Sigma 1 and by z the state variable for \Sigma 2: We have, for any measurable essentially bounded control u,
+
+.x = D1x + ~oe(A1x + B1u) + G1u = T D2T \Gamma 1x + ~oe(T (A2T \Gamma 1x + B2u)) + T G2u:
+
+12
+
+Thus letting z = T \Gamma 1x, we have:
+
+.z = T \Gamma 1(T D2z + ~oe(T (A2z + B2u)) + T G2u)
+
+= T \Gamma 1T (D2z + ~oe(A2z + B2u) + G2u) = D2z + ~oe(A2z + B2u) + G2u;
+
+where, in the previous equations, we have used the fact that T 2 \Lambda noe. So, as z(0) = 0 = T \Gamma 1x(0), uniqueness of solutions implies that:
+
+z(t) = T \Gamma 1x(t) for all t, for the trajectory of the second system corresponding to the same control, which implies:
+
+C2z(t) = C1T z(t) = C1x(t);
+
+for all t.
+
+5 Technical Results Again we fix a oe : IR ! IR, assumed differentiable and so that (*) holds, more precisely so that:
+
+oe(0) = oe
+
+00(0) = 1 \Gamma  oe0(0) = 0 :
+
+In this section we assume that two fixed systems
+
+\Sigma 1 = (D1; A1; B1; G1; C1)oe and
+
+\Sigma 2 = (D2; A2; B2; G2; C2)oe
+
+with m inputs and p outpus are given and we would like to find necessary conditions for these two systems to have the same i/o behavior when both are initialized at x10 = x20 = 0:
+
+5.1 Some Basic Identities Let fu1; \Delta  \Delta  \Delta  ; ukg be control values; i.e. ui 2 Rm for each i, and let ti; i = 1; \Delta  \Delta  \Delta ; k be positive real numbers. Consider the piecewise constant control u(t) on the interval [0; T ) with
+
+T =
+
+kX
+
+i=1
+
+ti
+
+which is equal to u1 on [0; t1), u2 on [t1; t1+t2), and so on. Denote by yij (t) the jth-component of the output of the system \Sigma i, i = 1; 2, corresponding to the control u(t); and by Xiul, l = 1; \Delta  \Delta  \Delta ; k, the following vector field:
+
+Xiul(x) = Dix + ~oe(Aix + Biul) + Giul: (30) We denote hij(x) = (Cix)j. The following is a well-known formula (see e.g. [17] page 210):
+
+@k @t1 \Delta  \Delta  \Delta  @tk fififififit
+
+1=\Delta \Delta \Delta =tk=0
+
+yij(t) = LXiu
+
+k \Delta  \Delta  \Delta  LX
+
+iu
+
+1 h
+
+i j(x
+
+i0); (31)
+
+13
+
+for all x0 2 IRn, where LXh denotes the Lie-derivative of the function h along the vector field X. Thus, if \Sigma 1 and \Sigma 2 have the same i/o behavior, from (31) we have:
+
+LX1u
+
+k \Delta  \Delta  \Delta  LX
+
+1u
+
+1 h
+
+1 j (0) = LX2uk \Delta  \Delta  \Delta  LX2u1 h2j (0) (32)
+
+for all j = 1; \Delta  \Delta  \Delta ; p, k * 0; and vectors uj 2 Rm:
+
+The following technical Lemma will be used later to derive some necessary conditions for the two systems to have the same i/o behavior. If h is a smooth function from IRn to IR, and Z is a smooth vector field on IRn, expressed in the natural coordinates, we will use the following notations:
+
+1. rh = ( @h@x
+
+1 ; \Delta  \Delta  \Delta ;
+
+@h @xn ); the usual gradient,
+
+2. (Z)\Lambda  = the usual Jacobian matrix of Z; i.e. if (Z)k = zk then [(Z)\Lambda ]lk = @z
+
+k
+
+@xl :
+
+When we omit arguments, we understand all Jacobians and gradients as being evaluated at the same point x.
+
+Lemma 5.1 Let h be a smooth function from IRn to IR, and Zi, i * 1, be smooth vector fields on IRn. Then for all k * 1 the following formula holds:
+
+LZk \Delta  \Delta  \Delta  LZ1 h = rh(Z1)\Lambda  \Delta  \Delta  \Delta  (Zk\Gamma 1)\Lambda Zk + Gk(h; Z1; \Delta  \Delta  \Delta  ; Zk) (33) where the expression Gk(h; Z1; \Delta  \Delta  \Delta  ; Zk), which is a scalar function of x, is a sum of terms each of which is a product of k + 1 factors, and each of these factors is a derivative of order at most k either of the function h or of the components of the vector fields Zi: Moreover, in each term there are at least three factors where the derivative is of order f0 or 2g and at least two of them are of order 0:
+
+Proof. We will prove the statement by induction on k. Let k = 1, then we have
+
+LZ1h = rhZ1; (34) by definition of Lie derivative. So, in this case, the Lemma holds with G1(h; Z1) j 0. To give an idea of what the expression of the function Gk is, before dealing with the general induction step, we also study explicitly the case k = 2: In this case we have:
+
+LZ2LZ1 h =
+
+nX
+
+i=1
+
+@ @xi (LZ
+
+1h)(Z2)i = rh(Z1)\Lambda Z2 +
+
+nX
+
+i;j=1
+
+@2h @xi@xj (Z1)i(Z2)j ; (35)
+
+thus, letting G2(h; Z1; Z2) = Pni;j=1 @
+
+2h
+
+@xi@xj (Z1)i(Z2)j; G2 satisfies the desired properties, and so (33) holds for k = 2. Let now k ? 2. By inductive assumption we have:
+
+LZk (LZk\Gamma 1 \Delta  \Delta  \Delta  LZ1h) = r[rh(Z1)\Lambda  \Delta  \Delta  \Delta  (Zk\Gamma 2)\Lambda Zk\Gamma 1]Zk + r[Gk\Gamma 1(h; Z1; \Delta  \Delta  \Delta  ; Zk\Gamma 1)]Zk First we discuss the first term of this sum. Let L = rh(Z1)\Lambda  \Delta  \Delta  \Delta  (Zk\Gamma 2)\Lambda , a row vector. So the first term is:
+
+r[LZk\Gamma 1]Zk = L(Zk\Gamma 1)\Lambda Zk + ZTk\Gamma 1(LT )\Lambda Zk ;
+
+where T indicates transpose. Thus we have
+
+LZk \Delta  \Delta  \Delta  LZ1 h = rh(Z1)\Lambda  \Delta  \Delta  \Delta  (Zk\Gamma 1)\Lambda Zk + Gk(h; Z1; \Delta  \Delta  \Delta  ; Zk)
+
+14
+
+where
+
+Gk(h; Z1; \Delta  \Delta  \Delta  ; Zk) = ZTk\Gamma 1(LT )\Lambda Zk-- -z ""
+
+L1
+
++ r[Gk\Gamma 1(h; Z1; \Delta  \Delta  \Delta  ; Zk\Gamma 1)]Zk-- -z ""
+
+L2
+
+: (36)
+
+Now we need to show that Gk has the right properties. It is clear from the expression of Gk, using rules for differentiation of products, that it is a sum of terms in which each term is a product of k + 1 factors. Moreover, the terms arising from L1 in (36) involve only derivatives of at most order two, and those coming from L2 involve derivatives of order at most k (since by induction Gk\Gamma 1 has derivatives of order at most k \Gamma  1). So we only need to show that in each term there are at least three derivatives of order 0 or 2, and two are of order 0. Each term of L1 starts and ends in factors of order zero (the ones arising from Zk\Gamma 1 and Zk), and exactly one of the factors in-between includes a derivative of order 2, since in L there are only first order derivatives. For the terms coming from L2, notice that in each term the last factor is of order zero and using the inductive assumption we can conclude that there are two other factors, one of order zero and one of order 0 or 2.
+
+Notice that if Xiu is any vector field of the type defined by equation (30), then :
+
+(Xiu(x))\Lambda  = Di + ^oe(Aix + Biu)Ai; (37) where for any vector v = (v1; \Delta  \Delta  \Delta  ; vn), ^oe(v) denotes the n \Theta  n diagonal matrix
+
+^oe(v) = Diag (oe0(v1); \Delta  \Delta  \Delta  ; oe0(vn)):
+
+Lemma 5.2 Let \Sigma  = (D; A; B; G; C)oe be a oe-system and pick ui 2 IRm; i = 1; \Delta  \Delta  \Delta  ; k. Denoting by Cj the jth-row of C, we have that, for all j = 1; : : :; p:
+
+LXuk \Delta  \Delta  \Delta  LXu
+
+1 Cj (x) =C
+
+j(D + ^oe(Ax + Bu1)A) \Delta  \Delta  \Delta  (D + ^oe(Ax + Buk\Gamma 1)A)(Dx + ~oe(Ax + Buk) + Guk) +f kj (x; u1; \Delta  \Delta  \Delta  ; uk)
+
+(38)
+
+where f kj is a function which is identically zero if k = 1 or 2, and for k * 3 satisfies f kj (0; 0; \Delta  \Delta  \Delta  ; 0; u; 0; \Delta  \Delta  \Delta  ; 0; v) = 0 for all u; v 2 IRm.
+
+Proof. We apply the result in Lemma 5.1. By (37) we have that the first term in the right hand side of (38) is exactly the first term in (33). If k = 1 or 2, then we get the desired conclusions from equations (34) and (35), since any derivative of Cj x of order greater then 2 is identically zero. For k * 3, we only need to prove that:
+
+Gk(Cj x; Xu1; \Delta  \Delta  \Delta  ; Xuk ) = 0 (39) at x = 0; when uk = v and all the other ui's but one equal zero. Since the second derivative of Cj x is zero, ~oe(Ax + Bu)jx=0;u=0 = 0, and oe00(0) = 0; all the zero and second order derivatives vanish identically for entries of X0 and C. Thus (39) holds by the Lemma 5.1.
+
+Proposition 5.3 Let \Sigma 1 and \Sigma 2 be the two oe-systems. If they are i/o equivalent, then for all l; k * 0 and for all u; v 2 IRm it holds that:
+
+C1(D1 + A1)l(D1 + ^oe(B1v)A1)(D1 + A1)k[~oe(B1u) + G1u] = C2(D2 + A2)l(D2 + ^oe(B2v)A2)(D2 + A2)k[~oe(B2u) + G2u]: (40)
+
+15
+
+Proof. The statement follows from Lemma 5.2 applied to the sequence of control values
+
+(0; \Delta  \Delta  \Delta ; 0-- -z ""
+
+l
+
+; v; 0; \Delta  \Delta  \Delta ; 0-- -z ""
+
+k
+
+; u)
+
+since ^oe(Ax + Bu)jx=0;u=0 = I and f kj (0; 0; \Delta  \Delta  \Delta ; 0; v; 0; \Delta  \Delta  \Delta  ; 0; u) = 0: Remarks 5.4 Let \Sigma 1 and \Sigma 2 be as before.
+
+1. Appling (40) to the sequence of control values (0; \Delta  \Delta  \Delta ; 0-- -z ""
+
+k
+
+; u), we have:
+
+C1(D1 + A1)k[~oe(B1u) + G1u] = C2(D2 + A2)k[~oe(B2u) + G2u] (41) for all u 2 IRm: 2. Let vl be the lth-coordinate of v 2 IRm. Then
+
+@ @vl [C(D + A)
+
+k(~oe(Bv) + Gv)] = C(D + A)k[^oe(Bv)Bl + Gl];
+
+where Bl and Gl are the lth columns of B and G respectively. Thus from the equality (41), and evaluating the previous derivative at v = 0, we have that:
+
+C1(D1 + A1)k(B1 + G1) = C2(D2 + A2)k(B2 + G2); (42) for all integers k * 0.
+
+5.2 Finding the Equivalence T For each fixed positive integer n; m; p; let
+
+Sn;m;p = f(A; B; C) j A 2 Rn\Theta n; B 2 Rn\Theta m; C 2 Rp\Theta ng: We let Scn;m;p be the subset of Sn;m;p consisting of those triples (A; B; C) which are canonical, i.e. observable:
+
+rank [CT ; AT CT ; : : : ; (AT )n\Gamma 1CT ] = n
+
+and controllable:
+
+rank [B; AB; : : : ; An\Gamma 1B] = n;
+
+see [17], section 5.5. This is a generic, in the sense of the introduction, subset of Sn;m;p, for each n; m, and p.
+
+Proposition 5.5 Assume \Sigma 1 and \Sigma 2 are i/o equivalent. Assume, also, that
+
+(Di + Ai; Bi + Gi; Ci) 2 Scni;m;p for i = 1; 2. Then, n1 = n2 = n and there exists a unique matrix T 2 Gl(n) such that:
+
+C2 = C1T; D2 + A2 = T \Gamma 1(D1 + A1)T; B2 + G2 = T \Gamma 1(B1 + G1); ~oe(B2u) + G2u = T \Gamma 1(~oe(B1u) + G1u) 8 u 2 IRm:
+
+(43)
+
+16
+
+Proof. Note that equation (42) says that the two linear systems given by the triples
+
+(Di + Ai; Bi + Gi; Ci) ; i = 1; 2 have the same i/o behavior, thus since they are both canonical, we know by the linear theory that n1 = n2 and there exists a unique invertible matrix T that satisfies the first three equations of (43). Thus, in particular, we have
+
+C2(D2 + A2)k[~oe(B2u) + G2u] = C1(D1 + A1)kT [~oe(B2u) + G2u] 8 k * 0; 8 u 2 IRm: Combined with equation (41) this gives:
+
+C1(D1 + A1)k[~oe(B1u) + G1u] = C1(D1 + A1)kT [~oe(B2u) + G2u]; 8 k * 0; 8 u 2 IRm; and thus by the observability assumption applied to the pair ((A1 + D1); C1) we have:
+
+~oe(B1u) + G1u = T (~oe(B2u) + G2u) 8 u 2 IRm; as desired.
+
+Remark 5.6 Let vl be the lth-coordinate of v 2 IRm. Then, by taking the derivative with respect to vl in the last equation of (43), we have:
+
+^oe(B2v)(B2)l + (G2)l = T \Gamma 1(^oe(B1v)(B1)l + (G1)l); where, as usual, (Bi)l and (Gi)l, i = 1; 2, are the lth columns of B and G respectively. This implies:
+
+^oe(B2v)B2 + G2 = T \Gamma 1[^oe(B1v)B1 + G1] 8 v 2 IRm: (44)
+
+Proposition 5.7 Assume that \Sigma 1, \Sigma 2 satisfy the same assumptions as in Proposition 5.5. Then the invertible matrix T satisfies also the following equation:
+
+(D1 + ^oe(B1u)A1)T = T (D2 + ^oe(B2u)A2) 8 u 2 IRm (45)
+
+Proof. Notice first that by (43) we have
+
+C2(D2 + A2)l = C1(D1 + A1)lT 8 l * 0: Now we apply (40) to get, for any u; v 2 IRm and any l * 0:
+
+C1(D1 + A1)l(D1 + ^oe(B1u)A1)(D1 + A1)k[~oe(B1v) + G1v] = C1(D1 + A1)lT (D2 + ^oe(B2u)A2)(D2 + A2)k[~oe(B2v) + G2v]:
+
+Thus by the observability assumption on (A1 + D1; C1) we have:
+
+(D1 + ^oe(B1u)A1)(D1 + A1)k[~oe(B1v) + G1v] = T (D2 + ^oe(B2u)A2)(D2 + A2)k[~oe(B2v) + G2v]:
+
+Applying (43) to the left-hand side of this, we have:
+
+(D1 + ^oe(B1u)A1)T (D2 + A2)k[~oe(B2v) + G2v] = T (D2 + ^oe(B2u)A2)(D2 + A2)k[~oe(B2v) + G2v]:
+
+17
+
+Since, for all l = 1; \Delta  \Delta  \Delta  ; m we have:
+
+@ @vl (D2 + A2)
+
+k[~oe(B2v) + G2v]fififi
+
+v=0 = (D2 + A2)
+
+k[(B2)l + (G2)l];
+
+where (B2)l and (G2)l are the lth columns of B2 and G2 respectively, we can conclude that, for all k * 0:
+
+(D1 + ^oe(B1u)A1)T (D2 + A2)k(B2 + G2) = T (D2 + ^oe(B2u)A2)(D2 + A2)k(B2 + G2): This equation, together with the controllability assumption on (A2 + D2; B2 + G2), gives (45).
+
+5.3 Characterization of T Now we want to prove that the sufficient condition stated in Proposition 4.4 is also necessary in a generic sense. For this purpose, we first let:
+
+Boen;m = fB 2 IRn\Theta m j bi;j 6= 0 8 i; j and 8 i 6= j 9 k such that bi;k=bj;k 62 \Lambda oeg: (46) Notice that if condition (P) holds, which in turn would be the case if (A2) holds, then the second condition in the definition of Boen;m says that for all i 6= j there exists k such that jbi;kj 6= jbj;kj. As an illustration, if (P) holds and m = 1, the conditions defining Boen;1 say that all the components of the vector B are nonzero and they have different absolute values.
+
+We let:
+
+~Sn;m;p = ((D; A; B; G; C)oe fififififi B 2 B
+
+oen;m; rank [A; B] = n
+
+and (A + D; B + G; C) 2 Scn;m;p ) : (47)
+
+Notice that ~Sn;m;p is a generic subset of the set of all oe-systems, when we identify the latter with IRn
+
+2+n2+np+2mn --c.f. Remark 3.3-- provided that \Lambda 
+
+oe is finite.
+
+Theorem 3 Let \Sigma i = (Di; Ai; Bi; Gi; Ci)oe 2 ~Sni;m;p for i = 1; 2, and assume that oe satisfies (A1). Then the two systems are i/o equivalent if and only if they are oe-equivalent.
+
+Proof. The sufficiency part is given by Proposition 4.4, thus we need only to prove the necessary part. From Proposition 5.5 we know that n1 = n2 = n; let T be the matrix obtained in that Proposition. By equation (45), we have:
+
+(D1T )i;j \Gamma  (D2T )i;j = \Gamma oe0(
+
+mX
+
+l=1
+
+b1i;lul)(A1T )i;j +
+
+nX
+
+k=1
+
+ti;ka2k;joe0(
+
+mX
+
+l=1
+
+b2k;lul):
+
+For a control value of the special form u = (v; 0; \Delta  \Delta  \Delta ; 0), with v 2 IR, this equation becomes:
+
+(D1T )i;j \Gamma  (D2T )i;j = \Gamma oe0(b1i;1v)(A1T )i;j +
+
+nX
+
+k=1
+
+ti;ka2k;joe0(b2k;1v): (48)
+
+If we take the limit as v ! 1, then, since all the entries of B1 and B2 are non zero and (A1) holds, the left-hand side of equation (48) goes to zero. So we can conclude that:
+
+D2 = T \Gamma 1D1T; (49)
+
+18
+
+which in turn implies:
+
+A2 = T \Gamma 1A1T;
+
+by the second equation in (43). Using, again, the control value u of the special form (v; 0; \Delta  \Delta  \Delta ; 0), equation (44) becomes:
+
+(T G2)i;j \Gamma  (G1)i;j = oe0(b1i;1v)(B1)i;j \Gamma 
+
+nX
+
+k=1
+
+ti;kb2k;j oe0(b2k;1v):
+
+Taking the limit as v ! 1, we have, as before, that the left-hand side of the previous equation goes to zero. Thus:
+
+T G2 = G1;
+
+which in turn implies:
+
+T B2 = B1;
+
+by the third equation in (43). Notice, for further reference, that assumption (A1) is used only in these two parts of the proof.
+
+Thus the matrix T satisfies all the desired interlacing equations. It remains to show that T 2 \Lambda noe, for which it suffices to show that T is of the form P Q where P and Q are defined respectively as in (23) and in (25). From (45) and (49) we get:
+
+^oe(B1u)T A2 = T ^oe(B2u)A2 8 u 2 IRm: (50) On the other hand, since we have proved that G2 = T \Gamma 1G1, the last equation in (43) becomes:
+
+~oe(B2u) = T \Gamma 1~oe(B1u) 8 u 2 IRm: (51) Taking the partial derivative with respect to ul in the previuos equation we conclude, for all u 2 IRm:
+
+^oe(B2u)(B2)l = T \Gamma 1 ^oe(B1u)(B1)l;
+
+where (Bi)l indicates the lth column of Bi, and hence also ^oe(B1u)B1 = T ^oe(B2u)B2. Thus, using the other interlacing equations, we conclude:
+
+^oe(B1u)T B2 = T ^oe(B2u)B2; (52) for all u 2 IRm. From (50) and (52) we have:
+
+^oe(B1u)T [A2; B2] = T ^oe(B2u)[A2; B2]: Thus by the full rank assumption on the matrix [A2; B2], we can conclude:
+
+^oe(B1u)T = T ^oe(B2u); 8 u 2 IRm: (53) We can rephrase (53) as follows:
+
+oe0(
+
+mX
+
+l=1
+
+b1i;lul)ti;j = oe0(
+
+mX
+
+l=1
+
+b2j;lul)ti;j:
+
+By taking u of the special form wk = (0; \Delta  \Delta  \Delta ; 0; v; 0; \Delta  \Delta  \Delta ; 0) (v 2 IR in the kth-position), we conclude, for each pair i; j:
+
+ti;j 6= 0 ) oe0(b1i;kv) = oe0(b2j;kv) 8 k = 1; : : : ; m; 8v 2 IR: (54)
+
+19
+
+Since oe(0) = 0, we may integrate and conclude that:
+
+b2j;koe(b1i;kv) = b1i;koe(b2j;kv) for any such i; j and for all v, or equivalently that oe(sx) = soe(x) for all x, where s = b2j;k=b1i;k, that is,
+
+ti;j 6= 0 ) b2j;k=b1i;k 2 \Lambda oe 8 k = 1; : : :; m: (55)
+
+For i = 1; \Delta  \Delta  \Delta ; n, let
+
+Li = fj j ti;j 6= 0g;
+
+since T is invertible, each Li 6= ;. Moreover, if Li " Lj 6= ; for some pair i 6= j, then we have, (using any k 2 Li " Lj):
+
+b2k;l
+
+b1i;l 2 \Lambda oe and
+
+b2k;l
+
+b1j;l 2 \Lambda oe 8 l = 1; \Delta  \Delta  \Delta ; m:
+
+Since \Lambda oe is a subgroup, the previous equation implies:
+
+b1i;l b1j;l =
+
+b1i;l b2k;l
+
+b2k;l
+
+b1j;l 2 \Lambda oe 8 l = 1; \Delta  \Delta  \Delta ; m;
+
+which contradicts the assumption that B1 2 Boen;m. So, we conclude that Li consists of only one element, thus for each i = 1; \Delta  \Delta  \Delta  ; n there exists only one index j = ss(i) such that ti;ss(i) 6= 0: Let P be the permutation matrix representing ss; then we can write the matrix T as follows:
+
+T = P Q where Q = Diag (t1;ss(1); \Delta  \Delta  \Delta  ; tn;ss(n)).
+
+To complete the proof we need to see only that ti;ss(i) 2 \Lambda oe for all i = 1; \Delta  \Delta  \Delta ; n: From equation (51) and since B1 = T B2 we have that, for each u = (u1; \Delta  \Delta  \Delta  ; um) 2 IRm:
+
+oe(
+
+mX
+
+l=1
+
+ti;ss(i)b2ss(i);lul) = ti;ss(i)oe(
+
+mX
+
+l=1
+
+b2ss(i);lul); for each i = 1; \Delta  \Delta  \Delta ; n:
+
+Again using u of the special type wk = (0; \Delta  \Delta  \Delta ; 0; v; 0; \Delta  \Delta  \Delta ; 0) (v 2 IR in the kth-position) we get:
+
+oe(ti;ss(i)b2ss(i);kv) = ti;ss(i)oe(b2ss(i);kv) 8 v 2 IR: As b2ss(i);k 6= 0, this means ti;ss(i) 2 \Lambda oe as desired.
+
+Remark 5.8 We can conclude the same results if only require that the function oe be infinitely differentiable in a neighbourhood of zero, instead of on all of IR, and if we change (A1) into
+
+(A1') oe 2 C1(IR) and oe0(x) ! 0 as jxj ! 1. For the case D = ffI mentioned in Remarks 5.4.1 and 5.4.2, just smoothness about x = 0 is sufficient.
+
+Remark 5.9 Assume given n different functions oei that satisfy our assumptions (*), instead of a fixed oe. Define:
+
+~oe(x) = (oe1(x1); \Delta  \Delta  \Delta ; oen(xn)):
+
+If oe0i(0) = fi 6= 0 for all i, for some fixed fi, then all our results still hold, for two generic systems of the same dimension.
+
+20
+
+5.4 Special Cases We show in this section how to deal with a few special cases of the general class of systems considered.
+
+5.4.1 When D is diagonal and G = 0 Assume now that we fix an ff 2 IR and we restrict our attention to the subclass of systems of the form:
+
+\Sigma  = (ffI; A; B; 0; C)oe
+
+where ff is this fixed real number (the same for all members of the class). In this case the result of Theorem 3 applies even if we drop the assumption (A1). In fact, from equation (43), since D1 = D2 = ffI, and G1 = G2 = 0, we can conclude, without using assumption (A1), that:
+
+A2 = T \Gamma 1A1T; B1 = T B2; and ~oe(B1u) = T ~oe(B2u) 8 u 2 IRm: As assumption (A1) was used only in this part of the proof, our statement follows. In particular, this applies for ff = 0, which gives the class of systems in equation (7), or ff = \Gamma 1, which gives the class in equation (4).
+
+Observe that in this case (D = diagonal, and G = 0), the assumption rank [A; B] = n is redundant, as it follows from controllability of the pair (A + ffI; B), or equivalently, of the pair (A; B); this is just the case * = \Gamma ff of the Hautus condition (c.f. [17], Lemma 3.3.7).
+
+5.4.2 When D is diagonal and B = 0 Assume that we fix again an ff 2 IR, and this time we restrict our attention to the subclass of systems of the form:
+
+\Sigma  = (ffI; A; 0; G; C)oe
+
+where ff is this fixed real number (the same for all members of the class). Notice that, when ff = \Gamma 1, this class of systems is the class described in equation (5). A typical system \Sigma  of this class is of the type:
+
+.x = ffx + oe(Ax) + Gu y = Cx (56)
+
+In this case we cannot appply the results of Theorem 3 directly, since for this class B = 0, and the zero matrix does not belong to Boen;m, so we argue as follows.
+
+Given \Sigma , as before, we consider the following system ~\Sigma :
+
+.z = ffz + oe(Az + AGu) w = Cz (57)
+
+The next Lemma is easily checked.
+
+Lemma 5.10 Let u(t) be an input function defined on [0; T ] with u 2 C1[0; T ] and u(0) = 0. If z(t) is the trajectory of ~\Sigma  corresponding to u(t), with z(0) = 0, then
+
+x(t) = z(t) + Gu(t) is the trajectory of \Sigma  corresponding to the input \Gamma ffu(t) + .u(t), with x(0) = 0.
+
+21
+
+Let A be the following class of control functions:
+
+A = fv j v 2 C1[0; T ] for some T ? 0; v(0) = 0g:
+
+Lemma 5.11 If \Sigma 1 and \Sigma 2 are two oe-systems which are not i/o equivalent then there exists v 2 A, and t ? 0 such that, denoting by yi; i = 1; 2 the respective output functions corresponding to v, y1(t) 6= y2(t).
+
+Proof. Given an admissible control u(\Delta ), we can find a sequence un(\Delta ) 2 A such that the controls un(\Delta ) are equibounded and converge to u(\Delta ) almost everywhere. Now we need only apply the approximation results in Theorem 1 of [17] to conclude the desired result.
+
+Let \Sigma 1 and \Sigma 2 be two systems of type (56), and ~\Sigma i for i = 1; 2 their corresponding systems of type (57).
+
+Proposition 5.12 If \Sigma 1 and \Sigma 2 are i/o equivalent, then ~\Sigma 1 and ~\Sigma 2 are also i/o equivalent. Proof. We first notice that if \Sigma 1 and \Sigma 2 are i/o equivalent then, for any value v 2 IRm, we have:
+
+C1G1v = C2G2v : (58)
+
+Indeed, let u(t) = vt be a linear-in-time control function. Then, for t small enough, this control is admissible for both \Sigma 1 and \Sigma 2. Moreover, denoting by yi(\Delta ) the respective output functions, we have:
+
+.yi(0) = CiGiv ;
+
+which, given the i/o equivalence, implies (58).
+
+We now prove the statement by way of contradiction. Assume that ~\Sigma 1 and ~\Sigma 2 are not i/o equivalent. Then, by Lemma 5.11, there exist u(\Delta ) 2 A and _t ? 0 such that, denoting by ~yi(\Delta ) the respective output functions corresponding to u(\Delta ), we have:
+
+~y1(_t) 6= ~y2(_t) : (59) Since u(\Delta ) 2 A, by Lemma 5.10, we have that xi(t) = zi(t) + Giu(t) for i = 1; 2, are the trajectories in \Sigma i corresponding to the control \Gamma ffu(\Delta ) + .u(\Delta ). Moreover, their corresponding outputs are:
+
+yi(t) = ~yi(t) + CiGiu(t) : (60)
+
+From the previous equation, and from equations (58) and (59), we have:
+
+y1(_t) 6= y2(_t) ; which contradicts the fact that the systems \Sigma i are i/o equivalent.
+
+The proof in this case will rely upon the transformation
+
+\Sigma  = (ffI; A; 0; G; C)oe \Gamma ! ~\Sigma  = (ffI; A; AG; 0; C)oe : This will require reinterpreting the genericity conditions for the latter system in terms of the former one. For this purpose, we first observe that, for any two matrices A 2 IRn\Theta n and G 2 IRn\Theta m, it holds that:
+
+22
+
+1. rank [A; AG] = n if and only if A is invertible. 2. (A; AG) is a controllable pair if and only if A is invertible and the pair (A; G) is controllable.
+
+The first property follows from the fact that [A; AG] = A[I; G], while the second assertion follows from [AG; A2G; : : : ; AnG] = A[G; AG; : : :; An\Gamma 1G].
+
+Now let
+
+^Sn;m;p = ((ffI; A; 0; G; C)oe fififififi AG 2 B
+
+oen;m; A invertible ;
+
+and (A; G; C) 2 Scn;m;p ) :
+
+Theorem 4 Let \Sigma i = (ffI; Ai; 0; Gi; Ci)oe 2 ^Sni;m;p for i = 1; 2. Then the two systems are i/o equivalent if and only if they are oe-equivalent.
+
+Proof. We need only to prove the necessary part. By Proposition 5.12 if \Sigma 1 and \Sigma 2 are i/o equivalent then their corresponding systems ~\Sigma 1 and ~\Sigma 2 of type (57) are also i/o equivalent. It is easy to see that the condition \Sigma i 2 ^Sni;m;p implies ~\Sigma i 2 ~Sni;m;p. So we can apply Theorem 3 (notice that this Theorem holds without assumption (A1) by the remark in subsection 5.4.1), and conclude that n1 = n2 = n, and there exists T 2 \Lambda noe such that:
+
+C2 = C1T; A2 = T \Gamma 1A1T; A2G2 = T \Gamma 1A1G1:
+
+Since the matrices Ai are invertible, the last two equations imply:
+
+G2 = T \Gamma 1G1; as desired.
+
+5.4.3 Yet another class Under a change of coordinates z = Ax, Equation (56) becomes:
+
+.z = ffz + A~oe(z) + G0u y = C0z ; (61)
+
+where G0 = AG, and C0 = CA\Gamma 1 (asumming invertibility of A). This type of system appears often in the literature as well. Again the uniqueness result holds; a genericity condition can be derived from the above change of coordinates:
+
+G0 2 Boen;m, A invertible, and (A; G0; C0) 2 Scn;m;p. Several other classes of systems can also be treated by coordinate transformations on the classes considered here.
+
+23
+
+6 Proof of Main Results Theorems 1 and 2 are now proved as follows.
+
+First observe that, since property (P) holds, and using Lemma 4.2, every element of \Lambda noe is of the form P Q, with P a permutation matrix and Q a diagonal matrix with entries in f\Gamma 1; 1g, and:
+
+ffl When oe is odd, \Lambda noe is precisely the set of such elements. ffl When oe is not odd, \Gamma 1 62 \Lambda oe, so \Lambda noe is exactly the set of permutation matrices.
+
+The results now follow from Theorem 3, via the remarks in subsections 5.4.1 and 5.4.2. Notice that for Theorem 1 one can take
+
+~S1(n; m; p) = ~S3(n; m; p) = f(A; B; C) fififififi B 2 Boen;m and (A; B; C) 2 Scn;m;pg
+
+and
+
+~S2(n; m; p) = f(A; B; C) fififififi AB 2 Boen;m; A invertible, and (A; B; C) 2 Scn;m;pg :
+
+Moreover, here Boen;m is just the class of matrices B for which:
+
+1. bi;j 6= 0 for all i; j, 2. for each i 6= j, there exists some k such that jbi;kj 6= jbj;kj.
+
+For Theorem 2, the sets can be taken in the same way, except that now the set Boen;m consists of the matrices B which satisfy that all entries are nonzero and this property holds:
+
+for each i 6= j, there exists some k such that bi;k 6= bj;k.
+
+7 Universal Inputs for Identification The results in this paper imply that i/o experiments completely determine the internal weights of networks (up to a relabeling of units and sign reversals.) This means that if two nets are not equal, then there is some input to which they respond differently. Given any pair of distinct nets --and assuming the genericity conditions apply to both-- there is some such diagnostic input, which depends on the pair that has to be distinguished. In principle, however, it may have been the case that there is no "universal" input which, given any pair of distinct nets, serves to distinguish this particular pair. It turns out, however, that such universal testing inputs do exist, and in fact inputs with such properties are "generic" in a precise mathematical sense. This is summarized in the following statement.
+
+We assume that oe is an analytic function, and that its derivative is bounded. (The last condition is imposed simply to obtain a statement not involving domains of definition of solutions of differential equations, and can be relaxed; the analyticity assumption is critical, on the other hand.) For each input u(\Delta ) : [0; T ] ! IRm, consider the mapping
+
+u : \Sigma  7! y(\Delta )
+
+24
+
+where y(\Delta ) : [0; T ] ! IRp is the (zero-initial-state) output of \Sigma  when the input u(\Delta ) is applied to the system. We view the domain of u as the union of the sets S1(n; m; p) over all positive integers n, that is, the set of all systems of the first class and with m input channels and p outputs. (An entirely analogous result holds for all the other classes considered in this paper, as long as the above assumptions on oe hold.)
+
+Theorem 5 Let T ? 0 be arbitrary. Then there exists an input u : [0; T ] ! IRm such that u is one-to-one.
+
+This result can be interpreted as saying that it is theoretically possible, just from the information contained in the output y(\Delta ), and from the assumption that the system is of the class considered, to uniquely determine all the weights in the network. It does not say anything about actual algorithms for determining the weights from this output data; of course, this latter one is an issue for much further research. Moreover, the class of infinitely differentiable inputs satisfying the conclusions of the Theorem can be shown to be generic, in the sense that this class contains a countable intersection of open dense subsets, in the standard C1 topology, of the set of all smooth controls u : [0; T ] ! IRm, and there are even analytic inputs with this universality property. (Actually, the class of "good" inputs is extremely large, being defined by the nonvanishing of certain analytic functions, so it is fair to say the response of the net to a "random" input will suffice, at least theoretically, for determination of the number of units and unique identification of all weights.)
+
+The proof of the above Theorem is immediate from the general results for control systems given in [16] and [18], which imply that identifiability is equivalent to "single experiment" identifiability, for systems defined by analytic differential equations and depending analytically on parameters (here, the weights). We omit details of the application, as this would involve introducing considerable extra terminology, but the proof is totally routine (one proves the result for each fixed n, and then takes the intersection of the set of all good inputs over all n, which gives still a generic set.)
+
+8 Less Knowledge of Function It is interesting to point out that the nontrivial (necessity) parts of the results presented in this paper often do not really require precise knowledge of the nonlinearity oe, but merely of some of its derivatives --or, as discussed later, slightly weaker results hold even with almost no information at all. In this section, we sketch these generalizations.
+
+Assume that we have two infinitely differentiable nonlinear functions oe1, and oe2, such that:
+
+oei(0) = oe00i (0) = 1 \Gamma  oe0i(0) = 0 for i = 1; 2; (62) and they satisfy assumption A2 with the same q ? 2, i.e.
+
+9 q ? 2 such that oe(q)i (0) = ff 6= 0: (63) Notice that we have assumed, in particular, that oe(q)1 (0) = oe(q)2 (0). Under these assumptions it is easy to see that if oe1(ax) = aoe2(x) for all x in a neighbourhood of zero then a 2 f\Sigma 1; 0g. We let:
+
+\Lambda n = (T 2 Gl(n) fififififi T = P Q; where P is a permutation matrix, andQ = Diag (*
+
+1; \Delta  \Delta  \Delta  ; *n) with *i = \Sigma 1 ) : (64)
+
+25
+
+It can be proved that, arguing as in Lemma 4.2:
+
+~oe1(T x) = T ~oe2(x) for all x 2 IRn implies T 2 \Lambda n : We denote by Fff;q the set of all infinitely differentiable functions that satisfy the conditions expressed in (62) and (63) and also assumption A1.
+
+Now we give a definition which parallels definition 4.3.
+
+Definition 8.1 Let \Sigma 1 = (D1; A1; B1; G1; C1)oe1; \Sigma 2 = (D2; A2; B2; G2; C2)oe2 be two systems, and n1; n2 be the dimensions of the state spaces of \Sigma 1, \Sigma 2 respectively. We say that \Sigma 1 and \Sigma 2 are equivalent if n1 = n2 = n, and if there exists an invertible matrix T 2 \Lambda n such that:
+
+A2 = T \Gamma 1A1T; D2 = T \Gamma 1D1T;
+
+C2 = C1T; B2 = T \Gamma 1B1; G2 = T \Gamma 1G1:
+
+Given the previous definition we would like to conclude that (again generically) two systems that are i/o equivalent must be necessarily equivalent. Notice that all the results presented in Sections 5.1 and 5.2 are based on the properties expressed by equation (62) for the functions oei. Thus, it is easy to see that those results, in particular the equalities expressed by equations (40), (43), and (45), hold if we substitute oe; ~oe; and ^oe with oei; ~oei; and ^oei in a consistent way. Now we fix two values for the parameters ff and q of equation (63), and we define two sets which will play the same role as the sets Boen;m and ~Sn;m;p defined in equations (46), and (47) respectively. We let:
+
+Bn;m = fB 2 IRn\Theta m j bi;j 6= 0 8 i; j and 8 i 6= j 9 k such that bi;k=bj;k 6= \Sigma 1g; (65) and
+
+Sn;m;p = 8?!?:(D; A; B; G; C)oe fififififi
+
+oe 2 Fff;q B 2 Bn;m; rank [A; B] = n and (A + D; B + G; C) 2 Scn;m;p
+
+9?=? ; : (66) Given these definitions, we can now prove the following result which corresponds to the result presented in Theorem 3 for the case of only one function oe. (Of course, now there is no reason for equivalence to imply i/o equivalence, as the nonlinearities may be very different.)
+
+Theorem 6 If the systems \Sigma i = (Di; Ai; Bi; Ci)oei 2 Sni;m;p for i = 1; 2 are i/o equivalent, then they are equivalent. Moreover, either oe1(x) = oe2(x) 8 x 2 IR, or oe1(x) = \Gamma oe2(\Gamma x) 8 x 2 IR.
+
+Proof. We will only give a brief sketch of the proof, describing only the critical steps, following the proof of Theorem 3. Using the same arguments as in the mentioned proof, we can conclude that n1 = n2 = n and there exists an invertible matrix T which satisfies all the desired interlacing equations. Thus it remains to show that T 2 \Lambda n. Notice that the following equation holds:
+
+^oe1(B1u)T = T ^oe2(B2u); 8 u 2 IRm;
+
+26
+
+So, we find:
+
+ti;j 6= 0 ) oe1(sv) = soe2(v);
+
+where s = b2j;k=b1i;k, and the previous equation holds for all k = 1; : : :; m; and 8v 2 IR. Thus, we have:
+
+ti;j 6= 0 ) b2j;k=b1i;k = \Sigma 1 8 k = 1; \Delta  \Delta  \Delta  ; m:
+
+From now on, we argue as in the last part of the proof of Theorem 3. For i = 1; \Delta  \Delta  \Delta ; n, let
+
+Li = fj j ti;j 6= 0g; since T is invertible, each Li 6= ;. Moreover, if Li " Lj 6= ; for some pair i 6= j, then we have, (using any k 2 Li " Lj):
+
+b2k;l
+
+b1i;l = \Sigma 1 and
+
+b2k;l
+
+b1j;l = \Sigma 1 8 l = 1; \Delta  \Delta  \Delta ; m:
+
+Clearly, the previous equation implies:
+
+b1i;l b1j;l = \Sigma 1 8 l = 1; \Delta  \Delta  \Delta  ; m;
+
+which contradicts the assumption that B1 2 Bn;m. So, we conclude that Li consists of only one element, thus for each i = 1; \Delta  \Delta  \Delta  ; n there exists only one index j = ss(i) such that ti;ss(i) 6= 0: Let P be the permutation matrix representing ss; then we can write the matrix T as follows:
+
+T = P Q where Q = Diag (t1;ss(1); \Delta  \Delta  \Delta  ; tn;ss(n)).
+
+To complete the proof we need to see that ti;ss(i) = \Sigma 1 for all i = 1; \Delta  \Delta  \Delta ; n: Notice that we have:
+
+oe1(ti;ss(i)b2ss(i);kv) = ti;ss(i)oe2(b2ss(i);kv) 8 v 2 IR:
+
+As b2ss(i);k 6= 0, this means ti;ss(i) = \Sigma 1 as desired. Notice that this last equation says, in particular that:
+
+oe1(ti;ss(i)x) = ti;ss(i)oe2(x) 8 x 2 IR: (67)
+
+Thus we can have these following three cases:
+
+1. if ti;ss(i) = 1 for all i then oe1(x) = oe2(x) for all x 2 IR, 2. if ti;ss(i) = \Gamma 1 for all i then oe1(x) = \Gamma oe2(\Gamma x) for all x 2 IR, 3. if the ti;ss(i)'s take both values \Sigma 1, then necessarily, oe1(x) = oe2(x) for all x 2 IR, moreover
+
+in this case we can also conclude that oe1 must be an odd function.
+
+27
+
+8.1 No Information on Derivatives Finally, we point out that even with no knowledge of derivatives, partial results can be obtained. Indeed, assume we are given a function oe satisfying the following properties:
+
+oe(0) = oe00(0) = 0 oe0(0) = a ? 0 oeq(0) = b ? 0;
+
+(68)
+
+together with assumption A1.
+
+Let ~oe(t) := roe(st), where sq\Gamma 1 = a=b, and r = 1=as. Then ~oe 2 F1;q. If \Sigma  = (D; A; B; G; C)oe; is a oe-system, then the ~oe-system with the following matrices:
+
+~D = D; ~A = 1rs A; ~B = 1s B; ~G = rG; ~C = 1r C;
+
+has the same i/o behaviour.
+
+Assume, now, that we are given two systems \Sigma i, with i = 1; 2, and with functions oei satisfying the assumptions of equation (68) (now with possibly different parameters a and b). Then the following Proposition is a direct consequence of Theorem 6 and of the previous observation.
+
+Proposition 8.2 Let \Sigma i = (Di; Ai; Bi; Ci)oei be two systems as before. Assume, for i = 1; 2, that: 8?!?
+
+:
+
+1 si Bi 2 Bni;m;rank [ 1
+
+ri Ai; Bi] = ni;( 1 siri Ai + Di; 1si Bi + riGi; 1ri Ci) 2 S
+
+cn
+
+i;m;p:
+
+If the two systems are i/o equivalent, then n1 = n2 = n and there exists a matrix T 2 \Lambda n such that:
+
+A2 = s2r2s
+
+1r1 T
+
+\Gamma 1A1T;
+
+D2 = T \Gamma 1D1T;
+
+C2 = r2r
+
+1 C1T;
+
+B2 = s2s
+
+1 T
+
+\Gamma 1B1;
+
+G2 = r2r
+
+1 T
+
+\Gamma 1G1:
+
+Moreover, either oe1(x) = r2r
+
+1 oe2(
+
+s2 s1 x) for all x 2 IR, or oe1(x) = \Gamma 
+
+r2
+
+r1 oe2(\Gamma 
+
+s2 s1 x) for all x 2 IR.
+
+9 Final Comments We have proved that, generically on nets, the i/o behavior uniquely determines the internal form, up to simple symmetries. The sets where this conclusion does not hold are "thin" in the sense that they are included in sets defined by algebraic equalities. (Note that the particular sets ~S(n; m; p) that we construct may be slightly larger than strictly needed for the conclusions to hold.)
+
+28
+
+The results imply unique identifiability of parameters, under all possible input/output experiments. We also gave a result showing that single experiments are (generically) sufficient for identification, in the analytic case.
+
+Finally, the last section showed that, if the precise nonlinearities are not known, a result can still be obtained, essentially providing uniqueness up to four parameters.
+
+As problems for further research, we may mention the following:
+
+ffl Obtain precise sample complexity bounds. ffl Study the effect of noise. Here one may expect a connection to optimal Hankel approximation as well as other linear control theory issues.
+
+ffl Design algorithms for parameter identification using the techniques introduced here.
+
+An analogous result for discrete-time networks has been recently obtained; see [1].
+
+29
+
+References
+
+[1] Albertini, F., and E.D. Sontag. (1992). Identifiability of discrete-time neural networks.
+
+Preprint.
+
+[2] Cleeremans, A., D. Servan-Schreiber, and J.L. McClelland. (1989). Finite state automata
+
+and simple recurrent networks. Neural Computation, 1, 372-381.
+
+[3] Cohen, M.A., and S. Grossberg. (1983). Absolute stability of global pattern formation and
+
+parallel memory storage by competitive neural networks. IEEE Trans. Systems, Man, and Cybernetics, 13, 815-826.
+
+[4] Cowan, J.D.. (1968). Statistical mechanics of neural nets. In E.R. Caianiello (ed.), Neural
+
+Networks. Berlin: Springer, pp. 181-188.
+
+[5] Hecht-Nielsen, R.. (1989) Theory of the backpropagation neural network. In Proceedings
+
+of the Int. Joint Conf. on Neural Networks, Washington, IEEE Publications, NY, 593-605.
+
+[6] Hirsch, M.W.. (1989). Convergent activation dynamics in continuous-time networks. Neural
+
+Networks, 2, 331-349.
+
+[7] Hopfield, J.J.. (1984). Neurons with graded responses have collective computational properties like those of two-state neurons. Proc. of the Natl. Acad. of Sciences, USA, 81, 3088-3092.
+
+[8] Isidori, A.. (1985). Nonlinear Control Systems: An Introduction. Berlin: SpringerVerlag.
+
+[9] Michel, A.N., J.A. Farrell, and W. Porod. (1989) Qualitative analysis of neural networks.
+
+IEEE Trans. Circuits and Sys., 36, 229-243.
+
+[10] Nijmeijer, H., and A.V. Van der Schaft. (1990) Nonlinear Dynamical Control Systems. New York: Springer-Verlag.
+
+[11] Robinson, A.J., and F. Fallside. (1988). Static and dynamic error propagation networks
+
+with application to speech coding. In D.Z. Anderson (ed.), Neural Information Processing Systems. New York: American Institute of Physics, pp. 632-641.
+
+[12] Schwarzschild, R., and E.D. Sontag. (1991) Algebraic theory of sign-linear systems. Proceedings of the Automatic Control Conference, Boston, MA, 799-804.
+
+[13] Siegelmann, H.T., and E.D. Sontag. (1991). Turing computability with neural nets. Appl.
+
+Math. Lett., 4(6), 77-80.
+
+[14] Siegelmann, H.T., and E.D. Sontag. (1992). On the computational power of neural nets.
+
+In Proc. Fifth ACM Workshop on Computational Learning Theory, Pittsburgh, July 1992, 440-449.
+
+[15] Siegelmann, H.T., and E.D. Sontag. Analog computation, neural networks, and circuits.
+
+Submitted.
+
+[16] Sontag, E.D.. (1979). On the observability of polynomial systems. SIAM J.Control and
+
+Opt., 17, 139-151.
+
+[17] Sontag, E.D.. (1990). Mathematical Control Theory: Deterministic Finite Dimensional Systems. New York: Springer.
+
+[18] Sussmann, H.J.. (1972). Single-input observability of continuous-time systems. Math. Systems Theory, 12, 371-393.
+
+[19] Sussmann, H.J.. (1977). Existence and uniqueness of minimal realizations of nonlinear
+
+systems. Math. Sys. Theory, 10, 263-284.
+
+30
+
+[20] Sussmann, H.J.. Uniqueness of the weights for minimal feedforward nets with a given
+
+input-output map. Neural Networks, 5, 589-593.
+
+31</pre>
+</body>
+</html>

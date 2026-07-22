@@ -1,0 +1,597 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/dls.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/dls.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "dls.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Dvi file name: "dls.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+Separating Bi-Chromatic Points by Parallel Lines Tetsuo Asano John Hershberger J'anos Pach Eduardo Sontag
+
+Diane Souvaine Subhash Suri
+
+October 18, 1994
+
+Abstract Given a 2-coloring of the vertices of a regular n-gon P , how many parallel lines are needed to separate the vertices into monochromatic subsets? We prove that bn=2c is a tight upper bound, and also provide an O(n log n) time algorithm to determine the direction that gives the minimum number of lines. If the polygon is a non-regular convex polygon, then n \Gamma  3 lines may be necessary, while n \Gamma  2 lines always suffice. This problem arises in machine learning and has implications about the representational capabilities of some neural networks.
+
+1 Introduction Let P be a regular polygon on n vertices. Given a 2-coloring of the vertices of P , how many parallel lines do we need to separate the vertices of P into monochromatic subsets? In other words, what is the smallest number m(n) of parallel lines that always suffices to partition the vertices of P into m(n) + 1 monochromatic subsets? Observe that an adversary picks the coloring of the vertices of P and we (the algorithm) choose the direction of lines. We show in this paper that m(n) =
+
+\Xi 
+
+n
+
+2
+
+\Pi 
+
+. This bound is clearly tight since if the vertices of P are colored
+
+alternately black and white, then n=2 parallel lines are necessary. We present two different proofs of this fact. The first proof is somewhat shorter but it is non-constructive. The second proof also leads to an O(n log n) time algorithm.
+
+This problem arises in machine learning. Briefly, for the class of neural nets having a single hidden layer consisting of threshold units and two inputs, but allowing direct connections from inputs to outputs, we show that the Vapnik-Chervonenkis (VC) dimension of the class is at least 4k + 3, where k is the number of hidden units. This provides an improvement by a factor of two over the corresponding result for nets that allow no such direct connections (Baum 88). In the context of learning theory, this has implications about the representational capabilities of the two types of nets. A different, worse-case, comparison, is given in (Sontag 89), which also shows a factor of two, and relates all this to sigmoidal responses.
+
+A natural extension of the geometric problem is to consider the 2-coloring of arbitrary points in the plane. We show that even if the points form the vertices of a convex (but non- regular) polygon, n \Gamma  3 parallel lines may be sometimes necessary. The upper bound is n \Gamma  2 unless all the points are collinear, in which case n \Gamma  1 lines are necessary and sufficient.
+
+This abstract is organized as follows. In Section 2, we give the main result of this paper: a proof of the bn=2c bound for a regular n-gon along with an algorithm to find the direction of
+
+1Pass1: Page 2
+
+
+these lines. Section 3 presents the application of the geometric problem to neural-net theory. Section 4 outlines some extensions and generalizations of the geometric problem and makes some concluding remarks.
+
+2 The Main Section Let P be a convex regular n-gon in the plane with vertices p
+
+1
+
+; p
+
+2
+
+; : : : ; p
+
+n
+
+. Let
+
+~
+
+l be a directed
+
+line through the center of P , with orientation in the range from 0 to ss such that the orthogonal projections of the p
+
+i
+
+'s onto
+
+~
+
+l are distinct. Let ss(
+
+~
+
+l) denote the permutation of the p
+
+i
+
+'s determined
+
+by the order of their projections along
+
+~
+
+l. Denoting the set of all distinct permutations ss(
+
+~
+
+l) by
+
+\Pi , we clearly have j\Pi j = n.
+
+Let c : fp
+
+1
+
+; p
+
+2
+
+; : : : ; p
+
+n
+
+g ! fB; W g be a 2-coloring of the vertices with colors black and white
+
+and let b represent the number of black vertices, and w the number of white.
+
+2.1 The First Proof For a given ordered pair of points p
+
+i
+
+; p
+
+j
+
+, there is exactly one permutation in which p
+
+j
+
+immedi-
+
+ately succeeds p
+
+i
+
+. The total number of monochromatic ordered pairs over all the permutations
+
+is b(b \Gamma  1) + w(w \Gamma  1), or b
+
+2
+
++ w
+
+2
+
+\Gamma  n. The expected number of pairs of adjacent elements
+
+with the same color in an arbitrary permutation is
+
+b
+
+2
+
++w
+
+2
+
+\Gamma n
+
+n
+
+. Thus, at least one line
+
+~
+
+l defines a
+
+permutation ss(
+
+~
+
+l) that has at least
+
+l
+
+b
+
+2
+
++w
+
+2
+
+n
+
+m
+
+\Gamma  1 pairs of adjacent elements with the same color.
+
+But then, taking any collection of n \Gamma  1 lines perpendicular to
+
+~
+
+l and separating the vertices of
+
+the polygon from each other, we can remove at least
+
+l
+
+b
+
+2
+
++w
+
+2
+
+n
+
+m
+
+\Gamma  1 of them without creating a
+
+strip that contains vertices of both colors. Thus at most
+
+n \Gamma  1 \Gamma  (
+
+&
+
+b
+
+2
+
++ w
+
+2
+
+n
+
+'
+
+\Gamma  1) ^
+
+_
+
+n
+
+2
+
+*
+
+separating lines are needed. 2.2 The Second Proof Given a line
+
+~
+
+l, the subscripts of the points in the permutation ss(
+
+~
+
+l) are given by two interleaved
+
+sequences, one ascending and one descending. Away from the ends of the subscript permuta- tion, the subscripts follow the pattern : : : ; i; k \Gamma  i; i + 1; k \Gamma  i \Gamma  1; : : : , where k is a parameter that completely characterizes ss(
+
+~
+
+l). (All subscript arithmetic is modulo n.) The ends of the
+
+subscript permutation are given by the equation 2i j fk or k + 1g (mod n), depending on whether k is odd or even. The number of color differences between neighbors in ss(
+
+~
+
+l) is the
+
+same as the number of lines perpendicular to
+
+~
+
+l needed to partition the polygon vertices into
+
+monochromatic slabs.
+
+To simplify our counting arguments, we consider the palindromic permutation ss(
+
+~
+
+l)ss(\Gamma 
+
+~
+
+l)
+
+given by concatenating ss(
+
+~
+
+l) with its reversal. This sequence is composed of two full-length
+
+(length n) ascending and descending subscript sequences, interleaved as specified by the pa- rameter k. In particular, the junction between ss(
+
+~
+
+l) and its reversal follows the pattern of the
+
+2Pass1: Page 3
+
+
+interior of ss(
+
+~
+
+l). The palindromic sequence has exactly twice as many color differences between
+
+neighbors as ss(
+
+~
+
+l), even when considered as a cyclic sequence.
+
+Let D(i; j) be a function that is 1 if c(p
+
+i
+
+) 6= c(p
+
+j
+
+) and 0 otherwise. Then the number of
+
+neighbor differences in ss(
+
+~
+
+l)ss(\Gamma 
+
+~
+
+l) is
+
+n X
+
+i=1
+
+D(i; k \Gamma  i) +
+
+n X
+
+i=1
+
+D(i; k + 1 \Gamma  i);
+
+that is, the sum of two convolutions. Note that the average value of a convolution is 2bw=n:
+
+n X
+
+k=1
+
+n X
+
+i=1
+
+D(i; k \Gamma  i) =
+
+n X
+
+i=1
+
+n X
+
+k=1
+
+D(i; k \Gamma  i) = 2bw:
+
+Hence there is some k such that the number of neighbor differences in ss(
+
+~
+
+l)ss(\Gamma 
+
+~
+
+l) is at most
+
+4bw=n. It follows that the number of parallel lines needed to partition the polygon vertices is at most b2bw=nc ^ bn=2c.
+
+2.3 The Algorithm We can use the Fast Fourier Transform algorithm to compute the sum
+
+P
+
+n
+
+i=1
+
+D(i; k \Gamma  i) for
+
+every value of k in O(n log n) time, then find the value of k that gives the minimum number of slabs in additional O(n) time.
+
+In particular, let
+
+a
+
+i
+
+=
+
+ae
+
++1; if c(p
+
+i
+
+) = B,
+
+\Gamma 1; otherwise.
+
+Then D(i; j) =
+
+1
+
+2
+
+(1 \Gamma  a
+
+i
+
+a
+
+j
+
+), and
+
+n X
+
+i=1
+
+D(i; k \Gamma  i) =
+
+n
+
+2
+
+\Gamma 
+
+1
+
+2
+
+n X
+
+i=1
+
+a
+
+i
+
+a
+
+k\Gamma i
+
+:
+
+We compute the convolution
+
+P
+
+a
+
+i
+
+a
+
+k\Gamma i
+
+for every value of k using the FFT (see (AHU 74)),
+
+where the underlying field is the integers mod p, for some prime p ? 2n of the form p = rn + 1. Linnik's "large sieve" proves that such a prime exists and has only O(log n) bits (and hence is suitable for computation); see (Linnik 41) or (Bombieri 74).
+
+3 Application to Neural Networks Let N be a positive integer (soon to be restricted to N = 2), and let H : R ! R denote the "hardlimiter" or "Heaviside" function: H(x) = 0 if x ^ 0 and H(x) = 1 if x ? 0. We say that f : R
+
+n
+
+! R is a (single hidden layer) k-neuron net (with possible direct connections from
+
+inputs to outputs, and N input neurons) if there are real numbers w
+
+0
+
+; w
+
+1
+
+; : : : ; w
+
+k
+
+; o/
+
+1
+
+; : : : ; o/
+
+k
+
+and vectors v
+
+0
+
+; v
+
+1
+
+; : : : ; v
+
+k
+
+2 R
+
+N
+
+such that, for all x 2 R
+
+N
+
+,
+
+f (x) = w
+
+0
+
++ v
+
+0
+
+\Delta  x +
+
+k X
+
+i=1
+
+w
+
+i
+
+H(v
+
+i
+
+\Delta  x \Gamma  o/
+
+i
+
+)
+
+where the dot indicates inner product.
+
+3Pass1: Page 4
+
+
+Theorem 3.1 Fix N = 2. Then there is some set S of 4k + 3 points in the plane with the following property: for each possible 2-coloring of S, there exists some k-neuron net f with the property that f (x) ? 0 on the elements of one color and f (x) ! 0 on the elements of the other color.
+
+Theorem 3.1 says that the VC (Vapnik-Chervonenkis) dimension of the set of all k-neuron nets with possible direct connections is at least 4k +3; see for instance (Baum and Haussler 89) for the basic terminology on VC dimension. We conjecture that for general N a lower bound of about 2kN is achievable.
+
+The proof of Theorem 3.1 is quite simple at this stage. Pick any k, and consider the particular set S consisting of the vertices of the convex regular (4k + 3)-gon in the plane. Assume that a 2-coloring of S is given. ?From the main result we can conclude that there is some unit vector * (for instance, the one that gives the orientation of
+
+~
+
+l) so that the real
+
+numbers * \Delta  x are arranged into at most 2k + 2 monochromatic intervals (the "color" * \Delta  x is that of x). This reduces our problem to the case of finding a k-net with one input (that is, N = 1,) which separates 2k + 2 bicolored disjoint intervals, and this is done in turn in (Sontag 89).
+
+4 Extensions and Concluding Remarks A natural extension of our geometric problem is to consider arbitrary point sets. We can con- struct a non-regular convex n-gon for which m(n) * n\Gamma 3. Our construction uses exponentially spaced points on a parabola. This bound is close to the worst possible, since if n points are in general position, we always have m(n) ^ n \Gamma  2. (If all points are collinear, m(n) = n \Gamma  1.) We believe that n \Gamma  2 is the true upper bound for points in general position.
+
+An interesting open question is to extend the regular n-gon construction to three or more dimensions. We now want to find a set for which any 2-coloring can be separated into monochro- matic subsets by a small number of parallel hyperplanes. In three dimensions, we would like to know if there is a configuration S of n points such that for any 2-coloring of S, bn=3c parallel planes suffice to separate the points into monochromatic slabs. (This would give as a corollary a VC dimension of at least 6k + 5 when N = 3.)
+
+References (AHU 74) Aho, A. V., Hopcroft, J. E., and Ullman, J. D., The Design and Analysis of Computer Algorithms, Addison-Wesley, 1974. (Baum 88) Baum, E. B., "On the capabilities of multilayer perceptrons," J.Complexity 4 (1988): 193-215. (Baum and Haussler 89) Baum, E. B., and D. Haussler, "What size net gives valid generaliza- tion?," Neural Computation 1 (1989): 151-160. (Bombieri 74) E. Bombieri, "le Grand Crible," Asterisque 18, 1974. (Linnik 41), Y. V. Linnik, Dokl. Akad. Nauk SSSR 30 (1941): 292-294. (Sontag 89) "Sigmoids distinguish better than Heavisides," Neural Computation 1 (1989): 470-472.
+
+4</pre>
+</body>
+</html>

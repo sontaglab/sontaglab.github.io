@@ -1,0 +1,780 @@
+OCR of paper; see pdf file pla.pdf for viewable/printable page
+
+
+PACIFIC JOURNAL OF MATHEMATICS
+Vol. 98, No, 1, 19&
+REMARKS ON PIECEWISE-LINEAR ALGEBRA
+EDUARDO D. SONTAG
+This note studies some of the basic properties of the
+category whose objects are finite unions of (open and closed)
+polyhedra and whose morphisms are (not necessarily continu-
+ous) piecewise-linear maps.
+Introduction. A function f. V ---+ W between real vector spaces
+is piecewise-linear (PL) if there exists a partition of V into "open
+polyhedra" X, (i.e., relative interiors of polyhedra) such that f is
+affine on each X, (As distinct to the case of PL-topology, no
+continuity is required of f.) Images and preimages under PL-maps
+give rise to finite unions of open polyhedra, or PL-set8; conversely
+PL functions can be characterized by the fact that their graphs
+are PL-sets. This paper studies some basic algebraic properties
+of the category PL, proving in particular that it is an exact
+category, and in fact a pretopos. A classification is given for the
+isomorphism classes of objects of PL, in terms of a two-generator
+semiring.
+The first section recalls without proof some facts from polyhedral
+geometry needed in the paper. Except for the setting of a unified
+notation and for minor generalizations, the material there is well
+known. The second section defines PL maps and sets, and studies
+the category. The main results (leading to the classification theorem)
+are given in the last section.
+1. Review of polyhedral geometry. The following conventions
+and definitions hold throughout. All vector spaces are finite-
+dimensional spaces over the reals R; a flat means an affine sub-
+manifold of some such space V, and the closed half-spaces associated
+to a linear f. V , R and an r in R (or associated to the hyperplane
+(xlf(x) = rJ,) are the sets Jx1f(x) 4~ r) and fxlf(x) j~; r). The cor-
+responding open half-spaces are obtained by using strict inequalities
+in the above. A half-line (closed or open) is the intersection of a
+line L in V with a (closed or open) half-space not containing L.
+A (convex) closed polyhedron in V is by definition an intersection
+of finitely many closed half-spaces. The dimension of a nonempty
+polyhedron P is the dimension of aff (P), the smallest flat containing
+P; the relative interior ri (P) is the interior of P relative to the
+usual topology on aff (P). An open polyhedron P is by definition
+the relative interior of some closed polyhedron cel(P) (c1 denoting
+183
+<<PAGE-DIVIDER>>
+184 EDUARDO D. SONTAG
+usual topological closure); this is equivalent to P being an intersec-
+tion of finitely many flats and open half-spaces. A (closed or open)
+polytope is a polyhedron which is bounded (=contains no half-lines).
+The relative boundary rb (P) is the set-theoretic difference c./(P)\ri (P).
+We review now a few other notions and results which are
+needed later; for proofs the reader is referred to Rockaffelar [7],
+especially 8, 9, 17, 18, and 19, and to GrUnbaum [5]. (The
+terminology "polyhedron" is usually reserved for closed ones and
+results are stated for these; results for "open polyhedra" are implicit
+in results about relative interiors. In our case, open polyhedra will
+be more relevant.)
+A proper ("exposed") face of a closed polyhedron P (or, more
+generally, of a convex seQ is the intersection of P with a nontrivial
+supporting hyperplane H (i.e., an H such that H intersects P and
+* is contained entirely in one of the half-spaces associated to H).
+* face of P is either P itself, the empty set, or a proper face. A
+zero-dimensional, one-dimensional, or maximal proper face is called
+respectively a vertex (or extreme point), edge, or facet. An extreme
+direction (or "extreme point at infinity") is the direction of a half-
+line contained in some edge (by direction one means a translation-
+equivalence class of half -lines dir (y) = family of sets (x -~ %y, X ~~- 01,
+x in V, f or a nonzero vector y).
+If P is an irredundant intersection of half -spaces each associated
+to a hyperplane H,, the facets of P are precisely the intersections
+of P with the various H, The facets of facets of P are intersections
+of facets of P, and every face of P is an intersection of facets.
+The set F(P) of faces of P, ordered by inclusion, is a complete lat-
+tice, the meet being the intersection. The following result (see
+e.g., Rockaffelar [7, Theorem 18.2]) will be useful.
+THEOREM 1.1. The family of relative interiors ri (F), F in F(P),
+gives a partition of P.
+Note that the ri (F) for F proper give a partition of rb (P).
+A face of an open polyhedron P is by definition the same thing
+as a face of c-IT).
+A (closed or open) polyhedron P recedes in direction d = dir (y)
+if x + xy is in P whenever x is in P and % is nonnegative. This
+is equivalent to requiring that there exist at least one x in P with
+(x + %y, x ~!: 01 contained in P. The recession cone O+P is the set
+consisting of zero and of all vectors y such that dir (y) is a direction
+of recession of P, or equivalently, the set of y with P + y C- P.
+(Here C + y, or more generally A + B, indicates as usual the set
+of all sums.) For any P, it holds that O+P = 0+(ri (P)).
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 185
+The (closed) convex hull conv (S) of a finite subset S of V is the
+smallest convex subset of V containing S; it is the closed polyhedron
+consisting of all convex combinations E %,s,, E )., = 1, %, L-,: 0, of
+elements of S. The open convex hull opconv (S) is obtained by re-
+stricting to X, > 0 in the above; this is the same as ri (conv (S)). If
+D is a set of directions of V, ray (D) is the union of zero and the
+set of all vectors V whose directions belong to D. For a finite set
+of points S and directions D, conv (S, D) is the smallest convex set
+containing S and receding in all directions of D, i . e., conv (S + ray (D))
+The latter is also equal to conv (S) + cone (D), where cone (D) =
+conv (ray (D)); thus conv (S, D) is the set of all sums Z X,x, + E Pjyj,
+where the x, are in S, the Y, are arbitrary vectors with directions
+in D, and the x,, pj are nonnegative with Z x, = 1. The correspond-
+ing open convex hull opeonv.(S, D) = ri (conv (S, D)) is obtained by
+restricting the X,, yj to be strictly positive. One of the basic results
+on polyhedra, due to Minkowski and Weyl, can now be stated (see
+Rockaffelar [7, Theorem 19.1]):
+THEOREM 1.2. The following are equivalent:
+(a) P is a (closed) polyhedron;
+(b) P is a closed convex set with finitely many faces;
+(c) P is finitely generated, i.e., P = conv (S, D) for some finite
+S, D.
+Further, if P is a line-free polyhedron, then S above [resp., D] can
+be chosen as the set of extreme points [resp., extreme directions,] of
+P.
+Polyhedral sets are preserved by images and preimages under
+linear transformations; this is clear from (c) above. But the larger
+class of projective transformations is also compatible with the poly-
+hedral structure. A projective transformation is obtained by
+embedding the given affine space into a projective space and then
+restricting to a different affine open set. In local coordinates, say
+for V = R0, this process induces a partial map of the form
+x i i (<c, x> + d)-'(Ax + b) ,
+where A is linear and I I c I I I + d2 * 0. Griinbaum's book discusses
+these transformations in detail. Projective transformations preserve
+colinearity and the polyhedral sets in their domain. Questions about
+polyhedra can then be reduced to the ease of polytopes. For example,
+consider the nonsingular projective transformation:
+(1.3) a: x 1 0 (1 + X, + - - - + X.)7'(X,, . . ., X.)
+This maps the open positive orthant R'+ of Ro into the following
+<<PAGE-DIVIDER>>
+186 EDUARDO D. SONTAG
+open polytope J. of R',
+(1.4) X, + + X, < 1 X, ~_t 0
+in such a way that directions in R*+ become identified to just point's
+in x, + - - - + x. = 1, x, ;~: 0. Open polyhedra P in R"+ correspond to
+open polytopes Q contained in J., extreme points [resp., extreme
+directions] of P corresponding to extreme points of Q [resp., extreme
+points of Q lying in x, + - - - + x. = 1].
+A (generalized) m-8implex is the (closed or open) convex hull of
+m + 1 affinely independent points and directions, i.e., of a set S U D
+of cardinality m + 1 for which aff (conv (S, D)) has dimension m.
+Since projective equivalences preserve affine independence in their
+domains, simplexes correspond to simplexes under (1.3), and the usual
+(polytope) baricentric subdivision theorem implies, (after if necessary
+subdividing a given polyhedron into its intersection with orthants,):
+LEMMA 1.5. Every (open or closed) polyhedron is a disjoint
+union of open 8implexe8.
+This lemma will be useful in the last section.
+2. PL-sets and maps.
+DEFINITION 2.1. The PL-sub8ets of a vector space V are those
+belonging to the Boolean algebra PL (V) generated by all the open
+(or all the closed) half-spaces of V. A PL-8et is a PL-subset of some
+V. A PL-relation R: X - Y is one which is a PL-set as a subset
+of X x Y; a PL-map f: X - Y is a map which is a PL-relation.
+A PL-set is thus the same as a disjoint union of open polyhedra.
+A number of facts are therefore immediate consequences of those
+know*n for polyhedra. For example, images and preimages under
+linear maps preserve PL-sets, and the product X x Y of PL-subsets
+of V, W is a PL-subset of V x W.
+LEMMA 2.2. Let R: X, - X, and S: X, - X, be PL-relation8, with
+the X, in PL (VJ. Then
+R&S: = ((x,y,z) in Xx Yx ZJxRy and ySz)
+is a PL-8et.
+Proof. Just note that R & S = (R x V,) n (V, x S) El
+Projection of the above on V, and V. yields:
+COROLLARY 2.3. A composition of PL-relation8 is a PL-relation.
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 187
+Thus PL-maps are also closed under composition, and we have
+a well-defined category PL. Note that since PL-maps are defined
+through their graphs, f -1 is a PL-relation for any PL-map f, and
+therefore isomorphi8m8 in PL are the same as PL-bijections, Before
+studying general properties of PL we need several technical facts.
+A PL-map is a "piecewise linear" map in the following sense.
+LEMMA 2.4. If P. X - Y, X is in PL (V), Y is in PL (W), and
+X = U Xj is a finite covering such that each restriction f I X, is a
+PL-map, then f is a PL-map. Conversely, assume that f. X - Y is
+a PL-map and let X = U X,' and Y = U Yj' be (finite) partitions into
+open polyhedra. Then there exist (finite) open polyhedral partitions
+X = U X, and Y = U Yj which refine the original ones and such
+that each restriction f I X, is the restriction of a affine map V - W,
+and maps X, into some Yj. Further, if f is one-to-one, then there
+exist simultaneous open refinements as above X = U X, f(X) = U Yt,
+with f(X,) = Y, and each f I X, the restriction of an invertible linear
+map from aff (XJ onto aff (YJ.
+Proof. The first assertion is clear from the fact that (the graph
+of) f is the union of (the graphs of) the f I X, -
+To prove the remaining assertions, let X = UX,, Y= UYj', and
+G = U Gh be partitions of X, Y, and G = graph of f, into open
+polyhedra. Let G,j, be the intersection of GkI prl-'(X,), and pr-I(Yj'),
+2
+where pr, denotes projection of V x W into the ith factor. Each
+G,j, is an open polyhedron and projects into X,, Y!. Since f is a
+function, the family of all pr,(G,j,,) is a partition of X into open
+polyhedra Xj,, which refines the original one; note that Xik maps
+into Yj'. When f is one-to-one, the Yj,: = pr,(G,j,) are disjoint, and
+f(X,i,) = Yq, The last statement follows from the fact that the
+projections restricted to aff (G,,,) establish isomorphisms with
+aff (Xiih), aff (Yj,), since they are one-to-one on the open subset G,j.
+of aff (Giii.). 11
+A PL-map is in fact, up to PL-automorphisms of its domain, a
+linear map, since X =_ graph (f ). This fact is itself not too useful,
+(since the automorphism. carries all the nonlinearityJ but is implicit
+in arguments like the above. (The terminology 'TL" should not be
+confused with the very different notion that appears in combinatorial
+topology, where all (PL) maps are continuous and all polyhedra are
+closed polytopes.)
+A general way of constructing PL-sets is the following. Let L
+be the first-order language over the alphabet having: constants r
+for each real number r, variables x,, - - - , x,, - - -, unary function
+<<PAGE-DIVIDER>>
+188 EDUARDO D. SONTAG
+symbols "r.( )" for each r real, binary function symbol +, and
+relational symbols >, =.
+LEMMA 2.5. Every sentence S in L defines a PL-8et, i.e., if
+x,, - - -, x. are the free variables in S then
+(2.6) Dom (S): = [(x,, - - -, xJ in R* I S(x,, xJ)
+is a PL-set. Conversely, any PL-subset of an R* can be defined in
+this fashion.
+Proof. The converse part is clear, since every open half-space,
+or hyperplane, can be defined by an equation aix, + - - - + a,x,, < r,
+or = r. To prove that Dom (S) is always a PL-set, it is enough to
+prove that all atomic formulas define PL-sets and that closing under
+-, A, 3, preserves the PL-structure. But atomic formulas are all
+linear equations or inequalities, so they define hyperplanes or half-
+spaces, and they are therefore PL-sets. Closure under negation and
+conjunction holds by the Boolean closure (complements, intersections).
+Finally, f x I (3y)S(x, y)) is the projection of J(x, y) I S(x, y)); it is there-
+fore PL if the latter is. F~
+Another way of expressing the conclusion -of the above lemma
+is by saying that any set defined using existential or universal
+quantifiers can be also defined using only propositional connectives.
+In using the above one usually extends the language (informally) to
+include sentences containing PL-functions (since these are defined by
+their graphs, which are PL-sets), and arbitrary PL-sets (since under
+isomorphism a P in PL (V) is a subset of some R*). Similarly, one
+can bound quantifiers, as in "for all x in S, when S is known
+to be a PL-set.
+For example, consider the situation in applications in which one
+has a family of PL-maps
+(2.7) f. = f(., V): X Z , y in Y,
+where f. X x Y - Z is a fixed PL-map. Here it is natural to ask
+whether the sets of the y in Y where f is one-to-one, or onto, are
+PL-sets. In view of 2.5, the answer is (trivially) yes: for instance,
+f is one-to-one f or the y in:
+(y in Ylf(x, y) = f(x', y) implies x = x') ,
+which is expressable as a first-order sentence. Similarly, given a
+z, in Z, the set of common "zeros"
+(2-8) Ix in Xlf,(x) = zo for all y)
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 189
+is a PL-set. Related to this is the set of all x for which there is
+some V solving the equations:
+(2.9) X~: = Ix in X I there exists y with f(x, y) = zJ ,
+which is again PL. One of the most useful properties of the category
+PL is the validity of the following global implicit function theorem:
+THEOREM 2. 10. Let f: X x Y - Z be a PL-map, z,, in Z, and
+X, as in (2.9). Then there exists a PL-map s: X~ , Y such that
+f(x, s(x)) = z~ for all x in X.-
+Letting R be the relation "x R y iff f(x, y) = z,", this becomes a
+consequence of the first part of the following stronger result:
+THEOREM 2.11. Let R: X , Y be a PL-relation with domain X,
+There exists then a PL-map s: X,, --- Y such that:
+(a) 8(x) is in R(x) for all x, and
+(b) R(x) = R(x') implies s(z) = s(x').
+Proof. With a slightly different terminology, the problem is
+that of showing that for each PL-subset R of V x W there is a
+section 8 of pr, such that 8(x) depends only on prl-'(x). Without loss
+of generality we assume V = R0, W = R'. The result will follow
+by induction on k once it is established for k = 1. Indeed, assume
+it is true for k and let R be a PL-subset of R"'. Let X, be the
+projection of R on the first n + 1 coordinates. The result being
+true for k = 1 means that there is an 81: X,, - R with 81(x) in R,(x)
+for all x and ol(x) = 8~(x') if RI(x) = Rl(x'), where R, is just X, seen
+as a relation Ro -+ R; note that X. is the domain both of R and of
+R, By the inductive hypothesis there is also an s,: X, -, R' satisfy-
+ing (a), (b). The desired 8 can be then obtained defining 8(x):
+82(x, 8,(x)).
+Thus the problem reduces to the case k = 1. Farther, we may
+assume that R is an open polyhedron. If R is a more general PL-
+set we can write R as a union, of the disjoint open polyhedra
+R,, - - -, A. If for each of these there exists an 8,: pr,(R,) R, an
+8: pr,(R) - R can be constructed using 2.4 by defining s: 8, on
+X,, where X, is pr,(R,) and X, is pr(R,)\X,-, for i > 1. This 8 will
+satisfy both (a), (b).
+We divide the case R = open polyhedron in R* x R into four
+disjoint cases: (i) the vector
+e,,+,: = (0, ...' 0, 1)
+is in OIR and -e.+, is not, (ii) e.+, is not in O+R but -e.+, is, (iii)
+<<PAGE-DIVIDER>>
+190 EDUARDO D. SONTAG
+both :Le, are in O+R, and (iv) neither of :Le.+, is in O+R. Let
+r,(x): = inf (r I (x, r) is in R) ,
+r2(x): = sup Jr I (x, r) is in R)
+(these may be :t -). If (i) holds, we define S(x)'. = r,(X) + 1; if (ii)
+holds, 8(x): = r,(x) - 1; if (iii) then s(x): = 0; and if (iv) then 8(x): =
+1/2(r,(x) + r,(X)). Property (b) is trivially true for such a definition
+of 3, since the r,(x) depend only on the corresponding R(x). With
+respect to (a), case (i) corresponds to the situation in which Qx) x
+R) ncl(R) is always a half-line not bounded "above", thus (x, rl(x)) +
+e, is in R, since (x, rl(x)) is in cl(R) and O+R = 0+(clR). The same
+argument applies to case (ii). Case (iii) corresponds to Qx) x R) n cl(R)
+being a finite interval with endpoints (x, r,(x)) and (x, r,(x)); thus
+(x, s(x)) is in ri (cl(R)) = R. In case (iv) the entire line (x) x R is
+in R and thus (x, 0) is in R.
+It only remains to prove that s is piecewise linear. For this it
+is enough to show that r, and r, are PL-maps when finite-valued.
+We work with r,; the argument for r, being the same. Let F,, - - -, F"
+be the relative interiors of the proper faces of R. These cover
+rb(R), so that rl(x) is always in a suitable FJO when finite. We drop
+from the list all those F,' for which (x) x R either doesn't intersect
+Fj' or intersects Fj' at more than one point. Note that, for the
+latter, r,(x) will be in a face of Fj', which is in turn a lower-
+dimensionalF,'. Sincethe projections pr,JFj' are now all one-to-one,
+they admit PL-sections (whose graphs are the Fjo themselves). If
+r,(x) belongs to a certain F~' then also r,(x') is. in the same Fj' for
+any other x' in pr,(Fj'): otherwise, there is some s > 0 such that
+ZI: = J + s)r,(x) - ez
+is in Fj, where z is the unique point in Fj' projecting into x', since
+Fj' is relatively open and convex. But then
+J + W'W + r;.r,(x'))
+is in cel(R), projects into x, and is strictly less than r,(x), contradict-
+ing the definition of the latter. Thus r, is a PL-map on each of
+the (disjoint) pr,(FI), and is therefore PL itself.
+The above remarks help in characterizing the category PL. The
+terminology "subset" will be used in the set-theoretic sense, while
+"subobject" will be used in the categorical sense. Note that the
+category of finite sets is equivalent to a full subcategory of PL;
+the subcategory of finite sets of integers (as PL subsets of R) gives
+the representation. By arguments as in Sets, (and using the above
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 191
+results,) it is easy to establish that: (i) 0 = 0 and 1 = 10) are initial
+and final objects respectively; (ii) 0 is a generator for the category,
+and 2 = (0, 11 is a cogenerator; and (iii) equalizers and finite products
+and coproducts exist (first order constructions). Thus PL is finitely
+complete with finite coproducts, with the respective (co)limits
+preserved by the forgetful functor to Sets. It is equivalent for a
+PL-map to be a monomorphism, one-to-one, a coretraction, or an
+equalizer. Similarly, epimorphism, onto, retraction, and coequalizer
+are equivalent properties. A theory of congruences exists, as with
+algebraic theories. A congruence on a PL-set X is a PL-relation
+R: X - X which is an equivalence relation. Then one can prove
+that a relation R is a congruence iff R = Ker f = ((x, y) I fx) = f(y)j f or
+some PL-map f with domain R. The induced-homomorphism property
+holds for congruences. Thus PL is a pretopos (Johnstone [6]).
+It follows that PL admits a full, limit-preserving, and finite
+coproduct-preserving embedding into the geometric topos shv (PL, J)
+of sheaves for the precanonical (Grothendieck) topology J on PL.
+This embedding is for example usef ul in system theory, when one
+studies the category Mach (PL) of machines (see Arbib and Manes
+[11) over PL. The canonical realization functor does not admit a
+adjoint over PL, but adjoints do exist over the larger category of
+sheaves, since the latter is in particular cartesian closed and has
+epi/mono factorizations (see Goguen [4]). For the "uniqueness of
+canonical realizations" results, one can work on the sheaf category
+and then descend to the (full) subcategory PL. In fact, observable
+and bounded-time reachable realizations over PL are also canonical
+over the larger category because the embedding preserves finite
+coproducts and limits. Other applications to system theory of the
+PL concepts introduced in this paper are given in Sontag [8].
+3. The objects of PL. The main purpose of this section is to
+obtain a classification of the isomorphism classes of PL-sets. This
+classification is of course not as simple as that for the subcategories
+of finite sets and of finite-dimensional vector spaces, but is non-
+etheless easy to understand after introducing the proper algebraic
+structure. The theory will be developed through a series of technical
+remarks.
+A. Ranks and labels. For each fixed n, D. is the set of all
+finite disjoint families of open polyhedra contained in R. The
+following defines an equivalence relation in D,,:
+(3.1) DE~D' iff U (P, P in D) = U (Q, Q in YJ
+The relation E, is defined as follows: DE,,Dt is and only if D
+<<PAGE-DIVIDER>>
+192 EDUARDO D. SONTAG
+(PI, P,) and there is some hyperplane H intersecting P, such
+that D' = (Pi, - - -, P,-,, P% P,+, P,-), where P,1, P+, and P; denote the
+intersection of P, with H and with the two half-spaces associated
+to H.
+LEMMA 3.2. The smallest equivalence relation on D. containing
+E,) is E, In fact, E, is the union, over all i, j, of the relations
+Ei 0 E;-j.
+Proof. Since E, contains E,, we need only to prove that, if
+D (P,, - - -, PJ and D' = (Q,, - - -, Q.1 have the same union, then
+there exists a third family D" of open polyhedra (L,, - - -, L,J such
+that DEW" and DEW" for some i, j. In other words, D" must be
+such that there is a chain D = D~, D,, - - -, D, = D" with DkEDA,,,
+for all k, and similarly for Y. Let (H,) be a finite family of
+hyperplanes constructed as follows. For each P in D or in D', pick
+hyperplanes & - - -, K. such that P is the intersection of some of
+the K, and of open half-spaces associated to the rest of the K.; the
+H2 are then obtained by considering all the Ki obtained in this way,
+for P in D and Y.
+Let D" be the family of all those minimally-nonempty intersec-
+tions T of the H, and open half-spaces associated to the H, for
+which T is included in the union of the sets in D (or D'). These
+intersections are disjoint, by minimality, so D" is in D.. Note that
+DE,D To obtain a chain from D to D", let D: = (Pl, P,),
+and write each Pj as an intersection of the H, and corresponding
+half-spaces. If any of the P,, say P,., is not a minimal intersection,
+there exists an H, inducing a proper subdivision P,+, P,-,, P.I. Then
+DE.D,, where D, is (P1, - - -, Pl-,, P,, P+, P-), and the argument can
+be repeated with D, Eventually one reaches a D, with all P,
+minimal (so a member of D"). But every T in D" appears in D,,
+since D"ED, and every T in D" is included in the union of the
+P, in D. So A = D". The same argument gives a chain from D'
+to D". 7
+Pairs of integers are naturally ordered by: (i, j) ;5 (i', j') when-
+ever i;5 V and j;5 F. With this ordering:
+DEFINITION 3.3. The p-rank of a (nonempty) open polyhedron
+P is
+p-rank (P): = (dim P, dim O+P) .
+The rank r(X) of a nonempty PL-8et X is defined as the maximal
+possible p-rank of a polyhedral subobject of X when there is a
+unique such maximal rank.
+<<PAGE-DIVIDER>>
+PIECEWIS&LINEAR ALGEBRA 193
+DEFINITION 3.4. The (open or closed) polyhedron P in R11 is
+acute if it is included in the orthant R*,.
+The above subclass of polyhedra is introduced for purely technical
+purposes, mainly because the projective equivalence a introduced in
+(1.3) will permit reducing many questions about acute polyhedra to
+questions about polytopes (even though a is not a PL-map).
+LEMMA 3.5. Let P be an acute open polyhedron in R* of p-rank
+(n, m), with n # 0, and H be a hyperplane intersecting P. Let P1,
+P+, and P- be the intersections of P with H and its associated open
+half-spaces, and let (n', n'), (nl, n'), and (n-, m-) denote the respective
+p-rank8. Then exactly one of the following possibilities holds:
+(a) (n+, m+) = (n-, m-) = (n, m) and (n', m') = (n - 1, m);
+(b) m L> 2, (n+, m+) = (n-, m-) (n, m), and (n', mO) = (n -
+M - 1);
+(c) for some k < m, (n+, m+) (n, m), (n-, m-) = (n, k), and
+(n', mo) = (n - 1, k);
+(d) idem to (c), with reversed.
+Proof. We first note that P+, P- (and P') are all nonempty.
+This is berause P is open in R11 and H is the boundary of its as-
+sociated half-spaces. In fact, P+ and P- are again open, so also of
+dimension n, while P' is relatively open in H and hence of dimension
+n - 1. To understand the dimensions "at infinity" ml, m+, m-, we
+consider the projective equivalence a: R" -J. = J. Let Q, Q+, Q-,
+QO, K be the images of P, P+, P-, P1, and HnR*, under this
+transformation, denoting also by K the span of the above K. Let
+K_ denote the hyperplane
+X, + - + X,,
+Since directions of recession of acute polyhedra correspond to points
+in K. with all x, ~~ 0, one has for each of A: =.Q, Q0, Q+, Q- and
+A': = P, P', P+, P- (and defining the dimension of the empty set as
+- 1):
+(3.6) dim O+A' = 1 + dim (cz(A) n K-) .
+There are then four cases to consider:
+( i ) cz(Q) n K. = 0. Here cl(A) n K. is empty for all of the
+above A, and hence case (a) holds with m = 0.
+( ii ) c/(Q) n K_ # 0 but K n cl(Q) n K. = o In this case,
+C/(QD) n K. = cl(K n Q n K.) = K n c/(Q) n K. = o, so one of
+C./(Q+) n K_ or c/(Q-) n K. must also be empty (otherwise a line in
+<<PAGE-DIVIDER>>
+194 EDUARDO D. SONTAG
+K. joining points in both of the latter would intersect c/(Q,) n K.).
+if c./(Q-) n K. is empty, then c/(Q,) n K_ c./(Q) n K., and (c) holds
+with k = 0. Otherwise, (d) holds with k 0.
+(iii) K n c/(Q) n K. # 0 and c./(Q) n K. is contained in K n K..
+In this case all c/(A) n K_ are equal, so (a) holds.
+(iv) As above but with c.I(Q) n K. not contained in K n K..
+Necessarily c/(Q) n K_ has more than one point so (since a polytope)
+dimension at least one, and hence m ~!! 2. Here K n K. is a hyper-
+plane of K. intersecting the polytope c/(Q) n K. at c/(Q,) n K_
+Let k be the dimension of the latter. If K n K. intersects Q n K.
+then k = m and (b) holds. If K n K- intersects only the boundary
+then k < m and either c/(Qo) n K_ = cz(Q-) n K_ and (c) holds, or
+cl(Q,) n K_ = c/(Q+) n K_ and (d) holds instead. El
+DEFINITION 3.7. The (n, m)-8implex s(n, m) is the (generalized)
+open n-simplex opconv (S, D), where S is the set of points
+of elt * * f e,-,, and D is the set of directions of es-7%+Iv t e" (e,
+denotes here the ith canonical vector in R*).
+Thus s(n, m) is an acute polyhedron of p-rank (n, ra), namely,
+(3.8) ((x,, ---,xJ in R*Jall x,>0 and x, + --- +X*-M<ll 0
+(just a point if n = 0) or equivalently, the product P.-. x R-+, where
+P, is the interior of the standard (bounded) k-simplex and R+ is
+(OF -). Every simplex of p-rank (n, m) is isomorphic to s(n, m)
+under an invertible linear map between their spans.
+LEMMA 3.9. For open polyhedra the p-rank coincides with the
+rank.
+Proof. We need to show that if there is a one-to-one PL-map
+Q --+ P between open polyhedra then p-rank (Q) ;;~ p-rank (P). For
+this it will be sufficient to show that the p-rank is invariant under
+isomorphism, since it is clear from the definition that the p-rank of
+a subset of P cannot exceed that of P. Assume then that f is
+bijective.
+Consider for each of P, Q, the partitions into open subpolyhedra
+obtained by intersecting with the various orthants of aff (P), aff (Q)
+and their respective faces (without loss of generality assume
+aff (P) = R, aff (Q) = RI). By (2.4) there exist refinements into open
+polyhedral partitions (Pi), IQJ such that f is a linear isomorphism
+in each Qi. (By (1.5) we may in fact assume that each element of
+the partition is a generalized simplex, with corresponding P', Q,
+linearly isomorphic.) Since p-rank is invariant under linear isomor-
+phism, it will be enough to show that, whenever one has such
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 195
+partitions, p-rank (P) = max. of the p-ranks of the P, (and the same
+for Q). If P is acute, this is a consequence of (3.2) and (3.5). In
+the general case, it will be enough to show that the intersection P'
+of P with at least one of the open orthants of Re has the same
+rank as P. But 01P is open in aff (O+P) and thus there is some
+orthant, say R'+ under a linear change of coordinates, such that
+el(R'+) intersects aff (O+P) and O+P. Thus P recedes in dim (O+P)
+linearly independent directions of vectors in R, and the corresponding
+P' has equal p-rank. One may construct the p, so that some refine
+p', and the result follows from the case of acute polyhedra. El
+A polyhedron is by (1-5) a disjoint union of (generalized) simplexes.
+Let
+(3.10)
+F: = N[Isij, i 2,- j 2!: 011
+be the free abelian monoid on the symbols sq (here N denotes the
+nonnegative integers, and elements of F are polynomials in the
+symbols sq with coefficients in N and "termwise" addition).
+DEFINITION 3.11. An element a = Z a,j8,j of of F is a,label for
+a PL-set X if there exists a partition of X into open simplexes
+consisting of precisely a,j simplexes of rank (i, j).
+Of course labels	are far	from unique. Note that each PL-set
+has labels and that	for each	element a	of F there is a PL-set X
+having a as a label;	in fact t	he latter X	can be assumed to be in
+an orthant R*+ (one only needs	to suitably	embed the orthants of an
+R` containing X in	disjoint	hyperplanes	of RO).
+LEMMA 3.12. Two PL-8et8 are i8omorphic if and only if they
+have a label. in common.
+Proof. Clear from 2.4 and the previous remarks. El
+LEMMA 3.13. Let P be an open polyhedron. If (PJE,'(Q,, Q,, - I
+and each Q, i8 isomorphic to a (generalized) simplex, then P i8
+also i8omorphic to a simplex.
+Proof. We must prove that if P+, P-, PI are all isomorphic to
+generalized simplices then P also is. Since 8(n, m) = P.-. x R-+,
+this is by 3.5 equivalent to showing that the coproducts of each
+of:
+(a) P,, Pk, Pk-,,
+<<PAGE-DIVIDER>>
+196 EDUARDO D. SONTAG
+2 2
+(b) R+, R+, R,
+(c) R, P., P.-,, n ~! 1,
+are all simplices (respectively, Pk, R1, R*+). The simplex 3(n, M) is
+isomorphic to the cube I- x Rl+', where I is the open interval (0, 1).
+This is proved in the first paragraph of (3.14) below, and will be
+used here. Since I is isomorphic to the coproduct of two I's
+and a point, case (a) follows by multiplication by I". Case (b)
+follows by slicing P = M+ by the hyperplane K = [z, - x, = 01: each
+of P+, P- is a simplex (isomorphic to) K, and P,, is a half-line.
+We now study case (c). Consider P = R%+ and let K. be the hyper-
+plane (x, + - - - + x. = 1). Let P- be the bounded component. Then
+P- is isomorphic to P., and P(, is P., It will be enough then to
+prove that P+ is isomorphic to R*+. For this, define f: P+ --o. R" as
+the identity if x, + - - - + x, ~~ 1, and (xi, * * *, x,-,, x, ++ x, - 1)
+if x, + - - - + x, < 1; this is a PL-isomorphism. F-1
+PROPOSITION 3.14. Every acute open polyhedron is i3omorphic
+to a (generalized) open simplex.
+Proof. It is proved in combinatorial topology that a closed
+polytope is isomorphic to a closed simplex, with the relative interiors
+mapping to each other, via a continuous PL-map; see for instance
+Zeeman [9, Lemma 8]. Recalling the form of 8(n, m), this implies
+that any product X x R", with X a polytope, is isomorphic to a
+simplex, so the cubes P x Ri used in 3.13 are indeed isomorphic to
+simplices.
+For a general acute polyhedron P the result will be proved by
+a refinement of the argument for polytopes, using the projective
+equivalence a. "Slicing" first by a suitable hyperplane x, + - - - +
+x, = a, it is enough by 3.13 to prove the result f or a P such that
+a(P) is in any desired neighborhood of K. (notation as in 3-5). A
+f urther linear transformation on P can be used to insure that a(P)
+is in fact contained in a neighborhood of any given point x in
+K. with all x, > 0. For a(P) small enough, there exists then a
+simplex Q such that (i) a(Q) contains and has the same dimension
+as a(P), and (ii) Q_ = cel(a(Q)) n K_ has the same dimension as
+P. = cel(a(P)) n K_
+Pick now a point z in the relative interior of the face P_ of
+a(P). Define a "pseudo-radial projection" into z, as in Zeeman [9,
+Lemma8], from a cell subdivision of the boundary of a(Q) into one
+for the boundary of a(F). Since z is in K_ and P., Q_ have equal
+dimensions, this means joining to z that a(P) and a(Q) admit
+simultaneous partitions into isomorphic open simplexes a(PJ, a(Q,)
+with (P,)- and (Q,). of equal dimensions. So Pi, Q, have the same
+<<PAGE-DIVIDER>>
+PIECEWIS&LINEAR ALGEBRA 197
+rank and are isomorphic to each other, for each i. Thus P is
+isomorphic to Q, as wanted. El
+B. Classification. We consider now the set PL, of isomorphism
+classes of PL-sets, as an abelian monoid, with coproduct as the binary
+operation and whose identity is the empty set. By 1.5, PL, is
+generated by the generalized simplices. Thus the monoid homomor-
+phism
+(3.15) F, PL,
+induced by
+(3.16) X(8,j): = isoclass of 8(i, j) , i R: j ~!t 0
+is surjective.
+PROPOSITIoN 3.17. As a monoid congruence, the kernel of X is
+generated by the following set of equations:
+(a) 8jj = 28jj + 8j_j,J1 i ~_t 11 i ;~-_ 01
+(b) 8,1 ~ ?jjj + oj,j, i ~!: j ;2-- 2, and
+(c) 8ji = so + 8v. + 8i-l'k' j Lg k, i - 1 24 k k 0.
+Proof. Each of the above equations is in the kernel of X, since
+they can be realized- by slicing the simplex s(i, j) by appropriate
+hyperplanes, as in the proof of 3.13. Conversely, assume that
+(3.18) %(a) = X(b) .
+We want to prove that there exists a sequence of elements of F,
+all mapping into the same isoclass, and such that each of these
+elements is obtained from the preceeding or succeeding one by one
+of the above types of substitutions.
+Let X and Y be PL-sets in R0, with labels a and b respectively.
+Since %(a) = X(b), X and Y have by 3.12 a label in common, say
+c. It is enough to prove that a (and hence by the same argument
+b) is equivalent to c using the above transformations. Let D be a
+partition of X that gives the label c. Then (XjE,,'D,E~D, - EtD,
+with each i = +1 or -1. Each D, has a label c, with %(c,) X(c,+,).
+Since the polyhedra D, are all acute, 3.5 can be applied at each
+step, with each of the cases (a), (b), (c) resulting from the cor-
+responding cases in 3.5. 0
+One has then an algebraic representation for the isoclasses of
+PL, as elements of the quotient monoid F/(kerx). Given a PL-set,
+a label for it can be obtained immediately from any partition of F
+<<PAGE-DIVIDER>>
+198 EDUARDO D. SONTAG
+into open simplices, or more generally, (by 3.14), from any parti-
+tion into open polyhedra contained in orthants.
+Matters can be further simplified by the introduction of the
+two-generator abelian semiring with identity:
+(3.19) N[x, yJ = (I ajxy,, a,, ~~ 0) .
+Additively, this is just again F, when one identifies
+(3.20)
+8tj = xi-jyj .
+The map X, thought of now as defined on N[x, y], is a 8emiring
+homomorphism when PLO is viewed as a semiring using (eartesian,
+or categorical) product as multiplication. The multiplicative identity
+I is the one-point set, X(x) is the open unit interval I = (0, 1), and
+X(y) is R, The semiring structure permits giving a finite presenta-
+tion for PLO:
+THEOREM 3.21. Let PLO be the set of isomorphi8m classes of
+objects of PL, thought of as a semiring with coproduct as addition
+and product as multiplication. Then PLO is isomorphic to the
+semiring
+(3.22) S: = N[x, y]/E,
+where E is the semiring congruence generated by the three equations
+(a) x 2x + I ,
+(3.23) (b) y' 2y' + y ,
+(C) y x + y + 1 -
+Proof. In terms of x and y, a set of equations generating E
+ker X is known to be, from (4.17),
+(a) x*y" = 2x*y- + x"-Iy- , n m 0 ,
+(3.24) W x"y- = 2x*y- + x-y--1 , n 0 , m 2,
+(C) x dyk+t xdyk+t + x d+tyk + xd+t-lyk ,
+d 0 f t 2~ 0 f k >~= 0 , d + t
+As generators of a 8emiring congruence, these equations are in turn
+equivalent to the simpler set consisting of (3.23a), (3.23b) and
+(3.25) y t = y 9 + xt + x9-1 t ~-_ 1 .
+Since (3.23c) is the particular case t I of this, the proof will be
+complete once that we establish that (3.25) follows from (3.23). By
+induction assume that (3.25) is true f or t - I (t ~_!t 2); then:
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 199
+yt = y t-2y2 =yt-'(2y' + y)
+= 2y2 +,yt-1
+= 2y'-'(x + y + 1) + y`
+= (2y' + 3y'~' + xy'-') + xy t-1
+= (2y' + 3y` + xy'-') + x(y'-' + xt-1 _i- xt-2)
+= (2y' + 2xy'-' + 3y) + W + xt-1) ,
+and we need to show that the first of these is again y. But this
+term is
+yl-'[(2y' + y) + 2y + 2xy] yl-2(yl + 2y + 2xy)
+Y`[y + 1 + (1 + 2x)]
+Y,-,(y + 1 + X)
+Let
+(3.26) 2: PL-sets S
+be the characteristic of PL, the map assigning to each PL-set its
+equivalence class of labels. This is a useful object to consider when
+answering questions about the category. Note that 2 can be used
+to translate into purely algebraic problems even questions not ex-
+clusively about isomorphism. For instance, asking whether there
+is an epimorphism f: X- Y between PL-sets amounts by the results
+of 3 to asking if Y is a subobject of X, and this is in turn
+equivalent to deciding if 2(Y) is a summand of j(X) in S. Similarly,
+Y is a factor of X (f "splits") if and only if 2(Y) divides -(X).
+X
+As an example, we solve here the epi/mono question for the case
+of well-defined ranks (the solution in the general case follows easily
+from this).
+PROPOSITION 3.27. Let X, Y be PL-sets with well-defined ranks.
+Then there exists a monomorphism f. X , Y if and only if either
+one of the following conditions hold:
+( i ) dim X > 1 and r(X) :!-< r(Y).
+00 dim X = dim Y = 1 and the coefficient of y in a label of X
+never exceeds that of y in a label of Y.
+(iii) dim Y > dim X = 1 and r(X) 5; r(Y).
+(iv) X is finite and card(X) :!9 card(Y).
+Proof. The condition r(X) -~ r(Y) is necessary, by definition of
+rank. Assume now that dim X=n+m> I and let r(X) = (n+m, m);~-:
+(u + v, v) = r(Y). Let a, b be labels of X, Y. Each monomial x'yj
+<<PAGE-DIVIDER>>
+200 EDUARDO D. SONTAG
+is a summand of x"y-, and hence of X"y", so a is a summand of rx"y"
+for some integer r. Iterating (3-24a), the latter is in fact a summand
+of a single monomial ry". But b contains one such monomial, since
+r(Y) = (u + v, v). Thus a is a summand of b, and (i) is proved.
+When the dimension of X is 1, the possibilities are ?-(X) = (1, 0) or
+(1, 1). In the first case, a = ax + a is a summand of x and hence
+of b. In the second case, a = ax + j3y + Y, which is a summand of
+a suitable ky. Since r(Y) j~; (2, 1), b has a term xy. By (3.24a),
+this admits a summand kxy, which by (3.23a) has a summand ky.
+Thus (ii) follows. To prove (iii), note that a = ax +,ay + -t, b ==
+a'x + Oy + -t', aa' # 0, 6' L- 8. By (3.23a), ax + y is a summand
+of x, hence of a'x. And ey is a summand of e'y, so a is a
+summand of b, as wanted. [I
+It is interesting to remark that the classical theorem of Euler
+on counting faces of polyhedra is a consequence of the form of S.
+Let
+(3.28) X: PL-sets N
+be obtained by composing j with the evaluation x: = -1, y: = 0
+(well-defined by the form of E). In terms of S, a PL'-set X is
+isomorphic to an acute polyhedron iff it is isomorphic to a cube, i.e.,
+of the form X(x'yi). In particular, an open polytope of dimension n
+has label x". Thus 2(X) = (-1)*. A closed polytope P is (see proof
+of 3.14) isomorphic to a closed cube, i.e., it has a label (x + 2)", so
+~(P) = 1 always. Writing a closed polytope P as a disjoint union
+of the relative interiors of its faces, one has, if P has d, faces of
+dimension i, that E-j=o (- 1)'dj I (Euler's theorem). The map X
+can be extended to *: PL-sets Z', by evaluation at x: = (- 1, - 1),
+y: = (0, - 1). This map is universal for groups, and establishes Z'
+as the Grothendieck group of PL. Note that by studying the f ree
+abelian monoid (rather than group) generated by the open simplexes,
+one obtains a complete characterization of isoclasses, from which the
+Grothendieck group can be in turn derived.
+We turn now to the word problem for S, i.e., deciding for given
+a, b in N[x, yJ if they are equivalent under E. Since the generators
+of E all preserve degree, it is clear that in deciding if a E b one
+may restrict attention to the free abelian monoid
+(3.29) F.: = N[Js,j 10 :!~~ j ;5 i :!-- nJJ ,
+where n is the dimension of X(a) and X(b), modulo the congruence
+generated by those equations in (3.15) which involve only i :!&' n.
+Note that F. is just the product monoid NIn.
+<<PAGE-DIVIDER>>
+PIECEWISE-LINEAR ALGEBRA 201
+There are a considerable number of results each of which
+implies the decidability of word problems in a monoid M = N'*.
+For example, one may use the results on integer equations given by
+Ginsburg and Spanier [3]. Another approach is to note that every
+monoid congruence on the (finitely generated commutative) monoid
+M is a rational subset of M x M, as proved in Filenberg and
+SchUtzenberger [2] (in fact, they also prove that there are always
+rational cross-sections for such congruences). A rational subset of
+M x M is recognizable by a generalized finite automaton (Eilenberg
+[2, Theorem VIL 10.1]). Thus checking if aEb is equivalent to
+checking if (a,b) is accepted by a given automaton, a purely
+algorithmic process.
+To rigorously state the implications of the above one would
+need to give a precise meaning to the phase "given a PL-set". This
+could mean for example "given by a sentence in the language L"
+introduced in (2.5), restricting unary operators and constants to
+computable real numbers. Obtaining a polyhedral partition, i.e., a
+label, becomes a problem in linear algebra. We shall assume in
+any case that a PL-set is "given" by specifying a label for it.
+Decidability of word problems in each F,, gives then:
+THEOREM 3.30. Isomorphi8m of PL-sets i8 decidable.
+REFERENCES
+1. M. A. Arbib and E. Manes, Machines in a category: an expository introduction,
+SIAM Review, 57 (1974), 163-192.
+2. S. Eilenberg and M. P. Schijtzenberger, Rational sets in commutative monoids, J.
+Algebra, 13 (1969), 173-191.
+3. S. Ginsburg and E. H. Spanier, Bounded Algol-like languages, Trans. Amer. Math.
+Soc., IL13 (1964), 333-368.
+4. J. A. Goguen, Minimal realizations of machines in closed categories, Bull. Amer.
+Math. Soc., 78 (1972), 777-783.
+5. B. GrUnbaum, Convex Polytopes, Wiley, 1967.
+6. P. T. Johnstone, Topos Theory, Academic Press, 1977.
+7. R. T. Rockaffelar, Convex Analysis, Princeton Univ. Press, 1970.
+8. E. D. Sontag, Nonlinear regulation: the piecewise-linear approach, IEEE Trans.
+Autom. Control, 26 (1981), 346-358.
+9. E. C. Zeeman, Seminar on Combinatorial Topology, Publ. I.H.E.S., 1963.
+Received November 19, 1979 and in revised form January 22, 1981. Supported in
+part by U. S. Air Force Grant AFOSR-F49620-79-C-0117.
+RUTGERS UNIVERSITY
+NEW BRUNSWICK, NJ 08903

@@ -1,0 +1,5207 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/dt-further-albertini.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/dt-further-albertini.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "fa2.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Pass0: Page 22
+Dvi file name: "fa2.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+FURTHER RESULTS ON CONTROLLABILITY PROPERTIES
+
+OF DISCRETE-TIME NONLINEAR SYSTEMS
+
+\Lambda 
+
+Francesca Albertini
+
+y
+
+Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+E-mail: albertin@pdmat1.unipd.it,sontag@hilbert.rutgers.edu
+
+ABSTRACT Controllability questions for discrete-time nonlinear systems are addressed in this paper. In particular, we continue the search for conditions under which the group-like notion of transi- tivity implies the stronger and semigroup-like property of forward accessibility. We show that this implication holds, pointwise, for states which have a weak Poisson stability property, and globally, if there exists a global "attractor" for the system.
+
+1 Introduction This paper continues the study, initiated in [4] and then developed in [1], of some controllability properties of discrete-time nonlinear systems, of the type:
+
+x(t + 1) = f (x(t); u(t)); t = 0; 1; 2; : : : ; (1) where x(t) 2 X and u(t) 2 U . We will deal, as in the above-mentioned papers, with the class of invertible systems, that is with those systems for which the function f (\Delta ; u) is a diffeo- morphism. Such systems arise, for instance, when dealing with continuous-time models under digital controls via sampling. For futher motivations of the study of this class we refer to [4].
+
+If \Sigma  is a system of type (1), and x
+
+0
+
+is any state, then we can define the reachable set from
+
+x
+
+0
+
+, R(x
+
+0
+
+), and the orbit from x
+
+0
+
+, O(x
+
+0
+
+). We will see later (section 2.1) the precise definition of
+
+these objects; intuitively, R(x
+
+0
+
+) is the set of all those states that can be reached from x
+
+0
+
+using
+
+arbitrary controls, and O(x
+
+0
+
+) consists of all those states to which we can steer x
+
+0
+
+using both
+
+the motions of \Sigma  and negative-time motions. The concept of reachable sets is certainly more natural than the concept of orbits, since negative-time motions are not allowed. However, orbits
+
+\Lambda 
+
+This research was supported in part by US Air Force Grant AFOSR-91-0346, and also by an INDAM (Istituto
+
+Nazionale di Alta Matematica Francesco Severi, Italy) fellowship. Keywords: Discrete-time, nonlinear systems, transitivity, accessibility.
+
+y
+
+Also: Universita' di Padova, Dipartimento di Matematica, Via Belzoni 7, 35100 Padova, Italy.
+
+1Pass1: Page 2
+
+
+are usually easier to study --they arise from group actions-- and they have nicer properties. For instance, it is known that each orbit has a natural structure of submanifold of X .
+
+This paper studies some relations between these two concepts. In particular, we will focus our attention on the relation between the notion of forward accessibility (i.e. int R(x
+
+0
+
+) 6= ;) and
+
+the weaker notion of transitivity (i.e. int O(x
+
+0
+
+) 6= ;). We would like to see when transitivity
+
+implies forward accessibility. It is a classical result, in the continuous-time framework, that this implications holds always for analytic systems, and under some appropriate Lie-rank conditions in the C
+
+1
+
+case ( this fact is often called the "positive form of Chow's Lemma"). For discrete-
+
+time systems it is known that, in general, this implication fails. However, for analytic discrete- time systems, there are some cases in which it has been already established that transitivity implies forward accessibility. For instance, this is known when f is a rational map (see [5]), or when x
+
+0
+
+is a positively Poisson stable point for a some fixed diffeomorphism f (\Delta ; u
+
+0
+
+) (see [1]).
+
+In this paper we will strengthen considerably this last result, by proving the implication when x
+
+0
+
+has a weak type of Poisson stability. Moreover it is shown that transitivity implies forward
+
+accessibility when there exists a transitive state x
+
+0
+
+which is also a global "attractor" for \Sigma  .
+
+The paper is organized as follows. In section 2 we introduce some basic definitions and notations. In section 3 we associate to a discrete-time system \Sigma  some families of vector fields whose orbits will be correlated to the geometry of reachable sets and orbits. These families of vector fields are an extension of those considered in the previous work [1, 2, 3, 4]; we consider their introduction one of the main contributions of this paper. Section 4 presents some of the connections between the sets of vector fields so introduced and reachability. In section 5 we prove partial results for smooth systems. Finally, in section 6, which deals with the analytic case, we give our main results.
+
+2 Basic Definitions In this paper we study discrete-time nonlinear systems \Sigma  of the type (1), where the state space X and the control space U satisfy the following properties:
+
+ffl X is a connected, second countable, Hausdorff, differentiable manifold of dimension n, ffl U is a subset of IR
+
+m
+
+such that U ` clos int U , and any two points in the same connected
+
+component of U can be joined by a smooth curve lying entirely in int U (except possibly for endpoints).
+
+Notice that when U ` IR then the second assumption on U is automatically satisfied.
+
+The system is of class C
+
+k
+
+, with k = 1 or !, if the manifold X is of class C
+
+k
+
+and the function
+
+f : X \Theta  U ! X is of class C
+
+k
+
+(i.e., there exists a C
+
+k
+
+extension of f to an open neighborhood of
+
+2Pass1: Page 3
+
+
+X \Theta  U in X \Theta  IR
+
+m
+
+). We call systems of class C
+
+1
+
+smooth systems and those of class C
+
+!
+
+analytic
+
+systems.
+
+Definition 2.1 A system \Sigma  is said to be invertible if for all u 2 U , the function f
+
+u
+
+: X ! X
+
+with f
+
+u
+
+(x) = f (x; u) is a diffeomorphism.
+
+We will be dealing with the class of invertible systems. For each u 2 U , we will denote by f
+
+\Gamma 1
+
+u
+
+the inverse function of f
+
+u
+
+.
+
+From now on, and unless otherwise stated, we assume that a fixed smooth invertible system \Sigma  is given.
+
+2.1 Some Notations For any fixed state x and any nonnegative integer k define:
+
+
+
+k;x
+
+(u) := f
+
+u
+
+k
+
+;:::;u
+
+1
+
+(x) (2)
+
+where u = (u
+
+k
+
+; : : : ; u
+
+1
+
+) 2 U
+
+k
+
+, and where f
+
+u
+
+k
+
+;:::;u
+
+1
+
+denotes f
+
+u
+
+k
+
+ffi : : : ffif
+
+u
+
+1
+
+. If there exists an integer
+
+k * 0 and a u = (u
+
+k
+
+; : : : ; u
+
+1
+
+) 2 U
+
+k
+
+such that 
+
+k;x
+
+(u) = z, we will write:
+
+x
+
+;
+
+k
+
+z :
+
+For each u, let ae
+
+k;x
+
+(u) be the rank of
+
+@
+
+@u
+
+
+
+k;x
+
+[u]. For each x 2 X , let:
+
+_ae
+
+x
+
+:= max
+
+k*0
+
+max
+
+u2U
+
+k
+
+ae
+
+k;x
+
+(u): (3)
+
+Let:
+
+8
+
+!
+
+:
+
+R
+
+0
+
+(x) := fxg
+
+R
+
+k
+
+(x) := f z j x
+
+;
+
+k
+
+z g; k = 1; 2; : : : ;
+
+R
+
+k
+
+(x) is the set of states reachable from x in (exactly) k steps. The following sets will also be
+
+very helpful:
+
+~ R
+
+k
+
+(x) := f
+
+k;x
+
+(u) j u 2 U
+
+k
+
+; ae
+
+k;x
+
+(u) = _ae
+
+x
+
+g;
+
+which represents the set of states that are maximal-rank reachable from x in (exactly) k steps, and
+
+_ R
+
+k
+
+(x) := f
+
+k;x
+
+(u) j u 2 U
+
+k
+
+; ae
+
+k;x
+
+(u) = ng
+
+which represents the set of states that are nonsingularly reachable from x in k steps. We let:
+
+R(x) :=
+
+[
+
+k*0
+
+R
+
+k
+
+(x)
+
+3Pass1: Page 4
+
+
+and analogously for
+
+~ R(x) and
+
+_ R(x). R(x) is the set of states reachable from x. The set
+
+~ R(x)
+
+is always nonempty, but the set
+
+_ R(x) may be empty.
+
+Recall that \Sigma  is said to be forward accessible from x if and only if int R(x) 6= ;. It can be proved that, for analytic systems \Sigma  ,
+
+U connected ) 8 x 2 X ;
+
+~ R(x) is dense in R(x): (4)
+
+For the proof of (4) we refer to Proposition 3.3 of [1]; the basic idea is to combine the analyticity assumption, which guarantees that the set of control sequences giving maximal rank is open and dense, with the assumption that U ` clos int U , which gives that for each u 2 U there exists a sequence u
+
+n
+
+2 int U converging to u.
+
+We also define the controllable set to x, and the orbit from x, as follows. Let:
+
+8 !
+
+:
+
+C
+
+0
+
+(x) := fxg
+
+C
+
+k
+
+(x) := f z j z
+
+;
+
+k
+
+x g; k = 1; 2; : : : ;
+
+then the controllable set to x is:
+
+C(x) :=
+
+[
+
+k*0
+
+C
+
+k
+
+(x):
+
+Let:
+
+8
+
+!
+
+:
+
+O
+
+0
+
+(x) := fxg
+
+O
+
+k
+
+(x) := f z j 9z
+
+1
+
+2 O
+
+k\Gamma 1
+
+and (z
+
+1
+
+;
+
+1
+
+z or z
+
+;
+
+1
+
+z
+
+1
+
+) g; k = 1; 2; : : : ;
+
+then the orbit from x is:
+
+O(x) :=
+
+[
+
+k*0
+
+O
+
+k
+
+(x):
+
+The system \Sigma  is said to be backward accessible from x if and only if int C(x) 6= ;; \Sigma  is said to be transitive from x if and only if int O(x) 6= ;.
+
+The following Lemma states a well known criterion for forward accessibility (for the proof see Proposition 3.2 in [1]).
+
+Lemma 2.2 Let \Sigma  be a smooth invertible system. For each x 2 X , the following are equivalent:
+
+1. int R(x) 6= ;, 2. int
+
+_ R(x) 6= ;.
+
+There is an analogous result for the transitivity property.
+
+Lemma 2.3 Let \Sigma  be a smooth invertible system. Then, for each x 2 X , and for any positive integer k the following properties hold:
+
+4Pass1: Page 5
+
+
+1. int O
+
+k
+
+(x) 6= ; if and only if there exist a sequence of control values u = (u
+
+1
+
+; \Delta  \Delta  \Delta  ; u
+
+k
+
+), and
+
+a sequence ffl = (ffl
+
+1
+
+; \Delta  \Delta  \Delta  ; ffl
+
+k
+
+), with ffl
+
+i
+
+= \Sigma 1, such that, the following map:
+
+\Psi 
+
+ffl
+
+: U
+
+k
+
+! X : (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+) 7! f
+
+ffl
+
+k
+
+v
+
+k
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+v
+
+1
+
+(x)
+
+has full rank at u. 2. int O(x) 6= ; if and only if there exists a positive integer k such that the previous conditions
+
+are satisfied for this k.
+
+Proof. We prove 1. The sufficient part follows easily from the Implicit Function Theorem, so we need to see the converse. Notice that O
+
+k
+
+(x) is given by the union, over all the different sequences
+
+of length k of \Sigma 1's, of the images of maps of the type \Psi 
+
+ffl
+
+. Thus, arguing by contradiction, since
+
+this union is countable, the neccessary part follows by Sard's Theorem and the fact that a countable union of set of measure zero has again measure zero. The second claim follows immediately from the first, by a similar argument.
+
+3 A New Class of Vector Fields Associated to Systems Some Lie algebras of vector fields L; L
+
+\Gamma 
+
+; L
+
++
+
+; \Gamma ; \Gamma 
+
+\Gamma 
+
+; \Gamma 
+
++
+
+were introduced in [4] (see also [2]
+
+and [3] for previous work) to study the controllability properties of invertible systems. Here, using the same vector fields, we will define slightly different Lie algebras, which allow us to derive stronger results.
+
+Let \Sigma  be a given smooth invertible system. First, for each u 2 U , and each i = 1; : : : ; m, we let X
+
++
+
+u;i
+
+, and X
+
+\Gamma 
+
+u;i
+
+be the following vector fields:
+
+X
+
++
+
+u;i
+
+(x) =
+
+@
+
+@v
+
+i
+
+fi fi fi fi
+
+v=0
+
+f
+
+\Gamma 1
+
+u
+
+ffi f
+
+u+v
+
+(x); (5)
+
+X
+
+\Gamma 
+
+u;i
+
+(x) =
+
+@
+
+@v
+
+i
+
+fi fi fi fi
+
+v=0
+
+f
+
+u
+
+ffi f
+
+\Gamma 1
+
+u+v
+
+(x): (6)
+
+Given a vector field Y and a control value u 2 U , we can define another vector field from Y by applying the change of coordinates given by the diffeomorphism f
+
+u
+
+,
+
+(Ad
+
+u
+
+Y )(x) = (df
+
+u
+
+(x))
+
+\Gamma 1
+
+Y (f
+
+u
+
+(x)): (7)
+
+Here df
+
+u
+
+stands for the differential of f
+
+u
+
+with respect to x. This is sometimes called the "pull-
+
+back of Y under the diffeomorphism f
+
+u
+
+". In the same way, but now using the diffeomorphism
+
+f
+
+\Gamma 1
+
+u
+
+, we also define Ad
+
+\Gamma 1
+
+u
+
+. We let:
+
+Ad
+
+ffl
+
+k
+
+\Delta \Delta \Delta ffl
+
+1
+
+u
+
+k
+
+\Delta \Delta \Delta u
+
+1
+
+Y = Ad
+
+ffl
+
+1
+
+u
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+ffl
+
+k
+
+u
+
+k
+
+Y: (8)
+
+5Pass1: Page 6
+
+
+We define now:
+
+\Gamma 
+
++
+
+= fAd
+
+u
+
+k
+
+\Delta \Delta \Delta u
+
+1
+
+X
+
++
+
+u
+
+0
+
+;i
+
+jk * 0; 1 ^ i ^ m; u
+
+0
+
+; : : : ; u
+
+k
+
+2 U g;
+
+\Gamma 
+
+\Gamma 
+
+= fAd
+
+\Gamma 1\Delta \Delta \Delta \Gamma 1
+
+u
+
+k
+
+\Delta \Delta \Delta u
+
+1
+
+X
+
+\Gamma 
+
+u
+
+0
+
+;i
+
+jk * 0; 1 ^ i ^ m; u
+
+0
+
+; : : : ; u
+
+k
+
+2 U g;
+
+\Gamma  = fAd
+
+ffl
+
+k
+
+\Delta \Delta \Delta ffl
+
+1
+
+u
+
+k
+
+\Delta \Delta \Delta u
+
+1
+
+X
+
+ffl
+
+0
+
+u
+
+0
+
+;i
+
+jk * 0; 1 ^ i ^ m; u
+
+0
+
+; : : : ; u
+
+k
+
+2 U; ffl
+
+0
+
+; : : : ; ffl
+
+k
+
+= \Sigma 1g:
+
+(9)
+
+These previous definitions are the same as those given in [4].
+
+For any finite sequence of controls _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+), we will denote by j_j the length k of
+
+this sequence. Now, for any such _ we define the following Lie algebras:
+
+L
+
++
+
+_
+
+= Lie fX
+
++
+
+u;i
+
+; Ad
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+l
+
+X
+
++
+
+u;i
+
+j 1 ^ l ^ k; 1 ^ i ^ m; u 2 U g;
+
+L
+
+\Gamma 
+
+_
+
+= Lie fX
+
++
+
+u;i
+
+; Ad
+
+\Gamma 1
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+\Gamma 1
+
+v
+
+l
+
+X
+
++
+
+u;i
+
+j 1 ^ l ^ k; 1 ^ i ^ m; u 2 U g;
+
+L
+
+_
+
+= Lie fX
+
++
+
+u;i
+
+; Ad
+
+ff
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+ff
+
+v
+
+l
+
+X
+
++
+
+u;i
+
+j 1 ^ l ^ k; 1 ^ i ^ m; ff = \Sigma 1; u 2 U g:
+
+(10)
+
+Notice that, if _ = (0; \Delta  \Delta  \Delta  ; 0), then the previous Lie algebras coincide respectively with the Lie algebras L
+
++
+
+k
+
+; L
+
+\Gamma 
+
+k
+
+, and L
+
+k
+
+defined in [4].
+
+The way in which these algebras of vector fields will be used is as follows. We will show that the integral manifolds that they give rise to help in describing the geometry of the sets R(x), C(x), and O(x), in the sense that the corresponding motions (forward and/or backwards) of our system lie in these orbits (see Propositions 4.4 and 4.5 given below). Moreover we will see that the notions of forward and backward accessibility, as well as transitivity, are related to the full dimensionality of the tangent subspaces at each point, corresponding to these families of vector fields (see Proposition 6.1).
+
+Along these lines, the following two results were proved in [4], Corollary 4.4 and Theorem 2 part (a) respectively. We repeat their statements here for the convenience of the reader.
+
+Proposition 3.1 Let \Sigma  be a smooth invertible system. If y 2
+
+~ R(x), and dim Lie \Gamma 
+
++
+
+(y) = n,
+
+then \Sigma  is forward accessible from x.
+
+Proposition 3.2 Let \Sigma  be a smooth invertible system, then the following conditions are equiv- alent:
+
+1. \Sigma  is forward accessible from all x 2 X , 2. dim \Gamma 
+
++
+
+(x) = n for all x 2 X ,
+
+3. dim Lie \Gamma 
+
++
+
+(x) = n for all x 2 X .
+
+6Pass1: Page 7
+
+
+4 Some General Properties Definition 4.1 A map h : X ! X is balanced (with respect to the given system \Sigma  ) if it can be written as f
+
+ffl
+
+1
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+k
+
+u
+
+k
+
+for some u
+
+i
+
+2 U , ffl
+
+i
+
+= \Sigma 1 and with
+
+P
+
+k
+
+i=1
+
+ffl
+
+i
+
+= 0.
+
+Lemma 4.2 Assume that y = f
+
+ffl
+
+1
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+k
+
+u
+
+k
+
+(x), with u
+
+i
+
+2 U , ffl
+
+i
+
+= \Sigma 1 for each i = 1; \Delta  \Delta  \Delta  ; k.
+
+Consider the partial sums:
+
+l
+
+i
+
+=
+
+i X
+
+j=1
+
+ffl
+
+j
+
+for i = 1; \Delta  \Delta  \Delta  ; k:
+
+Assume that l
+
+k
+
+= 0, and let l = max f jl
+
+i
+
+j j i = 1; \Delta  \Delta  \Delta  ; kg. Pick any sequence v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+l
+
+of
+
+elements in U . Then one can write:
+
+y = g
+
+k
+
+ffi \Delta  \Delta  \Delta  ffig
+
+1
+
+(x); (11)
+
+where each g
+
+i
+
+is a balanced map of the form:
+
+g
+
+i
+
+= h
+
+i
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffik
+
+i
+
+;
+
+and, for each i = 1; \Delta  \Delta  \Delta  ; k, the maps h
+
+i
+
+and k
+
+i
+
+have the form:
+
+8 ? ? ? !
+
+? ? ? :
+
+h
+
+i
+
+= f
+
+ff(i)
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ff(i)
+
+v
+
+_(i)
+
+k
+
+i
+
+= f
+
+\Gamma ff(i)
+
+v
+
+*(i)
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma ff(i)
+
+v
+
+1
+
+and ff(i) = \Sigma 1, j_(i) \Gamma  *(i)j = 1.
+
+Proof. Let ff(i) = sgn (l
+
+i
+
+) 2 f0; 1; \Gamma 1g and write also l
+
+0
+
+= 0. For i = 1; \Delta  \Delta  \Delta  ; k, define:
+
+g
+
+i
+
+= h
+
+i
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffik
+
+i
+
+as follows:
+
+8
+
+? ? ? !
+
+? ? ? :
+
+k
+
+i
+
+= f
+
+ff
+
+i\Gamma 1
+
+v
+
+jl
+
+i\Gamma 1
+
+j
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ff
+
+i\Gamma 1
+
+v
+
+1
+
+h
+
+i
+
+= f
+
+\Gamma ff
+
+i\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma ff
+
+i\Gamma 1
+
+v
+
+jl
+
+i
+
+j
+
+:
+
+The g
+
+i
+
+are balanced maps, since l
+
+i
+
+= ffl
+
+i
+
++ l
+
+i\Gamma 1
+
+. Moreover, by definition, it holds that:
+
+k
+
+i
+
+= (h
+
+i\Gamma 1
+
+)
+
+\Gamma 1
+
+i = 2; \Delta  \Delta  \Delta  ; k:
+
+We now prove, by induction on i, that:
+
+g
+
+i
+
+ffi \Delta  \Delta  \Delta  ffig
+
+1
+
+= h
+
+i
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+u
+
+1
+
+: (12)
+
+7Pass1: Page 8
+
+
+If i = 1, then l
+
+1
+
+= ffl
+
+1
+
+and l
+
+0
+
+= 0, so (12) is obvious. The induction step for i ? 1 is provided
+
+by:
+
+g
+
+i
+
+ffi \Delta  \Delta  \Delta  ffig
+
+1
+
+= (h
+
+i
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffik
+
+i
+
+)(h
+
+i\Gamma 1
+
+ffif
+
+ffl
+
+i\Gamma 1
+
+u
+
+i\Gamma 1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+u
+
+1
+
+) = h
+
+i
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+u
+
+1
+
+:
+
+Now, since l
+
+k
+
+= 0, h
+
+k
+
+= identity, so (12) gives the desired conclusion.
+
+If \Delta  is a set of smooth vector fields and x 2 X , we denote by Orb
+
+\Delta 
+
+(x) the orbit of \Delta 
+
+passing through x. Recall that, by definition, y 2 Orb
+
+\Delta 
+
+(x) if and only if there exists an
+
+absolute continuous curve fl : [a; b] ! X such that fl(a) = x, fl(b) = y, and there exist t
+
+i
+
+with
+
+a = t
+
+0
+
+! t
+
+1
+
+! \Delta  \Delta  \Delta  ! t
+
+r
+
+= b, and vector fields X
+
+i
+
+2 \Delta  such that fl restricted to [t
+
+i
+
+; t
+
+i+1
+
+] is an
+
+integral curve of X
+
+i
+
+or \Gamma X
+
+i
+
+.
+
+The following fact about continuos-time systems is well known, we repeat it here since it is needed in the proof of the next Proposition. Let \Sigma  be a continuous-time system described by the following set of controlled differential equations:
+
+.x(t) = f (x(t); u(t)): (13) (For a precise definition of continuous-time systems see for instance [7], [8], or [6].) Given two states x
+
+1
+
+; x
+
+2
+
+, we say that x
+
+1
+
+can be controlled to x
+
+2
+
+if there exist some interval [0; T ], T * 0,
+
+and an essentially bounded measurable map u(\Delta ) defined on [0; T ], such that the solution of the differential equation (13) with this u(\Delta ), and with x(0) = x
+
+1
+
+, is defined on all the interval [0; T ],
+
+and x(T ) = x
+
+2
+
+. We say that x
+
+2
+
+is weakly reachable from x
+
+1
+
+if there exists a finite sequence of
+
+states z
+
+1
+
+= x
+
+1
+
+; z
+
+2
+
+; : : : ; z
+
+k
+
+= x
+
+2
+
+such that for each l = 2; : : : ; k either z
+
+l\Gamma 1
+
+can be controlled to
+
+z
+
+l
+
+or z
+
+l
+
+can be controlled to z
+
+l\Gamma 1
+
+. Let:
+
+\Delta  = ff (\Delta ; u)g
+
+u2U
+
+:
+
+Given these notations, the following fact holds (for the proof see Proposition 2.16 in [7]): Lemma 4.3 x
+
+1
+
+is weakly accessible from x
+
+2
+
+, x
+
+1
+
+2 Orb
+
+\Delta 
+
+(x
+
+2
+
+):
+
+The following result generalizes [4] Proposition 5.2, which deals with the very special case in which _ = 0; \Delta  \Delta  \Delta  ; 0
+
+-- -z ""
+
+k
+
+.
+
+Proposition 4.4 Let k be any nonnegative integer. Assume that \Sigma  is a smooth system with connected U. Then:
+
+1. R
+
+k
+
+(x) ` Orb
+
+L
+
+\Gamma 
+
+_
+
+(y) for all y 2 R
+
+k
+
+(x) and for all _ with j_j * k,
+
+2. C
+
+k
+
+(x) ` Orb
+
+L
+
++
+
+_
+
+(y) for all y 2 C
+
+k
+
+(x) and for all _ with j_j * k \Gamma  1.
+
+8Pass1: Page 9
+
+
+Proof. Note that in the above statements, it is always sufficient to prove the inclusion for any particular y in R
+
+k
+
+(x) or, for the second part, in C
+
+k
+
+(x), since Orb
+
+\Delta 
+
+(z) = Orb
+
+\Delta 
+
+(y) if
+
+z 2 Orb
+
+\Delta 
+
+(y), for any set of vector fields \Delta .
+
+We prove now the first part. Let z 2 R
+
+k
+
+(x). Then:
+
+z = f
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+u
+
+k
+
+(x);
+
+for some (u
+
+1
+
+; \Delta  \Delta  \Delta  ; u
+
+k
+
+) 2 U
+
+k
+
+. Now take any _ with j_j * k, _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+; \Delta  \Delta  \Delta  ; v
+
+j_j
+
+), and consider
+
+the state:
+
+y = f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+(x) 2 R
+
+k
+
+(x):
+
+We will prove that z is in Orb
+
+L
+
+\Gamma 
+
+_
+
+(y). We have:
+
+z = f
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+u
+
+k
+
+ffif
+
+\Gamma 1
+
+v
+
+k
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+(y):
+
+We can write the previous equation as:
+
+z = g
+
+1
+
+ffi \Delta  \Delta  \Delta  ffig
+
+k
+
+(y);
+
+where:
+
+8
+
+? ? ? !
+
+? ? ? :
+
+g
+
+1
+
+= f
+
+u
+
+1
+
+ffif
+
+\Gamma 1
+
+v
+
+1
+
+g
+
+i
+
+= f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+i\Gamma 1
+
+ffif
+
+u
+
+i
+
+ffif
+
+\Gamma 1
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+for i = 2; : : : ; k:
+
+Letting z
+
+0
+
+= z, and, for i = 1; \Delta  \Delta  \Delta  ; k, z
+
+i
+
+= g
+
+\Gamma 1
+
+i
+
+(z
+
+i\Gamma 1
+
+), we have z
+
+k
+
+= y (see Fig. 1).
+
+x u
+
+u u
+
+u v
+
+v
+
+v
+
+v
+
+v v
+
+v
+
+v v
+
+v
+
+4
+
+3
+
+2 1
+
+1 2
+
+1
+
+3 2
+
+1
+
+4 3
+
+2
+
+1
+
+y=z
+
+z
+
+z
+
+z
+
+z=z
+
+4
+
+3
+
+2
+
+1
+
+0
+
+g
+
+g
+
+g g
+
+1 2
+
+3 4
+
+Figure 1: case with k = 4 We prove that z
+
+i
+
+2 Orb
+
+L
+
+\Gamma 
+
+_
+
+(z
+
+i\Gamma 1
+
+), from which the desired conclusion follows by transitivity.
+
+9Pass1: Page 10
+
+
+Given the assumptions on the set U , for i = 1; : : : ; k, there exist smooth curves ff
+
+i
+
+: [0; T ] !
+
+U , such that ff
+
+i
+
+(0) = v
+
+i
+
+, ff
+
+i
+
+(T ) = u
+
+i
+
+, and ff
+
+i
+
+(t) 2 int U . Let
+
+fl
+
+i
+
+(t) = f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+i
+
+ffif
+
+\Gamma 1
+
+ff
+
+i
+
+(t)
+
+ffif
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+(z
+
+i\Gamma 1
+
+); (14)
+
+for i = 1; \Delta  \Delta  \Delta  ; k, and t 2 [0; T ].
+
+Note that fl
+
+i
+
+(0) = z
+
+i\Gamma 1
+
+; fl
+
+i
+
+(T ) = z
+
+i
+
+, and, for any fixed t,
+
+fl
+
+i
+
+(t + ffl) = f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+i
+
+ffif
+
+\Gamma 1
+
+ff
+
+i
+
+(t+ffl)
+
+(q
+
+i
+
+);
+
+where
+
+q
+
+i
+
+= f
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+(z
+
+i\Gamma 1
+
+) = f
+
+ff
+
+i
+
+(t)
+
+ffif
+
+\Gamma 1
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+(fl
+
+i
+
+(t)):
+
+Therefore:
+
+@ @t
+
+fl
+
+i
+
+(t) =
+
+@
+
+@ffl
+
+j
+
+ffl=0
+
+f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+i
+
+ffif
+
+\Gamma 1
+
+ff
+
+i
+
+(t+ffl)
+
+ffif
+
+ff(t)
+
+ffif
+
+\Gamma 1
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+1
+
+(fl
+
+i
+
+(t))
+
+= \Gamma 
+
+P
+
+m
+
+j=1
+
+ff
+
+0
+
+ij
+
+(t)Ad
+
+\Gamma 1
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+\Gamma 1
+
+v
+
+i
+
+X
+
++
+
+ff
+
+i
+
+(t);j
+
+(fl
+
+i
+
+(t));
+
+(15)
+
+where ff
+
+ij
+
+is the j\Gamma th component of the curve ff
+
+i
+
+. For each i = 1; : : : ; k, we may interpret
+
+equation (15) as the equation of a continuous-time system with state trajectory fl
+
+i
+
+(t) and
+
+control (ff
+
+i
+
+(t); ff
+
+0
+
+i1
+
+(t); : : : ; ff
+
+0
+
+im
+
+(t), so by Lemma 4.3 it follows that z
+
+i
+
+2 Orb
+
+L
+
+\Gamma 
+
+_
+
+(z
+
+i\Gamma 1
+
+), as desired.
+
+Now we prove the second part. The proof follows the same lines as the proof of the first part. Let z 2 C
+
+k
+
+(x). Then:
+
+z = f
+
+\Gamma 1
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+u
+
+k
+
+(x);
+
+for some (u
+
+1
+
+; \Delta  \Delta  \Delta  ; u
+
+k
+
+) 2 U
+
+k
+
+. Now take any _ with j_j * k \Gamma  1, _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k\Gamma 1
+
+; v
+
+k
+
+; \Delta  \Delta  \Delta  ; v
+
+l
+
+). (If
+
+j_j = k \Gamma  1, we choose v
+
+k
+
+arbitrarily; it will be clear later that we need v
+
+k
+
+only for technical
+
+reasons.) Let y 2 C
+
+k
+
+(x) be the following state:
+
+y = f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+k
+
+(x):
+
+We will prove that z is in Orb
+
+L
+
++
+
+_
+
+(y). We have:
+
+z = f
+
+\Gamma 1
+
+u
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+u
+
+k
+
+ffif
+
+v
+
+k
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+(y):
+
+We can write the previous equation as:
+
+z = g
+
+1
+
+ffi \Delta  \Delta  \Delta  ffig
+
+k
+
+(y);
+
+where:
+
+8
+
+? ? ? !
+
+? ? ? :
+
+g
+
+1
+
+= f
+
+\Gamma 1
+
+u
+
+1
+
+ffif
+
+v
+
+1
+
+g
+
+i
+
+= f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffif
+
+\Gamma 1
+
+u
+
+i
+
+ffif
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+for i = 2; : : : ; k:
+
+10Pass1: Page 11
+
+
+Letting z
+
+k
+
+= y, and, for i = 1; \Delta  \Delta  \Delta  ; k, z
+
+k\Gamma i
+
+= g
+
+k\Gamma i+1
+
+(z
+
+k\Gamma i+1
+
+), we have (see Fig. 2):
+
+8 ? ? ? !
+
+? ? ? :
+
+z
+
+0
+
+= z
+
+z
+
+i\Gamma 1
+
+= f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffif
+
+\Gamma 1
+
+u
+
+i
+
+ffif
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+(z
+
+i
+
+):
+
+x u
+
+u u
+
+u v
+
+v
+
+v
+
+v
+
+v v
+
+v
+
+v v
+
+v
+
+4
+
+3
+
+2 1
+
+1 2
+
+1
+
+3 2
+
+1
+
+4 3
+
+2
+
+1
+
+y=z
+
+z
+
+z
+
+z
+
+z=z
+
+4
+
+3
+
+2
+
+1
+
+0
+
+g
+
+g
+
+g g
+
+1 2
+
+3 4
+
+Figure 2: case with k = 4 To prove our statement, it is now sufficient to show that, for i = 1; \Delta  \Delta  \Delta  ; k, z
+
+i\Gamma 1
+
+2 Orb
+
+L
+
++
+
+_
+
+(z
+
+i
+
+).
+
+As before, for each i = 1; : : : ; k, there exists a smooth curve ff
+
+i
+
+: [0; T ] ! U such that
+
+ff
+
+i
+
+(0) = v
+
+i
+
+, ff
+
+i
+
+(T ) = u
+
+i
+
+, and ff
+
+i
+
+(t) 2 int U . Let
+
+fl
+
+i
+
+(t) = f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffif
+
+\Gamma 1
+
+ff
+
+i
+
+(t)
+
+ffif
+
+v
+
+i
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+(z
+
+i
+
+); (16)
+
+for i = 1; \Delta  \Delta  \Delta  ; k, and t 2 [0; T ].
+
+Arguing as in the first case, we conclude:
+
+@ @t
+
+fl
+
+i
+
+(t) =
+
+@
+
+@ffl
+
+j
+
+ffl=0
+
+f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+i\Gamma 1
+
+ffif
+
+\Gamma 1
+
+ff
+
+i
+
+(t+ffl)
+
+ffif
+
+ff
+
+i
+
+(t)
+
+ffif
+
+v
+
+i\Gamma 1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+(fl
+
+i
+
+(t))
+
+= \Gamma 
+
+P
+
+m
+
+j=1
+
+ff
+
+0
+
+ij
+
+(t)Ad
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+i\Gamma 1
+
+X
+
++
+
+ff
+
+i
+
+(t);j
+
+(fl
+
+i
+
+(t)):
+
+(17)
+
+We now give a similar result for the zero-time orbit of a point x. We introduce the following notation:
+
+O
+
+0
+
+k
+
+(x) = fy = f
+
+ffl
+
+s
+
+u
+
+s
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+u
+
+1
+
+(x) j s * 0;
+
+s X
+
+i=1
+
+ffl
+
+i
+
+= 0; u
+
+j
+
+2 U; and j
+
+j X
+
+i=1
+
+ffl
+
+i
+
+j ^ k 8 j = 1; \Delta  \Delta  \Delta  ; sg;
+
+(18) with k 2 ZZ, k * 0.
+
+11Pass1: Page 12
+
+
+Proposition 4.5 Let k be any nonnegative integer, and assume that \Sigma  is a smooth invertible system with connected U. Then, for all x 2 X , all y 2 O
+
+0
+
+k
+
+(x), and all sequences of control values
+
+_ with j_j * k, we have:
+
+O
+
+0
+
+k
+
+(x) ` Orb
+
+L
+
+_
+
+(y):
+
+Proof. Notice first that x 2 O
+
+0
+
+k
+
+(x), by using the empty sequence. We will prove that for each
+
+x,
+
+O
+
+0
+
+k
+
+(x) ` Orb
+
+L
+
+_
+
+(x): (19)
+
+The general statement follows from this, since y 2 O
+
+0
+
+k
+
+(x) ` Orb
+
+L
+
+_
+
+(x) implies Orb
+
+L
+
+_
+
+(x) =
+
+Orb
+
+L
+
+_
+
+(y).
+
+Let y 2 O
+
+0
+
+k
+
+(x). Then:
+
+y = f
+
+ffl
+
+s
+
+u
+
+s
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ffl
+
+1
+
+u
+
+1
+
+(x)
+
+with
+
+P
+
+s
+
+i=1
+
+ffl
+
+i
+
+= 0 and k * j
+
+P
+
+j
+
+i=1
+
+ffl
+
+i
+
+j for any j = 1; \Delta  \Delta  \Delta  ; s. Now take any _ with j_j * k,
+
+_ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+; \Delta  \Delta  \Delta  ; v
+
+j_j
+
+). We can now apply Lemma 4.2, with l = k, and we obtain:
+
+y = g
+
+s
+
+ffi \Delta  \Delta  \Delta  ffig
+
+1
+
+(x):
+
+Here, each g
+
+i
+
+is a balanced map of the form:
+
+g
+
+i
+
+= f
+
+ff(i)
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ff(i)
+
+v
+
+_(i)
+
+ffif
+
+ffl
+
+i
+
+u
+
+i
+
+ffif
+
+\Gamma ff(i)
+
+v
+
+*(i)
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma ff(i)
+
+v
+
+1
+
+with ff(i) = \Sigma 1, and j_(i) \Gamma  *(i)j = 1. Now let:
+
+8 !
+
+:
+
+z
+
+0
+
+= x
+
+z
+
+i+1
+
+= g
+
+i+1
+
+(z
+
+i
+
+) for i = 0; : : : ; s \Gamma  1;
+
+thus z
+
+s
+
+= y (see Fig. 3).
+
+x=z
+
+z
+
+z
+
+z
+
+z
+
+z
+
+u u
+
+u
+
+u
+
+u u v
+
+v
+
+v
+
+v
+
+v
+
+y=z
+
+1
+
+1
+
+1 1
+
+1 1
+
+2
+
+2 3
+
+4
+
+5
+
+6
+
+0
+
+2
+
+3
+
+4
+
+5
+
+6
+
+Figure 3: case with s = 6,k = 3 Let ae(i) = maxf_(i); *(i)g. Given the assumptions on the set U , for each i = 1; : : : ; s, there exists a smooth curve fi
+
+i
+
+: [0; T ] ! U , such that fi
+
+i
+
+(0) = v
+
+ae(i)
+
+, fi
+
+i
+
+(T ) = u
+
+i
+
+, and fi
+
+i
+
+(t) 2 int U .
+
+Let:
+
+fl
+
+i
+
+(t) = f
+
+ff(i)
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ff(i)
+
+v
+
+_(i)
+
+ffif
+
+ffl
+
+i
+
+fi
+
+i
+
+(t)
+
+ffif
+
+\Gamma ff(i)
+
+v
+
+*(i)
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma ff(i)
+
+v
+
+1
+
+(z
+
+i\Gamma 1
+
+) (20)
+
+12Pass1: Page 13
+
+
+for i = 1; \Delta  \Delta  \Delta  ; s, and t 2 [0; T ]. Thus it holds that fl
+
+i
+
+(0) = z
+
+i\Gamma 1
+
+and fl
+
+i
+
+(T ) = z
+
+i
+
+. To prove (19),
+
+it is enough to establish that z
+
+i\Gamma 1
+
+2 Orb
+
+L
+
+_
+
+(z
+
+i
+
+).
+
+If ff(i) = 1 and ae(i) = _(i), then necessarily ffl
+
+i
+
+= \Gamma 1. Thus equation (20) is of the same
+
+type as equation (14), and, as in (15), we may conclude that:
+
+@ @t
+
+fl
+
+i
+
+(t) = \Gamma 
+
+m X
+
+j=1
+
+fi
+
+0
+
+ij
+
+(t)Ad
+
+\Gamma 1
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+\Gamma 1
+
+v
+
+_(i)
+
+X
+
++
+
+fi
+
+i
+
+(t);j
+
+(fl
+
+i
+
+(t));
+
+where fi
+
+ij
+
+denotes the j\Gamma th component of the curve fi
+
+i
+
+. If ff(i) = 1 and ae(i) = *(i), then
+
+necessarily ffl
+
+i
+
+= 1. In this case, instead of considering the curve fl
+
+i
+
+(t), we consider the following
+
+curve:
+
+fl
+
+\Gamma 1
+
+i
+
+(t) = f
+
+ff(i)
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+ff(i)
+
+v
+
+*(i)
+
+ffif
+
+\Gamma ffl
+
+i
+
+fi
+
+i
+
+(t)
+
+ffif
+
+\Gamma ff(i)
+
+v
+
+_(i)
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma ff(i)
+
+v
+
+1
+
+(z
+
+i
+
+); (21)
+
+which joins z
+
+i
+
+to z
+
+i\Gamma 1
+
+. Since equation (21) is again of the same type as equation (14), now we
+
+can conclude as before.
+
+If ff(i) = \Gamma 1 and ae(i) = *(i), then necesarily ffl
+
+i
+
+= \Gamma 1. Thus equation (20) is of the same
+
+type as equation (16), and, as in (17), we may conclude that:
+
+@ @t
+
+fl
+
+i
+
+(t) = \Gamma 
+
+m X
+
+j=1
+
+fi
+
+0
+
+ij
+
+(t)Ad
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+_(i)
+
+X
+
++
+
+fi
+
+i
+
+(t);j
+
+(fl
+
+i
+
+(t)):
+
+Finally, if ff(i) = \Gamma 1 and ae(i) = _(i), then necessarily ffl
+
+i
+
+= 1. So we can argue as before by
+
+considering the curve fl
+
+\Gamma 1
+
+i
+
+(t) instead of fl
+
+i
+
+.
+
+5 New Results on Accessibility In this section we present some new results for systems with connected control space U. Proposition 5.1 Let \Sigma  be any smooth invertible system. If y 2 R
+
+k
+
+(x), and _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+)
+
+are such that:
+
+y = f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+(x);
+
+then
+
+dim Lie \Gamma 
+
++
+
+(x) * dim L
+
+_
+
+(y): (22)
+
+Proof. Assume that dim L
+
+_
+
+(y) = r, and let Y
+
+1
+
+; \Delta  \Delta  \Delta  ; Y
+
+r
+
+be vector fields in L
+
+_
+
+so that
+
+f Y
+
+1
+
+(y); : : : ; Y
+
+r
+
+(y) g is a basis of L
+
+_
+
+(y). Without loss of generality, we may assume that each
+
+Y
+
+i
+
+is a vector field involving Lie brackets of a finite numbers of vector fields of the type:
+
+X
+
++
+
+u;j
+
+1
+
+; or Ad
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+l
+
+X
+
++
+
+u;j
+
+2
+
+; or Ad
+
+\Gamma 1
+
+v
+
+1
+
+\Delta  \Delta  \Delta  Ad
+
+\Gamma 1
+
+v
+
+l
+
+X
+
++
+
+u;j
+
+3
+
+;
+
+13Pass1: Page 14
+
+
+with l ^ k, and j
+
+i
+
+2 f1; : : : ; mg.
+
+Consider, for i = 1; \Delta  \Delta  \Delta  ; r, the following vector fields:
+
+Z
+
+i
+
+= Ad
+
+v
+
+k
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+1
+
+Y
+
+i
+
+:
+
+These are linearly independent at x; in fact:
+
+Ad
+
+v
+
+k
+
+\Delta  \Delta  \Delta  Ad
+
+v
+
+1
+
+Y
+
+i
+
+(x) = d(f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+)
+
+\Gamma 1
+
+(x)Y
+
+i
+
+(f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+(x)) = d(f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+)
+
+\Gamma 1
+
+(x)Y
+
+i
+
+(y):
+
+Moreover, it follows recursively from the fact that, for any two vector fields X
+
+1
+
+and X
+
+2
+
+,
+
+Ad
+
+v
+
+[X
+
+1
+
+; X
+
+2
+
+] = [Ad
+
+v
+
+X
+
+1
+
+; Ad
+
+v
+
+X
+
+2
+
+]; for any v 2 U;
+
+that Z
+
+i
+
+2 Lie \Gamma 
+
++
+
+for each i = 1; \Delta  \Delta  \Delta  ; r. Thus (22) holds.
+
+Definition 5.2 For any nonnegative integer k, and for x 2 X we say that:
+
+1. x is k\Gamma forward accessible if int R
+
+k
+
+(x) 6= ;,
+
+2. x is k\Gamma backward accessible if int C
+
+k
+
+(x) 6= ;,
+
+3. x is k\Gamma transitive if O
+
+0
+
+k
+
+(x) is open.
+
+Recall that if _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+) is any finite sequence of controls, then we will denote by j_j the
+
+length k of this sequence.
+
+Proposition 5.3 Let \Sigma  be a smooth invertible system, with connected U. Then:
+
+1. if x is k\Gamma forward accessible, then for all _ with j_j * k \Gamma  1, Orb
+
+L
+
++
+
+_
+
+(x) is open;
+
+2. if x is k\Gamma backward accessible, then for all _ with j_j * k, Orb
+
+L
+
+\Gamma 
+
+_
+
+(x) is open;
+
+3. if x is k\Gamma transitive, then for all _ with j_j * k, Orb
+
+L
+
+_
+
+(x) is open.
+
+Proof.
+
+(1) Since x is k\Gamma forward accessible, there exists an open set V contained in R
+
+k
+
+(x). Let
+
+_ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k\Gamma 1
+
+; v
+
+k
+
+; \Delta  \Delta  \Delta  ; v
+
+l
+
+), where if j_j = k \Gamma  1, we choose v
+
+k
+
+arbitrarily, since it will be clear
+
+later that v
+
+k
+
+is needed only for technical reasons. Let
+
+W = f
+
+\Gamma 1
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+\Gamma 1
+
+v
+
+k
+
+(V ):
+
+We will prove that W ae Orb
+
+L
+
++
+
+_
+
+(x), from which (1) follows.
+
+14Pass1: Page 15
+
+
+Pick any y 2 W ; then there exists z 2 V such that y 2 C
+
+k
+
+(z). Moreover, since z 2 R
+
+k
+
+(x),
+
+we also have x 2 C
+
+k
+
+(z); thus, applying the second result in Proposition 4.4, we can conclude:
+
+y 2 Orb
+
+L
+
++
+
+_
+
+(x)
+
+as desired.
+
+(2) We proceed as in (1). Thus if _ = (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+; \Delta  \Delta  \Delta  ; v
+
+j_j
+
+), we let V; W be two open sets
+
+chosen so that:
+
+V ae C
+
+k
+
+(x);
+
+W = f
+
+v
+
+1
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+k
+
+(V );
+
+and we will prove that W ae Orb
+
+L
+
+\Gamma 
+
+_
+
+(x).
+
+Pick any y 2 W , then y 2 R
+
+k
+
+(z) for some z 2 V . Moreover, we also have x 2 R
+
+k
+
+(z); thus,
+
+applying the first result in Propositon 4.4, we can conclude:
+
+y 2 Orb
+
+L
+
+\Gamma 
+
+_
+
+(x)
+
+as desired.
+
+(3) This part is an obvious consequence of Proposition 4.5, since x 2 O
+
+0
+
+k
+
+(x) implies:
+
+O
+
+0
+
+k
+
+(x) ae Orb
+
+L
+
+_
+
+(x):
+
+Thus Orb
+
+L
+
+_
+
+(x) is open.
+
+6 Analytic Case Throughout all this section we asssume that an analytic invertible system \Sigma  , with connected control space U, is given. All the results presented here hold under these assumptions.
+
+Proposition 6.1 Denote by _ a sequence of control values.
+
+1. If x is k\Gamma forward accessible then for all _ with j_j * k \Gamma  1, dim L
+
++
+
+_
+
+(x) = n.
+
+2. If x is k\Gamma backward accessible then for all _ with j_j * k, dim L
+
+\Gamma 
+
+_
+
+(x) = n.
+
+3. If x is k\Gamma transitive then for all _ with j_j * k, dim L
+
+_
+
+(x) = n.
+
+Proof. We will prove only the first statement; the second and the third follow using the same arguments. Since \Sigma  is analytic, applying a theorem of Nagano (see [9], section 9, or [7], Theorem 5), we know that the distribution associated to L
+
++
+
+_
+
+is integrable. Moreover, if x is k\Gamma forward
+
+accessible then, by the first result in Proposition 5.3, we have that Orb
+
+L
+
++
+
+_
+
+(x) is open. Thus we
+
+can conclude that dim L
+
++
+
+_
+
+(x) = n, as desired.
+
+15Pass1: Page 16
+
+
+Proposition 6.2 If y 2 R
+
+l
+
+(x), and y is k\Gamma transitive for some k ^ l, then:
+
+dim Lie \Gamma 
+
++
+
+(x) = n:
+
+Proof. The statement is an immediate consequence of Proposition 5.1, and Proposition 6.1 part 3.
+
+We say that a system \Sigma  is bounded transitive if there exists a nonnegative integer k such that O
+
+k
+
+(x) has non-empty interior for all x 2 X . Notice that if O
+
+k
+
+(x) has non-empty interior
+
+then, clearly, O
+
+0
+
+2k
+
+(x) is open. Thus the following Corollary is a consequence of the previous
+
+Proposition and of Proposition 3.2:
+
+Corollary 6.3 If \Sigma  is bounded transitive, then \Sigma  is also forward accessible.
+
+Remark 6.4 Notice that if the state space X is compact, \Sigma  transitive implies \Sigma  bounded transitive. To see this fact we argue as follows. For each x 2 X , denote by k
+
+x
+
+any positive
+
+integer such that x is k
+
+x
+
+\Gamma transitive. Then, by continuity, there exists an open neighborhood
+
+O
+
+x
+
+of x such that if y 2 O
+
+x
+
+then y is k
+
+x
+
+\Gamma transitive. These open sets fO
+
+x
+
+g
+
+x2X
+
+cover X . Let
+
+fO
+
+x
+
+i
+
+g
+
+i=1;:::;l
+
+be a finite subcover. Then, letting k = maxfk
+
+x
+
+i
+
+g
+
+i=1;:::;l
+
+, we have that O
+
+k
+
+(x) has
+
+nonempty interior for all x 2 X ; thus \Sigma  is bounded transitive.
+
+So, in particular, the previous result implies that, if the state space X is compact, then a system \Sigma  is transitive if and only if it is forward accessible. This result was proved in a very different way before, see [1] Theorem 2.
+
+Definition 6.5 Given x 2 X , we let:
+
+!(x) = fy 2 X j 9 x
+
+n
+
+k
+
+2 R
+
+n
+
+k
+
+(x); x
+
+n
+
+k
+
+! y; n
+
+k
+
+! 1g:
+
+Note that, for control space consisting of only one element, U = fug, the previous Definition is the standard !-limit set.
+
+Proposition 6.6 If y 2 !(x) and y is transitive, then dim Lie \Gamma 
+
++
+
+(x) = n.
+
+Proof. Since y is transitive, there exists a nonnegative integer k such that O
+
+0
+
+k
+
+(y) is open. Thus
+
+there exists a neighborhood W of y, such that O
+
+0
+
+k
+
+(z) is open for all z 2 W . Since y 2 !(x),
+
+there exists ~y 2 R
+
+l
+
+(x) " W with l * k; thus, by Proposition 6.2, we conclude the desired result.
+
+Recall that if Y is a vector field on a manifold X , one says that x 2 X is a positively Poisson stable point for Y if and only if for each neighbourhood V of x and each T * 0 there exists some t ? T such that e
+
+tY
+
+(x) 2 V , where e
+
+tY
+
+(\Delta ) represents the flow of Y .
+
+16Pass1: Page 17
+
+
+Analoguosly, one can define positive Poisson stability in discrete time, for a given diffeo- morphism f : X ! X , as done in [1]. Next we define a generalization of this concept to systems.
+
+Definition 6.7 Given a system \Sigma  , the point x 2 X is said to be positively Poisson stable for \Sigma  if and only if for each neighbourhood V of x and each integer N * 0 there exist some integer k ? N , and (v
+
+1
+
+; \Delta  \Delta  \Delta  ; v
+
+k
+
+) 2 U
+
+k
+
+such that f
+
+v
+
+k
+
+ffi \Delta  \Delta  \Delta  ffif
+
+v
+
+1
+
+(x) 2 V .
+
+The following result generalizes [1] Theorem 1, which deals with the very special case of states which are positively Poisson stable for the diffeomorphism f
+
+0
+
+. The proof in this case
+
+requires the full machinary just introduced.
+
+Theorem 1 Let x 2 X be a positively Poisson stable point for \Sigma  . Then x is transitive if and only if x is forward accessible.
+
+Proof. Notice that x positively Poisson stable for \Sigma  means that x 2 !(x). Thus from Proposition 6.6, we know that if x is transitive then dim Lie \Gamma 
+
++
+
+(x) = n. So there exists a neighbourhood W
+
+of x such that dim Lie \Gamma 
+
++
+
+(y) = n for all y 2 W . Since x 2 !(x), and, since by the analyticity
+
+assumption
+
+~ R(x) is dense in R(x) (see (4), there exists some y 2 W "
+
+~ R(x). Thus we can
+
+conclude that x is forward accessible, using Proposition 3.1.
+
+The other implication being obvious, the statement is proved.
+
+Definition 6.8 Given a system \Sigma  , we say that \Sigma  is weakly asymptotically controllable to a state _x if _x 2 clos R(x) for all x 2 X .
+
+Remark 6.9 Saying that _x 2 clos R(x) is not equivalent to saying that there exists a fixed infinite sequence u
+
+i
+
+, i ? 0, such that the sequence x
+
+i
+
+= f
+
+u
+
+i
+
+;:::;u
+
+1
+
+(x) converges to _x, notion which
+
+is sometimes is called asymptotic controllability. Our notion is weaker, in fact, as it is proved in the next Lemma, it is equivalent to _x 2 !(x), which, in general, implies only that a subsequence of the x
+
+i
+
+'s converges to _x.
+
+Lemma 6.10 Assume that (_x; _u) 2 X \Theta  U is not an equilibrium pair, that is, f (_x; _u) 6= _x. Then the following properties are equivalent:
+
+1. \Sigma  is weakly asymptotically controllable to _x, 2. _x 2 !(x) for all x 2 X .
+
+17Pass1: Page 18
+
+
+Proof. Obviously (2) implies (1); thus we need only to establish the converse. Let W
+
+n
+
+be a
+
+sequence of neighborhoods of _x such that if x
+
+n
+
+2 W
+
+n
+
+then x
+
+n
+
+! _x. We may assume that
+
+W
+
+0
+
+= X . We will prove, by induction, that for any x 2 X , there exists a sequence fx
+
+n
+
+g
+
+n*0
+
+such that:
+
+x
+
+n
+
+2 R
+
+k
+
+n
+
+(x) " W
+
+n
+
+with k
+
+n
+
+* n: (23)
+
+Clearly, from (23), Property 2 follows.
+
+Pick any x 2 X . Define x
+
+0
+
+= x, and k
+
+0
+
+= 0; then x
+
+0
+
+2 R
+
+k
+
+0
+
+(x) " W
+
+0
+
+. Assume that we have
+
+already defined x
+
+0
+
+; \Delta  \Delta  \Delta  ; x
+
+n\Gamma 1
+
+. We let:
+
+~x
+
+n
+
+=
+
+8 ? ? ? !
+
+? ? ? :
+
+f (x
+
+n\Gamma 1
+
+; _u) if f (x
+
+n\Gamma 1
+
+; _u) 6= _x
+
+f (f (x
+
+n\Gamma 1
+
+; _u); _u) if f (x
+
+n\Gamma 1
+
+; _u) = _x
+
+then ~x
+
+n
+
+6= _x. By assumption there exists some x
+
+n
+
+2 R
+
+~ k
+
+n
+
+(~x
+
+n
+
+) " W
+
+n
+
+for some
+
+~ k
+
+n
+
+? 0. Thus x
+
+n
+
+2
+
+R
+
+k
+
+n
+
+(x) " W
+
+n
+
+, with k
+
+n
+
+= k
+
+n\Gamma 1
+
++ 1 +
+
+~ k
+
+n
+
+, if ~x
+
+n
+
+was defined in the first way, and k
+
+n
+
+= k
+
+n\Gamma 1
+
++ 2 +
+
+~ k
+
+n
+
+otherwise. In any case, we have k
+
+n
+
+* n since k
+
+n\Gamma 1
+
+* n \Gamma  1. Thus (23) holds.
+
+We now obtain one of our main results: Theorem 2 Let \Sigma  be an analytic invertible system. If \Sigma  is weakly asymptotically controllable to _x, and _x is transitive then \Sigma  is forward accessible from all x 2 X .
+
+Proof. Unless we are in the trivial case X = f_xg, _x transitive implies that there exists _u such that f (_x; _u) 6= _x. Thus, by Lemma 6.10, _x 2 !(x) for all x 2 X , which, using Proposition 6.6, gives dim Lie \Gamma 
+
++
+
+(x) = n for all x 2 X . So the statement follows from Proposition 3.2.
+
+Example 6.11 Let's consider the following class of systems:
+
+\Sigma  : x(t + 1) = Ax(t) + Bu
+
+1
+
+(t) + g(x(t); u
+
+2
+
+(t));
+
+with X = IR
+
+n
+
+, U = IR
+
+m
+
+1
+
+\Theta  IR
+
+m
+
+2
+
+, u
+
+i
+
+2 IR
+
+m
+
+i
+
+, and where A; B are matrices with A 2 IR
+
+n\Theta n
+
+, and
+
+B 2 IR
+
+n\Theta m
+
+1
+
+. Assume that g is an analytic function such that:
+
+g(x; 0) = 0 8 x 2 X : It is easy to see that the assumption that (A; B) is a stabilizable pair implies that \Sigma  is weakly asymptotically controllable to 0. Recall that (A; B) stabilizable is equivalent to say that there exists a matrix F 2 IR
+
+m
+
+1
+
+\Theta n
+
+such that the matrix A + BF is Hurwitz, i.e. all its eigenvalues
+
+have negative real part. So the previous Theorem applies in this case, in particular, we have the following conclusion:
+
+If A; B is a stabilizable pair and \Sigma  is transitive from 0 then
+
+\Sigma  is forward accessible from all x 2 X .
+
+18Pass1: Page 19
+
+
+References [1] Albertini, F., and E.D. Sontag, "Discrete-time transitivity and accessibility: analytic sys-
+
+tems," in SIAM J. Control 31(1993): to appear.
+
+[2] Fliess, M. and D. Normand-Cyrot, "A group-theoretic approach to discrete-time nonlinear
+
+controllability," Proc. IEEE Conf. Dec. Control, San Diego, Dec. 1981.
+
+[3] Jakubczyk, B., and D. Normand-Cyrot, "Orbites de pseudo groupes de diffeophismes et
+
+commandabilit'e des syst`emes non lin'eaires en temps discret," C.R. Acad. Sciences de Paris 298-I(1984): 257-260.
+
+[4] Jakubczyk, B., and E.D. Sontag, "Controllability of nonlinear discrete-time systems: A
+
+Lie-algebraic approach," SIAM J. Control and Opt. 28(1990): 1-33.
+
+[5] Mokkadem, A., "Orbites de semi-groupes de morphismes r'eguliers et syst`emes non lin'eaires
+
+en temps discret," Forum Math., 1(1989): 359-376.
+
+[6] Nijmeijer, H., and A.V. Van der Schaft, Nonlinear Dynamical Control Systems, Springer-
+
+Verlag, New York, 1990.
+
+[7] Sontag, E.D., "Integrability of certain distributions associated with actions on manifolds
+
+and applications to control problems," in Nonlinear Controllability and Optimal Control (H.J. Sussmann, ed.), pp. 81-131, Marcel Dekker, NY 1990.
+
+[8] Sontag, E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems,
+
+Springer-Verlag, New York, 1990.
+
+[9] Sussmann, H.J., "Orbits of families of vector fields and integrability of distributions," Trans.
+
+American Mathematical Society 180(1973): 172-188.
+
+19Pass1: Page 20
+
+
+LARGER COPY OF FIGURE 1:
+
+x u
+
+u u
+
+u v
+
+v
+
+v
+
+v
+
+v v
+
+v
+
+v v
+
+v
+
+4
+
+3
+
+2 1
+
+1 2
+
+1
+
+3 2
+
+1
+
+4 3
+
+2
+
+1
+
+y=z
+
+z
+
+z
+
+z
+
+z=z
+
+4
+
+3
+
+2
+
+1
+
+0
+
+g
+
+g
+
+g g
+
+1 2
+
+3 4
+
+Figure 2: case with k = 4Pass1: Page 21
+
+
+LARGER COPY OF FIGURE 2:
+
+x u
+
+u u
+
+u v
+
+v
+
+v
+
+v
+
+v v
+
+v
+
+v v
+
+v
+
+4
+
+3
+
+2 1
+
+1 2
+
+1
+
+3 2
+
+1
+
+4 3
+
+2
+
+1
+
+y=z
+
+z
+
+z
+
+z
+
+z=z
+
+4
+
+3
+
+2
+
+1
+
+0
+
+g
+
+g
+
+g g
+
+1 2
+
+3 4
+
+Figure 3: case with k = 4Pass1: Page 22
+
+
+LARGER COPY OF FIGURE 3:
+
+x=z
+
+z
+
+z
+
+z
+
+z
+
+z
+
+u u
+
+u
+
+u
+
+u u v
+
+v
+
+v
+
+v
+
+v
+
+y=z
+
+1
+
+1
+
+1 1
+
+1 1
+
+2
+
+2 3
+
+4
+
+5
+
+6
+
+0
+
+2
+
+3
+
+4
+
+5
+
+6
+
+Figure 4: case with s = 6,k = 3</pre>
+</body>
+</html>

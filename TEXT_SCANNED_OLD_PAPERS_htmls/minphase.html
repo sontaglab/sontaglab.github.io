@@ -1,0 +1,864 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/minphase.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/minphase.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Minimum-phase nonlinear systems: a new definition
+
+Daniel Liberzonx\Lambda  A. Stephen Morsex\Lambda  Eduardo D. Sontagzy
+
+xDept. of Electrical Engineering, Yale University, New Haven, CT 06520
+
+zDept. of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+June 27, 2000
+
+Abstract This paper introduces and studies a new definition of the minimum-phase property for general smooth nonlinear control systems. The definition does not rely on a particular choice of coordinates in which the system takes a normal form or on the computation of zero dynamics. In the spirit of the "input-to-state stability" philosophy, it requires the state and the input of the system to be bounded by a suitable function of the output and derivatives of the output, modulo a decaying term depending on initial conditions. The class of minimum-phase systems thus defined includes all affine systems in global normal form whose internal dynamics are input-to-state stable and also all left-invertible linear systems whose transmission zeros have negative real parts. As an application, we explain how the new concept enables one to develop a natural extension to nonlinear systems of a basic result from linear adaptive control.
+
+1 Introduction A linear, single-input/single-output (SISO) system is said to be minimum-phase if the numerator polynomial of its transfer function has all its zeros in the open left half of the complex plane. This property can be given a simple interpretation that involves the relative degree of the system, which equals the difference between the degrees of the denominator and the numerator of the transfer function. Namely, if a linear system of relative degree r is minimum-phase, then the "inverse" system, driven by the r-th derivative of the output of the original system, is stable. For left-invertible, multi-input/multi-output (MIMO) systems, in place of the zeros of the numerator one appeals to the so-called transmission zeros of the system.
+
+The notion of a minimum-phase system is of great significance in many areas of linear system analysis and design. In particular, it has played an important role in parameter adaptive control. A basic example is provided by the "certainty equivalence output stabilization theorem" [8], which says that when a certainty equivalence, output stabilizing adaptive controller is applied to a minimum-phase linear system, the closed-loop system is detectable through the tuning error. In essence, this result serves as a justification for the certainty equivalence approach to adaptive control of minimum-phase linear systems.
+
+For nonlinear systems that are affine in controls, the minimum-phase property has been defined in [1] in terms of the concept of zero dynamics. The zero dynamics are the internal dynamics of the
+
+\Lambda Email: fliberzon,morseg@sysc.eng.yale.edu. Supported by AFOSR, DARPA, and NSF.
+
+yEmail: sontag@control.rutgers.edu. Supported by US Air Force Grant F49620-98-1-0242.
+
+1
+
+system under the action of the input that holds the output constantly at zero. The system is called minimum-phase if the zero dynamics are (globally) asymptotically stable. In the SISO case, a unique input capable of producing the zero output is guaranteed to exist if the system has a uniform relative degree, which is now defined to be the number of times one has to differentiate the output until the input appears. Extensions to MIMO systems are discussed in [2, 5].
+
+The need to work with the zero dynamics makes the above definition of a minimum-phase nonlinear system difficult to use, unless one can find a change of coordinates that transforms the system into a certain "normal form". It has also been recognized that just asymptotic stability of the zero dynamics is often inadequate for control design purposes, so that additional requirements need to be placed on the internal dynamics of the system. One such common requirement is that the internal dynamics be input-to-state stable with respect to the output and its derivatives up to order r \Gamma  1, where r is the relative degree (see, for instance, [10]).
+
+In this paper we propose a new definition of the minimum-phase property for general smooth nonlinear systems, which does not rely on zero dynamics or normal forms. Loosely speaking, we will call a system minimum-phase if its state and input eventually become small if the output and derivatives of the output are small. It will follow from our definition that if a system has a uniform relative degree and is detectable through the output and its derivatives up to some order, uniformly over all inputs that produce a given output, then it is minimum-phase. For SISO systems that are real analytic in controls, we will show that the converse is also true, thus arriving at a useful equivalent characterization of the minimum-phase property (Theorem 1). We will prove that the class of minimum-phase systems as defined here includes all left-invertible linear systems whose transmission zeros have negative real parts (Theorem 2) and all affine systems in global normal form with input-to-state stable internal dynamics.
+
+Relying on a series of observations and auxiliary results deduced from the new definition, we will establish a natural nonlinear counterpart of the certainty equivalence output stabilization theorem from linear adaptive control (Theorem 3). This conceptually important and intuitively appealing result did not seem to be attainable within the boundaries of the existing theory. It serves to illustrate that the minimum-phase property introduced in this paper is indeed a reasonable and useful extension of the corresponding notion for linear systems. In view of the remarks made earlier, we expect that the new concept will find numerous other applications in nonlinear control design.
+
+The proposed definition is precisely stated in the next section. In Section 3 we give a somewhat non-standard definition of relative degree, which is especially suitable for subsequent developments. In Section 4 we review the notions of detectability and input-to-state stability. In Section 5 we study our definition of the minimum-phase property with the help of the concepts discussed in Sections 3 and 4. In Section 6 we derive some useful results for cascade systems. In Section 7 we present a nonlinear version of the certainty equivalence output stabilization theorem. Examples are provided throughout the paper to illustrate the ideas.
+
+2 Definition and preliminary remarks We will consider systems of the general form
+
+.x = f (x; u) y = h(x) (1)
+
+where the state x takes values in Rn , the input u takes values in Rm , the output y takes values in Rl (for some positive integers n, m, and l), and the functions f and h are smooth (C1). Admissible input (or "control") signals are locally essentially bounded, Lebesgue measurable functions u : [0; 1) ! Rm .
+
+2
+
+For every initial condition x(0) and every input u(\Delta ), there is a maximally defined solution x(\Delta ) of the system (1), and the corresponding output y(\Delta ). Note that whenever the input function u is k \Gamma  1 times continuously differentiable, where k is a positive integer, the derivatives .y, "y, : : : , y(k) are well defined (this issue will be discussed in more detail later).
+
+Recall that a function ff : [0; 1) ! [0; 1) is said to be of class K if it is continuous, strictly increasing, and ff(0) = 0. If ff 2 K is unbounded, then it is said to be of class K1. A function fi : [0; 1) \Theta  [0; 1) ! [0; 1) is said to be of class KL if fi(\Delta ; t) is of class K for each fixed t * 0 and fi(s; t) decreases to 0 as t ! 1 for each fixed s * 0.
+
+We will let k \Delta  k[a;b] denote the essential supremum norm of a signal restricted to an interval [a; b], i.e., kzk[a;b] := ess supfjz(s)j : a ^ s ^ bg, where j \Delta  j is the standard Euclidean norm. When some vectors v1 2 Rn1 ; : : : ; vk 2 Rnk are given, we will often use the simplified notation (v1; : : : ; vk) for the "stack" vector (vT1 ; : : : ; vTk )T 2 Rn1 +\Delta \Delta \Delta +nk. Given an Rl -valued signal z and a nonnegative integer k, we will denote by zk the Rl(k+1) -valued signal
+
+zk := (z1; .z1; : : : ; z(k)1 ; : : : ; zl; .zl; : : : ; z(k)l ) provided that the indicated derivatives exist. Definition 1. We will call the system (1) minimum-phase if there exist a positive integer N , a class KL function fi, and a class K1 function fl such that for every initial state x(0) and every N \Gamma  1 times continuously differentiable input u the inequalityfifififi`
+
+u(t) x(t)'fifififi ^ fi(jx(0)j; t) + fl(ky
+
+N k[0;t]) (2)
+
+holds for all t in the domain of the corresponding solution of (1).
+
+From the bound on the magnitude of the input in (2) we deduce that y j 0 implies u ! 0. This can be interpreted as saying that the system has a stable left inverse, in the input-output sense. However, no explicit construction of such a left inverse is necessary. On the other hand, the bound on the magnitude of the state signifies that the system is detectable through the output and its derivatives, uniformly with respect to inputs1 (see Section 4). Detectability is a state-space concept, whose attractive feature is that it can be characterized by Lyapunov-like dissipation inequalities. These two requirements capture intrinsic properties of the system, which are independent of a particular coordinate representation. They are consistent with the intuition provided by the concept of a minimum-phase linear system.
+
+Example 1. Consider the linear SISO system
+
+.x = Ax + bu y = cT x (3)
+
+Let r be its relative degree. This means that we have cT b = cT Ab = \Delta  \Delta  \Delta  = cT Ar\Gamma 2b = 0 but cT Ar\Gamma 1b := g 6= 0. From the formula y(r)(t) = cT Arx(t) + gu(t) we immediately obtain
+
+ju(t)j ^ j(A
+
+r)T cjjx(t)j + jy(r)(t)j
+
+jgj : (4) 1In particular, this detectability property is preserved under state feedback; for comparison, recall that every minimumphase linear system is detectable under all feedback laws.
+
+3
+
+Moreover, it is well known that there exists a linear change of coordinates x 7! (,; j), where , 2 Rr , j 2 Rn\Gamma r , and ,1 = y, which transforms the system (3) into the normal form
+
+.,1 = ,2 .,2 = ,3
+
+: : : .,r = dT , + f T j + gu
+
+.j = P , + Qj
+
+and (3) is minimum-phase (in the classical sense) if and only if Q is a stable matrix. Stability of Q is equivalent to the existence of positive constants * and _ such that jj(t)j ^ e\Gamma *tjj(0)j + _k,k[0;t] (it is also equivalent to detectability of the transformed system with extended output , = yr\Gamma 1). Combining the last inequality with (4), we arrive at
+
+ju(t)j ^ j(A
+
+r)T cje\Gamma *t
+
+jgj jx(0)j +
+
+j(Ar)T cj(_ + 1) + 1
+
+jgj ky
+
+rk[0;t]:
+
+This yields (2) with N = r. On the other hand, if (2) holds, then we know that y j 0 implies x ! 0, and so (3) must be minimum-phase. Thus we see that for linear SISO systems the above definition reduces to the usual one. Incidentally, note that when N = r in (2), the smoothness of u becomes superfluous, because y is automatically r times (almost everywhere) differentiable for every admissible input u.
+
+The above remarks suggest that the concepts of relative degree and detectability are related to the minimum-phase property as defined here. In what follows, we develop some machinery which is needed to study this relationship, and explore to what extent the situation described in Example 1 carries over to (possibly MIMO) nonlinear systems.
+
+3 Relative degree 3.1 SISO systems Let us first consider the case when the system (1) is SISO, i.e., when m = l = 1. To specify what will be meant by "relative degree", we need to introduce some notation. For each k = 0; 1; : : : define, recursively, the functions Hk : Rn \Theta  Rk ! R by the formulas H0 := h and
+
+Hk+1(x; u0; : : : ; uk) := @Hk@x f (x; u0) +
+
+k\Gamma 1X
+
+j=0
+
+@Hk
+
+@uj uj+1 (5)
+
+where the arguments of Hk are (x; u0; : : : ; uk\Gamma 1). As an illustration, in the special case of the SISO affine system
+
+.x = f (x) + g(x)u y = h(x) (6)
+
+we have H1(x; u0) = Lf h + Lghu0 and H2(x; u0; u1) = L2f h + (LgLf h + Lf Lgh) u0 + L2ghu20 + Lghu1 (omitting the argument "x" in the directional derivatives).
+
+4
+
+The significance of the functions Hk lies in the fact that if the input u(\Delta ) is in Ck\Gamma 1 for some positive integer k, then along each solution x(\Delta ) of (1) the corresponding output has a continuous k-th derivative satisfying
+
+y(k)(t) = Hk\Gamma x(t); u(t); : : : ; u(k\Gamma 1)(t)\Delta :
+
+In particular, suppose that Hk is independent of u0; : : : ; uk\Gamma 1 for all k less than some positive integer r. Then Hr depends only on x and u0, as given by
+
+Hr(x; u0) = @Hr\Gamma 1@x (x) f (x; u0) : For example, in the case of the affine system (6) we have
+
+Hr(x; u0) = Lrf h(x) + LgLr\Gamma 1f h(x) u0 : (7)
+
+We conclude that for every initial condition and every input, y(r\Gamma 1) exists and is an absolutely continuous function of time, and we have
+
+y(r)(t) = Hr(x(t); u(t))
+
+for almost all t in the domain of the corresponding solution. The converse is also true, namely, if y(r\Gamma 1) exists and is absolutely continuous for all initial states and all inputs, then Hk must be independent of u0; : : : ; uk\Gamma 1 for all k ! r. Indeed, if Hk were a non-constant function of u0 for some k ! r, then it would take different values at (x0; u01) and (x0; u02) for some x0 2 Rn and u01; u02 2 R. Choosing the initial state x(0) = x0 and applying the input u(t) j u01 for t 2 [0; ") and u(t) j u02 for t * ", where " is small enough, would produce an output y with a discontinuous k-th derivative, contradicting the existence and absolute continuity of y(r\Gamma 1).
+
+We will say that a positive integer r is the (uniform) relative degree of the system (1) if the following two conditions hold:
+
+1. For each k ! r, the function Hk is independent of u0; : : : ; uk\Gamma 1. 2. There exist two class K1 functions ae1 and ae2 such that
+
+ju0j ^ ae1(jxj) + ae2 (jHr(x; u0)j) (8) for all x 2 Rn and all u0 2 R. It is clear that if there exists such an integer r, then it is unique. Indeed, if the inequality (8) holds for some r, then Hr cannot be independent of u0 (otherwise we would have ju0j ^ c := ae1(0) + ae2(jHr(0; 0)j) for all u0, a contradiction), hence property 1 cannot hold for any _r ? r. In view of the previous remarks, r is the relative degree of (1) if and only if for some functions ae1; ae2 2 K1, for every initial condition, and every input, y(r\Gamma 1) exists and is absolutely continuous (hence y(r) exists almost everywhere) and the inequality
+
+ju(t)j ^ ae1(jx(t)j) + ae2(jy(r)(t)j) (9) holds for almost all t (to see why (9) implies (8), simply apply an arbitrary constant control u(t) j u0).
+
+We next show that the above definition reduces to the usual one (as given, e.g., in the book by Isidori [5]) in the case of the SISO affine system (6) with f (0) = 0.
+
+Proposition 1 Consider the affine system (6) with f (0) = 0. A positive integer r is the relative degree of (6) as defined here if and only if LgLkf h(x) = 0 for all x and all integers k ! r \Gamma  1, and
+
+LgLr\Gamma 1f h(x) 6= 0 for all x.
+
+5
+
+Proof. Suppose that r is the relative degree of (6) as defined here. Applying (7) repeatedly, we see that property 1 in the definition of relative degree implies LgLkf h j 0 for all k ! r \Gamma  1. Moreover, property 2 in the definition of relative degree means that
+
+ju0j ^ ae1(jxj) + ae2\Gamma fifiLrf h(x) + LgLr\Gamma 1f h(x) u0fifi\Delta  for all x 2 Rn and all u0 2 R. Thus, if there were some x0 2 Rn with LgLr\Gamma 1f h(x0) = 0, then we would have ju0j ^ c := ae1(jx0j) + ae2(jLrf h(x0)j) for all u0, a contradiction. Conversely, suppose that r satisfies the properties in the statement of the proposition, so that it is the uniform relative degree of (6) in the sense of [5]. Then property 1 in the definition of relative degree is verified using (7). Moreover, Hr(x; u0) takes the form b(x) + a(x)u0, where b(0) = 0 because f (0) = 0 in (6). Since a(x) 6= 0, we have
+
+1 ja(x)j ^ _ae1(jxj) +
+
+1 ja(0)j ; jb(x)j ^ _ae2(jxj)
+
+for some class K1 functions _ae1 and _ae2. If follows that
+
+ju0j ^ 1ja(x)j (jHr(x; u0)j + jb(x)j) ^ ` _ae1(jxj) + 1ja(0)j ' (jHr(x; u0)j + _ae2(jxj)) from which property 2 in the definition of relative degree can be easily deduced.
+
+Note that the definition of relative degree proposed here is not restricted to affine systems. As a simple example, the system .y = u2 has relative degree 1 according to our definition. Of course, this case is also covered by the definition of relative degree for not necessarily affine systems given in [9, p. 417]. However, our definition is more restrictive; for example, the system .y = arctan u would have relative degree 1 in the context of [9], but the bound (8) does not hold.
+
+Remark 1. The relative degree cannot exceed the order of the system, i.e., if r exists, then we must have r ^ n. For the affine system (6), this is an immediate consequence of Proposition 4.1.3 of [5] or Corollary 5.3.8 of [13], which imply that if r is the relative degree, at least locally at some x0 2 Rn , then the r vectors h(x), Lf h(x), : : : , Lr\Gamma 1f h(x) are linearly independent in a neighborhood of x0 in Rn . For the general system (1), we can consider the associated affine system
+
+.x = f (x; z)
+
+.z = u y = h(x)
+
+(10)
+
+of dimension n + 1. If r is the relative degree of (1), then there exists a point (x0; z0) 2 Rn+1 at which (10) has relative degree r + 1 (in the sense of [5]). The results just mentioned then imply that the r + 1 vectors H0(x), : : : , Hr(x; z) are linearly independent in a neighborhood of (x0; z0) in Rn+1 , hence r ^ n.
+
+To prove one of our main results (Theorem 1 in Section 5) we will need the following characterization of relative degree, which also has intrinsic interest.
+
+Proposition 2 A positive integer r is the relative degree of (1) if and only if the following three conditions are satisfied:
+
+1. For each k ! r, the function Hk is independent of u0; : : : ; uk\Gamma 1. 2. For each compact set X ae Rn and each positive constant K, there exists a number M such that
+
+jHr(x; u0)j * K whenever x 2 X and ju0j * M .
+
+6
+
+3. Hr(0; u0) 6= 0 for all u0 6= 0.
+
+This in turn requires the following lemma, which is a simple exercise on K1 functions. Its proof is included for completeness.
+
+Lemma 1 If a continuous function H : Rp ! [0; 1), where p is a positive integer, is such that H(z) ! 1 when jzj ! 1, and H(z) ? 0 when z 6= 0, then there exists a class K1 function ae such that jzj ^ ae(H(z)) for all z.
+
+Proof of Lemma 1. Consider the function fl : [0; 1) ! [0; 1) given by fl(s) := minjzj*s H(z). This function is well defined (because H is radially unbounded so the minimum is taken over a compact set), continuous, positive definite, nondecreasing, and unbounded, and we have fl(jzj) ^ H(z) for all z. Then one can find a function ff 2 K1 such that ff ^ fl (for arbitrary s0 ^ s1 ^ s2 such that fl is increasing on [s0; s1] and constant on [s1; s2], let ff(s) := (fl(s) + fl(s0))=2 for s 2 [s0; s1], and on [s1; s2] let ff be linear with ff(s2) = fl(s2)). We have ff(jzj) ^ H(z), hence jzj ^ ae(H(z)) with ae := ff\Gamma 1.
+
+Proof of Proposition 2. Condition 1 in the statement of the proposition exactly matches property 1 in the definition of relative degree. If property 2 in the definition of relative degree holds, then condition 2 of the proposition is satisfied with M (X ; K) = ae1(maxx2X jxj)+ ae2(K). It is clear that property 2 in the definition of relative degree implies condition 3 of the proposition. It remains to show that conditions 2 and 3 of the proposition imply property 2 in the definition of relative degree. Let z := (x; u0), and consider the function H(z) := jxj + jHr(x; u0)j. We claim that this function satisfies the hypotheses of Lemma 1. Indeed, take an arbitrary K ? 0. Condition 2 of the proposition implies that there exists an M such that jHr(x; u0)j ? K whenever jxj ^ K and ju0j ? M . It follows that H(z) ? K if jzj ? K + M . Therefore, H is radially unbounded. In view of condition 3 of the proposition, clearly H(z) ? 0 if z 6= 0. Thus we can apply Lemma 1, which guarantees the existence of a function ae 2 K1 such thatfifififi`
+
+x u0'fifififi ^ ae\Gamma jxj + jHr(x; u0)j\Delta  ^ ae(2jxj) + ae\Gamma 2jHr(x; u0)j\Delta :
+
+From this (8) follows with ae1(s) = ae2(s) := ae(2s).
+
+3.2 MIMO systems The above concept extends in a straightforward fashion to the case when the system (1) is MIMO, i.e., when m and l are not necessarily equal to 1. For each i 2 f1; : : : ; lg, let Hi0 be the i-th component of h, and define the functions Hik : Rn \Theta  (Rm )k ! R, k = 1; 2; : : : recursively by the formula (5) with Hik; Hik+1 instead of Hk; Hk+1. We will say that a set of positive integers fr1; : : : ; rlg is the (uniform) relative degree of the system (1) if the following two conditions hold:
+
+1. For each i 2 f1; : : : ; lg and each k ! ri, the function Hik is independent of u0; : : : ; uk\Gamma 1. 2. There exist two class K1 functions ae1 and ae2 such that
+
+ju0j ^ ae1(jxj) + ae2ifififi\Gamma H1r1(x; u0); : : : ; Hlrl(x; u0)\Delta fififij for all x 2 Rn and all u0 2 Rm .
+
+7
+
+Similarly to the SISO case, fr1; : : : ; rlg is the relative degree of (1) if and only if for some functions ae1; ae2 2 K1, for every i 2 f1; : : : ; lg, every initial condition, and every input, y(ri\Gamma 1)i exists and is absolutely continuous (hence y(ri)i exists almost everywhere) and the inequality
+
+ju(t)j ^ ae1(jx(t)j) + ae2ifififi\Gamma y(r
+
+1)1 (t); : : : ; y(rl)
+
+l (t)\Delta fififij
+
+holds for almost all t. Using the same type of argument as in the proof of Proposition 1, one can show that for the square (m = l) affine system
+
+.x = f (x) +
+
+mX
+
+i=1
+
+gi(x)ui
+
+y1 = h1(x)
+
+: : : ym = hm(x)
+
+with f (0) = 0 this reduces to the definition of uniform vector relative degree given in [5], which says that we must have Lgj Lkf hi(x) = 0 for all x and all integers 1 ^ j ^ m, 1 ^ i ^ m, k ! ri \Gamma  1, and that the m \Theta  m matrix A(x) defined by
+
+Aij(x) := Lgj Lri\Gamma 1f hi(x)
+
+must be nonsingular for all x. More generally, for m ^ l the corresponding l \Theta  m matrix must be leftinvertible (i.e., of rank m) for all x. Note that for MIMO systems the relative degree is not necessarily unique. Proposition 2 carries over to the MIMO setting subject to an obvious change of notation, but this will not be needed in the sequel.
+
+4 Detectability and related notions Consider a general system of the form
+
+.x = f (x; u):
+
+We recall from [12] that this system is called input-to-state stable (ISS) if there exist some functions fi 2 KL and fl 2 K1 such that for every initial state x(0) and every input u the corresponding solution satisfies the inequality
+
+jx(t)j ^ fi(jx(0)j; t) + fl(kuk[0;t])
+
+for all t * 0. Intuitively, this means that the state eventually becomes small when the input is small.
+
+Given a system with both inputs and outputs
+
+.x = f (x; u) y = h(x; u) (11)
+
+we will say that it is 0-detectable if there exist some functions fi 2 KL and fl1; fl2 2 K1 such for every x(0) and every u the corresponding solution satisfies the inequality
+
+jx(t)j ^ fi(jx(0)j; t) + fl1(kuk[0;t]) + fl2(kyk[0;t]) as long as it exists. In particular, a system without inputs given by
+
+.x = f (x) y = h(x)
+
+8
+
+will be called 0-detectable if there exist some functions fi 2 KL and fl 2 K1 such that for every initial state x(0) the corresponding solution satisfies the following inequality as long as it exists:
+
+jx(t)j ^ fi(jx(0)j; t) + fl(kyk[0;t]) (12) (cf. [4]). These concepts were studied in [14] under the names of input/output-to-state stability and output-to-state stability, respectively.
+
+Let us call the system (11) uniformly 0-detectable if there exist some functions fi 2 KL and fl 2 K1 such that for every initial state x(0) and every control input u the inequality (12) holds along the corresponding solution. As the name suggests, uniform 0-detectability amounts to 0-detectability that is uniform with respect to inputs. This property was called uniform output-to-state stability in [6] and strong detectability in [4].
+
+Another definition, which will be needed in Section 7, is the following one (introduced in [15]). The system (11) is said to be input-to-output stable if there exist some functions fi 2 KL and fl 2 K1 such that for every x(0) and every u the following inequality holds along the corresponding solution:
+
+jy(t)j ^ fi(jx(0)j; t) + fl(kuk[0;t]):
+
+Finally, we remark that since all the systems under consideration are time-invariant, the same properties would result if we used an arbitrary initial time t0 instead of 0 in the above inequalities (changing the second argument of fi from t to t \Gamma  t0 accordingly). This fact will be used implicitly in the proofs in Section 6.
+
+5 Minimum-phase systems 5.1 SISO systems We first study the SISO case, represented by the system (1) with m = l = 1. Take a nonnegative integer k. Restricting the input u to be in Ck\Gamma 1, we can consider the k-output extension of the system:
+
+.x = f (x; u) yk = hk(x; u; : : : ; u(k\Gamma 1)) (13)
+
+where
+
+hk(x; u; : : : ; u(k\Gamma 1)) := \Gamma H0(x); H1(x; u); : : : ; Hk(x; u; : : : ; u(k\Gamma 1))\Delta  is the new output map (here we are using the notation of Section 3.1). That is, we redefine the output of the system to be yk. With a slight abuse of terminology, we will apply to such systems the definition of uniform 0-detectability given in the previous section. Of course, for k = 0 we recover the original system. Our main result in this section is the following characterization of the minimum-phase property for SISO systems.
+
+Theorem 1 1. Suppose that the system (1) has a relative degree r and that its k-output extension
+
+(13) is uniformly 0-detectable for some k. Then (1) is minimum-phase in the sense of Definition 1, with N = maxfr; kg.
+
+2. Suppose that the system (1) is minimum-phase in the sense of Definition 1, that the function
+
+f (x; \Delta ) is real analytic in u for each fixed x, and that f (0; 0) = 0 and h(0) = 0. Then (1) has a relative degree, and its k-output extension (13) is uniformly 0-detectable for k = N .
+
+9
+
+Proof. Part 1. Since r is the relative degree, the inequality (9) holds with ae1; ae2 2 K1. Suppose that for some k the system (13) is uniformly 0-detectable. This can be expressed as
+
+jx(t)j ^ _fi(jx(0)j; t) + _fl(kykk[0;t]) where _fi 2 KL and _fl 2 K1 (see Section 4). Combining this with (9) and using the simple fact that for every class K function ae and arbitrary numbers s1; s2 * 0 one has ae(s1 + s2) ^ ae(2s1) + ae(2s2), we arrive at the inequality (2) with N := maxfr; kg, fi(s; t) := ae1(2 _fi(s; t)) + _fi(s; t), and fl(s) := ae1(2_fl(s)) + ae2(s) + _fl(s). Thus (1) is minimum-phase as needed.
+
+Part 2. Since the system (1) is minimum-phase, we know in particular that for some positive integer N and some functions fi 2 KL and fl 2 K1 the inequality
+
+ju(t)j ^ fi(jx(0)j; t) + fl(kyN k[0;t]) (14) holds along solutions of (1) for all smooth inputs. The function Hk cannot be independent of u0, : : : , uk\Gamma 1 for all k = 0; : : : ; N . Otherwise, letting x(0) = 0 and applying an arbitrary constant input, we would deduce from (14) that ju0j ^ c := fi(0; t) + fl\Gamma fifi(H0(0); : : : ; HN (0))fifi\Delta  for all u0, a contradiction. Thus the integer
+
+r := maxfk ! N : Hk is independent of u0; : : : ; uk\Gamma 1g + 1 (15) is well defined. Condition 1 of Proposition 2 holds with this r. For every input u we have:
+
+.y = H1(x)
+
+: : :
+
+y(r\Gamma 1) = Hr\Gamma 1(x)
+
+y(r) = @Hr\Gamma 1@x (x)f (x; u) = Hr(x; u)
+
+y(r+1) = @Hr@x (x; u)f (x; u) + @Hr@u
+
+0 (x; u) .u =: G1(x; u) +
+
+@Hr
+
+@u0 (x; u) .u
+
+y(r+2) =: G2(x; u; .u) + @Hr@u
+
+0 (x; u)"u
+
+: : :
+
+y(N) =: GN\Gamma r(x; u; : : : ; u(N\Gamma r\Gamma 1)) + @Hr@u
+
+0 (x; u)u
+
+(N\Gamma r)
+
+(16)
+
+The following fact will be useful. Lemma 2 If (14) holds and r is defined by (15), then there cannot exist a bounded sequence fxjg in Rn , a sequence fwjg in R with limj!1 jwjj = 1, and a positive constant K such that for all j we have jHr(xj; wj)j ! K and @Hr@u
+
+0 (xj; wj) 6= 0.
+
+Proof. Suppose that there exist sequences fxjg and fwjg and a positive constant K with the properties indicated in the statement of the lemma. Fix an arbitrary positive integer j. Consider the initial state x(0) = xj, and pick a smooth (e.g., polynomial) input function uj(\Delta ) with uj(0) = wj whose derivatives at t = 0 are specified recursively by the equations
+
+u(i)j (0) = \Gamma  Gi(xj; uj(0); : : : ; u
+
+(i\Gamma 1) j (0))
+
+@Hr
+
+@u0 (xj; uj(0))
+
+; i = 1; : : : ; N \Gamma  r: (17)
+
+10
+
+In view of (16), we will then have
+
+.y(0) = H1(xj); : : : ; y(r\Gamma 1)(0) = Hr\Gamma 1(xj); jy(r)(0)j = jHr(xj; wj)j ! K; y(r+1)(0) = \Delta  \Delta  \Delta  = y(N)(0) = 0:
+
+Therefore, if such an input uj is applied and if " is an arbitrary fixed positive number, then there exists a sufficiently small time Tj such that for all t 2 [0; Tj] the following inequalities hold:
+
+jx(t)j ! jxjj + "; j .y(t)j ! jH1(xj)j + "; : : : ; jy(r\Gamma 1)(t)j ! jHr\Gamma 1(xj)j + "; jy(r)(t)j ! K + "; jy(r+1)(t)j ! "; : : : ; jy(N)(t)j ! ":
+
+Repeating this construction for all j, we obtain a sequence of trajectories of (1) along which jx(t)j, j .y(t)j, : : : , jy(N)(t)j are uniformly bounded for small t, whereas juj(t)j is unbounded for small t and large j. We arrive at a contradiction with (14), and the proof of the lemma is complete.
+
+Let us denote by \Theta  the set of all x 2 Rn such that Hr(x; \Delta ) is a constant function.
+
+Lemma 3 Suppose that f (x; \Delta ) is real analytic in u for each fixed x. If (14) holds and r is defined by (15), then the set \Theta  is empty.
+
+Proof. Suppose that \Theta  is nonempty. The set \Theta  is closed (because if for a sequence fxjg converging to some x we have @Hr@u
+
+0 (xj; u0) = 0 for all u0 and all j, then
+
+@Hr
+
+@u0 (x; u0) = 0 for all u0). Moreover, \Theta  6= Rnby virtue of (15). Pick a point _x on the boundary of \Theta . Take an arbitrary sequence fv
+
+jg in R with limj!1 jvjj = 1. Since _x 2 \Theta , the function Hr(_x; \Delta ) is constant, so clearly there exists a K such that
+
+jHr(_x; vj)j ! K for all j. By continuity, for each j there exist a neighborhood Bj(_x) of _x and a positive number ffij such that jHr(x; u0)j ! K for all x 2 Bj(_x) and all u0 2 (vj \Gamma  ffij; vj + ffij). Moreover, the neighborhoods Bj(_x), j = 1; 2; : : : can be chosen to be nested, i.e., Bi(_x) ae Bj(_x) whenever i ? j, and the sequence fffijg can be chosen to be nonincreasing. Now, fix an arbitrary j. We know that if x =2 \Theta , then @Hr@u
+
+0 (x; \Delta ) cannot be identically zero on the interval (vj \Gamma  ffij; vj + ffij), by virtue of real analyticityof H
+
+r(x; \Delta ) which follows from that of f (x; \Delta ). Thus, for an arbitrary xj 2 Bj(_x) n \Theta , we can find a
+
+wj 2 (vj \Gamma  ffij; vj + ffij) such that @Hr@u
+
+0 (xj; wj) 6= 0. This construction can be carried out for all j. SinceB
+
+i(_x) ae Bj(_x) when i ? j, the points xj, j = 1; 2; : : : can be chosen in such a way that jxjj is uniformly
+
+bounded for all j. Moreover, we have jwjj * jvjj \Gamma  jffijj * jvjj \Gamma  jffi1j ! 1 as j ! 1. In view of Lemma 2,
+
+we arrive at a contradiction with (14), which proves the lemma.
+
+Our goal is to show that conditions 2 and 3 of Proposition 2 hold, which would imply that r is the relative degree of (1). We break this into two separate statements.
+
+Lemma 4 Suppose that f (x; \Delta ) is real analytic in u for each fixed x. If (14) holds and r is defined by (15), then for each compact set X ae Rn and each positive constant K there exists a number M such that jHr(x; u0)j * K whenever x 2 X and ju0j * M .
+
+Proof. Suppose that, contrary to the statement of the lemma, there exist a compact subset X of Rn , a positive constant K, a sequence fxjg in X , and a sequence fvjg in R with limj!1 jvjj = 1, such that jHr(xj; vj)j ! K for all j. By continuity, we can find a nonincreasing sequence of positive numbers fffijg such that jHr(xj; u0)j ! K for all j and all u0 2 (vj \Gamma  ffij; vj + ffij). Fix an arbitrary j. Since \Theta  is empty by Lemma 3 and Hr(xj; \Delta ) is real analytic, @Hr@u
+
+0 (xj; \Delta ) cannot vanish identically on the interval(v
+
+j \Gamma  ffij; vj + ffij). Thus we can find a wj 2 (vj \Gamma  ffij; vj + ffij) such that @Hr@u0 (xj; wj) 6= 0. Repeat this construction for all j. Lemma 2 applies again, yielding a contradiction with (14), and the proof of the
+
+lemma is complete.
+
+11
+
+Lemma 5 Suppose that f (x; \Delta ) is real analytic in u for each fixed x and that we have f (0; 0) = 0 and h(0) = 0. If (14) holds and r is defined by (15), then Hr(0; u0) 6= 0 for all u0 6= 0.
+
+Proof. Suppose that Hr(0; _u0) = 0 for some _u0 6= 0. We know from Lemma 3 that the set \Theta  is empty. Thus by real analyticity @Hr@u
+
+0 (0; \Delta ) cannot vanish identically on any open neighborhood of _u0. Thisimplies that there exists a sequence fv
+
+jg converging to _u0 such that @Hr@u0 (0; vj ) 6= 0 8j (if @Hr@u0 (0; _u0) 6= 0, simply let vj j _u0). Choose an arbitrary j. Take the initial state to be x(0) = 0. Pick a smooth (e.g.,
+
+polynomial) input function uj(\Delta ) such that uj(0) = vj and the equations (17) hold with 0 in place of xj. From (16) we immediately see that y(r+1)(0) = \Delta  \Delta  \Delta  = y(N)(0) = 0. Since h(0) = 0, we have y(0) = 0. We also know that f (0; 0) = 0, which is only possible when H1(0) = \Delta  \Delta  \Delta  = Hr\Gamma 1(0) = 0. It follows that
+
+.y(0) = \Delta  \Delta  \Delta  = y(r\Gamma 1)(0) = 0. We conclude that if the input uj is applied, then for every " ? 0 there exists a sufficiently small time Tj such that for all t 2 [0; Tj] the following inequalities hold:
+
+jx(t)j ! "; j .y(t)j ! "; : : : ; jy(r\Gamma 1)(t)j ! "; jy(r)(t)j ! jHr(0; vj)j + "; jy(r+1)(t)j ! "; : : : ; jy(N)(t)j ! ":
+
+Carrying out the above construction for all j and noting that limj!1 Hr(0; vj) = Hr(0; _u0) = 0, we see that y(t), .y(t), : : : , y(N)(t) become arbitrarily small for small t as j ! 1. On the other hand, uj(0) ! _u0 6= 0, so uj(t) is bounded away from 0 for small t and large j. This is a contradiction with (14), which proves the lemma.
+
+We can now finish the proof of Theorem 1. We have shown that the integer r defined by (15) satisfies all three conditions of Proposition 2, thus r is the relative degree of the system (1). Since (1) is minimum-phase, we also immediately conclude from (2) that its N -output extension is uniformly 0-detectable.
+
+As an illustration, consider the affine system (6) with f (0) = 0. Its right-hand side is obviously real analytic in u. Reconstructing the above proof for this case, we find that r is the smallest integer for which LgLr\Gamma 1f h(x) is not identically zero on Rn , and \Theta  = fx : LgLr\Gamma 1f h(x) = 0g. If the system is minimum-phase, then Lemma 3 implies that \Theta  must be empty, which means that r is the relative degree (Proposition 1). Since the hypothesis h(0) = 0 is only used in Lemma 5, it is not needed in this case.
+
+We will be especially interested in systems that are covered by part 1 of Theorem 1 with k = r\Gamma 1. Let us agree to call the system (1) strongly minimum-phase if it has a relative degree r and its (r \Gamma  1)-output extension is uniformly 0-detectable. Note that yr\Gamma 1 is a function of the state x only: yr\Gamma 1 = hr\Gamma 1(x); no differentiability assumptions need to be placed on u in this case.
+
+Example 2. Consider an affine system in global normal form
+
+.,1 = ,2 .,2 = ,3
+
+: : : .,r = b(,; j) + a(,; j)u
+
+.j = q(,; j) y = ,1
+
+(18)
+
+where , := (,1; : : : ; ,r) and a(,; j) 6= 0 8,; j (so that r is the relative degree). This system is usually called minimum-phase if the zero dynamics .j = q(0; j) have an asymptotically stable equilibrium at j = 0 (see [1]). Since yr\Gamma 1 = ,, the above definition of the strong minimum-phase property in this case
+
+12
+
+demands that the last equation in (18), which represents the internal dynamics, be input-to-state stable (ISS) with respect to , (more precisely, with respect to all possible signals , that can be generated by the ,-subsystem). This is in general a stronger condition than just asymptotic stability of the zero dynamics; however, in the linear case the two properties are equivalent (and both amount to saying that all zeros of the transfer function must have negative real parts). As we already mentioned, the ISS assumption has been imposed on the internal dynamics of the system in various contexts associated with control design (see, e.g., [10]).
+
+We know from [6, 14] that the (r \Gamma  1)-output extension of (1) is uniformly 0-detectable if there exists a smooth, positive definite, radially unbounded function V : Rn ! R that satisfies
+
+rV (x)f (x; u) ^ \Gamma ff(jxj) + O/(jyr\Gamma 1j) 8x; u for some functions ff; O/ 2 K1. This Lyapunov-like dissipation inequality can be used to check the strong minimum-phase property, once the relative degree of the system is known. In fact, it provides a necessary and sufficient condition for uniform 0-detectability if controls take values in a compact set [6]. Unfortunately, this condition is only sufficient and not necessary if the control set is unbounded. For example, consider the integrator .x = u, y = x. It is obviously uniformly 0-detectable (here r = 1), but for every smooth positive definite V : R ! R and every x in the nonempty set fx 2 R : V 0(x) 6= 0g the quantity V 0(x)u can be made arbitrarily large by a suitable choice of u.
+
+Consider the affine system (6), and suppose that it is strongly minimum-phase. It may or may not have a global normal form (construction of a global normal form requires additional properties besides relative degree [5]). However, one can always apply a state feedback law so that the r-dimensional subsystem that describes the evolution of , = yr\Gamma 1 takes the form ., = A,, where A is a stable matrix. Then y and all derivatives of y decay to zero exponentially fast. In view of uniform 0-detectability with respect to yr\Gamma 1, it is easy to see that the entire system becomes globally asymptotically stable. Note that this is true for every feedback law that linearizes and stabilizes the ,-subsystem, which is not necessarily the case for systems with globally asymptotically stable zero dynamics (see [5, Section 9.2]).
+
+Remark 2. The bound (9), which is a consequence of the definition of relative degree, does not necessarily imply that one can explicitly solve for u in terms of x and y(r) (example: .y = u2). However, this is possible for some systems, in particular, it can always be done for the affine system (6). In this case, we can express u as a function of x and _y := p(D)y, where p is an arbitrary stable polynomial of degree r and D := ddt . Substituting this expression for u, we obtain an "inverse" system, driven by _y. Then an alternative definition of the strong minimum-phase property would require this inverse system to be ISS with respect to _y, which is consistent with the well-known interpretation of the minimum-phase property for linear systems, mentioned in the Introduction. To understand the relationship between the two notions, consider for simplicity the system in global normal form (18). Take a stable polynomial p(s) = sr +pr\Gamma 1sr\Gamma 1 +: : :+p1s+p0, and rewrite the equation for .,r as .,r = \Gamma pr\Gamma 1,r \Gamma : : :\Gamma p1,2 \Gamma p0,1 + _y. Then the r-dimensional subsystem that describes the evolution of , is easily seen to be a stable linear system driven by _y, hence it is ISS with respect to _y. If the system .j = q(,; j) is ISS with respect to , (recall that this is a consequence of the strong minimum-phase property) then the overall system is indeed ISS with respect to _y, because a cascade of two ISS systems is ISS.
+
+We conclude this subsection with an example of a minimum-phase system that is not strongly minimum-phase.
+
+Example 3. Consider the system
+
+.x1 = u .x2 = \Gamma x2 + u2
+
+y = x1
+
+(19)
+
+13
+
+It has relative degree 1. From the equation .x2 = \Gamma x2 + .y2, which is ISS with respect to .y, we see that the 1-output extension of (19), with output (y; .y), is uniformly 0-detectable. Therefore, (19) is minimum-phase by virtue of part 1 of Theorem 1. Now let us show that this system is not strongly minimum-phase, i.e., it is not uniformly 0-detectable with respect to the original output y. It is enough to find a solution trajectory along which x1 converges to zero while x2 does not converge to zero. Take the initial state to be 0, and apply the following input: u(t) j 1 for 0 ^ t ! 1, u(t) j \Gamma 1 for 1 ^ t ! 2, u(t) j 1 for 2 ^ t ! 2 12 , u(t) j \Gamma 1 for 2 12 ^ t ! 3, u(t) j 1 for 3 ^ t ! 3 14 , and so on. Then x1 ! 0, whereas for x2 we have .x2 = \Gamma x2 + 1 so x2 ! 1.
+
+5.2 MIMO systems We now turn to the general case of the system (1) with u 2 Rm and y 2 Rl . For arbitrary nonnegative numbers k1; : : : ; kl, we can redefine the output of the system to be
+
+yk1;:::;kl := (y1; .y1; : : : ; y(k
+
+1)1 ; : : : ; yl; .yl; : : : ; y(kl)
+
+l )
+
+restricting the input u to be sufficiently smooth so that the indicated derivatives exist. This amounts to considering the system
+
+.x = f (x; u) yk1;:::;kl = hk1;:::;kl(x; u; : : : ; u(j\Gamma 1)) (20)
+
+where j := max1^i^l ki and
+
+hk1;:::;kl(x; u; : : : ; u(j\Gamma 1)) := 0BBB@i
+
+H10 (x); H11 (x; u); : : : ; H1k
+
+1(x; u; : : : ; u
+
+(k1\Gamma 1))jT
+
+: : :i Hl0(x); Hl1(x; u); : : : ; Hlkl(x; u; : : : ; u(kl\Gamma 1))j
+
+T
+
+1CCC A (in the notation of Section 3.2). Similarly to the SISO case, we will call this system the (k1; : : : ; kl)- output extension of (1). The next result is readily obtained by the same arguments as those employed in the proof of Theorem 1. We will see below that the nontrivial part of Theorem 1, which states that under suitable assumptions the minimum-phase property implies the existence of a relative degree, does not hold for MIMO systems. We will also explain why this is an advantage, rather than a drawback, of our definition.
+
+Proposition 3 Suppose that the system (1) has a relative degree fr1; : : : ; rlg. Then it is minimumphase if and only if its (k1; : : : ; kl)-output extension (20) is uniformly 0-detectable for some k1, : : : , kl.
+
+Of special interest are systems satisfying the condition of Proposition 3 with ki = ri \Gamma  1, i = 1; : : : ; l. Accordingly, let us call the system (1) strongly minimum-phase if it has a relative degree fr1; : : : ; rlg and its (r1 \Gamma  1; : : : ; rl \Gamma  l)-output extension is uniformly 0-detectable. Note that yr1\Gamma 1;:::;rl\Gamma l is a function of x only, as given by yr1\Gamma 1;:::;rl\Gamma l = hr1\Gamma 1;:::;rl\Gamma l(x), and no differentiability assumptions need to be placed on u. We thus obtain a generalization to MIMO systems of the strong minimum-phase property introduced in the previous subsection. It has a similar interpretation in terms of input-to-state stability of the internal dynamics for systems in global normal form, and admits an analogous Lyapunov-like sufficient condition.
+
+14
+
+However, we remark that for MIMO systems the existence of a relative degree is quite a restrictive assumption. For example, linear systems with relative degree form a rather special subclass of those linear systems for which the minimum-phase property (in its classical sense) is well defined.2 Fortunately, Definition 1 does not have the shortcoming of applying only to systems with relative degree, as illustrated by the following example.
+
+Example 4. The system
+
+.x1 = u1 .x2 = x3 + u21 .x3 = u2 .x4 = \Gamma x4 + x31
+
+y = (x1; x2)
+
+does not have a relative degree. This system is minimum-phase, as can be seen from the formulas ju2j = j"y2 \Gamma  2 .y1 "y1j ^ j"y2j + .y21 + "y21, jx3j ^ j .y2j + .y21, and the fact that the equation for x4 is ISS with respect to x1.
+
+The above example is to be contrasted with the next one. Example 5. The system
+
+.x1 = u1 .x2 = x3 + x2u2 .x3 = u2 .x4 = \Gamma x4 + x31
+
+y = (x1; x2)
+
+does not have a relative degree. The zero dynamics of this system are .x4 = \Gamma x4, and the input that produces them is identically zero. However, it can be shown by the same kind of argument as the one used in the proof of Theorem 1 that arbitrarily large u2 can lead to arbitrarily small x, y, and derivatives of y. Therefore, this system is not minimum-phase.
+
+We will now establish an important property of Definition 1, namely, that for linear MIMO systems it reduces exactly to the classical definition. We will make use of some concepts and results from the linear geometric control theory (see [16] and the references therein). Consider the linear system
+
+.x = Ax + Bu y = Cx (21)
+
+with x 2 Rn , u 2 Rm , and y 2 Rl . We assume that (21) is left-invertible. Recall that a subspace V of Rn is called (A; B)-invariant if there exists an m \Theta  n matrix F such that (A + BF )V ae V. Denote by I the family of all (A; B)-invariant subspaces that are contained in ker C. Then I has a unique largest member (with respect to inclusion) which we denote by S. The eigenvalues of the restriction of A + BF to S are the same for all F such that (A + BF )V ae V. These eigenvalues are called the transmission zeros of the system (21). Left-invertible linear systems are usually called minimum-phase if all their transmission zeros have negative real parts. Our goal is to prove that this is equivalent to the minimum-phase property in the sense of Definition 1.
+
+2Basically, the reason for this is that the relative degree of a MIMO system can be lost or gained as a result of a linear coordinate transformation in the output space, while the minimum-phase property is invariant under such transformations.
+
+15
+
+As a direct consequence of Silverman's "structure algorithm" [11], there exists an m-vector y, whose components are linear combinations of the components of y and their derivatives, which satisfies
+
+.y = Lx + M u where the matrix M is nonsingular. From this we immediately obtain
+
+juj ^ jM \Gamma 1Ljjxj + jM \Gamma 1jj .yj: An (n \Gamma  m)-vector z of complementary coordinates can be chosen whose dynamics are independent of u, as given by .z = N x. Consider the feedback matrix F := \Gamma M \Gamma 1L. Then S is precisely the largest (A + BF )-invariant subspace in ker C, and thus equals the unobservable subspace of (C; A + BF ), i.e., S = Tni=1 ker C(A + BF )i\Gamma 1: It follows that there exists a linear change of coordinates x 7! (,; j) such that S = f(,; j) : , = 0g, and the components of , are linear combinations of the components of y and their derivatives. In these coordinates the system (21) takes the form
+
+., = R, + GT j + Gu .j = P , + Qj
+
+Its transmission zeros are the eigenvalues of Q. Reasoning exactly as in Example 1, we see that Q is a stable matrix if and only if the system is minimum-phase in the sense of Definition 1. We summarize this as follows.
+
+Theorem 2 A left-invertible linear system is minimum-phase in the sense of Definition 1 if and only if all its transmission zeros have negative real parts.
+
+6 Cascade results The purpose of this section is to investigate how the minimum-phase property behaves under series connections of several subsystems. We will prove two lemmas. The first one says that the cascade of a 0-detectable system with a minimum-phase system is 0-detectable, which is a result of independent interest. The second lemma is a direct generalization of the first one, and will be needed to prove the adaptive control result of Section 7. To simplify the presentation and to obtain the sharpest results possible, we restrict our attention to SISO strongly minimum-phase systems.
+
+Suppose that we are given two systems:
+
+\Sigma 1 : .x1 = f1(x1; u1)
+
+y1 = h1(x1) (22)
+
+and
+
+\Sigma 2 : .x2 = f2(x2; u2)
+
+y2 = h2(x2) (23)
+
+Upon setting u2 = y1, we obtain a cascade system, which we denote by \Sigma c (see Figure 1).
+
+Assume that \Sigma 2 has a relative degree r. We can then consider the r-output extension _\Sigma c of \Sigma c, whose input is u1 and whose output is yr2. This corresponds to introducing a new output map of the form
+
+h(x1; x2) = \Gamma h2(x2); H1(x2); : : : ; Hr\Gamma 1(x2); Hr(x2; h1(x1))\Delta 
+
+which is defined as explained in Section 3. We have the following result.
+
+16
+
+PSfrag replacements
+
+u1 \Gamma  +
+
+y1 y2\Sigma 
+
+2\Sigma 1
+
+eq
+
+Figure 1: The cascade system
+
+Lemma 6 If \Sigma 1 is 0-detectable and \Sigma 2 is strongly minimum-phase, then the system _\Sigma c with input u1 and output yr2 is 0-detectable.
+
+Proof. In the proofs of this lemma and the next one, fi with various subscripts will be used to denote class KL functions, and fl and ae with various subscripts will be used to denote class K1 functions. For t * t0 * 0, the 0-detectability of \Sigma 1 can be expressed by the inequality
+
+jx1(t)j ^ fi1(jx1(t0)j; t \Gamma  t0) + fl0(ku1k[t0;t]) + fl1(ky1k[t0;t]) while the strong minimum-phase property of \Sigma 2 leads to the inequalities
+
+jx2(t)j ^ fi2(jx2(t0)j; t \Gamma  t0) + fl2(kyr\Gamma 12 k[t0;t]) (24) and
+
+jy1(t)j ^ ae1(jx2(t)j) + ae2(jy(r)2 (t)j):
+
+Since the system _\Sigma c has a cascade structure, we employ the trick of breaking a time interval under consideration into several parts in order to derive the result (as done in [12]). Straightforward but lengthy calculations yield
+
+jx1(t)j ^ fi1(jx1(t=2)j; t=2) + fl0(ku1k[t=2;t]) + fl1(ky1k[t=2;t])
+
+^ _fi1(jx1(0)j; t) + _fi2(jx2(0)j; t) + _fl0(ku1k[0;t]) + _fl1(kyr2k[0;t])
+
+where
+
+_fi1(s; t) := fi1(3fi1(s; t=2); t=2) _fi2(s; t) := fi1(9fl1(3ae1(2fi2(s; 0))); t=2) + fl1(3ae1(2fi2(s; t=2)))
+
+_fl0(s) := fl0(s) + fi1(3fl0(s); 0) _fl1(s) := fi1(9fl1(3ae1(2fl2(s))); 0) + fi1(9fl1(3ae2(s)); 0) + fl1(3ae1(2fl2(s))) + fl1(3ae2(s))
+
+Combining this with (24), we arrive at the desired result.
+
+Lemma 6 states that the cascade system is 0-detectable through y2 and derivatives of y2 up to order r, where r is the relative degree \Sigma 1. It is in general not true that the cascade system is 0-detectable through the original output y2 only. We support this claim by constructing an example of a 0-detectable system which, when followed by an integrator, fails to remain 0-detectable.
+
+Example 6. Assume given a smooth function ' : [0; 1) ! [0; 1) with the following properties:
+
+1. ' is in L1. 2. R a0 '2(s) ds * a3 for all a * 0 (in particular, ' is not in L2). 3. '(0) = 0. 4. '0(0+) = 1, '(i)(0+) = 0 for i ? 1.
+
+17
+
+(It is an elementary exercise to obtain such a '. Start with a piecewise constant function that takes the value k5 on an interval of length 1=k7 around each positive integer k, and is zero elsewhere. SinceP
+
+1 k=1 k5k\Gamma 7 ! 1, this function is in L1; we also have P
+
+j k=1 k10k\Gamma 7 = 1 + : : : + j3. Then approximatethis function by a smooth one and modify it in a neighborhood of zero to achieve desired behavior
+
+there. Properties 2 and 4 are not conflicting, because property 4 means that '(s) ss s near 0, andR a
+
+0 sds = a2=2 * a3 for small a. Property 4 is only needed to ensure the smoothness of the system \Sigma 1to be constructed next.)
+
+Consider the system \Sigma 1 given by (22), with x1 2 R, f1(x1) j 1 (no input u1), h1(x1) := \Gamma x1 for x1 ! 0 and h1(x1) := '(x1) for x1 * 0. To verify that this system is 0-detectable, take the function V defined for x1 ! 0 by V (x1) := x21=2 and for x * 0 by
+
+V (x1) := Z
+
+x1
+
+0 ('
+
+2(s) \Gamma  s2) ds :
+
+The function V is radially unbounded and positive definite (because for x1 ? 0 we have V (x1) * 2x31=3 using property 2 of '). Its derivative V 0(x1) equals x1 for x1 ! 0 and \Gamma x21 + '2(x1) for x1 * 0. Thus we have V 0(x1)f1(x1) ^ \Gamma x21 + y21 for all x1. In view of the results of [14], this implies that \Sigma 1 is 0-detectable.
+
+For \Sigma 2, we take an integrator (which is strongly minimum-phase), i.e., (23) with x2 2 R, f2(x2; u2) = u2, and h2(x2) = x2. Then the cascade system \Sigma c has the form
+
+.x1 = 1 .x2 = h1(x1) y2 = x2
+
+With initial state 0 we have y2(t) = R t0 '(s)ds which is bounded, while x1(t) ! 1.
+
+Next, suppose that the system \Sigma 1 has another output y3 = h3(x1). Letting u2 = y1 as before, and defining the output y4 := y3 \Gamma  y2, we obtain a cascade-feedforward system \Sigma cf shown in Figure 2.
+
+PSfrag replacements
+
+u1 \Gamma 
+
++ y1 y2\Sigma 
+
+2\Sigma 1
+
+y3
+
+y4
+
+Figure 2: The cascade-feedforward system Assume that the input u1 is in Cr\Gamma 1, where r is the relative degree of \Sigma 2 as before. We can then consider the system ~\Sigma 1 whose input is ur\Gamma 11 and whose output is yr3. Indeed, as explained in Section 3, for each i 2 f1; : : : ; rg the i-th derivative of y3 exists and can be written as y(i)(t) = Hi(x(t); u1(t); : : : ; ui\Gamma 11 (t)) for a suitable function Hi. Moreover, since y2 is r times differentiable almost everywhere, we can consider the r-output extension _\Sigma cf of \Sigma cf , whose input is ur\Gamma 11 and whose output is yr4.
+
+Lemma 7 Suppose that \Sigma 1 is 0-detectable (with respect to its input u1 and both its outputs, y1 and y3), \Sigma 2 is strongly minimum-phase, and the system ~\Sigma 1 with input ur\Gamma 11 and output yr3 is input-to-output stable. Then the system _\Sigma cf with input ur\Gamma 11 and output yr4 is 0-detectable.
+
+18
+
+Proof. For t * t0 * 0, the hypotheses of the lemma lead to the following inequalities:
+
+jx1(t)j ^ fi1(jx1(t0)j; t \Gamma  t0) + fl0(ku1k[t0;t]) + fl1(ky1k[t0;t]) + fl3(ky3k[t0;t]) jx2(t)j ^ fi2(jx2(t0)j; t \Gamma  t0) + fl2(kyr\Gamma 12 k[t0;t])
+
+jy1(t)j ^ ae1(jx2(t)j) + ae2(jy(s)2 (t)j) jyr3(t)j ^ fi3(jx1(t0)j; t \Gamma  t0) + fl4(kur\Gamma 11 k[t0;t])
+
+We have
+
+jx2(t)j ^ ^fi1(jx1(0)j; t) + ^fi2(jx2(0)j; t) + ^fl0(kur\Gamma 11 k[0;t]) + ^fl4(kyr4k[0;t])
+
+where
+
+^fi1(s; t) := fi2(6fl2(4fi3(s; 0)); t=2) + fl2(4fi3(s; t=2)) ^fi2(s; t) := fi2(3fi2(s; t=2); t=2)
+
+^fl0(s) := fi2(6fl2(4fl4(s)); 0) + fl2(4fl4(s)) ^fl4(s) := fl2(2s) + fi2(3fl2(2s); 0)
+
+Similarly,
+
+jx1(t)j ^ ~fi1(jx1(0)j; t) + ~fi2(jx2(0)j; t) + ~fl0(kur\Gamma 11 k[0;t]) + ~fl4(kyr4k[0;t])
+
+where for example
+
+~fi2(s; t) := fi1(12fl1(3ae1(2fi2(s; 0))); t=2) + fl1(4ae1(4fi2(2fi2(s; t=4); t=4)))
+
+Combining the two estimates, we obtain the desired result.
+
+7 Adaptive control In this section we describe a framework for adaptive control of uncertain nonlinear systems, in which the concept of a minimum-phase system introduced in this paper turns out to be useful (enabling one to achieve what did not seem possible with the previously available definition).
+
+7.1 Set-up and motivation Let P be an unknown plant, with dynamics of the form
+
+.xP = fP(xP; u)
+
+y = hP(xP)
+
+where xP 2 Rn is the state, u 2 R is the control input, and y 2 R is the measured output (we assume that P is SISO just to simplify the notation; the generalization to the MIMO setting is straightforward). Assume that P is a member of some family of systems Sp2P Fp, where P is an index set. For each p 2 P, the subfamily Fp can be thought of as consisting of a nominal process model M p together with a collection of its "perturbed" versions. The present discussion is very general and does not depend on any special structure of Fp.
+
+Consider the following family of controllers, parameterized by p taking values in P:
+
+.xC = fC (xC ; y; p) up = hC (xC ; p)
+
+19
+
+For every fixed p 2 P, we denote the corresponding controller by C p . One can think of C p as a candidate controller which would be used to control the plant P if this plant were known to be a member of Fp.
+
+We assume that on-line controller selection is carried out with the help of some estimation procedure. This is facilitated by a dynamical system E called the multi-estimator, which takes the form
+
+.xE = fE (xE ; y; u) yp = hp(xE ); p 2 P
+
+The signals yp; p 2 P are used to define the estimation errors
+
+ep := yp \Gamma  y; p 2 P: One usually designs the multi-estimator in such a way that ep converges to zero in the case when the unknown plant coincides with the p-th nominal process model M p and there are no disturbances or noise.
+
+Most of the standard adaptive algorithms are based on varying the index of the candidate controller in the feedback loop according to a tuning/switching law oe : [0; 1) ! P, in such a way that the corresponding estimation error eoe is maintained small in some sense. The underlying idea behind such a strategy is known as certainty equivalence. Intuitively, the motivation here is that the nominal process model with the smallest estimation error "best" approximates the actual process, and thus the candidate controller associated with that model can be expected to do the best job of controlling the process. To justify this paradigm, one must be able to ensure that the smallness of the estimation error implies the smallness of the state of the closed-loop system. Thus we see that a crucial desired property of this system is 0-detectability through the estimation error.
+
+To make this discussion more precise, take an arbitrary fixed q 2 P. The closed-loop system, which results when the q-th candidate controller C q is placed in the feedback loop with the plant P and the multi-estimator E , is described by the equations
+
+.xP = fP(xP; hC (xC ; q)) .xE = fE (xE ; hP(xP); hC (xC ; q)) .xC = fC (xC ; hP(xP); q)
+
+(25)
+
+We will take the output of this system to be the estimation error eq = hq(xE ) \Gamma  hP(xP). A glance at Figure 3 might be helpful at this point. The above remarks suggest that it is desirable to design the system (25) so as to make it 0-detectable with respect to eq.
+
+Consider the following system, which we call the injected system and denote by E C q :
+
+.xE = fE (xE ; hq(xE ) \Gamma  eq; hC (xC ; q)) .xC = fC (xC ; hq(xE ) \Gamma  eq; q)
+
+We view it as a system with input eq, state (xE ; xC ), and outputs u and yq = hq(xE ), which realizes the interconnection of the q-th candidate controller C q with the multi-estimator E . This is the system enclosed in the dashed box in Figure 3. Basically, the choice of the candidate controllers is governed by the resulting properties of this system. This makes sense because E is implemented by the control designer; the validity of such an approach will become clear in view of the results that are discussed next.
+
+It was shown in [3, 4] that if the injected system E C q is input-to-state stable (ISS) with respect to eq, and if the plant P is 0-detectable, then the closed-loop system (25) is 0-detectable with respect to
+
+20
+
+PSfrag replacements
+
+u \Gamma \Gamma 
+
+++
+
+yy
+
+yq C q
+
+E
+
+P
+
+eq
+
+Figure 3: The closed-loop system (25) eq. This provided a natural nonlinear extension of the Certainty Equivalence Stabilization Theorem proved for linear systems in [8]. Another relevant result from [8] is the so-called Certainty Equivalence Output Stabilization Theorem, which we mentioned in the Introduction. It suggests that the desired 0-detectability of the system (25) through eq should be preserved if one weakens the assumptions on the injected system E C q by only requiring input-to-output stability from eq to yq instead of input-to-state stability3, but demands that the plant be minimum-phase rather than 0-detectable. In what follows, we demonstrate that a result along these lines indeed holds for nonlinear systems.
+
+7.2 Main result and discussion Assume that the relative degree r of P is known. Let us redefine the input and the output of the system E C q to be er\Gamma 1q and yrq, respectively. We denote the resulting system by fE C q; its output map is obtained as explained in the previous sections. We also redefine the output of the closed-loop system (25) to be erq; i.e., we consider the r-output extension of (25), which we denote by _\Sigma cl. The indicated derivatives exist if the vector fields appearing in (25) are smooth. We now make the following assumptions:
+
+1. The plant P is strongly minimum-phase. 2. The system fE C q is input-to-output stable. 3. The controller C q is 0-detectable. 4. The multi-estimator E is 0-detectable.
+
+The result stated below is a direct consequence of Lemma 7: one needs to apply that lemma with \Sigma 1 = E C q (which is easily seen to be a 0-detectable system) and \Sigma 2 = P.
+
+Theorem 3 Under assumptions 1-4, the closed-loop system _\Sigma cl with output erq is 0-detectable.
+
+The same techniques would apply readily if the plant P is minimum-phase but not necessarily strongly minimum-phase, and in particular if P satisfies the hypotheses of part 1 of Theorem 1. However, we would only be able to conclude detectability of the closed-loop system with extended output ekq , which for k ? r is a weaker statement than that provided by Theorem 3.
+
+3A careful examination of the classical model reference adaptive control algorithm for linear systems reveals that the control law only output stabilizes the estimated model.
+
+21
+
+Theorem 3 gives a weak version of 0-detectability, namely, 0-detectability through the output and derivatives of the output. For linear systems the distinction disappears; the reason for this is most easily seen from the well-known observability decomposition. It is possible to employ similar ideas to single out a class of nonlinear systems for which 0-detectability of the k-output extension, where k is a positive integer, implies 0-detectability of the original system. Namely, suppose that in suitable coordinates the system under consideration takes the form
+
+.x1 = f1(x1) .x2 = f2(x1; x2)
+
+y = h(x1)
+
+(26)
+
+with f1(0) = 0 and h(0) = 0, where the subsystem .x1 = f1(x1), y = h(x1) is strongly observable in the sense of [12]. The last condition means that there exists a class K1 function ae such that we have kx1k[0;t] ^ ae(kyk[0;t]) along solutions of the x1-subsystem. This is a strong global version of the observability decomposition for nonlinear systems described in [9, Chapter 3] and references therein. Now, suppose that the k-output extension of (26) is 0-detectable. Then (26) must be 0-detectable through x1, hence we must have jx2(t)j ^ fi(jx2(0)j; t) + fl(kx1k[0;t]) for some fi 2 KL and fl 2 K1. Combined with strong observability, this yields jx2(t)j ^ fi(jx2(0)j; t) + fl(ae(kyk[0;t])), and so we see that (26) is indeed 0-detectable (through the original output y).
+
+Therefore, if one wants to achieve 0-detectability of the closed-loop system (25) with output eq, one way to proceed is to try to design this system so that the above observability decomposition is possible. This, of course, may be very difficult to verify in practice. We also point out that the need to maintain smallness of the estimation error together with its first derivative is not uncommon in adaptive control (see, e.g., Chapters 5 and 6 of [7]). Precise implications of Theorem 3 for adaptive control of nonlinear systems remain to be investigated.
+
+Acknowledgments. Helpful discussions with Jo~ao Hespanha, Brian Ingalls, and Misha Krichman are gratefully acknowledged.
+
+References
+
+[1] C. I. Byrnes, A. Isidori, Local stabilization of minimum phase nonlinear systems, Systems Control Lett., vol.
+
+11, 1988, pp. 9-17.
+
+[2] C. I. Byrnes, A. Isidori, Asymptotic stabilization of minimum phase nonlinear systems, IEEE Trans. Automat.
+
+Control, vol. 36, 1991, pp. 1122-1137.
+
+[3] J. P. Hespanha, Logic-based switching algorithms in control, Ph.D. Thesis, Dept. of Electrical Engineering,
+
+Yale University, 1998.
+
+[4] J. P. Hespanha, A. S. Morse, Certainty equivalence implies detectability, Systems Control Lett., vol. 36, 1999,
+
+pp. 1-13.
+
+[5] A. Isidori, Nonlinear Control Systems, 3rd edition, Springer, Berlin, 1995. [6] M. Krichman, E. D. Sontag, Y. Wang, Lyapunov characterizations of input-output-to-state stability, in Proc.
+
+38th Conf. on Decision and Control, 1999, pp. 2070-2075.
+
+[7] M. Krstic, I. Kanellakopoulos, P. V. Kokotovic, Nonlinear and Adaptive Control Design, Wiley, New York,
+
+1995.
+
+[8] A. S. Morse, Towards a unified theory of parameter adaptive control, part II: Certainty equivalence and
+
+implicit tuning, IEEE Trans. Automat. Control, vol. 37, 1992, pp. 15-29.
+
+22
+
+[9] H. Nijmeijer, A. J. van der Schaft, Nonlinear Dynamical Control Systems, Springer, New York, 1990. [10] L. Praly, Z. P. Jiang, Stabilization by output feedback for systems with ISS inverse dynamics, Systems
+
+Control Lett., vol. 21, 1993, pp. 19-33.
+
+[11] L. M. Silverman, H. J. Payne, Input-output structure of linear systems with application to the decoupling
+
+problem, SIAM J. Control, vol. 9, 1971, pp. 199-233.
+
+[12] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Trans. Automat. Control, vol. 34,
+
+1989, pp. 435-443.
+
+[13] E. D. Sontag, Mathematical Control Theory, Deterministic Finite Dimensional Systems, 2nd edition,
+
+Springer-Verlag, New York, 1998.
+
+[14] E. D. Sontag, Y. Wang, Output-to-state stability and detectability of nonlinear systems, Systems Control
+
+Lett., vol. 29, 1997, pp. 279-290.
+
+[15] E. D. Sontag, Y. Wang, Notions of input to output stability, Systems Control Lett., vol. 38, 1999, pp. 235-248. [16] W. M. Wonham, Linear Multivariable Control: a Geometric Approach, 3rd edition, Springer, New York,
+
+1985.
+
+23</pre>
+</body>
+</html>

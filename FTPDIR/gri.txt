@@ -1,0 +1,418 @@
+OCR of paper; see pdf file gri.pdf for viewwable/printable page
+
+Systems & Control Letters 13 (1989) 373-381
+North-Holland
+The effect of sampling on linear equivalence
+and feedback linearization
+A. ARAPOSTATHIS *
+Department of Electrical and Computer Engineering, The University of Texas at Austin, Austin, TX 78712-1084, U.S.A.
+B. JAKUBCZYK **
+Institute of Mathematics, Polish Academy of Sciences, 00-950 Warszawa, Sniadeckich 8, Poland
+H.-G. LEE
+Department of Electrical and Computer Engineering, Louisiana State University, Baton Rouge, LA 70803-5901, U.S.A.
+S.I. MARCUS
+Department of Electrical and Computer Engineerinp, The University of Texas at Austin, Austin, TX 78712-1084, U.S.A.
+E.D. SONTAG f
+Department of Mathematics, Rutgers University, New Brunswick, NJ 08903, U.S.A.
+Received 10 October 1988
+Revised 5 April 1989
+373
+Abstract: We investigate the effect of sampling on linearization for continuous time systems. It is shown that the discretized system is
+linearizable by state coordinate change for an open set of sampling times if and only if the continuous time system is linearizable by
+state coordinate change. Also, it is shown that linearizability via digital feedback imposes highly nongeneric constraints on the
+structure of the plant, even if this is known to be linearizable with continuous-time feedback. For n = 2, we show, under the
+assumption of completeness of adFG, that if the discretized system is lineariable by state coordinate change and feedback, then the
+continuous time affine complete analytic system is hnearizable by state coordinate change only. Also, we suggest a method of proof
+when n > 3.
+Keywords: Feedback linearization; sampling; nonlinear systems; discrete-time systems; discretization.
+1. Introduction
+An area of research that has attracted some recent interest is that of determining the effect of digital
+implementation of nonlinear control laws for continuous-time smooth systems. Specifically, there have
+been characterizations of the preservation of controllability (Sontag [10,121) and observability (Sontag [11])
+under zero-th order hold sampled control, and questions have been raised concerning the effect of such
+sampling on linear equivalence and feedback linearization techniques. This paper deals with the latter
+topic.
+The problem of linearization of a nonlinear system is that of finding a (nonlinear) state coordinate
+change (and feedback) such that the resulting closed-loop system behaves as a linear system under the new
+Research was supported in part by the Air Force Office of Scientific Research under Grant AFOSR-86-0029, in part by the
+National Science Foundation under Grant ECS-8617860, and in part by the DoD Joint Services Electronics Program through the
+Air Force Office of Scientific Research (AFSC) Contract F49620-86-C-0045.
+Work was performed while the author was visiting the Mathematics Department, Rutgers University.
+Research supported in part by US Air Force Grant 88-0235.
+0167-6911/89/$3.50 (D 1989, Elsevier Science Publishers B.V. (North-Holland)
+<<PAGE-DIVIDER>>
+374 A. A rapostathis et al. / Effect of sampling on linear equiualence
+coordinates. Once such a linearizing transformation and feedback are obtained, we can then use linear
+system theory in order to control the original system. Thus, linearization when applicable is an extremely
+powerful technique for the development of efficient control laws for nonlinear systems (e.g., see Tam et al.
+[161).
+The linearization problem for continuous time systems has been studied extensively (see, e.g., the
+references in Lee et al. [7]). However, the complexity of the control laws makes almost mandatory the use
+of computers to perform the necessary on-line calculation. The effect of the discretization on the
+linearization process has not been fully researched. For example, suppose that a continuous time system
+(e.g., a robot manipulator) is linearizable by state coordinate change and feedback. Then if a desired
+feedback is applied, the resulting discretized closed-loop system is no longer a linear one under the new
+coordinates. This is because the control input is a constant between the sampling times.
+Necessary and sufficient conditions for linearizability of the discrete-time system by state coordinate
+change (and feedback) can be found in Grizzle [2], Jakubzyk [51, Lee et al. [71, and Lee and Marcus [8].
+Some work on the effects of sampling on linearizability has been reported in Grizzle [21 and Grizzle and
+Kokotovic [3]. Much of the research in this area has been stimulated by the work of J. Grizzle. In
+particular, he has conjectured the following [2].
+Conjecture [2]. Let T: i =f(x, u) be a single-input analytic control system on R n, n ~!! 2, such that
+f(0, 0) = 0, and let Th: Xk+1 =fh(Xkl Uk) be its sampled data representation for a sampling interval h. Then
+_Yh is locally feedback linearizable for an open set of sampling times (i.e., it is sampled feedback linearizable)
+if and only if -Y is state-equivalent to a controllable linear system.
+This conjecture is incorrect if we consider a general nonlinear system of the form f (x, u). (Sup-
+pose that _~ = F(x) + G(x)u is state-equivalent to a controllable linear system. Let f(x, u) = F(x) +
+G(x)(u + U3 ).) Thus we consider an affine control system of the form F(x) + G (x) u and furthermore,
+we assume that F(x) and G(x) are analytic vector fields.
+In Section 2, we define our notation and review some background material. In Section 3, it is shown
+that the discretized system is linearizable by state coordinate change for an open set of sampling times if
+and only if the continuous time system is linearizable by state coordinate change. In Section 4, we show
+that sampled feedback linearizability implies that the continuous time system is also lineafiable by state
+coordinate change and feedback, and we derive an interesting necessary condition for sampled feedback
+linearizability. Finally, under the assumption of the completeness of ad,G, we show that J. Grizzle's
+conjecture is true for affine control systems when n = 2 and suggest a method of proof when n > 3. Some
+preliminary aspects of this work were reported in [22].
+2. Preliminaries and definitions
+Consider a nonlinear continuous time control system of the form
+,i(t) = F(x(t)) + G(x(t)) u(t)
+(2.1)
+where x E=- R", u E=- R, and F(x), G(x) are analytic vector fields with F(O) = 0. Then the discretized system
+of (2.1) with sampling interval h > 0 is as follows:
+x (t + h) f, (x (t), u (t)) (2.2)
+where f,(x, U) (pF1uG(X)' with Ox denoting the flow of X. Notice that fh(O, 0) = 0.
+h
+Definition 2.1. The discrete time system (2.2) (or the continuous time system (2.1)) is linearizable by state
+coordinate change if there exists a smooth state coordinate change around 0 E=- R" which transforms it into
+a reachable linear system.
+<<PAGE-DIVIDER>>
+A. A rapostathis et al. / Effect of sampling on linear equivalence 375
+Definition 2.2. The discrete time system (2.2) (or the continuous time system (2.1)) is linearizable by state
+coordinate change and feedback if there exists a smooth nonsingular feedback u = -y(x, v) such that the
+closed-loop system is linearizable by state coordinate change.
+Definition 2.3. The system (2.1) is sampled linearizable by state coordinate change if there exists 8 > 0 such
+that for every h Cz (0, 8), the system (2.2) is linearizable by state coordinate change.
+Definition 2.4. The system (2.1) is sampled feedback linearizable if there exists 5 > 0 such that for every
+h c (0, 8), the system (2.2) is linearizable by state coordinate change and feedback.
+Since the problem of linearization is essentially local in nature, the results presented here will be
+primarily in terms of local coordinates. Define, for k ~!: 1,
+,hF (pF+(u+c)GOF+uGOF
+VII ( X, u ) = " I ( (k-I)h h -h _(k-])h)(X)-
+T~, , = 0
+Since fh(-, u) is a diffeomorphism for each h, u, Vk(-, u) is a (locally) well-defined vector field on R" for
+each h, u (similar vector fields are also used in Sontag [111 and Jacubczyk and Sontag [13]). Now (see
+Goodman [1], Normand-Cyrot [91, Sontag [121, Varadarajan [171, Jakubczyk and Normand-Cyrot [18],
+Monaco and Normand-Cyrot [19-21]),
+1)'h'+ 00
+ad' G uJ#, h (2.3)
+V,' u ) = E F+ uG
+j=0
+The vector fields 8j(h) take the form
+(h) 1)" 1 h'gj', j ~!! 0,
+where (1/i!)ad'F 1G, i ~~ 1, and Pj' .= (I li)(ad FIR.' .-I + adGJX-11), j~!: 1, i~!j+ 2, with #Ij+1 =0 for
+j ~t 1.
+From the characterization of linear equivalence and feedback linearizability for discrete time systems
+given in Grizzle [2], Jakubczyk [5], and Lee et al. [71, we have the following basic results.
+neorem 2.1. The system (2.1) is sampled linearizable by state coordinate change if and only if there exists
+8 > 0 such that, for every h E=- (0, 8),
+(1) (Vh(0, 0), Vh2(0, 0),..., Vh(0, 0)) are linearly independent;
+60 Vhl(X, UO = Vhl(X, U2) for all (x, ul), (x, U2) in a neighborhood of (0, 0);
+(iii) [Vh, Vhjj = 0 for I :!~ i, ji:!~ n + 1.
+Theorem 2.2. The system (2. 1) is sampled feedback linearizable if and only if there exists 8 > 0 such that, for
+every h e (0, 6),
+(i) ( Vh(0, 0), Vh2(0, 0),..., Vh(0, 0)) are linearly independent;
+(ii) Vh'(., u1) and Vhl(., U2) are parallel for all ul, U2 near 0;
+(iii) span ( Vh, Vh2,. . ., Vh) are inuolutive distributions for 1 !!~ i :!~ n - 1.
+Remark 2.1. Since OhF(.) is a diffeomorphism, the following follows easily: if Vhl(x, u) is not a function of
+u in a neighborhood of (0, 0), then the same is true of Vh"(x, u). Similarly, if Vh(-, u) are parallel for
+every u near 0, then for p:!!~ 2, VhP(., u) are also parallel for every u near 0.
+Remark 2.2. Proofs of Theorems 2.1 and 2.2 follow easily from the results of [7] once we notice that
+h is a well-defined vector field if and only if Vhl(x, u) is not a function of u;
+(i) (pF+uG(X)j.(a1aU)
+h is a well-defined distribution if and only if Vh(x, ul) and Vhl(X, U2) are
+(ii) OF+uG(X)j.(Sp{a1aUj)
+parallel for all u1 and U2-
+<<PAGE-DIVIDER>>
+376 A. A rapostathis et al. / Effeci of sampling on linear equivalence
+3. Sampfed finear equivalence
+It is evident that if the system (2.1) is linearizable by state coordinate change only, then the discretized
+system (2.2) is linearizable by the same state coordinate change. The following theorem establishes a
+converse to this fact.
+Theorem 3.1. If the system (2.1) is sampled linearizable by state coordinate change, then the system (2.1) is
+linearizable by state coordinate change.
+Proof. Suppose that (2.1) is sampled linearizable by state coordinate change. Then, by Theorem 2.1 and
+Remark 2.1, there exists 8 > 0 such that, for every h E-= (0, 3), VP(x, u) is not a function of u in a
+neighborhood of (0, 0) and is thus a well-defined vector field on R" for p ~~ 1. Define the vector field, for
+P
+Y,P, 1)'+' ( p' - ( p - 1)' ) ad'F 'G. (3.1)
+Then it is easily seen (Varadarajan [171), that for p ~! 1, VhP = YhP. Thus for p ~! 1,
+VP P hl
+Vhj - 1)'+ 1 p'ad'F 1 G.
+j=1 i~l
+Since the coefficients of ( XP, p n) in terms of f(hP/p!)adP_'G, p = I__ n) form a Van-
+F
+dermonde matrix, Theorem 2.1(i) implies that (XP, p=I,...,n), and hence (G(O), (adFG)(0),...,
+(ad n -'G)(0)) are linearly independent. Also, from (2.3) we see that Theorem 2.1(ii) implies that 8,(h) = 0
+for every h (0, 8). Since
+13= adG(adFG),
+it follows adG(adFG) = 0. Now assume that adG(ad' FG) = 0 for I :!~ i < k. Then
+k+3 1 k
+#
+1 - (k + 3)! ad G (ad F+ 1G)
+Hence ad G (ad' G) = 0 for i L- 1. This and the linear independence of { G (0), (ad FG)(0),. (ad n - 1G)(0))
+F F
+imply that (2. 1) is locally linearizable by state coordinate change (Sussmann [151). El
+However, if the system (2.1) is not locally linearizable by state coordinate change but is locally
+linearizable by state coordinate change and feedback, then the discretized system (2.2) is no longer
+guaranteed to be locally linearizable by state coordinate change and feedback. This is because the control
+u(t) must be a constant between the sampling times. When n = 1, (2-2) is locally linearizable by state
+coordinate change and feedback if G(O) =f 0. Thus, in the next section we assume n > 2 and investigate the
+effect of sampling on linearizability by state coordinate change and feedback.
+4. Necessary conditions for sampled feedback linearizability
+Theorem 4.1. If the system (2.1) is sampled feedback linearizable, then the system (2.1) is feedback
+linearizable.
+Proof. For the controllability condition, see Theorem 3.1. Consider VhP(x, u), for p ~! 1; Theorem 2.2(ii)
+and Remark 2.1 do not imply that this is a well-defined vector field on R", but that it is a well defined
+<<PAGE-DIVIDER>>
+A. A rapostathis et al. / Effect of sampling on linear equivalence 377
+distribution, and it is easily seen that, for (x, u) in a neighborhood of (0, 0) and p ~~ 1,
+span t Vh" (x, u)) = span t YP (x)),
+where ( YP ) is the vector field defined in (3.1). Now, letX _P~ 1 YJ for I :!~ p :~ n. Then it follows, as in
+1 YJ
+the proof of Theorem 3.1, that Theorem 2.2 (iii) implies that (G, ad,.G,..., ad n -'G) is an involutive
+F
+distribution. Hence, the system (2.1) is feedback linearizable (Hunt, Su, and Meyer [4], Jakubczyk and
+Respondek [61, and Su [14]). F-1
+Condition (ii) of Theorem 2.2 has not been used fully in deriving the necessity of the conditions in
+Theorem 4.1. In the following, we obtain stronger necessary conditions by further using condition (11) of
+Theorem 2.2.
+Theorem 4.2. If the system (2.1) is sampled feedback linearizable, then ad,ad,G = a,G for some analytic
+scalar function a, and ad 2ad,G = 0.
+G
+Proof. By (ii) of Theorem 2.2 and (2.3), the vector fields (,Bp(h), p ~: 0) are parallel for every h E=- (0, 8). In
+this theorem, we use only the fact that fl., Al, and P2 should be parallel. Using the fact that Al and Al are
+parallel, it follows that ad,ad,G = a,G for some analytic scalar function al. Note that
+3 4
+3! ad ad G (al,G), 4 (ad 9' + ad P6 4! (2L,-(a,)G + 2a,adFG),
+4= 1
+2 4 ad p' = 4! LG(a,)G,
+#
+5 1 "04 1 a2
+#2 (ad + adj') = ((LFL(;(al) + 2L,L,(a,) + 2 )G + 3L,(al)adFG
+5 2 1 5! 1
+Now using the fact that A, and 92 are parallel, and the fact that the determinant of a matrix is a
+multilinear function of the columns, it follows that
+2 3 n-
+0 = det [Al 182 adFG adFG ... ad.. 'G]
+2
+[Al p4 2 6 p6 2 n- 7)
+= -h' det 0 2 ad FG ... ad"F_ 'G I + It det [,80' 3 -' ad FG ... ad F 'G] + O(h
+for every h E=- (0, 8). Thus
+p6- 2 2
+0 det [ PO' ' ad G ... ad~~-'G] = -L,(a,) det[G adFG adFG ... ad~F_'G].
+2 F f 5!2
+Since det[G adFG ... ad" G 0, LG (al) = 0, which implies that ad 2adFG=O. 0
+F G
+By using a simple induction argument and the Jacobi identity, we can conclude the following.
+Corollary 4.3. If the system (2.1) is sampledfeedback linearizable, then every Lie bracket with two more G's
+than F's must vanish identically.
+5. A special case
+In this section, we assume that ad,G is a complete vector field and show that Grizzle's conjecture is
+true for af fine control systems when n = 2 and suggest a method of proof when n ~!: 3. As a by-product, we
+obtain stronger necessary conditions than those in Section 4 for sampled feedback linearizabitity.
+<<PAGE-DIVIDER>>
+378 A. Arapostathis el al. / Effect ofsampling on linear equivalence
+Lemma 5.1. Suppose that (2.1) is sampledjeedback linearizable, and assume that ad,G is a complete vector
+field. Then ad adFG = 0 for I ~~ i < 2.
+Proof. By Theorem 4.2, /34 = 0 and 8' = (I15!)(2LGLF(aj) + 2a 2)G. By using the Jacobi identity, it can
+2 2
+be easily shown that
+ad,ad,ad 3G =adGadFadGad 2G - ad G ad ad,,G ad 2G
+F F F
+=adGadFadGad 2G - ad ,j,, ad G ad 2G + adad~,Gad,ad,G.
+F F
+Thus ad,adGad 3G = cjG + MG LF(al)ad FG for some scalar function c, Now, note that
+F
+5 1 1 2 2 3
+181 -(ad 'p4 + ad 'p4) = -(2L (a,)G + 4LF(al)adFG + 2alad G + adGad G).
+5 1 0 5!F F F
+p6 p5 '85) 2
+Thus 2 (1/6)(adF 2 +adG I =C2G+(I16!)(9LGLF(aj)+4a1)adFG for some scalar function C2.
+Now consider
+0 = det [ P1 P2 ad 2G ... ad n-1 G]
+F F
+2
+=h 6det['001 P 5ad2G ... ad"G] - h 7 ... ad 1G] + 0(h8).
+2 F F det [ fl' p7 ad 2 G n-
+0 2 F F
+Thus
+'87 2 2
+0 det [ P' ad G ... ad"-'Gl = -~,-(3L L - 2a ) det[G ad,G ... ad" -'G
+0 2 F F G F(al) I F
+2a2.
+Therefore, LGLF(al) 3 , Since La1,-G(C'1)=LFLG(a1)-L,LF(a,) and L,(a,)=O, LadFG(a,)=
+2a 2. By assumption, adFG is a complete vector field. Therefore, al(x) = 0, which implies adGadFG = 0.
+.1 1
+By the Jacobi identity,
+ad,ad 2G = adFadGadFG - ad~dFad,G = ad,.ad,ad,G = 0. El
+F
+Remark 5. 1. By using the Jacobi identity, it can be easily shown that ad , ad',,.G = 0 for I !~ i :!~ 2 implies
+that every bracket with the same number or more G's than F's must vanish identically.
+In order to show that sampled feedback linearizability implies feedback linearizability of (2.1), we must
+prove that adGadi G = 0 for j ~: 1; Lemma 5.1 shows this for j = 1, 2. We would like to prove this for all
+F
+j ~~t I by induction; so we assume that it holds for j ~: k, and derive the consequences.
+Lemma 5.2. Suppose that (2. 1) is sampled feedback linearizable. Let k ~~: 2 and assume ad Gad' FG = 0 for
+i:!~ k. Then
+(i) 0' = 0 for i:!~ k + 2 and '8k+1 = (11(k + 3)!)adGad k+ 'G;
+I I F
+(ii) adGad k, 1G = ak + I G for some analytic function ak + 1;
+F
+(iii) LG(ak + 1) = 0-
+Proof. (1) and (ii) are obvious. By using the Jacobi identity, it is easy to show that adGad k12 G
+F
+Rk + 2)ad Fad Gad k+ 1. Note that
+F
+ek+3 ak+,G, 8k+4 I k + 4 L ak+l)G+ k + 4 ak+,ad,G
+~1 I - F(
+(k + 1)! (k + 4)! ~ 2 2
+ek+i=o k+ 3k+3 - I -
+12 for i :5: 3, LG(ak+I)G,
+92 + 4 adG) I Tk-+-4)!
+<<PAGE-DIVIDER>>
+A. A rapostathis et al. / Effect of sampling on linear equivalence 379
+k+5 pk+4 + pk+4
+P
+2 k + 5fadF 2 adG I
+- I LFLG (C~k + I ) +k + 4LCLF(ak+l) G+ k + 6 LG(ak+l)adFG
+(k + 5)! 2 2
+Now consider
+0 = det P, ad 2G ... ad n- 'GI
+F F
+2
+= h 6det[p' fl' ad2G ... ad n -- 1G] It7det[,B' p7 -' ad2G ... ad"-'G] + O(h').
+0 2 F F 0 2 F F
+Thus
+k+6-i 2 n
+0 det ad,,G ... ad 'G Lc,(ak+l) det[G adFG ... ad"-'GI.
+2 F I ~k -+5)!2 F
+Hence LG (ak + 1) 0. r-1
+Remark 5.2. Under the assumption of Lemma 5.2, if we can show that ak I I = 0, then (2.1) is locally
+linearizable by state coordinate change. Now we show that ak, I = 0 when n = 2 and k = 2.
+Theorem 5.3. Let n = 2, and assume that ad FG is a complete vector field. The system (2.1) is sampled
+feedback linearizable if and only if it is locally linearizable by state coordinate change only.
+Proof. (Sufficiency) Obvious by Theorem 3.1.
+(Necessity) By Lemma 5.1, ad,ad' G = 0 for I :!~ i:!~ 2. By Lemma 5.2, adGad3G = a,G and LG(a3) = 0-
+F F
+Therefore P' = 0 for i < 6 and p7 = (117!)(3LGL,(a3)G). Let 8,q Y-,2-,Eqad'-'G and Pq Y-2 xq ad'-'G.
+2 2 F I i- F
+By considering 0 = Y-,'= I det[ #' P'-'] we obtain
+0 1
+7= 1 21 3
+91 7! ~cjG + ( 2L,(a,,) + 42a3E2) ad,,.G
+for some scalar function C3. Thus
+1 1 27
+#2 -C4G + -LGLF (a3)ad,-G
+8! 2
+3)
+for some scalar function C4, because L,(a3) = 0 and LG(C2 0. By considering
+2 pq-,] 3
+0 Y_ det [ PO' 2 8! 2! LCL,(a3) det[G ad,G],
+t=I
+it follows LGL,(a3) = 0- Since LG(a3) 0, L.d,.c;(a3) 0. Therefore a3 is a constant. Using the Jacobi
+identity, it can be easily shown that
+1 1 99 j6
+Y_ ad,ad'.ad,ad5,-'G 0, - Y_ ad ad' ad a4 -'G 18a2G
+P2 8! 2 9! G F G 9! 3
+Consider
+5 5
+0 Y_ det[fl' 8'10-'] (,E'?~O-' - C, ?&-I det[G ad,.-G].
+0 1 2 2 1
+<<PAGE-DIVIDER>>
+380 A. Arapostathis et al. / Effect ofsampling on linear equivalence
+Note that E, = 1, E1 = 0, E' = 0, and (2= _'. Thus
+2 1 2
+5 5 5
+2-1 - X?2 - I X81 + C11 ko I fl klo-i
+0= ffiko - E i2 k10 2 2 2
+Thus,
+5 5
+.1 0_1 iko-I
+X'2 = 2'V, + (2kl El 2
+and
+5 5 5 5
+2 1 2-' _i).
+G k1o L, (E' X! 0 y , LG Al
+L,(X?2) = 'LG(VI) + L,(E' ) k,' + E2 L E'
+i=3 i~3
+q = 0 2 3
+Since 2 for q:!~ 8, LG(klo-i) = LG(k20__i) 0 for 3 :E~ i:!~ 5. Also, since adGadFG = 0, ad,adFG = a3G,
+and adGad 4G = 2 a3 ad FG, it follows LG ('E') LG ( E3) = 0, LG ((4) = a3/4!, LG (f4) = 0, LG( E5) = 0, and
+F 1 2 1 2 1
+2
+LG(4E'2) = 2a3/5!. Also note that V, = 2a3/5! and ?~2 = a3/5!2. Thus LG(X?2) 12L,(V,) - a3/5!5!2. Since
+09 2 2
+2 g'adGfll' = 18/9!a3G, it follows LG(VI) = (18/8!)a3. Therefore,
+10 = ' (ad,.P9 + ad
+2 YO 2 G18 I'
+9
+= I G + 18 a2+ 18 a2 _ I a2 ad,G
+_F0 ~C5 ( 9! 3_~_!2 3 5!5!2 3
+= I c5G + 432 a2ad,G,
+10 10!5 3
+2 -18 2
+0 det [,8() 82" - a det[ G ad FG
+10!5 '
+Therefore a3=01 i.e. adGad 3G=0. Hence, (2.1) is locally linearizable by state coordinate change
+F
+(Sussmann [15]). 0
+Remark 5.3. We conjecture that when n ~!! 3 (and with the assumption of completeness of adi G,
+F
+j n - 1), Theorem 5.3 is true and that the same method of proof works.
+Acknowledgement
+H.G. Lee would like to thank Sungwoo Suh for many helpful discussions and suggestions involving the
+material presented in this paper.
+References
+[1] R. Goodman, Lifting vector fields to nilpotent Lie groups, J. Math. Pures et Appl. 57 (1978) 77-86.
+[21 J.W. Grizzle, Feedback linearization of discrete-time systems, in: Lecture Notes in Control and Information Sciences, Vol. 83
+(Springer-Verlag, Berlin-New York, 1986) 273-281.
+[3] J.W. Grizzle and P.V. Kokotovic, Feedback linearization of sampled-data systems, IEEE Trans. Automat. Control 33 (1988)
+857-859.
+[4] L.R. Hunt, R. Su and G. Meyer, Design for multi-input nonlinear system, in: R.W. Brockett et al., Fds., Differential Geometric
+Control Theory (Birkhauser, Boston, MA, 1983) 268-293.
+[51 B. Jakubczyk, Feedback linearization of discrete-time systems, Systems Control Lett. 9 (1987) 411-416.
+[6] B. Jakubczyk and W. Respondek, On the linearization of control systems, Bull. Acad. Polon. Sci. Ser. Math. Astron. Physics 28
+(1980) 517-522.
+<<PAGE-DIVIDER>>
+A. Arapostathis et al. / Effect ofsampling on linear equivalence 381
+[7] H.G. Lee, A. Arapostathis and S.I. Marcus, On the linearization of discrete time systems, Internat. J. Control 45 (1987)
+1803-1822.
+[8] H.G. Lee and S.I. Marcus, Approximate and local linearization of nonlinear discrete-time systems, Infernat. J. Control 44 (1986)
+1103-1124.
+[91 D. Normand-Cyrot, Theorie et Pratique des S_Yst~mes Non Lineatres en Temps Discret, Th~se de Docteur d'Etat, Universit6
+Paris-Sud (1983).
+[10] F.D. Sontag, Remarks on the preservation of various controllability properties under sampling, in: Deuelopment et Utilisation
+o"Oulds et Modeles Mathematiques en Automatique, Analyse de Systimes et Traitemeni de Signal, Coll. CNRS, RCP 567, Bell-Ile
+(1983) 623-637.
+1111 F.D. Sontag, A concept of local observability, S~vstems Control Lett. 7 (1984) 41-47.
+[121 E.D. Sontag, An eigenvalue condition for sampled weak controllability of bilinear systems, Systems Control Lett. 7 (1996)
+313-315.
+[131 B. Jakubczyk and E.D. Sontag, Controllability of nonlinear discrete time systems: a Lie-algebraic approach, SIAM J. Control
+and Optim. 28 (1990).
+[141 R. Su, On the linear equivalents of nonlinear systems, Systems Control Lett. 2 (1986) 48-52.
+[151 H.J. Sussmann, Lie brackets, real analyticity, and geometric control, in: R.W. Brockett et al., Eds., Differential Geometric Control
+Theog (Birkhauser, Boston, MA, 1983) 1-116.
+[16] T.J. Tarn, A.K. Bejczy, A. Isidori and Y. Chen, Nonlinear feedback in robot arm control, Proc. 23rd IEEE Conf. Decision and
+Control, Las Vegas, NV (1984) 736-751.
+t171 V.S. Varadarajan, Lie Groups, Lie Algebras and Their Representations (Prentice Hall, Englewood Cliffs, NJ, 1974).
+[181 B. Jakubczyk and D. Normand-Cyrot, Orbites de pseudo groupes de diff6omorphismes et cominandabilit6 des syst~mes non
+lin6aires en temps discret, C.R. Acad. Sci Paris S&. 1 298 (1984) 257-260.
+[191 S. Monaco and D. Normand-Cyrot, On the sampling of a linear control system, Proc. 24th IEEE Conf. on Decision and Control,
+Fort Lauderdale, FL (1985) 1457-1462.
+[201 S. Monaco and D. Normand-Cyrot, Nonlinear systems un discrete time, in: M. Fliess and M. Hazewinkel, Eds., Algebraic and
+Geometric Methods in Nonlinear Control Theory (Reidel, Dordrecht- Boston, 1986) 411-430.
+t21j S. Monaco and D. Normand-Cyrot, A Lie exponential formula for the nonlinear discrete time functional expansions, in: C.I.
+Byrnes and A. Lindquist, Eds., Theory and Applications of Nonlinear Control Systems (North-Holland, Amsterdam, 1986).
+[22] H.G. Lee, A. Araposthathis and S.I. Marcus, Remarks on discretization and linear equivalence of continuous time nonlinear
+systems, Proc. 26th IEEE Conf. on Decision and Control, Los Angeles, CA (1987) 1783-1785.

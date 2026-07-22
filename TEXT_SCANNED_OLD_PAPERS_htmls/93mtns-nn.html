@@ -1,0 +1,178 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93mtns-nn.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93mtns-nn.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+UNIQUENESS OF WEIGHTS FOR RECURRENT NETS
+
+Francesca Albertini Universita' di Padova, Dipartimento di Matematica,
+
+Via Belzoni 7, 35100 Padova, Italy,
+
+Eduardo D. Sontag Rutgers University, Department of Mathematics,
+
+New Brunswick, NJ 08903, U.S.A. E-mail: albertini@pdmat1.unipd.it, sontag@hilbert.rutgers.edu
+
+Keywords: recurrent networks, identifiability, observability.
+
+1. Introduction
+
+We study recurrent neural networks evolving either in discrete or in continuous time. The dynamics of such systems can be described by a set of either difference or differential equations of the following type (to simplify notations, we use the superscripts "+" and ":" to denote time-shift and time-derivative respectively, and we omit the time arguments t):
+
+x+ ( or .x) = ~oe(Ax + Bu) y = Cx; (1)
+
+with A 2 IRn\Theta n, B 2 IRn\Theta m, C 2 IRp\Theta n, and where ~oe(x) = (oe(x1); : : : ; oe(xn)), with oe a function from IR to itself. (For the continuous-time case, we always assume that the function oe is globally Lipschitz, so that the existence and uniqueness of solutions for the differential equation is guaranteed.)
+
+We will consider the parameter identifiability problem, which asks about the possibility of recovering the entries of the matrices A, B, and C from the input/output map u(\Delta ) 7! y(\Delta ) of the system. This question has been already addressed in [1] and in [2] (and, for feedforward nets, in [6] and in [4]) where it is proved that, under appropriate minimality assumptions, the zero-initial state i/o behavior determines, up to a small number of symmetries, the weights of the model. In this paper we establish the same result for arbitrary-initial state i/o maps. Moreover, we show that, for a generic subclass of these models, the minimality conditions needed in order for the results to hold are exactly the observability conditions found in the recent paper [3]. It is interesting to notice that, inside this subclass, these observability conditions are also necessary for identifiability.
+
+2. The activation function oe
+
+Given any map oe : IR ! IR, we say that oe satisfies the independence property ("IP" from now on) if, for every positive integer l, nonzero real numbers b1; : : : ; bl, and real numbers fi1; : : : ; fil such that (bi; fii) 6= \Sigma (bj; fij) 8i 6= j ; it must hold that the functions 1 ; oe(b1x + fi1) ; : : : ; oe(blx + fil) are linearly independent. The function oe : IR ! IR which appears in our model will always assumed to satisfy property IP and to be odd. Given a matrix M , we denote by Mi the i\Gamma th row of M . For any two positive integer
+
+1
+
+n; m, we let:
+
+Bn;m = ( B 2 IRn\Theta m fififififi Bi 6= 0 8 i = 1; : : : ; nB
+
+i 6= \Sigma Bj 8 i 6= j ) :
+
+3. Statement of the main results Assume we are given a oe-system \Sigma  j (A; B; C)oe (either in discrete or in continuous time) initialized at a given state x0 (we will write \Sigma  j (A; B; C; x0)oe to denote the oesystem \Sigma  together with the initial state x0). Then we can associate to \Sigma  an i/o map as follows. In the discrete-time case, for any sequence of inputs u1; : : : ; uk a sequence of outputs y0 = Cx0; y1 : : : ; yk is generated. In the continuous-time case for any control function u(\Delta ) : [0; T ] ! IRm (which we assume to be measurable essentially bounded), after solving the differential equation with initial state x0 and denoting its solution with x(t), we have a corresponding output function y(t) = Cx(t). Thus, in both cases, to the given initialized system \Sigma  j (A; B; C; x0)oe we associate an i/o map:
+
+*\Sigma ;x0 : ( (u1; : : : ; uk) ! (y0; : : : ; yk) discreteu(\Delta ) ! y(\Delta ) continuous. We say that two initialized oe-system \Sigma  j (A; B; C; x0)oe, and ~\Sigma  j ( ~A; ~B; ~C; ~x0)oe are i/o equivalent if p = ~p, m = ~m, and *\Sigma ;x0 = *~\Sigma ;~x
+
+0: We will study the problem of determiningwhen two given initialized oe-systems are i/o equivalent.
+
+Let:
+
+\Lambda n = ( T 2 Gl (n) fififififi T = P Q with P = permutation matrix ;Q = Diag (fi(1); : : : ; fi(n)); fi(i) = \Sigma 1: ) :
+
+Definition 3.1 We say that two initialized oe-systems \Sigma i = (Di; Ai; Bi; Ci; xi)oe; for i = 1; 2 are (sign-permutation) equivalent if n1 = n2 = n, and if there exists a matrix T 2 \Lambda n such that:
+
+A2 = T \Gamma 1A1T; C2 = C1T; B2 = T \Gamma 1B1; x2 = T \Gamma 1x1:
+
+Since oe was assumed to be odd, it is easy to see that two equivalent oe-systems are i/o equivalent. Our aim is to show that generically also the converse holds. We say that a subset of IRp is generic if it is nonempty and if its complement is the set of zeroes of a finite number of polynomials in p variables. By a generic subset of oe-systems we mean a generic subset of IRn
+
+2+nm+np when we identify the set of all oe-systems with IRn2+nm+np.
+
+We first let S to be the subset of oe-systems (1) for which the matrix B is in Bn;m. Notice that S is a generic subset of oe-systems.
+
+We say that a subspace V of IRn is a coordinate subspace if it is of the type:
+
+V = span f ei1 ; : : : ; eik g; where eij are the vectors of the canonical basis in IRn. For any pair of matrices (A; C) we denote by Oc(A; C) the largest A-invariant coordinate subspace included in ker C. Next Remark presents a simple procedure to compute Oc(A; C).
+
+2
+
+Remark 3.2 For any oe-system \Sigma , we let:
+
+I0(\Sigma ) = f i j 9 j 2 f1; : : : ; pg and cji 6= 0 g; Ik(\Sigma ) = f i j 9 l 2 Ik\Gamma 1(\Sigma ) with ali 6= 0 g;
+
+and I(\Sigma ) = S
+
+k*0 Ik(\Sigma );Ic(\Sigma ) = f1; : : : ; ng n I(\Sigma ) :
+
+Moreover, for each subset J ` f1; : : : ; ng, let VJ be the following coordinate subspace:
+
+VJ = span f ej j j 2 J g : With these notations we have: Proposition 3.3 Oc(A; C) = VIc(\Sigma ).
+
+A system \Sigma  is said to be observable if for each two distinct initial states there exists some control that gives different output when \Sigma  is started at those states (for a precise statement, both for discrete and continuous time systems, see e.g. [5]). Given these definitions, the following result holds (see [3], Theorem 1):
+
+Proposition 3.4 A system \Sigma  2 S is observable if and only if ker A"ker C = Oc(A; C) = 0.
+
+Now, we can state our main results, which will be proved in a later section. Theorem 1 Assume that oe is an odd map which satisfies property IP, (and, for the continuous-time case, it is globally Lipschitz). Let \Sigma  j (A; B; C; x0)oe and ~\Sigma  j ( ~A; ~B; ~C; ~x0)oe be two observable oe-systems in S. Then, these systems are i/o equivalent if and only if they are equivalent.
+
+Remark 3.5 Notice that, inside the class S, the observability condition is also necessary in order to guarantee the implication
+
+i/o equivalence ) equivalence. More precisely, if S0 ` S is any class of systems so that this implication holds for any pair of systems in S0 and initial states, then every system in S0 must be observable. This is proved as follows. Assume that \Sigma  j (A; B; C)oe is not observable. By definition of observability, there exist then two distinct states x1 and x2 which are not distinguishable. This means precisely that \Sigma 1 j (A; B; C; x1)oe and \Sigma 2 j (A; B; C; x2)oe are i/o equivalent. If the above implication would hold, then the systems must be equivalent. So there is a T 2 \Lambda n such that T B = B and T x2 = x1. But the fact that B 2 Bn;m implies that T is the identity. (In other words, the action of \Lambda n on S is a free group action.) Thus x1 = x2, a contradiction.
+
+3
+
+Remark 3.6 It is also interesting to notice that, if a oe-system is not observable because Oc(A; C) 6= 0, a reduction by unobservability is possible. It is only necessary to note that one can induce a dynamics on the quotient space IRn=Oc(A; C), which can be done because the subspace Oc(A; C) is an A-invariant coordinate subspace. More precisely, the construction is as follows.
+
+Let \Sigma  2 S. If Oc(A; C) 6= 0, then after if necessary reordering variables, the equations for \Sigma  take the following block form. The first block of variables corresponds to a basis of Oc(A; C), and has size n1 = dimension of Oc(A; C); the second set of variables has size n2 = n \Gamma  n1.
+
+x+1 = oe(A1x1 + A2x2 + B1u) x+2 = oe(A3x2 + B2u)
+
+y = C2x2:
+
+Then (A; B; C; (x1; x2))oe and \Sigma 0 j (A3; B2; C2; x2)oe are i/o-equivalent, for any initial state x = (x1; x2) of the original system, and the second system has lower dimension. The system \Sigma 0 is again in S. Moreover, \Sigma 0 is observable if ker A " ker C = 0. Indeed, the choice of variables insures that Oc(A3; C2) = 0. Furthermore,
+
+rank 0B@
+
+A1 A2
+
+0 A3 0 C2
+
+1CA
+
+= n
+
+implies
+
+rank ` 0 A30 C
+
+2 ' = n2
+
+so the conclusion ker A3 " ker C2 = 0 follows from ker A " ker C = 0.
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "For neural networks, function determines form,"
+
+Neural Networks, to appear. Summary in: "For neural networks, function determines form," Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 26-31.
+
+[2] Albertini, F., and E.D. Sontag, "Identifiability of discrete-time neural networks,"
+
+Proc. European Control Conference, Groningen, July, 1993, pp.460-465.
+
+[3] Albertini, F., and E.D. Sontag, "State observability in recurrent neural networks,"
+
+System and Control Letters, to appear.
+
+[4] C. Fefferman, "Reconstructing a neural net from its output," preprint, Princeton
+
+University, 1993.
+
+[5] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990.
+
+[6] Sussmann, H.J., "Uniqueness of the weights for minimal feedforward nets with a
+
+given input-output map," Neural Networks 5(1992): 589-593.
+
+4</pre>
+</body>
+</html>

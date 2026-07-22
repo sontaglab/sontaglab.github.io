@@ -1,0 +1,940 @@
+OCR of paper; see pdf file reg.pdf for viewable/printable page
+
+Reprinted from INFORMATION AND CONTROL Vol. 5 1, No. 2, November 1981
+All Rights Reserved by Academic Press, New York and Lonclon Printed in Belgium
+Conditions for Abstract Nonlinear Regulation*
+EDUARDO D.SONTAG
+Department of Mathematics, Rutgers University, New Brunswick, New Jersey 08903
+This paper studies the general problem of the existence of output (dynamic)
+stabilizers for a control system. The controller is not assumed to have any special
+structure. Necessary and sufficient conditions are given in terms of new notions
+which generalize the usual ones of stabilizability and detectability. In the particular
+cases of analytic and bilinear systems, these conditions are considerably simplified.
+1. INTRODUCTION
+A typical regulation problem is the following one. Let S be a control
+system, and let "0" be an equilibrium state of S. One wishes to obtain a
+(feedback) controller which drives every state of S asymptotically to 0 while
+it applies inputs to S which themselves approach 0 (internal stability). In
+general, this controller has access only to (partial) measurements of the state
+of S. Further, one assumes that arbitrary (finite support) disturbances may
+affect states and measurements, but that these disturbances cannot be
+directly observed by the controller. For linear (time invariant, finite dimen-
+sional) systems, such a controller exists if and only if S is stabilizable and
+detectable (see, e.g., Wonham (1974)). The first of these properties, which we
+shall call "asymptotic controllability," or just "asycontrollability," means
+that each state can be driven (open loop) asymptotically to the origin. The
+second, which we shall call "O-detectability," says that the subsystem defined
+by the set of "unobservable states," i.e., the set of those states which are
+indistinguishable from 0, is asymptotically stable.
+In this paper, we present a result which can be interpreted as a
+generalization, to nonlinear systems, of the above result. There has been, of
+course, extensive research on the topic of constructing regulators for many
+kinds of nonlinear systems, but no characterization in the spirit of those in
+the linear theory has been suggested. Much past research dealt with
+controllers having a "smooth" or even algebraic structure-for instance,
+bilinear controllers for bilinear systems. While such special controllers are of
+course to be desired if they exist, it appears to be impossible to derive.a
+general theory under such artificial constraints. There are in fact many
+This research was supported in part by Air Force Grant AFOSR-80-0196.
+105
+0019-9958/81/110105-23S02.00/0
+Copyright C 1991 by Academic Press, Inc.
+All rights of reiwoduction in any form reserved.
+<<PAGE-DIVIDER>>
+106 EDUARDO D. SONTAG
+examples of simple control problems for which no "nice" synthesis is
+possible. One way around this difficulty is to relax somewhat the structure
+and to introduce piecewise linear controllers., as done for instance in the well-
+developed case of sliding-mode systems (see, e.g., Utkin (1977) and Young
+(1978)). Even when using such an approach, however, there seems to be no
+way to derive complete necessary and sufficient characterizations. (A
+somewhat related approach. via sampled PL controllers, is described in
+Sontag (1981 ). and provides sufficient conditions for regulability which are
+very close to being necessary.)
+In view of the above., we take the most general approach that seems
+natural. Regulators will be just abstract control systems: a set with well-
+defined transition and output maps. In order to obtain a mathematically
+significant theory. we shall restrict attention to the case where the original
+system to be controlled has a certain amount of structure, at least
+topological. and progress to systems defined by analytic differential
+equations and eventually to bilinear systems. For each such class the charac-
+terizations become progressively simpler, until in the last case one recovers.
+for bilinear systems. a characterization equal to that for linear systems. The
+constructions in the proofs are rather abstract, but they all can be in prin-
+ciple implemented digitally; our objective in this paper, however, is to
+understand the underlying properties, not to provide actual control
+algorithms. (Close inspection of the proofs suggests that, with the
+appropriate definitions, the resulting regulators can be defined via
+piecewise-analytic.'" or at least "piecewise-continuous," equations,
+depending on the structure of the original system.)
+In Section 2 we present the definitions and state the main results. The
+central theorem is that. for systems S whose state spaces admit a metric for
+which the system maps are continuous, regulability of (S, 0) is equivalent to
+preregulability plus indy-detectability. The latter has a rather technical
+definition. it means. intuitively, that indistinguishability ("indy," for short)
+classes can be estimated (asymptotically). Preregulability means that S is 0-
+detectable (definition as in the linear case) and indy-asycontroll able (or,
+"indy classes are asycontrol I able"), meaning essentially that for each indy
+class there is a control sending all states in the class (uniformly) to 0. The
+necessary. part of this equivalence is easy to prove from the definitions. The
+intuitive idea of the sufficiency proof is also easy to understand: alternate
+estimation of indy classes with appropriate control actions; technicaJly, the
+proof turns out to be rather delicate, and it will occupy most of Section 3. It
+turns out that indy-detectability is satisfied automatically for analytic
+systems. so regulability is in that case equivalent to just preregul ability. In
+the bilinear (or, more generally, state-affine case) one can prove, further, that
+preregulability is in fact equivalent to just asycontrollability and 0-
+detectability.
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 107
+The results in this paper were presented in the conference papers of Sontag
+(1981b, 1982b). Throughout the paper we include suggestions for further
+research.
+2. DEFINITIONS AND STATEMENT OF RESULTS
+We shall need a large number of definitions and notational conventions.
+The latter are unavoidable if the proofs are to be kept at a reasonable length.
+SYstems and Signal Spaces
+A time-function will be any function defined on the nonnegative reals P
+(>,O). In any statement involving time functions, "for all C will mean "for all
+t >, 0" unless otherwise stated. Often, values will belong to a set having a
+distinguished element, to be called always "0," and/or a set endowed with a
+metric d; some of the following notations assume this. Let w be a time
+function. Then t(w) := sup it I w(t) * 0 1. The concatenation at b >, 0 of v and
+w is denoted by v I b I w and is equal to v(t) for t < b and to w(t - b)
+otherwise. The time function 0 is the one having the constant value 0. The b-
+initial segment of v-restriction to 10, b) followed by 0- is v I b 10. The right
+shift by b of v is just 0 1 b I v; this suggests extending the above definition to
+deal with negative b, so that the left shift (with truncation) is 0 1 b I v with
+b < 0. Note the equality u I a I (v I b I w) = (u I a I v) J(a + b)l w. We adopt the
+convention that any function which we define on a subinterval I will be alter-
+natively thought of as a time function, extended by 0 outside I.
+For any metric space (X, d) and subset A of X, we denote by B(A, r)
+Iresp., B*(A,r)] the open Iresp., closed] ball JxJd(x,A)<rJ Iresp., <1.
+When an element 0 has been distinguished in X, #(x) := d(x, 0), and A is
+omitted in the above for A = 101. If v is a time function, #(v) will denote the
+sup-"norm", i.e., supJ#(v(t)), t >, 01, assuming values are on a metric space
+and there is a distinguished value. Consistently with this, B(r) [B*(r)] will
+be also used for time functions, i.e., for the set Jv I #(v) < rf J<r]. For any
+T, the set B(r; T) is the set of v with #(v) < r and with t(v) < T, and
+similarly for B*. No confusion should arise from the fact that the same
+notations-#(.), 0, etc.-will be used in any given discussion to refer to
+objects associated to different sets; the meanings will be clear from the
+context.
+One rather obvious terminology convention: most definitions and proofs
+will involve estimates depending on various (distinct) parameters-say T
+depending on k and e, b depending only on e, etc. A phrase like "for all
+k, e > 0 there exist positive T(k, e) and b(e) such that..." will be used
+sometimes instead of saying, more precisely: "there exist functions
+<<PAGE-DIVIDER>>
+108 EDUARDO D. SONTAG
+T: P(>O)X P(>O)- P(A) and b: R(>O)-P(>O) such that, for all k> 0
+and e > 0 the quantities T(k, e) and b(e) satisfy ......
+Let V be a metric space with an element 0 and for which the balls B*(r)
+are all compact. A signal space V is a set of time functions with values in the
+(underlying signal-value set) V which (1) is closed under concatenations, (2)
+contains 0, (3) consists of locally bounded time functions, i.e., #(v I tj 0) is
+Finite for all u in V and all t, and (4) is extended, i.e., a time function v with
+all truncations v It 10 in V is necessarily itself in V.
+The cartesian product U X V of two signal spaces is itself a signal space
+with underlying set U X V and metric d((u, v), (u', v')) = d(u, v) + d(u', C).
+Let V, W be two fixed signal spaces (of "input" and "output" signals,
+respectively). With respect to these, a system S = (X, 0, h) is given by a set
+X, a map 0: P (>,O) X X X V-+X, and a map h:XXV-W, such that the
+following axioms hold for all x in X, all u, v in V, and all t, s:
+(2.1) 0(0; x, v) = x,
+(2.2) 0(s;0(t;x,u),v)=0(t+s;x,uItIv),
+(2.3) if u It 0 = v It 10, then 0(t; x, u) = 0(t; x, v),
+(2.4) given K, T > 0, there exists K' > 0 so that, for all v in B(K; T),
+iv(-) = h(0(-; x, v), v(.)) is in W, and w I TI 0 is in B(K'; T).
+Note that of course K' depends on x. An initialized system (S, 0), or just S,
+is given by a system S and a state 0 in S which satisfies:
+(2.5) 0(t; 0, 0) = 0 for all t, and
+(2.6) h(0, 0) = 0.
+Note the use of "0" both to denote a state and elements of (input and
+output) signal spaces; there is a mild inconsistency in not denoting this state
+by "0." The above definition is rather standard, except perhaps for (2.4),
+which must be added in the abstract setup but is automatically satisfied in
+the usual ("finite dimensional") cases. The causality axiom (2.3) follows
+from the consistency (2.1) and semigroup (2.2) axioms, but we include it for
+emphasis.
+Some particular classes of systems will be of interest. A strictly causal
+system is one for which h is independent of v; more generally, if V = C X D
+and W = E X F, then one says, for example, that E is strictly causal on the
+C-coordinate if the first coordinate of h(x, c, d) does not depend on c. A
+discrete time (or a "sampled data" system) is one for which transitions occur
+at integer times only and depend only on samples of the input: 0(t; x, v) = x
+for t < 1, 0(1; x, v) depends only on v(O). This models the case of difference
+equations in the strictly causal case (with a "one-second clock" added in
+each interval); for outputs depending on inputs one would modify the state
+space to store samples of past inputs. Note that the present definition allows
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 109
+for interconnections of discrete and other systems. A continuous-time system
+is one arising (in the obvious way) from equations
+)~(t) =f (x(t), v(t)), w(t) = h(x(t), v(t)), (2.7)
+where the state space X is a differentiable manifold, the map f: X X V --+ T(X)
+is continuous, each f(., v) is a complete vector field on X, and h is
+continuous. The space of input signals V consists of all piecewise continuous
+time functions to V (one could take locally bounded measurable inputs
+without changing any of the results), and it is assumed that solutions x(t)
+exist and are unique for all x(0) and all t. (Note that we are implicitely
+making the usual-and rather restrictive, in our view-assumption that there
+are no finite escape times. This assumption simplifies considerably the
+exposition, but it would be interesting to have the general case treated in the
+future.) An analytic (continuous time) system is one for which X and W are
+real analytic manifolds, V is a subset of an Euclidean space with connected
+interior and no isolated points, and both f and h are real analytic (see
+Sussmann (1979)). Finally, a (continuous time) state-affine system is one for
+which X, V, W are Euclidean, f is aff ine in x, and h is a constant linear
+function of x, i.e., one has equations
+)~(t) = F(u(t)) x(t) -i- G(u(t)), y(t) = Hx(t), (2.8)
+with F(.) and G(.) continuous. As an initialized system, 0 is the origin in X.
+(Bilinear systems have F, G linear on u.)
+The most important class in what follows is that of metric systems. These
+are systems S for which X is a metric space with all B*(r) compact, and for
+which h and 0 are jointly continuous in all their arguments (for the compact-
+open topology on V). The continuous systems defined before are all metric.
+We need to introduce a few notions for a general system S. The output
+out I x1v I is the signal in W defined by w(.) := h(o(.; x, v), v(-)), for any x in
+X and u in V. Two states x, x' are v-indistinguishable iff out1X/v1 =
+outlx'lu 1. They are indistinguishable if this happens for all v in V. An obser-
+vable system is one for which no two states are indistinguishable. For a state
+x, input u, and subset A of X containing x, the indy class (resp., v-indy class)
+of x rel A is the set JxIIA I (resp., Jx1v1A 1) consisting of all states in A which
+are indistinguishable (resp. v-indistinguishable) from x. When A = X, we
+write just Ix I and Jx1v], respectively. This notation is consistent with the one
+for outputs since the latter depend only on indy classes. Note that, for
+example, 10/01 is for initialized systems the set of all states x giving iden-
+tically zero outputs when the input signal 0 is fed into the system.
+Let I be the equivalence relation defined by: xIx' iff [x] = Ix'], and
+consider the quotient set XII. When X is a topological space, XII will be
+endowed with the (usual) finest topology for which the projection [.1 is
+continuous. The (A-) saturation JBI (resp., JB11AJ) of a subset B (resp.,
+<<PAGE-DIVIDER>>
+110 EDUARDO D. SONTAG
+rel .4 ) is the union of the sets [x] for x in B (resp., JxIIA ] for x in A r-) B).
+The set B is saturated (resp.. rel A) iff B= JB] (resp.. =JB11A I). By
+continuity of the maps out I./ .1. 1. X/I is a Hausdorff space when X is a metric
+s% stem.
+Regulation Concepts
+We shall say that a map f: V- W between signal spaces is stable iff the
+following tv~o properties hold:
+(2.9) for an% k. T. e > 0 there is a T' so that #(f(r)(t)) < e whenever
+v is in B(k: T) and t >~ P:
+(2. 10) for an% e > 0 there exist d. T > 0 so that #(f (u)) < e whenever
+u is in B(d: T).
+An initialized system v.-ill be called stable iff its i/o mapf(r) := out[0/rJ is
+stable.
+In other kkords. outputs must converge to zero under any finite support
+inputs (to be thought of as -disturbances- or -perturbations-). and this
+con% er2ence is uniform on the "magnitude"' of the disturbance: further, small
+disturbances should give rise to small outputs. This is just one of many
+possible definitions. and we use it because it is simple. mathematically
+comenient. and intuiti%ely reasonable. The results to be given can be
+extended to coxer stabilitv under non-finite support but "suffliciently rapid
+deca\ " disturbances: the proofs are basically the same. but there seems to be
+no simple (elegant) \~a\ to make the corresponding statements precise. We
+lease as a suggestion for further research the search for similar results under
+other definitions. e.g.. via extended spaces. From a purely mathematical
+standpoint. it ~vould be highly desirable to have a definition of stability
+%khich is closed under cascades.
+A (deterministic. general) regulation problem is specified by (i) an
+initialized systern (P. 0) (the plant) whose input and output spaces split as
+U x V and If' x Y. respectively. with the Y-coordinate strictly causal on the
+U-coordinate. and (ii) a class OBJ of maps from V into U X W X Y. The
+signal spaces V. U. W. Y will be called the spaces of disturbances, controls.
+output-objectives. and measurements, respectively. A solution to such a
+problem is provided by an initialized system (Q,O) (the controller) which
+satisfies the following properties:
+(2. 11 ) the input (resp.. output) signal space of Q is Y (resp., U),
+(2.12) the interconnection P * Q (see below) is well-posed, and
+(2.13) the ilo map f (v) := out 1 (0, 0)1v I of P * Q is in OBJ.
+In general, by the interconnection P * Q of two systems P = (X, 0, h) and
+Q = (X'. o'. h') with compatible signal spaces as above, we mean a system
+(X x X'. o *. h * ) such that (i) the input signal space of P * Q is V, the
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION
+output space U x W x Y, and (ii) for any v in V, and any x in X, x' in X',
+let (x(t), x'(t)) = 0*(t; (x, x'), v), y(t) := Y-coordinate of h(x(t), v(t)),
+u(t) := h'(x'(t),y(t)); then the following must hold:
+(2.14) out* I (x, xl)lu] = (out' IxIly], out[x/(u, v)]) = (u, w,y), and
+(2.15) 0 * (t; (x, x'), v) = (O(t; x, (v, u)), 0'(t; x', y)) for all t.
+If both P and Q are initialized systems, one defines P * Q to be initialized at
+(0, 0). We shall say that the interconnection P * Q is well-posed if there is a
+unique such P * Q. (This can be equivalently expressed in terms of
+uniqueness of the signals u and y such that the above properties hold.) The
+x(.), x'(.), u, y will be refered to as the "closed-loop" state trajectories and
+control and measurement signals.
+We shall be interested here only in the state stabilization problem, but we
+feel that the above definition should be appropriate to the modeling of many
+other interesting regulation problems (decoupling when V, W are further split
+and OBJ consists of diagonal maps, etc.). One possible variation is to require
+the ilo maps associated to every initial state to be in OBJ, but this can be
+made equivalent to the above if one includes enough "disturbances" to set
+initial states. A rather interesting fact is that even some system theoretic
+problems not commonly thought of as "regulation" problems fit neatly in the
+above; for instance, if OBJ consists of a single map and P is the trivial
+system with y := v and w := u then a "controller" is just a realization off,
+an inversion problem, on the other hand, can be modeled by letting y :=f (v),
+h, := u, for given f with OBJ = idelays I or ~ integrators ~. Here we restrict
+ourselves to:
+(2.16) DEFINITION. The plant P is regulable iff the regulator problem
+has a solution when OBJ= Istable maps~.
+As explained in the Introduction, we are going to treat only a particular
+case of this problem, namely, that of state stabilization under any finite
+support perturbations. Specifically, we make thefollowing assumptions on P
+for the rest of the paper:
+(2.17) full state as output-objective: W-coordinate of h(x, u, v) = x;
+(2.18) independent state and output disturbances: V is a product
+A x B, in such a way that 0 is independent of B and the second coordinate of
+h is independent of A;
+(2.19) the disturbances arefull (see (2.2l)-(2.22) below); and
+(2.20) the system P is metric.
+The argument A (resp., B) will be deleted from h (resp., 0).
+The notion of full disturbance corresponds to requiring that arbitrary
+effects can be achieved by the perturbations. The typical example, and the
+<<PAGE-DIVIDER>>
+112 EDUARDO D. SONTAG
+standard case in the regulation literature, is that of additive disturbances,
+e.g., ~ =f (x, u) + a, y = h(x) + b. for continuous time systems on an
+Euclidean space. The axioms are as follows:
+(2.2 1) For each T, u the map O[T, u ](a) := O(T; 0, u, a) (i) is open at
+a = 0 with respect to the compact-open topology on A, and (ii) for each k, u
+there is a V such that the image of B(k'; 7) under OJT, UJ contains B(k).
+(2.22) Let T > 0. Then, (i) for each e > 0 there is a d > 0 such that,
+for each admissible trajectory x(.) with #(x(t)) < d for t < T and for each y
+in B(d, 7-), there is a b in B with #(b I T1 0) < e and y(t) = Y-coordinate of
+h(x(t), b(t)) for t < T, and (ii) for each k > 0 there is a V > 0 such that if
+x(.) is a trajectory with x(t) in B(k) for all t < T, and if y is in B(k; T), then
+there is a b with #(b T1 0) < k' and with y(t) = h(x(t), b(t)) for I < T.
+We introduce also the underlying system S := P10 of the plant P; this is
+the system (X, 0, h) obtained when the maps 0, h are restricted to v = 0 and
+the first coordinate of h is ignored. This system, with input and output
+spaces U and Y, respectively, will be very important in what follows since
+most properties will depend only on S. (Suggestion for further research: if
+(2.19) does not hold, one may derive the results using for S the set of states
+reached from x = 0, and if (2.17) does not hold the results can be derived
+with some variation relating to controllability to the set of states giving
+= 0.)
+We now introduce the notions which will be used to characterize
+regulability. Let P be a fixed plant, and take S = P10. All notions of
+indistinguishability will be with respect to the underlying system S, not to P.
+The same notations 0, h will be used for the system maps of P and S; each
+has one less argument (a, or b, respectively) in the case of S. Definitions
+2.23 and 2.24 depend only on S, and Definition 2.26 only involves P in the
+well-posedness of the feedback system for arbitrary disturbances. Recall that
+X has a metric d.
+(2.23) DEFINITION. The system S is 0-detectable iff 10/0] is
+asymptotically stable, i.e., (i) 0(t; x, 0) converges to x = 0 (as t - 00) for any
+x in 10/0 1, and (ii) for each e > 0 there is a d > 0 such that #(0(.; x, 0)) < e
+for # (x) < d.
+Note that 10/0 1 is positively invariant under u = 0, so the above could
+have been also defined as stability (in the sense of this paper) for the
+,.subsystem" 10/0] of S, assuming one introduces appropriate "disturbances"
+to set the initial states in 10/0]. Note also that a standard stability argument
+can be used to prove that the convergence is uniform on compacts, i.e., that
+for each k > 0 and r > 0 there is a T such that 0 1 T, 0 ] maps B(k) into B(r).
+The next definition requires, intuitively, that each state x be open-loop
+asymptotically controllable to the origin, given only the knowledge of the
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 113
+indy class jxj; the technical conditions ask for for uniform convergence on
+compacts, and for small excursions and control values for small states:
+(2.24) DEFINITION. The system S is indy-asycontrollable iff there exists
+a function d: P(>O) -* IR(A) and for each indy class L there is a control
+signal u such that:
+(i) if #(x) < d(e) for some x in L and some e, then both #(u) < e and
+#(o(.. x, u)) < e; and
+(ii) for each k, r there is a T such that, whenever there is an x in L
+with #(x) < k, then #(0(T; x, u)) < r.
+(2.25) DEFINITION. The system S is asycontrollable iff S is indy-
+asycontrollable with respect to the identity measurement function.
+The most important of Definitions 2.24 and 2.25 will be the former. Note
+that in particular this condition implies that L = [0] is asymptotically stable
+when u = 0, but this is in general weaker than Definition 2.23 because 101
+may be a proper subset of 10/0]. Note that Definitions 2.24 and 2.25
+coincide for observable systems. In the "classical" linear case, Definition
+2.24 is equivalent to Definition 2.23 plus Definition 2.25. No definition like
+2.24 appears to have been given before. We could have defined asycon-
+trollability not requiring that controls converge to zero. Since we are
+studying here "regulation with internal stability," the present definition is the
+appropriate one. The reference Sontag (1982) deals with a Lyapunov ("direct
+method") characterization of -asycontroll ability for continuous time systems;
+it would be interesting to obtain analogous conditions for indy-
+asycontrol I ability and for 0-detectability. Note that we are suggesting here
+"internal" characterizations, not the search for conditions under which a
+given regulator configuration gives a solution to a regulator problem (which
+is an interesting but different problem). The work of Vidyasagar (1980) may
+be very useful in this regard.
+(2.26) DEFINITION. The system S is preregulable iff it is 0-detectable
+and i ndy -asy control I able.
+While the intuitive content of the next definition is very natural -indy
+classes can be estimated on compacts by a suitable "detector",- we would
+like to suggest for further study the search for a simpler definition
+compatible with the results to be obtained. Note the interpretation of the
+Q(k, e) below as "detectors" for states in the large compact B*(k) which do
+not "disturb" the states in a small ngbd B(e).
+(2.27) DEFINITION. The plant P is indy-detectable iff (i) for each e > 0
+<<PAGE-DIVIDER>>
+114 EDUARDO D. SONTAG
+there is a d(e) > 0, (ii) for each k, k', e > 0 there is an m(k, e, k1) > 0, (iii)
+for each k, r, e > 0 there is a T(k, e, r) > 0, (iv) for each k, e > 0 there is a
+system Q(k, e) with P * Q(k, e) well-posed, a state q(k, e) in each such
+system, and a b(k, e) > 0, and (v) there is given for each such k, e a function
+i: X' , XII (primes indicate objects associated to Q(k, e)), such that the
+following properties hold for arbitrary k, e, r. Consider first the closed loop
+system P * Q(k, e) and, for each x in X the trajectory with x'(0) = q(k, e),
+x(O) = 0, v = 0, and let T:= T(k, e, r); then:
+(a) if #(x) < d(e'), then *(x(t)) < e' and #(u(t)) < e' for all t < T
+and all e' in the interval le, I];
+(b) if #(x) < k, then #(x(t)) < b(k, e) for all t < T, and x(T) is in
+B(i(x'(T)), r);
+(c) if #(x) < k' for some k', then #(x(t)) < m and #(u(t)) < m for all
+t < T and m = m(k, e, k').
+Consider now the system P by itself, with input signals u = v = 0.
+It is then also required that:
+(d) if #(x) < d(e), and if y I t'l 0 = 0 for some t', then either
+16(1': x, 0)/0 1 = 10/0 1 or #(x(t)) < e for 0 < t < t', and
+(e) if #(x) < k' and y I t'1 0 = 0 for some k', t', then either
+o(t'. x. 0)/0 1 = 10/0 1 or #(x(t)) < m(1, 1, k') for t < t'.
+The definition could be generallized to allow for the estimation function to
+depend on the present output y(t); this would give an equivalent concept
+since one may always enlarge the state space of Q to allow for the memory
+of-v. The I in (e) is chosen arbitrarily; it is only used in order to simplify
+notations by not adding yet another estimate depending only on V. We shall
+see later that:
+(2.28) THEOREm. Every plant P with S analytic is indy-detectable.
+But many --even smooth- systems are not indy-detectable. For instance,
+consider the system -plant- with X = A Y = U = IR (W is irrelevant and B
+can be taken trivial) and equations x u + a, y = h(x), where h is any
+function which is bijective on the interval [-2, -11 and is zero outside
+1-3, -11. The underlying system S (a = 0) is in fact observable, but the
+above definition cannot hold for, say, r = 0. 1, e 0. 5. Indeed, compare two
+trajectories remaining in B(O.5). Both result in y 0, independently of x(O),
+so the controller state trajectory x'(.) is independent of the initial state of the
+plant, say x(0) = x or =z. It follows that the control u is also the same, and
+thus the distance d(x(t), z(t)) is constant in t (where z(.) is the trajectory
+starting at z). But (b) requires that for some t = T this distance be less than
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 115
+0.2, because the set (indy class) i(x'(T)) consists of a single state (obser-
+vability). Taking x = 0, z = 0.4 gives a contradiction.
+These are the main results to be proved:
+(2.29) THEOREM. Regulability = indy-detectability + preregulability.
+(2.30) COROLLARY. For S analytic, regulability = preregulability.
+(2.3 1) THEOREM. For S state-affine, preregulability = 0-detectability +
+asYcontrollabili(y.
+3. PROOFS
+Necessayy Part
+Let P be a regulable plant, S = P10, and Q a regulator for P. Recall that
+(2.17)-(2.20) are supposed to hold, and that OBJ = all stable maps. We wish
+to show that P is preregulable and indy-detectable. A state x' in X' is
+reachable (from 0) iff there is some input signal y for Q and some t such that
+x' = 0'(t; 0, y). The following lemma gives consequences of regulability for
+S.
+(3. 1) LEMMA. Consider P * Q, and assume that v = 0. Then, for each
+k, e > 0, and for each x' in X', there exist positive numbers d(e), m(k, x),
+and T(k, e, x') such that: (a) if #(x) < d(e) and x' = 0, then the closed loop
+trajectories have #(x(.)) < e and #(u) < e, and (b) if #(x) < k and x' is
+reachable, then (i) #(x(t)) < e and #(u(t)) < e for all t > T = T(k, e, x), and
+(ii) x(-), y, u are in B(m(k, x')).
+Proof. Let e > 0 be given. By (2. 10), there are e' > 0 and T > 0 such
+that #(out 1 (0, 0)1v ]) < e whenever v is in B(e'; T). Since P is metric, and
+using the local compactness of X and V, the map sending the triple (a, u, x)
+into the trajectory 0(-; x, (u, a)) is continuous, assuming the compact open
+topology is used for state trajectories. Thus, 0(t; 0, 0, 0) = 0 implies that
+there exists for the above T an e' small enough so that *(x(t)) < e for t < T
+if v is as above and u = 0. We assume that e' satisfies also this property. By
+2.22(i), for this e' there is a d such that, whenever x(-) is a trajectory which
+is in B(a) for t < T, there is some b in B(e'12; T) such that h(x(t), b(t)) = 0
+for t < T. By 2.2 1 (i), this d can be chosen small enough that for each x in
+B (d) there is an a in B (e'12; T) such that 0 1 T, 0 1 sends a to x. Further, d can
+be taken less than e. We let d(e) := this last d. Assume now that x is in
+B(d(e)), and pick a as above. The continuity argument on 0 gives that
+#(x(t)) < e for all t < T. Thus, there is a b as above such that y(t) =
+<<PAGE-DIVIDER>>
+116 EDUARDO D. SONTAG
+h(x(t), b(t)) = 0 for t < T. Let u :=(a. b). Then, if x(0) = 0, x'(0) = 0, all
+future x(t) (=w(t)) and u(t) are in B(e), and y I TJ 0 = 0, x(T) = x. It follows
+that x'(T) = 0. Thus, 0 * (t: (x, 0), 0) = 0 * (t; 0 * (T; (0, 0), v), 0) = 0 * (t + T,
+(0. 0). v 1 TJ 0). and it follows that (a) holds.
+We now prove (b). We first establish that for any k and any reachable x'
+there exists a c = c(k, x') and a T such that, whenever #(x) < k, there is a v
+in B(c) such that 0*(T; (0, 0), v) = (x, x'). Since x' is reachable in Q, there
+is a,v in its input signal space and a T such that 0'(T-, 0, y) = x'. Let u(t) :=
+h'(x ' (t). y(t)) for t < T. By 2.21 (ii), there is for this k a c > 0 such that, for
+each x in B(k) there is an a in B(c12) so that O(T; 0, u, a) = x. By Definition
+2.4 applied to P10, for each such a c there is a k' such that all intermediate
+x(t) are in B(k'), when the input to P has a in B(c12) and u fixed as above.
+By 2.22(ii), then. c can be chosen large enough that, for any trajectory x(.)
+starting in B(k'), there is a b in B(c12) with h(x(t), b(t)) =y(t) for t < T.
+This c = e(k, x') satisfies the desired property.
+Assume now that e, k, x' are given. Choose a T = T(x') so that T + T'
+satisfies the required properties. Let N = N(c, T, T') be such that all of x(t),
+u(t). y(t). are in B(N) whenever t < T + T', v is in B(c; T), and initial state
+= 0 (definition of "system" applied to P * Q). To obtain m, let T' be
+obtained for (say) e = 1, and let m(k, x') be larger than N(c, T, T') and 1.
+This completes the proof of Lemma 3. 1.
+(3.2) PROPOSITION. S is 0-detectable.
+Proof. Let Jx10 I = [0/0 ]. Consider in P * Q the initial state (x, 0), and
+assume that r = 0. Consider the signals u = 0 in U and y = 0 in Y. Let x(t) =
+o(t: 0. 0), x'(t) = 0 for all t. By well-posedness, it follows that 0*(t;
+(x, 0). 0) = (x(t), 0). The conclusion follows from Lemma 3. 1.
+(3.3) PROPOSITION. S is indy-asycontrollable.
+Proof. Let d(.) be as Lemma 3. 1. Let L be an indy class. Pick any x in
+L. and consider 0*(t; (x, 0), 0). We claim that the ensuing u and y are
+independent of the particular x chosen: this follows from well-posedness,
+since outlx,/u I = outiz/ul whenever [x] = Jz] = L. Again the result follows
+from Lemma 3.1.
+(3.4) PROPOSITION. P is indy-deteclable.
+Proof. Again the proof uses Lemma 3.1. We let d(-) be as there, and
+define Q(k, e) := Q, and q(k, e) := 0, for all k, e, T' via T(k, e, r) := the
+T(k,r,O) from Lemma 3.1, b(k',e)=m(k,e,k'):=m(k',O), and the
+functions i all constant and equal to 101. Given e, k, r, the axioms (a), (b),
+and (c) in 2.27 then follow from Lemma 3. 1. In particular, note that (a)
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 117
+holds for an -v e' (not just those in le, 11), because Q is independent of e, and
+for (b) note that d(x(n, i(x'(T))) = d(x(t), 101) < d(x(t), 0). To prove (d),
+assume that x(O) = x is in B(d(e)), x'(0) = 0, u = v = 0, and y I t'I 0 = 0 for
+some t'. Let z := x(t'). Consider the evolution of P * Q with v := 0 and
+starting at (z, 0). Let u', y', z(.), z'(.) be the trajectories obtained. The
+signals 0 t' I u' and 0 It' I y' are consistent with the trajectory equal to x(t)
+for t < t' and to z(t' - t) otherwise, and similarly for x'. By well-posedness,
+these are the trajectories corresponding to the initial state (x, 0) and v = 0.
+Thus, #(x(t)) < e for all t, and in particular for t < t', as wanted. The proof
+of (e) is analogous.
+SufficiencY
+Throughout this section, P is an indy-detectable, preregulable plant. We
+shall need a couple of easy technical lemmas.
+(3.5) LEMMA. Given a compact subset Z of X, and an open subset N,
+there exists an open set N' such that (i) N' is saturated rel Z, and (ii) for
+an 'v indi, class L such that N contains L n Z, N' satisfies L r) Z 9 N'r) Z ~i~
+N r) Z.
+Proof. Consider the restriction 0 to Z of the projection [.1. Since Z is
+compact and XII is Hausdorff, 0 is a closed (continuous) map. Let B be the
+complement of N r-) Z in Z. This set is closed in the relative topology of Z.
+Thus, JB11ZJ (=preimage under 0 of O(B)) is also closed in Z, and hence in
+X. Then N' := complement (in X) of I B11Z I satisfies the required properties.
+(3.6) LEMMA. Each of thefunctions d(-) appearing in Definitions 2.23,
+2.24, and 2.27 maY be assumed to be continuous and strictly increasing.
+Proof. Note that any function d' with d'(e) < d(e) for all e > 0 also
+satisfies the conditions in each case. Note also that, when e' > e, d can be
+redefined if desired at e' by d'(e') := d(e), again without affecting the
+validity of the conditions. Given d, then, define first d' by: d'(e) := d(11n) in
+the interval I 11n, 11(n - 1)), for each n > 1, and d(e) := d(l) otherwise.
+Now replace d' by any continuous strictly increasing function majorized by
+the piecewise constant d'.
+Only part of the following lemma will be needed later, but the full
+statement is of interest in itself. Note the difference with Definition 2.24: T is
+now independent of L, and x(t), u(t) are in B(r) for all t >, T; on the other
+hand, u depends now on k and r. Only indy-asycontrollability is needed in
+Lemmas 3.7-3.8.
+(3.7) LEMMA. For each V, r', e > 0 with r' < V, e < k' there are
+positive d'(e), c(k'), and T(k', r') > 1 such that,for each indy class L', there
+<<PAGE-DIVIDER>>
+118 EDUARDO D. SONTAG
+is an input u' with: (i) if x is in L' n B * (d'(e)), then both O(t: x, u') and
+u'(t) are in B(e) for all t, and (ii) if x is in L,nB*(k'), then
+x(t)=O(t;x,u') is in B(r') for all t>,T'(k',r'), and #(x(t))<c(k),
+#(u) < c(k').
+Proof. Define a function j(e) := d(d(e)12), where d is as in Definition
+2.24, assumed continuous and strictly increasing via Lemma 3.6. Let also
+d'(e) :=j(e)12. For each class L * [0], let e(L) be the inf of the e such that
+L n B * (j(e)) is nonempty. Since L is closed, e(L) * 0. Pick V, r', e, and a
+class L.
+Assume first that L * 10]. Apply Definition 2.24 to L, to obtain an input
+u as there. Let r := d(r'), k := k' + 1, and pick T as in Definition 2.24(ii).
+Pick a number c larger than V, larger than the (finite) number #(u I Tj 0),
+and larger than all possible values #(O(t; x, u') for all t < T, x in B*(k') and
+#(u') < maxj#(u I Tj 0), k'~. Since OJT, u] is continuous, there is a d" such
+that any x, z at distance <d" get mapped to x', z' at distance <d(e(L))12,
+for x, z in B * (k). Let m be a number less than both d" and j(e(L))12. Note
+that 61Tul maps E:=LnB*(k') into B(d(r')). Let N be an open set
+which contains the former and which is also mapped into B(d(r')). We may
+assume that N is contained in the m-ngbd of E. By Lemma 3.5, we may
+further assume that N is saturated rel B*(k'). Consider any indy class L'
+intersecting N at a nonempty set F. Let G be the image of F under OJT, ul.
+Since jx] = [z] always implies that 10(t; x, u)] = [0(t; z, u)], there is a
+(unique) indy class H containing F. Let w be the input associated to H via
+Definition 2.24. In particular, for any x in G, OQ; x, w) remains in B(r') for
+all t. Further, #(w) < r' < c. Suppose that L' intersects some B*(d'(e)), for
+some e, say at x. Since N is saturated rel B*(k), x is in N (because
+d'(e) < e < k). Thus, there is some z in L with d(x, z) < nz <j(e(L))12. Since
+#(x) < d'(e) =j(e)12, it follows that j(e(L)) < #(z) <j(e(L))12 +j(e)12.
+Thus, e(L) < e. It follows that L intersetcs B(j(e)) = B(d(d(e)12)), and z is
+in the intersection. Also, this implies that u is in B(j(e)), so also in B(e). By
+Definition 2.24, O(T; z, u) is in B(d(e)12). Since d(x, z) < rn < d, also x' :=
+O(T; x, u) is in B(d(e)). Thus, #(0(.; x, w)) < e and #(w) < e.
+Concatenating u and w, one has for each L' intersecting N that the
+conclusions hold, except of course that T and c depend on the chosen
+L (*[01).
+We claim that the same local result holds for L = [0]. Again apply
+Definition 2.24, to obtain T, with r = d(r'), k = k' + 1. Note that now u = 0.
+Since E := [0 ] n B * (k') is mapped by u = 0 into B(d(r')), there is by
+continuity on u and x an a > 0 such that O(T; x, w) is in B(d(r')) whenever
+#(w) < a and x is in an a-ngbd of E. Let N be an open ngbd of E which is
+saturated rel B*(k) and which is contained in the B(d(a))-ngbd of E.
+Consider any indy class L' intersecting N at a nonempty set F. Choose for
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 119
+L' an input u as in Definition 2.24. If L' intersects B*(d'(e)), note that
+d'(e) < d(e), so L' also intersects B(d(e)), and hence by Defilnition 2.24
+future x(t) and u(t) are in B(e). If x is in F, it is also in B(d(a)), so also
+#(u) < a, and hence also O(T; x, u) is in B(d(r')), as wanted. With any c
+larger that a and larger than the x(t) which may appear when starting in the
+closure of N, one has the conclusion for ngbds of L = [0].
+Cover the set B*(k') by the open sets N(L) constructed for each L and
+take a finite subcover. It is enough now to take c (resp., 7) as the largest of
+the c(L) (resp., all T(L), and 1) associated to this subcover.
+(3.8) LEMMA. Let T(-, -) and d(-) be the functions in the statement of
+Lemma 3.7. For each k, r, e > 0 with r < k and e < I < k there exists a c(k),
+and for each indv class L intersecting B*(k) there exist an input u and a
+open set N, such that (i) L n B *(k) ~-= N, (ii) N is saturated rel B *(k), (iii)
+for an 'v x in N n B * (k), #(0(T; x, u)) < r and #(x(t)) < c(k) for all t < T,
+(iv) if e < e' <_ I and x is in N n B * (d(e')), then #(x(t)) < e' for t < T, and
+(v) #(u) < c(k).
+Proof. Let k, r, e, L be given. Pick u as in Lemma 3.7. Let M be the set
+of all x in X such that for each e' in le, I I the following property holds:
+#(x),<_ d(e') implies #(0(t; x, u)) < e' for all t < T. An easy compactness
+argument (plus continuity of d(.)) gives that M is open. By Lemma 3.7, L is
+contained in M. Since L n B*(k) is mapped by 01 T, ul into B(r), it has an
+open ngbd M' which is also sent to B(r). Let N' be the intersection of M and
+M' and pick N such that it satisfies (i) and (ii) and such that Nr)B*(k) is
+included in N' r-) B*(k). Assume that x is in the first of these sets. Then x is
+in M'. so it is mapped into B(r). Define c(k) as larger than c'(k) :=the
+I.c(k)" of Lemma 3.7, and so that it bounds all values #(O(t; x, u')) for
+#(u') < c'(k), t <, T, and #(x) < k. Thus, (iii) holds. Since (v) holds by
+construction, it only remains to prove (iv). But this is immediate from the
+definition of M.
+(3.9) LEMMA. For each k', V, r, e, e' > 0, e < 1, there are
+T T'(k', r, e) > 1, positive c' = c'(k'), m' = m'(k', e, k "), g = g(e'),
+b' b'(k', e), and systems Q = Q(k', r, e) with states x' = x'(k, r, e) such
+that the following properties hold: (i) the interconnection P * Q is well posed,
+and for v = 0, x(O) = x, and x'(0) = x' the following hold for the ensuing
+closed loop trajectories; (ii) if W(x) < g(e') for an e' in the interval [e, I ],
+then #(x(t)) < e' and #(u(t)) < e' for t < T, (iii) if *(x) < V, then
+#(x(T)) < r, and #(x(t)) < c' and #(u(t)) < b' for t < T, and (iv) if
+#(x) < V, then #(u(t)) < m'for t < T.
+Proof. Let d be as in Lemma 3.8, and let d' be the function called d in
+Definition 2.27. Define g(e) := d'(d(e)). Consider the detectors in Definition
+<<PAGE-DIVIDER>>
+120 EDUARDO D. SONTAG
+2.27, and let R be the Q(k', d(e)) there, q = q(k', d(e)). Let X(R) be the state
+space of R. Using b from Definition 2.27, let k be any number larger than
+b(k', e), r, and 1. Let c'(k') := c(k), and let b'(k', e) be any number larger
+than b(k', e) and e(k). Let m'(k', e, k") be any number greater than c(k) and
+m(k% e. V). We shall define T'(k', r, e) to be the sum of the T(k, r) in
+Lemma 3.8 and of T = T(V, d(e), 0') (right-hand term is the estimate in
+Definition 2.27), where the number 0' will be constructed below.
+We claim that there exists an open covering JNj, i = I_., n ~ of B *(k) with
+a] I Ni saturated rel B * (k), inputs I ui ~ as in Lemma 3.8, and a map 1: X' -
+I I_., n ~ s u ch that: ( I ) Ni n B * (k) is mapped i nto B (r) by ui at time T(k, r),
+with all the properties in Lemma 3.8 holding, and (2) when R is started at q
+and x(O) is in B(k'), then x(T) is in Ni for i = I (x'(7)). We now prove this
+claim. Pick any indy class L, and apply Lemma 3.8 to get a corresponding
+N, u. Let O(L) be such that the O(L)-ngbd of L n B * (k) is contained in N.
+Pick 0'(L) := t9(L)/2. Consider B(L, 0'(L)) and apply Lemma 3.5 to this set,
+with Z = B*(k). Let N'(L) be the saturated open thus obtained. Cover B*(k)
+by these N'(L), and take a finite subcover IN' = N'(Li), i = I_., n 1. By Ni,
+Ui we denote the N, u associated to the corresponding L,. Let 0' be a number
+which is less than I and less than all the 0j'. This is the 0' used above to
+obtain the time T that the detector R will be operated. Given any indy class
+L intersecting B * (k), one of the N' contains this intersection. Let j: XII ,
+~ 1_., n ~ be a choice map giving an index i for which this happens. Let
+I (z) :=j(i(z)). If R is now operated, with x(O) = x in B(k'), one has x(T) in
+B(i(x'(T)), 0') by definition of indy-cletectability. Thus, d(x(T), z) < 0' for
+some z in i(x'(n). But x(t) is always in B(b(k', e)), so #(z) < k. By the
+definition of j, i(x'(T)) n B * (k) is contained in B(Li, 0j), where i = 1 (x'(T)).
+Thus, d(x(T), Lj) < 0j, and it follows that x(T) is in Ni, as claimed.
+We now define Q = Q(k', r, e). The state space X' will be the set
+(X(R) U ~ n ~) X F, minus the set of all (p, s) with p in X(R) and s >, T.
+The state x' will be (q, 0). States of the type (p, t) in X(R) x R will be said
+to be "of type I", the (i, t) in the rest of type 2. We let 0", V denote the
+system functions of R. Then, for states of types I and 2 respectively:
+0, (t; (p, S), Y) (0 " (t; P, A t + S) if t + s < T
+(1(0"(T- s;p,y)), t + s) otherwise,
+0, (t: U, S), Y) (i, t + S), (3.10)
+h'((p, t), y) h"(p, y); h'((i, t), y) := ui(t - 7). (3.11)
+Then (3.10)-(3.11) define indeed a system, and the interconnection P*Q is
+well posed: one needs only to check all possible combinations of types of
+states and times <T or >T. For instance, the signals u, y needed for the
+closed loop operation are constructed separately for t < T (well posedness of
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 121
+P*R) and for t ~>_ T (basically open-loop control in that interval). All the
+desired properties hold by construction.
+(3.12) LEMMA. Consider the system S = P10. For each k, e > 0 there
+exist positive j(e), n(k) such that,for any, t, xfor which outIx/0] I t 0 = 0, the
+following properties hold: (a) if #(x) < j(e) for some e, then #(O(t'; x, 0)) < e
+for all t' < t + 1, and (b) if #(x) < k for some k, then #(O(t'; x, 0)) < n(k)
+for all t' < t + 1.
+Proof. By continuity of 0(t; -, 0) there is a g(.) such that B(g(e)) is
+mapped into B(e) for all t < 1. By 0-detectability, there is a d'(.) such that
+#(0(- -, x, 0)) < e whenever Jx10 I = [0/0 1 and #(x) < d'(e). Finally, let d be
+as in Definition 2.27. Define j(.) := min Jd'(-), d(g(.)) ~. Pick an x in fte))
+and t arbitrary. Assume that y It 10 = 0. By indy-detectability, either (i) x(t 1)
+is in B(g(e)) for t' < t or (ii) x(t) is in [0/0]. In case (i), the choice of g
+gives the desired conclusion. If Jx(t)10 I = 10/0 1, then, since also y(t') = 0 for
+t' < t, it follows that out[x/01 = 0, so x is itself in 10/01. By 0-detectability,
+(a) holds. To prove (b), note that the estimate n(k) exists for x in 10/01, and
+if x is not in this set, the estimate also exists by Definition 2.27 plus the
+boundedness of #(0(t, x; 0)) for x bounded and t < 1.
+The proof that a given system description involving different kinds of
+states indeed defines a system Q, and that an interconnection P * Q is well-
+posed, is in general very tedious since it involves careful checking of all
+axioms for each kind of state. The following technical lemma can be used, at
+least in the case that we shall need to consider, to establish directly these
+properties.
+(3.13) LEMMA. Assume given a fami~i, of systems Q(i). i > 0, for which
+the interconnections P * Q(i) are well-posed for each i. States q(i) and a
+subset Z(i) are specified for each state set X(i). Further, a function
+fj: Z(i) - N (= nonnegatiue integers) is given for each i. Let s(x, -y) :=
+inf it 0(t, x, Y) is in Z(i) ~, for each input y and each x in X(i). It is assumed
+that there is an s(x) (possibl 'v infinite) such that s(x, Y) > s(x) > 0 for all y,
+for each x not in Z(i), and that s(q(i)) = T(i) >, I for all i. The claim is that
+there is a unique s 'i1stem Q such that P * Q is well-posed, and such that for
+each x in X(i):
+0(t, x, 19 = OP; X, Y) if t < S (X, A
+= 0i(t - s(x, y); q(j), 0 I(s(x, y) - t)1 y) otherwise, (3.14)
+where j :=fi(oi(s(x, Y); x, u)), and where the state space of Q is the disjoint
+union of the X(i) modulo the identifications x = q(fi(x)) for each x in Z(i).
+The output map is assumed to be h(x, y) := hi(x, y) for those x that are in
+X(i) but not in Z(i).
+<<PAGE-DIVIDER>>
+122 EDUARDO D. SONTAG
+Proof (sketch). The definition of 0 is by induction on n, defining
+o(t; x.'y) for each (t, x,Y) such that, either s(x) > I and t < n, or s(x) < I and
+t '< n - 1. Formulas 3.14 then define 0 for all values. The axioms for Q being
+a system follow from those for the subsystems Q(i). To prove well-posedness,
+consider a state x of P and a state x' of Q, say in X(i). By the above iden-
+tification, one may assume that x' is not in Z(i). Thus, a unique pair of
+closed-loop signals (u, y) exists, by well-posedness of P * Q(i), for t < s(x).
+Using this '~7 one obtains the nextj as in formula 3.14, and the result follows
+by induction. Note the use of the assumption that T(i) > I in the induction
+step, ensuring that there are finitely many transitions, from one type of state
+to another type of state, in any finite time interval.
+We now start constructing the controller P. The definition will use the
+construction in Lemma 3.13. Define, using Lemma 3.9, e(l) := I and induc-
+tively e(i + 1) := &(i)). For each a > 0, definef(a) to be any integerj such
+that e(j) < a.
+A system Q(O) is introduced as follows. Its state set is X(O) := set of
+initial segments of observations, i.e., the set of pairs (y, t), y in Y, with
+y I t 10 0. We denote by 0 the pair (0, 0), and define 0(t; 0, y) := 0 if
+T(y) inf J t I y(t) * 0 ~ is greater than t, O(t; 0, y) := (y I (t - T(y))j 0,
+t - T(y)) otherwise. For a state (y, t) with t > 0, define 0(t'; (y, y')
+(y I t I y', I + t'). The output h is constantly =0. Let Z(O) := ( (y, t) I t =
+and fo(y. 1) :=f (#(y 10.510)). The hypothesis of 3.13 hold then for Q(O),
+when q(O) := 0.
+Define now functions K(ij) and m(ij) as follows, by induction on i. Let
+K(lj) :=j for all j >, 1. A:ssume that K(ij) has been defined for all j. Let
+k'(i) := K(i, i). Consider using Lemma 3.9 the system Q'(i) := Q(k'(i),
+e(i + 2), e(i -~- 1)), and obtain T(i) := T(V(i), e(i + 2), e(i + 1)). Let m(i,j) :=
+m'(V(i), e(i + 1), K(ij)), for all j. The induction is then completed by letting
+K(i + 1j) be any number bounding
+I #(0(t; x, u)) I t < T(i), #(x) < K(ij), #(u) < m(ij)). (3.15)
+Note that K(i + 1j) > K(ij) >j for each i. Now introduce the systems Q(i)
+as follows. The state space X(i) of Q(i) is XI(i) x P(_>0), where X(i) is the
+state space of Q'(i), and let q(i) := (x'(i), 0), using the states x'(i) given in
+Lemma 3.9. The set Z(i) consists of all the (x, t) with t = T(i). If 0,! is the
+transition map of Q'(i), then let for Q(i):
+oi(t'; (X, 0, Y) := (01! W; X, A t' + t), (3.16)
+and output hi((x, 1), y) := hf(x, y). Let fi be constantly equal to i + 1. The
+hypothesis in Lemma 3.13 hold by well posedness of the original P * Q'(i).
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 123
+Note that s(x, t) := T(i) - t < T(i) for all x. And s(q(i)) = T(i), so the
+notations T(.) in Lemmas 3.13 and 3.9 are consistent.
+Let Q be constructed from these Q(i) via Lemma 3.13. It must be proved
+that P * Q is stable. We shall use primes (') to indicate objects associated to
+Q. For simplicity, conditions (2.9)-(2. 10) will be only proved explicitly for u
+and x: by the continuity of the output measurement y on x, the full result for
+outJ(0,0)J1vJ=(u,x,y) can be obtained trivially from this. Note the
+following two properties that hold by construction. Let v = 0, and consider
+the states x(O) = 0 in P and x'(0) = q(i) in X'. Then, for each i > 1:
+(3.17) assume #(x) < e(i + I - V), V > 0, and take any j > i; let
+T:=O if j = i, = T(i + 1) + - - - + T(j) otherwise; then #(x(t)) and #(u(t))
+are necessarily < e(j - P) for t > T;
+(3.18) assume #(x) < K(i,j), j > i, and let T:= T(i) + + T(j); then
+*(x(t)) and #(u(t)) are <e(j) for t >, T.
+Let k, T be given, and consider a disturbance v in B(k; T). Let j > 0 be
+chosen such that T < T(O) + - - - + T(j). Then x'(T) must be in one of the
+sets X(i) with 0 < i <j. Assume first that i > 0. Let t' := s(x'(7)). Then
+x'(T + P) - q(i + I). Let K be a number large enough so that x(T + t') is in
+B(K). Note that K can be chosen independently of the particular v since x(T)
+is bounded for v in, say, B(k; T+ 1), and since the input disturbance is
+identically zero in the interval (T, T + T'). Let j ~>- i be such that-
+K < K(i,j)-recall that always K(i,j) >j. Then property (2.9) in the
+def-inition of stability follows from (3.18). Assume now that i = 0, and
+suppose that x(T) is in 10/01 and x'(T)=O. Then (2.9) follows by 0-
+detectability. If x = x(T) is not in 10/0 1, consider t' := inf of those t for
+which the output y of S has y(t) * 0, assuming x(O) = x and control u = 0.
+Then x(T + t') is again bounded as a function only of k and T, by the
+second part of Lemma 3.12. Since x'(T + t) = q(l), one may again apply
+(3.18). If x'(T) * 0, then there is a t' < I as above, so we again apply (3.18).
+Thus, (2.9) is true in every case.
+To prove (2. 10), let e be given. Define T := 0.5. Pick a f such that
+e(j') < e. Let d be such that, with u = 0 and #(v) < d, necessarily #(x(t)) <
+j(e(j' + I)Y-cf. Lemma 3.12-and *(y(t)) < e(f) for t < 0.6 (any number
+larger than 0. 5 is suitable here). Let t" := inf it I y(t) * 0 if u = 0 is applied
+to P ~. If y = 0, then in the closed loop operation always x'(t) = 0. Thus,
+u = 0 is indeed applied (note the delay which prevents this reasoning from
+being circular). In that case, Lemma 3.12 gives the desired result. The other
+possibility is that t" is finite. Then x'(t" + 1) =some q(i), where i =f (a),
+a = magnitude of the output y restricted to [t", t" + 0.5). By the choice of
+d, a< e(f). By definition off, then, i > f. Again by Lemma 3.12, one
+knows that #(x(t" + 1)) < e(f + I). Let V := i -f. By (3.17), then,
+<<PAGE-DIVIDER>>
+124 EDUARDO D. SONTAG
+#(x(t)) < e(i - P) < e(j') < e for all t, and the same happens for the control
+values #(u(t)).
+This completes the proof of regulability. Close inspection of the above
+proof suggests an area for further research: develop all the theory in the
+category of "piecewise continuous" systems, where one requires all maps
+appearing to be continuous on each of the elements of a covering; the sets in
+this covering could be, e.g., intersections of open and closed sets, and in
+order for the setup to be of applied interest one should require this covering
+to be locally finite around each nonzero state. Similarly for piecewise
+analytic, etc. Note that these constructions result a priori in very large state
+spaces; as remarked in the Introduction we are here interested only in
+abstract regulability. But various simplifications are immediate. In most
+situations one is only interested in appropiate behavior for disturbances
+which are bounded in magnitude and/or in controlling to a sufficiently close
+tolerance around the origin, not necessarily asycontrol I ability. All that is
+required is then to only consider those Q(i) controlling states of a given
+bounded magnitude, to a ngbd B(j) small enough.
+Some Particular Classes o Systems
+~f
+We wish to prove Theorem 2.28. The following lemma is useful.
+(3.19) LEMMA. Let P be a plant, and assume that the following
+properties hold for S = P10, for some T > 0: (i) for each e there is a u with
+#(u) < e and such that u determines final states, i.e., for any x, z in X, if
+outlxlul I Tj 0 = outlz/u] I Tj 0, then [O(T; x, u)] = [0(T; z, u)], and (ii) for
+an '11 x in X, either out[x/01 I Tj 0 # 0 or 10(T; x, 0)] = [0/01. Then P is indy-
+detectable.
+Proof. Given e > 0, pick d(e) such that 0(t; x, u) is in B(e) whenever
+t < T, #(x) < d(e), and #(u) < d(e). Such a d always exists by continuity
+because 0 is an equilibrium state. Let T(k, e, r) := constantly T, and let
+m = m(k, e, k') be any number bounding #(O(t; x, u)) for t < T, #(x) < V,
+and #(u) <, 1. Let b(k, e) := m(k, e, k). The system Q(k, e) will depend only
+on e; in fact, both the state space X and the transition map 0 are even
+independent of e. Pick X as the set of initial segments of inputs (y, t) with
+y tj 0 = y. Let 0(t'; (y, t), y') :=(y I tj (y' I t'1 0), t + t'). For each e, take an
+u as in the statement, such that #(u) < min 11, d(e) ~. Define for Q(k, e) the
+(strictly causal) output map h(y, t) := u(t). Finally, choose q(k, e) := (0, 0),
+and let i(y, t) := the indy class [0(T; x, u)] characterized by y I Tj 0, if any
+such class exists, and arbitrary otherwise. (In the case to be considered,
+analytic systems, one may replace Y by a finite dimensional space.) The
+systems Q(k, e) are all well defined, and the interconnection P * Q(k, e) is
+well posed-trivially, since there is no feedback involved. The axioms (a),
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 125
+(b), (c), for indy-detectability are satisfied by construction. We now prove
+(d). Let t' be arbitrary and let #(x) < d(e). Assume that outlx/0] I t'J 0 = 0.
+Let first t' >, T. Then 10(T; x, 0)/0 ] = 10/0 1, so also 10(t'; x, 0)/0 ] = 10/0 1,
+as wanted. If instead t' < T, then #(O(t; x, 0)) < e for all t < t', by definition
+of d(-). To prove (e) the argument is analogous: just note that #(0(t; x, 0)) is
+bounded when x and t are both bounded.
+For analytic systems, the hypothesis of the lemma hold; this is an
+immediate consequence of the main result in Sussmann (1979); part (ii) is
+just an exercise in analyticity. This establishes Theorem 2.28. We remark
+also that one has the same result for (at least) polynomial discrete time
+systems; see Sontag (1979).
+Turning now to preregul ability, we ask when is this property equal to just
+asycontrollability plus 0-detectability. Call a system weakly preregulable if
+these two latter properties hold. (This is unrelated to "weak regulation" in
+the sense of Sontag (1981).) The following analytic system is weakly
+preregulable but not preregulable (see Sontag (1982b) for details). Let the
+state space of S be the plane, U = R, and equations:
+.i = 4x arctan(xz - 1)(u + 1) + 2x(I _ Z2)(U2 + 1),
+i = -Z(U -1- 1), (3.20)
+and output y = z. It is interesting that this system is pretty well behaved near
+(0, 0) since its linearization there is asymptotically stable. Study of this
+example suggests the definitions below.
+Call the system S locally indy-asycontroll able if there exists a ngbd N of 0
+and a function d such that the properties in (2.4) hold for all indy classes rel
+N. Call S strongly locally indy-a.c. if there is some saturated such ngbd. In
+the "hyperbolic" case when the linearization of S at zero makes sense and is
+regulable, one concludes only local indy-a.c., not the strong notion.
+(3.21) LEMMA. A weakly regulable and strongly locally indy-a.c. system
+S is necessarily preregulable.
+Proof. We must prove indy- asycontroll ability. First modify d such that
+for no e > 0 is #(x) < d(e) for an x not in N. Let a > 0 be such that B(a) is
+included in N. Let k > 0, and pick any x in B*(k). By asycontrollability,
+there are a u and a T such that #(0(t; x, u)) < a for all t > T. Using an
+argument as in Lemma 3.7, one can conclude that there as a whole ngbd of x
+that satisfies the same property, for a fixed T(x), and for inputs u bounded
+by a constant dependent only on x. By compactness, one can find a b(k) and
+a T(k) such that all states in B*(k) can be controlled into B(a) in time T(k)
+using inputs in B(d(k)). We may assume that b(-) and T(.) are increasing
+functions. Let c(k) be a bound on the values #(0(t; x9 u)), for #(u) = b(k),
+<<PAGE-DIVIDER>>
+126 EDUARDO D. SONTAG
+#(x) < k, and t < T(k). Consider T(-, -) from the definition of strong local
+indy-asycontrollability. Define now a new T'(k, r) := T(k) + T(c(k), r).
+Let now L :?L 0 be an indy class, and assume that L does not intersect N
+(otherwise, what follows is true by hypothesis). Let k be smallest possible
+such that L intersects B*(k). Let x be any state in this intersection. Find u
+so that O(T(k); x, u) is in B(a). Then all of L is mapped into a indy class L'
+having a representative in B(a). Thus (saturation) L' is included in N. There
+is then an input u' driving L' to the origin, and u I T(k)l u' drives L to the
+origin. Condition (i) of Definition 2.24 is irrelevant here because L does not
+intersect N. Assume however that L intersects some B(k'), say at a state z.
+Necessarily, k' > k. So b(k') > b(k), and thus #(O(T(k); z, u) < c(k'). It
+follows that, for the chosen input for L', z is mapped into B(r) in time at
+most T(k', r). This completes the proof.
+Particular cases of interest of the above are that of local indy-a.c. with 101
+compact, or the case where there is (exact) local controllability. We use this
+lemma to give a proof of Theorem 2.3 1.
+Let S be a weakly preregulable state affine system. Consider 101, which is
+a subset of 10/01. This set is a subspace for which we may decompose the
+equations for S as
+.i = F(u) x + G(u), (3.22)
+i = A (u) z + E(u) x + B(u), (3.23)
+with y = Hx, and where [0 1 is the space of vectors of the form j (0, z) 1. Since
+10/0 1 is asymptotically stable, [0 ] also is (under input = 0). Thus, A (0) is a
+Hurwitz matrix. By Beliman (1969, Theorem 2.2.2), and by continuity of A
+on u, there is an e > 0 such that i(t) = A (u (t)) x(t) is asystable for any u in
+B(e). In the definition of asycontroll ability, let d be such that, for any (x, z)
+in B(d), there is a u in D(e) controlling (x, z) asymptotically to zero.
+Consider now N:= saturated of B(d) = spacei(x, z) I #(x) < d). Pick any
+indy class L(x) which contains an (x, 0) in B(d). Let u control (x, 0) as
+above. In general,
+z(t) = A(t) z + g(u, x)(t), (3.24)
+where A is the fundamental matrix of i = A (u(t)) z. For z = 0, then g(u, x)(t)
+converges to zero. Thus, for any other z this is still true, for the same fixed u,
+because the first term in the right converges by the choice of e. Thus, L(x) is
+controlled, and the estimates d(.), T(., -) follow from those for asycon-
+trollability applied to (x, 0) plus the linear theory. Thus, S is strongly locally
+indy-a.c., and the result follows from the previous lemma.
+RECEIVED: July 6, 1981.
+<<PAGE-DIVIDER>>
+ABSTRACT NONLINEAR REGULATION 127
+REFERENCES
+BELLMAN, R. (1969), "Stability Theory of Differential Equations," Dover, New York.
+BROCKET-r, R. W. (1974), On the algebraic structure of bilinear systems, in "Theory and
+Applications of Variable Structure Systems" (R. Mohler and A. Ruberti, Eds.), Academic
+Press, New York.
+D'ALESSANDRO, P., ISIDOW, A. AND RUBERTi A. (1974), Realization and structure theory of
+bilinear systems, SIAM J. Control 12, 517-535.
+SONTAG, E. D. (1979), On the observability of polynomial systems, 1: Finite-time problems,
+SIAM J. Control Optim. 17, 139-15 1.
+SONTAG, E. D. (1981), Nonlinear regulation: The piecewise linear approach, IEEE Trans.
+Automat. Control AC-26, 346-358.
+SONTAG, E. D. (1981b), Abstract regulation of nonlinear systems: stabilization, in
+"Symposium, Feedback and Synth. Linear and Nonlinear Systems, Bielefeld/Rome, June
+8 1.-
+SONTAG, E. D. (1982), A Lyapunov-like characterization of asymptotic controllability, SIAM
+J. Control Optim., to appear.
+SONTAG, E. D. (1982b), Abstract regulation of nonlinear systems: stabilization, Part 2, in
+"Princeton Conf. Inform. Sci. and Systems, March 1982."
+SUSSMANN, H. J. (1979), Single-input observability of continuous time systems, Math.
+Systems Theory 12, 31-52.
+UTKIN, V. (1977), Variable structure systems with a sliding mode: A survey, IEEE Trans.
+Automai. Control AC-22, 212-222.
+VIDYASAGAR, M. (1980), On the stabilization of nonlinear systems using state detection,
+IEEE Trans. Automat. Control AC-25, 504-509.
+WONHAM, W. M. (1974), "Linear Multivariable Control," Springer, New York.
+YOUNG. K. D. (1978), Controller design for a manipulator using theory of variable structure
+systems. IEEE Trans. Systems Man Cybernet. SMC-8, 101-109.
+Printed by the St. Catherine Press Ltd., Ternpelhof 41, Bruges, Belgium
