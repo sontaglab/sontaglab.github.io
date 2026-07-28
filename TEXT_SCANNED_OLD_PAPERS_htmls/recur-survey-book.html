@@ -1,0 +1,416 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/recur-survey-book.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/recur-survey-book.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Recurrent Neural Networks: Some Systems-Theoretic Aspects
+
+\Lambda 
+
+Eduardo Sontag Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903
+
+sontag@control.rutgers.edu
+
+Abstract This paper provides an exposition of some recent research regarding system-theoretic aspects of continuous-time recurrent (dynamic) neural networks with sigmoidal activation functions. The class of systems is introduced and discussed, and a result is cited regarding their universal approximation properties. Known characterizations of controllability, observability, and parameter identifiability are reviewed, as well as a result on minimality. Facts regarding the computational power of recurrent nets are also mentioned.
+
+\Lambda Supported in part by US Air Force Grant AFOSR-94-0293
+
+0
+
+1 Introduction Recurrent nets have been introduced in control, computation, signal processing, optimization, and associate memory applications. Given matrices A 2 Rn\Theta n, B 2 Rn\Theta m, C 2 Rp\Theta n, as well as a fixed Lipschitz scalar function oe : R ! R, the continuous time recurrent network \Sigma  with activation function oe and weight matrices (A; B; C) is given by:
+
+dx
+
+dt (t) = ~oe
+
+(n) (Ax(t) + Bu(t)) ; y(t) = Cx(t) ; (1)
+
+where ~oe(n) : Rn ! Rn is the diagonal map
+
+~oe(n) : 0@
+
+x1.
+
+..
+
+xn
+
+1A
+
+7! 0B@
+
+oe(x1)
+
+...
+
+oe(xn)
+
+1CA
+
+: (2)
+
+The terminology of neural networks arises when one thinks of each coordinate xi of the composite state x as a representation of the internal state of the ith neuron in a set of n interconnected "neurons" or processors. The rate of change of the ith dynamic element is determined by the current state of each other neuron j, either in an inhibitory or excitatory fashion (depending on the sign of the respective "synaptic strength" aij) as well as by the current values of the coordinates ui; i = 1; : : :; m of the external input signal u (similarly weighed by the bij's).
+
+1
+
+The role of the activation or response function oe is to saturate the total rate of change, and is motivated by the simplistic binary "fire or not fire" model of biological neurons. Typically, the function oe is of a "sigmoidal" type as illustrated in Figure 1. Most often in experimental practice as well as theory,
+
+Figure 1: Sigmoidal activation one takes
+
+oe(x) = tanh x = e
+
+x \Gamma  e\Gamma x
+
+ex + e\Gamma x : or equivalently, up to translations and change of coordinates, the "standard sigmoid" or "logistic" function oe(x) = 1=(1 + e\Gamma x). Finally, the coordinates of y(t) represent the output of p probes, or measurement devices, each of which provides a weighted average of the current values xi(t) of the states of the various neurons.
+
+As an illustration, take the system shown in Figure 2.
+
+u2 u1
+
+--\Gamma \Gamma  \Gamma \Gamma `
+
+-
+
+3 5 \Gamma 1
+
+\Gamma 7
+
+2
+
+1
+
+6k
+
+6k ?
+
+- -
+
+oeffiflfflfi oeffiflfflfi
+
+-
+
+R
+
+R x2 x1 y
+
+Figure 2: Example of a two-dimensional, two-input, one-output net The equations for this example are
+
+dx
+
+dt 1 = oe(2x1 + x2 \Gamma  u1 + 5u2) ;
+
+dx
+
+dt 2 = oe(\Gamma 7x2 + 3u2) ; y = x1 ;
+
+or the matrix form in (1) with
+
+A = ` 2 10 \Gamma 7 ' ; B = ` \Gamma 1 50 3 ' ; C = (1 0) : There are many variants of the basic model presented above. First of all, one may consider discrete time models, in which the time evolution is described
+
+2
+
+by a difference instead of a differential equation:
+
+x(t + 1) = ~oe(n) (Ax(t) + Bu(t)) ; y(t) = Cx(t) or an Euler approximation
+
+x(t + 1) = x(t) + ~oe(n)(Ax(t) + Bu(t)) : Second, one may consider systems in continuous time in which the right-hand side of the differential equation has a slightly different form, such as
+
+dx
+
+dt (t) = Dx(t) + ~oe
+
+(n) (Ax(t) + Bu(t)) ;
+
+or dx
+
+dt (t) = A~oe
+
+(n) (x(t)) + Bu(t) :
+
+For instance, Hopfield nets have D a diagonal matrix with negative entries (and A symmetric). The paper [2] showed how, at least for certain problems, it is possible to transform among the different models, in such a way that once that results are obtained for (1), corollaries for the variants are easily obtained. For instance, the transformation z = Ax + Bu takes a recurrent net as studied in this paper into the second model: dzdt (t) = A~oe(n) (z(t)) + Bv(t), where the new input is v = dudt .
+
+In this paper we restrict attention to the form (1). One advantage of this form is that the linear systems customarily studied in control theory are precisely those nets for which the activation oe is the identity function. This suggests that the above model may be amenable to a theoretical development parallel to linear systems theory (for which see e.g. [11]). Indeed, there are complete characterizations of basic systems theoretic properties such as controllability, observability, minimality, and parameter identifiability. This paper presents a brief survey of some such results. We also review the fact that recurrent nets can approximate arbitrary nonlinear systems (albeit in a restricted fashion). Finally, we discuss the role of recurrent nets as universal models of digital as well as analog computation.
+
+2 System-Theory Results: Statements We next state several results, which are discussed later in the paper in some more detail (for those results for which a proof is already available in the literature, appropriate citations will be given). For simplicity of exposition, and because that is the most often-used case in applications, we restrict all statements here to the case oe = tanh; the later discussion will be done in somewhat more generality.
+
+3
+
+Approximation Capabilities Recurrent nets provide universal identification models, in the restricted sense that any system can be simulated by a net, on compact subsets of the state and input-value spaces and finite time intervals. We consider systems b\Sigma  (cf. [11])
+
+dx
+
+dt = f(x; u) ; y = h(x) (3)
+
+with input space Rm, output space Rp and state space Rbn (the integer bn is called the dimension of the system) where h : Rbn ! Rp is continuous, and f : Rbn \Theta  Rm ! Rbn is continuously differentiable on x for each u 2 Rm, with f and fx jointly continuous on x and u. We assume that solutions bx(t; b,; u), t 2 [0; T ], exist for the initial value problem dxdt = f(x; u), x(0) = b,, for each possible input (i.e., locally essentially bounded map u : [0; T ] ! Rm) and each
+
+initial state b, 2 Rbn. Suppose we are given compact subsets K1 ` Rbn and K2 ` Rm, as well as an " ? 0 and a T ? 0. We say that the net \Sigma , with input and output spaces also Rm and Rp respectively, simulates b\Sigma  on the sets K1; K2 in time T and up to accuracy " if there exist two differentiable mappings
+
+ff : Rn ! Rbn and fi : Rbn ! Rn so that the following property holds: For each ^x(0) = b, 2 K1 and each u(\Delta ) : [0; T ] ! K2,flflflb
+
+x(t; b,; u) \Gamma  ff(x(t; fi(b,); u))flflfl ! " ; flflflh(bx(t; b,; u)) \Gamma  C(x(t; fi(b,); u))flflfl ! " for all t 2 [0; T ], where x(t; ,; u) denotes, in general, the unique solution x : [0; T ] ! Rn of dxdt = ~oe(n)(Ax + Bu) with x(0) = ,, given the (measurable essentially bounded) input function u : [0; T ] ! Rm, and similarly for the second system. From [9] we have:
+
+Theorem 1 For each system b\Sigma  and for each K1, K2, ", T as above, there is a net \Sigma , with oe = tanh, which simulates b\Sigma  on the sets K1; K2 in time T and up to accuracy ".
+
+Controllability and Observability Several results from now on assume a certain generic property for the input matrix B, namely that all its rows are nonzero and they are pairwise distinct even after a sign reversal. More precisely, letting rowi(Q) denote the ith row of a matrix Q, we define, for each pair of positive integers n and m:
+
+Bn;m := \Phi B 2 Rn\Theta m; (8 i) rowi(B) 6= 0 and (8 i 6= j) rowi(B) 6= \Sigma rowj(B)\Psi  : (Observe that, for the special but most important case m = 1, a vector b 2 Bn;1 if and only if all its entries are nonzero and have different absolute values.)
+
+4
+
+We omit the subscripts n; m if they are clear from the context. Since the complement of Bn;m is an algebraic subset, the complement of Bn;m has zero Lebesgue measure and is an open dense subset of Rn\Theta m.
+
+The net (1) is (completely) controllable if any state can be steered to any other state, i.e., for each pair of states ,; i 2 Rn, there is some T * 0 and some input u on [0; T ] such that x(T; ,; u) = i. (The output y is irrelevant to this definition.) When oe(x) = x, that is, for linear systems, controllability is equivalent to the requirement that the matrix pair (A; B) be a reachable pair, i.e. the rank of the n \Theta  nm matrix (B; AB; : : : ; An\Gamma 1B) must be n. For nets with activation tanh, we have the following from [12]:
+
+Theorem 2 Assume that B 2 B and oe = tanh. Then the net (1) is controllable.
+
+The net (1) is observable if any two states can be distinguished by input/output experiments, i.e., for each pair of states ,; i 2 Rn, there is some T * 0 and some input u on [0; T ] such that Cx(T; ,; u) 6= Cx(T; i; u). For linear systems, observability is equivalent to the requirement that the transposed pair (A0; C0) be a reachable matrix pair. For nets, we have as follows, from [4]. Consider the directed graph G, with node set f1; : : :; ng, in which there is an edge from i to j whenever aij 6= 0. Let N be the set consisting of those nodes i for which the ith column of C is nonzero. If every node can be reached from N by some path in the graph G, we say that every variable influences the output.
+
+Theorem 3 Assume that B 2 B and oe = tanh. Then the net (1) is observable if and only if every variable influences the output and rank (A0; C0) = n.
+
+Identifiability of Parameters and Minimality A natural question is as follows. Assume that we do manage to find a net \Sigma  which matches exactly the complete i/o behavior of an observed input/output behavior. Can we then say something regarding the relation between the internal structure of the object generating the behavior (in control theoretic terminology, the "plant") and the equations defining \Sigma ? We now state two results which address this question. The first one says that if the plant happened to be itself a net b\Sigma , and if both nets satisfy the generic observability condition just given, then \Sigma  and b\Sigma  must be identical (up to a possible relabeling and sign change of variables). The second deals with the general case in which the plant is a more arbitrary dynamical system b\Sigma . In this case, again provided \Sigma  is observable, we can conclude that b\Sigma  must be larger than \Sigma , in the sense that there is a natural map from a subset of the state space of b\Sigma  onto that of our model \Sigma , compatible with the dynamics of both systems; this means in particular that \Sigma  is a minimal model.
+
+For any net \Sigma , any input function u : [0; T ] ! Rm, and any initial state , 2 Rn, we consider the ensuing output function y(t; ,; u) := Cx(t; ,; u). Two
+
+5
+
+initialized nets (\Sigma ; ,) and (b\Sigma ; b,) with same input and output spaces are i/o equivalent if y(\Delta ; ,; u) = by(\Delta ; b,; u) for all inputs u, where by indicates the output function associated to b\Sigma .
+
+A particular change of variables possible for nets is as follows. Take any sequence
+
+" = ("1; : : : ; "n) 2 f\Gamma 1; 1gn
+
+and any permutation ss : f1; : : :; ng ! f1; : : :; ng. Consider the new stateb x whose coordinates bxss(i) := "ixi are obtained by exchanging the xi's and possibly (if "i = \Gamma 1) inverting signs. This means that bx = T x, with
+
+T = diag("1; : : : ; "n)(ess(1); : : : ; ess(n)) ; where ei is the ith canonical basis vector. If oe is an odd function, then T ~oe(n)(v) = ~oe(n)(T v) for all v 2 Rn. Thus, the new state bx satisfies the equations .b
+
+x = ~oe(n)( bAbx + bBu) ; y = bCbx ;
+
+with b
+
+A = T AT \Gamma 1 ; bB = T B ; bC = CT \Gamma 1 : (4)
+
+If , 2 Rn, let b, := T ,. Any initialized net (b\Sigma ; b,) obtained in this fashion is said to be sign-permutation equivalent to (\Sigma ; ,). It is easy to see that signpermutation equivalent nets are also i/o equivalent. We have the following converse from [3]:
+
+Theorem 4 Assume that \Sigma  and b\Sigma  are two observable nets with oe = tanh and B; bB 2 B. Then, \Sigma  and b\Sigma  are sign-permutation equivalent if and only if they are i/o equivalent.
+
+For the next result, we consider systems b\Sigma  as in (3), except that we now also ask that h and f : Rn \Theta  Rm ! Rn be (real-)analytic on x. More generally,
+
+we allow the state space bX to be any paracompact (real-)analytic connected manifold, with h : bX ! Rp analytic, and a continuous mapping f : bX \Theta  Rm ! T bX such that ss(f(x; u)) = x, where ss : T bX ! bX is the tangent bundle projection, so that f(x; u) is analytic on x and fx continuous on bX \Theta  Rm. For technical reasons, we assume completeness: for each function u : [a; b] ! Rm with 0 2 [a; b], and each b, 2 bX, there is a solution of dxdt = f(x; u), x(0) = b,, defined for all t 2 [a; b]. As before, we may consider the outputs by(t; b,; u) = h(bx(t; b,; u)), and we call two initialized systems i/o equivalent if these the outputs coincide for all possible inputs.
+
+Theorem 5 Assume that the initialized analytic (b\Sigma ; b,) and the observable initialized net (\Sigma ; ,) with oe = tanh and B 2 B are i/o equivalent. Then, there is an analytic submanifold X0 of bX and an analytic onto mapping \Pi  : X0 ! Rn, such that h(q) = C\Pi (q) for all q 2 X0 and, for each input u : [0; T ] ! Rm and
+
+each t 2 [0; T ], bx(t; b,; u) 2 X0 and \Pi (bx(t; b,; u)) = x(t; ,; u). In particular, the dimension of \Sigma  is minimal among all systems i/o equivalent to it.
+
+6
+
+3 System-Theory Results: Discussion Theorems 1, 2, 3, and 4 hold for activations oe more general than tanh, as we discuss next. (In every case, in addition to the conditions stated, one assumes that oe : R ! R is locally Lipschitz, so that solutions of the evolution equations are defined at least locally.)
+
+Approximation Theorem 1 is from [9]. It is proved for any oe that has the following spanning property: the linear span of the functions oe(as + b), with a; b 2 R, that is, the set of all finite linear combinationsX
+
+i
+
+cioe(ais + bi);
+
+restricted to any finite interval [ff; fi] ae R, constitute a dense subset of C0[ff; fi], the set of continuous functions on [ff; fi] endowed with the metric of uniform convergence.
+
+Not every function has the spanning property. For instance, if oe is a polynomial of degree k then the above span is the set of all polynomials of degree ^ k, hence it forms a closed subspace and cannot be dense. This turns out to be the only exception: [6] shows that any locally Riemann integrable oe (i.e., any function which is continuous except at most in a set of measure zero, and bounded on each compact) has the spanning property if and only if it is not a polynomial.
+
+Controllability Theorem 2 is from [12]. It is proved for oe odd and with the properties that there exists lims!+1 oe(s) = oe1 ? 0, oe(s) ! oe1 for all s 2 R, and, for each a; b 2 R with a ? 1,
+
+lims !+1
+
+oe1 \Gamma  oe(as + b)
+
+oe1 \Gamma  oe(s) = 0 :
+
+This latter asymptotic property is essential; for instance, the sigmoid arctan does not satisfy it, and in fact the Theorem is false for oe = arctan.
+
+The proof of the Theorem is based on establishing that the positive cone generated by the vector fields
+
+f~oe(n)(Ax + Bu); u 2 Rmg equals the tangent space at each point x of the state space, which provides local controllability at each state.
+
+Observe that there are no assumptions on A. In fact, the condition that B 2 B is necessary in the following sense: if B 2 Rn\Theta m is so that for all
+
+7
+
+A 2 Rn\Theta n the system (1) is controllable, then B 2 B; however, for a specific A it may very well happen that the net is controllable even if B 62 B.
+
+A related fact is that "forward accessibility" (the reachable set from each state has nonempty interior) holds for every net as in Theorem 2, provided that oe has the "IP property" to be discussed below. This result had been earlier shown in the paper [1] (which dealt mainly with accessibility for the much harder discrete-time case). It is an immediate consequence of the fact that, when the IP property holds, the linear span of f~oe(n)(Ax + Bu); u 2 Rmg equals the tangent space at each point x.
+
+Observability Theorem 3 is from [4]. It is proved for every oe that satisfies the independence property (IP). This property is basically a dual to the spanning property. For odd oe, it states that translates and dilations of oe must be linearly independent: for any positive integer l, any l-tuple of distinct pairs (ai; bi) with ai ? 0, the functions 1; oe(a1s + b1); : : : ; oe(als + bl) are linearly independent, i.e.,
+
+c0 +
+
+lX
+
+i=1
+
+cioe(ais + bi) j 0 ) c0 = c1 = : : : = cl = 0 :
+
+(A variation of the property, more interesting for non-odd oe, asks linear independence of pairs (ai; bi) with ai 6= 0 but now requiring also (ai; bi) 6= \Gamma (aj; bj) for all i 6= j.)
+
+A simple sufficient condition can be used to show that many maps, including tanh and arctan, satisfy the IP property (cf. [4]): it is enough that oe admit an extension as a complex analytic function oe : C ! C defined on a subset of the form \Phi 
+
+jImzj ^ *g n fz0; _z0\Psi 
+
+for some * ? 0, where Imz0 = * and z0 and _z0 are singularities. Another way of establishing the IP property is by an asymptotic analysis of oe, in the spirit as in the statement given above for the controllability property; this was the approach taken in [14]. For instance, cf. [5], oe has the IP property if it is continuously differentiable, oe(s)=oe0(s) is defined and has constant sign for all s large, and:
+
+lims !+1
+
+oe(s) oe0(s) = 0 :
+
+As remarked in [5], this establishes the IP property whenever oe(s) = q(s)ep(s), and p; q are polynomials with deg p * 2. Even weaker conditions from [5] are to require that for each b ? 0, oe(s + b)=oe(s) be defined and bounded for all sufficiently large s, and
+
+oe(s + b)=oe(s) ! 0 as s ! +1 ; or that the same property hold for 1=oe.
+
+8
+
+The condition that every variable affects the output can be equivalently stated in terms of invariant subspaces. This provides an elegant connection to the case of linear systems, since for the latter observability means that there is no nonzero A-invariant subspace of the kernel of C. To be precise, the condition means that there cannot exist any nonzero subspace of ker C which is invariant under A and also under all `i, i 2 f1; : : :; ng, where
+
+`i : Rn ! Rn is the projection on the ith axis, i.e., `iej = ffiijei. (We let ffiij be the Kronecker delta and ei the ith canonical basis vector.)
+
+Parameter Identifiability Theorem 4 is from [3]. It is proved there for every oe that is odd and satisfies the IP property. Thus it holds as well for any oe for which any of the sufficient conditions stated above are verified.
+
+Minimality Theorem 5 does not appear to have been mentioned in the literature. It is an easy consequence of the uniqueness theorem for minimal realizations, as we describe next.
+
+The restriction of the dynamics of b\Sigma  to the orbit X0 passing through the initial state b, provides an initialized system (b\Sigma 0; b,0) which is orbit-minimal in the sense of [13] and is again i/o equivalent to (\Sigma ; ,). One may then apply Theorem 1 in [13] to conclude that there is also an initialized analytic system
+
+(b\Sigma 0; b,0) with state space X0, i/o equivalent to (\Sigma ; ,) and minimal in the sense of [13], and an analytic onto mapping
+
+\Pi 0 : X0 ! X0 such that h(q) = h0(\Pi 0(q)) for all q 2 X0 and, for each input u : [0; T ] ! Rm and each t 2 [0; T ], bx(t; b,; u) 2 X0 and (with the obvious notations)
+
+\Pi 0(bx(t; b,; u)) = bx0(t; ,; u) : (The statement of Theorem 1 in [13] is somewhat weaker than this, but the proof actually shows the claimed facts.) Next, Theorem 5 in [13], applied to the two minimal systems (b\Sigma 0; b,0) and (\Sigma ; ,) provides an isomorphism \Pi 1, which composed with \Pi 0 provides the mapping desired for Theorem 5 in this paper.
+
+In fact, a stronger result holds as well, namely, if the orbit X0 equals the whole space X and if b\Sigma  is observable, then \Pi  is a diffeomorphism.
+
+9
+
+4 Computational Power We close with a mention of results regarding computational capabilities of recurrent networks, seen from the point of view of classical formal language theory. The papers [7, 8] considered discrete-time networks with the "semilinear" or "saturated linearity" activation
+
+ss(x) = 8!:
+
+\Gamma 1 if x ^ \Gamma 1 1 if x * 1 x otherwise.
+
+It is assumed, for simplicity (but not changing the results in any substantial way) that there are just one input and one output channel (m = p = 1). The cited papers established that with rational weights recurrent networks are computationally equivalent, up to polynomial time, to Turing machines, and with with real weights to a large class of "analog computers". (With no time constraints, all possible binary functions, recursive or not, are "computable" in exponential time by real-weight machines.)
+
+Formally, we say that a pair consisting of a recurrent network \Sigma  and an initial state , 2 Rn is admissible if, for every input of the special form
+
+u(\Delta ) = ff1; : : : ; ffk; 0; 0; : : :; (5) where each ffi = \Sigma 1 and 1 ^ k ! 1, the output that results with x(0) = , is either y j 0 or y is a sequence of the form
+
+y(\Delta ) = 0; 0; : : :; 0-- -z ""
+
+s
+
+; fi1; : : :; fil; 0; 0; : : : ; (6)
+
+where each fii = \Sigma 1 and 1 ^ l ! 1. A rational (\Sigma ; ,) is one for which the matrices defining \Sigma , and ,, all have rational entries. (In that case, for rational inputs all ensuing states and outputs remain rational.) Given an admissible (\Sigma ; ,), there is an associated partial function
+
+OE : f\Gamma 1; 1g+ ! f\Gamma 1; 1g+ ; where f\Gamma 1; 1g+ is the free semigroup in the two symbols \Sigma 1, given as follows: for each sequence
+
+w = ff1; : : :; ffk ;
+
+consider the input in Equation (5) and its corresponding output, which is either identically zero or has the form in Equation (6). If y j 0, then OE(w) is undefined; otherwise, if Equation (6) holds, then OE(w) is defined as the sequence fi1; : : : ; fil. In the latter case, we say that the response to the input sequence w was computed in time s + l. If OE is obtained in this form, the (partial) function OE is said to be realized by the initialized network (\Sigma ; ,). It is shown in [7] that any partial function OE : f\Gamma 1; 1g+ ! f\Gamma 1; 1g+ can be realized by some admissible pair, and OE can be realized by some rational admissible pair if and only if OE is a partial recursive function.
+
+10
+
+Constraints in computational time are of course more interesting. Restricting for simplicity to language recognition, the results can be summarized as follows. If OE(w) is defined for all inputs and if there is a function on positive integers T : N ! N so that the response to each sequence w is computed in time at most T (jwj), where jff1; : : : ; ffkj = k, then (\Sigma ; ,) is said to compute in time T . If OE is everywhere defined and
+
+OE : f\Gamma 1; 1g+ ! f\Gamma 1; 1g ; that is, the length of the output is always one, one can think of OE as the characteristic function of a subset L of f\Gamma 1; 1g+, that is, a language over the alphabet f\Gamma 1; 1g. Given T : N ! N, the language L is recognizable in time T if the corresponding characteristic function is, for some admissible pair that computes in time T . It can be proved that languages recognizable in polynomial time by rational admissible pairs are exactly those in the class P of polynomialtime recursive languages. Using real weights, a new class, "analog P," arises. This class can be characterized as the class of all languages recognizable by arbitrary nonlinear (but Lipschitz-continuous) dynamical systems, see [7] for details. The class analog P strictly contains P, and it turns out to coincide with a class already studied in computer science, namely the languages recognized in polynomial time by Turing machines which consult oracles, where the oracles are sparse sets. This gives a precise characterization of the power of recurrent nets in terms of a known complexity class. The following table summarizes the results just discussed:
+
+Weights Capability Polytime
+
+integer regular regular rational recursive (usual) P
+
+real arbitrary analog P
+
+5 Some Remarks It would be quite interesting to have complete characterizations of controllability in the case when the matrix B does not belong to B. It is easy to see that the block matrix [A; B] must be in B (defined for sizes n by n + m), but useful necessary and sufficient conditions are unknown.
+
+We have avoided discussion of system-theoretic issues for discrete-time networks. Approximation, observability, and identifiability results are known for the discrete time case, and most are similar to those for continuous time (see the respective references). The controllability case is still open, though partial characterizations are known (see [1]).
+
+11
+
+References
+
+[1] Albertini, F., and P. Dai Pra, "Forward accessibility for recurrent neural
+
+networks," IEEE Trans. Automat. Control 40 (1995): 1962-1968
+
+[2] Albertini, F., and E.D. Sontag, "For neural networks, function determines
+
+form," Neural Networks 6(1993): 975-990.
+
+[3] Albertini, F., and E.D. Sontag, "Uniqueness of weights for recurrent
+
+nets," Systems and Networks: Math Theory and Applics, Proc. MTNS '93, Vol. 2, Akademie Verlag, Regensburg, pp. 599-602. Extended version: http://www.math.rutgers.edu/~sontag/ftp dir/93mtns-nn-extended.ps.gz
+
+[4] Albertini, F., and E.D. Sontag, "State observability in recurrent neural
+
+networks," Systems & Control Letters 22(1994): 235-244.
+
+[5] Hautus, M., "A set of IP-functions," unpublished manuscript, Eindhoven
+
+University, August 1993.
+
+[6] Leshno, M., V.Ya. Lin, A. Pinkus, and S. Schocken, "Multilayer feedforward networks with a non-polynomial activation function can approximate any function," Neural Networks 6(1993): 861-867.
+
+[7] Siegelmann, H.T., and E.D. Sontag, "Analog computation, neural networks, and circuits," Theor. Comp. Sci. 131(1994): 331-360.
+
+[8] Siegelmann, H.T., and E.D. Sontag, "On the computational power of neural nets," J. Comp. Syst. Sci. 50( 1995): 132-150.
+
+[9] Sontag, E.D., "Neural nets as systems models and controllers," in Proc.
+
+Seventh Yale Workshop on Adaptive and Learning Systems, pp. 73-79, Yale University, 1992.
+
+[10] Sontag, E.D., "Neural networks for control," in Essays on Control: Perspectives in the Theory and its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+[11] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990.
+
+[12] Sontag, E.D., and H.J. Sussmann, "Complete controllability of continuoustime recurrent neural networks," Systems and Control Letters 30(1997): 177-183.
+
+[13] Sussmann, H.J., "Existence and uniqueness of minimal realizations of nonlinear systems," Math. Sys. Theory 10(1977): 263-284.
+
+[14] Sussmann, H.J., "Uniqueness of the weights for minimal feedforward nets
+
+with a given input-output map," Neural Networks 5(1992): 589-593.
+
+[15] Zbikowski, R., "Lie algebra of recurrent neural networks and identifiability," Proc. Amer. Auto. Control Conf., San Francisco, 1993, pp.2900-2901.
+
+12</pre>
+</body>
+</html>

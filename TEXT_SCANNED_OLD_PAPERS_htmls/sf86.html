@@ -1,0 +1,400 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/sf86.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/sf86.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+TIME-OPTIMAL CONTROL OF MANIPULATORS
+
+Eduardo D. Sontag* and  Hector J. Sussmann*
+
+Department of MathematicsRutgers, The State University
+
+New Brunswick, NJ 09803
+
+ABSTRACT This paper studies time-optimal control questions for a certain classof  nonlinear  systems.    This  class  includes  a  large  number  of
+
+mechanical  systems,  in  particular,  rigid  robotic  manipulators  withtorque constraints.  As nonlinear systems, these systems have many properties that are false for generic systems of the same dimensions.
+
+1. Introduction.*
+
+A  recent  paper  by  the  authors  ([SS])  established  a  number  ofresults  about  the  time  optimal  control  problem  for  the  two  link  rigid rotational  manipulator  model  described  in  Paul's  book  ([PA],equations 6.16 and 6.20).  It became evident later that many of the results  could  in  fact  be  derived  just  from  the  general  form  of  theequations  of  a  manipulator,  and  in  fact  that  a  great  deal  of  these results apply to (rigid) manipulators with more than two links as wellas  to  a  rather  general  class  of  nonlinear  systems.    This  class  of systems, which we shall call mechanical systems with full control, ischaracterized by the fact that, as with many Lagrangian formulations of  mechanical  systems,  the  evolution  equations  arise  from  anonsingular  set  of  second  order  differential  equations  (an  EulerLagrange equation, typically) for a set of variables ("positions"), andare such that derivatives of these variables ("velocities") appear only quadratically.  (Alternatively,  a  Hamiltonian  formulation  is  alsopossible.)  This note will establish a number of basic optimal control results  for  mechanical  systems,  and  then  apply  them  to  a  two-linkmanipulator  model.    We  view  this  work  as  only  a  (small)  first  step towards the understanding of this class of systems.
+
+Of  course,  we  do  not  mean  to  imply  that  our  "mechanicalsystems"  encompass  all  possible  models  of  control  systems  in mechanics.  For instance, certain types of frictional effects cannot beincluded in such models.
+
+Mechanical systems -in the sense of this paper- constitute a veryrestrictive  class  of  systems  when  viewed  in  the  context  of  general nonlinear  systems.    In  particular,  the  Lie  algebra  of  vector  fieldsassociated  to  such  a  system  must  satisfy  a  large  number  of nongeneric  relations.    Since  the  structure  of  this  Lie  algebracharacterizes  most  interesting  optimal  control  properties,  one  can expect,  and  indeed  one  finds,  many  properties  of  the  time  optimalproblem  for  these  systems  which  are  false  in  general  for  nonlinear systems  of  the  same  order.    For  instance,  it  is  almost  trivial  toestablish that if all controls except possibly one are singular along an extremal,  then  the  remaining  control  cannot  be  singular,  and  if  fact
+
+*Research supported in part by US Air Force Grant 85-0247 (Sontag) and by NSF Grant MCS78-02442-03 (Sussmann)
+
+must be bang-bang.
+
+Most of the results that we obtain are about the singular structureof  the  optimal  control  problem,  rather  than  about  optimal  controls themselves.  The study of the singular structure of the problem is ofgreat  interest  in  itself,  for  the  following  reason.    One  of  the  main techniques  used  in  practical  robotic  control  consists  in  dividing  thedesign  effort  into  two  stages:  (1)  find  an  open-loop  control  which achieves  the  desired  state  transfer,  and  (2)  linearize  along  theresulting trajectory, and use a linear controller to regulate deviations from  this  trajectory.    The  essential  point  is  that  this  last  step  willtypically depend  on controllability  of  the obtained  linearization  (as a time-varying  linear  system),  and a  trajectory  is  singular  preciselywhen this linearization is uncontrollable.  Thus, our characterizations of  singular  trajectories  should  help  in  determining  if  a  trajectorysuggested by step (1) is suitable for step (2).
+
+The  literature  in  (numerical)  optimal  control  of  manipulators  israther extensive; see for instance the papers [RA], [SD], and [SH], as well  as  the  references  there  and  other  papers  in  the  conferencevolume in which they appear.  As far as we are aware, a systematic study of singularities as the one started here has not been attemptedin  previous  work.    We  intend  to  direct  further  research  both  to theoretical  topics  and  to  the  understanding  of  what  implications  ourresults have for the algorithms given in the literature.  For instance, they may help in the "pruning" of possibilities in dynamic programingnumerical methods.
+
+The  only  other  theoretical  work  on  this  problem  that  we  areaware of is that in [AL].  That paper is devoted mainly to the proof of existence  of  optimal  controls  (basically,  one  needs  to  establish  thatthere are no finite escape times), but the last section proves that for a  two  link  manipulator  both  controls  cannot  be  simultaneouslysingular.  Note  that  the  result  proved  here,  mentioned  earlier,  will imply a much stronger fact, namely, that one of the controls has onlyfinitely many switchings.  (The proof given in [AL] does not rule out a phenomenon like "Fuller's problem", which occurs in many systems,and  in  which  optimal  controls  switch  infinitely  often  in  a  bounded interval,  nor  for  that  matter  even  more  pathological  behaviors,  likeCantor sets of discontinuities for the switching function.)
+
+We shall not repeat most of the material in [SS], which should beconsulted  for  further  and  more  detailed  discussions.    The  model  in that reference was, as mentioned earlier, that in Paul's textbook.  Wehave since noticed that there seems to be an error in the Lagrangian derivations in the book, which results in an extra term which cannotbe disregarded if both links are moving at high speed.  This means that a few of the statements in [SS], while true for the system studiedin  [PA],  are  not  necessarily  true  for  a  two-link  manipulator, -specifically, lemmas 4.5 and 5.4, and formulas 4.2-4.5,- though theycan be in most cases modified in trivial ways.  The theorems in [SS] are  still  valid  (with  signs  interchanged  in  6.1),  using  the  correctedformulas,  and  in  fact  will  be  established  in  more  generality  in  this note.
+
+2. Mechanical systems with full control.All  vectors  will  be  column  vectors,  but  for  printing  purposes  we shall often display them as rows.
+
+A (finite  dimensional)  mechanical  system  (with  full  control) willbe,  for  the  purposes  of  this  paper,  a  system  defined  by  equations (omitting the time arguments for simplicity):
+
+u = M(q)OEOEq + N(q, OEq) ,
+
+where q is a vector (of positions) in A^n, u is a vector (of controls) inA^n,  and  where  M  is  an  n*n  matrix  of  functions  of q,  symmetric positive definite for each qI^A^n, and N is an n-vector of functions of q and OEq with the property that, as functions of OEq, each of its entries isquadratic, i.e. is a polynomial  of degree  at most 2.  (In the  robotics
+
+literature, N is usually displayed as a sum of two terms, N+Q, the first homogeneous of degree 2 in OEq and the second independent of OEq; weare allowing also for linear terms in the velocities.)  The entries u
+
+i arebounded in magnitude:
+
+Li <= ui <= Mi , i=1,OEOEOE,n, where the Li < Mi are given constants.  As a function of t, each ui is measurable  essentially  bounded.  We assume  that all  the  functions of q and OEq that  appear  are  real-analytic  (in  most  applications,functions  belong  to  finitely  generated  algebras  spanned  by
+
+trigonometric functions and polynomials).
+
+This model includes mechanical manipulators with rigid rotationallinks  as  well  as  many  other  systems  of  interest.    (The  "full  control" qualifier  refers  to  the  fact  that  every  degree  of  freedom  can  beindependently controlled; certain lumped models for flexible arms, as well as models that include actuator dynamics, result in very similarequations but without this latter property.)  We take the positions q as belonging to A^n rather than to a subset -or even a manifold like S1,as is natural for some robotics problems- for notational simplicity; in any case, all of the results obtained depend on local methods.
+
+The  state  space  model  associated  to  the  above  is  given  byequations
+
+OEx = f(x) + G(x)u , (2.1) where x is a vector in A^2n; denoting the first n entries of x as q and last n entries as OEq, f(x) is the 2n-vector
+
+( )
+
+OEq
+
+-M(q)-1N(q,
+
+OEq)
+
+(thus as functions of q the last n coordinates of f are polynomials ofdegree at most 2) and
+
+G(x) = ( ),0L(q) with  L(q)  being  the  inverse  of  M(q)  -hence  also  symmetric  positivedefinite for each x.
+
+Such  systems  are  "linearizable  under  feedback",  in  the  sensethat the the transformation
+
+u = N(q, OEq) + M(q)v , where  v  is  a  new  control,  results  in  a  set  of  decoupled  doubleintegrators.  This  transformation  is  typically  used  in  control
+
+("computed torque method", etc.); however in optimal control it doesnot seem to be useful, since the torque constraints get transformed into state-dependent constraints for the linear problem.  A discussionis  given  in  [SS]  showing  that  full-control  mechanical  systems  may have  very  different  behavior  than  double  integrators,  in  terms  ofcertain degeneracies that may appear in optimal problems.
+
+For each  i=1,OEOEOE,n,  we  shall let gi denote  the ith  column  of  G;  its entries  are  all  functions  of  the  first  n  coordinates q of  x,  and  arenonzero for every x (positive definiteness of L).
+
+2.1. Basic Lie theoretic properties.We  shall  identify  functions A^2no""A^2n with  vector  fields  on A^2n, and apply differential geometric notation.  In particular, ada(b) = [a,b] denotes  the  Lie  bracket  of  the  vector  fields  a  and  b,  i.e.  b'a-a'b,where  prime  indicates  Jacobian.    When  we  refer  to  the  "ith
+
+coordinate"  of  a  vector  field,  we  mean  coordinates  with  respect  toabove identification.
+
+We  denote  by G the  module  over  Cw(A^2n)  generated  by  thevector  fields  g
+
+1,OEOEOE,gn,  and  by L the  Lie  algebra  of  vector  fieldsgenerated  by  {f,g
+
+1,OEOEOE,gn},  ,  the  vector  fields  appearing  in  the  model(2.1); we also use the shorthand notation:
+
+X = X1X2OEOEOEXk := [X1,[X2,[OEOEOE,[Xk-1,Xk]OEOEOE]]] (2.2) for iterated Lie compositions of vector fields.  Note that XkY = adkXY with  this  notation.    By  an iterated  bracket we  shall  mean  anexpression  as  above  for  which  each  X
+
+i is  one  of  f,  g1,  ...,  gn.  (Wealso  say,  abusing  terminology,  that  the  vector  field  X  is  an  iterated
+
+bracket.)  Given  one  such  X  =  X1X2OEOEOEXk,  the index i(X)  of  X  is defined as the difference nf-ng, where nf is the number of times that the  vector  field  f  appears  in  the  expression,  and  ng is  the  total number of gi's, counting multiplicities.
+
+With these notations, fgi= [f,gi], i=1,OEOEOE,n.  Because of the form of f and of the vector fields gi, it follows that the matrix (fg1,OEOEOE,fgn) has the form
+
+-( ),L(q)*
+
+from which it follows that the set of vector fields
+
+{g1,OEOEOE,gn,fg1,OEOEOE,fgn}  constitutes a frame, (2.3) i.e.  is  everywhere  linearly  independent,  and  hence  generates  (as  amodule over analytic functions) the set of all analytic vector fields on
+
+the state-space A^2n.
+
+Let Zi denote the set of all functions on R2n which, as functions of OEq
+
+1, OEOEOE,
+
+OEq
+
+n, are polynomials of degree at most i.  (With the conventionthat Z
+
+i = {0} if i<0.)
+
+Let Si be the set of vector fields X with the property that the first n
+
+coordinates of X are in Zi, and the last n coordinates are in Zi+1.  (So, for instance, vectors in S-1 have their first n coordinates zero and last n coordinates dependent only on q, and hence belong to G.)  If X isin S
+
+i and Y is in Sj, then [X,Y] belongs to Si+j.  The sets Si provide afiltration of L.  In fact, since f is in S
+
+1 and all gi are in S-1, by inductionon the formation of iterated brackets it follows that:
+
+Lemma 2.1: For any iterated bracket X, X I^ Si(X)n
+
+In particular, for all i,j,
+
+[gi,gj] = 0 (2.4) gifgj I^ G.
+
+3. Singular extremals.An extremal on an interval I  = [0,T] is given by functions (x,l,u) on I which satisfy (2.1) together with
+
+OEl = D[f(x)+G(x)u]l (3.1)
+
+(where  D[OEOEOE]  denotes  transpose  Jacobian), lz'0  everywhere,  u  ismeasurable  essentially  bounded,  and,  for  each  i=1,OEOEOE,n  and  for almost every t where the i-th switching function
+
+fi(t) := <l(t),gi(x((t))> is nonzero,
+
+ui(t) = { .Mi if fi(t)>0L
+
+i if fi(t)<0
+
+An extremal is admissible if Li<=ui(t)<=Mi for each i and almost all t.  A ui-singular extremal is one for which fi is identically zero; a singular extremal is one that is ui-singular for some i.
+
+From the maximum principle, it follows that, if {(x(t),u(t)), tI^[0,T]}is a time-optimal trajectory then there exists a l such that (x,l,u) is an  extremal.    If  the  set  of  zeroes  of fi is finite along  such  an extremal,  then  necessarily  ui is  a bang-bang  control,  i.e.,  it  equals a.e. a function that is piecewise constant, with values equal to eitherL
+
+i or Mi in each of finitely many subintervals.
+
+We  fix  an  extremal  and  an  i=1,OEOEOE,n.  Consider  the  switchingfunction f
+
+i; its derivative is
+
+fi' = <l,[f,gi]> + a* uj<l,[gj,gi]>nj=1 (3.2)
+
+= <l,[f,gi]>.
+
+In particular, the derivative exists everywhere, and is itself absolutelycontinuous.  (Note  that we  are  abusing  notation, in  that  the  precise
+
+meaning of the above is as follows: fi'(t) = <l(t),[f,gi](x(t))>.  We shall often omit the arguments t, or x(t), for notational simplicity.)
+
+Let Ji [resp., Ji'] be the set of limit points of zeroes of fi [resp., off i'].  Since fi is  continuously  differentiable,  Ji is  contained  in  Ji'.Thus, at points in J
+
+i the equations
+
+<l(t),gi(x(t))> = <l(t),[f,gi](x(t))> = 0 (3.3)
+
+hold.  If t is a limit point of all fi, then these equations hold for all i, contradicting the facts that l is always nonzero and that (2.3) holds.We have then established:
+
+Lemma 3.1: J1 C, J2 C, OEOEOE C, Jn is empty.n
+
+Thus, if n-1 of these sets equal all of I, the remaining one, say Ji, must be empty, i.e. the set of zeroes of fi is finite.  This says that not all controls may be simultaneously singular, and more precisely:
+
+Corollary 3.2: If the extremal (x,l,u) is uj-singular for all jz'i, then ui is
+
+bang-bang.n
+
+This result suggests the  study  of  extremals  that  are singular  forn-1  of  the  controls.    We  now  consider  this  question  in  some  more detail,  and  then  specialize  to  the  case  n=2.    There  are  of  coursemany other cases of interest (e.g., n-2 controls are singular and the rest are bang-bang), but they will not be studied in this note.
+
+3.1. A generic situation.By the second formula in (2.4), there exist analytic functions {a
+
+ijk,i,j,k = 1,OEOEOE,n} such that, for each i,j = 1,OEOEOE,n:
+
+gifgj = a* aijkgk .nk=1 These coefficients can be computed explicitely, as follows.  Let v beany vector field whose first n coordinates vanish identically, and let w
+
+be the vector function obtained from the last n coordinates.  Then, v can  be  expressed  as a* akgk,  where ak is  the  k-th  entry  of  thenk=1 n-vector  M(q)w.  When  v  =  gifgj,  which  is  in S-1,  the  obtained coefficients are in fact functions of q alone.
+
+Assume  an  extremal  (x,l,u)  has  been  fixed.  Taking  a  furtherderivative in (3.2) results for each i in:
+
+fi" = <l,ffgi> + a* bikfk ,nk=1 (3.4) where for each i,k:
+
+bik(t) = a* aijk(x(t))uj(t) .nj=1 This formula holds under no assumptions of singularity whatsoever.Assume now, however, that the extremal in question is u
+
+i-singular forall iz'k, for some given k.  This means that f i vanishes identically foriz'k, and hence (SD1) reduces to:
+
+fi" = <l,ffgi> + bikfk . (3.5) Thus, for every iz'k, the equations in (3.3) hold at all t, as well as thealmost everywhere vanishing of f
+
+i" for such i.  Assume that, at somet o in the interval of definition of the extremal, fk(to) = 0.  In that case,
+
+<l(to),ffgi(x(to))> = 0
+
+for all iz'k.  (The precise argument is as follows: the coefficient bik(t) is essentially bounded, and fko""0 as t approaches to.  Thus the last term  in  (3.5)  approaches  0  except  at  most  along  a  set  of  measurezero.  Since  the  first  term  is  continuous,  it  must  be  zero  at  t
+
+o.)Consider, for the given k, the set of vector fields
+
+{gi,i=1,OEOEOE,n}E`{fgi,i=1,OEOEOE,n,iz'k}E`{ffgi,i=1,OEOEOE,n,iz'k} , and let Sk be the set of states x at which these span the entire (2ndimensional)  tangent  space.    This  set  Sk is  an  open  set,  and  since the vector fields are all analytic it is in fact open dense, provided onlythat it be nonempty.  Since there are 3n-2 vectors in A^2n, one may
+
+expect  that  it  is  indeed  nonempty  (assuming  n>=2),  and  this  doeshappen  in  the  2-link  manipulator  example  discussed  later.    The above arguments establish, by contradiction, the following fact:
+
+Theorem 3.1: If (x,l,u) is an ui-singular extremal for all iz'k and x(t) remains in Sk for all t, then uk is constant (equal to Lk or Mk).n
+
+(Of  course,  as  with  all  statements  in  optimal  control,  "constant"here means equal to a constant almost everywhere.)  Later, we shall see how one may sometimes determine whether uk is equal to Lk or Mk, based on higher order conditions.
+
+For each k=1,OEOEOE,n, let Ak be the (n-1)*(n-1) matrix (aijk), where i and j each take the values 1,OEOEOE,k-1,k+1,OEOEOE,n.  (That is, delete the k-throw and column of (a
+
+ijk), seen for fixed k as an n*n matrix.)  Let
+
+\Delta k := det(Ak) . This is again an analytic function of x.  Finally, let
+
+Rk := Sk C, {x | \Delta kz'0} . This  set  is  either  empty  or  open  dense.    If  an  extremal  as  in  theprevious theorem is such that x(t) in fact remains in R
+
+k, then not onlyis  u k constant,  but  we  may  determine  the  remaining  controls.    Fixone such extremal, and assume uz^c constant (one of the above two
+
+values).  The  set  of  simultaneous  equations  {fi"=0,  iz'k},  is  by  (3.5) equivalent to the following matrix equation:
+
+Ak(x(t))wk(t) = yk(t) , (3.6)
+
+where wk is the column (n-1)-vector (u1,OEOEOE,^uk,OEOEOE,un)' (we use the "^" to indicate a missing element), and where
+
+y = (yk1,OEOEOE,^ykk,OEOEOE,ykn)' and for each iz'k,
+
+yki := <l(t),ffgi(x(t))>/fk(t) - aikkc . (Recall that fk is always nonzero along this type of extremal.)  If x(t) remains  in  Rk,  then  we  can  solve  (EQN2)  for wk as  an  analytic function of l(t) and x(t).  We may substitute the obtained expressionsfor u
+
+i(t), iz'k, as well as ukz^c, into the system equation (2.1) and theadjoint equation (3.1).  These  two  together become  a  system  of  2n
+
+ordinary differential equations with analytic right-hand side (there areno  controls  u  left),  and  the  solutions,  that  is  both l(t)  and  x(t),  are analytic  functions  of  time.    Since wk was  expressed  as  an  analytic function of them, we also conclude:
+
+Theorem 3.2: If (x,l,u) is an ui-singular extremal for all iz'k and x(t) remains in Rk for all t, then all controls ui are analytic as functions of time.  (And can in fact be computed in the above way.)n
+
+Note that the conditions <l,gi> z^ <l,fgi> z^ 0 for iz'k result in 2n-2 independent constraints, by (2.3).  So the costate l depends globallyon  only  two  parameters,  and  it  is  possible  to  give  thus  a  2-
+
+dimensional equation for these parameters.  We discuss this in moredetail below when treating the 2-link manipulator case.
+
+3.2. A degenerate case.It may happen that \Delta 
+
+k is identically zero, so that Rk is empty andthe above theorem doesn't provide any information.  On sets where
+
+the  rank  of  Ak is  constant,  it  is  possible  to  provide  some  results, using pseudoinverses instead of inverses.  In particular, assume thatthere is a row, say the i-th, of some A
+
+k, which is identically zero.  Forthis particular i, then, (3.5) says that the equation
+
+fi" = <l,ffgi> z^ 0 must  also  hold.  There  are  now  2n-1  conditions  for l,  and  ifindependent these determine l up to a constant multiple (and hence
+
+essentially  uniquely  as  a  multiplier).    If  the  rank  of  Ak is  constantly n-2,  one also can  determine by  an  argument  as  above  the  controlsu
+
+j, jz'i,k as feedback functions of the state alone.  However, also thecondition f
+
+i'''z^0  must  then  hold,  and  this  may  result  in  yet  anotherequation  for l,  inconsistent  with  the  previous  2n-1.    This  case
+
+appears in the two-link manipulator discussed next.
+
+4. A manipulator example.We  computed  explicitely  with  the  2-link  (n=2)  model  given  in [SH], with the numerical parameters provided in their Figure 1.  Withthe use of MACSYMA, we deduced the following facts:
+
+aij1 z^ 0  for all i,j (so A1z^0), (4.1)\Delta 
+
+2 = A2 = a112 = g(q2)sin2q2, S2 = {x| b(q2)( OEq1+ OEq2)sinq2 = 0},
+
+where g and b are  functions  which  are  nonzero,  (in  fact,  alwaysnegative,) for all q
+
+2.  Note also that g2ffg2 = fg2fg2 = Lf(a222)g2+a222fg2 . (4.2)
+
+4.1. Second control singular.We first consider the case corresponding to k=1 in the discussion in the previous section.  Thus fix any extremal which is u2-singular. We calculate the third derivative of f2, and obtain:
+
+f2''' = <l,fffg2> + u1<l,g1ffg2> + u2<l,g2ffg2> . By (EQN4), the last term is a  linear combination  of f2 and f2", and hence vanishes by singularity.  The control u1 must be constant.  Let B be the set in which the vectors
+
+{g2,fg2,ffg2,fffg2+cg1ffg2} are  linearly  independent,  for  c=Li and  c=Mi.  This  is  open,  and  a calculation shows that it is nonempty; thus:
+
+Theorem  4.1: There  are  no  v-singular  extremals  for  which  x(t)intersects the open dense set B.n
+
+States with OEq=0 are especially interesting.  The intersection of Bwith  the  set  of  such  states  is  still  nonempty  (hence,  open  dense  in that subset).
+
+4.2. First control singular.Consider  now  the  case  k=2.    From  the  calculations  in  (4.1)  it follows that there is an easy geometric characterization of R2:
+
+R2 = {x | q2z'kp/2 and OEq1+ OEq2z'0} .
+
+There, u2 is constant=c (=M2 or L2), and u1 is analytic, as discussed earlier.  We now provide some details of the way u1 is computed.
+
+Note  that  g1 has  the  form  (0,0,u,n)',  where  -by  positive definiteness  of  M- u is  everywhere  nonzero  (positive).Correspondingly, fg
+
+1 has the form (-u,-n,0,0)'.  The vectors a := (-n/u,1,0,0)'  andb := (0,0,-n/u,1)'
+
+are orthogonal to fg1 and g1 respectively.  Since l is also orthogonal to  these  vectors  along  a  u1-singular  trajectory,  it  follows  that l is  a combination of the two independent vectors a,b, i.e.:
+
+l(t) = l2(t)a(x(t)) + l4(t)b(x(t)) . Because  of  the  fact  that  the  last  2  entries  of  a  vanish,  a  is  alsoortogonal  to  g
+
+1 and  g2 along  this  trajectory.  It  follows  from  thedefinition of S 2 that <a,ffg1> can never vanish.  Further,
+
+f2 = <l,g2> = l4<b,g2> ,
+
+so l4 cannot vanish at any point of the interval (otherwise, this would give f2=0, a contradiction).  It follows that
+
+q(t) := l2(t)/l4(t) is  well-defined.    We  compute  the  derivative  of  q  using  the  adjointequations for l; this results in a Riccati differential equation
+
+OEq(t) = q2(t) + y(x(t))q(t) + c(x(t),u
+
+1(t)) , (4.3)
+
+where c(x,u1) and y(x) are explicitely computed functions, the former linear in u1 (and dependent on the constant value c of the control u2). If x(t) remains in R2, then we may as before solve f1"=0 for u1, there resulting the control law
+
+u1(t) = r(x(t))q(t) + s(x(t)) , (4.4)
+
+where s(x) is easily computed (and depends on c) and where
+
+r(x) := -<a,ffg1> (4.5) is  always  nonzero  as  remarked  earlier.    If  we  substitute  the  controllaw (4.4) into (4.3), we get a similar equation but with the function c
+
+now independent of u.  Alternatively, we may solve for q in (4.4), andsubstitute  into  (4.3)  in  order  to  obtain  a  similar  differential  equation for u.
+
+The construction can be reversed, in the following sense.  Givenany  x
+
+o in  R2,  solving  (4.3)  for  any  given  initial  q(0)  results,  via  therule (4.4), in a singular extremal (for either fixed value of u
+
+2), definedat  least  for  small  time.    Moreover, since r(x) is  never  zero,  we  may
+
+always find q(0) so that L1<u1(0)<M1, and hence so that the extremal is  admissible  (for  small  enough  time).  We  have  then  recoveredtheorem  5.1  of  [SS],  for  the  present  system  (and  with  a  somewhat
+
+simpler proof, based on considerably less computations):
+
+Theorem 4.2: Assume that (x,p,u) is a u1-singular extremal such that x(t) is in the open set R2 for all t in I = [0,T].  Then there is a solution q(t) of the Riccati equation (4.3) on I such that the control law (4.4)holds, while u
+
+2 equals one of the constant values c = L2 or M2.
+
+Conversely,  for  each  xoI^R2,  each  c  =  L2 or  M2,  and  each  real  qo, there  is  a  u1-singular  extremal  (x,p,u),  and  a  solution  of  equation (4.3),  both  defined  on  an  interval  I  which  contains  0  in  its  interior,such  that  x(0)=x
+
+o,  q(0)=qo,  and  equation  (4.4)  holds.  Moreover,there is for each x
+
+o in R2 a nonempty open interval Q(xo)I'A^ with thefollowing property: If q
+
+0I^Q then the singular extremal so constructed,for either of the two values of c, is admissible.n
+
+One  can  apply  higher  order  test  for  optimality  in  order  todetermine the exact value of c for the above extremals, just as done in [SS].  Various authors (see e.g. [KR], [HE], [MO], and references
+
+in these papers,) have found stronger constraints than those impliedby  the  maximum  principle.  The  simplest  of  these  generalizes  the classical Legendre-Clebsch condition  from variational  calculus.   Weapply these conditions to the single-control system that results when u2 is set identically equal to c.  The necessary condition is then that, along the singular extremal,
+
+<l,g1fg1> >= 0 . (4.6) Note that, by definition of a112,
+
+<l,g1fg1> = a112<l,g2> = a112f2 . Since a112 here  equals \Delta 2,  we  know  that  it  is  never  zero  along  an extremal for which x(t) is in R2.  Thus, since f2 never vanishes either, it follows that the inequality (GLC) is strict, and hence:
+
+sign of f2 = sign of \Delta 2 . Equivalently,  we  obtain  the  following  precise  characterization  of  thevalue of the constant control:
+
+u2(t) = { .Mi if sin2q2<0L
+
+i if sin2q2>0
+
+5. References. [AL]  Ailon,A.  and  G.Langholz,  "On  the  existence  of  time-optimalcontrol  of  mechanical  manipulators," J.Opt.Theory  &  Appls.
+
+46(1985): 1-21. [HE]  Hermes,H.,  "Lie  algebras  of  vector  fields  and  localapproximation  of  attainable  sets," SIAM  J.Cntr.  and  Opt. 16(1978): 715-727. [KR]  Krener,A.J.,  "The  high  order  maximal  principle  and  its
+
+application to singular extremals," SIAM J.Contr. and Opt., 15(1977):256-293. [MO]  Moyer,H.G.,  "Sufficient  conditions  for  a  strong  minimum  insingular control problems," SIAM J.Control 11(1973): 620-636. [PA]  Paul,  Richard  P., Robot  Manipulators:  Mathematics,Programming, and Control, MIT Press, 1982. [RA]  Rajan,  V.T.,  "Minimum  time  trajectory  planning," IEEE  1985International  Conf.on  Robotics  and  Automation,  IEEE  Computer Society, St.Louis, MO 1985, pp.759-764. [SH]  Sahar,G.  and  J.M.Hollerbach,  "Planning  of  minimum-timetrajectories  for  robot  arms," IEEE  1985  International  Conf.on Robotics  and  Automation,  IEEE  Computer  Society,  St.Louis,  MO1985, pp. 751-758.
+
+[SD]  Shiller,Z.  and  S.Dubowsky,  "On  the  optimal  control  of  roboticmanipulators with actuator and end-effector constraints," IEEE 1985 International  Conf.on  Robotics  and  Automation,  IEEE  ComputerSociety, St.Louis, MO 1985, pp.614-626
+
+[SS]  Sontag,  E.D.,  and  H.J.  Sussmann,  "Remarks  on  the  time-optimal control of two-link manipulators," Proc. IEEE Conf. Dec. and Control, 1985, pp.1643-1652.
+
+Table of Contents1. Introduction. 1 2. Mechanical systems with full control. 32.1. Basic Lie theoretic properties. 5 3. Singular extremals. 73.1. A generic situation. 9
+
+3.2. A degenerate case. 124. A manipulator example. 12 4.1. Second control singular. 134.2. First control singular. 13 5. References. 16</pre>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93mtns-nn-extended.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/93mtns-nn-extended.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+UNIQUENESS OF WEIGHTS FOR RECURRENT NETS
+
+Francesca Albertini Universita' di Padova, Dipartimento di Matematica,
+
+Via Belzoni 7, 35100 Padova, Italy,
+
+Eduardo D. Sontag Rutgers University, Department of Mathematics,
+
+New Brunswick, NJ 08903, U.S.A. E-mail: albertini@pdmat1.unipd.it, sontag@hilbert.rutgers.edu
+
+Keywords: recurrent networks, identifiability, observability.
+
+1. Introduction
+
+We study recurrent neural networks evolving either in discrete or in continuous time. The dynamics of such systems can be described by a set of either difference or differential equations of the following type (to simplify notations, we use the superscripts "+" and ":" to denote time-shift and time-derivative respectively, and we omit the time arguments t):
+
+x+ ( or .x) = ~oe(Ax + Bu) y = Cx; (1)
+
+with A 2 IRn\Theta n, B 2 IRn\Theta m, C 2 IRp\Theta n, and where ~oe(x) = (oe(x1); : : : ; oe(xn)), with oe a function from IR to itself. (For the continuous-time case, we always assume that the function oe is globally Lipschitz, so that the existence and uniqueness of solutions for the differential equation is guaranteed.)
+
+We will consider the parameter identifiability problem, which asks about the possibility of recovering the entries of the matrices A, B, and C from the input/output map u(\Delta ) 7! y(\Delta ) of the system. This question has been already addressed in [1] and in [2] (and, for feedforward nets, in [7] and in [5]) where it is proved that, under appropriate minimality assumptions, the zero-initial state i/o behavior determines, up to a small number of symmetries, the weights of the model. In this paper we prove the same result for arbitraryinitial state i/o maps. Moreover, we show that, for a generic subclass of these models, the minimality conditions needed in order for the results to hold are exactly the observability conditions found in the recent paper [3]. It is interesting to notice that, inside this subclass, these observability conditions are also necessary for identifiability.
+
+2. The activation function oe
+
+Given any map oe : IR ! IR, we say that oe satisfies the independence property ("IP" from now on) if, for every positive integer l, nonzero real numbers b1; : : : ; bl, and real numbers fi1; : : : ; fil such that (bi; fii) 6= \Sigma (bj; fij) 8i 6= j ; it must hold that the functions 1 ; oe(b1x + fi1) ; : : : ; oe(blx + fil) are linearly independent. The function oe : IR ! IR which
+
+This is the extended version of the conference paper with same title appeared in Systems and Networks: Mathematical Theory and Applications, Proc. MTNS '93, Vol. 2, Akademie Verlag, Regensburg, pp. 599-602.
+
+1
+
+appears in our model will always assumed to satisfy property IP and to be odd. The next result, which was proved in [4], Theorem 1, gives a condition for the IP property, weak enough to include many of the functions used for neural network applications:
+
+Assume that oe is a real-analytic function, and it extends to an analytic function oe : C ! C defined on a subset D ` C of the form D = fzj jIm zj ^ *g n fz0; _z0g for some * ? 0, where Im z0 = * and z0 and _z0 are singularities, that is, there is a sequence zn ! z0 so that joe(zn)j ! 1, and similarly for _z0. Then, oe satisfies property IP.
+
+Given a matrix M , we denote by Mi the i\Gamma th row of M . For any two positive integer n; m, we let:
+
+Bn;m = ( B 2 IRn\Theta m fififififi Bi 6= 0 8 i = 1; : : : ; nB
+
+i 6= \Sigma Bj 8 i 6= j ) :
+
+The next two Lemmas follow from the definition of the property IP, and from the fact that if B 2 Bn;m, then there exists u 2 IRm such that Biu 6= 0 for all i and Biu 6= \Sigma Bju for all i 6= j.
+
+Lemma 2.1 Let B 2 Bn;m. If Pni=1 cioe(ffi + Biu) = 0 for all u 2 IRm, then ci = 0 for all i = 1; : : : ; n.
+
+If v; w 2 IRm, we denote by ! v; w ? their scalar product. Lemma 2.2 Let B1 2 Bn1;m, B2 2 Bn2;m, and flji 2 IR with j = 1; 2 and 1 ^ i ^ nj. If, for some all nonzero coefficients ffij we have:
+
+n1X
+
+j=1 ff
+
+1 j oe(fl1j + ! B1j ; u ?) =
+
+n2X
+
+j=1 ff
+
+2 j oe(fl2j + ! B2j ; u ?)
+
+for all u 2 IRm, then we can conclude that: (1) n1 = n2 = n, and (2) there exist a permutation ss of the set f1; : : : ; ng, and some coefficients fi(i) = \Sigma 1, for i = 1; : : : ; n, such that:
+
+fl1j = fi(j)fl2ss(j); B1j = fi(j)B2ss(j); ff1j = fi(j)ff2ss(j):
+
+3. Statement of the main results Assume we are given a oe-system \Sigma  j (A; B; C)oe (either in discrete or in continuous time) initialized at a given state x0 (we will write \Sigma  j (A; B; C; x0)oe to denote the oesystem \Sigma  together with the initial state x0). Then we can associate to \Sigma  an i/o map as follows. In the discrete-time case, for any sequence of inputs u1; : : : ; uk a sequence of outputs y0 = Cx0; y1 : : : ; yk is generated. In the continuous-time case for any control function u(\Delta ) : [0; T ] ! IRm (which we assume to be measurable essentially bounded), after solving the differential equation with initial state x0 and denoting its solution with x(t), we have a corresponding output function y(t) = Cx(t). Thus, in both cases, to the given initialized system \Sigma  j (A; B; C; x0)oe we associate an i/o map:
+
+*\Sigma ;x0 : ( (u1; : : : ; uk) ! (y0; : : : ; yk) discreteu(\Delta ) ! y(\Delta ) continuous.
+
+2
+
+We say that two initialized oe-system \Sigma  j (A; B; C; x0)oe, and ~\Sigma  j ( ~A; ~B; ~C; ~x0)oe are i/o equivalent if p = ~p, m = ~m, and *\Sigma ;x0 = *~\Sigma ;~x
+
+0: We will study the problem of determiningwhen two given initialized oe-systems are i/o equivalent.
+
+Let:
+
+\Lambda n = ( T 2 Gl (n) fififififi T = P Q with P = permutation matrix ;Q = Diag (fi(1); : : : ; fi(n)); fi(i) = \Sigma 1: ) :
+
+Definition 3.3 We say that two initialized oe-systems \Sigma i = (Di; Ai; Bi; Ci; xi)oe; for i = 1; 2 are (sign-permutation) equivalent if n1 = n2 = n, and if there exists a matrix T 2 \Lambda n such that:
+
+A2 = T \Gamma 1A1T; C2 = C1T; B2 = T \Gamma 1B1; x2 = T \Gamma 1x1:
+
+Since oe was assumed to be odd, it is easy to see that two equivalent oe-systems are i/o equivalent. Our aim is to show that generically also the converse holds. We say that a subset of IRp is generic if it is nonempty and if its complement is the set of zeroes of a finite number of polynomials in p variables. By a generic subset of oe-systems we mean a generic subset of IRn
+
+2+nm+np when we identify the set of all oe-systems with IRn2+nm+np.
+
+We first let S to be the subset of oe-systems (1) for which the matrix B is in Bn;m. Notice that S is a generic subset of oe-systems.
+
+We say that a subspace V of IRn is a coordinate subspace if it is of the type:
+
+V = span f ei1 ; : : : ; eik g; where eij are the vectors of the canonical basis in IRn. For any pair of matrices (A; C) we denote by Oc(A; C) the largest A-invariant coordinate subspace included in ker C (see Corollary 4.8 for a way to compute Oc(A; C)). A system \Sigma  is said to be observable if for each two distinct initial states there exists some control that gives different output when \Sigma  is started at those states (for a precise statement, both for discrete and continuous time systems, see e.g. [6]). Given these definitions, the following result holds (see [3], Theorem 1):
+
+Proposition 3.4 A system \Sigma  2 S is observable if and only if ker A"ker C = Oc(A; C) = 0.
+
+Now, we can state our main results, which will be proved in a later section. Theorem 1 Assume that oe is an odd map which satisfies property IP, (and, for the continuous-time case, it is globally Lipschitz). Let \Sigma  j (A; B; C; x0)oe and ~\Sigma  j ( ~A; ~B; ~C; ~x0)oe be two observable oe-systems in S. Then, these systems are i/o equivalent if and only if they are equivalent.
+
+Remark 3.5 Notice that, inside the class S, the observability condition is also necessary in order to guarantee the implication
+
+i/o equivalence ) equivalence.
+
+3
+
+More precisely, if S0 ` S is any class of systems so that this implication holds for any pair of systems in S0 and initial states, then every system in S0 must be observable. This is proved as follows. Assume that \Sigma  j (A; B; C)oe is not observable. By definition of observability, there exist then two distinct states x1 and x2 which are not distinguishable. This means precisely that \Sigma 1 j (A; B; C; x1)oe and \Sigma 2 j (A; B; C; x2)oe are i/o equivalent. If the above implication would hold, then the systems must be equivalent. So there is a T 2 \Lambda n such that T B = B and T x2 = x1. But the fact that B 2 Bn;m implies that T is the identity. (In other words, the action of \Lambda n on S is a free group action.) Thus x1 = x2, a contradiction.
+
+Remark 3.6 It is also interesting to notice that, if a oe-system is not observable because Oc(A; C) 6= 0, a reduction by unobservability is possible. It is only necessary to note that one can induce a dynamics on the quotient space IRn=Oc(A; C), which can be done because the subspace Oc(A; C) is an A-invariant coordinate subspace. More precisely, the construction is as follows.
+
+Let \Sigma  2 S. If Oc(A; C) 6= 0, then after if necessary reordering variables, the equations for \Sigma  take the following block form. The first block of variables corresponds to a basis of Oc(A; C), and has size n1 = dimension of Oc(A; C); the second set of variables has size n2 = n \Gamma  n1.
+
+x+1 = oe(A1x1 + A2x2 + B1u) x+2 = oe(A3x2 + B2u)
+
+y = C2x2:
+
+Then (A; B; C; (x1; x2))oe and \Sigma 0 j (A3; B2; C2; x2)oe are i/o-equivalent, for any initial state x = (x1; x2) of the original system, and the second system has lower dimension. The system \Sigma 0 is again in S. Moreover, \Sigma 0 is observable if ker A " ker C = 0. Indeed, the choice of variables insures that Oc(A3; C2) = 0. Furthermore,
+
+rank 0B@
+
+A1 A2
+
+0 A3 0 C2
+
+1CA
+
+= n
+
+implies
+
+rank ` 0 A30 C
+
+2 ' = n2
+
+so the conclusion ker A3 " ker C2 = 0 follows from ker A " ker C = 0.
+
+4. Some Technical Properties In this section we prove some technical facts which will be used later. (Notice that both the statements of the results and the proofs are the same for the discrete and the continuous time case.) For any oe-system \Sigma , we let:
+
+I0(\Sigma ) = f i j 9 j 2 f1; : : : ; pg and cji 6= 0 g; Ik(\Sigma ) = f i j 9 l 2 Ik\Gamma 1(\Sigma ) with ali 6= 0 g;
+
+4
+
+and
+
+I(\Sigma ) = [
+
+k*0
+
+Ik(\Sigma ):
+
+We also denote
+
+Ic(\Sigma ) = f1; : : : ; ng n I(\Sigma ) :
+
+We use the following notation. For each subset J ` f1; : : : ; ng, let VJ be the following coordinate subspace:
+
+VJ = span f ej j j 2 J g :
+
+Lemma 4.7 Let \Sigma  j (A; B; C)oe be a oe-system, and let J be any subset as above. Then,
+
+VJ is A\Gamma invariant and included in ker C ) J ` Ic(\Sigma ) : Moreover,
+
+VIc(\Sigma ) is A\Gamma invariant and included in ker C :
+
+Proof. Assume first that VJ is A-invariant and is contained in ker C. Suppose that J T I(\Sigma ) 6= ;. Thus J T Ik(\Sigma ) 6= ; for some k, and we may assume that k is minimal with this property. Let i 2 J T Ik(\Sigma ). If k = 0 then Cei 6= 0, contradicting VJ ` ker C. Thus there is some l 2 Ik\Gamma 1(\Sigma ) with ali 6= 0. Since VJ is A-invariant, this means that el 2 VJ , that is, l is also in J . But this contradicts the minimality of k.
+
+Let now J = Ic(\Sigma ), and write I = I(\Sigma ). Since I0(\Sigma ) ` I, it is clear that VJ ` ker C, thus we need only to show that VJ is A-invariant. Notice that A-invariance is equivalent to: alj = 0 for all l 62 J and all j 2 J . Fix any l 62 J. Then l 2 I, and so there exists k such that l 2 Ik(\Sigma ). By definition Ik+1(\Sigma ) contains all the indices j such that alj 6= 0. Thus for each i 2 J , ali = 0, as desired.
+
+Since Oc(A; C) is by definition the largest A-invariant coordinate subspace included in ker C, we conclude:
+
+Corollary 4.8 Oc(A; C) = VIc(\Sigma ).
+
+Note that this observation provides an easy algorithm for obtaining Oc(A; C). Also, it implies that Ic(\Sigma ) must be empty if Oc(A; C) = 0; we state this for further reference:
+
+Corollary 4.9 If Oc(A; C) = 0, then I(\Sigma ) = f1; : : : ; ng.
+
+5. Proof of Theorem 1 From now on, we assume that we are given two i/o equivalent oe-systems \Sigma  and ~\Sigma  in S, initialized at x0 and ~x0, and with state space dimensions n and ~n respectively.
+
+First we introduce some useful notations. In the case of discrete-time oe-systems, for any sequence of control values u1; : : : ; uk 2 IRm, we let, for i = 1; : : : ; k:
+
+xi[u1; : : : ; ui] = oe(Axi\Gamma 1[u1; : : : ; ui\Gamma 1] + Bui);
+
+~xi[u1; : : : ; ui] = oe( ~A~xi\Gamma 1[u1; : : : ; ui\Gamma 1] + ~Bui);
+
+5
+
+and, for i = 0; : : : ; k:
+
+yi[u1; : : : ; ui] = Cxi[u1; : : : ; ui]; ~yi[u1; : : : ; ui] = ~C ~xi[u1; : : : ; ui]: Notice that since \Sigma  and ~\Sigma  are i/o equivalent, we have in particular that for any sequence u1; : : : ; ur; u 2 IRm:
+
+yr+1[u1; : : : ; ur; u] = ~yr+1[u1; : : : ; ur; u]):
+
+The previous equation can be rewritten in coordinate form as:X
+
+fijcji6=0g
+
+cjioe((Axr[u1; : : : ; ur])i + Biu) = X
+
+fij~cji6=0g
+
+~cjioe(( ~A~xr[u1; : : : ; ur])i + ~Biu); (2)
+
+for each j = 1; : : : ; p.
+
+Consider now the case of continuous-time oe-systems. Our aim next will be to show that also in this case an equation similar to (2) holds. For any control function w(\Delta ) : [0; Tw] ! IRm, with Tw * 0, we denote by xw(t) and by ~xw(t) the corresponding trajectories in \Sigma  and~ \Sigma , starting at x0 and ~x0 respectively. Moreover, we let yw(t) = Cxw(t) and ~yw(t) = ~C ~xw(t) be the output signals generated.
+
+Since \Sigma  and ~\Sigma  are i/o equivalent, we have that for all w(\Delta ) : [0; Tw] ! IRm,
+
+yw(t) = ~yw(t) for all t 2 [0; Tw]. If the control w happens to be continuous as a function of time, then the solutions of the corresponding differential equations are differentiable (as opposed to merely absolutely continuous) functions. Thus, in that case, also, for each _t 2 [0; Tw]:
+
+C .xw(t)jt=_t = .yw(t)jt=_t = .~yw(t)jt=_t = ~C .~xw(t)jt=_t: (3) Now take any control function w(\Delta ) : [0; Tw] ! IRm, with Tw * 0. Since the two initialized systems \Sigma  and ~\Sigma  are i/o equivalent, also the systems \Sigma  j (A; B; C; xw(Tw))oe and ~\Sigma  j ( ~A; ~B; ~C; ~xw(Tw))oe are i/o equivalent. Applying now the constant control w j u, for any value u 2 IRm, and taking _t = 0, from (3) there results:
+
+C~oe(Axw(Tw) + Bu) = ~C~oe( ~A~xw(Tw) + ~Bu): (4)
+
+Now we prove a preliminary result. Proposition 5.10 Let \Sigma  j (A; B; C; x0)oe and ~\Sigma  j ( ~A; ~B; ~C; ~x0)oe be two i/o equivalent oe-systems. If Oc(A; C) = Oc( ~A; ~C) = 0, then n = ~n and there exists a matrix T 2 \Lambda n such that, ~C = CT , and ~B = T \Gamma 1B.
+
+Moreover, for the discrete-time case, for each r * 0 and each sequence u1; : : : ; ur, we have that: ~
+
+A~xr[u1; : : : ; ur] = T \Gamma 1Axr[u1; : : : ; ur]: (5)
+
+For the continuous-time case, for each t * 0, and each control function w(\Delta ) : [0; t] ! IRm, we have that: ~
+
+A~xw(t) = T \Gamma 1Axw(t): (6)
+
+6
+
+Proof. We deal with both cases at the same time. First we want to show that for each i 2 f1; : : : ; ng there exist ss(i) 2 f1; : : : ; ~ng and fi(i) = \Sigma 1 such that:
+
+Bi = fi(i) ~Bss(i); (7) and, for the discrete-time case, for any r * 0, and any choice of ui 2 IRm:
+
+(Axr[u1; : : : ; ur])i = fi(i)( ~A~xr[u1; : : : ; ur])ss(i); (8) for the continuous-time case, for any t * 0 and any control function w(\Delta ) : [0; t] ! IRm:
+
+(Axw(t))i = fi(i)( ~A~xw(t))ss(i): (9) Notice that for any fixed 1 ^ i ^ n, the index ss(i) 2 f1: : : : ; ~ng satisfying the previous equations, if it exists, is unique. In fact, if we assume that there exist two indices ss(i) and ss0(i) for which equation (7) holds, then we get that ~Bss(i) = \Sigma  ~Bss0(i), which contradicts the assumption that ~B 2 B~n;m. Similarly, the fi(i) are unique. Moreover, if we prove that (7) and (8) or (9) hold, we get that necessarily n ^ ~n, thus by symmetry we also have that
+
+~n ^ n; so we can conclude that n = ~n.
+
+Fix any _- 2 f1; : : : ; ng. Then by Corollary 4.9 there exists a k * 0 such that _- 2 Ik(\Sigma ). We will construct ss(_-) and fi(_-) and prove that equations (7) and (8) or (9) hold by induction on the minimal such k.
+
+Assume that k = 0. Then, by definition of I0(\Sigma ), there exists some 1 ^ _-- ^ p such that c_--_- 6= 0. For the discrete-time case, i/o equivalence implies that equation (2) holds. Thus, in particular, we have:X
+
+fijc_--i6=0g
+
+c_--ioe((Axr[u1; : : : ; ur])i + Biu) = X
+
+fij~c_--i6=0g
+
+~c_--ioe(( ~A~xr[u1; : : : ; ur])i + ~Biu); (10)
+
+for any sequence u1; : : : ; ur; u 2 IRm. For the continuous-time case, i/o equivalence implies that equation (4) holds. So we also have:X
+
+fijc_--i6=0g
+
+c_--ioe((Axw(t))i + Biu) = X
+
+fij~c_--i6=0g
+
+~c_--ioe(( ~A~xw(t))i + ~Biu); (11)
+
+for any t * 0 and any control function w(\Delta ) : [0; t] ! IRm. Notice that both equations (10) and (11) hold for all u 2 IRm. Moreover xr[u1; : : : ; ur] and ~xr[u1; : : : ; ur], and also xw(t) and ~xw(t) do not depend on u. Thus, we can apply Lemma 2.2, which gives us the desired ss(_-) and fi(_-). (Note that, by the uniqueness property remarked above, these ss(_-) and fi(_-) do not depend on the particular inputs used in the argument.)
+
+Assume that now k ? 0. Then, by definition of Ik(\Sigma ) there exists _-- 2 Ik\Gamma 1(\Sigma ) such that a_--_- 6= 0. By inductive assumption we have that there exists ss(_--) and fi(_--) such that:(
+
+(Axr+1[u1; : : : ; ur; ur+1])_-- = fi(_--)( ~A~xr+1[u1; : : : ; ur; ur+1])ss(_--); discrete-time (Axw(t))_-- = fi(_--)( ~A~xw(t))ss(_--); continuous-time
+
+(12)
+
+7
+
+For the discrete-time case, we have just to rewrite the first of the previous equations as:P
+
+fija_--i6=0g a_--ioe((Axr[u1; : : : ; ur])i + Biur+1) =P fij~a_--i6=0g fi(_--)~a_--ioe(( ~A~xr[u1; : : : ; ur])i + ~Biur+1);
+
+and, applying again Lemma 2.2, since a_--_- 6= 0, we obtain ss(_-) and fi(_-), as desired.
+
+For the continuous-time case, pick any _t * 0, and any control function w(\Delta ) : [0; _t] ! IRm. Fix ffl ? 0, and, for each u 2 IRm, consider the following control function:
+
+wu(t) = ( w(t) t 2 [0; _t)u t 2 [_t; _t + ffl]: Then we have xw(_t) = xwu(_t) ( same for ~xw(_t) = ~xwu(_t) ). Moreover since wu is constant (and hence continuous) for all t ? _t, xwu(\Delta ) and ~xwu(\Delta ) are differentiable for all t ? _t. Thus differentiating the second equation in (12), and then taking the limit as t ! _t, we have: X
+
+fija_--i6=0g
+
+a_--ioe((Axw(_t))i + Biu) = X
+
+fij~a_--i6=0g
+
+fi(_--)~a_--ioe(( ~A~xw(_t))i + ~Biu):
+
+Now we apply again Lemma 2.2, to get ss(_-) and fi(_-), as desired.
+
+Thus equations (7) and (8) or (9) hold. So, in particular we know that n = ~n. Using now equations (7), the fact that oe is an odd function, and equations (8) or (9), we can rewrite the equation y1(u) = ~y1(u), for the discrete-time case, and the equation .y(t)jt=0 = .~y(t)jt=0 for the continuous-time case (using a constant, hence continuous, control u), as:
+
+nX
+
+i=1(c
+
+ij \Gamma  fi(i)~cjss(i))oe((Ax0)i + Biu) = 0:
+
+from the previous equation together with Lemma 2.1, we get:
+
+cji = ~cjss(i): (13)
+
+Let now T \Gamma 1 be the matrix P Q, where P is the permutation matrix representing ss(i), i.e. P ei = ess(i), and Q = Diag (fi(1); : : : ; fi(n)). Then, it is easy to verify that equations (7), (8) or (9), and (13) say that:
+
+~C = CT; ~B = T \Gamma 1B;
+
+and that equations (5) or (6) hold. Thus, since T 2 \Lambda n, our statement is proved.
+
+Now we can prove Theorem 1. Proof of Theorem 1 We need only to prove that i/o equivalence implies equivalence. from Proposition 5.10, we already know that n = ~n and there exists a matrix T 2 \Lambda n which satisfies ~C = CT , ~B = T \Gamma 1B, and also equations (5) or (6).
+
+For discrete-time oe-systems, we can rewrite equation (5), with r = 1, to get:
+
+nX
+
+j=1 a
+
+ijoe((Ax0)j + Bju) = fi(i)
+
+nX
+
+j=1 ~a
+
+ss(i)joe(( ~A~x0)j + ~Bju); 8 1 ^ i ^ n (14)
+
+8
+
+for all u. Using the facts that ( ~A~x0)ss(j) = fi(j)(Ax0)j (case r = 0 in the Proposition) and
+
+~Bss(j) = fi(j)Bj, together with the fact that oe is odd, the previous equation becomes:
+
+nX j=1(a
+
+ij \Gamma  fi(i)~ass(i)ss(j))oe((Ax0)j + Bju) = 0:
+
+By applying Lemma 2.1 to the previous equation we conclude:
+
+aij = fi(i)~ass(i)ss(j); which means that ~
+
+A = T \Gamma 1AT:
+
+To get the similar conclusion for the continuous-time case, we have just to differentiate equation (6) (again, applied to a constant control) with respect to t and evaluate at t = 0. This will give us again equation (14), from which we conclude as before.
+
+Now it remains only to show that ~x0 = T \Gamma 1x0. To get this equation, we argue as follows. First we get:
+
+Cx0 = ~C ~x0 = CT ~x0;
+
+Moreover, we also have:
+
+Ax0 = T ~A~x0 = AT ~x0:
+
+Thus x0 \Gamma  T ~x0 2 ker A " ker C. By observability we obtain that x0 = T ~x0, as desired.
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "For neural networks, function determines form,"
+
+Neural Networks, to appear. Summary in: "For neural networks, function determines form," Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 26-31.
+
+[2] Albertini, F., and E.D. Sontag, "Identifiability of discrete-time neural networks,"
+
+Proc. European Control Conference, Groningen, July, 1993, pp.460-465.
+
+[3] Albertini, F., and E.D. Sontag, "State observability in recurrent neural networks,"
+
+System and Control Letters, to appear.
+
+[4] Albertini F., Sontag E.D., and Maillot V., "Uniqueness of weights for neural networks," in Artificial Neural Networks with Applications in Speech and Vision (R. Mammone,ed.) Chapman and Hall, London, (1993), to appear.
+
+[5] C. Fefferman, "Reconstructing a neural net from its output," preprint, Princeton
+
+University, 1993.
+
+[6] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990.
+
+[7] Sussmann, H.J., "Uniqueness of the weights for minimal feedforward nets with a
+
+given input-output map," Neural Networks 5(1992): 589-593.
+
+9</pre>
+</body>
+</html>

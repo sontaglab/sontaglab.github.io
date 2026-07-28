@@ -1,0 +1,876 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97newton-transp.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97newton-transp.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+VC Dimension: An Introduction, for Neural Nets
+
+Eduardo Sontag, Rutgers sontag@control.rutgers.edu http://www.math.rutgers.edu/~sontag
+
+Concepts and VC Recall (from other talks!): sample complexity in PAC learning proportional (with fairly well-understood constants) to VC dim
+
+U = input space (for us typically C ` R m) C = concept class = a set of subsets of U e.g.: U = R , C = all open infinite intervals, or ; U = R , C = all S's or T's of any 2 open infinite intrvs
+
+(i.e. R , ;, one finite int, or two disj inf ints) U = R 2, C = all open half-spaces U = R 2, C = all convex sets
+
+finite subset S ` U shattered by C if: (8 S+ ` S ) (9 C 2 C) s.t. S+ = S T C
+
+e.g. respectively: every 2-element set, no 3-set every 3-set, no 4-set every noncollinear 3-set, no 4-set any finite subset of unit circle
+
+Vapnik-Chervonenkis (VC) Dimension:
+
+vc (C) := sup f card S j S shattered g
+
+e.g.'s: 2, 3, 3, 1
+
+2
+
+Equivalently, with Functions or instead of "concepts": Boolean functions F = function class = set of fncs U ! f0; 1g to f 2 F associate Cf = fu 2 U j f (u) = 1g so F , CF := nCf ; f 2 F o and viceversa via characteristic functions; use either terminology interchangeably
+
+vc (F ) := vc (CF )
+
+more generally, if F consists of real-valued functions let vc (F ) := vc (fH ffi f; f 2 F g) where "Heaviside" H(x): = 1 if x ? 0, = 0 if x ^ 0
+
+i.e. concepts = sets where possible f 2 F are positive standard convention on binary classif via nets/etc
+
+3
+
+Parametrized Classes of Functions suppose given fi : W \Theta  U ! R typically W = R w think of w 2 W as vector of parameters
+
+e.g. net, w adjustable weights wi; w = (w1; : : : ; ww) classifiers possible, for each weight choice:
+
+Ffi := f fi (w; \Delta ) j w 2 W g
+
+ffl fi : R 2 \Theta  R ! R , fi((a; b); u) := a + bu ; concepts = all open infinite intervals (or ;)
+
+ffl fi : R 3 \Theta  R ! R , fi((a; b; c); u) := a + bu + cu2 ; concepts = second example before
+
+ffl fi : R 3 \Theta  R 2 ! R , fi((a; b; c); (u; v)) := a + bu + cv ; concepts = third example (half-spaces)
+
+write vc (fi) := vc (Ffi ) above e.g.'s: fi linear in parameters , vc = # pars
+
+4
+
+F subspace of R U ) vc (F ) = dim F incidence (infinite) matrix: entries = f (u), rows indexed by u 2 U , columns by functions f 2 F
+
+Assume S = fu1; : : : ; ung ` U shattered, so 9 f1; : : : f2n s.t. cols have all 2n sign vectors
+
+A =
+
+f1 f2 f3 \Delta  \Delta  \Delta  f2n u1 \Gamma  \Gamma  \Gamma  \Delta  \Delta  \Delta  + u2 \Gamma  \Gamma  \Gamma  \Delta  \Delta  \Delta  +
+
+... ... ... ... \Delta  \Delta  \Delta  ...
+
+un\Gamma 1 \Gamma  \Gamma  + \Delta  \Delta  \Delta  +
+
+un \Gamma  + \Gamma  \Delta  \Delta  \Delta  +
+
+(" - " means ^ 0)
+
+(row) rank = n: else, 9 * 6= 0 s.t. * A = 0)
+
+consider signs of * = (+; +; \Gamma ; +; : : :) (6j 0) now pick column fi with same signs ) N
+
+so 9 n l.i. cols ) respective fi1; : : : ; fin l.i. so dim F * n, 8 n s.t. 9 shattered set ) dim F * sup n = vc (F )
+
+5
+
+Converse Inequality: Assume f1; : : : ; fn l.i. functions U ! R then 9 u1; : : : ; un so that
+
+A =
+
+f1 f2 \Delta  \Delta  \Delta  fn u1 f1(u1) f2(u1) \Delta  \Delta  \Delta  fn(u1) u2 f1(u2) f2(u2) \Delta  \Delta  \Delta  fn(u2)
+
+... ... ... ... \Delta  \Delta  \Delta 
+
+un f1(un) f2(un) \Delta  \Delta  \Delta  fn(un) has rank n
+
+(easy lin alg: n fncs l.i. ) 9 such elements in domain) Given any vector " 2 f0; 1gn, 9 v 2 R n so that Av = " thus f = (f1; : : : ; fn)v (which 2 subspace F ) has signs given by " on the respective ui's
+
+so S = fu1; : : : ; ung shattered thus vc (F ) * n, for all n s.t. 9 l.i. f 's
+
+) vc (F ) * sup n = dim F
+
+6
+
+Applications of this Lemma ffl Perceptrons = linear discriminators on R m Fm = all affine functions U = R m ! R
+
+f (u) = f (u1; : : : ; um) = a0 + a1u1 + : : : + amum (8(a0; : : : ; am) 2 R m) ) linear space of dim m + 1, so
+
+vc (Fm) = m + 1
+
+ffl 1-Hidden Layer nets w/ fixed input weights first-order nets with n hidden units and m inputs: oe : R ! R "activation" function input weights : n row m-vectors A1; : : : ; An input biases : n scalars b1; : : : ; bn
+
+u 7! c0 +
+
+nX
+
+i=1
+
+cioe(Aiu + bi)
+
+linearly parameterized by (c0; : : : ; cm) ) vc ^ n + 1
+
+when is vc = n + 1 ?
+
+7
+
+1HL Net
+
+`j'i `j'ioe`j'i `j'ioe`j'i
+
+`j'i `j'ioe
+
+? ?
+
+?
+
+?
+
+-
+
+HHH
+
+HHH
+
+HHH
+
+HHH
+
+HHHHj
+
+iiii
+
+iiii
+
+iiii
+
+iii1
+
+">XX
+
+">XX
+
+XXXz
+
+''
+
+''
+
+''
+
+''
+
+''
+
+''
+
+'7
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta 
+
+\Delta \Delta \Delta *
+
+,,,,,,
+
+,,,,:
+
+JJ
+
+JJ
+
+JJ
+
+JJ
+
+JJ
+
+JJ
+
+JJ^
+
+AA
+
+AA
+
+AA
+
+AA
+
+AA
+
+AA
+
+AA
+
+AA
+
+AAAU
+
+HHH
+
+HHH
+
+HHHHj
+
+@@
+
+@@
+
+@@
+
+@@
+
+@@R
+
+,,,,,,
+
+,,,,:
+
+">XX
+
+">z
+
+-
+
+-
+
+a21
+
+b2
+
+c0
+
+bn
+
+b1
+
+cn c2
+
+c1
+
+a1m
+
+anm
+
+a11 um
+
+u2 u1
+
+y y = f (u) = c0 + Pni=1 cioe(Aiu + bi) where Ai = row vector (ai1; : : : ; aim)
+
+so vc = n (fixed set of A's, b's!) means lin indep: c0 + Pni=1 cioe(Aiu + bi) j 0 ) c0 = : : : = cn = 0
+
+mail fail for trivial reasons, e.g. equal weights, or opposite signs and oe odd function (oe(\Gamma x) = \Gamma oe(x))
+
+but even if bottom weights different in this sense, in general false, e.g.:
+
+sin(1:u + 2ss) + (\Gamma 1) sin(1:u + 0) j 0 exp(1:u + 1) \Gamma  e exp(1:u + 0) j 0 or any poly, any periodic oe
+
+8
+
+oe = tanh ) vc = n + 1 Assume (Ai; bi) 6= \Sigma (Aj ; bj ) 8 i 6= j (else collect units) and Ai 6= 0 8 i (else c0 := c0 + cioe(bi))
+
+9 ^u 2 R m s.t., 8 i; j :ffl
+
+Ai^u 6= 0ffl bi = bj ) (Ai \Gamma  Aj )^u 6= 0ffl bi = \Gamma bj ) (Ai + Aj )^u 6= 0 (since complement of finite union of hyperplanes)
+
+suppose f (u) = c0 + Pni=1 cioe(Aiu+bi) = 0 8 u 2 R m so g(u) = f (u^u) = c0 + Pni=1 cioe(aiu+bi) = 0 8u 2 R (ai := Ai^u; ai 6= 0 8i, (ai; bi) 6= \Sigma (aj ; bj ) 8i 6= j ) assume ci 6= 0, i = 1; : : : n
+
+(else n0 ! n; note c1 = : : : = cn = 0 ) c0 = 0 too) suppose all ai ? 0 (else ci := \Gamma ci) w.l.o.g., a1 * ai, i = 2; : : : ; n
+
+let v := a1u + b1 ; g(v) = c0 + oe(v) + Pni=2 cioe(a0iv + b0i) = 0
+
+0 ! a0i ^ 1 and a0i = 1 ) b0i 6= 0 ) a0i ss2 p\Gamma 1 + b0i 6= k ss2 p\Gamma 1 8 k 2 Z odd (poles of oe)
+
+9
+
+Proof of l.i., for oe = tanh, ctd. analytic cont. ) g j 0 on C n fpolesg (connected) pick a sequence vn ! ss2 p\Gamma 1 ; then:
+
+0 j c1 + : : : + cioe(a
+
+0ivn)
+
+oe(vn) + : : : ! c1
+
+so c1 = 0, contradiction. p
+
+note: same for (1 + e\Gamma x)\Gamma 1, arctan, : : : shows uniqueness of weights from i/o behavior = identifibility of parameters "function determines form"
+
+Special case: no biases: Pni=1 cioe(aiu) for oe analytic, vc always = n () oe not poly
+
+all oe(aiu) polys degree d, n ? d ) not indep converse: g(k)(0) = Pni=1 aki cioe(k)(aiu) = 0 8k) P
+
+ni=1 aki ci = 0 if oe(k)(0) 6= 0 (infinitely many)
+
+generalized Vandermonde ) ci = 0 8 i
+
+10
+
+A (the?) Fundamental Fact about VC Dim F = set of fncs U ! f0; 1g for each m and each sequence (u1; u2; : : : ; um) 2 U m consider growth function
+
+fl (u1; u2; : : : ; um) :=
+
+card f(f (u1); f (u2); : : : ; f (um)) 2 f0; 1gm j f 2 F g
+
+thus m-element set S = fu1; u2; : : : ; umg shattered()
+
+fl (u1; u2; : : : ; um) = 2m (i.e., maximal)
+
+for m * d let:
+
+\Phi (m; d) :=
+
+dX
+
+i=0 i
+
+m
+
+i j ^ 2
+
+md
+
+d! ^ `
+
+em
+
+d '
+
+d
+
+Sauer's (-Shelah-Vapnik) Lemma. Assume vc (F ) = d ! 1. Then, 8 u1; u2; : : : ; um*d
+
+fl (u1; u2; : : : ; um) ^ \Phi (m; d)
+
+main point: polynomial growth; fl =2m o/ 1
+
+11
+
+Proof of Sauer Lemma. Let m * 1, 0 ^ d ^ m, r ? \Phi (m; d). Assume C 2 f0; 1gm\Theta r has all columns distinct. Then 9 d+1 by 2d+1 submatrix with distinct columns
+
+) Sauer: suppose vc (F ) = d, m * d, given (u1; u2; : : : ; um), let r = fl (u1; u2; : : : ; um) list all possible different traces as columns:
+
+f1(u1) f2(u1) : : : fr(u1) f1(u2) f2(u2) : : : fr(u2)
+
+... ... : : : ...
+
+f1(um) f2(um) : : : fr (um)
+
+recall want to prove r ^ \Phi (m; d); but if r ? \Phi (m; d) then 9 submatrix ) 9 d+1-subset shattered N
+
+prove Lemma by induction on m: m=1, d=0 ) \Phi (m; d)=\Phi (1; 0)=1, so r * 2, d+1=1 cols distinct ) r=2 ) C itself = (01) or (10)
+
+and m=1, d=1 ) r * 3 N (can't have 3 6= cols) now assume true for m; prove for m + 1
+
+12
+
+Proof of Sauer, ctd. rearrange cols of C so that
+
+1 f 0 \Delta  \Delta  \Delta  0 1 \Delta  \Delta  \Delta  1 \Lambda  : : : \Lambda  m \Gamma  1 f A A B-- -z ""
+
+r1 -- -z ""r2
+
+and A as wide as possible (perhaps no "A", r1 = 0) ffl all cols of A distinct
+
+- else 9 two equal columns in C
+
+ffl all columns of (A B) distinct
+
+- if B has two = cols, one must start in C
+
+with 0, the other with 1, ) make A bigger
+
+- if A; B have = col c: either  0c ! in  \Lambda B !,
+
+) appears in  0A !, contradict C has 6= cols or same argument if  1c ! appears in  \Lambda B !
+
+Claim: either:ffl
+
+(A B) has some d+1 rows with 2d+1 6= cols, orffl A has some d rows with 2d 6= cols
+
+13
+
+Proof of Sauer, end in first case obviously done, but also in second: then
+
+0 1
+
+A A ! has some d + 1 rows with 2
+
+d+1 6= cols
+
+so show claim, using induction hypothesis may assume m ? d otherwise m = d ) r ? \Phi (m; m) = 2m N
+
+(since can be at most 2m different cols)
+
+so m \Gamma  1 * d; two cases: (1) r2 ? \Phi (m \Gamma  1; d) result applies to (m \Gamma  1; r2; d), so OK (A B)
+
+(2) r2 ^ \Phi (m \Gamma  1; d))
+
+r1 = r \Gamma  r2 ? \Phi (m; d)\Gamma \Phi (m\Gamma 1; d) = \Phi (m\Gamma 1; d\Gamma 1) result for (m \Gamma  1; r1; d \Gamma  1) ) A has d good rows. p
+
+used \Phi (m; d) = # subsets of card ^ d in card S = m so \Phi (m; d) = \Phi (m\Gamma 1; d\Gamma 1)+\Phi (m\Gamma 1; d) if m * d+1 (S = S0 Sfug, count subsets including/not incl u)
+
+14
+
+Boolean Closure given F1; : : : ; Fk classes of functions U ! f0; 1g and fixed Boolean b : f0; 1gk ! f0; 1g,
+
+b(F1; : : : ; Fk ) :=
+
+ff (u) = b(f1(u); : : : ; fk(u)) j fi 2 Fi; i = 1; : : : ; kg
+
+Lemma. vc (b(F1; : : : ; Fk)) ^ ck maxi=1;:::;kfvc (Fi)g e.g.: 1HL net w/fixed 2nd level (ci) wts, H activation so if U = R m then vc = O(m) (more generally: 2nd level Boolean not lin-separable)
+
+Proof. assume S ` U shattered, card S = n restrict all functions to S
+
+Let F := F1 \Theta  : : : \Theta  Fk (fncs S ! f0; 1gk)F !
+
+b(F1; : : : ; Fk ) : f1; : : : ; fk 7! b ffi (f1; : : : ; fk) onto
+
+) card b(F1; : : : ; Fk) ^ card F = Y
+
+i
+
+card Fi
+
+d := maxi=1;:::;kfvc (Fi)g; Sauer ) card Fi ^ ( end )d (order elements of S , list values of f 's)
+
+) card b(F1; : : : ; Fk ) ^ ` end '
+
+d!k
+
+so shattered ) 2n ^ i end jdk ) n ! (2k log ek) d
+
+15
+
+Fixed 2nd Level 6) VC ! 1 for General oe oe(u) := 1ss arctan u + 12 + cos uff(1+u2) (ff ? 2ss) analytic "sigmoid": range (0; 1), bounded, oe0 ? 0 consider 1-2 net with fixed \Gamma c0 = c1 = c2 = 1:
+
+f (u) = \Gamma 1 + oe(a1u + b1) + oe(a2u + b2)
+
+claim: vc = 1 (params = bottom wts ai; bi's) in fact, true even if b1 = b2 = 0 and a1 = \Gamma a2 = *:
+
+f*(u) = \Gamma 1 + oe(*u) + oe(\Gamma *u) = 2 cos *uff(1 + *2u2)
+
+Pick any n and u1; : : : ; un; ss rationally independent as f(*u1; : : : ; *un) j * 2 N g mod 2ss dense in [0; 2ss]n,f
+
+(cos(*u1); : : : ; cos(*un)) j * 2 N g dense in [\Gamma 1; 1]n)
+
+(f*(u1); : : : ; f*(un)) can be made to have any sign sequence, by choice of appropriate *
+
+i.e. set fu1; : : : ; ung shattered
+
+16
+
+Compositions (Cascades) F set of functions U ! VG
+
+set of functions V ! WG ffi F
+
+:= fg ffi f j g 2 G ; f 2 F g set of functions U ! W
+
+n = fixed integer suppose 8 S ` U with card S ^ n, card F jS ^ p and 8 R ` V with card R ^ n, card G jR ^ q then 8 S ` U with card S ^ n, card (G ffi F )jS ^ pq
+
+Proof: let S = fu1; : : : ; ung of card n pick F0 = ff1; : : : ; fpg s.t. F0jS = F jS 8 fixed i let Ri := ffi(u1); : : : ; fi(un)g for this Ri, 9 Gi = fgi1; : : : ; giq g s.t. GijRi = G jRi now, if g ffi f 2 G ffi F f = fi for some i and g(fi(u)) j gij (fi(u)) for some j
+
+) G ffi F jS = fgij ffi fi j i = 1; : : : ; p; j = 1; : : : ; qgjS . p induction: p1:::pn if F1 ffi : : : ffi Fn
+
+17
+
+Feedforward Nets with H Activations (k\Gamma 1)-hidden layer net: fncs computed = ffk ffi: : :ffif1g fi : R ni\Gamma 1 ! R ni (ni nodes in ith level) n0 = m = # inputs; nk = 1 output i ? 0: values in f0; 1gni
+
+for layer i: fi = (f 1i ; : : : ; f nii ) each f ji wij -wt perceptron
+
+so # fncs on any input set of card n is ^ Qj ` enwij 'w
+
+ij
+
+lemma ) # ^ Qi Qj ` enwij 'w
+
+ij ^ Q
+
+ij (en)wij ^ (en)w
+
+w = Pij wij total # of weights (parameters)
+
+shattered S has card n ) 2n ^ (en)w)
+
+n ^ 2w log ew = O(w log w) (Cover'68)
+
+Conversely (Maass, Sakurai): lower bound on VC proportional to w log w
+
+so for H feedforward nets
+
+vc ss cw log w
+
+18
+
+Feedfwd Nets w/ H and Linear Activations ffl of interest in itself (see later: sigmoids)ffl
+
+illustrates another way to estimate VC dims
+
+not based on function counting but instead "dual": counting functions on weights
+
+Technical fact needed (classical) let \Psi (n; d) := largest number of regions into which
+
+n hyperplanes can partition R d (\Psi (1; d)=2, \Psi (n; 1)=n+1, \Psi (2; 2)=4, \Psi (2; 3) =7) i.e., if H1; : : : ; Hn hyperplanes in R d, bound on # conn. comps of space N = R d n (H1 S : : : S Hn)
+
+Lemma. for n * d, \Psi (n; d) = \Phi (n; d) Proof: assume n hyperplanes define q regions now add a hyperplane H each region (convex!) H intersects is divided in two so one new region created for each such T6 = regions intersected ) also 6= when restricted to H so at most \Psi (n; d\Gamma 1) new regions
+
+so \Psi (n+1; d) ^ q+\Psi (n; d\Gamma 1) ^ \Psi (n; d)+\Psi (n; d\Gamma 1) @ -conditions \Psi (1; d) = 2 and \Psi (n; 1) = n + 1
+
+) \Psi (n; d) =
+
+dX
+
+i=0 i
+
+n
+
+i j
+
+19
+
+Linear & H = Boolean of Perceptrons first, example: take case 2 H and 1 lin in first level i.e. fi(w; u) = H(: : :) where : : : = c1H(a11u1 + a12u2 + b1) + c2H(a21u1 + a22u2 + b2)
+
++ c3u1 + c4u1 + c0 parameters are w = (b1; b2; a11; : : : ; c1; : : :)
+
+observe: if these 6 functions:H
+
+(a11u1 + a12u2 + b1)H (a21u1 + a22u2 + b2)H (c0 + c1 + c2 + c3u1 + c4u1)H (c0 + c1 + c3u1 + c4u1)H (c0 + c2 + c3u1 + c4u1)H (c0 + c3u1 + c4u1) coincide on (w; u) and (w0; u0) then fi(w; u) = fi(w0; u0) i.e. fi(w; u) is Boolean function of these 6
+
+in general, lin+H net may be viewed as computing
+
+fi(w; u) = b(Q1(w; u); : : : ; Qr(w; u)) where each Qi(w; u) = H(Li(w; u)), Li affine r ^ g2g\Gamma 1, g = # Heaviside gates (+1 at output) (each H gate, each comb of outputs of lower levels)
+
+20
+
+Linear Units ) VC: w log w ; w2 take any u1; : : : ; un, and let s := fl (u1; u2; : : : ; un) let w1; : : : ; ws be so that distinct traces (fi(w1; u1); : : : ; fi(w1; un)) ; : : : ; (fi(ws; u1); : : : ; fi(ws; un))
+
+then 8 i 6= j 9 k 2 f1; : : : ; ng s.t. fi(wi; uk) 6= fi(wj ; uk), so 9 ` 2 f1; : : : ; rg s.t.
+
+sign L`(wi; uk) 6= sign L`(wj ; uk) (\Lambda ) (ignore accidental = 0; can perturb a bit)
+
+8 k; `, Hk` := fw j L`(w; uk) = 0g hyperplane on R w (*) ) wi, wj on 6= sides of some Hk` i.e. on diff conn components of N = R w n (S Hk`)
+
+8 i 6= j , wi; wj in 6= components ) s ^ # comps k2f1; : : : ; ng, `2f1; : : : ; O(2g )g, ) ^ cn2g hyperplanes s ^ \Phi (cn2w; w) ^ ic0n2wjw ^ (c0n)w2w
+
+2
+
+so set shattered ) 2n = s ) n = O(w2) )
+
+vc = O iw2j
+
+21
+
+Match Lower Bd for Linear&H (Koiran&EDS) Let w 2 N , and denote Bw := 8!:w 2 R fifififififi w =
+
+wX
+
+i=1
+
+bi 2i 9=;
+
+Let fi : R w \Theta  R 2 ! R be so that, for each w 2 Bw and each (i; j ) 2 S := f1; : : : ; wg2, fi ((w1; : : : ; ww); (i; j )) = ith bit of wj
+
+Claim: S shattered. Proof: desired trace represented as M 2 f0; 1gw\Theta w; pick w := (w1; : : : ; ww), where wj := dyadic rational with expansion = j th column)
+
+fi(w; (i; j )) = ith(wj ) = ith elem j th col = desired
+
+implement as response of net: construction is cascade of 3 subnets:
+
+ffl j 7! wjffl
+
+wj 7! first w binary fractional bits (b1; : : : ; bw)ffl ((b1; : : : ; bw); i) 7! bi
+
+extensions to scalar and to Boolean inputs:ffl
+
+S = f0; : : : ; w2 \Gamma  1g -- just decode u = iw + jffl shatter f0; 1g2 log w with O(w) weights
+
+remark: even fixed (non-prog) weights O(w)
+
+22
+
+Construction of Subnets: Some Details j 7! wj via:
+
+w1 +
+
+wX
+
+k=2 \Gamma 
+
+wk \Gamma  wk\Gamma 1\Delta  H(j \Gamma  k + 0:5)
+
+wj 7! bits (b1; : : : ; bw) recursively via:
+
+bk = H 242k\Gamma 1 0@wj \Gamma 
+
+k\Gamma 1X
+
+`=1
+
+2\Gamma `b`1A \Gamma  0:5 + 2\Gamma (w+1)35
+
+((b1; : : : ; bw); i) 7! bi easy with multiplication:
+
+b1 +
+
+wX
+
+`=2 \Gamma 
+
+b` \Gamma  b`\Gamma 1\Delta  H(i \Gamma  ` + 0:5)
+
+but cannot multiply bk's and (signals) and H's
+
+however, can emulate (binary) multiplication via
+
+uv = H(u + v \Gamma  1:5) so OK
+
+23
+
+Algebraic Classes recall in general, for continuous activations, vc = 1 Stengle-Yukich, 89: piecewise polynomial (or p.rational,: : : , even algebraic fncs) ) vc ! 1
+
+Proved next. first observation: fi(w; u) ? 0 () F (w; u) true, where F = some first-order formula in Th(R ; +; \Delta )
+
+quantif vars: hidden-unit actv (roots in alg fncs,: : : ) e.g. if fi((a; b; c; d); u) = c oe(au + b) + d then F = (9 z) [cz + d ? 0 & z = oe(au + b)] e.g. oe(x) = sat (x) = x if jxj ^ 1, = sign x otherwise, "z = oe(au + b)" j "au + b ? 1 & z = 1 or: : : "
+
+e.g. oe(x) = x1+jxj "z = oe(au + b)" j "(1 + jau + bj)z \Gamma  (au + b) = 0" which in turn can be written w/o abs values (cases)
+
+24
+
+Algebraic Classes: vc ! 1 Tarski-Seidenberg (elimination of quantifiers): F (w; u) j b[H(P1(w; u)); : : : ; H(Pk (w; u))] Pi's polynomials, b Boolean e.g., (9 z)(z2 + wz + u = 0) = "not (4u \Gamma  w2 ? 0)"
+
+interpret b as Boolean function, i.e.H
+
+(fi(w; u)) = b ffi (f w1 (u); : : : ; f wk (u)), f wi = H(Pi(w; \Delta ))
+
+let Fi = nf wi j w 2 R wo had: vc (b(F1; : : : ; Fk )) ^ ck maxi=1;:::;kfvc (Fi)g so only need to show vc (Fi) ! 1 for all i but Fi ` Gi := fH ffi P j P = poly of degree ^ dig where di := degree of Pi on u 2 R m
+
+such P 's form vector space of dim = idi+mm j ! 1 p What about other continuous activations? may = 1; but oe = tanh or arctan OK vc ! 1 via generalizations of T-S for Th(R ; +; \Delta ; exp(\Delta )) van den Dries,Wilkie,Khovanskii,Shelah,Laskowski: : : cf. Macintyre&EDS STOC'93
+
+25
+
+Algebraic Classes Bound: O(w2) (Goldberg&Jerrum'93) activations (piecewise) polynomial [rational] deg ^ D; at most p pieces where poly [rational]
+
+get vc = O( w + (log p + log D)w2 ) generalizes H&lin (D=1,p=2), percep. (D=p=1) again ; count conn components of N = R d n (S Hk`) but now Hk` = algebraic set = zeroes of poly
+
+R w n (fP1 = 0g S : : : SfPs = 0g)
+
+= fw j P1(w) : : : Ps(w) 6= 0g = project f(w; z) j 1 \Gamma  z P1(w) : : : Ps(w) = 0g
+
+conn comps alg sets: Milnor/Thom,60 ; O((csD)w) so repeat exactly same argument as for lin + H
+
+[poly deg k, input dim `, P Betti ^ k(2k \Gamma  1)`\Gamma 1]
+
+sigmoidal oe=tanh: Macintyre-Karpinski'95 ; O(w4)
+
+[uses more sophisticated argument, Warren]
+
+open: can improve sigmoidal to O(w2)? less not possible:
+
+26
+
+Sigmoids Lower Bound w2 (Koiran&EDS) "sigmoids":
+
+9 oe0(x0) 6= 0
+
+9 limx!1 oe(x) 6= limx!\Gamma 1 oe(x) (H excluded -as should!- but OK all others)
+
+) with oe-nets can get vc * cw2 reason: locally linear
+
+oe"(x) = oe(x0 + "x) \Gamma  oe(x0)"oe0(x
+
+0) ss x
+
+and globally Heaviside
+
+oe(x=") ss H(x) (assume w.l.o.g that limits are 0; 1)
+
+now apply result for linear + H matches upper bound for algebraic sigmoids many ellaborations, e.g. 6 9 limits but 9oe00(x0) 6= 0 (get squares via Taylor; products by symmetrization)
+
+27
+
+Remark: How Special are Shattered Sets? VC dim = largest k so some k-element set shattered cannot shatter all sets of size vc , but sometimes "most" OK, as half-spaces in R 2: noncollinear
+
+more generally, for perceptrons (half-spaces), shatter all affinely independent (w+1)-subsets
+
+also: vector space classes of analytic functions
+
+(find basis, then ask determinant not zero)
+
+can one shatter "generic" sets of size vc ? studied how VC depends on number of params w - may be 1, even for a 2-1 (funny-)"sigmoid" net - and finite but as high as w2 for with any sigmoidal
+
+perhaps vc AEw ) large shattered sets very special? yes!: for s ? 2w + 1, shattered s-sets special for e.g. nets with oe = tanh or arctan:
+
+28
+
+A Result on Generic-Set Shattering Fix a concept class 8 k, let Sk := subset of U (possibly empty) consisting of the ordered sets of k inputs that can be shattered
+
+(note: Sk 6= ; () k ^ vc )
+
+assume inputs are m-vectors, so S ` (R m)k = R mk
+
+_ := sup nk * 1 j Sk is a dense subset of R mk o
+
+e.g. for perceptrons (affine maps), _ = vc = m + 1 for T's of two halfspaces in R 2 (2-1 "and" nets) _ = 3 (cannot do 4 if one point in conv hull of rest) but vc = 4 (any 4 vertices of a quadrilateral)
+
+Theorem (EDS'96): for parametric class fi : R w \Theta  U ! R , under "reasonable assumptions" on map fi:
+
+_ ^ 2w + 1 (bound tight) (note: if fi continuous, Sk dense ) open dense)
+
+29
+
+Generic-Set Shattering, More Details "reasonable" assumptions = ? analyticity not enough (!) (e.g. cos)
+
+but analyticity plays major part in proof need "o-minimality" (van den Dries, Wilkie, : : : )
+
+zero sets have finite number of conn components
+
+precisely: anything definable using real exponentials, algebraic operations, arbitrary real constants
+
+e.g. "neural nets" with standard activations
+
+Sketch of proof: show more: 8 6= ; open W0 ` U w+1 = R m(w+1)9 6
+
+= ; open Q ` W 20 s.t. Q T S2w+2 = ;
+
+let A ` R m(w+1) be set of (u1; : : : ; uw+1)'s s.t.
+
+(9 w) st fi(w; \Delta ) 6j 0; fi(w; u1) = : : : = fi(w; uw+1) = 0 Analyticity ) dim A ! m(w + 1): union of w-parameter family of sets, each with dim ^ m(w + 1) \Gamma  (w + 1) = (w + 1)(m \Gamma  1); so dim A ^ w + (w + 1)(m \Gamma  1) = m(w + 1) \Gamma  1
+
+30
+
+Generic Shattering: End of Proof Sketch definable sets A have nice-behaved dims, & property: interior = ; ) inter(clos A)= ; (set nowhere dense) (compare: dense flow in torus vs algebraic set) as A has codim ? 0, inter=;, so inter(closure) too
+
+Let W0 be any open subset of (R m)w+1 so W0 n clos A is a nonempty open set) 9
+
+open V = V1 \Theta  : : : \Theta  Vw+1 ` W0 ` R m(w+1), V1; : : : ; Vw+1 connected (e.g. balls) ` R m, V T A = ;
+
+Now let Q := V \Theta  V ` W 20 ` R 2m(w+1) (open) Claim: Q T S2w+2 = ;. Indeed: cannot have (+; : : : ; +; \Gamma ; : : : ; \Gamma ) for (u1; : : : ; uw+1; v1; : : : ; vw+1): else 9 w s.t. 8 i fi(w; ui)?0, fi(w; vi)?0 so 8 i 9 zi 2 Vi (connected!) s.t. fi(w; zi) = 0 so (z1; : : : ; zw+1) 2 V T A = ; N
+
+Note definability essential in argument: for fi(w; u) = sin wu, m = w = 1, A = f(u1; u2) 2 R 2 j (9 w 6= 0) sin wu1 = sin wu2 = 0g = union of all lines with rational or 1 slope has empty interior but dense
+
+31
+
+Parallel vs Serial Inputs: Perceptrons Classical view: weight vector w inputs: u 2 R w output: H(hw; ui)
+
+aessoe, \Phi \Phi 
+
+\Phi \Phi 
+
+\Phi \Phi 
+
+\Phi \Phi *
+
+PP
+
+PPP
+
+PPPq HH
+
+HH
+
+HH
+
+HHjw2
+
+ww
+
+w1
+
+y ? 0?! 0? u2 u1
+
+uw
+
+(w0) ?
+
+VC dim = w (omit bias w0 for this part) Recurrent Perceptrons (serial view): inputs presented sequentially ("ARMA" models)
+
+- -filter ? 0?! 0?yw+1linear u = u1 : : : uw
+
+yt = ff1yt\Gamma n + : : : + ffnyt\Gamma 1 + fi1ut\Gamma n + : : : + finut\Gamma 1
+
+t = n + 1; : : : ; w + 1 (y1 = : : : = yn = 0) recursively, w = impulse response ; yw+1 = hw; ui so again perceptron on w inputs but weights restricted to nonlinear (2n-dim) submanifold Number of parameters w = 2n (dimensionality)
+
+how does VC depend on k (for small n)?
+
+32
+
+Dependence on Input Length Equivalent model: first-order vector difference eqn:
+
+x(t + 1) = Ax(t) + Bu(t) x(\Delta ) is n-vector of states, output = one coord n2 + n weights in n \Theta  n matrix A, n vector B but only w = 2n indep parameters mod GL(n; R )
+
+Note: for each dynamic order n have family of concepts: for each input length k, one class Fn;k
+
+Analogy: n-state automata, strings of length k (Gold, Angluin, Rivest-Shapire, : : : ) but R -inputs and focus on inform bounds, not comp complexity
+
+Dasgupta&EDS: vc ss p(n) log k actually: max nn; nblog(b w\Gamma 1n c)co ! vc (Fn;w)^
+
+min fk ; 20n + 4n log(w \Gamma  n + 1)g So w ? maxfn2; 32g )
+
+n
+
+2 log w ^ vc (Fn;w) ^ 8n log w
+
+33
+
+More Generally: Recurrent Nets Feedback nets:
+
+x(t + 1) = ~oe (Ax(t) + Bu(t)) again x(\Delta ) n-vector of states, output = one coord (w = n2 + n weights in n \Theta  n matrix A, n vector B) and ~oe(z1; : : : ; zn) := (oe(z1); : : : ; oe(zn)) is componentwise application of scalar nonlinearity oe
+
+e.g.: linear recursions as before: oe = linear threshold nets: oe = H saturation (over/underflows): oe = sat general "sigmoids" as before (derivative; limits)
+
+= neural nets w/unit delay feedback loops (cycles) Koiran&EDS: ffl thresholds: vc ss p(w) log k
+
+ffl sigmoidal pw poly: vc ss p(w)k (c1w ! vc ! c2w2) ffl sigmoid 1=(1 + e\Gamma z ): O(w4k2) ; \Omega (wk)
+
+34</pre>
+</body>
+</html>

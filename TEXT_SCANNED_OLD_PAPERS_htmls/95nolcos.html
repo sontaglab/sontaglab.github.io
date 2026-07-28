@@ -1,0 +1,340 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nolcos.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95nolcos.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+On Characterizations of Input-to-State Stability with Respect to Compact Sets
+
+Eduardo D. Sontag\Lambda  and Yuan Wang\Lambda \Lambda  \Lambda Department of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA \Lambda \Lambda Department of Mathematics, Florida Atlantic University, Boca Raton, FL 33431, USA
+
+Abstract. Previous characterizations of iss-stability are shown to generalize without change to the case of stability with respect to sets. Some results on iss-stabilizability are mentioned as well.
+
+Key Words. Set Stability; input-to-state stability; Lyapunov functions; control Lyapunov functions; practical stability
+
+1. Introduction System stability with respect to input perturbations is one of the central issues to be studied in control. During the past few years, the property called "input to state stability" (iss) has been proposed (originally in (Sontag, 1989a)) as a foundation for the study of such problems, and has been subsequently employed by many authors in areas ranging from robust control to highly nonlinear small-gain theorems (see for instance (Jiang et al., 1994; Tsinias, 1989)). In the paper (Sontag and Wang, 1995), the authors established the equivalence among several natural characterizations of the iss property, stated in terms of dissipation inequalities, robustness margins, and Lyapunov-like functions.
+
+The iss property was originally stated for stability with respect to a given equilibrium state of interest. On the other hand, in many applications it is of interest to study stability with respect to an invariant set A, where A does not necessarily consist of a single point. Examples of such applications include problems of robust control and the various notions usually encompassed by the term "practical stability." This motivated the study of the "set" version of the iss property, originally in (Sontag and Lin, 1992), and developed with applications to the study of parameterized families of systems in (Lin et al., 1995). Given the interest in set-iss, it is an obvious question to ask whether the equivalent characterizations given in (Sontag and Wang, 1995) for the special case A = equilibrium extend to the more general set case. It is the main purpose of this paper to point out that, at
+
+\Lambda  Supported in part by US Air Force Grant F49620-95-1- 0101 \Lambda \Lambda  Supported in part by NSF Grants DMS-9457826 and DMS-9403924
+
+least for the case of compact invariant sets A, the results in (Sontag and Wang, 1995) indeed can be generalized with little or no change; in particular, iss with respect to a given A is equivalent to the existence of an "iss-Lyapunov function" relative to A. (Most of the proofs valid in the equilibrium case extend easily to the set case.) The property of there existing some invariant compact set A so that there is iss with respect to A will be called the "compact-iss" property; various remarks about this notion are included, including the equivalence with what is sometimes called "practical stability." Finally, we also sketch some applications of the iss notion to feedback design and disturbance attenuation.
+
+2. Set Input to State Stability We deal with systems of the following general form:
+
+.x = f(x; u) ; (\Sigma )
+
+where f : IRn \Theta  IRm ! IRn is a locally Lipschitz map, and we interpret x and u as functions of time t 2 IR, with values x(t) 2 IRn and u(t) 2 IRm, for some positive integers n and m. (Generalizations to systems evolving on manifolds, and/or restricted control value sets, are also of interest, but in this paper, all spaces are Euclidean.) From now on, one such system is assumed given.
+
+A control or input is a measurable locally essentially bounded function u : IR*0 ! IRm. We use the notation kuk to indicate the Lm1-norm of u, and j\Delta j for Euclidean norm in IRn and IRm. For each , 2 IRn and each u 2 Lm1, we denote by x(t; ,; u) the trajectory of the system \Sigma  with initial state x(0) = , and the input u. (This solution is a priori only defined on some maximal interval [0; T,; u), with T,; u ^ +1, but the main definition will include the requirement that T,; u = +1.) We recall in an appendix the notions of positive definite and class K, K1, andKL
+
+comparison functions.
+
+Let A be a nonempty subset of IRn. For each , 2 IRn, j,jA = d (,; A) = inf fd (j; ,); j 2 Ag will denote the usual point-to-set distance from , to A. (So for the special case A = f0g, j,jf0g = j,j is the usual Euclidean norm.) We say that such an A is a 0-invariant set for \Sigma , or more precisely, for the associated "zero-input" or "undisturbed" system
+
+.x = f0(x) = f(x; 0) ; (\Sigma 0)
+
+if it holds that x(t; ,; 0) 2 A; 8 t * 0; 8 , 2 A : That is, when the control is u j 0, the solution when starting from A is defined for all t * 0 and stays in A.
+
+Definition 2.1 The system \Sigma  has K-asymptotic gain with respect to the nonempty subset A ` IRn if there is some fl 2 K (an "asymptotic gain") so that, for all u, solutions exist for all t * 0 and
+
+lim t!+1 jx(t; ,; u)jA ^ fl(kuk) (1)
+
+uniformly on compacts for ,.
+
+The uniformity requirement (which, as will be shown in a forthcoming paper, can be substantially relaxed) means, precisely: solutions exist for all initial states, controls, and times, and for each real numbers r; " ? 0, there is some T = T (r; ") * 0 so that jx(t; ,; u)jA ^ " + fl(kuk) for all u, all j,j ^ r, and all t * T . This generalizes the idea of finite (linear) gain, classically used in input/output stability theory. Clearly, if a system has K-asymptotic gain with respect to a set A, and if A0 is any subset of IRn containing A, then the system also has K-asymptotic gain with respect to A0.
+
+The main concept to be studied is as follows. Definition 2.2 Let A ` IRn be a nonempty compact set. The system \Sigma  is input-to-state stable (iss) with respect to A if it has K-asymptotic gain with respect to A and A is 0-invariant. 2
+
+Note that, in particular, if this property holds then the autonomous system \Sigma 0 is globally asymptotically stable with respect to A (in the sense in (Lin et al., to appear)). The iss property can also be definied with respect to non-compact 0- invariant sets A (cf. (Lin et al., 1995)), but then an additional technical condition must be imposed (see Remark 2.5 below).
+
+For any A ` IRn, we consider the zero-input orbit from A: O(A) := fj : j = x(t; ,; 0); t * 0; , 2 Ag and let O(A) be the closure of O(A).
+
+Lemma 2.3 Let A ` IRn be a nonempty compact set. If the system \Sigma  has K-asymptotic gain with respect to A, then it is iss with respect to O(A).
+
+Proof: Since O(A) includes A, the system has Kasymptotic gain with respect to O(A), and the latter set is 0-invariant (since O(A) is). Thus
+
+we only need to prove that O(A) is compact, or equivalently, that O(A) is bounded. From theK
+
+-asymptotic gain property, we know that there exists some T * 0 so that, for each , 2 A,j
+
+x(t; ,; 0)jA ^ 1 for all t * T . By continuity at states in A of solutions of \Sigma 0 with respect to initial conditions, and compactness of A, there is some constant c so that jx(t; ,; 0)jA ^ c for all t 2 [0; T ]. Thus O(A) is included in a ball of radius maxf1; cg.
+
+Definition 2.4 The system \Sigma  is compact-iss if it is iss with respect to some compact set A. 2
+
+By Lemma 2.3, this is equivalent to simply asking that system \Sigma  has K-asymptotic gain with respect to some compact set A.
+
+Remark 2.5 The definition of the iss property is in terms of a uniform attraction property. Just as for systems with no controls (cf. (Bhatia and Szeg"o, 1970), Theorem 1.5.28, or (Hahn, 1967), Theorem 38.1), compactness of A insures that the following stability-like property is automatically satisfied as well:
+
+For each " ? 0, there exists a ffi ? 0 so that
+
+j,jA ^ ffi; kuk ^ ffi ) jx(t; ,; u)jA ^ "; 8 t * 0 : Indeed, assume given " ? 0. Let T = T (1; "=2). Pick any ffi1 ? 0 so that fl(ffi1) ! "=2; then, ifj
+
+,jA ^ 1 and kuk ^ ffi1, and t * T ,j
+
+x(t; ,; u)jA ^ "=2 + fl(kuk) ! " : (2) By continuity (at u j 0 and states in A) of solutions with respect to controls and initial conditions, and compactness and 0-invariance of A, there is also some ffi2 ? 0 so that, if jjjA ^ ffi2 andk
+
+uk ^ ffi2 then jx(t; j; u)jA ^ " for all t 2 [0; T ]. Together with (2), this gives the desired property with ffi := min f1; ffi1; ffi2g. 2
+
+In a manner entirely analogous to the equilibrium case in (Sontag and Wang, 1995), Lemma 2.7, one can show the following characterization in terms of decay estimates:
+
+Lemma 2.6 The system \Sigma  is iss with respect to the compact set A if and only if there are a KLfunction fi and a K-function fl so thatj
+
+x(t; ,; u)jA ^ fi(j,jA ; t) + fl(kuk) (3) holds for each t * 0, u 2 Lm1, and , 2 IRn. 2 Remark 2.7 In the paper (Jiang et al., 1994), a system \Sigma  is said to be "input-to-state practically stable" (isps) if there exist a KL-function fi, aK
+
+-function fl and a constant c * 0 such thatj
+
+x(t; ,; u)j ^ fi(j,j ; t) + fl(kuk) + c (4) holds for each input u 2 Lm1 and each , 2 IRn. This concept is equivalent to the system being compact-iss. Indeed, the concept implies the Kasymptotic gain property with respect to the ball of radius c. Conversely, if the system is iss with respect to A, and 0 2 A (which may be assunmed without loss of generality, by first enlarging
+
+the set and then considering O(A)), then it is also isps, because jx(t; ,; u)j ^ jx(t; ,; u)jA + c ^ fi(j,jA ; t) + fl(kuk) + c ^ fi(j,j ; t) + fl(kuk) + c with c := supfj,j ; , 2 Ag. 2
+
+2.1. ISS-Lyapunov Functions An iss-Lyapunov function with respect to the compact subset A ` IRn for system \Sigma  is a smooth function V : IRn ! IR*0 which satisfies the following conditions: (a) V is proper and positive definite with respect to the set A, that is, there exist ff1; ff2 2 K1 such that for all , 2 IRn,
+
+ff1(j,jA) ^ V (,) ^ ff2(j,jA) ; (5) and (b) there exist functions ff3 2 K1 and oe 2 K such thatr
+
+V (,)f(,; v) ^ \Gamma ff3(j,jA) + oe(jvj) (6) for all , 2 IRn and for all v 2 IRm. Note that such a V is automatically also a Lyapunov function for the zero-input system \Sigma 0 with respect to A. Also, observe that, since here A is compact, the existence of a function ff2 as stated is in fact a consequence of the continuity of V .
+
+Remark 2.8 There are two other, equivalent, ways of defining iss-Lyapunov function. The first is as follows. One asks that V satisfy (5) and that, for some K1-functions ff4 and O/ there hold the implicationj
+
+,jA * O/(jvj) =)r
+
+V (,)f(,; v) ^ \Gamma ff4(j,jA) (7) (for each state , 2 IRn and control value v 2 IRm). A second variant is to drop the requirement that ff4 be of class K1; that is, one asks only that there is a O/ so thatj
+
+,jA * O/(jvj) =) rV (,)f(,; v) ! 0 (8) for all , 6= 0 and all v 2 IRm. These two variants are equivalent: if (8) holds, then there exists a positive definite function ff4 such that (7) holds (define for instance ff4(r) as the supremum of the values of rV (,)f(,; v) on the compact subset consisting of all j,jA = r and v so that O/(jvj) ^ r); then, for some properly chosen q, q(V ) satisfies (7) with a new ff4 2 K1. Extending the proof of Remark 2.4 in (Sontag and Wang, 1995), it can be shown that all variants of the definition are equivalent. 2
+
+Remark 2.9 If A is not compact, then properties (6) and (7) may no longer be equivalent. As an example, consider the following system: .x1 =\Gamma 
+
+x1; .x2 = \Gamma x2 + x1q(u \Gamma  jx2j); where q : IR ! IR is a smooth function satisfying q(r) = 0 for all r ^ 0 and q(r) ? 0 for all r ? 0. Let A be the setf
+
+(,1; ,2) : ,2 = 0g. Consider the function V (,) = ,22=2: Clearly V satisfies (5) (as j,jA = j,2j), andj
+
+,jA * jvj =) rV (,) f(,; v) ^ \Gamma ,22 : But it is easy to see that V fails to satisfy property (6). 2
+
+The main result is as follows. Theorem 1 Let the compact set A be a 0-invariant
+
+set for the system \Sigma . Then the system is iss with respect to A iff it admits an iss-Lyapunov function with respect to A.
+
+The proof follows essentially the same lines as the proof of the analogous Theorem 1 (for equilibria) in (Sontag and Wang, 1995). We omit the details for reasons of space, but the main point is that care must be taken to establish all estimates in terms of j\Delta jA rather than Euclidean norm.
+
+One may modify V in an essentially arbitrary way inside the set A, so as to make V positive definite with respect to subsets of A:
+
+Lemma 2.10 Assume that \Sigma  is iss with respect to a given compact set A, and let eA be any nonempty compact subset of A. Then there is a smooth function eV : IRn ! IR*0 which satisfies the following conditions: (a) eV is proper and positive definite with respect to the set eA, that is, there exist eff1; eff2 2 K1 such that for all , 2 IRn,e
+
+ff1(j,j eA) ^ eV (,) ^ eff2(j,j eA) ; (9) and (b) there exist a function eff3 2 K1 and a nondecreasing continuous function eoe such thatr e
+
+V (,)f(,; v) ^ \Gamma eff3(j,j eA) + eoe(jvj) (10) for all , 2 IRn and for all v 2 IRm. Proof: Let V be an iss-Lyapunov funtion for \Sigma  satisfying (6). Consider the set A1 = f, : j,jA * 1g. Since this is disjoint from A, there is a smooth function ' : IRn ! [0; 1] so that '(,) = 0 if , 2 A and 1 if , 2 A1. Similarly, there is some smooth, nonnegative function * defined on IRn which vanishes exactly on eA. Now we define eV (,) := *(,)(1 \Gamma  '(,)) + V (,)'(,): By construction, eV is smooth and is proper and positive definite with respect to eA, that is, there are comparison functions as in (9). Furthermore, since V (,) = eV (,) for j,jA ? 1, alsor e
+
+V (,) f(,; v) ^ \Gamma ff3(j,jA) + fl(jvj) ; (where ff3 and fl are the comparison functions associated to V ) for all v 2 IRm and all j,jA ? 1.
+
+Since both A and eA are compact, there exists some s0 * 0 such that j,j eA ^ j,jA + s0; thus
+
+r eV (,) f(,; v) ^ \Gamma ~ff3(j,j eA) + fl(jvj); (11) whenever j,j eA * 1 + s0, where ~ff3 is any K1 function which satisfies ~ff3(r) ^ ff3(r \Gamma  s0) for all r * s0 + 1. The proof is completed by taking any nondecreasing continuous function eoe which majorizes both fl(r) and the maximum ofr e
+
+V (,) f(,; v) over all j,j eA ^ 1 + s0; jvj ^ r.
+
+This construction can be applied in particular when A contains the origin eA = f0g to conclude that if the system \Sigma  is compact-iss, then \Sigma  admits a semi-iss-Lyapunov function, that is, a smooth function V satisfying ff1(j,j) ^ V (,) ^ ff2(j,j) for suitable ff1; ff2 2 K1 and so thatr
+
+V (,)f(,; v) ^ \Gamma ff3(j,j) + oe(jvj) (12)
+
+for some ff 2 K1 and nondecreasing continuous function oe. (Note that, in general, oe cannot be picked of class K; there is no need for such a function to vanish at 0. However, one may always write oe ^ c + eoe, for some class-K function eoe and some positive constant c.)
+
+On the other hand, if \Sigma  admits a semi-issLyapunov function satisfying (12), then it follows that j,j * O/(jvj) =) rV (,)f(,; v) ^ \Gamma ff3(j,j)=2 where O/(r) = ff\Gamma 13 ffi 2oe(r). Observe that O/ is a nondecreasing function. Using exactly the same arguments as used on page 441 of (Sontag, 1989a), one can show that there exist some KL-function fi and some nondecreasing function fl such thatj
+
+x(t; ,; u)j ^ fi(j,j ; t) + fl(juj) for each input u and each initial state ,. It is easy to see from this that the system is compact-iss. So we proved the following conclusion:
+
+Corollary 2.11 The system \Sigma  is compact-iss iff it admits a semi-iss-Lyapunov function.
+
+3. ISS-Control Lyapunov Functions In this section, we provide a preliminary discussion of some questions related to input to state stabilizability under feedback. (For simplicity, we consider only the case of stabilization with respect to the equilibrium A = f0g, but the theory could be developed in more generality.) Now inputs in \Sigma  will be assumed to be partitioned into two components, one of which corresponds to true controls u : IR*0 ! IRm, and the other to "disturbances" w : IR*0 ! IRp acting on the system. Furthermore, we will assume that the right-hand side of \Sigma  is affine in u and w. That is to say, we consider systems on IRn of the general form:
+
+.x = f(x) + G(x)u + D(x)w ; (13) where f and the columns of the matrices G and D are smooth vector fields. We also assume that f(0) = 0.
+
+Our main objective is to study conditions for the existence of a smooth feedback law u = k(x) such that the closed-loop system
+
+.x = f(x) + G(x)k(x) + D(x)w (14) is iss, with w seen as the external input. As when studying (non-iss) stabilizability under feedback, we search for conditions expressed in terms of "control Lyapunov functions."
+
+Observe that if there exists a feedback law as above, then, by the main result in (Sontag and Wang, 1995), there exists a positive definite, proper function ' such that the system
+
+.x = f(x) + G(x)k(x) + '(x)D(x)d (15) is uniformly globally asymptotically stable (ugas) with respect to all d 2 MO (= the set of all measurable functions from IR*0 to the unit ball in IRm). That is, there exists for solutions of this
+
+closed-loop system a KL-function fi such thatj
+
+x(t; ,; d)j ^ fi(t; ,); 8 t * 0 for all , 2 IRn and all d 2 MO. We next apply to (15) the converse Lyapunov Theorem in (Lin et al., to appear) for systems with no controls but with time-varying parametric uncertainties. We conclude (using the value u = k(x)) that there exists also a smooth, proper and positive definite function V such that
+
+inf u fa(,) + B0(,) u + '(,)B1(,) dg ! 0 for all jdj ^ 1 and , 6= 0, where we are using the notations a(,)=rV (,)f(,), B0(,)=rV (,)G(,), and B1(,)=rV (,)D(,). Consequently, for any , 6= 0,
+
+inf u fa(,) + B0(,) u + '(,) jB1(,)jg ! 0 : (16) For any given real-valued function V on IRn, letB
+
+0 be the set f, : B0(,) = 0; , 6= 0g. Thus, for the above V ,
+
+a(,) ! 0 if , 2 B0 (17) and
+
+limj ,j!1
+
+,2B0
+
+\Gamma a(,)j
+
+B1(,)j = +1: (18)
+
+(We make the convention that \Gamma a(,)= jB1(,)j = +1 at those points where B1(,) = 0. The meaning of the limit along B0 is the obvious one, namely that values are large as long as j,j is large and , 2 B0. If B0 happens to be bounded, this condition is vacuous.)
+
+Motivated by these considerations, we say that a smooth, proper and positive definite function V is an iss-control-Lyapunov-function (iss-clf) for (13) if (17)-(18) hold. An iss-clf V is said to satisfy the small control property (scp) if for any " ? 0, there is a ffi ? 0 such that for each 0 ! j,j ! ffi, there is some jvj ! " such that a(,) + B0(,)v ! 0. (To simplify, we also say that the corresponding pair (a(,); B0(,)) "satisfies scp.") These definitions constitute one possible generalization of the corresponding notion for systems with no "w", for which only equation (17) is relevant; see (Sontag, 1989b; Isidori, 1995).
+
+Theorem 2 If there is an iss-clf V for system (13), then there exists a feedback law k : IRn ! IRm which is smooth on IRn n f0g and is such that the closed-loop system (14) is iss. If V satisfies the small control property, then k can be chosen to be continuous at 0.
+
+This result is not really new: (Freeman and Kokotovic, to appear) give a very similar theorem which applies to systems not necessarily affine in controls, but we believe that the method of proof given here is very natural and constructive.
+
+We will say that a feedback k is almost smooth if it is smooth on IRn n f0g and continuous at 0.
+
+Remark 3.1 The converse of the above Theorem is also true, that is, if system (13) is iss-stabilizable
+
+by an almost smooth feedback k(\Delta ), then there exists an iss-clf with scp. However, in order to prove the stronger assertion, we would need to make some modifications to the proof of Theorem 1 in (Lin et al., to appear), but we don't have the space to do so in this conference paper. We may sketch the main steps, however. Basically, and using the notations in that paper, one needs to show that, when the 0-invariant set A used there is compact, the functions g and U constructed for obtaining V are locally Lipschitz outside A without needing to assume that f is locally Lipschitz on A (which, when k is almost smooth but not smooth, cannot be guaranteed). To show the Lipschitz continuity of g, one only needs to notice that the trajectories starting outside A never enter A in negative time; hence, the original proof is still valid. To prove the Lipschitz condition on U , one first notices that the stability of the system implies that trajectories starting from a compact set always stay in a compact set in positive time. Using this, one can show that x(t; ,; d,;") always stays in a compact set disjoint from A, for any t 2 [0; t,;"]. This then allows one to apply the Lipschitz condition for f outside A, together with the Gronwall inequality, to conclude that U is locally Lipschitz outside A. 2
+
+Sketch of Proof of Theorem 2. Assume that (13) admits an iss-clf V satisfying (17)-(18). If B0 is unbounded, we let
+
+1(r) = inf ae\Gamma  a(,)jB
+
+1(,)j : B0(,) = 0; j,j = roe
+
+(values may be infinite). If B0 is bounded, we let 1(r) be defined in this way for those r for which there is some , 2 B0 with j,j * r, but let 1(r) = 1 otherwise. In either case, it holds that inf f1(r); r 2 [a; b]g ? 0 for each two numbers 0 ! a ! b, so there is a smooth K1-function (r) such that (r) ^ min fr2; 1(r)g for all r * 0. Let '(,) := (jxj); this is continuously differentiable everywhere in IRn, because (r) ^ r2. It is clear that the following implication holds:
+
+, 2 B0 =) a(,) + '(,)jB1(,)j ! 0 : So inf v fa1(,) + B0(,) vg ! 0 for all , 6= 0, where a1(,) := a(,) + '(,) jB1(,)j : Applying the "universal formula" given in (Sontag, 1989b) (see also (Isidori, 1995), Section 9.4) to the pair (a1; B0), one obtains a feedback k0(,) = ff(a1(,); jB0(,)j), so that for all , 6= 0,
+
+a(,) + B0(,)k0(,) + '(,) jB1(,)j ! 0 (19) where ff(r; s) is the function defined by
+
+ff(r; s) = ae \Gamma 
+
+r+pr2+s4
+
+s ; if s 6= 0 ;0 ; if s = 0 .
+
+As it was shown in (Sontag, 1989b), the function ff is analytic on the set
+
+S = f(s; r) 2 IR2 : r 6= 0 or s ! 0g : This then implies that k0 is locally Lipschitz on
+
+IRnnf0g. (Note here that k0 may fail to be smooth on IRn nf0g because the function , 7! jB1(,)j may fail to be smooth.) To obtain a feedback that is smooth on IRn n f0g, it is sufficient to approximate k0 on IRn n f0g by a smooth k so that Equation (19) still holds. It then follows that
+
+a(,) + B0(,)k(,) + B1(,)v ! 0 (20) for all , 6= 0 and all jvj ^ (j,j). Therefore, V is an iss-Lyapunov function for the closed-loop system, and consequently, the closed-loop system is iss.
+
+To show that if in addition V satisfies the scp then the feedback law can be chosen to be continuous everywhere, observe that one may always choose
+
+ in such a manner that limj,j!0 jB1(,)(,)ja(,) = 0 : For instance, one can pick up any smooth K1- function ~ so that ~(r) ^ min f(r)(\Gamma a(,)) : , 2 B0; j,j = rg in a neighborhood of 0 where\Gamma 
+
+a(,) ^ 1, and let ~(r) ^ (r) everywhere. Then replace  by ~. With this new choice of  and the resulting ', the pair (a1(,); B0(,)) still has the scp, and hence the feedback law k0 is continuous everywhere, and hence, the approximating function k1 can be choosen almost smooth.
+
+3.1. Gain assignment Suppose that system (13) admits an iss-Lyapunov function V , and that the two K1-functions ff1 and ff2 are such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j); 8 ,: (21) The above arguments also show that if there exists a smooth, positive definite and proper function ' such that
+
+inf u fa(,) + B0(,)u + jB1(,)j '(,)g ! 0 for all , 6= 0, then there exists a feedback k that is smooth on IRn n f0g, such that for any , 6= 0, a(,) + B0(,)k(,) + B1(,)w ! 0 providedj
+
+wj ^ (j,j), where (r) = inf j,j^r'(,) is a K1- function. By the proof of Theorem 1 in (Sontag, 1989a), (strictly speaking, this is not a particular case of the setup in the first part, because the closed-loop system need not satisfy a Lipschitz property at the origin), one knows that there exists a KL-function fi so that for every trajectory x(t; ,; w) of the closed-loop system, it holds thatj
+
+x(t; ,; w)j ^ fi(j,j ; t) + fl(kwk) : (22) where fl(r) = ff\Gamma 11 ffi ff2 ffi \Gamma 1(r). We say that a function fl is a feedback assignable gain if there is some k so that an estimate of this form holds (for some fi), under some almost smooth feedback law.
+
+When studying the problem of iss stabilizability for a system of the form (13), a special case is that of "matching uncertainties" when G = D; then the equations have the form
+
+.x = f(x) + G(x)(u + w): (23) In (Sontag, 1989a), it was shown that if system (23) is stabilizable by a smooth feedback
+
+when w = 0 in (23), then the system is also issstabilizable by a smooth feedback. In (Praly and Wang, submitted), this result was generalized to obtain the following "gain assignability" result, rederived here in a somewhat simpler manner by means of iss-Lyapunov functions.
+
+Proposition 3.2 If system (23) is stabilizable by an almost smooth feedback k when w = 0, then every fl 2 K1 is an assignable gain.
+
+Proof: By standard converse Lyapunov theorems, the hypotheses imply the existence of a controlLyapunov function V satisfying (21) and
+
+inf ufa(,) + B(,)ug ! 0; 8, 6= 0; (24) where a(,) = rV (,)f(,); B(,) = rV (,)G(,), and in addition, V satisfies the scp. Let  be aK
+
+1-function such that (r) * 2fl\Gamma 1 ffi ff\Gamma 11 ffi ff2(r). Let ' be a almost smooth function so that '(,) *
+
+(j,)j =2 for all , 2 IRn. It follows from (24) that inf ufa1(,) + B(,)ug ! 0; 8, 6= 0; where a1(,) = a(,) + jB(,)j '(,). Arguing as earlier, one knows that there exists a k that is smooth on IRn n f0g such that
+
+a1(,) + B(,)k(,) ! 0 (25) for all , 6= 0. Note again that if the pair (a; B) satisfies the scp, the pair (a1; B) also satisfies the scp, so the resulting k is continuous everywhere. From (25), it follows that for each , 6= 0,
+
+a(,) + B(,)k(,) + B(,)w ! 0 provided jwj ^ (j,j)=2. From here one obtains the desired conclusion.
+
+Finally, we relate our results to those in (Isidori, 1995), Section 9.5, where the problem of disturbance attenuation with stability is discussed in the context of finiteness of L2 gains (we assume for this comparison that the output function is y = x). It was shown there that if system (13) admits a positive definite proper smooth function V such that for each , 6= 0,
+
+B0(,) = 0 =)
+
+a(,) + 14fl2 jB1(,)j2 + j,j2 ! 0; (26) where fl ? 0 is some constant, then there exists an almost smooth feedback k such that the closedloop system is iss with an iss-Lyapunov function satisfyingr
+
+V (f(,) + g(,)k(,) + p(,)w) ^ fl2 jwj2 \Gamma  ,2 : Observe that if (26) holds, then V is also an issLyapunov function as defined above. This follows immediately from the following observation:
+
+Lemma 3.3 Let a; b; c : IRn ! IR be continuous functions. Assume that c is positive definite and proper. If a(,) + (b(,))2 + c(,) ! 0 for all , 6= 0,
+
+then limj,j!1 \Gamma a(,)jb(,)j = 1 :
+
+Proof: The Lemma follows directly from the inequality ae + oeae * 2poe for all ae; oe ? 0.
+
+4. Appendix We recall the definitions of the standard classes of comparison functions. A function fl : IR*0 ! IR*0 is positive definite if fl(s) ? 0 for all s ? 0, and fl(0) = 0; the function fl is a K-function if it is continuous, positive definite, and strictly increasing; and fl is a K1-function if it is a Kfunction and fl(s) ! 1 as s ! 1. Finally, a function fi : IR*0 \Theta  IR*0 ! IR*0 is a KL-function if for each fixed t * 0 the function fi(\Delta ; t) is a Kfunction, and for each fixed s * 0, fi(s; t) decreases to zero as t ! 1.
+
+5. REFERENCES Bhatia, Nam Parshad and George Philip Szeg"o (1970).
+
+Stability Theory of Dynamical Systems. SpringerVerlag. New York.
+
+Freeman, Randy and Petar Kokotovic (to appear). Inverse optimality in robust stabilization. SIAM J. Control and Optimization, to appear.
+
+Hahn, Wolfgang (1967). Stability of Motion. SpringerVerlag. Berlin.
+
+Isidori, Alberto (1995). Nonlinear Control Systems:
+
+An Introduction. third ed. Springer-Verlag. New York.
+
+Jiang, Zhong-Ping, Andrew Teel and Laurent Praly
+
+(1994). Small-gain theorem for ISS systems and applications. Mathematics of Control, Signals, and Systems, 7, pp. 95-120.
+
+Lin, Yuandan, Eduardo D. Sontag and Yuan Wang
+
+(1995). Input to state stabilizability for parameterized families of systems. Int. Journal of Robust and Nonlinear Control, 5, pp. 187-205.
+
+Lin, Yuandan, Eduardo D. Sontag and Yuan Wang (to
+
+appear). A smooth converse Lyapunov theorem for robust stability. SIAM Journal on Control and Optimization. (Preliminary version in "Recent results on Lyapunov-theoretic techniques for nonlinear stability", in Proc. Amer. Automatic Control Conference, Baltimore, June 1994, pp. 1771-1775.).
+
+Praly, Laurent and Yuan Wang (submitted). Stabilization in spite of matched unmodelled dynamics and an equivalent definition of input-to-state stability.
+
+Sontag, Eduardo D. (1989a). Smooth stabilization implies coprime factorization. IEEE Transactions on Automatic Control AC-34, 435-443.
+
+Sontag, Eduardo D. (1989b). A `universal' construction of Artstein's theorem on nonlinear stabilization. Systems & Control Letters 13, 117-123.
+
+Sontag, Eduardo D. and Yuan Wang (1995). On characterizations of the input-to-state stability property. Systems & Control Letters 24, pp 351-359.
+
+Sontag, Eduardo D. and Yuandan Lin (1992). Stabilization with respect to noncompact sets: Lyapunov characterizations and effect of bounded inputs. In Nonlinear Control Systems Design 1992, IFAC Symposia Series, 1993, Number 7, M. Fliess Ed., Pergamon Press, Oxford, 1993,
+
+Tsinias, John (1989). Sufficient Lyapunovlike conditions for stabilization. Mathematics of Control, Signals, and Systems 2, 343-357.</pre>
+</body>
+</html>

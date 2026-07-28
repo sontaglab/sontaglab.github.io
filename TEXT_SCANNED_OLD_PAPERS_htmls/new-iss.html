@@ -1,0 +1,694 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/new-iss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/new-iss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 1
+
+New Characterizations of Input to State Stability
+
+Eduardo D. Sontag
+
+Yuan Wang
+
+Abstract-- We present new characterizations of the Input to State Stability property. As a consequence of these results, we show the equivalence between the ISS property and several (apparent) variations proposed in the literature.
+
+I. Introduction This paper studies stability questions for systems of the general form
+
+\Sigma  : .x = f(x; u) ; (1)
+
+with states x(t) evolving in Euclidean space Rn and controls u(\Delta ) taking values u(t) 2 U ` Rm, for some positive integers n and m (in all the main results, U = Rm). The questions to be addressed all concern the study of the size of each solution x(t) -- its asymptotic behavior as well as maximum value -- as a function of the initial condition x(0) and the magnitude of the control u(\Delta ).
+
+One of the most important issues in the study of control systems is that of understanding the dependence of state trajectories on the magnitude of inputs. This is especially relevant when the inputs in question represent disturbances acting on a system. For linear systems, this leads to the consideration of gains and the operator-theoretic approach, including the formulation of H1 control. For not necessarily linear systems, there is no complete agreement as yet regarding what are the most useful formulations of system stability with respect to input perturbations. One candidate for such a formulation is the property called "input to state stability" (ISS), introduced in [12]. Various authors, (see e.g. [4], [5], [6], [10], [16] have subsequently employed this property in studies ranging from robust control and highly nonlinear small-gain theorems to the design of observers and the study of parameterization issues; for expositions see [14] and most especially the textbooks [7], [8]. The ISS property is defined in terms of a decay estimate of solutions, and is known (cf. [15]) to be equivalent to the validity of a dissipation inequality
+
+dV (x(t))
+
+dt ^ oe(ju(t)j) \Gamma  ff(jx(t)j)
+
+holding along all possible trajectories (this is reviewed below), for an appropriate "energy storage" function V and comparison functions oe; ff.
+
+E. Sontag is with SYCON - Rutgers Center for Systems and Control, Department of Mathematics, Rutgers University, New Brunswick, NJ 08903. e-mail: sontag@control.rutgers.edu. This research was supported in part by US Air Force Grant F49620-95-1- 0101.
+
+Y. Wang is with Department of Mathematics, Florida Atlantic University, Boca Raton, FL 33431. e-mail: ywang@control.math.fau.edu. This research was supported in part by NSF Grants DMS-9457826 and DMS-9403924
+
+In some cases, notably in [2], [6], [17], authors have suggested apparent variations of the ISS property, which are more natural when solving particular control problems. The main objective of this paper is to point out that such variations are in fact theoretically equivalent to the original ISS definition. (This does not in any way diminish the interest of these other authors' contributions; on the contrary, the alternative characterizations are of great interest, especially since the actual estimates obtained may be more useful in one form than another. For instance, the "small-gain theorems" given in [6], [2] depend, in their applicability, on having the ISS property expressed in a particular form. This paper merely states that from a theoretical point of view, the properties are equivalent. For an analogy, the notion of "convergence" in Rn is independent of the particular norm used -- e.g. all Lp norms are equivalent -- but many problems are more naturally expressed in one norm than another.)
+
+One of the main conclusions of this paper is that the ISS property is equivalent to the conjunction of the following two properties: (i) asymptotic stability of the equilibrium x = 0 of the unforced system (that is, of the system defined by Equation (1) with u j 0) and (ii) every trajectory of (1) asymptotically approaches a ball around the origin whose radius is a function of the supremum norm of the control being applied. We prove this characterization along with many others. Since it is not harder to do so, the results are proved in slightly more generality, for notions relative to an arbitrary compact attractor rather than the equilibrium x = 0.
+
+A. Basic Definitions and Notations
+
+Euclidean norm in Rn or Rm is denoted simply as j\Delta j. More generally, we will study notions relative to nonempty subsets A of Rn; for such a set A, j,jA = d (,; A) = inf fd (j; ,); j 2 Ag denotes the point-to-set distance from , 2 Rn to A. (So for the special case A = f0g, j,jf0g = j,j.) We also let, for each " ? 0 and each set A:
+
+B(A; ") := f, j j,jA ! "g ; B(A; ") := f, j j,jA ^ "g : Most of the results to be given are new even for A = f0g, so the reader may wish to assume this, and interpret j,jA simply as the norm of ,. (We prefer to deal with arbitrary A because of potential applications to systems with parameters as well as the "practical stability" results given in Section VI.)
+
+The map f : Rn \Theta  Rm ! Rn in (1) is assumed to be locally Lipschitz continuous. By a control or input we mean a measurable and locally essentially bounded function u : I ! Rm, where I is a subinterval of R which contains the
+
+2 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 origin, so that u(t) 2 U for almost all t. Given a system with control-value set U, we often consider the same system but with controls restricted to take values in some subset O ` U; we use MO for the set of all such controls.
+
+Given any control u defined on an interval I and any , 2 Rn, there is a unique maximal solution of the initial value problem .x = f(x; u), x(0) = ,. This solution is defined on some maximal open subinterval of I, and it is denoted by x(\Delta ; ,; u). (For convenience, we allow negative times t in the expression x(t; ,; u), even though the interest is in behavior for t * 0.) A forward complete system is one such that, for each u defined on I = R*0, and each ,, the solution x(t; ,; u) is defined on the entire interval R*0. The Lm1-norm (possibly infinite) of a control u is denoted by kuk1. That is, kuk1 is the smallest number c such that ju(t)j ^ c for almost all t 2 I. Whenever the domain I of a control u is not specified, it will be understood that I = R*0.
+
+A function F : S ! R defined on a subset S of Rn containing 0 is positive definite if F (x) ? 0 for all x 2 S, x 6= 0, and F (0) = 0. It is proper if the preimage F \Gamma 1(\Gamma D; D) is bounded, for each D ? 0. A function fl : R*0 ! R*0 is of class N (or an "N function") if it is continuous and nondecreasing; it is of class N0 (or an "N0 function") if in addition it satisfies fl(0) = 0. A function fl : R*0 ! R*0 is of class K (or a "K function") if it is continuous, positive definite, and strictly increasing, and is of class K1 if it is also unbounded (equivalently, it is proper, or fl(s) ! +1 as s ! +1). Finally, recall that fi : R*0 \Theta  R*0 ! R*0 is said to be a function of class KL if for each fixed t * 0, fi(\Delta ; t) is of class K and for each fixed s * 0, fi(s; t) decreases to zero as t ! 1. (The notations K, K1, and KL are fairly standard; the notations N and N0 are introduced here for convenience.)
+
+B. A Catalog of Properties
+
+We catalog several properties of control systems which will be compared in this paper. Much of the terminology -- except for "ISS" and the names for properties of unforced systems -- is not standard, and should be considered tentative.
+
+A zero-invariant set A for a system \Sigma  as in Equation (1) is a subset A ` Rn with the property that x(t; ,; 0) 2 A for all t * 0 and all , 2 A, where 0 denotes the control which is identically equal to zero on R*0.
+
+From now on, all definitions are with respect to a given forward-complete system \Sigma  as in Equation (1), and a given compact zero-invariant set A for this system. The main definitions follow.
+
+We first recall the definition of the (ISS) property:
+
+9 fl 2 K; fi 2 KL st : 8 , 2 Rn 8 u(\Delta ) 8 t * 0 jx(t; ,; u)jA ^ fi(j,jA ; t) + fl(kuk1) : (ISS)
+
+This was the form of the original definition of (ISS) given in [12]. It is known that a system is (ISS) if and only if it satisfies a dissipation inequality, that is to say, there exists a smooth V : Rn ! R*0 and there are functions ffi2K1,
+
+i = 1; 2; 3 and oe2K so that
+
+ff1(j,jA) ^ V (,) ^ ff2(j,jA) (2) and
+
+rV (,)f(,; v) ^ oe(jvj) \Gamma  ff3(j,jA) (3)
+
+for each ,2Rn and v2Rm. See [15], [14] for proofs and an exposition, respectively. A very useful modification of this characterization due to [11] is the fact that the (ISS) property is also equivalent to the existence of a smooth V satisfying (2) and Equation (3) replaced by an estimate of the type rV (,)f(,; v) ^ \Gamma V (,) \Gamma  ff3(j,jA). (This can be understood as: "for some positive definite and proper functions y = V (x) and v = W (u) of states and outputs respectively, along all trajectories of the system we have
+
+.y = \Gamma y+v".) The main purpose of this paper is to establish further equivalences for the (ISS) property.
+
+It will be technically convenient to first introduce a local version of the property (ISS), by requiring only that the estimate hold if the initial state and the controls are small, as follows:
+
+9 ae ? 0; fl 2 K; fi 2 KL st : 8 j,jA ^ ae; 8 kuk1 ^ ae
+
+jx(t; ,; u)jA ^ fi(j,jA ; t) + fl(kuk1) 8 t * 0 : (LISS) Several standard properties of the "unforced" system obtained when u j 0 will appear as technical conditions. We review these now. The 0-global attraction property with respect to A (0-GATT) holds if every trajectory x(\Delta ) of the zero-input system
+
+(\Sigma 0) : .x = f(x; 0) (4) satisfies limt!1 jx(t; ,; 0)jA ! 0; if this is merely required of trajectories with initial conditions satisfying jx(0)jA ! ae, for some ae ? 0, we have the 0-local attraction property with respect to A (0-LATT). The 0-local stability property with respect to A (0-LS) means that for each " ? 0 there is a ffi ? 0 so that j,jA ! ffi implies that jx(t; ,; 0)jA ! " for all t * 0. Finally, the 0-asymptotic stability property with respect to A (0-AS) is the conjunction of (0-LATT) and (0-LS), and the 0-global asymptotic stability property with respect to A (0-GAS) is the conjunction of (0-GATT) and (0-LS). Note that (0-GAS) is equivalent to the conjunction of (0-AS) and (0-GATT). It is useful (see e.g. [3], [12], [7]) to express these properties in terms of comparison functions:
+
+9 fi 2 KL st : 8 , 2 Rn 8 t * 0
+
+jx(t; ,; 0)jA ^ fi(j,jA ; t) : (0-GAS) and
+
+9 ae ? 0; fi 2 KL st : 8 j,jA ! ae 8 t * 0
+
+jx(t; ,; 0)jA ^ fi(j,jA ; t) (0-AS)
+
+respectively.
+
+Next we introduce several new concepts. The limit property with respect to A holds if every trajectory must at some time get to within a distance of A which is a function of the magnitude of the input:
+
+SONTAG AND WANG: NEW CHARACTERIZATIONS OF INPUT TO STATE STABILITY 3
+
+9 fl 2 N0 st : 8 , 2 Rn 8 u(\Delta ) inf t*0 jx(t; ,; u)jA ^ fl (kuk1) : (LIM)
+
+Observe that, if this property holds, then it also holds with some fl 2 K1. However, the case fl j 0 will be of interest, since it corresponds to a notion of attraction for systems in which controls u are viewed as disturbances.
+
+The asymptotic gain property with respect to A holds if every trajectory must ultimately stay not far from A, depending on the magnitude of the input:
+
+9 fl 2 N0 st : 8 , 2 Rn 8 u(\Delta ) lim t!+1 jx(t; ,; u)jA ^ fl (kuk1) : (AG)
+
+Again, if the property holds, then it also holds with some fl 2 K1, but the case fl j 0 will be of interest later. The uniform asymptotic gain property with respect to A holds if the limsup in (AG) is attained uniformly with respect to initial states in compacts and all u:
+
+9 fl 2 N0 8 " ? 0 8 ^ ? 0 9 T = T ("; ^) * 0 st : 8 j,jA ^ ^
+
+sup t*T jx(t; ,; u)jA ^ fl (kuk1) + " 8u(\Delta ) : (UAG)
+
+The boundedness property with respect to A holds if bounded initial states and controls produce uniformly bounded trajectories:
+
+9 oe1; oe2 2 N st : 8 , 2 Rn 8 u(\Delta )
+
+sup
+
+t*0 jx(t; ,; u)jA ^ max f oe1(j,jA) ; oe2(kuk1) g : (BND)
+
+(This is sometimes called the "UBIBS" or "uniform bounded-input bounded-state" property.) The global stability property with respect to A holds if in addition small initial states and controls produce uniformly small trajectories:
+
+9 oe1; oe2 2 N0 st : 8 , 2 Rn 8 u(\Delta )
+
+sup
+
+t*0 jx(t; ,; u)jA ^ max f oe1(j,jA) ; oe2(kuk1) g : (GS)
+
+Observe that, if this property holds, then it also holds with both oei 2 K1. The local stability property with respect to A holds if we merely require a local estimate of this type:
+
+9 ffi ? 0; ff1; ff2 2 N0 st : 8 j,jA ^ ffi 8 kuk1 ^ ffi
+
+sup
+
+t*0 jx(t; ,; u)jA ^ max f ff1(j,jA) ; ff2(kuk1) g : (LS)
+
+If this property holds, then it also holds with both ffi 2 K1, i = 1; 2
+
+Theorem 1: Assume given any forward-complete system \Sigma  as in Equation (1), with U = Rm, and a compact zeroinvariant set A for this system. The following properties are equivalent:
+
+A. (ISS) B. (LIM) & (0-AS) C. (UAG) D. (LIM) & (0-GAS)
+
+E. (AG) & (0-GAS) F. (AG) & (LISS) G. (AG) & (LS) H. (LIM) & (LS) I. (LIM) & (GS) J. (AG) & (GS) This theorem will follow from a several technical facts which are stated in the next section and proved later in the paper. These technical results are of interest in themselves.
+
+C. List of Main Technical Steps
+
+We assume given a forward-complete system \Sigma  as in Equation (1), with U= Rm, and a compact zero-invariant set A for this system. For ease of reference, we first list several obvious implications:
+
+(UAG) =) (AG) : (5)
+
+(AG) =) (LIM) : (6) (ISS) =) (0-GAS) : (7)
+
+(LISS) =) (0-AS) : (8)
+
+(LISS) =) (LS) : (9) Because (LIM) implies (0-GATT) and (0-GAS) is the same as (0-AS) plus (0-GATT), we have:
+
+(LIM) & (0-GAS) () (LIM) & (0-AS) : (10) It was shown in [15] that
+
+(ISS) () (UAG) & (LS) : (11) It turns out that (LS) is redundant, so (UAG) is in fact equivalent to (ISS):
+
+Proposition I.1: (UAG) ) (LS). This observation generalizes a result which is well-known for systems with no controls (for which see e.g. [1, Theorem 1.5.28] or [3, Theorem 38.1]). It should be noted that the standing hypothesis that A is compact is essential for this implication; in the general case of noncompact sets A, the local stability property with respect to A is not redundant. From Proposition I.1 and Equation (7), we know then that:
+
+(UAG) =) (0-GAS) : (12)
+
+We also prove these results: Lemma I.2: (0-GAS) =) (LISS) : Lemma I.3: (BND) & (LS) () (GS) : Lemma I.4: (LIM) & (GS) () (AG) & (GS) : Lemma I.5: (LIM) ) (BND) : The converse of Lemma I.5 is of course false, as illustrated by the autonomous system .x = 0 (with n=m=1), which even satisfies (GS) but does not satisfy (LIM). From Lemmas I.3 and I.5, we have that:
+
+(LIM) & (LS) () (LIM) & (GS) : (13) The most interesting technical result will be this: Proposition I.6: (LIM) & (LS) ) (UAG) :
+
+4 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999
+
+We now indicate how the proof of Theorem 1 follows from all these technical facts.
+
+ffl (A () C): by Proposition I.1 and Equation (11). ffl (C)E): by (5) and (12). ffl (E)F): by Lemma I.2. ffl (F)G): by Equation (9). ffl (G)H): by Equation (6). ffl (H)I): by Equation (13). ffl (I)J): by Lemma I.4. ffl (J)G): obvious. ffl (H)C): this is Proposition I.6. ffl (E)D): by Equation (6). ffl (B () D): by Equation (10). ffl (D)H): by Lemma I.2 and Equation (9). A very particular consequence of the main Theorem is worth focusing upon: A () J, i.e. (ISS) is equivalent to having both the global stability property with respect to A and the asymptotic gain property with respect to A. Consider this property:
+
+9 fl 2 N0 st : 8 , 2 Rn 8 u(\Delta ) lim t!+1 jx(t; ,; u)jA ^ fl i limt!+1 ju(t)jj (14)
+
+(the limsup being understood in the "essential" sense, of holding up to a set of measure zero; note also that since fl is continuous and nondecreasing, the right-hand term equals
+
+lim t!+1fl(ju(t)j)). It is easy to show (see Lemma (II.1)) thatthis is equivalent to (AG). The conjunction of (14) and
+
+(GS) is the "asymptotic L1 stability property" proposed by Teel and discussed in the survey paper [2] (in that paper, A = f0g); it thus follows that asymptotic L1 stability is precisely the same as (ISS).
+
+In [17], Tsinias considered the following property (in that paper, A = f0g):
+
+9 fl 2 K st : 8 , 2 Rn 8 u(\Delta )
+
+[jx(t; ,; u)jA * fl(ju(t)j) 8 t * 0]
+
+) limt!1 jx(t; ,; u)jA = 0 (15)
+
+which obviously implies (LIM). The author considered the conjunction of (15) and (LS) (more precisely, the author also assumed a local stability property that implies (LS), namely f(x; u) = Ax + Bu + o(x; u), with A Hurwitz); because of the equivalence A () H, this conjunction is also equivalent to (ISS).
+
+The outline of the rest of the paper is as follows. In Section II we first prove Proposition I.1, Lemmas I.2, I.3, and I.4, and the equivalence between Property (14) and (AG), all of which are elementary. Section III contains the proof of the basic technical step needed to prove the main result, as well as a proof of Lemma I.5. After this, Section IV establishes a result showing that uniform global asymptotic stability of systems with disturbances (or equivalently, of an associated differential inclusion) follows from the non-uniform variant of the concept; this would appear to be a rather interesting result in itself, and in any case it is used in Section V to provide the proof of Proposition I.6. Finally, in Section VI we make some remarks
+
+characterizing so-called "practical" ISS stability in terms of ISS stability with respect to compact sets.
+
+II. Some Simple Implications We start with the proof of Proposition I.1.
+
+Proof: We will show the following property, which is equivalent to (LS):
+
+8 " ? 0 9 ffi ? 0 st : 8 j,jA ^ ffi 8 kuk1 ^ ffi
+
+sup
+
+t*0 jx(t; ,; u)jA ^ " : (16)
+
+Indeed, assume given " ? 0. Let T = T ("=2; 1). Pick any ffi1 ? 0 so that fl(ffi1) ! "=2. Then: for all j,jA ^ 1 and kuk1 ^ ffi1
+
+sup t*T jx(t; ,; u)jA ^ "=2 + fl(kuk1) ! " : (17)
+
+By continuity (at u j 0 and states in A) of solutions with respect to controls and initial conditions, and compactness and zero-invariance of A, there is also some ffi2 = ffi2("; T ) ? 0 so that
+
+jjjA ^ ffi2 and kuk1 ^ ffi2 ) sup
+
+t2[0;T] jx(t; j; u)jA ^ " :
+
+Together with (17), this gives the desired property with ffi := minf1; ffi1; ffi2g.
+
+We now prove Lemma I.2.
+
+Proof: We first note that the 0-global asymptotic stability property with respect to A implies the existence of a smooth function V such that
+
+ff1(j,jA) ^ V (,) ^ ff2(j,jA) 8 , 2 Rn; for some ff1; ff2 2 K1, and
+
+rV (,)f(,; 0) ^ \Gamma ff3(j,jA) 8 , 2 Rn; for some ff3 2 K1 (this is well-known; see for instance, [9] for one such a converse Lyapunov theorem). Following exactly the same steps as in the proof of Lemma 3.2 in [13], one can show that there exists some function O/ 2 K1 such that for all O/(jvj) ^ j,jA ^ 1,
+
+rV (,)f(,; v) ^ \Gamma ff3(j,jA)=2: (18) (Here we note that in the proof of Lemma 3.2 in [13], the function g(s) = 1 for s 2 [0; 1].)
+
+Using exactly the same arguments used on page 441 of [12], one can show that there exist a KL-function fi and a K1-function fl so that if jx(t; ,; u)jA ^ 1 for all t 2 [0; T ) for some T ? 0, then it holds that
+
+jx(t; ,; u)jA ^ maxffi(j,jA ; t); fl(kuk1)g (19) for all t 2 [0; T ). Let ae = minf^\Gamma 1(1=2); fl\Gamma 1(1=2)g, where ^(r) = fi(r; 0) for r * 0. Note here that ae ^ ^\Gamma 1(1=2) ^ 1=2. We now show that the (LISS) property holds with these fi, fl, and ae. Fix any , and u with j,jA ^ ae and
+
+SONTAG AND WANG: NEW CHARACTERIZATIONS OF INPUT TO STATE STABILITY 5 kuk1 ^ ae. First note that jx(t; ,; u)j ! 1 for t small enough.
+
+Claim: jx(t; ,; u)jA ^ 1 for all t * 0. Assume the claim is false. Then with
+
+t1 = infft : jx(t; ,; u)jA * 1g; it holds that 0 ! t1 ! 1. Note then that jx(t; ,; u)jA ! 1 for all t 2 [0; t1). This then implies that
+
+jx(t; ,; u)jA ^ maxffi(ae; 0); fl(ae)g ^ 1=2 8 t 2 [0; t1) : By continuity, jx(t1; ,; u)jA ! 1, contradicting to the definition of t1. This shows that t1 = 1, i.e., jx(t; ,; u)jA ^ 1 for all t * 0. Thus the estimate in (19) holds for all t, as desired.
+
+Next we prove Lemma I.3: boundedness property with respect to A and local stability property with respect to A implies global stability property with respect to A (the converse is obvious).
+
+Proof: Assume that Equations (BND) and (LS) hold, for a given choice of ffi; oe1; oe2; ff1; ff2. Pick a constant c * 0 and two class-K functions fi1 and fi2 so that, for each i = 1; 2, oei(s) ^ fii(s) + c for all s * 0. Pick two class-K functions fl1 and fl2 so that, for each i = 1; 2, it holds that:
+
+fli(s) * ffi(s) 8 0 ^ s ^ ffi ; fli(s) * 2fii(s) 8 s * 0 ; fli(s) * 2[fii(s) + 2c] 8 s * ffi :
+
+Consider any , and u. Then Equation (GS) holds. Indeed, if both j,jA ^ ffi and kuk1 ^ ffi then this follows from Equation (LS). Assume now that j,jA ? ffi. Thus Equation (BND) implies that, for all t * 0,
+
+jx(t; ,; u)jA ^ oe1(j,jA) + oe2(kuk1)
+
+^ fi1(j,jA) + c + fi2(kuk1) + c ^ fi1(j,jA) + 2c + (1=2)fl2(kuk1) ^ (1=2) [fl1(j,jA) + fl2(kuk1)] ^ max ffl1(j,jA); fl2(kuk1)g :
+
+The case kuk1 ? ffi is similar.
+
+Lemma I.4 says that the limit property with respect to A plus the global stability property with respect to A imply the asymptotic gain property with respect to A; it is shown as follows.
+
+Proof: Let oe1; oe2; fl 2 N0 be as in (LIM) and (GS). We claim that (AG) holds with:e
+
+fl(s) := maxf(oe1ffifl)(s); oe2(s)g : Pick any ,; u, and any " ? 0. By (LIM), there is some T * 0 so that jx(T; ,; u)jA ^ fl(kuk1) + ". Applying (GS) to the initial state x(T; ,; u) and the control v(t) := u(t+T ) we conclude that
+
+lim t!+1 jx(t; ,; u)jA ^ supt*T jx(t; ,; u)jA
+
+^ max f oe1(fl(kuk1) + ") ; oe2(kuk1) g
+
+and taking " ! 0 provides the conclusion.
+
+Finally, we show: Lemma II.1: Property (14) is equivalent to (AG).
+
+Proof: Since fl( lim
+
+t!+1 ju(t)j) ^ fl(kuk1); Property (14)implies (AG), with the same fl. Conversely, assume that
+
+(AG) holds; we next show that Property (14) holds with the same fl. Pick any , 2 Rn, control u, and " ? 0. Let
+
+r := lim
+
+t!+1 ju(t)j. Let h ? 0 be such that fl(r+h)\Gamma fl(r) ! ".Pick T ? 0 so that ju(t)j ^ r + h for almost all t * T , and
+
+consider the functions z(t) := x(t + T ) and v(t) := u(t + T ) defined on R*0. Note that v is a control with kvk1 ^ r +h and that z(t) = x(t; i; v), where i = x(T; ,; u). By the definition of the asymptotic gain property with respect to A, applied with initial state i and control v,
+
+lim t!+1 jx(t; ,; u)jA = limt!+1 jz(t; i; v)jA
+
+^ fl(kvk1) ^ fl(r + h) ! fl(r) + " :
+
+Letting " ! 0 gives Property (14).
+
+III. Uniform Reachability Time Let (1) be a forward-complete system. For each subset O of the input-value space U, each T * 0, and each subset C ` Rn, we denote
+
+RTO(C) := fx(t; ,; u) j 0 ^ t ^ T; u 2 MO; , 2 Cg and
+
+RO(C) := fx(t; ,; u) j t * 0; u 2 MO; , 2 Cg
+
+= [
+
+T*0
+
+RTO(C) :
+
+In [9, Proposition 5.1], it is shown that:
+
+Fact III.1: Let (1) be a forward-complete system. For each bounded subset O of the input-value space U, each T * 0, and each bounded subset C ` Rn, RTO(C) is bounded. 2
+
+Given a fixed system (1) which is forward-complete, a point , 2 Rn, a subset S ` Rn, and a control u, one may consider the "first crossing time"
+
+o/ (,; S; u) := inf ft * 0 j x(t; ,; u) 2 Sg with the convention that o/ (,; S; u) = +1 if x(t; ,; u) 62 S for all t * 0.
+
+The following result and its corollary are central. They state in essence that, for bounded controls, if o/ (,; S; u) is finite for all u then this quantity is uniformly bounded over u, up to small perturbations of , and S, and (the Corollary) uniformly on compact sets of initial states as well. (Observe that we are not making the assumption that f is convex on control values and that the set of such values is compact and convex, which would make the result far simpler, by means of a routine weak-? compactness argument.) The result will be mainly applied in the following special case: O is a closed ball in Rm, W = Rn, and for a given compact set A, C (in the Corollary) is a closed ball of the type
+
+6 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 B(A; 2s), p 2 C, \Omega  = B(A; 2s), and K = B(A; (3=2)s). But the general case is not harder to prove, and it is of independent interest.
+
+Lemma III.2: Let (1) be a forward-complete system. Assume given:
+
+ffl an open subset \Omega  of the state-space Rn, ffl a compact subset K ae \Omega , ffl a bounded subset O of the input-value space U, ffl a point p 2 Rn, and ffl a neighborhood W of p, so that
+
+sup u2MO o/ (p; \Omega ; u) = +1 : (20)
+
+Then there is some point q 2 W and some v 2 MO such that
+
+o/ (q; K; v) = +1 : (21) Proof: Let p0 = p be as in the hypotheses. Thus for each integer k * 1 we may pick some dk 2 MO so that x(t; p0; dk) 62 \Omega  for all 0 ^ t ^ k. For each j * 1, we let `j(t) = x(t; p0; dj), t * 0.
+
+Consider first f`j(t)gj*1 as a sequence of functions defined on [0; 1]. From Fact III.1 we know that there exists some compact subset S1 of Rn such that x(t; p0; dj) 2 S1 for all 0 ^ t ^ 1, for all j * 1. Let M = supfjf(,; *)j : , 2 S1; * 2 Og. Then fifi ddt `j(t)fifi ^ M for all j and almost all 0 ^ t ^ 1. Thus the sequence f`j(t)gj*1 is uniformly bounded and equicontinuous on [0; 1], so by the ArzelaAscoli Theorem, we may pick a subsequence foe1(j)gj*1 of fjgj*1 with the property that f`oe1(j)(t)gj*1 converges to a continuous function ^1(t), uniformly on [0; 1]. Now we consider f`oe1(j)(t)gj*1 as a sequence of functions defined on [1; 2]. Using the same argument as above, one proves that there exists a subsequence foe2(j)gj*1 of foe1(j)gj*1 such that f`oe2(j)(t)gj*1 converges uniformly to a function ^2(t) for t 2 [1; 2]. Since foe2(j)g is a subsequence of foe1(j)g, it follows that ^2(1) = ^1(1). Repeating the above procedure, one obtains inductively on k * 1 a subsequence foek+1(j)gj*1 of foek(j)gj*1 such that the sequence f`oek+1(j)(t)gj*1 converges uniformly to a continuous function ^k+1 on [k; k + 1]. Clearly, ^k(k) = ^k+1(k) for all k * 1. Let ^ be the continuous function defined by ^(t) = ^k(t) for t 2 [k \Gamma  1; k) for each k * 1. Then on each interval [k \Gamma  1; k], ^(t) is the uniform limit of f`oek(j)(t)g.
+
+Since the complement of \Omega  is closed and the `j's have images there, it is clear that ^ remains outside \Omega , and hence outside K. If ^ would be a trajectory of the system corresponding to some control v, the result would be proved (with q = p0). The difficulty lies, of course, in the fact that there is no reason for ^ to be a trajectory. However, ^ can be well approximated by trajectories, and the rest of the proof consists of carrying out such an approximation.
+
+Some more notations are needed. For each control d with values in O, we will denote by \Delta d the control given by \Delta d(t) = d(t + 1) for each t in the domain of d (so, for instance, the domain of \Delta d is [\Gamma 1; +1) if the domain of d was R*0). We will also consider iterates of the \Delta  operator, \Delta kd, corresponding to a shift by k. Since K is compact and \Omega  is open, we may pick an r ? 0 such that
+
+B(K; r) ` \Omega . We pick an r0 smaller than r=2 and so that the closed ball of radius r0 around p0 is included in the neighborhood W in which q must be found. Finally, let pk = ^(k) for each k * 1. Observe that both p0 and p1 are in S1 by construction.
+
+Next, for each j * 1, we wish to study the trajectory x(\Gamma t; p1; \Delta doe1(j)) for t 2 [0; 1]. This may be a priori undefined for all such t. However, since S1 is compact, we may pick another compact set eS1 containing B(S1; r) in its
+
+interior, and we may also pick a function ef : Rn\Theta Rm ! Rn which is equal to f for all (x; u) 2 eS1 \Theta  O and has compact support; now the system .x = ef (x; u) is complete, meaning that solutions exist for all t 2 (\Gamma 1; 1). We use ex(t; ,; u) to denote solutions of this new system. Observe that for each trajectory ex(t; ,; u) which remains in eS1, x(t; ,; u) is also defined and coincides with ex(t; ,; u). In particular, ex(\Gamma t; `oe1(j)(1); \Delta doe1(j)) = x(\Gamma t; `oe1(j)(1); \Delta doe1(j)), for each j, since these both equal x(1 \Gamma  t; p0; doe1(j)), for each t 2 [0; 1]. The set of states reached from S1, using the modified system, in negative times t 2 [\Gamma 1; 0], is included in some compact set (because the modified system is complete, and again appealing to Fact III.1). Thus, by Gronwall's estimate, there is some L * 0 so that, for all j * 1 and all t 2 [0; 1],fifie
+
+x(\Gamma t; p1; \Delta doe1(j)) \Gamma  x(\Gamma t; `oe1(j)(1); \Delta doe1(j))fifi
+
+^ L fifip1 \Gamma  `oe1(j)(1)fifi ;
+
+(no "," needed in the second solution, since it is also a solution of the original system). Since `oe1(j)(1) ! p1, it follows that there exists some j1 such that for all j * j1,fifie
+
+x(\Gamma t; p1; \Delta doe1(j)) \Gamma  x(\Gamma t; `oe1(j)(1); \Delta doe1(j))fifi ! r02
+
+(22) for all t 2 [0; 1]. Note that this means in particular thate
+
+x(\Gamma t; p1; \Delta doe1(j)) 2 B(S1; r=4) ` eS1 for all such t, for all j * j1, so ","can be dropped in Equation (22) for all j * j1. Now let 0 ! r1 ! r0 be such thatfifie
+
+x(\Gamma t; p; \Delta doe1(j1)) \Gamma  x(\Gamma t; p1; \Delta doe1(j1))fifi ! r02 (23) for all t 2 [0; 1], for all p 2 B(p1; r1). As this implies in particular that ex(\Gamma t; p; \Delta doe1(j1)) 2 B(S1; r=2) ` eS1, again tildes can be dropped. Combining (22) and (23), it follows that for each p 2 B(p1; r1), x(\Gamma t; p; \Delta doe1(j1)) is defined for all t 2 [0; 1] andfifi
+
+x(\Gamma t; p; \Delta doe1(j1)) \Gamma  x(\Gamma t; `oe1(j1)(1); \Delta doe1(j1))fifi ! r0
+
+(24) for all t 2 [0; 1]. Let w1(t) = doe1(j1)(t). Then (24) implies that for each p 2 B(p1; r1) it holds that x(\Gamma 1; p1; \Delta w1) 2 B(p0; r0), and, since x(\Gamma t; `oe1(j1); \Delta doe1(j1)) 62 \Omega  for all t 2 [0; 1],
+
+x(\Gamma t; p; \Delta w1) 62 B(K; r=2) 8 t 2 [0; 1]: In what follows we will prove, by induction, that for each i * 1, there exist 0 ! ri ! ri\Gamma 1 and wi of the form
+
+SONTAG AND WANG: NEW CHARACTERIZATIONS OF INPUT TO STATE STABILITY 7 wi = \Delta i\Gamma 1doei(j) for some j, so that, for all p 2 B(pi; ri), x(\Gamma t; p; \Delta wi) is defined for all t 2 [0; 1],
+
+x(\Gamma t; p; \Delta wi) 62 B(K; r=2) 8 t 2 [0; 1]; and
+
+x(\Gamma 1; p; \Delta wi) 2 B(pi\Gamma 1; ri\Gamma 1) :
+
+The case i = 1 has already been shown in the above argument.
+
+Assume now that the above conclusion is true for i = 1; 2; : : :; k. Consider, for each j, the trajectory x(\Gamma t; pk+1; \Delta k+1doek+1(j)). Again, this may be a priori undefined for all such t. But, again, by modifying the system in a compact set ~Sk+1 containing a neighborhood of Rk+1O (p0), one can show that there exists some _jk+1 * k+1 so that, for all j * _jk+1, x(\Gamma t; pk+1; \Delta k+1doek+1(j)) is defined for all t 2 [0; 1], and
+
+jx(\Gamma t; pk+1; \Delta k+1doek+1(j))
+
+\Gamma x(\Gamma t; `oek+1(j)(k + 1); \Delta k+1doek+1(j))j ! rk=4 (25)
+
+for all 0 ^ t ^ 1. We note here that, for any j, x(\Gamma t; `oek+1(j); \Delta k+1doek+1(jk+1)) is defined for all t 2 [0; k + 1] and
+
+x(\Gamma 1; `oek+1(j)(k + 1); \Delta k+1doek+1(j)) = `oek+1(j)(k): Since `oek(j)(k) ! pk as j ! 1, and foek+1(j)gj*1 is a subsequence of foek(j)gj*1, it follows that there exists some~ jk+1 * 0 such thatfifi
+
+x(t; `oek+1(j)(k); \Delta kdoek(j)) \Gamma  x(t; pk; \Delta kdoek(j))fifi ! rk4 (26)
+
+for all t 2 [0; 1], for all j * ~jk+1. Let jk+1 = maxf_jk+1; ~jk+1g, and let wk+1(t) = \Delta kdoek+1(jk+1)(t) for t 2 [0; 1]. Then, (25), applied with j = jk+1, says that:
+
+jx(\Gamma t; pk+1; \Delta wk+1)
+
+\Gamma x(\Gamma t; `oek+1(jk+1)(k + 1); \Delta wk+1)j ! rk=4 (27)
+
+for all t 2 [0; 1]. Using the case t = 1 of this equation, as well as (26) applied with j = jk+1 and t = 0, and the equality x(\Gamma 1; `oek+1(jk+1)(k + 1); \Delta wk+1) = `oek+1(jk+1)(k), we conclude that:
+
+x(\Gamma 1; pk+1; \Delta wk+1) 2 B(pk; rk=2) : (28) Pick any rk+1 so that 0 ! rk+1 ! rk and for every p 2 B(pk+1; rk+1), x(\Gamma t; p; \Delta wk+1) is defined for all t 2 [0; 1], and
+
+jx(\Gamma t; p; \Delta wk+1) \Gamma  x(\Gamma t; pk+1; \Delta wk+1)j ! rk=2 (29) for all t 2 [0; 1]. Then for such a choice of rk+1, it holds, for each p 2 B(pk+1; rk+1), by equation (27), thatfifi
+
+x(\Gamma t; p; \Delta wk+1) \Gamma  x(\Gamma t; `oek+1(jk+1)(k + 1); \Delta wk+1)fifi ! 3rk4 ! r=2
+
+for all t 2 [0; 1], which implies that, for each p 2 B(pk+1; rk+1),
+
+x(\Gamma t; p; \Delta wk+1) 62 B(K; r=2) 8 t 2 [0; 1]: Moreover, it follows from (28) and (29) that
+
+x(\Gamma 1; p; \Delta wk+1) 2 B(pk; rk) for all p 2 B(pk+1; rk+1). This completes the induction step.
+
+Finally, we define a control v on R*0 as follows:
+
+v(t) = wk(t \Gamma  k + 1) if t 2 [k \Gamma  1; k) for each integer k * 1. Then v 2 MO.
+
+For each k, we consider the trajectory x(\Gamma t; pk; \Delta kv) for t 2 [0; k]. Inductively, x(\Gamma i; pk; \Delta kv) 2 B(pk\Gamma i; rk\Gamma i) for each i ^ k, so this trajectory is indeed well-defined. We now let zk = x(\Gamma k; pk; \Delta kv). Note that also from x(\Gamma i; pk; \Delta kv) 2 B(pk\Gamma i; rk\Gamma i) we can conclude that
+
+x(\Gamma t; pk; \Delta kv) 62 B(K; r=2) 8t 2 [0; k] ; (30) which is equivalent to
+
+x(t; zk; v) 62 B(K; r=2) 8t 2 [0; k] : (31) As zk 2 B(p0; r0) for all k, there exists a subsequence of fzkg that converges to some point q 2 W . To simplify notation, we still use fzkg to denote one such convergent subsequence. We will finish our proof by showing that x(t; q; v) 62 K for all t * 0.
+
+Fix any integer N ? 0. Since the system is forwardcomplete, and using uniform Lipschitz continuity of solutions as a function of initial states in B(p0; r0) and using the control v on the interval [0; N ], we know that there exists some L1 ? 0 such that
+
+jx(t; q; v) \Gamma  x(t; zk; v)j ^ L1 jq \Gamma  zkj ; 8 t 2 [0; N ] ; 8 k : Hence, there exists some k0 ? 0 such that
+
+jx(t; q; v) \Gamma  x(t; zk0; v)j ! r4 ; 8 t 2 [0; N ] : (32) Without loss of generality, we assume that k0 * N . Combining (32) with (31), it follows that x(t; q; v) 62 B(K; r4) for all t 2 [0; N ]. As N was arbitrary, it follows that x(t; q; v) 62 K for all t * 0.
+
+The contrapositive of Lemma III.2 gives that, if from each point we can reach \Omega  in finite time, then the set K can be reached in uniform time from each state. This can in turn be made stronger to provide in addition uniformity on compacts for initial states, as follows.
+
+Corollary III.3: Let (1) be a forward-complete system. Assume given
+
+ffl a compact subset C of the state-space Rn, ffl an open subset \Omega  of the state-space Rn, ffl a compact subset K ae \Omega , and ffl a bounded subset O of the input-value space U,
+
+8 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 so that
+
+8 , 2 Rn 8 u 2 MO 9t * 0 s.t. x(t; ,; u) 2 K : Then
+
+sup fo/ (p; \Omega ; u) j p 2 C; u 2 MOg ! +1 : Proof: Pick an open set \Omega 0 and an " ? 0 so that K ae \Omega 0 ae B(\Omega 0; ") ` \Omega . By Lemma III.2, applied with \Omega 0 in place of \Omega  and W = Rn, we know that for each p 2 C there is some T = Tp so that, for each u 2 MO there is some t 2 [0; T ] so that x(t; p; u) 2 \Omega 0. (Otherwise, we would have supu2M
+
+O o/ (p; \Omega 0; u) = +1, and thus by theLemma there is some q 2 W =
+
+Rn and some v 2 MO such
+
+that o/ (q; K; v) = +1, that is so that x(t; q; v) =2 K for all t * 0, contradicting the assumption.) By Fact III.1 and Gronwall's Lemma, there is also some L = Lp ? 0 (Lp is obtained from the Lipschitz constant for f on RTO(C)) so that
+
+jx(t; ,; u) \Gamma  x(t; p; u)j ^ L j, \Gamma  pj
+
+for all t 2 [0; T ] and all , 2 C. Denote ffip := Lp=", pick a finite cover of C by sets of the form B(p; ffip), and let T be the largest of the Tp's in this cover. Now given any , 2 C and any u 2 MO, choose p so that , 2 B(p; ffip) and t 2 [0; Tp] so that x(t; p; u) 2 \Omega 0; then also x(t; ,; u) 2 \Omega , and t ^ T .
+
+Corollary III.4: Under the hypotheses of Corollary III.3, and if in addition \Omega  ae C, then there is some T * 0 so that
+
+RO(C) = RTO(C) ; and in particular RO(C) is bounded.
+
+Proof: Let T = sup fo/ (p; \Omega ; u) j p 2 C; u 2 MOg. Pick any y 2 RO(C); thus y = x(t0; ,; u), for some , 2 C, u 2 MO, and t0 * 0. Let t1 := maxft ^ t0 j x(t; ,; u) 2 Cg, and p := x(t1; ,; u). By maximality of t1, x(t; p; v) 62 C for any t 2 [0; t0 \Gamma  t1], where v(t) = v(t + t1). Thus, from the definition of T , t0\Gamma t1 ! T . So y = x(t0\Gamma t1; p; v) 2 RTO(C).
+
+As a simple application, we now prove Lemma I.5: if \Sigma  is forward-complete and satisfies the limit property with respect to A, then it satisfies the boundedness property with respect to A.
+
+Proof: Assume without loss of generality that fl 2 K1. For each s ? 0, define
+
+oe1(s) := sup fjx(t; ,; u)jA j
+
+, 2 B(A; 2s); u 2 MO; t * 0; O = B(0; fl\Gamma 1(s))\Psi  :
+
+We claim that oe1(s) ! 1 for all s ? 0. To see this, pick an s ? 0 and let C = B(A; 2s), \Omega  = B(A; 2s), and K = B(A; 3s=2). Pick any u 2 MO, O = B(0; fl\Gamma 1(s)). Note that oe1(s) is the largest possible value of j*jA, for * 2 RO(C). Property (LIM) implies that, for each , 2 Rn, there is some t * 0 so that
+
+jx(t; ,; u)jA ^ (3=2)fl (kuk1) ^ (3=2)fl(fl\Gamma 1(s)) = 3s=2 ; that is, x(t; ,; u) 2 K. We may then apply Corollary III.4, to conclude that RO(C) is bounded, so oe1(s) is indeed
+
+finite. We also define, for each r ? 0, the (finite) number:
+
+oe2(r) := oe1(fl(r)) : Finally, we define oei(0) := 0 for i = 1; 2. Note that both oe1 and oe2 are nondecreasing functions. Assume without loss of generality that both oei 2 N (if this does not hold, one may pick a larger eoei * oei). We next show that (BND) holds with these definitions.
+
+Pick , 2 Rn and a control u, and let s := j,jA and r := kuk1. Let x(t) = x(t; ,; u) for all t * 0. If s=r=0 then , 2 A, so zero-invariance of A means that the right hand side in the estimate (BND) vanishes. So assume s ? 0 or r ? 0. Consider two cases: Case 1: Assume that s * fl(r). Note that necessarily s ? 0. We have a trajectory with , 2 B(A; 2s) and with kuk1 = r ^ fl\Gamma 1(s), so by definition of oe1(s) it holds that jx(t)jA ^ oe1(s) = oe1(j,jA) for all t. Case 2: Assume that s ^ fl(r). Note that necessarily r ? 0. Define es := fl(r). We have that j,jA = s ^ es ! 2es and that kuk1 = r = fl\Gamma 1(es). Thus for all t it holds that jx(t)jA ^ oe1(es) = oe1(fl(r)) = oe2(kuk1), as wanted.
+
+IV. Uniform Stability The notions introduced next are motivated by thinking of inputs not as controls but as "time varying parameters" or "multiplicative uncertainties." Again we assume given a forward-complete system \Sigma  as in Equation (1), and a compact zero-invariant set A for this system.
+
+The global asymptotic stability property with respect to A (GAS) holds if the system is uniformly stable with respect to A:
+
+8 " ? 0 9 ffi ? 0 s.t.: 8 j,jA ^ ffi
+
+sup
+
+t*0 jx(t; ,; u)jA ^ " 8u(\Delta ) : (33)
+
+and is attractive with respect to A:
+
+8 , 2 Rn 8 u(\Delta ) limt*0 jx(t; ,; u)jA = 0 : (34)
+
+Note that this last condition is just as in (AG) with fl = 0. Observe also that if (33) holds then the set A must be invariant in the strong sense that x(t; ,; u) 2 A whenever , 2 A, for all inputs u (not just if u j 0).
+
+The uniform global asymptotic stability property with respect to A (UGAS) holds if the system is uniformly stable with respect to A and is uniformly attractive with respect to A:
+
+8 " ? 0 8 ^ ? 0 9 T = T ("; ^) * 0 s.t.: j,jA ^ ^ ) sup
+
+t*T jx(t; ,; u)jA ^ " 8u(\Delta ) :
+
+This is the same as asking that (UAG) hold with fl = 0. The main result in this Section is as follows.
+
+Theorem 2: Assume given a forward-complete system \Sigma  as in Equation (1), and a compact zero-invariant set A for this system. Furthermore, assume that the set of control values U is compact. Then the system satisfies (GAS) if and only if it satisfies (UGAS).
+
+SONTAG AND WANG: NEW CHARACTERIZATIONS OF INPUT TO STATE STABILITY 9
+
+Proof: Given " ? 0 and ^ ? 0 first find ffi as in (33). Let O = U, K = B(A; ffi=2), \Omega  = B(A; ffi), and C = B(A; ^). By (34), the hypotheses of Corollary III.3 hold, so there is some T * 0 such that, whenever j,jA ^ ^, and for each control u, there is some t0 = t0(,; u) ^ T so that jx(t0; ,; u)jA ^ ffi. From the choice of ffi, it follows that jx(t; ,; u)jA ^ " for all t * t0, and hence for all t * T .
+
+V. Proof of Main Proposition We now prove Proposition I.6. We must show that (LIM) and (LS) together imply (UAG) (the converse is obvious). By Equation 13, we may assume that (GS) holds, so by Lemma I.4, (AG) is also true. So from now on we assume both (AG) and (GS). The proof is based on first introducing a new system -- which appears also in an argument used in [15] -- having compact input-value set and which satisfies (GAS), and then using the equivalence (UGAS) = (GAS) for this auxiliary system to conclude that the original system is (UAG). (An intuitive interpretation is that this allows to restrict attention to input values that are subject to a state-dependent constraint of the type fl(ju(t)j) ^ jx(t)jA; inputs not satisfying this constraint do not matter, since for them already x(t) is bounded by a function of the input magnitude.)
+
+We start with a general construction. Take any locally Lipschitz function ' : Rn ! R*0 which vanishes on the set A. Consider the auxiliary system with the same state space Rn, input-value set U0 equal to the closed unit ball B(0; 1) in U= Rm, and equations as follows:
+
+(\Sigma ') : .x = f(x; '(x) d) = f'(x; d) : We use "d(\Delta )" to denote inputs to (\Sigma ') in order to avoid confusion with inputs to the original system, and for each , 2 Rn and each d, we use x'(t; ,; d) to denote the trajectory of (\Sigma ') with initial state , and input d. The system (\Sigma ') may not be complete even if the original system \Sigma  is (example: .x = u and '(x) = x2), but on the domain of definition of the solution one has that x'(t; ,; d) = x(t; ,; u) where u(t) := '(x'(t; ,; d))d(t). Note that, for (\Sigma '), A is invariant in the strong sense that all trajectories starting in A remain there (since for each , the solution of .x = f(x; 0), x(0) = ,, satisfies '(x(t)) j 0, by zero-invariance of A, and hence also satisfies .x(t) = f(x(t); '(x(t))d(t)) for all d).
+
+Let oe1, oe2, and fl be so that (GS) and (14) (already shown to be equivalent to (AG)) both hold. Without loss of generality, we assume that these are of class K1 and that fl = oe2. Pick any smooth K1-function ae such that
+
+oe2(ae(s)) ^ s2 8 s * 0; and let '(,) = ae(j,jA). We claim, with this choice of ', the system (\Sigma ') is complete and satisfies the global asymptotic stability property with respect to A.
+
+We first show that, for each , 2 Rn and each input d, and denoting x'(t; ,; d) simply as x'(t),
+
+oe2 ('(x'(t))) ^ 23 oe1(j,jA) (35)
+
+for each t in the maximal interval [0; Tmax) of definition of x'. Once this is established, it will follow that Tmax = +1 (completeness) and that every trajectory is bounded. If , 2 A, then (35) holds for all t * 0, since both sides vanish. So assume that , 2 Rn n A and d is an input. Denote x'(t; ,; d) simply as x'(t). For each t small enough, oe2('(x(t))) ! (2=3)oe1(j,jA) since
+
+oe2('(x(0))) = oe2(ae(j,jA)) ^ (1=2) j,jA ^ (1=2)oe1(j,jA) : Now let
+
+t1 := inf ft 2 [0; Tmax) j oe2('(x'(t))) * (2=3)oe1(j,jA)g with t1 := Tmax if the set is empty. Then Equation (35) holds on [0; t1). The restriction to the interval [0; t1) of x* is the same as the restriction to that interval of x(t; ,; u), where u(t) = '(x'(t))d(t) for t 2 [0; Tmax) and u(t) = 0 for t * Tmax. Note that ju(t)j = j'(x'(t))d(t)j ^ '(x'(t)) for t 2 [0; t1), so oe2(kuk1) ^ supt2[0;t1) oe2('(x'(t))), and (35) on t 2 [0; t1) implies that oe2(kuk1) ^ (2=3)oe1(j,jA). Together with (GS), we conclude that
+
+jx'(t)jA ^ oe1(j,jA) (36) whenever t 2 [0; t1). From this it follows that
+
+oe2('(x'(t))) ^ oe2(ae(oe1(j,jA))) ^ 12 oe1(j,jA) for all t 2 [0; t1). If t1 ! Tmax, then by continuity as t ! t\Gamma 1 , we conclude that oe2('(x'(t1))) ^ 12oe1(j,jA), which contradicts the definition of t1. Thus t1 = Tmax, and in particular (35) and (36) hold for all t * 0, and Tmax = +1. Equation (36) shows uniform stability, and also that
+
+lim t!1 jx'(t)jA ! 1 for each trajectory. Attraction followsbecause, for any trajectory x
+
+', and using the fact that, for
+
+all i,
+
+oe2(j'(i)d(t)j) ^ oe2('(i)) = oe2(ae(jijA)) ! (1=2) jijA ; Property (14) implies
+
+lim t!+1 jx'(t)jA ^ limt!+1oe2(j'(x'(t))d(t)j)
+
+^ (1=2) lim
+
+t!+1 jx'(t; ,; d)jA ;
+
+from which it follows that
+
+limt!+1 jx'(t; ,; d)jA = 0 ; (37)
+
+and so the system (\Sigma ') is (GAS) as claimed.
+
+It then follows from Theorem 2 that (\Sigma ') is (UGAS). To complete the proof of Proposition I.6, we need to show that this implies that the original system \Sigma  is (UAG). There are at least two ways to prove this fact. The first is very short but uses a converse Lyapunov theorem; the second is self-contained but longer. Each proof is of interest, so we provide both.
+
+By the main result in [9], (\Sigma ') being (UGAS) implies that there exists a smooth, proper, positive definite function V : Rn ! R with the property that rV (,)f'(,; *) ! 0
+
+10 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 for all , 6= 0 and all vectors * 2 B(0; 1) in Rm. This means that rV (,)f(,; _) ! 0 whenever _ 2 Rm and ae(j,jA) * j_j, which, since ae 2 K1, implies the uniform asymptotic gain property with respect to A (see e.g. [12]). Another proof, not using the existence of V , is as follows.
+
+Pick any compact subset C ae Rn and any " ? 0. Since (\Sigma ') is (UGAS), there is some T * 0 so that
+
+sup ,2C;d supt*T jx
+
+'(t; ,; d)jA ^ " :
+
+Pick any , 2 C and any control u. Consider x(t) = x(t; ,; u). Let
+
+t0 := inf \Phi t fifi flflutflfl1 * ae(jx(t)jA) \Psi  (t0 = 1 if the set is empty), where ut denotes the restriction of u to the interval [t; 1). Define
+
+d(t) := u(t)ae(jx(t)j
+
+A)
+
+for each t 2 [0; t0) and d(t) := 0 for t * t0. Note that kdk1 ^ 1, i.e. d is an input for the system (\Sigma '). Thus
+
+.x(t) = f(x(t); u(t))
+
+= f(x(t); d(t)'(x(t))) = f'(x(t); d(t)) ;
+
+so x(t) = x'(t; ,; d) for all 0 ^ t ! t0. From the choice of T , it follows that jx'(t; ,; d)jA ^ " for all t * T . Thus either
+
+t0 ^ T (38)
+
+or
+
+jx(t)jA ^ " for all t 2 [T; t0) : (39)
+
+If t0 = 1 then this means that jx(t)jA ^ " for all t * T . Otherwise, there is some sequence tn ! t+0 such that
+
+kvk1 * flflutnflfl1 * ae(jx(tn)jA) by definition of t0, where we denote v := ut. Therefore ae(jx(t0)jA) ^ kvk1 as well, by continuity of jx(t)jA. So, for each t * t0, using (GS),
+
+jx(t)jA ^ maxfoe1(jx(t0)jA); oe2(kvk1)g
+
+^ max \Phi \Gamma oe1ffiae\Gamma 1\Delta  (kvk1); oe2(kvk1)\Psi  = ff(kvk1) ^ ff(kuk1)
+
+where we defined
+
+ff(s) := maxf(oe1ffiae\Gamma 1)(s); oe2(s)g : We conclude that, for each t * T : in case (38), since t * t0 then jx(t)jA ^ ff(kuk1), and in case (39) we have that jx(t)jA ^ " when t 2 [T; t0) and jx(t)jA ^ ff(kuk1) when t * t0. In either case, t * T implies
+
+jx(t)jA ^ max f"; ff(kuk1)g ^ ff(kuk1) + " ; completing the proof of condition (UAG) (with "fl" function ff).
+
+VI. A Remark on "Practical" ISS Assume given a forward-complete system \Sigma  as in Equation (1), with U = Rm. In the paper [6], the system \Sigma  is said to be "input-to-state practically stable" (ISpS) if there exist a KL-function fi, a K-function fl and a constant c * 0 such that
+
+jx(t; ,; u)j ^ fi(j,j ; t) + fl(kuk1) + c (40) holds for each control u and each , 2 Rn. Compared with the definition of the ISS property, the difference is in the possibly nonzero constant c. In this section, we remark that this property can be rephrased in terms of the plain ISS property.
+
+Definition VI.1: The system \Sigma  has the compact ISS property if there is some compact zero-invariant set A such that \Sigma  has the uniform asymptotic gain property with respect to A. 2
+
+For any subset A ` Rn, not necessarily zero-invariant, we may consider the zero-input orbit from A:
+
+O(A) := fj : j = x(t; ,; 0); t * 0; , 2 Ag and let O(A) be the closure of O(A).
+
+Lemma VI.2: If property (UAG) holds for a set A, not necessarily zero-invariant, then O(A) is bounded and the system is ISS with respect to O(A).
+
+Proof: Since O(A) includes A, the system satisfies (UAG) with respect to O(A), and the latter set is 0- invariant (since O(A) is). Thus we only need to prove that O(A) is compact, or equivalently, that O(A) is bounded. From property (UAG), we know that there exists some T * 0 so that, for each , 2 A, jx(t; ,; 0)jA ^ 1 for all t * T . By continuity at states in A of solutions of the system with u j 0 with respect to initial conditions, and compactness of A, there is some constant c so that jx(t; ,; 0)jA ^ c for all t 2 [0; T ]. Thus O(A) is included in a ball of radius maxf1; cg.
+
+Proposition VI.3: The system \Sigma  is ISpS if and only if it is compact-ISS.
+
+Proof: If Equation (40) holds, then the property (UAG) holds with respect to the set A := B(0; c), and hence by Lemma VI.2, the system is ISS with respect to O(A). Conversely, assume that \Sigma  satisfies the input to state stability property with respect to some compact (zero-invariant) set A. Without loss of generality, we assume that 0 2 A (otherwise, we enlarge A; zero-invariance is not required). Then
+
+jx(t; ,; u)j ^ jx(t; ,; u)jA + c ^ fi(j,jA ; t)
+
++ fl(kuk1) + c ^ fi(j,j ; t) + fl(kuk1) + c
+
+with c := supfj,j ; , 2 Ag.
+
+As a consequence of the equivalence between these concepts, one may apply the general theory of ISS systems to the study of the ISpS property. As a simple illustration, we show next that the latter property can be characterized in terms of Lyapunov functions.
+
+SONTAG AND WANG: NEW CHARACTERIZATIONS OF INPUT TO STATE STABILITY 11
+
+Proposition VI.4: The system \Sigma  is compact-ISS if and only if there are a smooth function V : Rn ! R*0 and functions ffi 2 K1, i = 1; 2; 3 and oe 2 N so that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) and
+
+rV (,)f(,; v) ^ oe(jvj) \Gamma  ff3(j,j) : (41) Proof: The sufficiency part is routine: If V is as stated, then rV (,)f(,; v) ^ \Gamma ff3(j,j)=2 whenever j,j * O/(jvj), where O/(r) = ff\Gamma 13 ffi 2oe(r). Observe that O/ is a nondecreasing function. Using exactly the same arguments as used on page 441 of [12], one can then show that there exist some KL-function fi and some nondecreasing function fl such that
+
+jx(t; ,; u)j ^ fi(j,j ; t) + fl(kuk1) for each input u and each initial state ,, and it follows from here that the system is indeed compact-ISS.
+
+To prove the converse, namely the existence of such a function V , we first appeal to the converse Lyapunov result in [9]. Assuming that the uniform asymptotic gain property with respect to A holds, there is some smooth V : Rn ! R*0 and there are ffi2K1, i = 1; 2; 3 and oe2K so that both Equations (2) and (3) hold. As earlier, we may assume without loss of generality that A contains the origin. Thus the case eA = f0g of the following claim then provides the desired conclusion: Claim: Let eA be any nonempty compact subset of A. Then there is a smooth function eV : Rn ! R*0 which satisfies the following conditions:
+
+ffl eV is proper and positive definite with respect to the
+
+set eA, that is, there exist eff1; eff2 2 K1 such that for all , 2 Rn, e
+
+ff1(j,j eA) ^ eV (,) ^ eff2(j,j eA) ; (42) ffl there exist a function eff3 2 K1 and a nondecreasing
+
+continuous function eoe such that
+
+r eV (,)f(,; v) ^ eoe(jvj) \Gamma  eff3(j,j eA) (43) for all , 2 Rn and for all v 2 Rm. Indeed, consider the set A1 = f, : j,jA * 1g. Since this is disjoint from A, there is a smooth function ' : Rn ! [0; 1] so that
+
+'(,) = ae 0 ; if , 2 A;1 ; if , 2 A1: Similarly, there is some smooth, nonnegative function * defined on Rn which vanishes exactly on eA. Now we definee
+
+V (,) := *(,)(1 \Gamma  '(,)) + V (,)'(,) : By construction, eV is smooth and is proper and positive definite with respect to eA, that is, there are comparison functions as in (42). Furthermore, since V (,) = eV (,) for j,jA ? 1, also
+
+r eV (,) f(,; v) ^ \Gamma ff3(j,jA) + fl(jvj) ;
+
+(where ff3 and fl are the comparison functions associated to V ) for all v 2 Rm and all j,jA ? 1. Since both A
+
+and eA are compact, there exists some s0 * 0 such that j,j eA ^ j,jA + s0; thus
+
+r eV (,) f(,; v) ^ \Gamma ~ff3(j,j eA) + fl(jvj); (44) whenever j,j eA * 1+s0, where ~ff3 is any K1 function which satisfies ~ff3(r) ^ ff3(r \Gamma  s0) for all r * s0 + 1. The proof of the claim, and hence the Proposition, is completed by taking any nondecreasing continuous function eoe which majorizes both fl(r) and the maximum of r eV (,) f(,; v) over all j,j eA ^ 1 + s0; jvj ^ r.
+
+Note that this result, as opposed to the Lyapunov characterization of the ISS property with respect to A = f0g, does not require oe 2 K. However, one may always write oe ^ c + eoe, for some class-K function eoe and some positive constant c.
+
+References [1] N. P. Bhatia and G. P. Szeg"o, Stability Theory of Dynamical
+
+Systems, Springer-Verlag, New York, 1970. [2] J.-M. Coron, L. Praly, and A. Teel, Feedback stabilization
+
+of nonlinear systems: sufficient conditions and Lyapunov and input-output techniques, in Trends in Control, A. Isidori, ed., Springer-Verlag, 1995. [3] W. Hahn, Stability of Motion, Springer-Verlag, Berlin, 1967. [4] X. M. Hu, On state observers for nonlinear systems, Systems &
+
+Control Letters, 17 (1991), pp. 645-473. [5] A. Isidori, Global almost disturbance decoupling with stability
+
+for non minimum-phase single-input single-output nonlinear systems, Systems & Control Letters, to appear. [6] Z.-P. Jiang, A. Teel, and L. Praly, Small-gain theorem for
+
+ISS systems and applications, Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120. [7] H.K. Khalil, Nonlinear Systems (Second Edition), Macmillan,
+
+New York, 1996. [8] M. Krsti'c, I. Kanellakopoulos, and P. Kokotovi'c, Nonlinear and adaptive control design, John Wiley and Sons, New York, 1995. [9] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust stability, SIAM Journal on Control and Optimization, 34 (1996): pp. 124-160. (Preliminary version in "Recent results on Lyapunov-theoretic techniques for nonlinear stability", in Proc. Amer. Automatic Control Conference, Baltimore, June 1994, pp. 1771-1775.). [10] W. M. Lu, A state-space approach to parameterization of stabilizing controllers for nonlinear systems, IEEE Transactions on Automatic Control, 40 (1995), pp. 1576-1588. [11] L. Praly and Y. Wang, Stabilization in spite of matched unmodelled dynamics and an equivalent definition of input-to-state stability, (to appear). [12] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Transactions on Automatic Control, AC-34 (1989), pp. 435-443. [13] E. D. Sontag, Further facts about input to state stabilization,
+
+IEEE Transactions on Automatic Control, AC-35 (1990), pp. 473- 476. [14] E. D. Sontag, On the input-to-state stability property, European
+
+J. Control 1(1995): 24-36. [15] E. D. Sontag and Y. Wang, On characterizations of the inputto-state stability property, Systems & Control Letters, 24 (1995), pp. 351-359. (Preliminaryversion in "Notions equivalent to inputto-state stability," in Proc. IEEE Conf. Decision and Control, Orlando, Dec. 1994, IEEE Publications, 1994, pp. 3438-3443). [16] J. Tsinias, Sontag's "input to state stability condition" and
+
+global stabilization using state detection, Systems & Control Letters, 20 (1993), pp. 219-226. [17] J. Tsinias, Versions of Sontag's input to state stability condition
+
+and output feedback global stabilization, J. Math. Sys., Estimation and Control, 6 (1996): 113-116.</pre>
+</body>
+</html>

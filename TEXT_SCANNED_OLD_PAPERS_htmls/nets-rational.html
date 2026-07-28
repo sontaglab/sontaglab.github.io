@@ -1,0 +1,6557 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nets-rational.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nets-rational.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "jcss-hava.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Pass0: Page 13
+Pass0: Page 14
+Pass0: Page 15
+Pass0: Page 16
+Pass0: Page 17
+Pass0: Page 18
+Pass0: Page 19
+Pass0: Page 20
+Pass0: Page 21
+Pass0: Page 22
+Pass0: Page 23
+Pass0: Page 24
+Pass0: Page 25
+Pass0: Page 26
+Dvi file name: "jcss-hava.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+On The Computational Power Of Neural Nets
+
+\Lambda 
+
+Hava T. Siegelmann Department of Computer Science Rutgers University, New Brunswick, NJ 08903
+
+E-mail: siegelma@yoko.rutgers.edu
+
+Eduardo D. Sontag Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+E-mail: sontag@control.rutgers.edu
+
+Abstract This paper deals with finite size networks which consist of interconnections of synchronously evolving processors. Each processor updates its state by applying a "sigmoidal" function to a linear combination of the previous states of all units.
+
+We prove that one may simulate all Turing Machines by such nets. In particular, one can simulate any multi-stack Turing Machine in real time, and there is a net made up of 886 processors which computes a universal partial-recursive function. Products (high order nets) are not required, contrary to what had been stated in the literature. Non-deterministic Turing Machines can be simulated by non-deterministic rational nets, also in real time. The simulation result has many consequences regarding the decidability, or more generally the complexity, of questions about recursive nets.
+
+1 Introduction We study the computational capabilities of recurrent first-order neural networks, or as we shall also say from now on, processor nets. Our model consists of a synchronous network of processors. Its architecture is specified by a general directed graph. The input and output are presented as streams. Input letters are transferred one at a time via M input channels. A similar convention is applied to the output, which is produced as a stream of letters, where each letter is represented by p values. The nodes in the graph are called "neurons." Each neuron updates its activation value by applying a composition of a certain one-variable function with an affine combination (i.e., linear combination and a bias) of the activations of all neurons x
+
+j
+
+; j = 1; : : : ; N and the external inputs
+
+u
+
+k
+
+; k = 1; : : : M , with rational valued coefficients --also called weights-- (a
+
+ij
+
+; b
+
+ij
+
+; c
+
+i
+
+). That is, each
+
+processor's state is updated by an equation of the type
+
+x
+
+i
+
+(t + 1) = oe
+
+0 @
+
+N X
+
+j=1
+
+a
+
+ij
+
+x
+
+j
+
+(t) +
+
+M X
+
+j=1
+
+b
+
+ij
+
+u
+
+j
+
+(t) + c
+
+i
+
+1 A
+
+; i = 1; : : : ; N : (1)
+
+In our results, the function oe is the simplest possible "sigmoid," namely the saturated-linear function
+
+oe(x) :=
+
+8 ? !
+
+? :
+
+0 if x ! 0 x if 0 ^ x ^ 1 1 if x ? 1 :
+
+(2)
+
+This function has appeared in many applications of neural nets (e.g. [2, 4, 15, 30]). We focus on this specific activation function because it makes theorems easier to prove, and also because, as it
+
+\Lambda 
+
+This research was supported in part by US Air Force Grant AFOSR-91-0343.
+
+1Pass1: Page 2
+
+
+was proved in [24], a large family of sigmoidal type activation functions result in models which are not stronger computationally than this one.
+
+The use of sigmoidal functions --as opposed to hard thresholds-- is what distinguishes this area from older work that dealt only with finite automata. Indeed, it has long been known, at least since the classical papers by McCulloch and Pitts ([18], [14]), how to simulate finite automata by such nets.
+
+As part of the description, we assume that there is singled out a subset of the N processors, say x
+
+i
+
+1
+
+; : : : ; x
+
+i
+
+p
+
+; these are the p output processors, and they are used to communicate the outputs
+
+of the network to the environment. (Generally, the output values are arbitrary reals in the range [0; 1], but later we constrain them to binary values only.)
+
+We state that one can simulate all (multi-stack) Turing Machines by nets having rational weights. The rational numbers we consider are simple, small and do not require much precision. Furthermore, this simulation can be done with no slow down in the computation. In particular, it is possible to give a net made up of 886 processors which computes a universal partial-recursive function. Non-deterministic Turing Machines can be simulated by non-deterministic nets, also in real time.
+
+We restrict to rational (rather than real) states and weights in order to preserve computability. It turns out that using real valued weights results in processor nets that can "calculate" super-Turing functions, see [24].
+
+1.1 Related Work Most of the previous work on recurrent neural networks has focused on networks of infinite size. As each neuron is itself a processor, such models of infinite power are less interesting for the investigation of computational power, compared to our model which has only a finite number of neurons.
+
+There has been previous work concerned with computability by finite networks, however, start- ing with the classical work of McCulloch and Pitts cited above on finite automata. Another related result was due to Pollack[20]. Pollack argued that a certain recurrent net model, which he called a "neuring machine," is universal. The model in [20] consisted of a finite number of neurons of two different kinds, having identity and threshold responses, respectively. The machine was high-order , that is, the activations were combined using multiplications as opposed to just linear combinations (as in Equation 1). That is, the value of x
+
+i
+
+is updated by means of a formula of the following type:
+
+x
+
+i
+
+(t + 1) = oe
+
+0 @
+
+X
+
+(j!j+jfij)^k
+
+a
+
+i;!;fi
+
+x
+
+!
+
+(t)u
+
+fi
+
+(t)
+
+1 A
+
+i = 1::N ; (3)
+
+where !; fi are multiindices, "j j" denotes their magnitudes (total weights), k ! 1, and
+
+x
+
+!
+
+= x
+
+!
+
+1
+
+1
+
+: : : x
+
+!
+
+N
+
+N
+
+; u
+
+fi
+
+= u
+
+fi
+
+1
+
+1
+
+: : : u
+
+fi
+
+M
+
+M
+
+:
+
+Pollack left as an open question whether high-order connections are really necessary in order to achieve universality, though he conjectured that they are. High order networks (i.e. [6, 7, 11, 20, 28]) have been used in applications. One motivation often cited for the use of high-order nets was Pollack's conjecture regarding their superior computational power. We see that no such superiority of computational power exists, at least when formalized in terms of polynomial-time computation.
+
+Work that deals with infinite structure is reported by Hartley and Szu ([12]) and by Franklin and Garzon ([8] and [9]), some of which deals with cellular automata. There one assumes an
+
+2Pass1: Page 3
+
+
+unbounded number of neurons, as opposed to a finite number fixed in advance. In the paper [29], Wolpert studies a class of machines with just linear activation functions, and shows that this class is at least as powerful as any Turing Machine (and clearly has super-Turing capabilities as well). It is essential in that model, again, that the number of "neurons" be allowed to be infinite --as a matter of fact, in [29] the number of such units is even uncountable-- as the construction relies on using different neurons to encode different possible stack configurations in multi-stack Turing Machines.
+
+The idea of using continuous-valued neurons in order to attain gains in computational capabili- ties as compared with threshold gates had been investigated before. However, prior work considered only the special case of feedforward nets -see for instance [26] for questions of approximation and function interpolation, and [16] for questions of Boolean circuit complexity.
+
+The computability of an optical beam tracing system consisting of a finite number of elements was discussed in [21]. One of the models described in that paper is somewhat similar to ours, since it involves operations which are linear combinations of the parameters, with rational coefficients only, passing through the optical elements, and having recursive computational power. In that model, however, three types of basic elements are involved, and the simulated Turing Machine has a unary tape. Furthermore, the authors of that paper assume that the system can instantaneously differentiate between two numbers, no matter how close, which is not a logical assumption for our model.
+
+1.2 Consequences and Future Work The simulation result has many consequences regarding the decidability, or more generally the complexity, of questions about recursive nets of the type we consider. For instance, determining if a given neuron ever assumes the value "0" is effectively undecidable (as the halting problem can be reduced to it); on the other hand, the problem appears to become decidable if a linear activation is used (halting in that case is equivalent to a fact that is widely conjectured to follow from classical results due to Skolem and others on rational functions; see [3], page 75), and is also decidable in the pure threshold case (there are only finitely many states). As our function oe is in a sense a combination of thresholds and linear functions, this gap in decidability is perhaps remarkable. Given the linear-time simulation bound, it is of course also possible to transfer NP-completeness results into the same questions for nets (with rational coefficients). Another consequence of our results (when using the halting problem) is that the problem of determining if a dynamical system
+
+x(t + 1) = oe(Ax(t) + c) ever reaches an equilibrium point, from a given initial state, is effectively undecidable. Such models have been proposed in the neural and analog computation literature for dealing with content- addressable retrieval (work of Hopfield and others: here the initial state is taken as the "input pattern" and the final state as a class representative).
+
+Another corollary is that higher order networks are computationally equivalent, up to a poly- nomial time, to first order networks.
+
+Many other types of "machines" may be used for universality (see [25], especially Chapter 2, for general definitions of continuous machines). For instance, we can show that systems evolving according to equations x(t+1) = x(t)+o/ (Ax(t)+bu(t)+c); where o/ takes the sign in each coordinate, again are universal in a precise sense. It is interesting to note that this equation represents an Euler approximation of a differential equation; this suggests the existence of continuous-time simulations
+
+3Pass1: Page 4
+
+
+of Turing Machines, quite different technically from the work on analog computation by Pour-El and others. A different approach to continuous-valued models of computation is given in [5] and other papers by the same authors; in that context, our processor nets can be viewed as programs with loops in which linear operations and linear comparisons are allowed, but with an added restriction on branching that reflects the nature of the saturated response we use.
+
+The rest of this paper is organized as follows. Section 2 provides the exact definitions of the model and states the results. It is followed by Section 3, which highlights the main proof. Details of the proof are provided in Sections 4 to 7. In Section 8, we describe the universal network, and we end in Section 9, where we briefly describe the non-deterministic version of networks.
+
+2 The Model and Main Results We model a net, as described in the introduction, as a dynamical system. At each instant, the state of this system is a vector x(t) 2 Q
+
+N
+
+of rational numbers, where the ith coordinate keeps track of
+
+the activation value of the ith processor. Given a system of equations such as (1), an initial state x(1), and an infinite input sequence
+
+u = u(1); u(2); : : : ; we can define iteratively the state x(t) at time t, for each integer t * 1, as the value obtained by recursively solving the equations. This gives rise, in turn, to a sequence of output values, by restricting attention to the output processors; we refer to this sequence as the "output produced by the input u" starting from the given initial state.
+
+We want to define what we mean by a net computing a function
+
+OE : f0; 1g
+
++
+
+7! f0; 1g
+
++
+
+;
+
+where f0; 1g
+
++
+
+denotes the free semigroup of binary strings (excluding the empty string). To do
+
+so, we must first define what we mean by a formal network, a network which adheres to a rigid encoding of its input and output. We define formal nets with two binary input lines. The first of these is a data line, and it is used to carry a binary input signal; when no signal is present, it defaults to zero. The second is the validation line, and it indicates when the data line is active; it takes the value "1" while the input is present there and "0" thereafter. We use "D" and "V " to denote the contents of these two lines, respectively, so
+
+u(t) = (D(t); V (t)) 2 f0; 1g
+
+2
+
+for each t. We always take the initial state x(1) to be zero and to be an equilibrium state. We assume that there are two output processors, which also take the role of data and validation lines and are denoted by "G" and "H", respectively. The output of the network is then given by
+
+y(t) = (H(t); G(t)) 2 f0; 1g
+
+2
+
+:
+
+(The convention of using two input lines allows us to have all external signals be binary; of course many other conventions are possible and would give rise to the same results, for instance, one could use a three-valued input, say with values f\Gamma 1; 0; 1g, where "0" indicates that no signal is present, and \Sigma 1 are the two possible binary input values.)
+
+4Pass1: Page 5
+
+
+In general, our discrete-time dynamical system (with two binary inputs) is specified by a dy- namics map
+
+F : Q
+
+N
+
+\Theta  f0; 1g
+
+2
+
+! Q
+
+N
+
+:
+
+One defines the state at time t, for each integer t * 1, as the value obtained by recursively solving the equations:
+
+x(1) := x
+
+init
+
+; x(t + 1) := F (x(t); u(t)); t = 1; 2 : : :
+
+For each N 2 IN, we denote the mapping
+
+(q
+
+1
+
+; : : : ; q
+
+N
+
+) 7! (oe(q
+
+1
+
+); : : : ; oe(q
+
+N
+
+))
+
+by
+
+~oe
+
+N
+
+: Q
+
+N
+
+! Q
+
+N
+
+and we drop the subscript N when clear from the context. (We think of elements of Q
+
+N
+
+as column
+
+vectors, but for display purposes we sometimes show them as rows, as above. As usual, Q denotes the rationals, and IN denotes the natural numbers, not including zero.)
+
+Here is a formal definition.
+
+Definition 2.1 A oe-processor net N with two binary inputs is a dynamical system having a dynamics map of the form
+
+F (x; u) = ~oe(Ax + b
+
+1
+
+u
+
+1
+
++ b
+
+2
+
+u
+
+2
+
++ c);
+
+for some matrix A 2 Q
+
+N\Theta N
+
+and three vectors b
+
+1
+
+; b
+
+2
+
+; c 2 Q
+
+N
+
+. 2
+
+The "bias" vector c is not needed, as one may always add a processor with constant value 1, but using c simplifies the notation and allows the use of zero initial states, which seems more natural. When b
+
+1
+
+= b
+
+2
+
+= 0, one has a net without inputs. Processor nets appear frequently in neural network
+
+studies, and their dynamic properties are of interest (see for instance [17]).
+
+It is obvious that --with zero, or more general rational, initial state-- one can simulate a processor net with a Turing Machine. We wish to prove, conversely, that any function computable by a Turing Machine can be computed by such a processor net. We look at partially defined maps
+
+OE : f0; 1g
+
++
+
+! f0; 1g
+
++
+
+that are recursively computed. In other words, maps for which there is a multi-stack Turing Machine M so that, when a word ! 2 f0; 1g
+
++
+
+is written initially on the input/output stack, M halts on !
+
+if and only if OE(!) is defined, and OE(!), in that case, is the content of that stack when the machine halts.
+
+For each word
+
+! = !
+
+1
+
+\Delta  \Delta  \Delta  !
+
+k
+
+2 f0; 1g
+
++
+
+with
+
+OE(!) = fi
+
+1
+
+\Delta  \Delta  \Delta  fi
+
+l
+
+2 f0; 1g
+
++
+
+or undefined
+
+and each r 2 IN, we encode the input and output as follows. Input is encoded as
+
+u
+
+!
+
+(t) = (V
+
+!
+
+(t); D
+
+!
+
+(t)) ; t = 1; : : : ;
+
+where
+
+V
+
+!
+
+(t) =
+
+(
+
+1 if t = 1; : : : ; k
+
+0 otherwise ;
+
+5Pass1: Page 6
+
+
+and
+
+D
+
+!
+
+(t) =
+
+(
+
+!
+
+k
+
+if t = 1; : : : ; k
+
+0 otherwise :
+
+Output is encoded as
+
+y
+
+!;r
+
+(t) = (G
+
+!;r
+
+(t); H
+
+!;r
+
+(t)) ; t = 1; : : : ;
+
+where
+
+G
+
+!;r
+
+(t) =
+
+(
+
+1 if t = r; : : : ; (r + l \Gamma  1)
+
+0 otherwise
+
+if the output OE(!) is defined, and is 0 when OE(!) is not defined, and finally
+
+H
+
+!;r
+
+(t) =
+
+(
+
+fi
+
+t\Gamma r+1
+
+if t = r; : : : ; (r + l \Gamma  1)
+
+0 otherwise
+
+if the output OE(!) is defined, and is 0 when OE(!) is not defined.
+
+Theorem 1 Let OE : f0; 1g
+
++
+
+! f0; 1g
+
++
+
+be any recursively computable partial function. Then, there
+
+exists a processor net N with the following property:
+
+If N is started from the zero (inactive) initial state, and the input sequence u
+
+!
+
+is applied, N
+
+produces the output y
+
+!;r
+
+(where H
+
+!;r
+
+appears in the "output node," and G
+
+!;r
+
+in the "validation
+
+node") for some r.
+
+Furthermore, if a p-stack Turing Machine M (of one input stack and several working stacks) computes OE(!) in time T (!), then one may take r(!) = T (!) + O(j!j).
+
+Note that in particular it follows that one can obtain the behavior of a universal Turing Machine via some net. An upper bound from the construction shows that N = 886 processors are sufficient for computing such a universal partial recursive function.
+
+2.1 Restatement: No I/O It will be convenient to have a version of Theorem 1 that does not involve inputs but rather an encoding of the initial data into the initial state. (This would be analogous, for Turing Machines, to an encoding of the input into an input stack rather than having it arrive as an external input stream.)
+
+For a processor net without inputs, we may think of the dynamics map F as a map Q
+
+N
+
+! Q
+
+N
+
+.
+
+In that case, we denote by F
+
+k
+
+the k-th iterate of F . For a state , 2 Q
+
+N
+
+, we let ,
+
+j
+
+:= F
+
+j
+
+(,). We
+
+now state that if OE : f0; 1g
+
++
+
+! f0; 1g
+
++
+
+is a recursively computable partial function, then there
+
+exists a processor net N without inputs, and an encoding of data into the initial state of N , such that: OE(!) is undefined if and only if the second processor has activation value always equal to zero, and it is defined if this value ever becomes equal to one, in which case the first processor has an encoding of the result.
+
+Given ! = a
+
+1
+
+\Delta  \Delta  \Delta  a
+
+k
+
+2 f0; 1g
+
++
+
+, we define the encoding function
+
+ffi[a
+
+1
+
+\Delta  \Delta  \Delta  a
+
+k
+
+] :=
+
+k X
+
+i=1
+
+2a
+
+i
+
++ 1
+
+4
+
+i
+
+: (4)
+
+(Note that the empty sequence gets mapped into 0.)
+
+6Pass1: Page 7
+
+
+Theorem 2 Let M be a p-stack Turing Machine computing OE : f0; 1g
+
++
+
+! f0; 1g
+
++
+
+in time T . Then
+
+there exists a processor net N without inputs so that properties (a) and (b) below hold. In both cases, for each ! 2 f0; 1g
+
++
+
+, we consider the corresponding initial state
+
+,(!) := (ffi[!]; 0; : : : ; 0) 2 Q
+
+N
+
+:
+
+(a) If OE(!) is undefined, the second coordinate ,(!)
+
+j
+
+2
+
+of the state after j steps is identically equal to
+
+zero, for all j. If instead OE(!) is defined and computed in time T , than there exists T = O(T ) so that
+
+,(!)
+
+j
+
+2
+
+= 0 ; j = 0; : : : ; T \Gamma  1;
+
+,(!)
+
+T
+
+2
+
+= 1 ;
+
+and ,(!)
+
+T
+
+1
+
+= ffi[OE(!)]. (This is a linear time simulation.)
+
+(b)) Furthermore, if one substitutes ffi in equation (4) by a new map ffi
+
+p
+
+as follows:
+
+ffi[a
+
+1
+
+\Delta  \Delta  \Delta  a
+
+k
+
+]
+
+p
+
+:=
+
+k X
+
+i=1
+
+10p
+
+2
+
+\Gamma  1 + 4p(a
+
+i
+
+\Gamma  1)
+
+(10p
+
+2
+
+)
+
+i
+
+; (5)
+
+then the construction can be done in such a way that T = T . (This is a real time simulation.) The next few sections include the proofs of both theorems. We start by proving Theorem 2, and then obtain Theorem 1 as a corollary. As the details of the proof of Theorem 2 are very technical, we start by sketching the main steps in the proof in Section 3. The proof itself is organized into several steps. We first show how to construct a network N that simulates a given multi-stack Turing Machine M in time T = 4T (T is the computation time of the Turing Machine). This is done in Sections 4 and 5. In Section 6, we modify the construction into a network that simulates a given multi-stack Turing Machine with no slow down in the computation. This is done in three steps, and is based on allowing for large negative numbers to act as inhibitors.
+
+After Theorem 2 is proved, we show in section 7 how to add inputs and outputs to a processor net without input/output, thus obtaining Theorem 1 as its corollary. This ends the proofs.
+
+3 Highlights of the Proof This section is aimed at highlighting the main part of the proof of Theorem 2. We start with a 2-stack machine; this model is known to be equivalent to a 1-tape (standard) Turing Machine. Formally, a 2-stack machine consists of a finite control and two binary stacks, unbounded in length. Each stack is accessed by a read-write head, which is located at the top element of the stack. At the beginning of the computation, the binary input sequence is written on stack
+
+1
+
+. The machine
+
+at every step reads the top element of each stack as a symbol ff 2 f0; 1; #g (where # means that the stack is empty), checks the state of the control (s 2 f1; 2; : : : jSjg), and executes the following operations:
+
+1. For each stack, one of the following manipulations is made:
+
+(a) Popping the top element. (b) Pushing an extra element on the top of the stack (either 0 or 1).
+
+7Pass1: Page 8
+
+
+(c) No change in stack. 2. Changing the state of the control.
+
+When the control reaches a special state, called the "halting state," the machine stops. Its output is defined as the binary sequence on stack
+
+1
+
+. Thus, the I/O map or function computed by a 2-stack
+
+machine, is defined by the binary sequences on stack 1 before and after the computation.
+
+3.1 Encoding the Stacks Assume we were to encode a binary stream ! = !
+
+1
+
+!
+
+2
+
+\Delta  \Delta  \Delta  !
+
+n
+
+into the number
+
+n X
+
+i=1
+
+!
+
+i
+
+2
+
+i
+
+:
+
+Such a value could be held in a neuron since it ranges in [0; 1]. However, there are a few problems with this simple encoding. First, one can not differentiate between the strings "fi" and "fi \Delta  0", where `\Delta ' denotes the concatenation operator. Secondly, even when assuming that each binary string ends with 1, the continuity of the activation function oe makes it impossible to retrieve the most significant bit (in radix 2) of a string in a constant amount of time. (For example, the values :100000000000 and :011111111111111 are almost indistinguishable by a net.) In summary, given streams of binary input signals, one does not want them to be encoded on a continuous range, but rather to have gaps between valid encoding of the strings. Such gaps would enable a quick decoding of the number by means of an operation requiring only finite precision, or equivalently, reading the most significant bit in some representation in a constant amount of time.
+
+On the other hand, if we choose some set of "numbers with gaps" to encode the different binary strings, we have to assure that various manipulations on these numbers during the computation leave the stack encoding in the same set of "numbers with gaps."
+
+As a solution, the encoding of stacks is chosen to be as follows. Read the binary elements in each stack from top to bottom as a binary string ! = !
+
+1
+
+!
+
+2
+
+\Delta  \Delta  \Delta  !
+
+n
+
+. We encode this string into the
+
+number
+
+n X
+
+i=1
+
+2!
+
+i
+
++ 1
+
+4
+
+i
+
+:
+
+This number ranges in [0; 1), but not every value in [0; 1) appears. If the string started with the value 1, then the associated number has a value of at least
+
+3
+
+4
+
+, and if it started with 0, the value is
+
+in the range [
+
+1
+
+4
+
+;
+
+1
+
+2
+
+): The empty string is encoded into the value 0. The next element in the stack
+
+restricts the possible value further.
+
+The set of possible values is not continuous and has "holes". Such a set of values "with holes" is a Cantor set. Its self-similar structure means that bit shifts preserve the "holes." The advantage of this approach is that there is never a need to distinguish among two very close numbers in order to read the most significant digit in the base-4 representation.
+
+3.2 Stack Operations We next demonstrate the usefulness of our encoding of the stacks.
+
+8Pass1: Page 9
+
+
+1. Reading the Top: Assume a stack has the value ! = 1011, that is, it is encoded by the
+
+number q = :3133
+
+4
+
+. As discussed above, the value of q is at least
+
+3
+
+4
+
+when the top of the stack
+
+is 1, and at most
+
+1
+
+2
+
+otherwise. The linear operation
+
+4q \Gamma  2 transfers this range to at least 1 when the top element is 1, and at most 0 otherwise. Thus, the function top(q)
+
+top (q) = oe(4q \Gamma  2)
+
+provides the value of the top element.
+
+2. Push: Pushing 0 onto the stack ! = 1011 changes the value into ! = 01011. In terms of
+
+the encoding, q = :3133
+
+4
+
+is transferred into q = :13133
+
+4
+
+. That is, the suffix remains the same
+
+and the new element is entered into the most significant location. This is easily done by the operation
+
+q
+
+4
+
++
+
+1
+
+4 (which is equivalent to oe(
+
+q
+
+4
+
++
+
+1
+
+4
+
+) given that q 2 [0; 1).)
+
+3. Pop Stack: Popping a stack, transfers ! = 1011 into 011, or the encoding from q = :3133
+
+4
+
+to :133
+
+4
+
+. When the top element is known, the operation
+
+4q \Gamma  (2 top (q) + 1) (or equivalently oe(4q \Gamma  (2 top (q) + 1))) has the effect of popping the stack. One can verify that oe(4q) provides the "non-empty" predicate, and that pushing the value 1 can be implemented by
+
+q
+
+4
+
++
+
+3
+
+4
+
+.
+
+3.3 General Construction of the Network From the above discussion, we construct a network architecture which has three neurons per stack. One neuron holds the stack encoding (q), one holds top(q), and one measures whether the stack is empty. In addition, the architecture has a few neurons which represent the finite control (this is the old McCulloch and Pitts result [18]) and a set of neurons which take their input both from the stack reading neurons and from the finite control neurons and "computes' the next step.
+
+3.4 Real Time Simulation The above suggested encoding and the use of the lemma result in a Turing Machine simulation that requires four steps of the network for each step of the Turing Machine. To achieve a "step per step" simulation, a more complicated encoding is required, which relies upon a Cantor set with a specific size of gaps. Then, we use large negative numbers as inhibitors in a more sophisticated manner and attain in this manner the desired simulation in real time.
+
+We turn now to the formal proof. The proof is given for the general case of p-stack machines, not just the case p = 2 which would be sufficient for establishing Turing universality. This, more general case, is more interesting when establishing time bounds on computation.
+
+9Pass1: Page 10
+
+
+4 General Construction Of The Simulation As a departure point, we pick p
+
+0
+
+-tape Turing Machines with binary alphabets. We may equivalently
+
+study push-down automata with p = 2p
+
+0
+
+binary stacks. We choose to represent the values in the
+
+stacks as fractions with denominators which are powers of four. An algebraic formalization is as follows.
+
+4.1 p-Stack Machines Denote by C the "Cantor 4-set" consisting of all those rational numbers q which can be written in the form
+
+q =
+
+k X
+
+i=1
+
+a
+
+i
+
+4
+
+i
+
+with 0 ^ k ! 1 and each a
+
+i
+
+= 1 or 3. (When k = 0, we interpret this sum as q = 0.) Elements of
+
+C are precisely those of the form ffi[!], where ffi is as in Equation (4).
+
+The instantaneous description of a p-stack machine, with a control unit of n states, can be represented by a (p + 1)-tuple
+
+(s; ffi[!
+
+1
+
+]; ffi[!
+
+2
+
+]; : : : ; ffi[!
+
+p
+
+]);
+
+where s is the state of the control unit, and the stacks store the words !
+
+i
+
+(i = 1; : : : ; p), respectively.
+
+(Later, in the simulation by a net, the state s will be represented in unary as a vector of the form (0; 0; : : : ; 0; 1; 0; : : : ; 0).)
+
+For any q 2 C, we write
+
+i[q] :=
+
+(
+
+0 if q ^
+
+1
+
+2
+
+1 if q ?
+
+1
+
+2
+
+;
+
+and:
+
+o/ [q] :=
+
+(
+
+0 if q = 0
+
+1 if q 6= 0 :
+
+We think of i[\Delta ] as the "top of stack," as in terms of the base-4 expansion, i[q] = 0 when a
+
+1
+
+= 1
+
+(or q = 0), and i[q] = 1 when a
+
+1
+
+= 3. We interpret o/ [\Delta ] as the "nonempty stack" operator. It can
+
+never happen that i[q] = 1 while o/ [q] = 0; hence the pair (i[q]; o/ [q]) can have only three possible values in f0; 1g
+
+2
+
+.
+
+Definition 4.1 A p-stack machine M is specified by a (p + 4)-tuple
+
+(S; s
+
+I
+
+; s
+
+H
+
+; `
+
+0
+
+; `
+
+1
+
+; `
+
+2
+
+; : : : ; `
+
+p
+
+);
+
+where S is a finite set, s
+
+I
+
+and s
+
+H
+
+are elements of S called the initial and halting states, respectively,
+
+and the `
+
+i
+
+'s are maps as follows:
+
+`
+
+0
+
+: S \Theta  f0; 1g
+
+2p
+
+! S
+
+`
+
+i
+
+: S \Theta  f0; 1g
+
+2p
+
+! f(1; 0; 0); (
+
+1
+
+4
+
+; 0;
+
+1
+
+4
+
+); (
+
+1
+
+4
+
+; 0;
+
+3
+
+4
+
+); (4; \Gamma 2; \Gamma 1)g for i = 1; : : : p :
+
+(The function `
+
+0
+
+computes the next state, while the functions `
+
+i
+
+compute the next stack op-
+
+erations of stack
+
+i
+
+, respectively. The actions depend only on the state of the control unit and the
+
+symbol being read from each stack. The elements in the range
+
+(1; 0; 0); (
+
+1
+
+4
+
+; 0;
+
+1
+
+4
+
+); (
+
+1
+
+4
+
+; 0;
+
+3
+
+4
+
+); (4; \Gamma 2; \Gamma 1)
+
+10Pass1: Page 11
+
+
+of the `
+
+i
+
+should be interpreted as "no operation", "push0", "push1", and "pop", respectively.)
+
+The set X := S \Theta  C
+
+p
+
+is called the instantaneous description set of M, and the map
+
+P : X ! X defined by
+
+P(s; q
+
+1
+
+; : : : ; q
+
+p
+
+) := [ `
+
+0
+
+(s; i[q
+
+1
+
+]; : : : ; i[q
+
+p
+
+]; o/ [q
+
+1
+
+]; : : : ; o/ [q
+
+p
+
+]);
+
+`
+
+T
+
+1
+
+(s; i[q
+
+1
+
+]; : : : ; i[q
+
+p
+
+]; o/ [q
+
+1
+
+]; : : : ; o/ [q
+
+p
+
+]) \Delta  (q
+
+1
+
+; i[q
+
+1
+
+]; 1);
+
+. . .
+
+`
+
+T
+
+p
+
+(s; i[q
+
+1
+
+]; : : : ; i[q
+
+p
+
+]; o/ [q
+
+1
+
+]; : : : ; o/ [q
+
+p
+
+]) \Delta  (q
+
+p
+
+; i[q
+
+p
+
+]; 1)]
+
+where the dot "\Delta " indicates inner product, is the complete dynamics map of M. As part of the defini- tion, it is assumed that the maps `
+
+i
+
+, (i = 1; : : : p) are such that `
+
+1
+
+(s; i[q
+
+1
+
+]; : : : ; i[q
+
+p
+
+]; 0; o/ [q
+
+2
+
+]; : : : o/ [q
+
+p
+
+]),
+
+`
+
+2
+
+(s; i[q
+
+1
+
+]; : : : ; i[q
+
+p
+
+]; o/ [q
+
+1
+
+]; 0; o/[q
+
+3
+
+]; : : : o/ [q
+
+p
+
+]) : : : 6= (4; \Gamma 2; \Gamma 1) for all s; q
+
+1
+
+; : : : q
+
+p
+
+(that is, one does not
+
+attempt to pop an empty stack).
+
+Let ! 2 f0; 1g
+
++
+
+be arbitrary. If there exist a positive integer k, so that starting from the initial
+
+state, s
+
+I
+
+, with ffi[!] on the first stack and empty other stacks, the machine reaches after k steps the
+
+halting state s
+
+H
+
+, that is,
+
+P
+
+k
+
+(s
+
+I
+
+; ffi[!]; 0; : : : 0) = (s
+
+H
+
+; ffi[!
+
+1
+
+]; ffi[!
+
+2
+
+]; : : : ; ffi[!
+
+p
+
+])
+
+for some k, then the machine M is said to halt on the input !. If ! is like this, let k be the least possible number such that
+
+P
+
+k
+
+(s
+
+I
+
+; ffi[!]; 0; : : : ; 0)
+
+has the above form. Then the machine M is said to output the string !
+
+1
+
+, and we let OE
+
+M
+
+(!) := !
+
+1
+
+.
+
+This defines a partial map
+
+OE
+
+M
+
+: f0; 1g
+
++
+
+! f0; 1g
+
++
+
+;
+
+the i/o map of M. 2
+
+Save for the algebraic notation, the partial recursive functions OE : f0; 1g
+
++
+
+! f0; 1g
+
++
+
+are exactly
+
+the same as the maps OE
+
+M
+
+: C ! C of p-stack machines as defined here; it is only necessary to
+
+identify words in f0; 1g
+
++
+
+and elements of C via the above encoding map ffi. Our proof will then be
+
+based on simulating p-stack machines by processor nets.
+
+5 Network with Four Levels: Construction Assume that a p-stack machine M is given. Without loss of generality, we assume that the initial state s
+
+I
+
+, differs from the halting state s
+
+H
+
+(otherwise the function computed is the identity, which
+
+can be easily implemented by a net), and we assume that S := f0; : : : ; sg, with s
+
+I
+
+= 0 and s
+
+H
+
+= 1.
+
+We build the net in two stages. ffl Stage 1: As an intermediate step in the construction, we shall show how to simulate M with a certain dynamical system over Q
+
+s+p
+
+. Writing a vector in Q
+
+s+p
+
+as
+
+(x
+
+1
+
+; : : : ; x
+
+s
+
+; q
+
+1
+
+; : : : ; q
+
+p
+
+) ;
+
+11Pass1: Page 12
+
+
+the first s components will be used to encode the state of the control unit, with 0 2 S corresponding to the zero vector x
+
+1
+
+= \Delta  \Delta  \Delta  = x
+
+s
+
+= 0, and i 2 S; i 6= 0 corresponding to the ith canonical vector
+
+e
+
+i
+
+= (0; : : : ; 0; 1; 0; : : : ; 0)
+
+(the "1" is in the ith position). For convenience, we also use the notation e
+
+0
+
+:= 0 2 Q
+
+s
+
+. The q
+
+i
+
+'s
+
+will encode the contents of the stacks. For notational ease, we substitute i[t
+
+i
+
+] and o/ [t
+
+i
+
+] by a
+
+i
+
+and
+
+b
+
+i
+
+, respectively. Formally, define
+
+fi
+
+ij
+
+: f0; 1g
+
+2p
+
+! f0; 1g; (6)
+
+for i 2 f1; : : : ; sg ; j 2 f0; : : : ; sg and
+
+fl
+
+k
+
+ij
+
+: f0; 1g
+
+2p
+
+! f0; 1g; (7)
+
+for i 2 f1; : : : ; pg ; j 2 f0; : : : ; sg ; k = 1; 2; 3; 4 as follows:
+
+fi
+
+ij
+
+(a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = 1 () `
+
+0
+
+(j; a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = i
+
+(intuitively: there is a transition from state j of the control part to state i iff the readings from the stacks are: top of stack
+
+k
+
+is a
+
+k
+
+, and the nonemptyness test on stack
+
+k
+
+gives b
+
+k
+
+),
+
+fl
+
+1
+
+ij
+
+(a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = 1 () `
+
+i
+
+(j; a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = (1; 0; 0)
+
+(if the control is in state j and the stack readings are a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+, then the stack i
+
+will not be changed),
+
+fl
+
+2
+
+ij
+
+(a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = 1 () `
+
+i
+
+(j; a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = (
+
+1
+
+4
+
+; 0;
+
+1
+
+4
+
+)
+
+(if the control is in state j and the stack readings are a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+, then the operation
+
+Push0 will occur on stack i),
+
+fl
+
+3
+
+ij
+
+(a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = 1 () `
+
+i
+
+(j; a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = (
+
+1
+
+4
+
+; 0;
+
+3
+
+4
+
+)
+
+(if the control is in state j and the stack readings are a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+, then the operation
+
+Push1 will occur on stack i),
+
+fl
+
+4
+
+ij
+
+(a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = 1 () `
+
+i
+
+(j; a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+) = (4; \Gamma 2; \Gamma 1)
+
+(if the control is in state j and the stack readings are a
+
+1
+
+; a
+
+2
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; b
+
+2
+
+; : : : b
+
+p
+
+, then the operation
+
+Pop will occur on stack i).
+
+Let
+
+e P be the map Q
+
+s+p
+
+! Q
+
+s+p
+
+:
+
+(x
+
+1
+
+; : : : ; x
+
+s
+
+; q
+
+1
+
+; : : : ; q
+
+p
+
+) 7! (x
+
++
+
+1
+
+; : : : ; x
+
++
+
+s
+
+; q
+
++
+
+1
+
+; : : : ; q
+
++
+
+p
+
+)
+
+where, using the notation x
+
+0
+
+:= 1 \Gamma 
+
+P
+
+s
+
+j=1
+
+x
+
+j
+
+:
+
+x
+
++
+
+i
+
+:=
+
+s X
+
+j=0
+
+fi
+
+ij
+
+(a
+
+1
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; : : : b
+
+p
+
+) x
+
+j
+
+(8)
+
+12Pass1: Page 13
+
+
+for i = 1; : : : ; s and
+
+q
+
++
+
+i
+
+:= oe
+
+0 @
+
+s X
+
+j=0
+
+fl
+
+1
+
+ij
+
+(a
+
+1
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; : : : b
+
+p
+
+)x
+
+j
+
+1 A
+
+q
+
+i
+
++ (9)
+
+0 @
+
+s X
+
+j=0
+
+fl
+
+2
+
+ij
+
+(a
+
+1
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; : : : b
+
+p
+
+)x
+
+j
+
+1 A
+
+(
+
+1
+
+4
+
+q
+
+i
+
++
+
+1
+
+4
+
+) +
+
+0 @
+
+s X
+
+j=0
+
+fl
+
+3
+
+ij
+
+(a
+
+1
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; : : : b
+
+p
+
+)x
+
+j
+
+1 A
+
+(
+
+1
+
+4
+
+q
+
+i
+
++
+
+3
+
+4
+
+) +
+
+0 @
+
+s X
+
+j=0
+
+fl
+
+4
+
+ij
+
+(a
+
+1
+
+; : : : ; a
+
+p
+
+; b
+
+1
+
+; : : : b
+
+p
+
+)x
+
+j
+
+1 A
+
+(4q
+
+i
+
+\Gamma  2i[q
+
+i
+
+] \Gamma  1)
+
+for i = 1; : : : ; p.
+
+Let ss : X = S \Theta  C
+
+p
+
+! Q
+
+s+p
+
+be defined by
+
+ss(i; q
+
+1
+
+; : : : ; q
+
+p
+
+) := (e
+
+i
+
+; q
+
+1
+
+; : : : ; q
+
+p
+
+):
+
+It follows immediately from the construction that
+
+e P(ss(i; q
+
+1
+
+; : : : ; q
+
+p
+
+)) = ss(P(i; q
+
+1
+
+; : : : ; q
+
+p
+
+))
+
+for all (i; q
+
+1
+
+; : : : ; q
+
+p
+
+) 2 X .
+
+Applied inductively, the above implies that
+
+e P
+
+k
+
+(e
+
+0
+
+; ffi[!]; 0; : : : ; 0) = ss(P
+
+k
+
+(0; ffi[!]; 0; : : : ; 0))
+
+for all k, so OE(!) is defined if and only if for some k it holds that
+
+e P
+
+k
+
+(e
+
+0
+
+; ffi[!]; 0; : : : ; 0) has the form
+
+(e
+
+1
+
+; q
+
+1
+
+; : : : ; q
+
+p
+
+)
+
+(recall that for the original machine, s
+
+I
+
+= 0 and s
+
+H
+
+= 1, which map respectively to e
+
+0
+
+= 0 and e
+
+1
+
+in the first s coordinates of the corresponding vector in Q
+
+s+p
+
+). If such a state is reached, then q
+
+1
+
+is in C and its value is ffi[OE(!)] .
+
+ffl Stage 2: The second stage of the construction simulates the dynamics
+
+e P by a net. We first
+
+need an easy technical fact.
+
+Lemma 5.1 Let t 2 IN. For each function fi : f0; 1g
+
+t
+
+! f0; 1g there exist vectors
+
+v
+
+1
+
+; v
+
+2
+
+; : : : ; v
+
+2
+
+t
+
+2 ZZ
+
+t+2
+
+and scalars
+
+c
+
+1
+
+; c
+
+2
+
+; : : : ; c
+
+2
+
+t 2 ZZ
+
+such that, for each d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+; x 2 f0; 1g and each q 2 [0; 1],
+
+fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+)x =
+
+2
+
+t
+
+X
+
+i=1
+
+c
+
+i
+
+oe(v
+
+i
+
+\Delta  _) (10)
+
+and
+
+fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+)xq = oe
+
+0 @
+
+q +
+
+2
+
+t
+
+X
+
+i=1
+
+c
+
+i
+
+oe(v
+
+i
+
+\Delta  _) \Gamma  1
+
+1 A
+
+; (11)
+
+where we denote _ = (1; d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+; x) and "\Delta " = dot product in ZZ
+
+t+2
+
+.
+
+13Pass1: Page 14
+
+
+Proof. Write fi as a polynomial
+
+fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+) = c
+
+1
+
++ c
+
+2
+
+d
+
+1
+
++ : : : c
+
+t+1
+
+d
+
+t
+
++ c
+
+t+2
+
+d
+
+1
+
+d
+
+2
+
++ : : : c
+
+2
+
+td
+
+1
+
+d
+
+2
+
+\Delta  \Delta  \Delta  d
+
+t
+
+;
+
+expand the product fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+)x, and use that for any sequence l
+
+1
+
+; : : : ; l
+
+k
+
+of elements in f0; 1g,
+
+one has
+
+l
+
+1
+
+\Delta  \Delta  \Delta  l
+
+k
+
+= oe(l
+
+1
+
++ \Delta  \Delta  \Delta  + l
+
+k
+
+\Gamma  k + 1):
+
+Using that x = oe(x), this gives that
+
+fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+)x =
+
+c
+
+1
+
+oe(x) + c
+
+2
+
+oe(d
+
+1
+
++ x \Gamma  1) + \Delta  \Delta  \Delta  + c
+
+2
+
+toe(d
+
+1
+
++ d
+
+2
+
++ \Delta  \Delta  \Delta  + d
+
+t
+
++ x \Gamma  t) =
+
+2
+
+t
+
+X
+
+i=1
+
+c
+
+i
+
+oe(v
+
+i
+
+\Delta  _)
+
+for suitable c
+
+i
+
+'s and v
+
+i
+
+'s. On the other hand, for each o/ 2 f0; 1g and each q 2 [0; 1] it holds that
+
+o/ q = oe(q + o/ \Gamma  1) (just check separately for o/ = 0; 1), so substituting the above formula with o/ = fi(d
+
+1
+
+; d
+
+2
+
+; : : : ; d
+
+t
+
+)x gives the desired result.
+
+Remark 5.2 In the case where t = 2p and the arguments are the top and nonempty functions of the stacks, the arguments are dependent, and there is a need for just 3
+
+p
+
+terms in the summation,
+
+rather than 2
+
+2p
+
+. We illustrate this phenomenon with the simple case of p = 2, that is, the case of
+
+two stack machines. Here, when
+
+(d
+
+1
+
+; d
+
+2
+
+; d
+
+3
+
+; d
+
+4
+
+) = (a
+
+1
+
+; a
+
+2
+
+; b
+
+1
+
+; b
+
+2
+
+) (j (i[q
+
+1
+
+]; i[q
+
+2
+
+]; o/ [q
+
+1
+
+]; o/ [q
+
+2
+
+])) ;
+
+one can easily verify that from the following nine elements:
+
+(a
+
+1
+
+; a
+
+2
+
+; b
+
+1
+
+; b
+
+2
+
+; a
+
+1
+
+a
+
+2
+
+; a
+
+1
+
+b
+
+2
+
+; a
+
+2
+
+b
+
+1
+
+; b
+
+1
+
+b
+
+2
+
+)
+
+one can obtain --using a affine combinations only-- the value of the remaining seven elements
+
+(a
+
+1
+
+b
+
+1
+
+; a
+
+2
+
+b
+
+2
+
+; a
+
+1
+
+a
+
+2
+
+b
+
+1
+
+; a
+
+1
+
+a
+
+2
+
+b
+
+2
+
+; a
+
+1
+
+b
+
+1
+
+b
+
+2
+
+; a
+
+2
+
+b
+
+1
+
+b
+
+2
+
+; a
+
+1
+
+a
+
+2
+
+b
+
+1
+
+b
+
+2
+
+) :
+
+Hence, a sum of the type in Equation (10) requires in this case only nine elements rather than sixteen.
+
+We now return to the proof of the Theorem. Apply Lemma 5.1 repeatedly, with the "fi" of the Lemma corresponding to each of the fi
+
+ij
+
+'s and fl
+
+l
+
+ij
+
+'s, and using variously q = q
+
+i
+
+, q = (
+
+1
+
+4
+
+q
+
+i
+
++
+
+1
+
+4
+
+),
+
+q = (
+
+1
+
+4
+
+q
+
+i
+
++
+
+3
+
+4
+
+), or q = (4q
+
+i
+
+\Gamma  2i[q
+
+i
+
+] \Gamma  1). Write also oe(4q
+
+i
+
+\Gamma  2) whenever i[q
+
+i
+
+] appears (using that
+
+i[q] = oe(4q \Gamma  2) for each q 2 C), and oe(4q) whenever o/ [q] appears. The result is that
+
+e P can be
+
+written as a composition
+
+e P = F
+
+1
+
+ffi F
+
+2
+
+ffi F
+
+3
+
+ffi F
+
+4
+
+of four "saturated-affine" maps, i.e. maps of the form ~oe(Ax + c): F
+
+4
+
+: Q
+
+s+p
+
+! Q
+
+_
+
+; F
+
+3
+
+: Q
+
+_
+
+!
+
+Q
+
+*
+
+; F
+
+2
+
+: Q
+
+*
+
+! Q
+
+j
+
+; F
+
+1
+
+: Q
+
+j
+
+! Q
+
+s+p
+
+, for some positive integers _; *; j. (The argument to the
+
+function F
+
+4
+
+, called below z
+
+1
+
+, of dimension (s + p), represents the s x
+
+i
+
+'s of Equation (8) and the two
+
+q
+
+i
+
+'s of equation (9). The functions F
+
+1
+
+; F
+
+2
+
+; F
+
+3
+
+compute the transition function of the x
+
+i
+
+'s and q
+
+i
+
+'s in
+
+three stages.)
+
+14Pass1: Page 15
+
+
+Consider the following set of equations, where from now on we omit time arguments and use the superscript
+
++
+
+to indicate a one-step time increment:
+
+z
+
++
+
+1
+
+= F
+
+1
+
+(z
+
+2
+
+)
+
+z
+
++
+
+2
+
+= F
+
+2
+
+(z
+
+3
+
+)
+
+z
+
++
+
+3
+
+= F
+
+3
+
+(z
+
+4
+
+)
+
+z
+
++
+
+4
+
+= F
+
+4
+
+(z
+
+1
+
+) ;
+
+where the z
+
+i
+
+'s are vectors of sizes s + p, j, *, and _ respectively. This set of equations models
+
+the dynamics of a oe-processor net, with
+
+N = s + p + _ + * + j processors. For an initial state of type z
+
+1
+
+= (e
+
+0
+
+; ffi[!]; 0) and z
+
+i
+
+= 0, i = 2; 3; 4, it follows that at
+
+each time of the form t = 4k the first block of coordinates, z
+
+1
+
+, equals
+
+e P
+
+k
+
+(e
+
+0
+
+; ffi[!]; 0).
+
+All that is left is to add a mod-4 counter to impose the constraint that state values at times that are not divisible by 4 should be disregarded. The counter is implemented by adding a set of equations
+
+y
+
++
+
+1
+
+= oe(y
+
+2
+
+);
+
+y
+
++
+
+2
+
+= oe(y
+
+3
+
+);
+
+y
+
++
+
+3
+
+= oe(y
+
+4
+
+);
+
+y
+
++
+
+4
+
+= oe(1 \Gamma  y
+
+2
+
+\Gamma  y
+
+3
+
+\Gamma  y
+
+4
+
+) :
+
+When starting with all y
+
+i
+
+(0) = 0, it holds that y
+
+1
+
+(t) = 1 if t = 4k for some positive integer k,
+
+and is zero otherwise.
+
+In terms of the complete system, OE(!) is defined if and only if there exists a time t such that, starting at the state
+
+z
+
+1
+
+= (e
+
+0
+
+; ffi[!]; 0); z
+
+i
+
+= 0; i = 2; 3; 4; y
+
+i
+
+= 0; i = 1; 2; 3; 4;
+
+the first coordinate z
+
+11
+
+(t) of z
+
+1
+
+(t) equals 1 and also y
+
+1
+
+(t) = y
+
+2
+
+(t \Gamma  1) = 1. To force z
+
+11
+
+(t) not to
+
+output arbitrary values at times that are not divisible by 4, we modify it to
+
+z
+
++
+
+11
+
+= oe(: : : + l(y
+
+2
+
+\Gamma  1));
+
+where ": : :" is as in the original update equation for z
+
+11
+
+, and l is a positive constant bigger than
+
+the largest possible value of z
+
+11
+
+. The net effect of this modification is that now z
+
+11
+
+(t) = 0 for all t
+
+that are not multiples of 4, and for t = 4k it equals 1 if the machine should halt and 0 otherwise. Reordering the coordinates so that the first stack ((s + 1)st coordinate of z
+
+1
+
+) becomes the first
+
+coordinate, and the previous z
+
+11
+
+(that represented the halting state s
+
+H
+
+of the machine M) becomes
+
+the second coordinate, Theorem 2(a) is proved.
+
+5.1 A Layout Of The Construction The above construction can be represented pictorially as follows:
+
+15Pass1: Page 16
+
+
+F
+
+1
+
+: fl fl \Delta  \Delta  \Delta  fl
+
+-- -z ""
+
+s states
+
+fl \Delta  \Delta  \Delta  fl -- -z ""
+
+p "stacks"
+
+\Omega  ---z""
+
+counter 1
+
+F
+
+2
+
+: fl fl \Delta  \Delta  \Delta  fl
+
+-- -z ""
+
+s states
+
+fl fl flfl -- -z ""
+
+4 "new stack
+
+1
+
+"
+
+\Delta  \Delta  \Delta  fl fl flfl
+
+-- -z ""
+
+4 "new stack
+
+p
+
+"
+
+\Omega  ---z""
+
+counter 2
+
+F
+
+3
+
+: fl fl \Delta  \Delta  \Delta  \Delta  \Delta  \Delta  fl
+
+-- -z ""
+
+3
+
+p
+
+(s+1)
+
+fl \Delta  \Delta  \Delta  fl -- -z ""
+
+p top of stacks
+
+fl \Delta  \Delta  \Delta  fl -- -z ""
+
+p "stacks"
+
+\Omega  ---z""
+
+counter 3
+
+F
+
+4
+
+: fl fl \Delta  \Delta  \Delta  fl
+
+-- -z ""
+
+s states
+
+fl ---z""
+
+zero state
+
+flfl -- -z ""
+
+read "stack
+
+1
+
+"
+
+\Delta  \Delta  \Delta  flfl
+
+-- -z ""
+
+read "stack
+
+p
+
+"
+
+fl \Delta  \Delta  \Delta  fl -- -z ""
+
+p "stacks"
+
+\Omega  ---z""
+
+counter 4
+
+For now, ignore the rightmost element at each level, which is the counter. The remainder corresponds to the functions F
+
+4
+
+; F
+
+3
+
+; F
+
+2
+
+; F
+
+1
+
+, ordered from bottom to top. The processors are divided
+
+in levels, where the output of the ith level feeds into the (i \Gamma  1)st level (and the output of the top level feeds back into the bottom). The processors are grouped in the picture according to their function.
+
+The bottom layer, F
+
+4
+
+, contains 3 + p groups of processors. The leftmost group of processors
+
+stores the values of the s states to pass to level F
+
+3
+
+. The "zero state" processor outputs 1 or 0,
+
+outputting 1 if and only if all of the s processors in the first group are outputting 0. The "read stack i" group computes the top element i[q
+
+i
+
+] of stack i, and o/ [q
+
+i
+
+] 2 f0; 1g, which equals 0 if and
+
+only if stack i is empty. Each of the p processors in the last group stores an encoding of one of the p stacks.
+
+Layer F
+
+3
+
+computes the 2
+
+2p
+
+terms oe(v
+
+i
+
+\Delta  _) that appear in Equation (10) for each of the possible
+
+s + 1 values of the vector x. Only 3
+
+p
+
+(s + 1) processors are needed, though, since there are only
+
+three possibilities for the ordered pair (i[q
+
+i
+
+]; o/ [q
+
+i
+
+]) for each of the two stacks. (Note that each such
+
+_ contains i[q
+
+1
+
+], : : : , i[q
+
+p
+
+], o/ [q
+
+1
+
+], : : : , o/ [q
+
+p
+
+], as well as x
+
+0
+
+; : : : ; x
+
+s
+
+, that were computed at the level
+
+F
+
+4
+
+.) In this level we also pass to level F
+
+2
+
+the values i[q
+
+1
+
+], i[q
+
+2
+
+] and the encoding of the p stacks,
+
+from level F
+
+4
+
+.
+
+At level F
+
+2
+
+we compute all the new states as described in equation (8) (to be passed along
+
+without change to the top layer). Each of the four processors in the "new stack i" group computes one of the four main terms (rows) of equation (9) for one stack. For instance, for the fourth main term we compute an expression of the form:
+
+oe(4q
+
+i
+
+\Gamma  2i[q
+
+i
+
+] \Gamma  1 +
+
+s X
+
+j=0
+
+2
+
+2p
+
+X
+
+i=1
+
+c
+
+ij
+
+oe(v
+
+i
+
+\Delta  _) \Gamma  1)
+
+(obtained by applying equation (11)). Note that each of the terms q
+
+i
+
+, i[q
+
+i
+
+], oe(v
+
+i
+
+\Delta  _) has been
+
+evaluated in the previous level.
+
+Finally, at the top level, we copy the states from level F
+
+3
+
+, except that the halting state x
+
+1
+
+is
+
+modified by counter 2. We also add the four main terms in each stack and apply oe to the result.
+
+After reordering coordinates at the top level to be
+
+t
+
+1
+
+; x
+
+0
+
+; : : : ; x
+
+s
+
+; t
+
+2
+
+; : : : ; t
+
+p
+
+;
+
+the data processor and the halting processor are first and second, respectively, -as required to prove Theorem 2. Note that this construction results in values _ = s + 3p + 1, * = 3
+
+p
+
+(s + 1) + 2p, and
+
+j = s + 4p.
+
+16Pass1: Page 17
+
+
+6 Real Time Simulation Here, we refine the simulation of Section 5 to obtain the claimed real-time simulation. Thus, this section provides a proof of Theorem 2(b).
+
+We start in Subsection 6.1 by modifying the construction given in Section 5 in order to obtain a "two-level" neural network. At this point, we obtained a slow-down of a factor of two in the simulation. In Subsection 6.2, we modify the construction so that in one of the levels the neurons differ from the standard neurons: they compute linear combinations of their input with no sigma function applied to the combinations. Finally, in Subsection 6.3, we show how to modify the last network into a standard one with one level only.
+
+6.1 Computing in Two Layers We can write the dynamics of the stack q
+
+i
+
+as the sum of four components:
+
+q
+
+i
+
+=
+
+4 X
+
+j=1
+
+q
+
+ij
+
+; (12)
+
+where each q
+
+ij
+
+is the jth term (row) in Equation (9). That is, q
+
+i1
+
+may differ from 0 only if the last
+
+operation on stack i was "no-operation." Similarly, the components q
+
+i2
+
+; q
+
+i3
+
+; q
+
+i4
+
+may differ from 0
+
+only if the last operations of the ith stack were push0, push1, or pop, respectively.
+
+Using Lemma 5.1, we can write
+
+q
+
+ij
+
+= oe
+
+
+
+next-q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1
+
+!
+
+;
+
+where
+
+next-q
+
+ij
+
+=
+
+8 ? ? ? !
+
+? ? ? :
+
+q
+
+i
+
+if j = 1
+
+1 4
+
+q
+
+i
+
++
+
+1
+
+4
+
+if j = 2
+
+1 4
+
+q
+
+i
+
++
+
+3
+
+4
+
+if j = 3
+
+4q
+
+i
+
+\Gamma  2i[q
+
+i
+
+] \Gamma  1 if j = 4 :
+
+Similarly, the top of stack i (t
+
+i
+
+= i[q
+
+i
+
+]) can be expressed as
+
+t
+
+i
+
+=
+
+4 X
+
+j=1
+
+t
+
+ij
+
+; (13)
+
+t
+
+ij
+
+= oe
+
+
+
+4
+
+"
+
+next-q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1
+
+#
+
+\Gamma  2
+
+!
+
+;
+
+and the nonempty function of stack i (o/ [q
+
+i
+
+]) as
+
+e
+
+i
+
+=
+
+4 X
+
+j=1
+
+e
+
+ij
+
+; (14)
+
+e
+
+ij
+
+= oe
+
+
+
+4
+
+"
+
+next-q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1
+
+#!
+
+:
+
+Here, t
+
+ij
+
+is the "top" of the element q
+
+ij
+
+, and e
+
+ij
+
+is the nonempty test of the same element. As three
+
+out of the four stack elements fq
+
+i1
+
+; q
+
+i2
+
+; q
+
+i3
+
+; q
+
+i4
+
+g of each stack i = 1; : : : ; p are 0, and the fourth has
+
+17Pass1: Page 18
+
+
+the value of the stack i, it is also the case that three out of four elements of t
+
+i
+
+(and e
+
+i
+
+) are 0, and
+
+the fourth one holds the correct value of the top (nonempty predicate) of the relevant stack.
+
+We construct a network in which the stacks and their readings are not kept explicitly in values q
+
+i
+
+; t
+
+i
+
+; e
+
+i
+
+, but implicitly only via q
+
+ij
+
+; t
+
+ij
+
+; e
+
+ij
+
+; j = 1; : : : ; 4 ; i = 1; : : : ; p : By Lemma 5.1, all update
+
+equations of
+
+x
+
+k
+
+; k = 1; : : : ; s (states)
+
+q
+
+ij
+
+i = 1; 2 j = 1; 2; 3; 4 ;
+
+t
+
+ij
+
+i = 1; 2 j = 1; 2; 3; 4 ;
+
+e
+
+ij
+
+i = 1; 2 j = 1; 2; 3; 4 :
+
+can be written as
+
+oe ( lin. comb. of oe( lin. comb. of tops and nonempty )) ; that is, as what is usually called a "feedforward neural net with one hidden layer."
+
+The main layer consists of the elements q
+
+ij
+
+; t
+
+ij
+
+; e
+
+ij
+
+. In the hidden layer, we compute all elements
+
+oe(\Delta  \Delta  \Delta ) required by the lemma to compute the functions fi and fl. We showed that 3
+
+p
+
+s + 2 terms
+
+of this kind are required. We refer to these terms as "configuration detectors" as they provide the needed combinations of states and stack readings. These terms are all that are required to compute x
+
++
+
+k
+
+. We also keep in the hidden layer the values of q
+
+i
+
+; t
+
+i
+
+to compute next-q
+
+ij
+
+.
+
+The result is that
+
+e P can be written as a composition
+
+e P = F
+
+1
+
+ffi F
+
+2
+
+of two "saturated-affine" maps, i.e. maps of the form ~oe(Ax + c): F
+
+1
+
+: Q
+
+*
+
+! Q
+
+j
+
+; F
+
+2
+
+: Q
+
+j
+
+! Q
+
+*
+
+, for
+
+* = 3
+
+p
+
+s + 2p + 2 and j = s + 12p.
+
+In summary:
+
+ffl The main layer consists of:
+
+1. s neurons x
+
+k
+
+; k = 1; : : : ; s that represent the state of the system unarily.
+
+2. For each stack i; i = 1; : : : ; p we have
+
+(a) four neurons q
+
+1
+
+ij
+
+j q
+
+ij
+
+; j = 1; 2; 3; 4 ;
+
+(b) four neurons t
+
+1
+
+ij
+
+j t
+
+ij
+
+; j = 1; 2; 3; 4 ;
+
+(c) four neurons e
+
+1
+
+ij
+
+j e
+
+ij
+
+; j = 1; 2; 3; 4 :
+
+ffl The hidden layer consists of:
+
+1. 3
+
+p
+
+s + 2 neurons for configuration detecting. (The additional two are for the case of s
+
+0
+
+.)
+
+2. For each stack i; i = 1; : : : p we have
+
+(a) a neuron q
+
+2
+
+i
+
+j q
+
+i
+
+;
+
+(b) a neuron t
+
+2
+
+i
+
+j t
+
+i
+
+:
+
+18Pass1: Page 19
+
+
+6.2 Removing the Sigmoid From the Main Level Here, we show how to construct an equivalent network to the above, in which neurons in the main level compute linear combinations only. In the following construction, we introduce a set of stack "noisy-elements" f~q
+
+i1
+
+; ~q
+
+i2
+
+; ~q
+
+i3
+
+; ~q
+
+i4
+
+g for each stack i = 1; : : : p. These may assume not only values in
+
+[0; 1], but also negative values. Negative values of the stacks are interpreted as the value 0, while positive values are the true values of the stack. As in last section, only one of these four elements may assume a non-negative value at each time. The Noisy-top and Noisy-nonempty functions applied to the noisy-elements of the stacks may also produce values outside of the range [0; 1].
+
+To manage with only one level of oe functions, we need to choose a number representation that enforces large enough gaps between valid values of the stacks. We choose base b = 10p
+
+2
+
+(p is the
+
+number of stacks). Denote c = 2p + 1, b = 10p
+
+2
+
+, ffl
+
+1
+
+= (10p
+
+2
+
+\Gamma  1), ffl
+
+0
+
+= (10p
+
+2
+
+\Gamma  4p \Gamma  1). The reading
+
+functions noisy-top and noisy-nonempty corresponding to the of the jth noisy-element of stack i, are defined as:
+
+N-top (~q
+
+ij
+
+) := c(b~q
+
+ij
+
+\Gamma  (ffl
+
+1
+
+\Gamma  1)) (15)
+
+N-nonempty (~q
+
+ij
+
+) := b~q
+
+ij
+
+\Gamma  (ffl
+
+0
+
+\Gamma  1) : (16)
+
+The ranges of values of these functions are
+
+N-top (~q
+
+ij
+
+) 2
+
+8 ? !
+
+? :
+
+[2p + 1; 4p + 2] when the top is "1" [\Gamma 8p
+
+2
+
+\Gamma  2p + 1; \Gamma 8p
+
+2
+
++ 2] when the top is "0"
+
+[\Gamma 1; \Gamma 20p
+
+3
+
+\Gamma  10p
+
+2
+
++ 4p + 2] for an empty stack ;
+
+N-nonempty (~q
+
+ij
+
+) 2
+
+8 ? !
+
+? :
+
+[4p + 1; 4p + 2] when the top is "1" [1; 2] when the top is "0" [\Gamma 1; \Gamma 10p
+
+2
+
++ 4p + 2] for an empty stack :
+
+We denote
+
+~ t
+
+ij
+
+= N-top (~q
+
+ij
+
+) and ~e
+
+ij
+
+= N-nonempty (~q
+
+ij
+
+) for i = 1; : : : ; p, j = 1 : : : ; 4. Observe
+
+that all these ranges are included in
+
+R = [\Gamma 1; \Gamma 8p
+
+2
+
++ 2] [ [1; 4p + 2] ;
+
+Note that:
+
+Property: For all p * 2, any negative value of the functions N-top and N-nonempty has an absolute value of at least (2p \Gamma  1) times any positive value of them.
+
+The large negative numbers operate as inhibitors. We will see later how this property assists in constructing the network. As for the possibility of maintaining negative values in stack elements rather than 0, Equation (12) is not valid any more. That is, the elements ~q
+
+ij
+
+; j = 1; : : : ; 4 can
+
+not be combined linearly to provide the real value of the stack q
+
+i
+
+. This is also the case with the
+
+expression in Equations (15), and (16), and thus Equations (13) and (14) are no longer valid.
+
+Next, we prove that using the noisy-top and noisy-nonempty functions (rather than the binary top and nonempty functions), one may still compute the next value of the stack noisy-elements with one hidden layer only. We consider a function fi : R
+
+8p
+
+! f0; 1g which is sign-invariant. That
+
+is, if for all i = 1; : : : ; p and j = 1; : : : ; 4
+
+sign(t
+
+ij
+
+) = sign(t
+
+0
+
+ij
+
+) and sign(e
+
+0
+
+ij
+
+) = sign(e
+
+0
+
+ij
+
+)
+
+19Pass1: Page 20
+
+
+then
+
+fi(t
+
+11
+
+: : : ; e
+
+tr
+
+) = fi(t
+
+0
+
+11
+
+: : : ; e
+
+0
+
+tr
+
+) :
+
+Here we prove that any such function fi(\Delta ) can be written as a finite sum of the type
+
+P
+
+c
+
+i
+
+oe(linear combination of the t
+
+ij
+
+'s and e
+
+ij
+
+'s). (?)
+
+That is, the stack noisy-elements are computed correctly using one hidden layer only.
+
+To prove (?) , we state the following (more general) Lemma:
+
+Lemma 6.1 For each t; r 2 IN, let R
+
+t
+
+be the range
+
+[\Gamma 1; \Gamma 2t
+
+2
+
++ 2] [ [1; 2t + 2] ;
+
+and let
+
+S
+
+r;t
+
+= fd j d = (d
+
+(1)
+
+1
+
+; : : : ; d
+
+(r)
+
+1
+
+; d
+
+(1)
+
+2
+
+; : : : ; d
+
+(r)
+
+2
+
+; : : : ; d
+
+(1)
+
+t
+
+; : : : ; d
+
+(r)
+
+t
+
+) 2 R
+
+rt
+
+t
+
+; and
+
+8i = 1; : : : ; t at most one of d
+
+1
+
+i
+
+; : : : ; d
+
+r
+
+i
+
+is positive g :
+
+We denote by I the set of multi-indices (i
+
+1
+
+; : : : ; i
+
+t
+
+), with each i
+
+j
+
+2 f0; 1; : : : ; rg. For each function
+
+fi : S
+
+r;t
+
+! f0; 1g that is sign invariant, there exist vectors
+
+fv
+
+i
+
+2 ZZ
+
+t+2
+
+; i 2 Ig
+
+and scalars
+
+fc
+
+i
+
+2 ZZ; i 2 Ig
+
+such that for each (d
+
+(1)
+
+1
+
+; : : : ; d
+
+(r)
+
+t
+
+) 2 S
+
+r;t
+
+and any x 2 f0; 1g, we can write
+
+fi(d
+
+(1)
+
+1
+
+; : : : ; d
+
+(r)
+
+t
+
+)x =
+
+X
+
+i2I
+
+c
+
+i
+
+oe(v
+
+i
+
+\Delta  _
+
+i
+
+) ;
+
+where
+
+_
+
+i
+
+= _
+
+(i
+
+1
+
+;:::;i
+
+t
+
+)
+
+= (1; d
+
+(i
+
+1
+
+)
+
+1
+
+; d
+
+(i
+
+2
+
+)
+
+2
+
+; : : : d
+
+(i
+
+t
+
+)
+
+t
+
+; x); and where we are defining d
+
+0
+
+i
+
+= 0 : (17)
+
+Note that jIj = (r + 1)
+
+t
+
+. The operator "\Delta " is the dot product in ZZ
+
+t+2
+
+. 2
+
+Proof. As fi is sign-invariant, we can write fi when acting on S
+
+r;t
+
+as a polynomial
+
+fi(d
+
+(1)
+
+1
+
+; d
+
+(2)
+
+1
+
+; : : : ; d
+
+(r)
+
+t
+
+) = c
+
+1
+
++ c
+
+2
+
+oe(d
+
+(1)
+
+1
+
+) + c
+
+3
+
+oe(d
+
+(2)
+
+1
+
+) + \Delta  \Delta  \Delta  + c
+
+rt+1
+
+oe(d
+
+(r)
+
+t
+
+) +
+
+c
+
+rt+2
+
+oe(d
+
+(1)
+
+1
+
+)oe(d
+
+(1)
+
+2
+
+) + : : : + c
+
+(r+1)
+
+toe(d
+
+(r)
+
+1
+
+)oe(d
+
+(r)
+
+2
+
+) \Delta  \Delta  \Delta  oe(d
+
+(r)
+
+t
+
+) :
+
+(Note that no term with more than t elements of the type oe(d
+
+(i)
+
+j
+
+) appears, as most oe(d
+
+(i)
+
+j
+
+) = 0, by
+
+definition of S
+
+r;t
+
+.) Observe that for any sequence l
+
+1
+
+; : : : ; l
+
+k
+
+of (k ^ t) elements in R
+
+t
+
+and x 2 f0; 1g,
+
+one has
+
+oe(l
+
+1
+
+) \Delta  \Delta  \Delta  oe(l
+
+k
+
+)x = oe(l
+
+1
+
++ \Delta  \Delta  \Delta  + l
+
+k
+
++ k(2t + 2)(x \Gamma  1)):
+
+This is due to two facts:
+
+1. The sum of k; k ^ t elements of R
+
+t
+
+is non-positive when at least one of the elements is
+
+negative. This stems from the property that any negative value in this range is at least (t \Gamma  1) times larger than any positive value there.
+
+20Pass1: Page 21
+
+
+2. Each l
+
+i
+
+is bounded by (2t + 2).
+
+Expand the product fi(d
+
+1
+
+1
+
+; : : : ; d
+
+r
+
+t
+
+)x, using the above observation and the fact x = oe(x). This gives
+
+that
+
+fi(d
+
+(1)
+
+1
+
+; : : : ; d
+
+(r)
+
+t
+
+)x =
+
+c
+
+1
+
+oe(x) + c
+
+2
+
+oe
+
+i
+
+d
+
+(1)
+
+1
+
++ (2t + 2)(x \Gamma  1)
+
+j
+
++ \Delta  \Delta  \Delta  + c
+
+(r+1)
+
+t
+
+oe
+
+i
+
+d
+
+(r)
+
+1
+
++ : : : + d
+
+(r)
+
+t
+
++ t(2t + 2)(x \Gamma  1)
+
+j
+
+=
+
+X
+
+i2I
+
+c
+
+i
+
+oe(v
+
+i
+
+\Delta  _
+
+i
+
+) ;
+
+for suitable c
+
+i
+
+'s and v
+
+i
+
+'s, where _
+
+i
+
+is defined as in (17).
+
+Remark 6.2 Note that in the case where the arguments are the functions N-top and N-nonempty, the arguments are dependent and not all (r + 1)
+
+t
+
+terms are needed.
+
+Network Description The network consists of two levels. The main level consists of both s state neurons that are updated as beforehand, and stack noisy-neurons accompanied by stack noisy-readings neurons:
+
+~q
+
+1
+
+ij
+
+;
+
+~
+
+t
+
+1
+
+ij
+
+; ~e
+
+1
+
+ij
+
+; i = 1; : : : ; p j = 1; : : : ; 4 -- representing respectively stack noisy-elements, noisy-
+
+top elements, and noisy-nonempty elements. Using the same notations for the functions fl
+
+ij
+
+as in
+
+Equation (9), the update equations are
+
+~q
+
+1+
+
+ij
+
+= next-~q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1 ; (18)
+
+~ t
+
+1+
+
+ij
+
+= (2p + 1)
+
+"
+
+10p
+
+2
+
+(next-~q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1) \Gamma  (10p
+
+2
+
+\Gamma  2)
+
+#
+
+; (19)
+
+~e
+
+1+
+
+ij
+
+= 10p
+
+2
+
+(next-~q
+
+ij
+
++
+
+s X
+
+k=0
+
+fl
+
+j
+
+ik
+
+x
+
+k
+
+\Gamma  1) \Gamma  (10p
+
+2
+
+\Gamma  4p \Gamma  2) ; (20)
+
+where
+
+next-~q
+
+ij
+
+=
+
+8 ? ? ? ? !
+
+? ? ? ? :
+
+q
+
+i
+
+if j = 1
+
+1 10p
+
+2
+
+q
+
+i
+
++
+
+10p
+
+2
+
+\Gamma 4p\Gamma 1
+
+10p
+
+2
+
+if j = 2
+
+1 10p
+
+2
+
+q
+
+i
+
++
+
+10p
+
+2
+
+\Gamma 1
+
+10p
+
+2
+
+if j = 3
+
+10p
+
+2
+
+\Gamma  4pt
+
+i
+
+\Gamma  (10p
+
+2
+
+\Gamma  4p \Gamma  1) if j = 4 ;
+
+and q
+
+i
+
+and t
+
+i
+
+are the exact values of the stacks and top elements. Using Lemma 6.1, all the
+
+expressions of the type flx can be written as linear combinations of terms like oe( linear combinations of
+
+~ t
+
+1
+
+ij
+
+; ~e
+
+1
+
+ij
+
+).
+
+The hidden layer consists of both up to (5
+
+2p
+
+s + 2) configuration detectors neurons (as proved
+
+in Lemma 6.1) and the stack and top neurons:
+
+q
+
+2
+
+ij
+
+; t
+
+2
+
+ij
+
+; i = 1; : : : ; p j = 1; : : : ; 4 ;
+
+which are updated by the equations
+
+q
+
+2+
+
+ij
+
+:= oe(~q
+
+1
+
+ij
+
+) [q
+
+i
+
+=
+
+P
+
+4
+
+j=1
+
+q
+
+2
+
+ij
+
+] ;
+
+t
+
+2+
+
+ij
+
+:= oe(
+
+~ t
+
+1
+
+ij
+
+) i = 1; : : : ; p j = 1; : : : ; 4 [t
+
+i
+
+=
+
+P
+
+4
+
+j=1
+
+t
+
+2
+
+ij
+
+] :
+
+21Pass1: Page 22
+
+
+6.3 One Level Network Simulates TM Consider the above network. Remove the main level and leave the hidden level only, while letting each neuron there compute the information that it received beforehand from a neuron at the main level. This can be written as a standard network. This ends the proof of Theorem 2.
+
+7 Inputs and Ouputs We now explain how to deduce Theorem 1 from Theorem 2. In order to do that, we first show how to modify a net with no inputs into one which, given the input u
+
+!
+
+(\Delta ), produces the encoding
+
+ffi[!] as a state coordinate and after that emulates the original net. Later we show how the output is decoded. As explained above, there are two input lines: D = u
+
+1
+
+carries the data, and V = u
+
+2
+
+validates it. In this section we concentrate on the function ffi, thus proving that Theorem 2(a)
+
+implies a linear time simulation of a Turing Machine via a network with input and output. A similar proof, when applied to Theorem 2(b) (while substituting ffi by ffi
+
+p
+
+) implies Theorem 1.
+
+So assume we are given a net with no inputs
+
+x
+
++
+
+= oe(Ax + c) (21)
+
+as in the conclusion of Theorem 2. Suppose that we have already found a net
+
+y
+
++
+
+= oe(F y + gu
+
+1
+
++ hu
+
+2
+
+) (22)
+
+(consisting of 5 processors) so that, if u
+
+1
+
+(\Delta ) = D
+
+!
+
+(\Delta ) and u
+
+2
+
+(\Delta ) = V
+
+!
+
+(\Delta ), then with y(0) = 0 we have
+
+y
+
+4
+
+(\Delta ) = 0 \Delta  \Delta  \Delta  0
+
+-- -z ""
+
+j!j+1
+
+ffi[!]00 \Delta  \Delta  \Delta  and y
+
+5
+
+(\Delta ) = 0 \Delta  \Delta  \Delta  0
+
+-- -z ""
+
+j!j+2
+
+11 \Delta  \Delta  \Delta  ;
+
+that is,
+
+y
+
+4
+
+(t) =
+
+(
+
+ffi[!] if t = j!j + 2
+
+0 otherwise,
+
+and y
+
+5
+
+(t) =
+
+(
+
+0 if t ^ j!j + 2
+
+1 otherwise.
+
+Once this is done, modify the original net (21) as follows. The new state consists of the pair (x; y), with y evolving according to (22) and the equations for x modified in this manner (using A
+
+i
+
+to
+
+denote the ith row of A and c
+
+i
+
+for the ith entry of c):
+
+x
+
++
+
+1
+
+= oe(A
+
+1
+
+x + c
+
+1
+
+y
+
+5
+
++ y
+
+4
+
+)
+
+x
+
++
+
+i
+
+= oe(A
+
+i
+
+x + c
+
+i
+
+y
+
+5
+
+) ; i = 2; : : : ; n :
+
+Then, starting at the initial state y = x = 0, clearly x
+
+1
+
+(t) = 0 for t = 0; : : : ; j!j+2 and x
+
+1
+
+(j!j+3) =
+
+ffi[!], while, for i ? 1, x
+
+i
+
+(t) = 0 for t = 0; : : : ; j!j + 3.
+
+After time j!j + 3, as y
+
+5
+
+j 1 and u
+
+1
+
+= u
+
+2
+
+j 0, the equations for x evolve as in the original net,
+
+so x(t) in the new net equals x(t \Gamma  j!j \Gamma  3) in the original one for t * j!j + 3.
+
+The system (22) can be constructed as follows:
+
+y
+
++
+
+1
+
+= oe(
+
+1
+
+4
+
+y
+
+1
+
++
+
+1
+
+2
+
+u
+
+1
+
++
+
+1
+
+4
+
++ u
+
+2
+
+\Gamma  1)
+
+y
+
++
+
+2
+
+= oe(u
+
+2
+
+)
+
+y
+
++
+
+3
+
+= oe(y
+
+2
+
+\Gamma  u
+
+2
+
+)
+
+y
+
++
+
+4
+
+= oe(y
+
+1
+
++ y
+
+2
+
+\Gamma  u
+
+2
+
+\Gamma  1)
+
+y
+
++
+
+5
+
+= oe(y
+
+3
+
++ y
+
+5
+
+)
+
+22Pass1: Page 23
+
+
+This completes the proof of the encoding part. For the decoding process of producing the output signal y
+
+1
+
+, it will be sufficient to show how to build a net (of dimension 10 and with two inputs)
+
+such that, starting at the zero state and if the input sequences are x
+
+1
+
+and x
+
+2
+
+, where x
+
+1
+
+(k) = ffi[w]
+
+for some k and x
+
+2
+
+(t) = 0 for t ! k, x
+
+2
+
+(k) = 1 (x
+
+1
+
+(t) 2 [0; 1] for t 6= k, x
+
+2
+
+(t) 2 [0; 1] for t ? k), then
+
+for processors z
+
+9
+
+, z
+
+10
+
+it holds that
+
+z
+
+9
+
+=
+
+(
+
+1 if k + 4 ^ t ^ k + 3 + j!j
+
+0 otherwise ,
+
+and
+
+z
+
+10
+
+=
+
+(
+
+!
+
+t\Gamma k\Gamma 3
+
+if k + 4 ^ t ^ k + 3 + j!j
+
+0 otherwise .
+
+This is easily done with:
+
+z
+
++
+
+1
+
+= oe(x
+
+2
+
++ z
+
+1
+
+)
+
+z
+
++
+
+2
+
+= oe(z
+
+1
+
+)
+
+z
+
++
+
+3
+
+= oe(z
+
+2
+
+)
+
+z
+
++
+
+4
+
+= oe(x
+
+1
+
+)
+
+z
+
++
+
+5
+
+= oe(z
+
+4
+
++ z
+
+1
+
+\Gamma  z
+
+2
+
+\Gamma  1)
+
+z
+
++
+
+6
+
+= oe(4z
+
+4
+
++ z
+
+1
+
+\Gamma  2z
+
+2
+
+\Gamma  3)
+
+z
+
++
+
+7
+
+= oe(16z
+
+8
+
+\Gamma  8z
+
+7
+
+\Gamma  6z
+
+3
+
++ z
+
+6
+
+)
+
+z
+
++
+
+8
+
+= oe(4z
+
+8
+
+\Gamma  2z
+
+7
+
+\Gamma  z
+
+3
+
++ z
+
+5
+
+)
+
+z
+
++
+
+9
+
+= oe(4z
+
+8
+
+)
+
+z
+
++
+
+10
+
+= oe(z
+
+7
+
+) :
+
+In this case the output is y = (z
+
+10
+
+; z
+
+9
+
+).
+
+Remark 7.1 If one would also like to achieve a resetting of the whole network after completing the operation, it is possible to add the processor
+
+z
+
++
+
+11
+
+= oe(z
+
+10
+
+) ;
+
+and to add to each processor that is not identically zero at this point of time,
+
+v
+
++
+
+i
+
+= oe(: : : + z
+
+11
+
+\Gamma  z
+
+10
+
+) ; v 2 fx; y; zg ;
+
+where ": : :" is the formerly defined operation of the processor.
+
+8 Universal Network The number of neurons required to simulate a Turing Machine consisting of s states and p stacks, with a slow-down of a factor of two in the computation, is:
+
+s + 12p -- -z ""
+
+main layer
+
++ 3
+
+p
+
+s + 2 + 2p
+
+-- -z ""
+
+hidden layer
+
+:
+
+To estimate the number of processors required for a "universal" processor net, we should calculate the number s discussed above, which is the number of states in the control unit of a two stack
+
+23Pass1: Page 24
+
+
+universal Turing Machine. Minsky proved the existence of a universal Turing Machine having one tape with 4 letters and 7 control states, [19]. Shannon showed in [23] how to control the number of letters and states in a Turing Machine. Following his construction, we obtain a 2-letter 63-state 1-tape Turing Machine. However, we are interested in a two-stack machine rather than one tape. Similar arguments to the ones made by Shannon, but for two stacks, leads us to s = 84. Applying the formula 3
+
+p
+
+s + s + 14p + 2, we conclude that there is a universal net with 870 processors. To
+
+allow for input and output to the network, we need an extra 16 neurons, thus having 886 in a universal machine. (This estimate is very conservative. It would certainly be interesting to have a better bound. The use of multi-tape Turing Machines may reduce the bound. Furthermore, it is quite possible that with some care in the construction one may be able to drastically reduce this estimate. One useful tool here may be the result in [1] applied to the control unit--here we used a very inefficient simulation.)
+
+9 Non-Deterministic Computation A non-deterministic processor net is a modification of a deterministic one, obtained by incorporating a guess input line (G) in addition to the validation and data lines. Hence, the dynamics map of the network is now
+
+F : Q
+
+N
+
+\Theta  f0; 1g
+
+3
+
+! Q
+
+N
+
+:
+
+Similarly to Definition 2.1, we define a non-deterministic processor network as follows: Definition 9.1 A non-deterministic oe-processor net N with two binary inputs and a guess line is a dynamical system having a dynamics map of the form
+
+F (x; u; g) = ~oe(Ax + b
+
+1
+
+u
+
+1
+
++ b
+
+2
+
+u
+
+2
+
++ b
+
+3
+
+g + c);
+
+for some matrix A 2 Q
+
+N\Theta N
+
+and four vectors b
+
+1
+
+; b
+
+2
+
+; b
+
+3
+
+; c 2 Q
+
+N
+
+. 2
+
+A formal non-determinitic network is one that adheres to an input-output encoding convention similar to the one for deterministic systems, as in Section 2. For each pair of words !; fl 2 f0; 1g
+
++
+
+,
+
+the input to the network is encoded as
+
+v
+
+!;fl
+
+(t) = (V
+
+!
+
+(t); D
+
+!
+
+(t); G
+
+fl
+
+(t)) ; t = 1; : : : ;
+
+where the input lines V
+
+!
+
+and D
+
+!
+
+are the same as described in Setion 2 and Gfl is defined as
+
+G
+
+fl
+
+(t) =
+
+(
+
+fl
+
+t
+
+if t = 1; : : : ; jflj
+
+0 otherwise :
+
+The output encoding is the same as the one used for the deterministic networks.
+
+We restrict our attention to formal non-determinictic networks that compute binary output values only, that is, OE
+
+L
+
+(!; fl) 2 f0; 1g, where OE
+
+L
+
+(!; fl) is the function computed by a formal non-
+
+deterministic network when the input is ! 2 f0; 1g
+
++
+
+and the guess is fl 2 f0; 1g
+
++
+
+. The language L
+
+computed by a non-deterministic formal network in time B is
+
+L = f! 2 f0; 1g
+
++
+
+j 9 a guess fl
+
+!
+
+; OE
+
+L
+
+(!; fl
+
+!
+
+) = 1; jfl
+
+!
+
+j ^ T
+
+N
+
+(!) ^ B(j!j)g
+
+Note that the input ! and the guess fl
+
+!
+
+do not have to have the same length; the only requirement
+
+regarding their synchronization is that !(1) and fl(1) appear as an input to the network simul- tanously. The function T
+
+N
+
+is the amount of time required to compute the response to a given input
+
+24Pass1: Page 25
+
+
+!; and its bound, the function B, is called the computation time. The length of the guess, jfl
+
+!
+
+j, is
+
+bounded by the function T
+
+N
+
+.
+
+When restricted to the case of language recognition rather than general function computing, Theorems 1 and 2 can be restated for the non-deterministic model in which N is a non-deterministic processor net and M is a non-deterministic Turing Machine. The proofs are similar, and are omitted.
+
+10 Acknowledgment We wish to thank Robert Solovay for his useful comments during the early steps of this research.
+
+References
+
+[1] N. Alon, A.K. Dewdney, T.J. Ott, "Efficient simulation of finite automata by neural nets," J.
+
+A.C.M. 38 (1991): 495-514.
+
+[2] R. Batruni, "A multilayer neural network with piecewise-linear structure and back-propagation
+
+learning," IEEE Transactions on Neural Networks II, May 1991: 395-403. [3] J. Berstel, C. Reutenauer, Rational Series and Their Languages, Springer-Verlag, Berlin, 1988. [4] J.R. Brown, M.M. Garber and S.F. Vanable, "Articifial neural network on a SIMD architec-
+
+ture," in Proc. 2nd Symposium on the Frontier of Massively Parallel Computation, Fairfax, VA, 1988: 43-47. [5] L. Blum, M. Shub, and S. Smale, "On a theory of computation and complexity over the
+
+real numbers: NP completeness, recursive functions, and universal machines," Bull. A.M.S. 21(1989): 1-46. [6] A. Cleeremans, D. Servan-Schreiber, J. McClelland, "Finite State Automata and Simple Re-
+
+current Networks," Neural Computation, vol. 1 (1989), p. 372.
+
+[7] J.L. Elman, "Finding Structure in Time", Cognitive Science, vol. 14 (1990): 179-211. [8] S. Franklin, M. Garzon, "Neural computability," in Progress In Neural Networks, Vol 1 )(O.
+
+M. Omidvar, ed.), Ablex, Norwood, NJ, (1990): 128-144. [9] M. Garzon, S. Franklin, "Neural computability II," in Proc. 3rd Int. Joint Conf. Neural Net-
+
+works (1989): I, 631-637. [10] Sun, G.Z., H.H. Chen, Y.C. Lee and C.L. Giles, "Turing Equivalence of Neural Networks
+
+with Second Order Connection Weights," Proceedings of the International Joint Conference on Neural Networks, IEEE II, 1991: 357-362. [11] C.L. Giles, D. Chen, C.B. Miller, H.H. Chen, G.Z. Sun, Y.C. Lee, "Second-order recurrent
+
+neural networks for grammatical inference," Proceedings of the International Joint Conference on Neural Networks, Seattle, Washington, IEEE Publication, vol. 2 (1991): 273-278. [12] R. Hartley, H. Szu, "A comparison of the computational power of neural network models," in
+
+Proc. IEEE Conf. Neural Networks (1987): III, 17-22. [13] J.E. Hopcroft, and J.D. Ullman, Introduction to Automata Theory, Languages, and Computa-
+
+tion, Addison-Wesley, 1979.
+
+[14] S.C. Kleene, "Representation of events in nerve nets and finite automata," in Shannon, C.E.,
+
+and J. McCarthy, eds., Automata Studies, Princeton Univ. Press 1956: 3-41.
+
+[15] Lippmann, R.P., "An introduction to computing with neural nets," IEEE Acoustics Speech
+
+and Signal Processing Magazine, April 1987: 4-22.
+
+25Pass1: Page 26
+
+
+[16] W. Maass, G. Schnitger, E.D. Sontag, "On the computational power of sigmoid versus boolean
+
+threshold circuits," Proc. of the 32nd Annual Symp. on Foundations of Computer Science (1991): 767-776.
+
+[17] C.M. Marcus, R.M. Westervelt, "Dynamics of iterated-map neural networks," Phys. Rev. Ser.
+
+A 40(1989): 3355-3364.
+
+[18] W.S. McCulloch, W. Pitts, "Logical calculus of the ideas immanent in nervous activity," Bull.
+
+Math. Biophys. 5(1943): 115-133.
+
+[19] M.L. Minsky, Computation: Finite and Infinite Machines, Prentice Hall, Engelwood Cliffs,
+
+1967.
+
+[20] J.B. Pollack, On Connectionist Models of Natural Language Processing, Ph.D. Dissertation,
+
+Computer Science Dept, Univ. of Illinois, Urbana, 1987.
+
+[21] J.H. Reif, J.D. Tygar, A. Yoshida "The computability and complexity of optical beam tracing,"
+
+Proc. of the 31st Annual Symp. on Foundations of Computer Science (1990): 106-114.
+
+[22] R. Schwarzschild, E.D. Sontag, "Algebraic theory of sign-linear systems," in Proceedings of the
+
+Automatic Control Conference, Boston, MA, June (1991): 799-804.
+
+[23] C.E. Shannon, "A universal turing machine with two internal states," in Shannon, C.E., and
+
+J. McCarthy, eds., Automata Studies, Princeton Univ. Press 1956: 157-165.
+
+[24] H.T. Siegelmann, E.D. Sontag, "Analog computation, neural networks, and circuits," The
+
+Second Israel Symposium on Theory of Computing and Systems, Natanya, Israel, June, 1993.
+
+[25] E.D. Sontag, Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+[26] E.D. Sontag, "Feedforward nets for interpolation and classification," J. Comp. Syst. Sci.
+
+45(1992): 20-48.
+
+[27] G.Z. Sun, H.H. Chen, Y.C. Lee, and C.L. Giles, "Turing equivalence of neural networks with
+
+second order connection weights," in Int.Jt.Conf.Neural Nets, Seattle, 1991:II,357-.
+
+[28] R.J. Williams, D. Zipser, A Learning Algorithm for Continually Running Fully Recurrent
+
+Neural Networks, Neural Computation, Vol. 1 (1989): 270-280.
+
+[29] Wolpert, D., "A computationally universal field computer which is purely linear," techreport
+
+LA-UR-91-2937, Los Alamos National Laboratory, 1991.
+
+[30] B. Zhang, L. Zhang and H. Zhang, "A quantitative analysis of the behavior of the PLN
+
+network," Neural Networks 5, 1992: 639-661.
+
+26</pre>
+</body>
+</html>

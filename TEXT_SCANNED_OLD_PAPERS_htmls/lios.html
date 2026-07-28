@@ -1,0 +1,1140 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/lios.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/lios.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Lyapunov Characterizations of Input to Output Stability
+
+Eduardo Sontag\Lambda  Dept. of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+Yuan Wangy Dept. of Mathematics Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@math.fau.edu
+
+Abstract This paper presents necessary and sufficient characterizations of several notions of input to output stability. Similar Lyapunov characterizations have been found to play a key role in the analysis of the input to state stability property, and the results given here extend their validity to the case when the output, but not necessarily the entire internal state, is being regulated.
+
+Keywords. Lyapunov functions, output stability, ISS, robust control AMS subject classifications. 93D05, 93D20, 93D09, 34D20 Running Head. Lyapunov Characterizations of Input to Output Stability
+
+1 Introduction This paper concerns itself with systems with outputs of the general form
+
+.x(t) = f (x(t); u(t)); y(t) = h(x(t)) ; (1) where f : Rn \Theta  Rm ! Rn and h : Rn ! Rp are both locally Lipschitz continuous, f (0; 0) = 0, and h(0) = 0. In the paper [19] (see also [17]), the authors introduced several notions of output stability for such systems. All these notions serve to formalize the idea of a "stable" dependence of outputs y upon inputs (which may be thought of as disturbances, actuator or measurement errors, or regulation signals). They differ in the precise formulation of the decay estimates and the overshoot, or transient behavior, characteristics of the output. Among all of them, the one of most interest is probably the one singled out for the name input to output stability, or ios, for short.
+
+Our main theorem in this paper provides a necessary and sufficient characterization of the ios property in terms of Lyapunov functions. In the process of obtaining this characterization, we derive as well corresponding results for the variants of ios discussed in [19]. (The relationships between those variants, shown in [19], play a role in our proofs, but otherwise the two papers are independent of each other.)
+
+In the very special case when y = x, our concepts all reduce to the input to state stability (iss) property. Much of iss control design, cf. [2, 3, 4, 5, 6, 7, 9, 10, 13, 14, 15, 20], relies upon the Lyapunov characterizations first obtained in [12, 16]. Thus, it is reasonable to expect a similar impact from the results given here for the more general case.
+
+In order to review the different i/o stability concepts, let us make the following notational conventions. Euclidean norms will be denoted as jxj, and kuk denotes the Lm1-norm (possibly
+
+\Lambda This research was supported in part by US Air Force Grant F49620-98-1-0242
+
+yThis research was supported in part by NSF Grants DMS-9457826 and DMS-9403924
+
+1
+
+infinite) of an input u (i.e., a measurable and locally essentially bounded function u : I ! Rm , where I is a subinterval of R which contains the origin; if we do not specify the domain I of an input u, we mean implicitely that I = R*0 ). For each initial state , 2 Rn and input u, we let x(\Delta ; ,; u) be the unique maximal solution of the initial value problem .x = f (x; u), x(0) = ,, and write the corresponding output function h(x(t; ,; u)) simply as y(\Delta ; ,; u). Given a system with control-value set Rm , we often consider the same system but with controls restricted to take values in some subset \Omega  ` Rm ; we use M\Omega  for the set of all such controls. As usual, by a K function we mean a function fl : [0; 1) ! [0; 1) that is strictly increasing and continuous, and satisfies fl(0) = 0, by a K1 function one that is in addition unbounded, and we let KL be the class of functions [0; 1)2 ! [0; 1) which are of class K on the first argument and decrease to zero on the second argument. When we state the various properties below, we always interpret the respective estimates as holding for all inputs u and for all initial states , 2 Rn .
+
+Recall that a system is said to be forward complete if for every initial state , and input u, the solution x(t; ,; u) is defined for all t * 0.
+
+The following four output stability properties were discussed in [19]. A forward complete system is:
+
+ffl ios, or input to output stable, if there exist a KL-function fi and a K-function fl such that
+
+jy(t; ,; u)j ^ fi(j,j ; t) + fl(kuk); 8t * 0 (2) (the term fl(kuk) can be replaced by the norm of the restriction to past inputs fl(kuk[0;t]), and the sum could be replaced by a "max" or two analogous terms);
+
+ffl olios, or output-Lagrange input to output stable if it is ios and, in addition, there exist
+
+some K-functions oe1; oe2 such that
+
+jy(t; ,; u)j ^ maxfoe1(jh(,)j); oe2(kuk)g; 8 t * 0 ; (3)
+
+ffl siios, or state-independent input to output stable if there exist some fi 2 KL and some
+
+fl 2 K such that
+
+jy(t; ,; u)j ^ fi(jh(,)j ; t) + fl(kuk); 8 t * 0 ; (4)
+
+ffl ros, or robustly output stable if there are a smooth K1-function * and a fi 2 KL such
+
+that the system
+
+.x = g(x; d) := f (x; d*(jyj)) ; y = h(x) ; (5)
+
+is foward complete, and the estimate
+
+jy*(t; ,; d)j ^ fi(j,j ; t); 8 t * 0 ; (6) holds for all d 2 MB, where B = fj_j ^ 1g ae Rm , and where y*(\Delta ; ,; d) denote the output function of system (5).
+
+The last concept corresponds to the preservation of output stability under output feedback with "robustness margin" *. It was shown in [19] that siios ) olios ) ios ) ros, and no converses hold. It was also remarked in Section 2.2 that the olios property is equivalent to the existence of a KL-function fi and a K-function fl such that the estimate
+
+jy(t; ,; u)j ^ fi `jh(,)j ; t1 + ae(j,j) ' + fl(kuk); 8 t * 0; holds for all trajectories of the system. We now introduce the associated Lyapunov concepts.
+
+2
+
+Definition 1.1 With respect to the system (1), a smooth function V : Rn ! R*0 is:
+
+ffl an ios-Lyapunov function if there exist ff1; ff2 2 K1 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j); 8 , 2 Rn ; (7) and there exist O/ 2 K and ff3 2 KL such that
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j); 8 , 2 Rn ; 8_ 2 Rm ; (8)
+
+ffl an olios-Lyapunov function if there exist ff1; ff2 2 K1 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(jh(,)j); 8 , 2 Rn ; (9) and there exist O/ 2 K and ff3 2 KL such that (8) holds; ffl an siios-Lyapunov function if there exist O/ 2 K and ff3 2 K such that
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff3(V (,)); 8 , 2 Rn ; 8_ 2 Rm ; (10) and there exist ff1; ff2 2 K1 such that (9) holds; ffl an ros-Lyapunov function if there exist O/ 2 K and ff3 2 KL such that
+
+jh(,)j * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j); 8 , 2 Rn ; 8_ 2 Rm ; (11) and there exist ff1; ff2 2 K1 such that (7) holds. 2
+
+Observe that, if an estimate (7) holds, then (11) is implied by (8), in the sense that if O/ and ff1 are as in the former, then eO/ := ff\Gamma 11 ffi O/ can be used as "O/" for the latter. Note also that, provided that (9) holds, condition (8) is equivalent to the existence of O/ 2 K and ff3 2 KL so that
+
+jh(,)j * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j) :
+
+Our main results can be summarized as follows. We say that a system (1) is uniformly bounded input bounded state stable, and write "ubibs" for short, if it is forward complete and, for some function oe of class K, the following estimate holds for all solutions:
+
+jx(t; ,; u)j ^ maxfoe(j,j); oe(kuk)g; 8t * 0 : (12)
+
+Theorem 1 A ubibs system is:
+
+1. ios if and only if it admits an ios-Lyapunov function; 2. olios if and only if it admits an olios-Lyapunov function; 3. ros if and only if it admits an ros-Lyapunov function; and 4. siios if and only if it admits an siios-Lyapunov function.
+
+The proofs are provided in Section 4.
+
+3
+
+2 Remarks on Rates of Decrease In properties (8) and (11), the decay rate of V (x(t)) depends on the state and on the value of V (x(t)). The main role of ff3 is to allow for slower convergence if V (x(t)) is very small or if x(t) is very large. We first note two simplifications.
+
+Remark 2.1 Inequality (8) holds for some ff3 2 KL if and only if there exist K-functions ^1; ^2 such that
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma  ^1(V (,))1 + ^
+
+2(j,j) (13)
+
+for all , 2 Rn and all _ 2 Rm . This follows from Lemma A.2, proved in the Appendix. A similar remark applies to (11). 2
+
+Remark 2.2 Suppose V is an ios-Lyapunov function for the system satisfying (7) with some ff1; ff2 2 K1 and (13) with some O/; ^1; ^2 2 K. By the proof of Lemma 11 together with Lemma 12 in [14], one sees that there exists a C1 K1-function ae such that ae0(s)^1(s) * ae(s) for all s * 0. Let W = ae ffi V . Then W is a C1 function satisfying the following:
+
+ae(ff1(jh(,)j)) ^ W (,) ^ ae(ff2(j,j)); 8 , 2 Rn ; and
+
+W (,) * O/1(j_j) ) DW (,)f (,; _) ^ \Gamma  W (,)1 + ^
+
+2(j,j) (14)
+
+for all , 2 Rn and all _ 2 Rm , where O/1 = ae ffi O/ 2 K. This shows that if a system admits an ios-Lyapunov function, then it admits one satisfying inequality (14). A similar remark applies to (11). 2
+
+Obviously, a function which satisfies a decay estimate of the stronger form
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff(V (,)) (15) for some O/; ff 2 K is in particular an ios Lyapunov function. It is thus natural to ask if there always exists, for an ios system, a function with this stronger property. We now show, by means of an example, that such functions do not in general exist. Consider for that purpose the following two-dimensional single-input system:
+
+.x1 = 0; .x2 = \Gamma  2x2 + u1 + x2
+
+1 ; y = x
+
+2: (16)
+
+This system is ios, because with V (x) := x22, it holds that
+
+V (,) * _2 ) DV (,)f (,; _) = \Gamma 2x2 2x2 + u1 + x2
+
+1 ^ \Gamma 
+
+2V (,) 1 + x21 :
+
+Namely, V is an ios-Lyapunov function for the system.
+
+Suppose that system (16) would admit an ios-Lyapunov function W with a decay estimate as in (15), i.e., there exist some O/; ff 2 K such that
+
+W (,) * O/(j_j) ) DW (,)f (,; _) ^ \Gamma ff(W (,)): (17)
+
+4
+
+Without loss of generality, we may assume that O/ 2 K1. In particular, we have that
+
+DW (,)f (,; \Gamma O/\Gamma 1(W (,))) ^ \Gamma ff(W (,)) (18) for all , 2 R2 . Fix any ,1 2 R, and consider the one-dimensional differential equation
+
+.x2 = \Gamma  2x2 \Gamma  O/
+
+\Gamma 1(W (,1; x2))
+
+1 + ,21 : (19) Since W (,1; x2(t)) ! 0 (because of (18)) and as ff1(j,2j) ^ W (,1; ,2) for all , (for some ff1 2 K), it follows that x2(t) ! 0 as t ! 1. This implies that W (,1; ,2) ! O/(2,2) for all ,1 2 R and ,2 ? 0. Together with (17), this implies that there exists some fi 2 KL such that, for every trajectory of (16) with u(t) j 0, it holds that
+
+jx2(t)j ^ fi(jx2(0)j ; t); for all , = (x1(0); x2(0)) such that x2(0) ? 0. This is impossible, as it can be seen that, when u(t) j 0, x2(t) = x2(0)e\Gamma 2t=(1+(x1(0))
+
+2) whose decay rate depends on both x
+
+2(0) and x1(0).
+
+Observe that, if we let U (,1; ,2) := [(1 + ,21) j,2j](1+,
+
+2 1), then one obtains the following
+
+estimate:
+
+j,2j * j_j ) DU (,)f (,; _) ^ \Gamma U (,) (20)
+
+for all ,1 2 R, ,2 6= 0, and all _ 2 R. (The function U is not smooth on the set where U (,) = 0, but using a routine smoothing argument, one may easily modify U to get a smooth Lyapunov function.) This U is not an example of a W as here (which, in any case, we know cannot exist), because (20) only means that U is an ros-Lyapunov function, not necessarily an ios-Lyapunov function (since the comparison is between j,2j and j_j rather than between a function of U and j_j).
+
+Finally, we observe that property (8) in the ios-Lyapunov definition may be repharased as follows:
+
+V (,) ? eO/(j_j) ) DV (,)f (,; _) ! 0; 8 , 2 Rn ; 8_ 2 Rm (21)
+
+where eO/(s) := ae O/(s) (for any arbitrary chosen ae 2 (0; 1)). This statement is obviously implied by (8). Conversely, if V satisfies this property, then there is an ff 2 KL so that (8) holds; this follows from Lemma A.5 given in the Appendix.
+
+3 Uniform Stability Notions There is a key technical result which underlies the proofs of all our converse Lyapunov theorems. It requires yet another set of definitions, which correspond to stability uniformly on all "disturbance" inputs.
+
+Definition 3.1 A system (1) is uniformly output stable with respect to inputs in M\Omega , where \Omega  is a compact subset of Rm , if:
+
+ffl it is forward complete, and ffl there exists a KL-function fi such that
+
+jy(t; ,; u)j ^ fi(j,j ; t); 8t * 0 (22) holds for all u and all , 2 Rn .
+
+5
+
+If, in addition, there exists oe 2 K such that
+
+jy(t; ,; u)j ^ oe(jh(,)j); 8 t * 0 (23) holds for all trajectories of the system with u 2 M\Omega , then the system is output-Lagrange uniformly output stable with respect to inputs in M\Omega . Finally, if strengthens (22) to
+
+jy(t; ,; u)j ^ fi(jh(,)j ; t); 8 t * 0 (24) holding for all trajectories of the system with u 2 M\Omega , then the system is state-independent uniformly output stable with respect to inputs in M\Omega .
+
+Theorem 2 Let \Omega  be a compact subset of Rm , and suppose that a system (1) is uniformly output stable with respect to inputs in M\Omega . Then the system admits a smooth Lyapunov function V satisfying the following properties:
+
+ffl there exist ff1; ff2 2 K1 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j); 8 , 2 Rn ; (25)
+
+ffl there exists ff3 2 KL such that
+
+DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j); 8 , 2 Rn ; 8 _ 2 \Omega  : (26)
+
+Moreover, if the system is output-Lagrange uniformly output stable with respect to inputs in M\Omega , then (25) can be strengthened to
+
+ff1(jh(,)j) ^ V (,) ^ ff2(jh(,)j); 8 ,; (27) for some ff1; ff2 2 K1. Finally, if the system is state-independent uniformly output stable with respect to inputs in M\Omega , then (25) can be strengthened to (27) and also (26) can be strengthened to:
+
+DV (,)f (,; _) ^ \Gamma ff4(V (,)); 8 , 2 Rn ; 8 _ 2 \Omega  : (28)
+
+for some ff4 2 K.
+
+The proof of this theorem will be postponed until Section 4.5.
+
+4 Proof of Theorem 1 In the proofs of the various parts of the theorem, we need the following small gain lemma for output-Lagrange stability, see Lemma 8 of [19].
+
+Lemma 4.1 For every system which satisfies (3), there exist a K-function oe and a K1-function * such that, the system
+
+.x = f (x; d*(jyj)); y = h(x); (29)
+
+where d 2 MB, is forward complete, and
+
+jy*(t; ,; d)j ^ oe(jh(,)j); (30) for all , 2 Rn , all t * 0 and all d 2 MB. 2
+
+6
+
+4.1 Proof of Theorem 1, Part 1. Necessity. Consider an olios system (1). By Lemma 4.1, there exist a smooth K1-function *1 and a K-function oe such that the system
+
+.x = f (x; d*1(jyj)); y = h(x); where d 2 MB, is forward complete, and (30) holds.
+
+Since the system is olios, and in particular, ios, and as shown in [19], any ios system is necessarily also ros, there exists some smooth K1-function *2 such that the system
+
+.x = f (x; d*2(jyj)); y = h(x); (31) where d 2 MB, is forward complete, and there exists some fi 2 KL such that, for all trajectories x*
+
+2 (t; ,; u) with the output functions y*2 (t; ,; u), it holds thatfififi
+
+y*
+
+2 (t; ,; d)fififi ^ fi(j,j ; t); 8 t * 0; 8 , 2 R
+
+n ; 8 d 2 MB:
+
+Let *3(s) = minf*1(s); *2(s)g, and let *(\Delta ) be any smooth K1-function so that *(s) ^ *3(s) for all s. Then, the system
+
+.x = f (x; d*(jyj)); y = h(x); (32)
+
+where d 2 MB, is forward complete, and it holds thatfifi
+
+y*(t; ,; d)fifi ^ fi(j,j ; t) and fifiy*(t; ,; d)fifi ^ oe(jh(,)j); 8 t * 0: Applying Theorem 2, one sees that there exists some smooth function V such that
+
+ffl there exist ff1; ff2 2 K1 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(jh(,)j); 8 ,; (33)
+
+ffl there exist some ff3 2 KL such that
+
+DV (,)f (,; **(jh(,)j)) ^ \Gamma ff3(V (,); j,j) (34) for all , 2 Rn and all j*j ^ 1. It then follows that
+
+DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j)
+
+whenever j_j ^ *(jh(,)j), or equivalently, whenever jh(,)j * *\Gamma 1(j_j). Let O/ = ff\Gamma 12 ffi *\Gamma 1. Then one has:
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j)
+
+for all , and all _. Hence, V is an olios-Lyapunov function for the system. Sufficiency. Let V be an olios-Lyapunov function for system (1). Let ff1; ff2 2 K1 such that (9) holds. By (8), and arguing as in Remark 2.1, one also knows that there exists some ^1 and ^2 2 K1 such that
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma  ^1(V (,))1 + ^
+
+2(j,j) (35)
+
+7
+
+for all , and _.
+
+Let fi 2 KL be as in Lemma A.4 for the function ^1. Pick any initial state , and any u. Let x(t) and y(t) denote the ensuing trajectory and output function respectively. If for some t1 * 0, V (x(t1)) ^ O/(kuk), then V (x(t)) ^ O/(kuk) for all t * t1. (Proof: pick any " ? 0. If t2 := infft ? t1 j V (x(t)) ? O/(kuk) + "g is finite, then V (x(t)) ? O/(kuk) for all t in some left neighborhood of t2, so DV (x(t))=dt ! 0 and V (x(t)) ? V (x(t2)) for such t, contradicting its minimality. As " was arbitrary, the claim follows.) Now lete
+
+t = infft * 0 : V (x(t)) ^ O/(kuk)g with the understanding that et = 1 if V (x(t)) ? O/(kuk) for all t * 0. Then
+
+V (x(t)) ^ O/(kuk); 8 t * et; (36) and on [0; et), it holds that
+
+d
+
+dt V (x(t)) ^ \Gamma 
+
+^1(V (x(t))) 1 + ^2(jx(t)j) :
+
+Since the system is ubibs, there exists some oe such that (12) holds. Hence,
+
+d dt V (x(t)) ^ \Gamma 
+
+^1(V (x(t))) 1 + maxfe^2(j,j); e^2(kuk)g
+
+for all t 2 [0; et), where e^2 = ^2 ffi oe. It then follows Lemma A.4 that
+
+V (x(t)) ^ fi `V (,); t1 + maxfe^
+
+2(j,j); e^2(kuk)g '
+
+for all t 2 [0; et).
+
+Let v0(s) = maxj,j^s V (,). Then v0 is nondecreasing, v0(0) = 0, and V (,) ^ v0(j,j). Note then that
+
+fi `V (,); t1 + maxfe^
+
+2(j,j); e^2(kuk)g '
+
+^ max aefi `V (,); t1 + e^
+
+2(j,j) ' ; fi `v0(kuk);
+
+t 1 + e^2(kuk) 'oe
+
+^ max aefi `V (,); t1 + e^
+
+2(j,j) ' ; fi (v0(kuk); 0)oe
+
+(consider two cases: j,j * kuk and j,j ^ kuk). This shows that
+
+V (x(t)) ^ max aefi `V (,); t1 + e^
+
+2(j,j) ' ; efi0(kuk)oe
+
+for all t 2 [0; et), where efi0(s) = fi(v0(s); 0). Combining this with (36), one sees that
+
+V (x(t)) ^ max aefi `V (,); t1 + e^
+
+2(j,j) ' ; efl(kuk)oe (37)
+
+for all t * 0, where efl(s) = efi(s) + O/(s). Using the fact that jh(,)j ^ ff\Gamma 11 (V (,)), we conclude that
+
+jy(t)j ^ max ae efi `jh(,)j ; t1 + e^
+
+2(j,j) ' ; fl(kuk)oe (38)
+
+for all t * 0, where efi(s; r) = ff\Gamma 11 (fi(ff2(s); r)), and fl(s) = ff\Gamma 11 (efl(s)).
+
+8
+
+4.2 Proof of Theorem 1, Part 2. Necessity. Consider an ios system (1). By Theorem 1 in [19], there exist some locally Lipschitz map h0 and O/ 2 K1 with the property that h0(,) * O/(jh(,)j) such that the system
+
+.x = f (x; u); y = h0(x) (39) is olios. By Part 1 of this theorem, system (39) admits an olios-Lyapunov function V . This means that there exist ff1; ff2; ae 2 K1 and ff3 2 KL such that
+
+ff1(jh0(,)j) ^ V (,) ^ ff2(jh0(,)j); 8 , 2 Rn ; and
+
+V (,) * ae(j_j) =) DV (,)f (,; _) ^ \Gamma ff3(V (,); j,j):
+
+To show that V is an ios-Lyapunov function, it only remains to show that V (,) * eff1(jh(,)j) for some eff1 2 K1. But this follows immediately from the fact that jh(,)j ^ O/\Gamma 1(h0(,)). So one can let eff1 := ff1 ffi O/. Hence, V is indeed an ios-Lyapunov function for system (1).
+
+Sufficiency. Let V be an ios-Lyapunov function for system (1). From the proof of Part 1 of Theorem 1 (sufficiency), one can see that if V satisfies (35) for some O/; ^1; ^2 2 KL, then there exist efi 2 KL; e^2; efl 2 K1 such that (37) holds. This means that the system
+
+.x = f (x; u); y = V (x) is olios. Since V (x) * ff1(jh(,)j) for some ff1 2 K1, it follows that system (1) is ios.
+
+4.3 Proof of Theorem 1, Part 3. Necessity. Since the system (1) is ros, there is a smooth K1-function * such that system (5) is forward complete, and (6) holds for the corresponding system (5). That is, system (5) is uniformly output stable. By Theorem 2, system (5) admits a smooth Lyapunov function V satisfying (25) and
+
+DV (,)f (,; _*(jyj)) ^ \Gamma ff3(V (,); j,j); 8 , 2 Rn ; 8 j_j ^ 1; for some ff3 2 KL. This is equivalent to
+
+jyj * *\Gamma 1(j*j) ) DV (,)f (,; *) ^ \Gamma ff3(V (,); j,j); 8 , 2 Rn ; 8 j*j 2 Rm : Hence, one concludes that V is an ros-Lyapunov function for system (1). Sufficiency. Let V be an ros-Lyapunov function. As in Remark 2.1, there exist O/; ^1; ^2 2 K1 such that
+
+DV (,)f (,; _) ^ \Gamma  ^1(V (,))1 + ^
+
+2(j,j)
+
+whenever jh(,)j * O/(j_j). Let * = O/\Gamma 1. Without loss of generality, one may assume that * is smooth. (Otherwise, one can always replace * by a smooth K1-function that is majorized by *.) It then follows that
+
+DV (,)f (,; **(jh(,)j)) ^ \Gamma  ^1(V (,))1 + ^
+
+2(j,j)
+
+9
+
+for all , 2 Rn and all j*j ^ 1. This implies that for any trajectory x* (t) = x* (t; ,; d) of the system
+
+.x = f (x; d*(jyj)); y = h(x);
+
+where d 2 MB, it holds that
+
+d dt V (x*(t)) ^ \Gamma 
+
+^1(V (x* (t))) 1 + ^2(fifix* (t)fifi) (40)
+
+for all t * 0. It follows immediately that V (x*(t)) ^ V (,) for all t * 0. Since V (,) * ff1(jh(,)j) for some ff1 2 K1, it follows that, for some oe 2 K1,fifi
+
+y*(t)fifi ^ oe(j,j); 8 t * 0: (41) Since the system is ubibs, there exists some oe0 2 K such thatfifi
+
+x*(t; ,; d))fifi ^ maxfoe0(j,j); oe0(kudk)g; 8 t * 0; where ud(t) = d(t)*(jy(t)j). Combining this with (41), it follows thatfifi
+
+x* (t; ,; d)fifi ^ eoe(j,j); 8 t * 0; where eoe(s) = maxfoe0(s); oe0(*(oe(s)))g. Substituting this back into (40), one has
+
+d dt V (x* (t)) ^ \Gamma 
+
+^1(V (x* (t)))
+
+1 + ^3(j,j) ; 8 t * 0;
+
+where ^3(s) = ^2(eoe(s)). Again, by Lemma A.4, one knows that there exists some fi 2 KL (which depends only upon ^1) such that
+
+V (x* (t)) ^ fi `V (,); t1 + ^
+
+3(j,j) ' ; 8 t * 0:
+
+Together with the fact that jh(,)j ^ ff\Gamma 11 (V (,)), this yieldsfifi
+
+y*(t; ,; d)fifi ^ efi(j,j ; t); 8 t * 0; where efi(s; r) = ff\Gamma 11 [fi(ff2(s); t=(1 + ^3(s)))] is in KL, and ff2 is any K1-function such that V (,) ^ ff2(j,j) for all ,. This shows that the system is ros.
+
+4.4 Proof of Theorem 1, Part 4. Necessity. Assume that a ubibs system (1) admits an estimate (4) for some fi 2 KL and some fl 2 K. Without loss of generality, one may assume that
+
+jy(t; ,; u)j ^ maxffi(jh(,)j ; t); fl(kuk)g: Let oe1(s) = fi(s; 0), and oe2(s) = fl(s). Note then that (3) holds. By Lemma 8 in [19], there exists some smooth K1-function such that the corresponding system (5) is forward complete, and it holds that
+
+oe2(jd(t)j *(jy*(t; ,; d)j) ^ 12 jh(,)j
+
+10
+
+for all , 2 Rn , all t * 0 and all d 2 MB. One then can show that for the system
+
+.x(t) = f (x(t); d(t)*(jy(t)j)); y(t) = h(x(t)); there exists efi 2 KL so that, for all trajectories x*(t; ,; d), it holds thatfifi
+
+y*(t; ,; d)fifi ^ efi(jh(,)j ; t) for all t * 0. Applying the last part of Theorem 2 one sees that there exists V satisfying (27) for some ff1; ff2 2 K1 and
+
+DV (,)f (,; **(jy(,)j)) ^ \Gamma ff3(V (,)) for all , and all j*j ^ 1. This is equivalent to the existence of O/ 2 K1 such that
+
+V (,) * O/(j_j) ) DV (,)f (,; u) ^ \Gamma ff3(V (,)): (42)
+
+Sufficiency. It is routine to show that if there is a smooth function V satisfying (27) and (42), then the system admits an estimate of type (4).
+
+Remark 4.2 Note that in all the proofs of the necessity implications of Theorem 1, the ubibs property is not needed. That is, to show the existence of various Lyapunov functions for the corresponding stability properties, one does not need the ubibs property. However, the ubibs property is indeed required in the proofs of the sufficiency implications regarding the ios, olios, and the ros properties. It is not hard to find examples where a system admits an ios- (or olios, or ros)-Lyapunov function, without satisfying the ubibs property, and fails to be ios (or olios, or ros, respectively).
+
+It should also be noticed that Part 4 of Theorem 1 also holds for all forward complete systems (not necessarily ubibs). Without the ubibs assumption, this result recovers the converse Lyapunov theorem obtained in [12] for systems that are uniformly globally asymptotically stable with respect to closed invariant sets, when applied using as output the distance to a closed invariant set. In fact, Part 4 of Theorem 1 yields a more general result than the one in [12]. Because of the techniques used in the proofs in [12], the systems were required to be backward complete. Due to Part 4 of Theorem 1, it can be seen that the backward completeness assumption is redundant. 2
+
+4.5 Proof of Theorem 2 Consider the system
+
+.x(t) = f (x(t); u(t)); y = h(x(t)); (43)
+
+where the input u takes values in a compact subset \Omega  of Rm . Assume that the system is ubibs and there exists some fi 2 KL such that (22) holds for all trajectories of (43). Let ! : Rn ! R*0 be defined by
+
+!(,) := sup fjy(t; ,; u)j : t * 0; u 2 M\Omega g : (44)
+
+It then holds that
+
+jh(,)j ^ !(,) ^ fi0(j,j); 8 , 2 Rn ; (45)
+
+11
+
+where fi0(s) = fi(s; 0). Moreover, if there exists some oe 2 K such that (23) holds for all trajectories, then the above can be strengthened to
+
+jh(,)j ^ !(,) ^ oe(jh(,)j); 8 , 2 Rn : (46) Observe that, for any , 2 Rn , u 2 M\Omega , and t1 * 0,
+
+!(x(t1; ,; u)) ^ sup
+
+t*0;v2M\Omega  jy(t1 + t; ,; v)j ^ fi(j,j ; t1): (47)
+
+Also ! decreases along trajectories, i.e.,
+
+!(x(t; ,; u)) ^ !(,); 8t * 0; , 2 Rn ; u 2 M\Omega : (48) Define
+
+D := f, : y(t; ,; u) = 0; 8 t * 0; 8 u 2 M\Omega g:
+
+Then !(,) = 0 if and only if , 2 D. For , =2 D, it holds that
+
+!(,) = sup
+
+0^t^t,; u2M\Omega  jy(t; ,; u)j ; (49)
+
+where t, = Tj,j(!(,)=2), and Tr(s) is defined as in Lemma A.1 associated with the function fi.
+
+Lemma 4.3 The function !(,) is locally Lipschitz on Rn n D and continuous everywhere. Proof. First notice that
+
+lim ,!,0 !(,) * !(,0); 8 ,0 2 R
+
+n ; (50)
+
+that is, !(,) is lower semi-continuous on Rn . Indeed, pick ,0 and let c := !(,0). Take any " ? 0. Then there are some u0 and t0 so that jy(t0; ,0; u0)j * c\Gamma  "=2. By continuity of y(t0; \Delta ; u0), there is some neighborhood eU0 of ,0 so that jy(t0; ,; u0)j * c \Gamma  " for all , 2 eU0. Thus !(,) * c \Gamma  " for all , 2 eU0, and this establishes (50).
+
+Fix any ,0 2 Rn n D, and let c0 = !(,0)=2. Then there exists a bounded neighborhood U0 of ,0 such that
+
+!(,) * c0; 8 , 2 U0:
+
+Let s0 be such that j,j ^ s0 for all , 2 U0. Then
+
+!(,) = sup fjy(t; ,; u)j : t 2 [0; t1]; u 2 M\Omega g ; 8 , 2 U0; where t1 = Ts0(c0=2). By [12, Proposition 5.5], one knows that x(t; ,; u) is locally Lipschitz in , uniformly on u 2 M\Omega  and on t 2 [0; t1], and therefore, so is y(t; ,; u). Let C be a constant such that
+
+jy(t; ,; u) \Gamma  y(t; j; u)j ^ C j, \Gamma  jj ; 8 ,; j 2 U0; 8 0 ^ t ^ t1; 8 u 2 M\Omega : For any " ? 0 and any , 2 U0, there exist some t,;" 2 [0; t1] and some u,;" such that
+
+!(,) ^ jy(t,;"; ,; u,;")j + ": It then follows that, for any ,; j 2 U0, for any " ? 0,
+
+!(,) \Gamma  !(j) ^ jy(t,;"; ,; u,;")j + " \Gamma  jy(t,; "; j; u,;")j ^ C j, \Gamma  jj + ":
+
+12
+
+Consequently,
+
+!(,) \Gamma  !(j) ^ C j, \Gamma  jj ; 8 ,; j 2 U0:
+
+By symmetry,
+
+!(j) \Gamma  !(,) ^ C j, \Gamma  jj ; 8 ,; j 2 U0:
+
+This proves that ! is locally Lipschitz on Rn n D.
+
+We now show that ! is continuous on D. Fix ,0 2 D. One would like to show that
+
+lim,!,
+
+0 !(,) = 0: (51)
+
+Assume that this does not hold. Then there exists some "0 ? 0 and a sequence f,kg with ,k ! ,0 such that !(,k) ? "0 for all k. Without loss of generality, one may assume that
+
+j,kj ^ s1; 8 k; for some s1 * 0. It then follows that
+
+!(,k) = sup fjy(t; ,k; u)j : t 2 [0; t2]; u 2 M\Omega g ; where t2 = Ts1("0=2). Hence, for each k, there exists some uk 2 M\Omega  and some o/k 2 [0; t2] such that
+
+jy(o/k; ,k; uk)j * !(,k) \Gamma  "0=2 * "0=2:
+
+Again, by the locally Lipschitz continuity of the trajectories, one knows that there is some C1 ? 0 such that
+
+jy(t; ,k; u) \Gamma  y(t; ,0; u)j ^ C1 j,k \Gamma  ,0j ; 8 k * 0; 8 0 ^ t ^ t2; 8 u 2 M\Omega : Hence,
+
+jy(o/k; ,0; uk)j * "0=4
+
+for k large enough, contradicting the fact that y(t; ,0; u) j 0 for all u 2 M\Omega . This shows that (51) holds if ,0 2 D.
+
+Next, we pick any smooth and bounded function k : R*0 ! R?0 whose derivative is everywhere positive, and define W : Rn ! R*0 by
+
+W (,) := sup f!(x(t; ,; u))k(t) : t * 0; u 2 M\Omega g : (52) Corresponding to k there are two positive real numbers c1 ! c2 such that k(t) 2 [c1; c2] for all t * 0, and so
+
+c1!(,) ^ W (,) ^ c2!(,); 8 , 2 Rn ;
+
+which implies that
+
+c1 jh(,)j ^ W (,) ^ c2fi0(j,j); 8 , 2 Rn : (53)
+
+Note, for future reference, that it is always possible to find a bounded, positive, and decreasing continuous function o/ (\Delta ) with o/ (t) ! 0 as t ! 1, such that
+
+k0(t) * o/ (t) for all t * 0 : (54)
+
+By (47), one knows that !(x(t; ,; u)) ! 0 as t ! 1. It follows that there is some o/, * 0 such that
+
+W (,) = sup f!(x(t; ,; u))k(t) : u 2 M\Omega ; 0 ^ t ^ o/,g : (55)
+
+Furthermore, one can get the following estimate, where fTrg is a family of functions associated to fi as in Lemma A.4.
+
+13
+
+Lemma 4.4 For any , 62 D with j,j ^ r,
+
+W (,) = sup f!(x(t; ,; u))k(t) : u 2 M\Omega ; 0 ^ t ^ o/,g ; where o/, = Tr( c12c2 !(,)).
+
+Proof. If the statement is not true, then for any " ? 0, there exists some t" ? Tr( c12c2 !(,)) and some u" 2 M\Omega  such that
+
+W (,) ^ !(x(t"; ,; u"))k(t") + ": This implies the following:
+
+!(,) ^ 1c
+
+1 W (,) ^
+
+1 c1 !(x(t"; ,; u"))k(t") +
+
+" c1
+
+^ c2c
+
+1 !(x(t"; ,; u")) +
+
+" c1 ^
+
+c2 c1 \Delta 
+
+c1 2c2 !(,) +
+
+" c1
+
+= !(,)2 + "c
+
+1 :
+
+Taking the limit as " ! 0 results in a contradiction.
+
+Lemma 4.5 The function W (\Delta ) is locally Lipschitz on Rn n D and continuous everywhere. Proof. Fix ,0 62 D. Let K0 be a compact neighborhood of ,0 such that K0 " D = ;. Since ! is continuous, it follows that there is some r0 ? 0 such that !(,) ? r0 for all , 2 K0, and hence, W (,) ? r1 := c1r0 for all , 2 K0. Let
+
+T0 = Ts0 ` r18c
+
+2 ' ;
+
+where s0 ? 0 is such that j,j ^ s0 for all , 2 K0. Let C ? 0 be such that
+
+jy(t; ,; u) \Gamma  y(t; j; u)j ^ C j, \Gamma  jj ; 8 t 2 [0; T0]; 8 ,; j 2 K0; 8 u 2 M\Omega : Let
+
+K1 = K0 " ae, : j, \Gamma  ,0j ^ r116Cc
+
+2 oe :
+
+Fix any " 2 (0; r1=4). Then, for any , 2 K1, there exist t,;" 2 [0; T0] and u,;" 2 M\Omega  such that
+
+W (,) ^ !(x(t,;"; ,; u,;"))k(t,;") + ": Claim: For any ,; j 2 K1, !(x(t,;"; j; u,;")) * r18c2 .
+
+Proof. First we note that for any , 2 K1 ae K0,
+
+!(x(t,;"; ,; u,;")) * W (,) \Gamma  "c
+
+2 *
+
+W (,)
+
+2c2 * r2;
+
+where r2 := r12c2 . Thus, for each , 2 K1, there exists some v, 2 M\Omega  and some o/, ? 0 such that
+
+jy(o/,; x(t,;"; ,; u,;"); v,)j * !(x(t,;"; ,; u,;")) \Gamma  r2=2 * r2=2:
+
+14
+
+Observe that
+
+y(o/,; x(t,;"; ,; u,;"); v,) = y(o/, + t,;"; ,; v,;");
+
+where v,;" is the concatenation of u,;" and v,, i.e.,
+
+v,;"(t) = ae u,;"(t); if 0 ^ t ! t,;";v
+
+,(t \Gamma  t,;"); if t * t,;":
+
+Noticing that jy(t; ,; u)j ^ r2=2 for all t * Ts0(r2=4), one concludes that o/, + t,;" ! Ts0(r2=4) = T0. Note also that for any j 2 K1,
+
+jy(o/,; x(t,;"; j; u,;"); v,)j = jy(o/, + t,;"; j; v,;")j
+
+* jy(o/, + t,;"; ,; v,;")j \Gamma  jy(o/, + t,;"; j; v,;") \Gamma  y(o/, + t,;"; ,; v,;")j
+
+* r22 \Gamma  C j, \Gamma  jj
+
+* r22 \Gamma  2C r116Cc
+
+2 =
+
+r1 4c2 \Gamma 
+
+r1 8c2 =
+
+r1 8c2 :
+
+This implies that !(x(t,;"; j; u,;")) * r18c2 for all ,; j 2 K1, as claimed.
+
+According to [12, Proposition 5.1], there is some compact set K2 such that x(t; ,; u) 2 K2 for all 0 ^ t ^ T0, all , 2 K1 and all u 2 M\Omega . Let
+
+K3 = K2 " f, : !(,) * r1=8c2g: Applying Lemma 4.3, one knows that there is some C1 ? 0 such that
+
+j!(i1) \Gamma  !(i2)j ^ C1 ji1 \Gamma  i2j ; 8 i1; i2 2 K3: Since for all ,; j 2 K1 and all 0 ! " ! r1=4, x(t,;"; j; u,;") 2 K3, we have:
+
+j!(x(t,;"; ,; u,;")) \Gamma  !(x(t,;"; j; u,;"))j ^ C1 jx(t,;"; ,; u,;") \Gamma  x(t,;"; j; u,;")j ; for all ,; j 2 K1, all " 2 (0; r1=4). Hence,
+
+W (,) \Gamma  W (j) ^ !(x(t,;"; ,; u,;"))k(t,;") \Gamma  !(x(t,;"; j; u,;"))k(t,;") + "
+
+^ c2 j!(x(t,;"; ,; u,;")) \Gamma  !(x(t,;"; j; u,;"))j + " ^ c2C1 jx(t,;"; ,; u,;") \Gamma  x(t,;"; j; u,;")j + " ^ c2C1C2 j, \Gamma  jj + ";
+
+where C2 ? 0 is such a constant that jx(t; ,; u) \Gamma  x(t; j; u)j ^ C2 j, \Gamma  jj for all ,; j 2 K3, all t 2 [0; T0], all u 2 M\Omega . Note that the above holds for any " 2 (0; r1=4), and thus,
+
+W (,) \Gamma  W (j) ^ C3 j, \Gamma  jj for all ,; j 2 K1, where C3 = c2C1C2. By symmetry, one proves that
+
+W (j) \Gamma  W (,) ^ C3 j, \Gamma  jj for all ,; j 2 K1.
+
+To prove the continuity of W on D, it is enough to notice that for any , 2 D, W (,) = 0 and
+
+jW (,) \Gamma  W (j)j ^ c2!(j) ! 0; as j ! ,:
+
+15
+
+The proof of Lemma 4.5 is thus concluded.
+
+Below we show that W is decreasing along trajectories. Pick any , 62 D. Let `0 ? 0 be such that
+
+!(x(t; ,; v)) * !(,)=2; 8 t 2 [0; `0]; 8 v 2 \Omega ;
+
+where v denotes the constant function v(t) j v. (Observe that such a `0 exists because ! is continuous.) Pick any ` 2 [0; `0], and let jv = x(`; ,; v). For any " ? 0, there exists some tv;" and uv;" 2 M\Omega  such that
+
+W (jv) ^ !(x(tv;"; jv; uv;"))k(tv;") + "
+
+= !(x(tv;" + `; ,; uv;"))k(tv;" + `) `1 \Gamma  k(t
+
+v;" + `) \Gamma  k(tv;")
+
+k(tv;" + `) ' + "
+
+^ W (,) `1 \Gamma  k(t
+
+v;" + `) \Gamma  k(tv;")
+
+c2 ' + "; (56)
+
+where uv;" denotes the concatenation of v and uv;". Still for the fixed , and `, and for any r ? j,j, define
+
+T r,;` := maxev2\Omega  Tr ` c12c
+
+2 !(x(`; ,; ev))' : (57)
+
+Notice that x(`; ,; ev) is jointly continuous as a function of (`; ,; ev). Since ! and Tr are both continuous, this maximum is well defined and, moreover, T r,;` is continuous as a function of `, so in particular
+
+lim`!0
+
++ T
+
+r,;` = Tr ` c1
+
+c2 !(,)' : (58)
+
+Claim: tv;" + ` ^ T r,;` for all v 2 \Omega  and for all " 2 (0; c14 !(,)).
+
+Proof. Assume that this is not true. Then there is some v 2 \Omega  and some " 2 \Gamma 0; c14 !(,)\Delta  such that tv;" + ` ? T r,;`, and in particular,
+
+tv;" + ` * Tr ` c12c
+
+2 !(x(`; ,; v))' ;
+
+from which it follows that
+
+!(x(tv;"; jv; uv;")) = !(x(tv;" + `; ,; uv;")) ^ c12c
+
+2 !(x(`; ,; v)) =
+
+c1 2c2 !(j
+
+v);
+
+for some input function uv;" (which we can take to be the concatenation of v and uv;"; note that the inequality follows from (47) and the definition of the functions Tr).
+
+By the definition of W , one has
+
+!(jv) ^ 1c
+
+1 W (j
+
+v) ^ 1c1 !(tv;"; jv; uv;")k(tv;") + "c1
+
+^ c2c
+
+1 !(t
+
+v;" + `; ,; uv;") + "c1
+
+^ 12 !(jv) + "c
+
+1 ;
+
+which is impossible, since " ! c14 !(,) ^ c12 !(jv). This proves the claim.
+
+16
+
+From (56), we have, for any v 2 D and for any " small enough,
+
+W (x(`; ,; v)) \Gamma  W (,) ^ \Gamma  W (,)c
+
+2 o/ (t
+
+v;" + c`)` + "
+
+for some c 2 (0; 1), where we used the mean value theorem in order to estimate the change in k, and where o/ is a function as in (54). Using the monotonicity of o/ (\Delta ), and the above claim, one concludes
+
+W (x(`; ,; v)) \Gamma  W (,) ^ \Gamma  W (,)c
+
+2 o/ \Gamma T
+
+r,;`\Delta  ` + "
+
+for all " small enough. Letting " ! 0, one obtains:
+
+W (x(`; ,; v)) \Gamma  W (,) ^ \Gamma  W (,)c
+
+2 o/ \Gamma T
+
+r,;`\Delta  `; 8 v 2 \Omega :
+
+Thus one concludes that for any v 2 \Omega  and any ` ? 0,
+
+W (x(`; ,; v)) \Gamma  W (,)
+
+` ^ \Gamma 
+
+W (,)
+
+c2 o/ (T
+
+r,;`):
+
+Since W is locally Lipschitz on Rn n D, it is differentiable almost everywhere on Rn n D, and hence, for any v 2 \Omega , any r ? j,j, and any , at which W is differentiable,
+
+DW (,)f (,; v) = lim`!0
+
++
+
+W (x(`; ,; v)) \Gamma  W (,)
+
+` ^ \Gamma  lim`!0+
+
+W (,)
+
+c2 o/ (T
+
+r,;`)
+
+= \Gamma  W (,)c
+
+2 o/ ` lim`!0+ T
+
+r,;`' = \Gamma  W (,)
+
+c2 o/ `Tr `
+
+c1 c2 !(,)''
+
+^ \Gamma  W (,)c
+
+2 o/ `Tr `
+
+c1 c22 W (,)'' = \Gamma eff3(W (,); r); (59)
+
+where eff3(s; r) = sc2 o/ (Tr(c3s)) with c3 = c1=c22. Since (59) holds for all r ? j,j, it follows that
+
+DW (,)f (,; v) ^ \Gamma eff3(W (,); 2 j,j); (60) for all v 2 \Omega  and for almost all , 2 Rn n D.
+
+Since Tr(s) is defined for all r * 0 and s ? 0, one sees that eff3 is defined on R?0 \Theta  R*0 . Extend eff3 to R*0 \Theta  R*0 by letting eff3(0; r) := 0 for all r * 0. By the continuity property of o/ and Tr(\Delta ), one sees that eff3(\Delta ; r) is continuous for each r. (The continuity at s = 0 follows from eff3(s; r) = so/ (Tr(c3s))=c2 ^ so/ (0)=c2 for all s ? 0.) Furthermore, since o/ (Tr(c3s)) is nondecreasing in s, it follows that eff3(s; r) is of class K in s. Let ^ff3(s; r) = eff3(s; 2r)=(1 + r). This function tends to zero as r ! 1, because eff3(s; r) is nonincreasing in r; thus ^ff3(s; r) is of class KL. Moreover,
+
+DW (,)f (,; v) ^ \Gamma  ^ff3(W (,); j,j); 8 , 2 Rn n D; 8 v 2 \Omega : By Corollary A.3, there exists a continuous KL-function bff3 such that
+
+DW (,)f (,; v) ^ \Gamma bff3(W (,); j,j); 8 , 2 Rn n D; 8 v 2 \Omega : (61)
+
+To complete the proof, we follow the strategy used in [12] to find a smooth approximation of W . First of all, by Theorem B.1 in [12], applied on Rn n D, there is a continuous function W1 that is smooth on Rn n D such that
+
+jW1(,) \Gamma  W (,)j ^ W (,)2 ; 8 , 2 Rn n D ; (62)
+
+17
+
+and
+
+DW1(,)f (,; v) ^ \Gamma bff3(W (,); j,j)=2; 8 , 2 Rn n D ; 8 v 2 \Omega : (63)
+
+We extend W1 to all of Rn by letting W1 j 0 on D; thus, the approximation (62) holds on all of Rn . (Note that W and bff3(V (,); j,j) are both continuous, so the result in [12] can indeed be applied.)
+
+Next, we appeal to Lemma 4.3 in [12]. This shows that there exists some ae 2 K1 with ae0(s) ? 0 for all s ? 0 such that ae ffi W1 is smooth everywhere. Let V = ae ffi W1. It follows from (53) and (62) that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j); 8 , 2 Rn ; where ff1(s) = ae(c1s=2), ff2(s) = ae(2c2fi0(s)), and it follows from (62) and (63) that
+
+DV (,)f (,; _) ^ \Gamma ae0(W1(,))bff3(W (,); j,j)=2 ^ \Gamma ff3(V (,); j,j) (64) for all , 2 Rn n D, all _ 2 \Omega , where
+
+ff3(s; r) = ae
+
+0(ae\Gamma 1(s))bff3(ae\Gamma 1(V (,))=2; r)
+
+2 : Since V has local (actually, global) minima at all points in D, it follows that DV (,) j 0 on D, so we know that the estimate (64) holds also on all of Rn .
+
+Finally, observe that if there exists oe 2 K such that (23) holds for all trajectories of the system, then (46) holds for all ,, which, in turn, implies that
+
+c1 jh(,)j ^ W (,) ^ c2oe(jh(,)j); 8 , 2 Rn : (65) This results in the desired inequality:
+
+ff1(jh(,)j) ^ V (,) ^ oe1(jh(,)j); 8 , 2 Rn ; (66) where oe1(s) = ae(2c2oe(s)). This shows that if (23) holds for some oe 2 K, then property (25) can be strengthened to property (27).
+
+Finally, suppose that, in the above proof, one strengthens (22) to (24). Associated to the function fi there are, as before, functions fTrg. Since also we have an estimate as in (22), there are functions fTrg associated to a fi as in (22); without loss of generality, we will assume that the same Tr's work for both. Thus, we know that, provided t * Tr(s), jy(t; ,; u)j ^ s whenever jh(,)j ^ r or j,j ^ r. The claim stated after Equation(58) holds now for all r ? jh(,)j (instead of merely if r ? j,j), because (47) can be strenghtened to
+
+!(x(t1; ,; u)) ^ fi(jh(,)j ; t1) : We now repeat the above proof to get a function W (,) satisfying (65), and corresponding to (61), one has now also
+
+DW (,)f (,; v) ^ \Gamma bff3(W (,); jh(,)j) ^ \Gamma bff3 `W (,); W (,)c
+
+1 ' ;
+
+for all , 2 Rn n D and all v 2 \Omega . Therefore, on Rn n D,
+
+DW (,)f (,; v) ^ \Gamma ff4(W (,));
+
+18
+
+where eff4(s) = eff3(s; s=c1) is a continuous positive definite function. Using the same smoothing argument as earlier, we can show that there is a smooth function V such that (66) holds for some oe1; oe2 2 K1, and (64) can be strengthened to
+
+DV (,)f (,; v) ^ \Gamma bff4(V (,)) (67) for all , 2 Rn , all v 2 \Omega , where bff4(\Delta ) is some continuous positive definite function.
+
+Now we modify the function V to get V1 so that V1 satisfies inequalities of type (65) and (67) with bff4 replaced by a K1 function ff5. For this purpose, let ae0(\Delta ) be a smooth K1-function such that ae0(s)bff4(s) * 1 for s * 1, and let
+
+ae1(s) = eR
+
+s 0 ae0(s1) ds1 \Gamma  1:
+
+Define V1(,) = ae1(V (,)). It holds thatb
+
+ff1(jh(,)j) ^ V1(,) ^ bff2(jh(,j); 8 , 2 Rn ; where bff1(s) = ae1(ff1(s)), and bff2(s) = ae1(ff2(s)), and
+
+DV1(,)f (,; v) = \Gamma (V1(,) + 1)ae0(V (,))bff4(V (,)) ^ \Gamma ff5(V1(,)); for all , 2 Rn , all v 2 \Omega , where ff5 is any K1 function with the property that
+
+ff5(ae1(s)) ^ (ae1(s) + 1)ae0(s)bff4(s) for all s * 0 (such a K1-function exists because (s + 1)ae0(s)bff4(s) * s for all s * 1). Using V1 as a Lyapunov function, this completes the proof.
+
+5 Remarks The concept of input to output stability does not distinguish between "measured outputs" which may be used to provide information about the state of a system and "target outputs" which are often the object of control, nor does it allow for the consideration of "robustness" to disturbances. A more general concept can be studied as well, as follows. Suppose that, instead of systems as in (1), we study more general systems of the following form:
+
+.x(t) = f (x(t); u(t); d(t)) ; y(t) = h(x(t)) ; w(t) = k(x(t)) ; (68) where f : Rn \Theta  Rm \Theta  Rr ! Rn , h : Rn ! Rp , and k : Rn ! Rq , are all locally Lipschitz continuous (for some nonnegative integers n; m; r; p; q). We think of the functions d(\Delta ) and w(\Delta ) as disturbances and measured outputs respectively. Even more generality is gained if one considers, as mentioned in [17], a "measure" for states (in the sense of [11]), which we denote by jxjA in analogy to the distance to a set A as in previous extensions of the iss notion. Then, a natural definition of relative stability is given by the requirement that there should exist a KL-function fi, and K-functions fl1 and fl2, such that, for each initial state , and inputs (u; d), and for all t in the domain of definition of the corresponding maximal solution x(\Delta ) of (68),
+
+jy(t)j ^ fi(j,jA ; t) + fl1(kuk) + fl2(kwk) ; (69) where y and w are the functions h(x(\Delta )) and k(x(\Delta )) respectively. Observe that, when d does not appear in the equations, and k j 0, we recover (if j\Delta jA = j\Delta j) the ios definition. When,
+
+19
+
+again, d does not appear in the equations, but now h(x) = x, we recover (if j\Delta jA = j\Delta j) the "ioss" or "input/output to state stability" notion of zero-detectability discussed in [18] and recently completely characterized in [8]. (These notions are related by the fact that a system is iss if and only if it is both ioss and ios, which generalizes the linear systems theory fact that internal stability is equivalent to detectability plus external stability.) A sufficient Lyapunovtheoretic condition for our general notion (which could be called "input/measurement to output stability") is the existence of a smooth V : Rn ! R*0 such that, for some ff1; ff2 2 K1,
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,jA); 8 , 2 Rn (70) and there exist O/1; O/2 2 K and ff3 2 KL such that
+
+DV (,)f (,; _; ffi) ^ \Gamma ff3(V (,); j,j)+O/1(j_j)+O/2(jh(,)j); 8 , 2 Rn ; 8_ 2 Rm ; 8ffi 2 Rr ; (71) or obvious variations of this inequality. We leave the formulation of converse theorems for future work.
+
+A Some Facts Regarding KL Functions The following simple observation is proved in [19] and will be needed here too. Lemma A.1 For any KL-function fi, there exists a family of mappings fTrgr*0 such that
+
+ffl for each fixed r ? 0, Tr : R?0 onto\Gamma ! R?0 is continuous and strictly decreasing, and T0(s) j 0; ffl for each fixed s ? 0, Tr(s) is strictly increasing as r increases, and is such that fi(r; Tr(s)) !
+
+s, and consequently, fi(r; t) ! s for all t * Tr(s).
+
+Lemma A.2 For any KL function fi, there exist two K functions ^1 and ^2 so that
+
+fi(s; t) * ^1(s)1 + ^
+
+2(t) (72)
+
+for all s * 0 and all t * 0.
+
+Proof. We assume that b := sups fi(s; 0) ! 1 (otherwise, we first find a fi0 ^ fi with that property, and prove the result for fi0). We define, for all s * 0 and t * 0,e
+
+fi(s; t) := Z
+
+t+1
+
+t fi(s; o/ ) do/ : Note that efi is again of class KL, and efi(s; t) ^ fi(s; t) for all s; t. Lete
+
+ff(t) := sup
+
+s*0 efi(s; t) :
+
+This is finite everywhere, since it is bounded by b. Moreover, it is a continuous function, becausee
+
+ff(t) := Z
+
+t+1
+
+t ff(o/ ) do/;
+
+20
+
+where ff is the decreasing function (not necessarily strictly) defined by ff(t) := sups*0 fi(s; t). We will write from now on " efi(1; t)" instead of "eff(t)". Finally, we let
+
+ae(x) := maxfx; 0g for all x 2 R, and introduce the following function:
+
+c : R2 ! R : (x; y) 7! \Gamma  ln efi ` 1ae(x) ; ae(y)' \Gamma  ae(\Gamma x) \Gamma  ae(\Gamma y)
+
+where we understand efi( 10 ; t) as eff(t). As in [1], we let N denote the class of all functions k : R ! R that are nondecreasing, continuous, and unbounded below. Note that c is of class N on each variable separately. (Continuity follows from the continuity of each of efi(1; \Delta ), efi(s; \Delta ) for each s * 0, and efi(\Delta ; t) for each t * 0 as well as continuity of ae. The nondecreasing property is clear, using that efi(\Delta ; t) for each t * 0 and ae are nondecreasing, and that efi(1; \Delta ) and efi(s; \Delta ) for each s * 0 are nonincreasing. Unbounded below follows from the fact that for x ! \Gamma 1 we have c(x; y0) = a+x, where a = efi(1; ae(y0))\Gamma ae(\Gamma y0) and for y ! \Gamma 1 we have c(x0; y) = a+y,
+
+where a = \Gamma  ln efi i 1ae(x0) ; 0j \Gamma  ae(\Gamma x0).
+
+By Proposition 3.4 in [1], there is some k 2 N such that c(x; y) ^ k(x) + k(y) for all x; y. So, we can write, after using that fi * efi: fi(1=x; y) * e\Gamma k(x)e\Gamma k(y) for all x; y ? 0. Equivalently,
+
+fi(s; t) * ^1(s)1 + ^
+
+2(t)
+
+for all s; t ? 0, when we define
+
+^1(s) := e\Gamma k(1=s)\Gamma k(0)
+
+for all s ? 0 and
+
+^2(t) := ek(t)\Gamma k(0) \Gamma  1
+
+for all t * 0. Observe that both of these functions are continuous, nondecreasing, and nonnegative. Moreover, ^2(0) = 0, so ^2 is in K. From the inequality
+
+[1 + ^2(0)] fi(s; 0) * ^1(s) for all s ? 0, and the fact that fi(0; 0) = 0, we conclude that lims!0+ ^1(s) = 0, so we may extend ^1 by defining ^1(0) = 0, and thus ^1 is in K as well.
+
+As ^1 and ^2 in Lemma A.2 are continuous, we have, in particular:
+
+Corollary A.3 For any KL-function fi, there is a (jointly) continuous KL-function fi1 such that fi(s; r) * fi1(s; r) for all (s; r) 2 R*0 \Theta  R*0 . 2
+
+The following is a generalization of the comparison lemma given in [12]. It plays a role in the proofs of sufficiency, which are the easier parts of the theorems.
+
+Lemma A.4 For any K-function ^, there exists a KL function fi such that if y(\Delta ) is any locally absolutely continuous function defined on some interval [0; T ] with y(t) * 0, and if y(\Delta ) satisfies the differential inequality
+
+.y(t) ^ \Gamma c ^(y(t)) for almost all t 2 [0; T ] (73)
+
+21
+
+for some c * 0 with y(0) = y0 * 0, then it holds that
+
+y(t) ^ fi(y0; ct) for all t 2 [0; T ].
+
+Proof. First of all, by Lemma 4.4 in [12], for each ^ 2 K, there exists fi 2 KL such that for any locally absolutely continuous function z(t) * 0, if it satisfies the inequality
+
+.z(t) ^ \Gamma ^(z(t)) on [0; T ], it holds that z(t) ^ fi(z(0); t) for all t. (The statement in that reference applies to z defined on all of [0; 1), but exactly the same proof works for a finite interval.)
+
+Let y(t) be a function as in the statement of the lemma for some c ? 0; T ? 0. Let ey(t) = y(t=c). Then ey is again locally absolutely continuous and nonnegative on [0; cT ]. Moreover, ey satisfies the inequality d
+
+dt ey(t) ^ \Gamma ^(ey(t)): Hence, e
+
+y(t) ^ fi(ey(0); t)
+
+for all t 2 [0; cT ]. This then implies that
+
+y(t) ^ fi(y(0); ct) for all t 2 [0; T ].
+
+Finally, we have this fact, mentioned when discussing decrease conditions:
+
+Lemma A.5 Let V : Rn ! R be a C1 positive definition function with the following property: for some K function O/, it holds that
+
+V (,) * O/(j_j) and V (,) 6= 0 ) DV (,)f (,; _) ! 0 : Then, there is a function ff 2 KL so that:
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff(V (,); j,j) for all , 2 Rn ; _ 2 Rm .
+
+Proof. Without loss of generality, we assume that O/ 2 K1. Define the set, for each s; t * 0:
+
+R(s; t) := f(x; u) : j,j ^ t; V (,) * s; j_j ^ O/\Gamma 1(V (,))g : These sets are compact (possibly empty), for each s and t. Note the following properties:
+
+s ? s0 ) R(s; t) ` R(s0; t) t ? t0 ) R(s; t0) ` R(s; t) : Now let
+
+ff0(s; t) = min(,;_)2R(s;t) \Gamma DV (,)f (,; _)
+
+22
+
+(with the convention that ff0(s; t) = +1 if R(s; t) = ;). Then, ff0(s; t) is nonincreasing in t and nondecreasing in s. Moreover, ff(s; t) ? 0 whenever s ? 0 (by the hypothesis of the lemma). Next let: b
+
+ff(s; t) := minfff0(s; t); sg :
+
+This function has the same monotonicity properties as ff0, it satisfies ff0(s; t) * bff(s; t) for all s; t, and is finite-valued. It also satisfies bff(s; t) 6= 0 for s ? 0. Now picke
+
+ff(s; t) := Z
+
+s
+
+s\Gamma 1 bff(oe; t) doe (let bff(s; t) := 0 for s ! 0). This function still has the same monotonicity properties, satisfiese ff(s; t) ? 0 for s ? 0, and it is continuous in s. It may not be strictly increasing in s, nor need it converge to zero as t ! 0, so we obtain finally a KL function ff by defining:
+
+ff(s; t) := seff(s; t)(1 + s)(1 + t) : This satisfies the desired properties by construction, because
+
+V (,) * O/(j_j) ) DV (,)f (,; _) ^ \Gamma ff(V (,); j_j) and ff0 * bff * eff * ff pointwise.
+
+References
+
+[1] D. Angeli, E. D. Sontag, and Y. Wang, A characterization of integral input to state
+
+stability, IEEE Transactions on Automatic Control, (to appear).
+
+[2] S. Battilotti, Robust stabilization of nonlinear systems with pointwise norm bounded
+
+uncertainties: A control lyapunov approach, IEEE Transactions on Automatic Control, (to appear).
+
+[3] P. D. Christofides and A. Teel, Singular perturbations and input-to-state stability,
+
+IEEE Transactions on Automatic Control, 41 (1996), pp. 1645-1650.
+
+[4] A. Isidori, Global almost disturbance decoupling with stability for non minimum-phase
+
+single-input single-output nonlinear systems, Systems & Control Letters, 28 (1996), pp. 115-122.
+
+[5] A. Isidori, Nonlinear Control Systems II. Springer-verlag, London, 1999. [6] Z.-P. Jiang, A. Teel, and L. Praly, Small-gain theorem for ISS systems and applications, Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[7] H. K. Khalil, Nonlinear Systems, Prentice-Hall, Upper Saddle River, NJ, second ed.,
+
+1996.
+
+[8] M. Krichman, E. D. Sontag, and Y. Wang, Input-output-to-state stability. submitted. [9] M. Krsti'c and H. Deng, Stabilization of Uncertain Nonlinear Systems, Springer-Verlag,
+
+London, 1998.
+
+23
+
+[10] M. Krsti'c, I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive
+
+Control Design, John Wiley & Sons, New York, 1995.
+
+[11] V. Lakshmikantham, S. Leela, and A. A. Martyuk, Practical Stability of Nonlinear
+
+Systems, World Scientific, New Jersey, 1990.
+
+[12] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust
+
+stability, SIAM Journal on Control and Optimization, 34 (1996), pp. 124-160.
+
+[13] W. M. Lu, A class of globally stabilizing controllers for nonlinear systems, Systems &
+
+Control Letters, 25 (1995), pp. 13-19.
+
+[14] L. Praly and Y. Wang, Stabilization in spite of matched unmodelled dynamics and
+
+an equivalent definition of input-to-state stability, Mathematics of Control, Signals, and Systems, 9 (1996), pp. 1-33.
+
+[15] R. Sepulchre, M. Jankovic, and P. V. Kokotovi'c, Integrator forwarding: a new
+
+recursive nonlinear robust design, Automatica, 33 (1997), pp. 979-984.
+
+[16] E. D. Sontag and Y. Wang, On characterizations of the input-to-state stability property,
+
+Systems & Control Letters, 24 (1995), pp. 351-359.
+
+[17] , A notion of input to output stability, in Proc. of European Control Conference,
+
+Brussels, Belgium, July 1997.
+
+[18] , Output-to-state stability and detectability of nonlinear systems, Systems & Control
+
+Letters, 29 (1997), pp. 279-290.
+
+[19] , Notions of input to output stability, Systems & Control Letters, (to appear). [20] J. Tsinias, Sufficient Lyapunovlike conditions for stabilization, Mathematics of Control,
+
+Signals, and Systems, 2 (1989), pp. 343-357.
+
+24</pre>
+</body>
+</html>

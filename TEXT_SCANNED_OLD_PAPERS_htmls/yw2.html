@@ -1,0 +1,1206 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yw2.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yw2.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Generating series and nonlinear systems: Analytic aspects, local realizability, and i/o representations1
+
+Yuan Wang Mathematics Department, Florida Atlantic University, Boca Raton, Fl 33431
+
+(407)367-3317, E-mail: y wang@acc.fau.edu
+
+Eduardo D. Sontag Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+(908)932-3072, E-mail: sontag@hilbert.rutgers.edu
+
+ABSTRACT This paper studies fundamental analytic properties of generating series for nonlinear control systems, and of the operators they define. It then applies the results obtained to the extension of facts, which relate realizability and algebraic input/output equations, to local realizability and analytic equations.
+
+1 Introduction State space models tend to play a central role in nonlinear control theory. However, other descriptions involving directly the input/output behavior, such as Volterra series, are also appropriate and often useful. Indeed, these are closer to the transfer functions and transfer matrices that appear in the development of linear control theory; there, i/o representations were used first in the analysis of linear systems and state-space approaches were only later introduced. In particular, generating series have been a popular choice for representing input/output operators, starting with the work of Fliess in the late 1970s (see for instance the references [2], [4]).
+
+This paper has two main goals. First, we study a number of properties of generating series and the operators they define. While many of these properties have long been known and are used often by previous authors, it is hard to find complete proofs of them in the literature. In particular, the results proved here provide a mathematical foundation for many of the properties cited in our paper [15]. A second objective of this paper is to relate the rich theory that exists for differential-geometric nonlinear realization (for which see for instance [6], [8], [9], and [13]) to the results in [15]. The purely algebraic material in that reference shows the equivalence between on the one hand the existence of algebraic differential equations relating inputs and outputs, and on the other hand realizability by rational systems. In order to relate to the differential geometric framework, one must generalize [15] to analytic realizations and i/o equations. This is done here, using analogous ideas but quite different mathematical techniques. There are major differences with the algebraic case not only in the tools used but in the fact that, in contrast to that case, it is generally not true that every state space system gives rise to a global i/o equation, even under analyticity assumptions; only the converse, going from i/o equations to realizability, holds.
+
+Outline of this work: We start by giving the basic terminology regarding series and convergence. Then for operators defined by the evaluation of these series, we study smoothness properties of their output functions, including the fact, needed in later results, that analytic
+
+1This research was supported in part by US Air Force Grant AFOSR-88-0235. Keywords: Generating series,local realization of control systems.
+
+1
+
+inputs give rise to analytic outputs. Later, our results from [15] relating algebraic i/o equations to internal realizability are complemented here with a result relating analytic i/o equations and local internal realizability. To do this, we first construct a "meromorphic" realization by studying the properties of meromorphically finitely generated field extensions, and we impose similar properties on the observation fields already introduced in the former paper. Finally, by a perturbation approach, together with the Lie rank condition for realizability (cf. [3] and [12]), we show that around each point there is local analytic realization. (This could also be done by using the rank condition studied in [7].) In the last section, we compare the results of this paper with those in [15].
+
+2 Analytic Aspects of Generating Series We develop in this section the basic facts about operators defined by generating series.
+
+2.1 Definitions We call a power series in the noncommutative variables j0; j1; : : : ; jm, where m is a fixed integer, a formal power series
+
+c = X
+
+'2I\Lambda h
+
+c; j'ij'; (1)
+
+where we use the notation j' = ji1 ji2 \Delta  \Delta  \Delta  jil for each multiindex ' = i1i2 \Delta  \Delta  \Delta  il. The coefficientsh
+
+c; j'i are assumed to be real. The set of all power series (over a fixed but arbitrary alphabet P) forms a vector space with "+" defined coefficientwise.
+
+We shall say that the power series c is convergent if there exist K; M * 0 such that
+
+jhc; j'ij ^ KM kk! for each ' 2 Ik, and each k * 0: (2)
+
+For any fixed real number T ? 0, let UT be the set of all essentially bounded measurable functions
+
+u : [0; T ] ! IRm
+
+endowed with the L1 norm. We write kuk1 for maxfkuik1 :; 1 ^ i ^ mg and kuk1 for maxfkuik1 :; 1 ^ i ^ mg where ui is the i-th component of u, and kuik1 is the L1 norm of ui, kuik1 is the L1 norm of ui. For each u 2 UT and each ' 2 Il, we define inductively the functions
+
+V' = V'[u] 2 C[0; T ]
+
+by
+
+Vi1\Delta \Delta \Delta il+1 [u](t) = Z
+
+t
+
+0 ui
+
+1(s)Vi2\Delta \Delta \Delta il+1 (s) ds; (3)
+
+where VOE = 1 and ui is the i-th coordinate of u(t) for i = 1; 2; : : : ; m and u0(t) j 1.
+
+For each formal power series c in j0; j1 ; : : : ; jm , we define a formal operator on UT in the following way:
+
+Fc[u](t) = Xhc; j'iV'[u](t): (4)
+
+It has been known that for any T ! (M m + M )\Gamma 1, the series (4) converges uniformly and absolutely for all t 2 [0; T ] and all those u 2 UT such that kuk1 ^ 1 (cf [6]). In fact, for any L1 input u, there exists some ffi ? 0 such that (4) converges uniformly and absolutely on [0; ffi).
+
+2
+
+For each T ? 0, we define
+
+VT = fu 2 UT : kuk1 ! 1g; (5) and we shall say that T is admissible for c if T ! (M (m + 1))\Gamma 1 for some M such that (2) holds. Then Fc is always well defined on VT if T is admissible for c. We shall call Fc an input/output operator defined on VT if T is admissible for c. Hence, every convergent power series defines an i/o map, or more precisely, one such map on each VT for which T is admissible. (We often identify any two such operators, when there is no danger of confusion, dealing in effect with "germs" of such operators.)
+
+To each monomial z = j^, we associate a "shift" operator c 7! z\Gamma 1c defined by
+
+hz\Gamma 1c; j'i = hc; zj'i for j' 2 P \Lambda : It has been shown in [11] that if c is a convergent series and T is admissible for c, then T is admissible for z\Gamma 1c for any z 2 P \Lambda .
+
+2.2 Properties of I/O Operators Assume c is a convergent series and pick up a T admissible for c. We shall first show that Fc : VT ! C[0; T ] is a continuous operator with respect to the L1 norm in VT and the C0 norm in C[0; T ]. For this purpose, we need to establish the following lemma:
+
+Lemma 2.1 For every multiindex ' 2 I\Lambda , the map
+
+V' : VT ! C[0; T ]; u 7! V'[u] is continuous with respect to the L1 norm in VT and the C0 norm in C[0; T ]. Proof. We use induction on the length of '. For ' = i 2 I1, we have
+
+V'[u](t) = Z
+
+t
+
+0 ui(s) ds: It follows that for any u; v 2 VT ,
+
+kV'[u] \Gamma  V'[v]k1 ^ ku \Gamma  vk1; where "k \Delta  k1" denotes the C0 norm in [0; T ]. Thus V' is continuous for any ' 2 I1.
+
+Suppose the conclusion is true for all ' with j'j ^ n. Then for ^ = i' 2 In+1 and u; v 2 UT , we have
+
+jV^[v](t) \Gamma  V^[u](t)j = fifififiZ
+
+t
+
+0 vi(s)V'[v](s) ds \Gamma  Z
+
+t 0 ui(s)V'[u](s) dsfifififi ^ fifififiZ
+
+t
+
+0 (vi(s) \Gamma  ui(s))V'[v](s) dsfifififi + fifififiZ
+
+t 0 ui(s)(V'[v](s) \Gamma  V'[u](s)) dsfifififi^ k u \Gamma  vk1 kV'[v]k1 + kuk1 kV'[v] \Gamma  V'[u]k1:
+
+Notice V' is continuous, thus for any " ? 0 given, there exists some o/ ? 0 such that
+
+kV'[v]k1 ^ kV'[u]k1 + 1 and kuk1 (kV'[v] \Gamma  V'[u]k1) ! "=2;
+
+3
+
+for all v 2 Bo/ (u), where Bo/ (u) is the ball of radius o/ centered at u in UT . Now let
+
+ffi = min aeo/; "2(1 + kV
+
+'[u]k) oe :
+
+Then for any v 2 Bffi(u), j
+
+V^[v](t) \Gamma  V^[u](t)j ! "
+
+for all t 2 [0; T ], which implies that kV^[v] \Gamma  V^[u]k1 ! ". This shows that V^ is continuous, completing the induction step.
+
+Now let c be a convergent series, and pick any T admissible for c. Then for u; v 2 VT and 0 ^ t ^ T ,
+
+jFc[u](t) \Gamma  Fc[v](t)j = fififififiX
+
+' h
+
+c; j'i (V'[u](t) \Gamma  V'[v](t))fififififi
+
+^ fifififififi X
+
+j'j^sh
+
+c; j'i (V'[u](t) \Gamma  V'[v](t))fifififififi + fifififififi X
+
+j'j?sh
+
+c; j'i (V'[u](t) \Gamma  V'[v](t))fifififififi
+
+^ fifififififi X
+
+j'j^sh
+
+c; j'i (V'[u](t) \Gamma  V'[v](t))fifififififi + 2 X
+
+i*s
+
+(M (m + 1)T )i
+
+for any s * 0. Since V' : VT ! C[0; T ] is continuous andX
+
+i*s
+
+(M (m + 1)T )i \Gamma ! 0 as s ! 1;
+
+it follows that for any " ? 0 given, there exists some ffi ? 0 such that
+
+jFc[u](t) \Gamma  Fc[v](t)j ! " for any v 2 VT satisfying ku \Gamma  vk1 ! ffi. Thus, we get the following conclusion: Lemma 2.2 Assume that c is a convergent power series and T is admissible for c. Then the operator
+
+Fc : VT ! C[0; T ]
+
+is continuous with respect to the L1 norm in VT and the C0 norm in C[0; T ]. 2
+
+We now turn to considering the smoothness properties of Fc[u](t) as a function of time t. Notice that, for every multiindex ', V'[u](t) is absolutely continuous as a function of t. It follows immediately from the fact that Fc[u] defined by (4) converges uniformly that Fc[u](t) is continuous on [0; T ]. If fact, it was shown in [14] that for any u 2 VT , Fc[u](\Delta ) is absolutely continuous.
+
+Differentiability of these operators has been studied in [5], and the following formula, which follows from the definition (3), was provided in [5]:
+
+d dt Fc[u](t) = Fj
+
+\Gamma 1 0 c[u](t) +
+
+mX
+
+j=1
+
+uj(t) Fj\Gamma 1
+
+j c[u](t) (6)
+
+4
+
+for all t 2 [0; T ], and each continuous u 2 VT . In fact, (6) also holds for any u 2 VT for almost all t 2 [0; T ]. By (6), one can use induction to prove that Fc[u] is of class Ck+1 if u is of classC
+
+k. The following Lemma, however, is a less trivial one.
+
+Lemma 2.3 Suppose c is a convergent series and T is admissible to c. Then Fc[u] is analytic if u 2 VT is analytic.
+
+To prove Lemma 2.3, we need the following fact: For u 2 Vo/ (o/ ! T ) and v 2 VT \Gamma o/ , we use u#o/ v to denote the concatenated control:
+
+(u#o/ v)(t) = ( u(t) if 0 ^ t ^ o/ ,v(t \Gamma  o/ ) if o/ ! t ^ T . Lemma 2.4 Suppose c is a convergent series which satisfies (2) and T is admissible for c. For any 0 ^ o/ ! T; u 2 Vo/ , let d be the series defined by
+
+hd; j'i = Fj\Gamma 1
+
+l c[u](o/ ): (7)
+
+Then d is also a convergent power series and T \Gamma  o/ is admissible for d. Furthermore, for each v 2 VT \Gamma o/ ,
+
+Fc[u#o/ v](t + o/ ) = Fd[v](t): (8)
+
+Proof. It follows from (2) that
+
+jhj\Gamma 1' c; j^ij ^ KM l+k(l + k)! for ' 2 Il; ^ 2 Ik: Thus for any 0 ^ o/ ^ T and any u 2 Vo/ ,
+
+jFj\Gamma 1' c[u](o/ )j ^ fififififi X
+
+^2I\Lambda  h
+
+c; j'j^iV'[u](o/ )fififififi
+
+^
+
+1X
+
+k=0
+
+KM l+k(l + k)!(m + 1)k o/
+
+k
+
+k!
+
+= KM l
+
+1X
+
+k=0
+
+sk
+
+k! (l + k)! ; (9)
+
+where s = M (m + 1)o/ . For power series (9), we have
+
+1X
+
+k=0
+
+sk
+
+k! (l + k)! =
+
+dl dsl
+
+1X
+
+k=0
+
+sk
+
+k! =
+
+dl dsl
+
+sl 1 \Gamma  s =
+
+l! (1 \Gamma  s)l+1 ;
+
+for jsj ! 1. Therefore,
+
+jFj\Gamma 1' c[u](o/ )j ^ KM
+
+ll!
+
+(1 \Gamma  M (m + 1)o/ )l+1 ; i.e., jh
+
+d; j'ij ^ Ko/ M lo/ l! for ' 2 Il; l * 0 ; (10)
+
+where
+
+Ko/ = K1 \Gamma  M (m + 1)o/ ;
+
+5
+
+Mo/ = M1 \Gamma  M (m + 1)o/ ; and the constants M and K are as in (2). Since
+
+1 Mo/ (m + 1) =
+
+1 M (m + 1) \Gamma  o/ ? T \Gamma  o/;
+
+it follows that T \Gamma  o/ is admissible for d.
+
+Formula (8) will follow from the following formula:
+
+Vae[u#o/ v](t + o/ ) = X
+
+'^=ae
+
+V'[v](t)V^[u](o/ ); (11)
+
+for any ae 2 I\Lambda , since if we assume (11) holds, then
+
+Fc[u#o/ v](t + o/ ) = X
+
+ae h
+
+c; jaei X
+
+'^=ae
+
+V'[v](t)V^[u](o/ ) (12)
+
+= X
+
+' X^ h
+
+c; j'j^iV'[v](o/ )V^[u](t) (13)
+
+= X
+
+' X^ h
+
+j\Gamma 1' c; j^iV^[u](o/ )V'[v](t)
+
+= X
+
+'
+
+Fj\Gamma 1' c[u](o/ )V'[v](t)
+
+= Fd[v](t): (14) Note here that we can rearrange the terms in (12) to get (13) because the series of functions in (12) is absolutely convergent for 0 ^ o/ + t ^ T .
+
+We now return to prove (11) by induction on the length of ae. Equation (11) is true when ae = j 2 I1 because
+
+Vae[u#o/ v](t + o/ ) = Z
+
+t+o/
+
+0 (uj#o/ vj)(s) ds = Z
+
+o/
+
+0 uj(s) ds + Z
+
+t 0 vj(s) ds = Vae[u](o/ ) + Vae[v](t): Now assume that (11) holds for ae 2 In. For any
+
+ae = i1i2 \Delta  \Delta  \Delta  in+1 2 In+1; we have
+
+Vae[u#o/ ](t + o/ ) = Z
+
+t+o/
+
+0 (ui
+
+1 #o/ vi1 )(s)Vi2i3\Delta \Delta \Delta in+1[u#o/ v](s) ds
+
+= Z
+
+o/
+
+0 ui
+
+1(s)Vi2i3\Delta \Delta \Delta in+1 [u#o/ v](s) + Z
+
+t
+
+0 vi
+
+1 (s)Vi2i3\Delta \Delta \Delta in+1 [u#o/ v](o/ + s) ds
+
+= Vae[u](o/ ) + X
+
+i1'^=ae Z
+
+t 0 vi
+
+1 (s)V'[v](s)V^(o/ ) ds
+
+= Vae[u](o/ ) + X
+
+j'j*1;'^=ae
+
+V'[v](t)V^[u](o/ )
+
+6
+
+= X
+
+'^=ae
+
+V'[v](t)V^[u](o/ ):
+
+We completed the proof of (11) by induction.
+
+We now return to prove Lemma 2.3. Proof. Take an analytic control u in VT . First notice that if T is admissible for c, then there exists some " ? 0 such that T + " is also admissible for c. Assume " is so small that u is analytic in (\Gamma "; T + "). Let T1 = T + " and
+
+~u(z) = (~u1(z); : : : ; ~um(z)) be the complex analytic function whose restriction to the real interval (\Gamma "; T1) is u. One would like to say that the output is the restriction to real t of the complex output corresponding to ~u, from which analyticity would follow by the above differentiability (extended to the complexes). However, it is not necessary that ~u be bounded by 1 for jzj ^ T1, so a local analysis is needed.
+
+For any 0 ^ t0 ^ T , there exist some ffi ? 0 and oe ? 0 such that
+
+j~u(z)jM (m + 1)T1 ^ 1 \Gamma  oe if z 2 Bffi(t0) since j
+
+~u(t0)jM (m + 1)T1 ! 1
+
+where Bffi(t0) is the ball of radius ffi centered at t0 and M is as in (2). Assume here that ffi ! ". By Lemma 2.4,
+
+Fc[u](t) = Fd[v](t \Gamma  t0)
+
+where d is defined as in (7) and v(t) = u(t + t0). Let ~v(z) = ~u(z + t0). For any complex vector function w(z) = (w1(z); : : : ; wm(z)) of dimension m which is defined and analytic for all z in a ball around the origin, we define
+
+Vi1\Delta \Delta \Delta il+1[w](z) = Z
+
+z
+
+0 wi
+
+1 (s)Vi2\Delta \Delta \Delta il+1 (s) ds;
+
+inductively, where VOE = 1 and w0(z) :j 1. By induction, the integrand is analytic, so the integral is independent of the path and the result in analytic too. Thenfifififi
+
+fiXl hd; j'iVl[~v](z \Gamma  t0)fififififi ^
+
+1X
+
+l=0
+
+Kt0 M lt0 (m + 1)lN ljz \Gamma  t0jl (15)
+
+where Mt0 , Kt0 are defined as in the proof of Lemma 2.4 and
+
+N = maxz2B
+
+ffi(t0) ~u(z):
+
+Notice that the series 1X
+
+l=0
+
+M lt0(m + 1)lN ljz \Gamma  t0jl
+
+converges uniformly for j
+
+z \Gamma  t0j ^ 1 \Gamma  oeN M
+
+t0 (m + 1) :
+
+7
+
+Now let
+
+~ffi = min aeffi; 1 \Gamma  oeN M
+
+t0(m + 1) oe :
+
+Then the series of complex functionsX
+
+hd; j'iVl[~v](z \Gamma  t0) defines an analytic function in B~ffi(t0) since it converges uniformly, (cf: Theorem 5.1 in [1]). For t real,
+
+Fd[v](t \Gamma  t0) = X hd; j'iV'[v](t \Gamma  t0) = X hd; j'iV'[~v](t \Gamma  t0):
+
+Thus, Fd[v](t \Gamma  t0), i.e. Fc[u](t), is analytic for jt \Gamma  t0j ! ~ffi. Since t0 can be chosen arbitrarily in [0; T ], we get the desired conclusion.
+
+Observe here that we have not claimed the following stronger statement: if u has a single convergent power series representation on [0; T ] then Fc[u] also does. We only proved that Fc[u] is analytic, that is, it has a local power series expansion around each point. The following example shows that the above stronger statement is not true in general.
+
+Example 2.5 Consider the series
+
+c = 1 + j1 + 2j(2)1 + 3!j(3)1 + \Delta  \Delta  \Delta  + k! j(k)1 + \Delta  \Delta  \Delta  : It is not hard to see that any T ! 1 is admissible for c, and
+
+Fc[u](t) =
+
+1X
+
+k=0
+
+k! Z
+
+t
+
+0 Z
+
+s1 0 \Delta  \Delta  \Delta  Z
+
+sk\Gamma 1 0 u(s1) \Delta  \Delta  \Delta  u(sk) dsk \Delta  \Delta  \Delta  ds1
+
+=
+
+1X
+
+k=0 `Z
+
+t 0 u(s) ds'
+
+k
+
+= 11 \Gamma  R t
+
+0 u(s) ds
+
+:
+
+Let u = \Gamma  sin sst. Then Z
+
+t
+
+0 u(s) ds =
+
+2 ss sin
+
+2 ss
+
+2 t. Hence
+
+Fc[u](t) =
+
+ss
+
+2ss
+
+2 + sin2 ss2 t
+
+:
+
+Consider the equation ss
+
+2 + sin
+
+2 ss
+
+2 ` = 0 (16)
+
+on the complex plane. When ` = bj where j = p\Gamma 1, equation (16) becomes
+
+ebss=2 \Gamma  e\Gamma bss=2
+
+2 = \Sigma r
+
+ss
+
+2 :
+
+Let f (b) = e
+
+bss=2\Gamma e\Gamma bss=2
+
+2 . Then f (0) = 0 and
+
+f (1) =
+
+1X
+
+k=0
+
+( ss2 )2k+1 (2k + 1)! *
+
+ss
+
+2 * r
+
+ss
+
+2 :
+
+8
+
+Therefore there exists some b 2 (0; 1) such that f (b) = r ss2 which implies that there exists some ` 2 C with k`k ! 1 such that (16) holds. Therefore, the complex function
+
+g(z) =
+
+ss
+
+2ss
+
+2 + sin2 ss2 z
+
+has at least one singularity inside the unit disc. It then follows that Fc[u](t) cannot have a global convergent power series representation on [0; T ] if 0 ! 1 \Gamma  T ! ffi for ffi small enough, even though u has a global convergent power series representation. 2
+
+3 Realizability by Analytic Systems For any given convergent series c, we say that Fc is realizable by an analytic system
+
+\Sigma  = (M; (g0; : : : ; gm); x0; h) (17) if there exist some analytic manifold M, some x0 2 M, (m + 1) analytic vector fields
+
+g0; g1; : : : ; gm on M and an analytic function
+
+h : M ! IR
+
+such that for each u 2 VT with T admissible for c, there exists a solution x(\Delta ) of the equation
+
+x0 = g0(x) +
+
+mX
+
+j=1
+
+gj(x) uj ;
+
+x(0) = x0 defined on all of [0; T ], and
+
+Fc[u](t)(t) = h(x(t)) ; t 2 [0; T ] : (18)
+
+We shall say that Fc is locally realizable by an analytic system (17) if the solution x(\Delta ) of (17) is only defined for, and (18) only holds for, t small enough.
+
+For any given power series c, we define the observation space F1(c) as the IR-space spanned by all the series ff\Gamma 1c, the observation algebra A1(c) is the IR-algebra generated by the elements of F1(c), under the shuffle product (see [15]), and the observation field Q1(c) is the quotient field of A1(c). Note that Q1(c) is always defined since A1(c) is an integral domain (cf [15]).
+
+For any given convergent power series c, we say that A1(c) is an analytically finitely generated IR-algebra if there exist an integer n and n elements c1; c2; : : : ; cn of A1(c) such that for every element d in A1(c), there exists some analytic function ' defined on IRn such that
+
+Fd[u](t) = ' (Fc1[u](t); : : : ; Fcn[u](t)) for all u 2 VT ; t 2 [0; T ] and for any T admissible for c.
+
+We say that the observation field Q1(c) is a meromorphically finitely generated field extension
+
+9
+
+of IR if there exists an integer n and
+
+c1; c2; : : : ; cn 2 A1(c) such that for each element d in Q1(c), there exist some analytic functions '0 and '1 defined on IRn such that
+
+'0 (Fc1 [u](t); : : : ; Fcn[u](t)) Fd[u](t) = '1 (Fc1 [u](t); : : : ; Fcn[u](t)) for all u 2 VT ; t 2 [0; T ] and for any T admissible for c, and,
+
+'0 (Fc1 [u]; : : : ; Fcn[u]) 6= 0 for some u 2 VT , and some T admissible for c. If this is the case, we call c1; : : : ; cn the generators of the field, or, we say that the field is generated by c1; : : : ; cn. Informally speaking, then, a meromorphically finitely generated field extension of IR is one for which every element can be expressed as a meromorphic function of a finite set of generators.
+
+The following Theorem shows that certain finiteness properties imply realizability.
+
+Theorem 1 Assume that c is a convergent series. Then
+
+(a) Fc is realizable by an analytic system if A1(c) is analytically finitely generated.
+
+(b) Fc is locally realizable by an analytic system if Q1(c) is a meromorphically finitely generated field extension of IR.
+
+Proof. (a): Assume that A1(c) is generated by c1; c2; : : : ; cn, for some integer n. It follows that there exist an analytic function gij such that
+
+Fj\Gamma 1j ci = gij (Fc1 ; : : : ; Fcn ) (19)
+
+for any i = 1; : : : ; n, each j = 0; 1; : : : ; m, and an analytic function h such that
+
+Fc = h (Fc1; Fc2 ; : : : ; Fcn ) : Take M to be the Euclidean space IRn and let
+
+x0 = (hc1; OEi; hc2; OEi : : : ; hcn; OEi)0 : (20) It follows from (19) and formula (6) that the function
+
+x(t) = (Fc1 [u](t); Fc2[u](t); : : : ; Fcn[u](t))0 satisfies the equations
+
+x0 = g0(x) +
+
+mX
+
+j=1
+
+gj(x) uj ;
+
+x(0) = x0 ; for any u 2 VT , and (20) implies that
+
+y(t) = Fc[u](t) = h(x(t))
+
+10
+
+for all t 2 [0; T ]. We proved that Fc is realizable by an analytic system.
+
+(b): Assume that Q1(c) is meromorphically generated by c1; c2; : : : ; cn. Without loss of generality, we may assume that c1 = c. Similarly to part (a), one knows that for each i = 1; 2; : : : ; n; j = 0; 1; : : : ; m, there exist analytic functions gij and qij such that
+
+qij (Fc1 ; : : : ; Fcn) Fj\Gamma 1j c = gij (Fc1; : : : ; Fcn) (21)
+
+and qij (Fc1; : : : ; Fcn) 6= 0. (These are all equations among operators.) Without loss of generality, we may assume that qij = q for all i and j and
+
+q (Fc1 [u]; : : : ; Fcn [u]) 6= 0 : (22) It is not hard to see that for any u 2 VT , the function
+
+x(t) = (Fc1 [u](t); Fc2 [u](t); : : : ; Fcn[u](t))0 (23) satisfies the equation
+
+q(x(t)) x0(t) = g0(x(t)) +
+
+mX
+
+j=0
+
+gj(x(t)) uj (t) (24)
+
+x(0) = x0 = (hc1; OEi; hc2; OEi : : : ; hcn; OEi)0 ; (25) and,
+
+y(t) = Fc[u](t) = x1(t):
+
+It is clear that if
+
+q(x0) 6= 0 ; (26)
+
+then q(x) 6= 0 in a neighborhood N of x0, thus, Fc is locally realized by the analytic system
+
+(N ; ~g0; ~g1; : : : ; ~gm; x0; h) ; where ~gi = giq and h(x) = x1.
+
+We now assume q(x0) = 0. Note that the function x(\Delta ) defined by (23) is of class Ck if u is of class Ck\Gamma 1 for any k * 1, and x(\Delta ) is analytic if u is analytic. Since analytic controls is dense in VT (with respect to the L1 topology), (22) implies that there is at least one analytic input u0 for which the function
+
+q (Fc1 [u0]; : : : ; Fcn[u0])
+
+is not identically zero. Fix such an u0. Then the analyticity of Fci[u](t) and the analyticity of q imply that there exists some ffi ? 0 such that
+
+q (Fc1[u0](t); : : : ; Fcn [u0](t)) 6= 0 (27) for all t 2 (0; ffi). For each * 2 (0; ffi), we define a series c* by
+
+hc*; j'i = Fj\Gamma 1' c[u0](*):
+
+11
+
+By Lemma 2.4 c* is a convergent series and
+
+Fc*[u](t) = Fc[u0#*u](* + t) (28) for any u 2 VT \Gamma * and any * 2 (0; ffi), which implies that, for each u 2 VT \Gamma *, the function
+
+x*(t) = iFc*
+
+1 [u](t); Fc*2 [u](t); : : : ; Fc*n[u](t)j
+
+0
+
+also satisfies equation (24) with the initial state
+
+x*(0) = (Fc1[u0](*); Fc2[u0](*); : : : ; Fcn[u0](*))0 and
+
+F *c [u](t) = x*1 (t) :
+
+Notice that (28) means that
+
+q(x*0 ) 6= 0
+
+for each * 2 (0; ffi). thus for each fixed *, there exists a neighborhood N* of x* such that
+
+q(x) 6= 0; for all x 2 N*: Hence, each of these "perturbed" operators Fc* is locally realized by the analytic systemi
+
+N*; (~g0; ~g1; : : : ; ~gm); x*; hj : To show that Fc* is still realizable when * = 0, we need to introduce more notations. LetP be the set of polynomials in j0 ; j1; : : : ; jm . We now define the Lie bracket [\Delta  ; \Delta ] on P as follows:
+
+[P1; P2] = P1 \Delta  P2 \Gamma  P2 \Delta  P1
+
+where "\Delta " denotes the standard product defined for polynomials. With [\Delta  ; \Delta ] defined as above,P
+
+forms a Lie algebra. Let L be the subalgebra of P generated by j0 ; j2 ; : : : ; jm. The elements of L will be called Lie polynomials.
+
+We now define
+
+c(w) = X hw; j^i j\Gamma 1^ c
+
+for any polynomial w = P hw; j^i. Now for a given series c, we define the Lie rank ae(c) of c to be the dimension of the IR-space spanned by c(w), over all Lie polynomials w 2 L, i.e.,
+
+ae(c) = dim (span IR fc(w) : w 2 Lg) : It is well-known that the i/o operator Fc is locally realizable by an analytic system if and only if the Lie rank ae(c) is finite, and, if Fc is realizable by a system of dimension n, then the Lie rank ae(c) is less than or equal to n (cf [3], [6], [12]).
+
+It follows from the second part of the above statement that the Lie rank ae(c*) of c* is bounded by n for any * 2 (0; ffi).
+
+Claim: ae(c) ^ n.
+
+Suppose ae(c) ? n. Then there exist w1; : : : ; wn+1 such that the n + 1 series
+
+c(w1); : : : ; c(wn+1)
+
+12
+
+are linearly independent.
+
+We now enumerate the elements of P \Lambda , the set of all monomials in ji's, as z1; z2; : : : and we let A* be the matrix of n + 1 columns and infinitely many rows whose (i; j)-th entry ish
+
+c*(wj); zii. Then A0 is full column rank in the sense that there is no nonzero (n + 1)-vector v such that A0 v = 0. For any integer i, let Bi be the subspace of IRn+1 spanned by the first i row vectors of A. Then we have
+
+B1 ` B2 ` \Delta  \Delta  \Delta  ` Bi ` \Delta  \Delta  \Delta  : Since rank Bi is bounded by n+1 for any i, it follows that there exists some k such that Bi = Bk for any i * k, which implies that A = T Bk for some matrix T of infinite rows and n+1 columns, where Bk is the k \Theta  (n + 1) submatrix of A consisting the first k rows of A. Hence there is no nonzero (n + 1)-vector v such that Bkv = 0, that is, rank Bk = n + 1.
+
+Now let the B* be the submatrix of A* consisting of the first k rows of A*. Note that for the (ij)-th entry a*ij of B*, we have
+
+a*ij = hc*(wj); zii = hc*; wjzii = F(wjzi)\Gamma 1c[u0](*): Thus the entries of matrix B* are continuous functions of *, from which it follows that the rank of B* is a semicontinuous function of *. Therefore,
+
+rank B* = n + 1 (29) for * 2 (0; ") for some " ? 0. It follows immediately from (29) that the series
+
+c*(w1); c*(w2) : : : ; c* (wn+1) are linearly independent. This contradicts the fact that ae(c*) is bounded by n. Therefore, the Lie rank ae(c) is bounded by n. Applying the results in [3], [6], [12] cited above, we conclude that Fc is locally realizable by an analytic system. Furthermore, since ae(c) ^ n, we know that also Fc is locally realizable by a system of dimension less than or equal to n.
+
+4 Analytic I/O Equations In complete analogy with the algebraic case ([15]), an analytic input/output equation of order k is an equation of the type
+
+A iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0; (30)
+
+where A is an analytic function defined on IRm(k+1) \Theta  IR(k+1) and nontrivial in the last variable. The latter means that there exists some point
+
+__0; __1; : : : ; __k ; _*0 ; : : : ; _*k\Gamma 1
+
+in IRm(k+1) \Theta  IRk such that
+
+A i__0; __1 ; : : : ; __k ; _*0; : : : ; _*k\Gamma 1; *k j
+
+13
+
+is not a constant function. Generalizing the notions in the algebraic case, we also consider two special classes of i/o equations, as follows. First, meromorphic equations are those for which A(_0; : : : ; _k ; *0 ; : : : ; *k ) takes the form:
+
+A0(_0; : : : ; _k ; *0; : : : ; *k\Gamma 1)*k + A1(_0; : : : ; _k ; *; : : : ; *k\Gamma 1); (31) In other words,
+
+@2A(_0 ; : : : ; _k ; *0; : : : ; *k )
+
+@*2k = 0
+
+identically, the term "meromorphic" referring to the fact that *k is meromorphic in the remaining variables. Second, we consider analytically recursive equations, those for which A(_0; : : : ; _k ; *0 ; : : : ; *k ) takes the form
+
+A0(_0 ; : : : ; _k )*k + A1(_0 ; : : : ; _k ; *; : : : ; *k\Gamma 1); (32) the term is used because *k can be expressed analytically in terms of the other *i 's. Given an i/o operator Fc, where c is a convergent series, Fc will be said to satisfy the analytic i/o equation (30) if (30) holds for each Ck i/o pair (u; y) of Fc (and then we call (30) an analytic i/o equation for Fc, and in particular we say that the operator Fc satisfies an analytically recursive i/o equation if there is some such equation for which A is analytically recursive, and that Fc satisfies a meromorphic i/o equation if A can be chosen meromorphic and minimal in the sense that A0 = 0 is not an i/o equation of Fc.)
+
+Lemma 4.1 Let A : IRm(k+1) \Theta  IRk+1 ! IR be real-analytic, and assume that Fc is an i/o operator. Then, the property
+
+A `_0 ; : : : ; _k ; Fc; Fc1(_0 ); : : : ; Fck (_0 ;:::;_k\Gamma 1)' = 0; (33) holds for each _0; _1 ; : : : ; _k 2 IRm if and only if Fc satisfies the i/o equation (30). Remark 4.2 Equation (33) means that
+
+A `_0; : : : ; _k ; Fc[u](t); Fc1(_0 )[u](t); : : : ; Fck (_0;:::;_k\Gamma 1 )[u](t)' = 0; (34) for any u 2 VT and any t 2 [0; T ] . By definition, (34) holds for those u such that u#t !_ 2 Ck. But in general, u#t!_ is not of class Ck. The following proof of Lemma 4.1 in fact shows that equation (30) holds for all Ck i/o pairs of Fc if and only if it holds at any point at which u(t) is Ck, for every u 2 VT . 2
+
+To prove Lemma 4.1, we need the following Lemma: Lemma 4.3 Assume f 2 C[0; 1] and f (0) = 0. Then for each given integer n * 0, there exists a sequence of polynomial functions ffkg such that
+
+fk \Gamma ! f; as k ! 1 uniformly and f (i)k (0) = 0 for all k and 0 ^ i ^ n \Gamma  1.
+
+14
+
+Proof. Suppose f 2 C[0; 1] and f (0) = 0. Let ^f (x) = f (x1=n). Then, by Weierstrass' Theorem, there exists a sequence of polynomials approaching to ^f ; in particular, the sequence of polynomials can be chosen as the Bernstein polynomials
+
+^fk(x) =
+
+kX
+
+j=0
+
+^f ` jk ' ` kj ' xj(1 \Gamma  x)k\Gamma j:
+
+Notice that ^
+
+fk(0) = 0
+
+for all k. Now let fk(x) = ^fk (xn). Then
+
+fk(x) \Gamma ! f (x) as k ! 1 uniformly and fk's are polynomials of xn. Since fk(0) = 0, it follows that f (i)k (0) = 0 for 0 ^ i ^ n \Gamma  1.
+
+We are now ready to prove Lemma 4.1. Proof. Assume equation (34) holds for any u 2 VT and t 2 [0; T ]. Take an input
+
+u 2 VT " Ck\Gamma 1 and pick any t 2 [0; T ]. Assume
+
+u(s)(t) = _s
+
+for 0 ^ s ^ k. Then
+
+y(s)(t) = @
+
+s
+
+@ts Fc[u](t) = Fcs(_0;:::;_s\Gamma 1 )[u](t) for 0 ^ s ^ k. Therefore,
+
+P iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0: Since u and t can be picked arbitrarily, it follows that A = 0 is an i/o equation for Fc.
+
+Now assume A = 0 is an i/o equation for Fc. Take any fixed u 2 VT and consider
+
+^u := u#t !_; where _ = (_0; _1 ; : : : ; _k ). We shall prove the Lemma by first showing that (34) holds for all u 2 VT and t and all those _'s such that j_0 j ! 1. For this purpose, we will first find a sequencef
+
+vjg 2 Ck such that k
+
+vj \Gamma  ^uk1 ! 0; as j ! 1; (35)
+
+vj(s) = ^u(s) = !(s \Gamma  t) for s * t; and there exists some fixed ffi ? 0 such that
+
+jvj(s)j ! 1 for s 2 [0; t + ffi] for all large enough j.
+
+Assuming for now that there exists such a sequence fvjg, we show how to complete the proof. The output Fc[vj] is defined and differentiable in [0; t + ffi] for large enough j. Applying
+
+15
+
+(30) to the Ck pair (vj; yj) at time t, we get
+
+A ivj(t); : : : ; v(k)j (t); yj(t); : : : ; y(k)j (t)j = 0; (36) where yj = Fc[vj].
+
+By Lemma 2.2, we know that for t ^ o/ ^ t + ffi for some ffi ? 0
+
+y(s)j (o/ ) ! d
+
+s
+
+dts Fc[^u](o/ ) as j ! 1: Letting
+
+j ! 1 and o/ ! t+
+
+and taking the limits on both sides of (36), we get
+
+A _0 ; : : : ; _k\Gamma 1; Fc[^u](t); ddo/ fifififi
+
+o/=0+ F
+
+c[u](t + o/ ); : : : ; d
+
+k
+
+do/ k fififififio/=0+ Fc[^u](t + o/ )! = 0:
+
+Since u and t can be chosen arbitrarily, we get (34) under the assumption that j_0 j ! 1. To remove this assumption, notice that for any fixed u 2 VT and t, the function
+
+A `_0; : : : ; _k\Gamma 1; Fc[u](t); Fc1(_0 )[u](t); : : : ; Fck (_0 ;:::;_k\Gamma 1)[u](t)' (37) is analytic in _. Hence (34) holds for all _, not only for those with j_0j ! 1. Again, as u and t can be chosen arbitrarily, we get (33).
+
+Now we return to prove the existence of fvjg. Take u 2 VT and _0 ; : : : ; _k 2 IRm, wherej _0 j ! 1. Notice that the set
+
+^VT := nu 2 VT " C[0; T ] : u(t) = _0; kuk1 ! 1o
+
+is dense in VT (still using the L1 norm), so we may assume that u 2 ^VT . Now let
+
+~u(s) = ( u(s) \Gamma  !_(s \Gamma  t) if s ^ t,0 if t ! s ^ T . By Lemma 4.3, there exists a sequence ~vj in Ck[0; T ] such that
+
+~vj(s) ! ~u(s) uniformly and ~v(i)j (t) = 0 for 0 ^ i ^ k. Let
+
+vj(s) = ~vj(s) + !_(s \Gamma  t): Then fvjg ! u#t!_ uniformly. Since
+
+ju#t !_(s)j ! 1 for s 2 [0; t + ffi] for some small ffi, it follows that jvj(s)j ! 1 for s 2 [0; t + ffi] if j is large enough.
+
+Similar to the algebraic case discussed in [15], we have the following result:
+
+16
+
+Lemma 4.4 If Fc satisfies an analytic i/o equation, then it satisfies a meromorphic i/o equation.
+
+Proof. Assume that Fc satisfies an analytic i/o equation of order k;
+
+A iu(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)j = 0: Without loss of generality, we may assume that k is smallest possible among all analytic i/o equations for Fc. Now let, for each i * 0,
+
+Qi(_0; : : : ; _k ; *0; : : : ; *k ) = @
+
+i
+
+@*ik A(_0 ; : : : ; _k ; *0 ; : : : ; *k ):
+
+Claim: There exists some i such that Qi = 0 is not an i/o equation for Fc.
+
+Suppose by way of contradiction that Qi = 0 is an i/o equation of Fc for all i, i.e.,
+
+Qi(u(t); : : : ; u(k)(t); y(t); : : : ; y(k)(t)) = 0 (38) for all Ck i/o pairs (u; y) of Fc and for all i * 0. For each fixed u and each fixed t, we let
+
+(__0; : : : ; __k ; _*0 ; : : : ; _*k ) = (u(t); : : : ; u(k)(t); y(t); : : : ; : : : ; y(k)(t)) : Then (38) means that
+
+@i @*k A(__0 ; : : : ; __k ; _*0 ; : : : ; _*k\Gamma 1; _*k ) = 0
+
+for all i. It then follows from the analyticity of A that
+
+A(__0; : : : ; __k ; _*0 ; : : : ; _*k\Gamma 1; ff) = 0 for all ff 2 IR. Since u and t can be chosen arbitrarily, one concludes that
+
+A(u(t); : : : ; u(k)(t); y(t); : : : ; y(k\Gamma 1)(t); ff) = 0 for any Ck i/o pair (u; y) of Fc and any constant ff. Choose an ff such that the function
+
+A1(_0; : : : ; _k ; *0; : : : ; *k\Gamma 1) := A(_0; : : : ; _k ; *0; : : : ; *k\Gamma 1; ff) is not identically zero. (Such an ff exists because A is not identically zero, by definition of i/o equations.) It follows immediately that
+
+A1(u(t); : : : ; u(k)(t); y(t); : : : ; y(k\Gamma 1)(t)) = 0 (39) for all i/o pairs of Fc, and this is a nontrivial equation, by the choice of ff. We may assume that @
+
+@*j A1(_0 ; : : : ; _k ; *0 ; : : : ; *k\Gamma 1) 6= 0
+
+17
+
+for some j = 0; 1; : : : ; k \Gamma  1. Otherwise, if
+
+@ @*i A1(_0 ; : : : ; _k ; *0; : : : ; *k\Gamma 1) = 0
+
+for any i = 0; 1; : : : ; k \Gamma  1, then there exist some *0; : : : ; aek\Gamma 1 so that
+
+A2(_0 ; _1 ; : : : ; _k ) = A1(_0 ; _1; : : : ; _k ; *0; : : : ; *k\Gamma 1) is not identically zero and
+
+A2(u(t); u0(t); : : : ; u(k)(t)) = 0
+
+holds for all input functions and all t, which is impossible. Let j be as large as possible. Noting the fact that y(j) does not depend on u(i) for any i ? j, one knows that there exists some analytic function
+
+A3(_0 ; : : : ; _j ; *0 ; : : : ; *j )
+
+such that A3 = 0 is an i/o equation for Fc of order j ! k, which contradicts the assumed minimality of k.
+
+Thus we proved by induction that there exists some i such that Qi = 0 is not an i/o equation of Fc. Now let r * 1 be the smallest number for which Qr = 0 is not an i/o equation of Fc. Then
+
+Qr\Gamma 1(u(t); : : : ; u(k)(t); y(t); : : : ; y(k)) = 0 (40)
+
+is an i/o equation of Fc. Taking derivative with respect to time t on both sides of (40), one sees that Fc satisfies the following meromorphic i/o equation:
+
+Qr iu(t); : : : ; uk(t); y(t); : : : ; y(k)j y(k+1)
+
+= P3 iu(t); : : : ; uk(t); y(t); : : : ; y(k)j ;
+
+where P3 is some analytic function defined in IRm(k+1) \Theta  IR(k+1).
+
+For any given series c, the observation space F2(c) is defined to be the IR-space spanned by cn(_0 ; : : : ; _n\Gamma 1) for all n and all values of _0; : : : ; _n\Gamma 1. For the definition of cn(_0; : : : ; _n\Gamma 1 ) we refer the readers to [16]. Roughly speaking, cn(_0; : : : ; _n\Gamma 1) was defined in such a way that for any convergent power series c,
+
+dn dtn Fc[u](t) = Fcn(u(t);:::;u
+
+n\Gamma 1(t))[u](t); (41)
+
+for any continuous u 2 VT such that T is admissible for c. The observation algebra A2(c) is defined to be the IR-algebra generated by the elements of F2(c), and the observation field Q2(c) is defined to be the quotient field of A2(c). Again, Q2(c) is always well defined since A2(c) is an integral domain (cf [15]).
+
+The following Theorem relates the existence of analytic i/o equations to analytic finiteness properties of the observation algebra and field. An analogous result holds in the algebraic case (see [15]).
+
+Theorem 2 Assume c is a convergent power series. Then
+
+(a) Q2(c) is meromorphically finitely generated if Fc satisfies an analytic i/o equation;
+
+18
+
+(b) A2(c) is analytically finitely generated if Fc satisfies an analytically recursive i/o equation. Proof. We shall only provide the proof of part (a). Part (b) can be proved by the same approach.
+
+Assume Fc satisfies an analytic i/o equation. By Lemma 4.4, Fc satisfies a meromorphic i/o equation
+
+A0 iu(t); : : : ; u(k+1)(t); y(t); : : : ; y(k)(t)j y(k+1)(t)
+
+= A1 iu(t); : : : ; u(k+1)(t); y(t); : : : ; y(k)(t)j : (42)
+
+Taking derivative with respect to time t on both sides of the equation, one gets
+
+A0 iu(t); : : : ; u(k+1)(t); y(t); : : : ; y(k)(t)j y(k+2)(t) = ~A2 iu(t); : : : ; u(k+2)(t); y(t); : : : ; y(k)(t)j (43) + ^A2 iu(t); : : : ; u(k+2)(t); y(t); : : : ; y(k)(t)j y(k+1)(t);
+
+where
+
+~A2 =
+
+k+1X
+
+i=0
+
+@ @_i (A1 \Gamma  A0) _i+1 +
+
+k\Gamma 1X
+
+i=0
+
+@ @*i (A1 \Gamma  A0) *i+1 ;
+
+^A2 = @@*
+
+k
+
+(A1 \Gamma  A0) :
+
+Multiplying by A0 on both sides of (43) and replacing y(k+1) by (42), one knows that there exists some analytic function A2 such that
+
+A20 iu(t); : : : ; u(k+1)(t); y(t); : : : ; y(k)(t)j y(k+2)(t)
+
+= A2 iu(t); : : : ; u(k+2)(t); y(t); : : : ; y(k)(t)j :
+
+Using the above arguments repeatedly, one proves that for each r ? 0 there exists some analytic function Ar so that
+
+Ar0 iu(t); : : : ; u(k+1)(t); y(t); : : : ; y(k)(t)j y(k+r)(t)
+
+= Ar iu(t); : : : ; u(k+r)(t); y(t); : : : ; y(k)(t)j :
+
+According to Lemma 4.1, we have
+
+Ar0 `_0; : : : ; _k+1; Fc; : : : ; Fck(_0 ;:::;_k\Gamma 1)' Fck+r(_0;:::;_k+r\Gamma 1) = Ar `_0; : : : ; _k+r ; Fc; : : : ; Fck(_0;:::;_k\Gamma 1)' (44) for any r ? 0 and any _0; : : : ; _k+r 2 IRm. Let
+
+\Omega  = n(_0 ; : : : ; _k+1) :
+
+A0 `_0; : : : ; _k+1; Fc; : : : ; Fck(_0;:::;_k\Gamma 1)' 6= 0oe :
+
+19
+
+It follows from the fact that A0 = 0 is not an i/o equation of Fc that there exists some
+
+(_0; : : : ; _k+1) 2 IRm(k+2); some u 2 VT , and some o/ 2 [0; T ] so that
+
+A0 `_0 ; : : : ; _k+1; Fc[u](o/ ); : : : ; Fck(_0 ;:::;_k\Gamma 1)[u](o/ )' 6= 0: Since the function
+
+(_0; _2 : : : ; _k+1)
+
+:= A0 `_0; : : : ; _k+1; Fc[u](o/ ); : : : ; Fck(_0 ;:::;_k\Gamma 1)[u](o/ )'
+
+is an analytic function,
+
+\Omega 1 := n(_0; : : : ; _k+1) : (_0 ; : : : ; _k+1) 6= 0o
+
+is an open dense subset of IRm(k+2). As \Omega 1 ` \Omega , \Omega  is itself an open dense set of IRm(k+2).
+
+Now we let \Phi  be the set of all the coefficients of _ij that appear in cn(_0 ; : : : ; _n\Gamma 1), seen as a polynomial in _ij over the ring of power series in variables j0 ; : : : ; jm for all n ^ k + 1. Note that \Phi  is a finite set of power series.
+
+Pick up an arbitrary r * 2. Equation (44) implies that ck+r(_0; : : : ; _k+r\Gamma 1) is meromorphically generated by the elements of \Phi  if
+
+(_0 ; _1 ; : : : ; _k+1; _k+2; : : : ; _k+r\Gamma 1) 2 \Omega  \Theta  IRr\Gamma 2 :
+
+Since \Omega  is dense in IRk+2, it follows that \Omega  \Theta  IRr\Gamma 2 is dense in IRk+r. By Lemma 12.11 in [10], we know that for any choice of _0; : : : ; _k+r\Gamma 1,
+
+ck+r(_0; _1; : : : ; _k+r ) (45) is a linear combination of the elements in the set
+
+B := nck+r(_0; : : : ; _k+r\Gamma 1) : (_0 ; : : : ; _k+r\Gamma 1) 2 \Omega  \Theta  IRr\Gamma 2o : It follows immediately that (45) is meromorphically generated by the elements of \Phi  for any _0; : : : ; _k+r\Gamma 1. Since r can be chosen arbitrarily, we get our conclusion that all of Q2(c) is meromorphically generated by the finite set \Phi .
+
+5 Main Results In the previous section we showed that the realizability of an operator is closely related to the finiteness properties of A1(c) and Q1(c), while the existence of i/o equations is closely related to the finiteness properties of A2(c) and Q2(c). One of the main results in [16] shows thatF
+
+1(c) = F2(c), which implies that A1(c) = A2(c) and consequently, Q1(c) = Q2(c). Combining Theorem 2 and Theorem 1 we get our main results in this work:
+
+20
+
+Theorem 3 Assume that c is a convergent series. Then
+
+(a) Fc is realizable by an analytic system if Fc satisfies an analytically recursive i/o equation.
+
+(b) Fc is locally realizable by an analytic system if Fc satisfies an analytic i/o equation.
+
+6 Remarks We have shown in [15] that the existence of an algebraic i/o equation is equivalent to realizability by a singular polynomial system. However, in contrast to its algebraic analogue, the converse of Theorem 3 does not hold in the analytic case. By a small modification of a construction due to Respondek, it is shown in [14] that the following system defines an i/o operator F so that F [u] is defined for 0 ^ t ^ 1 and all u for which ku2k1 ^ 1, but F does not satisfy any analytic i/o equation. The example, with M = IR3, is as follows:
+
+x01 = u1 x02 = u2 x03 = u3
+
+h(x) = ex1
+
+1X
+
+k=0
+
+akfk(x2) x
+
+k3
+
+k! ;
+
+with initial state x(0) = 0. The functions fk and coefficients ak are defined via
+
+fk(x) = exp(exp(\Delta  \Delta  \Delta  (exp(x)) \Delta  \Delta  \Delta ))-- -z ""
+
+k
+
+for k * 1, and f0(x) = 1, and ak = (fk(1))\Gamma 1, k = 0; 1; : : :.
+
+It is possible to provide partial converses to Theorem 3, however. One possibility is to consider the mapping sending vectors
+
+(x; u(0); u0(0); : : : ; u(n\Gamma 1)(0)) ; consisting of states and (n \Gamma  1)-jets of inputs, into n-jets of outputs and (n \Gamma  1)-jets of inputs:
+
+(y(0); y0(0); : : : ; y(n)(0); u(0); u0(0); : : : ; u(n\Gamma 1)(0)) : This map is analytic, and hence the image of compact sets is a finite union of embedded submanifolds (from results in subanalytic set theory). This implies that, for bounded states and bounded controls (in an appropriate Whitney topology), a finite number of local analytic equations (as opposed to a single global equation) is satisfied by i/o pairs. Details will be given in a future paper. An alternative, but closely related, idea is being developed by W. Respondek (personal communication).
+
+7 Comparison With Algebraic Results Throughout the paper we have mentioned analogies with the algebraic case considered in [15]. In this section, we summarize these analogies and we point out the major differences with the analytic case.
+
+21
+
+The definition of input/output operator is the same in both papers, but while here we deal with analytic systems (17), in [15] the interest is in systems defined by rational equations. Essentially, the latter systems are defined by asking that the vector fields gi, and the output function h, be expressible as rational functions of the state -technically one must add a nondegeneracy condition to deal with the possible poles of these rational functions, and hence the name "singular polynomial systems."
+
+Theorem 1 has an analogue in the algebraic case: in part (a), realizability by an analytic system is replaced by realizability by a rational system, and "analytically finitely generated" is replaced by the standard finite generation notion for algebras; part (b) has a similar analogue, except that local realizability is replaced by global rational realizability when the field Q1(c) is a finitely generated field extension of IR. Note that neither result contains the other, as global realization by rational systems does not imply local analytic realizability, due to the possibility of poles.
+
+Analytic i/o equations (30) are replaced in [15] by polynomial equations, meromorphic equations are replaced by "rational equations" in which the highest derivative of the output is expressible as a rational function of lower order derivatives, and analytically recursive equations are replaced by "recursive" equations in which the latter expression contains no derivatives of outputs in the denominator. The analogue of Theorem 2 is somewhat easier to prove in the algebraic case: algebraic i/o equations give rise to finitely generated (rather than meromorphically finitely generated) field extensions, and recursive i/o equations imply finitely generated (rather than analytically finitely generated) algebras.
+
+Finally, the form of the main Theorem 3 is similar to that in [15], except that the converse of part (b) holds for algebraic equations and rational systems. This was discussed in the previous section, and is due to the lack of a strong property of elimination in the analytic case.
+
+References
+
+[1] L. V. Ahlfors, Complex Analysis: An Introduction to the theory of Analytic Functions
+
+of One Complex Variable, McGraw-Hill, New York, second ed., 1966.
+
+[2] M. Fliess, Fonctionnelles causales non lin'eaires et ind'etermin'ees non commutatives, Bull.
+
+Soc. Math. France, 109 (1981), pp. 3-40.
+
+[3] , R'ealisation locale des syst`emes non lin'eaires, alg`ebres de Lie filtr'ees transitives et
+
+s'eries g'en'eratrices non commutatives, Invent. Math., 71 (1983), pp. 521-537.
+
+[4] , Vers une notion de d'erivation fonctionnelle causale, Ann. Inst. Henri Poincar'e,
+
+Analyse non lin'eaire 3 (1986), pp. 67-76.
+
+[5] M. Fliess and C.Reutenauer, Une application de l'alg`ebre differentielle aux syst`emes
+
+r'eguliers (ou bilin'eaires), in Analysis and Optimization of Systems, Lect. Notes. Control Informat. Sci., Vol.44, A. Bensoussan and J. L. Lions, eds., Berlin, 1982, Springer-Verlag, pp. 99-107.
+
+[6] A. Isidori, Nonlinear Control Systems, Springer-Verlag, Berlin, second ed., 1989. [7] B. Jakubczyk, Local realizations of nonlinear causal operators, SIAM J. Control and
+
+Optimization, 24 (1986), pp. 231-242.
+
+22
+
+[8] , Realization theory for nonlinear systems; three approaches, in Algebraic and Geometric Methods in Nonlinear Control Theory, M. Fliess and M. Hazewinkel, eds., Dordrecht, 1986, Reidel, pp. 3-31.
+
+[9] H. Nijmeijer and A. van der Schaft, Nonlinear Dynamical Control Systems, SpringerVerlag, New York, 1990.
+
+[10] E. D. Sontag, Polynomial Response Maps, Springer-Verlag, Berlin-NY, 1979. [11] , Bilinear realizability is equivalent to existence of a singular affine differential i/o
+
+equation, Systems & Control Letters, 11 (1988), pp. 181-187.
+
+[12] H. J. Sussmann, A proof of the realization theorem for convergent generating series of
+
+finite lie rank. Submitted.
+
+[13] , Existence and uniqueness of minimal realizations of nonlinear systems, Mathematical
+
+Systems Theory, 10 (1977), pp. 263-284.
+
+[14] Y. Wang, Algebraic Differential Equations and Nonlinear Control Systems, PhD thesis,
+
+Rutgers, the State University of New Jersey, 1990.
+
+[15] Y. Wang and E. D. Sontag, Algebraic differential equations and rational control systems. submitted.
+
+[16] , On two definitions of observation spaces, Systems and Control Letters, 13 (1989),
+
+pp. 279-289.
+
+23</pre>
+</body>
+</html>

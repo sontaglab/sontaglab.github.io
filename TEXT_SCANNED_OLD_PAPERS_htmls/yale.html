@@ -1,0 +1,1905 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yale.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/yale.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.9 of July 23, 1990
+Dvi file name: "formatted-yale.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Dvi file name: "formatted-yale.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+NEURAL NETS AS SYSTEMS MODELS AND CONTROLLERS
+
+\Lambda 
+
+Eduardo D. Sontag Dept. of Mathematics, SYCON - Rutgers Center for Systems and Control
+
+Rutgers University, New Brunswick, NJ 08903
+
+E-mail: sontag@hilbert.rutgers.edu
+
+Abstract This paper briefly surveys some recent results relevant to the suitability of "neural nets" as models for dynam- ical systems as well as controllers for nonlinear plants. In particular, it touches upon questions of approxima- tion, identifiability, construction of feedback laws, clas- sification and interpolation, and computational capa- bilities of nets. No discussion is included of "learning" algorithms, concentrating instead on representational issues.
+
+1. Introduction The basic paradigm for control is that of a "plant" or physical device P interconnected with a controller C. The controller uses measurements from P in order
+
+P C
+
+Figure 1: Basic Paradigm to compute signals, which are then fed back into the plant so as to attain a given regulation objective. (This description can be extended to incorporate the effect of external disturbances, the specification of desired trajectories, and so forth.)
+
+The plant P represents an existing system, and it is essential to have a mathematical model of P which is accurate and useful both for theoretical analysis and controller synthesis. Sometimes, a good model can be derived from physical principles involving equations of motion, fluid dynamics, or chemical balance consider- ations. Often, however, only behavioral --also called input/output-- data is available. In that case, one typ- ically postulates a general parametric model for P , its values to be fit using a numerical procedure. "Neu- ral nets" have been proposed as one such source of parameterizations.
+
+A related but different issue to that of deciding upon an appropriate model for P is that of choosing the type of controller C to be employed. While in the classical --linear-- case it is reasonable to use a linear C, the choice is far less clear in general. Neural nets have been suggested, too, in this dual mode as controllers.
+
+\Lambda 
+
+Research supported in part by US Air Force Grant 91-
+
+0343
+
+What is meant precisely by the term neural net varies, depending on the author. The general consen- sus is that this means a simple, often linear, intercon- nection of static nonlinear scalar processors, supple- mented sometimes by memory elements (integrators, or delay lines). The coefficients of the interconnec- tions, called "weights", play a role vaguely analogous to the concentrations of neurotransmitters in biolog- ical neuronal systems, while the nonlinear processors in this over-simplified analogy correspond to the neu- rons themselves. In engineering practice, one decides a priori on the class of "neurons" to be used, that is, the type of nonlinearity allowed --typically of the "sig- moidal" type reviewed below-- and the weights are the parameters that are numerically adjusted in order to either model the plant, in the identification applica- tion, or to obtain a controller.
+
+Motivating the use of nets is the belief --as of yet not fully theoretically formalized-- that in some sense such nets are an especially appropriate family of pa- rameterized models, from a numerical and practical point of view.
+
+In this presentation we briefly survey some theoreti- cal results, especially those obtained by the author and his coworkers, dealing with the use of nets for iden- tification and control. As a general rule, we ignore numerical questions and algorithms, concentrating in- stead on the ultimate capabilities of nets for the above purposes. The discussion is mainly intuitive, and most details will not be included, but references to the liter- ature are given for the precise definitions and proofs.
+
+We return now to the issue of what a neural net -- from now on, just a "net"-- is. As explained above, by a net one typically means a system which is built by linearly combining memory-free scalar elements, each of which performs the same nonlinear transformation oe : IR ! IR on its input.
+
+One of the functions oe that we will focus on is sign (x) = x=jxj (zero for x = 0), or its relative, the hardlimiter, threshold, or Heaviside function H(x), which equals 1 if x ? 0 and 0 for x ^ 0 (one could de- fine the value at zero differently; results do not change much). Often one wants a differentiable saturation, and for this, especially in the neural network field, it is customary to consider the hyperbolic tangent tanh(x), which is close to the sign function when the "gain" fl is large in tanh(flx). (Equivalently, up to translations and change of coordinates, one usually finds the stan- dard sigmoid oe
+
+s
+
+(x) =
+
+1
+
+1+e
+
+\Gamma x
+
+.) Also common in prac-
+
+tice is a piecewise linear function, ss(x) := x if jxj ! 1Pass1: Page 2
+
+
+and ss(x) = sign (x) otherwise; this is sometimes called a "semilinear" or "saturated linearity" function.
+
+Whenever time behavior is of interest, one also in- cludes in nets dynamic elements, namely delay lines if dealing with discrete-time systems, or integrators in the continuous-time case.
+
+In the static case, we consider nets formed by inter- connections without loops, as otherwise the behavior is not always well-defined; we call these "feedforward" nets, in contrast to the terms "feedback," "recurrent," or "dynamic" nets used in the general case.
+
+s
+
+s s
+
+s
+
++ u
+
+u
+
+1
+
+2
+
+y
+
+5 1
+
+1 -1
+
+2
+
+0
+
+3
+
+2
+
+-3
+
+-1
+
+1
+
+2
+
+5
+
+Figure 2: Static Net Computing the Function 2oe(3oe(5u
+
+1
+
+\Gamma u
+
+2
+
+)+2oe(u
+
+1
+
++2u
+
+2
+
++1)+1)+5oe(\Gamma 3oe(u
+
+1
+
++2u
+
+2
+
++1)\Gamma 1)
+
+s s -1
+
+-1
+
+11
+
+2
+
+3 x
+
+x
+
+2 1 u
+
+u1
+
+2
+
+y Figure 3: Dynamic Net Representing the System
+
+.x
+
+1
+
+=oe(2x
+
+1
+
++x
+
+2
+
+\Gamma u
+
+1
+
++u
+
+2
+
+); .x
+
+2
+
+=oe(\Gamma x
+
+2
+
++3u
+
+2
+
+);y=x
+
+1
+
+1.1. What Do Nets Do? In the purely static case, nets can be thought of as merely computing functions. Such memory-free nets are natural in at least two control applications:
+
+-- as direct implementations of static feedback laws; -- as "pattern recognition" devices which choose
+
+among various controllers.
+
+In the latter case, different --typically simple linear-- controllers are employed depending on which region of the state space or output-value space the current measurement is in; see Figure 4. This is known some- times as "gain scheduling" or, if switching between controllers is replaced by a soft switching or blending of control laws, "fuzzy control." It is a useful control architecture when dealing with plants exhibiting qual- itatively different modes of operation, such as reconfig- urable aircraft or robotic manipulators under variable loads. In the first role, nets typically compute func- tions with continuous values, while in the second case nets are used as classifiers, producing a binary or more generally a finite-valued output. Mathematically, the first case gives rise to the study of questions of function approximation and interpolation, while the second fo- cuses on classification. We will discuss results relating with both of these aspects. One of the conclusions is that static nets are capable of controlling fairly general nonlinear plants, if state feedback is available.
+
+sensor measurements
+
+actuator commands
+
+C C C
+
+CLASSIFIER
+
+1
+
+2 3switch switch
+
+discrete signal
+
+discrete signal
+
+C Figure 4: Hierarchical Controller When memory elements are present, it is natural to view nets as nonlinear dynamical systems with inputs and outputs, in the sense of control theory. Dynamic nets play a role as identification models, as described above. In this context, theoretical results on approx- imation are relevant: To what extent can a general nonlinear system P be modeled by a net? Once that we agree to use a net as a model, a discussion of pa- rameter identifiability is important: To what extent are the parameters describing the model --in other words, the weights-- uniquely determined by the in- put/output behavior to be matched?
+
+Dynamic nets also arise as controllers, in the case in which direct state feedback is impossible and only partial measurements are available. (A general intro- duction to dynamic feedback is given in the textbook [13], which should also be consulted for all undefined terms from control theory.) Often dynamic controllers may be viewed as static controllers for augmented sys- tems: adding parallel integrators, or delay lines, to the plant P and then controlling the enlarged system by static feedback can be interpreted in this fashion. Sometimes, however, new issues arise, as discussed in the paper [10] which dealt with piecewise linear regu- lation, an area which is very closely related to the one of using dynamic nets as controllers.
+
+1.2. Some Definitions To fix terminology, we provide some definitions and notations.
+
+The symbol oe will always denote a fixed function oe : IR ! IR. For each positive integer r, we let oe
+
+r
+
+:
+
+IR
+
+r
+
+! IR
+
+r
+
+be the map that lets oe act coordinatewise,
+
+that is, oe
+
+r
+
+((x
+
+1
+
+; : : : ; x
+
+r
+
+)
+
+0
+
+) = (oe(x
+
+1
+
+); : : : ; oe(x
+
+r
+
+))
+
+0
+
+(prime
+
+indicates transpose), but we drop the subscript r when clear from the context. When dealing with continuous- time systems containing oe, we implicitely assume that oe is globally Lipschitz, so that solutions are defined for all times, though far less is needed. Usually, oe is taken to be one of the sigmoidal-type maps discussed earlier.
+
+Feedforward Nets
+
+We say that a a function f : IR
+
+m
+
+! IR is computable
+
+by a zero-hidden-layer net if it is an affine function, that is, there exist a vector v 2 IR
+
+m
+
+and a scalar o/ 2 IR
+
+such that f(u) = v:u + o/ , where the dot indicates inner product. For any integer d * 1, the function f : IR
+
+m
+
+! IR is computable by a d-hidden-layer netPass1: Page 3
+
+
+(with processsors of type oe) if there exist an integer l, constants w
+
+1
+
+; : : : ; w
+
+l
+
+2 IR, and functions f
+
+1
+
+; : : :; f
+
+l
+
+so that f(u) =
+
+P
+
+l
+
+i=1
+
+w
+
+i
+
+oe(f
+
+i
+
+(u)) and each f
+
+i
+
+is com-
+
+putable by a (d \Gamma  1)-hidden-layer net.
+
+In other words, the functions computable by nets with no hidden layers are those in the span of the co- ordinate functions and the constants, and those com- putable by d layers constitute the span of the func- tions oe(f(x)), for f computable with one less layer. Note that constant terms (or "biases" in neural net ter- minology) can always be included in the above sum, as one could take one of the f
+
+i
+
+'s to be a constant.
+
+A d-hidden-layer net is sometimes called a "(d + 2)- layer net" if one counts the inputs and outputs as a layer. We prefer the hidden-layer terminology, as it is less ambiguous. Note that a function f is computable by a one-hidden-layer net (it is a "1HL" function) if there are real numbers w
+
+0
+
+; w
+
+1
+
+; : : : ; w
+
+k
+
+, o/
+
+1
+
+; : : : ; o/
+
+k
+
+, and
+
+vectors v
+
+1
+
+; : : : ; v
+
+k
+
+2 IR
+
+m
+
+such that, for all u 2 IR
+
+m
+
+,
+
+f(u) = w
+
+0
+
++
+
+P
+
+k
+
+i=1
+
+w
+
+i
+
+oe(v
+
+i
+
+:u + o/
+
+i
+
+) : We also say in
+
+this case that f is a net "with k hidden neurons of type oe" or just that f is a "(k; oe)-net."
+
+The results to be given on the feedforward case will deal with d = 1 or d = 2.
+
+A function computable by a net with possible direct input to output connections (and d hidden layers) is by definition a function g : IR
+
+m
+
+! IR of the form
+
+F u + f(u), where F is linear and f is computable by a d-hidden-layer net as above. For multivariable maps f : IR
+
+m
+
+! IR
+
+p
+
+, "computable by a d-hidden-layer
+
+net" means by definition that each coordinate function f
+
+i
+
+: IR
+
+m
+
+! IR, i = 1; : : : ; m is so computable, and sim-
+
+ilarly if direct connections are allowed. For instance, computable by a one-hidden-layer net means that F factors as
+
+F (u) = F
+
+1
+
+(oe
+
+r
+
+(F
+
+2
+
+(u))) ; (1)
+
+where F
+
+1
+
+: IR
+
+r
+
+! IR
+
+p
+
+and F
+
+2
+
+: IR
+
+m
+
+! IR
+
+r
+
+are affine
+
+maps.
+
+It is by now well-known that functions computable by nets with a single hidden layer can approximate continuous functions, uniformly on compacts, under only weak assumptions on oe. We review below this fact, together with some results relating to the capa- bilities of such nets for solving interpolation and clas- sification problems. We also explain that for many problems, including those typically found in nonlinear control, two hidden layers are sometimes necessary. Feedback or Recurrent Nets
+
+Consider recurrent nets in discrete or continuous time. In the first case, there are n dynamic units whose values at time t, x
+
+i
+
+(t) 2 IR; i = 1; : : : ; n, evolve accord-
+
+ing to difference equations (\Delta x
+
+i
+
+)(t) = oe(w
+
+i
+
+(t)); where
+
+\Delta  indicates time-shift: (\Delta x)(t) = x
+
++
+
+(t) = x(t + 1) : In
+
+the continuous time case, these are differential equa- tions, and \Delta  stands for the time-derivative operator: (\Delta x)(t) = .x(t) =
+
+d
+
+dt
+
+x(t) : In either case, w
+
+i
+
+(t) is the
+
+input at time t to the ith device, which is a linear com- bination of the states of all the units as well as external signals. When oe= identity, we are dealing with ordi- nary linear control systems. As usual in control theory, we also assume that a particular set of measurements is
+
+of interest, and this is modeled by specifying an ouput map y(t) = Cx(t).
+
+Thus, we are led to consider systems that can be described by vector equations of the following type (deleting the time argument t):
+
+\Delta x = oe
+
+n
+
+(Ax + Bu) ; y = Cx ; (2)
+
+where A 2 IR
+
+n\Theta n
+
+, B 2 IR
+
+n\Theta m
+
+, and C 2 IR
+
+p\Theta n
+
+, and
+
+\Delta  = x
+
++
+
+or = .x in discrete or continuous time respec-
+
+tively. We call these oe-systems or recurrent nets.
+
+u
+
+-
+
+B
+
+- h
+
++
+
+-
+
+oe
+
+-
+
+\Delta 
+
+\Gamma 1
+
+-
+
+C
+
+-
+
+y x
+
+r
+
+oe A
+
+6
+
+Figure 5: Recurrent Net A constant vector c could be added to the right- hand side of equation (2), to represent what are usu- ally called "biases" in the neural net literature, that is, in order to allow affine rather than just linear com- binations of states and inputs, leading to equations \Delta x = oe
+
+n
+
+(Ax + Bu + c). It is often simpler to ig-
+
+nore this term by first adding a constant coordinate x
+
+0
+
+(t) j _, where _ 6= 0 and then replacing each en-
+
+try c
+
+i
+
+by the linear term (c
+
+i
+
+=_)x
+
+0
+
+, which can then be
+
+absorbed into the A matrix. (In continuous-time, as- suming that oe(0) = 0, then x
+
+0
+
+evolves according to
+
+.x
+
+0
+
+= oe(0); in discrete-time, we may take any nonzero
+
+element in the image of oe, _ = oe(*), and then use the
+
+update x
+
++
+
+0
+
+= oe((*=_)x
+
+0
+
+).)
+
+Mathematically, oe-systems are interesting, among other reasons, because:
+
+-- they are a powerful model of computation; -- they can approximate rather arbitrary plants. Such systems have been proposed as models of large scale parallel computation, since they are built of po- tentially many simple processors. Electrical circuit implementations of oe-systems, employing resistively connected networks of n identical nonlinear amplifiers, with the resistor characteristics used to reflect the de- sired weights, have been suggested as analog comput- ers, in particular for solving constrained optimization problems and for implementing content-addressable memories. In speech processing applications and lan- guage induction, recurrent net models are used as iden- tification models, and they are fit to experimental data by means of the gradient-descent optimization (the so- called "dynamic backpropagation" procedure) of some cost criterion.
+
+2. Approximation, Interpolation, Classification
+
+Given a function oe : IR ! IR, let F
+
+oe
+
+be the affine
+
+span of the set of all the maps oe
+
+a;b
+
+(x) := oe(ax + b),
+
+with a; b 2 IR. That is, the elements of F
+
+oe
+
+are those
+
+functions IR ! IR that are finite linear combinations c
+
+0
+
++ c
+
+i
+
+P
+
+i
+
+oe(a
+
+i
+
+x + b
+
+i
+
+). We say that the mapping oe isPass1: Page 4
+
+
+a universal nonlinearity if for each \Gamma 1 ! ff ! fi ! 1 the restrictions to the interval [ff; fi] of the functions in F
+
+oe
+
+constitute a dense subset of C
+
+0
+
+[ff; fi], the set of
+
+continuous functions on [ff; fi] endowed with the metric of uniform convergence. If oe is k-times continuously differentiable, we say that it is k-universal if these re- strictions of functions of F
+
+oe
+
+are dense in C
+
+k
+
+[ff; fi], the
+
+set of C
+
+k
+
+functions with the metric of uniform conver-
+
+gence of all derivatives up to order k.
+
+Note that, at this level of generality, we are not requiring anything besides density. In practical appli- cations, it may be desirable to consider special classes of functions oe, such as those used in Fourier analy- sis or wavelet theory, for which it is possible to pro- vide "reconstruction" algorithms for finding, given an f : [ff; fi] ! IR, a set of coefficients a
+
+i
+
+; b
+
+i
+
+; c
+
+i
+
+that result
+
+in an approximation of f within a desired tolerance.
+
+Not every nonlinear function is universal in the above sense, of course; for instance, if oe is a polyno- mial of degree k then F
+
+oe
+
+is the set of all polynomials
+
+of degree ^ k, hence closed and not dense in any C
+
+0
+
+.
+
+But most nonlinear functions are universal. Indeed, Hornik proved in [3] that any oe which is continuous, nonconstant, and bounded is universal (see also [2] for related results). Moreover, he also proved there (The- orem 3 in the paper) that if in addition to the above, oe
+
+is of class C
+
+k
+
+, then it is also k-universal, for each pos-
+
+itive integer k. (M. Leshno has recently notified this author that he has a new result showing that univer- sality holds for any continuous function which is not a polynomial.) In the rather general case of "sigmoidal" functions, that is, nondecreasing functions with the property that both lim
+
+x!\Gamma 1
+
+oe(x) and lim
+
+x!+1
+
+oe(x)
+
+exist (without loss of generality, assume the limits are \Gamma 1 and +1 respectively), universality is not hard to prove, as follows. Take any continuous function f on [ff; fi]. One can first approximate f uniformly by a piecewise constant function, i.e. by an element of F
+
+sign
+
+;
+
+then each sign function is approximated by oe(flx), for large enough positive fl.
+
+It is a standard fact that universality of oe implies that, for each m; p and each compact subset K of IR
+
+m
+
+,
+
+the set of functions F : IR
+
+m
+
+! IR
+
+p
+
+computable by
+
+single hidden layer nets, that is, those that can be written in the factored form (1), is dense in C
+
+0
+
+(K). A
+
+similar situation holds for k-universality.
+
+One can also establish density results for L
+
+q
+
+spaces,
+
+q ! 1, (use density of continuous functions,) but not in L
+
+1
+
+, which causes serious problems in nonlinear
+
+feedback control (see below).
+
+2.3. Approximations of Nonlinear Systems
+
+We now explain how the above translates into the fact that recurrent nets provide universal identification models, in a suitable sense. Consider a continuous- or discrete-time, time-invariant, control system \Sigma :
+
+.x [ or x
+
++
+
+] = f(x; u) (3)
+
+y = h(x)
+
+where x(t) 2 IR
+
+n
+
+, u(t) 2 IR
+
+m
+
+, and y(t) 2 IR
+
+p
+
+for all t,
+
+and f and h are continuously differentiable. For any
+
+measurable essentially bounded control u(\Delta ) : [0; T ] ! IR
+
+m
+
+, we denote by OE(t; x
+
+0
+
+; u) the solution at time t of
+
+(3) with initial state x(0) = x
+
+0
+
+; this is defined at least
+
+on a small enough interval [0; "), " ? 0. For oe-systems, when oe is bounded or globally Lipschitz with respect to x, it holds that " = T ; we will assume here that we are dealing with controls for which solutions exist globally, at least for the states on some compact set of interest. For each control, we let *(u) = *
+
+\Sigma ;x
+
+0
+
+(u) be
+
+the output function corresponding to the initial state x(0) = x
+
+0
+
+, that is, *(u)(t) := h(OE(t; x
+
+0
+
+; u)). We wish
+
+to see that, on compacts, and for finite time intervals, this system can be approximately simulated by a oe- system. We first define what is meant by approximate simulation.
+
+Assume given two systems \Sigma  and
+
+e \Sigma , as in (3), where
+
+we use tildes to denote data associated to the second system, and with same number of inputs and outputs (but possibly en 6= n). Suppose also that we are given compact subsets K
+
+1
+
+` IR
+
+n
+
+and K
+
+2
+
+` IR
+
+m
+
+, as well as
+
+an " ? 0 and a T ? 0. Supposed further (this simpli- fies definitions, but can be relaxed) that for each initial state x
+
+0
+
+2 K
+
+1
+
+and each control u(\Delta ) : [0; T ] ! K
+
+2
+
+the
+
+solution OE(t; x
+
+0
+
+; u) is defined for all t 2 [0; T ]. We'll
+
+say that the system
+
+e \Sigma  simulates \Sigma  on the sets K
+
+1
+
+; K
+
+2
+
+in time T and up to accuracy " if there exist two con-
+
+tinuous mappings ff : IR
+
+en
+
+! IR
+
+n
+
+and fi : IR
+
+n
+
+! IR
+
+en
+
+so
+
+that the following property holds: For each x
+
+0
+
+2 K
+
+1
+
+and each u(\Delta ) : [0; T ] ! K
+
+2
+
+, denote x(t) := OE(t; x
+
+0
+
+; u)
+
+and ex(t) :=
+
+e OE(t; fi(x
+
+0
+
+); u); then this second function is
+
+defined for all t 2 [0; T ], and
+
+kx(t) \Gamma  ff(ex(t))k ! " ; kh(x(t)) \Gamma 
+
+e
+
+h(ex(t))k ! "
+
+for all such t.
+
+One may ask for more regularity properties of the maps ff and fi as part of the definition; in any case the maps to be constructed below can be taken to be at least differentiable.
+
+Assume that oe is a universal nonlinearity in the sense defined earlier. Then, for each system \Sigma  and for
+
+each K
+
+1
+
+, K
+
+2
+
+, ", T as above, there is a oe-system
+
+e \Sigma  that
+
+simulates \Sigma  on the sets K
+
+1
+
+; K
+
+2
+
+in time T and up to
+
+accuracy ". Some variations of this result were given earlier and independently in [6] and [5], under more restrictive assumptions and with somewhat different definitions. As we haven't found it in this manner in the literature, we next sketch a proof.
+
+The final maps ff and fi will be built up out of several elementary maps. The first step is to add, if necessary,
+
+the equation .y =
+
+@h(x)
+
+@x
+
+:f(x; u) in the continuous case,
+
+or y
+
++
+
+= h(f(x; u)) in discrete-time, so that from now
+
+on one may take without loss of generality h linear, that is, y = Cx for some matrix C. The enlarged system simulates the original one via ff(x; y) = x and fi(x) = (x; h(x)).
+
+Next one finds a 1HLN function as in equation (1) that uniformly approximates f(x; u) (for the extended system) close enough on K
+
+1
+
+\Theta  K
+
+2
+
+; this will imply the
+
+desired approximation of solutions, by any standardPass1: Page 5
+
+
+well-posedness result, as discussed e.g. in [13], Theo- rem 37. This new function is specified by matrices and vectors T
+
+1
+
+2 IR
+
+n\Theta r
+
+; A 2 IR
+
+r\Theta n
+
+; B 2 IR
+
+r\Theta m
+
+; ff; fi 2 IR
+
+n
+
+and f(x; u) ss T
+
+1
+
+oe
+
+r
+
+(Ax + ff + Bu) + fi: Finally, one
+
+needs to show that a system with such a right-hand side and output y = Cx can be itself simulated by some oe-system. Changing coordinates in IR
+
+n
+
+if nec-
+
+essary, one may assume that T
+
+1
+
+has the form (T
+
+0
+
+0)
+
+0
+
+,
+
+where T is of full row rank. Thus the equations take the form
+
+.x
+
+1
+
+[ or x
+
++
+
+1
+
+] = T oe
+
+r
+
+(A
+
+1
+
+x
+
+1
+
++ A
+
+2
+
+x
+
+2
+
++ ff + Bu) + fi
+
+1
+
+.x
+
+2
+
+[ or x
+
++
+
+2
+
+] = fi
+
+2
+
+and the output function is y = C
+
+1
+
+x
+
+1
+
++ C
+
+2
+
+x
+
+2
+
+in these
+
+coordinates. Write n
+
+2
+
+= n \Gamma  rank T for the size of
+
+the x
+
+2
+
+variable. This is essentially a oe-system after
+
+a change of variables x = T z and elimination of the constant ("bias") vectors ff; fi
+
+1
+
+; fi
+
+2
+
+. More precisely, we
+
+proceed as follows.
+
+First, there is a
+
+e fi
+
+1
+
+so that T
+
+e fi
+
+1
+
+= fi
+
+1
+
+(since T has full
+
+row rank). Consider the system of dimension r + n
+
+2
+
+consisting of the above equation for x
+
+2
+
+together with:
+
+.z
+
+1
+
+[ or z
+
++
+
+1
+
+] = oe
+
+r
+
+(A
+
+1
+
+T z
+
+1
+
++ A
+
+2
+
+x
+
+2
+
++ ff + Bu) +
+
+e fi
+
+1
+
+and
+
+output y = C
+
+1
+
+T z
+
+1
+
++ C
+
+2
+
+x
+
+2
+
+. Given any initial con-
+
+dition (,
+
+1
+
+; ,
+
+2
+
+)
+
+0
+
+2 IR
+
+n
+
+, and any control u(\Delta ), pick the
+
+solution of the (z
+
+1
+
+; x
+
+2
+
+) system that has z
+
+1
+
+(0) = i and
+
+x
+
+2
+
+(0) = ,
+
+2
+
+, where i is any vector so that T i = ,
+
+1
+
+(again use that T is onto). Write x
+
+1
+
+(t) := T z
+
+1
+
+(t) along
+
+this solution. Then (x
+
+1
+
+(t); x
+
+2
+
+(t))
+
+0
+
+satisfies the original
+
+equations, and has the initial value (,
+
+1
+
+; ,
+
+2
+
+)
+
+0
+
+, so it is
+
+the state trajectory corresponding to the given con- trol. In conclusion, each trajectory of the original sys- tem can be simulated by some trajectory of the z
+
+1
+
+; x
+
+2
+
+-
+
+system. Let oe
+
+n
+
+2
+
+(0) = fl; then the equation for x
+
+2
+
+can
+
+be written with right-hand side oe(0x + 0u) + (fi
+
+2
+
+\Gamma  fl);
+
+thus, redefining n as r + n
+
+2
+
+, one is reduced to studying
+
+systems of the following special form: .x [ or x
+
++
+
+] =
+
+oe
+
+n
+
+(Ax + Bu + ff) + fi; with linear output y = Cx.
+
+One is only left to eliminate the bias terms ff and fi. Consider first treat the continuous-time case. Pick any real numbers _; * so that _oe(*) = 1 and consider these equations in dimension n + 2: .z=oe
+
+n
+
+(Az + _z
+
+n+1
+
+Afi +
+
+_z
+
+n+2
+
+ff+Bu), .z
+
+n+1
+
+=oe(*_z
+
+n+2
+
+), .z
+
+n+2
+
+=0, with output
+
+y = C(z + _z
+
+n+1
+
+fi), where z(t) 2 IR
+
+n
+
+. Given any ini-
+
+tial , 2 IR
+
+n
+
+and any control u(\Delta ), pick the solution of
+
+this extended system for which z(0) = ,, z
+
+n+1
+
+(0) = 0,
+
+and z
+
+n+2
+
+(0) = 1=_. Consider x(t) := z(t)+_z
+
+n+1
+
+(t)fi:
+
+Observe that z
+
+n+2
+
+j 1=_ and .z
+
+n+1
+
+j oe(*_
+
+1
+
+_
+
+) = 1=_.
+
+Therefore .x(t) = oe
+
+n
+
+(Ax + Bu + ff) + fi, and x(0) =
+
+z(0) + _z
+
+n+1
+
+(0) = ,, so the z; z
+
+n+1
+
+; z
+
+n+2
+
+system pro-
+
+vides the desired simulation. In discrete time, the only modification needed consists of replacing the z
+
+2
+
+equa-
+
+tion by z
+
++
+
+2
+
+= oe(*_z
+
+n+2
+
+). This completes the sketch of
+
+the proof of the approximation result.
+
+Thus, recurrent nets approximate a wide class of nonlinear plants. Note, however, that approximations are only valid on compact subsets of the state space and for finite time, so that many interesting dynamical characteristics are not reflected. This is analogous to the role of bilinear systems, which had been proposed
+
+previously (work by Fliess and Sussmann in the mid- 1970s) as universal models. As with bilinear systems, it is obvious that if one imposes extra stability as- sumptions ("fading memory" type) it will be possible to obtain global approximations, but this is probably not very useful, as stability is often a goal of control rather than an assumption.
+
+For applications of these approximations to signal processing see [5], and [6] for applications to control and identification.
+
+2.4. Number of Units As discussed earlier, pattern recognition is involved in the use of nets as selectors of lower-level con- trollers. In this context, it is interesting to ask about the number units that is needed in order to solve a given classification or interpolation task. We formal- ize this as follows. A labeled sample is a finite set S = (u
+
+1
+
+; y
+
+1
+
+); : : : ; (u
+
+s
+
+; y
+
+s
+
+), where the u
+
+1
+
+; : : : ; u
+
+s
+
+2 IR
+
+m
+
+are distinct and y
+
+1
+
+; : : : ; y
+
+s
+
+2 IR are the "labels". (The
+
+labels are binary if y
+
+i
+
+2 f0; 1g.) A classifier is a func-
+
+tion F : IR
+
+m
+
+! IR. The error of F on the labeled
+
+sample S is defined as E(F; S) :=
+
+P
+
+s
+
+i=1
+
+kF (u
+
+i
+
+) \Gamma  y
+
+i
+
+k
+
+2
+
+:
+
+A set F = fF
+
+~w
+
+: IR
+
+m
+
+! IR; ~w 2 R
+
+r
+
+g of functions
+
+parameterized by ~w 2 R
+
+r
+
+, r = r(F), is an architec-
+
+ture. An example is that of nets with no direct i/o connections and m=1 inputs, k hidden units; here the parameter set has dimension r=3k + 1. The sample S is loadable into F iff inf
+
+~w2IR
+
+r
+
+E(F
+
+~w
+
+; S) = 0: The ca-
+
+pacity c(F) of F is defined by requiring that c(F) * k iff every jSj = k is loadable. (This was called the "testing dimension" in [7].) That is, c(F)=1 means that all finite S are loadable, and c(F)=k !1 means that each S of cardinality ^ k is loadable but some S of cardinality k + 1 is not. In [11], we studied the relation between capacity and number of neurons, for nets with one hidden layer and Heaviside or sigmoidal activations; note that large capacity ss memorization, so this is especially relevant for learning issues. Next we review some results from [11].
+
+Consider first the case of input dimension m=1, that is, nets with one input, and k hidden units of type oe in one layer. Observe that there are 3k + 1 parameters (appearing nonlinearly) --or 3k + 2 if allowing direct connections,-- though for H, effectively only 2k + 1 matter. (In the case of the standard sigmoid, a Ja- cobian computation shows that these parameters are independent.) Let F
+
+INTP;k;`
+
+be the set of all functions
+
+like this, with no direct connections, and use a super- script "d" if direct connections are allowed. Finally, let F
+
+CLSF;k;`
+
+be the set of f0; 1g-valued functions of
+
+the form H(f(x)), for f a (k; oe)-net.
+
+We study scaling properties as k ! 1. Let, for each oe: CLSF(oe) := lim inf
+
+k!1
+
+c(F)=r(F), for F =
+
+F
+
+CLSF;k;`
+
+, and INTP(oe) := lim inf
+
+k!1
+
+c(F)=r(F), for
+
+F = F
+
+INTP;k;`
+
+. Define similarly CLSF
+
+d
+
+; INTP
+
+d
+
+when
+
+allowing direct connections.
+
+For any map oe, we consider the property (S1): 9 lim
+
+x!+1
+
+oe(x) 6= lim
+
+x!\Gamma 1
+
+oe(x) and the property
+
+(S2): 9 c s.t. ` is differentiable at c and `
+
+0
+
+(c) = j 6= 0.Pass1: Page 6
+
+
+Then, for classification, we have: CLSF(H) = 1=3; CLSF
+
+d
+
+(H) = 2=3; CLSF(oe) * 2=3
+
+assuming that oe is so that properties (S1)-(S2) are satisfied. The last bound is best possible, in the sense that for the piecewise linear ss we have CLSF(ss) = 2=3, while it is the case that CLSF(oe) = 1 for some "nice" (even, real-analytic) functions oe satisfying (S1)-(S2).
+
+Regarding continuous-valued interpolation, we have the results:
+
+INTP(H) = 1=3; INTP
+
+d
+
+(H) = 1=3; INTP(oe) * 2=3
+
+assuming in the last case that (S1)-(S2) hold and oe is continuous. Again here, INTP(ss) = 2=3, and we can also show that 2=3 ^ INTP(oe
+
+s
+
+) ^ 1 for the standard
+
+sigmoid (the proof of the upper bound in this latter case involves some algebraic geometry; the value may be infinite for more general sigmoids). Furthermore, the inequality INTP(oe) * 1=3 holds for any universal nonlinearity.
+
+The paper [11] includes also results when the num- ber of inputs m ? 1. Other closely related concepts were studied there as well, such as notions of "capac- ity" defined via the shattering of random sets, and Vapnik-Chervonenkis (VC) dimension measures, again comparing the power of Heaviside nets and sigmoidal nets, as well as the effect of direct i/o connections. In the multi-input case, it is interesting to study the par- ticular case of binary inputs and the scaling with re- spect to input size, for natural Boolean functions; this gives a connection with theoretical computer science issues in the area of "circuit complexity" as discussed in [4].
+
+2.5. Two-Hidden Layers, Inverse Problems
+
+Consider now the following inversion problem: Given a continuous function f : IR
+
+p
+
+! IR
+
+m
+
+, a com-
+
+pact subset C ` IR
+
+m
+
+included in the image of f, and
+
+an " ? 0, find a function OE : IR
+
+m
+
+! IR
+
+p
+
+so that
+
+kf(OE(x)) \Gamma  xk ! " for all x 2 C. One wants to find a OE which is computable by a net, as done in global so- lutions of inverse kinematics problems --in which case the function f is the direct kinematics. It is trivial to see that in general discontinuous functions OE are needed, so continuous oe cannot be used. However, and this is the interesting part, [12] establishes that nets with just one hidden layer, even if discontinuous oe is allowed, are not enough to guarantee the solution of all such problems. On the other hand, it is shown there that nets with two hidden layers (using H as the neuron type) are sufficient, for every possible f, C, and ". The basic obstruction is due, in essence, to the impossibility of approximating by single-hidden- layer nets the characteristic function of any bounded polytope, while for some (non one-to-one) f the only possible one-sided inverses OE must be close to such a characteristic function. This brings up the need to revive the study of training of nets with discontinu- ous activations, an area that had been left relatively
+
+aside during the recent interest in neural networks, but which can be attacked by means of modern techniques of nonsmooth optimization and set analysis.
+
+2.6. State Feedback We now make several remarks about nets for imple- mentation of state-feedback controllers. The objective, given a system
+
+.x = f(x; u)
+
+with f(0; 0)=0, is to find a stabilizer u=k(x), k(0)=0, making x=0 a globally asymptotically stable state of the closed-loop system .x=f(x; k(x)): The first re- mark is that the existence of a continuous stabilizer k is essentially equivalent to the possibility of sta- bilizing using 1HL nets (with any desired continu- ous oe). (Thus the simple classes of systems stud- ied in many neurocontrol papers, which are typically feedback-linearizable and hence continuously stabiliz- able, can be controlled using such 1HL nets.)
+
+More precisely, assume that f is twice continuously differentiable, that k is also in C
+
+2
+
+, that the origin is
+
+an exponentially stable point for .x=f(x; k(x)), and that K is a compact subset of the domain of stability. Pick any oe that is 2-universal (most interesting twice- differentiable scalar nonlinearities will do, as recalled earlier). Then, we can conclude that there is also a dif- ferent k, this one a 1HL net with neurons oe, for which exactly the same stabilization property holds. (Sketch of proof: one only needs to show that if k
+
+n
+
+! k in
+
+C
+
+2
+
+(K), with all k
+
+n
+
+(0)=0 --this last property can al-
+
+ways be achieved by simply considering k
+
+n
+
+(x) \Gamma  k
+
+n
+
+(0)
+
+as an approximating sequence-- then .x=f(x; k
+
+n
+
+(x))
+
+has the origin as an exponentially stable point and K is in the domain of attraction, for all large n. Now, the proof of Theorem 12 in [13] shows that there is a neighborhood V of zero, independent of n, where ex- ponential stability will hold, for all n sufficiently large, because f(x; k
+
+n
+
+(x))=A
+
+n
+
+x + g
+
+n
+
+(x), with A
+
+n
+
+! A and
+
+with g
+
+n
+
+(x) being o(x) uniformly on x. Now continu-
+
+ity of solutions on the right-hand side gives the result globally on K.
+
+In general, continuous stabilizers fail to exist, as dis- cussed for instance in [13], Section 4.8. Thus 1HLN feedback laws, with continuous oe, do not provide a rich enough class of controllers. This motivates the search for discontinuous feedback, and maps of the type studied in this paper provide a computational paradigm in which to pose questions of existence of such more general controllers. It is easy to provide ex- amples where 1HL H-nets will stabilize but no net with continuous activations (hence implementing a contin- uous feedback) will. More surprisingly, 1HLN feed- back laws, even with H activations, are not in general enough --intuitively, one is again trying to solve in- verse problems-- but two hidden layer nets using H (and having direct i/o connections) are always suf- ficient. More precisely, [12] shows that the weakest possible type of open-loop asymptotic controllability is sufficient to imply the existence of (sampled) con- trollers built using such two-hidden layer nets, which stabilize on compact subsets of the state space.Pass1: Page 7
+
+
+3. Recurrent Nets We saw above that recurrent nets, i.e. oe-systems (2), have certain approximation properties. This sug- gests their suitability as identification models, that is, models for plants P . An alternative way of character- izing the power of a class of models is in terms of the computations that they can perform. Another natural question deals with parameter (weights) identification from i/o data. We now offer some remarks on these two topics.
+
+3.7. Computability In the paper [8] with Hava Siegelmann, and related work, we investigated the computational capabilities of oe-systems, seen from the point of view of formal language theory. There we studied discrete-time oe- systems with oe = ss. When restricted to binary inputs and outputs, the computations carried out by such sys- tems can be viewed as transformations on languages, and hence can be compared with other, more classi- cal, models of computation. Our main results in [8] are: (a) with rational matrices A, B, and C, (and ra- tional initial state), such systems are equivalent, up to polynomial time, to Turing machines; (b) with real matrices, all possible binary functions, recursive or not, are "computable". Thus one may reduce ques- tions in computability to questions about realizability by ss-systems (2). When time constraints are imposed on the computation length, a rich theory arises. For instance, polynomial-time computation by ss-systems with real coefficients --a form of analog computing-- is equivalent to a notion of computability (nonuniform polysize circuits) that appeared in abstract computa- tion theory. Even the "P=?NP" problem has a version for ss-systems; see [9].
+
+3.8. Identifiability In [1], with Francesca Albertini, we were interested in studying the following issue: To what extent does the function of a oe-system, that is to say, the "black box" behavior mapping external inputs to outputs, uniquely determine the coefficients of the matrices A, B, C? A precise formulation, for continuous-time, is as follows. Assume that the network is started at x(0) = 0 and the corresponding state and output tra- jectories x(\Delta ) and y(\Delta ) are generated. In this manner to each triple (A; B; C) we associate an input-output mapping *
+
+(A;B;C)
+
+: u(\Delta ) 7! y(\Delta ) : We wish to know to
+
+what extent are the matrices A; B; C determined by the i/o mapping *
+
+(A;B;C)
+
+. If oe would have been the
+
+identity, linear systems theory tells us that, generi- cally, the triple (A; B; C) is determined only up to an invertible change of variables in the state space. That is, except for degenerate situations that arise due to parameter dependencies --non-controllability or non- observability-- if two triples (A; B; C) and (A; B; C) give rise to the same i/o behavior then there is an invertible matrix T such that the interlacing condi- tions T
+
+\Gamma 1
+
+AT = A; T
+
+\Gamma 1
+
+B = B; CT = C hold. This
+
+is the same as saying that the two systems are equiv- alent under a linear change of variables x(t) = T x(t).
+
+Conversely, any such T gives rise to another system with the same i/o behavior. These classical facts ap- ply only when oe is linear, as we discuss in [1]. There we show that for nonlinear activations --under very mild assumptions-- the natural group of symmetries is far smaller than that of arbitrary nonsingular ma- trices, being instead just a finite group. We prove in [1] that if two nets give rise to the same i/o behav- ior, then (again, as for linear systems, generically,) a matrix T will exist, providing the above interlacing equations, but having the special form of a permuta- tion matrix composed with a diagonal matrix perform- ing at most a sign reversal at each neuron. That is, the input/output behavior uniquely determines all the weights, except for a reordering of the variables and, for odd activation functions, possible sign reversals of all incoming and outgoing weights. A consequence of this uniqueness is that a dimensionality reduction of the parameter space, as done for linear systems via canonical forms, is not possible for recurrent nets.
+
+References [1] Albertini, F., and E.D. Sontag, "For neural networks,
+
+function determines form," submitted. [2] Cybenko, G., "Approximation by superpositions of a
+
+sigmoidal function," Math. Control, Signals, and Sys- tems 2(1989): 303-314. [3] Hornik, K., "Approximation capabilities of multilayer
+
+feedforward networks," Neural Networks 4(1991): 251- 257. [4] Maass, W., G. Schnitger, and E.D. Sontag, "On the
+
+computational power of sigmoid versus boolean thresh- old circuits," Proc. of the 32nd Annual Symp. on Foun- dations of Computer Science, 1991: 767-776. [5] Matthews, M., "On the uniform approximation of non-
+
+linear discrete-time fading-memory systems using neu- ral network models," Ph.D. Thesis, E.T.H. Zurich, Diss. ETH No. 9635, 1992. [6] Polycarpou, M.M., and P.A. Ioannou, "Identification
+
+and control of nonlinear systems using neural network models: Design and stability analysis," Report 91-09-01, Sept. 1991, Dept. of EE/Systems, USC, Los Angeles. [7] Romanik, K., "Approximate testing and learnability,"
+
+in Proc. Fifth ACM Workshop on Computational Learn- ing Theory, Pittsburgh, July 1992. [8] Siegelmann, H.T., and E.D. Sontag, "On the computa-
+
+tional power of neural nets," in Proc. Fifth ACM Work- shop on Computational Learning Theory, Pittsburgh, July 1992; see also SYCON Report 91-11, Rutgers Cen- ter for Systems and Control, November 1991. [9] Siegelmann, H.T., and E.D. Sontag, "Analog compu-
+
+tation, neural networks, and circuits," submitted. [10] Sontag, E.D., "Nonlinear regulation: The piecewise
+
+linear approach," IEEE Trans. Autom. Control AC- 26(1981): 346-358. [11] Sontag, E.D., "Feedforward nets for interpolation and
+
+classification," J. Comp. Syst. Sci., to appear, 1992. [12] Sontag, E.D., "Feedback Stabilization Using Two-
+
+Hidden-Layer Nets," in Proc. Amer. Automatic Control Conference, Boston, June 1991, pp. 815-820. To appear in IEEE Trans. Neural Networks. [13] Sontag, E.D., Mathematical Control Theory: Deter-
+
+ministic Finite Dimensional Systems, Springer, New York, 1990.</pre>
+</body>
+</html>

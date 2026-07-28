@@ -1,0 +1,1276 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/hoo.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/hoo.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Remarks regarding the gap between continuous, Lipschitz, and differentiable storage functions for
+
+dissipation inequalities appearing in H1 control
+
+Lionel Rosier a and Eduardo D. Sontag b
+
+;1
+
+a Laboratoire d'Analyse Num'erique et EDP,
+
+Universit'e Paris 11, b^at. 425,
+
+F91405 Orsay Cedex, France
+
+b Dept. of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+This paper deals with the regularity of solutions of the Hamilton-Jacobi Inequality which arises in H1 control. It shows by explicit counterexamples that there are gaps between existence of continuous and locally Lipschitz (positive definite and proper) solutions, and between Lipschitz and continuously differentiable ones. On the other hand, it is shown that it is always possible to smooth-out solutions, provided that an infinitesimal increase in gain is allowed.
+
+Key words: H1 control, storage functions, dissipation inequalities, Lyapunov functions, stability, viscosity solutions
+
+1 Introduction The so-called "H1 control problem" is that of finding a state (or more generally, a measurement-based) feedback which stabilizes a given system, while satisfying an energy-gain (L2 operator norm) constraint. For linear systems, the problem has a long history, and an elegant solution was provided in the by now classical paper [9]. The nonlinear version of this problem has been the subject of intense research as well; see for instance [4,5,14,21] among many
+
+1 E-mail: sontag@control.rutgers.edu. Research supported in part by US Air Force Grant F49620-98-1-0242 2 E-mail: Lionel.Rosier@math.u-psud.fr.
+
+others. A central role in these studies is played by a partial differential inequality, a Hamilton-Jacobi Inequality (HJI) which is satisfied by a "storage" or "energy" function V associated with the closed loop system.
+
+In this paper, we concern ourselves with the analysis of the HJI for a system already in closed-loop form, since we wish to make some remarks about the regularity of solutions of this equation. Moreover, in order to keep the discussion as simple as possible, we analyze the case of full state measurements, but similar conclusions could be drawn for the case when outputs are of interest. Thus, the main focus of this paper will be on systems, affine in inputs, of the following form:
+
+.x = g0(x) +
+
+mX
+
+i=1 u
+
+i gi(x) (1)
+
+for which states x evolve in Rn , and inputs u = (u1; : : : ; um) take values in Rm . We assume that the vector fields gi, i = 0; : : : ; m are locally Lipschitz in x. (These systems might be thought of having been obtained from a more general class of systems .x = f (x; u; v) after applying a stabilizing feedback v = k(x), but that interpretation is irrelevant to the results that we give.) In this introduction, we restrict attention to the above class of systems, but later we will also provide several results valid for more general systems, not necessarily affine in inputs, of the form
+
+.x = F (x; u) ; (2)
+
+with x(t) 2 Rn and u(t) 2 U . (As far as the definitions are concerned, we do not need impose any technical conditions on U and F .) We use j\Delta j to denote Euclidean norm in Rn or Rm . For systems (1), the HJI's of interest are inequalities which are often expressed as:
+
+rV (x) \Delta  g0(x) + 14fl
+
+mX
+
+i=1 (rV (x) \Delta  g
+
+i(x))
+
+2 + jxj2 ^ 0 ; (3)
+
+where fl ? 0 is the (square of the) "L2 gain" of the system. Inequality (3) for non-differentiable V must be interpreted in a generalized sense, as we discuss below. The V 's that arise, because of implicit stability considerations, must be proper and positive definite.
+
+Modulo some elementary calculus to do the implied maximization over u, the inequality (3) is equivalent to:
+
+rV (x) \Delta  g0(x) +
+
+mX
+
+i=1 u
+
+i gi(x)! ^ \Gamma jxj
+
+2 + fljuj2 ; (4)
+
+2
+
+understood as holding for all u. This latter form is preferred, because it makes sense for arbitrary (not necessarily input-affine) systems (2), and because the theory then makes a natural contact with the theory of dissipative systems developed by Willems and Moylan and Hill (see e.g. [12,13,21,22]). It is wellknown (and we review this fact in the Appendix) that (4) is equivalent to the following inequality:
+
+V (x(b)) \Gamma  V (x(a)) ^
+
+bZ
+
+a
+
+flju(t)j2 \Gamma  jx(t)j2 dt (5)
+
+holding along all solutions (x(\Delta ); u(\Delta )) of (1) with x(\Delta ) absolutely continuous and u(\Delta ) measurable and essentially bounded, for each a ! b in the domain of the solution. Notice that (5) has the following consequence for trajectories which start at x(0) = 0, and if V is nonnegative: for all T ? 0 for which the solution is defined, it must hold that
+
+TZ
+
+0 j
+
+x(t)j2 dt ^ fl
+
+bZ
+
+a j
+
+u(t)j2 dt :
+
+This means that the map u(\Delta ) 7! x(\Delta ) seen as a map between square-integrable functions, has operator norm ^ pfl. Conversely, the theory relates such operator norms back to the existence of V 's solving the differential inequality. We will not discuss this well-known material any further, but rather consider the differential inequality as our object of study.
+
+In general, it is not natural to impose the requirement that solutions to (4) should be smooth, so the HJI must be interpreted in the viscosity sense (a "viscosity supersolution"), see e.g. [8,10]), or, in what is an essentially equivalent manner, the proximal analysis formalism found in [7]. Under suitable controllability hypotheses, it does make sense to restrict attention to continuous V 's, see for instance [4]. Thus we will always assume in our study that V is at least continuous.
+
+The main results in this note address the gap between continuous and C1 solvability. We give examples which show (a) that there may exist even Lipschitzcontinuous (proper and positive definite) solutions, but no possible continuously differentiable ones, and (b) there may exist continuous (proper and positive definite) solutions but no possible locally Lipschitz continuous ones. On the other hand, we provide a smoothing result which shows that it is possible to pass from C0 to C1 solutions as long as an infinitesimal increase in the gain fl is allowed. A last section treats the special case of one-dimensional systems, where no gap exists. None of these facts is unexpected, of course, but it would appear that the corresponding counterexamples and proofs are not
+
+3
+
+available in the literature. 2 Definitions and Statements of Results Recall (cf. [7], Section 3.4) that a vector i 2 Rn is a viscosity subgradient of a function V : Rn ! R, at the point x 2 Rn , if
+
+lim infh!
+
+0
+
+1j hj [V (x + h) \Gamma  V (x) \Gamma  i \Delta  h] * 0 (6)
+
+The (possibly empty) set of all viscosity subgradients of V at x is called the viscosity subdifferential, and is denoted @DV (x). Observe that, if the function V is differentiable at x, then @DV (x) = frV (x)g.
+
+Definition 1 Suppose given a system \Sigma  as in (2), and a fl * 0. We say that a function V : Rn ! R*0 witnesses the gain fl if the following condition holds:
+
+i \Delta  F (x; u) ^ \Gamma jxj2 + fljuj2 8i 2 @DV (x) (7)
+
+for all x 2 Rn n f0g and u 2 U . The set of all those continuous V which witness a given gain fl for the system \Sigma  is denoted as W(\Sigma ; fl). \Lambda 
+
+We recall that a continuous function V : Rn ! R*0 is said to be proper (or "radially unbounded") provided that every set of the form fx j V (x) ^ ag is compact, for each a ? 0 (equivalently, V (x) ! 1 as jxj ! 1), and is said to be positive definite if V (x) = 0 if and only if x = 0. We denote
+
+W1(\Sigma ; fl) := fV 2 W(\Sigma ; fl) j V is proper and positive definite g :
+
+When V is C1, condition (7) means simply that rV (x)\Delta F (x; u) ^ \Gamma jxj2+fljuj2 for all x 6= 0 and u. As is well-known, asking for a globally C1 such function which is also positive definite is overly restrictive. To see this, consider an input-affine system with n = 1, and take u = 0. The inequality would force the bound jxj2= jg0(x)j ^ jV 0(x)j for all x 6= 0. If V is positive definite, it must have a local minimum at zero, so V 0(0) = 0. Hence
+
+jxj2 = o(g0(x)) as x ! 0 ;
+
+which is too strong a constraint on g0 (one would not be able to study a system such as .x = \Gamma x3). Therefore, it is routine (see for instance [20]) to drop the requirement of differentiability at the origin. We will denote by C10
+
+4
+
+the set of continuous functions V : Rn ! R*0 whose restriction to Rn n f0g is continuously differentiable.
+
+The first result consists of an example which shows that there may exist a globally Lipschitz V 2 W1(\Sigma ; fl), but no C10 such function (in fact, not even merely a C10 proper, nor a C10 positive definite, function in W(\Sigma ; fl)). Specifically, take the following system \Sigma 1:
+
+.x1 = jx1j (\Gamma x1 + jx2j + u1) .x2 = x2 (\Gamma x1 \Gamma  jx2j + u2) :
+
+Note that this system is of the form (1), with n = m = 2. Now consider the following function (basically, the L1 norm):
+
+V1(x) = 2 jx1j + 2 jx2j :
+
+This function is proper and positive definite, and globally Lipschitz. We prove in Section 3:
+
+Proposition 2 For the above system \Sigma 1, and unit gain fl = 1, we have V1 2W
+
+1(\Sigma 1; 1). On the other hand, if V is any C10 function in W(\Sigma 1; 1), then V is not positive definite nor proper.
+
+Remark 3 We chose to give example \Sigma 1 because of its simplicity. However, at the cost of added complexity, one may easily provide similar examples which are such that the vector fields gi are not merely Lipschitz. For a C1 example, we may take
+
+.x1 = jx1x2j3 + x1 (\Gamma jx1j + u1) .x2 = \Gamma (x1x2)3 + x2 (\Gamma jx2j + u2) :
+
+The proof of the analog of Proposition 2, using the same function V1 and gain 1, is virtually the same. \Lambda 
+
+The second result produces an example showing that there may exist a continuous V 2 W1(\Sigma ; fl), but every locally Lipschitz function in W(\Sigma ; fl) must be either nonproper or non-positive definite. Specifically, we will consider the following system \Sigma 3:
+
+.x1 = \Gamma x1 + x2 + u1 .x2 = 3x4=32 (\Gamma x1 \Gamma  x2 + u2)
+
+5
+
+which is of the form (1), with n = m = 2. We will consider the following function:
+
+V3(x1; x2) := x21 + x2=32
+
+which is proper, positive definite, and continuous. We prove in Section 3: Proposition 4 For the above system \Sigma 3, and unit gain fl = 1, we have V3 2 W1(\Sigma 3; 1). On the other hand, if V is any locally Lipschitz function in W(\Sigma 3; 1), then V is not positive definite nor proper.
+
+There is a general positive result as well. We show that, for any system \Sigma  as in (1), and any fl ? 0, W1(\Sigma ; fl) 6= ; implies that W1(\Sigma ; fl0) T C10 6= ; for each fl0 ? fl. In other words, it is always possible to smoothly approximate a proper positive definite continuous V by one that is continuously differentiable away from zero (actually, the proof provides an infinitely differentiable such approximation), provided that we allow a negligible increase in gain. This is summarized in the following statement, which we also prove in Section 3:
+
+Theorem 5 For any system \Sigma  as in (1),
+
+inf ffl j W1(\Sigma ; fl) 6= ;g = inf nfl j W1(\Sigma ; fl) " C10 6= ;o :
+
+This result is significant in so far as the "inf" in question is the one of interest in H1 control problems.
+
+Remark 6 The result in Theorem 5 is stated for input-affine systems. It is false in general for arbitrary systems (2). One elegant statement can be made by considering systems of the following special form, for any p * 1:
+
+.x = g0(x) +
+
+mX
+
+i=1 u
+
+p i gi(x) (8)
+
+(again assuming that the vector fields gi, i = 0; : : : ; m are locally Lipschitz in x). We may interpret the powers up, for negative u, either as "jujp" or as "sign u jujp"; with either interpretation, we shall show, also in Section 3, that Theorem 5 holds (for any system of this form) if p ^ 2 and does not hold (for some systems of this form) if p ? 2. \Lambda 
+
+Finally, we will analyze in Section 4 the special case m = n = 1. We will show that there is in that case no gap between the locally Lipschitz and the differentiable case, for systems affine in inputs, but that a gap reappears if we deal with systems that are not input-affine.
+
+6
+
+3 Proofs of Main Results We first prove Proposition 2 and Proposition 4. We then prove Theorem 5 (in somewhat more generality), and, finally, we justify the claims made in Remark 6.
+
+3.1 Proof of Proposition 2 In order to verify that V1 2 W(\Sigma 1; 1), we compute its subgradients. At any point x = (x1; x2) 2 R2 with x1x2 6= 0, obviously
+
+@DV1(x) = frV1(x)g = (2  x1jx
+
+1j ;
+
+x2j x2j!) ;
+
+so (7) becomes
+
+rV1(x) \Delta  g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! = 2 x
+
+1j
+
+x1j jx
+
+1j (\Gamma x1 + jx2j + u1)
+
++2 x2jx
+
+2jx
+
+2 (\Gamma x1 \Gamma  jx2j + u2)
+
+= 2u1x1 + 2u2jx2j \Gamma  2x21 \Gamma  2x22^ j
+
+uj2 \Gamma  jxj2 ;
+
+as desired. Suppose now that x1 = 0 and x2 6= 0. Then, it is an easy exercise with the definition of subgradients to see that
+
+@DV1(x) = [\Gamma 2; 2] \Theta  (2 x2jx
+
+2j ) ;
+
+so in this case, for any i = (i1; i2) 2 @DV1(x), we have:
+
+i \Delta  g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! = i1 \Delta  0 + 2 x
+
+2j
+
+x2jx2 (\Gamma jx2j + u2)
+
+= 2u2jx2j \Gamma  2x22^ j
+
+u2j2 \Gamma  jx2j2 ^ juj2 \Gamma  jxj2 ;
+
+again as desired. (The actual form of i1 turns out to be irrelevant.) The case (x1 6= 0; x2 = 0) is similar. So V1 2 W(\Sigma 1; 1).
+
+7
+
+We next show that, if W 2 W(\Sigma 1; 1) is of class C10 , then it cannot be proper nor positive definite. So, assume that
+
+rW (x) \Delta  g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! ^ juj
+
+2 \Gamma  jxj2 (9)
+
+holds for all x 6= 0 and all u. Fix any number a ? 0. Consider any point of the form x = (x1; x2) = (a; x2), with x2 6= 0. With the special choice u1 = x1 and u2 = jx2j, we have jxj = juj, so (using subscripts to denote partial derivatives) inequality (9) reduces to:
+
+Wx1(a; x2) \Gamma  (sign x2) Wx2 (a; x2) ^ 0 :
+
+When x2 ? 0 this gives Wx1(a; x2) \Gamma  Wx2(a; x2) ^ 0, so taking the limit as x2 ! 0+, we conclude
+
+Wx1 (a; 0) \Gamma  Wx2(a; 0) ^ 0
+
+for all a ? 0. Arguing with negative x2 and taking x2 ! 0\Gamma , we get also
+
+Wx1(a; 0) + Wx2 (a; 0) ^ 0
+
+for all a ? 0. We conclude that Wx1(a; 0) ^ 0 for all a ? 0. This means that W (\Delta ; 0) must be bounded above (and is nonnegative on R*0 ), so W cannot be proper. On the other hand, if W (0) = 0, this implies W (a; 0) j 0, so W cannot be positive definite either. This completes the proof of Proposition 2.
+
+3.2 Proof of Proposition 4 The intuitive idea of the construction of \Sigma 2 and V2 is as follows. We start with eV2(~x1; ~x2) = ~x21 + ~x22, the square norm in R2 , (~x1; ~x2) denoting the canonical coordinates on R2 , and consider the harmonic oscillator motion, but with rescaled time so that the ~x1-axis consists of equilibria: eg(~x1; ~x2) = (~x2 ~x22; \Gamma ~x1 ~x22). Note that eV2 is an integral for the motions of g. Next, we make a change of coordinates which is a global homeomorphism but fails to be a diffeomorphism: ~x1 7! ~x1 =: x1; ~x2 7! ~x32 =: x2. In the new coordinates (x1; x2), V2, the transformation of eV2, is no more locally Lipschitz. However, the transformation g of eg is locally Lipschitz, and it is of course still true that V2 integrates g. The key fact is this: for any locally Lipschitz W which is nonincreasing along trajectories of g, W cannot be positive definite nor proper. (In other words, there cannot be any locally Lipschitz "weak Lyapunov function" for .x = g(x)). Finally, we add an input-dependent term to g which
+
+8
+
+provides the dissipation property. When juj = jxj, this dissipation property reduces to the nonincreasing property mentioned above, and hence leads to a contradiction for V locally Lipschitz.
+
+We define the following locally Lipschitz vector field g in R2 :
+
+g(x1; x2) = ` x2\Gamma 3x
+
+1x
+
+4=3
+
+2 '
+
+and note that:
+
+i \Delta  g(x) = 0 8i 2 @DV2(x) ; 8x 2 R2 : (10)
+
+Indeed, pick any x = (x1; x2). If x2 6= 0 then necessarily i = (2x1; (2=3)x\Gamma 1=32 ), so the claim is clear. If instead x2 = 0, then g(x1; x2) = 0, so the claim holds as well.
+
+Note that system \Sigma 2 is of the form .x = f (x; u), where f (x; u) = g(x) + h(x; u), with
+
+h(x; u) := ` u1 \Gamma  x13x4=3
+
+2 (u2 \Gamma  x2) ' :
+
+Now note that:
+
+i \Delta  h(x; u) ^ juj2 \Gamma  jxj2 8i 2 @DV2(x) ; 8x 2 R2 ; 8u 2 R2 : (11)
+
+To verify this, pick any x = (x1; x2). Take first the case x2 6= 0. Since i must be equal to (2x1; (2=3)x\Gamma 1=32 ), we have that
+
+i \Delta  h(x; u) = 2x1u1 \Gamma  2x21 + 2x2u2 \Gamma  2x22 ^ juj2 \Gamma  jxj2 :
+
+If instead x2 = 0, then i = (2x1; i2), for some i2, so
+
+i \Delta  h(x; u) = 2x1u1 \Gamma  2x21 + i2 \Delta  0 ^ u21 \Gamma  x21 ^ juj2 \Gamma  jxj2 :
+
+Together with (10), we have thus that i \Delta  f (x; u) ^ juj2 \Gamma  jxj2, so we have proved that V2 2 W1(\Sigma 2; 1). Now we show that we cannot have a locally Lipschitz V 2 W1(\Sigma 2; 1).
+
+For any V 2 W(\Sigma 2; 1), setting u = x in the inequality i \Delta  f (x; u) ^ juj2 \Gamma  jxj2, and using that h(x; x) = 0, gives that
+
+i \Delta  g(x) ^ 0 8i 2 @DV (x) ; 8x 2 R2 : (12)
+
+9
+
+We will show that no locally Lipschitz function V can satisfy such a property and be positive definite or proper. Suppose given such a V ; we will prove that, for any positive number a at which the locally Lipschitz function x1 7! V (x1; 0) is differentiable, necessarily Vx1(a; 0) ^ 0. This means that V decreases along the x1-axis, and the negative conclusion follows. Fix now any such a, and denote , := (a; 0)0. We will analyze the behavior of V in a neighborhood of ,, by considering a curve which approaches , along an orbit of g.
+
+Take the following parameterized curve:
+
+fl : [0; 1] ! R2 : t 7! ` at(a2 \Gamma  (at)2)3=2 '
+
+which has the property that fl(1) = fl0(1) = ,. Note also that, for each t 2 [0; 1],
+
+g(fl(t)) = ` (a
+
+2 \Gamma  (at)2)3=2\Gamma 
+
+3at(a2 \Gamma  (at)2)2 ' = fi(t) fl0(t)
+
+where fi(t) = 1a (a2 \Gamma  (at)2)3=2 ? 0 for all t ! 1. Lemma 7 The function t 2 [0; 1] 7! W := V (fl(t)) is nonincreasing.
+
+PROOF. Since W is locally Lipschitz, its derivative exists almost everywhere. We must prove that W 0(t) ^ 0 for almost all t. This will follow from the following statement, valid for all subgradients:
+
+j ^ 0 for all t0 2 [0; 1) and all j 2 @DW (t0) : (13)
+
+The idea of the proof is as follows. If rV (fl(t0)) exists, then
+
+W 0(t0) = rV (fl(t0)) fl0(t0) = 1fi(t
+
+0) rV (fl(t
+
+0)) g(fl(t0)) ^ 0
+
+where the last inequality follows from (12). However, there is no reason for V to be differentiable at the points in the image of fl. So we need to apply the "approximate chain rule" for subgradients. Pick any t0 2 [0; 1) and j 2 @DW (t0). Take any " ? 0, and let 0 ! ffi ! " be such that
+
+jij jg(x) \Gamma  g(fl(t0))j ^ "fi(t0) (14)
+
+for all i 2 @DV (x) and all x such that jx \Gamma  fl(t0)j ! ffi (using continuity of g, and noting that all such i are bounded by a Lipschitz constant for V on a ball
+
+10
+
+of radius ffi about fl(t0)) and also so that
+
+jij jfl0(t1) \Gamma  fl0(t0)j ^ " (15)
+
+whenever i 2 @DV (x) for any x as above and jt1 \Gamma  t0j ! ffi (using now the fact that fl 2 C1).
+
+We apply to j and ffi the chain rule in [7], Theorem 2.2.5, but in its viscosity rather than subgradient form (the viscosity form follows from the version given in that reference by applying the approximation theorem in [7], Proposition 3.4.5). This tells us that there exist t1, x, i, and i0 such that jt1 \Gamma  t0j ! ffi,j
+
+x \Gamma  fl(t0)j ! ffi, i 2 @DV (x), and i0 2 @D(i \Delta  fl)(t1), so that jfl(t1) \Gamma  fl(t0)j ! " and jj \Gamma  i0j ! ".
+
+Since fl is differentiable, the scalar map i \Delta  fl is too, and hence i0 = (d=dt)(i \Delta  fl)(t1) = i \Delta  fl0(t1), so
+
+i0 = i \Delta  fl0(t1) = i \Delta  (fl0(t1) \Gamma  fl0(t0)) + i \Delta  fl0(t0)
+
+= i \Delta  (fl0(t1) \Gamma  fl0(t0)) + 1fi(t
+
+0) i \Delta  g(fl(t
+
+0))
+
+= ` + 1fi(t
+
+0) i \Delta  g(x) ;
+
+where
+
+` = i \Delta  (fl0(t1) \Gamma  fl0(t0)) + 1fi(t
+
+0) i \Delta  (g(fl(t
+
+0)) \Gamma  g(x)) ;
+
+and therefore i0 ^ 2" by (12), (14), and (15). So j ^ 3". As " was arbitrary, we conclude j ^ 0.
+
+Since W (t) * W (1) = V (,) for all t ! 1, for any h * 0 the last term in the following expression is nonpositive:
+
+1 h (V (a; 0) \Gamma  V (a \Gamma  ah; 0)) = (16)1
+
+h (V (fl(1 \Gamma  h)) \Gamma  V (a \Gamma  ah; 0)) +
+
+1 h (W (1) \Gamma  W (1 \Gamma  h)) :
+
+Since V is locally Lipschitz, there is some constant L such that (evaluating fl(1 \Gamma  h)):
+
+1 h jV (fl(1 \Gamma  h)) \Gamma  V (a \Gamma  ah; 0)j ^ La
+
+3h 12 (2 \Gamma  h)3=2 ! 0
+
+11
+
+as h ! 0+. We conclude, by taking limits as h ! 0+ in (16), that Vx1(a; 0) ^ 0, as claimed. 2
+
+3.3 Proof of Theorem 5 In order to be able to justify Remark 6, we will prove Theorem 5 for a more general class of systems, namely those of the following general form:
+
+.x = g0(x) +
+
+mX
+
+i=1 '(u
+
+i) gi(x) (17)
+
+where '(r) = jrjp or '(r) = (sign r) jrjp (interpreting '(0) = 0), and p is a fixed real number in the closed interval [1; 2]. Note that Theorem 5 as stated would correspond to p = 1 and the second choice of '. We still suppose that states x evolve in Rn , and inputs u = (u1; : : : ; um) take values in Rm , and that the vector fields gi, i = 0; : : : ; m are locally Lipschitz in x.
+
+The proof will be based upon the following general technical fact: Lemma 8 Assume that we are given: - an open subset O of Rn ; - a continuous function ff : O ! R?0 ; - a continuous function fi : O ! R*0 ; - an " ? 0; - a continuous function V : O ! R?0 satisfying
+
+i \Delta  g0(x) +
+
+mX
+
+i=1 '(u
+
+i) gi(x)! ^ \Gamma ff(x) + fi(x) juj
+
+2 8i 2 @
+
+DV (x)(18)
+
+for all x 2 O and u 2 U . Then, there exists a smooth W : O ! R such that
+
+jV (x) \Gamma  W (x)j ^ 12 V (x) (19)
+
+for all x 2 O, and
+
+rW (x) \Delta  g0(x) +
+
+mX
+
+i=1 '(u
+
+i) gi(x)! ^ \Gamma ff(x) + [(1 + ")fi(x) + "] juj
+
+2 (20)
+
+for all x 2 O and u 2 U .
+
+12
+
+Before proving the lemma, we explain how to obtain Theorem 5 as a corollary. We pick a system \Sigma  as in (1), and any fl0 ? fl ? 0. We suppose given a continuous proper and positive definite V 2 W(\Sigma ; fl), and need to show the existence of some W 2 W(\Sigma ; fl0) which is C1 on O = Rn n f0g, in addition to being proper and positive definite. We pick, in Lemma 8, fi(x) j fl, ff(x) =j
+
+xj2, and any " ? 0 such that (1 + ")fl + " ! fl0. The Lemma then applies to the restriction of V to O. We obtain a W as in the Lemma, and extend it from O to Rn by defining W (0) := 0. The approximation property (19) insures that W is proper and positive definite, and it is continuous at zero as well.
+
+The proof of Lemma 8 will be based upon a reduction to the following result, which we quote from [16]:
+
+Lemma 9 Let \Sigma  : .x = f (x; d) be a system, with x 2 X = Rn , and d 2 U , a compact metric space, so that f (x; d) is locally Lipschitz in x uniformly on d and jointly continuous in x and d. Assume that we are given:
+
+- an open subset O of X; - a continuous, nonnegative function V : O ! R satisfying
+
+i \Delta  f (x; d) ^ \Theta (x; d) 8x 2 O; i 2 @DV (x); d 2 U (21) with some continuous function \Theta  : O \Theta  U ! R; - two positive, continuous functions \Upsilon 1 and \Upsilon 2 on O.
+
+Then, there exists a smooth ^V : O ! R such thatfififi
+
+V (x) \Gamma  ^V (x)fififi ^ \Upsilon 1(x) 8x 2 O (22)
+
+and
+
+r ^V (x) \Delta  f (x; d) ^ \Theta (x; d) + \Upsilon 2(x) 8 x 2 O; d 2 U : (23)
+
+\Lambda  The proof given in [16] employs tools from nonsmooth analysis, borrowing in particular several simple facts from [6,7,19] in order to pass from continuous V to locally Lipschitz V , followed by a standard smoothing argument as given in [17]. (To be precise, the result is stated and proved in [16] using the language of proximal subgradients rather than viscosity subgradients. The proof, however, is the same in both cases.)
+
+13
+
+Proof of Lemma 8 We define
+
+f (x; d) := i1 \Gamma  jdj2j g0(x) +
+
+mX
+
+i=1 '(d
+
+i) i1 \Gamma  jdj
+
+2j1\Gamma 
+
+p
+
+2 gi(x)
+
+with U = unit ball in Rm . (If p = 2, we interpret the coefficient of gi as simply '(di).) Note that this system satisfies the hypotheses of Lemma 9. We use the same O and V , and let
+
+\Theta (x; d) := \Gamma  i1 \Gamma  jdj2j ff(x) + jdj2 fi(x) :
+
+We need to verify that (21) indeed holds. Pick any x and i, and any d withj
+
+dj ^ 1. We treat separately the cases jdj = 1 and jdj ! 1.
+
+Case 1: jdj = 1. If p ! 2, then (21) holds trivially (because f (x; d) = 0 and \Theta (x; d) = fi(x) * 0). So suppose p = 2. We must verify that
+
+mX i=1 '(d
+
+i) i \Delta  gi(x) ^ fi(x) (24)
+
+where '(r) = r2, or '(r) = r jrj, and d is a vector of unit norm. We are assuming that (18) holds, that is,
+
+i \Delta  g0(x) +
+
+mX
+
+i=1 '(u
+
+i) i \Delta  gi(x) ^ \Gamma ff(x) + fi(x) juj
+
+2 (25)
+
+for all u. Now pick any u of the form (1=")d, with " ? 0, so "2'(ui) = '(di) for each i. Multiplying both sides of (25) by "2, we have that
+
+"2i \Delta  g0(x) +
+
+mX
+
+i=1 '(d
+
+i) i \Delta  gi(x) ^ \Gamma "
+
+2ff(x) + fi(x) ;
+
+so taking limits as " ! 0 one obtains the desired inequality (24). Case 2: jdj ! 1. Introduce, for such a d, u = (u1; : : : ; um), where:
+
+ui := diq
+
+1 \Gamma  jdj2
+
+i = 1; : : : ; m :
+
+14
+
+Observe that
+
+juj2 = jdj
+
+2
+
+1 \Gamma  jdj2 ; 1 \Gamma  jdj
+
+2 = 1
+
+1 + juj2 ; '(di) i1 \Gamma  jdj
+
+2j1\Gamma 
+
+p
+
+2 = '(ui)
+
+1 + juj2 (26)
+
+for all i, so that
+
+f (x; d) = 11 + juj2 g0(x) +
+
+mX
+
+i=1 '(u
+
+i) gi(x)!
+
+and thus (18) implies that i \Delta  f (x; d) ^ \Theta (x; d) for all i 2 @DV (x), as wanted. So, we apply Lemma 9 with
+
+\Upsilon 1(x) := 1 \Gamma  ffi4 V (x)
+
+and
+
+\Upsilon 2(x) := ffi minf1; ff(x)g
+
+where ffi 2 (0; 1) is picked such that
+
+1 1 \Gamma  ffi ^ 1 + " and
+
+ffi 1 \Gamma  ffi ^ min ae";
+
+1 4 oe :
+
+This provides a function ^V . Now fix any u 2 Rm , and introduce
+
+di := uiq
+
+1 + juj2
+
+i = 1; : : : ; m :
+
+Observe that the relations (26) hold, and hence also
+
+jdj2 = juj
+
+2
+
+1 + juj2 ! 1
+
+holds. Furthermore, g0(x) + Pmi=1 '(ui) gi(x) = (1 + juj2)f (x; d). Therefore, (23) gives
+
+15
+
+r ^V (x) \Delta  g0(x) +
+
+mX
+
+i=1 '(u
+
+i)gi(x)!
+
+^ (1 + juj2) i\Gamma  i1 \Gamma  jdj2j ff(x) + jdj2 fi(x) + ffi minf1; ff(x)gj
+
+= \Gamma ff(x) + juj2 fi(x) + ffi minf1; ff(x)g + juj2 ffi minf1; ff(x)g^ \Gamma 
+
+ff(x) + juj2 fi(x) + ffiff(x) + juj2 ffi = \Gamma (1 \Gamma  ffi)ff(x) + juj2 (fi(x) + ffi)
+
+and if we now let
+
+W := 11 \Gamma  ffi ^V
+
+we conclude that
+
+jV \Gamma  W j ^ ffi1 \Gamma  ffi V + 11 \Gamma  ffi fififiV \Gamma  ^V fififi ^ 12V ;
+
+and
+
+rW (x) \Delta  g0(x) +
+
+mX
+
+i=1 '(u
+
+i) gi(x)! ^ \Gamma ff(x) + juj
+
+2 fi(x) + ffi
+
+1 \Gamma  ffi^ \Gamma 
+
+ff(x) + [(1 + ")fi(x) + "] juj2
+
+as desired for the conclusions of Lemma 8. 2 Notice, incidentally, that W is smooth (C1), not merely C1.
+
+3.4 Results for systems of form (8) The positive claim in Remark 6, for p ^ 2, has been proved already. To show that Theorem 5 does not extend to systems (17) when p ? 2, it will be convenient to introduce the vector field corresponding to what one might call an "L1 harmonic oscillator". This is the locally Lipschitz vector field on R2 defined by
+
+g(x1; x2) := ` jx1j x2\Gamma  jx
+
+2j x1 ' : (27)
+
+The flow of g leaves invariant the L1-balls around the origin, see Figure 1. Associated to g is the L1 norm, seen as a proper, positive definite Lipschitz
+
+16
+
+\Gamma \Gamma  @
+
+@
+
+\Gamma \Gamma @ @\Gamma 
+
+\Gamma `
+
+@@R
+
+\Gamma \Gamma \Psi  @@I Fig. 1. The vector field g function
+
+V1(x1; x2) := jx1j + jx2j :
+
+Except for the fact that we do not now need the factor "2", this function is as before. So @DV1(x) = f(x1=jx1j; x2=jx2j)g when x1x2 6= 0, @DV1(x) = [\Gamma 1; 1] \Theta  fx2=jx2jg when x1 = 0 and x2 6= 0, and similarly if x2 = 0. Therefore,
+
+i \Delta  g = 0 for all i 2 @DV1(x); x 2 Rn : (28)
+
+We also introduce the following vector field:
+
+g0(x1; x2) := ` \Gamma  jx1j x1\Gamma  jx
+
+2j x2 ' : (29)
+
+For the same V1,
+
+i \Delta  g0 = \Gamma jxj2 for all i 2 @DV1(x); x 2 Rn : (30)
+
+Now fix any p ? 2, and consider the following system \Sigma p, which is defined in terms of the above vector fields:
+
+.x = g0(x) + ju1jp g(x) \Gamma  ju2jp g(x) (31)
+
+This is a system of type (8) with m = 2, g1 = g, and g2 = \Gamma g. In view of (28) and (30), we have that
+
+i \Delta  (g0(x) + ju1jp g(x) \Gamma  ju2jp g(x)) ^ \Gamma jxj2
+
+for all x 2 R2 and u = (u1; u2) 2 R2 , and every i 2 @DV1(x). This means that V1 2 W1(\Sigma p; fl), for any fl ? 0. We now see that the equality in Theorem 5 cannot hold. In fact, we prove the following far stronger statement:
+
+Proposition 10 For all V 2 C10 , and all fl ? 0, V 62 W(\Sigma p; fl).
+
+17
+
+PROOF. Suppose that V 2 C10 and
+
+rV (x) \Delta  (g0(x) + ju1jp g(x) \Gamma  ju2jp g(x)) ^ \Gamma jxj2 + fl ju1j2 + fl ju2j2 (32)
+
+for all x 6= 0 and all u = (u1; u2). Fix any x = , 6= 0. Taking u = 0 gives thatr
+
+V (,) 6= 0. Since p ? 2, letting u2 = 0 and u1 ! +1 gives rV (,) \Delta  g(,) ^ 0. On the other hand, u1 = 0 and u2 ! +1 gives \Gamma rV (,) \Delta  g(,) ^ 0. So we conclude that rV (,) \Delta  g(,) = 0 for all , 6= 0.
+
+Now fix an a ? 0 and suppose that , has the form (a; x2) with x2 6= 0. Then,r
+
+V (,) \Delta  g(,) = 0 means that
+
+(sign x2) Vx1(a; x2) \Gamma  Vx2(a; x2) = 0
+
+Letting separately x2 ! 0+ and x2 ! 0\Gamma  gives Vx1(a; 0) = Vx2(a; 0) = 0, contradicting rV (a; 0) 6= 0.
+
+A variation of this example is as follows. Fix again any p ? 2. Instead of (31), we consider now the following system \Sigma 0p:
+
+.x = g0(x) + sign u jujp g(x) (33)
+
+with m = 1. It is also true that V1 2 W1(\Sigma p; fl), for any fl ? 0, and Proposition 10 again holds, simply taking the separate limits as u ! +1 or u ! \Gamma 1 in its proof.
+
+Remark 11 There is nothing very special about the form (8). Mainly, we picked these systems in order to illustrate with a specific class when the theorem holds. But Theorem 5 holds also for a general class of systems of subquadratic growth in inputs. Specifically, we may consider systems of the general form .x = g(x; u), where g is jointly continuous in x and u, and satisfies, for some constant p 2 (0; 2) and some continuous function h : Rn ! R:
+
+(i) jg(x; u)j ^ h(x) (1 + jujp) for every x and u; (ii) jg(x; u) \Gamma  g(y; u)j ^ cjx \Gamma  yj (1 + jujp) for every u, and every x; y in some
+
+(arbitrary chosen) ball.
+
+The proof is the same as for systems of the form (8). One only needs to set
+
+f (x; d) = i1 \Gamma  jdj2j g ix; d (1 \Gamma  jdj2)\Gamma 1=2j
+
+provided jdj ! 1, and f (x; d) = 0 otherwise, and to replace everywhere g0(x)+P
+
+mi
+
+=1 '(ui)gi(x) by g(x; u). We omit the simple details. \Lambda 
+
+18
+
+4 One-Dimensional Systems For one-dimensional systems, there is no gap between the locally Lipschitz and the C10 case:
+
+Proposition 12 Suppose given a system \Sigma  as in (1), with n = 1. Assume that for some fl ? 0 there exists a locally Lipschitz V 2 W1(\Sigma ; fl). ThenW
+
+1(\Sigma ; fl) T C10 6= ;.
+
+PROOF. Pick a V as in the statement of the proposition. By Rademacher's theorem there exist a zero measure (Borelian) set N ae R and a continuous positive function h such that
+
+x 62 N ) V 0(x) exists and jV 0(x)j ^ 12 h(x): (34)
+
+We shall construct W only on R*0 , the construction being similar on R^0 . If x 62 N , @DV (x) = fV 0(x)g, hence
+
+V 0(x) g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! ^ fl juj
+
+2 \Gamma  x2 8u 2 R: (35)
+
+Since the system .x = g0(x) is (globally) asymptotically stable, g0(x) ! 0 for each x ? 0. It follows from (34) and (35) (with u = 0) that
+
+1 2h(x) * V
+
+0(x) * x
+
+2j
+
+g0(x)j ? 0 for x ? 0; x 62 N: (36)
+
+Set for any x ? 0
+
+F (x) := (p * 0 : p g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! ^ fl juj
+
+2 \Gamma  x2 8u 2 R) :
+
+We claim that the (closed convex) set F (x) is nonempty for any x ? 0. Indeed, if x 62 N V 0(x) 2 F (x). If x 2 N we may pick a sequence (xn) in R?0 n N such that xn ! x as n ! 1. Since jV 0(xn)j ^ 12 h(xn) ^ c for some constant c, we may extract a subsequence of (V 0(xn)) which converges towards some p * 0. Clearly p 2 F (x).
+
+Let us set
+
+a :=
+
+mX
+
+i=1 g
+
+i(x)
+
+2; b := 4flg
+
+0(x); c := 4flx
+
+2
+
+19
+
+and
+
+\Delta (p) := ap2 + bp + c:
+
+It is a straightforward exercise to see that for any p * 0,
+
+p 2 F (x) () \Delta (p) ^ 0: (37)
+
+By the claim, \Delta (p) ^ 0 for some p, whereas \Delta (p) ! 1 as p ! \Gamma 1 (since b ! 0). It follows that \Delta  has (at least) one real root, hence b2 \Gamma  4ac * 0. Set
+
+p(x) := 8?!?: h(x) if a = 0;
+
+min nh(x); \Gamma b+pb
+
+2\Gamma 4ac
+
+2a o if a 6= 0:
+
+(38)
+
+Note that \Gamma b = 4fl jg0(x)j ? 0 on x ? 0, so when a ! 0 the second expression in the minimum above becomes unbounded; from here, it follows that p is continuous on R?0 . We claim that
+
+V 0(x) ^ p(x) 8x 2 R?0 n N: (39)
+
+Pick any x 2 R?0 n N . If a = 0, then (39) follows from (36) and (38). If a 6= 0, since V 0(x) 2 F (x), we see that \Delta (V 0(x)) ^ 0 (by (37)), hence V 0(x) ^\Gamma 
+
+b+pb2\Gamma 4ac
+
+2a which, combined with (36) and (38), yields V 0(x) ^ p(x).
+
+We are now ready to define W on R*0 : we set W (x) = R x0 p(s) ds for any x * 0. Since 0 ^ p ^ h, W is a (well-defined) locally Lipschitz function on R*0 which is C1 away from 0. Integrating in (39) we get W (x) * V (x) ? 0 for any x ? 0 and limx!1 W (x) = 1. Finally we claim that
+
+\Delta (p(x)) ^ 0 8x 2 R?0 n N: (40)
+
+Pick any x 2 R?0 n N . If a = 0, then
+
+\Delta (p(x)) ^ \Delta (V 0(x)) (using b ! 0 and (39))
+
+^ 0 (by (37)):
+
+If a 6= 0, we are led to prove that
+
+p(x) 2 " \Gamma b \Gamma  pb
+
+2 \Gamma  4ac
+
+2a ; \Gamma 
+
+b + pb2 \Gamma  4ac
+
+2a # :
+
+20
+
+Owing to the definition of p(x), we only have to prove
+
+h(x) * \Gamma b \Gamma  pb
+
+2 \Gamma  4ac
+
+2a :
+
+But
+
+\Gamma b \Gamma  pb2 \Gamma  4ac
+
+2a =
+
+2cj bj + pb2 \Gamma  4ac ^
+
+2cj
+
+bj =
+
+2x2j g0(x)j ^ h(x);
+
+by (36). This completes the proof of (40). Note that (40) also holds true for any x ? 0, by continuity of \Delta  ffi p. Using (37) it means that W 0(x) = p(x) 2 F (x) for all x ? 0, i.e.
+
+W 0(x) g0(x) +
+
+mX
+
+i=1 u
+
+igi(x)! ^ fl juj
+
+2 \Gamma  x2 8u 2 R:
+
+The proof of the proposition is complete. We now show that, for systems not affine in inputs, there is again a gap between the Lipschitz and differentiable cases. In Proposition 2 we gave an example of a system \Sigma 1 and a Lipschitz V1 2 W1(\Sigma 1; 1), such that no V in W(\Sigma 1; 1) T C10 can be positive definite or proper. The system was twodimensional (n = 2) and had two-dimensional input (m = 2). We now provide a scalar (n = m = 1) system \Sigma 3 which has the following properties: (a) it admits a Lipschitz V3 2 W1(\Sigma 3; 1), but (b) any W in W(\Sigma 3; 1) must be nondifferentiable. Thus, the conclusions are even stronger than for \Sigma 1; on the other hand, \Sigma 3 is not affine in inputs.
+
+Before giving the form of \Sigma 3, we start by considering the following two functions '+ and '\Gamma  : R2 ! R:
+
+'+(s; t) := max fmin f(s \Gamma  t)=2; sg ; 0g
+
+and
+
+'\Gamma (s; t) := \Gamma  max fmin f(\Gamma s \Gamma  t)=2; \Gamma sg ; 0g :
+
+Both of these are Lipschitz, and '+(0; t) = '\Gamma (0; t) = 0 for all t. Thus, the function
+
+'(s; t) := (sign s) max aemin ae 12 (jsj \Gamma  t); jsjoe ; 0oe
+
+21
+
+(with '(0; t) j 0) obtained by using '+ for s * 0 and '\Gamma  for s ! 0 is also Lipschitz.
+
+As min n 12 (jsj \Gamma  t); jsjo ^ jsj, it follows that
+
+j'(s; t)j 2 [0; jsj]
+
+for all (s; t). Since sign '(s; t) = sign s, this means that '(s) 2 [0; s] when s * 0 and '(s) 2 [s; 0] when s ^ 0. When t * jsj, min n 12 (jsj \Gamma  t); jsjo = 12 (jsj \Gamma  t), so
+
+'(s; t) = 0 if t * jsj :
+
+If t ^ \Gamma  jsj then jsj = jsj =2 + jsj =2 ^ jsj =2 \Gamma  t=2, so min n 12 (jsj \Gamma  t); jsjo = jsj. Therefore
+
+'(s; t) = s if t ^ \Gamma  jsj :
+
+The diagram in Figure 2 summarizes this information about the range of '.
+
+\Gamma \Gamma 
+
+\Gamma \Gamma 
+
+\Gamma \Gamma 
+
+\Gamma \Gamma @@ @@
+
+@@
+
+@@
+
+0
+
+[0; s][s; 0]
+
+s
+
+s = t s = \Gamma t Fig. 2. The range of '
+
+We define now, for a; b * 0:
+
+(a; b) := 12 h'(b \Gamma  a; b + a \Gamma  2) + (b \Gamma  a)i :
+
+As jb \Gamma  aj ^ b + a \Gamma  2 if and only if both a * 1 and b * 1, (a; b) = 12 (b \Gamma  a) for such a; b. Similarly, the properties of ' also imply that (a; b) = b \Gamma  a when a ^ 1 and b ^ 1, that (a; b) 2 [b \Gamma  a; 12 (b \Gamma  a)] when a * b, and that (a; b) 2 [ 12 (b \Gamma  a); b \Gamma  a] when a ^ b. We are now ready to specify \Sigma 3. We let:
+
+f (x; u) := (juj + x) (x; juj)
+
+for x * 0, and
+
+f (x; u) := x2 + juj (0; juj)
+
+22
+
+for x ! 0. This function is locally Lipschitz. Notice that (0; juj) * juj =2 * 0 for all u, so that f (x; u) * x2 for x ! 0. Observe the following properties, for all x * 0:
+
+(i) x ^ 1 & juj ^ 1 ) f (x; u) = u2 \Gamma  x2. (ii) x ^ 1 & juj * 1 ) f (x; u) ^ u2 \Gamma  x2. (iii) x * 1 & juj ^ 1 ) f (x; u) ^ 12 (u2 \Gamma  x2).
+
+(iv) x * 1 & juj * 1 ) f (x; u) = 12 (u2 \Gamma  x2).
+
+Finally, the Lipschitz function V3 shown in Figure 3.
+
+\Gamma \Gamma 
+
+fifi
+
+fifi
+
+JJ JJ JJ
+
+Fig. 3. V3(x) := maxfjxj ; 2x \Gamma  1g We show that V3 2 W1(\Sigma 3; 1), that is, V 0(x)f (x; u) ^ u2 \Gamma x2 for all x 6= 0 and all u. For x ! 0 this is obvious, since V 0(x)f (x; u) = \Gamma f (x; u) ^ \Gamma x2 ^ u2 \Gamma x2 for all u. So we only need to analyze the case x ? 0. For any 0 ! x ! 1, V 0(x)f (x; u) = f (x; u) ^ u2 \Gamma  x2 (properties i and ii) while for x ? 1 we have V 0(x)f (x; u) = 2f (x; u) ^ u2 \Gamma  x2 as well (properties iii and iv). Finally, we deal with the nondifferentiability point x = 1. An easy calculation shows that @DV3(1) is the closed interval [1; 2]. Pick any ae 2 [1; 2]. When juj ^ 1, f (x; u) = u2 \Gamma x2 ^ 0, so ae * 1 implies aef (x; u) = ae(u2 \Gamma x2) ^ u2 \Gamma x2. Finally, if juj * 1, f (x; u) = 12 (u2 \Gamma  x2) * 0, then ae ^ 2 implies aef (x; u) ^ u2 \Gamma  x2 as well.
+
+We now show that any W in W(\Sigma 3; 1) must be non-differentiable. Suppose that there is some such W which is differentiable. Fix u = 1. For any x, we must have, since W 2 W(\Sigma 3; 1):
+
+W 0(x)f (x; 1) ^ 1 \Gamma  x2 :
+
+When x 2 (0; 1), f (x; 1) = 1 \Gamma  x2 ? 0, so W 0(x) ^ 1. On the other hand, for x ? 1 we have f (x; 1) = (1 \Gamma  x2)=2 ! 0, so W 0(x) * 2 for such x. If W 2 C10 , this gives a contradiction as x ! 1+ and x ! 1\Gamma . However, continuity of W 0 is not needed for the contradiction, since we can argue as follows. By the mean value theorem,
+
+lim sup
+
+x!1
+
+\Gamma 
+
+W (x) \Gamma  W (1)
+
+x \Gamma  1 ^ 1 ! 2 ^ lim infx!1+
+
+W (x) \Gamma  W (1)
+
+x \Gamma  1 ;
+
+which contradicts the existence of W 0(1). 2
+
+23
+
+A Viscosity and Integral Formulations We prove the equivalence between the integral and viscosity formulations. This equivalence is well-known, but we need to address a small technical point due to the fact that we only defined the viscosity condition at nonzero states x. (We did so simply for technical reasons, in working out the examples; the remarks given below show that it makes no difference whether we consider the origin or not.) We need the following simple fact first.
+
+We assume given a system .x = F (x; u), where F : Rn \Theta  Rm ! Rn , as well as a closed set A ` Rn (in our application, the origin). and a continuous map w : Rn \Theta  Rm ! R such that w(x; u) * 0 for all x 2 A (in our application,\Gamma j
+
+xj2 + fljuj2)
+
+By a solution of .x = F (x; u), given a measurable locally essentially bounded u : [a; b] ! Rm , we mean an absolutely continuous x : [a; b] ! Rn such that
+
+.x(t) = F (x(t); u(t)) for almost all t 2 [a; b]. We also assume given a continuous function V : Rn ! R with the property that V (x) = 0 for all x 2 A.
+
+Proposition 13 Suppose that the following property:
+
+V (b) \Gamma  V (a) ^
+
+bZ
+
+a
+
+w(x(s); u(s)) ds (A.1)
+
+holds for all solutions x : [a; b] ! Rn n A. Then, it also holds for all solutions. PROOF. We first prove the conclusion under the assumption that x(a) 2 A and x(b) 2 A. Since then V (a) = V (b) = 0, we need to prove that, for any such solution, R ba w(x(s); u(s)) ds * 0. Let I := ft 2 [a; b] j x(t) 2 Ag and J := ft 2 [a; b] j x(t) =2 Ag. Note thatZ
+
+I
+
+w(x(s); u(s)) ds = Z
+
+I
+
+w(0; u(s)) ds * 0 :
+
+Since J is open, there is a countable (or finite) sequence of disjoint open subintervals Jk = (ak; bk) of [a; b] such that J = S1k=1 Jk and ak; bk 2 I for all k. Pick any Jk. For all ff; fi such that ak ! ff ! fi ! bk, since the restriction of x(\Delta ) to [ff; fi] lies entirely outside A, we have that V (fi) \Gamma  V (ff) ^ R fiff w(x(s); u(s)) ds, so taking limits as ff ! ak and fi ! bk, and using that V is continuous, we
+
+24
+
+conclude that 0 = 0 \Gamma  0 ^ RJk w(x(s); u(s)) ds. It follows that alsoZ
+
+J
+
+w(x(s); u(s)) ds =
+
+1X
+
+k=1 ZJk
+
+w(x(s); u(s)) ds * 0
+
+and we conclude that
+
+bZ
+
+a
+
+w(x(s); u(s)) ds = Z
+
+J
+
+w(x(s); u(s)) ds + Z
+
+I
+
+w(x(s); u(s)) ds * 0 ;
+
+as wanted. We now take the general case. Pick any solution defined on [a; b]. We assume without loss of generality that x(t) 2 A for some t 2 [a; b], since otherwise we are done by hypothesis. Let ff := minft j x(t) 2 Ag, fi := maxft j x(t) 2 Ag.
+
+On [a; ff), we have a trajectory that does not enter A, so, arguing as before by taking limits as we approach ff, R ffa w(x(s); u(s)) ds * V (ff) \Gamma  V (a). Similarly on [fi; b]. The restriction to [ff; fi] is a trajectory which starts and ends in A, so the first case considered in our proof applies. In summary,
+
+V (b) \Gamma  V (a) = (V (ff) \Gamma  V (a)) + (V (fi) \Gamma  V (ff)) + (V (b) \Gamma  V (fi))
+
+^
+
+ffZ
+
+a
+
+w(x(s); u(s)) ds +
+
+fiZ
+
+ff
+
+w(x(s); u(s)) ds +
+
+bZ
+
+fi
+
+w(x(s); u(s)) ds
+
+=
+
+bZ
+
+a
+
+w(x(s); u(s)) ds ;
+
+as desired.
+
+Note that the tempting "proof" which starts by writing V (b) \Gamma  V (a) =R
+
+b a [dV (x(t))=dt] dt and splits into I and J will not work, since there is noreason for V (x(t)) to be absolutely continuous (and, indeed, we are interested
+
+in general continuous V 's in our main results). We now suppose that F and w are continuous, and locally Lipschitz on x uniformly with respect to u on compacts. We consider the scalar-valued map '(x; y) := V (x) \Gamma  y on Rn \Theta  R and introduce the new system .x = F (x; u),
+
+.y = w(x; u), which we write as .z = G(z; u) in terms of the state z = (x0; y)0 2 Rn+1 .
+
+25
+
+It is clear that inequality (A.1) holds for every solution x : [a; b] ! Rn n A if and only if '(z(b)) ^ '(z(a)) for every solution of the extended system
+
+.z = G(z; u) as a system on the state space O := (Rn n A) \Theta  R. Moreover, as inputs are essentially bounded on finite intervals, this is in turn equivalent to asking that, for every given r ? 0, ' must decrease along all solutions of
+
+.z = G(z; u), again as a system in O but now with inputs satisfying ju(t)j ^ r for almost all t 2 [a; b], which is equivalent, by Filippov's Lemma, to having the corresponding decrease property for all solutions of the differential inclusions
+
+.z 2 Fr, for each r * 0, where
+
+Fr(z) := fG(z; u) j juj ^ rg :
+
+Now consider the convexification eFr(z) := co Fr(z). By standard relaxation results, e.g. [1], Corollary 10.4.5, any trajectory of .z 2 eFr(z) can be uniformly approximated by trajectories of .z 2 Fr(z), so, since ' is continuous, ' decreases along trajectories of .z 2 eFr(z) if it decreases along trajectories of
+
+.z 2 Fr(z) (and viceversa).
+
+In summary: inequality (A.1) holds, for every solution x : [a; b] ! Rn n A, if and only if, for each r ? 0 for every trajectory z : [a; b] ! O of the compact convex-valued and Lipschitz differential inclusion .z 2 eFr(z), it holds that '(z(b)) ^ '(z(a)). Using the characterization of strong invariance of differential inclusions given in [7], Theorem 4.6.3, this is equivalent 3 to the statement that i \Delta  v ^ 0 for all z 2 O, all i 2 @D'(z), and all v 2 eFr(z), or equivalently (since the set fv j i \Delta  v ^ 0g is convex) for all v 2 Fr(z). As every i 2 @D'(z), z = (x0; y)0, has the form i = (i01; \Gamma 1)0 with i1 2 @DV (x), and since every v 2 Fr(z) has the form (F (x; u); w(x; u)), the decrease property amounts to the requirement that i1 \Delta  F (x; u) ^ w(x; u) for all x 2 Rn n A, all u 2 U , and every i1 2 @DV (x). In summary:
+
+Proposition 14 The following are equivalent:
+
+(i) Inequality (A.1) holds for every solution x : [a; b] ! Rn . (ii) i \Delta  F (x; u) ^ w(x; u) for every x 2 Rn , u 2 U , and i 2 @DV (x). (iii) Inequality (A.1) holds for every solution x : [a; b] ! Rn n A.
+
+(iv) i \Delta  F (x; u) ^ w(x; u) for every x 2 Rn n A, u 2 U , and i 2 @DV (x).
+
+PROOF. We already proved the equivalence of the last two statements, and 3 There is an additional assumption of linear growth on the inclusion, but this can be achieved by changing the inclusion to be bounded outside a large enough compact set, which depends on the solution being studied; also, the reference [7] uses "proximal" instead of "viscosity" subgradients, but the proof is basically the same. For another proof, see [15] and the discussion in [4].
+
+26
+
+the first two are also equivalent (just take A = ;). By Proposition 13, the first and third statements are equivalent.
+
+Applying with V any positive definite continuous function (so V (0) = 0, in particular), and, w(x; u) = \Gamma jxj2 + fljuj2, and A = f0g, we conclude that (4) is equivalent to (5), as claimed in the introduction.
+
+Acknowledgments One of the authors (L.R.) thanks the Department of Mathematics of the Politecnico Di Torino for its hospitality, and is deeply grateful to Prof. A. Bacciotti for bringing some nice counterexamples from [2] to his attention and for stimulating discussions.
+
+References
+
+[1] J.P. Aubin and H. Frankowska, Set-Valued Analysis, Birkha"user, Boston, 1990. [2] A. Bacciotti, "An Introduction to stability and stabilization," in Proc. 1st
+
+Pedagogical School of the NCN, Athens (1999).
+
+[3] A. Bacciotti and L. Rosier, "Regularity of Liapunov Functions for Stable
+
+Systems," Systems and Control Lett., to appear.
+
+[4] J.A. Ball and J.W. Helton, "Viscosity solutions of Hamilton-Jacobi equations
+
+arising in nonlinear H1 control," J. Math. Systems Estim. Control 6(1996): 1-22.
+
+[5] T. Basar and P. Bernhard, H1-Optimal Control and Related Minimax Design
+
+Problems: A Dynamic Game Approach, Birkh"auser-Verlag, Boston, 1991.
+
+[6] F.H. Clarke, Yu.S. Ledyaev, E.D. Sontag, and A.I. Subbotin, "Asymptotic
+
+controllability implies feedback stabilization," IEEE Trans. Autom. Control, 42(1997), 1394-1407.
+
+[7] F.H. Clarke, Yu.S Ledyaev, R. Stern, P. Wolensky, Nonsmooth Analysis and
+
+Control Theory, Springer, New York, 1998.
+
+[8] M.G. Crandall, L.C. Evans, and P.L. Lions, "Some properties of viscosity
+
+solutions of Hamilton-Jacobi equations," Trans. Amer. Math. Soc. 282(1984): 487-435.
+
+[9] J.C. Doyle, K. Glover, P.P. Khargonekar, and B.A. Francis, "State-space
+
+solutions to standard H2 and H1 control problems," IEEE Trans. Autom. Control, 34(1989): 831-847.
+
+27
+
+[10] W.H. Fleming and H.M. Soner, Controlled Markov Processes and Viscosity
+
+Solutions, Springer-Verlag, Berlin, 1993.
+
+[11] J.W. Helton and M.R. James, Extending H1 Control to Nonlinear Systems,
+
+SIAM, Philadelphia, 1999.
+
+[12] D.J. Hill, "Dissipative nonlinear systems: Basic properties and stability
+
+analysis," in Proc. 31st IEEE Conf. Dec. and Control, Tucson, Arizona, 1992, 3259-3264.
+
+[13] D.J. Hill and P. Moylan, "Dissipative dynamical systems: Basic input-output
+
+and state properties," J. Franklin Institute, 5(1980), 327-357.
+
+[14] A. Isidori and A. Astolfi, "Disturbance attenuation and H1-control via
+
+measurement feedback in nonlinear systems," IEEE Trans. Autom. Control 37(1992): 1283-1293.
+
+[15] M.R. James, "A partial differential inequality for dissipative nonlinear systems,"
+
+Systems and Control Lett., 21(1993), 315-320.
+
+[16] M. Krichman, E.D. Sontag, and Y. Wang, "Input-Output-to-State Stability",
+
+submitted. (See also "Lyapunov characterizations of input-ouput-to-state stability," in Proc. IEEE Conf. Decision and Control, Phoenix, Dec. 1999, IEEE Publications, 1999, to appear.)
+
+[17] Y. Lin, E.D. Sontag and Y. Wang, "A smooth converse Lyapunov theorem for
+
+robust stability," SIAM J. of Control Optim., 34(1996), 124-160.
+
+[18] L. Rosier, "Smooth Lyapunov functions for discontinuous stable systems", Set
+
+Valued Analysis 7(1999): 375-405.
+
+[19] E.D. Sontag, "Stability and stabilization: discontinuities and the effect of
+
+disturbances," in Proc. of the NATO ASI "Nonlinear Analysis, Differential Equations and Control" Montreal Jul/Aug 1998; F.H. Clarke and R.J. Stern, eds., Kluwer, 1999, 551-598.
+
+[20] E.D. Sontag and A. Teel, "Changing supply functions in input/state stable
+
+systems," IEEE Trans. Autom. Control 40(1995): 1476-1478.
+
+[21] A. van der Schaft. L2-Gain and Passivity Techniques in Nonlinear Control
+
+(Lecture Notes in Control and Information Sciences, 218), Springer-Verlag, London, 1996.
+
+[22] J.C. Willems, "Dissipative dynamical systems. Parts I and II", Archive for
+
+Rational Mechanics and Analysis 45(1972): 321-393.
+
+28</pre>
+</body>
+</html>

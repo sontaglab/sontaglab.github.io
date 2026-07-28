@@ -1,0 +1,588 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/qiao-scl.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/qiao-scl.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Further Results on Controllability
+
+of Recurrent Neural Networks
+
+\Lambda 
+
+E. D. Sontagy Department of Mathematics Rutgers University, Piscataway, NJ 08854-8019, USA
+
+sontag@hilbert.rutgers.edu
+
+Y. Qiao Department of Computer Sciences C0500 University of Texas, Austin, TX 78712, USA
+
+yqiao@cs.utexas.edu
+
+Abstract This paper studies controllability properties of recurrent neural networks. The new contributions are: (1) an extension of a previous result to a slightly different model, (2) a formulation and proof of a necessary and sufficient condition, and (3) an analysis of a low-dimensional case for which the hypotheses made in previous work do not apply.
+
+1 Introduction This paper deals with controllability properties of what are often called "recurrent neural networks". These constitute a class of nonlinear systems which, although formally analogous to linear systems, exhibit interesting nonlinear characteristics and arise often in applications, see e.g. [3, 4, 5, 7, 9, 10, 11, 14, 15, 18]. A general model of recurrent nets (see e.g. [15]) is as follows. Assume given a Lipschitz map ` : R ! R. The most typical choice is
+
+`(x) = tanh x : R ! R : x 7! e
+
+x \Gamma  e\Gamma x
+
+ex + e\Gamma x ; which is also called the "sigmoid" or "logistic" map. For each positive integer n, we let ~`(n) denote the diagonal mapping
+
+~`(n) : Rn ! Rn : 0@
+
+x1.
+
+..
+
+xn 1A
+
+7! 0B@
+
+`(x1)
+
+...
+
+`(xn)
+
+1CA
+
+:
+
+Definition 1.1 An n-dimensional, m-input recurrent net (with activation function `) is a system with state space Rn and input-value space Rm respectively, and equations of the form
+
+.x(t) = ~`(n) (Ax(t) + Bu(t)) ; (1) where A 2 Rn\Theta n and B 2 Rn\Theta m . 2
+
+Since ~`(n) is a globally Lipschitz map, such a system is complete (every input is admissible for every state). For general terminology about systems and control, we follow [13]. In system-theoretic terms, we may represent a net by means of a block diagram as in Figure 1.
+
+\Lambda Supported in part by US Air Force Grant AFOSR-97-0159
+
+yCorresponding author
+
+1
+
+l- - - - -
+
+oe 6
+
+u x
+
+A +B R~`(n)
+
+Figure 1: Block diagram of net Observe that, if we had ` = the identity function, we would be studying continuous-time timeinvariant linear systems. However, in this paper ` will be bounded, which excludes that case. One manner in which recurrent nets arise is when modeling situations in which rates of change of state variables are bounded or saturated (we may use tanh to impose j .xij ! 1). In the field of neural networks, one thinks of the coordinates of x as the describing the time-evolution of an ensemble of n "neurons," and the entries Aij and Bij as "synaptic strengths," of the connections among neurons; in that context, ` : R ! R is called the "activation function".
+
+The paper [1] initiated the study of controllability properties for recurrent nets, and provided conditions for the "forward accessibility" of such systems. In [16], a sufficient condition for complete controllability was obtained, and this condition is reviewed below. One of the contributions of this paper is to show that the condition in [16] can be turned into a necessary and sufficient condition for a stronger form of complete controllability.
+
+There is a formal variant of the model given in the above definition, also sometimes referred to as a "recurrent neural network", namely as follows.
+
+Definition 1.2 An n-dimensional, m-input input-affine recurrent net (with activation function `) is a system with state space Rn and input-value space Rm respectively, and equations of the form
+
+.x(t) = A~`(n)(x(t)) + Bu(t) ; (2) where A 2 Rn\Theta n and B 2 Rn\Theta m . 2
+
+The block diagram representing such a system is as in Figure 2.
+
+l- - - 6
+
+oe
+
+oe
+
+u +B R
+
+A ~`(n)
+
+x
+
+Figure 2: Block diagram of input-affine net As often remarked, see e.g. [2], it is sometimes possible to obtain results for input-affine recurrent networks from analogous results for (non input-affine) nets, by means of the change of variables z = Ax + Bu. It is important to observe, however, that, under such a change of variables, one obtains equations of the form .z = A~`(n)(z) + Bv, where the new control v is the derivative of the original control. Thus, a solution x(\Delta ) corresponding to the action of non-differentiable (for instance, piecewise constant) u cannot be seen always as a trajectory of the new system; indeed, the function z will in general not be even absolutely continuous, so " .z" does not make sense. In addition, the feedback change of variables (x; u) 7! (Ax + Bu; v) can fail to be invertible because the matrix [A; B] does not have full rank (so not every state z can be written as Ax + Bu for some x and u). In summary, obtaining results for input-affine nets by this transformation is not completely trivial, and some work is required when following this approach. In [2], it was shown how, for questions of parameter identification, this transformation can be fruitfully applied. Another of the contributions of this paper is to follow this
+
+2
+
+approach in order to provide a controllability result. It turns out that a recent and nontrivial result about nonlinear controllability, from [6], is instrumental in the proof.
+
+Finally, at the end of this paper we return to the model (1), and provide a complete characterization of controllability for recurrent nets in the two-dimensional case.
+
+2 Statements of Results Given any continuous-time system .x = f (x; u), we write OE(t; x0; u) for the solution x(t) corresponding to the initial state state x(0) = x0 and the measurable (essentially) bounded control u : I ! Rm , where I = [0; T ] or I = [0; 1). For those systems that are considered in this paper, solutions exist globally and are unique, so this is well-defined for all (t; x0; u). (See [13] for generalities and basic facts about control systems.) We also write OE(t; x; u) as OEu(t; x) or OEtu(x), depending on the context.
+
+As usual, given any two states x0; xf , we say that x0 can be steered, or controlled, to xf if there is some T * 0 and some control u on [0; T ] such that the solution is defined for all t 2 [0; T ] and OE(T; x0; u) = xf . A system is controllable if every state x0 can be steered to every other state xf .
+
+For each pair of positive integers n and m, we introduce the following open and dense subset of the set of all n by m matrices:
+
+Bn;m := \Phi B 2 Rn\Theta m j (8 i) rowi(B) 6= 0 and (8 i 6= j) rowi(B) 6= \Sigma rowj(B)\Psi  where rowi(\Delta ) denotes the ith row of the given matrix. Observe that, in the special case m = 1, a vector b 2 Bn;1 if and only if all its entries are nonzero and have different absolute values.
+
+Finally, we let \Theta  be the set of all functions ` : R ! R which are Lipschitz and have the following properties:
+
+1. ` is an odd function, i.e. `(\Gamma r) = \Gamma `(r) for all r 2 R; 2. `1 = lims!+1 `(s) exists and is ? 0; 3. `(r) ! `1 for all r 2 R; 4. for each a; b 2 R, b ? 1,
+
+lims!+1 `1 \Gamma  `(a + bs)`
+
+1 \Gamma  `(s) = 0 : (3)
+
+The activation function which appears most frequently in applications is ` = tanh, so the following result from [16] is worth mentioning:
+
+Lemma 2.1 The function tanh 2 \Theta .
+
+We recall the main result from [16]: Theorem 1 Assume that ` 2 \Theta  and B 2 Bn;m. Then the system (1) is controllable.
+
+In order to state a necessary condition, we need the following concept, which we define for more general systems.
+
+Definition 2.2 A system .x = f (x; u) is strongly locally controllable around a state x0 if for each neighborhood V of x0 there is some neighborhood W of x0, included in V, so that, for every pair of states y and z in W , y can be controlled to z without leaving V. 2
+
+3
+
+This definition amounts to the requirement that any two states which are sufficiently close to x0 can be steered to one another without large excursions; see [13]. We will show, in Section 3:
+
+Theorem 2 Assume that ` 2 \Theta . Then the following two properties are equivalent, for (1):
+
+1. B 2 Bn;m. 2. The system (1) is strongly locally controllable around every state.
+
+If a system with connected state space (as is the case with recurrent nets, whose state space is Rn ) is strongly locally controllable around every state, then it is clearly also completely controllable. (Strong locally controllability around x0 implies that the reachable set R(x0) is both open and closed.) In fact, the proof of Theorem 1 given in [16] already establishes strong local controllability. Thus, we only need to prove the necessity of B 2 Bn;m.
+
+We now turn to input-affine nets. The main result, to be proved in Section 4, is:
+
+Theorem 3 Assume that ` 2 \Theta , rank [A; B] = n, and B 2 Bn;m. Then (2) is completely controllable.
+
+Finally, in Section 5, we will return to the model (1), and ask now what can be said if the hypothesis that B 2 Bn;m is dropped. In general, obtaining necessary and sufficient conditions for controllability when B 62 Bn;m appears to be a very difficult subject. We will, however, provide a complete solution for two-dimensional single-input (n = 2, m = 1) systems.
+
+3 Proof of Theorem 2 We start with a general observation. Lemma 3.1 If B 62 Bn;m then there exists a nonzero p 2 Rn so that
+
+sign pt ~`(n)(Ax + Bu) = sign ptAx for all (x; u) 2 Rn \Theta  Rm (with the convention sign 0 = 0).
+
+Proof. We denote, for each i, bi := rowi(B) and ai := rowi(A). There are three cases to consider: (1) some bi = 0, (2) bi \Gamma  bj = 0 for some i 6= j, and (3) bi + bj = 0 for some i 6= j.
+
+In the first case, we let p := ei (ith canonical basis vector). The conclusion follows from the equality
+
+eti ~`(n)(Ax + Bu) = `(aix) and the fact that sign `(v) = v. In the second case, we let p := ei \Gamma  ej. The expression
+
+(ei \Gamma  ej)t ~`(n)(Ax + Bu) = `(aix + biu) \Gamma  `(ajx + bju) = `(aix + biu) \Gamma  `(ajx + biu) is nonnegative if and only if aix * ajx (using that ` is monotonic), that is, when ptAx = aix \Gamma  ajx * 0, so also in this case we have the conclusion. Finally, if bi + bj = 0, we pick p := ei + ej. Then
+
+(ei + ej)t ~`(n)(Ax + Bu) = `(aix + biu) + `(ajx + bju) = `(aix + biu) \Gamma  `(\Gamma ajx + biu) (since ` is odd), which is nonnegative precisely when (ai + aj)x * 0.
+
+We now complete the proof of Theorem 2. Suppose that B 62 Bn;m. Let p be as in Lemma 3.1 and let V be Rn if ptA = 0 and fx j ptAx ? 0g otherwise. Pick any state x0 2 V. Let RV (x0) be the set of states reachable from x0 without leaving V. Then RV (x0) is included in the half spacen
+
+x j ptx * ptx0o :
+
+4
+
+This is because, if ., = ~`(n)(A, + B!) and ,(t) 2 V for all t, then
+
+d dt p
+
+t,(t) = pt~`(n)(A,(t) + B!(t)) * 0 ;
+
+so the function '(t) := pt,(t) is nondecreasing. Thus, there cannot be any neighborhood of x0 which is reachable from x0 without leaving V. This completes the proof of the Theorem.
+
+4 Proof of Theorem 3 We start by reviewing a very useful notion. We consider systems .x = f (x; u) for which the state space X is an open subset of some Euclidean space Rn , the input-value space U is a subset of Rm , f is continuously differentiable on x and f and fx are both continuous on (x; u).
+
+Given x0; xf 2 X, one says that xf is normally reachable from x0 (with piecewise constant controls) if there are control values u1; : : : ; uk 2 U and switching times t1; : : : ; tk 2 R?0 such that
+
+OEtkuk ffi : : : ffi OEt1u1 (x0) = xf and the map
+
+(s1; : : : ; sk) 7! OEsku
+
+k ffi : : : ffi OE
+
+s1 u1(x0)
+
+is nonsingular (i.e., its Jacobian at this point has rank n) at (t1; : : : ; tk). If xf is normally reachable from x0, for all pairs x0; xf 2 X, we say the system is globally, or completely, normally controllable. It is easy to see that the notion of normal reachability has the following transitivity property.
+
+Proposition 4.1 If y is normally reachable from x, x is reachable from z with piecewise constant controls and w is reachable from y with piecewise constant controls, then w is normally reachable from z. 2
+
+Of course, normal controllability implies controllability. A fundamental result in control theory makes a converse statement:
+
+Theorem 4 [6] Every completely controllable system is also completely normally controllable.
+
+The main technical fact that we need is given by the next result, which says that controllability is preserved under "backstepping" or "adding an integrator" ([8]). This result is a counterpart of the well-known theorem which asserts that stabilizability is preserved under backstepping, cf. [13], Chapter 4, but the proofs are very different. The critical step is showing that if a system is controllable then it is controllable using differentiable controls with preassigned boundary values. The technique of proof is almost identical to the one used in the much older paper [12], where it was shown that analytic systems are controllable using infinitely differentiable controls. We may now remove analyticity assumptions, thanks to the recent result that was cited in Theorem 4. We should point out, also, that the special case of the result for "systems without drift", was previously given in [17].
+
+Theorem 5 Suppose that the input-value set U is open and connected. Then, .x = f (x; u) is completely controllable if and only if the cascaded system
+
+.x = f (x; y)
+
+.y = v (4)
+
+with state space X \Theta  U and control space Rm is completely controllable.
+
+5
+
+Proof. If the cascaded system is completely controllable, it is clear that the x-subsystem must be as well. We now prove the other direction. Assume that .x = f (x; u) is completely controllable; Theorem 4 then says that the system is completely normally controllable (with piecewise constant controls). Take any x0; xf 2 X and any y0; yf 2 U. We will show how to control (x0; y0) to (xf ; yf).
+
+Pick "0 ? 0 small enough so that both OE("0; x0; y0) and OE(\Gamma "0; xf ; yf) are defined, were we wrote y0 and yf to denote the constant controls taking values y0 and yf respectively. Let ~x0 := OE("0; x0; y0) and
+
+~xf := OE(\Gamma "0; xf ; yf ). Using that the x-subsystem is completely normally controllable, in particular ~x0 is normally controllable to ~xf . Thus, there exist k, u1; : : : ; uk, and t1; : : : ; tk 2 R?0 , such that
+
+OEtku
+
+k ffi : : : ffi OE
+
+t1 u1 (~x0) = ~xf
+
+and the map (s1; : : : ; sk) 7! OEsku
+
+k ffi: : :ffiOE
+
+s1u
+
+1(~x0) is nonsingular at (t1; : : : ; tk). Applying the Inverse Mapping
+
+Theorem, we conclude that there is some neighborhood eV of ~xf and C1 functions ~s1; : : : ; ~sk : eV ! R?0 such that
+
+OE~sk(~z)u
+
+k ffi : : : ffi OE
+
+~s1(~z) u1 (~x0) = ~z
+
+for all ~z 2 eV . Let V := OE"0yf ( eV ), and define s1; : : : ; sk : V ! R?0 by
+
+si(z) := ~si(OE(\Gamma "0; yf ; z)) for i = 1; : : : ; k. Then,
+
+OE"0yf ffi OEsk(z)uk ffi : : : ffi OEs1(z)u1 ffi OE"0y0(x0) = z
+
+for all z 2 V . Because U ` Rm is open and connected, we may find a differentiable curve fl : [0; k+1] ! U such that fl(0) = y0, fl(k + 1) = yf and fl(i) = ui for i = 1; : : : ; k. Define ! : V \Theta  R ! R as follows:
+
+w(z; t) = 8????!????:
+
+0 t ! "0 1 "0 ^ t ! "0 + s1(z)
+
+: : : k "0 + s1(z) + : : : + sk\Gamma 1(z) ^ t ! "0 + s1(z) + : : : + sk(z) k + 1 "0 + s1(z) + : : : + sk(z) ! t :
+
+Then, we have
+
+OE \Gamma 2"0 + s1(z) + : : : + sk(z); x0; fl(!(z; \Delta ))\Delta  = z (5)
+
+for all z 2 V .
+
+We now choose a sequence of functions ael : R ! R, l = 1; 2; : : :, so that the following properties, for each l:
+
+ffl ael is C1, ffl ael(t) * 0 for all t 2 R and ae(t) = 0 for all jtj ? 1l , ffl RR ael = 1 for all l.
+
+For instance, one could take
+
+ael(t) = ( cle\Gamma 
+
+1 (l2t2\Gamma 1)2 jtj ! 1
+
+l0 otherwise,
+
+where cl is an appropriate normalizing constant.
+
+We introduce, for each l, the function
+
+!l : V \Theta  R : (z; t) 7! Z
+
+R !(z; o/ )ae
+
+l(t \Gamma  o/ )do/ :
+
+This is smooth in t, and the following properties hold:
+
+6
+
+1. !l(z; t) 2 [0; k + 1] for all l, z 2 V and t 2 R. 2. For each z 2 V , !l(z; t) 6= !(z; t) only if fififit \Gamma  "0 \Gamma  Pji=1 si(z)fififi ! 1l for some j, j = 0; : : : ; k. 3. !l(z; 0) = 0 and !l(z; 2"0 + s1(z) + : : : + sk(z)) = k + 1 for all z 2 V and all l ? 1"
+
+0 .
+
+Note that the functions fl(!l(z; \Delta )) are valid controls, as they take values in U, because of 1. Moreover, the values fl(!l(z; t)) belong to a compact subset K of U, namely the image of fl, for all t and z 2 V .
+
+We claim that
+
+hl(z) ! OE \Gamma 2"0 + s1(z) + : : : + sk(z); x0; fl(!(z; \Delta ))\Delta  = z (6)
+
+as l ! 1, uniformly on z (the last equality is true because of (5)), where we define for each l the map hl : V ! Rn as:
+
+hl(z) := OE \Gamma 2"0 + s1(z) + : : : + sk(z); x0; fl(!l(z; \Delta ))\Delta  :
+
+Indeed, we start by noting that we may assume, without loss of generality, that there is some T ? 0 such that the final times are equibounded:
+
+2"0 + s1(z) + : : : + sk(z) ! T for all z 2 V (take a smaller, relatively compact, neighborhood V of xf if necessary). In general, the following continuous dependence result holds for the system .x = f (x; u), a compact subset K ` U, and any fixed integer k: there is a function ff : R*0 ! R*0 , with ff(s) ! 0 as s ! 0, such that, whenever u; v are two inputs with values in K and of equal length T0 ^ T , which differ in at most k + 1 intervals of length \Delta , thenflfl
+
+OE(T0; x0; u) \Gamma  OE(T0; x0; v)flfl ^ ff(\Delta ) : This is proved by induction, using continuity of trajectories with respect to initial conditions and to controls with uniform norm ([13], Theorem 1). We may apply this general fact, for each z 2 V , and each l, to u = !l(z; \Delta ) and v = !(z; \Delta ), since property 2 above says that these differ on at most k + 1 intervals, each of length less than 2=l. So the convergence (6) holds, since for each " ? 0 we may simply pick l large enough so that ff(2=l) ! ", which then gives khl(z) \Gamma  zk ! " for all z 2 V .
+
+Finally, we note another general fact (which appears often in control theory, notably in connection to the "Brunovsky-Lobry Lemma"): if V is an neighborhood of a point xf 2 Rn , then is an " ? 0 such that every continuous map h : V ! Rn which is "-close to the identity must contain a neighborhood of xf in its image. (Proof: without loss of generality, we may take xf = 0. Replace V by a subset, some closed ball Bae of radius ae ? 0 about zero. Now take any " 2 (0; ae). Suppose that kh(x) \Gamma  xk ! " for all x 2 V . Then every p 2 Bae\Gamma " is in the image of h: for such a p, consider the map H(x) := x \Gamma  h(x) + p; then H maps Bae into itself, and hence by Brouwer's Fixed Point Theorem there is some _x so that H(_x) = _x, which means that h(_x) = p as we wanted to prove.) Applied to the above maps hl, which converge uniformly to the identity, we conclude, in particular that there are l and z0 2 V such that
+
+OE(2"0 + s1(z0) + : : : + sk(z0); x0; fl(!l(z0; \Delta ))) = xf : Since both fl and !l(z0; \Delta )) are continuously differentiable. we may write fl(!l(z0; t)) = y0 + R t0 v(s)ds for some bounded measurable (in fact, continuous) function v : R ! Rm . As a control applied to the cascaded system (4), v steers (x0; y0) to (xf ; yf).
+
+Since we had picked arbitrary (x0; y0) and (xf ; yf), this completes the proof of controllability.
+
+We now complete the proof of Theorem 3. From Theorem 1 and Theorem 5, we know that the cascaded system
+
+.x(t) = ~`(n)(Ax(t) + By(t))
+
+.y(t) = v (7)
+
+is globally controllable.
+
+7
+
+Now take any two states z0; zf 2 Rn for the system (2). Since rank [A; B] = n, there are pairs (x0; y0) and (xf ; yf) in Rn+m such that Ax0 + By0 = z0 and Axf + Byf = zf. Let v : [0; T ] ! Rm be any control steering (x0; y0) to (xf ; yf), along a trajectory (x(\Delta ); y(\Delta )) of system (7). Let z(t) := Ax(t) + By(t). This is an absolutely continuous function which satisfies z(0) = z0 and z(T ) = zf. Moreover, its derivative is A .x + B .y = A~`(n)(z) + Bv, so v is a control steering z0 to zf for the system (2).
+
+5 Two Dimensional Recurrent Nets From now on, we will assume, for simplicity, that in addition to ` 2 \Theta , also ` is continuously differentiable, and satisfies `0(s) ? 0 for all s 2 R, `0 is decreasing to zero on [0; 1), `0(0) = 1, and `1 = 1. Note that the standard example ` = tanh satisfies these properties. Furthermore, in this section, all recurrent nets are two-dimensional and single-input (n = 2, m = 1).
+
+When B = (b1; b2)t 62 Bn;1, we may assume after a rescaling of inputs, changes of variables x ! \Gamma x or y ! \Gamma y, and/or exchanges of variables, that one of these cases holds:
+
+1. B = (0; 0)t 2. B = (0; 1)t 3. B = (1; 1)t
+
+and in the first case we don't have controllability. In the remaining two cases, under a further feedback transformation of the type u ! ax + by + u0, where u0 is a new control, one may transform a recurrent net, while preserving controllability properties, into one of the two canonical forms:
+
+.x = `(ax + by)
+
+.y = `(u) (8)
+
+or
+
+.x = `(ax + u)
+
+.y = `(by + u) : (9)
+
+We now characterize controllability for each of these forms.
+
+Proposition 5.1 The system (8) is controllable if and only if jaj ^ jbj and b 6= 0. Proof. First we prove the necessity part. Obviously, if b = 0 the system is not controllable. So we can assume that jaj ? jbj ? 0. There are two cases to consider:
+
+a ? 0 In this case, since `1 = 1, we may find A ? 0 such that a`(z) ? jbj for all z * A. Then, the set f(x; y) 2 R2 j ax + by * Ag is forward invariant for the system (8), which therefore cannot be controllable.
+
+a ! 0 We consider the system obtained by reversing time in (8) and redefining the control as \Gamma u:
+
+.x = `(\Gamma ax \Gamma  by)
+
+.y = `(u0) (10)
+
+(note that, since ` is an odd function, we may write \Gamma `(ax + by) = `(\Gamma ax \Gamma  by) and \Gamma `(u) = `(u0), where we think of u0 := \Gamma u as a new control). Since (10) is not controllable, (8) is not controllable either.
+
+We now turn to the sufficiency part. To prove controllability, it is enough to show, for any system that satisfies jaj ^ jbj and b 6= 0, that the system is null-controllable, i.e., every state can be steered
+
+8
+
+to 0. Indeed, suppose that this general fact has been established. Now to steer a state back from 0 to any other state (x; y), one may consider the system (10). This also satisfies the hypotheses and hence is null-controllable. We find a control u that steers the state of this new system from (x; y) to 0, and then apply \Gamma u to the original system with the time reversed, to drive 0 to (x; y). So we can steer any state to any other, by first passing through the origin. Moreover, since b 6= 0, the system is locally controllable around the origin, and so it suffices to prove that every state x can be steered into any arbitrarily chosen neighborhood of 0 (asymptotic null-controllability).
+
+We start with the case a = 0. Take any neighborhood V of the origin, and pick any state (x; y) 2 R2 . It is clear that there is some control that steers this state to some new state of the special form (x0; 0). If this state is in V , we are done. Otherwise, we have x0 6= 0. We will assume without loss of generality that x0 ? 0, the argument for x0 ! 0 being analogous. We next steer our state to a state of the form (x00; \Gamma b), along the trajectory (,; j). Let
+
+t0 := infft ? 0 j bj(t) ! 0g : Then, ,(t0) = x0 + R t
+
+0
+
+0 `(bj(t))dt ? 0 and j(t0) = 0. By the definition of t0 and the continuity of ,, wemay choose t
+
+1 ? t0 such that ,(t1) ? 0, bj(t1) ! 0 and (0; j(t1)) 2 V . Thus, we can steer our initial state to the state (,(t1); j(t1)), and after that apply the control j 0. The system will reach the state
+
+(0; j(t1)) in finite time. This completes our proof for the case a = 0.
+
+Now we assume 0 ! jaj ^ jbj and show asymptotic null-controllability. Through a change of variables
+
+~x = ax + by
+
+~y = y
+
+and v = `(u), the system (8) becomes as follows:
+
+.~x = a `(~x) + bv
+
+.~y = v (11)
+
+with control value space (\Gamma 1; 1). The system (8) is asymptotically null-controllable if and only if (11) is. Thus, we now prove that (11) is asymptotically null-controllable. If a ! 0, then we simply steer ~y to 0 and then use the identically zero control, which makes ~x go to 0 asymptotically while "freezing" ~y at zero. So we only need to deal with the case a ? 0. Moreover, we may assume without loss of generality that b ? 0. If this were not the case, we change variables again, making y0 := \Gamma ~y and using the new control v0 := \Gamma v, which brings the system into the above form with b replaced by \Gamma b. In summary, we have 0 ! a ^ b from now on.
+
+We start by defining the following set:
+
+\Omega  := f(x; y) j x ? 0; y ? 0; x + ay `(x) ! byg : We claim that every initial state (~x0; ~y0) 2 \Omega  can be steered to the origin asymptotically. To see this, we first apply the feedback control
+
+v = a~y
+
+0
+
+~x0 \Gamma  b~y0 `(~x) to obtain the closed-loop system:
+
+.~x = a~x
+
+0
+
+~x0 \Gamma  b~y0 `(~x) .~y = a~y
+
+0
+
+~x0 \Gamma  b~y0 `(~x) : (12)
+
+Let (,; j) be the trajectory of (12) that corresponds to the initial state ,(0) = ~x0, j(0) = ~y0. Since
+
+~x0 ? 0 and ~x0 \Gamma  b~y0 ! \Gamma a~y0`(~x0) ! 0, it follows that ,(t) ! 0 monotonically as t ! 1. Consider
+
+9
+
+the function ff(t) := ~y0,(t) \Gamma  ~x0j(t). Then, from the form of the equations, it follows that .ff j 0 and ff(0) = 0. Thus ff j 0, so j(t) = (~y0=~x0),(t) ! 0 as well.
+
+By definition of \Omega , 0 ! a~y0`(~x0) ! b~y0 \Gamma  ~x0. Since , is decreasing, we have that `(,(t)) ^ `(~x0) for all t * 0. So fifififi
+
+a~y0
+
+~x0 \Gamma  b~y0 `(,(t))fifififi ! 1
+
+for all t * 0, so the control v takes values in (\Gamma 1; 1), as required. This proves the claim. Moreover, the same claim is also true for \Gamma \Omega , because of the symmetry of the system (that is, if we change variables x0 := \Gamma ~x, y0 := \Gamma ~y, and v0 := \Gamma v, the system equations are the same but \Omega  gets transformed into \Gamma \Omega ).
+
+Now suppose given an arbitrary state (~x0; ~y0) 2 R2 . We first steer it to some state of the form (0; ~y1). This can always be done with controls bounded by one, because a ^ b. If ~y1 = 0, we are done. Otherwise, if ~y1 ? 0, we steer it to some (~x2; ~y2) 2 \Omega . If ~y1 ! 0, we steer it to some (~x2; ~y2) 2 \Gamma \Omega . These motions can be accomplished by the application of a short duration control, positive or negative respectively. By the claim proved above, we may then steer (~x2; ~y2) to the origin asymptotically.
+
+Proposition 5.2 The system (9) is completely controllable if and only if a 6= b. Proof. We first show the necessity statement. Suppose that a = b, and consider the initial state (0; 0). Pick any control u, and let , be the solution of .x = `(ax + u) with ,(0) = 0. By uniqueness of solutions, (,; ,) is the trajectory for the entire system with the initial state (0; 0). Thus any state (x; y) reachable from (0; 0) must have x = y, and the system is not controllable.
+
+Now we turn to proving sufficiency when a 6= b. Arguing exactly as before, it suffices to prove asymptotic null-controllability, because the condition a 6= b is again satisfied for the time reversed equations (a ! \Gamma a and b ! \Gamma b), and the linearization at the origin is controllable due to the condition a 6= b. We may further assume (exchange equations if necessary) that a ? b. There are two cases to consider:
+
+b * 0 Here a ? b * 0. Let
+
+\Omega  := f(x; y) 2 R2 j 0 ! x ! y; ax ? byg : Claim 1: Pick (x0; y0) 2 \Omega . Then, there is a C1 function
+
+k : (0; 1) ! R which has the following property:
+
+y0`(sax0 + k(s)) \Gamma  x0`(sby0 + k(s)) = 0 for all s 2 (0; 1) : (13) Indeed, we consider the following function:
+
+f (s; u) := y0`(sax0 + u) \Gamma  x0`(sby0 + u) : For each fixed s, f (s; \Gamma 1)f (s; 1) = \Gamma (x0 \Gamma  y0)2 ! 0. So there exists some u = k(s) such that f (s; k(s)) = 0. Moreover, for each u 2 R for which f (s; u) = 0, necessarily
+
+@f
+
+@u (s; u) ? 0 : (14)
+
+To verify this, take any u so that f (s; u) = 0. Since ax0 ? by0, also
+
+`(sax0 + u) ? `(sby0 + u) and therefore
+
+x0`(sax0 + u) ? x0`(sby0 + u) = y0`(sax0 + u);
+
+10
+
+where the last equality follows from (13). This implies that (x0 \Gamma  y0)`(sax0 + u) ? 0, which, since x0 \Gamma  y0 ! 0, means that
+
+sax0 + u ! 0 : (15)
+
+We know, then, that sby0 + u ! sax0 + u ! 0. The derivative `0 is increasing on (\Gamma 1; 0] (since ` is odd and we assumed that `0 is decreasing on [0; 1)), so
+
+0 ! `0(sby0 + u) ^ `0(sax0 + u) Multiplying this inequality by x0 ! y0 gives (14). We conclude that u = k(s) is the unique solution of the equation f (s; u) = 0 and, by the Implicit Mapping Theorem, that k is C1. So Claim 1 is proved.
+
+Claim 2: Any (x0; y0) 2 \Omega  can be controlled to the origin asymptotically. To prove this, we apply the feedback control u = k(x=x0). Let , solve ., = `(a, + k(,=x0)) with ,(0) = x0. Notice that u is well-defined (the argument of k is positive) at least for small t ? 0, since ,(0)=x0 = 1. We let, for all t so that ,(t) ? 0:
+
+s(t) := ,(t)x0 : Thus, a,(t) = s(t)ax0 for all such t. Now we let j(t) := y0s(t). It follows that
+
+.j = y
+
+0
+
+x0 ., =
+
+y0 x0 `(a, + k(s)) =
+
+y0 x0 `(sax
+
+0 + k(s))
+
+which in turn equals `(sby0 +k(s)) by (13). So, substituting y0s(t) = j(t), we have that .j = `(bj +k(s)). Thus (,; j) is the trajectory with (,(0); j(0)) = (x0; y0), as long as ,(t) remains positive. Moreover, (15) insures that a, + k(s) ! 0, so ., ! 0 whenever , ? 0. This implies that ,(t) ! 0 as t increases (it could be the case that , becomes zero in finite time, or ,(t) ! 0 as t ! 1), and, so also j(t) = y0,(t)=x0 approaches zero. This proves Claim 2.
+
+Observe that the same claim holds true for \Gamma \Omega , because of the symmetry of the system (that is, if we change variables x0 := \Gamma x, y0 := \Gamma y, and u0 := \Gamma u, the system equations are the same but \Omega  gets transformed into \Gamma \Omega ).
+
+Finally, take an arbitrary (x0; y0) 2 R2 . Suppose that this point is not already in \Omega  S(\Gamma \Omega ) Sf(0; 0)g. We may first steer this point to a state of the form (0; y1). (This can obviously be done, for instance by first using u = \Gamma ax \Gamma x to bring x close to zero, and then using local controllability of the first equation). If y1 = 0, then we are done.
+
+Suppose y1 ? 0. If we apply u = 1 thereafter, ,(t) ! 1 and j(t) ! 1 along the ensuing trajectory (because the right-hand side in each of the equations in (9) is bounded below by `(1) ? 0). We evaluate the limit of ,=j using L'H^opital's rule. We have that ., = `(a, + 1) ! 1 and either j ! 1 (if b ? 0) or j ! `(1) (if b = 0), so in either case the limit in question is * 1. Since a ? b, a, \Gamma  bj eventually becomes positive. Let t0 be infimum of the t * 0 so that a,(t) \Gamma  bj(t) ? 0. For t ^ t0,
+
+.,(t) = `(a,(t) + 1) ^ `(bj(t) + 1) = .i(t)
+
+so j \Gamma  , increases while t ^ t0. Thus j(t0) \Gamma  ,(t0) * y1 ? 0, and so for some small t ? t0 we have that j(t) ? ,(t) and a,(t) ? bj(t), so (,; j) enters \Omega . If y1 ! 0, we may apply u = \Gamma 1 and conclude that we eventually enter \Gamma \Omega . In any case, we can then steer the state of the system to zero asymptotically. This completes consideration of the case b * 0.
+
+b ! 0 In this case we may first steer x to 0 and subsequently apply the identically zero control. The y coordinate will go to 0 asymptotically, while x is "frozen" at zero.
+
+This completes our discussion of the two cases.
+
+11
+
+References
+
+[1] Albertini, F., and P. Dai Pra, "Forward accessibility for recurrent neural networks," IEEE Trans.
+
+Automat. Control 40 (1995): 1962-1968
+
+[2] Albertini, F., and E.D. Sontag, "For neural networks, function determines form," Neural Networks
+
+6(1993): 975-990.
+
+[3] Chu, Y-C., and K. Glover, "Gain-scheduling for systems with repeated scalar nonlinearities," IEEE
+
+Conf. Decision and Control , San Diego, Dec. 1997.
+
+[4] Feng, Z., and A.N. Michel,, "Uniqueness and stability of equilibria of a class of neural networks
+
+with applications to the Hopfield model," IEEE Conf. Decision and Control , San Diego, Dec. 1997.
+
+[5] Giles, C.L., G.Z. Sun, H.H. Chen, Y.C. Lee, and D. Chen, "Higher order recurrent networks and
+
+grammatical inference", in Advances in Neural Information Processing Systems 2, D.S. Touretzky (ed.), Morgan Kaufmann, San Mateo, CA, 1990.
+
+[6] Grasse, K.A., and H.J. Sussmann, "Global controllability by nice controls," in Nonlinear Controllability and Optimal Control (H.J. Sussmann, ed.), Dekker, New York, 1990, pp. 33-79.
+
+[7] Hunt, K.J., G.W. Irwin, and K. Warwick, eds., Neural Network Engineering in Dynamic Control
+
+Systems, Springer-Verlag, London, 1995.
+
+[8] Krstic, M., I. Kanellakopoulos, and P. Kokotovic, Nonlinear and adaptive control design, John
+
+Wiley & Sons, New York, 1995.
+
+[9] Matthews, M., "A state-space approach to adaptive nonlinear filtering using recurrent neural networks," Proc. 1990 IASTED Symp. on Artificial Intelligence Applications and Neural Networks, Z"urich, pp. 197-200, July 1990.
+
+[10] Michel, A.N., J.A. Farrell, and W. Porod. (1989) Qualitative analysis of neural networks. IEEE
+
+Trans. Circuits and Sys., 36, 229-243.
+
+[11] Polycarpou, M.M., and P.A. Ioannou, "Neural networks and on-line approximators for adaptive
+
+control," in Proc. Seventh Yale Workshop on Adaptive and Learning Systems, pp. 93-798, Yale University, 1992.
+
+[12] Sontag, E.D., "Finite dimensional open-loop control generators for nonlinear systems," Int. J. Control 47 (1988): 537-556.
+
+[13] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer,
+
+New York, 1990.
+
+[14] Sontag, E.D., "Neural networks for control," in Essays on Control: Perspectives in the Theory and
+
+its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+[15] Sontag, E.D., "Recurrent neural networks: Some systems-theoretic aspects," in Dealing with Complexity: a Neural Network Approach (M. Karny, K. Warwick, and V. Kurkova, eds.), SpringerVerlag, London, 1997, pp. 1-12.
+
+[16] Sontag, E.D., and H.J. Sussmann, "Complete controllability of continuous-time recurrent neural
+
+networks," Systems and Control Letters 30(1997): 177-183.
+
+[17] Sussmann, H.J., "Local controllability and motion planning for some classes of systems with drift,"
+
+in Proc. 30th Conf. Decision and Control , Brighton, UK, IEEE Publications, 1991, pp. 1110-1114.
+
+[18] Zbikowski, R., "Lie algebra of recurrent neural networks and identifiability," Proc. Amer. Auto.
+
+Control Conf., San Francisco, 1993, pp.2900-2901.
+
+12</pre>
+</body>
+</html>

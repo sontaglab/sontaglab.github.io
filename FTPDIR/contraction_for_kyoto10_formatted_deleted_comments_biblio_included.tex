@@ -1,0 +1,1034 @@
+
+
+\documentclass{svmult}
+
+
+
+\newcommand{\opteqn}[1]{$#1$}
+\newcommand{\optpar}{}  % change to null and linefeed
+\newcommand{\mysubsection}[1]{\smallskip\noindent{\bf \emph{#1}.}}
+
+
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\newcommand{\eq}[2]{\begin{equation}\label{#1}#2\end{equation}}
+
+\newcommand{\pic}[2]{\includegraphics[scale=#1]{\FIGDIR/#2}}
+\newcommand{\picc}[2]{\begin{center}\pic{#1}{#2}\end{center}}
+
+\newcommand{\comment}[1]{}
+\newcommand{\edo}{\end{document}}
+
+
+\newcommand{\R}{{\mathbb R}}  %ams bold
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+
+\newcommand{\be}[1]{\begin{equation}\label{#1}}
+\newcommand{\ee}{\end{equation}}
+
+\newcommand{\halmos}{\rule{1ex}{1.4ex}}
+
+\newcommand{\mybox}{\hfill $\Box$} %put \qed at right margin (white square)
+
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eeq}{\end{eqnarray}}
+\newcommand{\beqn}{\begin{eqnarray*}}
+\newcommand{\eeqn}{\end{eqnarray*}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+\newcommand{\st}{\, | \,}
+\newcommand{\inter}{{\rm int}}
+\newcommand{\co}{{\rm co}}
+\newcommand{\col}{{\rm col}}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+
+
+
+
+\newcommand{\cc}{c}
+\newcommand{\kk}{k}
+\newcommand{\cckT}{ckT}
+\newcommand{\pp}{p}
+\newcommand{\norma}{1}
+\newcommand{\normb}{2}
+
+\newcommand{\perorb}{\hat{x}}
+\newcommand{\mypmatrix}[1]{\left(\begin{array}{cccccccccccc}#1\end{array}\right)}
+
+\newcommand{\absv}[1]{\left\vert #1 \right\vert}
+
+\title*{Contractive Systems with Inputs}
+
+\titlerunning{Contractive Systems with Inputs}
+
+\author{Eduardo D. Sontag}
+\institute{Department of Mathematics\\
+Rutgers University\\
+USA\\
+\texttt{sontag@math.rutgers.edu}}
+
+\begin{document}
+
+\maketitle
+
+\medskip
+
+\centerline{$\framebox{\bf Dedicated to Y. Yamamoto on the occasion of his 60th birthday}$}
+
+\bigskip
+
+\subsection*{Abstract}
+
+Contraction theory provides an elegant way of analyzing the behaviors of
+systems subject to external inputs.  Under sometimes easy to check hypotheses,
+systems can be shown to have the incremental stability property that all
+trajectories converge to a unique solution.  This property is especially
+interesting when forcing functions are periodic (a globally attracting limit
+cycle results), as well as in the context of establishing synchronization
+results.  The present paper provides a self-contained introduction to some
+basic results, with a focus on contractions with respect to non-Euclidean
+metrics.
+
+\section{Introduction}
+
+
+The most common approach to analyzing global stability properties of nonlinear
+dynamical systems is through Lyapunov functions.
+However, in many applications, Lyapunov functions are not always
+easy to find, especially if steady states are not known \emph{a priori}.
+Remarkably, a stronger property than stability, namely the \emph{contraction}
+(or incremental stability) requirement that all solutions should converge
+(exponentially) towards each other, is sometimes easier to work with.
+Contractive dynamics result when the logarithmic norm, or matrix measure, of
+the Jacobian of the vector field is uniformly negative on the state space.
+Different norms are appropriate to different problems, just as different
+Lyapunov functions have to be carefully picked.
+Non-Euclidean norms have been found to be useful in the study of many
+bio-molecular problems, see for example~\cite{russo_dibernardo_sontag}.
+
+The study of contractions in the context of stability theory dates back at
+least to the work of Demidovich (\cite{demidovich}), who established the basic
+convergence results with respect to Euclidean norms, and independently to
+Yoshizawa (\cite{yoshizawa1,yoshizawa2}); see~\cite{pavlov} for a historical
+discussion. 
+In control theory, contraction theory has been popularized and extended by 
+Slotine and coworkers, see for instance 
+\cite{Loh_Slo_00}, \cite{Jou_04_a}, \cite{Wan_Slo_05}
+where applications to nonlinear control, observer problems, and synchronization
+and consensus problems in complex networks have been developed,
+as well as by Nijmejer and coworkers in the context of nonlinear regulator
+problems, see for example \cite{pavlov_book}.
+In this latter work, the authors use the phrase ``convergent dynamics''
+to refer to property that there exists a (necessarily unique) globally
+asymptotically stable solution to which all other solutions converge.
+
+This paper gives a self-contained exposition, with simple proofs, of some
+basic results in contraction theory, It seems difficult to find such simple
+proofs in the literature, particularly for contractions with respect to
+non-Euclidean norms.  We emphasize that the presentation is expository, and no
+substantial new results on contraction theory are claimed.
+
+Definitions and statements of the main results are provided in
+Section~\ref{sec:defs}, and proofs are given in Section~\ref{sec:proofs}.
+
+Section~\ref{sec:synch} briefly discusses the application of contraction
+theory to the synchronization of coupled identical dynamical systems,
+following an idea of Slotine and collaborators (``virtual systems'').  Also
+discussed there is a minor extension in which simultaneous convergence, not
+merely synchronization, is achieved.
+
+For periodically forced contractive systems, globally attracting limit cycles
+arise, a sort of ``entrainment'' property.
+Such a property is false for general systems that have a well-defined steady-state
+response to constant inputs, for which even chaotic behavior may arise under
+periodic forcing (\cite{arxiv_chaos_2009}).
+
+In closing this introduction, we remark that a modern approach to contractive
+dynamics steps away from the consideration of Jacobians, and defines
+contraction properties by means of ``logarithmic Lipschitz constants''
+directly associated to the vector field.  This elegant approach, nicely
+surveyed in~\cite{soderlind}, is powerful and intuitive, and allows immediate
+generalizations to infinite-dimensional problems.  However, in order to verify
+the property for particular examples, Jacobians must still be employed.
+
+
+\section{Definitions and Statements of Main Results}
+\label{sec:defs}
+
+We consider in this paper systems of ordinary differential equations,
+generally time-dependent:
+\be{eqn:gensys}
+\dot x = f(t,x)
+\ee
+defined for $t\in [0,\infty )$ and $x\in C$, where $C$ is a subset of $\R^n$.
+It will be assumed that $f(t,x)$ is differentiable on $x$, and that
+$f(t,x)$, as well as the Jacobian of $f$ with respect to $x$,
+denoted as $J(t,x) = \frac{\partial f}{\partial x}(t,x)$, are continuous in $(t,x)$. 
+In applications of the theory, it is often the case that $C$ will
+be a closed set, for example given by non-negativity constraints on variables
+as well as linear equalities representing mass-conservation laws.
+For a non-open set $C$, differentiability in $x$ means that the vector field
+$f(t,\cdot )$ can be extended as a differentiable function to some open set which
+includes $C$, and the continuity hypotheses with respect to $(t,x)$ hold on
+this open set.
+
+We denote by
+$
+\varphi(t,s,\xi )
+$
+the value of the solution $x(t)$ at time $t$ of the differential
+equation~(\ref{eqn:gensys}) with initial value $x(s)=\xi $.
+It is implicit in the notation that $\varphi(t,s,\xi )\in C$ (``forward invariance''
+of the state set $C$).
+This solution is in principle defined only on some interval $s\leq t<s+\varepsilon $,
+but we will assume that $\varphi(t,s,\xi )$ is defined for all $t\geq s$.
+Conditions which guarantee such a ``forward-completeness'' property
+are often satisfied in applications, for example whenever
+the set $C$ is closed and bounded, or whenever the vector field $f$ is
+bounded.  (See for example Appendix C in~\cite{mct} for more discussion, as well
+as~\cite{angeli-sontag-fc} for a characterization of the forward completeness
+property.) 
+Under the stated assumptions, the function $\varphi$ is jointly differentiable
+in all its arguments (this is a standard fact on well-posedness of
+differential equations, see for example Appendix C in~\cite{mct}).
+
+We recall (see for instance~\cite{michelbook} or
+\cite{desoer-vidyasagar-siam}) that, given a vector norm on Euclidean space
+($\abs{\cdot }$), with its induced matrix norm $\norm{A}$, the associated
+\emph{matrix measure} $\mu $ is defined as the directional derivative of the
+matrix norm in the direction of $A$ and evaluated at the identity matrix, that
+is:
+\opteqn{
+\mu (A) \,:=\;
+\lim_{h \searrow 0} \frac{1}{h} \left(\norm{I+hA}-1\right).
+}
+For example, if $\abs{\cdot }$ is the standard Euclidean 2-norm, then
+$\mu (A)$ is the maximum eigenvalue of the symmetric part of $A$.
+Matrix measures, also known as ``\emph{logarithmic norms}'', were
+independently introduced by Germund Dahlquist and Sergei Lozinskii in 1959,
+\cite{dahlquist,lozinskii}.
+The limit is known to exist, and the convergence is monotonic,
+see~\cite{strom,dahlquist}.
+
+\begin{definition}
+The system (\ref{eqn:gensys}), or the time-dependent vector field $f$, is
+said to be
+\emph{infinitesimally contracting} on a set $C \subseteq \R ^n$ if 
+there exists some norm in $C$, with associated matrix measure $\mu $, such that,
+for some constant $c>0$ (the \emph{contraction rate}), it holds that:
+\begin{equation} \label{eqn:contrcond}
+\mu \left(J\left(x,t\right)\right) \le - \cc, \quad \forall x \in C, \quad \forall t \ge 0.
+\end{equation}
+\end{definition}
+
+The key result is that infinitesimal contractivity implies global contractivity:
+
+\begin{theorem}\label{theo:main}
+Suppose that $C$ is a convex subset of $\R^n$ and that $f(t,x)$ is
+infinitesimally contracting with contraction rate $\cc$.
+Then, for every two solutions $x(t)=\varphi(t,0,\xi )$ and $z(t)=\varphi(t,0,\zeta )$
+of~(\ref{eqn:gensys}), it holds that:
+\be{eqn:contract}
+\abs{x(t)-z(t)} \;\leq \; e^{-\cc t} \abs{\xi -\zeta }, 
+\quad\quad\forall\,t\ge 0\,.
+\ee
+\end{theorem}
+
+If ${\cal A}$ is a non-empty forward-invariant set for the dynamics,
+then every solution must approach ${\cal A}$.  Indeed, take any $\zeta \in {\cal A}$ and any
+trajectory $x(t)=\varphi(t,0,\xi )$; then, with $z(t)=\varphi(t,0,\zeta )$,
+$\mbox{dist}\,(x(t),{\cal A})\leq \abs{x(t)-z(t)} \;\leq \; e^{-\cc t} \abs{\xi -\zeta }\rightarrow 0$
+as $t\rightarrow \infty $.  In particular, if an equilibrium exists, then it must be
+unique and globally asymptotically stable, and the same is true for periodic
+orbits.  More interestingly, periodic orbits are assured to exist if
+the vector field is periodic, as would happen for a system with inputs
+$\dot x=f(x,u)$ under a periodic input $u(\cdot )$.  We discuss this next.
+
+Given a number $T>0$, we will say that system~(\ref{eqn:gensys}) is
+\emph{$T$-periodic} if it holds that 
+\opteqn{
+f(t+T,x) \,=\, f(t,x) 
+\quad\forall\,t\geq 0,\,x\in C\,.
+}
+Notice that a system $\dot x=f\left(x,u(t)\right)$ with input $u(t)$ is
+$T$-periodic $u(t)$ is itself a periodic function of period $T$. 
+\optpar
+The basic theoretical result about periodic orbits is as follows.
+
+\begin{theorem}\label{theorem:contraction}
+Suppose that:
+\begin{itemize}
+\item $C$ is a closed convex subset of $\R^n$;
+\item $f$ is infinitesimally contracting with contraction rate $\cc$;
+\item $f$ is $T$-periodic.
+\end{itemize}
+Then, there is a unique periodic solution $\perorb(t):[0,\infty )\rightarrow C$ of~(\ref{eqn:gensys})
+of period $T$ and,
+for every solution $x(t)$, it holds that $\abs{x(t)-\perorb(t)}\rightarrow 0$ as $t\rightarrow \infty $.
+\end{theorem}
+
+
+Cascades of contractive systems are again contracting.  To state this fact
+precisely, let us consider a system of the following form:
+\beqn
+\dot  x &=& f(t,x)\\
+\dot  y &=& g(t,x,y)
+\eeqn
+where $x(t)\in C_1\subseteq \R^{n_1}$ and $y(t)\in C_2\subseteq \R^{n_2}$ for
+all $t$.
+We write the Jacobian of $f$ with respect to $x$ as
+$A(t,x) = \frac{\partial f}{\partial x}(t,x)$,
+the Jacobian of $g$ with respect to $x$ as
+$B(t,x,y) = \frac{\partial g}{\partial x}(t,x,y)$,
+and the Jacobian of $g$ with respect to $y$ as
+$C(t,x,y) = \frac{\partial g}{\partial y}(t,x,y)$,
+
+When we say that $\dot y=g(t,x,y)$ is \emph{infinitesimally contracting
+when $x$ is viewed as a parameter} we mean that, with respect
+to some norm $\abs{\cdot }$), there is an estimate
+$\mu (C(t,x,y))\leq  -\cc_2<0$
+for all $x\in C_1$, $y\in C_2$ and all $t\geq 0$.
+
+\begin{theorem}\label{theo:cascades}
+Suppose that:
+\bi
+\item
+the system $\dot x=f(t,x)$ is infinitesimally contracting;
+\item
+the system $\dot y=g(t,x,y)$ is infinitesimally contracting when $x$ is
+viewed as a parameter;
+\item
+the mixed Jacobian $B(t,x,y)$ is bounded.
+\ei
+Then, the cascaded system is infinitesimally contracting.
+\end{theorem}
+
+The basic contraction property insures that any solutions of $\dot x=f(t,x)$
+exponentially converge to each other.  The following result provides
+a ``robustness margin'' that says that any solution of the original system
+and any solution of a perturbed system $\dot x=f(t,x)+h(t)$ also
+exponentially converge to each other, provided that $h(t)\rightarrow 0$ exponentially.
+This is a ``converging-input converging output'' property that provides a weak
+type of input-to-state stability.
+
+\begin{theorem}
+\label{theo:fhc}
+Assume that the system $\dot x=f(t,x)$ is infinitesimally contracting.
+Let $h(t)$ be a vector function satisfying
+\opteqn{
+\abs{h(t)}\leq Le^{-kt} \quad \forall\,t\geq 0
+}
+for some $k>0$ and $L\geq 0$,
+Then, there exist constants $\ell>0$ and $\kappa $ such that the following property
+holds:
+For any solution $x(t)=\varphi(t,0,\xi )$ of the system $\dot x=f(t,x)$,
+and any solution $z(t)=\varphi(t,0,\zeta )$ of the system $\dot x=f(t,x)+h(t)$,
+\be{eqn:estimatefh}
+\abs{x(t)-z(t)} \leq  e^{-\ell t} \left(\kappa  +  \abs{\xi -\zeta }\right)
+\ee
+for all $t\geq 0$.
+\end{theorem}
+
+In general, the constant $\kappa $ cannot be dropped from the estimate
+in Theorem~\ref{theo:fhc}.
+Indeed, consider this counterexample: compare the solutions $x(t)=0$ and
+$z(t)=te^{-t}$ of $\dot x=-x$ and $\dot x=-x+e^{-t}$ with $\xi =\zeta =0$ respectively.
+
+Observe that any solutions of $\dot x=f(t,x)+h_1(t)$ and $\dot x=g(t,x)+h_2(t)$
+will also converge to each other, if $h_1$ and $h_2$ satisfy the properties
+for $h$ in Theorem~\ref{theo:fhc}, since they both converge to any solution
+of the system with no $h$.
+
+\section{Proofs of Main Results}
+\label{sec:proofs}
+
+\mysubsection{Proof of Theorem~\ref{theo:main}}
+We give the proof in a generalized form, in which convexity is replaced by a
+weaker constraint on the geometry of the space, but the estimate on
+trajectories is potentially weaker than in the convex case.
+
+Let $K>0$ be any positive real number and assume that a norm in $\R^n$ has
+been chosen.
+We will say that a subset $C\subset\R^n$ is \emph{$K$-reachable} if, for any
+two points $x_0$ and $y_0$ in $C$ there is some continuously differentiable
+curve $\gamma : \left[  0, 1 \right] \rightarrow C$ 
+such that:
+$\gamma \left(0\right) = x_0$;
+$\gamma \left(1\right)=y_0$;
+$\abs{\gamma '  \left(r\right)} \le K \abs{y_0 - x_0}$ for all $r\in [0,1]$. 
+For convex sets $C$, we may pick $\gamma (r)=x_0+r(y_0-x_0)$, so 
+$\gamma '(r)= y_0-x_0$ and we can take $K=1$.  Thus, convex sets are
+$1$-reachable, and it is easy to show that the converse holds as well.
+
+Note that a set $C$ is $K$-reachable for some $K$ if and only if the length
+of a minimal-length (geodesic) smooth path connecting any two points $x$
+and $y$ in $C$ and parametrized by arc length, is bounded by some multiple
+$K_0$ of the Euclidean norm $\abs{y-x}_2$. Indeed, re-parametrizing to a path
+$\gamma $ defined on $\left[0,1\right]$, we have:
+\opteqn{
+\abs{\gamma ' \left(r\right)}_2 \le K_0 \abs{y-x}_2.
+}
+Since in finite dimensional spaces all norms are equivalent, a
+suitable $K$ as in the above estimate exists.
+
+\begin{lemma}\label{theo:k-reachable}
+Suppose that $C$ is a $K$-reachable subset of $\R^n$ and that $f(t,x)$ is
+infinitesimally contracting with contraction rate $\cc$.
+Then, for every two solutions $x(t)=\varphi(t,0,\xi )$ and $z(t)=\varphi(t,0,\zeta )$
+it holds that:
+\be{eqn:weak}
+\abs{x(t)-z(t)} \leq  K e^{-\cc t} \abs{\xi -\zeta } 
+\quad\quad\forall\,t\ge 0\,.
+\ee
+\end{lemma}
+
+Observe that Theorem~\ref{theo:main}
+follows trivially from Lemma \ref{theo:k-reachable}, since for convex sets
+we may pick $K=1$.
+
+\begin{proof}
+Given any two points $x\left(0\right)= \xi $ and $z\left(0\right)= \zeta $ in
+$C$, pick a smooth curve $\gamma : \left[ 0, 1\right] \rightarrow C$, such
+that $\gamma \left(0\right)=\xi $ and $\gamma \left(1\right)=\zeta $. Let  
+$\psi \left(t,r\right)=\varphi(t,0,\gamma \left(r\right))$, that is,
+the solution of system (\ref{eqn:gensys}) rooted at
+$\psi \left(0,r\right) =\gamma \left(r\right)$, $r \in [0,1]$. 
+Since $\varphi$ and $\gamma $ are continuously differentiable, also
+$\psi \left(t,r\right)$ is continuously differentiable in both arguments.
+We define
+\opteqn{
+w(t,r) := \frac{\partial \psi }{\partial r}(t,r).
+}
+It follows that
+\[
+\frac{\partial w}{\partial t}(t,r) = \frac{\partial}{\partial t}\left(\frac{\partial \psi }{\partial r}\right)=\frac{\partial}{\partial r}\left(\frac{\partial \psi }{\partial t}\right)=\frac{\partial}{\partial r}f(\psi \left(t,r\right),t).
+\]
+As
+\opteqn{
+\frac{\partial}{\partial r}f(\psi \left(t,r\right),t) = \frac{\partial f}{\partial x}(\psi \left(t,r\right),t)\frac{\partial \psi }{\partial r}(t,r),
+}
+\opteqn{
+\frac{\partial w}{\partial t}(t,r) = J(\psi \left(t,r\right),t) w(t,r),
+}
+where $J(\psi \left(t,r\right),t) = \frac{\partial f}{\partial x}(\psi \left(t,r\right),t)$.
+Appealing to  Coppel's inequality (see e.g.~\cite{Vid_93}), we have:
+\begin{equation} \label{eq:coppelthm}
+\abs{w(t,r)} \le \abs{w(0,r)}  e^{\int_{0}^t \mu \left( J\left(\tau \right)\right)d\tau }\leq K \abs{\xi -\zeta } e^{-\cc t},
+\end{equation}
+for all $x \in C$, $t\geq 0$, and $r \in [0,1]$. 
+By the Fundamental Theorem of Calculus, we can write
+\opteqn{
+\psi \left(t,1\right)-\psi \left(t,0\right) = \int_0^1{w(t,s)} ds .
+}
+Hence, we obtain
+\opteqn{
+\abs{x(t)-z(t)} \leq \int_0^1{\abs{w(t,s)}}ds.
+}
+Now, using (\ref{eq:coppelthm}), the above inequality becomes:
+\[
+\abs{x(t)-z(t)} \le \int_0^1 \left(\abs{w(0,s)}  e^{\int_{0}^t \mu \left( J\left(\tau \right)\right)d\tau } \right) ds \le K \abs{\xi -\zeta }e^{-\cc t}.
+\]
+This completes the proof of the lemma.
+\end{proof}
+
+We remark that in some cases it might be possible to prove a strict contraction
+($K=1$) even if the domain is not convex, by appealing to the deeper theory
+of logarithmic Lipschitz constants (see~\cite{soderlind} for definitions and
+details).  If the (lub) logarithmic Lipschitz constant $M[f]$ of the vector
+field is $-c<0$, then an estimate~(\ref{eqn:contract}) holds.  
+In general, $M[f]$ is an upper bound on the supremum of $\mu (J(t,x))$,
+with equality to the supremum in the convex case.
+
+\mysubsection{Proof of Theorem \ref{theorem:contraction}}
+We assume now that the vector field $f$ is $T$-periodic.
+
+\begin{remark}\label{rem:periodicf}
+Periodicity implies that the initial
+time is only relevant modulo $T$.  More precisely:
+\be{eqn:periodicf}
+\varphi(kT+t,kT,\xi ) = \varphi(t,0,\xi )
+\ee
+for all positive integers $k$, all $t\geq 0$, and all $x\in C$.
+Indeed, let $z(s)=\varphi(s,kT,\xi )$, $s\geq kT$, and consider the function
+$x(t)=z(kT+t)=\varphi(kT+t,kT,\xi )$, for $t\geq 0$.
+So,
+\[
+\dot x(t) = \dot z(kT+t) = f(kT+t,z(kT+t)) = f(kT+t,x(t)) = f(t,x(t))\,,
+\]
+where the last equality follows by $T$-periodicity of $f$.
+Since $x(0)=z(kT)=\varphi(kT,kT,\xi )=\xi $, it follows by uniqueness of
+solutions that $x(t)=\varphi(t,0,\xi ) = \varphi \left(kT+t,kT,\xi \right)$, which is~(\ref{eqn:periodicf}).
+As a corollary, we also have that
+\be{eqn:periodicfc}
+\varphi(kT+t,0,\xi ) = \varphi(kT+t,kT,\varphi(kT,0,\xi )) = \varphi(t,0,\varphi(kT,0,\xi ))
+\ee
+for all positive integers $k$, all $t\geq 0$, and all $x\in C$,
+where the first equality follows from the semigroup property of solutions (see e.g. \cite{mct}), and
+the second one from~(\ref{eqn:periodicf}) applied to
+$\varphi(kT,0,\xi )$ instead of $\xi $.
+\end{remark}
+
+Define now
+\opteqn{
+P(\xi ) = \varphi(T,0,\xi ),
+}
+where $\xi = x \left(0\right) \in C$. 
+
+\begin{lemma}\label{lemma:P}
+$P^k(\xi ) = \varphi(kT,0,\xi )$ for all positive integers $k$ and $\xi \in C$.
+\end{lemma}
+
+\begin{proof}
+We will prove the Lemma by recursion. In particular, the statement is true by definition when $k=1$.
+Inductively, assuming it true for $k$, we have:
+\[
+P^{k+1}(\xi ) = 
+P(P^k(\xi )) =
+\varphi(T,0,P^k(\xi )) = 
+\varphi(T,0,\varphi(kT,0,\xi )) =
+\varphi(kT+T,0,\xi ).
+\]
+\end{proof}
+
+\begin{theorem}\label{theo:contraction-general}
+Suppose that:
+\begin{itemize}
+\item $C$ is a closed $K$-reachable subset of $\R^n$;
+\item $f$ is infinitesimally contracting with contraction rate $\cc$;
+\item $f$ is $T$-periodic;
+\item $Ke^{-\cc T}<1$.
+\end{itemize}
+Then, there is an (unique) periodic solution $\perorb(t):[0,\infty )\rightarrow C$
+of~(\ref{eqn:gensys}) having period $T$. Furthermore, every solution $x(t)$
+converges to $\perorb(t)$, i.e. $\abs{x(t)-\perorb(t)}\rightarrow 0$ as $t\rightarrow \infty $. 
+\end{theorem}
+
+Theorem~\ref{theorem:contraction} is a corollary, because the assumption
+$Ke^{-\cc T}<1$ in Theorem \ref{theo:contraction-general} is automatically
+satisfied when the set $C$ is convex (i.e. $K=1$) and the system is
+infinitesimally contracting.
+
+
+\begin{proof}
+Observe that $P$ is a contraction with factor $Ke^{-\cc T}<1$: 
+$\abs{P(\xi )-P(\zeta )}\leq Ke^{-\cc T} \abs{\xi -\zeta }$
+for all $\xi ,\zeta \in C$,
+as a consequence of Theorem~\ref{theo:k-reachable}.
+The set $C$ is a closed subset of $\R^n$ and hence complete as a metric space
+with respect to the distance induced by the norm being considered.
+Thus, by the contraction mapping theorem, there is a (unique) fixed
+point $\bar \xi $ of $P$.
+Let $\perorb(t):=\varphi(t,0,\bar \xi )$.
+Since $\perorb(T)=P(\bar \xi )={\bar \xi }=\perorb(0)$, $\perorb(t)$ is a periodic orbit of
+period $T$. 
+Moreover, again by Theorem~\ref{theo:k-reachable},
+we have that
+$\abs{x(t)-\perorb(t)} \leq  K e^{-\cc t} \abs{\xi -\bar \xi }\rightarrow 0$.
+Uniqueness is clear, since two different periodic orbits would be disjoint
+compact subsets, and hence at positive distance from each other,
+contradicting convergence. This completes the proof.
+\end{proof}
+
+Notice that, even in the non-convex case, the assumption $Ke^{-\cc T}<1$ can be
+dropped, provided that we assert only the existence of (and global
+convergence to) a unique periodic orbit, whose period is $kT$ for some integer
+$k>1$.  Indeed, the vector field is also $kT$-periodic for any integer $k$.
+Picking $k$ large enough so that $Ke^{-\cckT}<1$, we have the conclusion that
+such an orbit exists, applying Theorem~\ref{theo:contraction-general}.
+
+\mysubsection{Proof of Theorem~\protect{\ref{theo:cascades}}}
+We assume that the system $\dot x=f(t,x)$ is infinitesimally contracting with
+respect to a norm $\abs{\cdot }_\norma$, with contraction rate $\cc_1$, that is,
+$\mu _\norma(A(t,x))\leq  -\cc_1$ for all $x\in C_1$ and all $t\geq 0$, where
+$\mu _\norma$ is the matrix measure associated to $\abs{\cdot }_\norma$,
+the system $\dot y=g(t,x,y)$ is infinitesimally contracting with respect to a
+norm $\abs{\cdot }_{\normb}$ with contraction rate $\cc_2$, when $x$ is viewed as
+a parameter in the second system, that is, $\mu _{\normb}(C(t,x,y))\leq  -\cc_2$
+for all $x\in C_1$, $y\in C_2$ and all $t\geq 0$, where $\mu _{\normb}$ is
+the matrix measure associated to $\abs{\cdot }_{\normb}$,
+and that the mixed Jacobian $B(t,x,y)$ is bounded:
+$\norm{B(t,x,y)}\leq \kk$, for all $x\in C_1$, $y\in C_2$ and all $t\geq 0$,
+for some real number $k$, where ``$\norm{\cdot }$'' is the
+operator norm induced by $\abs{\cdot }_{\norma}$ and $\abs{\cdot }_{\normb}$ on
+linear operators $\R^{n_1} \rightarrow  \R^{n_2}$.
+
+We need to show that, under these assumptions, the complete system is
+infinitesimally contracting.  More precisely, pick any two positive numbers
+$\rho _1$ and $\rho _2$ such that 
+\opteqn{
+\cc_1 \,-\, \frac{\rho _2}{\rho _1} \kk \;>\; 0
+}
+and let
+\opteqn{
+\cc := \min \left\{\cc_1 - \frac{\rho _2}{\rho _1} \kk, \cc_2\right\} \,.
+}
+We will show that $\mu (J)\leq  -\cc$, where $J$ is the full Jacobian:
+\opteqn{\tiny 
+J = 
+\left[ 
+\begin{array}{*{20}c}
+A & 0 \\
+B & C
+\end{array} \right]\,,
+}
+with respect to the matrix measure $\mu $ induced by the following norm in
+$\R^{n_1+n_2}$:
+\opteqn{
+\abs{(x_1,x_2)} = \rho _1 \abs{x_1}_{\norma} + \rho _2 \abs{x_2}_{\normb} \,.
+}
+Since
+\opteqn{\tiny
+(I+hJ)x = 
+\left[ 
+\begin{array}{*{20}c}
+(I+hA)x_1  \\
+hBx_1 + (I+hC)x_2
+\end{array} \right]
+}
+for all $h$ and $x$, we have that, for all $h$ and $x$:
+\beqn
+\abs{(I+hJ)x}
+&=&
+\rho _1\abs{(I+hA)x_1} + \rho _2 \abs{hBx_1 + (I+hC)x_2}\\
+&\leq &
+\rho _1\abs{I+hA}\abs{x_1} +
+\rho _2\abs{hB}\abs{x_1} +
+\rho _2\abs{I+hC}\abs{x_2},
+\eeqn
+where from now on we drop subscripts for norms.
+Pick now any $h>0$
+and a unit vector $x$ (which depends on $h$)
+such that $\norm{I+hJ} = \abs{(I+hJ)x}$.
+Such a vector $x$ exists by the definition of induced matrix norm, and we note
+that $1= \abs{x} = \rho _1\abs{x_1}_{\normb}+\rho _2\abs{x_2}_{\normb}$, by the definition of the norm
+in the product space.
+Therefore:
+\beqn
+\frac{1}{h} 
+&&
+\!\!\!\!\!
+\left(\norm{I+hJ}-1\right)
+\;=\;
+\frac{1}{h} \left(\abs{(I+hJ)x}-\abs{x}\right)\\
+&\leq &
+\frac{1}{h} 
+\left(
+\rho _1\abs{I+hA}\abs{x_1} +
+\rho _2\abs{hB}\abs{x_1} +
+\rho _2\abs{I+hC}\abs{x_2}
+- \rho _1 \abs{x_1} - \rho _2 \abs{x_2}
+\right)\\
+&=&
+\frac{1}{h} 
+\left(\abs{I+hA} -1 + \frac{\rho _2}{\rho _1}h\abs{B} \right) \rho _1\abs{x_1}
++
+\frac{1}{h}
+\left(\abs{I+hC} - 1 \right) \rho _2\abs{x_2}\\
+&\leq &
+\max\left\{
+\frac{1}{h}\left(\abs{I+hA} -1\right) + \frac{\rho _2}{\rho _1}\kk
+\,,\,
+\frac{1}{h}\left(\abs{I+hC} - 1 \right)
+\right\} \,,
+\eeqn
+where the last inequality is a consequence of the fact that
+$\lambda _1a_1+\lambda _2a_2\leq \max\{a_1,a_2\}$ for any non-negative numbers
+with $\lambda _1+\lambda _2=1$ (convex combination of the $a_i$'s).
+Now taking limits as $h\searrow0$, we conclude that
+\opteqn{
+\mu (J)\leq 
+\max \left\{-\cc_1 + \frac{\rho _2}{\rho _1} \kk, -\cc_2\right\}
+=
+-\cc \,,
+}
+as desired.
+
+\mysubsection{Proof of Theorem~\protect{\ref{theo:fhc}}}
+We first make some general remarks about perturbed systems.
+Consider additive perturbations of the system~(\ref{eqn:gensys}) of the
+following general form:
+\be{eqn:perturbed}
+\dot x \,=\, F(x,t) \,=\, f(t,x) + h(t,x)
+\ee
+where the vector field $h(t,x)$ is defined for $t\geq 0$ and $x\in C$, with values
+in $\R^n$, is differentiable on $x$, and $h(t,x)$ and its Jacobian $H(t,x) =
+\frac{\partial h}{\partial x}(t,x)$ are both continuous in $(t,x)$.
+We have the following simple observation:
+
+\begin{lemma}
+\label{lem:perturb}
+Assume that the system $\dot x=f(t,x)$ is infinitesimally contracting with
+contraction rate $\cc$ with respect to a norm $\absv{\cdot }$.
+Suppose that the Jacobian of the perturbation satisfies:
+\be{eq:jacpert}
+\norm{H(t,x)} \leq  c_h < c
+\ee
+for all $t\geq 0$ and all $x\in C$.
+Then, the perturbed system~(\ref{eqn:perturbed})
+is infinitesimally contracting with respect to the same norm.
+\end{lemma}
+
+\begin{proof}
+The Jacobian of the new system is $\widetilde J(t,x) = J(t,x)+H(t,x)$, and:
+\[
+\mu (\widetilde J(x,t))
+\,\leq \,
+\mu \left(J\left(x,t\right)\right) +
+\mu (\left(H\left(x,t\right)\right)
+\,\leq \,
+\widetilde c := -c + c_h
+\]
+by subadditivity of matrix measures and the fact that the norm always
+upper-bounds the matrix measure (see for
+instance~\cite{desoer-vidyasagar-siam}, page 31).
+\end{proof}
+
+Some comments regarding Lemma~\ref{lem:perturb} are as follows.
+\emph{(i)}
+Suppose that $h(t,x)$ does not depend on $x$.  Then~(\ref{eq:jacpert})
+is trivially satisfied ($c_h=0$).
+\emph{(ii)}
+Suppose that
+\opteqn{
+H(t,x) \rightarrow  0
+}
+as $t\rightarrow \infty $, uniformly on $x\in C$.
+Then the system $\dot x=F(t-t_0,x)$ is infinitesimally contracting.
+That is, for any
+two solutions $x(t)=\varphi(t,t_0,\xi )$ and $z(t)=\varphi(t,t_0,\zeta )$ 
+of~(\ref{eqn:perturbed}) starting at time $t_0$, we have that:
+\[
+\abs{x(t)-z(t)} \;\leq \; e^{-\cc (t-t_0)} \abs{\xi -\zeta }, 
+\quad\quad\forall\,t\ge t_0\geq 0\,.
+\]
+Indeed, by assumption we have that
+$\beta (t) := \sup_{x\in C}\norm{H\left(x,t\right)} \rightarrow 0$ ,
+so we can pick any $t_0>0$ so that $c_h=\beta (t_0)<c$.
+\emph{(iii)}
+Consider any two solutions $x(t)=\varphi(t,0,\xi )$ and
+$z(t)=\varphi(t,0,\zeta )$ starting at time $t=0$.  Since
+$x(t)=\varphi(t,t_0,x(t_0))$ and $z(t)=\varphi(t,t_0,z(t_0))$,
+it follows that $x(t)-z(t)\rightarrow 0$ as $t\rightarrow 0$ (but not necessarily 
+satisfying an estimate $\abs{x(t)-z(t)} \;\leq \; e^{-\cc t} \abs{\xi -\zeta }$).
+
+\begin{lemma}
+\label{lem:fh}
+Assume that the system $\dot x=f(t,x)$ is infinitesimally contracting with
+contraction rate $\cc$ with respect to a norm $\absv{\cdot }$.
+Suppose that $h$ and its Jacobian $H$ are exponentially decreasing, in the
+sense that, for some $k>0$:
+\opteqn{
+h(t,x)\,e^{kt} \quad \mbox{is bounded}
+}
+and
+\opteqn{
+\norm{H(t,x)e^{kt}} \leq  c_h < c\quad
+\forall \,x \in C, \, \forall \, t\geq 0\,.
+}
+Then, there exist constants $\ell>0$ and $\kappa $ such that the following property
+holds:
+for any solution $x(t)=\varphi(t,0,\xi )$ of the system $\dot x=f(t,x)$,
+and any solution $z(t)=\varphi(t,0,\zeta )$ of the system $\dot x=f(t,x)+h(t,x)$,
+the estimate~(\ref{eqn:estimatefh}) is valid for all $t\geq 0$.
+\end{lemma}
+
+In the special case that $h$ is independent of $x$, this
+proves Theorem~\ref{theo:fhc}.
+
+\begin{proof}
+Consider the following auxiliary system, with $p\in [0,1]$:
+\beqn
+\dot p &=& -kp\\
+\dot x &=& F_p(t,p,x) \;=\; f(t,x) \,+\, p\, h(t,x)e^{kt}
+\eeqn
+viewed as a cascade.
+The $p$-subsystem is infinitesimally contracting
+with respect to the standard norm in $\R$.
+The $x$-subsystem is infinitesimally contracting
+when $p$ is viewed as a parameter.  Indeed, with:
+\opteqn{
+C(t,p,x) = \frac{\partial F_p}{\partial x}(t,p,x) = J(t,x)+ pH(t,x)e^{kt} \,,
+}
+we have that $\mu (C(t,p,x)) \leq  -c+c_h$, as earlier.
+Moreover, the mixed Jacobian
+\opteqn{
+B(t,x,y) = \frac{\partial F_p}{\partial p}(t,p,x) = h(t,x)e^{kt}
+}
+is bounded, by assumption.
+It follows from Theorem~\ref{theo:cascades} that the auxiliary system is also
+infinitesimally contracting with some rate $\ell$, and the proof of that
+result shows that this contraction can be established with respect to a norm
+of the form: 
+$\abs{(p,x)} = \rho _1 \abs{p}_{\norma} + \rho _2 \abs{x}_{\normb}$
+for some $\rho _1>0$ and $\rho _2>0$, where $\abs{p}_{\norma}$ denotes the usual
+norm in $\R$ and $\abs{x}_{\normb}$ denotes the original norm on $x$.
+
+Consider now any solution $x(t)=\varphi(t,0,\xi )$ of the system $\dot x=f(t,x)$ and any
+solution $z(t)=\varphi(t,0,\zeta )$ of the system $\dot x=f(t,x)+h(t,x)$.
+
+Introduce $X(t) := (0,x(t))$ and $Z(t) := (e^{-kt},z(t))$.
+It is clear that $X(t)$ and $Z(t)$ are the solutions of the
+auxiliary system corresponding to initial conditions
+$X(0)=(0,\xi )$ and $Z(0)=(1,\zeta )$ respectively.
+Because the auxiliary system is infinitesimally contracting,
+\opteqn{
+\abs{X(t)-Z(t)}\leq e^{-\ell t}\abs{X(0)-Z(0)}
+}
+for all $t\geq 0$, where
+\opteqn{
+\abs{X(t)-Z(t)} = \rho _1 e^{-kt} + \rho _2 \abs{x(t)-z(t)}_{\normb}
+}
+and
+\opteqn{
+\abs{X(0)-Z(0)} = \rho _1  + \rho _2 \abs{\xi -\zeta }_{\normb}\,.
+}
+So
+\opteqn{
+\rho _2 \abs{x(t)-z(t)}_{\normb} \leq  
+e^{-\ell t} \left(\rho _1  + \rho _2 \abs{\xi -\zeta }_{\normb}\right).
+}
+Dividing by $\rho _2$ and dropping the subscript for norms, we have
+(\ref{eqn:estimatefh}) with $\kappa =\rho _1/\rho _2$.
+\end{proof}
+
+\section{Synchronization}
+\label{sec:synch}
+
+We remark here on the use of contraction theory to show synchronization of
+coupled systems,
+based on the introduction of ``virtual dynamics'' by Slotine
+and collaborators (see for example~\cite{russo_dibernardo_ieee_cas2009}).
+For simplicity of notation, we consider time-invariant dynamics,
+but the same considerations apply to time-dependent vector fields.
+
+Suppose that we have two diffusion-interconnected identical systems:
+\beqn
+\dot y&=& f(y) + \gamma (z) - \gamma (y)\\
+\dot z&=& f(z) + \gamma (y) - \gamma (z)
+\eeqn
+where we think of $\gamma $ as a coupling law and assume that $\gamma $ is globally
+Lipschitz. 
+Typically, $\gamma $ is linear, so that $\gamma (z) - \gamma (y) = D(z-y)$ for a matrix $D$
+(which is often a diagonal matrix).
+For example, suppose that the systems are linear:
+$\dot y= Ay + D(z-y)$ and $\dot z= Az + D(y-z)$.
+Each system is individually (when $D=0$) asymptotically stable if and only
+$A$ is a Hurtwitz matrix (all eigenvalues have negative real part).
+Using a change of variables $(y,z) \mapsto  (y-z,y+z)$, we may bring this system to
+a block-diagonal form with blocks
+$A$$-$$2D$ and $A$,
+and thus it is clear that the interconnected system is 
+asymptotically stable if and only both $A$ and $A-2D$ are Hurwitz matrices.
+Moreover, the same proof (the first block corresponds to $y-z$) shows that
+for synchronization ($y(t)-z(t) \rightarrow 0$) it is enough that $A-2D$ be a
+Hurwitz matrix.
+
+For general, not necessarily linear systems, if the system $\dot x=f(x)$ is
+infinitesimally contracting, then the decoupled systems (obtained when $\gamma =0$)
+each satisfies that all solutions converge to each other.
+
+More interestingly, a synchronization result can be established as follows.
+Consider the following ``virtual system'':
+\be{eq:virtual}
+\dot x = f(x) - 2\gamma (x) + h(t)
+\ee
+(a different system results for each fixed input $h(\cdot )$)
+and suppose that the vector field $f - 2h$ is infinitesimally contracting.
+Take a particular solution $(y(t),z(t))$ of the coupled system.
+Then, $y(t)$ and $z(t)$ are two solutions of~(\ref{eq:virtual}), when we pick
+$h(t) = \gamma (y(t)) + \gamma (z(t))$.
+It follows that
+$\abs{z(t)-y(t)} \leq e^{-\cc t} \rightarrow  0$ for some $c>0$,
+showing that the $y$ and $z$ subsystems synchronize.
+Observe that this fact did not require the contractivity of $f$, but only
+that of $f-2\gamma $.
+
+Still for this solution $(y(t),z(t))$ of the coupled system,
+we now define $h(t) = \gamma (z(t)) - \gamma (y(t))$.
+Using the assumption that $\gamma $ is globally Lipschitz, we have that
+$\abs{w(t)}\leq  M \abs{z(t)-y(t)} \leq M e^{-\cc t}$, for some constant $M$.
+Now, if $f$ is contracting, we note that the equation
+satisfied by $y$ is $\dot x=f(x)+h(t)$.
+As $h(t)$ is exponentially convergent to zero, Theorem~\ref{theo:fhc}
+implies that $y(t)-x(t)\rightarrow 0$ as $t\rightarrow \infty $ for every solution of the system
+$\dot x=f(x)$.
+Pick any one particular such solution $x_0(\cdot )$.
+Then, $y(t)-x_0(t)\rightarrow 0$.
+We may repeat this argument for an arbitrary $(y(t),z(t))$, always comparing
+to the same $x_0(\cdot )$.
+In summary, we have the following conclusion: if both $f$ and $f-2\eta $ are
+infinitesimally contracting (not necessarily with respect to the same norm),
+then all solutions of the coupled system converge to the diagonal solution
+$(x_0(t),x_0(t))$.
+
+The preceding considerations make the following question natural: when
+does contractivity of $f$ (which is sufficient to provide a stability property
+for the isolated  systems) already imply contractivity of $f-2\gamma $ (so that
+synchronization to the uncoupled solutions occurs)?
+
+We provide next a condition for the case when every Jacobian $D=D(x)$
+of $\gamma (x)$ is a diagonal non-negative definite matrix.
+The question is, then, for the Jacobians $A=J(x)$: when does
+$\mu (A)\leq c$ imply that also $\mu (A-2D)\leq c$?
+
+Recall that a norm on $\R^n$ is said to be monotonic or ``axis oriented''
+if the following property holds for any two vectors in $\R^n$:
+\opteqn{
+\abs{y_i} \leq  \abs{x_i}   \Rightarrow  \abs{y} \leq \abs{x}\,.
+}
+The usual norms ($L^2$, $L^1$, $L^\infty $) are monotonic, as is any new norm
+of the type $\abs{x}_P = \abs{Px}$ for a diagonal positive definite matrix $P$,
+if $\abs{\cdot }$ is monotonic.
+
+Theorems 2 and 3 of \cite{bauer} say that the following properties are
+equivalent: (1) the norm is monotonic, (2) $\absv{x}$ depends only on the
+absolute values of the components of $x$, and (3) the associated operator norm
+satisfies that $\norm{E} = \max_j\{E_{jj}\}$ for any diagonal matrix $E$.
+So $\norm{I-hD} = \max_j\{1-hD_{jj}\} = 1-hd_{ii}$ for some $i$,
+which implies that $(1/h)(\norm{I-hD}-1) = -d_{ii}$ and thus
+$\mu (D) = d_{ii}\leq 0$.
+From subadditivity of matrix measures, we conclude that, for monotonic norms,
+\opteqn{
+\mu (A+D) \leq  \mu (A) \leq  c
+}
+and thus, for monotonic norms, we get contractivity of $f-2\gamma $ from
+that of $f$.
+
+
+\begin{thebibliography}{10}
+
+\bibitem{angeli-sontag-fc}
+D.~Angeli and E.~D. Sontag.
+\newblock Forward completeness, unboundedness observability, and their
+  {L}yapunov characterizations.
+\newblock {\em Systems and Control Letters}, 38:209--217, 1999.
+
+\bibitem{bauer}
+F.L. Bauer, J.~Stoer, and C.~Witzgall.
+\newblock Absolute and monotonic norms.
+\newblock {\em Numerische Mathematik}, 3:257--264, 1961.
+
+\bibitem{dahlquist}
+G.~Dahlquist.
+\newblock {\em Stability and error bounds in the numerical integration of
+  ordinary differential equations}.
+\newblock Trans. Roy. Inst. Techn. (Stockholm), 1959.
+
+\bibitem{demidovich}
+B.P. Demidovich.
+\newblock Dissipativity of a nonlinear system of differential equations (in
+  {R}ussian).
+\newblock {\em Vestnik Moscow State University, Ser. Mat. Mekh.}, 6:19--27,
+  1961.
+
+\bibitem{desoer-vidyasagar-siam}
+C.A. Desoer and M.~Vidyasagar.
+\newblock {\em Feedback Synthesis: Input-Output Properties}.
+\newblock SIAM, Philadelphia, 2009.
+
+\bibitem{Jou_04_a}
+J.~Jouffroy and J.~J.~E. Slotine.
+\newblock Methodological remarks on contraction theory.
+\newblock In {\em 42nd Conf. Decision and Control}, pages 2537--2543. IEEE
+  Press, 2004.
+
+\bibitem{Loh_Slo_00}
+W.~Lohmiller and J.~J.~E. Slotine.
+\newblock Nonlinear process control using contraction theory.
+\newblock {\em AIChe Journal}, 46:588--596, 2000.
+
+\bibitem{lozinskii}
+S.~M. Lozinskii.
+\newblock Error estimate for numerical integration of ordinary differential
+  equations. {I}.
+\newblock {\em Izv. Vtssh. Uchebn. Zaved. Mat.}, 5:222--222, 1959.
+
+\bibitem{michelbook}
+A.~N. Michel, D.~Liu, and L.~Hou.
+\newblock {\em Stability of Dynamical Systems: Continuous, Discontinuous, and
+  Discrete Systems}.
+\newblock Springer-Verlag (New-York), 2007.
+
+\bibitem{pavlov}
+A.~Pavlov, A.~Pogromvsky, N.~van~de Wouv, and H.~Nijmeijer.
+\newblock Convergent dynamics, a tribute to {B}oris {P}avlovich {D}emidovich.
+\newblock {\em Systems and Control Letters}, 52:257--261, 2004.
+
+\bibitem{pavlov_book}
+A.~Pavlov, N.~{van de Wouw}, and H.~Nijmeijer.
+\newblock {\em Uniform output regulation of nonlinear systems: a convergent
+  dynamics approach}.
+\newblock Springer-Verlag, Berlin, 2005.
+
+\bibitem{russo_dibernardo_ieee_cas2009}
+G.~Russo and M.~di~Bernardo.
+\newblock Contraction theory and the master stability function: linking two
+  approaches to study synchronization in complex networks.
+\newblock {\em IEEE Transactions on Circuit and Systems II}, 56:177--181, 2009.
+
+\bibitem{russo_dibernardo_sontag}
+G.~Russo, M.~{di Bernardo}, and E.D. Sontag.
+\newblock Global entrainment of transcriptional systems to periodic inputs.
+\newblock 2009.
+\newblock Submitted. Preprint in http://arxiv.org/abs/0907.0017.
+
+\bibitem{soderlind}
+G.~S\"oderlind.
+\newblock The logarithmic norm: history and modern theory.
+\newblock {\em BIT Numerical Mathematics}, 46:631--652, 2006.
+
+\bibitem{mct}
+E.~D. Sontag.
+\newblock {\em Mathematical Control Theory. Deterministic Finite-Dimensional
+  Systems}.
+\newblock Springer-Verlag (New York), 1998.
+
+\bibitem{arxiv_chaos_2009}
+E.D. Sontag.
+\newblock An observation regarding systems which converge to steady states for
+  all constant inputs, yet become chaotic with periodic inputs.
+\newblock Technical report, arxiv 0906.2166, 2009.
+
+\bibitem{strom}
+T.~Strom.
+\newblock On logarithmic norms.
+\newblock {\em SIAM J. Numer. Anal.}, 12:741--753, 1975.
+
+\bibitem{Vid_93}
+M.~Vidyasagar.
+\newblock {\em Nonlinear systems analysis (2nd Ed.)}.
+\newblock Pretice-Hall (Englewood Cliffs, NJ), 1993.
+
+\bibitem{Wan_Slo_05}
+W.~Wang and J.~J.~E. Slotine.
+\newblock On partial contraction analysis for coupled nonlinear oscillators.
+\newblock {\em Biological Cybernetics}, 92:38--53, 2005.
+
+\bibitem{yoshizawa1}
+T.~Yoshizawa.
+\newblock {\em Stability theory by Liapunov's second method}.
+\newblock The Mathematical Society of Japan, Tokyo, 1966.
+
+\bibitem{yoshizawa2}
+T.~Yoshizawa.
+\newblock {\em Stability theory and the existence of periodic solutions and
+  almost periodic solutions}.
+\newblock Springer-Verlag, New York, 1975.
+
+\end{thebibliography}
+
+
+
+\edo
+

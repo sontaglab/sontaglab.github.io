@@ -1,0 +1,1772 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ddgs.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/ddgs.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Constr. Approx. CONSTRUCTIVE
+
+APPROXIMATION
+
+cfl 1994 Springer-Verlag NewYork Inc.
+
+Rates of Convex Approximation in Non-Hilbert
+
+Spaces
+
+Michael J. Donahue, Leonid Gurvits, Christian Darken, and Eduardo Sontag
+
+Abstract.
+
+This paper deals with sparse approximations by means of convex combinations of elements from a predetermined "basis" subset S of a function space. Specifically, the focus is on the rate at which the lowest achievable error can be reduced as larger subsets of S are allowed when constructing an approximant. The new results extend those given for Hilbert spaces by Jones and Barron, including in particular a computationally attractive incremental approximation scheme. Bounds are derived for broad classes of Banach spaces; in particular, for Lp spaces with 1 ! p ! 1, the O(n
+
+\Gamma 1=2)
+
+bounds of Barron and Jones are recovered when p = 2.
+
+One motivation for the questions studied here arises from the area of "artificial neural networks," where the problem can be stated in terms of the growth in the number of "neurons" (the elements of S) needed in order to achieve a desired error rate. The focus on non-Hilbert spaces is due to the desire to understand approximation in the more "robust" (resistant to exemplar noise) Lp, 1 ^ p ! 2 norms.
+
+The techniques used borrow from results regarding moduli of smoothness in functional analysis as well as from the theory of stochastic processes on function spaces.
+
+1. Introduction The subject of this paper concerns the problem of approximating elements of a Banach space X--typically presented as a space of functions--by means of finite linear combinations of elements from a predetermined subset S of X. In contrast to classical linear approximation techniques, where optimal approximation is desired and no penalty is imposed on the number of elements used, we are interested here in sparse approximants, that is to say, combinations that employ few elements. In particular, we are interested in understanding the rate at which the achievable error can be reduced as one increases the number allowed. Such questions are of obvious interest in areas such as signal representation, numerical analysis, and neural networks (see below).
+
+AMS classification: 41A25, 46B09, 68T05 Key words and phrases: Banach space, convex combination, neural network, modulus of smoothness
+
+1
+
+2 Donahue, Gurvits, Darken, and Sontag
+
+Rather than arbitrary linear combinations Pi aigi, with ai's real and gi's in S, it turns out to be easier to understand approximations in terms of combinations that are subject to a prescribed upper bound on the total coefficient sumP
+
+i jaij. After normalizing S and replacing it by S [ \Gamma S, one is led to studyingapproximations in terms of convex combinations. This is the focus of the current
+
+work.
+
+To explain the known results and our new contributions, we first introduce some notation.
+
+1.1. Optimal Approximants Let X be a Banach space, with norm k \Delta  k. Take any subset S ` X. For each positive integer n, we let linnS consist of all sums Pni=1 aigi, with g1; : : :; gn in S and with arbitrary real numbers a1; : : : ; an, while we let conS be the set of such sums with the constraint that all ai 2 [0; 1] and Pi ai = 1. The distances from an element f 2 X to these spaces are denoted respectively by
+
+klinnS \Gamma  fk := inf fkh \Gamma  fk ; h 2 linnSg and
+
+kconS \Gamma  fk := inf fkh \Gamma  fk ; h 2 conSg : Of course, always klinnS \Gamma  fk ^ kconS \Gamma  fk. For each subset S ` X, lin S =[
+
+nlinnS and co S = [nconS denote respectively the linear span and the convex hull of S. We use bars to denote closure in X; thus, for instance, coS is the closed
+
+convex hull of S. Note that saying that f 2 lin S or f 2 coS is the same as saying that limn!+1 klinnS \Gamma  fk = 0 and limn!+1 kconS \Gamma  fk = 0 respectively; in this case, we say for short that f is (linearly or convexly) approximable by S. These distances as a function of n represent the convergence rates of the best approximants to the target function f. The study of such rates is standard in approximation theory (e.g., (Powell 1981)), but the questions addressed here are not among those classically considered.
+
+Let OE be a positive function on the integers. We say that the space X admits a (convex) approximation rate OE(n) if for each bounded subset S of X and each f 2 coS, kconS \Gamma  fk = O(OE(n)). (The constant in this estimate is allowed to, and in general will, depend on S, typically through an upper bound on the norm of elements of S.) One could of course also define the analogous linear approximation rates; we do not do so because at this time we have no nontrivial results to report in that regard. (The implications of the restriction to convex approximates is examined in Appendix A.)
+
+Jones (1992) and Barron (1991) showed that every Hilbert space admits an approximation rate OE(n) = 1=pn. One of our objectives is the study of such rates for non-Hilbert spaces. To date the larger issue of convergence rates in more general Banach spaces and in the important subclass of Lp, p 6= 2, spaces has not been addressed. Barron (1992) showed that the same rate is obtained in the uniform norm, but only for approximation with respect to a particular class of sets S.
+
+Rates of Convex Approximation 3 1.2. Incremental Approximants Jones (1992) considered the procedure of constructing approximants to f incrementally, by forming a convex combination of the last approximant with a single new element of S; in this case, the convergence rate in L2 is interestingly again O(1=pn). Incremental approximants are especially attractive from a computational point of view. In the neural network context, they correspond to adding one "neuron" at a time to decrease the residual error. We next define these concepts precisely.
+
+Again let X be a Banach space with norm k \Delta  k. Let S ` X. An incremental sequence (for approximation in co S) is any sequence f1; f2; : : : of elements of X so that f1 2 S and for each n * 1 there is some gn 2 S so that fn+1 2 co (ffn; gng).
+
+We say that an incremental sequence f1; f2; : : : is greedy (with respect to f 2 coS) if
+
+kfn+1 \Gamma  fk = inf \Phi kh \Gamma  fk j h 2 co (ffn; gg) ; g 2 S\Psi  ; n = 1; 2; : : : : The set S is generally not compact, so we cannot expect the infimum to be attained. Given a positive sequence ffl = (ffl1; ffl2; : : :) of allowed "slack" terms, we say that an incremental sequence f1; f2; : : : is "-greedy (with respect to f) if
+
+kfn+1 \Gamma  fk ! inf \Phi kh \Gamma  fk j h 2 co (ffn; gg) ; g 2 S\Psi  + "n ; n = 1; 2; : : : : Let OE be a positive function on the integers. We say that S has an incremental (convex) scheme with rate OE(n) if there is an incremental schedule " such that, for each f in coS and each "-greedy incremental sequence f1; f2; : : :, it holds that
+
+kfn \Gamma  fk = O(OE(n)) as n ! +1. Finally, we say that the space X admits incremental (convex) schemes with rate OE(n) if every bounded subset S of X has an incremental scheme with rate OE(n).
+
+The intuitive idea behind this definition is that at each stage we attempt to obtain the best approximant in the restricted subclass consisting of convex combinations (1 \Gamma  *n)fn + *ng, with *n in [0; 1], g in S, and fn being the previous approximant. It is also possible to select the sequence *1; *2; : : : beforehand. We say that an incremental sequence f1; f2; : : : is ffl-greedy (with respect to f) with convexity schedule *1; *2; : : : if
+
+kfn+1 \Gamma  fk ! inf \Phi k ((1 \Gamma  *n)fn + *ng) \Gamma  fk j g 2 S\Psi  + "n ; n = 1; 2; : : : :
+
+One could also define the analogous linear incremental schemes, for which one does not require *n 2 [0; 1], but, as before, we only report results for the convex case.
+
+Informally, from now on we refer to the rates for convex approximation as "optimal rates" and use the terminology "incremental rates" for the best possible rates for incremental schemes. For any incremental sequence, fn 2 con(S), so clearly optimal rates are always majorized by the corresponding incremental rates.
+
+4 Donahue, Gurvits, Darken, and Sontag
+
+The main objective of this paper1 is to analyze both optimal and incremental rates in broad classes of Banach spaces, specifically including Lp, 1 ^ p ^ 1. A summary of our rate bounds for the special case of the spaces Lp is given as Table 1. In general, we find that the worst-case rate of approximation in the "robust" Lp, 1 ^ p ! 2, norms is worse than that in L2, unless some additional conditions are imposed on the set S.
+
+Table 1. The order of the worst-case rate of approximation in Lp. "no" means that the approximants do not converge in the worst case.
+
+p 1 (1; 2) [2; 1) 1 optimal 1 n
+
+\Gamma 1+1=p n\Gamma 1=2 1
+
+incremental no n
+
+\Gamma 1+1=p n\Gamma 1=2 no
+
+1.3. Neural Nets The problem is of general interest, but we were originally motivated by applications to "artificial neural networks." In that context the set S is typically of the form
+
+S = fg : IRd ! IR j 9 a 2 IRd; b 2 IR; s:t: g(x) = \Sigma oe(a \Delta  x + b)g; where oe : IR ! IR is a fixed function, called the activation or response function. Typically, oe is a smooth "sigmoidal" function such as the logistic function (1 + e\Gamma x)\Gamma 1, but it can be discontinuous, such as the Heaviside function (the characteristic function of [0; 1)). The elements of linnS are called single hidden layer neural networks (with activation oe and a linear output layer) with n hidden units. For neural networks, then, the question that we investigate translates into the study of how the approximation error scales with the number of hidden units in the network.
+
+Neural net approximation is a technique widely used in empirical studies. Mathematically, this is justified by the fact that, for each compact subset M of IRd, restricting elements of S to M , one has that lin S = C0(M ), that is, lin S is dense in the set of continuous functions under uniform convergence (and hence also in most other function spaces). This density result holds under extremely weak conditions on oe; being locally Riemann integrable and non-polynomial is enough. See for instance (Leshno et al., 1992).
+
+Spaces Lp with p equal to or slightly greater than one are particularly important because of their usefulness for robust estimation (e.g., (Rey 1983)). In the particular context of regression with neural networks, Hanson (1988) presents experimental results showing the superiority of Lp (p o/ 2) to L2.
+
+1 A preliminary version of some of the results presented in this paper appeared as (Darken, Donahue, Gurvits and Sontag 1993).
+
+Rates of Convex Approximation 5 1.4. Connections to Learning Theory Of course, neural networks are closely associated with learning theory. Let us imagine that we are attempting to learn a target function that lies in the convex closure of a predetermined set of basis functions S. Our learned estimate of the target function will be represented as a convex combination of a subset of S. For each n in an increasing sequence of values of n, we optimize our choice of basis functions and their convex weighting over a sufficiently large data set (the size of which may depend on n). Let us assume that the problem is "learnable", e.g., that over the class of probability measures of interest on the domain of the functions in S, the difference between one's estimates of the error based on examples must converge to the true error uniformly over all possible approximants. Then the generalization error (expected loss over the true exemplar distribution) must go to zero at least as fast as the order of the upper bounds in this work. Thus our bounds represent a guarantee of how fast generalization error will decrease in the limiting case when exemplars are so cheap that we do not care how many we use during training.
+
+Moreover, since for error functions that are Lp norms our bounds are tight, we can say something even stronger in this case. For Lp, there exists a set of basis functions and a function in their convex hull such that no matter how many examples are used in training, the error can decrease no faster than the bounds we have provided. Thus, our results exhibit a worst-case speed limitation for learning.
+
+1.5. Contents of the Paper It is a triviality that optimal approximants to approximable functions always converge. However, the rates of convergence depend critically upon the structure of the space. In some spaces, like L1, there exist target functions for which the rate can be made arbitrarily slow (Sect. 2.1). In Banach spaces of (Rademacher) type t with t ? 1, however, a rate bound of O(n\Gamma 1+1=t) is obtained (Sect. 2.2). For Lp spaces these results specialize to those of Table 1. Particular examples of Lp spaces are given to show that the orders given in our bounds cannot in general be sharpened (Sect. 2.3).
+
+Section 3 studies incremental approximation. A particularly interesting aspect of these results is that the new element of S added to the incremental approximant is not required to be the best possible choice. Instead, the new element can meet a less stringent test (Theorem 3.5). Also, the convex combination of the elements included in the approximant is not optimized. Instead a simple average is used. (This is an example of a fixed convexity schedule, as defined in Sect. 1.2.) Thus, our incremental approximants are the simplest yet studied, simpler even than those of (Jones 1992). Nonetheless, the same worst-case order is obtained for these approximants on Lp, 1 ! p ! 1, as for the optimal approximant. In more general spaces, the incremental approximants may not even converge (Sect. 3.1). However, if the space has a modulus of smoothness of power type greater than one, or is of Rademacher type t, then rate bounds can be given (Sects. 3.2 and 3.3).
+
+6 Donahue, Gurvits, Darken, and Sontag
+
+Both optimal and incremental convergence rates may be improved if S has special structure (Sect. 4). In particular, we provide some analysis of the situation where S is a finite-VC dimension set of indicator functions and the sup norm is to be used, which is a common setting for neural network approximation.
+
+2. Optimal Approximants In this section we study rates of convergence for optimal convex approximates. To illustrate the fact that the issue is nontrivial, we begin by identifying a class of spaces for which the best possible rate OE(n) is constant, that is to say, no nontrivial rate is possible (Theorem 2.3). This class includes infinite dimensional L1 and L1 (or C(X)) spaces.
+
+In Theorem 2.5 we then study general bounds valid for spaces of (Rademacher) type t. It is well-known that Lp spaces with 1 ^ p ! 1 are of type minfp; 2g (Ledoux and Talagrand 1991); on this basis an explicit specialization to Lp is given in Corollary 2.6.
+
+We then close this section with explicit examples showing that the obtained bounds are tight.
+
+2.1. Examples of Spaces Where No Rate Bound is Possible In some spaces, the worst-case rate of convergence of optimal approximants can be shown to be arbitrarily slow.
+
+Lemma 2.1. Let (an) be a positive, convex (an + an+2 * 2an+1) sequence
+
+converging to 0. Define a0 = 2a1 and bn = an\Gamma 1 \Gamma  an. Let S = fa0ekg, wheref
+
+ekg is the canonical basis in l1, and consider f = (bn) as an element of l1. Then f 2 coS and
+
+klinN S \Gamma  fk = aN for all N :(2.1) Proof. Note that P1n=1 bn=a0 = 1, so clearly f 2 coS. By convexity (bn) is a
+
+non-increasing sequence, so
+
+klinN S \Gamma  fk =
+
+1X
+
+i=N+1
+
+bi =
+
+1X
+
+i=N+1
+
+ai\Gamma 1 \Gamma  ai = aN :(2.2)
+
+ut Consider next the space l1. Let fflk be an enumeration of all f\Gamma 1; 0; 1g-valued sequences that are eventually constant, i.e., fflk(n) 2 f\Gamma 1; 0; 1g for all n 2 IN, and for each k there exists an N such that fflk(n) = fflk(N ) for all n ? N . For each n, let gn 2 l1 be the sequence gn(k) = fflk(n), and define the map T : l1 ! l1 by T (en) = gn. The reader may check that T is an isometric embedding. Therefore T carries the example of Lemma 2.1 into l1.
+
+What happens in c0, the space of all sequences converging to 0? We will now construct a projection from T (l1) into c0 that will retain the desired convergence
+
+Rates of Convex Approximation 7 rate. We will need, however, the extra restriction that the sequence (an) be strictly convex, i.e., that an + an+2 ? 2an+1.
+
+Let bn = an\Gamma 1 \Gamma  an as before, and define the auxiliary sequences
+
+cN = minfn 2 IN j bn ! aN g
+
+_cN = minfn 2 IN j n ? N + 1 and an ! bN \Gamma  bN+1g:
+
+The sequence c is well defined because aN ? 0 for all N and bn # 0. Similarly,
+
+_c is well defined since an # 0 and by strict convexity bN \Gamma  bN+1 ? 0. Note that cN ^ N + 1 ! N + 2 ^ _cN . Moreover, cN (and hence _cN ) goes to infinity with N since bn ? 0 for each n while aN # 0.
+
+Next define for each N 2 IN,
+
+AN = fk 2 IN j fflk(n) = 0 for n ! cN and fflk(n) = fflk(_cN + 1) for n ? _cN g; and define for convenience the single element set A0 = fk j fflk = ffikg, where ffik(n) is the sequence that is 1 for n = k and 0 otherwise. Then let A = [N AN .
+
+Let P be the projection that sends an element h of l1 to the sequence P (h)(k) = h(k) if k 2 A and P (h)(k) = 0 otherwise. Notice that if fflk(n) 6= 0, then k 62 AN for all N such that n ! cN . Since cN ! 1, if follows that there exists for each n only finitely many k's in A such that fflk(n) 6= 0. (Each AN is a finite set.) Therefore P (gn) = P ffi T (en) 2 c0 for each n, i.e., P ffi T : l1 ! c0.
+
+It remains to show that
+
+kP ffi T (f) \Gamma  linN P ffi T (S)k = aN : Let us introduce the notation ~h for P ffi T (h), h 2 l1, and similarly ~S for P ffi T (S). It is clear that k ~f \Gamma  linN ~Sk ^ aN , since T is an isometry and kP k = 1. To examine the bound from below, let ~fN = PNn=1 dn~emn be an arbitrary element of linN ~S, where fm1; m2; : : : ; mN g is a sampling of IN of size N . We aim to produce a k0 2 A such that ~fN (k0) = 0 and ~f (k0) * aN , since then
+
+k ~f \Gamma  ~fN k = sup
+
+k2A j
+
+~f(k) \Gamma  ~fN (k)j * j ~f(k0) \Gamma  ~fN (k0)j * aN :
+
+Let n0 = min(INnfm1; m2; : : : ; mN g). If n0 ! cN , select k0 such that fflk0 = ffin0. If n0 = N + 1 (which is the largest possible value for n0), select k0 such that fflk0(n) = 0 for n ^ N and = 1 otherwise. It follows from cN ^ N +1 that k0 2 A in either event, and clearly ~fN (k0) = 0. Moreover, in the first case ~f(k0) = bn0 * aN by the definition of cN , while in the second case, ~f (k0) = P1n=N+1 bn = aN .
+
+Lastly, consider the case cN ^ n0 ^ N . Select k0 so that fflk0(n) = 0 if n 2f m1; m2; : : : ; mN g or if n ? _cN , and fflk0(n) = 1 otherwise. This sequence is guaranteed to be in AN , and ~fN (k0) = 0. Moreover,
+
+~f(k0) =
+
+_cNX
+
+n=cN
+
+bnfflk0(n) * bN +
+
+_cNX
+
+n=N+2
+
+bn:
+
+8 Donahue, Gurvits, Darken, and Sontag The inequality holds because fflk0(n) = 1 for at least one n ^ N , and (bn) is a decreasing sequence. It then follows from the definition of _cN that
+
+bN +
+
+_cNX
+
+n=N+2
+
+bn = bN + aN+1 \Gamma  a_cN ? aN ;
+
+so k ~f \Gamma  ~fN k * aN , completing the proof. Lemma 2.2. Let (an) be a positive, strictly convex (an + an+2 ? 2an+1) sequence converging to 0. Then there exists a bounded set S ae c0 (with kgk ^ 2a1 for all g 2 S) and f 2 coS such that
+
+kf \Gamma  linN Sk = aN for all N 2 IN: An alternate method of proof is to replace the projection P in the discussion above with a map T 0 : l1 ! c0 defined by T 0(h)(k) = ffikh(k), where ffik # 0 is carefully chosen (as a function of (an)) to preserve the inequality kT 0 ffi T (f) \Gamma  linN T 0 ffi T (S)k * aN . The details are left to the reader.
+
+In either method, the constructed base set S ae c0 depends on the rate sequence (an). It is interesting to compare this with the situation in l1 and l1, where the set S is universal, i.e., independent of (an). (Though the limit function f 2 coS does vary with (an).)
+
+The preceding discussion showing the absence of a rate bound in l1 relied upon an isometric embedding of l1 into l1. The same argument can be used if we have only an isomorphic embedding, i.e., a bounded linear map with bounded inverse. Combining this with the two preceding lemmas gives
+
+Theorem 2.3. Let X be a Banach space with a subspace isomorphic to either
+
+l1 or c0. Then for any positive sequence (an) converging to 0, it is possible to construct a bounded set S and f 2 coS such that
+
+kcoN S \Gamma  fk * klinN S \Gamma  fk * aN :(2.3) Proof. If (an) is not convex, then replace it with a strictly convex sequence (_an)
+
+converging to zero such that _an * an for all n. This is a well-known construction, for example (Stromberg 1981, p. 515). The result then follows from Lemmas 2.1 and 2.2. ut
+
+If a Banach space contains a subspace isomorphic to l1 or c0, then it is not reflexive. The converse is not true, though there are a variety of results that do imply the existence of subspaces isomorphic to l1 or c0, and such results combine with Theorem 2.3 to identify spaces with arbitrarily slow convergence of the type discussed. For example:
+
+Theorem 2.4. [(Lindenstrauss and Tzafriri 1979, p. 35)] A Banach lattice X
+
+is reflexive if and only if no subspace of X is isomorphic to l1 or c0.
+
+Rates of Convex Approximation 9 This theorem implies that examples of arbitrarily slow convergence exist in L1[0; 1] and C[0; 1], although in these cases it is also easy to construct the embeddings directly (Darken et al. 1993). Related results can be found in (Bessaga and Pelczynski 1958), (Rosenthal 1974), (Rosenthal 1994), and (Gowers preprint).
+
+In Section 3 we will show that a condition somewhat stronger than reflexivity (uniform smoothness) guarantees convergence of incremental approximates. In the next section, however, we show that a condition unrelated to reflexivity (the Rademacher type property) can guarantee convergence of optimal approximants and even give bounds on convergence rates.
+
+2.2. Bounds for Type t Spaces We recall some basic definitions first.
+
+A Rademacher sequence (ffli)ni=1 is a finite sequence of independent zero mean random variables taking values from f\Gamma 1; +1g. Given any Banach space X, any Rademacher sequence (ffli)ni=1, and any fixed finite sequence (fi)ni=1 of elements of X, we can view in a natural manner the expression Pni=1 fflifi as a random variable taking values in X. With this understanding, the space X is of (Rademacher) type t (with constant C) if for each Rademacher sequence (ffli) and each sequence (fi) it holds that
+
+E flflflX fflififlflfl
+
+t ^ C X kf
+
+ikt :(2.4)
+
+It is interesting to note that t can never be greater than 2, that Hilbert spaces are of type 2, and that there exists nonreflexive Banach spaces of type 2 (James 1978).
+
+Theorem 2.5. Let X be a Banach space of type t, where 1 ^ t ^ 2. Pick
+
+S ae X, f 2 co(S), and K ? 0 such that 8g 2 S, kg \Gamma  fk ^ K. Then for all n,
+
+kconS \Gamma  fk ^ KC
+
+1=t
+
+n1\Gamma 1=t ;(2.5) where C is a constant depending on X but independent of n.
+
+Proof. 8ffl ? 0; 9nffl, ff1; : : :; ffnffl 2 IR+, and f1; : : :; fnffl 2 S such that
+
+nfflX
+
+i=0
+
+ffi = 1;
+
+nfflX
+
+i=0
+
+ffifi + \Delta  = f;
+
+and k\Delta k ! ffl. Take ,j to be a sequence of independent random variables on X taking value fi with probability ffi. Then for any fi 2 (0; 1),
+
+E flflflflflflf \Gamma  1n
+
+nX
+
+j=1
+
+,jflflflflflfl
+
+t (2.6)
+
+= 1nt E flflflflflfl
+
+nX
+
+j=1
+
+(f \Gamma  ,j \Gamma  \Delta ) + n\Delta flflflflflfl
+
+t
+
+10 Donahue, Gurvits, Darken, and Sontag
+
+^ 1nt E 0@(1 \Gamma  fi) flflflP
+
+n j=1(f \Gamma  ,j \Gamma  \Delta )flflfl
+
+1 \Gamma  fi + fin k
+
+\Delta k
+
+fi 1A
+
+t
+
+^ 1nt 264(1 \Gamma  fi)E 0@ flflflP
+
+n j=1(f \Gamma  ,j \Gamma  \Delta )flflfl
+
+1 \Gamma  fi 1A
+
+t
+
++ fi `n k\Delta kfi '
+
+t375
+
+= 1nt(1 \Gamma  fi)t\Gamma 1 E flflflflflfl
+
+nX
+
+j=1
+
+(f \Gamma  ,j \Gamma  \Delta )flflflflflfl
+
+t
+
++ 1fit\Gamma 1 k\Delta kt ;
+
+which follows because OE(x) = xt is a convex function for 1 ^ t ^ 2. Since the range of ,j has finitely many values and the space is type t, by (Ledoux and Talagrand 1991, Prop. 9.11, p. 248) it follows that:
+
+E flflflflflfl
+
+nX
+
+j=1
+
+(f \Gamma  ,j \Gamma  \Delta )flflflflflfl
+
+t
+
+^ C
+
+nX
+
+j=1
+
+E kf \Gamma  ,j \Gamma  \Delta kt :(2.7)
+
+On the other hand, we have:
+
+Ekf \Gamma  ,1 \Gamma  \Delta kt =
+
+nfflX
+
+i=1
+
+ffikf \Gamma  fi \Gamma  \Delta kt(2.8)
+
+^
+
+nfflX
+
+i=1
+
+ffi (kf \Gamma  fik + k\Delta k)t
+
+!
+
+nfflX
+
+i=1
+
+ffi(K + ffl)t
+
+= (K + ffl)t: Without loss of generality, assume 0 ! ffl ! 1 and take fi = ffl. Then combining (2.6), (2.7), and (2.8),
+
+E flflflflflflf \Gamma  1n
+
+nX
+
+j=1
+
+,jflflflflflfl
+
+t
+
+! C(K + ffl)
+
+t
+
+nt\Gamma 1(1 \Gamma  ffl)t\Gamma 1 + ffl:
+
+We conclude that for some realization of the ,j (labeled gj) the inequality must hold, i.e., flflfl
+
+flflflf \Gamma  1n
+
+nX
+
+j=1
+
+gjflflflflflfl
+
+t
+
+! C(K + ffl)
+
+t
+
+nt\Gamma 1(1 \Gamma  ffl)t\Gamma 1 + ffl:
+
+Taking the infimum with respect to all ffl ? 0 proves the theorem. ut
+
+Rates of Convex Approximation 11
+
+We now give a specialization to Lp, 1 ^ p ! 1. These spaces are of type t = minfp; 2g. From (Haagerup 1982) we find that the best value for C in (2.5)
+
+is 1 if 1 ^ p ^ 2 and p2 [\Gamma  ((p + 1)=2)=pss]1=p if 2 ! p ! 1. One may use Stirling's formula to get an asymptotic formula for the latter expression.
+
+Corollary 2.6. Let X be an Lp space with 1 ^ p ! 1. Suppose S ae X,
+
+f 2 coS, and K ? 0 such that 8g 2 S, kg \Gamma  fk ^ K. Then for all n,
+
+kconS \Gamma  fk ^ KCpn1\Gamma 1=t ;(2.9) where t = minfp; 2g, and Cp = 1 if 1 ^ p ^ 2 and Cp = p2 [\Gamma  ((p + 1)=2)=pss]1=p for 2 ! p ! 1. For large p, Cp , pp=e.
+
+2.3. Tightness of Rate Bounds In this section we show that order of the rate bound given for Lp in (2.9) is tight. That is, we give specific examples of Lp spaces and subsets S with target functions f 2 coS where optimal approximants converge with the specified order.
+
+Theorem 2.7. There exists S ` lp, 1 ! p ! 1, and f 2 coS such thatk
+
+conS \Gamma  fkp = Kn\Gamma 1+1=p where K = supg2S kf \Gamma  gkp.
+
+Proof. Let S consist of the elements of the canonical basis for lp. Then f := 0
+
+is in the closed convex hull of S and supg2S kf \Gamma  gkp = 1. Let fn be an element of conS that is to approximate 0. So fn is of the form fn = Pnk=1 akgnk, where each gnk is an element of S, and the ak are non-negative and sum to 1. Without loss of generality, we may assume the gnk are distinct, since otherwise we would be effectively working in comS with m ! n. Then
+
+kfn \Gamma  0kp =
+
+nX
+
+k=1
+
+apk:
+
+It is easy to see that the error is minimized by taking the ak's all equal, namely8
+
+k, ak = 1=n (Jensen). Therefore
+
+kfn \Gamma  0k * n(1\Gamma p)=p = n\Gamma 1+1=p:
+
+ut Next we show that the O(n\Gamma 1=2) bound for Lp, 2 ! p ! 1, is tight (see Corollary 2.6). We borrow from computer science the notation (n) = \Omega (OE(n)) to mean that there is a constant C ? 0 so that (n)=OE(n) * C for all n large enough. For the purposes of the next result, we say a space Lp is admissible if there exists a Rademacher sequence definable on it; for instance, Lp(0; 1) with the usual Lebesgue measure is one such space.
+
+Proposition2.8. For any admissible Lp, 2 ! p ! 1, there exists a subset S
+
+and an f 2 coS such that kconS \Gamma  fkp = \Omega (n\Gamma 1=2).
+
+12 Donahue, Gurvits, Darken, and Sontag Proof. Let ,i, i.i.d. on f-1,+1g, be a Rademacher sequence. Define S = f,ig,
+
+which is a subset of the unit ball in Lp. Using the upper bound of Khintchine's Inequality (Khintchine 1923; Ledoux and Talagrand 1991, Lemma 4.1, p. 91), one can show that 0 2 coS. Suppose the best approximation of 0 by a convex sum of n elements of S is Pni=1 ffi,k(i). Then by the lower bound of Khintchine's Inequality, flflfl
+
+flfl
+
+nX
+
+i=1
+
+ffi,k(i)flflflflfl
+
+Lp *
+
+ApsX
+
+i
+
+ff2i = Apk(ffi)kl2 :
+
+But we have already given an example in l2 (in the proof of Theorem 2.7) for which the last term is \Omega (n\Gamma 1=2). ut
+
+3. Incremental Approximants We now start the study of incremental approximation schemes. Unlike the situation with optimal approximation, incremental approximations are not guaranteed to even converge. In general, the convergence of incremental schemes appears to be intimately tied to the concept of norm smoothness. In Theorem 3.1 we show that smoothness is equivalent to at least a monotonic decrease of the error, and then in Theorem 3.4 it is proved that uniform smoothness is a sufficient condition to guarantee convergence. (It is possible to construct a smooth space with an ffl-greedy sequence that does not converge--Appendix D. However, if an ffl-greedy sequence converges, then it can only converge to the desired target function--Corollary 3.2.)
+
+In Sects. 3.2 and 3.3 we study upper bounds on the rate of convergence for spaces with modulus of smoothness of power type greater than 1 and for spaces of (Rademacher) type t, 1 ! t ^ 2. The Lp spaces, 1 ! p ! 1, are examples of spaces with modulus of smoothness of power type t = min(p; 2) (see Appendix B), which themselves sit inside the more general class of spaces of type t. (See, for example, (Lindenstrauss and Tzafriri 1979, p. 78; Deville et al. 1993, p. 166), while (James 1978) shows that the containment is strict. See also (Figiel and Pisier 1974).) The upper bounds obtained for incremental approximation error in the power type spaces agree with the bounds for optimal approximation error obtained in Sect. 2.2 (albeit with a slightly larger constant of proportionality), which were shown to be the best possible in Sect. 2.3. Therefore, little is lost by using incremental approximates instead of optimal approximates, at least in worst-case settings. The incremental convergence bounds obtained in Sect. 3.3 for type-t spaces are only slightly weaker than the optimal approximation error bounds obtained in Sect. 2.2
+
+3.1. Convergence of Greedy Approximants The first remark is that for some spaces there may not exist any nondecreasing rate whatsoever. In the terminology given in the introduction, it may be the case
+
+Rates of Convex Approximation 13 that there are greedy incremental sequences for f for which kfn \Gamma  fk 6! 0. This will happen in particular if there are a set S and two elements f 6= fn 2 coS so that for each g 2 S and each h 2 co (ffn; gg) different from fn, kh\Gamma fk ? kfn\Gamma fk; in that case, the successive minimizations result in the sequence fn; fn; : : :, which doesn't converge to f. Geometrically, convergence of incremental approximants can fail to occur if the unit ball for the norm has a sharp corner. This is illustrated by the example in Fig. 1, for the plane IR2 under the L1 norm. In order to use the intuition gained from this example, we need a number of standard but perhaps less-known notions from functional analysis.
+
+\Gamma \Gamma 
+
+\Gamma \Gamma 
+
+@@
+
+@@\Gamma \Gamma  \Gamma \Gamma  @@
+
+@@
+
+q (0; 0)
+
+q fn
+
+qg1 q g2
+
+Fig. 1. Incremental approximants may fail to converge in some spaces. Consider approximating f = (0; 0) by linear combinations of elements from ffn; g1; g2g according to the L1(IR2) metric. The best approximant by one point is fn. The rotated square is the contour of the norm about f on which fn lies. The best approximant by a linear combination of fn and g1 or g2 is once again fn. Thus even though f is in the convex hull of ffn; g1; g2g, incremental approximants fail to converge or even to decrease monotonically.
+
+If X is a Banach space and f 6= 0 is an element of X, a peak functional for f is a bounded linear operator, that is, an element F 2 X\Lambda , that has norm = 1 and satisfies F (f) = kfk. (The existence for each f 6= 0 of at least one peak functional is guaranteed by the Hahn-Banach Theorem.) Geometrically, one may think of the null space of F \Gamma  kfk as a hyperplane tangent at f to the ball centered at the origin of radius kfk. (For Hilbert spaces, there is a unique peak functional for each f, which can be identified with (1=kfk)f acting by inner products.) The space X is said to be smooth if for each f there is a unique peak functional. (Roughly, this means that balls in X have no "corners.") The modulus of smoothness of any Banach space X is the function ae : IR*0 ! IR*0 defined by
+
+ae(r) := 12 \Gamma sup kfk=kgk=1 fkf + rgk + kf \Gamma  rgkg \Gamma  2\Delta  Note that, by sub-additivity of norms, always ae(r) ^ r. For Hilbert spaces, one has ae(r) = p1 + r2 \Gamma  1. A Banach space is said to be uniformly smooth if ae(r) = o(r) as r ! 0; in particular, Hilbert spaces are uniformly smooth, but so are Lp spaces with 1 ! p ! 1, as is reviewed in Appendix B. (Here one has an upper bound of the type ae(r) ! crt, for some t ? 1, which implies
+
+14 Donahue, Gurvits, Darken, and Sontag uniform smoothness.) As a remark, we point out that uniformly smooth spaces are reflexive, but the converse implication does not hold.
+
+The next result implies that greedy approximants always result in monotonically decreasing error if and only if the space is smooth. In particular, if the space is not smooth, then one can not expect greedy (or even ffl-greedy) incremental sequences to converge. (Since one may always consider the translate S \Gamma  ffg as well as a translation by f of all elements in a greedy sequence, no generality is lost in taking f = 0.)
+
+Theorem 3.1. Let X be Banach space. Then:
+
+1. Assume that X is smooth, and pick any S ae X so that 0 2 coS. Then for
+
+each nonzero f 2 X there is some g 2 S and some ~f 2 co(ff; gg) different from f so that k ~fk ! kfk. 2. Conversely, if X is not smooth, then there exist an S ae X so that 0 2 coS
+
+and an f 2 S so that, for every g 2 S and every ~f 2 co(ff; gg) different from f, k ~f k ? kfk.
+
+Proof. Assume that X is smooth, and let S and f be as in the statement. Let
+
+F be the (unique) peak functional for f. There must be some g 2 S for which
+
+F (g) ! kfk=2 ;(3.10) since otherwise fh 2 X j F (h) = kfk=2g would be a hyperplane separating co(S) from 0 2 coS. Define
+
+f* = (1 \Gamma  *)f + *g for * 2 [0; 1]. We wish to show that kf*k ! kfk for some * 2 (0; 1], as this will establish the first part of the Theorem. For this, consider the peak functional F* for f*. Note that
+
+lim*#0 F*(f) = lim*#0 F*(f*) + F*(f \Gamma  f*) = lim*#0 kf*k = kfk:(3.11)
+
+The unit ball in X\Lambda  is weak-\Lambda  compact (Alaoglu), so the net (F*)*2(0;1) (where * # 0) has a convergent subnet, say F*ff ! F \Lambda , with kF \Lambda k ^ 1. In particular, F*ff(f) ! F \Lambda (f), so it follows from (3.11) that F \Lambda (f) = kfk, and hence F \Lambda  is a peak functional for f. But X is smooth, so F \Lambda  = F . Thus there exists *0 2 (0; 1] such that jF*0(g) \Gamma  F (g)j ! kfk=2, which combines with (3:10) to give F*0(g) ! kfk. Therefore
+
+kf*0k = F*0(f*0 ) = (1 \Gamma  *0)F*0(f) + *0F*0(g) ! kfk; since *0 ? 0. This proves the first assertion.
+
+We now prove the converse. Since X is not smooth, there is some unit vector f with two distinct peak functionals F and F 0. Since F 6= F 0, there is some h 2 X so that F (h) 6= F 0(h). Let
+
+g := h \Gamma  `F (h) + F
+
+0(h)
+
+2 ' f :
+
+Rates of Convex Approximation 15 Note that F (g) + F 0(g) = 0 and F 0(g) 6= 0; scaling g, we may assume that F 0(g) = 2. Consider now the set S = ff; g1; g2g, where g1 = g and g2 = \Gamma g; note that 0 2 co S. This provides the needed counterexample, since
+
+k(1 \Gamma  *)f + *g1k * F 0 ((1 \Gamma  *)f + *g) = 1 + * ? 1 = kfk and
+
+k(1 \Gamma  *)f + *g2k * F ((1 \Gamma  *)f \Gamma  *g) = 1 + * ? 1 = kfk for each * ? 0. ut
+
+It is interesting to remark that, for the set S built in the last part of the proof, even elements in the affine span of f and g1 (or of f and g2) have norm ? 1 if distinct from f, that is, the inequalities hold in fact for all * 6= 0. (For * ! 0, interchange F and F 0 in the last pair of equations.)
+
+It is an easy consequence of the first part of Theorem 3.1 that greedy incremental approximates in a smooth Banach space can converge only to the target function:
+
+Corollary 3.2. Let X be a smooth Banach space with S ae X. Let f 2 coS
+
+and suppose f1, f2, : : : is an incremental ffl-greedy sequence with respect to f, where the schedule ffl1; ffl2; : : : converges to 0. If the sequence (fn) converges, then it converges to f.
+
+Proof. Without loss of generality, we may assume that f = 0. Suppose limn fn =
+
+f1 6= 0. Then by the first part of Theorem 3.1, there exists g 2 S and * 2 [0; 1] such that k(1 \Gamma  *)f1 + *gk ! kf1k. Define ffi = kf1k \Gamma  k(1 \Gamma  *)f1 + *gk, and choose N large enough so kf1 \Gamma  fnk ! ffi=3 and ffln ! ffi=3 for all n ? N . Fix n ? N . Then k(1 \Gamma  *)fn + *gk ! kf1k \Gamma  2ffi=3, but (fn) is ffl-greedy, which implies kfn+1k ! kf1k \Gamma  ffi=3. But this is impossible since by choice of N ,k
+
+f1 \Gamma  fn+1k ! ffi=3. Therefore the limit f1 = 0, as desired. ut
+
+It is possible, however, to have an ffl-greedy sequence that fails to converge. See Appendix D. This situation is avoided if X is uniformly smooth, as we shall see below. But first we need a technical lemma that captures the geometric properties of smoothness necessary to obtain stepwise estimates of convergence. This lemma is used not only in Theorem 3.4, but also throughout Sect. 3.2.
+
+Lemma 3.3. Let X be a Banach space with modulus of smoothness ae(u), and
+
+let S ae X. Assume that 0 2 co(S) and let f 6= 0 be an element of co(S). Let F be a peak functional for f. Then
+
+k(1 \Gamma  *)f + *gk ^ (1 \Gamma  *) ^1 + 2ae ` *kgk(1 \Gamma  *)kfk '* kfk + *F (g);(3.12) for all 0 ^ * ! 1 and all g 2 S. Furthermore, for any ffl ? 0, there exists a g 2 S such that F (g) ! ffl.
+
+16 Donahue, Gurvits, Darken, and Sontag Proof. Pick any 0 ^ * ! 1 and g 2 S. If g = 0 then (3.12) is trivially satisfied,
+
+so assume g 6= 0.
+
+Define h = f +ug=kgk and h\Lambda  = f \Gamma ug=kgk for u * 0. Then from the definition of the modulus of smoothness we have
+
+khk + kh\Lambda k ^ 2kfk [1 + ae(u=kfk)] : But
+
+kh\Lambda k * F `f \Gamma  ukgkg' = kfk \Gamma  uF (g)=kgk: Therefore
+
+khk ^ kfk (1 + 2ae(u=kfk)) + uF (g)=kgk:(3.13) If we set u = *kgk=(1 \Gamma  *), we get
+
+(1 \Gamma  *)f + *g = (1 \Gamma  *)h; which combines with (3.13) to prove (3.12).
+
+Finally, given ffl ? 0, suppose there is no g 2 S such that F (g) ! ffl. Then the affine hyperplane fh 2 X j F (h) = ffl=2g would separate S from 0, contradicting 0 2 co(S). ut
+
+Theorem 3.4. Let X be a uniformly smooth Banach space. Let S be a bounded
+
+subset of X and let f 2 co(S) be given, and let (ffln) be an incremental schedule with P1k=1 fflk ! 1. Then any ffl-greedy (with respect to f) incremental sequence (fn) ae co S converges to f.
+
+Proof. Pick K * supg2S kf \Gamma  gk, and let (fn) be an ffl-greedy incremental
+
+sequence. Define
+
+an := kfn \Gamma  fk: We want to show that an ! 0. To this end, let a1 = lim infn!1 an. Since (fn) is ffl-greedy, an+1 ^ an + ffln and an+m ^ an + Pm\Gamma 1k=n fflk. But P1k=n fflk ! 0 as n ! 1, so in fact a1 = limn!1 an. Suppose a1 ? 0. Then from the definition of ffl-greedy and (3.12), it follows that
+
+an+1 ^ inf*;g ae(1 \Gamma  *) ^1 + 2ae ` *K(1 \Gamma  *)a
+
+n '* an + *Fn(g \Gamma  f)oe + ffln;
+
+where ae is the modulus of smoothness for X, Fn is the peak functional for fn \Gamma  f, and the infimum is taken over all 0 ^ * ! 1 and g 2 S. (In relation to Lemma 3.3, everything here is translated by \Gamma f.) The modulus of smoothness is a nondecreasing function, so certainly
+
+ae ` *K(1 \Gamma  *)a
+
+n ' ^ ae `
+
+2*K (1 \Gamma  *)a1 '
+
+Rates of Convex Approximation 17 for large enough n. Using this and taking the limit as n ! 1 in the preceding inequality yields
+
+a1 ^ a1 ae1 + inf* * ^ 4Ka
+
+1
+
+ae (u(*))
+
+u(*) \Gamma  1*oe ;
+
+where u(*) := (2*K)= [(1 \Gamma  *)a1]. But u(*) ! 0 as * ! 0, so by uniform smoothness ae(u)=u ! 0 as * ! 0. Therefore the quantity in the infimum is negative, and a contradiction is reached. Thus, a1 must be zero. ut
+
+The stepwise selection of * = *n in the above proof apparently depends upon the modulus of smoothness ae(u). We shall see in the next section that if we have a non-trivial power type estimate on the modulus of smoothness then it suffices to use *n = 1=(n + 1), i.e., fn+1 becomes a simple average of g1; g2; : : : ; gn+1.
+
+3.2. Spaces with Modulus of Smoothness of Power Type Greater than One We now give rate bounds for incremental approximates that hold for all Banach spaces with modulus of smoothness of power type greater than one (Theorems 3.5 and 3.7). Keep in mind that ae(u) ^ flut with t ? 1 is a sufficient condition for X to be uniformly smooth, and holds in particular for Lp-spaces if 1 ! p ! 1. (See Appendix B.)
+
+Theorem 3.5. Let X be a uniformly smooth Banach space having modulus of
+
+smoothness ae(u) ^ flut, with t ? 1. Let S be a bounded subset of X and let f 2 co(S) be given. Select K ? 0 such that kf \Gamma  gk ^ K for all g 2 S, and fix ffl ? 0. If the sequences (fn) ae co(S) and (gn) ae S are chosen recursively such that
+
+f1 2 S(3.14) Fn(gn \Gamma  f) ^ 2flnt\Gamma 1kf
+
+n \Gamma  fkt\Gamma 1 ((K + ffl)
+
+t \Gamma  Kt) := ffin(3.15)
+
+fn+1 = ` nn + 1 ' fn + ` 1n + 1 ' gn;(3.16) (where Fn is the peak functional for fn\Gamma f; we terminate the procedure if fn = f), then
+
+kfn \Gamma  fk ^ (2flt)
+
+1=t(K + ffl)
+
+n1\Gamma 1=t ^1 +
+
+(t \Gamma  1) log2 n
+
+2tn *
+
+1=t
+
+:(3.17)
+
+Recall that (3.15) can always be obtained, since otherwise fh 2 X j Fn(h \Gamma  f) = ffin=2g would be a hyperplane separating S from f 2 co(S).
+
+18 Donahue, Gurvits, Darken, and Sontag Proof. Replacing S with S \Gamma  f allows us to assume without loss of generality
+
+that f = 0 and kgk ^ K for all g 2 S.
+
+Applying Lemma 3.3 with g = gn and * = 1=(n + 1) yields
+
+kfn+1k ^ nkfnkn + 1 ^1 + 2ae ` kgnknkf
+
+nk'* +
+
+ffin n + 1(3.18)
+
+^ nkfnkn + 1 "1 + `(2fl)
+
+1=t(K + ffl)
+
+nkfnk '
+
+t#
+
+:
+
+If we set
+
+an := nkfnk(2fl)1=t(K + ffl) into the previous inequality we obtain
+
+an+1 ^ an(1 + 1=atn): Comparing to Lemma C.1, we see that this is half of (C.46). We can get the rest by applying the triangle inequality to (3.16) and making use of Lemma B.3 (B.38), i.e.,
+
+an+1 ^ an + 1=(2fl)1=t ! an + 3=2: So to employ Lemma C.1, it remains only to show that (C.47) holds for n = 2 or for n = 1 with a1 * 1. Note first that
+
+a1 = kf1k(2fl)1=t(K + ffl) ! 1(2fl)1=t ! tt by Lemma B.3 (B.41). So (3.17) holds for n = 1, and if a1 * 1 then we can apply Lemma C.1 immediately. Otherwise a1 ! 1, in which case
+
+a2 ^ a1 + 1(2fl)1=t ! ` 5t \Gamma  12 '
+
+1=t
+
+;
+
+by Lemma B.4, and so (C.47) holds for n = 2.
+
+It follows in either case that
+
+an ^ `tn + t \Gamma  12 log2 n'
+
+1=t
+
+for all n * 1.
+
+Rewriting in terms of fn proves the theorem. ut
+
+Recall that in Lp spaces, the modulus of smoothness is of power order t, where t = min(p; 2). The next corollary follows immediately from the preceding theorem and Lemma B.1.
+
+Rates of Convex Approximation 19 Corollary 3.6. Let S be a bounded subset of Lp, 1 ! p ! 1, with f 2 co(S)
+
+given. Define q = p=(p\Gamma 1) and select K ? 0 such that kf \Gamma gk ^ K for all g 2 S. Then for each ffl ? 0, there exists a sequence (gn) ae S such that the sequence (fn) ae co(S) defined by
+
+f1 = g1 fn+1 = nfn=(n + 1) + gn=(n + 1) satisfies
+
+kf \Gamma  fnk ^ 2
+
+1=p(K + ffl)
+
+n1=q ^1 +
+
+(p \Gamma  1) log2 n
+
+n *
+
+1=p
+
+if 1 ! p ^ 2 and
+
+kf \Gamma  fnk ^ (2p \Gamma  2)
+
+1=2(K + ffl)
+
+n1=2 ^1 +
+
+log2 n
+
+n *
+
+1=2
+
+if 2 ^ p ! 1.
+
+We now interpret Theorem 3.5 in terms of ffl-greedy sequences. Let f, S, and X be as in that theorem, and let (fn) be an ffl-greedy sequence with respect to f, which as before we can assume to be 0. Then
+
+kfn+1k ^ inf*;g ((1 \Gamma  *) "1 + 2fl ` *kgk(1 \Gamma  *)kf
+
+nk '
+
+t# k
+
+fnk + *Fn(g)) + ffln
+
+^ infg ( nkfnkn + 1 "1 + 2fl ` kgknkf
+
+nk '
+
+t#
+
++ Fn(g)=(n + 1)) + ffln;
+
+by Lemma 3.3. The outside inequality holds also if (fn) is only ffl-greedy with respect to the convexity schedule *n = 1=(n + 1). Now given that the modulus of convexity satisfies ae(u) ^ flut (t ? 1), fix ffl ? 0, and select an incremental schedule (ffln) satisfying ffln ^ fflfl=nt. Then using the fact that kgk ^ K for all g 2 S and that there exists g 2 S with Fn(g) smaller than any preassigned positive value, we get
+
+kfn+1k ^ nkfnkn + 1 "1 + 2fl ` Knkf
+
+nk'
+
+t#
+
++ fflfl=nt:
+
+Recalling the definition of ffin in (3.15), we see that fflfl=nt ^ ffin=(n + 1), and a comparison with (3.18) shows that the bound obtained in Theorem 3.5 also holds for the ffl-greedy sequence (fn) as well. This proves
+
+Theorem 3.7. Let X be a uniformly smooth Banach space with modulus of
+
+smoothness ae(u) ^ flut, with t ? 1. Then X admits incremental convex schemes with rate 1=n1\Gamma 1=t. Moreover, if the incremental schedule (ffln) satisfies ffln ^ fflfl=nt where ffl is any fixed positive value, and if (fn) is either ffl-greedy or ffl-greedy with convexity schedule *n = 1=(n + 1), then the error to the target function at step n + 1 is bounded above by (3.17).
+
+20 Donahue, Gurvits, Darken, and Sontag
+
+The specialization of this result to Lp spaces, analogous to Corollary 3.6, is straightforward and is left to the reader.
+
+Remark. The only non-constructive step in the proof of Theorem 3.5 is the
+
+determination of g 2 S such that Fn(g \Gamma  f) ^ ffin, where Fn is the peak functional for fn \Gamma  f. In Lp spaces, Fn can be associated with the function in Lq (q = p=(p \Gamma  1)) defined by
+
+hn(x) := sign(fn \Gamma  f(x))jfn \Gamma  f(x)jp\Gamma 1=kfn \Gamma  fkp\Gamma 1p ; so
+
+Fn(g \Gamma  f) = Z hn(x) (g(x) \Gamma  f(x)) dx: This means that to satisfy (3.15), one must find g 2 S such thatZ
+
+hn(x)g(x) dx ^ ffin + Z hn(x)f(x) dx: (We should point out that R hn(x)f(x) dx is likely to be negative.)
+
+The specific details of finding such a g will depend on the neuron class S under consideration. But as an example, suppose S consists of those functions g(x) having the form \Sigma oe(a \Delta  x + b), where a 2 IRd, b 2 IR, oe is a fixed activation function, and x 2 IRd is allowed to vary over a subset \Omega  ae IRd. Then we are left with finding an a and b such thatfififi
+
+fiZ\Omega  hn(x)oe(a \Delta  x + b) dxfifififi * \Gamma  Z\Omega  hn(x)f(x) dx \Gamma  ffin:(3.19) Actually, the condition f 2 coS implies the existence of an a and b such that the left hand side of (3.19) is at least as large as \Gamma  R\Omega  hn(x)f(x) dx, so this may be viewed as a maximization problem. We do not need to find the global maximum, however, but only a value satisfying the weaker condition (3.19).
+
+3.3. Rate Bounds in Type t Spaces We turn our attention now to determining rate bounds for incremental approximants in Rademacher type t spaces with 1 ! t ^ 2 (Corollary 3.13). The constants in the bounds are implicit. Furthermore, the rate bounds for the case of Lp spaces (not given explicitly) are slightly weaker than those established in the previous section.
+
+Banach and Saks (1930) showed that if a sequence g1; g2; : : : is weakly convergent to f in Lp(0; 1), 1 ! p ! 1, then there is a subsequence gk1; gk2; : : : that is Cesaro summable in the norm topology to f, i.e., kf \Gamma  Pni=1 gki=nk ! 0. This result was extended to uniformly convex spaces by Kakutani (1938). We give now a generalization that holds in Banach spaces of type t ? 1.
+
+Rates of Convex Approximation 21 Definition3.8 Generalized Banach-Saks Property (GBS).
+
+A Banach space X has the GBS property if for each bounded set S and each f 2 coS, there exists a sequence g1; g2; : : : in S such that kf \Gamma  Pnk=1 gk=nk ! 0. If OE is a given function on IN, we say that X has the GBS(OE) property if for each f and set S as above one can always find some sequence satisfying the convergence rate kf \Gamma  Pnk=1 gk=nk = O(OE(n)).
+
+A probabilistic proof of the GBS(OE) property for arbitrary Banach spaces of type t ? 1 is given below. We will make use of the following basic property of type t spaces: If a Banach space X is of type t, then for any independent mean zero random variables ,i 2 X taking finitely many values, E(k,1 + : : : + ,nkt) ^ C Pni=1 Ek,ikt (Ledoux and Talagrand 1991, p. 248). We also need the following result from Ledoux and Talagrand (1991, Theorem 6.20, p. 171).
+
+Theorem 3.9. Suppose that ,i are independent mean zero random variables in
+
+X, Ek,ikN ^ 1, 1 ^ i ^ n, N ? 1, N 2 IN. Then there is a universal constant K such that
+
+E flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl
+
+N ^ 
+
+K Nlog N "E flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl + `E max1^i^n k,ikN '
+
+1 N #!N :(3.20)
+
+The following corollary plays a crucial role in our argument. Corollary 3.10. Suppose that k,ik ^ M , and Banach space X is of type t ? 1.
+
+Then
+
+E flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl
+
+N ^
+
+AN n
+
+N
+
+t ;(3.21)
+
+where An is a constant depending on N , M , and X. Proof.
+
+E flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl
+
+N ^ `
+
+K Nlog N hE iflflflX ,iflflflj + M i'
+
+N
+
+^ K Nlog N "`E flflflX ,iflflfl
+
+t'
+
+1
+
+t + M #!N
+
+^ 0@K Nlog N 24C
+
+1
+
+t 
+
+nX
+
+i=1
+
+Ek,ikt!
+
+1
+
+t
+
++ M 351A
+
+N
+
+^ `K Nlog N '
+
+N i
+
+C
+
+1
+
+t M n
+
+1
+
+t + M j
+
+N
+
+^ AN n
+
+N
+
+t :
+
+ut
+
+22 Donahue, Gurvits, Darken, and Sontag
+
+Below we follow a standard construction using the Borel-Cantelli Lemma. Theorem 3.11. Let us consider a sequence ,i of independent, bounded, zero
+
+mean random variables in a Banach space X of type t ? 1. Then with probability one, flflflfl
+
+fl
+
+1 n
+
+nX
+
+i=1
+
+,iflflflflfl = o(n
+
+1
+
+t \Gamma 1+ffl)(3.22)
+
+for any ffl ? 0. Proof. By the Chebyshev inequality, 8N 2 IN,
+
+P (flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl * ffi) ^ E 0@flflflflfl
+
+nX
+
+i=1
+
+,iflflflflfl
+
+N 1A
+
+ffi\Gamma N
+
+^ AN n
+
+N
+
+t ffi\Gamma N :
+
+The second inequality follows from Corollary 3.10. Set ffi = anffl+1=t, where a ? 0 and ffl ? 0. Then the right hand side of the last inequality becomes AN a\Gamma N n\Gamma fflN . For sufficiently large N , N ffl ? 1 andX
+
+n*1
+
+AN aN nNffl ! 1:
+
+Thus by Borel-Cantelli,
+
+8a ? 0; P (9(nk); nk k!1\Gamma ! 1 s:t: flflflflfl 1n
+
+k
+
+nkX
+
+i=1
+
+,iflflflflfl * a(nk)
+
+1
+
+t \Gamma 1+ffl) = 0:
+
+Since the union of countably-many zero-measure sets also has zero measure, it follows that for any (al) converging to 0,
+
+P (9l; 9(nk); nk k!1\Gamma ! 1 s:t: flflflflfl 1n
+
+k
+
+nkX
+
+i=1
+
+,iflflflflfl * al(nk)
+
+1
+
+t \Gamma 1+ffl) = 0;
+
+which implies that
+
+P ( limn!1 flfl
+
+1 n P
+
+n i=1 ,iflfl
+
+n
+
+1
+
+t \Gamma 1+ffl = 0) = 1:
+
+ut We are now ready to investigate the GBS(OE) property. Suppose that f 2 coS ae X. Then for any ffl ? 0 there exists a k(ffl) ! 1 and gffli 2 S, ffffli ? 0 for 1 ^ i ^ k(ffl)
+
+with Pk(ffl)i=1 ffffli = 1 such that flflflfl
+
+flflf \Gamma 
+
+k(ffl)X
+
+i=1
+
+ffffligffli flflflflflfl ! ffl:
+
+Rates of Convex Approximation 23 Let ~fffl := Pk(ffl)i=1 ffffligffli , and consider a positive sequence (ffln) such that
+
+1 n
+
+nX
+
+j=1
+
+fflj ^ n
+
+1
+
+t \Gamma 1:
+
+Also select a sequence of independent random variables ,j such that P f,j = gfflji g = fffflji for each i, 1 ^ i ^ k(fflj). Thenflflflfl
+
+flfl 1n
+
+nX
+
+j=1
+
+,j \Gamma  fflflflflflfl = flflflflflfl 1n
+
+nX
+
+j=1
+
+(,j \Gamma  ~ffflj ) \Gamma  1n
+
+nX
+
+j=1
+
+(f \Gamma  ~ffflj )flflflflflfl
+
+^ flflflflflfl 1n
+
+nX
+
+j=1
+
+jjflflflflflfl + n
+
+1
+
+t \Gamma 1:
+
+Here jj = ,j \Gamma  ~ffflj , so Ejj = 0. Applying Theorem 3.11 immediately yields: Theorem 3.12. Any Banach space of type t, 1 ! t ^ 2, has the GBS(n
+
+1
+
+t \Gamma 1+ffl)
+
+property for all ffl ? 0.
+
+This can be restated as: Corollary 3.13. Let X be a Banach space of type t, 1 ! t ^ 2, and let S be a
+
+bounded subset of X with f 2 coS. Then for all ffl ? 0, there exists a sequence (gi) ae S such that the incremental sequence
+
+fn = 1n
+
+nX
+
+i=1
+
+gi = n \Gamma  1n fn\Gamma 1 + 1n gn(3.23)
+
+satisfies
+
+kf \Gamma  fnk = o(n
+
+1
+
+t \Gamma 1+ffl):(3.24)
+
+Remark. The GBS(OE) property guarantees for f 2 coS and S bounded the
+
+existence of (gn) ae S such that kf \Gamma  Pni=1 gi=nk ! 0. It is not true in general that one may pick all the gn distinct. Consider for example the Hilbert space `2 (which is of type 2, i.e., GBS(1=pn)) and S = (en), where (en) is an orthonormal basis. Then coS = Pi*0 ffiei where ffi * 0 and P ffi = 1. But if enk 6= enl, (nk 6= nl) then
+
+1 N
+
+NX
+
+i=1
+
+eni k\Delta k\Gamma ! 0:
+
+However, it is possible to give necessary and sufficient conditions for the existence of a sequence of distinct elements (gi) ae S as above:
+
+Theorem 3.14. Let X be a Banach space of type t, 1 ! t ^ 2, S ae X, f 2 coS.
+
+There exists a sequence (gi) ae S where 8i 6= j, gi 6= gj such that k P gi=n\Gamma fk !
+
+0 if and only if for all finite K ae S, f 2 co(S n K).
+
+24 Donahue, Gurvits, Darken, and Sontag Proof. That f 2 co(S n K) for all finite K is sufficient follows from the discussion preceding Theorem 3.12. With this condition holding, we are free to choose the gfflji to be distinct for all i and j.
+
+Necessity follows from considering a single finite-cardinality set K ae S such that f 62 co(S n K). Assume there exists a sequence of distinct elements (gi) ae S such that kf \Gamma  Pni=1 gi=nk ! 0. We will construct a sequence in co(S n K) converging to f, which is a contradiction.
+
+Since jKj ! 1 there must be an r ? 0 such that 8n ? r, gn 2 S n K. Let s ? r. Then
+
+fs := 1s
+
+sX
+
+i=1
+
+gi = 1s
+
+rX
+
+i=1
+
+gi + 1s
+
+sX
+
+i=r+1
+
+gi:
+
+As s ! 1, the first sum tends to zero, so the second must tend to f. Therefore the sequence
+
+1 s \Gamma  r
+
+sX
+
+i=r+1
+
+gi = ss \Gamma  r 1s
+
+sX
+
+i=r+1
+
+gi
+
+must also tend to f. Each element of this sequence is in co(S n K). ut
+
+4. Additional Assumptions on S In the previous sections we have studied the convergence of convex approximates from arbitrary bounded sets S as a function of the space X. However, it is possible to improve the convergence behavior for a given space by imposing additional assumptions on S. For example, suppose X = Lp(\Omega ) with 1 ^ p ! 2 and m(\Omega ) ! 1. If there exists h 2 L2(\Omega ) such that jg(x)j ! h(x) for all x 2 \Omega  and g 2 S, then S ae L2(\Omega ) as well, and the convex closure of S is the same in both Lp(\Omega ) and L2(\Omega ). Working in L2(\Omega ), we can find for each f 2 coS an incremental sequence fn converging to f with rate O(1=pn). This convergence rate (with a different constant) then holds in Lp(\Omega ) as well, though in the latter space the sequence might not be ffl-greedy, especially in view of Theorem 3.1.
+
+At the other end of the Lp spectrum, recall from Theorem 2.3 that there can be no general rate bound in L1. However, by restricting S to classes of indicator functions, we can recover L2-like convergence in L1. This approach, common in the artificial neural network community, is especially interesting in pattern classification applications, and the connections with Vapnik-Chervonenkis (VC) dimension--first discovered by Barron in (Barron 1992)--are especially intriguing.
+
+Definition4.1. Let F be a class of indicator functions on a set X. Let W be
+
+the set of all Y ` X such that for all Z ` Y there exists an f 2 F such that f " Y = Z. The "VC (Vapnik-Chervonenkis) dimension of F " is supY 2W jY j.
+
+Our bounds (Theorem 4.5) are slightly weaker than those given by (Barron 1992) (ours are "big O" as compared to "little O"). However, the proof method here
+
+Rates of Convex Approximation 25 seems worthy of note, especially as it makes use of more basic results than the central limit theorem relied upon in (Barron 1992).
+
+We also explore the implications of good convergence rate bounds on the VC dimension of the corresponding set S. Good convergence rate bounds for S do not imply that S has a finite V C dimension (Theorem 4.6), i.e., the converse of Theorem 4.5 is false. However, if any nontrivial rate bound holds uniformly for all subsets of S, its VC dimension must be finite (Theorem 4.7).
+
+Definition4.2. Let F be a class of indicator functions on a set X. Its dual F 0
+
+is defined as the class fevx; x 2 Xg of indicator functions on F , where
+
+evx(f) = f(x) 8f 2 F : Thus, for each element of X there is a unique element of F 0, named evx. Note that it may be the case that evx = evy for x 6= y. One thinks of evx as the "evaluation at x operator" for elements of F . Note that evx contains the members of F which contain x. (If an indicator function takes the value one on an element of its domain it may be said to "contain" it. In fact, we will identify evx withf
+
+f 2 F : f(x) = 1g:)
+
+Definition4.3. Let V C be the operator on classes of indicator functions that
+
+measures the Vapnik-Chervonenkis (VC) dimension. If F is a class of indicator functions, we define the co-VC dimension by
+
+coV C(F ) := V C(F 0):(4.25) The next lemma is a consequence of (Ledoux and Talagrand 1991, Theorem 14.15, p. 418).
+
+Lemma 4.4. Denote by M (\Omega ; \Sigma ) the Banach space of all bounded signed measures _ on (\Omega ; \Sigma ) equipped with the norm k_k := j_j(\Omega ) j _+(\Omega ) + _\Gamma (\Omega ). Let C ae \Sigma ; consider the operator j : M (\Omega ; \Sigma ) ! l1(C) defined by j(_) = (_(c))c2C . Then V C(C) ! 1 if and only if there exists a constant K such that for any Rademacher sequence fli and all finite sequences (_i) ae M (\Omega ; \Sigma ),
+
+E flflflflflX
+
+i
+
+flij(_i)flflflflfl ^ K X
+
+i k
+
+_ik2!
+
+1=2
+
+:(4.26)
+
+If such a K exists, K = K0pV C(C), where K0 is a universal constant. Theorem 4.5. Let F be a class of indicator functions on a set X. Then F ae
+
+l1(X). Let coV C(F ) = d ! 1. Then for any h 2 coF , kconF \Gamma hk ^ K(d=n)1=2, where K is a universal constant.
+
+Proof. Since h 2 coF , 8ffl ? 0, 9kffl 2 coF s:t: kh \Gamma  kfflk ! ffl. We will neglect
+
+the ffl and write merely k where convenient. For some nffl, kffl = Pnffli=1 ffifi, wherePn
+
+ffli=1 ffi = 1, ai ? 0, and fi 2 F . Let \Sigma k := oe(F 0 [ [nffli=1fffigg). M (F; \Sigma k) is a
+
+Banach space of bounded measures on F . The norm of _ 2 M (F; \Sigma k) is k_kM =
+
+26 Donahue, Gurvits, Darken, and Sontag j_j(F ) = _+(F ) + _\Gamma (F ). Define mi 2 M (F; \Sigma k) to be the probabilistic pointmass measure with support on fi, i.e., mi assigns measure 1 to sets containing fi and 0 otherwise. Define _k := Pni=1 ffimi. Let ,l be finite-valued i.i.d. random variables taking value mi with probability ffi. Define j : M (F; \Sigma k) ! l1(X) by j(_) := (_(evx))x2X . Note that j is a linear operator. By the triangle inequality,
+
+E, flflflflflj 
+
+nX
+
+i=1
+
+,l=n! \Gamma  hflflflflfl ^ E, flflflflflj X
+
+l
+
+(,l \Gamma  _k)!flflflflfl =n + kh \Gamma  kk :
+
+By a simple inequality (Ledoux and Talagrand, 1991, Lemma 6.3, p. 152),
+
+E, flflflflflX
+
+l
+
+j (,l \Gamma  _k)flflflflfl ^ 2E,Efl flflflflflX
+
+l
+
+fllj(,l \Gamma  _k)flflflflfl ;
+
+where fll are i.i.d. random variables taking values +1 and -1 with equal probability. Then by Lemma 4.4,
+
+Efl flflflflflX
+
+l
+
+fllj(,l \Gamma  _k)flflflflfl ^ KpdsX
+
+l k
+
+,l \Gamma  _kk2M:
+
+Since ,l and _k are both probability measures, k,l \Gamma _kkM ^ k,lkM +k_kkM = 2. Combining the above, we have
+
+E, flflflflflj 
+
+nX
+
+i=1
+
+,l=n! \Gamma  hflflflflfl ^ 4Kpdpn + ffl:
+
+Since the inequality is true for all ffl ? 0 it remains true for ffl = 0. Since for some realization of the ,l the inequality must still hold, the theorem is proven. ut
+
+The mere fact of the existence of a convergence rate bound for a set of indicator functions does not imply that the set has finite VC dimension. We give an example to make this point.
+
+Theorem 4.6. Let X be a measure space with an infinite number of measurable
+
+sets. Let S denote the set of indicator functions of all measurable sets. Clearly the VC dimension of S is infinite. However, if f 2 coS, then f can be approximated by an element of conS with error less than 1=n (in the uniform metric).
+
+Proof. If f 2 coS, then clearly 0 ^ f(x) ^ 1 for all x 2 X. Fix n and define
+
+Ak = f\Gamma 1 ([(k \Gamma  1)=n; 1]) for k = 1; 2; : : :; n. (Note that some Ak may be empty.) Let gk be the indicator function for Ak. Each gk is in S since f must be a measurable function. The function
+
+fn =
+
+nX
+
+k=1
+
+(1=n)gk
+
+Rates of Convex Approximation 27 is in conS and satisfies
+
+0 ^ fn(x) \Gamma  f(x) ! 1=n for all x 2 X. (Moreover, this shows that coS equals the set of measurable functions with range in [0; 1].) ut
+
+However, if it is the case that one given convergence rate bound holds for all finite subsets of a set of indicator functions, then the VC dimension of this set is finite.
+
+Theorem 4.7. Let F be a set of indicator functions on a set X and C ` F .
+
+Let ff(C; r) be the worst-case rate of approximation of a member of the closed convex hull of C by r elements of C. Assume that there is some function h so that h(r) ! 0 as r ! 1 such that ff(C; r) ^ h(r) for all finite C ae F . Then V C(F ) ! 1.
+
+Proof. We argue by contradiction. Assume that V C(F ) = 1. Then also
+
+coV C(F ) = 1. Thus, for each integer n there are elements x1; x2; : : : ; x2n 2 X and functions f1; : : : ; fn 2 F such that (f1; : : : ; fn) takes all 2n possible values on these points. Define Cn := ff1; : : :; fng. Consider approximating f :=Pn
+
+i=1 fi=n 2 coCn by r elements of Cn. By the symmetry of f, we can withoutloss of generality write the approximant as g = Pr
+
+i=1 ffifi. Thenk
+
+g \Gamma  fksup = sup
+
+X jg(x) \Gamma  f(x)j
+
+= sup
+
+X fififififi
+
+rX
+
+i=1 `
+
+ffi \Gamma  1n ' fi(x) \Gamma 
+
+nX
+
+i=r+1
+
+1 n fi(x)fififififi
+
+= 12 sup
+
+X fififififi
+
+rX
+
+i=1 `
+
+ffi \Gamma  1n ' [2fi(x) \Gamma  1] \Gamma 
+
+nX
+
+i=r+1
+
+1 n [2fi(x) \Gamma  1]fififififi
+
+= 12 
+
+rX
+
+i=1 fifififi
+
+ffi \Gamma  1nfifififi +
+
+nX
+
+i=r+1
+
+1 n !
+
+since there is an element x 2 X for which 2fi(x)\Gamma 1 is of the same sign as ffi\Gamma 1=n for 1 ^ i ^ r and is negative one for i ? r. Thus
+
+kg \Gamma  fksup * 12 n \Gamma  rn = 12 i1 \Gamma  rnj :(4.27) Since the bounding function for the error, h, converges to zero, there exists q ? 0 such that h(q) ! 1=4. But the worst-case error approximating elements of C2q with q functions from this set is greater than [1\Gamma q=(2q)]=2 = 1=4, a contradiction. This establishes the claim. ut
+
+Acknowledgments This work was partially completed while Michael Donahue and Eduardo Sontag were visiting Siemens Corporate Research.
+
+28 Donahue, Gurvits, Darken, and Sontag
+
+A. Implications of the Convexity Assumption Constraining f to lie within the convex closure of S (instead of the linear span) effectively reduces the size of the set of approximable functions. Which functions are being left out? For the case of functions on a real interval under the sup norm where S is the set of Heavisides, there is a tidy answer.
+
+Define Fv :=
+
+ff : [a; b] ! IR j Var(f) ^ v; 8t 2 [a; b]; jf(t)j ^ vg:(A.28) Let H be the set of Heavisides on IR, i.e., H = fh : IR ! IR j 9`; h = I[`; 1)g. Define
+
+Hv := ff : IR ! IR j 9h 2 H s:t: f = vh or f = \Gamma vh(A.29)
+
+or f = vh0 or f = \Gamma vh0 where 8t 2 [a; b]; h0(t) = h(\Gamma t)g:
+
+Clearly Hv ae Fv, and a straightforward argument shows that in fact Fv = co(Hv)sup. By an elementary argument (analogous to the proof of Theorem 4.6), one can also show that if f 2 Fv, then kconHv \Gamma  fksup = O(1=n).
+
+At this point, it is natural to ask what is the class of functions that can be uniformly approximated by neural nets with Heaviside activations, that is, what is the closure of the linear span (not the convex hull) of the maps from Hv (which is the same for all v of course). This is a classical question; see for instance (Dieudonn'e 1960, VII.6): the closure is the set of all regulated functions, that is, the set of functions f : [a; b] ! R for which limx!x\Gamma 
+
+0 f(x) and limx!x
+
++ 0 f(x)exist for all x
+
+0 2 [a; b) and x0 2 (a; b], respectively. Thus, by constraining target functions to the convex closure of Hv instead of the span, we are losing the ability
+
+to approximate those regulated functions that are not of bounded variation.
+
+In the multivariable case, that is, f : K ! IR with K a compact subset of IRn, the situation is far less clear. If f has "bounded variation with respect to half-spaces" (i.e., is in the convex hull of the set of all half spaces (Barron 1992)), and in particular if f admits a Fourier representation
+
+f(x) = Z
+
+IRn e
+
+ih!;xi ~f (!)d!
+
+with Z
+
+IRn k!kj
+
+~f (!)jd! ! 1;
+
+then by (Barron 1992) there are approximations with rate O(1=pn) (since f is in the convex hull of the Heavisides). But the precise analog of regulated functions is less obvious. One might expect that piecewise constant functions can be uniformly approximated, for instance, at least if defined on polyhedral partitions, but this is false.
+
+Rates of Convex Approximation 29
+
+For a counterexample, let f be the characteristic function of the square [\Gamma 1; 1]2 in IR2, and let K be, for instance, a disc of radius 2 centered on (0; 0). Then it is impossible to approximate f to within error 1=8 by a one hidden-layer neural net, that is, a linear combination of terms of the form H(hw; xi + b), with w 2 IR2 and b 2 IR. (Constant terms on K can be included, without loss of generality, by choosing b appropriately.) This is proved as follows. If there would exist a function g of this form, that approximates to within 1=8, then close to the boundary of the disc its values are in the range (\Gamma 1=8; 1=8), and near the center of the square it has values ? 7=8. Moreover, everywhere the values of g are in (\Gamma 1=8; 1=8) S(7=8; +1). Now, the function 4g \Gamma  (1=2) is again in the same span, and it now has values in (\Gamma 1; 0) and (3; +1) in the same regions. This contradicts (Sontag 1992, Prop. 3.8). (Of course, one can also prove this directly.)
+
+B. Properties of the Modulus of Smoothness In this section we collect some inequalities related to power type estimates of the modulus of smoothness. In particular, the first lemma shows that Lp spaces are of power type t = min(p; 2). (See Corollary 3.6 and Theorem 3.7.)
+
+Lemma B.1. If X = Lp, 1 ^ p ! 1, then the modulus of smoothness ae(u)
+
+satisfies
+
+ae(u) ^ ae u
+
+p=p if 1 ^ p ^ 2
+
+(p \Gamma  1)u2=2 if 2 ^ p ! 1(B.30)
+
+for all u * 0. Proof. From the definition of the modulus of smoothness we have
+
+2(ae(u) + 1) = supfkf + gk + kf \Gamma  gk j kfk = 1; kgk = ug
+
+^ 21=q supf(kf + gkp + kf \Gamma  gkp)1=p j kfk = 1; kgk = ug;(B.31) where q = p=(p \Gamma  1). The inequality follows from the concavity of the function t ! t1=p. Next we make use of some inequalities given by Hanner (1956):
+
+(kfk + kgk)p + j kfk \Gamma  kgk jp ^ kf + gkp + kf \Gamma  gkp(B.32) ^
+
+2(kfkp + kgkp);
+
+for 1 ! p ^ 2. The inequalities hold in the reverse sense if 2 ^ p ! 1. (The second inequality above is actually due to Clarkson (1936).) Combining this with (B.31) yields
+
+ae(u) ^ 8!:
+
+(1 + up)1=p \Gamma  1 if 1 ^ p ^ 2^
+
+(1 + u)p + j1 \Gamma  ujp
+
+2 *
+
+1=p \Gamma 
+
+1 if 2 ^ p ! 1(B.33)
+
+This result is cited in (Lindenstrauss 1963). It is possible to use the methods in (Hanner 1956) to show that the above bounds on ae(u) are tight.
+
+30 Donahue, Gurvits, Darken, and Sontag
+
+For 1 ! p ^ 2, (B.30) now follows immediately. For p * 2 and 0 ^ u ^ 1 a Taylor series expansion shows`
+
+(1 + u)p + (1 \Gamma  u)p
+
+2 '
+
+1=p ^ p \Gamma  1
+
+2 u
+
+2 + 1;(B.34)
+
+which proves (B.30) for 2 ^ p ! 1 and 0 ^ u ^ 1. For u ? 1, divide by u and use (B.34) again:`
+
+(u + 1)p + (u \Gamma  1)p
+
+2 '
+
+1=p
+
+= u ` (1 + 1=u)
+
+p + (1 \Gamma  1=u)p
+
+2 '
+
+1=p
+
+^ u + p \Gamma  12u ^ p \Gamma  12 u2 + 1; for 2 ^ p ! 1 and u ? 1. ut
+
+For completeness we note the following result, the proof of which is left to the reader.
+
+Theorem B.2. Let X be a Banach space. The modulus of smoothness for X
+
+satisfies
+
+ae(u) ^ u for all u * 0.(B.35) Furthermore, if X is L1 or L1 with dimension at least 2, then
+
+ae(u) = u for all u * 0.(B.36) The following technical lemma uses an inequality of Lindenstrauss to provide several lower bounds on fl as a function of t for spaces with modulus of smoothness ae(u) ^ flut. These are needed in Theorem 3.5.
+
+Lemma B.3. Let X be a Banach space with modulus of smoothness ae(u) satisfying ae(u) ^ flut for all u * 0. Then 1 ^ t ^ 2 and
+
+flt * ae [(2 \Gamma  t)t]
+
+1\Gamma t=2 (t \Gamma  1)t\Gamma 1 if 1 ! t ! 2
+
+1 if t = 1 or t = 2.(B.37)
+
+Moreover, for all t 2 [1; 2],
+
+fl * p2 \Gamma  1;(B.38) fl * 3\Gamma t=2;(B.39) fl * 2t\Gamma 1=5t=2;(B.40)
+
+fl ? 1t e\Gamma 3=2e:(B.41)
+
+Rates of Convex Approximation 31 Proof. Lindenstrauss (1963) givesp
+
+1 + u2 \Gamma  1 ^ ae(u) ^ flut for all u * 0.(B.42) Letting u ! 1 shows that t * 1, and if t = 1 then fl * 1. Furthermore,
+
+flut * p1 + u2 \Gamma  1 * u
+
+2
+
+2 + u2 ; so letting u # 0 proves that t ^ 2 and if t = 2 then fl * 1=2.
+
+Therefore t satisfies 1 ^ t ^ 2, and inequalities (B.37) through (B.41) hold if t = 1 or t = 2. Next assume 1 ! t ! 2, and rewrite (B.42) as
+
+fl * p1 + u
+
+2 \Gamma  1
+
+ut for all u * 0.
+
+In particular, this inequality holds if we replace u with p(2 \Gamma  t)t=(t \Gamma  1), which gives
+
+fl * (2 \Gamma  t)
+
+1\Gamma t=2(t \Gamma  1)t\Gamma 1
+
+tt=2 :(B.43) This completes the proof of (B.37).
+
+Inequality (B.38) follows from (B.42) by setting u = 1. Using u = p3 provides (B.39), and (B.40) is obtained with u = p5=2.
+
+To prove (B.41), place the inequality xx * e\Gamma 1=e into (B.43) to obtain
+
+fl * t\Gamma t=2e\Gamma 1=2ee\Gamma 1=e: Then use 1 ! t ! 2 to complete the proof. ut These estimates are compared in Figure 2. Lemma B.4. Let ae(u) be the modulus of smoothness of a Banach space, and
+
+assume that ae(u) ^ flut for all u * 0 (t 2 [1; 2] is fixed). Then
+
+1 + 1(2fl)1=t ! `5t \Gamma  12 '
+
+1=t
+
+:(B.44)
+
+Proof. Define h(t) to be the right-hand side of (B.44). Then the derivative of
+
+h(t) has the same sign as
+
+5t \Gamma  1
+
+2 `1 \Gamma  log `
+
+5t \Gamma  1
+
+2 '' +
+
+1 2 :(B.45)
+
+But (B.45) is decreasing in t for t ? 3=5, so h0(t) = 0 for at most one point t0 2 [1; 2] (in fact t0 ss 1:4724), which would be a local maximum for h. In particular, for any subinterval [t1; t2] ae [1; 2], it must be that
+
+h(t) * min (h(t1); h(t2)) for all t 2 [t1; t2].
+
+32 Donahue, Gurvits, Darken, and Sontag
+
+1
+
+t e
+
+\Gamma 3=2e
+
+2t
+
+\Gamma 1=5t=2
+
+3
+
+\Gamma t=2
+
+p2 \Gamma  1 1
+
+t [(2 \Gamma  t)t]
+
+1\Gamma t=2(t \Gamma  1)t\Gamma 1
+
+2.01.81.61.41.21.0 1.0 0.8 0.6 0.4 0.2 0.0 Fig. 2. Comparison of lower bound estimates on fl (from Lemma B.3) as a function of t. For our purposes we divide the interval [1; 2] into two subintervals: [1; 5=4] and [5=4; 2]. Evaluating h at the endpoints yields
+
+h(1) = 2 h(5=4) = (21=8)4=5 ? 2:16
+
+h(2) = 3=p2 ? 2:12:
+
+Therefore h(t) * 2 for t 2 [1; 5=4], and h(t) * 2:12 for t 2 [5=4; 2].
+
+To obtain the corresponding upper bounds on the left-hand side of (B.44), apply (B.39) for t 2 [1; 5=4], and (B.40) for t 2 [5=4; 2]. ut
+
+C. A Sequence Inequality The following lemma may be viewed as pertaining to a discrete analogue of the differential equation y0 = y1\Gamma t, the general solution of which is y(x) = (tx+C)1=t. It can be used to provide bounds on the convergence rate of sequences having incremental changes compatible with the estimates from Lemma 3.3, with which it is combined to produce Theorems 3.5 and 3.7.
+
+Lemma C.1. Let (an) be a nonnegative sequence satisfying
+
+an+1 ^ an + min `32 ; 1at\Gamma 1
+
+n '(C.46)
+
+Rates of Convex Approximation 33 for all n, where 1 ^ t ^ 2. If
+
+an ^ `tn + t \Gamma  12 log2 n'
+
+1=t (C.47)
+
+is satisfied for some n * 2, or for n = 1 with a1 * 1, then it is satisfied for all n0 ? n as well.
+
+Proof. Let us take bn := tn + (1=2)(t \Gamma  1) log2 n, assume that an ^ b1=tn , and
+
+proceed by induction, i.e., show that an+1 ^ b1=tn+1.
+
+Suppose first that an ! 1 and n * 2. Then
+
+b1=tn+1 * b1=t3 * (6 + (1=2) log2 3)1=2 ? 5=2: The second inequality holds because the function t 7! (3t + (1=2)(t \Gamma  1) log2 3)1=t is decreasing in t for t 2 [1; 2], and so attains its minimum at t = 2. But then
+
+an+1 ^ an + 3=2 ! 5=2 ! b1=tn+1; as desired.
+
+Alternatively, suppose that an * 1. Then since the function x 7! x(1 + 1=xt) is nondecreasing for x * 1, we have
+
+an+1 ^ an(1 + 1=atn) ^ b1=tn (1 + 1=bn)
+
+^ b1=tn ^1 + tb
+
+n +
+
+t(t \Gamma  1)
+
+2b2n *
+
+1=t
+
+^ ^t(n + 1) + t \Gamma  12 log2(n + 1) + t \Gamma  12n \Gamma  t \Gamma  12 log2(1 + 1=n)*
+
+1=t
+
+:
+
+The third inequality above follows from a Taylor series expansion of (1 + 1=bn)t. Combining this with the definition of bn+1 and the fact that log2(1 + 1=n) * 1=n for n * 1 yields
+
+an+1 ^ b1=tn+1; concluding the proof. ut
+
+D. An Example of a Smooth Banach Space with Non-Converging
+
+ffl-Greedy Sequences
+
+In Sect. 3.1 it was shown that ffl-greedy sequences in uniformly smooth spaces always converge (provided P fflk ! 1), and that smoothness is necessary and sufficient for monotonically decreasing error in incremental approximants. We now construct an example showing that simple smoothness is insufficient to guarantee convergence of ffl-greedy sequences.
+
+34 Donahue, Gurvits, Darken, and Sontag
+
+Let a = (a(n)) be a sequence of real numbers. Define the sequence of functions (Fn) (the norm sequence) from IRIN to IR+ [ f0g recursively by
+
+F1(a) = ja(1)j
+
+Fn(a) = [(Fn\Gamma 1(a))pn + ja(n)jpn]1=p
+
+n ;
+
+where (pn) is a fixed sequence (called the norm power sequence) with 1 ^ pn ! 1 for all n.
+
+Note that for each a, Fn(a) is nondecreasing with n. Define
+
+X(pn) := aea 2 IRIN j sup
+
+n Fn(a) ! 1oe ;(D.48)
+
+and for a 2 X(pn) k
+
+ak := F (a) := limn!1 Fn(a):(D.49)
+
+The reader may verify that X(pn) equipped with the norm (D.49) is a Banach space. (This space is similar to the modular sequence spaces studied in (Woo 1973).) If (pn) is bounded and pn ? 1 for all n, then it can be shown that X(pn) is smooth. Let us use the notation en 2 X(pn) to denote the canonical basis element en(k) = ffin(k). (Note that kenk = 1 for all n independent of (pn).)
+
+PropositionD.1. Let (fln) be a strictly decreasing sequence converging to 1.
+
+Then there exists a norm power sequence (pn) that is non-increasing, converges to 1, and has pn ? 1 for all n, such that the bounded set S = f\Gamma fl1e1g [f
+
+flnengn2IN in X(pn) admits for each incremental schedule (ffln) an incremental sequence (an) ae coS that is ffl-greedy with respect to 0 but does not converge. (Note that 0 2 coS.)
+
+Proof. X(pn) is determined by its power sequence (pn). Choose p1 ? 1 arbitrarily, and recursively select pn 2 (1; pn\Gamma 1] to satisfy
+
+inf0^*^1 [(1 \Gamma  *)fln\Gamma 1]pn + (*fln)pn ? 1:(D.50)
+
+This can always be done because the inequality holds for pn = 1 and so by continuity in pn holds also for all pn sufficiently close to 1.
+
+Now let (fflk) be a fixed incremental schedule. We build an ffl-greedy (with respect to 0) sequence (ak) ae S ae coS as follows. Let a1 = fln1en1 be any ffl1- greedy element of S with n1 ? 1 (i.e., fln1 ! minf1 + ffl1; fl1g). Assuming that ak\Gamma 1 = flnk
+
+\Gamma 1 enk\Gamma 1 with nk\Gamma 1 ? 1, we will show that we can pick ak = flnkenkwith n
+
+k ? nk\Gamma 1 to be fflk-greedy. Indeed, suppose that
+
+bk = (1 \Gamma  *)ak\Gamma 1 + *gk is an fflk-greedy step, where gk 2 S. It follows from (D.50) and the monotonicity of fln that kbkk ? 1, so we can pick nk ? nk\Gamma 1 such thatk
+
+bkk ? flnk = kflnkenkk: Therefore, taking ak = flnkenk yields an fflk-greedy increment.
+
+We define the sequence (ak) recursively in this manner to complete the construction. ut
+
+Rates of Convex Approximation 35
+
+References Banach, S., and S. Saks (1930) Sur la convergence forte dans les champs LP , Studia Math.,
+
+2:51-57. Barron, A. R. (1991) Approximation and estimation bounds for artificial neural networks, in
+
+Proc. Fourth Annual Workshop on Computational Learning Theory, Morgan Kaufmann, 243-249. Barron, A. R. (1992) Neural net approximation, in Proc. of the Seventh Yale Workshop on
+
+Adaptive and Learning Systems, 69-72. Bessaga, C., and A. Pelczynski (1958) A generalization of results of R. C. James concerning
+
+absolute bases in Banach spaces, Studia Math., 17:151-164. Clarkson, J. A. (1936) Uniformly convex spaces, Trans. Amer. Math. Soc., 40:396-414. Darken, C., M. Donahue, L. Gurvits, and E. Sontag (1993) Rate of approximation results motivated by robust neural network learning, in Proc. of the Sixth Annual ACM Conference on Computational Learning Theory, The Association for Computing Machinery, New York, N.Y. 303-309. Deville, R., G. Godefroy, and V. Zizler (1993) Smoothness and Renormings in Banach Spaces.
+
+Wiley, N.Y.. Dieudonn'e, J. (1960) Foundations of Modern Analysis. Academic Press, N.Y.. Figiel, T. and G. Pisier (1974) S'eries al'eatoires dans les espaces uniform'ement convexes ou
+
+uniform'ement lisses, C. R. Acad. Sci. Paris, 279, S'erie A:611-614. Gowers, W. T., A Banach space not containing c0, l1, or a reflexive subspace. Preprint. Haagerup, U. (1982) The best constants in the Khintchine inequality, Studia Math., 70:231-
+
+283. Hanner, O. (1956) On the uniform convexity of Lp and `p, Arkiv f"or Matematik, 3:239-244. Hanson, S. J. and D. J. Burr (1988) Minkowski-r back-propagation: learning in connectionist
+
+models with non-Euclidean error signals, in Neural Information Processing Systems, American Institute of Physics, New York, 348. James, R. C. (1978) Nonreflexive spaces of type 2, Israel J. Math., 30 :1-13. Jones, L. K. (1992) A simple lemma on greedy approximation in Hilbert space and convergence
+
+rates for projection pursuit regression and neural network training, Annals of Statistics, 20:608-613. Kakutani, S. (1938) Weak convergence in uniformly convex spaces, T^ohoku Math. J., 45:188-
+
+193. Khintchine, J. (1923) "Uber die diadischen Br"uche. Math. Z., 18:109-116. Ledoux, M. and M. Talagrand (1991) Probability in Banach Space. Springer-Verlag, Berlin. Leshno, M., V. Lin, A. Pinkus, and S. Schocken (1992) Multilayer feedforward networks with
+
+a non-polynomial activation function can approximate any function. Preprint. Hebrew University. Lindenstrauss, J. (1963) On the modulus of smoothness and divergent series in Banach spaces,
+
+The Michigan Math. J., 10:241-252. Lindenstrauss, J. and L. Tzafriri (1979) Classical Banach Spaces II: Function Spaces. SpringerVerlag, Berlin. Powell, M. J. D. (1981) Approximation theory and methods. Cambridge University Press,
+
+Cambridge. Rey, W. J. (1983) Introduction to Robust and Quasi-Robust Statistical Methods. SpringerVerlag, Berlin. Rosenthal, H. (1974) A characterization of Banach spaces containing l1, Proc. Nat. Acad. Sci.
+
+(USA), 71:2411-2413. Rosenthal, H. (1994) A subsequence principle characterizing Banach spaces containing c0, Bull.
+
+Amer. Math. Soc., 30:227-233. Sontag, E. D. (1992) Feedback stabilization using two-hidden-layer nets, IEEE Trans. Neural
+
+Networks, 3:981-990. Stromberg, K. R. (1981) An Introduction to Classical Real Analysis. Wadsworth, New York. Woo, J. Y. T. (1973) On modular sequence spaces, Studia Math., 48:271-289.
+
+36 Donahue, Gurvits, Darken, and Sontag Michael J. Donahue Institute for Mathematics and its Applications University of Minnesota Minneapolis, MN 55455
+
+Leonid Gurvits Learning Systems Department Siemens Corporate Research, Inc. 755 College Road East Princeton, NJ 08540
+
+Christian Darken Learning Systems Department Siemens Corporate Research, Inc. 755 College Road East Princeton, NJ 08540
+
+Eduardo Sontag Department of Mathematics Rutgers University New Brunswick, NJ 08903
+
+This article was processed using the LATEX macro package with CAP style</pre>
+</body>
+</html>

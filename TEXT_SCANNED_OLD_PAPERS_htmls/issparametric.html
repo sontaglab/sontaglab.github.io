@@ -1,0 +1,902 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/issparametric.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/issparametric.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Input to State Stabilizability for Parameterized Families of Systems
+
+Yuandan Lin1 Department of Mathematics
+
+Florida Atlantic University Boca Raton, FL 33431, USA
+
+Email: lin@acc.fau.edu Phone: +1 (407) 367-2483, Fax: +1 (407) 367-2436
+
+Eduardo D. Sontag1 Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903, USA
+
+Email: sontag@hilbert.rutgers.edu Phone: +1 (908) 932-3072, Fax: +1 (908) 932-5530
+
+Yuan Wang2 Department of Mathematics
+
+Florida Atlantic University Boca Raton, FL 33431, USA
+
+Email: y wang@acc.fau.edu Phone: +1 (407) 367-3317, Fax: +1 (407) 367-2436
+
+Key Words: Nonlinear stability, Robust control, Stabilization with respect to sets,
+
+Bounded-input/bounded-state, Lyapunov function techniques
+
+1This research was supported in part by US Air Force Grant AFOSR-91-0346. 2This research was supported in part by NSF Grant DMS-9108250.
+
+1
+
+Abstract This paper studies various stability issues for parameterized families of systems, including problems of stabilization with respect to sets. The study of such families is motivated by robust control applications. A Lyapunov-theoretic necessary and sufficient characterization is obtained for a natural notion of robust uniform set stability; this characterization allows replacing ad hoc conditions found in the literature by more conceptual stability notions. We then use these techniques to establish a result linking state space stability to "input to state" (bounded-input bounded-state) stability. In addition, the preservation of stabilizability under certain types of cascade interconnections is analyzed.
+
+2
+
+1 Introduction Questions of stability for parameterized families of nonlinear systems have long attracted much research attention; see for instance [5], [4] and [2], and the references there. In this paper, we show how to characterize uniform stability precisely in terms of Lyapunov functions, and, moreover, how to do so when stability with respect to an invariant subset is of interest. (Our notion of robust uniform set stability for parameterized systems reduces to the one routinely used in the control literature when the set of interest is just an equilibrium.) A necessary and sufficient characterization is obtained, which allows replacing ad hoc conditions often found in the literature by more conceptual stability notions. A basic tool is provided by the converse Lyapunov theorem established in [8].
+
+In operator-theoretic studies of systems, the central interest is usually on a notion of "input to state" stability (ISS) defined in terms of finiteness of gains (operator norms). As shown in [12], and since explored by many other authors, a more natural notion for nonlinear systems is one in which the size of the state must satisfy a nonlinear estimate in terms of the initial state and the size of the control. In that reference, it was shown that, with this notion, a system is stabilizable with respect to an equilibrium if and only if it is input/state stabilizable. In [8], this result was generalized to stability and ISS with respect to sets, using the above-mentioned converse theorem. Here, we show how these results can be extended to deal with families of systems (and stability with respect to sets). The extension is fairly straightforward, but it is complicated by the fact that the Lyapunov function then depends on the parameters, which is not desirable in robust control applications. Thus we have to work harder in order to provide sufficient conditions under which a more uniform function exists.
+
+One application of our techniques is in the study of the preservation of stability under cascades with integrators. This is the critical ingredient in the "backstepping technique" currently popular; see for instance the textbook [13], Section 4.8, and references there for stabilization, and [7] for many other issues. It is a natural extension of these studies to investigate the same question for parameterized families. Here the uncertainty caused by the presence of unknown parameters makes the problem far harder, and results for systems without parameters cannot be generalized in a straightforward manner to families. When studying stabilizability for parameterized nonlinear systems, much work classically imposed restrictive "matching conditions" on uncertainties; see e.g. [1], [4] and [5]. In later work, such as for instance [2], [11], [14] and [3], conditions were dropped and various local results were obtained. In the recent paper [6], Imura, Sugie, and Yoshikawa were able to give a general theorem on preservation of stability under cascades, for parametric familes under no matching conditions. In the last section of our paper, we show how to apply our approach to generalize their result in various ways, especially relaxing their exponential stability conditions.
+
+2 Stability of Parameterized Systems (no Controls) We start by giving a number of definitions that apply to parameterized families, first for systems with no controls and later with controls. These definitions apply in particular to systems that do not depend on parameters, of course. Some important facts and basic concepts about set stability for nonlinear systems without parameters are needed throughout the paper; we refer the reader to the Appendix and [8] for these. In particular, the concepts of K1, KL andK
+
+-functions, needed in the next definition, are recalled in the Appendix.
+
+3
+
+Consider a parameterized family of systems of the following type:
+
+.x = f (x; _) ; (1) where the state x(t) 2 IRn for all t, the parameter _ 2 IRl, and f is a smooth map from IRn+l to IRn. In particular, for each fixed _, f (\Delta ; _) is a smooth vector field on IRn. Here we assume that for each fixed parameter _, the system (1) is complete and we use x_(t; x0) to denote the solution at time t 2 IR of (1), with initial state x(0) = x0 and parameter value _. A system with no parameters is one in which f is independent of _.
+
+We say that a closed (not necessarily compact) subset A of IRn is an invariant set of (1) if it is an invariant set of .x = f (x; _) for each fixed _. Throughout this work we assume that the following property holds for A:
+
+sup x2IRnfjxjAg = 1 ;
+
+where jxjA denotes the standard point-to-set distance, i.e.,
+
+jxjA def= d(x; A) = infz2A d(x; z) : Note that when A = f0g, jxjA = jxj is the usual Euclidean norm. Definition 2.1 Let A be a closed invariant set of (1). We say that (1) is robustly uniformly globally asymptotically stable (RUGAS) with respect to the set A if the following properties hold:
+
+1. Robust Uniform Stability. There exists a K1-function ffi(\Delta ) such that for any " ? 0 given,
+
+jx_(t; x0)jA ! " for all _; all t * 0; provided jx0jA ! ffi("). 2. Robust Uniform Attraction. For any r; " ? 0, there exists an T ? 0, such that
+
+jx_(t; x0)jA ! " for all _; whenever jx0jA ! r and t * T . 2 For systems with no parameters, we simply say that the system is "uniformly globally asymptotically stable" (UGAS) with respect to the set A. 2
+
+When A consists just of an equilibrium point, UGAS reduces to the usual notion of global asymptotic stability.
+
+One can study the stability of a parameterized family of systems by studying the stability of the following augmented system (with no parameters):
+
+.x = f (x; _) ; ._ = 0; (2) in which both x and _ are treated as states. To make notations simpler, we use (x; _) to denote the column vector ` x_ ', and similarly, use (f; 0) to denote ` f0 '. Let z = (x; _); F = (f; 0); then the above system can be written as
+
+.z = F (z) : (3)
+
+4
+
+Note that system (1) is RUGAS with respect to A if and only if system (3) is UGAS with respect to A\Theta IRl. Consequently, the stability of a parameterized family of systems with respect to an equilibrium x0 is equivalent to the stability of its augmented system with respect to the invariant set fx0g \Theta  IRl.
+
+The following characterization of the RUGAS property follows from Property A.1 in the Appendix:
+
+Proposition 2.2 The system (1) is RUGAS with respect to a closed, invariant set A ` IRn if and only if there exists a KL-function fi such that, given any initial state x0, the solution x_(t; x0) satisfies j
+
+x_(t; x0)jA ^ fi(jx0jA ; t)
+
+for all _ and all t * 0. 2
+
+It is well-known that Lyapunov functions provide a powerful tool for studying stabilizability of systems. We define Lyapunov functions for parameterized families of systems in the following way:
+
+Definition 2.3 Let A be a nonempty, closed, invariant set of (1). A smooth Lyapunov function for the parameterized family of systems (1) with respect to A is a smooth function V : IRn \Theta 
+
+IRl \Gamma ! IR satisfying, with the notation V_(,) def= V (,; _):
+
+1. there exist two K1-functions ff1 and ff2 such that
+
+ff1(j,jA) ^ V_(,) ^ ff2(j,jA); for any _ 2 IRl and any , 2 IRn; 2. there exists a continuous, positive definite function ff3 such that
+
+@V_
+
+@x f (,; _) ^ \Gamma ff3(j,jA) :
+
+2
+
+For A = f0g, Lyapunov functions for parameterized families as in the above definition are routinely assumed in robust control studies; see for instance [5], [4] and [2]. Applying Theorem 3 in the Appendix for the augmented system (3) for families of systems (1), one obtains the following result:
+
+Theorem 1 A parameterized family of systems (1) is RUGAS with respect to a nonempty, closed, invariant set A if and only if it admits a smooth Lyapunov function V with respect toA
+
+.
+
+Remark 2.4 Note that we made the blanket assumption that the system is complete. This property is needed in the technical proof of the converse Lyapunov theorem given in [8]. However, this assumption turns out to be superfluous in the case in which the closed invariant setA
+
+is compact. This can be shown by the following argument:
+
+First observe that, for any given smooth (in fact, just continuous) map f (x; _), there exist two smooth scalar functions a(x) and b(_) such that a(x) * 1, b(_) * 1, and jf (x; _)j ^ a(x)b(_) for all x 2 IRn and _ 2 IRl. The existence of a(x) and b(_) follows from the following argument:
+
+5
+
+For each integer i, let Ci = fx 2 IRn : jxj ^ ig and let Di = f_ 2 IRl : j_j ^ ig. Let
+
+ci = maxf1; sup
+
+(x;_)2Ci\Theta Di jf (x; _)jg:
+
+Then it holds that j
+
+f (x; _)j ^ cicj; 8 (x; _) 2 Ci \Theta  Dj : (4)
+
+Let oei(x) be a nonnegative smooth function such that oei(x) = 1 if x 2 Ci n Ci\Gamma 1, and oei(x) = 0 if x 62 Ci+1 or x 2 Ci\Gamma 2, where Ci = ; if i ^ 0. Let
+
+a(x) = 1X
+
+i=0
+
+cioei(x):
+
+Then a(x) * ci if x 2 Ci n Ci\Gamma 1. Similarly, there exists a nonnegative smooth function b(_) such that b(_) * cj if _ 2 Dj n Dj\Gamma 1. For any (x; _) 2 IRn \Theta  IRl, there exist i and j such that x 2 Ci n Ci\Gamma 1 and _ 2 Dj n Dj\Gamma 1. From (4), it follows that
+
+jf (x; _)j ^ cicj ^ a(x)b(_): Hence, a(x) and b(_) are the desired functions.
+
+Now, to system (1), we associate the following system:
+
+.x = 1a(x) f (x; _): (5) Because the right-hand side is bounded in norm on x, for each fixed _ (by b(_)), the system (5) is complete, i.e., x_(t; x0) is defined for all t 2 IR for every fixed parameter _. Furthermore, it can be shown (see [10]) that if (1) is RUGAS then so is (5). It then follows from Theorem 1 that there exists a Lyapunov function V for (5). Noting that a(x) * 1, one can show that V is also a Lyapunov function for the orginal system (1). 2
+
+When dealing with families of parameterized control systems, it is usually desirable to obtain a Lyapunov function which is independent of the parameter _. However, as illustrated in the following example, it is in general impossible to find a Lyapunov function which is independent of _, even for a RUGAS family with parameters in a compact set. The example is motivated by an example in [13] (see p. 170).
+
+Example 2.5 Consider the two dimensional parameterized family of systems:
+
+.x = A(_)x; x 2 IR2; _ 2 [0; 2ss] ; (6) where for each _ 2 [0; 2ss] ,
+
+A(_) = ` \Gamma  sin
+
+2 _ 1 \Gamma  sin _ cos _\Gamma 
+
+1 \Gamma  sin _ cos _ \Gamma  cos2 _ ' :
+
+The system is RUGAS for _ 2 [0; 2ss]. This can be shown as follows. First of all, for each _, the eigenvalues of A(_) are (\Gamma 1 \Gamma  p3j)=2 and (\Gamma 1 + p3j)=2, where j = p\Gamma 1, and moreover, one can show that for _ 2 [0; 2ss],
+
+A(_) = T (_)  \Gamma 
+
+1\Gamma p3j
+
+2 0
+
+0 \Gamma 1+p3j2 ! T
+
+\Gamma 1(_) ;
+
+6
+
+where
+
+T (_) = 0@
+
+1 1 e
+
+4ss
+
+3 j + sin2 _
+
+1 \Gamma  sin _ cos _
+
+e
+
+2ss
+
+3 j + sin2 _
+
+1 \Gamma  sin _ cos _
+
+1A
+
+;
+
+and
+
+T \Gamma 1(_) = 1 \Gamma  sin _ cos _p3j 0BBB@
+
+e
+
+2ss
+
+3 j + sin2 _
+
+1 \Gamma  sin _ cos _ \Gamma 1
+
+\Gamma  e
+
+4ss
+
+3 j + sin2 _
+
+1 \Gamma  sin _ cos _ 1
+
+1CCC A : It follows immediately that
+
+eA(_)t = T (_)  e\Gamma 
+
+1+p3j
+
+2 t 0
+
+0 e\Gamma 
+
+1\Gamma p3j
+
+2 t ! T \Gamma 
+
+1(_) ; for all t :
+
+It is not hard to see that there exist L1 and L2 such that kT (_)k ^ L1 and flflT \Gamma 1(_)flfl ^ L2 for all _, therefore, flflfl
+
+eA(_)tflflfl ^ kT (_)k flflflT \Gamma 1(_)flflfl e\Gamma 
+
+1 2 t ^ Le\Gamma 
+
+1
+
+2 t ; for all t ? 0 ;
+
+where L = L1L2. From here one sees clearly that system (6) is RUGAS for _ 2 [0; 2ss]. However, we have the following conclusion:
+
+There is no Lyapunov function for system (6) which is independent of _. Proof: Assume that there would be a Lyapunov function V for (6) which does not depend on _. Then there would exist some K1-functions ffi with ffi(x) ? 0 for i = 1; 2 and continuous, positive definite function ff3 such that
+
+ff1(jxj) ^ V (x) ^ ff2(jxj); 8x ; and @V
+
+@x A(_)x ^ \Gamma ff3(jxj) ; for all x and for all _ 2 [0; 2ss] : (7) Now we let u : IR ! [0; 2ss] be defined by
+
+u(t) = t (mod 2ss) : (8) Then V would also be a Lyapunov function for the time varing system
+
+.x = A(u(t))x(t) ; (9) because (7) would still be true when _ is replaced by u(t). This would imply that system (9) is uniformly globally asymptotically stable. This is, however, impossible since with u(t) defined by (8),
+
+x1(t) = \Gamma  cos t; x2(t) = sin t
+
+is a solution of (9). By contradiction, we have shown that there is no Lyapunov function for (6) which is independent of _. 2
+
+7
+
+3 Input/State Stabilizability of Parameterized Systems In this section, we consider the question of input/state stabilizability for parameterized systems, with an emphasis on compact subsets of parameters.
+
+Consider the following parameterized family of control systems:
+
+.x = f (x; u; _) ; _ 2 IRl; (10) where f is a smooth map from IRn \Theta  IRm \Theta  IRl to IRn. We use x_(t; x0; u) to denote solutions when the parameter _ is used.
+
+Let \Omega  be a subset of IRl. We say that a system is smoothly robustly stabilizable with respect to a closed set A and all _ 2 \Omega  if there exist a smooth function k(x) and a KL-function fi, both of which are independent of _, such that every solution of
+
+.x = f (x; k(x); _) ; is defined for all t 2 IR, and it holds that
+
+jx_(t; x0)jA ^ fi(jx0jA ; t) ; 8 t * 0 ; 8 _ 2 \Omega  : When \Omega  = IRl, this is the same as the concept introduced in Definition 2.1 (cf. Proposition 2.2), for the system obtained by using the feedback u = k(x).
+
+A system is robustly-input/state stable (RISS) with respect to a closed set A and all _ 2 \Omega  if there exist a KL-function fi and a K-function fl, such that for all _ 2 \Omega , all essentially bounded controls u, and all initial states x0, the solution x_(t; x0; _) is defined for all t * 0 and the following estimate holds
+
+jx_(t; x0; u)jA ^ fi(jx0jA ; t) + fl(kuk) for all t * 0.
+
+For systems with no parameters, we simply say "globally input/state stable" (ISS).
+
+Remark 3.1 Because of causality, the ISS property is equivalent to the one that would result if we would only require the estimate to be
+
+jx(t; x0; u)jA ^ fi(jx0jA ; t) + fl(kvtk) ; (11) for any locally essentialy bounded function u, where vt is the truncation of u at time t:
+
+vt(o/ ) def= ( u(o/ ) ; if 0 ^ o/ ^ t ;0 ; if o/ ? t :
+
+2 A system is smoothly robustly-input/state stabilizable with respect to A and all _ 2 \Omega  if there exist a smooth map k : IRn \Gamma ! IRm and an m \Theta  m matrix \Gamma  of smooth functions defined on IRn, invertible everywhere, such that the system
+
+.x = f (x; k(x) + \Gamma (x)v; _) is RISS with respect to A for _ 2 \Omega 
+
+8
+
+Definition 3.2 A smooth function V : IRn \Theta  IRl \Gamma ! IR is said to be an ISS-Lyapunov function for the system (10) and for the set \Omega  with respect to a closed set A if there exist some K1- functions ff1; ff2 and O/, and a continuous positive definite function ff3 such that, for all _ 2 \Omega , it holds that
+
+ff1(j,jA) ^ V (,; _) ^ ff2(j,jA) ; 8, 2 IRn ; (12)
+
+and @V (,; _)
+
+@, \Delta  f (,; u; _) ^ \Gamma ff3(j,jA) ; (13) whenever j
+
+,jA * O/(juj) : (14)
+
+The following result provides a sufficient condition for input/state stability in terms of the existence of ISS-Lyapunov functions. We say that control system (10) is forward complete if for each _ 2 \Omega , each locally essentially bounded control u, and each x0, the correponding trajectory x(t; x0; u) exists for all t * 0.
+
+Proposition 3.3 Assume that system (10) is forward complete and that it admits an ISSLyapunov function for _ 2 \Omega  with respect to a closed set A. Then, the system (10) is RISS with respect to A for _ 2 \Omega . 2
+
+Proof. For system (10), consider the following augmented system
+
+.x = f (x; u; _); ._ = 0 : (15) Let ^A denote the set A \Theta  \Omega . Clearly jzj ^A = jxjA, where z = (x; _)0. Note that V is an ISS Lyapunov function for (10) with respect to A if and only if V is an ISS Lyapunov function for (15) with respect to ^A. Applying Proposition A.2 to (15), one sees that the existence of the ISS Lyapunov function implies that the solutions of (15) satisfy
+
+jz(t)j ^A ^ fi(jz(0)j ^A) + fl(kuk) ; for some KL-function fi and some K function fl. It then follows that system (10) is ISS.
+
+Remark 3.4 Note that when the set A is compact, the existence of an ISS-Lyapunov function guarantees that the system is forward complete. Thus, in the case when A is compact, one can drop the forward completeness assumption. 2
+
+Assume now that u = k(x) robustly stabilizes system (10) for all _ 2 IRl with respect to a closed set A. Then by Theorem 1, one knows that there exists a smooth Lyapunov function
+
+V_(,) def= V (,; _) such that
+
+ff1(j,jA) ^ V_(,) ^ ff2(j,jA) and @V_(,)@, f (,; k(,); _) ^ \Gamma ff3(j,jA) ; for some K1-functions ff1; ff2 and some continuous positive definite function ff3.
+
+It then can be shown (see [8], [9]) that there exist some matrix \Gamma 0(,; _) and a K1-function O/ such that
+
+@V_
+
+@, f (,; k(,) + \Gamma 0(,; _)v; _) ^ \Gamma 
+
+ff3(j,jA)
+
+2 ;
+
+9
+
+for all _ whenever j,jA * O/(jvj). Moreover, for this \Gamma 0, the system
+
+.x = f (x; k(x) + \Gamma 0(x)v; _) is forward complete. In fact, it is shown in [8] and [9] that \Gamma 0 can be chosen as '0Im\Theta m for some smooth function '0 satisfying 0 ! '0(,; _) ^ 1 for all , and _. Now for any compact subset \Omega  of IRl, let
+
+'1(,) def= min_2\Omega  '0(,; _) :
+
+Then '1(,) is locally Lipschitz since '0(\Delta ; \Delta ) is a smooth function. Let '2 be a smooth function such that 1
+
+4'1(,) ^ '2(,) ^
+
+3 4'1(,) for all , (such a function always exists, see [8]). Let
+
+\Gamma  def= '2 Im\Theta m : Clearly \Gamma (,) is invertible everywhere, and
+
+@V_(,)
+
+@, f (,; k(,) + \Gamma (,)v; _) ^ \Gamma 
+
+ff3(j,jA)
+
+2 ; for _ 2 \Omega  ;
+
+whenever j,jA * O/(jvj). In other words, V is an ISS-Lyapunov function for the system
+
+.x = f (x; k(x) + \Gamma (x)v; _) (16) for _ 2 \Omega  with respect to A. Applying Lemma 3.3, we obtain the following conclusion which generalizes the results in [12] to set stability for parameterized systems.
+
+Theorem 2 Assume that the system (10) is smoothly robustly uniformly asymptotically stabilizable with respect to a closed set A for all values of _. Then for any compact subset \Omega  of IRl, the system (10) is smoothly robustly input/state stabilizable with respect to A for all _ 2 \Omega .
+
+Remark 3.5 In practice, it may be too stringent to require that a system be stabilizable for all values of _, as the given system may only be stabilizable for those values of _ lying in a fixed compact set \Omega . Thus an interesting question is: If one knows that a system is stabilizable for _ 2 \Omega , does it follow that the system is input/state stabilizable for _ 2 \Omega  with the same set \Omega ? In the above discussion, our approach required us to assume that the system is stable for all _. However, one may often be able to proceed as follows. Assume that there is a smooth map oe : IRr \Gamma ! IRl so that the image of oe is \Omega , and so that there is a compact subset \Lambda  ` IRr such that oe(\Lambda ) = \Omega . Now replace f (x; u; _) by f (x; u; oe(*)), and apply the above results to the system
+
+.x = f (x; u; oe(*))
+
+for * 2 \Lambda . One obtains input/state stabilizability for all values of *, or equivalently, the values of _ in \Omega . As an illustration, assume that one knows that the system .x = f (x; u; _) is stabilizable for _ 2 [0; 1]. Let oe(*) = sin2 *. Then the system .x = f (x; u; sin2 *) is stabilizable for all * 2 IR. Applying Theorem 2 to f (x; u; sin2 *) with the set [0; ss=2] for the parameter *, one concludes that the system is input/state stabilizable for all values of * in [0; ss=2], or equivalently, for all values of _ in [0; 1]. 2
+
+Remark 3.6 From Remarks 2.4 and 3.4, it follows that when A is compact, the completeness assumption is not needed in Theorem 2. 2
+
+10
+
+4 Adding an Integrator In this section, we study the stabilizability of the following type of parameterized cascade system:
+
+.x = f (x; z; _) (17)
+
+.z = u ; (18)
+
+where x(t) 2 IRn; z(t) 2 IRm, and f is a smooth map. Assume that f (0; 0; _) = 0 for all _. To study the stabilizability problem for the above system, let us first consider the following type of parameterized cascade system:
+
+.x = f (x; z; _) ; (19)
+
+.z = g(x; z; _) + u ; (20)
+
+where g : IRn \Theta  IRm \Theta  IRl \Gamma ! IRm is a smooth mapping with g(0; 0; _) = 0. Let g0(x; _) def= g(x; 0; _). Then g can be written as g0(x; _) + g1(x; z; _)z for some m \Theta  m matrix of smooth functions g1. Rewrite (20) as
+
+.z = g0(x; _) + g1(x; z; _) z + u : (21) For the above cascade parameterized system, we have the following conclusion: Lemma 4.1 Assume that the system (19) is UGAS with respect to the origin when z = 0 for all _, and admits an ISS-Lyapunov function V with ff1; ff2; ff3 and O/ as in Definition 3.2. Let \Omega  be a compact subset of IRl. Assume further that the function O/ is smooth, and it holds that
+
+max_2\Omega  jg0(x; _)j = O `qff3(jxj)' ; as jxj ! 0 : (22) Then the system (19)-(20) is smoothly robustly stabilizable with respect to the equilibrium (x; z) = (0; 0) for _ 2 \Omega .
+
+Proof. Let V be the ISS-Lyapunov function for (19) and ff1; ff2; ff3 and O/ be as in Definition 3.2, and define
+
+V1(x; z; _) = V (x; _) + jzj
+
+2
+
+2 : (23) Then along the trajectories of (19)-(20),
+
+.V1 = @V@x f (x; z; _) + z0u + z0g0(x; _) + z0g1(x; z; _)z : (24)
+
+Take a smooth function '1(x; z) satisfying
+
+'1(x; z) * max_2\Omega  kg1(x; z; _)k ;
+
+and let k1(x; z) def= \Gamma '1(x; z)z \Gamma  z; u def= u1 + k1(x; z). Then (24) implies that
+
+.V1 ^ @V@x f (x; z; _) \Gamma  jzj2 + z0u1 + z0g0(x; _) : (25)
+
+11
+
+Let '2 be a smooth function satisfying
+
+'2(x) * 1 + 1pff
+
+3(jxj) max_2\Omega  jg0(x; _)j : (26)
+
+Notice that such a function always exists because of condition (22). Now let
+
+k2(x; z) def= \Gamma '22(x)z ; and u1 def= k2(x; z) + u2 : Note that when jxj * O/(jzj), @V@x f (x; z; _) ^ \Gamma ff3(jxj), thus, (25) implies that when jxj * O/(jzj),
+
+.V1 ^ \Gamma ff3(jxj) \Gamma  jzj2 + z0u2 \Gamma  jzj2 '22(x) + z0g0(x; _)
+
+^ \Gamma  3ff3(jxj)4 \Gamma  jzj2 + z0u2 \Gamma   pff3(jxj)2 \Gamma  jg0(x; _)j jzjpff
+
+3(jxj) !
+
+2
+
+^ \Gamma  3ff3(jxj)4 \Gamma  jzj2 + z0u2 : (27) Now let us consider the case when jxj ^ O/(jzj). Using the smoothness of the functions O/, @V@x , f (x; z; _) and g0(x; _), one can rewrite the functions as follows:
+
+O/(r) = rO/0(r) ; @V@x (x; _) = x0W (x; _) ; and
+
+f (x; z; _) = f (x; 0; _) + F1(x; z; _)z ; g0(x; _) = G0(x; _)x ;
+
+where O/0 is a smooth function, and W (x; _) 2 IRn\Theta n; F1(x; z; _) 2 IRn\Theta m, and G0(x; _) 2 IRm\Theta n are matrices of smooth functions. With these notations, it follows from (25) that along the trajectories of (19)-(20),
+
+.V1 ^ @V@x f (x; z; _) \Gamma  jzj2 + z0u2 \Gamma  jzj2 '22(x) + z0g0(x; _)
+
+^ @V@x f (x; 0; _) + x0W (x; _)F1(x; z; _)z \Gamma  jzj2 + z0u2 + z0G0(x; _)x ^ \Gamma ff3(jxj) + jzj2 O/0(jzj) kW (x; _)F1(x; z; _)k \Gamma  jzj2
+
++ z0u2 + jzj2 kG0(x; _)k O/0(jzj) : (28) Finally, let '3 be a smooth function satisfying
+
+'3(x; z) * max_2\Omega  iO/0(jzj) kW (x; _)F1(x; z; _)k + O/0(jzj) kG0(x; _)k j ;
+
+and let
+
+u2 = k3(x; z) def= \Gamma '3(x; z)z : (29)
+
+Thus, for u = k(x; z) def= k1(x; z) + k2(x; z) + k3(x; z), it follows from (28) that whenj
+
+xj ^ O/(jzj), one has .
+
+V1 ^ \Gamma ff3(jxj) \Gamma  jzj2 : (30)
+
+12
+
+Notice that with u2 defined by (29), the last term in (27) is nonpositive. Combining (27) and (30), one knows that V1 is a Lyapunov function of the system (19)-(20). We conclude that the system is smoothly robustly stabilizable.
+
+The proof of the lemma is a bit tedious, because, unlike the situation in the case of single systems, where the terms in the right-hand side of (20) can be canceled in a straightforward manner by choosing a simple control law, here one needs to make some estimates which allow the design of a control law which is independent of the parameters, and which can overcome the effect of those terms.
+
+Now we return to discuss the stabilizability of system (17)-(18). Let f0(x; z) def= f (x; z; 0)
+
+and let f1 def= f \Gamma  f0. Rewrite system (17)-(18) as
+
+.x = f0(x; z) + f1(x; z; _) ; (31)
+
+.z = u : (32)
+
+Assume that there exists a smooth function k0(x) for which k0(0) = 0 such that z = k0(x) stabilizes system (31) with respect to the origin for all _. By Theorem 1, there exists a Lyapunov function V for the closed-loop system
+
+.x = f0(x; k0(x)) + f1(x; k0(x); _): (33) Let \Omega  be a compact subset of IRl. One can show, as in the proof of Theorem 2, that there exists a smooth function ' satisfying 0 ! '(x) ^ 1 such that V is an ISS-Lyapunov function for the system
+
+.x = f0(x; k0(x) + '(x)w) + f1(x; k0(x) + '(x)w; _) ;
+
+that is, there exist K1-functions ff1; ff2; O/, and a positive definite function ff3, such that
+
+ff1(jxj) ^ V (x; _) ^ ff2(jxj) ; and @V
+
+@x if0(x; k0(x) + '(x)w) + f1(x; k0(x) + '(x)w; _)j ^ \Gamma ff3(jxj) whenever j
+
+xj * O/(jwj) : (34)
+
+Now take v def= z \Gamma  k0(x) and w def= (x)v where (x) def= 1='(x). Then w satisfies the equation
+
+.w = @@x f (x; z; _)'(x)w + (x)u \Gamma  (x) @k0@x (f0(x; z) + f1(x; z; _)) ; where f = f0 + f1. Write f1(x; k0(x) + v; _) as f1(x; k0(x); _) + F1(x; v; _)v for some matrix F1 of smooth functions. It then holds that
+
+.w = (x)u + g0(x; _) + g1(x; w; _)w \Gamma  g2(x; z) ; where
+
+g0(x; _) def= \Gamma (x) @k0@x f1(x; k0(x); _) ;
+
+g1(x; w; _) def= @@x f (x; z; _)'(x) \Gamma  @k0@x F1(x; v; _) ;
+
+13
+
+and
+
+g2(x; z) def= (x) @k0@x f0(x; z) :
+
+Let u def= '(x)(u1 \Gamma  g2(x; z)). We have
+
+.x = f0(x; k0(x) + '(x)w) + f1(x; k0(x) + '(x)w; _) ; (35) .w = u1 + g0(x; _) + g1(x; w; _)w : (36)
+
+Applying Lemma 4.1 to the system (35)-(36), we know that if the function O/ in (34) can be chosen smooth, then there exist a smooth feedback law u1 = k1(x; w) stabilizing the system with respect to the equilibrium 0. Noticing the relations between w; v and z and the fact that 0 ! ' ^ 1, one sees that the control law
+
+u = k(x; z) def= '(x)(k1(x; w) \Gamma  g2(x; z)) ; stabilizes system (31)-(32). Thus we have shown the following conclusion: Proposition 4.2 Assume that the system (31) is stabilizable with respect to the origin by a smooth feedback law z = k0(x) for which k0(0) = 0 for all _. Assume further that, for a compact subset \Omega  of IRl, the following holds:
+
+1. the function O/ in (34) can be chosen smooth;
+
+2. as jxj tends to 0,
+
+max_2\Omega  @k0(x)@x f1(x; k0(x); _) = O(qff3(jxj)) : (37)
+
+Then the cascade system (31)-(32) is smoothly robustly stabilizable with respect to the origin for all _ 2 \Omega . 2
+
+Remark 4.3 A special case of Proposition 4.2 is that when system (31) is smoothly exponentially stabilizable, that is, there exists a smooth feedback law z = k0(x), such that the system (33) is UGAS, and there exist a smooth function V and quadratic functions ffi; i = 1; 2; 3 such that
+
+ff1(jxj) ^ V (x; _) ^ ff2(jxj) ;
+
+@V
+
+@x f (x; k0(x); _) ^ \Gamma ff3(jxj) : (38) Assume ff3(r) * cr2 for some c ? 0. Still denoting z \Gamma  k0(x) by v, and write
+
+f (x; k0(x) + v; _) = f (x; k0(x); _) + F1(x; v; _)v ; and write @V
+
+@x = x0W (x; _) for some matrices F1 and W of smooth functions. Then one has:
+
+@V
+
+@x f (x; k0(x) + v; _) =
+
+@V
+
+@x f (x; k0(x); _) + x0W (x; _)F1(x; v; _)v
+
+^ \Gamma  cjxj
+
+2
+
+2 \Gamma  
+
+cjxj2
+
+2 \Gamma  x0W (x; _)F1(x; v; _)v!
+
+= \Gamma  cjxj
+
+2
+
+2 \Gamma 
+
+c 2 fififix \Gamma  W (x; _)F1(x; v; _)vfififi
+
+2 + c
+
+2 fififiW (x; v)F1(x; v; _) vfififi
+
+2
+
+^ \Gamma  cjxj
+
+2
+
+2 +
+
+c 2 flflflW (x; _)F1(x; v; _)flflfl
+
+2 jvj2 :
+
+14
+
+For the compact subset \Omega  of IRl, let '(x) be a smooth function satisfying
+
+'(x) ^ 11 + max
+
+_2\Omega ; jvj^jxj=p2 kW (x; _)F1(x; v; _)k
+
+:
+
+Then for such a choice ', one has
+
+@V
+
+@x f (x; k0(x) + '(x)w; _)
+
+^ \Gamma  cjxj
+
+2
+
+2 +
+
+c 2 flflflW (x; _)F1(x; '(x)w; _)flflfl
+
+2'2(x) jwj2 : (39)
+
+Notice then that it always hold thatflflfl
+
+W (x; _)F1(x; '(x)w; _)flflfl'(x) ^ 1 : Thus, whenever jxj * p2 jwj,
+
+@V
+
+@x f (x; k0(x) + '(x)w; _)
+
+^ \Gamma  c jxj
+
+2
+
+4 \Gamma  
+
+c jxj2
+
+4 \Gamma 
+
+c 2 flflflW (x; _)F1(x; '(x)w; _)flflfl
+
+2'2(x) jwj2!
+
+^ \Gamma  c jxj
+
+2
+
+4 : From here one sees that the function O/ can be chosen as O/(r) = p2 r, which is smooth everywhere. Thus we showed that condition 1 holds. Condition 2 also holds, because pff3(jxj) = O(jxj), and also f1(x; k0(x); _) = O(jxj) since f1(0; k0(0); _) = 0 and _ belongs to a compact set. Thus both conditions 1 and 2 hold when ff3 is a quadratic function. Thus we recover the following result given in [6]:
+
+If system (31) is smoothly exponentially stable for all _, then for any compact set \Omega , the cascade system (31)-(32) is smoothly stabilizable.
+
+The methods used in [6] could be adapted to study the general case, i.e., the case when (31) is merely smoothly, not necessarily exponentially, stabilizable. However, instead of condition 1
+
+in Proposition 4.2, the generalization would require imposing restrictions on @V@x , in addition to the condition (37) that was assumed in Proposition 4.2. 2
+
+In many cases, condition 1 assumed in Proposition 4.2 can be relaxed. For instance, when the parameter does not appear in the control channel of (31), that is, when f1 is independent of z, and the Lyapunov function for the closed-loop system (33) is independent of _, one does not need to check if O/ is smooth. The design can then proceed as follows:
+
+Assume that z = k0(x) smoothly stabilizes the system
+
+.x = f0(x; z) + f1(x; _) ; (40) with a Lyapunov function V (x) satisfying
+
+ff1(jxj) ^ V (x) ^ ff2(jxj) ;
+
+15
+
+and @V
+
+@x if0(x; k0(x)) + f1(x; _)j ^ \Gamma ff3(jxj) : Again let v def= z \Gamma  k0(x), then
+
+.v = u + g0(x; _) + g1(x; z) ; (41) where
+
+g0(x; _) def= \Gamma  @k0@x f1(x; _) ; and g1(x; z) def= \Gamma  @k0@x f0(x; z) :
+
+Let w = (x0; v0)0 and use F (w; u; _) to denote the map (f 00 + f 01; u0 + g00 + g01)0. Let
+
+V1(x; v) def= V (x) + 12 jvj2 : Then along the trajectories of (40)-(41),
+
+.V1 = @V@x if0(x; z) + f1(x; _)j + v0u + v0g0(x; _) + v0g1(x; z)
+
+= @V@x if0(x; k0(x)) + f1(x; _)j
+
++ @V@x F1(x; v)v + v0u + v0g0(x; _) + v0g1(x; z) ; where F1 is a matrix of smooth functions such that
+
+f1(x; k(x) + v) = f1(x; k(x)) + F1(x; v)v : Let
+
+k1(x; v) = \Gamma g1(x; z) \Gamma  `@V@x F1(x; v)'0 ;
+
+and let u = k1(x; v) + u1. Then one has
+
+.V1 ^ \Gamma ff3(jxj) + v0u1 + v0g0(x; _) : (42)
+
+Now assume that for a compact set \Omega , condition (37) holds. Again let '2(x) be given as in (26), and let
+
+u1 = k2(x; v) def= \Gamma '22(x)v \Gamma  v :
+
+Then for
+
+u = k(x; v) def= k1(x; v) + k2(x; v) ;
+
+it follows from (42) that
+
+.V1 ^ \Gamma  3ff3(jxj)4 \Gamma  jvj2 ;
+
+from which it follows that V1 is a Lyapunov function for the system
+
+.x = f0(x; z) + f1(x; _) ;
+
+.z = k(x; z \Gamma  k0(x)) :
+
+Thus we established the following conclusion:
+
+16
+
+Proposition 4.4 Assume that the system (40) is smoothly stabilizable with respect to the origin for all _, with a Lyapunov function which is independent of _. Then the cascade system (40) and (18) is stabilizable for _ in a compact set \Omega  if condition (37) holds. 2
+
+Remark 4.5 In the proof of Propositions 4.2 and 4.4 we needed to assume that the system was stabilizable for all values of _. But as illustrated in Remark 3.5 one can often weaken this assumption. 2
+
+Example 4.6 Consider the system
+
+.x = _x3 + xz; _ 2 [\Gamma 1; 1] ; (43)
+
+.z = u : (44)
+
+The closed-loop system for (43) under the feedback law z = k0(x) def= \Gamma 2x2 is
+
+.x = \Gamma (2 \Gamma  _)x3 ; _ 2 [\Gamma 1; 1] ; (45) which is a RUGAS system with respect to the equilibrium x = 0 for _ 2 [\Gamma 1; 1], with the Lyapunov function V (x) = x
+
+2
+
+2 satisfying dV
+
+dx [\Gamma (2 \Gamma  _)x
+
+3] = \Gamma (2 \Gamma  _)x4 ^ \Gamma x4 ; 8_ 2 [\Gamma 1; 1] :
+
+Notice that z = \Gamma 2x2 does not stabilize the system (43) for all values of _ 2 IR, but as indicated in Remark 3.5, one can consider the stabilization problem for system (43)-(44) for _ 2 [\Gamma 1; 1] by studying the system
+
+.x = x3 sin * + xz ; * 2 IR ; (46)
+
+.z = u ;
+
+Let f (x; z; *) def= x3 sin * + xz. Clearly z = \Gamma 2x2 stabilizes the system (46) for all *, with the Lyapunov function V (x) = 12 x2 satisfying
+
+dV
+
+dx f (x; k(x); *) ^ \Gamma x
+
+4 ; 8* 2 IR :
+
+Notice that the closed-loop system is not exponentially stable, so one needs to check if condition (37) holds to see if Proposition 4.4 applies. In this example, ff3(r) = r4,
+
+f1(x; z; *) = f (x; z; *) \Gamma  f (x; z; 0) = x3 sin * ; and
+
+max* fifififi dkdx f1(x; k(x); _)fifififi = 4x4 = o(qff3(jxj)) ; as jxj ! 0 :
+
+By Proposition 4.4, the system (43)-(44) is stabilizable. In what follows, we will construct the desired feedback law by following the steps in the proof of the Proposition. Letting v = z \Gamma  (\Gamma 2x2), one has
+
+.v = u + 4x4 sin * + 4x2z :
+
+17
+
+Let V1(x; z) def= x
+
+2 + v2
+
+2 , then along the trajectories of the system,
+
+.V1 = \Gamma (2 \Gamma  sin *)x4 + x2v + uv + 4x4v sin * + 4x2zv : (47)
+
+Take k1(x; z) def= \Gamma x2 \Gamma  4x2z and let u = u1 + k1(x; z). Then (47) becomes:
+
+.V1 ^ \Gamma x4 + u1v + 4x4v sin * : (48)
+
+Now let
+
+'2(x) def= 1 + 1pff
+
+3(jxj) max* fifififi
+
+@k0
+
+@x f1(x; k(x); _)fifififi = 1 + 4x
+
+2 ;
+
+and take u1 = k2(x; v) def= \Gamma v'22(x) \Gamma  v. Then it follows from (48) that
+
+.V1 ^ \Gamma x4 \Gamma  v2 \Gamma  16x4v2 + 4x4v sin *
+
+^ \Gamma x4 \Gamma  v2 \Gamma  4x4(2v \Gamma  sin *4 )2 + x
+
+4
+
+4 ^ \Gamma 
+
+3x4
+
+4 \Gamma  v
+
+2 :
+
+Therefore, the desired feedback law is
+
+u = k(x; z) = k1(x; z) + k2(x; v) = \Gamma x2 \Gamma  4x2z \Gamma  v(1 + 4x2)2 \Gamma  v ; and the closed-loop system is
+
+.x = _x3 + xz ; _ 2 [\Gamma 1; 1]
+
+.z = \Gamma x2 \Gamma  4x2z \Gamma  (z + 2x2)(1 + 4x2)2 \Gamma  (z + 2x2) ;
+
+which is RUGAS for _ 2 [\Gamma 1; 1]. 2
+
+18
+
+References
+
+[1] G. Ambrosino, G. Celentano, and F. Garofalo, Robust model tracking control for
+
+a class of nonlinear plants, IEEE Transactions on Automatic Control, 30 (1985), pp. 275- 279.
+
+[2] Y. H. Chen and G. Leitmann, Robustness of uncertain systems in the absence of matching assumptions, International Journal of Control, 45 (1987), pp. 1527-1542.
+
+[3] M. J. Corless, Robustness of a class of feedback-controlled uncertain nonlinear systems
+
+in the presence of singular perturbations, in Proc. American Control Conference, 1987, pp. 1584-1589.
+
+[4] M. J. Corless and G. Leitmann, Continuous state feedback guaranteeing uniform ultimate boundedness for uncertain dynamic systems, IEEE Transactions on Automatic Control, 26 (1981), pp. 1139-1144.
+
+[5] S. Gutman, Uncertain dynamical systems -- a Lyapunov min-max approach, IEEE Transactions on Automatic Control, 24 (1979), pp. 437-443.
+
+[6] J. Imura, T. Sugie, and T. Yoshikawa, Global robust stabilization of nonlinear cascaded systems, in Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 3031-3036.
+
+[7] I. Kanellakopoulos, P. V. Kokotovic, and A. S. Morse, A toolkit for nonlinear
+
+feedback design, Systems & Control Letters, 18 (1992), pp. 83-92.
+
+[8] Y. Lin, Lyapunov Function Techniques for Stabilization, PhD thesis, Rutgers, The State
+
+University of New Jersey, New Brunswick, New Jersey, 1992.
+
+[9] Y. Lin, E. D. Sontag, and Y. Wang, Input to state stabilizability of nonlinear systems.
+
+in preparation.
+
+[10] , A smooth converse Lyapunov theorem in a form suitable for various results on control
+
+design. in preparation.
+
+[11] A. Saberi and H. Khalil, Quadratic-type Lyapunov functions for singularly perturbed
+
+systems, IEEE Transactions on Automatic Control, AC-29 (1984), pp. 542-550.
+
+[12] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Transactions on
+
+Automatic Control, AC-34 (1989), pp. 435-443.
+
+[13] , Mathematical Control Theory: Deterministic Finite Dimensional Systems, SpringerVerlag, New York, 1990.
+
+[14] J. L. Willems and J. C. Willems, Robust stabilization of uncertain systems, SIAM
+
+Journal on Control and Optimization, 21 (1983), pp. 352-374.
+
+19
+
+A Appendix In this section, we recall some notions and results for set stability for nonlinear systems without parameters. For proofs of results presented here, please consult [8] and [10].
+
+We first recall some standard concepts from stability theory. A function fl : IR*0 \Gamma ! IR*0 is a K-function if it is continuous, strictly increasing and fl(0) = 0; it is a K1-function if it is a K-function and also fl(s) ! 1 as s ! 1. Finally, fl is a positive definite function if fl(s) ? 0 for all s ? 0, and fl(0) = 0.
+
+A function fi : IR*0 \Theta  IR*0 \Gamma ! IR*0 is a KL-function if for each fixed t * 0 the function fi(\Delta ; t) is a K-function, and for each fixed s * 0 it is decreasing to zero as t ! 1.
+
+Consider the following system:
+
+.x = f (x) ; x 2 IRn ; (49) where f is assumed to be smooth (i.e., infinitely differentiable). We will assume that the system is complete, and denote by x(t; x0) (and sometimes simply by x(t) if there is no ambiguity from the context) the solution at time t of (49) with x(0) = x0.
+
+The following characterization of the UGAS property will be extremely useful.
+
+Proposition A.1 The system (49) is UGAS with respect to a closed, invariant set A ` IRn if and only if there exists a KL-function fi such that, given any initial state x0, the solution x(t; x0) satisfies j
+
+x(t; x0)jA ^ fi(jx0jA ; t) ; any t * 0 : (50)
+
+2
+
+Lyapunov functions are introduced for parameterized systems (and hence in particular for systems with no parameters) in Definition 2.3.
+
+Theorem 3 The system (49) is UGAS with respect to A if and only if there exists a smooth Lyapunov function V with respect to the set A.
+
+Consider the following nonlinear system:
+
+.x = f (x; u) (51) with smooth f : IRn \Theta  IRm \Gamma ! IRn.
+
+Recall Definition 3.2 of ISS-Lyapunov function, considered in the special case of systems with no parameters. Then, [8] and [9] show:
+
+Proposition A.2 If the system (51) is forward complete and admits an ISS-Lyapunov function with respect to A, then it is ISS with respect to A.
+
+Sketch of the Proof: Let V be an ISS-Lyapunov function for (51) with respect to A with the functions ffi(x) (i = 1; 2; 3) and O/ as in Definition 3.2. Pick any x0 2 IRn and any bounded measurable function u. It is not hard to show that the set S = f, 2 IRnj V (,) ^ ff2(O/(kuk))g is forward invariant. With i = ff\Gamma 11 ffi ff2 ffi O/, one has, for the trajectory x(t; x0; u), thatj
+
+x(t)jA ^ i(kuk) if x(t) 2 S. On the other hand, dV (x(t))=dt = rV (x(t)) \Delta  f (x(t); u(t))^ \Gamma 
+
+ff(V (x(t))) when x(t) 62 S, where ff = ff3 ffi ff\Gamma 12 . Finally, let fiff be a KL-function so that y(t) ^ fiff(y0; t) for each solution of the differential inequality .y(t) ^ \Gamma ff(y(t)), y(0) = y0 * 0. Then fi(s; t) = ff\Gamma 11 (fiff(ff2(s); t)) and i are as needed for the definition.
+
+20</pre>
+</body>
+</html>

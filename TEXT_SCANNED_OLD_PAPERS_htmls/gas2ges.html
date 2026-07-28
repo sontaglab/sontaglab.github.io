@@ -1,0 +1,586 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/gas2ges.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/gas2ges.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Asymptotic stability equals exponential stability, and ISS equals
+
+finite energy gain--if you twist your eyes
+
+Lars Gr"une ? Fachbereich Mathematik, J.W. Goethe-Universit"at, Postfach 11 19 32, D-60054 Frankfurt a.M.,
+
+Germany, E-Mail: gruene@math.uni-frankfurt.de
+
+Eduardo D. Sontag ?? Department of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA,
+
+E-Mail: sontag@control.rutgers.edu
+
+Fabian R. Wirth Zentrum f"ur Technomathematik, Universit"at Bremen, D-28344 Bremen, Germany,
+
+E-Mail: fabian@math.uni-bremen.de
+
+In this paper we show that uniformly global asymptotic stability for a family of ordinary differential equations is equivalent to uniformly global exponential stability under a suitable nonlinear change of variables. The same is shown for input-to-state stability and input-to-state exponential stability, and for input-to-state exponential stability and a nonlinear H1 estimate.
+
+Key words: asymptotic stability, exponential stability, input-to-state stability, nonlinear H1
+
+1 Introduction Lyapunov's notion of (global) asymptotic stability of an equilibrium is a key concept in the qualitative theory of differential equations and nonlinear control. In general, a far stronger property is that of exponential stability, which requires decay estimates of the type "kx(t)k ^ ce\Gamma *t kx(0)k." (See for instance [16] for detailed discussions of the comparative roles of asymptotic and exponential stability in control theory.) In this paper, we show that, for differential equations evolving in finite-dimensional Euclidean spaces Rn (at least in spaces of dimensions6 = 4; 5) the two notions are one and the same under coordinate changes.
+
+? This paper has been written while the first author was visiting the Dipartimento di Matematica, Universit'a di Roma "La Sapienza", Italy, supported by DFG-Grant GR1569/2-1.??
+
+Supported in part by US Air Force Grant F49620-98-1-0242
+
+Preprint submitted to Elsevier Preprint 18 May 1999
+
+Of course, one must define "coordinate change" with care, since under diffeomorphisms the character of the linearization at the equilibrium (which we take to be the origin) is invariant. However, if, in the spirit of both structural stability and the classical HartmanGrobman Theorem (which, cf. [23], gives in essence a local version of our result in the special hyperbolic case), we relax the requirement that the change of variables be smooth at the origin, then all obstructions disappear. Thus, we ask that transformations be infinitely differentiable except possibly at the origin, where they are just continuously differentiable. Their respective inverses are continuous globally, and infinitely differentiable away from the origin.
+
+Closely related to our work is the fact that all asymptotically stable linear systems are equivalent (in the sense just discussed) to .x = \Gamma x; see e.g. [1]. The basic idea of the proof in [1] is based upon projections on the level sets of Lyapunov functions, which in the linear case of course be taken to be quadratic (and hence have ellipsoids as level sets). It is natural to use these ideas also in the general nonlinear case, and Wilson's paper [36], often cited in control theory, remarked that level sets of Lyapunov functions are always homotopically equivalent to spheres. Indeed, it is possible to obtain, in great generality, a change of coordinates rendering the system in normal form .x = \Gamma x (and hence exponentially stable), and several partial versions of this fact have appeared in the literature, especially in the context of generalized notions of homogeneity for nonlinear systems; see for instance [6,25,15,27,24].
+
+It is perhaps surprising that, at least for unperturbed systems, the full result seems not to have been observed before, as the proof is a fairly easy application of results from differential topology. (Those results are nontrivial, and are related to the generalized Poincar'e conjecture and cobordism theory; in fact, the reason that we only make an assertion for 6= 4; 5 is closely related to the fact that the original Poincar'e conjecture is still open.)
+
+Note, however, that it has been common practice in the papers treating the nonlinear case to use the flow generated by the original system to define an equivalence transformation, thereby reducing the regularity of the transformation to that of the system. Here we use the flow generated by the (normalized) Lyapunov function itself, which yields more regular transformations. In addition, and most importantly, our poof also allows for the treatment of perturbed systems (for which the reduction to .x = \Gamma x makes no sense).
+
+Lyapunov's notion is the appropriate generalization of exponential stability to nonlinear differential equations. For systems with inputs, the notion of input to state stability (ISS) introduced in [29] and developed further in [5,9,13,14,17,18,26,28,32,33] and other references, has been proposed as a nonlinear generalization of the requirement of finite L2 gain or, as often also termed because of the spectral characterizations valid for linear systems, "finite nonlinear H1 gain" (for which see e.g. [2,11,12,34]). We also show in this paper that under coordinate changes (now in both state and input variables), the two properties (ISS and finite H1 gain) coincide (again, assuming dimension 6= 4; 5).
+
+We do not wish to speculate about the implications of the material presented here. Obviously, there are no "practical" consequences, since finding a transformation into an exponentially stable system is no easier than establishing stability (via a Lyapunov function). Perhaps these remarks will be of some use in the further theoretical development of ISS and other stability questions. In any case, they serve to further justify the naturality of Lyapunov's
+
+2
+
+ideas and of concepts derived from his work. 2 Setup We consider the family of differential equations
+
+.x(t) = f (x(t); d(t)) (1)
+
+where f : Rn \Theta  D ! Rn is continuous and for x 6= 0 locally Lipschitz continuous in x, where the local Lipschitz constants can be chosen uniformly in d 2 D ` Rm . Let D denote the set of measurable, locally essentially bounded functions from R to D. For any x0 2 Rn and any d(\Delta ) 2 D, there exists at least one maximal solution of (1) for t * 0, with x(0) = x0. By abuse of notation, we denote any such solution, even if not unique, as OE(t; x0; d(\Delta )), t 2 I(x; d(\Delta )), where I(x; d(\Delta )) is its existence interval. Throughout the paper, k \Delta  k denotes the usual Euclidean norm, and "smooth" means C1. For a differentiable function V : Rn ! R the expression Lfd V (x) denotes the directional derivative DV (x)f (x; d).
+
+The general framework afforded by the model (1) allows us to treat simultaneously classical differential equations (the case when D = f0g) and more generally robust stability of differential equations subject to perturbations (when functions in D are seen as disturbances which do not change the equilibrium, as in parameter uncertainty), as well as systems with inputs in which elements of D are seen as exogenous tracking or regulation signals, or as actuator errors (in which case, the continuity properties of (x; d) 7! OE(\Delta ; x; d) are of interest). In light of these applications, we now describe the appropriate stability concepts.
+
+For the first, assume that D is compact and that f (0; d) = 0 for all d 2 D. Then we say that the zero state is uniformly globally asymptotically stable (UGAS) if there exists a class KL function fi such that, for each d(\Delta ) 2 D, every maximal solution is defined for all t * 0 and
+
+kOE(t; x; d(\Delta ))k ^ fi(kxk; t) (2)
+
+for all t * 0. As usual, we call a function ff : [0; 1) ! [0; 1) of class K, if it satisfies ff(0) = 0 and is continuous and strictly increasing (and class K1 if it is unbounded), and we call a continuous function fi : [0; 1)2 ! [0; 1) of class KL, if it is decreasing to zero in the second and of class K in the first argument. (It is an easy exercise, cf. e.g. [20], to verify that this definition is equivalent to the requirements of uniform stability and uniform attraction stated in "" \Gamma  ffi" terms.) Note that while our general assumptions on the right hand side f do not guarantee uniqueness of solutions through zero, the added assumption of asymptotic stability implies that OE(t; 0; d) j 0 is the unique solution with initial condition x = 0, for all d 2 D. As a consequence, since away from zero we have a local Lipschitz condition, solutions are unique for each given initial state and d 2 D.
+
+If the origin is no common fixed point for all values d 2 D then (2) is impossible. In this case, however, still a useful notion of stability is possible. We call the system (1) (globally)
+
+3
+
+input-to-state stable (ISS), if there exists a class KL function fi and a class K1 function ff such that all solutions of (1) satisfy
+
+kOE(t; x; d(\Delta ))k ^ fi(kxk; t) + ff( sup
+
+0^o/^t kd(o/ )k) (3)
+
+for all d(\Delta ) 2 D and all t * 0. Formulation (3) is the most frequently used characterization of the ISS property. Note that with ~fi = 2fi and ~ff = 2ff inequality (3) immediately implies
+
+kOE(t; x; d(\Delta ))k ^ max ( ~fi(kxk; t); ~ff( sup
+
+0^o/^t kd(o/ )k)) ;
+
+hence this "max" formulation can be used as an equivalent characterization. Two apparently stronger formulations of these properties are obtained if we replace fi(kxk; t) by ce\Gamma *tkxk, more precisely we call the zero position of (1) uniformly globally exponentially stable (UGES), if there exist constants c * 1; * ? 0 such that
+
+kOE(t; x; d(\Delta ))k ^ ce\Gamma *tkxk (4)
+
+holds for all d(\Delta ) 2 D and all t * 0, and we call the system input-to-state exponentially stable (ISES), if there exist a class K1 function ff and constants c * 1; * ? 0 such that
+
+kOE(t; x; d(\Delta ))k ^ max (ce\Gamma *tkxk; ff( sup
+
+0^o/^t kd(o/ )k)) (5)
+
+for all d(\Delta ) 2 D and all t * 0. (As usual, these definitions use appropriate constants c; * ? 0. In this paper, however, we will see that we can always work with "normalized" versions choosing c = 1; * = 1. For the (ISES) property we use the "max" formulation because it allows a further implication as stated in Theorem 5, below. Observe that (5) implies (3) with fi(kxk; t) = ce\Gamma *tkxk.)
+
+Extending the concepts in [1, p. 207] to our nonlinear setting, we will call a homeomorphism
+
+T : Rn ! Rn
+
+a change of variables if T (0) = 0, T is C1 on Rn , and T is diffeomorphism on Rn n f0g (i.e., the restrictions of T and of T \Gamma 1 to Rn n f0g are both smooth). Given a change of variables T and a system (1), we may consider the transformed system
+
+.y(t) = ~f (y(t); d(t)) ; (6)
+
+where, by definition,
+
+~f (y; d) = DT (T \Gamma 1(y))f (T \Gamma 1(y); d) :
+
+4
+
+In other words, system (6) is obtained from the original system by means of the change of variables y = T (x). Observe that the new system again satisfies the general requirements:~ f (y; d) is continuous, and it is locally Lipschitz on x for x 6= 0, uniformly on d.
+
+It is our aim to show that for dimensions n 6= 4; 5 the following assertions are true. Given a system of the form (1) satisfying (2) or (3), respectively, there exists a transformed system that satisfies (4) or (5), respectively. In this sense, global asymptotic stability is equivalent to global exponential stability under nonlinear changes of coordinates. Furthermore, one may obtain transformed systems where the constants defining the exponential stability property can be chosen to be the special values c = * = 1.
+
+Furthermore we show that if system (1) is ISES (5) with c = * = 1 then there exists a homeomorphism R : Rm ! Rm on the input space with R(0) = 0 that is a diffeomorphism on Rm n f0g such that the transformed system with v = R(d)
+
+.y(t) = _f (x(t); v(t)); _f (x; v) = f (x; R\Gamma 1(v)) (7)
+
+satisfies the following "L2 to L2" nonlinear H1 estimate:
+
+tZ
+
+0 k
+
+OE(s; x; v(\Delta ))k2ds ^ kxk2 +
+
+tZ
+
+0 k
+
+v(s)k2ds: (8)
+
+Since (8) in turn implies ISS (by [31, Theorem 1]), we obtain equivalence between ISS and the nonlinear H1 estimate (8) up to nonlinear changes of coordinates.
+
+3 Construction of the coordinate transformation The main tool for our construction of T is the use of an appropriate Lyapunov function V . In fact, we can obtain T for a whole class of functions as stated in the following proposition. Recall that a function V : Rn ! R is called positive definite if V (0) = 0 and V (x) ? 0 for all x 6= 0, and proper if the set fx j V (x) ^ fig is bounded for each fi * 0.
+
+The next result says in particular that any such function may look like kxk2 under a coordinate change. This implies in particular that the level sets under coordinate change are spheres. It may therefore not come as a surprise that a basic ingredient of the proof is related to the question of whether level sets of Lyapunov functions in Rn are diffeomorphic to the sphere Sn\Gamma 1. This question is solved except for the two special cases of dimensions n = 4 and n = 5, though in the case n = 5 it is at least known that the statement is true if only homeomorphisms are required. (For the case n = 4 this question is equivalent to the Poincar'e conjecture; see [36].)
+
+Proposition 1 Let n 6= 4 and let V : Rn ! R be a proper, positive definite C1 function. Assume furthermore that V is smooth on Rn n f0g with nonvanishing gradient. Then for each
+
+5
+
+class K1 function fl which is smooth on (0; 1) there exists a homeomorphism T : Rn ! Rn with T (0) = 0 such that
+
+~V (y) := V (T \Gamma 1(y)) = fl(kyk) :
+
+In particular this holds for fl(kyk) = kyk2. If n 6= 4; 5 then T can be chosen to be a diffeomorphism on Rn nf0g. Furthermore, in this case there exists a class K1 function fl which is smooth on (0; 1) and satisfies fl(s)=fl0(s) * s such that T is C1 with DT (0) = 0.
+
+PROOF. For the function V the right hand side of the normed gradient flow
+
+.x = rV (x)
+
+0
+
+krV (x)k2
+
+is well defined and smooth for x 6= 0. Denote the solutions by (t; x). Then V ((t; x)) = V (x) + t, and thus since V is proper and rV (x) 6= 0 for x 6= 0 for a given initial value x 2 Rn  is well defined for all t 2 (\Gamma V (x); 1), thus also smooth (see e.g. [10, Corollary 4.1]).
+
+Fix c ? 0. We define a map ss : Rn n f0g ! V \Gamma 1(c) by
+
+ss(x) = (c \Gamma  V (x); x) :
+
+Obviously ss is smooth, and since the gradient flow crosses each level set V \Gamma 1(a); a ? 0 exactly once it induces a diffeomorphism between each two level sets of V , which are C1 manifolds due to the fact that V is smooth away from the origin with nonvanishing gradient.
+
+Now observe that the properties of V imply that V \Gamma 1(c) is a homotopy sphere (cf. also [36, Discussion after Theorem 1.1]), which implies that V \Gamma 1(c) is diffeomorphic to Sn\Gamma 1 for n = 1; 2; 3 (see e.g. [22, Appendix] for n = 2, [7, Theorem 3.20] for n = 3; n = 1 is trivial). For n * 6 we can use the fact that the sublevel set fx 2 Rn j V (x) ^ cg is a compact, connected smooth manifold with a simply connected boundary, which by [21, x9, Proposition A] implies that the sublevel set is diffeomorphic to the unit disc Dn, hence V \Gamma 1(c) is diffeomorphic to Sn\Gamma 1. Thus for all dimensions n 6= 4; 5 we may choose a diffeomorphism S : V \Gamma 1(c) ! Sn\Gamma 1. By [8] we may choose S to be at least a homeomorphism in the case n = 5.
+
+Let Q := S ffi ss. The coordinate transformation T is now given by T (0) = 0 and
+
+T (x) = fl\Gamma 1(V (x)) Q(x) ; x 6= 0 :
+
+An easy computation verifies that T \Gamma 1(0) = 0 and
+
+T \Gamma 1(y) =  fl(y) \Gamma  c; S\Gamma 1  ykyk!! ; y 6= 0 ;
+
+6
+
+hence T is a diffeomorphism on Rn n f0g (resp. a homeomorphism if n = 5). Since V (0) = 0, and (t; S\Gamma 1(y=kyk)) ! 0 as t & \Gamma c, both T and T \Gamma 1 are homeomorphisms.
+
+Finally, we have that
+
+V (T \Gamma 1(y)) = V  fl(kyk) \Gamma  c; S\Gamma 1  ykyk!!!
+
+= V S\Gamma 1  ykyk!! \Gamma  c + fl(kyk) = fl(kyk) which finishes the proof of the first assertion. For n 6= 4; 5 and s ? 0 we define
+
+L(s) := sup
+
+V (x)=s kDQ(x)k
+
+and choose any class K function a which is C1 and satisfies
+
+a(s) ^ sL(s) for all s 2 (0; 1] :
+
+Then the function h given by
+
+h(r) =
+
+rZ
+
+0
+
+a(s)ds
+
+is smooth and of class K1. Note that this construction implies h(r) ^ ra(r) for all r * 0, hence h(r)=h0(r) ^ r. Thus fl := h\Gamma 1 is of class K1, smooth on (0; 1), and satisfies
+
+fl(s) fl0(s) = h
+
+\Gamma 1(s)h0(h\Gamma 1(s)) * h\Gamma 1(s)h(h\Gamma 1(s))
+
+h\Gamma 1(s) = s:
+
+Differentiating T yields
+
+DT (x) = h0(V (x))Q(x) \Delta  DV (x) + h(V (x))DQ(x):
+
+For x ! 0 the first term tends to 0 since both h0(V (x)) = a(V (x)) and DV (x) tend to 0, and the second tends to 0 since for all x sufficiently close to 0 the inequality
+
+h(V (x))kDQ(x)k ^ a(V (x))kDQ(x)k ^ V (x)L(V (x)) kDQ(x)k ^ V (x)
+
+holds by construction of h. Thus DT (x) ! 0, as x ! 0, and consequently T 2 C1 with DT (0) = 0, by a straightforward application of the mean value theorem, see e.g. [19, Chap.
+
+7
+
+V, Theorem 3.2] and the fact that a function is continuously differentiable if all partial derivatives exist and are continuous. 2
+
+4 Main Results Using the coordinate transformation T we can now prove our main results. Theorem 2 Let n 6= 4; 5 and consider any system (1) on Rn which is UGAS (2). We suppose that the set D ae Rm is compact. Then, (1) can be transformed into a system (6) that is UGES (4).
+
+In particular, the constants in (4) can be chosen to be c = 1; * = 1.
+
+PROOF. Under our assumptions, by [20, Theorem 2.9, Remark 4.1] \Lambda  there exists a smooth function V : Rn ! R for (1) such that
+
+LfdV (x) ^ \Gamma ff1(kxk) (9)
+
+for some class K1 function ff1. Furthermore, there exist class K1 functions ff2; ff3 such that
+
+ff2(kxk) ^ V (x) ^ ff3(kxk) : (10)
+
+Now let ff4 be a C1 function of class K1 which is smooth on (0; 1) and satisfies ff04(0) = 0, such that ff4(a) ^ minfa; ff1 ffi ff\Gamma 13 (a)g for all a * 0.
+
+Such a function can be obtained e.g. by a slight modification of the construction in [26, Proof of Lemma 11]: Take a class K1 function satisfying ffi(a) ^ minfa; ff1 ffi ff\Gamma 13 (a)g and which is smooth on (0; 1). Then
+
+ff4(a) = 2ss
+
+aZ
+
+0
+
+ffi(o/ ) 1 + o/ 2 do/
+
+has the desired properties. Thus we obtain
+
+Lfd V (x) ^ \Gamma ff4(V (x)): (11)
+
+Now define
+
+ae(a) := exp 0@\Gamma 
+
+1Z
+
+a
+
+ff4(o/ )\Gamma 1do/ 1A for a ? 0; ae(0) := 0
+
+\Lambda  To be precise, the results in that reference make as a blanket assumption the hypothesis that f is locally Lipschitz, not merely continuous, at x = 0. However, as noted in e.g. [35], the Lipschitz condition at the origin is not used in the proofs.
+
+8
+
+Obviously ae is smooth on (0; 1); furthermore ae is of class K1 and by [26, Lemma 12] ae is a C1 function on [0; 1) with ae0(0) = 0. Thus defining
+
+W (x) := ae(V (x))
+
+we obtain a C1 Lyapunov function, which is smooth on Rn nf0g, for which an easy calculation shows that
+
+Lfd W (x) = exp i\Gamma  R
+
+1 V (x) ff4(o/ )\Gamma 1do/ j
+
+ff4(V (x)) Lf
+
+d V (x) ^ \Gamma W (x):
+
+Applying Proposition 1 to W , using the class K1 function fl with fl(s)=fl0(s) * s we obtain for each d 2 D and y 6= 0
+
+h ~f (y; d); yi = kykfl0(kyk)L ~f
+
+d ~W (y) ^ \Gamma  k
+
+yk
+
+fl0(kyk) ~W (y) = \Gamma  k
+
+yk fl0(kyk)fl(kyk) ^ \Gamma kyk
+
+2 :
+
+Clearly the overall inequality also holds for y = 0 so that we obtain
+
+d dt ky(t)k
+
+2 = 2h ~f (y(t); d(t)); y(t)i ^ \Gamma 2ky(t)k2
+
+and hence ky(t)k2 ^ e\Gamma 2tky(0)k2, i.e. the desired exponential estimate. 2 Theorem 3 Let n 6= 4; 5 and suppose that the system (1) on Rn is ISS (3) with some classK
+
+1 function ff and some class KL function fi. Then (1) is can be transformed into a system (6) that is ISES (5) with constants c = * = 1.
+
+PROOF. By [32, Theorem 1] y there exists a C1 function V which is smooth on Rn n f0g and a class K1 function O/ such that
+
+kxk ? O/(kdk) ) LfdV (x) ^ \Gamma ff1(kxk)
+
+for some class K1 function ff1. Furthermore, there exist class K1 functions ff2; ff3 such that
+
+ff2(kxk) ^ V (x) ^ ff3(kxk) :
+
+As in the proof of Theorem 2 we find a function ae which is class K1, C1, and smooth on Rn n f0g, such that W = ae ffi V satisfies
+
+kxk ? O/(kdk) ) Lfd W (x) ^ \Gamma W (x) : y As with the UGAS proof, it is easy to verify that the assumption that the right-hand side is Lipschitz at zero is never actually used in [32]. The possible non-uniqueness of trajectories does not affect the argument used in Lemma 2.12 in that paper, which reduces the problem to one of UGAS.
+
+9
+
+Now Proposition 1 yields a parameter transformation T such that ~W (y) = W (T \Gamma 1(y)) = fl(kyk) and fl(s)=fl0(s) * s.
+
+Now choose a class K1 function ffi such that kT \Gamma 1(y)k * ffi(kyk) and define ~ff = ffi\Gamma 1 ffi O/. Then a straightforward calculation yields
+
+kyk ? ~ff(kdk) ) L ~f
+
+d ~W (y) ^ \Gamma  ~W (y): (12)
+
+Similar to the proof of Theorem 2 this implies
+
+k ~OE(t; y; d(\Delta ))k ^ e\Gamma tkyk
+
+as long as k ~OE(t; y; d(\Delta ))k ? ~ff(sup0^o/^t kd(o/ )k) which yields the desired estimate. 2 Theorem 4 Consider the system (1) on Rn being ISES (5) with some class K1 function ff and c = * = 1. Then there exists a homeomorphism R : Rm ! Rm on the input space with R(0) = 0, that is a diffeomorphism on Rm n f0g, such that the the transformed system (7) satisfies the nonlinear H1 estimate (8).
+
+PROOF. From (5) it is immediate that for any d(\Delta ) 2 D, any x 2 Rn , and any T ? 0 we have
+
+kxk * eT ff( sup
+
+0^o/^T kd(o/ )k) ) kOE(t; x; d(\Delta ))k ^ e
+
+\Gamma tkxk for all t 2 [0; T ] : (13)
+
+Now consider the function W (x) = kxk2. Then (13) implies
+
+kxk * eT ff( sup
+
+0^o/^T kd(o/ )k) ) W (OE(t; x; d(\Delta ))) ^ e
+
+\Gamma 2tW (x) for all t 2 [0; T ] :
+
+In particular this estimate is valid for constant functions d(\Delta ) j d 2 D, thus the mean value theorem (observe W (OE(0; x; d)) = W (x) = e\Gamma 0W (x)) yields
+
+kxk * ff(kdk) ) LfdW (x) ^ \Gamma 2W (x) ^ \Gamma W (x) :
+
+Now defining
+
+~ff(r) = sup
+
+kxk^ff(r);kdk^rhf (x; d); xi
+
+we obtain a class K1 function ~ff with
+
+Lfd W (x) ^ \Gamma W (x) + ~ff(kdk):
+
+10
+
+Without loss of generality (one could take a larger ~ff), we may assume ~ff to be smooth on (0; 1), and thus
+
+R(d) := ~ff(kdk)
+
+2d
+
+kdk
+
+has the regularity properties as stated in the assertion. Now the transformation (7) yields
+
+L _fv W (x) ^ \Gamma W (x) + kvk2:
+
+Integrating this equation along a trajectory x(\Delta ) gives
+
+W (x(t)) \Gamma  W (x(0)) ^ \Gamma 
+
+tZ
+
+0
+
+W (x(s))ds +
+
+tZ
+
+0 k
+
+v(s)k2ds
+
+which implies (8) since W (x) = kxk2. 2 5 Remarks Note that, in general, for our results to be true we cannot expect T to be diffeomorphic on the whole Rn . Consider the simplest case where f does not depend on d and is differentiable at the origin. If T were a diffeomorphism globally, then DT \Gamma 1(0) would be well-defined, which implies that
+
+D ~f (0) = @@y fififififi
+
+y=0
+
+DT (T \Gamma 1(y))f (T \Gamma 1(y)) = DT (0)Df (0)DT \Gamma 1(0)
+
+and so the linearizations in 0 are similar; in particular, the dimension of center manifolds remains unchanged.
+
+Actually, if one wants the exponential decay to be e\Gamma t, even for linear systems one cannot obtain a diffeomorphism T . As an example, consider the one-dimensional system .x = \Gamma x=2. Here one uses the change of variables y = T (x) given by T (x) = x2; x ? 0; T (0) = 0 and T (x) = \Gamma x2; x ! 0 to obtain .y = \Gamma y. Note that T is C1 with DT (0) = 0. The inverse of this T is given by T \Gamma 1(y) = py; y ? 0; T \Gamma 1(0) = 0 and T \Gamma 1(y) = \Gamma p\Gamma y; y ! 0 which is smooth only away from the origin, though continuous globally.
+
+An example for the case of nontrivial center manifolds is given by the system .x = \Gamma x3. Let us first note that for this system there is no transformation in the class we consider such that the transformed system is of the form .y = \Gamma y. The reason for this is that we would have .T (x) =
+
+.y = \Gamma y = \Gamma T (x), so at least for x ? 0 V = T is a Lyapunov function with the property that. V (x) = \Gamma V 0(x)x3 = \Gamma V (x). It is readily seen that the solutions of this differential equation (in x and V ) are Vc(x) = c exp 1\Gamma 2x2 , for c 2 R. However, the image of [0; 1) under such
+
+11
+
+Vc yields a bounded set, so that these functions are no candidate for coordinate transforms on R. Nonetheless a coordinate transform according to our requirements can now be easily built: Take any K1 function ff with ff0 ? 0 on (0; 1) so that with via the symmetrization ff(\Gamma x) := ff(x) we get a smooth function on R. Now define
+
+T (x) := ff(x)V1(x); x * 0; T (x) := \Gamma ff(x)V1(x); x ! 0 :
+
+Then for y 6= 0 we have .y = .T (x) = \Gamma (1 + ff
+
+0(x)x3
+
+ff(x) )T (x) ! \Gamma y, so that the transformed systemdecays at least exponentially with constants c = 1; * = 1. Again note that the requirement
+
+DT (0) = 0 is vital, in fact all orders of derivatives vanish in 0.
+
+A basic ingredient of the proof of Theorem 2 is the construction of a Lyapunov function with the property .V ^ \Gamma V . Actually, one may even, under restricted conditions, obtain the equality .V = \Gamma V . It should be noted that already in [3] it is shown that for dynamical systems with globally asymptotically stable fixed point a continuous Lyapunov function with the property V (OE(t; x)) = e\Gamma tV (x) exists, see also Chapter V.2 in [4]. Note, however that in these references only systems with trajectories defined on R are considered, which does not include the previous example. Indeed, if f (x; d) = f (x) is independent of d 2 D and the system .x = f (x) is backward complete we can can also define a coordinate transformation based on a different W than the one used in the proof of Theorem 2: In this case the function W (x) = exp t(x) with t(x) defined by V (OE(t(x); x)) = 1 is positive definite, proper, and satisfies Lf W (x) = \Gamma W (x), thus W (OE(t; x)) = W (x)\Gamma t. Since V \Gamma 1(1) = W \Gamma 1(1) we still find a diffeomorphism S as in the proof of Proposition 1. Deviating from this proof, instead of the gradient flow we now use the trajectories of the system, i.e. we define ss(x) = OE(W (x) \Gamma  1; x) yielding W (ss(x)) = W (x) \Gamma  (W (x) \Gamma  1) = 1. Thus from ss we can construct T as in the proof of Proposition 1, and obtain W (T \Gamma 1(y)) = kyk2. Furthermore the definition of ss implies that each trajectory fOE(t; x) j t 2 Rg is mapped onto the line fffS(ss(x)) j ff ? 0g and consequently ~f (y) = \Gamma y, i.e. we obtain a transformation into the linear system .y = \Gamma y. Note, however, that with this construction the coordinate transformation will in general only have the regularity of f (e.g. a homeomorphism if f is only C0), which is inevitable since it transforms f into a smooth map. Moreover, this construction cannot be generalized to systems with disturbances.
+
+Since we are not requiring that the inverse of a change of variables be itself a change of variables (because one may, and in fact does in our constructions, have DT (0) = 0, in which case T \Gamma 1 is not differentiable at the origin), the way to define a notion of "equivalence" is by taking the transitive and symmetric closure of the relation given by such changes of variables. That is, we could say that system (1) is equivalent to a system (6) if there exist k 2 N and maps f0 = f; f1; : : : ; fk = ~f : Rn \Theta  D ! Rn , all satisfying the assumptions on f , with the following properties: For each i = 0; : : : ; k \Gamma  1 there exists a change of variables T as above such that fl(y; d) = DT (T \Gamma 1(y))fm(T \Gamma 1(y); d), where l = i; m = i + 1 or l = i + 1; m = i.
+
+Finally, regarding our notion of system transformation, note that even if f (0; d) 6= 0 for some d 2 D for the original system (1), then under the assumption DT (0) = 0 we have ~f (0; d) = 0 for all d 2 D for the transformed system. This implies that even if the original system had unique trajectories through zero, the transformed system cannot have this property.
+
+12
+
+Acknowledgments: We thank David Angeli for suggestions regarding the remark on backward complete systems, as well as Uwe Helmke and Laurent Praly for many references to the literature.
+
+References
+
+[1] V.I. Arnol'd. Ordinary Differential Equations, Springer-Verlag, Berlin, 1992. [2] T. Ba,sar and P. Bernhard. H1-Optimal Control and Related Minimax Design Problems. A
+
+Dynamic Game Approach, Second edition, Birkh"auser, Boston, 1995.
+
+[3] N. Bhatia. On asymptotic stability in dynamical systems. Math. Syst. Theory 1(1967): 113-127. [4] N. Bhatia and G. Szeg"o. Stability Theory of Dynamical Systems. Number 161 in Grundlehren
+
+der mathematischen Wissenschaften. Springer-Verlag, Berlin, New York, Heidelberg, 1970.
+
+[5] P.D. Christofides and A.R. Teel. Singular perturbations and input-to-state stability. IEEE
+
+Trans. Automat. Control 41(1996): 1645-1650.
+
+[6] C. Coleman. Local trajectory equivalence of differential systems. Proc. Amer. Math. Soc.
+
+16(1965): 890-892. Addendum. Ibid. 17, 770 (1966).
+
+[7] B.A. Dubrovin, A.T. Fomenko, and S.P. Novikov. Modern Geometry - Methods and
+
+Applications, Part III: Introduction to Homology Theory, Springer-Verlag, New York, 1990.
+
+[8] M.H. Freedman. The topology of four-dimensional manifolds. J. Differ. Geom. 17(1982): 357-
+
+453.
+
+[9] L. Gr"une. Input-to-state stability of exponentially stabilized semilinear control systems with
+
+inhomogeneous perturbations, System & Control Letters, to appear.
+
+[10] P. Hartman. Ordinary Differential Equations, Birkh"auser, Basel, Second edition, 1982. [11] J.W. Helton and M.R. James. Extending H1 Control to Nonlinear Systems, SIAM,
+
+Philadelphia, 1998.
+
+[12] A. Isidori and A. Astolfi. Disturbance attenuation and H1-control via measurement feedback
+
+in nonlinear systems. IEEE Trans. Automat. Control 37(1992): 1283-1293.
+
+[13] A. Isidori. Global almost disturbance decoupling with stability for non minimum-phase singleinput single-output nonlinear systems. Systems & Control Letters 28 (1996), pp. 115-122.
+
+[14] Z.P. Jiang, A. Teel, and L. Praly. Small-gain theorem for ISS systems and applications.
+
+Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[15] M. Kawski. Geometric homogeneity and applications to stabilization. Nonlinear Control System
+
+Design Symposium (NOLCOS), Lake Tahoe, June 1995.
+
+[16] H.K. Khalil. Nonlinear Systems, Prentice-Hall, Upper Saddle River, NJ, second ed., 1996. [17] M. Krsti'c and H. Deng. Stabilization of Uncertain Nonlinear Systems, Springer-Verlag, London,
+
+1998.
+
+[18] M. Krsti'c, I. Kanellakopoulos, and P.V. Kokotovi'c. Nonlinear and Adaptive Control Design,
+
+John Wiley & Sons, New York, 1995.
+
+13
+
+[19] S. Lang. A first course in calculus, fifth ed., Springer-Verlag, New York, 1986. [20] Y. Lin, E.D. Sontag, and Y. Wang. A smooth converse Lyapunov theorem for robust stability.
+
+SIAM J. Control Optim. 34(1996): 124-160.
+
+[21] J. Milnor. Lectures on the h-Cobordism Theorem, Princeton Mathematical Notes, Princeton
+
+Univ. Press, Princeton, NJ. 1965.
+
+[22] J. Milnor. Topology from the Differentiable Viewpoint, University Press of Virginia,
+
+Charlottesville 1965.
+
+[23] L. Perko. Differential Equations and Dynamical Systems, Second edition, Springer-Verlag, New
+
+York, 1996.
+
+[24] L. Praly. Generalized weighted homogeneity and state dependent time scale for linear
+
+controllable systems. Proc. Conf. Decision and Control CDC97, San Diego, CA, 1998, 4342- 4347.
+
+[25] J.-B. Pomet and L. Praly. A result on robust boundedness. Systems & Control Letters 10(1988):
+
+83-92.
+
+[26] L. Praly and Y. Wang. Stabilization in spite of matched unmodelled dynamics and an equivalent
+
+definition of input-to-state stability. Math. of Control, Signals, and Systems 9(1996): 1-33.
+
+[27] L. Rosier. Etude de quelques probl`emes de stabilisation. Th`ese de Doctorat. E.N.S. de Cachan,
+
+Univ. Paris XI, 1993.
+
+[28] R. Sepulchre, M. Jankovic, and P.V. Kokotovi'c. Constructive Nonlinear Control. SpringerVerlag, Berlin, 1997.
+
+[29] E.D. Sontag. Smooth stabilization implies coprime factorization. IEEE Trans. Automat. Contr.
+
+34(1989): 435-443.
+
+[30] E.D. Sontag. Mathematical Control Theory, Deterministic Finite Dimensional Systems, Second
+
+Edition, Springer-Verlag, New York, 1998.
+
+[31] E.D. Sontag. Comments on integral variants of ISS. Systems & Control Letters 34(1998): 93-
+
+100.
+
+[32] E.D. Sontag and Y. Wang. On characterizations of the input-to-state stability property. Systems
+
+& Control Letters 24 (1995): 351-359.
+
+[33] J. Tsinias. Input to state stability properties of nonlinear systems and applications to bounded
+
+feedback stabilization using saturation. ESAIM Control Optim. Calc. Var. 2(1997): 57-85.
+
+[34] A. van der Schaft. L2-Gain and Passivity Techniques in Nonlinear Control (Lecture Notes in
+
+Control and Information Sciences, 218), Springer-Verlag, London, 1996.
+
+[35] Y. Wang, A converse Lyapunov theorem with applications to ISS-disturbance attenuation. In
+
+Proc. 13th IFAC World Congress, 1996, vol. E, pp. 79-84.
+
+[36] F.W. Wilson. The structure of the level surfaces of a Lyapunov function. J. Differ. Equations
+
+3 (1967): 323-329.
+
+14</pre>
+</body>
+</html>

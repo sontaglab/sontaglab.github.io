@@ -1,0 +1,698 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iss-ejc.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iss-ejc.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+On the Input-to-State Stability Property
+
+Eduardo D. Sontag\Lambda  Department of Mathematics Rutgers University, New Brunswick, NJ 08903y
+
+Abstract The "input to state stability" (iss) property provides a natural framework in which to formulate notions of stability with respect to input perturbations. In this expository paper, we review various equivalent definitions expressed in stability, Lyapunov-theoretic, and dissipation terms. We sketch some applications to the stabilization of cascades of systems and of linear systems subject to control saturation.
+
+1 Introduction There are two very conceptually different ways of formulating the notion of stability of control systems. One of them, which we may call the input/output approach, relies on operator-theoretic techniques. Among the main contributions to this area, one may cite the foundational work by Zames, Sandberg, Desoer, Safanov, Vidyasagar, and others. In this approach, a "system" is a causal operator F between spaces of signals, and "stability" is taken to mean that F maps bounded inputs into bounded outputs, or finite-energy inputs into finite-energy outputs. More stringent typical requirements in this context are that the gain of F be finite (in more classical mathematical terms, that the operator be bounded), or that it have finite incremental gain (mathematically, that it be globally Lispchitz). The input/output approach has been extremely successful in the robustness analysis of linear systems subject to nonlinear feedback and mild nonlinear uncertainties, and in general in the area that revolves around the various versions of the small-gain theorem. Moreover, geometric characterizations of robustness (gap metric and the like) are elegantly carried out in this framework. Finally, i/o stability provides a natural setting in which to study the classification and parameterization of dynamic controllers.
+
+On the other hand, there is the model-based, or state-space approach to systems and stability, where the basic object is a forced dynamical system, typically described by differential or difference equations. In this approach, there is a standard notion of stability, namely Lyapunov asymptotic stability of the unforced system. Associated to such a system, there is an operator F mapping inputs (forcing functions) into state trajectories (or into outputs, if partial measurements on states are of interest). It becomes of interest then to ask to what extent Lyapunov-like stability notions for a state-space system are related to the stability, in the senses discussed in the previous paragraph, of the associated operator F . It is well-known (see e.g. [30]) that, in contrast to the case of linear systems, where there is -subject to mild technical assumptions- an equivalence between state-space and i/o stability, for nonlinear systems the two types of
+
+\Lambda Supported in part by US Air Force Grant F49620-95-1-0101
+
+yE-mail: sontag@hilbert.rutgers.edu
+
+properties are not so closely related. Even for the very special and comparatively simple case of "feedback linearizable" systems, this relation is far more subtle than it might appear at first sight: if one first linearizes a system and then stabilizes the equivalent linearization, in terms of the original system one does not in general obtain a closed-loop system that is input/output stable in any reasonable sense. (However, it is always possible to make a choice of a --usually different-- feedback law that achieves such stability, in the linearizable case as well as for all other stabilizable systems, as will be discussed below.)
+
+It is the purpose of this article to present a brief and informal survey of various links between the two alternative paradigms of stability, i/o and state-space, through the systematic use of the notion of "input to state stability" (iss). This notion differs fundamentally from the operator-theoretic ones that have been classically used in control theory, first of all because it takes account of initial states in a manner fully compatible with Lyapunov stability. Second, boundedness (finite gain) is far too strong a requirement for general nonlinear operators, and it must be replaced by "nonlinear gain estimates," in which the norms of output signals are bounded by a nonlinear function of the norms of inputs; the definition of iss incorporates such gains in a natural way. The iss notion was originally introduced in [15] and has since been employed by several authors in deriving results on control of nonlinear systems. It can be stated in several equivalent manners, which indicates that it is at least a mathematically natural concept: dissipation, robustness margins, and classical Lyapunov-like definitions.
+
+The dissipation characterizations are closely related to the pioneering work of Willems ([31]), who introduced an abstract concept of energy dissipation in order to unify i/o and state space stability, and in particular with the purpose of understanding conceptually the meaning of Kalman-Yakubovich positive-realness (passivity), and frequency-domain stability theorems in a general nonlinear context. His work was continued by many authors, most notably Hill and Moylan (see e.g. [5, 6]). (However, although extremely close in spirit, technically our work does not make much contact with the existing dissipation literature. Mathematically it is grounded instead in more classical converse Lyapunov arguments in the style of Massera, Kurzweil, and Zubov.)
+
+The equivalences between different notions of input to state stability originate with the paper [15], but the definitive conclusions were obtained in recent work jointly carried out with with Yuan Wang in [22], which in turn built upon research with Wang and Yuandan Lin in [9] and [19]; the input-saturated results are based on joint papers with Wensheng Liu and Yacine Chitour ([10]) as well as Sussmann and Yang ([24]). Some recent and very relevant results by Teel ([26]) and Jiang, Praly, and Teel ([7]) are also mentioned. In the interest of exposition, the style of presentation in this survey is informal. The reader should consult the references for more details and, in some cases, for precise statements.
+
+Acknowledgements. I wish to especially thank Yuan Wang and Zhong Ping Jiang for a careful reading of this manuscript and many suggestions for its improvement.
+
+Preliminaries This paper deals with continuous time systems of the standard form
+
+.x = f (x; u) ; (1) where x(t) 2 Rn and u(t) 2 Rm. (Since global asymptotic stability will be of interest, and when such a property holds the state space must be Euclidean, there is no reason to consider
+
+2
+
+systems evolving in more general manifolds than Euclidean space.) For undefined terminology from control theory see [18].) It is assumed that f : Rn \Theta  Rm ! Rn is locally Lipschitz and satisfies f (0; 0) = 0. Controls or inputs are measurable locally essentially bounded functions u : R*0 ! Rm. The set of all such functions is denoted by Lm1;e, and one denotes kuk1 = (ess) supfju(t)j; t * 0g ^ 1; when this is finite, one obtains the usual space Lm1, endowed with the (essential) supremum norm. (Everywhere, j \Delta  j denotes Euclidean norm in the appropriate space of vectors, and k\Delta k induced norm for matrices, while k\Delta k1 is used for sup norm.) For each x0 2 Rn and each u 2 Lm1, x(t; x0; u) denotes the trajectory of the system (1) with initial state x(0) = x0 and input u. This is a priori defined only on some maximal interval [0; Tx0;u), with Tx0;u ^ +1. If the initial state and input are clear from the context, one writes just x(\Delta ) for the ensuing trajectory. The system is (forward-) complete if Tx0;u =+1 for all x0 and u.
+
+The questions to be studied relate to the "stability," understood in an appropriate sense, of the input to state mapping (x0; u(\Delta )) 7! x(\Delta ) (or, in the last section, when an output is also given, of the input to output mapping 7! y(\Delta )). To appreciate the type of problem that one may encounter, consider the following issue. Suppose that in the absence of inputs the trivial solution x j 0 of the differential equation
+
+.x = f0(x) = f (x; 0) (2) is globally asymptotically stable (for simplicity, in such a situation, we'll simply say that (1), or equivalently the zero-input restricted system (2), is gas). Then one would like to know if, for solutions of (1) associated to nonzero controls, it holds that
+
+u(\Delta ) \Gamma !t!10 ) x(\Delta ) \Gamma !t!10
+
+(the "converging input converging state" property) or that
+
+u(\Delta ) bounded ) x(\Delta ) bounded (the "bounded input bounded state" property). Of course, for linear systems .x = Ax + Bu these implications are always true. Not only that, but one has explicit estimates
+
+jx(t)j ^ fi(t)jx0j + fl kutk1 where
+
+fi(t) = flflfletAflflfl ! 0 and fl = kBk Z
+
+1
+
+0 flflfle
+
+sAflflfl ds
+
+for any Hurwitz matrix A, where ut is the restriction of u to [0; t], though of as a function in Lm1 which is zero for s?t. From these estimates both properties can be easily deduced.
+
+These implications fail in general for nonlinear systems, however, as has been often pointed out in the literature (see for instance [30]). As a trivial illustration, take the system
+
+.x = \Gamma x + (x2 + 1)u (3) and the control u(t) = (2t + 2)\Gamma 1=2. With x0 = p2 there results the unbounded trajectory x(t) = (2t + 2)1=2. This is in spite of the fact that the system is gas. Thus, the converging input converging state property does not hold. Even worse, the bounded input u j 1 results in a finite-time explosion. This example is not artificial, as it arises from the simplest case of feedback linearization design. Indeed, given the system
+
+.x = x + (x2 + 1)u ;
+
+3
+
+the obvious stabilizing control law (obtained by first cancelling the nonlinearity and then assigning dynamics .x =\Gamma x) is
+
+u := \Gamma 2xx2 + 1 + v
+
+where v is the new external input. In terms of this new control (which might be required in order to meet additional design objectives, or may represent the effect of an input disturbance), the closed-loop system is as in (3), and thus is ill-behaved. Observe, however, that if instead of the obvious law just given one would use:
+
+u := \Gamma 2xx2 + 1 \Gamma  x + v ; then the closed-loop system becomes instead
+
+.x = \Gamma 2x \Gamma  x3 + (x2 + 1)u : This is still stable when u j 0, but in addition it tolerates perturbations far better, since the term \Gamma x3 dominates u(x2 + 1) for bounded u and large x. The behavior with respect to such u is characterized qualitatively by the notion of "iss" system, to be discussed below. More generally, it is possible to show that up to feedback equivalence, gas always implies (and is hence equivalent) to the iss property to be defined. This is one of many motivations for the study of the iss notion, and will be reviewed after the precise definitions have been given.
+
+Besides being mathematically natural and providing the appropriate framework in which to state the above-mentioned feedback equivalence result, there are several other reasons for studying the iss property, some of which are briefly mentioned in this paper. See for instance the applications to observer design and new small gain theorems in [28], [29], [7], and [12]; the construction of coprime stable factorizations was the main motivation in the original paper [15] which introduced the iss concept, and the stabilization of cascade systems using these ideas was briefly discussed in [16].
+
+2 The Property iss Next, four natural definitions of input to state stability are proposed and separately justified. Later, they turn out to be equivalent. The objective is to express the fact that states remain bounded for bounded controls, with an ultimate bound which is a function of the input magnitude, and in particular that states decay when inputs do.
+
+2.1 From gas to iss -- A First Pass The simplest way to introduce the notion of iss system is as a generalization of gas, global asymptotic stability of the trivial solution x j 0 for (2). The gas property amounts to the requirements that the system be complete and the following two properties hold:
+
+1. (Stability): the map x0 7! x(\Delta ) is continuous at 0, when seen as a map from Rn into
+
+C0 ([0; +1); Rn), and
+
+2. (Attractivity): lim
+
+t!+1jx(t; x0)j=0.
+
+4
+
+Note that, under the assumption that 1. holds, the convergence in the second part is automatically uniform with respect to initial states x0 in any given compact. By analogy, one defines the system (1) to be input to state stable (iss) if the system is complete and the following properties, which now involve nonzero inputs, hold:
+
+1. the map (x0; u) 7! x(\Delta ) is continuous at (0; 0) (seen as a map from Rn \Theta  Lm1 to
+
+C0 ([0; +1); Rn), and
+
+2. there exists a "nonlinear asymptotic gain" fl 2K so that
+
+lim t!+1jx(t; x0; u)j ^ fl(kuk1) (4)
+
+uniformly on x0 in any compact and all u.
+
+(The class K consists of all functions fl : R*0 ! R*0 which are continuous, strictly increasing, and satisfy fl(0) = 0. The uniformity requirement means, explicitly: for each r and " positive, there is a T ?0 so that jx(t; x0; u)j ^ " + fl(kuk1) for all u and all jx0j^r and t * T .)
+
+In the language of robust control, the inequality (4) is an "ultimate boundedness" condition. Note that this is a direct generalization of attractivity to the case u 6j 0; the "lim sup" is now required since the limit need not exist.
+
+2.2 From Lyapunov to Dissipation -- A Second Pass A potentially different concept of input to state stability arises when generalizing classical Lyapunov conditions to certain classes of dissipation inequalities.
+
+A storage or energy function is a V : Rn ! R*0 which is continuously differentiable, proper (that is, radially unbounded) and positive definite (that is, V (0) = 0 and V (x) ? 0 for x 6= 0). A (classical) Lyapunov function for the zero-input system (2) is a storage function for which there exists some function ff of class K1 --that is, of class K and so that also ff(s) ! +1 as s ! +1-- so that r
+
+V (x) \Delta  f0(x) ^ \Gamma ff(jxj)
+
+holds for all x2Rn. This means that dV (x(t))=dt ^ \Gamma ff(jx(t)j) along all trajectories.
+
+By analogy, when nonzero inputs must be taken into account, it is sensible to define an iss-Lyapunov function as a storage function for which there exist two class K1 functions ff and ` such that r
+
+V (x) \Delta  f (x; u) ^ `(juj) \Gamma  ff(jxj) (5)
+
+for all x 2 Rn and all u 2 Rm. Thus, along trajectories one now obtains the inequality dV (x(t))=dt ^ `(ju(t)j) \Gamma  ff(jx(t)j).
+
+A smooth iss-Lyapunov function is a V which satisfies these properties and is in addition infinitely differentiable. Smoothness is an extremely useful property in this context, as one may then use iterated derivatives of V along trajetories for various design as well as analysis questions, in particular in so-called "backstepping" design techniques.
+
+In the terminology of [31, 6], (5) is a dissipation inequality with storage function V and supply function w(u; x) = `(juj) \Gamma  ff(jxj). (In the context of dissipative systems one often postulates the equivalent integral form V (x(t; x0; u)) \Gamma  V (x0) ^ R t0 w(u(s); x(s))ds, which must hold along all trajectories, and no differentiability is required of V . Moreover, outputs y =h(x) are used instead of states in the estimates, so the present setup corresponds to the case h(x)=x.)
+
+5
+
+The estimate (5) is a generalization of the one used by Brockett in [1] when defining "finite gain at the origin;" in that paper, the function ` is restricted to be quadratic, and the concepts are only defined locally, but the ideas are very similar.
+
+2.3 Gain Margins -- A Third Pass Yet another possible approach to formalizing input to state stability is motivated both by the classical concept of total stability and as a generalization of the usual gain margin for linear systems.
+
+In [22], a (nonlinear) stability margin for system (1) is defined as any function ae 2 K1 with the following property: for each admissible --possibly nonlinear and/or time-varying-- feedback law k bounded by ae, that is, so that
+
+j k(t; x)j ^ ae(jxj) for all (t; x), the closed-loop system
+
+.x = f (x; k(t; x)) (6) is gas, uniformly on k. (More precisely, an admissible feedback law is a measurable function k : R*0 \Theta  Rn ! Rm for which (6) is well-posed; that is, for each initial state x(0) there is an absolutely continuous solution, defined at least for small times, and any two such solutions coincide on their interval of existence. Uniformity in k means that all limits in the definition of gas are independent of the particular k, as long as the inequality j k(t; x)j ^ ae(jxj) holds.) A system is said to be robustly stable if there exists some such ae.
+
+Observe that for arbitrary nonlinear gas systems, in general only small perturbations can be tolerated (cf. total stability results). The requirement that ae2K1 is thus highly nontrivial: it means that for large states relatively large perturbations should not affect stability.
+
+2.4 Estimates -- Fourth Pass A final proposed notion of input to state stability can be introduced by means of an estimate similar to that which holds in the linear case:
+
+jx(t; x0; u)j ^ flflfletAflflfl jx0j + `kBk Z
+
+1
+
+0 flflfle
+
+sAflflfl ds' kutk
+
+1 :
+
+It is first necessary to review an equivalent --if somewhat less widely known-- definition of gas. This is a characterization in terms of comparison functions. Recall that a function of class KL is a
+
+fi : R*0 \Theta  R*0 ! R*0
+
+so that fi(\Delta ; t) is of class K for each fixed t*0 and fi(s; t) decreases to 0 as t ! 1 for each s*0 (example of relevance to the linear case: ce\Gamma ats, with a?0 and a constant c). It is not difficult to prove (this is essentially in [4]; see also [15]) that the system (2) is gas if and only if there exists a fi 2KL so that j
+
+x(t; x0)j ^ fi(jx0j; t) (7)
+
+for all t; x0. (Note that sufficiency is trivial, since forward completeness follows from the fact that trajectories stay bounded, the estimate jx(t; x0)j ^ fi(jx0j; 0) provides stability, and jx(t; x0)j ^
+
+6
+
+fi(jx0j; t) ! 0 shows attractivity. The converse is established by formulating and solving a differential inequality for jx(t; x0)j.)
+
+In this context, it is then natural to consider the following "fi +fl" property: There exist fi 2KL and fl 2K so that, for all initial states and controls, and all t*0:
+
+jx(t; x0; u)j ^ fi(jx0j; t) + fl(kutk1) : (8) (One could use a "max" instead of the sum of the two estimates, but the same concept would result. Also, it makes no difference to write kuk1 instead of the norm of the restriction kutk1.) This is a direct generalization of both the linear estimate and the characterization of gas in terms of comparison functions.
+
+2.5 All Are Equivalent The following result was recently proved by Yuan Wang and the author:
+
+Theorem 1 ([22]) For any system (1), the following properties:
+
+1. iss (nonlinear asymptotic gain), 2. there is an iss-Lyapunov function (dissipativity), 3. there is a smooth iss-Lyapunov function, 4. there is a nonlinear stability margin (robust stability), and 5. there is some fi+fl estimate,
+
+are all equivalent.
+
+The proof is heavily based on a result obtained by Wang, Lin, and the author in [9], which states essentially that a parametric family of systems .x = f (x; d), with arbitrary time-varying "disturbances" d(t) taking values on a compact set D, is uniformly globally asymptotically stable if and only if there exists a smooth storage function V and an ff2K1 so that
+
+rV (x) \Delta  f (x; d) ^ \Gamma ff(jxj) for all x2Rn and values d2D. Note that the construction of a smooth V is not entirely trivial (this subsumes as particular cases several standard converse Lyapunov theorems).
+
+There is yet another equivalent notion of iss, obtained in the recent work [13]. This notion allows replacing sup norms on controls with a fading-memory L1 estimate, as follows, and is of great use in robust control applications.
+
+Theorem 2 A system (1) is iss if and only if there exist a KL-function fi, and two functions fli; flo 2 K, so that
+
+jx(t; ,; u)j ^ fi(j,j; t) + flo `Z
+
+t
+
+0 e
+
+s\Gamma tfli(ju(s)j)ds'
+
+for all t * 0.
+
+7
+
+2.6 Checking the iss Property Of course, verifying the iss property is in general very hard --after all, in the particular case of systems with no inputs, this amounts to checking global asymptotic stability. Nonetheless, the dissipation inequality (5) provides in principle a good tool, playing the same role as Lyapunov's direct method for asymptotic stability. Actually, even more useful is the following variant, which is the original definition of "iss-Lyapunov function" in [15]. Consider a storage function with the property that there exist two class K functions ff and O/ so that the implication
+
+jxj * O/(juj) ) rV (x) \Delta  f (x; u) ^ \Gamma ff(jxj) (9) holds for each state x 2 Rn and control value u 2 Rm. It is shown in [22] that the existence of such a V provides yet another necessary and sufficient characterization of the iss property. (Other variants are also equivalent, for instance, asking that ff be of class K1.)
+
+As an illustration, consider the following system, which will appear again later in the context of an example regarding the stabilization of the angular momentum of a rigid body. The state space is R, the control value space is R2, and dynamics are given by:
+
+.x = \Gamma x3 + x2u1 \Gamma  xu2 + u1u2 : (10) This system is gas when u j 0, and for large states the term \Gamma x3 dominates, so it can be expected to be iss. Indeed, using the storage function V (x) = x2=2 there results
+
+rV (x) \Delta  f (x; u) ^ \Gamma  ` 29' x4 provided that 3ju1j ^ jxj and 3ju2j ^ x2. A sufficient condition for this to hold is that juj ^ *(jxj), where *(r) := minfr=3; r2=3g. Thus V is an iss-Lyapunov function as above, with ff(r) = (2=9)r4 and O/ = *\Gamma 1.
+
+Another example is as follows. Let sat : R ! R be the standard saturation function: sat[r] = r if jrj ^ 1, and sat[r] = sign(r) otherwise. Consider the following one-dimensional one-input system:
+
+.x = \Gamma  sat[x + u] : (11)
+
+This is an iss system, as will be proved next by showing that
+
+V (x) := jxj
+
+3
+
+3 +
+
+x2
+
+2 (12)
+
+is an iss-Lyapunov function. Observe that V is once differentiable, as required. This is a very particular case of a more general result dealing with linear systems with saturated controls, treated in [10]; more will be said later about the general case (which employs a straightforward generalization of this V ).
+
+To prove that V satisfies a dissipation inequality, first note that, since jr \Gamma  sat[r]j^r sat[r] for all r,
+
+jx \Gamma  sat[x + u]j ^ jx + u \Gamma  sat[x + u]j + juj ^ (x + u)sat[x + u] + juj (13) for all values x2R and u2R. It follows that
+
+\Gamma xsat[x + u] = x(\Gamma x) + x(x \Gamma  sat[x + u])^ \Gamma 
+
+x2 + jxj(x + u)sat[x + u] + jxjjuj
+
+8
+
+for all x; u. On the other hand, using that sat[r]^1 for all r,
+
+\Gamma jxjxsat[x + u] = jxj [\Gamma (x + u)sat[x + u] + usat[x + u]]^ \Gamma j
+
+xj(x + u)sat[x + u] + jxjjuj :
+
+Adding the two inequalities, it holds that
+
+\Gamma  (1 + jxj)xsat[x + u] ^ \Gamma x2 + 2jxjjuj (14) so that indeed r
+
+V (x) \Delta  f (x; u) ^ \Gamma  x
+
+2
+
+2 + 2u
+
+2
+
+as desired (note that rV (x) = x(1 + jxj)).
+
+2.7 Relations Among Estimates, Zero-State Responses, and Linear Gains There are many relationships among the various estimates which appear in the alternative characterizations of iss. Two of them are as follows.
+
+Assume that V is a storage function satisfying the estimates in Equation (5):
+
+rV (x) \Delta  f (x; u) ^ ff4(juj) \Gamma  ff3(jxj) (15) for some K1 functions ff3 and ff4. Since V is proper, continuous, and positive definite, there are as well two other class K1 functions ff1 and ff2 such that
+
+ff1(jxj) ^ V (x) ^ ff2(jxj) (16) for all x 2 Rn. It then holds that one may pick an asymptotic gain fl in Equation (4) of the form:
+
+fl = ff\Gamma 11 ffiff2ffiff\Gamma 13 ffiff4 : (17)
+
+Moreover, if instead of (15) there holds a slightly stronger estimate of the form
+
+rV (x) \Delta  f (x; u) ^ ff4(juj) \Gamma  ff3(jxj) \Gamma  ff(jxj) where ff is any class K function, then the fl function in the "fi +fl" property (8) can also be picked as in Equation (17). These conclusions are implicit in the proofs given in [15] and [22].
+
+For trajectories starting at the particular initial state x0 = 0, for any input function u, and assuming only that V satisfies (15)-(16), it holds that jx(t; 0; u)j ^ fl(kuk1) for all t * 0, not merely asymptotically, for the same fl as in (17), that is,
+
+kx(\Delta ; 0; u)k1 ^ fl(kuk1) : Thus the zero-state response has a "nonlinear gain" bounded by this fl.
+
+A particular case of interest is when both of (ff1; ff2) and (ff3; ff4) are convex estimate pairs in the following sense: a pair of class K functions (ff; fi) is a convex estimate pair if ff and fi are convex functions and there is some real number k * 1 such that fi(r) ^ kff(r) for all r * 0. Note that for any convex function ff in K and any k * 1 it holds that ff\Gamma 1(kff(r)) ^ kr for all nonnegative r, from which it follows that ff\Gamma 1(fi(r)) ^ kr if k is as in this definition. One concludes that if each of (ff1; ff2) and (ff3; ff4) is a convex estimate pair, then the gain fl can be
+
+9
+
+taken to be bounded by a linear function. In other words, the input to state operator, starting from x0 =0, is bounded as an operator with respect to sup norms:
+
+kx(\Delta ; 0; u)k1 ^ g kuk1 : This is the standard situation in linear systems theory, where V is quadratic (and hence admits estimates in terms of ff1 and ff2 of the form cir2, where c1 and c2 are respectively the smallest and largest singular values of the associated form) and the supply function can likewise be taken of the form c4juj2 \Gamma  c3jxj2. So finiteness of linear gain, that is, operator boundedness, follows from convexity of the estimation functions. Somewhat surprinsingly, for certain linear systems subject to actuator saturation, convex (but not quadratic) estimates are also possible, and this again leads to finite linear gains. For example, this applies to the function V in Equation (12), as an iss-Lyapunov function for system (11): there one may pick ff=ff1 =ff2 = r3=3 + r2=2, which is convex since ff00(r) = 2r + 1 ? 0, while ff3 and ff4 can be taken quadratic (cf. Equation (14)).
+
+As an additional remark, note that, just from the fact that V is nonnegative and V (0) = 0, and integrating the dissipation inequality (5), for x0 = 0 there results the inequalityR
+
++1 0 ff(jx(t; 0; u)j)dt ^ R
+
++1 0 `(ju(t)j)dt. In this manner, it is routine to use dissipation inequal-ities for proving operator boundedness in various pth norms (in particular, when ff(r) = c
+
+1r2 and `(r) = c2r2 one is estimating "H1" norms). But in the current context, more general
+
+nonlinearities than powers are being considered.
+
+It is also interesting to note that, if V and ff are so that the estimate (9) is satisfied, then there is some ` so that the dissipation estimate (5) also holds, with these same V and ff.
+
+2.8 Set iss A useful variation of the notion of iss system is obtained when one studies stability with respect to a closed subset K of the state space Rn, not necessarily K = f0g. It is possible to generalize the various definitions given; for instance, the definition (8) becomes
+
+jx(t; x0; u)jK ^ fi(jx0jK; t) + fl(kutk1) where jxjK denotes the distance from x to the set K. (When u j 0, this equation implies in particular that the set K must be invariant for the unforced system.) This notion of set input to state stability was introduced and studied in [19, 8]. The equivalence of various alternative definitions can be given in much the same way as the equivalence for the particular case K = f0g (at least for compact K), since the general results in [9] are already formulated for set stability; see [23] for details. Set-iss is of interest in various contexts, among them the design of robust control laws (the sets in question correspond to equilibria for different parameter values) and those cases in which only "practical" stabilization, that is to say, stabilization to a neighborhood of the origin, is all that is possible.
+
+3 Interconnections It is by now well known, and easy to prove, that the cascade of two iss systems is again iss (in particular, a cascade of an iss and a gas system is gas). It is interesting to observe that this statement can be understood very intuitively in terms of the dissipation formalism, and it provides further evidence of the naturality of the iss notion. In addition, proceeding in this manner, one obtains a Lyapunov function (with strictly negative derivative along trajectories) for the cascade.
+
+10
+
+Theorem 3 Consider the system in cascade form
+
+.z = f (z; x) .x = g(x; u) - - zx
+
+where f (0; 0) = g(0; 0) = 0, the second equation is iss, and the first equation is iss when x is seen as an input. Then the composite system is iss.
+
+The proof can be based on the following argument. First one shows that it is possible to obtain storage functions V1 and V2 so that V1 satisfies a dissipation estimate
+
+rV1(z) \Delta  f (z; x) ^ `(jxj) \Gamma  ff(jzj) for the first subsystem, while V2 is a storage function for the x-subsystem so that
+
+rV2(x) \Delta  g(x; u) ^ ~`(juj) \Gamma  2`(jxj) (see [21] for details). Then V1(z) + V2(x) is a storage function for the composite system, which satisfies the dissipation inequality with derivative bounded by ~`(juj) \Gamma  `(jxj) \Gamma  ff(jzj).
+
+A beautiful common generalization of both the cascade result and the usual Small-Gain Theorem was recently obtained by Jiang, Teel, and Praly.
+
+-
+
+oeoe
+
+vz xu
+
+Figure 1: Composite Feedback Form Theorem 4 ([7]) Consider a system in composite feedback form (cf. Figure 1):
+
+.z = g(z; x; v) .x = f (x; z; u)
+
+where u; v are the inputs to the composite system. Assume:
+
+ffl Each of .x = f (x; z; u) and .z = g(z; x; v) is an ISS system, when (z; u) and (x; v) are
+
+considered as inputs respectively; let fl1 and fl2 denote the gains for the x and z subsystems, in the sense of the estimate of type (8).
+
+ffl The following small-gain condition holds: there is a ae 2 K1 so that (fl1 + ae) ffi (fl2 + ae) ^ r
+
+for all r *0.
+
+Then, the composite system is iss.
+
+(Note that in the special case in which the fli(r) = gir, the small gain condition is satisfied iff g1g2 ! 1, thus generalizing the usual case.) It is important to note that the result in [7] is far more general; for instance, it deals with partially observed systems and with "practical stability" notions. Also, the small gain condition can be stated just in terms of the gains
+
+11
+
+with respect to the z and x variables. Related to these results is previous work on small-gain conditions, also relying on comparison functions, in [14, 11].
+
+A different cascade form, with an input feeding into both subsystems, is of interest in the context of stabilization of saturated linear systems (using an approach originally due to Teel, cf. [25] and developed in far more detail than we can do justice here to in the recent paper [26])) and in other applications. This provides yet another illustration of the use of iss ideas. The structure is (cf. Figure 2):
+
+.z = f (z; x; u) .x = g(x; u) :
+
+6
+
+oe
+
+u -- -
+
+k(z)
+
+zx
+
+Figure 2: Special Cascade Configuration First assume that a (locally Lipschitz) feedback law k can be found which makes the system .z = f (z; x; k(z)) gas uniformly on x, that is, f (0; x; k(0))=0 for all x and an estimate as in (7),j
+
+z(t)j^fi(jz(0)j; t) holds, which is independent of x(t). Suppose also that the x subsystem is iss. Then, the feedback law u = k(z) gives closed-loop equations .z = f (z; x; k(z)), .x = g(x; k(z)); because x is essentially irrelevant in the first equation, these equations behave just as a cascade of a gas system (the z-system) and an iss one, so the gas property results as before. (More precisely, this is because it is still possible to find a Lyapunov function which depends only on z for the z-subsystem, due to the assumed uniformity property; see [9].) The interesting fact is the same global conclusions hold under more local assumptions on the z-subsystem. Assume:
+
+ffl The z-subsystem is stabilizable with small feedback, uniformly on x small, meaning that
+
+for each 0 ! " ^ "0 there is a (locally Lipschitz) feedback law k" with jk"(z)j ^ " for all z so that .z = f (z; x; k"(z)) is gas uniformly on jxj ^ "0; further, under the feedback law u=k"(z) the composite system is forward complete (solutions exist for all t?0).
+
+ffl The x subsystem is iss.
+
+(Later we discuss an interesting class of examples where these properties are verified.) Then, the claim is that, for any small enough " ? 0, the composite system under the feedback law u = k"(z) is gas. Stability is clear: for small x and z, trajectories coincide with those that would result if uniformity would hold globally on x (cf. the previous case). We are left to show that every solution (x(\Delta ); z(\Delta )) satisfies x(t) ! 0 and z(t) ! 0 as t ! +1.
+
+To establish this fact, pick any " as follows. Let fl be a "nonlinear asymptotic gain" as in Equation (4), so that lim
+
+t!+1jx(t; x0; u)j ^ fl(kuk1) for all inputs and initial conditions. Now takeany 0 ! " ! "
+
+0 so that fl(") ! "0. Pick any k" so that jk"(z)j ^ " for all z. Consider any solution (x(\Delta ); z(\Delta )). Seeing v(t) = k"(z(t)) as an input to the x-subsystem, with kvk1 ^ ", the choice of
+
+fl means that for some T , t * T implies jx(t)j ! "0. It follows that z(t) ! 0. Now the second equation is an iss system with an input v(t) ! 0, so also x(t) ! 0, as required.
+
+12
+
+4 An Example As a simple illustration of the use of the iss concept, we may consider the oft-studied problem of globally stabilizing to zero the angular momentum of a rigid body which is controlled by means of two external torques applied along principal axes, and suggest an alternative way of achieving this objective using iss ideas. (This may represent a model of a satellite under the action of a pair of opposing jets.) The components of the state variable ! = (!1; !2; !3) denote the angular velocity coordinates with respect to a body-fixed reference frame with origin at the center of gravity and consisting of the principal axes. Letting the positive numbers I1; I2; I3 denote the respective principal moments of inertia (positive numbers), this is a system on R3, with controls in R2 and equations:
+
+I .! = S(!)I! + Bu ; (18) where I is the diagonal matrix with entries I1; I2; I3 and where B is a matrix in R3\Theta 2 whose columns describe the axes on which the control torques apply. Since it is being assumed that the two torques act along two principal axes, without loss of generality the columns of B are (0; 1; 0)0 and (0; 0; 1)0 respectively. The matrix S(!) is the rotation matrix
+
+S(!) = 0@
+
+0 !3 \Gamma !2\Gamma 
+
+!3 0 !1 !2 \Gamma !1 0
+
+1A
+
+:
+
+Dividing by the Ij 's, and applying the obvious feedback and coordinate transformations, there results a system on R3 of the form:
+
+.x1 = x2x3 .x2 = u1 .x3 = u2
+
+where u1 and u2 are the controls.
+
+To globally stabilize this system, and following the ideas of [1] for the corresponding local problem, one performs first a change of coordinates into new coordinates (x; z1; z2), where x = x1 and
+
+x2 = \Gamma x1 + z1 ; x3 = x21 + z2 :
+
+The system is now viewed as a cascade of two subsystems. One of these is described by the x variable, with z1 and z2 now thought of as inputs, and the second one is the z1; z2 subsystem. The first subsystem is precisely the one in example (10), and it is therefore iss. Since a cascade of an iss and a gas system is again gas, it is only necessary to stabilize the z1; z2 subsystem. In other words, looking at the system in the new coordinates:
+
+.x = \Gamma x3 + x2z1 \Gamma  xz2 + z1z2 .z1 = u1 + (\Gamma x + z1) ix2 + z2j
+
+.z2 = u2 \Gamma  2x1 (\Gamma x + z1) ix2 + z2j ;
+
+any feedback that stabilizes the last two equations will also make the composite system gas. One may therefore use
+
+u1 = \Gamma x1 \Gamma  x2 \Gamma  x2x3 ; u2 = \Gamma x3 + x21 + 2x1x2x3 ;
+
+13
+
+which renders the last two equations .z1 = \Gamma z1 and .z2 = \Gamma z2. As a remark, note that a conceptually different approach to the same problem can be based upon zero dynamics techniques ([2, 27]). In that context, one uses Lie derivatives of a Lyapunov function for the x-subsystem in building a global feedback law; see the discussion in [18], Section 4.8. For the present rigid body stabilization problem, the feedback stabilizing law obtained using that approach would be as follows ([2]):
+
+u1 = \Gamma x1 \Gamma  x2 \Gamma  x2x3 \Gamma  2x1x3 ; u2 = \Gamma x3 + 3x21 + 2x1x2x3 :
+
+5 Linear Systems with Actuator Saturation For linear systems subject to actuator saturation, more precise results regarding stabilization can be obtained. The objective is to study control problems for plants P that can be described as in Figure 3, where W indicates a linear transfer matrix. For simplicity, we consider here just
+
+\Gamma \Gamma  ---
+
+yu W (s)
+
+P
+
+Figure 3: Saturated-Input Linear System
+
+the state-observation case, that is, systems of the type
+
+.x = Ax + B sat[u] : (19) By an Lp-stable system one means that the zero-initial state response induces a bounded operator Lp ! Lp. The following result was recently obtained by W. Liu, Y. Chitour, and the author (see also [3] for related results on input to state dependence for such systems):
+
+Theorem 5 ([10]) Assume that the pair (A; B) is controllable and that A is neutrally stable (i.e., there is some symmetric positive definite Q so that AT Q + QA ^ 0). Then, there exists a matrix F so that the system
+
+.x = Ax + B sat[F x + u] is Lp-stable for each 1 ^ p ^ 1.
+
+The fact that gas can be achieved for such systems is a well-known and classical application of dissipation ideas, and a quadratic Lyapunov function suffices; obtaining the iss property, and in particular operator stability, is far harder. Not surprisingly, the proof involves establishing a dissipation inequality involving a suitable storage function. What is perhaps surprising is that the storage function that is used is only of class C1, in general not smooth: V is of the form x0P x + jxj3, for some positive definite P . One establishes by means of such a V that the system is iss. Since the used V admits convex estimates (in the sense discussed in Section 2.7), stronger operator stability conclusions can be obtained. The second example given in Section 2.6
+
+14
+
+(system (11) and storage function (12)) illustrates the detailed calculations in a very simple case.
+
+The hypotheses in Theorem 5 can be relaxed considerably. For instance, controllability can be weakened, and the result is also valid if instead of sat one uses a more general bounded saturation function oe which satisfies: (1) near the origin, oe is in a sector [^1; ^2]: 0!^1 ^ oe(r)r ^ ^2 for all 0!jrj^1, and (2) sign (r)oe(r)?^?0 if jrj?1.
+
+A different line of work concerns linear systems subject to control saturation in the case in which the matrix A is not stable, but still has no eigenvalues with positive real part. This is the case, for instance, if A has a Jordan block of size at least two corresponding to an eigenvalue at the origin (the multiple integrator). In that case, Lp stabilization is not possible, but, since the system is open-loop null-controllable (assuming as in Theorem 5 that the pair (A; B) is controllable, or at least stabilizable as a linear pair), it is realistic to search for a globally stabilizing feedback.
+
+A first result showing that a smooth globally stabilizing feedback always exists was given in work by Sussmann and the author ([20]). A remarkable design in terms of combinations of saturations was supplied by Teel ([25]), for the particular case of single-input multiple integrators, and a general construction based on Teel's ideas was completed recently in work of Sussmann, Yang, and the author ([24]). For simplicity, call a function Rn ! Rm each of whose coordinates has the form
+
+'1x + ff1 sat['2x + ff2 sat[: : : sat['s\Gamma 1x + ffs\Gamma 1 sat['sx]] : : :]] for some s and some real numbers ffi and linear functionals 'i a cascade of saturations, and one for which coordinates have the form
+
+ff1 sat['1x] + ff2 sat['2x] + : : : + ffs sat['sx] a superposition of saturations. (In the terminology of artificial neural networks, this last form is a "single hidden layer net.") There are two results, one for each of these controller forms:
+
+Theorem 6 ([24]) Consider the system (19), where the pair (A; B) is stabilizable and A has no eigenvalues with positive real part. Then there exist a cascade of saturations k and a superposition of saturations ` so that .x = Ax + B sat[k(x)] and .x = Ax + B sat[`(x)] are both gas.
+
+(The coefficients ffi in the second case can be chosen arbitrarily small, which means that the second result could also be stated as stability of .x = Ax + B`(x) since the saturation is then irrelevant.)
+
+For cascades of saturations, this design proceeds in very rough outline as follows (the superposition case is similar). A preliminary step is to bring the original system (19) to the following composite form:
+
+.z = A1z + B1(\Gamma F x + sat[u]) .x = A2x + B2 sat[u] ;
+
+where F is a matrix which has the property that the system .x = A2x + B2 sat[F x + u] is iss. (An example of such F is provided by the case .x = \Gamma sat[x + u], shown earlier to be iss, and more generally the case treated in Theorem 5.) Further, it is assumed that for each " ? 0
+
+15
+
+sufficiently small there is a (locally Lipschitz) feedback law k" with jk"(z)j ^ " for all z and so that .z = A1z + B1k"(z) is gas. Now the feedback law
+
+u = F x + k"(z) is so that for small x and " the z-equation is gas independently of x (in fact, the x variable is completely cancelled out), and hence the discussion given in connection with Figure 2 applies. Thus the composite system is stabilized, assuming only that the z-subsystem can be stabilized with small feedback. Moreover, F x + k"(z) has a cascade form provided that k" be a saturation of a cascade. These assumptions can be in turn obtained inductively, by decomposing the z equation recursively into lower dimensional subsystems. (More precisely, instead of sat one may use a scaled version with smaller lower bounds, satffi[r] = ffi sat[r=ffi], and the proof is the same. This provides the small feedback needed in the inductive step.) See [24] for details as well as a far more general result, which allows many other saturation functions oe instead of sat.
+
+6 Feedback Equivalence As mentioned earlier, with the concept of iss, it is possible to prove a general result on feedback equivalence. Consider two systems
+
+.x = f (x; u) and .x = g(x; u) with the same state and input value spaces (same n, m). These systems are feedback equivalent if there exist a smooth k : Rn ! Rm, and an m \Theta  m matrix \Gamma  consisting of smooth functions having det \Gamma (x) 6= 0 for all x, such that
+
+g(x; u) = f (x; k(x) + \Gamma (x)u) for all x and u (see Figure 4). The systems are strongly feedback equivalent if this holds with \Gamma  = I (see Figure 5).
+
+Strong equivalence is the most interesting concept when studying actuator perturbations, while feedback equivalence is a natural concept in feedback linearization and other design techniques. More general notions of feedback equivalence are also possible, not requiring transformations to be affine in u, but the main result will hold already for these types of transformations.
+
+ffiflfflfiffiflfflfi- - -6
+
+oe
+
+? x
+
+k f\Gamma u ffifl
+
+fflfi- -
+
+6
+
+oe
+
+x k fu
+
+Figure 4: Feedback
+
+Equivalence
+
+Figure 5: Strong Feedback
+
+Equivalence
+
+The system (1) is stabilizable if there exists a smooth function k (with k(0)=0) so that
+
+.x = f (x; k(x)) is gas. Equivalently, the system is strongly feedback equivalent to a gas system. It is issstabilizable if it is feedback equivalent to an iss system.
+
+16
+
+Theorem 7 ([15, 17]) The following properties are equivalent, for any system:
+
+ffl The system is stabilizable. ffl The system is iss-stabilizable. For systems affine in controls u (that is, f (x; u) is affine in u) the above are also equivalent to strong feedback equivalence to iss.
+
+7 Input/Ouput Stability (ios) Until here, only input to state stability was discussed. It is possible to give an analogous definition for input/output operators. This will be done next, and a result will be stated which shows that this property is equivalent to internal stability under suitable reachability and observability conditions, just as with linear systems (cf. for instance Section 6.3 in [18]).
+
+An i/o operator is a causal map F : Lm1;e ! Lp1;e. (More generally, partially defined operators can be studied as well, but since only the stable case will be considered, and since stability implies that F is everywhere defined, there is no need to do so here; see [15] for more details.)
+
+The i/o operator F is input/output stable (ios) if there exist two functions fi 2KL and fl 2K so that j
+
+F (u)(t)j ^ fi(kutk1 ; t \Gamma  T ) + fl(flflflutflflfl1)
+
+for all pairs 0 ^ T ^ t (a.e.) and all u 2 Lm1;e. Here ut denotes as earlier the restriction of the input u to [0; t] and ut denotes its restriction to [t; +1), in both cases seen as elements of Lm1;e having zero value outside of the considered range. This notion is well-behaved in various senses; for instance, it is closed under composition (serial connection), and u ! 0 implies F (u) ! 0.
+
+Consider now a control system .x = f (x; u) with outputs
+
+y = h(x) (20) where h : Rn!Rp is continuous and satisfies h(0)=0. With initial state x0 =0, this induces an operator
+
+F (u)(t) := h(x(t; 0; u))
+
+(a priori only partially defined). The system (1)-(20) is called ios if this operator is.
+
+The system with outputs (1)-(20) is well-posed observable ("strongly" observable in [15]) provided that the following property holds: there exist two functions ff1; ff2 of class K such that, for each triple of state, control, and output functions on t*0
+
+(x(\Delta ); u(\Delta ); y(\Delta )) satisfying the equations, the norms of these functions necessarily satisfy
+
+kxk1 ^ ff1(kuk1) + ff2(kyk1): (21) Analogously, one has a notion of a well-posed reachable system (1). This is a system for which there is a function ff3 of class K with the following property: for each x0 2 Rn there exists a time T ?0 and a control u so that k
+
+uk1 ^ff3(jx0j)
+
+17
+
+and so that x(T; 0; u)=x0.
+
+For linear systems, these properties are equivalent to observability and reachability from zero respectively. In general, the first one corresponds to the possibility of reconstructing the state trajectory in a regular fashion --similar notions have been studied under various names such as "algebraic observability" or "topological observability" -- and the second models the situation where the energy needed to control from the origin to any given state must be in some sense proportional to how far this state is from the origin. The proof of the following result is a routine argument, and is quite similar to the proofs of analogous results in the linear case as well as in the dissipation literature:
+
+Theorem 8 ([15]) If (1) is iss, then (1)-(20) is ios. Conversely, if (1)-(20) is ios, well-posed reachable, and well-posed observable, then (1) is iss.
+
+Many variants of the notion of ios are possible, in particular in order to deal with nonzero initial states ([8, 7]), or to study notions of practical stability, in which convergence to a small neighborhood of the origin is desired. Also of interest, is the study of the ios (or even iss) property relative to attracting invariant sets, not necessarily the origin and not even necessarily compact; see ([8, 9]) for instance.
+
+18
+
+References
+
+[1] Brockett, R.W., "Asymptotic stability and feedback stabilization," in Differential Geometric Control theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkhauser, Boston, 1983, pp. 181-191.
+
+[2] Byrnes, C.I. and A. Isidori, "New results and counterexamples in nonlinear feedback stabilization," Systems and Control Letters, 12(1989): 437-442.
+
+[3] Chitour, Y., W. Liu, and E.D. Sontag, "On the continuity and incremental-gain properties
+
+of certain saturated linear feedback loops," Intern. J. Robust and Nonlinear Control , to appear. (Preliminary version in Proc. IEEE Conf. Decision and Control, Orlando, Dec. 1994, IEEE Publications, 1994, pp. 127-132.)
+
+[4] Hahn, W, Stability of Motion, Springer-Verlag, New York, 1967. [5] Hill, D.J., and P. Moylan, "Dissipative dynamical systems: Basic input-output and state
+
+properties," J. Franklin Institute 5(1980): 327-357.
+
+[6] Hill, D.J., "Dissipative nonlinear systems: Basic properties and stability analysis," Proc.
+
+31st IEEE Conf. Dec. and Control , Tucson, Arizona, 1992, pp. 3259-3264.
+
+[7] Jiang, Z.-P., A. Teel, and L. Praly, "Small-gain theorem for ISS systems and applications,"
+
+Math of Control, Signals, and Systems 7(1994): 104-130.
+
+[8] Lin, Y., Lyapunov Function Techniques for Stabilization, PhD Thesis, Mathematics Department, Rutgers, The State University of New Jersey, New Brunswick, New Jersey, 1992.
+
+[9] Lin, Y., E.D. Sontag, and Y. Wang, "A smooth converse Lyapunov theorem for robust
+
+stability," SIAM J. Control and Opt., to appear. (Preliminary version in "Recent results on Lyapunov-theoretic techniques for nonlinear stability," in Proc. Amer. Automatic Control Conference, Baltimore, June 1994 , pp. 1771-1775.)
+
+[10] Liu, W., Y. Chitour, and E.D. Sontag, "Remarks on finite gain stabilizability of linear
+
+systems subject to input saturation," SIAM J. Control and Opt., to appear. (Preliminary version in Proc. IEEE Conf. Decision and Control, San Antonio, Dec. 1993, IEEE Publications, 1993, pp. 1808-1813.)
+
+[11] Mareels, I.M., and D.J. Hill, "Monotone stability of nonlinear feedback systems," J. Math.
+
+Sys, Estimation and Control 2(1992): 275-291.
+
+[12] Praly, L., and Z.-P. Jiang, "Stabilization by output feedback for systems with ISS inverse
+
+dynamics," Systems & Control Letters 21(1993): 19-34.
+
+[13] Praly, L., and Y. Wang, "An equivalent definition of input-to-state stability and stabilization in spite of matched unmodelled dynamics," submitted for publication.
+
+[14] Safonov, M.G., Stability and Robustness of Multivariable Feedback Systems, MIT Press,
+
+Cambridge, MA, 1980.
+
+[15] Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Transactions on
+
+Automatic Control AC-34(1989): 435-443.
+
+[16] Sontag, E.D., "Remarks on stabilization and input-to-state stability," Proc. IEEE Conf.
+
+Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 1376-1378.
+
+[17] Sontag, E.D., "Further facts about input to state stabilization," IEEE Transactions on
+
+Automatic Control AC-35(1990): 473-476.
+
+[18] Sontag E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems,
+
+Springer-Verlag, New York, (1990).
+
+19
+
+[19] Sontag, E.D., and Y. Lin, "Stabilization with respect to noncompact sets: Lyapunov
+
+characterizations and effect of bounded inputs," in Proc. Nonlinear Control Systems Design Symp., Bordeaux, June 1992 (M. Fliess, Ed.), IFAC Publications, pp. 9-14.
+
+[20] Sontag, E.D., and H.J. Sussmann, "Nonlinear output feedback design for linear systems
+
+with saturating controls," Proc. IEEE Conf. Decision and Control, Honolulu, Dec. 1990, IEEE Publications, 1990: 3414-3416.
+
+[21] Sontag, E.D., and A. Teel, "Changing supply functions in input/state stable systems,"
+
+submitted.
+
+[22] Sontag, E.D., and Y. Wang, "On characterizations of the input-to-state stability property,"
+
+Systems and Control Letters 24 (1995): 351-359. (Preliminary version in "Notions equivalent to input-to-state stability," in Proc. IEEE Conf. Decision and Control, Orlando, Dec. 1994, IEEE Publications, 1994, pp. 3438-3443.)
+
+[23] Sontag, E.D., and Y. Wang, "Characterizing the input-to-state stability property for set
+
+stability," Proc. Third Nonlinear Control System Design Symposium (NOLCOS), Lake Tahoe, CA, June 1995, to appear.
+
+[24] Sussmann, H.J., E.D. Sontag, and Y. Yang, "Stabilization of linear systems with bounded
+
+controls," IEEE Trans. Autom. Control 39(1994): 2411-2425.
+
+[25] Teel, A.R., "Global stabilization and restricted tracking for multiple integrators with
+
+bounded controls," Systems and Control Letters 18(1992): 165-171.
+
+[26] Teel, A.R., "A nonlinear small-gain theorem for the analysis of control systems with saturation," IEEE Trans. Autom. Ctr., to appear.
+
+[27] Tsinias, J., "Sufficient Lyapunovlike conditions for stabilization," Math. of Control, Signals, and Systems 2(1989): 343-357.
+
+[28] Tsinias, J., "Versions of Sontag's input to state stability condition and the global stabilizability problem," SIAM Journal on Control and Optimization 31(1993): 928-941.
+
+[29] Tsinias, J., "Sontag's `input to state stability condition' and global stabilization using state
+
+detection," Systems & Control Letters 20(1993): 219-226.
+
+[30] Varaiya, P.P. and R. Liu, "Bounded-input bounded-output stability of nonlinear timevarying differential systems," SIAM J.Control 4(1966): 698-704.
+
+[31] Willems, J.C., "Mechanisms for the stability and instability in feedback systems," Proc.
+
+IEEE 64 (1976): 24-35.
+
+[32] Zames, G., "On the input-output stability of time-varying nonlinear systems. Part I: Conditions derived using concepts of loop gain, conicity and passivity; Part II: Conditions involving circles in the frequency domain and sector nonlinearities," IEEE Trans. Autom. Ctr. AC-11 (1966): 228-238 and 465-476.
+
+20</pre>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-dt.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/saturated-dt.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Global Stabilization of Linear Discrete-Time Systems
+
+with Bounded Feedback
+
+Yudi Yang IBM, MD340 1311 Mamaroneck Ave White Plains, NY 10605
+
+yudiy@vnet.ibm.com
+
+Eduardo D. Sontag\Lambda  Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+sontag@hilbert.rutgers.edu
+
+Hector J. Sussmanny Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+sussmann@hilbert.rutgers.edu
+
+Abstract This paper deals with the problem of global stabilization of linear discrete time systems by means of bounded feedback laws. The main result proved is an analog of one proved for the continuous time case by the authors, and shows that such stabilization is possible if and only if the system is stabilizable with arbitrary controls and the transition matrix has spectral radius less or equal to one. The proof provides in principle an algorithm for the construction of such feedback laws, which can be implemented either as cascades or as parallel connections ("single hidden layer neural networks") of simple saturation functions.
+
+1 Introduction This paper is concerned with the global stabilization to the origin x = 0 of the state x(t) of a linear discrete-time system
+
+\Sigma  : x(t + 1) = Ax(t) + Bu(t) ; (1.1) when the control values u(t) are constrained to lie in a bounded subset U of Rm which contains zero in its interior. (As usual, A 2 Rn\Theta n and B 2 Rn\Theta m.) The study of stabilization under such constraints is not only a natural mathematical problem, but also arises often in many applied areas.
+
+The open loop question is well-understood. Call a system (1.1) asymptotically null controllable with bounded controls (ANCBC) if there is some U with the above properties such that, for each initial state x(0) 2 Rn, there exists a sequence u(\Delta ) = u(0); u(1); : : :, with all values u(t) 2 U , which steers the solution x(t) asymptotically to the origin, that is, so that the solution of (1.1) converges to zero. (It turns out, and in fact follows also from the results to be given, that if this property holds for some such U then it also holds for every U which contains the origin in its interior.) Now, it is known (cf. [3]) that a system is ANCBC if and only if (1) the pair (A; B) is stabilizable or "asycontrollable" in the usual unconstrained sense (equivalently, the rank of [*I \Gamma  A; B] is n for all complex * with j*j * 1, cf. e.g. [5], exercise 4.4.7) and (2) the spectral radius of A is less or equal to one. This provides an elegant algebraic solution of the open-loop question. What is proved in this paper is that, under exactly the same conditions, there is in fact a simple feedback synthesis that achieves closed-loop stabilization. The feedback laws that achieve this goal can be optionally of a form that involves series (cascade) connections
+
+\Lambda Supported in part by US Air Force Grant AFOSR-91-0343
+
+ySupported in part by NSF Grant DMS-8902994 and by US Air Force Grant AFOSR-91-0343
+
+Keywords: linear discrete-time systems, saturated feedback, global stabilization.
+
+1
+
+of linear functions and saturation devices or, alternatively, if desired, of a parallel form involving such saturations.
+
+The results in this paper are in no way surprising or unexpected, since they are closely analogous to similar results presented by the authors, and by A. Teel, for continuous time systems, in the sequence of papers [6], [9], [7], and [8]. Although the organization of the current work is tightly patterned after that of [8], and many of the arguments - but not all - are, conceptually, straightforward generalizations of the corresponding arguments in that continuous time paper, it seems appropriate to present the discrete time results, because there are many technical estimates that have to be carefully established for this particular case and which are not totally obvious.
+
+To simplify the presentation, we present a result that is weaker than the complete analog of the result in [8]: we restrict the saturations to be used when implementing feedback laws to be of a special kind, while in the continuous time result we showed that rather arbitrary saturation functions could be used as the building blocks. However, for applications, it would appear that our choice of primitive saturation functions is sufficient.
+
+The organization of the paper is as follows. In Section 2 we introduce notations as well as state the main results; this is almost a verbatim translation of the corresponding continuous time material. In Section 3 we provide a technical lemma on changing to a suitable canonical form, while another technical lemma, dealing with an ultimate boundedness result, is given in Section 4. The result in this section is not proved in a manner analogous to the corresponding result in [8], since doing so would require first obtaining the discrete time analogues of the finite gain results given in [2]; a direct proof is given instead. Finally, in Section 5 we give the proof of the main result, with arguments that are again quite similar to those used for continuous time.
+
+The results in this paper are extracted from Chapter 6 of the doctoral thesis [11]. Other references to closely related problems are [1] and [10]: the former gave a result on semi-global stabilizability (feedback laws that are guaranteed to work on any given compact, though not necessarily globally) using a simple saturated linear feedback, and the later provided partial results on global stabilizability for some special systems.
+
+2 Statement of the Main Results We start by introducing notations for the classes of functions which will be used to describe the feedback laws to be synthesized. (These definitions and notations are essentially the same as in the paper [8], except that they are built out of a special saturation function, defined next, instead of the far more general saturations used in that paper.) We let S consist of the saturations at various levels ffi ? 0, that is, the set of all functions R ! R of the type
+
+oe(s) = ffisat (s=ffi) ; where ffi ? 0, and
+
+sat (s) = sign (s) \Delta  minfjsj; 1g :
+
+Next we introduce, for each nonnegative integer k and each finite sequence oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oek) of functions in S, a set of functions from Rn to R, denoted Fn(oeoeoe), which consist of "cascades" of saturations. By induction on k, we define these sets as follows:
+
+ffl when k = 0 (which we can interpret as corresponding to the "empty sequence" oeoeoe), Fn(oeoeoe)
+
+consists of just one element, namely, the zero function from Rn to R;
+
+2
+
+ffl when k = 1, we define Fn(oe1) as the set of all the functions h : Rn ! R of the form
+
+h(x) = oe1(g(x)), where g : Rn ! R is a linear function;
+
+ffl for k ? 1, Fn(oe1; \Delta  \Delta  \Delta  ; oek) is the set of all those functions h : Rn ! R that are of the form
+
+h(x) = oek(f (x) + cg(x)), for some linear f : Rn ! R, some g 2 Fn(oe1; \Delta  \Delta  \Delta  ; oek\Gamma 1), and some c * 0.
+
+A second family of sets of functions Gn(oeoeoe), corresponding to "parallel combinations" of saturations, is defined as follows: for each nonnegative integer k and each finite sequence oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oek) of functions in S, Gn(oeoeoe) is the class of functions h : Rn ! R of the form
+
+h(x) = oe1(f1(x)) + oe2(f2(x)) + \Delta  \Delta  \Delta  + oek(fk(x)) ; where f1; \Delta  \Delta  \Delta  ; fk are linear functions.
+
+Finally, given any m-tuple lll = (l1; \Delta  \Delta  \Delta  ; lm) of nonnegative integers, and any finite sequence (oe11; \Delta  \Delta  \Delta  ; oe1l1; \Delta  \Delta  \Delta  ; oem1 ; \Delta  \Delta  \Delta  ; oemlm) of functions in S, we define the following classes of vector functions built out of the classes of scalar functions which were just defined. We write in block form
+
+oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oejlllj), where jlllj = l1 + \Delta  \Delta  \Delta  + lm, and let Fllln(oeoeoe) (respectively, Gllln(oeoeoe),) be the set
+
+of all functions h : Rn ! Rm that are of the form (h1; \Delta  \Delta  \Delta  ; hm), where hi 2 Fn(oei1; \Delta  \Delta  \Delta ; oeili) (respectively, hi 2 Gn(oei1; \Delta  \Delta  \Delta  ; oeili)) for i = 1; 2; \Delta  \Delta  \Delta ; m. (So Fllln(oeoeoe) = Fn(oeoeoe), Gllln(oeoeoe) = Gn(oeoeoe) when m = 1.) For a sequence of saturations as here, we denote as koeoeoek the maximum bound (the "ffi"'s in their definition) among all the oei's. (We use also kxk for the Euclidean norm of a vector x, but the meaning should be clear from the context.)
+
+Let ffi ? 0. We say that a function , : Z*0 ! Rn is eventually bounded by ffi (and write j,j ^ev ffi), if there exists T ? 0 such that j,(t)j ^ ffi for all t * T . Given an n-dimensional system E : x(t + 1) = f (x(t)), we say that E is iics (integrable-input converging-state) if, whenever fe(t)g10 2 l1, every solution t ! x(t) of x(t + 1) = f (x(t)) + e(t) converges to zero as t ! 1. (We need this concept in order to be able to state a result which can be used in an induction proof.) For a system x(t + 1) = f (x(t); u(t)), we say that a feedback u = k(x) is stabilizing if 0 is a globally asymptotically stable equilibrium of the closed-loop system x(t+1) = f (x(t); k(x(t))). If, in addition, this closed-loop system is iics, then we will say that k is iics-stabilizing.
+
+For an n \Theta  n real matrix A, let N (A) be the number of eigenvalues z of A such that jzj = 1 and Im z * 0, counting multiplicities.
+
+This is the explicit version of our main result:
+
+Theorem 1 Assume that \Sigma  is an ANCBC linear system x(t + 1) = Ax(t) + Bu(t) with state space Rn and input space Rm. Let N = N (A). Then, for every " ? 0, there exist a sequence oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oeN ) of functions belonging to S with koeoeoek ^ " and an m-tuple lll = (l1; \Delta  \Delta  \Delta  ; lm)
+
+of nonnegative integers such that jlllj = l1 + \Delta  \Delta  \Delta  + lm = N , for which there are iics-stabilizing feedbacks
+
+u = kF (x) (2.1)
+
+u = kG(x) (2.2)
+
+such that kF 2 Fllln(oeoeoe), kG 2 Gllln(oeoeoe).
+
+We will say that (2.1), (2.2) are "feedbacks of Type F " and "of Type G" respectively.
+
+3
+
+A linear discrete-time system \Sigma  is bounded feedback stabilizable (BFS) if there exists a bounded locally Lipschitz feedback k that stabilizes \Sigma . A linear discrete-time system \Sigma  is small feedback stabilizable (SFS) if for every " ? 0 there exists a stabilizing feedback k for \Sigma  such that kk(x)k ^ " for all x.
+
+The following is an easy Corollary of Theorem 1, and conveys the main conclusions in a simplified form.
+
+Theorem 2 Let \Sigma  be a linear discrete-time system. Then the following conditions are equivalent:
+
+1. \Sigma  is SFS, 2. \Sigma  is BFS, 3. \Sigma  is ANCBC.
+
+Note that the implication 3 ) 1 follows from Theorem 1, while 1 ) 2 and 2 ) 3 are trivially true.
+
+3 A Useful Change of Coordinates In this section we present a technical lemma which is needed in the proof of Theorem 1. It follows the lines of the analogous continuous-time result, Lemma 3.1, in [8].
+
+Lemma 3.1 Consider an n-dimensional linear single-input system
+
+\Sigma  : x(t + 1) = Ax(t) + bu(t) : (3.1) Suppose that (A; b) is a controllable pair and that all the eigenvalues of A have magnitude 1.
+
+(i) If * = 1 or * = \Gamma 1 is an eigenvalue of A, then there is a linear change of coordinates
+
+T x = (y1; \Delta  \Delta  \Delta  ; yn)0 = (_y0; yn)0 of Rn that transforms \Sigma  into the form
+
+_y(t + 1) = A1 _y(t) + b1(yn(t) + u(t)) ; yn(t + 1) = *(yn(t) + u(t)) ; (3.2)
+
+where the pair (A1; b1) is controllable and yn is a scalar variable. (ii) If A has an eigenvalue of the form ff + fii, with fi 6= 0, then there is a linear change of
+
+coordinates T x = (y1; \Delta  \Delta  \Delta  ; yn)0 = (_y0; yn\Gamma 1; yn)0 of Rn that transforms \Sigma  into the form
+
+_y(t + 1) = A1 _y(t) + b1(yn(t) + u(t)) ; yn\Gamma 1(t + 1) = ffyn\Gamma 1(t) \Gamma  fi(yn(t) + u(t)) ;
+
+yn(t + 1) = fiyn\Gamma 1(t) + ff(yn(t) + u(t)) ;
+
+(3.3)
+
+where the pair (A1; b1) is controllable and yn\Gamma 1; yn are scalar variables.
+
+4
+
+Proof. We first prove (i). If * = 1 or * = \Gamma 1 is an eigenvalue of A, then there exists a nonzero n-dimensional row vector v such that vA = *v. It follows from the Hautus condition for controllability (see e.g. [5], Lemma 3.3.7) that vb 6= 0; thus, we may normalize v so that vb = *, which we assume from now on. We apply a preliminary linear change of coordinates T x = (_z0; zn)0, where the matrix T is picked so that zn = vx; in the new coordinates, the system equations take the following block form:
+
+_z(t + 1) = A1_z(t) + zn(t)~b1 + u(t)~b2 ; zn(t + 1) = *zn(t) + *u(t) :
+
+We now apply a second coordinate change, letting _y = _z + zn~b3, yn = zn, where the vector ~b3 will be specified below. The system equations now become:
+
+_y(t + 1) = A1 _y(t) + yn(t)(~b1 + (*I \Gamma  A1)~b3) + u(t)(~b2 + *~b3) ; yn(t + 1) = *(yn(t) + u(t)) :
+
+We pick ~b3 to be any solution of ~b2 + *~b3 = ~b1 + (*I \Gamma  A1)~b3, i.e, A1~b3 = ~b1 \Gamma  ~b2. (This is possible because A1 is nonsingular; note that all its eigenvalues are in the unit circle.) With b1 = ~b1 + (*I \Gamma  A1)~b3, the equations have the desired form (3.2).
+
+We next prove part (ii). Let * = ff + fii, fi 6= 0, be an eigenvalue of A. Let v be a left eigenvector associated to *, i.e. vA = *v, v 6= 0. Again by Hautus' condition, vb 6= 0. Write v = v1 + iv2, with v1 and v2 real. We may assume that v1b 6= 0 (otherwise, use iv in place of v), and, hence, normalizing, that v1b = \Gamma fi. Let o/ = v2b and consider the following real 2 \Theta  2 matrix:
+
+P = 1fi2 + o/ 2  fi
+
+2 + ffo/ fi(ff \Gamma  o/ )
+
+fi(o/ \Gamma  ff) fi2 + ffo/ ! : Make a linear change of coordinates T x = (_z0; zn\Gamma 1; zn)0 so that (zn\Gamma 1; zn)0 j P (v1x; v2x)0. In the new coordinates, the system equations become:
+
+_z(t + 1) = A1 _z(t) + zn\Gamma 1(t)~b1 + zn(t)~b2 + u(t)~b3 ; zn\Gamma 1(t + 1) = ffzn\Gamma 1(t) \Gamma  fi(zn(t) + u(t)) ;
+
+zn(t + 1) = fizn\Gamma 1(t) + ff(zn(t) + u(t)) ;
+
+(3.4)
+
+and every eigenvalue of A1 has magnitude 1. Finally, we change coordinates once more, by letting _y = _z + zn\Gamma 1~b4 + zn~b5, yn\Gamma 1 = zn\Gamma 1, yn = zn, where the vectors ~b4, ~b5 will be chosen below. Then the last two equations of (3.4) are as desired, and the equation of _y becomes
+
+_y(t + 1) = A1 _y(t) + yn\Gamma 1(t)(~b1 \Gamma  A1~b4 + ff~b4 + fi~b5)
+
++yn(t)(~b2 \Gamma  A1~b5 + ff~b5 \Gamma  fi~b4) + u(t)(~b3 \Gamma  fi~b4 + ff~b5) : (3.5)
+
+If we could choose ~b4, ~b5 such that
+
+~b1 \Gamma  A1~b4 + ff~b4 + fi~b5 = 0 (3.6)
+
+and ~
+
+b3 \Gamma  fi~b4 + ff~b5 = ~b2 \Gamma  A1~b5 \Gamma  fi~b4 + ff~b5; (3.7)
+
+then we could let
+
+b1 = ~b2 \Gamma  A1~b5 \Gamma  fi~b4 + ff~b5 (3.8)
+
+and the system equations would become (3.3) as desired. To prove the existence of ~b4 and ~b5, we rewrite (3.7) as A1~b5 = ~b2 \Gamma  ~b3, from which we get ~b5 because A1 is nonsingular. Then from (3.6), we have (A1 \Gamma ffI)~b4 = ~b1+fi~b5. Since the eigenvalues of A1 have magnitude 1 and ff 6= \Sigma 1, the matrix A1 \Gamma  ffI is nonsingular, and so ~b4 exists as well. 2
+
+5
+
+4 An Ultimate Boundedness Result The main technical lemma needed for the proof of our main result is given in this section. Though its conclusions are similar to Lemma 3.2 in [8], the proof that we provide is quite different. Because we restricted attention to a special type of saturation functions, the argument is substantially simpler than that in the cited paper.
+
+Lemma 4.1 Let a; b be two real constants such that a2 + b2 = 1 and b 6= 0. Let ej = (ej(0); ej(1); ej(2); \Delta  \Delta  \Delta ), j = 1; 2, be two elements of l1. Pick any ffi ? 0 and any " 2 (0; ffi4). Suppose that v : Z*0 ! R2 is so that jvj ^ev ". Then, if fl = (x(\Delta ); y(\Delta )) : Z*0 ! R2 is any solution of the system
+
+x(t + 1) = ax(t) \Gamma  by(t) + bu(t) + e1(t) ;
+
+y(t + 1) = bx(t) + ay(t) \Gamma  au(t) + e2(t) ; (4.1)
+
+where
+
+u(t) = oe(y(t) + ,v(t)) + jv(t) ; (4.2)
+
+and , + j = 1, ,; j * 0, and oe(s) = ffisat (s=ffi), it follows that
+
+lim sup
+
+t!+1 kfl(t)k ! r =
+
+1 jbj(7jaj + 4)" + 7" : (4.3)
+
+Proof. Without loss of generality, we assume b ? 0 (if this were not the case, the result can be proved for the negatives \Gamma a; \Gamma b, etc., substituted for the original data; note that the assumptions hold for these, and the conclusions involve only absolute values). Let ` = arctan( ba), 0 ! ` ! ss, if a 6= 0, and ` = ss2 if a = 0. Then a + ib = ei`. Let z(t) = x(t) + iy(t), e(t) = e1(t) + ie2(t). Then
+
+z(t + 1) = ei`(z(t) \Gamma  iu(t)) + e(t) : (4.4)
+
+Again, without loss of generality, we assume that kek1 ! ", (otherwise we can find T ? 0 such that Pt*T je(t)j ! ", and then we only need to consider the solution for t * T ). Similarly, we assume jv(t)j ^ " for all t. So
+
+jz(t + 1)j ^ jz(t) \Gamma  iu(t)j + je(t)j
+
+= px(t)2 + (y(t) \Gamma  u(t))2 + je(t)j = pjz(t)j2 \Gamma  u(t)(2y(t) \Gamma  u(t)) + je(t)j = jz(t)j + w(t) + je(t)j ;
+
+(4.5)
+
+where
+
+w(t) = \Gamma u(t)(2y(t) \Gamma  u(t))jz(t)j + pjz(t)j2 \Gamma  u(t)(2y(t) \Gamma  u(t)) : (4.6)
+
+If t is so that jy(t)j * 3", then from (4.2) it follows that
+
+2" ^ ju(t)j ^ 43 jy(t)j ; and u(t) has the same sign as y(t). So
+
+w(t) ^ \Gamma  2" \Delta 
+
+23jy(t)j
+
+2jz(t)j ^ \Gamma 
+
+2"2 jz(t)j :
+
+6
+
+Thus, from (4.5), we have
+
+jz(t + 1)j ^ jz(t)j \Gamma  2"
+
+2
+
+jz(t)j + je(t)j ; if jy(t)j * 3" : (4.7)
+
+If instead t is so that jy(t)j ! 3", then since jy(t) + ,v(t)j ! 4" ^ ffi, it follows that
+
+u(t) = y(t) + v(t) : (4.8) So
+
+w(t) = v(t)
+
+2 \Gamma  y(t)2
+
+jz(t)j + pjz(t)j2 + v(t)2 \Gamma  y(t)2 and hence
+
+w(t) ^ v(t)
+
+2 \Gamma  y(t)2
+
+2jz(t)j ^
+
+"2 2jz(t)j : (4.9)
+
+We conclude that, provided jy(t)j ! 3",
+
+jz(t + 1)j ^ jz(t)j + "
+
+2
+
+2jz(t)j + je(t)j : (4.10)
+
+In addition,
+
+jy(t + 1)j * bjx(t)j \Gamma  jaj(jy(t)j + ju(t)j) \Gamma  je2(t)j * bjx(t)j \Gamma  (7jaj + 1)" ; for jy(t)j ! 3". If jx(t)j * 1b (7jaj + 4)", then
+
+jy(t + 1)j * 3" ; (4.11) and also jx(t)j * 4" (recall that b ^ 1), which implies jz(t)j * 4". Since je(t)j ^ ", from (4.10) it follows that
+
+jz(t + 1)j ^ jz(t)j + "
+
+2
+
+8" + " ^
+
+41 32 jz(t)j : (4.12) On the other hand, since jy(t + 1)j * 3", applying (4.7) for z(t + 2), we conclude that
+
+jz(t + 2)j ^ jz(t + 1)j \Gamma  2"
+
+2
+
+jz(t + 1)j + je(t + 1)j : (4.13)
+
+Using (4.10) and (4.12) to substitute jz(t + 1)j in the first and second terms of (4.13), we end up with
+
+jz(t + 2)j ^ jz(t)j + "
+
+2
+
+2jz(t)j \Gamma  64
+
+"241 jz(t)j + je(t)j + je(t + 1)j
+
+! jz(t)j \Gamma  "
+
+2
+
+jz(t)j + je(t)j + je(t + 1)j :
+
+Summarizing, we have proved:
+
+Fact I:
+
+(i) if jy(t)j * 3", then
+
+jz(t + 1)j ^ jz(t)j \Gamma  2"
+
+2
+
+jz(t)j + je(t)j ; (4.14)
+
+7
+
+(ii) if jy(t)j ! 3", and jx(t)j * 1b (7jaj + 4)", then
+
+jz(t + 2)j ^ jz(t)j \Gamma  "
+
+2
+
+jz(t)j + je(t)j + je(t + 1)j : (4.15)
+
+As a consequence of Fact I, we have Fact II: there exists t ? 0 such that z(t) is in the region
+
+R = fx + yi : jxj ^ 1b (7jaj + 4)"; jyj ^ 3"g : Indeed, if Fact II were not true, then for any t ? 0 we would have either jy(t)j * 3" or jx(t)j * 1b (7jaj + 4)". Now we select a sequence (t0; t1; t2; \Delta  \Delta  \Delta ) of integers in the following way:
+
+ffl t0 = 0, ffl for j * 0, if (4.14) is true for t = tj , then tj+1 = tj + 1; otherwise tj+1 = tj + 2.
+
+Then we have
+
+jz(tj+1)j ^ jz(tj )j \Gamma  "
+
+2
+
+jz(tj )j +
+
+tj+1\Gamma 1X
+
+k=tj
+
+je(k)j : (4.16)
+
+Summing (4.16) for j = 0; 1; 2; \Delta  \Delta  \Delta ; n, we have
+
+jz(tn+1)j ^ jz(0)j \Gamma  "2
+
+nX
+
+k=0
+
+1 jz(tk)j +
+
+tn+1\Gamma 1X
+
+k=0
+
+je(k)j : (4.17)
+
+In particular, we have
+
+jz(tn+1)j ^ jz(0)j + kek1 = M (4.18)
+
+for all n * 0. So from (4.17) it follows that
+
+jz(tn+1)j ^ jz(0)j \Gamma  (n + 1)"2=M + kek1 : (4.19) Let n ! 1. Then jz(tn+1)j ! \Gamma 1, which is a contradiction. So Fact II is proved.
+
+To complete the proof of the lemma, it is enough to show the next fact.
+
+Fact III: if z(T ) 2 R for some T * 0, then jz(t)j ^ r for all t * T .
+
+Note that if z(t) 2 R, then
+
+jz(t)j ^ 1b (7jaj + 4)" + 3" : (4.20) If for some T1, z(T1) =2 R, but z(T1 \Gamma  1) 2 R, then from Fact II (applied to the trajectory which starts at the state (x(T1); y(T1))), it follows that there exists T2 ? T1 such that z(T2) 2 R, and z(t) =2 R for T1 ^ t ! T2. Now we select t0 = T1; t1; t2; \Delta  \Delta  \Delta  ; tn = T2 as we did above such that (4.16) is satisfied for j = 0; 1; 2; \Delta  \Delta  \Delta  ; n. Then
+
+jz(tj)j ^ jz(t0)j +
+
+tj\Gamma 1X
+
+k=t0
+
+je(k)j (4.21)
+
+8
+
+for 1 ^ j ^ n. Note that z(t0) = ei`(z(T1 \Gamma  1) \Gamma  iu(T1 \Gamma  1)) + e(T1 \Gamma  1), and z(T1 \Gamma  1) 2 R.
+
+There are two cases to consider now, depending on the sign of w(T1 \Gamma  1). If this quantity is negative, then from (4.5) we know that
+
+jz(T1)j ! jz(T1 \Gamma  1)j + " : Together with (4.21), we conclude (recall that t0 = T1) that
+
+jz(tj)j ^ jz(T1 \Gamma  1)j + " +
+
+tj\Gamma 1X
+
+k=T1
+
+je(k)j : (4.22)
+
+If instead w(T1 \Gamma  1) ? 0, then from (4.9) it follows that jy(T1 \Gamma  1)j ! ", so we have that also ju(T1 \Gamma  1)j ! 2". Thus jz(t0)j ^ jz(T1 \Gamma  1)j + 2" + je(T1 \Gamma  1)j. Substituting this into (4.21), we obtain the estimate:
+
+jz(tj )j ^ jz(T1 \Gamma  1)j + 2" +
+
+tj\Gamma 1X
+
+k=T1\Gamma 1
+
+je(k)j ; 0 ^ j ^ n : (4.23)
+
+For the times of the form tj , the above bounds will provide the desired conclusions. However, we must take into account as well the cases when tj \Gamma  tj\Gamma 1 = 2, so that we need to bound the states x(tj + 1) for such j's. In that case, from (4.10) and (4.23) we have
+
+jz(tj + 1)j ^ jz(tj )j + "
+
+2
+
+2jz(tj)j + je(tj)j ^ jz(T1 \Gamma  1)j +
+
+"2 2jz(tj)j + 3" :
+
+Since by z(tj) is not in R, it follows that jz(tj)j * minf4"=b; 3"g ? "=2, so we have jz(tj + 1)j ^ jz(T1 \Gamma  1)j + 4". From (4.20) we conclude that
+
+jz(tj + 1)j ^ 1b (7jaj + 4)" + 7" (4.24) when tj+1 \Gamma  tj = 2. Finally, from inequalities (4.20), together with (4.22) or (4.23) when t is in the sequence of tj 's, or (4.24) when t is not in this sequence, imply that jz(t)j ^ r for T1 ^ t ! T2. So Fact III is established. 2
+
+We can summarize the above result, as well as an analogous one-dimensional property, as a general property of certain systems with orthogonal A matrices, as follows.
+
+Corollary 4.2 For n = 1; 2, let J be an n \Theta  n matrix, equal to either 1 or \Gamma 1 if n = 1, or of the form `
+
+ff \Gamma fi
+
+fi ff '
+
+in the case n = 2, with ff2 + fi2 = 1 and fi 6= 0. Let b = 1 if n = 1, and b = (0; 1)0 if n = 2. Then for every " ? 0, ffi ? 0 there exists ` ? 0 such that for any functions v : Z*0 ! R and e : Z*0 ! Rn, where v ^ev `, e 2 l1, if fl : Z*0 ! Rn is any solution of the system
+
+x(t + 1) = Jix(t) \Gamma  oe(xn(t) \Gamma  ,v(t))b + jv(t)bj + e(t) ; where oe(s) = ffisat (s=ffi), , + j = 1, ,; j * 0, it follows that
+
+lim sup
+
+t!+1 kfl(t)k ! " :
+
+9
+
+Proof. Assume first n = 2. We pick any 0 ! ` ! minf ffi4; "7+(7jaj+4)=jbjg, and apply Lemma 4.1 with """ there equal to `, from which the conclusion follows.
+
+Next, we prove the conclusion for n = 1. In this case, the equation of the system becomes
+
+x(t + 1) = *ix(t) \Gamma  oe(x(t) \Gamma  ,v(t)) + jv(t)j + e(t) ; where * = \Sigma 1. Pick any ` ? 0. Arguing as earlier (start from a large enough time), we may without loss of generality assume that kek1 ! `. If jv(t)j ^ ` ^ ffi=3, then for jx(t)j * 3` we have joe(x(t) \Gamma  ,v(t)) \Gamma  jv(t)j * 2`, and oe(x(t) \Gamma  ,v(t)) \Gamma  jv(t) has the same sign as x(t). So if jx(t)j * 3`, then
+
+jx(t + 1)j ^ jx(t) \Gamma  oe(x(t) \Gamma  ,v(t)) + jv(t)j + je(t)j ^ jx(t)j \Gamma  ` : Thus there is some t0 so that jx(t0)j ^ 3`. However, the interval [\Gamma 3`; 3`] is invariant: it follows from the equation and the fact that ` ^ ffi=3 that jx(t + 1)j ^ 3` whenever jx(t)j ^ 3`. So lim supt!+1 jx(t)j ^ 3`. Now, to obtain the conclusion of the corollary, it suffices to take ` = minfffi=3; "=3g. 2
+
+5 The Proof of Theorem 1 First, we notice that under the conditions of the theorem there exists a linear change of coordinates of the state space that transforms \Sigma  into the block form
+
+\Sigma  : ( x1(t + 1) = A1x1(t) + B1u(t); x1(t) 2 R
+
+n1 ;
+
+x2(t + 1) = A2x2(t) + B2u(t); x2(t) 2 Rn2 ;
+
+where (i) n1+n2 = n, (ii) all the eigenvalues of A1 have magnitude 1, (iii) all the eigenvalues of A2 have magnitude less than 1, and (iv) (A1; B1) is a controllable pair. Suppose that we find an iicsstabilizing feedback u = k(x1) of Type F or Type G for the system x1(t + 1) = A1x1(t) + B1u(t) such that the resulting closed-loop system is asymptotically stable. Then this same feedback law will stabilize \Sigma  as well, because the second equation, x2(t+1) = A2x2(t)+B2k(x1(t)), can be seen as an asymptotically stable linear system forced by a function that converges to zero. Thus, in order to stabilize \Sigma , it is enough to stabilize the "critical subsystem" x1(t+1) = A1x1(t)+B1u(t). Without loss of generality, in our proof of the theorem we will suppose that \Sigma  is already in this form, that is, we assume that all the eigenvalues of A have magnitude 1 and that the pair (A; B) is controllable.
+
+5.1 Single-Input Case We start with the single-input case, and prove the theorem by induction on the dimension n of the system.
+
+For dimension zero there is nothing to prove. Now assume that we are given a single-input n-dimensional system, n * 1, and suppose that Theorem 1 has been established for all singleinput systems of dimension less than or equal to n \Gamma  1. We consider separately the following two possibilities:
+
+(i) 1 or \Gamma 1 is an eigenvalue of A,
+
+10
+
+(ii) neither 1 nor \Gamma 1 is an eigenvalue of A. Write N = N (A), and pick any " ? 0. We want to prove the existence of iics-stabilizing feedbacks u = \Gamma kF (x) and u = \Gamma kG(x), where kF 2 Fn(oeoeoe), kG 2 Gn(oeoeoe), for some finite sequence oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oeN) of functions in S, with koeoeoek ^ ". (The negative signs are merely for notational convenience; since saturations are odd functions, the signs can be switched by changing coefficients of linear combinations.)
+
+In Case (i), we apply Part (i) of Lemma 3.1 and rewrite our system in the form
+
+_y(t + 1) = A1 _y(t) + (yn(t) + u(t))b1 ; yn(t + 1) = *(yn(t) + u(t)) ; (5.1)
+
+where _y = (y1; \Delta  \Delta  \Delta  ; yn\Gamma 1)0. (Note that if n = 1, only the second equation appears.) In Case (ii), since n ? 0, A has a pair of eigenvalues of the form ff + fii, with fi 6= 0. So we apply Part (ii) of Lemma 3.1 and make a linear transformation that puts \Sigma  in the form
+
+_y(t + 1) = A1 _y(t) + (yn(t) + u(t))b1 ; yn\Gamma 1(t + 1) = ffyn\Gamma 1(t) \Gamma  fi(yn(t) + u(t)) ;
+
+yn(t + 1) = fiyn\Gamma 1(t) + ff(yn(t) + u(t)) ;
+
+(5.2)
+
+where _y = (y1; y2; \Delta  \Delta  \Delta ; yn\Gamma 2)0. (In the special case when n = 2, the first equation will be missing.) So, in either case, we can rewrite our system in the form
+
+_y(t + 1) = A1 _y(t) + (yn(t) + u(t))b1 ; ~y(t + 1) = J(~y(t) + u(t)b0) ; (5.3)
+
+where J is as in Lemma 3.1 and b0 is like b in that Lemma. To consider the problem of iicsstabilizing feedback, we must study solutions of the following system:
+
+_y(t + 1) = A1 _y(t) + (yn(t) + u(t))b1 + _e(t) ; ~y(t + 1) = J(~y(t) + u(t)b0) + ~e(t) ; (5.4)
+
+where _e; ~e are arbitrary elements of l1.
+
+We will design a feedback of the form
+
+u = oeN (\Gamma yn + ,v) + jv = \Gamma oeN (yn \Gamma  ,v) + jv ; (5.5) where , and j are constants such that ,j = 0; , + j = 1, oeN (s) = "sat (s="), and v is to be chosen later.
+
+From Corollary 4.2 we may pick a 0 ! ` ! "=2 such that, if jv(t)j ^ev `, then all trajectories of (5.4) satisfy j~yj ^ev "=2. Consider one such trajectory. Then, for all t sufficiently large, u(t) = \Gamma yn(t) + v(t), and the first block equation in (5.4) becomes
+
+_y(t + 1) = A1 _y(t) + v(t)b1 + _e(t) (5.6) for all large t. Note that (A1; b1) is controllable and all eigenvalues of A1 have magnitude 1. By the inductive hypothesis, we conclude that there exist
+
+_kF 2 Fn(_oeoeoe) and _kG 2 Gn(_oeoeoe) (5.7)
+
+for some _oeoeoe = (oe1; \Delta  \Delta  \Delta ; oeN\Gamma 1) such that k_oeoeoek ^ `, each of which is iics-stabilizing for the system
+
+_y(t + 1) = A1 _y(t) + u(t)b1.
+
+11
+
+We let
+
+kF (y) = oeN (\Gamma yn + _kF (_y))
+
+and
+
+kG(y) = oeN (\Gamma yn) + _kG(_y)
+
+(cases , = 1, j = 0, and , = 0, j = 1 respectively), and claim that these are iics-stabilizing for the original system. Locally around the origin, the closed-loop system is linear, so stability is not an issue, and it is enough to prove the attraction property. We must show that, for any
+
+_e; ~e elements of l1, all solutions converge to zero. Pick any such trajectory. As discussed, u is eventually linear in the variables yn and v, where we are taking v = _kF (_y) or v = _kG(_y). By the inductive construction, we know that also _y(t) ! 0 as t ! 0, which means that, since v is a linear function of _y when _y is small, (5.4) will eventually become a linear asymptotically stable system with an converging input, and thus the state indeed converges to zero. The sequence oeoeoe = (oe1; \Delta  \Delta  \Delta ; oeN\Gamma 1; oeN ) clearly satisfies koeoeoek ^ ". The proof for the single-input case is completed.
+
+5.2 The General Case Next, we deal with the general case of m ? 1 inputs and prove Theorem 1 by induction on m.
+
+First, we know from the proof above that the theorem is true if m = 1. Assume that Theorem 1 has been established for all k-input systems, for all k ^ m \Gamma  1, and let \Sigma  : x(t + 1) = Ax(t) + Bu(t) be an m-input system.
+
+Assume without loss of generality that the first column b1 of B is nonzero and consider the Kalman controllability decomposition of the system \Sigma 1 : x(t + 1) = Ax(t) + b1u1(t) (see e.g. [5], Lemma 3.3.3). We conclude that, under a change of coordinates y = T \Gamma 1x, \Sigma 1 has the form
+
+y1(t + 1) = A1y1(t) + A2y2(t) + _b1u1(t) ; y2(t + 1) = A3y2(t) ;
+
+where (A1; _b1) is a controllable pair. In these coordinates \Sigma  has the form
+
+y1(t + 1) = A1y1(t) + A2y2(t) +_b1u1(t) + _B1 _u(t) ; y2(t + 1) = A3y2(t) + _B2 _u(t) ; (5.8)
+
+where _u = (u2; \Delta  \Delta  \Delta  ; um)0 and _B1; _B2 are appropriate matrices. So it suffices to show the conclusion for (5.8). Let n1; n2 denote the dimensions of y1; y2, respectively. Recall that N = N (A). For the single-input controllable system
+
+y1(t + 1) = A1y1(t) + _b1u1(t) ; there is a feedback
+
+u1 = k1(y1) (5.9)
+
+such that (i) k1 2 Fn1(oe1; \Delta  \Delta  \Delta ; oeN1) (respectively, k1 2 Gn1 (oe1; \Delta  \Delta  \Delta  ; oeN1)) where N1 = N (A1); (ii) the resulting closed-loop system is iics; (iii) koeoeoe1k ^ ", where oeoeoe1 = (oe1; \Delta  \Delta  \Delta  ; oeN1). Since (5.8) is controllable, we conclude that the (m-1)-input subsystem y2(t + 1) = A3y2(t) + _B2 _u(t) is controllable as well. By the inductive hypothesis, this subsystem can be stabilized by a feedback
+
+_u = _k(y2) = (k2(y2); \Delta  \Delta  \Delta ; km(y2)) (5.10)
+
+such that (i) _k 2 F
+
+_lll
+
+n2(oeN1+1; \Delta  \Delta  \Delta ; oeN ) (respectively, _k 2 G
+
+_lll n2), where _lll = (N2; \Delta  \Delta  \Delta  ; Nm) is an (m \Gamma  1)-tuple of nonnegative integers and j_lllj = N \Gamma  N1; (ii) the resulting closed-loop system is
+
+12
+
+iics; (iii) koeoeoe2k ^ ", where oeoeoe2 = (oeN1+1; \Delta  \Delta  \Delta  ; oeN). We let k(y) = (k1(y1); _k(y2)). This globally stabilizes (5.8), and the resulting closed-loop system is iics. Indeed, around the origin the system (5.8) has a block triangular linear form, whose diagonal blocks are asymptotically stable, so stability is automatic. Consider now any e1; e2 2 l1 and any solution of (5.8) with e1; e2 added to the respective blocks. Then y2(t) ! 0 as t ! 0 because _k is iics-stabilizing. Moreover, since near the origin the system is linear, y2 is an l1 function itself. Now consider the first block of equations, viewing
+
+A2y2(t) + _B1_k(y2(t)) + e1(t)
+
+as an l1 perturbation. Since k1 is iics-stabilizing, it follows that y1(t) ! 0 as t ! 0 as well. So if we let lll = (N1; N2; \Delta  \Delta  \Delta  ; Nm) and k = (k1(y1); k2(y2); \Delta  \Delta  \Delta ; km(y2)), then k 2 Fllln(oeoeoe) (respectively, k 2 Gllln(oeoeoe) ), oeoeoe = (oe1; \Delta  \Delta  \Delta  ; oeN ), satisfies all the required properties as desired. 2
+
+References
+
+[1] Lin, Z, and Saberi, A,, Semi-global exponential stabilization of linear discrete-time systems subject to "input saturation" via linear feedbacks. Systems and Control Letters, 24(1995): 125-132.
+
+[2] Liu, W., Chitour, Y., and Sontag, E.D., On finite gain stabilizability of linear systems
+
+subject to input saturation. SIAM J. Control and Optimization 34 (1996): to appear.
+
+[3] Sontag, E.D.,, An algebraic approach to bounded controllability of linear systems. Int.
+
+J. of Control, 39(1984): 181-188.
+
+[4] Sontag, E.D., 1989, Remarks on stabilization and input-to-state stability. Proc. IEEE
+
+Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, pp. 1376-1378.
+
+[5] Sontag, E.D.,, Mathematical Control Theory: Deterministic Finite Dimensional Systems
+
+Springer, New York, 1990.
+
+[6] Sontag, E.D., and Sussmann, H.J., Nonlinear output feedback design for linear systems
+
+with saturating controls. Proc. IEEE Conf. Decision and Control, Honolulu, Dec. 1990, IEEE Publications, 3414-3416.
+
+[7] Sontag, E.D., and Yang, Y., Global stabilization of linear systems with bounded feedback. Technical Report SYCON-91-09, Rutgers Center for Systems and Control, July 1991.
+
+[8] Sussmann, H.J., Sontag, E.D., and Yang, Y., A general result on the stabilization of
+
+linear systems using bounded controls. IEEE Transactions on Automatic Control, 39(1994): 2411-2425.
+
+[9] Teel, A.R., Global stabilization and restricted tracking for multiple integrators with
+
+bounded controls. Systems and Control Letters, 18(1992): 165-171.
+
+[10] Tsirukis, A.G., and Morari, M., Controller design with actuator constraints. Proc. IEEE
+
+Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, pp. 2623-2628.
+
+[11] Yang, Y., Global Stabilization of Linear Systems with Bounded Feedback. Ph.D. Thesis,
+
+Mathematics Department, Rutgers University, August 1993.
+
+13</pre>
+</body>
+</html>

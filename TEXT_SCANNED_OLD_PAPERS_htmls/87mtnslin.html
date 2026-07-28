@@ -1,0 +1,532 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/87mtnslin.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/87mtnslin.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+AN EXPLICIT CONSTRUCTION OF THE
+
+EQUILINEARIZATION CONTROLLER
+
+Eduardo D. Sontag
+
+\Lambda 
+
+Department of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903
+
+This paper provides further results about the equilinearization method of control design recently introduced by the author. A simplified derivation of the controller is provided, as well as a theorem on local stabilization along reference trajectories.
+
+1 Introduction Recent papers by Rugh and Baumann, and by Reboulet, Champetier, and others, (see for instance [2], [4]) has emphasized the idea of studying families of linearizations of nonlinear systems around different operating points, and in particular the problem of obtaining compensators with the property that all closed-loop linearizations have the same dynamic behavior. In a similar spirit, we started in [5] and [6] the study of linearizations along more arbitrary trajectories of nonlinear systems. This work is closely tied to the standard approach in engineering practice, where an open-loop trajectory is preplanned (using for instance nonlinear optimal control techniques,) and a servo is built using linear control theory in order to regulate along this reference motion. The regulated system then corrects for (small) disturbances and measurement errors. What these papers showed was how to build offline a nonlinear controller which, when presented with the particular motion to be followed, in effect behaves as a regulator along that motion. The design consists of two parts. In the first, one shows that any nonlinear controllable plant, under mild technical conditions, admits a precompensator with the following property: along control trajectories joining pairs of states, the composite system (precompensator plus plant) is, up to first order, isomorphic to a parallel connection of integrators. Systems along all possible such trajectories admit then the same linearization, hence the term equilinearization. The second part consists of closing the loop using the alternative cooordinates in which the system is an integrator, and expressing the resulting system in terms of the original plant states.
+
+The above methodology results in a computational approach to control design. One objective of the present paper is to provide a very explicit and simplified form for the compensator, as well as the proof of a theorem showing that the closed-loop design indeed provides asymptotic stability along all reference motions.
+
+\Lambda Research supported in part by US Air Force Grant 0247. Electronic address: sontag@fermat.rutgers.edu
+
+2 Fixed Time-Varying Systems We shall consider first the problem of stabilization for a fixed time varying linear system; later we shall show how this construction can be made universal for finite-dimensional families of trajectories. The time-varying construction is closely related to those usual in the theory of systems over rings, as developed by the author and others, and more specifically to the pole shifting techniques introduced in [3] for discrete-time linear systems.
+
+Consider thus a fixed time varying linear system
+
+.x(t) = A(t)x(t) + B(t)u(t) : (1) Here A(t) is an n by n matrix for each t 2 IR and B(t) is an n by m matrix for each t. Take first an as illustration the case in which n = m and det B(t) 6= 0 for all t. One can always stabilize this system by the trivial ("computed-torque") feedback law
+
+u(t) = B
+
+\Gamma 1(t)(\Gamma A(t) \Gamma  ffI)x(t) ;
+
+with ff ? 0 arbitrary. This results in the decoupled closed-loop system .x(t) = \Gamma ffx(t) : The above argument does not generalize to the nontrivial case when n 6= m, but the following alternative method will. Introduce first a new variable , through the transformation
+
+\Phi (t),(t) = x(t) ; (2) where \Phi  is a fundamental matrix solution
+
+.\Phi (t) = A(t)\Phi (t) (3)
+
+with initial condition \Phi (0) = I. In terms of the , variable, the original differential equation is transformed into .
+
+,(t) = \Phi (t)
+
+\Gamma 1B(t)u(t) ;
+
+and the uncontrolled term dissappears. This transformation is standard in the realization theory for time-varying linear systems, and is also standard in the context of the calculation of Volterra expansions for bilinear systems. Now, still for the trivial case n = m, B invertible, we can stabilize in the , coordinates, using
+
+u = \Gamma ff(\Phi 
+
+\Gamma 1B)\Gamma 1, = \Gamma ffB\Gamma 1x ;
+
+which results in ., = \Gamma ff,. (Except where needed for emphasis, we will drop the t arguments from now on.) In terms of the x coordinates, the closed loop system can be described by the equation
+
+.x = (A \Gamma  ffI)x :
+
+If \Phi  is bounded, or if it has (at worst) exponential growth, as will be the case in later applications, it is possible to choose ff large enough so that , will decrease exponentially at a rate fast enough to insure that x itself decreases -for instance for A constant, choose ff larger than the real parts of all the eigenvalues of A.
+
+The above construction can be generalized to the much less trivial case m ! n. The necessary change of variables will be similar to that in equation (2), except that integral (dynamic) feedback will be added through the construction of a precompensator. For simplicity of exposition, we shall restrict attention here to the single input case, m = 1. Comparing with the
+
+material in the paper [5], which does not make this restriction, it should be straightforward for the reader to modify the formulas of the simplified controller to the most general case. We write B simply as b.
+
+Assume first that we have found an integer k, a k \Theta  n time dependent matrix R = R(t), and k + 1 time dependent n \Theta  n matrices
+
+Ei; i = 0; \Delta  \Delta  \Delta  ; k; with E0 j I (identity) and Ek j 0, such that the following differential equations hold for each i = 1; \Delta  \Delta  \Delta  ; k: .
+
+Ei = AEi \Gamma  EiA \Gamma  Ei\Gamma 1 + bRk\Gamma i+1 ; (4)
+
+where Rj denotes the j-th row of R. (Note that the last term is an n \Theta  n rank one matrix, the product of a column n-vector by a row n-vector, and not an inner product.) Assume also given k + 1 real numbers ff1; \Delta  \Delta  \Delta  ; ffk+1. Now introduce k + 1 new vector functions
+
+z1; \Delta  \Delta  \Delta  ; zk; v; each of them an n-vector, so that together they satisfy the differential equations
+
+.zi = Azi + zi\Gamma 1 (5) for i = 2; \Delta  \Delta  \Delta  ; k and
+
+.z1 = Az1 +
+
+kX
+
+i=1 (
+
+ffiI \Gamma  ffk+1Ek\Gamma i+1) zi + ffk+1x + v : (6)
+
+Finally, consider the differential equation (1), with u substituted by
+
+u =
+
+kX
+
+i=1
+
+Rizi ; (7)
+
+together with the differential equations for the zi's, seen as a time varying system with state space IR(k+1)n and new external control v.
+
+This can be interpreted as a system obtained by applying the time-varying linear feedforward control law (7) to the original system, where the zi are states of a dynamic compensator.
+
+The control system can be implemented digitally, by solving numerically the linear differential equations for the zi, and feeding (7) to the plant. Note that z1 has a feedback term ffk+1x, linear time invariant in the state x. The differential equations are time-varying, since A as well as R and the Ei are time dependent matrices. The term v is there in order to provide if desired for further design objectives; it will be identically zero below, since in this paper we shall be interested only in stabilization, which is going to be achieved by a suitable choice of the numbers ffi.
+
+The reason for the above construction is as follows. Consider the controlled closed-loop system, having state variables
+
+(z1; \Delta  \Delta  \Delta  ; zk; x) :
+
+We introduce new variables ii; i = 1; \Delta  \Delta  \Delta  ; k and , via
+
+\Phi ii = zi
+
+and
+
+\Phi , = x \Gamma 
+
+kX
+
+i=1 E
+
+izk\Gamma i+1 ; (8)
+
+where \Phi  is again a solution of the fundamental equation (3) for A; compare with equation (2). We differentiate both sides of (8) with respect to time, and substitute into Ax + Bu the expression for x obtained from (8) and the law (7) for u. Then,
+
+A\Phi , + \Phi  ., =
+
+A \Phi , +
+
+kX
+
+i=1 E
+
+izk\Gamma i+1! +
+
+kX
+
+i=1 bR
+
+izi
+
+\Gamma 
+
+kX
+
+i=1(
+
+.Eizk
+
+\Gamma i+1 + Ei .zk\Gamma i+1)
+
+from which it follows because of (4), (5), (6), and the conditions E0 j I and Ek j 0, that
+
+., = ik; .ik = ik
+
+\Gamma 1; \Delta  \Delta  \Delta  ; .i2 = i1;
+
+and
+
+.i1 =
+
+kX
+
+i=1 ff
+
+iii + ffk+1, + * ;
+
+where * = \Phi \Gamma 1v is the external control in new variables. Thus in the  := (i1; \Delta  \Delta  \Delta  ; ik; ,) and * coordinates for states and control we have a parallel connection of n systems in control canonical form, a system of the form
+
+. = ~A + ~B* ;
+
+where ~A; ~B are constant matrices and the characteristic polynomial of ~A isi
+
+sk+1 \Gamma  ff1sk \Gamma  \Delta  \Delta  \Delta  \Gamma  ffks \Gamma  ffk+1j
+
+n : (9)
+
+Note that the composite state
+
+(z1(t); \Delta  \Delta  \Delta  ; zk(t); x(t))
+
+is bounded in norm by cfl(t)k(t)k, where c is a constant (dependent only on n; k) and fl(t) is any upper bound for the absolute values of all the entries of \Phi (t) and the Ei(t). Thus if fl(t) grows at worst exponentially, there is a choice of the coefficients ffi which insures that, for * j 0, k(t)k decays at a faster rate, and hence that the composite state of the precompensator and plant also decays exponentially. This is clarified by theorem 3 below.
+
+The whole point of the nonlinear design is that it will be possible to precompute the general form of the matrices Ei; R as symbolically dependent on the coordinates of the reference state and control trajectory. We next address this point.
+
+3 Nonlinear Design Assume that we want to regulate along trajectories of the nonlinear smooth (i.e., infinitely differentiable,) system
+
+.x(t) = f (x(t)) + u(t)g(x(t)) ; (10)
+
+where x(t) 2 IRn for all t, and where we consider again for simplicity only the single input case u(t) 2 IR and systems linear in the control (see [5] for the more general situation). More specifically, we restrict our interest to those trajectories that are obtained as follows. We assume given a smooth open-loop control generator:
+
+.j(t) = P (j(t)); u(t) = Q(j(t)) ; (11) where j(t) 2 IRl for some l, for all t, and where Q : IRl ! IR may be thought of as an output map. Typically, we may have an equation such as .j = 0; u = j (controls of interest are step signals,) .j1 = 0; .j2 = j1; u = j2 (controls are ramps,) or a general second-order linear equation to produce all of the above plus periodic controls.
+
+The design method starts with the assumption that an integer k is given and that a k \Theta  n matrix W is also given such that the matrix equality (14) (see below) holds. The entries of W are functions of the variables (j; x), defined on some open subset O of the space Rl+n (a significant improvement over the design in [5], where these were functions defined on Rl+n(n+1)). The design will be valid along those trajectories of the composite system
+
+.j = P (j); u = Q(j) (12) .x = f (x) + ug(x) (13)
+
+such that (j(t); x(t)) 2 O for all t. The interval of definition may be finite or infinite. In the infinite case, we prove a stability result later.
+
+Both k and W can be themselves computed in principle in ways described in [5] and [6]; see theorem 2 below. The computational complexity involved in the calculation of k and W by a general purpose computer-aided design method could however be huge, since techniques from symbolic algebra are involved. (Of course, that is an unavoidable fact about nonlinear systems.) Once these are found, however, the rest of the design is relatively simple, as illustrated now. Further, approximate solutions of the equation for W will probably be sufficient for regulation purposes. This is illustrated by the example detailed in [8], where the equilinearization methodology is applied to the control of the angular velocity of a satellite through a single pair of opposing jets.
+
+In order to describe the equation that W must satisfy, we introduce the following vector functions on Rl+n with values in the same space (equivalently, vector fields in Rl+n):
+
+A(j; x) := ` P (j)f (x) + Q(j)g(x) ' ; b(j; x) := ` 0g(x) ' : Recall that adAc is the vector field obtained as the Lie bracket [A; c], where
+
+[A; c] := c
+
+0A \Gamma  A0c ;
+
+and prime indicates Jacobian. We ask that k and W satisfy the right-inverse equation
+
+(b; adAb; \Delta  \Delta  \Delta  ; adk
+
+\Gamma 1
+
+A b)W = I : (14)
+
+We then have the following main result, whose proof we omit since it follows easily from the main result in [5].
+
+Theorem 1 The matrices R; Ei constructed by the algorithm described below have the following property. If (j(t); x(t)) remains in the set O for all t, then the system (A(t); b(t)) obtained by
+
+A(t) = f
+
+0(x(t)) + Q(j(t))g0(x(t)); b(t) = g(x(t));
+
+is such that the matrices
+
+Ei(t) := Ei(j(t); x(t)); R(t) := R(j(t); x(t)); solve the requirements E0 j I, Ek j 0, and (4).
+
+The interpretation of all this is that one will apply to the plant at time t the control
+
+u(t) +
+
+kX
+
+i=1 R
+
+i(j(t); x(t))zi(t) ;
+
+obtained by adding a linear correction to the reference input. And in formula (6), the variable 'x' to be multiplied by the gain ffk+1 really means now the observed error in x, that is, the difference between the actual state of the plant and the reference x(t). For small enough perturbations, one may the expect that the actual state trajectory will approach asymptotically the desired reference state trajectory, if the gains ffi are chosen properly. This is established below.
+
+We now describe the algorithm in pseudo-macsyma code. It was implemented in various MACSYMA environments, including a Sun-3 workstation. The entire algorithm takes only a few lines of code. First we define k \Theta  k matrices Dl; l = 0; \Delta  \Delta  \Delta  ; k \Gamma  1 by the formulas:
+
+Dl[i; j] := if l = i + j \Gamma  k \Gamma  1 then (\Gamma 1)j
+
+\Gamma 1j \Gamma  1
+
+l !
+
+else 0:
+
+Now let L be the operator on matrices
+
+L(M ) := LAM + M (f
+
+0 + Q(j)g0) ;
+
+defined on matrices M with n columns whose entries are functions of (j; x), and where LA applies componentwise as a Lie derivative, that is, LAOE = rOE:A for functions OE(j; x). Finally, we let
+
+R :=
+
+k\Gamma 1X
+
+i=1 D
+
+iLi(W ) ;
+
+Ek : 0 (an n \Theta  n matrix) and, recursively on i = k \Gamma  1; \Delta  \Delta  \Delta  ; 1
+
+Ei := (f
+
+0 + Q(j)g0)Ei+1 \Gamma  L(Ei+1) + bRk
+
+\Gamma i :
+
+(Note that the last product is an n \Theta  n matrix.) This completes the construction.
+
+For completeness, we now quote a consequence of the results in [5] and [6], restated in terms of the solvability of (14).
+
+Theorem 2 Assume that the system (10) is analytic and completely controllable. Further, assume that either there is some equilibrium state f (x0) = 0 or that the system is complete. Then, for each compact subset C of the state space Rn there are an integer k, an open-loop control generator as in (11), and a matrix W , such that the following property holds: for each pair of states x1; x2 2 C there is some initial condition j(0) of (11) and a time T such that, solving (12) with initial condition (j(0); x1) results in a trajectory with x(T ) = x2, and further, the trajectory is contained in the domain of W for all t, and the matrix equation (14) holds there.
+
+More is true, in fact. If the original system is "algebraic" in a suitable sense (for instance, all functions appearing are rational functions, or even in other finite algebras, like trigonometric polynomials,) and if an open-loop generator is also given which is also algebraic in this sense, then it is possible to prove that there is a global solution W , in the sense that W is defined, and the equation (14) holds, for all trajectories along which there is linear controllability, with no need to restrict to compacts. See [7] for details.
+
+4 A stability theorem We prove in this section that the coefficients ffi can be chosen so that there is asymptotic stability of the closed-loop system, along all trajectories corresponding to the given finitedimensional control generator, as long as these trajectories remain in a bounded set. We first need a result about time-varying systems. Denote by kak the Euclidean norm of a vector a, and by kAk the associated matrix norm. Recall that a solution z(\Delta ) of an equation
+
+.z(t) = F (t; z(t)) (15) is said to be asymptotically stable (a.s.) if the following two properties hold:
+
+1. There is a function ffi : (0; 1) ! (0; 1) such that, for each " ? 0, if z(\Delta ) is any other
+
+solution of (15) with kz(0) \Gamma  z(0)k ! ffi(") then necessarily kz(t) \Gamma  z(t)k ! " for all t * 0, and
+
+2. there is a ffi0 ? 0 such that each solution z(\Delta ) of (15) for which kz(0) \Gamma  z(0)k ! ffi0 must
+
+satisfy kz(t) \Gamma  z(t)k ! 0 as t ! 1.
+
+Proposition 4.0.1 Let C(t) be a continuous n \Theta  n matrix function, and let fl(t; z) be an n-vector of functions, continuous on t and smooth on z, which satisfies
+
+kfl(t; z)k ^ c1kzk2 (16) for all t and all z 2 IRn. Assume that T (t) is a continuous n \Theta  n matrix function, invertible for each t * 0, such that
+
+maxfkT (t)
+
+\Gamma 1k; kT (t)kg ^ c2e*t 8t * 0 (17)
+
+for some * ? 0 and so that the matrix
+
+P := T (t)
+
+\Gamma 1C(t)T (t) \Gamma  T (t)\Gamma 1 .T (t) (18)
+
+is constant and each of the eigenvalues of P has real part ! \Gamma _, where _ * 3*. Here, c1; c2 are constants. Then, the solution z j 0 of
+
+.z(t) = C(t)z(t) + fl(t; z(t)) (19) is asymptotically stable.
+
+Proof. Introduce the vector function
+
+fi(t; y) := T (t)
+
+\Gamma 1e_tfl(t; e\Gamma _tT (t)y) :
+
+Note that because of the assumptions on fl; T; T \Gamma 1,
+
+kfi(t; y)k ^ ~ce(3*
+
+\Gamma _)tkyk2 ^ ~ckyk2 : (20)
+
+Consider the differential equation
+
+.y = (P + _I)y + fi(t; y) : (21) The eigenvalues of the linear part of this equation all have negative real parts, because of the assumption on the eigenvalues of P . Thus this linear part is uniformly asymptotically stable, while the nonlinear part is, because of (20), of order o(y) uniformly on t. Thus (see e.g., [9], page 188,) the solution y j 0 of (21) is asymptotically stable. Let ffi(\Delta ); ffi0 be as in the definition of stability given above, and introduce ~ffi(") := ffi(")=c2; ~ffi0 := ffi0=c2. Pick now any " ? 0, and consider any solution z(\Delta ) of (19) for which kz(0)k ! ~ffi("). It follows that
+
+y(t) := e_tT (t)
+
+\Gamma 1z(t)
+
+is a solution of (21), and satisfies that
+
+ky(0)k ^ kT (0)
+
+\Gamma 1k kz(0)k ^ ffi(") ;
+
+and therefore also
+
+kz(t)k ^ e
+
+\Gamma _tkT (t)kky(t)k ^ ky(t)k ! "
+
+for all t * 0. Finally, if kz(0)k ! ~ffi0 then also ky(0)k ! ffi0 and hence z(t) ! 0.
+
+Theorem 3 Assume that the integer k and the matrices R; Ei; i = 1; \Delta  \Delta  \Delta  ; k are as in the statement of theorem 1. Let K be any compact subset of O. Then, there exist real numbers ff1; \Delta  \Delta  \Delta  ; ffk+1 such that the following holds. Assume that the trajectory (j(t); x(t)) of (10)-(11) is included in K for all t * 0, and consider the closed loop system
+
+.z1 = A(t)z1 +
+
+kX
+
+i=1 (ff
+
+iI \Gamma  ffk+1Ek\Gamma i+1(t)) zi + ffk+1(, \Gamma  x) (22)
+
+.zi = A(t)zi + zi\Gamma 1; i = 2; \Delta  \Delta  \Delta  ; k (23) ., = F ( ,(t) ; Q(j(t)) +
+
+kX
+
+i=1 R
+
+i(t)zi(t) ) ; (24)
+
+where, for notational simplicity, we introduced the function F (,; w) := f (,) + wg(,), and where again
+
+A(t) = f
+
+0(x(t)) + Q(j(t))g0(x(t)) (25)
+
+(Jacobians), and
+
+Ei(t) := Ei(j(t); x(t)); R(t) := R(j(t); x(t));
+
+all evaluated along the chosen trajectory. Then, the conclusion is that
+
+z1(t) j 0; \Delta  \Delta  \Delta  ; zk(t) j 0; ,(t) = x(t) is an a.s. solution of (22)-(24).
+
+Proof. By continuity of f , g, R, and all the Ei, and by compactness of K, there are positive constants *; d1; d2 such that
+
+kf
+
+0(b) + Q(a)g0(b)k ! * ; (26)
+
+kR(a; b)k ! d1 ; (27) and
+
+kEi(a; b)k ! d2; i = 1; \Delta  \Delta  \Delta  ; k; (28)
+
+for all (a; b) 2 K. Also, since F is twice continuously differentiable, there is a function
+
+fl0 : IRl+n+n+1 ! IR and a constant d3 such that
+
+kfl0(a; b; ,; w)k ^ d3k(,; w)k2 (29) for every (a; b) 2 K, and so that, for each such (a; b), F (,; w) equals
+
+F (b; Q(a)) + F,(b; Q(a))(, \Gamma  b) + Fw(b; Q(a))(w \Gamma  Q(a)) + fl0(a; b; , \Gamma  b; w \Gamma  Q(a)) : (30) In particular, (26) insures that kA(t)k ! * for any possible matrix as in (25). Elementary estimates on the solutions of .x = A(t)x and .x = \Gamma A(t)x, (see for instance [9], p.67ff.,) imply therefore that
+
+maxfk\Phi (t)k; k\Phi (t)
+
+\Gamma 1kg ^ e*t (31)
+
+for the fundamental solution associated to any such matrix A(\Delta ). Let _ := 3*.
+
+Pick the coefficients ff1; \Delta  \Delta  \Delta  ; ffk+1 such that all the roots of (9) have real part less than \Gamma _.
+
+Now consider any fixed reference trajectory, as above, and introduce the n-vector of new variables zk+1(t) := ,(t) \Gamma  x(t). In terms of these variables, the last term in (22) becomes ffk+1zk+1, and (24) becomes
+
+.zk+1 = A(t)zk+1 +
+
+kX
+
+i=1
+
+Ri(t)zi(t)g(x(t)) + fl0(j(t); x(t); zk+1;
+
+kX
+
+i=1
+
+Ri(t)zi(t)) : (32)
+
+Thus we wish to show that (z1 j z2 j \Delta  \Delta  \Delta  j zk+1 j 0) is an a.s. solution of the system (22), (23), (32). We write this system in terms of the variables z := (z1; \Delta  \Delta  \Delta  ; zk+1) 2 IR(k+1)n as
+
+.z(t) = C(t)z(t) + fl(t; z(t)) ; with fl(t; z) being the function which is identically zero except for its last n coordinates, which equal
+
+fl0(j(t); x(t); zk+1;
+
+kX
+
+i=1
+
+Ri(t)zi(t)) :
+
+Note that fl satisfies because of (29) and (27) an estimate as in (16). By the constructions of R and of the matrices Ei, it follows that (18) is satisfied with P = ~A,
+
+T (t) =
+
+0BBB BBB@
+
+\Phi (t) 0 \Delta  \Delta  \Delta  0 0
+
+0 \Phi (t) \Delta  \Delta  \Delta  0 0.
+
+.. ... . . . ... ...
+
+0 0 \Delta  \Delta  \Delta  \Phi (t) 0 Ek(t) Ek\Gamma 1(t) \Delta  \Delta  \Delta  E1(t) \Phi (t)
+
+1CCC CCCA :
+
+Observe that also
+
+T (t)
+
+\Gamma 1 =
+
+0BBB BBB@
+
+\Phi (t)\Gamma 1 0 \Delta  \Delta  \Delta  0 0
+
+0 \Phi (t)\Gamma 1 \Delta  \Delta  \Delta  0 0.
+
+.. ... . . . ... ...
+
+0 0 \Delta  \Delta  \Delta  \Phi (t)\Gamma 1 0 \Gamma \Phi (t)\Gamma 1Ek(t) \Gamma \Phi (t)\Gamma 1Ek\Gamma 1(t) \Delta  \Delta  \Delta  \Gamma \Phi (t)\Gamma 1E1(t) \Phi (t)\Gamma 1
+
+1CCC CCCA :
+
+Note that an estimate as required for (17) holds because of (28) and (31). The conclusion then follows from proposition 4.0.1.
+
+5 References
+
+1. Baillieul, J., "Controllability and observability of polynomial dynamical systems,"
+
+Nonl. Anal., TMA 5 (1981): 543-552.
+
+2. Baumann, W. T., and W. J. Rugh, "Feedback control of nonlinear systems by extended
+
+linearization," IEEE Trans. Autom. Control, 31(1986): 40-46.
+
+3. Kamen, E. W., P. K. Khargonekar, and K. R. Polla, "A transfer function approach to
+
+linear time-varying systems," SIAM J.Control & Opt. 23(1985): 550-565.
+
+4. Reboulet, C. and C. Champetier, "A new method for linearizing nonlinear systems:
+
+the pseudolinearization," Int.J. Control 40(1980): 631-638.
+
+5. Sontag, E. D., "Controllability and linearized regulation," IEEE Trans. on Autom.
+
+Control 32(1987): 877-888. (Summarized version in Proc. Conference Info. Sci. and Systems, Princeton, 1986, pp.667-671.)
+
+6. Sontag, E. D., "Finite dimensional open-loop control generators for nonlinear systems",
+
+Int.J. Control: to appear.
+
+7. Sontag, E. D., "Equilinearization: A simplified derivation and experimental results,"
+
+in Proc. Conference Info. Sci. and Systems, Johns Hopkins University, 1987, pp. 490-495.
+
+8. Sontag, E.D., "An approach to the automatic design of first-order controllers along reference trajectories," Proc. IEEE Conf. Decision and Control, Los Angeles, Dec.1987.
+
+9. Vidyasagar, M., Nonlinear Systems Analysis, Prentice-Hall, 1978.</pre>
+</body>
+</html>

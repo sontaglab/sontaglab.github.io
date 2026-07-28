@@ -1,0 +1,440 @@
+OCR of paper; see pdf file clf83.pdf for viewwable/printable page
+
+SIAM J. CON FROI, AND OP FIMIZATION Tj 1993 Society for Industrial and Applied Mathematics
+Vol. 21, N,, 3, May 199'-1 036~-0129/93/2101-WIO $01.25/0
+A LYAPUNOV-LIKE CHARACTERIZATION OF ASYMPTOTIC
+CONTROLLABILITY*
+EDUARDO D. SONTAGt
+Abstract. It is shown that a control system in R' is asymptotically controllable to the origin if and
+only if there exists a positive definite continuous functional of the states whose derivative can be made
+negative by appropriate choices of controls.
+Key words. stabilization, controllability, Lyapunov functions, nonlinear control
+1. Introduction. Lyapunov techniques have long been used in studying control
+problems for a system i (t) = f (x (t), u (t)): Controlling so as to diminish the value of
+a suitable positive definite function is an obvious way of achieving stabilization, and
+feedback laws can be analyzed through the use of such a function--see for instance
+the books Barbashin [1970], Lefschetz [1965] and Letov [1961]. Sometimes one
+considers Lyapunov functions in conjunction with other techniques, like the analysis
+of sliding modes-see for instance Utkin [1977]; in these and other applications, the
+natural Lyapunov functions are often nondifferentiable.
+In this paper we deal with the relation between the property of asymptotic
+controllability (every state can be driven, asymptotically, to a desired state "0", plus
+a local condition) and the existence of a positive definite continuous function V whose
+derivative can be made negative by appropriate choices of controls. If not only is the
+system asymptotically controllable but in fact there is a (suitable smooth) feedback
+law K(-) such that the closed loop system i(t)=f(x(t),K(x(t))) is asymptotically
+stable, then an inverse Lyapunov theorem can be applied to this closed loop system
+in order to obtain a V as above. Inverse Lyapunov results for classical (no control)
+systems have a long history themselves, with important contributions by Persidski,
+Malkin, Massera and others; a good reference is Hahn [1978]. In general, however,
+a continuous K fails to exist, even for very simple systems-see for instance the
+discussion in Sontag and Sussmann [1980]-so such an argument cannot be applied
+to conclude the existence of V.
+The main result of this paper is that, for asymptotically controllable systems, a
+V as above always exists. We allow relaxed ("chattering") controls when testing the
+derivative of V. (Since relaxed directions belong to the convex hull of ordinary ones,
+the latter suffice in the C' case.) The proof will be based on a combination of some
+basic optimal control concepts and classical Lyapunov techniques (in particular, those
+of Zubov [1964]). For results somewhat related to this note, the reader may wish to
+consult the references Tokumaru et al. [1969] (gives a sufficient Lyapunov-like
+condition), Jacobson [19771 (gives a local necessary and sufficient criterion for a
+special class of systems), and Vinter [1980] (gives a time-varying functional charac-
+terizing nonreachability from a given point). Both the results and the techniques used
+here, however, are different from those in these references.
+2. Definitions and statement of results. The systems to be studied are given by
+differential equations
+(2.1) i (0 = f (X (0, U (0)
+* Received by the editors May 18, 198 1, and in revised form May 7, 1982. This research was supported
+in part by U.S. Air Force grant AFOSR-80-0196.
+Department of Mathematics, Rutgers University, New Brunswick, New Jersey 08903.
+462
+<<PAGE-DIVIDER>>
+ASYMPTOTIC CONTROLLABILITY 463
+with states x(t) in X := R", and input values u(t) in a locally compact metric space
+U for which the balls Ivid(g, v):_5 rl are compact for each v in U (d = distance in U).
+A special element "0" is distinguished in U, and the state x = 0 of X is an equilibrium
+point, i.e., f (0, 0) = 0. The map f is locally Lipschitz in (x, u). The set of (ordinary)
+controls U is the set of measurable and locally essentially bounded functions u: R, --> U.
+Here R, denotes the set of nonnegative reals; sometimes (depending on the context)
+R, denotes positive reals. By abuse of notation, we shall use the same terminologies
+for controls defined only on a finite interval; these may be extended arbitrarily outside
+the interval of interest, Solutions of (2. 1) are assumed to be unique and to exist locally
+(in t) for all controls; suitable Carath6odory- type conditions insure this. (Note that
+we do not wish to impose the (somewhat unrealistic) assumption that the solutions
+are always defined for all t -- 0, i.e., that there are no finite escape times.)
+Given the distinguished "zero" input value 0, let JAI:= d(g, 0) for f4 in U.
+The set U, consists of all those A with JAI _!5r, and Ur is the set of all measurable
+u: R, -* U,, seen as a subset of U. The set of generalized control values is the set
+W = W(U) of probability measures on U; the subset of those measures supported
+n U, is W,. The set W may be topologized using the weak topology, and one introduces
+then the space of relaxed controls W as the set of measurable functions K,: R, - W.
+For the topology on W see the references below; we shall only need to know the
+continuous dependence facts mentioned later. The subspaces W, correspond to the
+relaxed controls w(t) which are in Wr a.e.; each of these subspaces is sequentially
+compact and-identifying g in U with the Dirac measure concentrated at JAI-
+contains (densely) the corresponding U,. A bounded relaxed control w is one belonging
+to some W,; the infimum of the r for which w is in Wr is denoted by JJwJJ. Note that,
+for ordinary controls, Ilull becomes the essential supremum of the values Ju(t)J, t in R.
+(The notation J~x 11 will be used also for the Euclidean norm on X, but this should cause
+no confusion.) For details on relaxed controls, see Warga [1972], or the (very clear)
+presentation in Gamkrelidze [19781; the paper Arstein [19781 summarizes most of
+the needed facts.
+There is a natural definition of solution of (2. 1) when relaxed (rather than ordinary)
+controls are used; see the above references for details. The solution at time t for the
+initial condition x (0) = ~ and control w will be denoted by x (t; e, w) or just by x (t)
+if both and w are clear from the context. For any given 6 and w there is an open
+set Y I x N x M containing (0, 6, w) such that x (t; T1, v) is well-defined for any
+(t, 77, v) in Y. Further, if this solution is known to be defined for 0!_5 t!_5 T, then the
+map (t, TI, v) - x (t; -q, v) is continuous on [0, T] x N x M, for some open N, M.
+We are now ready to introduce our definitions and state the main result.
+DEFINITION 2.2. The system (2.1) is asymptotically (null-) controllable (a.c., for
+short) if and only if the following properties hold:
+(i) (global part) for each 6 in X there exists an (ordinary) control u such that
+x(t) =x(t; 6, u) is defined for all t ~_tO and x(t)-O as t-00;
+(ii) (local part) for each E > 0 there exists a 8 > 0 such that for any state with
+~~6J~ < 8 there is a u as in (i) such that also JJx e for all t ~_! 0;
+(iii) (bounded controls) there exist positive -q and k such that, if the 6 in (ii)
+satisfies also 11~11 < p, then the control u can be chosen with JJu JI!_5 k.
+The above seems to be the obvious definition of a.c. if one is to model the usual
+uniform asymptotic stability notion in the controlled case. (Or intuitively, if the given
+system is to be seen as the open-loop part of some abstract closed-loop stable system.)
+The requirement (iii) of a bound on magniludes of inputs required for controlling
+small states seems physically (and mathematically) reasonable. In fact, in order to
+<<PAGE-DIVIDER>>
+464 EDUARDO D. SONTAG
+model "regulation with internal stability" one adds the requirement that u(t)-0 as
+t , cc; see Sontag [1982]. Analogous results would hold in that case. Observe that
+both of the (local) parts (ii) and (iii) would hold, for instance, if U = R', f is
+differentiable at (0, 0) and the linearization of (2. 1) at the origin is stabilizable in the
+usualsense.
+Given a function V: X - R, a state ~, and a relaxed control w defined on an
+interval containing t = 0, let
+(2.3) ~/w lim V(X (t; 4 W)) -
+Consider the following four properties of such a function V:
+(2.4a) V is continuous;
+(2.4b) V(6) > 0 for 6 > 0, and V(0) = 0 (V is positive definite);
+(2.4c) the set 161 V(e) < r) is bounded, for each r (V is proper);
+(2.4d) for each e in X there is a relaxed w with 1~, (6) < 0, and there are positive
+numbers k and 17 such that w can be chosen with 11 w 11 < k whenever 11611 < 77.
+The following is an easy consequence of the above:
+(2.4e) for each E > 0 there is a 6 > 0 such that V(6) < 0 implies 11611 < E.
+In the next section we prove:
+THEoRFm 2.5. The system (2.1) is asymptotically controllable if and only if there
+exists a V satisfying properties (2.4a)-(2.4e).
+The definition (2.3) of the (Dini) derivative along a trajectory is one immediate
+generalization of that used in the standard (no control) case; see.for example Rouche
+et al. [1977]. (We could have used in in this definition a lim sup instead of a lim inf;
+in that case Theorem 2.5 still holds: The sufficiency statement becomes weaker, while
+the necessary part can be proved in exactly the same way.)
+3. Proof of Theorem 2.5. We first establish the easy part:
+A. Sufficiency. Let V, k, T1 be as in (2.4), and let - > 0. Take a 0 as in (2.4e)
+such that V(e) < 8 implies that 11611 < min 171, E 1. A state x will be called nicely reachable
+from a given state 6 if and only if there exists an (ordinary) control u and a time
+T ~?! 0 such that:
+(3.1a) x = x (T; ~, u);
+(3.1b) V(x (t; 6, u)) < 2 V(6) for 0!-5 t !-5 T;
+(3.10 if V(6) < 0 then also Ju 11 < k.
+Let
+(3.2) a inf JV(x)lx nicely reachable from 61.
+Either a (6) = 0 for all 6 or a (~) 74- 0 for some 6.
+Case 1. a (~) = 0 for all ~. Pick any 6, and choose a 61 nicely reachable and with
+V(61) < V(6)/2. Iterate the construction starting with 61. One obtains in this way a
+sequence fei~ with V(ei) --), 0 as i -+ cc (hence also ei -+ 0) and such that 6i = x (ti; 6, w)
+for an increasing sequence ftJ and a fixed w (obtained by concatenation). Let
+T:= sup(til; then V(x(t))-+O (for x(t) :=x(t;~,w)) as t-*T. If T<oo, extend w by
+<<PAGE-DIVIDER>>
+ASYMPTOTIC CONTROLLABILITY 465
+w (t) := 0 for t ~-! T; in any case one concludes that x (t) -+ 0 as t -+ o0, with all x (t) nicely
+reachable from ~. This gives the first part of the a.c. definition. Pick now a 8 > 0 such
+that JJx 11 <8 implies V (x) < 6/2. If 11611 <8 for the above 6, then all x (t) in the obtained
+trajectory satisfy V(x(t))<2V(6)<6. It follows that JJX(t)JJ<E, as required in (ii) of
+the a.c. definition. Finally, part (iii) is satisfied by construction, using the same k and
+any 71'> 0 for which 11611 < T1' implies V (6) < 0.
+Case 11. a(e)>O for some e. We shall derive a contradiction. Let JxJ be a
+sequence of nicely reachable states with V (x,) 7+ a := a (e). All these x. belong to the
+compact set
+(3.3) Ix I V(x) -f~- V(61;
+replacing Jx,J by an appropriate subsequence we may assume that
+(3.4) X. - 6 V(C) a -!Ei V(f).
+By property (2.4d), there is then a sequence tj 0' and a relaxed w with V(x (ti; 6, w)) <
+V(C) = a for each ti. Further, if V(f) < 0 then also V(~) < 0 so one may pick such a
+w with JJwJJ < k. It follows from the continuity of V(x (t; C, w)) on t that there is an i
+such that (with t := ti) also
+(3.5) V(x(s;Cw))<'2V(e) forO:-!5s:-st.
+Thus for (w', C') sufficiently close to (w, C) it holds that
+(3.6) V(x(s;C,w'))<2V(e) forO:-5s-.-!:-t.
+Pick an ordinary control w'= u such that this holds and such that also
+(3.7) V(x (t; C, u)) <a.
+If V(~) < 0, require also that 11ull < k. (Recall that ordinary controls are dense in Wk-)
+Let now z, := x (s; x., u). For large enough n, (3.4)- (3.6) give a z, nicely reachable
+from 6 and with V(z.) < a. This contradicts the minimality of a.
+B. Some bounding functions. We now start proving that a.c. implies the existence
+of a V as above. We shall need a sequence of basic lemmas. In order to simplify
+notations, g(i-oo) will mean lim,-,,. g(p), and g(O) := lim,-O- g(p) for a function
+defined on positive reals only. A fixed asymptotically controllable system is assumed
+given; the numbers k and iq are as in the a.c. definition,
+LFMMA 3.8. There exist a positive number po < 1 and maps -r, 0, g: R, - R, m: R
+R, and K: X -* U, where.0, ix and m are continuous, m is strictly decreasing, 0 is strictly
+increasing and g is nondecreasing, such that the following properties hold:
+a) m (-co) = +oo, m (+o0) = 0, m (0) = 1;
+b) p :-~i 0 (p) for all p, 0 (0) = 0;
+c) 7 ( p ) = 0 fo r 0 -!s p :-5 p 0;
+d) g (p) = k for 0:-5 p !-:s! po, A (+oc) +oo;
+e ) for each 0, with x (t) := x (t; K (6)):
+(ii) JJx (t)ll-:s 0 (11611) for t -- 0,
+(iii) x (t) 0 as t --* oc,
+(iv) for t -r (11611), JJx (011:-s m (t -,r
+Proof. Part 1. We shall first construct sequences of nonnegative numbers JEiJ,
+JTiJ and Jbil, i in Z, such that: JEiJ is strictly increasing, Ei -* 0 (resp. +C0) as i + -0c
+(resp. +oo), and so that for each 6 for which 11ell < -j there is an (ordinary) control u
+satisfying JJu 11 < bi and JJx (t; e, u)JJ < ej+1 for all t -- 0 and also JJx (t; 6, U)11 < Ei-1 for t ~-: Ti.
+<<PAGE-DIVIDER>>
+466 EDUARDO D. SONTAG
+Let Eo := 2'. By induction on Definition 2.2 one concludes the existence of a sequence
+of numbers i-!5 -1, such that: for each e with 11611 -5-= ei-1 there is a control u with
+- k, JJx (t; u)II < ei and x (t) -+ 0 as t -+ oc); one may take the JEJ strictly decreasing
+11U11:5
+and approaching 0 as i -* -co. Further, one may assume that e-I :_5 77. Consider now
+a fixed i < 0 and take a 6 with 11611:_5 ei. There is then an u as above and some T = T(f)
+such that JJx (T)II < Ei-2 for the corresponding solution. By continuity of x (- ; -, u) there
+is an open neighborhood H(e) of f such that, for each z in H(e), Ilz (t)II < Eil for
+0 f-z- t!_5 T and Ilz (T)11 < Ei-2, where z (t) := x (t; z, u). By construction Of Ei-2, there is
+for each such z M a control v with 11v 11 < k (not necessarily the same' u) such that
+(3.9) JJx (t; z (T), v)11 < Ei-1, t ~_t 0.
+Concatenating the restriction of u to [0, TJ with this v, one concludes that for each
+z in H(6) there is some (ordinary) control with the resulting trajectory having
+11Z (011 < Ei-1 for all t ~_ T(~) while keeping Ilz (t)II < Ei,1 for all t. (Note that the input
+to be applied in order to achieve this depends on the particular z; for the original u
+there may be no neighborhood on which this controllability is achieved.) The H($)
+cover the ball of radius Ei; pick a finite subcover. Let Tj := largest of the T(e) for this
+subcover. With all bi := k the sequences JEJ, Jbil, {TiJ satisfy the requirements for i < 0.
+We now define the sequences for i i_2t 0, by induction on increasing i. Assume that
+Ei, bi-, and Ti._1 have been already defined (recall for the first step that Eo=21). By
+property (i) in the definition of a.c., it follows that for each 6 with 11611!-s Ei there exists
+some u and some T = T(6) with JJx (T)11 < Ei-2. By induction, it is possible to control
+x(T) in such a way as to stay in the ball of radius ei-I. These further controls can be
+chosen with JvJJ<bi_I. An argument like the one in the previous paragraph gives a
+fixed Ti such that each state e as above is controlled to JJx(Ti)JJ<Ei_1 by appropriate
+choice of controls. Further, all these controls are obtained by concatenating one of a
+finite number of controls ui (finite subcover argument) with controls with 11v 11 < bi-,.
+Let bi be larger than bi-, and all Iluill. To complete the induction step we need to
+define Ei,1. Consider the set
+(3.10) Jx(t; 6, u)JJJ6JJ-_Ei, Ilull:-5bi, 0!_stf_~-Tij.
+Since this set is compact, it is contained in the interior of some ball of radius Ei,1.
+For simplicity of future arguments, we shall assume that the sum of the Ti, i < 0, is
+infinite; larger Ti's can always be chosen in the above constructions. This completes
+Part 1.
+Part 2. Let 0: R, - R be any continuous strictly increasing function such that
+(0) = 0 and, for all i
+(3.11) (p) >,-i-1 for p in [Ei-1, eil.
+Let Po _i. Take ti: R~ R to be any continuous nondecreasing function having
+g (p) = bo for 0:_E~ p :_S po, g (+oo) = +oo, and such that, for all i,
+(3.12) g(p)--bi forpin(Ei-1,Eil.
+Denote to := 0 and ti := T_ 1 + + T_ i for i > 0. Let m be as in a) and satisfying, for
+i ~_!! 0,
+(3.13) m(t)>E-i fort in[ti, ti+11.
+Let 7 be the step function with value 0 for p ~_:- po and for i =_-~ 0,
+(3.14) 7(p)=To+---+Ti forpin(ei-1,Eil.
+<<PAGE-DIVIDER>>
+ASYMPTOTIC CONTROLLABILITY 467
+The open-loop "choice" function K is introduced merely for notational convenience;
+no smoothness of any kind is required. Given a state 6, say with Ei-1 < 11611:_5 Ei, find a
+control u 1 sending 6 to el = x (Ti; ~, u) with llu,ll < bi, llf ill < Ei-1, and all intermediate
+states with Jlx (t)11 < Ei,,. Repeat with 61, finding a U2, f2. Iterating this construction,
+let K (f) be the concatenation of all the ui thus obtained. The corresponding trajectory
+satisfies x W -* 0 as t -+ oo. By construction, 11K (6)11 < bi, which is less than A (11611) by
+(3.12). Also, llx (t)Jl < ei, I for all t 0, and by (3. 11) also llx (t)ll < 0 (11611).
+We now need only establish property (iv). Assume first that Ilell < Ei, with i = -1.
+Then,r (11611) = 0, and the above construction insures that llx (011 < - -i when t is in [tj, ti,i].
+By (3.13), property (iv) holds. If i < - 1, the trajectory has llx (t)11 < E -j when t is in
+[t, - Li, ti, I - Li ], where
+(3.15) Li := T-1 + + Ti,i,
+for any -i - 1, and llx (t)ll < ei+, for all t i_!: 0. If t is in [ti, ti+11, j < -i - 1, then
+Ix (t)ll < e _j by the latter fact; if i i_!: -i - 1 then t i_2: ti > tj -Li gives again that llx (011 < E-j-
+Again by (3.13), property (iv) of (3.8c) holds. There remains the case i i_i,- 0. In that
+case, after time
+(3.16) T = Ti + T-i + + To =,r(11611)
+a state x W with llx (t)ll < c-1 is reached, and after that the trajectory has states bounded
+by m (t - T) (by the case i = -1).
+LEMMA 3.17. (The notations of the previous lemma still hold). There exist con -
+tinuous strictly increasing functions N, 0, P: R+ -* R, with N(O) = 0, N(+oo) = +oo, such,
+that the following properties hold. For any state ~ and for any relaxed cQntrol w, let
+'0
+(3.18) R (6, w) := f, N(llx (t; ~, w)ll) dt + max Jllw 11 - k, 01
+if the solution is defined for all t -_ 0, and R (6, w) := +oo otherwise. Then, for each 6:
+(a) R (6, K (6)) < x;
+(b) if 116 11 -_ p o then R (e, K (6)) !_~ 0 (116 11);
+(c) if R (6, w) < R (6, K (6)) for some w, then lix (t; e, w)ll n-S 0 (11611) for all t ~_?~ 0 and
+11 w 11 -_ V (11611);
+(d) for each a > 0 there is a 6 > 0 such that if R (6, w) < a for some w, then 11611:-s 0;
+(e) for each a > 0 there is a 0 > 0 such that Ilell > a implies that R (6, w) >,6 for
+all w.
+Proof. Let n := m - 1: R, - R be the inverse function of m. Define the function
+(3.19) Ni(p) := p exp E-n (p)].
+Both N, and exp[-n(-)] are strictly increasing continuous functions, N1(0)=0,
+Nl(+oc)) = +CC.
+For each triple of positive numbers (a, b, c), choose the quantity -I (a, b, c) > 0 in
+such a way that the following property holds: if w is any control with 11 w 11:_5 a, and if
+61, 6 are any states with
+(3.20) 62 = x (T; 61, w)
+for some T > 0 and the trajectory having
+(3.21) b :_5 1 Ix (t; 6 1, w) I 1:_5 c f or 0:-s t :_5 T,
+<<PAGE-DIVIDER>>
+468 EDUARDO D. SOTrrAG
+then
+T
+(3.22) Nj(jjx (t)JI) dt (a, b, C)11~1 - 6211-
+Such a quantity always exists, because the integrand is bounded below by Ni(b) (so
+that the left side is at least T - Ni(b)), while 1161-6211 is bounded by TB, where B is
+a bound on the values f (x, A) for jjx 11:-5- c and JjL 1:-5 a.
+We shall define inductively a nondecreasing sequence of maps Nj, 1, starting
+with (3.19), and will then let (pointwise)
+(3.23) N := lim Nj.
+i-CO
+This limit will be finite because the following property will hold by construction for
+each j:
+(3.24) p:-50(j) implies Nj(p) = Nj,j(p) (=N(p)).
+(Note that 0 (j) -* +oc) as j -,- oo.) Further, all the functions Ni (hence N itself) will be
+continuous (or even C' if desired). Assume then that Nj has been defined for all i:-sj,
+in such a way that (3.24) holds for i = 1, - - - , j - 1. Introduce the quantities
+(3.25) ri := Ni (0 (j))T (j) +.0 (j),
+w
+(3.26) LJ6, w) := f, Nj flIx (t; 6, w)JI) dt
+with Lj(e, w) := +00 if there is a finite escape time.
+Take now any e with 11ell:_5 j. When t ~-~ T (j), it follows from Lemma 3.8e(iv) that
+(3.27) 11x(t; eK(e))jj< M(t-T(jj6jj))'-5-:M(t-T(j))
+and hence also jjx (t)JI < m (0) = 1 < 46 (1) for these t. Thus,
+00 M
+(3.28) ti) Nj (Ilx (t)JI) dt N, flIx (t)JI) dt
+(by (3.24)), and by (3.27) this is less than
+'o
+(3.29) OM exp [-n (m (t - T (j)))] dt,
+which equals 0 (1). Since Jjx (t; 6, K (6))J1 < 0 (j) for all t ~-2! 0 (again from Lemma 3.8e),
+one has the bound
+(3.30) Li (6, K (6)) ~-- ri.
+Define also
+(3.31) yj := -y(rj +g (j) + k, 0(j) + 1, 0(j) + 2).
+Let gi be any continuous nonnegative function from R+ to R which vanishes outside
+the interval [0 (j), 0 (j) + 3] and such that
+(3.32) gi(p) := r, IL,
+Yi
+for p in the interval [0 (j) + 1, 0 (j) + 2]. The induction step is provided by the definition
+(3.33) Nj ~ 1 (p) := (1 + gi (p))Nj (p).
+<<PAGE-DIVIDER>>
+ASYMPTOTIC CONTROLLABILITY 469
+Note that (3.24) indeed holds. This completes the construction of N.
+Finally, pick any 0 and v continuous, increasing, and such that
+(3.34) v(p) >ri +A (j) +k,
+and
+(3.35) 0(p) >0 (j) +2,
+whenever p is in [i - 1, fl.
+We now prove that (a) to (e) hold. Define L as in (3.26) but using N in the
+integrand. Pick a 6 with 11611 < j. The trajectory corresponding to the control K (6) has
+11x(t)11<0(j) for t ~-O, so, by (3.24), L(6, K(6)) =Lj(fK(f))<rj. Thus
+(3.36) R (6, K (6)) f-~- ri + g (j),
+and in particular (a) holds. Assume that j was chosen so that 11611 >j - 1. Suppose now
+that w is a control for which R (6, w) < R K (6)). B y (3.3 6),
+(3.37) 11 w 11 :-~ ri + A+ k < , (116 11),
+as wanted in (c). Now assume that for the corresponding trajectory there would be
+some t with JJx (t)JI > 0 (11611) > 0 (j) + 2. There are then times t1 < t2 such that 11X (tl)ll
+0 U) + 1, 11X (011 = 0 (j) + 2 and
+(3.38) (j) + 1 --E JJx (t)JI!-E.0 (j) + 2
+for tl -' t '- t2. Hence
+R (6, w) f"2 N (JJx (t)11) dt -- f'2 Ni, 1 (JJx (t)11) dt
+(3.39) 1 1
+(1 + gi W + 1)) J'2 N, (JJx (t)11) dt ~- ri + ji (j) ~- R (f, K (6)).
+I
+This contradicts the choice of 6 and w. So (c) holds. To prove (b), let JJ6JJ:-5-:p,. Then
+,r (11611) = 0 and 11K (e)JI!_5 k, so, for w = K
+(3.40) R (e, K N, (I Ix (t) 11) dt :5 0 (11611) e -'dt = 0 (11~11).
+We now establish (d) and (e). Given a > 0 choose any integer j > 0 so that a + k <
+If R (6, w) < a then 11w 11 < g (j). We claim that 11611 < 0 := .0 (j) + 2. Otherwise, 11611
+0 (j) + 2 implies that there exist ti < t, with JJx (t,)Il = 6(j) + 2, 11X (t2)11 = e(i) + 1, and all
+JJx (t)JI bounded by these values for tl:-S t:-~ t2. By an argument similar to the one used
+above, R (~, w) can be proved to be larger than r, + g (j) > a, a contradiction. Thus (d)
+holds. Assume now that 11611 >a, and let y' := y (k + 1, a/2, a). Let w be given. If
+11w 11 > k + 1 then R (~, w) > 1; otherwise R (e, w) > ay'/2. With
+(3.41) 0 := min k + 1, ay,
+2
+(e) is also established.
+C. The function V.
+(3.42) V inf JR (6, w)J w relaxed controll.
+<<PAGE-DIVIDER>>
+470 EDUARDO D. SONTAG
+Note that V(O) = 0, so by (3.18b) the function V is continuous at zero; V is always
+finite by (3.18a). By (3.18d), the sets {6jV(6)<aj are always bounded. By (3.18e),
+V(6) > 0 for 6 ?- 0.
+LEMMA 3.43. Let (6., w.) -+ (6, w) as n -* 00, and assume that all R (6,, w,) and
+R (6, w) are finite. Then R (6, w) 1-S lim R (6,, w.).
+Proof. Let x, (t) := x (t; en, wn) and x (t) := x (t; e, w). Then N(IlXn (011) converges to
+N(jjx(t)jj) for each t. By Fatou's lemma,
+W '0
+(3.44) f0 N flIx (t)JI) dt:-!s; lim f, N flIx, (t)JI) dt.
+If the measures wi(t) are all supported in some U,, for some subsequence jwj), then
+also jjwjj!-5r. It follows that
+(3.45) 11w11:-5lim 11wn11-
+Thus also
+(3.46) max jjjwjj - k, 01:-5 lim (max 111w.11 - k, 01),
+and the conclusion follows from (3.44) and (3.46) and the elementary fact that always
+lim a. + lim b. !-5; lim (an + b~).
+LEMMA 3.47. For each 6 there is a w * with R (6, w V
+Proof. Let JR (6, w,)j be a minimizing sequence. By (3.18d) we may assume that
+all 11w. 11:_5 v (11C11) =: r and
+(3.48) lix, (t)ll:-5 0 (11611) for t0.
+By sequential compactness of W,, (a subsequence of) jw.j converges to a control w*
+in W,. The solution x (t) := x (t; 6, w *) is defined for all t, because (3.48) implies that
+jjx (t)JI is bounded independently of t. By (3.43),
+(3.49) R(6, w*):-~-lim R(6, w.) = V(6),
+so V (6) = R (6, w *), as wanted.
+LEMMA3.50. Vis lower semicontinuous.
+Proof. Let {6, 1 be a sequence converging to e, and write V(6n) = R (6,, Wn). For
+a suitable subsequence one may assume that w. - w, for an appropriate w. (All 11w.11
+are bounded by v(11611) +6, some 45.) Thus
+(3.51) V(6) -- R (e, w)!-s lim R (~., w.) = lim V(e).
+LEMMA3.52. Viscontinuous.
+Proof. We only need to establish upper semicontinuity. Pick e > 0. Choose a
+positive 3 <po so that
+(3.53) p < 5 implies 46 (p) <
+2
+Pick any state e, and let R (6, w) = V(f). Since x (t) := x (t; 6, w) necessarily converges
+to zero, there is some T with 11x(T)11<3. There is also a neighborhood H of 6 such
+that, for each z in H, and for the above w, T,
+T T
+E
+(3.54) N (11z (t)JI) dt <fo N (Ilx (t)JI) dt+2
+for the corresponding solution with z (0) = z, and such that also 11z (T)11 < 8. By (3.5 3)
+and (3.18b) (continuity at 0), V(z) < V(6) + E. This proves upper semicontinuity.
+<<PAGE-DIVIDER>>
+ASYMPTOTIC CONTROLLABILITY 471
+We are only left with establishing (2.4d). Let 6 be any state, V(e) = R (e, w).
+Take any z = x (t) in the trajectory, and let w' be the translation of w by (-t), so in
+particular 11w'11-_1Jw1J. It follows that
+(3.55) V(z):_!~~R(z, w')!_E~; N(11x (s)11) ds + max 111w'11 - k, 01.
+So
+(3.56) lim V(Z) - V(01 < lim f 'N(llx (s)11) ds -N(Ilell) < 0.
+'_0- t t-0- _t
+Further, 11w11 is bounded by vfllell). This completes the proof of the theorem.
+REFERENCES
+Z. ARSTFIN [1978], Relaxed controls and the dynamics of control systems, this Journal, 16, pp. 689-701.
+E. A. BARBASHIN [1970], Introduction to the Theory ofStability, Walters-Noordhoff, Groningen.
+R. V. GAMKRELIDZE [19781, Principles ofOptimal Control Theory, Plenum Press, New York.
+W. HAHN [1978], Stability ofMotion, Springer, Berlin.
+D. H. JACOBSON [1977], Extensions of Linear-quadratic Control, Optimization, and Matrix Theory,
+Academic Press, New York.
+S. LEFSCHETZ [1965], Stability ofNonlinear Control Systems, Academic Press, New York.
+A. L. LETOV [1961], Stability in Nonlinear Control Systems, Princeton University Press, Princeton, NJ.
+N. RoucHE, P. HA13ETS AND M. LALOY [19771, Stability Theory by Lyapunov's DirectMethod, Springer-
+Verlag, New York.
+E. D. SONTAG AND H. J. SUSSMANN [1980], Remarks on continuous feedback, Proc. IEEE Conference
+Decision and Control, Albuquerque, NM, pp. 916-921.
+E. D. SONTAG [19821, Abstract regulation of nonlinear systems: Stabilization, in Feedback Control of Linear
+and Nonlinear Systems, Lecture Notes in Control and Information Sciences, 39, D. Hinrichsen and
+A. Isidori, eds., Springer, Berlin, pp. 227-243.
+H. TOKUMARu, N. ADACHI AND A. INOUE [19691, On the controllability of non-linear control systems,
+Memoirs Faculty of Engr. Kyoto, 31, pp, 402-424.
+V. 1. UTKIN [1977], Variable structure systems with sliding mode: A survey, IEEE Trans. Automat. Control.,
+AC-22, pp. 212-222.
+R. VINTER [1980], A characterization of the reachable set for nonlinear control systems, this Journal, 18,
+pp.599-610.
+J. WARGA r1972], Optimal Control of Differential and Functional Equations, Academic Press, New York.
+V. 1. ZuBov [1964], Methods ofA. M. Lyapunov and their Application, Noordhoff, Groningen.

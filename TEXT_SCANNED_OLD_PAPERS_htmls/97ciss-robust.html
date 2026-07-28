@@ -1,0 +1,420 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97ciss-robust.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97ciss-robust.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A REMARK ON ROBUST STABILIZATION OF GENERAL
+
+ASYMPTOTICALLY CONTROLLABLE SYSTEMS
+
+Yu. S.Ledyaev\Lambda  Steklov Institute of Mathematics
+
+Moscow 117966
+
+Russia ledyaev@class.mi.ras.ru
+
+Eduardo Sontagy Dept. of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+Abstract It was shown recently by Clarke, Ledyaev, Sontag and Subbotin that any asymptotically controllable system can be stabilized by means of a certain type of discontinuous feedback. The feedback laws constructed in that work are robust with respect to actuator errors as well as to perturbations of the system dynamics. A drawback, however, is that they may be highly sensitive to errors in the measurement of the state vector. This paper addresses this shortcoming, and shows how to design a dynamic hybrid stabilizing controller which, while preserving robustness to external perturbations and actuator error, is also robust with respect to measurement error. This new design relies upon a controller which incorporates an internal model of the system driven by the previously constructed feedback.
+
+1. Introduction Let the nonlinear control system
+
+.x = f (x; u) (1) be (null)-asymptotically controllable. This means that for each point x0 2 Rn there exists an "open loop" control u : [0; +1) ! U which drives the state vector x(t) to the origin in Rn . It is clear that the control system (1) is asymptotically controllable if there exists a "closed-loop", or feedback, control k : Rn ! U which stabilizes all trajectories of the system
+
+.x = f (x; k(x)) (2) with respect to the origin. The answer to the converse question: "Does asymptotic controllability imply feedback stabilization?" is not so obvious. In fact, the answer is negative if we consider only continuous feedback laws, as remarked in [15] and [2]. One must allow for discontinuous feedback. Unfortunately, allowing discontinuous feedback leads to an immediate difficulty: how should one define the meaning of solution x(\Delta ) of the differential equation (2) with discontinuous right-hand side? One possibility would be to interpret solutions in terms of differential inclusions, and in particular solutions in
+
+\Lambda Visiting Rutgers University. Supported in part by Russian Fund for Fundamental Research Grant 96-01-00219 and by the Rutgers Center for Systems and Control (SYCON)
+
+ySupported in part by US Air Force Grant AFOSR-94-0293
+
+the Filippov sense [7]. However, as shown in [12, 6], there are examples of asymptotically controllable systems for which there is no possible feedback that stabilizes in the Filippov sense; in fact, [6] shows that the existence of a stabilizing feedback in the Filippov sense is equivalent to the existence of a continuous stabilizing one, in the case of systems affine in controls. Thus a totally different notion is needed.
+
+A natural and physically meaningful concept of solution of (2), which can be interpreted as stabilization by sampling at arbitrarily high sampling rates, was introduced in [4]. This concept allowed the proof of the general result: asymptotic controllability implies the existence of stabilizing feedback. The feedback laws constructed in that work are robust with respect to actuator errors as well as to perturbations of the system dynamics (1). A drawback, however, is that they may be highly sensitive to errors in the measurement of the state vector x(t). This paper addresses this shortcoming, and shows how to design a dynamic hybrid stabilizing controller which, while preserving robustness to external perturbations and actuator error, is also robust with respect to measurement error. This new design relies upon a controller which incorporates an internal model of the system driven by the previously constructed feedback. We start by reviewing the relevant definitions and results from [4].
+
+1.1. Definition of Feedback Solution
+
+From now on, we assume that U is a compact metric space and that the mapping f : Rn \Theta  U ! Rn : (x; u) 7! f (x; u) is continuous, and locally Lipschitz on x uniformly on compact subsets of Rn \Theta U. (The compactness assumption on U is made here only to clarify the exposition and it can be replaced by more general assumption that U is a locally compact metric space.) We use jxj to denote the usual Euclidean norm of x 2 Rn , and hx; yi for the inner product of two such vectors.
+
+By a sampling partition (of [0; +1)) we mean any infinite sequence ss = ftigi*0 consisting of numbers
+
+0 = t0 ! t1 ! t2 ! : : : with limi!1 ti = 1; its diameter is the number
+
+d(ss) := sup
+
+i*0(t
+
+i+1 \Gamma  ti):
+
+An arbitrary function k : Rn ! U will be called feedback.
+
+Definition 1.1 Suppose given a feedback k, a partition ss, and an x0 2 Rn . Recursively solve
+
+.x(t) = f (x(t); k(x(ti))) ; t 2 [ti; ti+1] (3) for i = 0; 1; 2; : : :, using as initial value x(ti) the endpoint of the solution on the preceding interval (and starting with x(t0) = x0). The function x(\Delta ) thus obtained is the sstrajectory of (2) starting from x0.
+
+The above solution may fail to be defined on all of [0; +1), because of possible finite escape times in one of the intervals, in which case we only have a trajectory defined on some maximal interval. We say that the trajectory is well-defined if this interval is all of [0; +1).
+
+Definition 1.2 The feedback k : Rn ! U s-stabilizes the system (1) if for each pair
+
+0 ! r ! R there exist numbers M = M (R) ? 0, ffi = ffi(r; R) ? 0, and T = T (r; R) ? 0 such that, for each partition ss with d(ss) ! ffi, and for each initial state x0 such that jx0j ^ R, the ss-trajectory x(\Delta ) of (2) starting from x0 is well-defined and the following properties are satisfied:
+
+1. (uniform attractiveness)
+
+jx(t)j ^ r for all t * T : (4)
+
+2. (overshoot boundedness)
+
+jx(t)j ^ M (R) for all t * 0; (5)
+
+3. (Lyapunov stability)
+
+lim R#0 M (R) = 0: (6)
+
+Thus, a stabilizing feedback is one such that, for all fast enough sampling, drives states asymptotically to the origin and with small overshoot. Observe that, implicit in this definition are the facts that a faster sampling rate may be required near the origin (since smaller steps are needed, to preserve stability), as well as very far from the origin (to avoid for instance lack of existence of solutions). This definition is consistent with more classical notions of stabilization: if a continuous feedback k stabilizes the system (1) in the usual sense of making the origin of (2) globally asymptotically stable, then it also s-stabilizes (cf. [4]).
+
+The following definition of (global, null-) asymptotic controllability generalizes the classical concept of uniform asymptotic stability for control systems; it was introduced in [13]. Given any control, that is, a measurable function u : [0; +1) ! U, the solution of (1) at time t * 0, with initial condition x0, defined on some maximal interval [0; tmax(x0; u)), is denoted by x(t; x0; u).
+
+Definition 1.3 The system (1) is asymptotically controllable if:
+
+1. (attractiveness) for each x0 2 Rn there exists some
+
+control u such that the trajectory x(t) = x(t; x0; u) is defined for all t * 0, and x(t) ! 0 as t ! +1;
+
+2. (Lyapunov stability) for each " ? 0 there exists
+
+ffi ? 0 such that, for each x0 2 Rn with jx0j ! ffi, there is a control u as in 1. such that jx(t)j ! " for all t * 0.
+
+A relation between asymptotic controllability and feedback s-stabilization was established in [4].
+
+Theorem 1 The system (1) is asymptotically controllable if and only if it admits an s-stabilizing feedback.
+
+The interesting part of this result lies in the construction of an s-stabilizing feedback for any asymptotically controllable system (1). This construction was based on: (a) the notion of control-Lyapunov function [13], (b) methods of nonsmooth analysis [3], and (c) techniques from positional differential games [10, 5].
+
+1.2. Robustness Properties of Feedback
+
+The advantages of feedback over open-loop control are usually expressed in terms of robustness properties. The most obvious such property is the compensation for sudden changes in states. Often, in addition, one is interested in good performance even with respect to persistent disturbances. Consider the following "perturbed" model associated to (2):
+
+.x = f (x; k(x + e(t)) + a(t)) + d(t): (7) We think of d(t) as an external disturbance of the dynamics, a(t) as an actuator error , and e(t) as a measurement error for the state vector x(t). For continuous stabilizing feedback, one has the following classical results on stability for persistent disturbances (cf. [9]): that there is a continuous function ae : Rn ! R*0 such that ae(x) ? 0 for x 6= 0, and so that, for any disturbances d(\Delta ), a(\Delta ), and e(\Delta ) satisfying
+
+jd(t)j ^ ae(x(t)); ja(t)j ^ ae(x(t)); je(t)j ^ ae(x(t)); (8) the trajectories of (7) are uniformly asymptotically stable with respect to the origin. Moreover, it can be shown that a continuous stabilizing feedback provides robust practical semi-global stabilization of the perturbed system (7), in the following sense: for any 0 ! r ! R there exists positive j = j(r; R), T = T (r; R), and M (R) such that for any disturbances d(\Delta ); a(\Delta ); e(\Delta ) satisfying
+
+jd(t)j ^ j; ja(t)j ^ j; je(t)j ^ j; any trajectory of (7) with jx(0)j ^ R satisfies (4), (5) (and (6) holds for M ).
+
+The situation concerning robustness properties of sstabilizing discontinuous feedback is more complicated.
+
+We will say that the feedback k is robustly s-stabilizing with respect to external disturbances, and actuator errors,
+
+in the absence of measurement errors if there exists a continuous function ae : Rn ! R*0 , ae(x) ? 0 for x 6= 0, such that, for any disturbances a(\Delta ), d(\Delta ) satisfying (8), and e(\Delta ) j 0, k is s-stabilizing for the perturbed system (7).
+
+We will simply say that k is robustly s-stabilizing if for any disturbances a(\Delta ), d(\Delta ) and errors e(\Delta ) satisfying (8) k is s-stabilizing for the perturbed system (7).
+
+It was shown in [4] that the s-stabilizing feedback constructed there is robust with respect to external disturbances and actuator errors in the absence of measurement errors. But the assumption that there is no measurement error, i.e. e(\Delta ) j 0, is essential for establishing that fact. In general, s-stabilizing feedback can be too sensitive with respect to errors in measurement of state vector x(t). The following result from [11] (which was motivated by an analogous result for classical solutions given in [8]) imposes strong conditions on robust stabilization:
+
+Theorem 2 Let k : Rn ! U be a robust s-stabilizing feedback. Then the control system (1) admits a smooth control-Lyapunov function.
+
+The existence of a smooth control-Lyapunov function for control system (1) is a strong requirement, and fails in general for asymptotically controllable systems. For instance, if (1) is affine in controls, the existence of such a control-Lyapunov function implies that there is also a continuous stabilizing feedback, which as discussed earlier is in general not the case. More generally, the existence of smooth control-Lyapunov function is equivalent to the existence of stabilizing discontinuous feedback with solutions of (2) defined in terms of a suitable differential inclusion.
+
+The main contribution of this paper lies in the construction, for any asymptotically controllable system, of a dynamic hybrid controller, which provides robust stabilization in spite of external disturbances, actuator errors, and measurement errors. An important component of this controller is an internal model of the system (1) under the action of the s-stabilizing feedback constructed in [4].
+
+Our notion of s-stabilizing discontinuous feedback was based upon the notion of discontinuous feedback studied in the context of positional differential games by N.N. Krasovskii and A.I. Subbotin in [10]. Similarly, our design of a stabilizing robust controller in this paper is closely patterned after the "control with guide" algorithm, which was introduced in their work also in order to provide robustness of discontinuous feedback with respect to measurement errors.
+
+Remark 1.4 Mathematically, because of the uniform continuity of f (x; u) on bounded sets, any perturbation of the system (1) by actuator errors can be considered and accounted for by the external disturbances. So from now on we omit any explicit reference on actuator errors. 2
+
+This paper is organized as follows. In the next section we provide a construction of the robust controller for
+
+asymptotically controllable system and discuss some auxiliary results. Later these results are used in the proof of the robustness properties of this controller.
+
+2. Robust Dynamic Hybrid Controller Let the control system (1) be asymptotically controllable and let k : Rn ! U be a s-stabilizing feedback for (1).
+
+In the presence of measurement errors e(t), only values x0(t) of the measured estimate of state vector x(t)
+
+x0(t) := x(t) + e(t) (9) can be used for control.
+
+Define a tracking controller k0 : Rn \Theta Rn ! U as follows:
+
+hz \Gamma  x0; f (x0; k0(x0; z))i = max
+
+u2Uhz \Gamma  x
+
+0; f (x0; u)i: (10)
+
+The most important feature of the tracking controller (10) is the fact that trajectories of the system
+
+.x = f (x; k0(x0; z)) + d1(t) (11) can track any trajectory of the control system
+
+.z = f (z; u(t)) + d2(t) (12) for any control u(\Delta ) if the measurement errors e(\Delta ), disturbances d1(\Delta ), d2(\Delta ), and diameter of the sampling partition ssx for (11) are small enough. We postpone a detailed discussion to the end of this Section, in order to first define a robust dynamic hybrid controller.
+
+A dynamic hybrid controller consists of:
+
+ffl a tracking controller k0 (10) which drives system (11) ffl an internal model of the system (1) driven by an sstabilizing feedback
+
+.z = f (z; k(z)) + d2(t) (13)
+
+ffl a set of re-initialization rules which define moments
+
+t0k from the sampling partition ssz for (13) for reinitialization of internal model (13)
+
+z(t0k) = x0(t0k) (14)
+
+ffl a sampling rule to choose sampling moments ti 2 ssx
+
+and o/i 2 ssz
+
+ti+1 \Gamma  ti ^ ffix(x0(ti)) (15) o/i+1 \Gamma  o/i ^ ffiz(z(o/i)): (16) Remark 2.5 Note that, by allowing a disturbance in the internal model (13), we can assume that the output z(t) of the internal model is computed by an Euler method for the differential equation (13). In this sense, the internal model is the computational model of closed-loop system (2).
+
+The re-initialization rule for choosing moments for reinitialization of the internal model is determined by the stabilizing properties of s-stabilizing feedback k. Their precise definition will be given in (26)-(27), after a description of these properties.
+
+A sampling rule means that sampling partitions ssx for (11) and ssz for (13) satisfying respectively (15) and (16) are considered. The continuous functions ffix : Rn ! R*0 and ffiz : Rn ! R*0 are assumed to be positive outside 0. 2
+
+The main result of this paper is the following statement characterizing robustness properties of the dynamic hybrid controller defined in this section.
+
+Theorem 3 Let the system (1) be asymptotically controllable and k be an s-stabilizing feedback. Then, there exists continuous functions ae : Rn ! R*0 , ffix : Rn ! R*0 , and ffiz : Rn ! R*0 , as well as re-initialization rules (26)- (27), such that for any measured estimate x0 of state vector x, and any disturbances d1(\Delta ), d2(\Delta ) satisfying
+
+jx0(t) \Gamma  x(t)j ^ ae(x(t)); for any t * 0 (17) jd1(t)j ^ ae(x(t)); jd2(t)j ^ ae(x(t)) for any t * 0;
+
+(18) The ssx-trajectories x(\Delta ) of (11) are stable in the following sense: for any 0 ! r ! R there exist positive T = T (r; R) and M (R) such that (6) holds, and any ssx-trajectory of (11) with jx(0)j ^ R satisfies (4) and (5).
+
+It is possible to derive from Theorem 3 that this dynamic hybrid controller provides robust practical semiglobal stabilization of system (1) even for ssx-trajectories of (11) with sampling partitions ssx satisfying assumption d(ssx) ^ ffi, instead of (15), for some positive constant ffi.
+
+Corollary 2.6 For any 0 ! r ! R there exist positive T = T (r; R), j = j(r; R), ffi = ffi(r; R), and M(R) such that (6) holds and for any measured estimate x0 and any disturbances d1(\Delta ), d2(\Delta ) satisfying
+
+jx0(t) \Gamma  x(t)j ^ j for any t * 0; (19) jd1(t)j ^ j; jd2(t)j ^ j for any t * 0; (20) any ssx-trajectory of (11) with d(ssx) ^ ffi and jx(0)j ^ R satisfies (4) end (5). 2
+
+This result means that the dynamic hybrid controller drives x(t) from a bounded set in Rn uniformly to an arbitrary small neighborhood of the origin, if the measurements errors, external disturbances, and diameter of a sampling partition are small enough.
+
+2.1. Re-Initialization Rules
+
+In this paper we prove Theorem 3 for the case of sstabilizing feedback k defined in [4]. Let us describe some properties of this feedback which are used in the statement of the re-initialization rules for the internal model.
+
+There are monotone sequences of positive numbers fRjg+1\Gamma 1 and closed sets fGjg+1\Gamma 1 such that
+
+lim j!\Gamma 1 Rj = 0; limj!+1 Rj = +1;
+
+Gj ae BRj ae B2Rj ae Gj+1 (21) and the set Gj+1 is invariant with respect to ssztrajectories of the internal model:
+
+z(t) 2 Gj+1 for all t * 0 (22) if d(ssz) ^ ffij and jd2(t)j ^ O/j for some positive numbers ffij; O/j. Moreover, there exists moments Tj ? 0 such that, for any ssz-trajectory as above with z(0) 2 Gj+1, we have the relation
+
+z(t0) 2 Gj\Gamma 1; jz(t)j ? Rj\Gamma 2 for all t 2 [0; t0] (23) at some moment t0 ^ Tj. Remark 2.7 It can be shown that there exist continuous functions ffiz : Rn ! R*0 and O/z : Rn ! R*0 which are positive outside 0 and such that for any disturbance d2(\Delta ) satisfying
+
+d2(t) ^ O/(z(t)) for all t * 0 (24) and ssz-trajectory of (13) with sampling partition ssz determined by sampling rule (16), relations (22) and (23) hold. 2
+
+We have for the sets
+
+Hj := Gj+1 n Gj that
+
+Rn n f0g = [+1j=\Gamma 1Hj:
+
+Now we can define re-initialization rules for determining sequential moments t0k 2 ssz, k = 0; 1; : : :, of reinitialization (14) of the internal model (13).
+
+Let t00 = 0, and assume that the moment t0k has already been determined. Take an index jk that satisfies
+
+x0(t0k) 2 Hjk : (25) Then the next moment t0k+1 of the re-initialization is defined as first moment t0 ? t0k from ssz such that one of the following two events occur:
+
+x0(t0) 2 Hjk+1 for some jk+1 ^ jk \Gamma  1 (26)
+
+x0(t0) 62 Gjk+2 (27)
+
+2.2. Tracking Lemma
+
+It was mentioned before that the tracking controller (10) can track trajectories of control system (12) by using only measured estimates x0(t) (9) of state vector x(t).
+
+The next variant of Krasovskii-Subbotin Tracking Lemma [10] makes this statement precise.
+
+Let us assume that function f : Rn \Theta  U ! Rn satisfies the following growth and Lipschitz conditions:
+
+jf (x; u)j ^ m on Rn \Theta  U (28) jf (x1; u)\Gamma f (x2; u)j ^ ljx1\Gamma x2j for all x1; x2 2 Rn ; u 2 U
+
+(29)
+
+Lemma 2.8 Under assumptions (28), (29) for any positive T , j, any measured estimate x0(\Delta ) and disturbances d1(\Delta ), d2(\Delta ) satisfying (19), (20), and any trajectory z(\Delta ) of (12) defined on [0; T ], an arbitrary ssx-trajectory of (10) with
+
+d(ssx) ^ j2 (30)
+
+and initial conditions
+
+jx(0) \Gamma  z(0)j ^ j (31) is defined on [0; T ] and satisfies
+
+jx(t) \Gamma  z(t)j ^ fl(j) for all t 2 [0; T ]; (32) where
+
+fl(j) := e2lT (1 + l(1 + mj)2 + 4m)
+
+1 2 j (33)
+
+Remark 2.9 Since limj!+0 fl(j) = 0, it follows from Lemma 2.8 that, on finite time intervals, the trajectories of (11) driven by the controller k0 (10) approximate arbitrarily close (that is, they track) the trajectories of (12) if measurement errors, disturbances, diameter of the sampling partition are small and the initial conditions x(0) and z(0) are close enough.
+
+It follows from the proof of Lemma 2.8 that if a trajectory z(\Delta ) stays in some compact set G, then, for sufficiently small j, constants m, l in (28), (29) can be defined as an upper bound and Lipschitz constant of f on the set G0 \Theta U where G0 is some compact neighborhood of G. This means that we can replace the global growth and Lipschitz conditions (28), (29) by assumptions of continuity and local Lipschitzness of f . 2
+
+3. Proof of Main Theorem Let mj and lj denote respectively the upper bound for jf (x; u)j and Lipschitz constant of f on the set BRj+3 \Theta  U for every integer j.
+
+Define
+
+jj := maxfj ? 0 : flj(j) + 2j ^ Rj\Gamma 2 \Gamma  Rj\Gamma 3g; where the function flj is given by (33) for T = Tj; m = mj; l = lj. Let
+
+~ae(x) := minfji : j \Gamma 3 ^ i ^ j +3g for Rj ! jxj ^ Rj+1; ~ffi(x) := minfj2i : j\Gamma 3 ^ i ^ j+3g for Rj ! jxj ^ Rj+1; and
+
+ae(x) := minf~ae(y) + 12 jy \Gamma  xj : y 2 Rn g
+
+ffix(x) := minf~ffi(y) + 12 jy \Gamma  xj : y 2 Rn g: Note that functions ae and ffix are positive for x 6= 0, Lipschitz with constant 12 and
+
+ae(x) ^ ji; ffix(x) ^ j2i (34) for any j \Gamma  3 ^ i ^ j + 3 and Rj ! jxj ^ Rj+1.
+
+Without loss of generality we may assume that the function ae satisfies the inequality ae ^ O/.
+
+By using the Lipschitz condition for the function ae, we obtain that for any x; x satisfying jx \Gamma  x0) ^ ae(x), the following inequality holds:
+
+jx \Gamma  x0j ^ 2ae(x0): (35) To verify that the functions ae and ffix satisfy the assertion of Theorem 3, let us consider two sequential moments t0k; t0k+1 of the re-initialization of the internal model (13).
+
+Let t\Lambda  = minft0k+1; t0k +Tjk and denote by ~t the maximal t0 2 [t0k; t\Lambda ] such that
+
+Rjk\Gamma 3 ! jx(t)j ! Rjk+3 (36) Rjk\Gamma 3 ! jx0(t)j ! 2Rjk+2 (37) for all t 2 [t0k; t0].
+
+It follows from (17),(34) and (35) and that
+
+jx(t0k) \Gamma  x0(t0k)j ^ 2ae(x0(t0k)) ^ 2jjk ; which implies that (36), (37) hold for t = t0k and ~t ? t0k.
+
+Then we have from (34) that
+
+ae(x(t)) ^ jjk ffix(x0(t)) ^ j2jk for all t 2 [t0k; ~t]: This implies due to (17) that we can apply Lemma 2.8 to obtain that the estimate
+
+jx(t) \Gamma  z(t)j ^ flj(jj) (38) is valid for all t 2 [t0k; ~t].
+
+Then in view of (22), (23) and the definition of jj we obtain that (36), (37) hold for t = ~t, which implies that both these relations are valid on the entire interval [t0k; t\Lambda ].
+
+To show that
+
+t0k+1 ! t0k + Tjk ;
+
+where the moment t0k+1 is defined by the relation (26), let us assume that this is not the case. Then (38) holds and
+
+x0(t) 62 Gjk for all t 2 [t0k; t0k + Tjk ]. Recall that in this case, for the trajectory z(\Delta ) of the internal model there exists t0 2 (t0k; t0k + Tjk ] such that the first inclusion in (23) holds. This implies that
+
+jx0(t0)j ^ jz(t0)j + flj(jj ) + jj
+
+! Rjk\Gamma 1 + Rjk\Gamma 2 \Gamma  Rjk\Gamma 3 ! 2Rjk\Gamma 1:
+
+Because of (21) we obtain that x0(t0) 2 Gjk . This contradiction proves that the relation (26) determines the reinitialization moment t0k+1 and
+
+t0k+1 \Gamma  t0k ! Tjk : (39) Thus, we have proved the following Lemma.
+
+Lemma 3.10 For any k = 0; 1; : : : (39) holds and
+
+x0(t) 2 B2Rjk+2 ae Gjk+3 for all t 2 [t0k; t0k+1 (40)
+
+x0(t0k+1) 2 Hjk+1 ae Gjk : (41) It is obvious that by using this Lemma we can prove that the dynamic hybrid controller provides the uniform convergence of x0(t) to the origin in Rn . Then it follows from (17) and (35) that x(t) uniformly converges to the origin too.
+
+To realize this plan, let us consider any 0 ! r ! R and initial point x0 2 BR for the ssx-trajectory of (11) with x(0) = x0. Then we have from (17) and definition jj that there exists an integer N = N (R) which does not depend upon x0 such that x0(0) 2 GN and limR!+0 N (R) = \Gamma 1: Define
+
+M (R) := 4RN(R)+2;
+
+and note that it satisfies (6). In accordance with Lemma 3.10 we have that
+
+jx0(t)j ^ 2RN(R)+2; which implies (5) because of (35). Define maximal the K(r) such that 4RK(r)+2 ! r. By applying Lemma 3.10, we obtain that there is a moment t0 such that
+
+t0 ^ T :=
+
+N(R)X
+
+i=K(r)
+
+Ti
+
+x0(t0) 2 GK(r) which implies due to the same Lemma that
+
+jx(t)j ^ 4RK(r)+2 for all t ^ T: Then x(\Delta ) satisfies (4). This completes the proof of Theorem 3.
+
+Proof of Corollary 2.6. For arbitrary 0 ! r ! R, integers K = K(r) and N = N (R) were defined in the proof of Theorem 3. Let us define
+
+j := minfae(x) : RK\Gamma 1 ^ jxj ^ M (R)g;
+
+ffi := minf RKm
+
+K+2 ; minfffi
+
+x(x) : RK\Gamma 1 ^ jxj ^ M (R)gg:
+
+If the measurement x0(\Delta ), the disturbances d1(\Delta ), d2(\Delta ) satisfy (19), (20), and the diameter of the sampling partition ssx is less than ffi, then for any ssx-trajectory x(\Delta ) with jx(0)j ^ R, the relations (17),(18) hold, and the partition ssx satisfies the sampling rule (15) for all t such that RK\Gamma 1 ^ jx0(t)j ^ 2RN. For such t, Lemma 3.10 is valid, and x0(t) and x(t) attain respectively GK and B4RK before some moment T ? 0, and stay there till the moment when x0(t) attains GK\Gamma 1. But the set GK\Gamma 1 is not necessarily invariant with respect to x0(t). This means that the reinitialization moment can be defined by (27). Thus, x0(t) can jump at such a moment outside GK\Gamma 1. It is easy to estimate that due to the choice of delta, the vector x0(t) can jump to B2RK , which means that x0(t) will stay in BRK+2 till the moment it again attains GK\Gamma 1. It follows from (35) that for all T * T ,
+
+jx(t)j ^ 2RK+2 ! r; which proves that (4),(5) holds.
+
+References
+
+[1] Artstein, Z., "Stabilization with relaxed controls," Nonl.
+
+Anal., TMA 7(1983): 1163-1173.
+
+[2] Brockett, R.W., "Asymptotic stability and feedback
+
+stabilization," in Differential Geometric Control theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkhauser, Boston, 1983, pp. 181-191.
+
+[3] Clarke, F.H., Methods of Dynamic and Nonsmooth Optimization. Volume 57 of CBMS-NSF Regional Conference Series in Applied Mathematics, S.I.A.M., Philadelphia, 1989.
+
+[4] Clarke, F.H., Yu.S. Ledyaev, E.D. Sontag, and
+
+A.I.Subbotin, "Asymptotic stabilization implies feedback stabilization," IEEE Trans. Automat. Control (1997), to appear. (Preliminary version: "Asymptotic stabilization and feedback stabilization," Proc. Conf. on Information Sciences and Systems (CISS 96), Princeton, NJ, 1996, 1232-1237.)
+
+[5] Clarke, F.H., Yu.S. Ledyaev, and A.I. Subbotin, "Universal feedback strategies for differential games of pursuit," SIAM J. Control, 35 (1997), 552 - 561.
+
+[6] Coron, J.-M., and L. Rosier, "A relation between continuous time-varying and discontinuous feedback stabilization," J.Math. Systems, Estimation, and Control 4(1994): 67-84.
+
+[7] Filippov, A.F., "Differential equations with discontinuous
+
+right-hand side," Matem. Sbornik 5(1960): 99-127. English trans. in Amer. Math. Translations 42(1964): 199- 231.
+
+[8] Hermes, H., "Discontinuous vector fields and feedback
+
+control," in Differential Equations and Dynamic Systems (J.K. Hale and J.P. La Salle, eds.), Academic Press, New York, 1967.
+
+[9] Krasovskii, N.N., Stability of Motion, Stanford University
+
+Press, Stanford, 1963.
+
+[10] Krasovskii, N.N., and A.I. Subbotin, Positional differential games, Nauka, Moscow, 1974 [in Russian]. French translation Jeux differentiels, Editions Mir, Moscou, 1979. Revised English translation Game-Theoretical Control Problems, Springer-Verlag, New York, 1988.
+
+[11] Ledyaev, Yu.S., and E.D.Sontag, "A Lyapunov characterization of robust stabilization" (1997) (in preparation).
+
+[12] Ryan, E.P., "On Brockett's condition for smooth stabilizability and its necessity in a context of nonsmooth feedback," SIAM J. Control Optim. 32(1994): 1597-1604.
+
+[13] Sontag E.D., "A Lyapunov-like characterization of
+
+asymptotic controllability," SIAM J. Control and Opt. 21(1983): 462-471.
+
+[14] Sontag E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990.
+
+[15] Sontag, E.D., and H.J. Sussmann, "Remarks on continuous feedback," in Proc. IEEE Conf. Decision and Control, Albuquerque, Dec. 1980, IEEE Publications, Piscataway, pp. 916-921.</pre>
+</body>
+</html>

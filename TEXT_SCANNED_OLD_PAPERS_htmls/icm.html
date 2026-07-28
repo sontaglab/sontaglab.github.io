@@ -1,0 +1,338 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/icm.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/icm.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Spaces of Observables in Nonlinear Control Eduardo Sontag Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+Engineering design and optimization techniques for control typically rely upon the theory of irreducible finite-dimensional representations of linear shift-invariant integral operators. A representation of F : [L1;loc(0; 1)]m ! [C0(0; 1)]p is specified by a triple of linear maps A : Rn ! Rn, B : Rm ! Rn, and C : Rn ! Rp so that, for each "input" !, F(!)(t) = C,(t), where the state , is the solution of the initial value problem ,0(t) \Gamma  A,(t) = B!(t), ,(0) = 0.
+
+For such state-space realizations to exist, it is an elementary and wellknown fact that the following equivalent properties must hold, if F(!)(t) =R
+
+t
+
+0 K(t \Gamma  o/ )!(o/ )do/ and the entries of the p \Theta  m matrix kernel K(t) are analyticand of exponential order jK
+
+ij(t)j ! ffect: rationality of the Laplace transform matrix K(s) = R 10 K(t)e\Gamma stdt; existence of some nontrivial algebraic-differential equation E(!(t); !0(t); : : : !(s)(t); j(t); j0(t); : : : ; j(r)(t)) = 0 relating inputs and outputs j = F(!); and finiteness of the rank of the block Hankel matrix H = (Hij)1i;j=0 which is defined, in terms of the Taylor expansion of K, by the p \Theta  m submatrix entries \Gamma @i+jK=@ti+j\Delta  (0).
+
+Irreducible representations are exactly those of minimal dimension, which equals the rank % of H, and they have desirable control-theoretic properties. Most significant are the facts that the elementary observables x 7! CetAx + C R t0 e(t\Gamma o/)AB!(s)ds separate points, and that states can be asymptotically steered to the equilibrium x0 = 0 by means of linear feedback laws !(t) = F x(t) which render Re * ! 0 for all eigenvalues * of A + BF .
+
+The study of representability and the analysis of qualitative properties of minimal realizations has its roots in the nineteenth century, in particular in the work of Lord Kelvin regarding the use of integrators for solving differential equations, Kronecker's contributions to linear algebra (to a great extent motivated by essentially these questions), and Hurwitz' and Routh's stability criteria. The theory, which is at the core of modern multivariable linear control, achieved full development mainly during the 1960s. Standard textbooks (e.g. [21]) cover this material, which forms the basis of widely used computer-aided design packages. Much effort has been directed since the early 1970s towards extensions to nonlinear operators, including the characterization of representability by means of explicit numerical invariants generalizing %, the equivalence to high-order differential constraints, and the synthesis of steering control laws. A still-developing but fairly detailed body of knowledge is by now available, covering both global algebraic and local analytic aspects.
+
+2 Spaces of Observables in Nonlinear Control
+
+This talk will focus on a narrow but fundamental and unifying subtopic, namely the role played by observables, which are the functions on states induced by experiments. I will start with a brief introduction to control systems and the questions to be studied, followed by an outline of results.
+
+1. Introduction To control something means to influence its behavior so as to achieve a desired goal. Sophisticated regulation mechanisms are ubiquitous in nature as well as in modern technology, where they appear in a wide range of industrial and consumer applications, such as anti-lock brakes, fly-by-wire high-performance aircraft, automation robots, or precision controllers for CD players. Control theory postulates mathematical models of control systems and deals with the basic principles underlying their analysis and design.
+
+The basic paradigm is that of a (controlled) system \Sigma , specified by a right action
+
+X \Theta  \Omega  ! X : (x; !) 7! x \Delta  !
+
+of a monoid \Omega , whose elements are called inputs or controls, on a set X, the state space, together with a map, the output function,
+
+h : X ! Y into a set Y, of output or measurement values. (Partial actions are also of interest, particularly in the context of the differential systems discussed below, but at this abstract level they can be subsumed merely by adjoining to X an "undefined" element, invariant under all !, as well as an extra element to Y.) Typically the elements of \Omega  are functions of a discrete or continuous time variable, and one interprets the action x \Delta  ! as defining a forced dynamical system with phase-space X. The function h expresses constraints on the information readily available about states. Often the control objective is to find appropriate functions ! which force the new state x \Delta  ! to have some particular desired characteristic, such as being close to a certain target set or optimizing a cost criterion, using only information about the initial state x inferred from outputs.
+
+Different algebraic, topological, and/or analytic structures are then superimposed on this basic setup in order to model specific applications and to develop nontrivial results. For instance, like with classical (noncontrolled) dynamical systems, one manner in which actions often arise is through the integration of ordinary differential equations. Let X be a (second countable) differentiable manifold, with tangent bundle projection ss : T X ! X, and let U be a separable locally compact metric space (of input values). A continuous-time differential system is specified by a continuous mapping f : X \Theta  U ! T X such that ss(f(x; u)) = x for each (x; u) 2 X \Theta  U, of class C1 on X and with fx continuous on X \Theta  U, together with a continuous h : X ! Y into another metric space. For each T ? 0, let LU1[0; T ] = measurable and essentially compact maps from [0; T ] into U. For each ! 2 LU1[0; T ] and x 2 X, there is a well-posed initial value problem on [0; T ]
+
+,0(t) = f(,(t); !(t)) ; ,(0) = x : (1)
+
+Eduardo Sontag 3 Solutions exist at least for small t ? 0; let x \Delta  ! be the value ,(T ), if defined, of this solution. The concatenation of ! 2 LU1[0; T ] and * 2 LU1[0; S] is the element !]* 2 LU1[0; T + S] which is almost everywhere equal to !(t) on [0; T ] and to *(t \Gamma  T ) on [T; T + S]. Let \Omega U be the disjoint union of the sets LU1[0; T ], over all T * 0, including for T = 0 the zero-length input \Pi ; this is a monoid under ], with identity \Pi . A controlled system as above results. Often Y is an Euclidean space and the components of h(x) designate coordinates of the state x which can be instantaneously measured. As a concrete example, the dynamic and kinematic equations of a rigid body subject to torques and translational forces gives rise to a differential system evolving on X = tangent bundle of the Euclidean group. The input values are in U = Rm if there are m independent external torques and forces acting on the system. An appropriate measurement function h : T E(3) ! R3 is included in the system specification if one can only directly measure the body's angular momentum, but not its SO(3) orientation component or its translational coordinates.
+
+In order to attain a desired control objective, it is usually necessary to determine the current state x of the system. This motivates the state estimation, or in its stochastic formulation, the Kalman filtering problem: find x on the basis of experiments consisting of applying a test input and measuring the ensuing response. That is to say, one needs to reconstruct x from the values h!(x) of the observables
+
+h! : X ! Y : x 7! h(x \Delta  !) : A necessary condition for state estimation is that fh!; ! 2 \Omega g separate points; algorithmic and well-posedness requirements lead in turn to several refinements of this condition.
+
+In many practical situations it is impossible to derive flow models like differential equations from physical principles. Sometimes the system to be controlled is only known implicitly, through its external behavior, but no dynamical model (action, output map) is available. The only data is the response of the system to the various possible inputs !, when starting from some initial or "relaxed" state x0. Mathematically, one is given a mapping F : \Omega  ! Y rather than a system \Sigma  in the form defined above. Thus a preliminary step in control design requires the solution of the realization problem: passing from an external or input-output (i/o) description to a well-formulated internal or state-space dynamical model. This is the inverse problem of representing the given F in the form
+
+F (!) = h!(x0) = h(x0 \Delta  !) for some system \Sigma  and initial state x0. Typically, moreover, one wants to find a \Sigma  that satisfies additional constraints --the state space has a topological structure, its dynamics arise as the flow of a differential equation, etc.-- so as to permit the eventual application of numerical optimization techniques in order to solve control problems.
+
+For state estimation and realization questions, the observables h!, together with their infinitesimal versions for differential systems, obviously play a central role. It is perhaps surprising that their study is also extremely useful when dealing
+
+4 Spaces of Observables in Nonlinear Control with many other control issues, due in part to the dualities between "input to state" and "state to output" maps, and between X and functions on X. Studying the duality between observables and states is particularly fruitful in control theory, perhaps more so than in physics.
+
+Since the mid 1970s, various algebraic structures associated to observables were introduced\Lambda  and shown to be fundamental ingredients in providing new insights into realization, observation, and other control-theory problems.
+
+In this talk, I give a brief and selective account of basic concepts and recent developments in the program of study that deals with the systematic use of spaces of observables. Considered are questions such as: "Given an i/o mapping, how does one classify its possible state-space representations?" "With what algebraic, topological, and/or analytic structures are state spaces naturally endowed?" "How does one characterize those operators which admit representations in terms of finite systems of first order ordinary differential equations?" "How do algebraic-differential constraints on input/output data relate to such representability?" "What are implications of finite dimensionality, finite generation, and finite transcendence degree of linear spaces, algebras, and fields of observables, respectively, upon the classification of internal models?" and "Which input functions are rich enough to permit all information about systems and states to be deduced from their associated observables?" Several answers are outlined, along with applications to the numerical solution of path planning problems for nonholonomic mechanical systems.
+
+The results reported here represent the contributions of many researchers; as far as my own work in this area is concerned, it has benefited greatly from discussions with and the insight of many colleagues, including especially Jean-Michel Coron, Michel Fliess, Bronek Jakubczyk, H'ector Sussmann, and Yuan Wang.
+
+In the interest of preserving clarity of exposition, the formulations in this talk are not the most general possible. For instance, inputs and outputs are often taken to lie in Euclidean spaces; although this covers the most interesting cases for applications, many aspects can be developed in far more generality, and this is indeed what is done in many of the references. Undefined concepts and terminology from control theory are as in [21].
+
+2. Global Algebraic Aspects The most fundamental level on which to formulate the construction of observables is as follows. Let X be a set endowed with an action by a monoid (semigroup with
+
+identity) \Omega , and let H ` RX be a collection of real-valued functions on X. For each ! 2 \Omega  and ` 2 RX, let ! \Delta ` := `!; where `!(x) := `(x\Delta !). This induces a left action of \Omega  on RX, and seeing the latter as an algebra with pointwise operations, each map ` 7! `! is a homomorphism. The observation space O(X; H) and observation algebra A(X; H) are the smallest \Omega -invariant R-linear subspace and subalgebra of
+
+\Lambda As with so many other notions central to control, observation spaces and algebras were first systematically studied by Rudolf Kalman, now at the E.T.H., so this topic is particularly appropriate for a Z"urich ICM.
+
+Eduardo Sontag 5 RX, respectively, which contain H. Their generating elements `!, ` 2 H, are the elementary (global) observables.
+
+An algebraic controlled system is given by an action X \Theta  \Omega  ! X and output map h : X ! Y for which each of the sets X and Y is endowed with the structure of a real affine scheme, \Omega  acts by morphisms, and h is a morphism. The state space X comes equipped with both the Zariski topology and the strong topology obtained by requiring that all elements of the algebra of real-valued regular functions A(X) be continuous. Such systems can be viewed as "generalized polynomial systems," since in the particular case when the algebras of functions A(X) and A(Y) are finitely generated, the schemes X and Y are algebraic sets and h as well as each of the maps x 7! x \Delta  ! are expressed by vector polynomial functions. (All affine schemes X are here assumed to be reduced over R, meaning reduced and real points are dense. Identifying X with the set of its real points, X can be seen as the set SpecR (A) of all homomorphisms A ! R, for some R-algebra A = A(X) which is reduced over R.) Several basic results for algebraic controlled systems, some of which are summarized next, were developed in [19]. (This reference dealt specifically with discrete time systems, but the results hold in more generality.)
+
+For such a system \Sigma  = (X; h), let H be the set of coordinates f'ffih; ' 2 A(Y)g of h. The system \Sigma  is said to be algebraically observable (ao) if A\Sigma  := A(X; H) = A(X). This condition is stronger than merely stipulating that observables must separate points; it corresponds to the requirement that states must be recoverable from input/output experiments by means of purely algebraic operations. In the case of finitely generated algebras, it means precisely that each coordinate of the state must be expressible as a polynomial combination of the results of a finite number of experiments. With respect to a fixed initial state x0 2 X, the action is algebraically reachable (ar) if x0 \Delta  \Omega  is Zariski-dense in X. This property is in general weaker than complete reachability --i.e. transitivity of the action, x0 \Delta  \Omega  = X-- and corresponds to the nonexistence of nontrivial algebraic invariants of the orbit x0 \Delta  \Omega . An initialized system \Sigma  = (X; h; x0) is algebraically irreducible or canonical if it is both ao and ar.
+
+An (i/o) response is any map F : \Omega  ! Y. A representation or realization of F is a \Sigma  = (X; h; x0) so that F (!) = h(x0 \Delta  !) for all !. Initialized algebraic systems form a category under the natural notion of morphism T : \Sigma 1 ! \Sigma 2, namely a scheme morphism T : X1 ! X2, with T (x10) = x20 , such that h1(x) = h2(T (x)) and T (x \Delta  !) = T (x) \Delta  ! for all x and !. Isomorphisms can be interpreted as "changes of coordinates" in the state space. Two isomorphic systems always give rise to the same response.
+
+Theorem ([23, 19]). For any response F there exists a canonical realization given by an initialized algebraic controlled system. Any two canonical realizations of the same response are necessarily isomorphic.
+
+A proof of the existence part of this result is quite simple and provides a starting point for the study of algebraic realizations, so it is worth sketching. Considering \Omega  acting on itself on the right, A(\Omega ; f'ffiF; ' 2 A(Y)g) is the observation algebra AF of F . As \Omega  acts by homomorphisms on AF , duality provides an algebraic action of \Omega  on XF := SpecR (AF ). On the other hand, the map F induces a homomorphism
+
+6 Spaces of Observables in Nonlinear Control A(Y) ! AF via ' 7! 'ffiF , which in turn by duality provides an output morphism h : XF ! Y. The construction is completed defining x0 2 XF by x0() := (\Pi ) (evaluation at the identity). An important feature of this constructive proof is that finiteness conditions on spaces of observables, which can be in principle verified directly from input/output data, are immediately reflected upon corresponding finiteness properties of canonical realizations.
+
+2.1. Finiteness Conditions For simplicity, assume from now on that the output value space is Euclidean, Y = Rp for some integer p (the number of "output channels").
+
+For \Omega  acting on itself and Fi the ith coordinate of F , O(\Omega ; fF1; : : : ; Fpg) is the observation space OF ` AF . Finite dimensionality of OF as a real vector space translates into realizability by state-affine systems, for which X is Euclidean and transitions x 7! x \Delta  ! and output h are given by affine maps ([14, 19, 6]). This is analogous to Hochschild-Mostow "representative" functions on Lie groups ([11]), those whose translates span a finite dimensional space, but here translates are being taken with respect to a semigroup action.
+
+Finite generation of AF as an algebra over R corresponds to canonical realizability by systems evolving on algebraic varieties, and tools from algebraic geometry lead to stronger results. As one illustration of such results, take two realizations of the same response whose state spaces are nonsingular varieties. Assume further that both systems are reachable and observable in the sense that the algebra A(X) separates complex points (this is considerably weaker than algebraic observability). An argument based on Zariski's Main Theorem shows that the two systems must then be isomorphic ([19], Section 26).
+
+When AF is an integral domain, one may introduce its field of fractions KF , the observation field of F . Natural finiteness conditions are then finite generation of KF or finite transcendence degree as a field extension of R. For classes of discretetime responses, these two turn out to be equivalent. They characterize realizability in terms of systems with dynamics definable by rational difference equations, or alternatively by piecewise regular functions on a stratification into quasi-affine varieties of dimension at most tr.deg KF ([19], Section 27). This dimension can be explicitly computed from F , and finiteness is equivalent to existence of algebraic difference equations relating inputs and outputs.
+
+Most often encountered in engineering are linear responses. These are well understood (e.g. [21]), but it is worth recalling the basic facts in order to appreciate the context of the above and later results. In continuous time, fix a positive integer m, the "number of input channels," and let U = Rm and \Omega  = \Omega U . A linear response is one defined by a convolution operator F (!) = R
+
+T
+
+0 K(T \Gamma s)!(s)ds, foreach ! 2 LU
+
+1[0; T ], where K is analytic (or more generally K 2 (L1;loc[0; 1))
+
+p\Theta m).
+
+The natural finite dimensional realizations in this case are linear differential systems, which have Euclidean state spaces X = Rn, linear f(x; u) = Ax + Bu in their differential equation descriptions (1), initial state 0, and linear output map h(x) = Cx. Linear isomorphisms, basis changes in the state space, lead to an action (A; B; C) 7! (T \Gamma 1AT; T \Gamma 1B; CT ) of GL(n) on these representations.
+
+Eduardo Sontag 7 Theorem. Let F be a linear response. The following are equivalent: (1) the vector space OF is finite dimensional; (2) the algebra AF is finitely generated; (3) tr.deg KF ! 1; and (4) there exists a linear realization. Moreover, there is always in that case a canonical linear realization, whose dimension %F = dim OF = tr.deg KF is minimal among all possible linear realizations, and any two such realizations are in the same GL(n)-orbit.
+
+One then studies the family of all responses with fixed %F = n, or equivalently the quotient space of the open subset of canonical triples Mn;m;p ` Rn(n+m+p) under GL(n), seen as a smooth action of a Lie group on a manifold. This action is free, and the quotient has a structure of differentiable manifold for which the map Mn;m;p!Mn;m;p=GL(n) is a smooth submersion and in fact defines a principal fibre bundle ([21], Section 5.6). Moreover, Mn;m;p=GL(n) is a nonsingular algebraic variety, and the moduli problem, fundamental for the understanding of parameterization problems for identification applications, is solved ([27]). The operator A in a minimal linear realization is the infinitesimal generator of a shift operator in the observation space. However, it may also be viewed as a derivation on a space of jets of observables. This alternative characterization which holds in the linear case motivates the study of infinitesimal observation vector spaces and algebras. These objects can be defined for "analytic" classes of nonlinear responses, which arise when viewing R T0 K(T \Gamma  s)!(s) as the first term in a higher order functional Taylor (nonlinear Volterra) expansion. In continuous time, such spaces are computationally far more useful than their global versions, since they do not involve integration of differential equations. A convenient way to introduce this approach is by means of generating series.
+
+3. Local Analytic Responses I continue to assume that U = Rm and Y = Rp for some positive integers m and p. Analytic responses are defined in terms of power series in finitely many noncommuting variables, so these need to be reviewed first.
+
+3.1. Generating Series Let \Theta  = f`0; : : :; `mg be a set of symbols, Lh\Theta i the free real Lie algebra on the set \Theta , Rh\Theta i its enveloping algebra, and Rhh\Theta ii the completion of Rh\Theta i with respect to the maximal ideal (\Theta ). Thus Rhh\Theta ii is the set of formal power series
+
+c = X
+
+ff2\Theta 
+
+\Lambda  hcjffi ff :
+
+In these terms, the associative noncommutative R-algebra structure in Rhh\Theta ii is that whose product extends concatenation in \Theta \Lambda , Rh\Theta i is the polynomial subalgebra consisting of series with finitely many nonvanishing coefficients, the free associative R-algebra on \Theta , and Lh\Theta i is the Lie subalgebra generated by \Theta . Finally, the Lie algebra of Lie series Lhh\Theta ii consists of those c 2 Rhh\Theta ii whose homogeneous components are in Lh\Theta i, and the set of exponential Lie series Ghh\Theta ii = exp(Lhh\Theta ii)
+
+8 Spaces of Observables in Nonlinear Control forms a multiplicative subgroup of Rhh\Theta ii (Campbell-Hausdorff formula). There is a linear duality between Rhh\Theta ii and Rh\Theta i:
+
+hcj*i = X
+
+ff2\Theta 
+
+\Lambda  hcjffih*jffi : (2)
+
+There is also a commutative associative product on Rhh\Theta ii, the shuffle product, with the empty word as unit and with fi`i ff`j = ((fi`i) ff)`j + (fi (ff`j))`i for all fi; ff 2 \Theta \Lambda . For each d 2 Rhh\Theta ii and * 2 Rh\Theta i, *\Gamma 1d 2 Rhh\Theta ii is the adjoint defined by h*\Gamma 1djffi := hdj*ffi (d*\Gamma 1 is defined analogously). The action d 7! *\Gamma 1d makes Rhh\Theta ii into a right module over Rh\Theta i. Restricting * to Lh\Theta i defines an action by derivations of Lh\Theta i on Rhh\Theta ii seen as a shuffle product algebra (Friedrichs' criterion amounts to the converse: d 7! *\Gamma 1d being a derivation implies * 2 Lh\Theta i; see the excellent exposition [16]). The series c 2 Rhh\Theta ii is convergent if there is a positive (radius of convergence) ae and a K so that jhcjffij ^ Kff!aeff for each ff 2 \Theta \Lambda , ff = length of ff. The set of convergent series is invariant under d 7! *\Gamma 1d.
+
+3.2. Chen-Fliess Embedding of Inputs For each ! 2 LU1[0; T ] = (L1[0; T ])m and S0 2 Rhh\Theta ii, consider the initial value problem
+
+S0(t) = `0 +
+
+mX
+
+i=1
+
+!i(t)`i! S(t) ; S(0) = S0 (3)
+
+seen as a differential equation over Rhh\Theta ii (derivative taken coefficientwise). There is a unique solution S!;S0 defined on [0; T ], with absolutely continuous coefficients, which can be characterized as a fixed point of the corresponding integral equation; successive approximations give rise to the Peano-Baker formula, which exhibits the solution in terms of iterated integrals. In particular, S!;1(T ) defines the ChenFliess series cf[!] of ! ([2, 5, 26]). By uniqueness of solutions of (3), the mapping ! 7! cf[!] is an (anti-) homomorphism from \Omega  = \Omega U into the multiplicative structure of Rhh\Theta ii, and since moments of ! are among the coefficients of cf[!], the map is 1-1. It can be proved that the elements in the image lie in Ghh\Theta ii, so one has a natural group embedding of \Omega  into Ghh\Theta ii. Furthermore, if the components of ! 2 LU1[0; T ] have magnitude less than 1 then jhcf[!]jffij ^ T ff=ff! for each ff 2 \Theta \Lambda . The pairing (2) extends to such a series * = cf[!], provided that c is convergent with radius satisfying T ae(m + 1) ! 1; the series defining hcjcf[!]i then converges absolutely, uniformly on the restrictions !jt of ! to initial subintervals [0; t], t ! T .
+
+3.3. Germs of Responses and Systems Let \Omega 0 ` \Omega  contain for some T ? 0 a neighborhood of 0 2 LU1[0; T ] and be closed under restrictions to initial subintervals. A map F : \Omega 0 ! Y defined on some such \Omega 0, with coordinates Fi(!) := hcijcf[!]i for some vector c = (c1; : : : ; cp) of convergent generating series c, is a local analytic response. (Various more global definitions of analytic response can be given; see e.g. [12].) From now on, I will indentify any two F 's which coincide on the intersection of their domains and
+
+Eduardo Sontag 9 "response" will thus mean a germ of local analytic response. With this convention, responses are in 1-1 correspondence with p-vectors of convergent generating series. Furthermore, to make the presentation simpler, and because most interesting cases for applications are encompassed by this subclass, system will mean a differential system \Sigma  analytic and affine in controls: X is an analytic manifold, h and f are analytic, and f(x; u) is affine in u. That is, in (1) one has ,0 = g0(,)+Pmj=1 !jgj(,), for some m+1 analytic vector fields gj. Fixing an initial state x0 2 X, the complete i/o behavior F \Sigma ;x0(!) = h(x0 \Delta  !) is by analytic continuation uniquely determined by its restriction to small times and controls, the response characterized by the Fliess generating series
+
+hcij`j1 : : : `jki := (gjk : : : gj1hi)(x0); where hi is the ith coordinate of h (cf. [5], which generalized Gr"obner's "Lie series" [9] for autonomous systems). A realization of a response will mean a local realization in this sense: specifying a manifold, initial state, h, and vector fields which represent the germ.
+
+3.4. Infinitesimal Observables of The First Kind, Realizability For any given system \Sigma , the infinitesimal observables of the first kind, which summarize information contained in jets of global observables ([14, 10, 6, 21]), are the functions
+
+gj1 : : : gjkhi; (j1; : : : ; jk) 2 f0; : : :; mgk; k * 0; i = 1; :::; p :
+
+The observation space (resp., algebra) of the first kind O\Sigma  (resp., A\Sigma ) is defined as the linear span (resp., algebra under pointwise products) of all these functions.
+
+The field of fractions K\Sigma  is well-defined if the manifold is connected. Starting instead with a response F , with series ec = (c1; : : : ; cp) 2 (Rhh\Theta ii)p, there is an infinitesimal observable of the first kind, ff\Gamma 1ci, for each ff 2 \Theta \Lambda  and i = 1; :::; p. (These elements correspond to certain derivatives of F that can be defined when using piecewise constant controls !.) Taking the smallest R-linear subspace of Rhh\Theta ii, shuffle subalgebra, and quotient field, containing all elements ff\Gamma 1ci, there result the observation linear space OF , algebra AF , and field of observables KF of the first kind associated to F (or ec). When (\Sigma ; x0) realizes F , \Sigma  is accessible (see
+
+below), and X is connected, OF ' O\Sigma , AF ' A\Sigma , KF ' K\Sigma .
+
+The system \Sigma  is accessible at x0 if the reachable set from x0 has nonempty interior; equivalently (Chow's Theorem) the accessibility rank condition (ARC)
+
+holds: L\Sigma (x0) = Tx0X, where L\Sigma  is the (accessibility) Lie algebra of vector fields generated by fgi; i = 0; : : :; mg. It is locally observable at x0 if observables corresponding to small-time controls separate points near x0; equivalently, the observability rank condition (ORC) holds: dO\Sigma (x0) = T \Lambda x
+
+0 X. The system \Sigma  is analyticallycanonical at x
+
+0 (from now on, just "canonical") if it is both accessible and locally observable at x0. Canonical realizations of any response are unique up to local
+
+diffeomorphisms, and a global result also holds (cf. Sussmann's [24], as well as Fliess' [5], which related to Singer and Sternberg's work on local equivalence of pseudogroups induced by isomorphic Lie algebras [17]).
+
+10 Spaces of Observables in Nonlinear Control
+
+In complete analogy to the global algebraic case discussed earlier, algebraic finiteness conditions on infinitesimal observables associated to F reflect differential realizability properties ([1, 31]). Finite generation of AF relates to canonical realizations describable by polynomial differential equations, and tr.deg K ! 1 to rational realizability.
+
+Of far wider applicability is an elegant general condition for realizability due to Fliess, which can also be expressed in terms of AF . Assume that (\Sigma ; x0)
+
+is any realization of F . The set f` 7! X`(x0); X 2 L\Sigma g of linear maps A\Sigma  ! R identifies with the subquotient T \Sigma x
+
+0 = L
+
+\Sigma (x
+
+0)=L
+
+\Sigma (x
+
+0) T(dO
+
+\Sigma (x
+
+0))0 of Tx0 X. The
+
+crucial insight is that an intrinsic definition of T \Sigma x
+
+0 , independent of the particularrealization, is possible. The elements of Lh
+
+\Theta i act as derivations on the (shuffle)
+
+ring of observables AF and hence can be thought of as formal vector fields. Vectors should be obtained by evaluations of these vector fields at a point playing the role of x0. Since AF is an algebra of functions on Chen-Fliess series, a candidate for such an evaluation is h\Delta j1i. (In fact, one could also think of the group extension of Chen-Fliess series as the state space for a formal, accessible but not observable, realization.) Thus it is natural to define T F0 as the vector space of linear operators d 7! h*\Gamma 1dj1i on AF . The dimension of T F0 , which is isomorphic to spanfec*\Gamma 1; * 2 Lh\Theta ig ` (Rhh\Theta ii)p, is the Lie rank %F ; it can be computed algebraically from the coefficients of the series ec and generalizes the Hankel rank from the linear case. It is easy to see that T F0 ' T \Sigma x
+
+0 for all possible realizations \Sigma ; moreover, T
+
+\Sigma x
+
+0 = Tx0 X ifand only if
+
+\Sigma  is canonical. Thus %F ^ dim X, with equality in the canonical case.
+
+A result assuring existence of \Sigma  provided %F ! 1 was stated by Fliess, motivated by formal groups work of Guillemin, Sternberg, and Singer ([17, 7]) in connection with Cartan's Fundamental Theorems, and various alternative proofs have been given:
+
+Theorem ([5, 15, 12]). F is realizable if and only if %F ! 1; %F is then the dimension of the canonical realization, and is the minimal possible dimension of any realization.
+
+3.5. Infinitesimal Observables of Second Kind, I/O Equations For each smooth control ! and each k * 0, let ffi(!; k) := S(k)!;1(0) 2 Rh\Theta i. This is the kth derivative, evaluated at t = 0, of the solution defining the Chen-Fliess series of !. Given an F , with generating series ec, and any i = 1; : : :; p and k and !, there is an infinitesimal observable of the second kind ffi(!; k)\Gamma 1ci. These elements span a linear space, a shuffle algebra, and a field OF? , AF? , and KF? . They characterize jets of outputs, since hcijffi(!; k)i is the ith coordinate of (dk=dtk)(F (!jt))jt=0. The following fundamental equalities, valid for any F , are central to further results, and can be proved by establishing that the elements ffi(!; k) form a set of generators for the algebra Rh\Theta i.
+
+Theorem ([28]). OF = OF? , AF = AF? , and KF = KF? . Often in applications, one is given a differential equation directly linking inputs and outputs. Let E : Uk \Theta  Rk+1 ! R be analytic, nontrivial on the last variable. A
+
+Eduardo Sontag 11 response F with Y = R satisfies the input output equation
+
+E(!(t); !0(t); : : : !(k\Gamma 1)(t); j(t); j0(t); : : : ; j(k)(t)) = 0 of order k if this equality holds for all pairs of functions (!; j(t) = F (!jt)) with ! smooth of sufficiently small magnitude and all small t. (For Y = Rp, p ? 1, an equation would be imposed on each output coordinate, but for simplicity I only consider the special case p = 1.) The differential rank %F? of F is the smallest k (possibly +1) so that F satisfies an i/o equation of order k.
+
+For linear responses, it is well-known --an immediate consequence of the theory of linear recurrences-- that realizability is equivalent to the existence of "autoregressive moving average" representations, that is, i/o equations with E linear (or in harmonic analysis terms, rationality of transfer functions). In general, an i/o equation establishes constraints on jets. For instance, if E is a polynomial function, the above equation says that j(k) is algebraic over a field generated by lower derivatives of inputs and outputs (the precise formulation is in terms of differential algebra). Appropriate finiteness conditions on OF? , AF? , and KF? are equivalent to the existence of equations with E linear or polynomial on y, and to corresponding special forms of realizations ([31]). For the general analytic case one has:
+
+Lemma ([30]). If F satisfies an i/o equation (%F? ! +1) then it is realizable (% ! +1).
+
+Observation fields play a central role in the proof. Sketch: %F? ! +1 implies that KF? is a meromorphically finitely generated extension of R, and by the previous fundamental equalities the same holds for KF . Using coordinates for the latter, one obtains a formal realization. However, this realization may have singularities at its initial state x0, so it may not define a true analytic system. On the other hand, in this realization, the responses corresponding to nonsingular states near x0 give rise to generating series with finite, in fact uniformly bounded, %. Using lower semicontinuity of Lie rank gives that %F ! +1.
+
+3.6. Universal Inputs, Orders of Equations For each fixed smooth control ! and response F , one may consider the linear span OF! of the elements ffi(!; k)\Gamma 1ci, i = 1; : : : ; p, k * 0. In general this is a proper subspace of OF? (the sum of OF! over all !). However, for appropriate !, the projections on the constant term, being either 0 or R, may produce a pointwise equality. For any O ` Rhh\Theta ii, let hOj1i = fhlj1i; l 2 Og. A smooth control ! is universal for the family of responses F if hOF! j1i = hOF? j1i for each F 2 F. Given a system \Sigma , consider the family of responses F\Sigma  which is obtained by including, for each fixed state x0, the response F \Sigma ;x0, and for each x0 and each vector v 2 Tx0X also the response dF \Sigma ;x0;v defined by the series with hcij`j1 : : : `jk i := (dgjk : : : gj1hi)(x0)v.
+
+Theorem. For each \Sigma , there exist analytic controls universal for F\Sigma . Moreover, the set of smooth controls universal for F\Sigma  is generic.
+
+Here, a set \Omega 0 of smooth controls is generic if the set f(!(0); !0(0); : : :); ! 2 \Omega 0g of jets contains a countable intersection of open dense subsets of Q1i=0 Rm (prod12 Spaces of Observables in Nonlinear Control uct topology). This transversality result can be traced to a sequence of papers including [8, 18, 25, 29, 4, 32] by Grasselli and Isidori, Sussmann, Wang, Coron, and the author. (A somewhat more general result assures existence of controls universal uniformly on all F\Sigma . Also, an alternative theorem can be stated in terms of genericity in a Whitney topology, for controls of fixed length.)
+
+It is an immediate consequence of the theorem that, for each observable system \Sigma , there exists some analytic control with the property that the output function when using this particular control uniquely determines the internal state ("universal inputs for observability"). Also, given any two initialized systems, there is an analytic control that distinguishes them. Another application is as follows. Here p = 1.
+
+Theorem ([29, 32]). For each F , % ^ %F? . If there is a canonical realization of F in terms of rational vector fields, equality holds.
+
+This generalizes the classical linear case, where % = %F? . By the Lemma, %F? ! +1 implies % ! +1. The critical step in the proof is to show that if \Sigma  is a canonical realization of dimension n, but there is an equation of order d ! n, then for each ! there would exist x and v so that hOG! j1i is a proper subspace of hOG? j1i, for G = dF \Sigma ;x0;v. The additional property in the rational case follows by straightforward elimination theory.
+
+Yet another application is, by duality, to controllability problems. Assume that ffx : ! 7! x \Delta  ! is defined on a LU1[0; T ]-neighborhood of !0. The control !0 is nonsingular for x if ffx is a submersion at !0. (Fr'echet derivative ff0x[!0] is onto, or equivalently the variational equation along the ensuing trajectory is controllable as a time-varying linear system.) The control ! is nonsingular for the system \Sigma  if for each state x there is a restriction of ! to some initial subinterval [0; t] which is nonsingular for x. (It follows that, if x \Delta  ! is defined, ! itself must be nonsingular for x.) Numerical techniques based on linearizations rely upon such controls, so it is of interest to study their existence.
+
+The system \Sigma  is strongly accessible from a state x if there is some T ? 0 so that the reachable set from x in time exactly T has nonempty interior; equivalently, \Sigma  satisfies the strong accessibility rank condition (SARC) at x: L\Sigma 0 (x) = TxX, where L\Sigma 0 is the smallest Lie ideal of L\Sigma  containing fgi; i = 1; : : : ; mg. For each x there is some ! which is nonsingular for x if and only if the SARC holds at all x. One implication is immediate from the implicit function theorem, and the converse follows by a standard argument involving Brouwer's fixed point theorem, which allows restricting to countable families of controls, hence permitting application of Sard's Lemma ([20]). A stronger result holds:
+
+Corollary. If the SARC holds from each state then there is an analytic control nonsingular for \Sigma . Moreover, the set of smooth controls nonsingular for \Sigma  is generic.
+
+This result can be found, in this form, in [22]; a weaker form in which controls are multiplied by a scalar function of x was in [3], for general smooth, not necessarily analytic, systems with g0 = 0, and stronger results are now available as well ([4]). The basic observation needed in the proof is that nonsingularity can be expressed
+
+Eduardo Sontag 13 as the nonvanishing of the output of an extended system \Sigma e obtained from \Sigma  by adjoining a variational equation and a matrix equation which computes the controllability Gramian. The problem is reduced to finding inputs universal for F\Sigma e .
+
+I end with an illustration, closely connected with the results in [3], of how this corollary can be used to numerically approach certain control problems.
+
+4. An Application: Steering Nonholonomic Systems It is often of interest to explicitly compute motions for mechanical systems, especially those subject to constrains such as the non-slippage of rolling wheels. Specified are a (for the present purposes, analytic) manifold X, the configuration space, and a constant-rank codistribution D on X which describes the kinematic constraints. The objective is to find, for each pair of states x0 and xf , a curve tangential to the kernel of D, whose initial point is x0 and final point equals, or is sufficiently near, the target xf . Assuming that ker D can be globally spanned by independent (analytic) vector fields g1; : : : ; gm, one may introduce a system as in Section 3. (g0 = 0), and for this system the problem becomes one of finding a control ! so that x0 \Delta  ! is equal to or close to xf . In this case complete controllability, that is, solvability of the exact problem for all pairs (x0; xf), is equivalent to the SARC (or the ARC, since g0 = 0) holding globally. Many sophisticated synthesis procedures have been proposed, most based on a nontrivial analysis of the structure of L\Sigma 0 , and a rich literature exists (e.g. [13] and references there.) When the structure L\Sigma 0 is too complicated for a detailed analysis, a numerical technique as follows could in principle be used.
+
+For simplicity of exposition, I'll assume that X = Rn is Euclidean and xf = 0. Multiplying the vector fields gi by a suitable scalar function, one may assume that the system is complete. Thus controls defined on a fixed interval, say, [0; 1=2], provide well-defined trajectories, and by the results previously stated, smooth ones are generically nonsingular.
+
+For any one such control !, one may consider the antisymmetric extension e! of ! to [0; 1] having e!(1\Gamma t) = \Gamma !(t) for t 2 [0; 1). This defines a measurable control which is again nonsingular for the system, but now in addition x \Delta  e! = x for each state. Thus x\Delta (e!+v) = x+ff0x[e!](v)+o(v). By nonsingularity, there is some v so that ff0x[e!](v) = \Gamma x. One choice for v is the pseudo-inverse v = N (x) = \Gamma  (ff0x[e!])# (x). Thus x\Delta (e!+hv) = (1\Gamma h)x+o(h) for such v and small h. With the alternative choice of the adjoint v = N (x) = \Gamma  (ff0x[e!])\Lambda  (x), there results x\Delta (e!+hv) = (I \Gamma hQ)x+o(h), where Q is positive definite and self-adjoint. In either case a contraction results for small h. Moreover, the following result holds for both of these choices of operator N (which correspond respectively to Newton and steepest descent algorithms, and can be explicitly computed in terms of variational equations), as well as for a larger class defined in abstract terms; it concerns the convergence of the iteration Fh(x) := x \Delta  (e! + hN (x)).
+
+14 Spaces of Observables in Nonlinear Control Theorem ([22]). Let B1 ` B2 be any two balls in Rn centered at 0. Then, for generic !, and for each h ? 0 small enough, there is some integer N so that F Nh (B2) ` B1.
+
+References
+
+[1] Z. Bartosiewicz, Minimal polynomial realizations, Math. of Control, Signals, and
+
+Systems 1 (1988), 227-231. [2] K.T. Chen, Iterated path integrals, Bulletin AMS 83 (1977), 831-879. [3] J-M. Coron, Global asymptotic stabilization for controllable systems without drift,
+
+Math of Control, Signals, and Systems 5 (1992), 295-312. [4] , Linearized control systems and applications to smooth stabilization, SIAM
+
+J. Control and Opt.32(1994): 358-386. [5] M. Fliess, R'ealisation locale des syst`emes non lin'eaires, alg`ebres de Lie filtr'ees
+
+transitives et s'eries g'en'eratrices non commutatives, Invent Math. 71 (1983), 521- 537. [6] M. Fliess and I. Kupka, A finiteness criterion for nonlinear input-output differential
+
+systems, SIAM J. Control and Opt. 21 (1983), 721-728. [7] V.W., Guillemin and S. Sternberg, An algebraic model of transitive differential
+
+geometry, Bull. AMS 70 (1964), 16-47. [8] O.M. Grasselli and A. Isidori, An existence theorem for observers of bilinear systems, IEEE Trans. Autom. Control 26 (1981), 1299-1301. [9] W. Gr"obner, Die Lie-Reihen und ihre Anwendunmgen, VEB Deutscher Verlag der
+
+Wissenschaften, Berlin, 1967. [10] R. Hermann, and A.J. Krener, Nonlinear controllability and observability, IEEE
+
+Trans. Autom. Control 22 (1977), 728-740. [11] G. Hochschild, and G.D. Mostow, Representations and representative functions of
+
+Lie groups, Ann. Math. 66 (1957), 495-542. [12] B. Jakubczyk, Realization theory for nonlinear systems; three approaches, in Algebraic and Geometric Methods in Nonlinear Control Theory (M. Fliess and M. Hazewinkel, eds.), Reidel, Dordrecht, 1986, pp. 3-31. [13] Z.X. Li and J.F. Canny eds., Nonholonomic Motion Planning, KAP, Boston, 1993. [14] J. T. Lo Global bilinearization of systems with controls appearing linearly, SIAM
+
+J. Control 13 (1975), 879-885. [15] C. Reutenauer, The local realization of generating series of finite Lie rank, in Algebraic and Geometric Methods in Nonlinear Control Theory (M. Fliess and M. Hazewinkel, eds.), Reidel, Dordrecht, 1986, pp. 33-44. [16] , Free lie algebras Oxford University Press, New York, 1993. [17] I.M. Singer and S. Sternberg, The infinite groups of Lie and Cartan, Israel J. Anal.
+
+Math 15 (1965), 1-114. [18] E.D. Sontag, On the observability of polynomial systems, SIAM J. Control and Opt.
+
+17 (1979), 139-151. [19] , Polynomial Response Maps, Springer-Verlag, Berlin, 1979. [20] , Finite dimensional open-loop control generators for nonlinear systems, Int.
+
+J. Control 47 (1988), 537-556. [21] , Mathematical Control Theory, Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990. [22] , Control of systems without drift via generic loops, IEEE Trans. Autom.
+
+Control 40(1995): 1210-1219.
+
+Eduardo Sontag 15 [23] E.D. Sontag and Y. Rouchaleau, On discrete-time polynomial systems, J. Nonlinear
+
+Analysis 1 (1976), 55-64. [24] H.J. Sussmann, Existence and uniqueness of minimal realizations of nonlinear systems, Math. Systems Theory 10 (1977), 263-284. [25] , Single-input observability of continuous-time systems, Math. Systems Theory 12 (1979), 371-393. [26] , Lie brackets and local controllability, A sufficient condition for scalar-input
+
+systems, SIAM J. Control and Opt. 21 (1983), 686-713. [27] A. Tannenbaum, Invariance and System Theory, Algebraic and Geometric Aspects,
+
+Springer, NY, 1980. [28] Y. Wang and E.D. Sontag, On two definitions of observation spaces, Systems and
+
+Control Letters 13 (1989), 279-289. [29] , I/O Equations for Nonlinear Systems and Observation Spaces, Proc. IEEE
+
+Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991, pp. 720-725. [30] , Generating series and nonlinear systems, analytic aspects, local realizability,
+
+and i/o representations, Forum Mathematicum 4 (1992), 299-322. [31] , Algebraic differential equations and rational control systems, SIAM J. Control and Opt. 30 (1992), 1126-1149. [32] , Orders of input/output differential equations and state space dimensions,
+
+SIAM J. Control and Opt.33 (1995): 1102-1127.</pre>
+</body>
+</html>

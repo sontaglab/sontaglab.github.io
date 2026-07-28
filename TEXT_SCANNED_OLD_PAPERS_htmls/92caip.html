@@ -1,0 +1,362 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/92caip.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/92caip.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Reprinted from: Artificial Neural Networks for Speech and Vision (Proc. Workshop held at Rutgers, 1992, Edited by Richard J. Mammone) Chapman and Hall, London, 1993, ISBN 0 412 54850 X, pp. 113-125
+
+UNIQUENESS OF WEIGHTS FOR NEURAL
+
+NETWORKS Francesca Albertini\Lambda  and Eduardo D. Sontagy
+
+Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+Vincent Maillotz D'epartement de Math'ematiques et d'Informatique
+
+Ecole Normale Sup'erieure, 75005 Paris
+
+1 Introduction In most applications dealing with learning and pattern recognition, neural nets are employed as models whose parameters, or "weights," must be fit to training data. Gradient descent and other algorithms are used in order to minimize an error functional, which penalizes mismatches between the desired outputs and those that a candidate net --with a fixed architecture and varying weights-- produces.
+
+There are many numerical issues that arise naturally when using such a design approach, in particular: (i) the possibility of local minima which are not globally optimal, and (ii) the possibility of multiple global minimizers. The first question was dealt with by many different authors --see for instance [5, 13, 14]-- and will not reviewed here. Regarding point (ii), observe that there are obvious transformations that leave the behavior of a network invariant, such as interchanges of all incoming and outgoing weights between two neurons, that is the relabeling of neurons, or, for odd activation functions, flipping the signs of all incoming and outgoing weights at any given node. Two networks differing in such a manner give the same error on the training data. When there is a net that fits perfectly the data, all nets differing from it by one of the above transformations also attain the global minimum (zero) of the error functional.
+
+\Lambda This research was supported in part by US Air Force Grant AFOSR-91-0343. Currently also at Universita' di Padova, Dipartimento di Matematica, 35100 Padova, Italy. E-mail address: albertin@hilbert.rutgers.edu
+
+yThis research was supported in part by US Air Force Grant AFOSR-91-0343. E-mail
+
+address: sontag@hilbert.rutgers.edu
+
+zE-mail address: vmaillot@dmi.ens.fr
+
+A natural question, asked by Hecht-Nielsen in [10], is to what extent are neuron exchanges and sign flips the only transformations that generically occur. If indeed these are the only possible ones, then essentially all the internal structure is uniquely determined by the external behavior of the network. Moreover, the set of invariant transformations is then finite. (One may want to build additional symmetries into a network, in order to increase representational bias, by imposing artificial conditions such as asking that certain weights be equal, which is helpful in designing networks that focus on invariances in the input patterns; see e.g. [7]. This leads to richer transformation groups, but that is a different issue than the one treated here.)
+
+Various conditions can be given which assure that equality of behaviors between two networks implies equality up to neuron relabeling and signs flips. An important consequence in those cases in which the conditions apply is that there is no possible dimensionality reduction in the parameter space, contrary to the situation in classical linear identification, where canonical forms have to be introduced in order to achieve parameter identifiability. (Seen more positively, the parameterizations provided by neural networks have very little redundancy.) In this short expository survey, we sketch various known facts about this issue, including recent results about recurrent nets, and we provide a new and simple proof of a uniqueness result that applies in the single hidden layer case.
+
+2 Single-Hidden Layer Nets Let oe : IR ! IR be any function, and let m; n; p be positive integers. A singlehidden layer net with m inputs, p outputs, n hidden units, and activation function oe is specified by a pair of matrices B; C and a pair of vectors fi; c0, where B and C are respectively real matrices of sizes n \Theta  m and p \Theta  n, and fi and c0 are respectively real vectors of size n and p. We denote such a net by a 5-tuple
+
+\Sigma  = \Sigma (B; C; fi; c0; oe) ;
+
+omitting oe if obvious from the context. In particular, \Sigma  has no offsets if fi = c0 = 0 (the terminology "biases" or "thresholds" is sometimes used instead of offsets).
+
+For simplicity, we will assume from now on that p = 1; generalizations to the multiple-output case are not hard but they complicate the notations. Thus, from now on, C is a row n-vector and c0 is a constant.
+
+Let ~oen : IRn ! IRn indicate the application of oe to each coordinate of an n-vector:
+
+~oen(x1; : : : ; xn) = (oe(x1); : : :; oe(xn)) :
+
+(We will drop the subscript as long as its value is clear from the context.) The behavior of \Sigma  is defined to be the map
+
+beh\Sigma  : IRm ! IR : u 7! C~oe(Bu + fi) + c0 : In other words, the behavior of a network is a composition of the type f ffi~oeffig, where f and g are affine maps. Given two networks \Sigma  and ^\Sigma , we say that they are (input/output) equivalent and denote
+
+\Sigma  , ^\Sigma  ; if beh\Sigma  = beh ^\Sigma  (equality of functions). The question to be studied, then, is: when does \Sigma  , ^\Sigma  imply \Sigma  = ^\Sigma ?
+
+Consider first the case in which oe is the identity. In that case, beh\Sigma  = CBu + (Cfi + c0), and we see that any two nets \Sigma  giving rise to the same products CB and Cfi + c0 have the same behavior. Assume that \Sigma  , ^\Sigma . Under suitable minimality conditions (B, ^B of full row rank and C, ^C of full column rank), there must exist an invertible matrix T such that ^C = CT ,^ B = T \Gamma 1B, and ^c0 = C(fi \Gamma  T ^fi) + c0. Conversely, for any given \Sigma , any such T , and any ^fi, the above formulas define a ^\Sigma  which is equivalent to the given one. Thus, uniqueness is very far from being satisfied. The same argument applies if oe is any linear map. Observe, as the same fact will be needed later, that without minimality assumptions nothing at all can be concluded; for instance, if B; ^B; fi; ^fi; c0; ^c0 all vanish, one has \Sigma  , ^\Sigma  but there need be no relation among C and ^C.
+
+One might at first think that nonlinear maps oe provide uniqueness up to finitely many symmetries. But it is easy to see that far more is needed. For instance, such a property cannot hold for polynomials, nor for periodic functions, nor for the exponential function (see below). Thus one is led to the search for easily verifiable conditions on the mapping oe which imply the desired property. We formalize what is needed:
+
+Definition 2.1 The function oe satisfies the independence property ("IP" from now on) if, for every positive integer l, nonzero real numbers b1; : : : ; bl, and real numbers fi1; : : : ; fil for which the pairs (bi; fii), i = 1; : : : ; l satisfy
+
+(bi; fii) 6= \Sigma (bj; fij) 8i 6= j ;
+
+it must hold that the functions
+
+1 ; oe(b1x + fi1) ; : : : ; oe(blx + fil) are linearly independent. The function oe satisfies the weak independence property ("WIP") if the above linear independence property is only required to hold for all pairs with fii = 0, i = 1; : : :; l. 2
+
+Observe that the independence condition is:
+
+c0 +
+
+lX
+
+i=1
+
+cioe(bix + fii) = 0 8x 2 IR ) c0 = c1 = : : : = cl = 0 :
+
+This is the property needed for the desired uniqueness results, as we discuss next.
+
+Recall that some sort of nontriviality hypothesis is needed. Let \Sigma (B; C; fi; c0; oe) be given, and denote by Bi the transpose of the ith row of the matrix B and by ci and fii the ith entries of C and fi respectively. With these notations, beh\Sigma (u) = c0 + Pni=1 cioe(Biu + fii). As in [15], we say that \Sigma  is irreducible if the following properties hold:
+
+1. ci 6= 0 for each i = 1; : : : ; n. 2. Bi 6= 0 for each i = 1; : : :; n. 3. (Bi; fii) 6= \Sigma (Bj ; fij) for all i 6= j.
+
+Given \Sigma (B; C; fi; c0; oe), a sign-flip operation consists of simultaneously reversing the signs of ci, Bi, and fii, for some i. A node-permutation consists of interchanging (ci; Bi; fii) with (cj; Bj; fij), for some i; j. Given two nets \Sigma  and ^\Sigma , we say that they are equivalent if n = ^n and (B; C; fi; c0) can be transformed into ( ^B; ^C; ^fi; ^c0) by means of a finite number of sign-flips and node-permutations. Of course, equivalent nets have the same behavior (since oe has been assumed to be odd). The next simple remark establishes the connection between the concepts just introduced. The proof is adapted from [15]. We assume for simplicity that the function oe is odd, but it is easy to generalize this in various ways.
+
+Lemma 2.2 Let oe be odd and satisfy property IP. Assume that \Sigma  and ^\Sigma  are both irreducible, and \Sigma  , ^\Sigma . Then, \Sigma  and ^\Sigma  are equivalent. If oe only satisfies WIP, the same statement is true for nets with no offsets.
+
+Proof. Assume that \Sigma  and ^\Sigma  are as in the statement, so
+
+C~oe(Bu + fi) + c0 = ^C~oe( ^Bu + ^fi) + ^c0 for all u 2 IRm : (1) Pick any fixed vector _u 2 IRm such that:
+
+ffl Bi _u 6= 0 and ^Bi _u 6= 0 for all i = 1; : : : ; n , ffl (Bi _u; fii) 6= \Sigma (Bj _u; fij) and ( ^Bi _u; ^fii) 6= \Sigma ( ^Bj _u; ^fij) for all i 6= j . Such vectors exist, because we only need to avoid the union of the hyperplanes in IRm determined by each of the equations: Biu = 0, (Bi + Bj )u = 0 for each i; j for which fii = \Gamma fij, (Bi \Gamma  Bj)u = 0 for each i; j for which fii = fij, and the corresponding ones for ^\Sigma .
+
+In particular, we may consider elements u 2 IRm of the form u = _ux in Equation (1). With the notations bi = Bi _u and ^bi = ^Bi _u, we obtain the identity
+
+(c0 \Gamma  ^c0) +
+
+nX
+
+i=1
+
+cioe(bix + fii) \Gamma 
+
+nX
+
+i=1
+
+^cioe(^bix + ^fii) = 0 for all x 2 IR :
+
+If the functions 1, bix + fii, ^bix + ^fii, i = 1; : : : ; n are linearly independent, then all ci = 0, contradicting irreducibility. Since property IP holds (or WIP, in the case of nets with no offsets, for which all fii = ^fii = 0), the only way in which linear independence can fail is if some bi or ^bi vanishes, which cannot be the case because of the choice of _u, or --since also by construction (bi; fii) 6= \Sigma (bj; fij) and similarly for the (bi; fii)'s-- if (bi; fii) = \Sigma (^bj; ^fij) for some i; j. Thus, using that oe is odd, we may relabel indices, apply if necessary a sign-flip and collect these two terms, there resulting an equation:
+
+(c0 \Gamma  ^c0) + (c1 \Gamma  "^c1)oe(b1x + fi1) +
+
+nX
+
+i=2
+
+cioe(bix + fii) \Gamma 
+
+nX
+
+i=2
+
+^cioe(^bix + ^fii) = 0
+
+with " = \Sigma 1, where now no pair (bi; fii) or (^bi; ^fii) equals \Sigma (b1; fi1). We may iterate this argument until all terms have been collected, which leads to an equation such as
+
+(c0 \Gamma  ^c0) +
+
+nX
+
+i=1
+
+(ci \Gamma  "i^ci)oe(bix + fii) = 0 :
+
+Once more using property IP, this implies that c0 = ^c0 and ci = "i^ci for all i, completing the proof.
+
+Remark 2.3 For infinitely differentiable oe, there is a slightly different argument that can be used in the above proof, instead of the choice of a direction _u, but which makes the stronger assumption that all derivatives of oe satisfy IP or WIP. This argument was given in [8], which dealt with projection-pursuit algorithms in statistics, an area closely related to neural networks; we sketch the idea next. Again, we need to reduce an equation such as (1) to the scalar case. To do this, we apply a sequence of partial derivation operators wk \Delta  r, where each wk is chosen so as to kill one direction at a time among the vectors Bi, while the rest of the directions provide a nonzero inner product. After this procedure, there results a scalar linear dependence involving a derivative of oe instead of oe itself. 2
+
+Our goal is then to explore easily verifiable and weak conditions for IP and WIP to hold.
+
+2.1 The Property WIP Characterizing WIP is especially easy, and very classical: for odd analytic functions oe, property WIP holds if and only if oe is not a polynomial.
+
+Lemma 2.4 If oe is a polynomial, WIP does not hold. Conversely, if oe is odd and infinitely differentiable, and if there are an infinite number of nonzero derivatives qk = oe(k)(0), then oe satisfies property IP.
+
+Proof. If oe is a polynomial of degree r, the functions oe(bix) are all polynomials of degree r, and hence are linearly dependent, for any choice of distinct and positive numbers bi, i = 1; : : : ; r + 2. For the converse, we need to see that c0 + Pli=1 cioe(bix) j 0 implies that c0 = c1 = : : : = cl = 0, assuming that all the bi are nonzero and have different absolute values. Since oe is odd, oe(0) = 0, so c0 = 0. Furthermore, we may assume after sign-flips if necessary, that all bi ? 0. Taking derivatives of various orders, and evaluating at x = 0, one obtains qk Pli=1 cibki = 0 for all k. Let C = (c1; : : :; cl). Picking l nonzero derivatives qkj , j = 1; : : :; l, there results that CM = 0,
+
+where M is the generalized Vandermonde matrix with entries bkji . It is a classical fact that such a matrix is nonsingular (Descartes' rule of signs), so C = 0 as desired.
+
+Thus the conditions in Lemma 2.2 are satisfied for many interesting nonlinearities, for the case of nets with no offset. Nets with no offsets appear naturally in signal processing and control applications, as there it is often
+
+the case that one requires that the zero input signal causes no effect, corresponding to equilibrium initial states for a controller or filter.
+
+Even stronger results can be proved if constraints are imposed on the matrix B. For instance, one may require that the successive rows of B have the form (d1; : : : ; dk; 0; : : :; 0), (0; d1; : : : ; dk; 0; : : : ; 0), (0; 0; d1; : : :; dk; 0; : : :; 0), : : : . Such a constraint is natural if one is dealing with a composition
+
+f ffioeffig ; where f; g are finite impulse response filters, and the inputs u are thought of as time signals. (The di's are the coefficients of the filter g; the coefficients defining f are the entries of C.) If any di is nonzero, then all rows of B are nonzero, and it holds automatically that Bi 6= \Sigma Bj for all i 6= j; essentially, due to the regularity of B, one is dealing here with a case closer to that of one neuron (n = 1) than general n. The uniqueness result in this context is essentially what was proved in [3]. (Actually, [3] treated more general time-invariant linear systems than FIR filters, as well as a continuous-time version, and in [4] the authors generalized their work to other structures containing one scalar nonlinearity. That work was in turn motivated by the older work [11] and [9] which dealt with interconnections of linear systems and memory free nonlinearities.)
+
+2.2 The Property IP It appears to be harder to obtain elegant characterizations of the stronger property IP. For obvious examples of functions not satisfying IP, take oe(x) = ex, any periodic function, or any polynomial. One case is relatively simple: the one concerning dependence equations in which all bi = 1 in the definition of the property IP. Now the only condition left is that the elements fii must be all distinct. Given an equation
+
+c0 +
+
+lX
+
+i=1
+
+cioe(x + fii) j 0 ; (2)
+
+taking Fourier transforms results in the desired conclusion that all ci must vanish, as long as oe is not identically zero (a.e.). Of course, many functions do not admit Fourier transforms, but observe that any linear combination of functions satisfying a nontrivial identity as above again satisfies a similar identity (with larger l). Thus, for instance, if there is a nonzero linear combination of translates of oe which is integrable, then oe itself cannot satisfy
+
+such an equation. An example is any "squashing" function (oe is measurable, nondecreasing, and bounded), in which case oe(x + 1) \Gamma  oe(x \Gamma  1) is in L1.
+
+The most interesting case, for neural network applications, is oe(x) = tanh(x), or equivalently after a linear transformation, the standard sigmoid
+
+1 1+e\Gamma x . (It is more convenient to work with tanh(x), as it is odd.) For thisfunction oe, consider first again the case when b
+
+i = 1 and equation (2). From this equation, with a change of variables z = e\Gamma 2x we obtain
+
+^c0 +
+
+lX
+
+i=1
+
+^ci qi + z j 0 (3)
+
+where ^c0 = c0 \Gamma  P ci, ^ci = 2ciqi, and qi = e2fii. Taking the limit as z ! +1, we have that ^c0 = 0. We may consider the identity (3) over the complexes (analytic continuation), and take residues at the various z = \Gamma qi; from here one concludes the desired linear independence.
+
+In place of the residue argument, we may instead use a formula due to Cauchy, which shows the stronger fact that from the values of the right-hand side of (3) at any l points z1; : : : ; zl one can retrieve the ci's uniquely: let M be the matrix with entries Mij = 1qi+zj , then ([6], Section 11.3):
+
+det M = Qi?j (zi \Gamma  zj )(qi \Gamma  qj )Q
+
+i;j (qi + zj ) 6= 0 :
+
+Thus (^c1; : : : ; ^cl)M = 0 implies once more that all ^ci = 0.
+
+The reduction of questions about tanh-nets to questions about rational functions, by means of the transformation z = e\Gamma 2x, formed the basis of the approach taken in [13] to study local minima of gradient descent; see also the recent work [16], which carries this much further into deeper questions of approximation theory. A similar reduction can be done whenever the bi are rational numbers, but the above proof works only under the assumption that all the bi are equal. However, for the particular function oe = tanh, the full property IP, with no further restrictions on the bi's, was established by Sussmann in [15], using a very different argument. We wish to show now that a residue type of argument works in general, and in the process we extend considerably the class of functions to which it applies.
+
+Theorem 1 Assume that oe is a real-analytic function, and it extends to an analytic function oe : C ! C defined on a subset D ` C of the form:
+
+D = fz j jIm zj ^ *g n fz0; _z0g
+
+for some * ? 0, where Im z0 = * and z0 and _z0 are singularities, that is, there is a sequence zn ! z0 so that joe(zn)j ! 1, and similarly for _z0. Then, oe satisfies property IP.
+
+Proof. Assume that
+
+c0 + c1oe(b1z + fi1) + : : : + croe(brz + fir) j 0 (4) is an equation of linear dependence, with r as small as possible. Thus ci 6= 0 for all i = 1; : : :; r. Without loss of generality, we may assume that jb1j * bi for all i ? 1. After a change of variables b1z + fi1 ! z, we have that (b1; fi1) = (1; 0), (bi; fii) 6= \Sigma (1; 0) for all i * 2, and bi ^ 1 for all i. Thus, by the assumptions on singularities, biz0 + fii is not a singularity of oe, for all i * 2. Dividing the expression in (4) by oe(z) and taking limits as z ! z0, we obtain c1 = 0, a contradiction.
+
+A typical example of a oe satisfying the hypotheses of the theorem is that of a oe having a meromorphic extension which has a unique pole of minimal positive real part. Most rational functions satisfy this, as well as the main example in neural networks research, oe(x) = tanh(x). In this case, the set of poles is the set f(kss=2)i ; k oddg and one can take z0 = (ss=2)i. Another interesting example for neural nets is that of arctan(x). In this case, integrating 11+z2 , one can find a branch defined on the complement of fRe z = 0; jIm zj * 1g.
+
+Remark 2.5 C. Fefferman (personal communication) has recently been able to extend this argument to "multiple hidden layer" nets, for the special case of the nonlinearity tanh(x). 2
+
+3 Recurrent Nets A recurrent net with m inputs, p outputs, dimension n, and activation function oe is specified by a triple of matrices A; B; C and a pair of vectors fi; c0, where A, B, and C are respectively real matrices of sizes n \Theta  n, n \Theta  m and p \Theta  n, and fi and c0 are respectively real vectors of size m and p. We use the notation
+
+\Sigma  = \Sigma (A; B; C; fi; c0; oe) ;
+
+again omitting oe if obvious from the context. Because this is natural in control applications, and since the only results to be described are for that
+
+case, we assume that \Sigma  has no offsets, i.e. fi = c0 = 0, and write just \Sigma (A; B; C; oe).
+
+We will interpret the above data (A; B; C) as defining a controlled and observed dynamical system evolving in IRn (in the standard sense of control theory; see e.g. [12]) by means of a differential equation
+
+.x = ~oe (Ax + Bu) ; y = Cx (5) in continuous-time (dot indicates time derivative), or a difference equation
+
+x+ = ~oe (Ax + Bu) ; y = Cx (6) in discrete-time ("+" indicates a unit time shift). Other systems models are possible; for instance, "Hopfield nets" have dynamics of the form
+
+.x = \Gamma Dx + ~oe (Ax + Bu) (7) (with D a diagonal matrix and often A symmetric); results analogous to those to be described can be obtained for these more general models as well.
+
+Depending on the interpretation (5) or (6), one defines an appropriate behavior beh\Sigma , mapping suitable spaces of input functions into spaces of output functions, again in the standard sense of control theory (see [12]). For instance, in continuous time, one proceeds as follows: For any measurable essentially bounded u(\Delta ) : [0; T ] ! IRm, we denote by OE(t; ,; u) the solution at time t of (5) with initial state x(0) = ,; this is defined at least on a small enough interval [0; "), " ? 0. (The maps oe of interest in neural network theory tend to be mostly globally Lipschitz, in which case " = T .) For each input, we let beh\Sigma (u) be the output function corresponding to the initial state x(0) = 0, that is,
+
+beh\Sigma (u)(t) := C(OE(t; 0; u)) ; defined at least on some interval [0; "). Given recurrent nets \Sigma  and ^\Sigma  (necessarily with the same numbers of input and output channels, i.e. with p = ^p and m = ^m), we again say that \Sigma  and ^\Sigma  are equivalent (in discrete or continuous time, depending on the context) if it holds that beh\Sigma  = beh ^\Sigma ; as
+
+before, we denote \Sigma  , ^\Sigma  (To be more precise, in continuous-time, we require that for each u the domains of definitions of beh\Sigma (u) and beh ^\Sigma (u) coincide, and their values be equal for all t in the common domain.)
+
+Next we summarize the main results from [1] and [2] on weight uniqueness for recurrent networks.
+
+3.1 Continuous-Time We assume from now on that oe is infinitely differentiable, and that it satisfies the following assumptions:
+
+oe(0) = 0 ; oe
+
+0(0) 6= 0 ; oe00(0) = 0 ; oe(q)(0) 6= 0 for some q ? 2 : (\Lambda )
+
+We let S(n; m; p) denote the set of all recurrent nets \Sigma (A; B; C; oe) with fixed n; m; p. Two nets \Sigma  and ^\Sigma  in S(n; m; p) are sign-permutation equivalent if there exists a nonsingular matrix T such that
+
+T \Gamma 1AT = ^A ; T \Gamma 1B = ^B ; CT = ^C and T has the special form:
+
+T = P D ;
+
+where P is a permutation matrix and D = diag(*1; : : : ; *n), with each *i = \Sigma 1. The nets \Sigma  and ^\Sigma  are just permutation equivalent if the above holds with D = I, that is, T is a permutation matrix.
+
+Let Bn;m be the class of n \Theta  m real matrices B for which:
+
+1. bi;j 6= 0 for all i; j, 2. for each i 6= j, there exists some k such that jbi;kj 6= jbj;kj.
+
+For any choice of positive integers n; m; p; we denote by Scn;m;p the set of all triples of matrices (A; B; C), A 2 Rn\Theta n, B 2 Rn\Theta m, C 2 Rp\Theta n which are "canonical" (observable and controllable, as in [12], section 5.5). This is a generic set of triples, in the sense that the entries of the ones that do not satisfy the property are zeroes of certain nontrivial multivariable polynomials.
+
+Finally, we let:
+
+~S(n; m; p) = n\Sigma (A; B; C; oe) fififi B 2 Bn;m and (A; B; C) 2 Scn;m;po :
+
+Then, in [1], the following result was proved: Theorem 2 Assume that oe is odd and satisfies property (*). For any two \Sigma ; ^\Sigma , \Sigma  , ^\Sigma  if and only if \Sigma  and ^\Sigma  are sign-permutation equivalent.
+
+If we simply modify the definition of Bn;m to consist now of matrices for which 1. holds and 2. is replaced by:
+
+2'. for each i 6= j, there exists some k such that bi;k 6= bj;k, and defining ~S as above, but with this new Bn;m, the above reference also proved:
+
+Theorem 3 Assume that oe is not odd and satisfies property (*). For any two \Sigma ; ^\Sigma , \Sigma  , ^\Sigma  if and only if \Sigma  and ^\Sigma  are permutation equivalent.
+
+The paper [1] explains how in fact the assumption that both nets have the same activation function oe is basically redundant, as the equality of activation functions can be derived from the equality of behaviors. Many more results are given there, for other continuous-time models.
+
+3.2 Discrete-Time Similar results hold for discrete-time recurrent nets. These are treated in detail in [2]. Proofs are technically different than in the continuous case, but the results are analogous. More precisely, we assume that oe not only satisfies (*), but also the following extra condition, which appeared above in the context of single-hidden layer nets with no offsets: oe(k)(0) 6= 0 for infinitely many integers k. Then the same theorems as before hold, provided that we redefine:
+
+^S(n; m; p) = n(A; B; C) fififi(A; B; C) 2 ~S(n; m; p); cij 6= 0 8 i; jo :
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "For neural networks, function determines form," Neural Networks, to appear. Summary in: "For neural networks, function determines form," Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 26-31.
+
+[2] Albertini, F., and E.D. Sontag, "Identifiability of discrete-time neural
+
+networks," Preprint, Sept. 1992.
+
+[3] Boyd, S., and L.O. Chua, "Uniqueness of a basic nonlinear structure"
+
+IEEE Trans. Circuits and Systems CAS-30(1983): 648-651.
+
+[4] Boyd, S., and L.O. Chua, "Uniqueness of circuits and systems containing one nonlinearity," IEEE Trans. Automatic Control AC-30(1985): 674-681.
+
+[5] Brady, M., R. Raghavan and J. Slawny, "Backpropagation fails to separate where perceptrons succeed," IEEE Trans. Circuits and Systems CAS-36(1989): 665-674.
+
+[6] Davis, Philip J., Interpolation and Approximation, Blaisdell, New York,
+
+1963.
+
+[7] Denker, J., Schwartz, D., Wittner, B., Solla, S.A., Howard, R., Jackel,
+
+L., and Hopfield, J., "Automatic learning, rule extraction and generalization," Complex Systems, 1(1987): 877-922.
+
+[8] Diaconis, P., and M. Shahshahani, "On nonlinear functions of linear
+
+combinations," SIAM J. Sci. Stat. Comput. 5(1984): 175-191.
+
+[9] Harper,T.R., and W.J. Rugh, "Structural features of factorable
+
+Volterra systems," IEEE Trans. Automatic Control AC-21(1976): 822- 832.
+
+[10] Hecht-Nielsen, R., "Theory of the backpropagation neural network," in
+
+Proceedings of the Int. Joint Conf. on Neural Networks, Washington, 1989, IEEE Publications, NY, 593-605.
+
+[11] Smith, W.W., and W.J. Rugh, "On the structure of a class of nonlinear
+
+systems," IEEE Trans. Automatic Control AC-19(1974): 701-706.
+
+[12] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990.
+
+[13] Sontag, E.D., and H.J. Sussmann, "Backpropagation can give rise to
+
+spurious local minima even for networks without hidden layers," Complex Systems 3(1989): 91-106.
+
+[14] Sontag, E.D., and H.J. Sussmann, "Backpropagation separates where
+
+perceptrons do," Neural Networks, 4(1991): 243-249.
+
+[15] Sussmann, H.J., "Uniqueness of the weights for minimal feedforward
+
+nets with a given input-output map," Neural Networks 5(1992): 589- 593.
+
+[16] Williamson, R.C., and U. Helmke, "Existence and uniqueness results
+
+for neural network approximations," preprint, Sept 1992.</pre>
+</body>
+</html>

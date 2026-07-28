@@ -1,0 +1,433 @@
+OCR of paper; see pdf file noether-realiz.pdf for viewwable/printable page
+
+Reprinted from JOURNAL OF COMPUTER AND SYSTEM SCIENCES Vol. 18, No. 1. February 1979
+All Rights Reserved by Academic Press. New York 4nd London PrinUd in Be4euvv
+On the Existence of Minimal Realizations of Linear Dynamical
+Systems over Noetherian Integral Dornains*
+YVEs RoUCIIALEAU
+Centre de Alath~niatiques Appliqu&s, E.N.S. Mines de Paris, F-06560 Valbonne, France
+AND
+EDUARDO D. SONTAG
+Rutgers University, Department of Math enza tics, New Brunswick, New Jersey 08903
+Received June 15, 1977; revised March 22, 1978
+This paper studies the problem of obtaining minimal realizations of linear input/output
+maps defined over rings. In particular, it is shown that, contrary to the case of systems over
+fields, it is in general impossible to obtain realizations whose dimiension equals the rank of
+the Hankel matrix. A characterization is given of those (Noetherian) rings over which
+realizations of such dimensions can he always obtained, and the result is applied to delay-
+differential systems.
+A. INTRODUCTION
+A linear, discrete-time, constant, dynamical system Z over an integral domain R is
+defined by giving a finitely generated torsionfree R-module X (the state module) and a
+triplet of R-honiomorphisms (F, G, H), where
+F: X --* X, G: R", --)- X, H: X -->- R-.
+We call the free R-module R- the input module, R" the output module, and write the
+equations of the system
+xt+l = Fx, + Gut t C Z'
+yt+l ~ Hxt+l ,
+where ut (the input at time t) belongs to R"', x, (the state at time t) to X and y, (the output
+at time 0 to RP.
+It follows from the linearity of these equations that the relation they induce between
+* This research was supported in part by U.S. Army Research Grant DAH C04-74-G-01 53 and
+U.S. Air Force Grant AFOSR72-2268 through the Center for Mathematical System Theory,
+University of Florida, Gainesville, Fla. 32611.
+65
+0022-OOW/79/010065-11$02.00/0
+Copyright Cc) 1979 by Academic Press, Inc.
+All rights of reproduction in any form reserved.
+<<PAGE-DIVIDER>>
+66 ROUCHALFAU AND SONTAG
+inputs and outputs is completely characterized by the infinite sequence of p x m
+R-matrices S - (A, , A, _.) (the inputloutput sequence of the system) where A, is the
+matrix representation of the R-homomorphism UP IG: R111 ~ RP in the standard bases
+of R and RP. Conversely, given a sequence of p - "i R-matrices S - (A, , A, _.), the
+realization problem consists in finding a finitely generated torsion-free R-module X and
+three R-homomorphisms (F. G, II) as above such that A, --- HF'--'G, for all t ---- 0.
+Suppose that X can be generated as an R-module bv n elements; then we can represent
+the homomorphisms F, G, 11 (not necessarily uniquel_y) by R-matrices with respect to the
+standard bases of R and RP and the set of generators. We shall from now on not make any
+distinction between the homomorphisms and their chosen matrix representations. If r
+is the smallest cardinalitv for a set of generators of X, we shall call r the dimension of the
+svstem over R.
+When R is a field, the realization problem is completely solved. It is shown in Kalman,
+Falb, and Arbib [5] that an input/output sequence can be realized by a fi nite- dimensional
+svsteni Iff its associated behavior matrix
+(~l -42 A3 ...
+B '42 -4:3 ~14
+has finite rank n, that n is the minimal dimension for a realization of the sequence, and that
+a system realizing the sequence has minimal dimension iff it is canonical, i.e. both reachable
+(the map (G, FG,..., Fn 1G): Rnm --->- X is onto) and observable (the map (H', FH ......
+(F)1~ IIF)': X ~ R" is one-to-one). An algorithm is also given to construct such a
+minimal realization.
+When R is not a field, it was first shown in Rouchalcau, Wyman, and Kalman [10] that,
+under fairly general conditions on R, the criterion for the existence of a realization is
+exactIv the same as above, namely that the behavior matrix have finite rank (an up-to-date
+summary of these existence results is given in Section B of this paper). That paper did
+not consider the question of the minimal dimension of realizations. Such a concept of
+course is easv to define: a realizable input!output sequence S (which therefore has a
+behavior matrix of finite rank) can be realized by linear systems of finite dimension; a
+minimal realization of S over R will be one, the dimension of which is smaller than that
+of any other realization of S. It, of course, always exists but is not equivalent any more to
+the notion of canonical realization; its dimension may be larger than the rank of the
+behavior matrix, and is not in general easily determined from inputloutput data.
+The purpose of the present paper will be to study a more restrictive and stronger
+version of minimality. Instead of asking, as in the a aformentioned paper (Rouchaleau,
+Wyman, and Kalman [10]):
+"When does an R-Input~output sequence S realizable over the quotient field K of R
+also have a realization over R ?", we shall ask:
+"When does S have an R-realization which has the same dimension as a minimal
+realization over K;".
+Since R is assumed to be an integral domain, we may consider its quotient field K. To a
+system (X, F, G, H) over R we may associate a system (X OX R K, F OR K, G OR K,
+<<PAGE-DIVIDER>>
+LINEAR DYNAMICAL SYSTEMS OVER NOETHERIAN INTEGRAL DOMAINS 67
+H K) over K which has the same input Toutput sequence of R-matrices. Furthermore,
+It is clear that if the system over R is canonical, then so is the associated system over K.
+Since the R-sequence S -- (Al , A, ...) is a fortiori a K-sequence, we can find a realization
+for it over K-1 the system (.Y ';)R K, F (1)1? K, G xll? K, 11 (X,), K) is an example of such a
+realization. To determine a minimal realization for the R-sequence S over K is a solved
+problem. We are thus led to the follov,-mg
+(1.1) DEFINITION. A realization (-V, F, G, 11) of a sequence S over R is called
+absolutely minimal iff its dimension is the same as that of a minimal realization of S over
+the quotient field K.
+(1.2) Remark. This definition is equivalent to requesting that the system over K
+defined by the matrices F, G, H be canonical. An absolutclv minimal realization remains
+minimal under any ring extension of R.
+(1.3) LEMMA. The state module X of an absolutely minimal systein Z is free. Z is
+observable and weakly reachable (i.e., rank, (G,FG_.,1,'11 1G) ~ n, dimension of the
+system), and converseIV an observable and weahlY reachable system i's absolutelv minimal.
+Proof. The n generators of X as an R-module are also generators of X R K as a
+K-vector space. If tbey are not linearly independent, the dimension of X (111? K is less
+than n, contradicting minimality over K.
+If the svstern were not observable, there VMUld be a state x -/ 0 in X such that
+x'(J1Y1l' - - - (F') " - 1 HT - 0;
+but this would a fortiori mean that there is a state x / 0 in X r`~,)~ K which is unobservable
+for the system (X Q,,, K, F, G, H) over K, contradicting its canonicity.
+The proof of the converse is just as trivial. I
+The aim of this paper is to characterize those rings R over which any realizable mput/
+output sequence can have an absolutely minimal realization. The interest of such a
+characterization is two-fold. First, it will tell Lis exactly when we do not lose anything
+(from the point of View of dimension) by realizing an input,foutput sequence over the ring
+R rather than over an overfield of R. Second, one of the motivations for studying SN-stems
+over rings is their use in modeling delay-differential systems (c.f. Kamen [6]). In this case
+the rings under consideration are polynomial rings; a sufficient condition for the point-,vise
+controllability of delay- di fferen tial systems is that the associated ring model be veakly
+reachable (see Sontag [12, Section 5]). Furthermore (as pointed out to the authors by
+E. Kamen) only for absolutely minimal realizations can internal stability be deduced
+from external (bounded inputlbounded Output) stability. So it is important to know the
+polynomial rings over which this condition is ahAavs true.
+After having reviewed in Section B of this paper the conditions under which a realiza-
+tion exists, Nve shall study the problem of ahS01LJtelV minimal realizations. We shall see in
+c
+ection C that, for single input systems, canonical realizations are absolutely minimal over
+S
+very general rings. Section D shows that for general multivariable systems this verv nice
+<<PAGE-DIVIDER>>
+68 ROUCHALFAU AND SONTAG
+property holds only over principal- I dea I domains; we then give an algorithill for con-
+structing such a canonical, absolutely minimal realization. In Section E, we shall give a
+condition guaranteeing the existence of absolutely minimal realizations; specializing the
+result to the case of polynomial rings, we shall find that only those in one or two variables
+sati-fv the condition.
+13. SURVEY OF THE CONDITIONS UNDiR Nviucii REALIZATION-, ]EXIST OVER A RING
+The fact that
+(2.1) THEORP0. An inputloutput sequence S of inatrices over a Noetherian domain R
+is realizable over R iff it is realizable over the quotient field K of R.
+was first established by Rouchalcau, Wvman, and Kalman [10]. To make the paper self
+contained, we shall now giN,e a simple proof of this result.
+It is well-known (see, for instance, Sontag [12, Lemma (3.1)1) that an input,routput
+sequence S is realizable (whether over a field or over a ring) iff the (infinite) columns of its
+beha6or Triatrix
+B ~1, A:, -44 ...
+mav he written as linear combinations of a finite subset of columns; in other words, iff
+the columns of B generate a finitelv generated module X. We can then obtain a canonical
+realization as follows: take X as state module; consider the shift operator on X defined by
+s k
+s
+ending each column of B to the column occupying the same position in the next bloc
+col Unin ~ it extends to a well defined module endomorphism F of X because of the Hankel
+pattern of B-, define a linear transformation G: R- --). X bv mapping thejth standard basis
+vector of R into thejth clementary column of B; finally, define H: X ~ RP bv taking as
+the Image of any column of B the vector composed of the first p elements of that column
+(in other ~~ ords, the intersection of the column with the first block row). Then (X, F, G, H)
+is a canonical realization of
+Let us now assume that the R-sequence,5 is realizable over K, and assume that vj Vn
+arc a set of basis columns for B over K. Then anv column v of B can be written as
+11
+v Y v, j(v) u K.
+2-1
+The cocfficients Ai(v) in this linear dependence can be obtained using Cramer's formulas
+-&Z-) JIM J, (v), J c R.
+j
+Both these determinants, composed bv additions and multiplications from elements of R,
+belong to R.
+<<PAGE-DIVIDER>>
+LINEAR DYNAMICAL SYSTEMS OVER NOETHERIAN INTEGRAL DOMAINS 69
+Dcfine no,,v u, - vj~'J. We have, for any column v of B,
+n
+v -- y Jj(7) iii, J i(v) e R,
+i=1
+hence the R-module generated by the columns v of B is contained in the R-module
+generated by ii, _., u. . Since "Noetherian" is equivalent to "every submodule of a
+finitely generated module is finitely generated", the theorem follows.
+If -,vcre lax the Noetherian assumption, then we can use the following result of
+Cahen and Chabert [16]:
+(2.2) 141sui,,r. Let R be completely integrall -y closed and K its quotient field. Then an
+I.itputioutput sequence ~~ of R-matrice;is realizable over R whenever S is realizable over K.
+Furthermore, the monic recurrence relation of S of minimal degree over K has all of its coeffi-
+cients in R.
+Proof. See Eilenberg [3, Chap. XVI, Theorem 12.2].
+But it has been shown (Rouchaleau, Kalman, and Wyman [10]) that an R-sequence is
+realizable over R whenevei it is realizable over the integral closure R of R. Hence we have:
+(2.3) RESULT. If the integral closure R? of a ring R is completely integrally closed, then an
+R-sequence i's realizable over R iff it is realizable over the quotient field K of R.
+A slightly less general result was proved by Rouchaleau and Wyman [11], using a
+generalization of classical stability theory. Extensions to reduced rings can be found in
+Rouchalcau [9].
+C. SINGLE-1NPuT OR SINGLE-OuTt,irr SYSTEMS
+Let S be such that in - 1, p being an arbitrary finite integer. It is well known that the
+existence of a realization is linked to that of a monic recurrence relation between the
+elements of .;. We have precisely.
+(3.1) LFm,-vlA. If an input/output sequence S with in -- I satisfies a monic recurrence
+relation over R of degree n, then S has a realization of dimension n over R.
+Proof. Assume that aAk A,Ak ~n-l '-Ik-,n 0 for all k > 0, with ii c- R
+for all 1'. Then the R-matrices
+0 0 0 ... 0
+1 0 0 ... 0 0
+0 1 0 ... 0 0
+F G 11 ~ (A, -4, A
+(0 0 0 ... I - (0)
+0 0 0 ... 0 0
+together with the state module Rn constitute a realization of size n.
+<<PAGE-DIVIDER>>
+70 ROUCHALEAU AND SONTAG
+(3.2) LEMMA' ' If the domain R i's integrally closed and the inputloutput sequence S is
+realizable over R, then its monic recurrence polynomial of minimal degree over the quotient
+field of R has all of its coefficients in R.
+Proof. Since S is realizable over R, it satisfies a monic recurrence relation with
+coefficients in R (given, for example, by the characteristic polynomial h(z) of F in one of its
+realizations). If we now view S as a sequence over K, the set of recurrence polynomials
+of S is an ideal j in K[z] (nonempty, since j contains h(z)). This ideal is principal, hence
+has a monic gencratorf(z), the monic recurrence polynomial of minimal degree of S over
+K. Thus we have:
+h(z) = g(z) f (z), h(z) monic in R[z], f [z] monic in K[z].
+This is the exact setup of Zarlski and Samuel [Vol. 1, Chap. V, Sect. 3, Theorem 51, and
+it follows from the integral closure of R that f (z) is in R[z]. I
+Assume then that our input/output sequence S has a minimal realization over K of
+dimension n and that S is realizable over R. This means that the associated behavior
+matrix B(S) has rank n (see for example Kalman, Falb, and Arbib [5, Chap. 10]), hence
+that the first n + I columns of B(S) are linearly dependent. Then there is a recurrence
+relation of degree n over K between the elements (in the present case, vectors) of the
+input/output sequence. If R is integrally closed, it follows from (3.2) that, there is a monic
+recurrence relation of degree <n over R. By (3.1), there is an R-realization Zof dimension
+n. Since a realization with coefficients in _R is a fortiori one with coefficients in K and
+the dimension of a minimal realization over K is n, this R-realization Z must have
+dimension exactly n. Furthermore, the realization constructed in (3.1) is reachable (the
+columns of G, FG,..., F-1 G generate R11) and observable. We have therefore proved
+(3.3) PROPOSITION. An R-realizable inputloutput sequence with ni ~ I over an integrally
+closed domain R has an R-realization which is both canonical and absolutely minimal.
+The argument is very similar in the case of single-output systems. The n-dimensional
+realization associated with the recurrence of degree n is now given by
+0 1 0 ... 0 A,
+0 0 1 ... 0 A2
+F G H ~ (1 0 ... 0)
+0 0 0 ... I An-1
+-'n -on-1 -Cn-2 *** -A, A I
+Rn being the state module. Thus we have
+(34) PROPOSITION. An R-realizable input loutput sequence with p ~~ I over an integrally
+closed domain has an R-realization which i's absolutely minimal and observable but not
+necessarily reachable.
+,Fo see that all realizations like in (3.4) are not necessarily reachable, assume that R
+is not a principal ideal domain and let oi, fl c R generate a nonprincipal proper ideal j of R.
+<<PAGE-DIVIDER>>
+LINEAR DYNAMICAL SYSTEMS OVER NOETHERIAN INTEGRAL DOMAINS 71
+Then the input/output sequence A, - - (A g) - - A, -- - - - is realized minimally over R by
+F ~ 1, G - (a 0), H ~ 1. If we take R as a state module, then this absolutely minimal
+realization is not reachable since J is proper. A canonical realization would have a state
+module isomorphic to J (which is non principal) hence its dimension would be 2, and it
+would not be absolutely minimal.
+The dual of such a realization, on the other hand, is canonical. We have here an example
+of a "strongly observable" system (see Sontag [14]), as well as a breakdown of the fact that
+the dual of a canonical system over K field is canonical.
+(3.5) Remark. If we assume that R is not Just integrally closed but even completely
+integrally closed (for example, if it is integrally closed and Noetherian) then we need
+assume only in (3.3) and (3.4) that the input,~output sequence S has a minimal realization
+of dimension n over K. That it is R-realizable follow directly from (2.2).
+Let us now consider the general mulfivariable case.
+D. WHEN ARF CANONwAi. RFALIZATIONS ALso R-'\IININTAI,?
+The answer to this question for Multi-input, multi-output systems is very simple.
+(4.1) PROPOSITION. The canonical realization of ever -v inputioutput sequence S over a
+Noetherian domain R is absolutelY minimal if and on/Y if R i's a principal-ideal domain.
+Proof. Sufficiency. Let X be the state module of a canonical realization (X, F, G, H)
+of the sequence S; it is by definition finitely generated and torsion free. Since R is a princi-
+pal ideal domain, X is a free module. Let dim X n. Consider the associated K-system,
+(X K, F (~~)R K, G (~X,'~R K, H (/), K). Its state space X CX R K has the same dimension
+n (as a K-vector space) as X (as an R-module) since X is free. As was pointed out in the
+introduction, this associated K-system is canonical since the original R-system was. So n
+is the dimension of a minimal realization of S over K. The system (X, F, G, H) is therefore
+necessarily an absolutely minimal realization of S.
+Necessity. Let us first establish the general fact, of interest by itself, that any finitely
+generated torsion-free module X may be the state module of a canonical svstern. Since X
+is finitely generated, with, say, in generators, there is a projection
+R"' U ~ X -- 0.
+Since X is finitely generated, torsion-free, and the rings we are considering are integral
+domains, there is also an injection, for some p,
+0 - - ~ A'-', RP.
+(see Rotman [8, Theorem 4.21]). So (X,F, G, H), A,Itli X as a state module and with
+F - identify, G ~ u, H - - v, is a canonical system.
+It was pointed out in the Introduction (Lernma 1.3) that the state module of an
+<<PAGE-DIVIDER>>
+72 ROUCHALEAU AND SONTAG
+absolutely minimal realization is alwavs free. So if the state module of any canonical
+system is R-minimal, then any finitely generated, torsion free-module is free. But this,
+together with the Noetherian assumption, implies that R is a principal ideal domain. I
+We shall give an algorithm for constructing such a canonical realization. First we
+ascertain the rank of the behavior matrix B(S) (which can be done over any field containing
+R, using the rank condition of Kalman, Falb, and Arbib [5, Chap. 10, Condition 11.231).
+Then we find a nonsingular submatrix (1) of maximal rank, sav n, and a basis over R for
+B,,.,, (the submatrix of B(S) consisting of the first n block rows and columns of the
+behavior matrix). This can be done in the following way.
+(i) Let 1, be the submatrix of B,,,, containing the rows of op, and a, the L~reatest
+common divisor of the elements in the first row of B,,,,, . Call x1 the linear combination of
+the columns of L having a, as its leading coefficient.
+(ii) Subtract from every column x of L a multiple of x, a(x)x, (x(x) in R) such that
+the first clernent of x - cx(x)xi be 0. This is possible by definition of a, . We get a next
+matrix Li with zero top row, and such that its columns together with x, still generate the
+colunins of L.
+(iii) We apply the same procedure to the second row of L, , obtaining x, and L, ,
+etc... . At the end of the process, we shall have a basis made up of vectors (x . ..... X.) -
+Let F be the n x m submatrix of L having its columns in the first block columns and A
+the p 'X n submatrix of B,, corresponding to the columns of 0 and the first block row.
+Thcri NNc can write out a realization (theso-called Silverman realization):
+F - (X . ..... NJ (70) 0- I(x . ..... X,,),
+G (x1 x,J 'F,
+H - /l (P I (v . ..... X,J,
+\%here cy designates the shift operator.
+The matrix (X, I ... I x,,), beings lower triangular, is easy to invert. As to 0, its inverse is
+a byproduct of the determination of the rank of the behavior matrix.
+E. NVHPN CAN WE GUARANTEE THE EXISTENCE OF AN
+ABSOLUTELY MINIMM. REALIZATION?
+We have just seen that we cannot expect every canonical multivariable svstern to be
+also absolutely minimal, unless the ring is a principal ideal domain. If, however, we are
+willing to consider absolutely minimal systems which may not be canonical, then we can
+guarantee their existence over more general rings. These are given exactly by the following
+(5.1) THEOREM. EverY realizable input!" output sequence S over a Noetherian ring R has
+an absoluteh, minitnal realization iff everY finitelY generated reflexive module over R is free.
+Proof. lVecessitY. Let X be the state module of a canonical realization of ~; over R and
+<<PAGE-DIVIDER>>
+LINEAR DYNAMICAL SYSTEMS OVER NOETHERIAN INTE.GRAL DOMAINS 73
+M t lie state module of an absolutely minimal realization of '~. By Leninia (1.3) an absolu-
+tely inininial realization is always observable, hence Zelgcr's lemma (see Kalman, Falb,
+an I I
+, d Arbib [5, Chap. 10. Lemma 6.2]) Implies the existence of an injection X , W. Also,
+bv definition of a minimal realization, 11 '~)R K is the state space of a canonical realization
+of .'~ ox er K. So 11 K is isomorphic with X I , K. Thus we have, up to isomorphism,
+X C 31 ~- X , , K, where M is free (Leturna (1.3)).
+We are exactly in the situation described by Bourbaki [2, Sect. 4, No. 1, Corollaire de la
+Proposition 1], and both ]?-modules X and .1I are "r6seaux" of the K-vector space
+X R K, .1I being furthermore free and containing X. As is i )inted out in the above
+rcf'cr(-n((, (Proposition 3, (IN') and Remark 3), Hom,(.11, R) C lJorn,(X, R), that 1s,
+let A he a finitely generated, torsion-frec module over R. Its dual X- is finitely
+generated ,,Iiicc R is Noctherian. Ixt ~,u . ..... u,,; be generators of X'. We may construct
+'I calmnical ~,-~stcin Zoo , -'Nith state module Xas follows. We choose the number of inputs 11
+and the niatrl.\ G as in the proof of (4.1), take for F the identlt%- matrix and dcfine
+11: X - ~ R" in such a way that Its p rows are gi~ en b~ the functions [u . ..... UJ-
+Suppose the system Z, has an absolutely minimal rtalization .17, - (31, P, G, 1Y). By
+the first paragraph of the proof, XC 11. So the inap 1/: A'- R1, extends to a inap
+fl: J I - - l?". Since in the system .1',, the ro,~vs of 11 generate X, the generators of X'
+extend to lincar inaps 11 - R. So X' C 11'. It follo-,vs that M' A". Consequentl\
+if A I's -Cflcxl\cl then X M and so X is free.
+Nlofficlenr.i% Assume that (X, F, G, II) is a canonical system. X is therefore of finite
+tvpc, hence a 'Wseau" of X (1)R K (see Bourbaki [2, Sect. 4, No. 1, Proposition 11). It
+follo\N s that X` and X- ' are reflexive (Bourbaki [2, Sect. 4, No. 2, comments following
+Th~OFCTIIC 11). SA) .\'and X* * have the saine dual, and the map H: X -, RP may be viewed
+as a inap If- ': X*'* --, R". The map I,': X - X canonically induces a map F*: X*- - V-".
+N\ hich in turn canonicallv induces F* ': X- X". Hence a system (X, F, G, H)
+canoincall.\ induces a system .1" - (X*-, F", G, [I**) having the same inputloutput
+inap. Since X" is reflexive, is free hv assumption. But -V'- is a free "r6scau" of
+X K (13ourbaki [2, Sect. 4, No. 2, COTrllllCntS preceeding Theorem 11), hence
+dim, X- dlul,(A', , K) (BOUrbaki [2, Sect. 4, No. 1, ExaMple 2]). X K being
+the state space of a canonical realization over K, !:' ' is an absolutelv minimal realization.
+(5.2) Remark. Absolutcly minimal realizations are not necessarily unique. In fact,
+thev areasubclass of the lattice of minimal-rank realizations, studied in Sontag [13]. When
+R is a pi incipal-deal domain, this subclass coincides with the entire lattice.
+NVe have thus obtained an abstract characterization of those rings over which absolutely
+mininial realizations alwaNs exist. We ,,hall now show that among rings ofpolvnomials over a
+field onli, those in one or two indeterminates meet the condition of Theorem (5. 1). (The case of
+one indeterminate has already been treated in the previous section).
+(5.3) LEM-MA. Ever_v finitely, generated refleviTe R-module is projective ~ff the global
+d7mension of R is inferior or equal to 2.
+<<PAGE-DIVIDER>>
+74 ROUCHALEAV AND SONTAG
+Proof. This result - - - due to Bass - - - may be found in Faith [4].
+(5.4) LEMMA. If R is a ring of poij,nomials in two unknowns over a field, then everv
+projective module of finite t3pe over R isfiree.
+Proof. See Bass [1, Part 11, Chap. 4, Sect. 6].
+Hilbert's theorem on syzygics implies that the global dimension of a polynomial ring in
+n unknowns is n (see for example, Kaplanski [7, Part 111, Theorem 7]). This and the last
+two lemmas show that our claim is true.
+Observation. A counterexample for the case of polynomials in three variables over a
+field K (R K[x, Y, z]) is given bv the following inputloutput map with m - 3, 3.
+0 0
+__ (0
+-0),
+Z -4, - ~43 0 0 0
+0 X, 0 0 0)
+Although rank B - 2, there exists no R-realization of dimension 2. Indeed, the canonical
+state module X is isomorphic to the column space of .4, , and this module can be proven to
+be reflexive but not free.
+In view of (5.3), the general problern of deciding if a given R satisfies the condition of
+(5.1) breaks down into the subproblems: (i) determine if global dim R ~~ 2 (easy) and (ii)
+decide if finitely generated projectives over R are necessarily free. This latter problem is
+very difficult, but is currently an important research area in commutative algebra (viz.
+"Serre's conjecture", etc.).
+Returning to the case of delay- dl ffe rential systems mentioned in the Introduction, we
+deduce from (5.1), (5.2) and (5.4) that only up to two rationally independent delays may be
+in general allowed if realizations of the "right" dimensions are to exist.
+F. CONCLUSION
+lVe have shown under exactly what conditions we can realize an Input/output sequence
+over a ring with matrices over the same ring without losing any of the nice properties
+guaranteed by classical realization theorv over a field. Admittedly, the class of rings thus
+characterized I- rather narrow; however, it does contain, besides principal-ideal domains,
+polynOTIlial rings in two indeterminates (which have applications in the theorv of linear
+delay-differential systems studied by Kamen [6]).
+It is possible to give an upper bound on the increase in size due to the choice of a
+canonical realization (see Swan [15]). In particular, over a Dedekind ring, it can be shown
+that this bound is equal to I (Bourbaki [2, Chap. 7, Sect. 4, No. 9, Theorem 6]). In fact,
+the first example of a canonical, vet nonminimal system was given to the authors by
+Professor B. F. Wyman using a Dedeking ring.
+<<PAGE-DIVIDER>>
+LINEAR DYNAMICAL SY~,TEMS OVER NOETHERIAN INTEGRAL DOMAINS 75
+ACKNOWLEDGMENT
+The ;lUtbors are very grateful to Professor R. E. Kalman for his numerous suggestions and
+comments during the writing of this paper.
+REFERENCES
+I .11. BASS, "Algebraic K-Thcory," Benjamin, New York, 1968.
+2. N. BOURBAKI, "Alg~hre Commutative," Chap. 7, Diviseurs, Herm~,nn, Paris, 1965.
+3. S. "Automata, Languages, and Machines," Vol. A, Academic Press, New York,
+1974.
+4. C. ]"All If, "Rings, Modules, and Categories," Springer-Verlag, New York/Berlin, 1973.
+5. R. E. KAL-MAN, 1'. L. FALB, AND M. A. ARBIB, "Topics in Mathematical System Theory,"
+McG I a\% -Hill, New York, 1969.
+6. E- W. KANIEN, An algebraic theory of systems defined by convolution operators, j. Math.
+S1,stein Theo?jy 9 (1975), 57-74.
+1. KAPLANSKI, "Fields and Rings," Univ. of Chicago Press, Chicago, 1969.
+8. J. J. Ro'r',IAN, "Notes on Homological Algebra," Van Nostrand-Reinhold, Princeton, N.J.,
+1970.
+9. Y. ROUCHALEAIT, "Linear, discrete-time, finite-Llimensional, dynamical systems over some
+classes Of Commutative rings," Ph.D. Thebis, Stanford University, 1972.
+10. Y. ROUCHALFAl-, B. F. WYNIAN, AND R. E. KAL.MAN, Algebraic structure of linear dynamical
+systems. 111. Realization theory over a commutative ring, Proc. Nat. Acad. Sci. USA 69 (1972),
+2404-2406.
+11. Y. ROU( HALEAU AND B. F. WYMAN, Linear dynamical systems over integral domains, J. Comput.
+System Sci. 9 (1974), 129-142.
+12. E. 1). SONTAG, Linear systems over commutative rings: A survey, Ricerche Automatica 7 (1976),
+1-34.
+13. E. 1). SON FAG, The lattice of minimal realizations of response maps over rings, Math. Systems
+Theory 11 (1977), 169-175.
+14. E. 1). SONTAG, On split realizations of response maps over rings, Inform. Contr. 37(1978),
+23-33.
+15. R. G. SWAN, The number of generators of a module, Math. Z. 102 (1967), 318-322.
+16. P. J. CAHEN AND J. L. CHABFRT, 1~16rnents quasi-entiers et extensions de Fatou, J. Algebra 36
+(1975), 185-192.
+Printed by the St Catherine Press Ltd., Tempelhof 37, Bruges, Belgium.

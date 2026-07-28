@@ -1,0 +1,440 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97ecc-ios.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97ecc-ios.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A Notion of Input to Output Stability
+
+Eduardo Sontag\Lambda  Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+and Yuan Wangy Dept. of Mathematics, Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@math.fau.edu
+
+Abstract. This paper deals with a notion of "input to output stability" (ios), which formalizes the idea that outputs depend in an "aymptotically stable" manner on inputs, while internal signals remain bounded. When the output equals the complete state, one recovers the property of input to state stability (iss). When there are no inputs, one has a generalization of the classical concept of partial stability. The main results provide Lyapunov-function characterizations of ios.
+
+Keywords. Stability, Nonlinear control, Robust stability
+
+1 Introduction This paper concerns itself with questions of stability for general finite-dimensional systems, in the standard sense of nonlinear control:
+
+.x(t) = f(x(t); u(t)); y(t) = h(x(t)) (1) (dot indicates derivative, and we often omit the time argument "t"), whose states x(t) evolve in an Euclidean space Rn. For the purposes of the present paper, it is useful to think of the possible forcing input functions u(\Delta ) as "disturbances" acting on the system, rather than controls to be manipulated, and to think of the output variable y(t) as a quantity to be regulated, like a tracking error at time t. (Technical assumptions on f, h, and admissible inputs, are described later.) We wish to emphasize that the results to be presented are new and of interest -- though easier -- even when there are no inputs ( .x = f(x)), a situation which we view as a special case of (1).
+
+In many problems, it is usually the case that one only wishes to stabilize the output values y(t) rather than the full state x(t). Typically, it is required that y(t) converge to zero as t ! 1, and in addition one asks that internal variables x(t) remain bounded (under suitable assumptions on the "disturbances" u). A very special case of this kind of question has a long and distinguished history in differential equation theory. Indeed, when there are no inputs u, and the coordinates of y are a subset of the coordinates of x (that is to say, h is a projection on a subspace of the state space Rn), the type of property being considered is a concept of "partial" asymptotic stability; the reader is directed to the excellent survey paper [16] for references to partial stability, and to [6] for the somewhat related notion of "stability with respect to two mea\Lambda This research was supported in part by US Air Force Grant F49620-95-1-0101
+
+yThis research was supported in part by NSF Grants DMS9457826 and DMS-9403924
+
+sures".
+
+There are several ways of making mathematically precise the objective described in the previous paragraph, and these alternatives vary in subtle details. For instance, one must decide how uniform is the rate of convergence of y(t) to zero, and precisely how the magnitude of inputs and initial states affect this convergence. It is imperative to understand which of the possible formulations give rise to a theory which is both mathematically rich and has applied relevance for control theory. That is the main objective of this paper. One general guideline that we follow is that a mathematically natural notion should admit a characterization in Lyapunov-function terms.
+
+In past work, we have studied a property which we call "input to state stability" (iss, for short), introduced in [9], and have provided several characterizations, including a necessary and sufficient Lyapunovtheoretic one; for references see [12], [11], and the latest paper [13]. (For applications and more discussion of that concept see, for instance, [3], [4], [5], [15].) In very informal terms, the iss property means that "no matter what the initial conditions, if the future inputs are small, then the state must eventually be small". In this work, we return to a subject also introduced in [9]. There, we used the term input to output stability (ios, for short) to mean that the output (as opposed to the full state) must be eventually small, no matter what the initial conditions, if future inputs are small. It is possible to express the property in purely input/output terms, using past inputs to represent initial conditions, or in state space terms, explicitly summarizing the effect of past inputs through an initial state. Since we wish to provide Lyapunovtheoretic characterizations, we adopt this latter point of view here. (The relations between both views are explained in [9] and in more detail in [7] and [4].)
+
+It turns out, however, that the notion of ios given in [9] is not the appropriate one for modeling the situation typical in regulation or in robust and adaptive control, where a condition of boundedness of internal variables is required in addition to asking that outputs become small. An equally important shortcoming, from a mathematical point of view, is that it would appear to be difficult to obtain a Lyapunovtheoretic characterization unless one imposes such internal boundedness. Thus, in this paper, we incorporate a state bound. For lack of a less cumbersome name, we decided to use the same term "ios" for this new concept. This should not cause much confusion since the term has not been widely accepted.
+
+We caution the reader not to confuse ios with the notion named input/output to state stability (ioss) in [14] (also called "detectability" in [10], and "strong unboundedness observability" in [4]). This other notion roughly means that "no matter what the initial conditions, if future inputs and outputs are small, the state must be eventually small". It is not a notion of stability; for instance, the unstable system
+
+.x = x; y = x is ioss. Rather, it represents a property of zero-state detectability. There is a fairly obvious connection between the various concepts introduced, however: a system is iss if and only if it is both ioss and ios. This fact generalizes the linear systems theory result "internal stability is equivalent to detectability plus external stability" and its proof follows by routine arguments ([9], [7], [4]).
+
+The next section presents precise definitions and statements of results. An appendix sketches the most important steps; a journal paper will contain complete proofs, which are fairly technical and long.
+
+2 Statements of Results We assume, for the systems (1) being considered, that the map f : Rn \Theta  Rm ! Rn is locally Lipschitz continuous, and the map h : Rn ! Rp is continuous. We also assume that f(0; 0) = 0 and h(0) = 0. We use the symbol j\Delta j for Euclidean norm in Rn, Rm, and Rp.
+
+By an input we mean a measurable and locally essentially bounded function u : I ! Rm, where I is a subinterval of R which contains the origin. The Lm1- norm (possibly infinite) of an input u is denoted by kuk, i.e. kuk = (ess) supfju(t)j ; t 2 Ig. Whenever the domain I of an input u is not specified, it will be understood that I = R*0.
+
+Given a system with control-value set Rm, we often consider the same system but with controls restricted to take values in some subset \Omega  ` Rm; we use M\Omega  for the set of all such controls.
+
+Given any input u defined on an interval I containing t = 0, and given any , 2 Rn, there is a unique maximal solution of the initial value problem .x = f(x; u), x(0) = ,. This solution is defined on some maximal open subinterval of I, and it is denoted by x(\Delta ; ,; u). The corresponding output is denoted by y(\Delta ; ,; u), that is, y(t; ,; u) = h(x(t; ,; u)) on the domain of definition of the solution.
+
+As usual, we let K be the class of functions [0; 1) ! [0; 1) which are zero at zero, strictly increasing, and continuous, K1 the subset of K functions that are
+
+unbounded, and KL the class of functions [0; 1)2 ! [0; 1) which are of class K on the first argument and decrease to zero on the second argument.
+
+2.1 Main Concepts Definition 2.1 A system (1) is uniformly bounded input bounded state (ubibs) if there exists some Kfunction oe such that, for every input u and every initial state ,, the solution x(t; ,; u) is defined for all t * 0 and the estimate
+
+jx(t; ,; u)j ^ maxfoe(j,j); oe(kuk)g; 8 t * 0 : (2) holds. 2 Remark 2.2 The term ubibs is sometimes employed for a weaker property, in which an additive constant is allowed in the right-hand side of the estimate (2), that is, one does not ask that trajectories must remain small if initial states and controls are small; see for instance [1]. As with other stability concepts (cf. the last section of [13]), much of what we do can be also stated in this weaker sense of "practical stability". 2
+
+Note that for a system with no controls,
+
+.x = f(x); y = h(x); (3) the ubibs property reduces to a "bounded state" estimate:
+
+jx(t; ,)j ^ oe(j,j); 8 t * 0; 8 , 2 Rn (4) This property amounts to (neutral) stability plus (cf. [17]) "uniform boundedness".
+
+The main property that we wish to introduce is as follows.
+
+Definition 2.3 A system (1) is input to output stable (ios) if:
+
+ffl it is ubibs, and ffl there exist a KL-function and a K-function fl such
+
+that
+
+jy(t; ,; u)j ^ fi(j,j ; t) + fl(kuk); 8t * 0; (5) holds for all u and all , 2 Rn. 2 For an autonomous system (3), we say simply output stable (os). That is, such a system is os if it satisfies an estimate (4) and there is some KL-function fi such that
+
+jy(t; ,)j ^ fi(j,j ; t) 8t * 0; (6)
+
+holds for all , 2 Rn. Clearly, if system (1) is ios then the associated 0-input system .x = f(x; 0) is os.
+
+When h is the identity, ios coincides with the iss property mentioned in the introductory section (and os is exactly the same as global asymptotic stability). Observe that the ubibs property is redundant in that case, as it is obviously implied by the decay estimate (5), letting oe = minffi(\Delta ; 0); flg.
+
+Our main result is as follows.
+
+Theorem 1 The following statements are equivalent.
+
+1. System (1) is ios.
+
+2. The system is ubibs and there exist ff1; ff2 2 K1,
+
+O/ 2 K and ff3 2 KL such that for each r * 0, there is a smooth function V so that:
+
+ffl ff1(jh(,)j) ^ V (,) ^ ff2(j,j) for all , 2 Rn; ffl DV (,)f(,; _) ^ \Gamma ff3(V (,); j,j) for all ,
+
+such that V (,) * O/(r) and all j_j ^ r.
+
+The statement of the Lyapunov condition in Theorem (1) is more complicated than one would like. It says in essence that ios is equivalent, for each bound on controls, to the existence of an Lyapunov-like function V which vanishes only when the output vanishes, and whose derivative along trajectories is negative (unless either the function is already zero or the current input is large). Moreover, the rate of decay of V (x(t)) depends on the state and on the value of V (x(t)) (the main role of ff3 is to allow for slower convergence if V (x(t)) is very small or if x(t) is very large; the inequality can be restated in various alternative ways). We do not yet know if ios implies the existence of one V (independent of the input level r) with the stated properties. For the case of no inputs, however, applying this theorem with r = 0 one has the following, apparently new, result for os:
+
+Corollary 2.4 The following statements are equivalent for systems without inputs.
+
+1. System (3) is os.
+
+2. The boundedness condition (4) holds and there exist ff1; ff2 2 K1, and ff3 2 KL, and a smooth function V so that:
+
+ffl ff1(jh(,)j) ^ V (,) ^ ff2(j,j) for all , 2 Rn; ffl DV (,)f(,) ^ \Gamma ff3(V (,); j,j) for all , 2 Rn.
+
+For this case, no inputs, the above Lyapunov property had already appeared in the literature, but only as a sufficient condition; see [2].
+
+Of course, in general, if there is a V that works for all r, then the system is ios. Since this property is probably the most useful one for verification, and in any case because the (easy) result is needed as a step in the proof of Theorem 1, we state the sufficient condition separately:
+
+Proposition 2.5 Assume that the system (1) is ubibs and that there exists a smooth function V : Rn ! R*0 so that the following two properties hold:
+
+ffl There exist ff1; ff2 2 K1 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j); 8 , 2 Rn: (7)
+
+ffl There exist O/ 2 K and ff3 2 KL such that for all
+
+, 2 Rn and all _ 2 Rm:
+
+V (,) * O/(j_j) ) DV (,)f(,; _) ^ \Gamma ff3(V (,); j,j):
+
+(8)
+
+Then, the system is ios.
+
+2.2 Robust Output Feedback In the study of the iss property in [12], a central role was played by the equivalence between iss and a robust stability property. Even though the analogous equivalence does not hold for ios, it is nonetheless of interest to study the connections with the corresponding notion. Surprisingly, the notion that obtains has an elegant characterization in Lyapunov function terms.
+
+To each given system (1) and each smooth function *, we associate the following system with inputs d(\Delta ):
+
+.x = g(x; d) := f(x; d*(jyj)) ; y = h(x) ; (9) where d 2 M\Omega  with \Omega  = [\Gamma 1; 1]m. We will be using x*(\Delta ; ,; d) (and y*(\Delta ; ,; d), respectively) to denote the trajectory (and the output function respectively) of (9) corresponding to each initial state ,, each function *, and each input d(\Delta ).
+
+Definition 2.6 We say that system (1) is robustly output stable (ros) if it is ubibs and there exists a smooth K1-function * such that the corresponding system (9) is os uniformly (uos) with respect to all d 2 M\Omega , that is,
+
+jy*(t; ,; d)j ^ fi(j,j ; t); 8 t * 0; (10) for all , 2 Rn and all d 2 M\Omega .
+
+Observe that, for systems (3) with no controls, the ros property is the same as os. In general, just one implication holds:
+
+Lemma 2.7 If a system is ios, then it is ros.
+
+We now turn to a Lyapunov-like property that is closely related to the one used in Proposition 2.5: the difference between them lies in the conditions in (8) and (12) which guarantee decrease of V .
+
+Definition 2.8 A smooth function V : Rn ! R*0 is an ros-Lyapunov function for system (1) if the following two properties hold:
+
+ffl There exist ff1 and ff2 such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j); 8 , 2 Rn; (11)
+
+ffl There exist O/ 2 K and ff3 2 KL such that
+
+jh(,)j * O/(j_j) ) DV (,)f(,; _) ^ \Gamma ff3(V (,); j,j)
+
+(12) for all , 2 Rn and all _ 2 Rm. 2
+
+Our main result regarding the ros property is: Theorem 2 A system (1) is ros if and only if it is ubibs and it admits an ros-Lyapunov function.
+
+3 Appendix In this appendix, we provide sketches of the proofs of several of the results (the full paper will be found
+
+in Web page cited in the bibliography). As it is the generally in Lyapunov theory, it easier to establish sufficiency statements than converse theorems, in which V must be constructed. The following is the key technical result that underlies all proofs.
+
+Lemma 3.1 Consider a ubibs system (1). Let \Omega  be a compact subset of Rm, and let b * 0. Then the following two properties are equivalent:
+
+1. There exists a KL-function fi such that
+
+jy(t; ,; u)j ^ fi(j,j ; t) + b; 8 t * 0; (13) for all , 2 Rn and all u 2 M\Omega . 2. There exist continuous functions ! : Rn ! R*0,
+
+V : Rn ! R*0 such that the following hold:
+
+ffl jh(,)j ^ !(,) + b for all , 2 Rn; ffl V is locally Lipschitz on the set f, : V (,) 6=
+
+0g;
+
+ffl there exist c1; c2 ? 0 such that
+
+c1!(,) ^ V (,) ^ c2!(,) (14) for all , 2 Rn; ffl there exists ff3 2 KL such that
+
+DV (,)f(,; _) ^ \Gamma ff3(V (,); j,j); (15) for all _ 2 \Omega , for almost all , such that V (,) 6= 0.
+
+The proof of the result is fairly technical and long. The complete proof will be given in the full paper. We remark here that the choice of c1; c2 and ff3 only depends on the decay function fi, and it is independent of b. Below we show how to prove, with the help of Lemma 3.1, the results stated in Section 2.
+
+3.1 Proof of Theorem 1 Proof of [2 ) 1]. Let ffi (i = 1; 2; 3) and O/ be given as in Theorem 1. Fix r * 0. Let Vr be the corresponding function satisfying all the conditions in the theorem. Pick , 2 Rn and an input u with kuk = r, and use x(t) := x(t; ,; u). Consider the set
+
+Sr = f, 2 Rn : Vr(,) ^ O/(r)g : It then follows from condition 2 in the theorem that whenever x(t) =2 Sr,
+
+d dt Vr(x(t)) ^ \Gamma ff3(Vr(x(t)); jx(t)j):
+
+Following the same steps as in page 441 of [9], one can show that if x(t0) 2 Sr, then x(t) 2 Sr for all t * t0.
+
+Observe that since the system is ubibs, there is some oe 2 K such that (2) holds, i.e.,
+
+jx(t)j ^ maxfoe(j,j); oe(r)g 8 t * 0:
+
+We now let t1 = minft * 0 : x(t) 2 Srg. If t1 ! 1, then
+
+Vr(x(t)) ^ O/(r); 8 t * t1: (16)
+
+On [0; t1), it holds that
+
+.Vr(x(t)) ^ \Gamma ff3(Vr(x(t)); jx(t)j) ^ \Gamma ff3(Vr(x(t)); c);
+
+where c = maxfoe(j,j); oe(r)g. By a generalized comparison principle, one knows that there exists a family ffir(s; t)gr*0 (which only depends on the KLfunction ff3) of KL functions with the property that fir1 (s; t) ^ fir2 (s; t) for all s; t if r1 ^ r2 such that
+
+Vr(x(t)) ^ fic(V (,); t) 8 t 2 [0; t1): (17) Noticing that
+
+fic(V (,); t) ^ fic(ff2(j,j); t) ^ maxffioe(j,j)(ff2(j,j); t); fioe(r)(ff2(r); t)g
+
+for all , 2 Rn and r; t * 0 (consider two cases: j,j * r and j,j ! r), one obtains
+
+Vr(x(t)) ^ maxf _fi(j,j ; t); fl0(r)g 8 t 2 [0; t1); (18) where _fi(s; t) := fioe(s)(ff2(s); t), and fl(s) := fioe(s)(ff2(s); 0). Combining (17) and (18), one obtains
+
+Vr(x(t)) ^ maxf _fi(j,j ; t); fl0(kuk); O/(kuk)g; 8 t * 0; from which it follows that
+
+jh(x(t))j ^ maxf ^fi(j,j ; t); fl(kuk)g; 8 t * 0; (19) where ^fi(s; t) := ff\Gamma 11 ( _fi(s; t)), and
+
+fl(s) = maxfff\Gamma 11 (fl0(s)); ff\Gamma 11 (O/(s))g: Proof of [2 ) 1]. Fix r * 0, and let Mr denote the set of inputs u with kuk ^ r. Then
+
+jx(t; ,; u)j ^ fi(j,j ; t) + fl(r); 8 t * 0; for all , and all u 2 Mr. An immediate consequence of Lemma 3.1 (with b = fl(r)) is the following:
+
+Lemma 3.2 Assume that system (1) is ios. Then there exist c1; c2 ? 0 and ff3 2 KL such that for any r * 0, there exist continuous functions ! : Rn ! R*0, W : Rn ! R*0 so that the following holds:
+
+ffl jh(,)j ^ !(,) + fl(r) for all , 2 Rn; ffl c1!(,) ^ W (,) ^ c2!(,); ffl W is locally Lipschitz on the set f, : W (,) 6= 0g; ffl it holds that DW (,)f(,; _) ! \Gamma ff3(W (,); j,j) for
+
+all j_j ^ r and almost all , such that W (,) 6= 0.
+
+We now continue to prove Theorem 1. Let c1; c2 and ff3 be as in above. Fix r * 0. Let !r and Wr be as in Lemma 3.2 corresponding to the fixed value r. Let Dr be the set defined by
+
+Dr = f, : Wr(,) = 0g:
+
+By [8, Theorem B.1], there exists a smooth function
+
+^Wr(,) defined on Rn n Dr such thatfififi
+
+^Wr(,) \Gamma  Wr(,)fififi ^ Wr(,)=2; 8 , 62 Dr; and
+
+D ^Wr(,)f(,; _) ^ \Gamma ff3(Wr(,); j,j)=2; a.e. , 62 Dr: Extend ^Wr to Rn by letting ^Wr(,) = 0 for all , 2 Dr. Then ^Wr is continuous everywhere,
+
+^c1(^!r(,) \Gamma  fl(r)) ^ ^Wr(,) ^ ^ff2(j,j); 8 , 2 Rn; where ^c1 = c1=2, ^ff2(s) = 2c2fi(s; 0), ^!r(,) = !r(,) + fl(r), and
+
+D ^Wr(,)f(,; _) ^ \Gamma ^ff3(Wr(,); j,j); whenever ^!r(,) 6= 0; where ^ff3(s; r) = ff(s=2; r)=2.
+
+Let, for each r ? 0, 'r : Rn ! [0; 1] be such that
+
+'r(,) = ae 1; if ^!r(,) * 2fl(r);0; if ^!
+
+r(,) ^ 3fl(r)2 ;
+
+and let  : Rn ! R*o be a smooth function such that ae(jh(,)j) ^ (,) ^ ^c1 jh(,)j =3 for some K1-function ae. Define
+
+Vr(,) = 'r(,) ^Wr(,) + (1 \Gamma  'r(,))(,): Then Vr is smooth everywhere,
+
+Vr(,) * ae ^c1 ^!r(,)=2; if ^!r(,) * 2fl(r),ae(jh(,)j); if ^!r(,) ^ 3fl(r)=2; and for 3fl(r)=2 ^ ^!r(,) ^ 2fl(r), one has
+
+Vr(,) * ^c1'r(,)(^!r(,) \Gamma  fl(r)) + (1 \Gamma  'r(,))(,)
+
+* ^c1'r(,)^!r(,)3 + (,) \Gamma  'r(,) ^c1 jh(,)j3 * ae(jh(,)j):
+
+Combining this with the fact that Vr(,) ^ ^c
+
+1jh(,)j
+
+3 +^ff
+
+2(j,j), one obtains:e
+
+ff1(jh(,)j) ^ Vr(,) ^ eff2(j,j); 8 , 2 Rn; where eff1(s) = minfae(s); ^c1sg, and eff2(s) = ^ff2(s) + ae1(s), and where ae1 is such a K-function such that
+
+^c1jh(,)j
+
+3 ^ ae1(j,j) for all ,. Since Vr(,) = Wr(,) when^!(,) * 2fl(r), it holds that
+
+^!(,) * 2fl(r) ) DVr(,)f(,; _) ^ \Gamma ^ff3(Vr(,); j,j);
+
+(20) for all j_j ^ r. Observe that when ^!(,) * 2fl(r), it holds that
+
+Vr(,) = ^Wr(,) ^ 2c2!(,) ^ 2c2 ^!(,); and hence, it follows from (20) that
+
+Vr(,) * fl1(r) ) DVr(,)f(,; _) ^ \Gamma ^ff3(Vr(,); j,j)
+
+for all j_j ^ r, where fl1(s) = fl(s)c
+
+2 . This finishes theconstruction of smooth V
+
+r's for r ? 0. To get a smoothfunction
+
+V0 from ^W0, one can follow exactly the same
+
+steps as in the smoothing arguments used in [8].
+
+3.2 Proof of Theorem 2 Proof of the sufficiency. Let V be an ros-Lyapunov function for system (1) with ffi (i = 1; 2; 3) and O/ as in (11) and (12). Without loss of generality, we may assume that O/ 2 K1. With * = O/\Gamma 1, one can rewrite (12) as
+
+DV (,)f(,; _*(jh(,)j)) ^ \Gamma ff3(V (,); j,j) for all , 2 Rn, all j_j ^ 1. This implies that for any , and any d 2 M\Omega  with \Omega  = [\Gamma 1; 1]m, the corresponding trajectory x*(t) := x*(t; ,; d) of system (9) satisfies the following:
+
+d dtV (x*(t)) ^ \Gamma ff3(V (x*(t)); jx*(t)j); 8 t * 0:(21)
+
+It follows immediately that V (x*(t)) ^ V (,) for all t * 0, which, in turn, implies that
+
+jh(x*(t))j ^ oe4(j,j); 8 t * 0; (22) where oe4 = ff\Gamma 11 ffi ff2. Since system (1) is ubibs, there is some oe 2 K such that
+
+jx*(t)j ^ maxfoe(j,j); oe(kudk)g; where ud(t) = d(t)*(jy*(t)j). Combining this with (22), one sees jx*(t)j ^ ^oe(j,j) for all t * 0, where ^oe(s) = maxfoe(s); *(oe4(s))g. Putting this back into (21), we have
+
+d dt V (x*(t)) ^ \Gamma ff3(V (x*(t)); ^oe(j,j)); 8 t * 0:
+
+Again, by a generalized comparison principle, one knows that there is some fi 2 KL depending only on ff3 and ^oe, such that V (x*(t)) ^ fi(j,j ; t) for all t * 0, from which it follows that
+
+jh(x*(t))j ^ ^fi(j,j ; t); 8 t * 0; where ^fi(s; t) = ff\Gamma 11 [fi(ff2(s); t)].
+
+The necessity part of Theorem 2 is an easy consequence of Lemma 3.1. Due to space limitations, we must omit the detailed arguments here.
+
+3.3 Proof of Lemma 2.7 Assume that system (1) is ubibs with estimation (2). Without loss of generality, we may assume that oe(s) * s for all s * 0. Let ^0 any K1-function such that ^0(2oe(s)) ^ s=4.
+
+Using the same arguments as used in [12], one can show that if ju(t)j ^ ^0(jx(t; ,; u)j) for almost all t *
+
+0, then ju(t)j ^ j,j2 for almost all t * 0.
+
+Let E := f(,; _) : j_j ^ ^0(j,j)g. The above conclusion implies that if (x(t; ,; u); u(t)) 2 E for almost all t * 0, then jx(t; ,; d)j ^ oe(j,j) for all t * 0.
+
+Assume now that system (1) is ios with decay estimation (5). Let t1 ? 0. Then, for any t * t1,
+
+jy(t; ,; d)j ^ fi(j,1j ; t \Gamma  t1) + fl(kuk[t
+
+1;1));
+
+where ,1 = x(t1; ,; u), and kuk[t;1) denotes the L1 norm of u restricted to [t; 1). Thus, if (x(t; ,; u); u(t)) 2 E a.e., then the following holds:
+
+jy(t; ,; d)j ^ fi1(j,j ; t \Gamma  t1) + fl(kuk[t
+
+1;1]); 8 t * 0;
+
+where fi1(s; t) = fi(oe(s); t) 2 KL, and in particular,
+
+jy(t; ,; d)j ^ fi1(j,j ; t=2) + fl(kuk[t=2;1)); 8 t * 0; if (x(t); u(t)) 2 E a.e. Without loss of generality, we assume that fl 2 K1. Now let
+
+E1 = f(,; _) 2 E : j_j ^ fl\Gamma 1(jh(,)j =2)g ae E: If (x(t; ,; u); u(t)) 2 E1 a.e., then
+
+jy(t; ,; d)j ^ fi1(j,j ; t=2) + kyk[t=2;1)2 ; 8 t * 0: Let oe3 2 K1 such that jh(,)j ^ oe3(j,j). Then
+
+E1 oe f(,; _) : j_j ^ ^(jh(,)j)g; where ^(s) = minffl\Gamma 1(s=2); ^0(oe\Gamma 13 (s))g. Consider the system
+
+.x = f(x; d^(jyj)); y = h(x); (23) with d 2 M\Omega . Pick any d 2 M\Omega  and any ,. Let x^(t) denote the corresponding trajectory of (23), and y^(t) the corresponding output function. Then (x^(t); d(t)y^(t)) 2 E1 a.e., and hence,
+
+jy^(t)j ^ fi2(j,j ; t) + ky
+
+^k[t=2;1)
+
+2 ; 8 t * 0;
+
+where fi2(s; t) = fi1(s; t=2) 2 KL. By [4, Lemma A.1], there is some KL-function ^fi, which only depends on fi2, such that jy^(t)j ^ ^fi(j,j ; t) for all t * 0. Hence, system (23) is os uniformly on all d 2 M\Omega .
+
+References [1] A. Bacciotti, External stability of nonlinear systems, in Proceedings of IFAC Non-Linear Control Systems Design Symposium, (NOLCOS '95), Tahoe City, CA, June 1995.
+
+[2] L. Hatvani, On the asymptotic stability by nondecrescent Ljapunov function, Nonlinear Analysis, Theory, Methods and Appl., 8 (1984), pp. 67-77.
+
+[3] A. Isidori, Global almost disturbance decoupling
+
+with stability for non minimum-phase single-input
+
+single-output nonlinear systems, Systems & Control Letters. to appear.
+
+[4] Z.-P. Jiang, A. Teel, and L. Praly, Small-gain theorem for ISS systems and applications, Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[5] M. Krsti'c, I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive Control Design, John Wiley & Sons, New York, 1995.
+
+[6] V. Lakshmikantham, S. Leela, and A. A. Martyuk,
+
+Practical Stability of Nonlinear Systems, World Scientific, Teaneck, 1990.
+
+[7] Y. Lin, Lyapunov Function Techniques for Stabilization, PhD Thesis, Mathematics Department, Rutgers, The State University of New Jersey, New Brunswick, New Jersey, 1992.
+
+[8] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust stability, SIAM Journal on Control and Optimization, 34 (1996), pp. 124-160.\Lambda 
+
+[9] E. D. Sontag, Smooth stabilization implies coprime
+
+factorization, IEEE Transactions on Automatic Control, AC-34 (1989), pp. 435-443.\Lambda 
+
+[10] , Some connections between stabilization
+
+and factorization, in Proc. IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 990-995.\Lambda 
+
+[11] , On the input-to-state stability property,
+
+European Journal of Control, 1 (1995), pp. 24- 36.\Lambda 
+
+[12] E. D. Sontag and Y. Wang, On characterizations
+
+of the input-to-state stability property, Systems & Control Letters, 24 (1995), pp. 351-359.\Lambda 
+
+[13] , New characterizations of the input to state
+
+stability property, IEEE Transactions on Automatic Control, 41 (1996), pp. 1283-1294.\Lambda 
+
+[14] , Detectability of nonlinear systems, in
+
+Proc. Conf. on Information Science and Systems (CISS 96), Princeton, NJ, 1996, pp. 1031-1036.\Lambda 
+
+[15] J. Tsinias, Sontag's "input to state stability condition" and global stabilization using state detection, Systems & Control Letters, 20 (1993), pp. 219-226.
+
+[16] V. J. Vorotnikov, Stability and stabilization of
+
+motion: Research approaches, results, distinctive characteristics, Automation and Remote Control, 54 (1993), p.339-397.
+
+[17] T. Yoshizawa, Stability Theory and the Existence
+
+of Periodic Solutions and Almost Periodic Solutions, Springer Verlag, New York, 1975.
+
+\Lambda Available at http://www.math.rutgers.edu/esontag</pre>
+</body>
+</html>

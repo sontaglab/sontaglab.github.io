@@ -1,0 +1,600 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/oss-scl.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/oss-scl.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Output-to-State Stability and Detectability of Nonlinear Systems
+
+Eduardo D. Sontag a
+
+;1, Yuan Wang b;2
+
+a Dept. of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA b Dept. of Mathematics, Florida Atlantic University, Boca Raton, FL 33431, USA
+
+1 Introduction The concept of "input to state stability" (iss), introduced in [16], has proved to be a very useful paradigm in the study of nonlinear stability for systems subject to external effects (see e.g. [2], [3], [5], [6], [7], [9], [10], [25]). In contrast with more classical operatortheoretic approaches, the notion of iss takes into account the effect of initial states in a manner fully compatible with Lyapunov stability, and incorporates naturally the idea of "nonlinear gain" functions; the reader may wish to consult [19] for an exposition -- as well as [23] for several new characterizations obtained after that exposition was written. In very informal terms, the iss property translates into the statement that "no matter what is the initial state, if the inputs are small, then the state must eventually be small".
+
+Given the central role often played in control theory by the duality between input/state and state/output behavior, one may reasonably ask what concept obtains if outputs are used instead of inputs in the iss definition. This corresponds roughly to asking that "no matter the initial state, if the observed outputs are small, then the state must be eventually small". For linear systems, the notion that arises is that of detectability . Thus, it would appear that this dual property, which we will call output to state stability (oss), is a natural candidate as a concept of nonlinear (zero-)detectability.
+
+One of the main contributions of [21] was to show that the iss property is equivalent to an "infinitesimal" description, namely the existence of a "storage" function V such that, along all possible trajectories, V decreases if the current inputs are not too large compared to the current states. This property can be expressed in the language of dissipative systems which is now quite standard in nonlinear control theory. Again using a naive dualization, one could ask what is the notion that emerges when we ask that there be some function V so that, along all possible trajectories, V decreases if the outputs are not too large compared to the present states. For linear systems, one obtains again detectability. For
+
+1 Supported in part by US Air Force Grant F49620-95-1-0101.
+
+E-mail: sontag@control.rutgers.edu 2 Supported in part by NSF Grants DMS-9457826 and DMS-9403924.
+
+E-mail: ywang@math.fau.edu
+
+Preprint submitted to Elsevier Preprint 15 September 1996
+
+nonlinear systems, variations of this property have very often been suggested as a notion of detectability as well (cf. Remark 5). It is not difficult to see that this dissipation property, once rigorously formulated, implies oss, and this is proved here. The converse implication, i.e. that both concepts are equivalent, is harder to show but also true. We state precisely that fact, but the proof is too lengthy to be included in this short note so we refer the reader to a conference paper for the details.
+
+The paper also discusses the corresponding notion that arises when both inputs and outputs are considered, which we call input/output to state stability (ioss). In this case, we have only proved the easy implication (dissipation property implies ioss) but we conjecture that the converse holds as well. The notion of ioss is closely connected to the possibility of stabilizing a partially observed system using only output measurements and is implied by the existence of observers. The ioss property is also related to the strict passivity property (see section 3 for more details). Various remarks concerning these issues are made in the paper. (The terminology "ioss" should not be confused with the totally different concept called ios in [16], refined and further developed in [24], which refers instead to input/output stability as opposed to detectability.)
+
+The rest of this paper is organized as follows. Section 2 provides the precise definition of oss and the formulation of the main equivalence result. Section 3 presents the definition of ioss and shows its connections to the existence of a dynamical system which estimates the norm of the state. Section 4 discusses a simple example (dimension one), with the purpose of illustrating the concepts and also in order to provide a counterexample needed later. Finally, Section 5 includes several remarks about observers, "incremental" or "Lipschitz" ioss, and output injection.
+
+2 Output to State Stability We first consider autonomous systems, i.e., systems with no inputs:
+
+.x = f (x); y = h(x); (1)
+
+where f : X ! X is locally Lipschitz continuous and h : X ! Rp is continuously differentiable, and where the state space X = Rn for some n. We assume that x = 0 is an equilibrium state, that is, f (0) = 0. We also assume that h(0) = 0. In what follows, we always use x(t; ,) to denote the trajectory of (1) with initial state ,, and write
+
+y(t; ,) = h(x(t; ,)) and denote the function y, := y(\Delta ; ,) also as y when , is clear from the context. The trajectory x(t; ,), and consequently also y(t; ,), are defined on some maximal interval [0; tmax), where tmax = tmax(,) ^ +1.
+
+In general, we use j,j to indicate Euclidean norm, and if z is a function defined on a real interval which contains [0; t], kzj[0;t]k is the sup norm of the restriction of z to [0; t], that is supt2[0;t] jz(t)j. (Later, when dealing with input functions, which are arbitrary
+
+2
+
+locally essentially bounded functions, kzk is understood as essential supremum, that is, supremum except for a set of measure zero.)
+
+Recall that K is the class of functions [0; 1) ! [0; 1) which are zero at zero, strictly increasing, and continuous, K1 is the subset of K functions that are unbounded, and KL is the class of functions [0; 1)2 ! [0; 1) which are decreasing to zero on the second argument and of class K on the first argument (see e.g. [1]).
+
+Definition 1 The system (1) is output-to-state stable (oss) if there exist some fi 2 KL and some fl 2 K such that
+
+jx(t; ,)j ^ max nfi(j,j ; t); fl iky,j[0;t]kjo (2)
+
+for all , 2 X and all t 2 [0; tmax). Definition 2 An oss-Lyapunov function for system (1) is any function V with the following properties:
+
+(i) There exist K1-functions ff1 and ff2 such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j); 8 , 2 X: (3) (ii) V is differentiable along trajectories, that is, for every trajectory x(t; ,) of (1),
+
+V (x(t; ,)) is differentiable in t. Furthermore, there exist K1-functions ff and oe such that for every trajectory x(t; ,), and all t 2 [0; tmax),
+
+d dt V (x(t; ,)) ^ \Gamma ff(jx(t; ,)j) + oe(jy(t; ,)j) : (4)
+
+A special type of oss-Lyapunov function is sometimes useful, in which the estimate (4) is replaced by the estimate:
+
+d dt V (x(t; ,)) ^ \Gamma V (x(t; ,)) + oe(jy(t; ,)j) : (5)
+
+This is the "dual" of the analogous dissipation characterization for the iss property proved in [14]. If V satisfies (3), is differentiable along trajectories, and for all trajectories satisfies (5) for all t, we call it an exponential-decay oss-Lyapunov function.
+
+The main equivalence result is as follows. Theorem 3 The following properties are equivalent for any system (1): - The system is oss. - The system admits an oss-Lyapunov function. - The system admits an exponential-decay oss-Lyapunov function.
+
+The two simpler parts of the Theorem, namely that the existence of an oss-Lyapunov function implies the existence of an exponential decay one, and that this in turn implies that the system is oss, are both particular cases of the more general facts to be shown below for the "ioss" property. The most interesting implication, establishing the existence of an oss-Lyapunov function, is too technical and long to be included in this note; the complete proof can be found in [22], available as a conference proceedings paper and also electronically as a technical report.
+
+3
+
+Remark 4 The statement of the Theorem is formally dual to a known characterization of the iss property. Recall that an iss system .x = f (x; u) (with controls but not considering an output function) is one whose trajectories satisfy an estimate of the form
+
+jx(t; ,; u)j ^ max nfi(j,j ; t); fl ikuj[0;t]kjo (6)
+
+for all t 2 [0; tmax), where x(t; ,; u) denotes the trajectory that results from initial state , and control u and tmax = tmax(,; u) ^ +1. It is shown in [21] that a system is iss if and only if it admits an iss-Lyapunov function V , that is a V which satisfies (3) and an estimate of the form
+
+d dt V (x(t; ,; u)) ^ \Gamma ff(jx(t; ,)j) + oe(ju(t)j)
+
+along all trajectories. The formal analogy notwithstanding, we have not been able to obtain the proof by means of a duality argument. Superficially it would appear that it is enough to replace u by y in the iss definition and hence obtain oss, but the roles of controls and outputs are very different: it is not possible to concatenate pieces of output trajectores and obtain a valid output, as it is the case with inputs, and this fact is essential in the proof in [21]. As a matter of fact, a proof along the lines in [21] would provide an infinitely differentiable function V of x. We do not yet know if this can always be insured for oss systems. \Lambda 
+
+Remark 5 As discussed in the introduction, the oss property can be thought of as a definition of detectability. Indeed, variations of this notion can be found at various places in the literature. The definition involving comparison functions implies in particular that the system is "zero detectable" in the sense of [15]. This means that under zero inputs, states whose outputs are identically zero should form an asymptotically stable subsystem (that is, y j 0 implies x ! 0, plus a local stability condition). That definition relates to the current definition (which says in addition that y ! 0 implies x ! 0 and that y small implies x small) in exactly the same way that global asymptotic stability of an unperturbed system .x = f (x; 0) relates to the iss property. The definition which involves Lyapunov functions had also appeared in restricted forms. As an example, in [10], Equation 15, one finds detectability defined by the requirement that there should exist a (differentiable) storage function V satisfying our Equations (3) and (4), but with the special choice oe(y) := jyj2. A variation of this is to weaken (4) to require merely
+
+x 6= 0 ) ddt V (x(t; ,)) ! oe(jy(t; ,)j) as done for instance in the definition of detectability given in [11]. The next sections discuss other literature citations for related concepts. \Lambda 
+
+Remark 6 There is another type of relationship between the notions of oss and iss, different from duality. Consider a system in cascade form
+
+.x1 = f (x1; x2) .x2 = g(x2)
+
+4
+
+where n = n1 + n2 and the variables xi have sizes n1 and n2 respectively. Assume that the output is y = x2. If we interpret the n2-dimensional subsystem .z = g(z) as a generator of input signals ("exosystem") for the n1-dimensional system .x = f (x; u), then the oss property amounts to a version of the input to state stability property for this first subsystem, but only with respect to the signals so generated. This is weaker than asking that the first subsystem be iss. We illustrate this gap with an example which also serves to connect the current topic to a standard example found in the theory of time-varying systems. We start by considering the following two dimensional parameterized family of linear time-invariant systems:
+
+.x = A(*)x; x 2 R2 ; * 2 R ; (7)
+
+where for each * 2 R,
+
+A(*) = ` \Gamma 1 + a cos
+
+2 * 1 \Gamma  a sin * cos *
+
+\Gamma 1 \Gamma  a sin * cos * \Gamma 1 + a sin2 * '
+
+and a = 3=2 (the same argument works for any a 2 (1; 2)). It is not hard to see that there is a constant c ? 0 so that (using induced matrix norm)
+
+keA(*)tk ^ ce\Gamma t=4
+
+holds for any * and any t * 0. Consider now the three-dimensional system
+
+.x = A(x3)x .x3 = 0
+
+where y = x3 is taken to be the (scalar) output. Consider any initial state , = (,1; ,2; ,3) and the ensuing trajectory x(\Delta ). From the above bound, we have that
+
+jx(t)j ^ ce\Gamma t=4 j(,1; ,2)j + j,3j from which we conclude that the three-dimensional composite system is oss (using fi(s; t) = ce\Gamma t=4s and oe(r) = r). On the other hand, the system .x = A(u)x is not iss, since when applying the periodic input u(t) = t modulo 2ss the solution that results is
+
+x(t) = et=2 ` cos t\Gamma  sin t ' and therefore a bounded input produces an unbounded trajectory. \Lambda 
+
+3 Input/Output to State Stability We now turn to the study of the general case of systems having both inputs and outputs:
+
+.x = f (x; u) ; y = h(x) : (8)
+
+5
+
+We assume standard hypotheses (see e.g. [18]): f (x; u) is continuous jointly on (x; u) 2 Rn \Theta  Rm and locally Lipschitz on x uniformly on bounded u, and still take h : X ! Rp continuously differentiable, h(0) = 0. In this context, it is natural to study when it is true that "small inputs and small outputs mean (eventually) small state trajectories". This property, which blends the definitions of oss and iss, may be formulated precisely as follows.
+
+Definition 7 The system (8) is input/output-to-state stable (ioss) if there exist some fi 2 KL and fl1; fl2 2 K such that
+
+jx(t; ,; u)j ^ max nfi(j,j ; t); fl1 ikuj[0;t]kj ; fl2 iky,;uj[0;t]kjo (9)
+
+for every initial state , and control u and all t 2 [0; tmax), tmax = tmax(,; u). Here x(t; ,; u) denotes the trajectory that results from initial state , and input u, and y,;u(t) = y(t; ,; u) = h(x(t; ,; u)).
+
+Remark 8 The ioss property has appeared before in the literature. It represents a natural combination of the notions of "strong" observability (cf. [16]) and iss. It was called "detectability" in [17] (where it is phrased in input/output, as opposed to state space, terms) and it was called "strong unboundedness observability" in [5] (more precisely, this last notion allows an additive nonnegative constant in the right-hand side of the estimate). \Lambda 
+
+We can also define the obvious generalization of Definition 2: Definition 9 An ioss-Lyapunov function for system (8) is any function V so that Property (3) in Definition 2 holds, V is absolutely continuous along trajectories, for all initial states and controls, and there exist K1-functions ff, oe1, and oe2 such that for every trajectory x(t; ,; u), and almost all t 2 [0; tmax),
+
+d dt V (x(t; ,; u)) ^ \Gamma ff(jx(t; ,; u)j) + oe1(ju(t)j) + oe2(jy(t; ,; u)j) : (10)
+
+It is again interesting to consider the variation suggested by the characterization of the iss property in [14], as discussed in relation to Equation (5), namely to replace (10) by an estimate
+
+d dt V (x(t; ,; u)) ^ \Gamma V (x(t; ,; u)) + oe1(ju(t)j) + oe2(jy(t; ,; u))j) : (11)
+
+If V satisfies (3), is absolutely continuous along trajectories, and for all trajectories satisfies (11) for almost all t 2 [0; tmax), we call it an exponential-decay ioss-Lyapunov function.
+
+Lemma 10 A system admits an ioss-Lyapunov function if and only if it admits an exponential-decay ioss-Lyapunov function.
+
+PROOF. Obviously, the existence of an exponential-decay ioss-Lyapunov function implies the existence of an ioss-Lyapunov function. The converse is proved using ideas
+
+6
+
+from [14], as follows. Assume that system (8) admits an ioss-Lyapunov function with ffi (i = 1; 2) as in (3) and with ff; oe1; oe2 as in (10). Replacing ff by ff ffi ff\Gamma 12 , we have:
+
+d dt V (x(t; ,; u)) ^ \Gamma ff(V (x(t; ,; u))) + oe1(ju(t)j) + oe2(jy(t; ,; u)j) (12)
+
+for almost all t 2 [0; tmax(,; u)). According to Lemma 4 in [14], there exists some function ae 2 K1 which can be extended as a C1 function to a neighborhood of [0; 1) such that ae0(r) ff(r)2 * ae(r) for all r * 0. Consider the function W (,) := ae(V (,)). Observe that W is again proper and positive definite. Along any trajectory x(t) := x(t; ,; u) (with y(t) := y(t; ,; u)), at any point where (10) holds, one has that ddt W (x(t)) = ae0(V (x(t))) ddt V (x(t)) is upper bounded by:
+
+\Gamma ae0(V (x(t))) ff(V (x(t)))2 + ae0(V (x(t))) \Gamma  ff(V (x(t)))2 +oe1(ju(t)j) + oe2(jy(t)j)! which in turn is bounded by
+
+\Gamma  ae(V (x(t)) + ae0(V (x(t)))\Gamma  ff(V (x(t)))2 oe1(ju(t)j) + oe2(jy(t)j)! : (13)
+
+Observe that when V (x(t)) * ff\Gamma 1(2oe1(ju(t)j) + 2oe2(jy(t)j)) it holds that:
+
+ae0(V (x(t))) \Gamma  ff(V (x(t)))2 + oe1(ju(t)j) + oe2(jy(t)j)! ^ 0; (14) while if instead V (x(t)) ^ ff\Gamma 1(2oe1(ju(t)j) + 2oe2(jy(t)j)), then:
+
+ae0(V (x(t))) (oe1(ju(t)j) + oe2(jy(t)j)) ^ ^oe1(ju(t)j) + ^oe2(jy(t)j) (15) for some K1-functions ^oe1 and ^oe2 (using here the fact that ae0(s) is a continuous function). Combining (14) and (15), one concludes from the estimate (13) on ddt W (x(t)) that
+
+d dt W (x(t)) ^ \Gamma W (x(t)) + ^oe1(ju(t)j) + ^oe2(jy(t)j)
+
+for almost all t 2 [0; tmax).
+
+Lemma 11 If the system (8) admits an ioss-Lyapunov function, then it is ioss. We prove this below. Remark 12 In feedback control, the concept of passivity has been widely used. System (8) with m = p is said to be strictly passive is there exist a continuous nonnegative function V : Rn ! R*0 , called a storage function, and a positive definite function ff, called the dissipation rate, such that for any , 2 Rn and any input u,
+
+V (x(t; ,; u)) \Gamma  V (,) ^ \Gamma 
+
+tZ
+
+0
+
+ff(jx(s; ,; u)j) ds +
+
+tZ
+
+0
+
+y(s; ,; u)u(s) ds (16)
+
+7
+
+for all t * 0 (c.f. [7], Definition D.2). Note here that if, as in [7], Lemma D.3, V is differentiable, positive definite, and proper, and if ff in (16) is also proper, then V is an ioss-Lyapunov function because (16) implies
+
+d dt V (x(t; ,; u)) ^ \Gamma ff(jx(t; ,; u)j) + y(t; ,; u)u(t)
+
+^ \Gamma ff(jx(t; ,; u)j) + [y(t; ,; u)]2 + u(t)2
+
+for all t * 0, all , 2 Rn and all inputs u. By Lemma 11, this implies that the system is ioss. (If V (x(t)) does not have a derivative along trajectories, one obtains an integral equation version of (10); it is possible to show that the existence of a V with such a property also implies that the system ioss.) \Lambda 
+
+Proof of Lemma 11. Let ff1; ff2 be as in (3), and let ff; oe1 and oe2 be as in (10). Pick any initial state , and any input u. Denote the trajectory x(t; ,; u) by x(t), and the output y(t; ,; u) by y(t). We then have, for almost all t 2 [0; tmax),
+
+d dt V (x(t)) ^ \Gamma ff(jx(t)j) + oe1(ju(t)j) + oe2(jy(t)j):
+
+This implies that
+
+d dt V (x(t)) ^ \Gamma ff(jx(t)j)=2 (17)
+
+whenever ff(jx(t)j)2 * oe1(ju(t)j) + oe2(jy(t)j). That is, (17) holds whenever
+
+jx(t)j * ff\Gamma 1 (2oe1(ju(t)j) + 2oe2(jy(t)j)) :
+
+Fix T 2 (0; tmax), and let v\Lambda  = (ff2 ffi ff\Gamma 1) i2oe1(kuk) + 2oe2(kyj[0;T ]k)j. It then follows that
+
+V (x(t)) * v\Lambda  ) ddt V (x(t)) ^ \Gamma  ^ff(V (x(t))); a:e: t 2 [0; T ]; where ^ff(r) = 12 ff ffi ff\Gamma 12 . We now cite an easy comparison principle (cf. [22], Lemma 2.2): Lemma 13 For each continuous and positive definite function ff : [0; 1) ! R*0 , there exists a KL-function fiff with the following property: for any absolutely continuous function w : [0; T ] ! R*0 and any number v\Lambda  * 0, if for all t 2 [0; T ] it holds that
+
+w(t) * v\Lambda  =) .w(t) ^ \Gamma ff(w(t)) a.e. ; then w(T ) ^ maxffi(w(0); T ); v\Lambda g. \Lambda  We now apply this Lemma to obtain a KL-function fi^ff as there. Thus, along any trajectory, by the conclusion of the Lemma for w(t) = V (x(t)):
+
+V (x(t)) ^ max ffi^ff(V (x(0)); t); v\Lambda g ; 8 t 2 [0; T ];
+
+and in particular,
+
+8
+
+V (x(T )) ^ max ffi^ff(V (x(0)); T );i
+
+ff2 ffi ff\Gamma 1j i2oe1(kuk) + 2oe2(kyj[0;T ]k)jo :
+
+Hence, one gets, by replacing T by t,
+
+jx(t)j ^ max nff\Gamma 11 (fi^ff(ff2(j,j); t)) ;i
+
+ff\Gamma 11 ffi ff2 ffi ff\Gamma 1j i2oe1(kuk) + 2oe2(kyj[0;t]k)jo
+
+for all t 2 [0; tmax). From this we obtain (9), with
+
+fi(s; r) = ff\Gamma 11 (fi^ff(ff2(s); r)) and
+
+fli(s) = iff\Gamma 11 ffi ff2 ffi ff\Gamma 1j (4oei(s))
+
+for i = 1; 2.
+
+Note that for systems with no controls (that is, when the right-hand side f (x; u) in (8) is independent of u), ioss is the same as oss and an ioss-Lyapunov function is the same as an oss-Lyapunov function. So it is natural to make the following conjecture, which generalizes Theorem 3.
+
+Conjecture. The following properties are equivalent for any system (8):
+
+(i) The system is ioss. (ii) The system admits an ioss-Lyapunov function. (iii) The system admits an exponential-decay ioss-Lyapunov function.
+
+Lemmas 11 and 10 established that 1 ( 2 , 3. What remains to be proved is the implication 1 ) 2.
+
+3.1 Norm-Observers We discuss \Lambda  here relationships between the ioss property and the possibility of estimating the norms of states "on-line". It is often the case (cf. [14]) that obtaining such estimates suffices for control applications. This is also strongly related with Assumption UEC (73) in [4].
+
+Definition 14 A (one-sided) state-norm estimator for system (8) is a system
+
+.z = g(z; u; y) (18)
+
+whose inputs are pairs (u(t); y(t)) consisting of inputs and outputs of (8), such that the following properties hold:
+
+- The system (18) is iss (with inputs (u; y)).
+
+\Lambda  The material in this section was in large part suggested to the authors by Laurent Praly.
+
+9
+
+- There are a function ae of class K and a function fi of class KL so that, for each initial
+
+states , and i for (8) and (18) respectively, and each input u(\Delta ),
+
+jx(t; ,; u)j ^ fi(j,j+jij ; t) + ae(jz(t; i; u; y,;u)j) (19) for all t 2 [0; tmax). The above definition is interpreted as follows: the z equation provides an upper bound ae(z(t)) on the true state x(t), with an error which is initially small if , and i are small, and which in any case decays to zero as t ! 1. In addition, this "norm detector" equation is stable in the iss sense.
+
+Proposition 15 Consider the following properties for any system (8): - The system admits an exponential-decay ioss-Lyapunov function. - There is a norm-estimator for the system. - The system is ioss.
+
+Then each statement implies the following one, and in the case of systems with no inputs, they are all equivalent.
+
+PROOF. Assume that V is an exponential-decay ioss-Lyapunov function, so (11) holds along all trajectories. We assume, without loss of generality, that the function ff2 in Equation (3) satisfies r ^ ff2(r) for all r * 0. Consider the system (18) given by the equations
+
+.z = \Gamma z + oe1(juj) + oe2(jyj) : (20) This is an iss system, since it can be seen as an asymptotically stable linear system driven by the input oe1(juj) + oe2(jyj). Pick any initial states ,; i of (8) and (18) respectively, and any input u(\Delta ). Consider the ensuing trajectory (x(t); z(t)) of the composite system. Property (11) implies that
+
+d dt V (x(t)) \Gamma  z(t)! ^ \Gamma V (x(t)) \Gamma  z(t)!
+
+for almost all t 2 [0; tmax(x(0); u)). Thus
+
+V (x(t)) ^ z(t) + e\Gamma t(V (,) \Gamma  i) ^ jz(t)j + 2e\Gamma tff2(j,j + jij) (using r ^ ff2(r)). This can be written as (19) with ae := ff\Gamma 11 (2(\Delta )) and fi(s; t) := ff\Gamma 11 (4e\Gamma tff2(s)). Assume now that there is some norm-estimator (18). Choose any initial state , for (8), any input u, and the special initial state i = 0 for the norm-estimator. Since the latter is an iss system, there holds an estimate
+
+jz(t; 0; u; y,;u)j ^ max nbfl1 ikuj[0;t]kj ; bfl2 iky,;uj[0;t]kjo (21)
+
+for all t 2 [0; tmax), for some class-K functions bfli (the "fi" term vanishes because i = 0). On the other hand, the estimation equation (19) becomes
+
+jx(t; ,; u)j ^ fi(j,j ; t) + ae(jz(t; 0; u; y,;u)j) : (22)
+
+10
+
+The conjunction of Equations (21) and (22) implies that the original system is ioss. Finally, if there are no controls, we know by Theorem 3 that the first and the last properties are equivalent.
+
+Of course, if the conjecture stated earlier is true, then the last part of this result also holds in general (for systems with controls).
+
+4 Remarks on Stabilization by Measurement Feedback The ioss property plays a role when attempting to generalize the linear systems theorem "stabilizable plus detectable equals stabilizable by dynamic feedback" to a general nonlinear context. We first make some informal remarks concerning that issue, which needs considerable further research. Then, we develop in some more detail a very special case (one-dimensional systems), with two purposes: to illustrate in a very concrete manner the general fact that the ioss property is relevant to the issue of stabilizing a system using only information provided by partial measurements, and to introduce a counterexample to be used later. In addition, the construction provides an interesting connection between the ioss notion and some ideas which originate in the literature on adaptive control.
+
+Remark 16 (In general, ioss and state stabilizability imply dynamic output stabilizability.) It is a general fact that for any ioss system (8), at least under reasonable structural assumptions, the existence of a state-feedback u = k(x) that drives the internal states to the origin implies the existence of a dynamic controller which achieves the same goal using output information only. More precisely, for any system defined by analytic f and h, "state stabilizability plus ioss" indeed implies the possibility, at least at an abstract existence level, of driving the internal state to zero based only on information provided by input/output measurements; see [22]. The proof uses in an essential manner the results on existence of "universal inputs" for analytic systems developed in the early 1980s. At this time, however, the existence of such a dynamic stabilizer is established in a very nonconstructive fashion, as an abstract "hybrid" system. This is quite analogous to the general theory developed in [15]. \Lambda 
+
+Remark 17 (Dynamic stabilization in i/o sense implies ioss.) Consider a system diagram as in Figure 1. In this diagram, ud and yd denote external "disturbance" signals
+
+aessoe,aessoe, - oe
+
+? oe- oe
+
+u y
+
++ .x=f(x;u)
+
+y=h(x)
+
+C+
+
+ydud ue ye
+
+Fig. 1. System, Controller C, Signals (control and measurement noises, respectively); u and y are respectively the input and
+
+11
+
+output of the system to be controlled, and ue and ye are the signals that the controller C works with. A controller is an initialized system, which is said to stabilize the system (8) in the i/o sense if for each locally essentially bounded disturbances ud; yd and each initial state of (8), solutions of the closed-loop system exist for all t * 0 and are unique, and the closed-loop system is an iss system with respect to the external "noises" ud; yd. Further, we assume that if ye j 0 then the controller produces ue j 0. (We omit a precise technical definition because of space limitations, and because the remark that we make is basically tautological.) The existence of such a controller implies that the system is ioss. Indeed, for any initial state , of the system (8), and any control u applied to it, we may consider the disturbances ud := u and yd := \Gamma y,;u. This results in "error signals" ue j ye j 0 for the controller, and the i/o stability property becomes simply the ioss estimate. \Lambda 
+
+In the rest of this section, we develop a very special case of output stabilization, as an example where the constructions can be made explicit.
+
+4.1 Systems without drift As a preliminary step, we restrict attention to systems (8) having the property that f (x; 0) = 0 for all states x. Such systems are called systems without drift (because in the absence of external inputs they do not "move"). There is a trivial characterization of the ioss property for such systems.
+
+Recall that, in general, a function h : Rn ! R is proper (or "radially unbounded") if fx s:t: jh(x)j ^ \Delta g is compact for each \Delta  ? 0. The function h will be said here to be kernel-free if h(x) 6= 0 for each x 6= 0.
+
+Lemma 18 A system with no drift is an ioss system if and only if the map h is proper and kernel-free.
+
+PROOF. Pick any state , and consider the trajectory corresponding to the control u j 0. Because the system has no drift, x(t; ,; 0) j ,. Thus the estimate (9) gives in this case:
+
+j,j ^ max ffi(j,j ; t); fl2(jh(,)j)g for all t 2 [0; tmax) = [0; 1). Letting t ! 1 we conclude that
+
+j,j ^ fl2(jh(,)j) 8 , 2 Rn : (23)
+
+Conversely, if there is some fl2 of class K such that (23) holds then the system is ioss (any fi and fl1 can be used). To conclude the proof, observe that a function h : Rn ! R which is continuous and satisfies h(0) = 0 (as assumed for measurement maps) is proper and kernel-free if and only if there is some fl 2 K such that j,j ^ fl(jh(,)j) for all , (sufficiency is obvious, and necessity can be proved by taking ff(r) := infj,j*r jh(,)j, and fl := ff\Gamma 11 where ff1 is any K function with the property that ff1(s) ^ ff(s) for all s * 0).
+
+12
+
+A one-dimensional example Next, we specialize even further, to the case of a one-dimensional system
+
+.x = u ; y = h(x) : (24)
+
+We wish to show by means of an explicit construction that there is a dynamic feedback controller which drives the state to zero while only using information about the state available via the output map h. We assume that the system is ioss, which means equivalently that the map bh(x) := jh(x)j is proper and positive definite. (In general, it is clear from the definitions that any system (8) is ioss if and only if the system with same dynamics but new output bh is ioss.) A controller that uses only the information provided by bh(x) is in particular one that uses the information h(x). Thus we assume from now on without loss of generality that h : R ! R*0 and this map is proper and positive definite. As a matter of fact, we will only assume these two somewhat weaker properties of the function h : R ! R*0 :
+
+a. h is locally Lipschitz. b. For each " ? 0 there is some ffi ? 0 such that h(r) ! ffi implies r ! ".
+
+Note that the last property says that "h(r) ! 0 implies r ! 0". We still assume that h(0) = 0.
+
+Let Q : R ! R be any function which is twice continuously differentiable and so that the following two properties hold:
+
+lim sup
+
+z!+1 Q(z) = +1 (25)
+
+and
+
+lim infz!+1 Q(z) = \Gamma 1 : (26)
+
+(For example, Q(z) = z sin z.) We apply the feedback
+
+u = Q0(z)h(x) to the system (24), where z is the solution of .z = h(x). This is motivated by the entirely analogous adaptive-control construction in [12]. Observe that the x-equation under closedloop has right-hand side which is (locally) Lipschitz on x; z because Q is of class C2.
+
+Proposition 19 Let (,; i) 2 R2 and consider the maximal solution (x(\Delta ); z(\Delta )) of the following initial value problem:
+
+.x = Q0(z)h(x) ; .z = h(x) ; x(0) = , ; z(0) = i : Then, the solution exists for all t * 0, and there exists some i\Lambda  2 R such that
+
+limt!1 (x(t); z(t)) ! (0; i\Lambda ) :
+
+13
+
+PROOF. Since d(x \Gamma  Q(z))=dt = Q0(z)h(x) \Gamma  Q0(z)h(x) = 0, for each t in the maximal interval of existence [0; tmax), we have that
+
+Q(z(t)) = Q(i) \Gamma  , + x(t) : (27) If , = 0 there is nothing to prove, since in that case (x; z) j (0; i) So we assume , 6= 0. Note that sign x(t) = sign , for all t 2 [0; tmax), because the points of the form (0; a) are equilibria. If , ? 0 then x(t) * 0 for all t, so (27) implies that Q(z(t)) * Q(i) \Gamma  , and hence
+
+Q(z(t)) is bounded below : (28)
+
+Observe that .z = h(x) * 0, so z is nondecreasing. Thus, Equations (28) and (26) imply that z is bounded. If instead , ! 0 then x(t) ^ 0 for all t, so (27) implies that Q(z(t)) ^ Q(i) \Gamma  , and therefore
+
+Q(z(t)) is bounded above : (29)
+
+Equations (29) and (25) imply that again z is bounded. In either case, we know then that Q(z(t)) is bounded, and applying (27) yet again we conclude that x is also bounded. Therefore the trajectory (x; z) remains bounded, which implies tmax = 1. In addition, since z is nondecreasing, that there is some i\Lambda  so that z(t) ! i\Lambda  as t ! 1.
+
+Consider now the function y(t) = h(x(t)). We have that
+
+z(t) \Gamma  i =
+
+tZ
+
+0
+
+y(s) ds
+
+and so R 10 y(s) ds = i\Lambda  \Gamma  i ! 1. On the other hand, y is globally Lipschitz on [0; 1). Indeed, if c1 is a Lipschitz constant for h on the bounded set fx(t); t * 0g, then for each t1 ^ t2 we have that
+
+jy(t2) \Gamma  y(t1)j ^ c1 jx(t2) \Gamma  x(t1)j ^ c1
+
+t2Z
+
+t1
+
+h(x(s)) jQ0(z(s))j ds ^ c1c2(t2 \Gamma  t1)
+
+for some c2, since x and z are bounded and h; Q0 are continuous. Thus y is in L1 and globally Lipschitz, which implies ("Barbalat's Lemma", see e.g. [6], p. 192) that y(t) ! 0 as t ! 1. Now Assumption b on the function h implies that x(t) ! 0, as needed.
+
+5 Remarks on Observers and Output-Injection The previous sections discussed the facts that the ioss property is connected with the possibility of stabilization by output feedback, and also to the existence of (one-sided) estimators of the norm of the state. These are essentially properties connected with "zerodetectability", meaning being able to asymptotically distinguish any given state , from
+
+14
+
+the zero state. For linear systems, this 0-detectability property is equivalent to detectability: being able to asymptotically distinguish every pair of states. But for general, nonlinear, systems, these properties are very different. Estimates of arbitrary states are not necessarily required if the objective is merely to drive the state to the special state "zero". See [15] for more discussion of this matter. Nonetheless, since there is a substantial literature dealing with the subject of observers for nonlinear systems, it seems worthwhile to explore some of the relations between the ioss (or oss) property and observers. It turns out that the appropriate notion to consider is that of "incremental" or "Lipschitz" ioss. In this section, we make several elementary remarks concerning these questions.
+
+One possible definition of "observer" for (8) is that of a dynamical system which processes inputs and outputs of (8) and produces an estimate bx(t) of the state x(t). The estimation condition would be that x(t) \Gamma  bx(t) ! 0 as t ! 1 and that this difference (the estimation error) should be small if it starts small (see [18], Chapter 6, and also the very early work [26]).
+
+However, it is far more natural in the context of iss-type notions to require that the estimation error x(t)\Gamma  bx(t) be small even if the measurements of inputs and outputs taken by the observer are "noisy". Writing ud and yd for the input and output measurement noises, we have the situation in Figure 2, which we next formalize in the special case of full state observers.
+
+m m- - - ?
+
+6
+
+- -
+
+- .x=f(x;u)
+
+y=h(x)u(t)
+
+ud(t)
+
+yd(t)
+
+bx(t)observer y(t)
+
+Fig. 2. Observer with noise ud and yd Definition 20 A (full-order state) observer for the system (8) is a system defined by equations .z = g(z; v; w) evolving in the same space Rn as (8), driven by inputs v and w of dimensions equal to the dimension of the input and output value spaces of (8), respectively, and so that the following properties hold. There exist functions fi 2 KL, and fl1; fl2 2 K such that, for each initial states , and i of the composite system consisting of (8) and
+
+.z = g(z; u + ud; y + yd) (30)
+
+and each (measurable locally essentially bounded) inputs u; ud; yd, if [0; tmax) is the maximal interval of existence of x(t) = x(t; ,; u) then the solution z(t) of (30) with z(0) = i, y(t) = h(x(t)), and the same u; ud; yd is also defined on [0; tmax) and there holds on [0; tmax) the estimate
+
+jx(t) \Gamma  z(t)j ^ max nfi(j, \Gamma  ij ; t); fl1 ikudj[0;t]kj ; fl2 ikydj[0;t]kjo : (31)
+
+15
+
+Note that how this definition insures that the error x(t) \Gamma  z(t) converges to zero when there is no noise in the measurements taken by the observer, and in general degrades gracefully as a function of the magnitude of such disturbances.
+
+Assume now that an observer is given. Apply the definition for the particular case , = i (for any fixed state ,) and ud = yd j 0. The observer property implies that x(t) = z(t) for all t 2 [0; tmax), from which it follows that f (x(t); u(t)) = g(x(t); u(t); h(x(t))) for all such t. In particular, this holds for all constant controls, from which we conclude that f (x; u) = g(x; u; h(x)) for all state and input values x; u. We conclude from here the following "folk" fact:
+
+Lemma 21 The equations of any observer (30) must have the ("output injection") form
+
+.z = f (z; u + ud) + L(z; u + ud; y \Gamma  h(z) + yd) (32)
+
+where the vector field L satisfies that L(a; b; 0) = 0 for all a; b. \Lambda  Definition 22 The system (8) is incrementally input/output-to-state stable (i-ioss) if there exists some fi 2 KL and fl1; fl2 2 K such that, for every two initial states ,1 and ,2, and any two controls u1 and u2,
+
+jx(t; ,1; u1) \Gamma  x(t; ,2; u2)j ^ max ffi(j,1 \Gamma  ,2j ; t);
+
+fl1 ik(u1 \Gamma  u2)j[0;t]kj ; fl2 ik(y,1;u1 \Gamma  y,2;u2)j[0;t]kjo (33)
+
+for all t in the common domain of definition. Assume from now on that the original system satisfies f (0; 0) = 0. Thus x j 0 is a trajectory of the system (8) for the input u j 0 and having output y j 0. Comparing any solution with this zero solution, it follows that if a system is i-ioss then it is also ioss.
+
+Proposition 23 If an observer for (8) exists, the system is i-ioss.
+
+PROOF. Consider any ,i and ui as in Definition 22. Let xi = x(\Delta ; ,i; ui) Since L(\Delta ; \Delta ; 0) j 0 in the form (32) for the observer, we may view x2 as the state of the observer when starting at z(0) = ,2, x(0) = ,1, the input to the system is u = u1, and the disturbances are ud := u2 \Gamma  u1 and yd := h(x2) \Gamma  h(x1). Then the desired inequality (33) is just the observer estimate (31).
+
+Remark 24 In general, the ioss property does not guarantee the existence of an observer. To see this, it suffices to give an example of a system that is ioss but not i-ioss. Consider the one-dimensional system .x = u; y = x2. This is an ioss system, by Lemma 18 (and we constructed a dynamic system which drives the state to zero using only output measurements in Proposition 19). But it is not i-ioss, as shown by taking u1 = u2 j 0 and ,1 = 1, ,2 = \Gamma 1: otherwise the estimate (33) would give
+
+2 ^ fi(2; t) + fl1(0) + fl2(0) ! 0 ; a contradiction. \Lambda 
+
+16
+
+We refer the reader to [13,9] for more on relations between observers (with a weaker definition not involving ud and yd) and the iss property, as well as the closely related topic of parameterizations of stabilizers. From the output-injection form (32) and the special case x j 0, u j 0, and yd = y we also conclude that the system .x = f (x; u) + L(x; u; \Gamma h(x)) is iss, which generalizes the classical notion of output injection for linear systems. For the case u j 0 (asymptotic stability), such issues are discussed in [2], which also discusses other more restrictive notions of output injection and necessary conditions for detectability in this sense.
+
+Remark 25 The concept defined in Definition 20 is not the most general version of observers. More natural, and the point of view taken in [17], is simply to ask for the observer to be an i/o mapping rather than a system, requiring that the assignment (ud; yd) 7! x \Gamma  bx should be "input to output stable" (uniformly on (u; y)) in the sense used in the paper [16]. This means, essentially, that small disturbances ud and yd do not affect too much the quality of the estimate. Full-order observers as in 20 are observers for which the estimate bx is the state of the observer itself, instead of a function of the state of the observer. In the context of arbitrary nonlinear systems, such estimators are probably not very natural, but full-state observers are those most often considered in the literature ("Luenberger observers" or "deterministic Kalman filters"). \Lambda 
+
+References
+
+[1] W. Hahn, Stability of Motion, Springer-Verlag, Berlin, 1967. [2] X. M. Hu, On state observers for nonlinear systems, Systems & Control Letters, 17 (1991),
+
+pp. 645-473.
+
+[3] A. Isidori, Global almost disturbance decoupling with stability for non minimum-phase singleinput single-output nonlinear systems, Systems & Control Letters, 28 (1996), pp. 115-122.
+
+[4] Z.-P. Jiang and L. Praly, Preliminary results about robust Lagrange stability in adaptive
+
+nonlinear regulation, Int. J. of Adaptive Control and Signal Processing, 6, (1992), pp. 285- 307.
+
+[5] Z.-P. Jiang, A. Teel, and L. Praly, Small-gain theorem for ISS systems and applications,
+
+Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[6] H. K. Khalil, Nonlinear Systems, Prentice-Hall, Upper Saddle River, NJ, second ed., 1996. [7] M. Krsti'c, I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive Control Design,
+
+John Wiley & Sons, New York, 1995.
+
+[8] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust stability,
+
+SIAM Journal on Control and Optimization, 34 (1996), pp. 124-160.
+
+[9] W. M. Lu, A class of globally stabilizing controllers for nonlinear systems, Systems & Control
+
+Letters, 25 (1995), pp. 13-19.
+
+[10] , A state-space approach to parameterization of stabilizing controllers for nonlinear
+
+systems, IEEE Transactions on Automatic Control, 40 (1995), pp. 1576-1588.
+
+17
+
+[11] A. S. Morse, Control using logic-based switching, in Trends in Control: A European
+
+Perspective, A. Isidori, ed., Springer, London, 1995, pp. 69-114.
+
+[12] R. Nussbaum, Some remarks on a conjecture in parameter adaptive control, Systems &
+
+Control Letters, 3 (1983), pp. 243-246.
+
+[13] D. J. Pan, Z. Z. Han, and Z. J. Zhang, Bounded-input-bounded-output stabilization of
+
+nonlinear systems using state detectors, Systems & Control Letters, 21 (1993), pp. 189-198.
+
+[14] L. Praly and Y. Wang, Stabilization in spite of matched unmodelled dynamics and an
+
+equivalent definition of input-to-state stability, Math. of Control, Signals, and Systems, 9 (1996): 1-33.
+
+[15] E. D. Sontag, Conditions for abstract nonlinear regulation, Information and Control, 51
+
+(1981), pp. 105-127.
+
+[16] , Smooth stabilization implies coprime factorization, IEEE Transactions on Automatic
+
+Control, AC-34 (1989), pp. 435-443.
+
+[17] , Some connections between stabilization and factorization, in Proc. IEEE Conf. Decision
+
+and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 990-995.
+
+[18] , Mathematical Control Theory: Deterministic Finite Dimensional Systems, SpringerVerlag, New York, 1990.
+
+[19] , On the input-to-state stability property, European Journal of Control, 1 (1995), pp. 24-
+
+36.
+
+[20] E. D. Sontag and Y. Lin, Stabilization with respect to noncompact sets: Lyapunov
+
+characterizations and effect of bounded inputs, in Nonlinear Control Systems Design 1992, IFAC Symposia Series, M. Fliess, ed., Pergamon Press, Oxford, 1993, pp. 43-49.
+
+[21] E. D. Sontag and Y. Wang, On characterizations of the input-to-state stability property,
+
+Systems & Control Letters, 24 (1995), pp. 351-359.
+
+[22] , Detectability of nonlinear systems, in Proc. Conf. on Information Science and Systems
+
+(CISS 96), Princeton, NJ, 1996, pp. 1031-1036.
+
+[23] , New characterizations of the input to state stability property, IEEE Transactions on
+
+Automatic Control, 41(1996), pp. 1283-1294.
+
+[24] , A notion of input to output stability, submitted. [25] J. Tsinias, Sontag's "input to state stability condition" and global stabilization using state
+
+detection, Systems & Control Letters, 20 (1993), pp. 219-226.
+
+[26] M. Vidyasagar, On the stabilization of nonlinear systems using state detection, IEEE
+
+Transactions on Automatic Control, 25 (1980), pp. 504-509.
+
+18</pre>
+</body>
+</html>

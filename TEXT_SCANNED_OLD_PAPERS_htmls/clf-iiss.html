@@ -1,0 +1,456 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/clf-iiss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/clf-iiss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+On integral-input-to-state stabilization
+
+\Lambda 
+
+Daniel Liberzon Department of Electrical Engineering
+
+Yale University New Haven, CT 06520 liberzon@sysc.eng.yale.edu
+
+Eduardo D. Sontag Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+Yuan Wang Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431 ywang@control.math.fau.edu
+
+Abstract This paper continues the investigation of the recently introduced integral version of inputto-state stability (iISS). We study the problem of designing control laws that achieve iISS disturbance attenuation. The main contribution is an appropriate concept of control Lyapunov function (iISS-CLF), whose existence leads to an explicit construction of such a control law. The results are compared and contrasted with the ones available for the ISS case.
+
+1 Introduction Since the concept of input-to-state stability (ISS) was first introduced in [11], there has been a great deal of research on the problem of designing input-to-state stabilizing controllers [4, 6, 7, 9, 15, 16, 17]. In its usual setting, this problem consists in finding a control law that makes the closedloop system input-to-state stable with respect to external disturbances. Most of this activity has centered around the concept of ISS-control Lyapunov function (ISS-CLF). The existence of an ISSCLF has been shown to be necessary and sufficient for the existence of an input-to-state stabilizing state feedback control law. In fact, the knowledge of an ISS-CLF leads to explicit formulae for such control laws (see [4] and [15, 17] for two different constructions). For certain classes of systems, ISSCLFs can be systematically generated via backstepping [7, 9]. In addition, input-to-state stabilizing control laws possess desirable properties associated with inverse optimality [4, 9].
+
+In parallel with these developments, an integral variant of input-to-state stability (iISS) has been introduced and studied in [1, 12]. Intuitively, while the state of an input-to-state stable system is
+
+\Lambda Submitted to 1999 American Control Conference.
+
+1
+
+small if inputs are small (cf. "L1 to L1 stability"), the state of an integral-input-to-state stable system is small if inputs have finite energy as defined by an appropriate integral (cf., e.g., "L2 to L1 stability"). The concept of iISS is weaker than that of ISS, in the sense that every input-to-state stable system is necessarily integral-input-to-state stable but the converse is not true. From the viewpoint of control design for systems with disturbances, this leads to the existence of systems that are integral-input-to-state stabilizable but not input-to-state stabilizable (an example is given below). This paper is concerned with the problem of designing integral-input-to-state stabilizing control laws, which apparently has not been studied in the literature. We introduce the concept of iISS-CLF, whose existence leads to an explicit construction of an integral-input-to-state stabilizing state feedback control law. Although the results we obtain are similar to those available for the ISS case, some nontrivial modifications of existing notions and techniques are required. A new equivalent characterization of iISS is also established. These developments are heavily based on the work by David Angeli and two of the authors reported in [1], and the characterization given here is actually a minor variation of one of the properties that were established in that paper. Many issues that are resolved for ISS, some of which we mentioned at the beginning, remain to be investigated in the iISS case.
+
+The notion of iISS is precisely defined in the next section. For the definition of ISS the reader is referred to [11, 6, 7, 13]. The concept of ISS is known to be useful in the context of control of uncertain nonlinear systems. In particular, the problem of adaptive nonlinear stabilization can be reduced, via the modular approach proposed in [8], to the problem of input-to-state stabilization with respect to the parameter estimation error. Similar techniques are exploited in the nonlinear supervisory control setting presented in [5], where input-to-state stability is used to prove that the closed-loop system is detectable through the estimation error, which leads to systematic hybrid output feedback stabilization methods. The applicability of this latter idea in the iISS framework will be discussed in a future publication.
+
+2 Characterizations of iISS Consider the system
+
+.x = f (x; d); x 2 Rn; d 2 Rk (1) where f : Rn \Theta  Rk ! Rn is a locally Lipschitz function and d can be viewed either as a disturbance or as a control input. Following [12], we will call the system (1) integral-input-to-state stable (iISS) with respect to d if for some functions ff; fl 2 K1 and fi 2 KL, for all initial states x0, and all d(\Delta ) the following estimate holds:
+
+ff(jx(t)j) ^ fi(jx0j; t) + Z
+
+t
+
+0 fl(jd(s)j)ds 8t * 0: It was shown in [1] that (1) is iISS with respect to d if and only if there exists an iISS-Lyapunov function, i.e., a positive definite proper smooth function V : Rn ! R such that for some class K function oe and some positive definite function ff we have
+
+rV (x)f (x; d) ^ \Gamma ff(jxj) + oe(jdj) 8x; d: (2) Two other necessary and sufficient conditions for iISS were given in [1]. One of them states that (1) is iISS if and only if it is 0-GAS (i.e., the system .x = f (x; 0) is globally asymptotically stable)
+
+2
+
+and zero-output dissipative, i.e., there exist a positive definite proper smooth1 function V : Rn ! R and a class K function oe such that
+
+rV (x)f (x; d) ^ oe(jdj) 8x; d: (3)
+
+A new equivalent characterization of iISS is established below. This characterization, as well as the ones mentioned above, will be useful in studying the concept of iISS-CLF (to be introduced in Section 3).
+
+Proposition 1 The following statements are equivalent: (i) The system (1) is iISS. (ii) There exist a positive definite proper smooth function W : Rn ! R, two class K1 functions ae
+
+and fl, and a positive definite function b with R +10 11+b(r) dr = +1 such that for all x 6= 0 and all d we have
+
+jxj * ae(jdj) ) rW (x)f (x; d) ! fl(jdj)b(W (x)): (4)
+
+(iii) There exist a positive definite proper smooth function W : Rn ! R, two class K1 functions ae
+
+and fl, a positive definite function ff, and a positive definite function b with R +10 11+b(r) dr = +1 such that for all x and d we have
+
+jxj * ae(jdj) ) rW (x)f (x; d) ^ \Gamma ff(jxj) + fl(jdj)b(W (x)): (5)
+
+Proof. The implication (iii))(ii) is trivial. To prove (ii))(i), suppose that (4) holds. According to [1, Theorem 1], we need to verify that (1) is 0-GAS and zero-output dissipative. The 0-GAS property is satisfied because rW (x)f (x; 0) ! 0 8x 6= 0, so that W is a Lyapunov function for the system .x = f (x; 0). To establish zero-output dissipativity, we define the function
+
+V (x) := Z
+
+W (x)
+
+0
+
+1 1 + b(r) dr
+
+which is clearly proper and positive definite by hypotheses. When jxj * ae(jdj) we have
+
+rV (x)f (x; d) = rW (x)f (x; d)1 + b(W (x)) ^ fl(jdj)b(W (x))1 + b(W (x)) ^ fl(jdj) while when jxj ! ae(jdj) we have
+
+rV (x)f (x; d) ^ maxj
+
+xj^ae(jdj) rV (x)f (x; d) =: ^fl(jdj):
+
+Defining oe(r) := maxffl(r); ^fl(r)g for each r * 0, we obtain (3) as needed.
+
+It remains to prove (i))(iii). Suppose that (1) is iISS. By [1, Theorem 1], there exists an iISSLyapunov function V so that (2) holds. Define W (x) := eV (x) \Gamma  1. This function is proper positive definite because V is, thus there exists a function ^ff 2 K1 such that
+
+^ff(jxj) ^ W (x) 8x: (6) 1The smoothness assumption can actually be weakened, cf. Remark 2.3 in [1]
+
+3
+
+Define a function ae 2 K by ae(r) := ^ff\Gamma 1(qoe(r)), r * 0. Whenever jxj * ae(jdj), from (6) we obtain W (x) * ^ff(jxj) * qoe(jdj). Therefore, using (2) we have
+
+rW (x)f (x; d) = rV (x)f (x; d) eV (x) = rV (x)f (x; d)(W (x) + 1)
+
+^ \Gamma ff(jxj)(W (x) + 1) + oe(jdj)(W (x) + 1)
+
+^ \Gamma ff(jxj) + oe(jdj)W (x) + oe(jdj) ^ \Gamma ff(jxj) + oe(jdj)W (x) + qoe(jdj) W (x):
+
+Thus (5) is satisfied with fl(r) := oe(r) + qoe(r) and b(r) := r.
+
+We know from [12, Theorem 2] that if there exist a positive definite proper smooth function W : Rn ! R, a constant q ? 0, and two class K1 functions fl and O/ such that
+
+rW (x)f (x; d) ^ (fl(jdj) \Gamma  q)W (x) + O/(jdj) 8x; d then (1) is iISS. It is also remarked in [12] that, contrary to what the corresponding developments for ISS might suggest, merely asking that
+
+rW (x)f (x; d) ^ (fl(jdj) \Gamma  q)ff(jxj) + O/(jdj) 8x; d for some ff; fl; O/ 2 K1 is not sufficient for iISS. A counterexample given there is .x = (d2 \Gamma  1)x3. Taking W (x) := x2, we obtain rW (x)f (x; d) = (d2 \Gamma  1)2x4, but solutions may escape to infinity in finite time. It follows from Proposition 1 that a suitable "compromise" is to impose the condition
+
+rW (x)f (x; d) ^ fl(jdj)W (x) \Gamma  qff(jxj) + O/(jdj) 8x; d (7) with q ? 0 and ff; fl; O/ 2 K1, as expressed in the following result.
+
+Corollary 2 If there exist a positive definite proper smooth function W : Rn ! R, a constant q ? 0, and class K1 functions ff, fl and O/ such that (7) is satisfied, then the system (1) is iISS.
+
+Proof. It is straightforward to check that (4) holds with ae(r) := ff\Gamma 1(2O/(r)=q) and b(r) := r.
+
+3 Control Lyapunov functions Consider the system
+
+.x = f (x) + G1(x)d + G2(x)u; x 2 Rn; d 2 Rk; u 2 Rm (8) where f : Rn ! Rn, G1 : Rn ! Rn\Theta k and G2 : Rn ! Rn\Theta m are locally Lipschitz functions. We will be interested in the design of integral-input-to-state stabilizing feedback control laws for (8), i.e., control laws of the form u = k(x; d) or u = k(x) such that the closed-loop system is iISS with respect to the disturbance d. We first introduce an appropriate notion of control Lyapunov function. Given a positive definite proper smooth function V : Rn ! R, we will call it an iISS-CLF of the 1st type for the system (8) if there exists a class K1 function oe such that for all x 6= 0 and all d we have
+
+infu fLf V (x) + LG1 V (x)d + LG2 V (x)u \Gamma  oe(jdj)g ! 0: (9)
+
+4
+
+For each x here Lf V (x) := rV (x)f (x) is a scalar and LGi V (x) := rV (x)Gi(x) (i = 1; 2) are row vectors. The inequality (9) can be rewritten as
+
+LG2 V (x) = 0 ) Lf V (x) + LG1 V (x)d \Gamma  oe(jdj) ! 0: (10) Let us define the set D0 := fx 2 Rn : LG2 V (x) = 0g. The following lemma recasts the definition of an iISS-CLF of the 1st type in a more concise way.
+
+Lemma 3 A positive definite proper smooth function V is an iISS-CLF of the 1st type for (8) if and only if there exist a positive definite function ff and a class K function O/ such that for all x and d we have
+
+LG2 V (x) = 0 ) Lf V (x) + LG1 V (x)d ^ \Gamma ff(jxj) + O/(jdj): (11)
+
+Proof. It is clear that (11) implies (9) with oe(r) = O/(r). Now assume that (9) holds. Then we have Lf V (x) + LG1 V (x)d \Gamma  oe(jdj) ! 0 for all x 2 D0 n f0g and all d. Let ff be any positive definite continuous function such that for all r * 0, all x 2 D0 with jxj = r, and all jdj ^ r we have
+
+ff(r) ^ \Gamma Lf V (x) \Gamma  LG1 V (x)d + oe(jdj): Such a function ff exists because for any two numbers 0 ! r ! R there exists a constant c ? 0 with the property that \Gamma Lf V (x) \Gamma  LG1 V (x)d + oe(jdj) ? c for all (x; d) 2 Sr;R := f(x; d) : x 2 D0; r ^ jxj ^ R; jdj ^ Rg. Indeed, if Sr;R is empty, any c ? 0 can be used, and if Sr;R is nonempty, the continuous function \Gamma Lf V (x) \Gamma  LG1 V (x)d + oe(jdj) is bounded away from zero. Thus, if x 2 D0 n f0g and jxj * jdj, we have
+
+Lf V (x) + LG1 V (x)d \Gamma  oe(jdj) ^ \Gamma ff(jxj) : (12) Next, let ^O/ be any class K function with the property that
+
+^O/(r) * Lf V (x) + LG1 V (x)d \Gamma  oe(jdj) + ff(jxj) for all r * 0, all x 2 D0 with jxj ^ r, and all jdj = r. (Arguing as above, one can show that such a function ^O/ exists because for any two numbers 0 ! r ! R there exists a constant c ? 0 with the property that \Gamma Lf V (x) \Gamma  LG1 V (x)d + oe(jdj) ! c for all (x; d) 2 Sr;R. Note that such an upper bound c can be taken to be small if R is small.) Therefore, if x 2 D0 n f0g and jxj ! jdj, we have
+
+Lf V (x) + LG1 V (x)d \Gamma  oe(jdj) ^ \Gamma ff(jxj) + ^O/(jdj): Together with (12), this implies that (11) holds with O/(r) := ^O/(r) + oe(r).
+
+The link between integral-input-to-state stabilization and the existence of an iISS-CLF of the 1st type is provided by the following result.
+
+Proposition 4 If the system (8) admits an iISS-CLF of the 1st type, then there exists an integralinput-to-state stabilizing feedback u = k(x; d) that is smooth when x 6= 0. Conversely, if there exists an integral-input-to-state stabilizing feedback u = k(x; d) that is locally Lipschitz everywhere, then (8) admits an iISS-CLF of the 1st type.
+
+5
+
+Proof. If there exists an integral-input-to-state stabilizing feedback u = k(x; d) that is locally Lipschitz everywhere, then the closed-loop system
+
+.x = f (x) + G1(x)d + G2(x)k(x; d) (13) satisfies the assumptions of Theorem 1 in [1]. This implies that (13) admits an iISS-Lyapunov function, which is then automatically an iISS-CLF of the 1st type for (8).
+
+Now suppose that V is an iISS-CLF of the 1st type for (8). The "universal" formula given in [10] (see also [13]) yields the feedback control law
+
+k(x; d) :=
+
+8??!
+
+??:
+
+\Gamma  ! + q!
+
+2 + (LG
+
+2 V (x)(LG2 V (x))T )2
+
+LG2 V (x)(LG2 V (x))T (LG
+
+2 V (x))
+
+T ; LG
+
+2 V (x) 6= 0
+
+0; LG2 V (x) = 0 where ! := Lf V (x) + LG1 V (x)d \Gamma  oe(jdj). It follows from [10, 13] that this control is smooth when x 6= 0. Indeed, the mapping (x; d) 7! (!; LG2 V (x)(LG2 V (x))T ) sends each pair (x; d) with x 6= 0
+
+into the set S := f(a; b) 2 R2 : b ? 0 or a ! 0g on which the mapping (a; b) 7! \Gamma  a+pa
+
+2+b2
+
+b isanalytic, and k is defined via the composition of these two mappings. Along the solutions of (13)
+
+we have .
+
+V \Gamma  oe(jdj) = \Gamma q!2 + (LG2 V (x)(LG2 V (x))T )2
+
+and this is negative if x 6= 0 by virtue of (10). Thus the system (13) is 0-GAS and zero-output dissipative, hence iISS.
+
+Motivated by the developments of Section 2, we can introduce an alternative definition of iISSCLF as follows. Given a positive definite proper smooth function W : Rn ! R, we will call it an iISS-CLF of the 2nd type for the system (8) if there exist two class K1 functions ae and fl and a positive definite function b with R +10 11+b(r)dr = +1 such that for all x 6= 0 and all d we have
+
+jxj * ae(jdj)
+
++ infu fLf W (x) + LG1 W (x)d + LG2 W (x)u \Gamma  fl(jdj)b(W (x))g ! 0
+
+We then have the following result.
+
+Proposition 5 If the system (8) admits an iISS-CLF of the 2nd type, then there exists an integralinput-to-state stabilizing feedback u = k(x; d) that is smooth when (x; d) 6= (0; 0). Conversely, if there exists an integral-input-to-state stabilizing feedback u = k(x; d) that is locally Lipschitz everywhere, then (8) admits an iISS-CLF of the 2nd type.
+
+Proof. If there exists an integral-input-to-state stabilizing feedback u = k(x; d) that is locally Lipschitz everywhere, then the closed-loop system (13) satisfies the assumptions of Proposition 1. This implies that there exists a function W that satisfies (4), and we see that W is automatically an iISS-CLF of the 2nd type for (8).
+
+Now suppose that W is an iISS-CLF of the 2nd type for (8). The proof of Proposition 4 would suggest the control law
+
+^k(x; d) :=
+
+8??!
+
+??:\Gamma 
+
+! + q!2 + (LG2 W (x)(LG2 W (x))T )2
+
+LG2 W (x)(LG2 W (x))T (LG
+
+2 W (x))
+
+T ; LG
+
+2 W (x) 6= 0
+
+0; LG2 W (x) = 0
+
+6
+
+where ! := Lf W (x) + LG1 W (x)d \Gamma  fl(jdj)b(W (x)). However, this control law may fail to be well defined on the set f(x; d) : LG2 W (x) = 0; jxj ! ae(jdj)g since ! is not necessarily negative there. To fix this problem, we modify the control law as follows. We start by finding a smooth function ' : Rn \Theta  Rk n f(0; 0)g ! [0; 1] such that '(x; d) = 0 if jxj ^ ae(jdj) and '(x; d) = 1 if jxj * 2ae(jdj). It is well known that such a "bump" function exists because S1 := f(x; d) : jxj ^ ae(jdj)g and S2 := f(x; d) : jxj * 2ae(jdj)g are disjoint closed subsets of the manifold Rn \Theta  Rk n f(0; 0)g (see, e.g., [3, Lemma 3.1.2]). Then we let
+
+k(x; d) :=
+
+8??!
+
+??:
+
+\Gamma  ! + q!
+
+2 + (LG
+
+2 W (x)(LG2W (x))T )2
+
+LG2 W (x)(LG2W (x))T (LG
+
+2 W (x))
+
+T '(x; d); LG
+
+2 W (x) 6= 0
+
+0; LG2 W (x) = 0
+
+(note that LG2 W (0) = 0, so the fact that '(0; 0) is undefined does not matter.) Since on the set S3 := f(x; d) : jxj * ae(jdj); (x; d) 6= (0; 0)g we have ! ! 0 whenever LG2 W (x) = 0, there is a neighborhood D of S3 such that ! ! 0 whenever LG2 W (x) = 0 and (x; d) 2 D. This implies that the function ^k is smooth on D, from which it follows that k is smooth on D. Also note that k is smooth on the interior *S1 of S1 because k j 0 on S1 n f(0; 0)g. Since Rn \Theta  Rk n f(0; 0)g = D [ *S1, we conclude that k is smooth on Rn \Theta  Rk n f(0; 0)g. Along the solutions of (13) we have
+
+jxj * 2ae(jdj) ) .W \Gamma  fl(jdj)b(W (x)) = \Gamma q!2 + (LG2 W (x)(LG2W (x))T )2 and this is negative if x 6= 0. Thus the system (13) is iISS by virtue of Proposition 1.
+
+The above results can be improved in two different ways. First, under certain additional assumptions on iISS-CLFs the control laws that we have constructed can be shown to be continuous everywhere. Second, the requirement that an integral-input-to-state stabilizing control law be Lipschitz everywhere is not necessary for the existence of an iISS-CLF. These observations are subsumed in the discussion that will be given at the end of Section 4.
+
+It is not hard to see from the proof of Proposition 1 and from the definitions of iISS-CLFs that if V is an iISS-CLF of the 1st type, then an iISS-CLF of the 2nd type (with b(r) = r) can be defined by W (x) := eV (x) \Gamma  1. On the other hand, if W is an iISS-CLF of the 2nd type, then an iISS-CLF
+
+of the 1st type can be defined by V (x) := R W (x)0 11+b(r)dr. For example, V (x) = ln(1 + W (x)) if b(r) = r.
+
+Recall that a positive definite proper smooth function W : Rn ! R is an ISS-CLF for (8) if there exists a class K1 function ae such that for all x 6= 0 and all d we have
+
+jxj * ae(jdj)
+
++ (14) infu fLf W (x) + LG1 W (x)d + LG2 W (x)ug ! 0
+
+(see, e.g., [6, 9]). Any ISS-CLF is automatically an iISS-CLF of the 2nd type as can be readily seen from the above definitions, but the converse is not true. In fact, there are systems for which an iISS-CLF can be found while no ISS-CLF exists (see the example below), so the concept of iISS-CLF is indeed a meaningful one.
+
+Example. Consider the two-dimensional system
+
+.x = \Gamma x + xd + u \Gamma  x2d
+
+.y = \Gamma y + yd \Gamma  u + x2d (15)
+
+7
+
+No matter what control is applied, d j 2 gives ddt (x + y) = x + y. This means that a bounded disturbance may lead to an unbounded trajectory, and hence the system (15) is not input-to-state stabilizable (and thus does not admit an ISS-CLF). On the other hand, it is not hard to see that it is integral-input-to-state stabilizable: setting u = x2d, we obtain the system
+
+.x = \Gamma x + xd
+
+.y = \Gamma y + yd (16)
+
+which is known to be iISS [12]. As an iISS-CLF one can take W = x2 + y2. Along the solutions of (16) we have .W = \Gamma 2W + 2W d ! fl(jdj)W 8x 6= 0, where fl(r) := 2r, hence W is an iISS-CLF of the 2nd type (with b(r) = r). It is not obvious how to integral-input-to-state stabilize the system (15) without canceling some of the terms that contain the disturbance. However, we will show in the next section that if there exists an iISS-CLF, then we can always find an integral-input-to-state stabilizing control in the pure state feedback form, i.e., one that does not depend on d.
+
+4 State feedback We showed in the previous section how an integral-input-to-state stabilizing feedback control of the form u = k(x; d) can be constructed from an iISS-CLF. This result is useful when the disturbance d can be directly measured and used for control. The next logical step is to ask whether the existence of an iISS-CLF implies that an integral-input-to-state stabilizing control in the state feedback form u = k(x) can be found. In this section we give a positive answer to this question. Regarding the ISS case, it is shown, e.g., in [9] that (14) is equivalent to the condition that for all x 6= 0 we have
+
+LG2 V (x) = 0 ) Lf V (x) + jLG1V (x)jae\Gamma 1(jxj) ! 0 and thus the "universal" construction of the type described in [10, 13] yields an input-to-state stabilizing control law that depends only on the state x and not on the disturbance d. It seems that in the iISS case a more involved argument is required.
+
+Proposition 6 If the system (8) admits an iISS-CLF of the 1st type, then there exists an integralinput-to-state stabilizing feedback u = k(x) that is smooth on Rn n f0g.
+
+Proof. Suppose that V is an iISS-CLF of the 1st type. Let a(x) := Lf V (x), b1(x) := LG1 V (x), and b2(x) := LG2 V (x). By Lemma 3, there exist a positive definite function ff and a class K function O/ such that for all x and d we have
+
+b2(x) = 0 ) a(x) + b1(x)d ^ \Gamma ff(jxj) + O/(jdj): In particular, letting d = 0 we obtain
+
+b2(x) = 0 ) a(x) ! 0 8x 6= 0: (17) This means that V is a CLF (in the sense of [10, 13]) for the system .x = f (x) + G2(x)u. Recall that D0 was defined to be the set fx 2 Rn : b2(x) = 0g. Let D1 be a neighborhood of D0 n f0g in
+
+8
+
+Rn such that for each x 2 D1 there exists some x0 2 D0 n f0g with ja(x) \Gamma  a(x0)j ! ff(jx0j) and jb1(x) \Gamma  b1(x0)j ! 1. Then for each x 2 D1 and each d we have (picking an appropriate x0 for x):
+
+a(x) + b1(x)d = a(x0) + b1(x0)d + (a(x) \Gamma  a(x0)) + (b1(x) \Gamma  b1(x0))d
+
+! \Gamma ff(jx0j) + O/(jdj) + ff(jx0j) + jdj = ^oe(jdj)
+
+where ^oe(r) := O/(r) + r. Let D2 be a neighborhood of 0 in Rn such that jLG1 V (x)j ^ 1 for all x 2 D2. Then for all x 2 D2 and all d we have
+
+a(x) + b1(x)d + b2(x)u ^ a(x) + jdj + b2(x)u: Note that D1 [ D2 is a neighborhood of D0 in Rn. Let '(x) : Rn ! [0; 1] be a smooth function such that '(x) = 0 if x 2 D0 and '(x) = 1 if x =2 D1 [ D2. Such a "bump" function is well known to exist (see, e.g., [3, Lemma 3.1.2]). Consider the feedback law of the form k(x) = k0(x) + k1(x), where
+
+k0(x) :=
+
+8??!
+
+??:\Gamma 
+
+a(x) + q(a(x))2 + (b2(x)b2(x)T )2
+
+b2(x)b2(x)T b2(x)
+
+T ; b2(x) 6= 0
+
+0; b2(x) = 0 and
+
+k1(x) :=
+
+8?!
+
+?:
+
+\Gamma  b1(x)b1(x)
+
+T
+
+b2(x)b2(x)T b2(x)
+
+T '(x); b2(x) 6= 0
+
+0; b2(x) = 0 Observe that b2(x)k0(x) ^ 0 and b2(x)k1(x) ^ 0 for all x, so also b2(x)k(x) ^ 0 for all x. For all (x; d) with x 2 D1 we have
+
+a(x) + b1(x)d + b2(x)k(x) ! ^oe(jdj) + b2(x)k(x) ^ ^oe(jdj): For all (x; d) 6= (0; 0) with x 2 D2 we have
+
+a(x) + b1(x)d + b2(x)k(x) ^ \Gamma q(a(x))2 + jb2(x)j4 + jdj + b2(x)k1(x) ! 2jdj (because either b2(x) = 0, in which case a(x) ! 0 by (17), or b2(x) 6= 0, in which case a(x) + b2(x)k0(x) ! 0 by definition of k0). Finally, for all (x; d) with x =2 D1 [ D2 we have
+
+a(x) + b1(x)d + b2(x)k(x) ^ \Gamma q(a(x))2 + jb2(x)j4 + b1(x)d \Gamma  jb1(x)j2
+
+^ \Gamma q(a(x))2 + jb2(x)j4 + jdj2=4 ! jdj2=2: Putting the above inequalities together, we obtain
+
+a(x) + b1(x)d + b2(x)k(x) ! oe(jdj) 8(x; d) 6= (0; 0) where oe(r) := maxf^oe(r); r2=2; 2rg. This implies that the closed-loop system is 0-GAS and zerooutput dissipative, hence iISS. Finally, to see that k(x) is smooth on Rn n f0g, notice that k1(x) is smooth everywhere while k0(x) is smooth on Rn n f0g.
+
+We know from [10, 13] that the control law k(x) defined in the above proof will in addition be continuous at x = 0 if V satisfies the following small control property: for each ffl ? 0 there exists a ffi ? 0 such that whenever 0 ! jxj ! ffi there exists some u with juj ! ffl for which
+
+Lf V (x) + LG2 V (x)u ! 0: (18)
+
+9
+
+One situation in which this happens is when there exists an integral-input-to-state stabilizing feedback u(k; d), locally Lipschitz everywhere, such that k(0; 0) = 0 (as in the example of Section 3). Indeed, in this case there exists an iISS-CLF of the 1st type V that satisfies (9) for some oe 2 K1. Letting d = 0 gives Lf V (x) + LG2 V (x)k(x; 0) ! 0. Since k(x; d) is continuous and k(0; 0) = 0, we see that the small control property is satisfied.
+
+Note that we have not yet obtained a necessary and sufficient condition for integral-input-to-state stabilization, since the necessity parts of Propositions 4 and 5 require that the control be locally Lipschitz at x = 0. A similar issue in fact arises in the context of ISS, and it has been frequently overlooked. One way to fix this problem in the case of an input-to-state stabilizing control law that is only smooth when x 6= 0 is to consider a positive definite function ff such that the right-hand side of the closed-loop system becomes smooth everywhere when multiplied by ff(jxj). Then the results of [14] allow one to conclude that this modified system will possess an ISS-CLF, which will in turn be an ISS-CLF for the original system because ff is positive definite (a similar trick was used in [2], although for a different purpose, namely, assuring continuity at the origin of a possibly discontinuous vector field). Alternatively, one can appeal to the results of [17] where a generalization of a converse Lyapunov theorem was proved for systems that do not have the regularity property on the invariant sets. As for the iISS case, a careful examination of the argument in [1] reveals that it does not use the assumption that the right-hand side is Lipschitz at zero. Therefore, to ensure the existence of an iISS-CLF is is enough to require that an integral-input-to-state stabilizing state feedback be smooth when x 6= 0 and continuous at 0. Since the existence of an iISS-CLF of the 2nd type implies the existence of an iISS-CLF of the 1st type, we can summarize our main findings as follows.
+
+Theorem 7 The system (8) admits an integral-input-to-state stabilizing state feedback control law u = k(x) that is smooth on Rn n f0g and continuous at 0 if and only if there exists an iISS-CLF of either the 1st or the 2nd type that satisfies the small control property.
+
+References
+
+[1] D. Angeli, E. Sontag, and Y. Wang, A characterization of integral input to state stability,
+
+submitted (summarized version in 1998 CDC).
+
+[2] Z. Artstein, Stabilization with relaxed controls, Nonlinear Anal., vol. 7, 1983, pp. 1163-1173. [3] M. Berger, B. Gostiaux, Differential Geometry: Manifolds, Curves, and Surfaces, SpringerVerlag, New York, 1988.
+
+[4] R. A. Freeman, P. V. Kokotovic, Inverse optimality in robust stabilization, SIAM J. Control
+
+Optim., vol. 34, 1996, pp. 1365-1391.
+
+[5] J. P. Hespanha, A. S. Morse, Certainty equivalence implies detectability, in Proc. 3rd Joint
+
+Conf. Information Sciences, 1997. To appear in Systems and Control Letters.
+
+[6] M. Krstic, H. Deng, Stabilization of Nonlinear Uncertain Systems, Springer-Verlag, London,
+
+1998.
+
+10
+
+[7] M. Krstic, I. Kanellakopoulos, P. V. Kokotovic, Nonlinear and Adaptive Control Design, Wiley,
+
+New York, 1995.
+
+[8] M. Krstic, P. V. Kokotovic, Modular approach to adaptive nonlinear stabilization, Automatica,
+
+vol. 32, 1996, pp. 625-629.
+
+[9] M. Krstic, Z.-H. Li, Inverse optimal design of input-to-state stabilizing nonlinear controllers,
+
+IEEE Trans. Automat. Control, vol. 43, 1998, pp. 336-350.
+
+[10] E. D. Sontag, A "universal" construction of Artstein's theorem on nonlinear stabilization,
+
+Systems Control Lett., vol. 13, 1989, pp. 117-123.
+
+[11] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Trans. Automat. Control, vol. 34, 1989, pp. 435-443.
+
+[12] E. D. Sontag, Comments on integral variants of ISS, Systems Control Lett., vol. 34, 1998, pp.
+
+93-100.
+
+[13] E. D. Sontag, Mathematical Control Theory, Deterministic Finite Dimensional Systems, second
+
+edition, Springer-Verlag, New York, 1998.
+
+[14] E. D. Sontag, Y. Wang, On characterizations of the input-to-state stability property, Systems
+
+Control Lett., vol. 24, 1995, pp. 351-359.
+
+[15] E. D. Sontag, Y. Wang, "On characterizations of input-to-state stability with respect to compact sets," in Proc. IFAC Non-Linear Control Systems Design Symposium (NOLCOS '95), Tahoe City, CA, June 1995, pp. 226-231.
+
+[16] J. Tsinias, Control Lyapunov functions, input-to-state stability and applications to global
+
+feedback stabilization for composite systems, J. Math. Systems Estim. Control, vol. 7, 1997, pp. 235-238.
+
+[17] Y. Wang, A converse Lyapunov theorem with applications to ISS-disturbance attenuation, in
+
+Proc. 13th IFAC World Congress, 1996, vol. E, pp. 79-84.
+
+11</pre>
+</body>
+</html>

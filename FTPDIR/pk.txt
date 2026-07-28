@@ -1,0 +1,1323 @@
+OCR of paper; see pdf file   pk.pdf  for viewable/printable page
+
+
+
+
+11 1 1 1 RANSAC I IONS ON AUTOMATIC CON TROT, VOL. Ac -27, No. 3. JUNE 1982
+On the Relation Between Stable Matrix
+Fraction Factorizations and Regulable
+Realizations of Linear Systems
+Over Rings
+PRAMOD P. KHARGONEKAR AND EDUARDO D. SONTAG
+Abstract -Various tNpes of transfer matrix factorizations are of interest
+"hen designing regulators for generalized types of linear systems (delay
+differential. 2-D, and families of systems). This paper studies the existence
+of stable and of stable proper factorizations. in the context of the theon of
+S~stem% oser rings. Factorability is related to stabilizabilin and detectabil-
+itN properties of realizations of the transfer matrix.
+1. INTRODUCTION
+HIS paper is motivated by recent research on the
+regulation ("servo problem") of certain classes of con-
+T
+trol systems which are "finite dimensional" and "linear" 'in
+a generalized sense. In contrast to the more standard linear
+finite dimensional case, linearity enters here in a more
+abstract sense, via the action of rings of operators or in
+terms of constraints on the quantities involved. For exam-
+ple, take a controlled delay equation like
+(dxldt)(t x(t ) -i- 3x(t - 1) - u(t - 2) (1.1)
+whose natural state space is an infinite dimensional func-
+tion space. This equation can be seen as a "finite dimen-
+sional" object if one introduces a ring of delay operators
+R[O], where (Ox)(t) x(t - 1), and then writes
+(d,xldt)(t) (I +30)x(t)+ (- 02)U(t). (1.2)
+This point of view suggests the use of methods from the
+usual theory in which coefficients of x(t) and u(t) are
+constant, but generalized to polynomial coefficients. In
+another example, when dealing with a discrete time system
+x(t + 1) - Fx(t) + Gu(t), (1.3)
+one may want to restrict all control u(t) and state values
+x(t), as well as the entries of F and G to be integers, it is
+natural to model such restricted linear systems as systems
+over the ring of integers. In a variation of this last example,
+all quantities may be evaluated only modulo a fixed num-
+ber r; for instance, r = 2', 1 = word length of a given
+Manuscript received January 13. 1981: revised May 27. 1981. Paper
+recommended by E. W. Kamen, Chairman of the Linear Systems COM_
+mittee. This work was supported by U.S. Army Research irant . DAAG
+29-80-C(X)50 and U.S. Air Force Grants AFOSR-76-3034 ModD and
+AFOSR-90-0196. stem Theory
+P. P. Khargonckar is with the Center for Mathematical Sv -,
+and the Department of Electrical Engineering, University of Florida
+Gaincs%ille, FL 32611,
+E. D. Sontag is with the Department of Mathematics, Rutgen, Univer-
+sity, NcA Brunswick, NJ 09903.
+627
+computer. In this case one uses the ring of integers mod r
+to study a class of systems which are, in a sense. nonlinear.
+Yet another example of these generalized classes of systems
+is the situation in which one is interested in the study of
+parameterized classes of linear systems; this may be ap-
+proached through the study of systems whose coefficients
+are functions of the parameters. with these functions hav-
+ing a specific structure (polynomial. analytic); the solution
+to a synthesis problem over the ring will provide a para-
+meteri'zed family of solutions to the corresponding problem
+for each system in the family. The literature on "systems
+over rings 11 is by now rather wide, and the reader is
+referred to the surveys Kamen [151 and Sontag [26], [281,
+and to the various papers on the subject 'In Byrnes and
+Martin [4]. [5] for further motivations and examples.
+Some of the generalized kinds of linear systems have
+been traditionally treated by other methods. This is espe-
+cially so of various types of distributed systems, which can
+be studied via functional-analytic techniques or through
+the use of "frequency domain" (transfer matrix) design
+tools (see, e.g., Callier and Desoer [61). We are interested
+here in the comparison to these latter methods, which
+involve an input/output approach in terms of various
+factorizations of transfer matrices (see, for instance, Youla
+et aL [311 and Desoer et aL [71). The systems over rings
+approach is based on generalizations of state space tech-
+niq iues and in relation to the corresponding 1/0 maps. The
+main objective of this paper is to clarify the relationships
+between. on the one hand, the type of factorability assump-
+tions made in the frequency domain approach, and on the
+o .ther hand, properties of realizations and 1/0 maps over
+rings. It is not our purpose here to study problems of
+optimality, nor to characterize the class of all regulators
+achieving stability for a given plant; we concentrate solely
+on existence questions. The characterizations to be given in
+terms of stabilizability and detectability of realizations
+intuitive understanding of many of the factoriza-
+permit an
+tions which employ rings of stable transfer functions. These
+factorizations can, in turn, be used in the study of other
+con trol- theoretic problems (output regulation, tracking, and
+ect on). Furthermore, some of the criteria
+disturbance rej I
+given are useful in checking whether or not a given transfer
+matrix admits a factorization of the type needed. while
+0018-9286/82/0600-0627$00.75 (~)1982 IEEE
+<<PAGE-DIVIDER>>
+628
+other results exhibit the relations between existence of
+factorizations of different kinds.
+It is important to note two major differences between
+our approach here and that in recent transfer matrix design
+methods. The first is that factorization and realization
+questions are considered here always in the context of a
+particular ring. For example, assume that one studies delay
+dif ferential systems modeled over a ring R [ 0 1, - - -, 0, J, where
+0, is an a,-second delay, for some rationally independent
+numbers a, Then all realizations, regulators, etc., are auto-
+matically systems over the same ring, i.e., delay systems
+whose delays are all integer combinations of the same basic
+length a,'s. In order to study more general realizations or
+regulators, one changes the base ring (for example, enlarges
+it to include more general operators from a suitable distri-
+bution ring as in Kamen [161). Another major difference
+here is that causality is explicitly considered via a special
+role for a delay (in discrete-time) or differentiation (in
+con ti nuous- time) operator z in the transfer matrices. This
+allows the realization of systems via difference or differen-
+tial operators, depending on the interpretation of z.
+II. SYSTEMS AND TRANSFER MATRICES
+The results in this paper cannot be established without
+employing certain abstract concepts and results from com-
+mutative algebra. However, all of the results can be trans-
+lated into "concrete" matrix theoretic terms for most base
+rings of system -theoretic interest, like a polynomial ring
+K[01,- - -,0,,] of polynomials in r variables with real (K =R)
+or complex (K = C) coefficients, or the ring of integers.
+Developing the theory only for such rings would be unnat-
+ural, since proofs would still be basically the same, but
+would have to be complemented with repeated use of the
+equivalences, e.g., "projective= free" (see below), which
+hold over these special rings. Furthermore, some rings for
+which the full "abstract" statements are needed are them-
+selves of interest In system theory, e.g., certain residue
+rings. We shall therefore proceed in the following way. If
+the translation of an abstract concept does not follow- for
+the above-mentioned rings-from previously given transla-
+tions, it will be given enclosed in slashes after the
+concept is introduced. Further, at various points the even
+more particular case of a one-variable polynomial ring
+R[01 will be used as an illustration, and in the last section
+an example is given which is also based on this ring.
+In all that follows, R is an arbitrary, but fixed commuta-
+tive ring (with identity). /Let R = integers or R = real or
+complex r-variable polynomial ring./ For the undefined
+algebraic terms, the reader should consult Bourbaki [1].
+Examples of rings of sys tem- theoretic interest are given in
+the references already mentioned; the last section will
+further restrict R. The term "module" will always mean
+finitely generated module over R or another ring if clear
+from the context, and linear will always mean linear with
+respect to the ring and modules in question. Composition
+of linear maps A, B will be denoted just by their juxtaposi-
+tion AB. When modules are free, linear maps will be
+IEEE TRANSACTION'S ON AUTOMATIC CONTROL, VOL. Ac-27, No. 3. juNE 1982
+identified with their matrices in any fixed basis, with the
+same notation used for a map and its matrix. The integer
+n(X) will denote the minimal possible cardinality of a set
+of generators for the module X. /All "modules" X of
+Interest in definitions and statements can be assumed to be
+free, i.e., sets of column vectors X = R", where n( X) - n,
+endowed with the coordinatewise operations./ Two arbi-
+trary integers m, p will be used to indicate number of input
+and output channels. respectively. When discussing any
+given system or transfer matrix, both the input- and out-
+put-value sets U: = R` and Y: = RP will be assumed
+fixed.
+A system I = (X, F, G, H, J) is given by a projective
+module X (the state space) and linear maps F: X - X, G:
+U-X, H: X-Y, andJ: U-Y. WhenJ=O, one has a
+strictly causal system; for such systems one drops J from
+the description.
+Most rings that have appeared in the system theory
+literature are projective-free, i.e., projective modules over R
+are free. This includes polynomial rings in any number of
+variables with coefficients in a field, rings of continuous
+functions on contractible spaces, and principal ideal do-
+mains. Over such rings a system can then be thought of as
+a collection of matrices of appropriate sizes. Projective
+modules must still be used in developing the theory, how-
+ever, since most constructions result in these.
+/A system (R", F, G, H, J) is given by matrices F, G, H,
+J of sizes n X n, n X m, p X n, and p X m, respectively,
+strictly causal 1 f J = 0. For instance, over R = R [ 0 1 a " sys-
+tem" is really a family of classical linear systems
+(F(O), G(O), H(O), J(O)), parameterized by 0. These
+matrices can be seen as representing a discrete or continu-
+ous time linear system. In order to fix ideas, we shall follow
+this example through the paper as applied to continuous-
+time systems./
+It is useful to introduce the discrete-time interpretati .on of
+a system. This corresponds to thinking of 1: as determining
+a set of equations
+x(t + 1) = Fx(t) + Gu(t), (2. 1 a)
+Y(t) = Hx(t)+ Ju(t) (2. 1 b)
+where u(t), x(t), and y(t) denote input, state, and output
+values at integer times t. The use of (2.1) permits us to give
+many of the definitions, and to interpret the results in an
+intuitive way even if one is interested in other interpreta-
+tions of the notion of system (e.g., delay-differential).
+Whatever definitions are given using the discrete time
+interpretation car. be translated into algebraic properties of
+the maps defining a system, and in that sense they apply to
+all possible interpretations.
+For example, it is natural to define a state to be reacha-
+ble (from the origin) if it can be obtained as x(T) for some
+T > 0 when starting from x(l) = 0 and solving (2. 1 a) wl th
+some sequence of inputs u(1), - - .,u(T- 1). Let e, be the ith
+element of the standard basis in U, g,: = Ge, and n = n(X).
+Then reachable states are precisely those in
+span(F,g,,j = 0, -,n - 1, i = 1, -,m). (2.2)
+<<PAGE-DIVIDER>>
+KHARGONEKAR AND SONTAG: FACTORIZATIONS AND REALIZATIONS OF LINEAR SYSTEMS
+A slvstem is reachable if every state is reachable, i.e.. if the
+span In (2.2) is all of X. Since reachable states are them-
+selves controllable to zero (see below), reachability is
+equivalent to the complete controllability (any state can be
+driven to any other state) of the discrete time interpreta-
+tion. One defines observability by the requirement that any
+two states be distinguishable by their input/output behav-
+ior; this corresponds with n = n( X) to
+n - I
+nkerHP ~ (0). (2.3)
+1=0
+(When R is an integral domain and X is free, (2.3) can be
+expressed as the usual Kalman observability condition.) A
+canonical system is one that is both reachable and observa-
+ble. The dual of E is the system I': ~ ( X', P, H', G', J')
+where X' is the linear dual of X and F', etc. indicate
+transpose (adjoint) maps. Note that m, p are reversed for
+the dual system. A coreachable (or "strongly observable")
+system is one whose dual is reachable; this concept may be
+interpreted in terms of reachability of "observables" of the
+system. A split system is one that is both reachable and
+coreachable. The concepts discussed in this paragraph are
+by now relatively well-known; the references given before
+should be consulted for more details.
+lReachabilit~, means that block matrix g(Y-) =
+[G, FG,. - .,Fn __ 'GI has a right inverse over the ring R~
+coreachability means that [H', F'H',. . -,W)" -'H'] has a
+right inverse over R; split if both hold. Observabilit -v corre-
+sponds to this last matrix being full-rank. Over R = R[61,
+reachability is equivalent to the gcd of the minors of g(::)
+being a unit, or to the matrix g(E)(O) being full-rank when
+evaluated at each complex number 0./
+For purposes of regulation one needs much less than
+reachability and/or coreachability of a given system. In
+order to define the more general conditions. we first need
+some notion of stability and/or convergence. A purely
+algebraic way of introducing these is to postulate a set of
+11 stable" polynomials to be fixed throughout the construc-
+tion. This idea was used by Morse [241. Our approach here
+follows Hautus and Sontag [141, but is generalized to the
+nonintegral domain case. A Hurwitz set S will be a multi-
+plicative subset of admissible polynomials in RJz] which
+contains at least one polynomial z - a of degree one, and
+which is closed under associates. (A polynomial p(z) is
+called admissible in Khargonekar [201 if there exists another
+polynomial b(z) such that the product pb has a monic
+leading coefficient; for integral domains this means just
+that the leading coefficient of p Is a unit in R. Closed under
+a.~sociates means that a(z)p(z) belongs to S whenever p(--)
+is in S and a(z) is a unit in R[Z]~ for integral domains such
+an a(z) is necessarily a constant.) The definitions and
+results to follow will always assume a Hurwitz set has been
+given.
+/As a running example, for R = R [ 0 1, let S be the set of
+polynomials p(O, Z) in R [ z I which are monic in : and such
+that p(v,s) is not zero for any v real and s with nonnega-
+tive real part. "Monic" can be taken to mean with leading
+coefficient in - equal to one, or simply a nonzero constant,
+629
+this will not make any difference in what follows. Thus a
+polynomial in S represents a family of polynomials in
+R[z], parameterized by a scalar parameter 0, all of the
+same degree, and all Hurwitz in the usual (continuous-time)
+sense. The same type of example could, of course, be given
+for families parameterized by r - I variables./
+Consider the ring R((Z 1 )) of (formal) Laurent series
+over R. This is the set consisting of all fc-imal sums
+!a, z a, = 0 for t -_ t(,, (2.4a)
+where the ring operation is the usual multiplication. This
+ring was shown to be very useful in realization over rings
+by Wyman [301, and can be considered Itself as a module
+over the subring R[z] consisting of polynomials on non-
+negative powers of z. Another subring of interest is the ring
+R[(z )] of rational power series, this is the ring of fractions
+T 'R[z], where T is the set of polynomials in z which are
+admissible in the sense explained above. This ring of
+fractions will be identified with the subring (and R[zl-sub-
+dule) of R((z ')) obtained by long division into nega-
+mo
+tive powers of z. For a Hurwitz set S one may consider the
+ring of fractions S- 'R[z], which can also be seen as a
+subring of the Laurent series ring. The elements of this
+fraction ring will be called stable rational functions. For
+the discrete time interpretation it is useful to think of
+elements (2.4a) just as time functions
+a(t) = a, (2.4b)
+with support bounded to the left. The stable ones now \vill
+be interpreted as -(asymptotically) stable" sequences, and
+the notation
+a(t), - '0 (as t - x) (2.5)
+will be used for these. (The quotation marks in the notation
+are included in order to emphasize that, for a particular
+Hurwitz set, these sequences may not converge in any
+reasonable sense. The "convergence" interpretation is very
+useful in guiding the proofs, as will be seen below, and the
+interest in applications is, of course, that in which either of
+these sequences indeed converge or they represent the
+coefficients of an expansion of a transform of a function
+which converges in the sense represented by the choice of
+S.) A proper (respectively, strictly proper) sequence (or
+series) will be one with a(t) = 0 for negative t (respectively.
+nonpositive t), i.e., power series in Z ' (respectively. with
+no constant term). For rational series and integral domains
+R properness corresponds to having a representation
+p(--)Iq(--) with deg( p) -z~ deg(q) (" < " for strictly proper).
+The subring of proper stable series will be denoted by
+pr(R, S). The same notations will also be used for the set
+of Laurent series M((z 1)) over a module M. This is a
+module over R((z ')) in the obvious way-, the stable ele-
+ments here are the elements of S 'M[z] = (S 1R[:J)0M.
+and these form a module over S 'R[z]. For example. in
+the case M = R". S 'R"[z] is the set of all n vectors of
+stable series.
+'/For our running example of continuous-time scalar-
+parameter families, a series in p(R, S) represents a family
+<<PAGE-DIVIDER>>
+630
+of transfer functions p(#, z)lq(O, z) each of which is
+Hurwitz stable. The coefficients a, = a,(0) give, then, for
+each 0 the expansion of the Laplace transform of the
+corresponding stable transfer function./
+An (asymptotically) stable system is one for which the
+characteristic polynomial det(zl - F) is in S. (Since state
+spaces are projective, characteristic polynom~ials are well-
+defined up to associates, by the method in K-hargonekar
+[201.) /In our example, a stable system is, in fact, a family
+of continuous-time systems as before, such that each sys-
+tem in the family is stable./
+A state x^ is (null-) asymptotically controllable (a.c.) if
+there exists an (infinite) input sequence (u(t ), t _- I ) with
+u(t)' - '0 and such that the solution of (2. 1 a) with x(1) ~
+x^ also satisfies x(t)' - '0. Asymptotically controllable
+states form a submodule of X. A system is asy,controllable if
+every state is a.c. A system is detectable if its dual is
+asycon troll able. Note again that in the abstract setup there
+is no reason that these controllability concepts really should
+correspond to any such concrete notion, although of course
+this will be the case in the applications of interest (I.e.,
+choice of Hurwitz set).
+/For our example, a system (i.e., family of continuous-
+time systems) is asycontrollable (respectively, detectable)
+iff each member of the family is asycontrollable ("stabiliz-
+able" In the usual literature) (respectively, detectable); this
+is discussed in detail in Section VI. For nonscalar (real)
+parameters it is still an open problem whether or not
+asycontrollability of the family is equivalent to each system
+being stabilizable, but the above definition is still equiva-
+lent to a number of "spectral" types of conditions (and for
+complex parameters the equivalence always holds); this is
+discussed in Hautus and Sontag [141./
+A rational matrix or transfer matrix (with m inputs and p
+outputs) W = W(z) is a p X m matrix whose entries are in
+Rf(z)]. A [strictly] proper transfer matrix is one whose
+entires are all (strictly) proper. Any system I gives rise to a
+corresponding proper transfer matrix W = W('-'5') defined
+by
+W(z) = H(zl - F) G + J. (2.6)
+When J = 0, W is strictly proper. Conversely, a (strictly)
+proper W always admits a realization, i.e., a (strictly causal)
+Y, satisfying (2.6). In fact, it is known from the realization
+theory over rings how to construct for any given W a
+canonical realization; this realization does not appear to be
+that useful for regulation questions, however, because the
+corresponding state space is, in general, not projective
+(except for special rings, like those in the last section).
+Finally, we define a transfer matrix to be stable if each of
+its entries is stable.
+As remarked in the introduction, there has been interest
+lately in various types of factorizations of transfer matrices.
+One considers a
+right factorization
+W=PQ (2.7)
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL. VOL. AC-27, No. 3, JUNE 1982
+or a
+left factorization
+W = Q__ IP, (2.8)
+with P and Q either polynomial or rational matrices. (For
+the factorizations to be well-defined, we assume in the
+polynomial case that Q is admissible, 1.e., that det Q is
+admissible 'In the sense defined before; in the rational case
+we assume that Q can be written as q-'Q with the
+polynomial q monic and the polynomial matrix Q admis-
+sible.) We are interested here in factorizations that satisfy a
+Bezout condition: for P and Q as in (2.7), this means that
+there exist matrices A and B such that
+AP + BQ = 1; (2.9)
+for P and Q as in (2.8) one wants A and B with
+PA + BQ = 1. (2.10)
+(in (2.9), B is square m by m, and A is m by p; dually for
+(2.10).) Depending on the type of matrices A and B al-
+lowed in the above, as well as on the allowed P and Q. one
+may then classify factorizations as: 1) polynomial, 2) stable,
+and 3) proper stable, meaning that all the matrices appear-
+ing- A, B, P, Q -must be of the corresponding type.
+The main goal of this paper is to relate the various types
+of factorizations with the existence of realizations of differ-
+ent kinds. One of these relations is already known as
+follows.
+Theorem 2.11 [20J.- The following statements are equiv-
+alent for any strictly proper transfer matrix W:
+1) W admits a polynomial right factorization;
+2) W admits a polynomial left factorizatim
+3) W admits a split realization;
+4) the canonical realization E( W) is (projective) and
+split.
+/In 4), read " the canonical realization exists and is split."/
+In Emre and Khargonekar I I I I i t is proved that a (f ree)
+split system can be regulated in much the same way as in
+the classical (linear finite-dimensional) case. Roughly.
+it Is possible to achieve arbitrary dynamics both for the
+regulated input/output behavior and for the remaining
+(observer) modes of the closed-loop (plant/ regulator) dy-
+namics. Moreover, the split condition can be checked in
+various ways directly from W (see Sontag [261, [271 and
+Khargonekar [20]). If the system is Just reachable and
+detectable, the same paper shows how essentially arbitrary
+dynamics can be achieved for the regulated 1/0 behavior
+while keeping the observer modes stable. Finally, Emre 1101
+proved that if the system is (only) asycontrollable and
+detectable, then it admits a stabilizing compensator. These
+results provide a strong motivation for the study of the
+existence of split, reac hab 1e /detectable, and asycontrolla-
+ble/detectable realizations.
+The existence of Bezout factorizations would appear to
+be rather restrictive when working over rings. A recent
+result of Lee and Olbrot [221, however, established the
+<<PAGE-DIVIDER>>
+KHARGONLKAR AN[) SONTAG: FACTORIZATIONS AND REALIZATIONS OF LINEAR SYSTEMS
+genericity of reachability, over R -polynomial ring in r
+variables, when the number of inputs m exceeds r. This
+result could be, in principle, extended to one about generic-
+ity of the split condition, although the form that the precise
+statement would take is not yet clear. This result would
+imply-via (2.4) and the results below-the genericity of
+the various types of Bezout factorability when dealing with
+systems with enough input and output channels. For "few"
+channels, the split condition-i.e., polynomial factorabil-
+1tv-1s. of course, too strong. For instance, the (scalar)
+transfer function p(O, z)lq(O, z) defined over R = R[01
+splits if and only if the plane complex curves determined
+by p,q do not intersect. The other Bezout conditions are
+not, in general, as strong however.
+'Take, for instance, the case of real scalar families of
+systems mentioned in our example. There, stable factora-
+bility is equivalent to p, q having no common zeros with 0
+real and Re s -_ 0, i.e., no unstable pole/zero cancellations
+for any member of the family of Systems./
+111. POLYNOMIAL MATRIX INTERPRETATIONS
+The definitions of reachability and asycontrollabilitY
+(and their duals) will be reformulated in a less intuitive,
+but more useful way in this section. Note first that the
+maps defining a system can be extended in the obvious
+(pointwise) way to the spaces U((zl)), Y((z_1)), and
+X((z '))-, these extensions are linear over R((z 1)) (and all
+its subrings), and they will be denoted in the same way as
+the original maps. Consider now a fixed system 2 and
+Hurwitz set S.
+A state x^ is reachable iff there exist polynomials x(z)
+and u(z) such that (zI- F)x(z)+ Gu(z) =x^. This isiust
+another way of saying that there is a finite input sequence
+u(t ). zero for positive t, which drives the state 0 (at some
+time t < 0) to x(l) = x^. Let
+JzI- F,GI: X[z]G)U[z] - X[z] (3-1)
+denote the map that sends a pair of polynomials (x, u) into
+(zI - F)x + Gu, thought of as an R [ z ]-module map. The
+above then says that reachability is equivalent to X being
+contained in the image of (3.1). Since X generates the
+projective R[z]-module X[z], we have the following.
+Lemma 3.2: The following statements are equivalent for
+any system E:
+1) E is reachable;
+2) [zI-FG] is onto;
+3) there exist linear maps M(z): X[z] - X[z) and Nfzl:
+X[z] - U[z] with
+zI - F, G] M(Z) I (in X[z])
+N(z)
+/Reachability is equivalent to right invertibilitY Of
+F, G] over R[zl.l
+Consider again the discrete time interpretation of Y_ We
+claim that any reachable state x^ is controllable to zero in
+631
+finite time n = n( X). More precisely, there exist sequences
+x(t) and u(t) satisfying (2.1a) and such that x(l)=x^,
+x(t)=O for t>n, and u(t)=O if t_-0 or t--n. This is
+proved in the same way as for finite dimensional systems
+over fields: by the Cayley-Hamilton theorem (which is
+valid over any commutative ring), one can write
+n - I
+F" a, F', (3.3a)
+0
+so for x^ in the span (2.2) one has that
+X. 'Gu,
+F V (3.3b)
+_0
+for suitable u, in U. Thus the sequence
+U(t): - U,_ t < n (3.4)
+(and 0 otherwise) results from x(l) = x^ in x(t) = 0 for
+t > n. Equivalently, there exist polynomials x(z) and u(z)
+of degree strictly less than n such that
+(zI - F)(z-x(z)) + G(z"u(z)) = x-. (3.5)
+Here the map in (3. 1) is seen as a map between rational or
+Laurent series. We would like to conclude from here that
+x- is a.c.; however, a finite sequence is not necessarily
+stable (i.e., z may not be in the Hurwitz set S being
+considered). But the following may be used. Let x' be
+reachable, and consider the new system defined over the
+same state space but with A: = F + al instead of the origi-
+nal F (here a is such that z - a is in S, and I is the identity
+map in X). The state x^ is still reachable in this new
+system Oust note that the generators of (2.2) using A are in
+the span of the original ones and vice versa). So an
+equation like (3.5) holds, with A in the place of F. Apply-
+ing the substitution in R[(z)) (ring homomorphism) z - z
+- a, there results an equation
+(zI - F)x*(z) + Gu*(z x^ (3.6)
+where x*(z) - x(z - a)l(z - a)" and u*(z) = u(z - a)l(z
+- a)" are both stable and strictly proper. We conclude as
+follows.
+Lemma 3.7: Reachable states are asymptotically
+controllable.
+Let A, B be (R-) modules. Elements of
+S-1(Hom,(A,B))[z] can be naturally seen as S-'R[zj-
+module (or equivalently, R[z]-module) maps from S`A[z]
+into S`B[zl; when B is finitely presented (e.g., if projec-
+tive) every such map can be represented in this form (see
+Bourbaki [1, sect. 11.2.71). A (strictly) proper map from
+S-'A[z] into S -'B[z] will be, by definition, one which is a
+(strictly) proper element of S-'(Hom,(A, B))[z] under
+this identification. A proper R[z]-map from S-'A[z] into
+S- LB[z] can also be identified with an Rlzl-map from
+pr(R, S)OA into pr(R, S)OB. /For all modules consist-
+ing of column vectors, identify matrices of rational func-
+tions with (rational) series whose coefficients are matrices./
+Now we can obtain the following desired characteriza-
+tions.
+<<PAGE-DIVIDER>>
+632
+Proposition 3.8: The following statements are equivalent
+for any system Y_:
+1) E is asycon troll able;
+2) [zI - F, GI: S_'X[z]E)S_'U[z1 - S-'X[z] is onto;
+3) there exist linear maps M(z): S_'X[z]-S_1X[z]
+and N(z): S - 1X[z] - S-'U[z] with
+M(Z)
+zI - F, G N(z) I (in S-'X[z I);
+4) there exist M, N proper as above.
+/Asycontrollability is equivalent to [zI - F, GI having a
+stable (proper stable) right inverse./
+Proof: Since X is projective, S-'X[z] is projective
+over S-'R[z], so 2) and 3) are equivalent. Assume now
+that 1) holds. Then any x^ in X is in the image of the map
+in 2). Since X spans this image, 2) holds. We shall prove
+now that 4) implies 1) and that 3) implies 4).
+Let M(z) and N(z) be as in 4), and pick any x^ in X. Let
+x*(z): - M(z)x', u*(z): = N(z)x^. These are proper,
+stable, and satisfy (3.6). Thus if x*(z) = x0 +x,z-'+ ...,
+U*(Z) - Uo + u1Z_' + - - - , comparing powers of z in (3.6),
+one concludes that x0 = 0 and that x, + Guo = x^. Since
+stable sequences form a submodule, we conclude that
+U*(Z)- U0 is also stable, and controls x, asymptotically to
+zero. But Guo is reachable, so by Lemma 3.7 it is also a.c.;
+thus x- is a sum of a.c. states, and is a.c. itself. So 1) holds.
+Finally, we prove that 3) implies 4). Consider the map
+[(z - a)-'(zI - F), G]:
+pr(R,S)(D(X+U)-pr(R,S)(&X. (3-9)
+We shall prove that this map is onto for the shown domain
+and codomain. It is enough for this to check that (3.9) is
+onto when reducing modulo every maximal ideal of
+pr(R, S) (i.e., tensoring by the possible residue fields of the
+latter). These evaluations are of two types: 1) those in
+which (z - a)-' reduces to zero, and 2) those that extend
+to the ring S - 'R [ z 1. This is because the latter can also be
+seen as the ring of fractions of pr(R, S) with respect to the
+multiplicative set generated by (z - a) - 1. The evaluations
+of type 1) (intuitively, "at z ~ oo") give the identity for the
+first block in (3.9), so the map is indeed onto at these ideals
+(see Hautus and Sontag [14] for more details). The evalua-
+tions of type 2) can be seen as reductions of those appear-
+Ing in the hypothesis 3), so they are also onto. Thus (3.9) is
+indeed onto. There exist, then, proper M(z), N(z) such
+that
+(z] - F)M,(z) + GN(z) = 1 (3. 10)
+where M,(z) = (z - a) `M(z) is also proper. (In fact, even
+if only N(z) were known to be proper, the equation
+M,(z) = (zI - F) - '(1 - GN(z)) (3.11)
+shows that M, is proper.)
+The statements in Lemma 3.2 and Proposition 3.8 can all
+be dualized Into left invertibility conditions
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL AC-27, No. 3, JUNE 1982
+[M(z) N(z)] zI- F 1 (3.12)
+H I
+for coreachability and detectability. This equation can be
+again understood over the original spaces without dualizing
+because all modules in the equations are projective and
+thus also reflexive (double dual equal to the original mod-
+ule).
+The above results are especially interesting when X is a
+free module. In that case, the conditions become just left or
+right invertibility with respect to stable or proper stable
+matrices. Note also that Proposition 3.8, statement 4) is the
+definition of stabilizability given in Hautus and Sontag
+[14], while Proposition 3.8, statement 3) is the one used by
+Emre [10]. All these definitions are then equivalent to the
+one given in Section 11.
+The definitions given here allow one to prove a number
+of facts in the "natural" way. Take for instance the lemma
+after the following definition.
+Definition 3.13: A regulator for the strictly causal sys-
+y1r, X1r )
+tem I=( X, F, G, H) is a system . , A, B, C, D)
+with input value set UOY and output value set U, such
+that the map
+F+GDH GC X(r)
+B,H+BIDH A+B XT X() - X(D
+Id
+(3.14)
+is stable. (Here B: = (BI, B2), and D acts only on the Y
+component.) The system Y_ is regulable if it admits such a
+regulator.
+Lemma 3.15: The system E is regulable if and only if it
+is asycontrollable and detectable.
+Proof.- For the sufficiency part; see Emre [10]. We
+prove here only the (easier) necessary part. In terms of the
+discrete-time interpretation, the map in (3.14) is just the
+closed-loop dynamics of the interconnection of 2 and E(rl.
+x(t + 1) = Fx(t) + Gu(t), y(t) = Hx(t),
+(3.16a)
+X (r) (I + 1) = Ax`)(t) + B,u(t) + B2Y(01
+U(t) = CX(r)(t) + Dy(t). (3.16b)
+Let x* be in X, and pick any x(')* in Z. Since (3.14) is
+stable, the sequence (X(t), X(r)(t)) obtained solving (3.16)
+is stable. Thus the corresponding u(.) is a linear combina-
+tion of stable sequences, and so is stable itself. It follows
+that x* is a.c.; thus 2 is asycontrollable, and a dual
+argument establishes detectability. So E is regulable.
+IV. STABLE FACTORIZATIONS
+We study here right factorizations W PQ _' of a trans-
+fer matrix into stable matrices P, Q which satisfy the
+Bezout condition A P + BQ = I with A, B stable. If q is a
+common stable denominator for the entries of P and Q,
+then also W=YZ-1 and CY+DZ=I, where Y=qP,
+Z = qB, C = q 'A, and D = q-'B. Thus, when studying
+<<PAGE-DIVIDER>>
+KHXRGONEKAR AND SONTAG: FACTORIZATIONS AND REALIZATIONS OF LINLAR SYSTEMS
+stable factorizations one may take P and Q to be poly-
+nomial without loss of generality.
+Assume that W = W(1) for a strictly causal detectable
+E. By the dual of Proposition 3.8, there exist stable linear
+maps M. N as in (3.12). If G would be the 'Identity, then
+W= H(z] - F)- ' (4.1) SO
+and (3.12) shows that (4.1) is a stable factorization of W. If
+G is present, but Y_ is reachable, one may expect to be able
+to somehow eliminate G, since every state is reachable.
+This intuitive idea motivates the main result in this section,
+which generalizes the result in Hautus and Sontag [14,
+Theorem 6.111 as follows.
+Theorem 4.2: A strictly proper transfer matrix W ad-
+mits a stable right factorization if and only if it admits a
+reachable and detectable (strictly causal) realization.
+Proof: Let I = M F, G, H) be reachable and detecta-
+ble, with W ~ W(E). Since X is projective, there is for
+n = n(X) a map
+with
+HI: X- R n (4.3)
+LHI = I = identity in X (4-4)
+for some L: R' - X. The reverse composition H, L is J .ust
+the projection on X, which will be thought of as a submod-
+ule of R". Consider the transfer matrix induced by N7,: -
+(X, F G, Hl):
+wi: = H, (--I - F G . (4.5) Thus
+I
+Since 1, 's a split system, there exist by Theorem 2.11
+polynomial matrices T, Q, C, and D, with Q admissible
+and
+W1_TQ_ (4.6)
+CT+ DQ = 1. (4.7)
+Note that the image of W, (as a rational matrix) is included
+in X((: ')) since H, has image in X. Thus the image of T is
+also included in X((z- 1)), and so
+T= H,LT. (4.8)
+633
+CH,M(zI- F)LT+CH,NHLT=CHILT, (4.12)
+CH,MGQ+CH,NP=CH,LT, (4.13)
+CH)MGQ+ CHINP=CT= I - DQ.
+(4.14)
+where we denote
+AP + BQ = 1 (4.15)
+A:=CH,N and B:=CHIMG+D. (4.16)
+Both A and B are stable because C, D are polynomial and
+M, N are stable.
+Conversely, assume that W = PQ with P, Q poly-
+normal, and that (4.15) holds for some stable A. B.
+Consider the -Q realization" corresponding to this factori-
+zation of W, as 'In Khargonekar [20, Theorem 4.41. This is a
+reachable realization E = (X, F. G, H), and all we need to
+establish is that E is detectable. We again introduce H,,
+etc., as in (4.3)-(4.5), and define
+R: - W,Q- Hl(zI- F)- IGQ. (4,17)
+Since the columns of Q are in the kernel (in fact, form a
+basis) of the input-to-state map associated with E, it
+follows that R is, in fact, a polynomial matrix. By reachabil-
+ity of E, there exist polynomial maps Y, Z with
+(zl - F) Y + GZ I = identity in X. (4.18)
+(zI - F) -'GZ (zI - F) Y. (4.19)
+Composing (4.15) with R to the left and with Q to the
+right, and using (4.17) and (4.9) gives
+RAPQ '+RB=RQ (4.20)
+KA W+ RB = W1, (4.21)
+RAH(zI-F)_'GZ+RBZ-H,(z1-F) 'GZ,
+(4.22)
+RAH[(_-1-F)_'-Y]+RBZ=H,[(7J-F) '-Y].
+(4.23)
+Since H,(zI - F)--'G = TQ- ', it follows by (4.4) that
+(zI - F) G = LTQ _', or GQ =( 71- F)LT. (4.9)
+Let
+Thus
+P: = HLT~ (4.10) where
+M,(zI - F)+ N,H = H, (4.24)
+so that MI: = RBZ + II,Y- RAHY, NI: = RAH. (4.25)
+1
+W=HLWI=PQ- (4.11)
+This will be the desired factorization (note that P and Q
+are, in fact, polynomial). We will now show the Bezout
+property. Since I is detectable, there are linear maps M, N
+as in (3.12). Composing with CH, on the left and with LT
+on the right, and applying (4.7), (4.8), and (4.9) gives
+So M(zl - F) + NH = I with M: = LM, and N: = LN,
+Note that M. N are stable because R, Y, Z are polynomial
+and A, B are stable. So Y_ is detectable.
+By duality one also has the following.
+Theorem 4.26: A strictly proper transfer matrix W has a
+stable left factorization if and only if it admits an
+asycontrollable and coreachable realization.
+<<PAGE-DIVIDER>>
+634
+Neither Theorem 4.2 nor Theorem 4.26 is a priori self-
+dual: K' mav satisfy Theorem 4.2. but not Theorem 4.26. It
+is natural to ask about the existence of (only) regulable
+realizations, which is a self-dual condition. If either left or
+right factorizations exist for W. then Theorem 4.2 and
+Theorem 4.26 show that there are regulable realizations of
+W. The following result shows that (under weak extra
+assumptions) the existence of a regulable realization in fact
+implies that there are stable factorizations. The extra as-
+sumptions are on R and on the number of input or output
+channels. The (Krull) dimension of R (see, e.g.. Gilmer
+[121) is denoted by dim R~ note that for polynomial rings
+or power series rings over a field, in r variables, one has
+dim R = r. In Section VI it will be seen that for principal
+ideal domains R no constraints are necessary and, in fact,
+this holds for a slightly larger class of rings (see Remark
+4.40). For more general R, we do not know if the assump-
+tions on the number of input and output channels are
+really necessary. Our proof uses the fact that the module L
+in (4.30) is free, and this will, in general, be false.
+Theorem 4.27: Assume that either m = I or that p = 1,
+or that R is Noetherian with dim R = r < Dc and
+max~m,p)>r+l. Then the following properties are
+equivalent for a strictly proper transfer matrix W.
+I ) W has a stable left factorization;
+2) W has a stable right factorization;
+3) W has a regulable realization.
+Proof: Note that Theorem 4.2 and Theorem 4.26 give
+that 1) and 2) imply 3). Since 3) is self-dual, it is then
+enough to prove that 3) implies 2). Let 1: = ( X, F, G, H)
+be an asycontrollable and detectable realization of W_ We
+treat the case in which m satisfies the hypothesis; when p
+satisfies the hypothesis, the theorem can be proved using
+dual arguments. By asycontrollability, the map
+[:I - F, - GI: S_ 1( X(DU)[--] - S--'X[:] (4.28)
+is onto. Let L be its kernel, and denote A: = S 'R Note
+that S 'U[:] =A'". Thus
+L(DS 'X[z] - A`6S_ 'X[:]. (4.29)
+Using projectivity, we may assume that S- 'X[--] is included
+in A". n = n( X), and that there is some module Z with
+S 'X[:](DZ= A". So
+LGA'; - A'2-1, (4.30)
+i.e., 1, has a free complement (is stab& free) and has rank
+m. I f in - 1, L is free (see Lam [2 1, Theorem 4.11 ]). I f R is
+Noetherian of finite dimension r, then dim R[:1 = r + 1
+(see, e.g.. Gilmer [12, Theorem 30.51) so m>r+]--
+dim R [: J -_ dim A ~ thus one may apply Bass' cancellation
+theorem (see, e.g., Lam [21, Theorem 7.31) to again con-
+clude that L must be free. Let fv,,- - -,v,,) be a basis of L.
+Without loss of generality, one may take the v, polynomial
+over R. Consider the one-to-one map
+A"' - A": e, - V, (4.31)
+whose image is included in the submodule S_1(X(DU)[zJ
+IEEE TRANSACTIONS ON' AUTOMATIC CONTROL, VOL. Ac-27, No. 3. JUNE 1982
+Let
+T1
+IV] v. I Q (4.32a)
+be its matrix. Note that
+(:I - F)T- GQ = 0 (4.32b)
+since the v, are in L. As the image of (4.31) is a direct
+summand of S-- '(XE)U)[:], there exist stable maps Y, Z
+giving a left inverse, i.e., with [Y, ZI[v,, .,vJ = 1, or
+YT+ ZQ = 1. (4.33)
+We will now show that Q is admissible. Let p = det(--I - F)
+then (zI - F)adj(--I - F) = pI., so the columns of
+cof(zl - F)G
+PI (4.34)
+are in L. It follows that the columns of (4.34) are in the
+span of the v,, so
+QR = pI (4.35)
+for some stable matrix R. Thus (detQ)-(detR)=p"=
+monic, and Q is indeed admissible. Now let P: HT (this
+is well-defined because the image of T is included in
+S-'X[z]). Then
+W= H(zI- F)-'G= HTQ-' = PQ-'. (4.36)
+We claim that this is a stable factorization of W. Since the
+original system is detectable, there exist stable maps M, N
+such that
+M(zI - F)+ NH= 1. (4.37)
+Multiplying on the right by (zI - F)-'GQ and on the left
+by Y,
+YMGQ + YNP = YT= I - ZQ, (4.38)
+so
+AP + BQ = 1 (4.39)
+for the stable matrices A: = YN, B: = YMG + Z. 4
+Remark 4.40: When R[z] is a Noetherian integral do-
+main of global dimension at most two, the ring S 'R[z] is
+project ive- free, so that the module L in (4.30) is indeed
+free. Thus for principal-ideal domains (pid's) the above
+abstract argument is valid with no restrictions on m. p. The
+"concrete" constructions in Section VI also give the result,
+but they cannot be extended to non-pid's. We sketch here a
+proof, provided by W. Vasconcelos, of the projective-free-
+ness claimed above. Take any projective S-'R[--I-module P
+and consider it as a direct summand of a suitable free
+module (S-'R[zJ)". Let M be the intersection in the latter
+of the sets ( R [ z I)" and P, so that in particular P = S - 'M.
+Then M is a closed R[z]-submodule of (R[z])" -because
+P is closed in the larger module-and is therefore reflexive.
+So M is a projective R[z]-module, by Bass' dimension-2
+theorem. It follows that T 'M = M [(z)] is projective over
+<<PAGE-DIVIDER>>
+KFIARGON I KAR AN D SONTAG: FAC FOR LZAI [ON S AND RE A I. I ZAFIONS 01; L INFAR SYSTEMS
+R[(--)]. But the latter is a ring of dimension one, so T 'M
+is, in fact, free over R[( It follows that M itself is free
+(Horrock's affine theorem), and so P = S 'M is also free.
+as required.
+V. STRICTLY PROPER FACTORIZATIONS
+In this section we give a result on proper stable factori-
+zations. Intuitively, the argument explained before Theo-
+rem 4.2 suggests that the existence of reachable and detec-
+table realizations should imply that of proper stable fac-
+torizations, since M and N may be assumed both proper by
+(Proposition 3.8, statement 4). The problem is that one
+should not introduce extra delays when "eliminating" G as
+discussed in that argument. This difficulty can be over-
+come if one first finds a suitable stable bicausal isomor-
+phism to premultiply the transfer matrix. The existence of
+such bicausal isomorphisms is known to be closely related
+to problems of "constant" state feedback, as discussed in
+the classical case by Hautus and Heymann [131. Construc-
+tion of constant stabilizing feedback laws for systems over
+rings is, in general, nontrivial (see, e.g., Kamen [ 171, Byrnes
+[3]. and Bumby et a[ [21). For principal ideal domains (see
+Section VI) the result of Morse [231 ensures the existence of
+stabilizing K as needed in the result given here. This result
+connects our setup with the "proper stable" case in Desoer
+et aL [7]. We shall assume that R is an integral domain, and
+later note why the results also hold in general. A technical
+remark is needed first.
+Lemma 5. 1.- Let X, Y be projective R-modules. Let the
+linearmapsA: Y-Y, B: X-Y, C: X-Y. and D: X-X
+satisfy AB = CD. Assume further that there exist linear
+maps M, N, P, and Q such that
+1) AM + CN I identity in Y, and
+2) PB + QD I identity in X.
+Then det A = r - det D, for some unit r.
+Proof.- Consider the linear maps
+f: = A C I and g: M _B ]: y(DX_y(DX.
+~p _Q N D
+(5-2)
+Then fg is triangular with identity diagonal, so f is invert-
+ible~ say, det f r. The conclusion then follows from the
+equality
+[I B I =~A 01.
+0 _ D P 1 (5.3)
+Theorem 5.4: Let E = (X, F, G, H) be reachable and
+detectable. Assume that there is some K: X - U such that
+(the characteristic polynomial of) F + GK is stable. Then
+W(Y-) has a proper stable right factorization.
+Proof.- The first part of the proof repeats that of
+Theorem 4.2, up to (4.11). We use the same notations as
+are used there. Now let
+Q': ~ Q - KLT. (5.5)
+Using (4.9),
+635
+F - GK )LT= ( :I - F )LT- GKLT= GQ
+(5.6)
+Since (X, F+ GK. G, H) is again reachable, there is a right
+Bezout equation as in Lemma 5.1-i), with A B, C, and D
+there equal to :I - f` GK. LT. G, and Q respectively.
+By (4.8) and (5.5) one also has an equation
+(CHI + K )LT+ DQ ~ 1. (5.7)
+Thus Lemma 5.1 applies over R[z] to give det Q^ r-
+det(:I - F - GK ), r a unit in R[ 7] (So in R). Thus is
+stable. Let
+QI: = QQ (5.8)
+Since Q is a polynomial and Q^ is stable, it follows that
+Q, is stable. Also,
+Q, = ((Q - KLT)Q I) (I - KLTQ I)
+= (I - K(:I - F) - 'G) (5.9)
+so Q, is also proper. Let
+PI: ~ PQ^ (5.10)
+Then P, is stable and W - P, Q I I. Since P, = WQ, P, is
+also proper. It only remains to find a proper Bezout
+condition on P, and Q, By detectability, there are proper
+stable M, N as in (3.12). Composing on the right by
+(_-1 - F)-- 'GQ and using (4.8), we conclude that
+MP + NGQ = LT.
+Thus
+Q_ Q - KLT = Q - K( MP + NGQ)
+( I - KNG)Q - KMP. (5.12)
+Write A: KM and B: - I - KNG; these are stable and
+proper.
+The same result is valid over nonintegral domains, but
+the above proof has to be modified slightly. This Is because
+the determinants in Lemma 5.1 may not be a priori defined,
+for arbitrary projective X, Y over a ring with nonconnected
+spectrum. But the proof of (5.2) uses only the case A = a
+characteristic polynomial and D = a map between free
+modules, so that these are all well-defined up to associates.
+The dual of Theorem 5.4 relates asycontrollable and
+coreachable realizations to the existence of proper stable
+left factorizations.
+VI. THE CASE R = PRINCIPAL-IDEAL DOMAIN
+The case in which R is a principal ideal domain is of
+special interest from a system-theoretic viewpoint. in par-
+ticular, the ring R[01 of real coefficient polynomials is used
+in applications to delay differential systems, -2-13"-or
+<<PAGE-DIVIDER>>
+.,)mage processing"- systems (note: transfer matrices are
+now rational in the two variables 0, z.) and single-parame-
+ter families of systems. Rings of rational functions with no
+real poles are used also for some of these applications. as
+well as rings of rational functions R[(Ofl. More generally,
+other rings of functions in one variable also appear some-
+times, e.g.. the ring of real-analytic functions in O~ such
+more general rings, although not necessarily pid's, still
+share many of the properties to be shown below. More
+precisely, for "elementary divisor rings" one can generalize
+the results in this section; see Bumby et al. [21 for the
+needed pole shifting results. Another pid of interest, the
+ring of integers, appears naturally in modeling fixed point
+digital implementations of systems.
+In this section, R denotes a pid. Most statements can be
+considerably simplified in this case, and since the canonical
+realization 1( W ) of a transfer function is necessarily pro-
+jective (in fact, free), factorability properties can be checked
+directly on Y_( W). We shall give first an elementary proof
+of Theorem 4.27 which does not involve any restrictions on
+m. The intuitive idea is straightforward: given a regulable
+system, restrict to its reachable subsystem. The nontrivial
+part Is proving that this subsystem is indeed detectable. An
+easy lemma is needed.
+Lemma 6. 1.- Let 1, = (F, G1, H,) be a factor system of
+E=(F,G, H), i.e., X= X,(DX,, and
+IFLE TRANSACTIONS ON AL'JOMA11C CONTROL, VOL. Ac-27, No. 3, JUNE 1982
+di f, when i > j. (6.8)
+To establish the claim, just apply F to d1ag(0, d 0).
+This must be again reachable, i.e.. in the span of the
+columns of D. Comparing ith rows gives that f,,d,=
+multiple of d, from which (6.8) follows.
+Consider the system 1, obtained by restriction to the
+reachable subset and a c .hoice of basis for this subset. A
+concrete representation is 21 R', A, B, C), with A
+D-'FD. B = D_ 1G, and C z~ HD. Let F, (respectively, A,)
+denote the submatrix obtained from the last i rows and
+columns of F (respectively, A). Since D is diagonal,
+det (zI - F, det (zI - A, for all i. (6.9)
+We claim that E, is detectable. Assume not. Then there is
+maximal ideal M of S-'R[z] such that
+z*I - A*
+rank C* < n (6.10)
+where the '*' is used to denote reduction modulo M. Thus
+there is a vector v over the residue field mod M such that
+C*v - (z*l - A*)v = 0. Since C* = H*D*, also H*(D*v)
+= 0. Since the original system is detectable, it follows that
+either
+F*)D*v:,~= 0 (6.11)
+F= F1 01, G G, 1, H - ( III, D). (6.2) or
+~ A B C
+If E is asycontrollable (respectively, detectable), then E, is
+also asycontrollable (respectively, detectable).
+Proof.- If E is asycontrollable, take stable rational
+M. N with
+(z1 - F)M + GN = I identity in X). (6.3)
+Let M, be the projection of M on X, Then
+(z1 - F, )M, + GN = I identity in X, (6.4)
+and M, is again stable. This is similarly the case for
+detectability.
+Theorem 6.5.- Let 2 be regulable. Then there is a system
+, which is reachable and detectable, such that W(E) =
+W(11 ).
+Proof.- We may assume that E=(R1',F,G,H) is
+weakly reachable, i.e., that the rank r of the span in (2.2) is
+equal to n. (This is because a weakly reachable subsystem
+is always a factor of the original system: take X,: = kernel
+of any map T of rank n - r which is zero on reachable
+states, and apply Lemma 6. 1. Consider
+gM: [G, FG, F" 'G] (6.6
+and let D: = diag(d d,) be the Smith canonical form
+ofg(E), whered,ld,,, fori=],- - -,n - 1. Call d, : =d,ld
+J
+if i By weak reachability, all d, are nonzero. Using an
+appropriate T in GL(R, n), we may assume that
+the columns of D span the reachable states. (6.7)
+Let F We claim that
+D*v = 0. (6.12)
+But (6.11) cannot hold because D*(z*I - A*)v = (z*l -
+F*)D*v. Thus (6.12) must hold. Let r be the smallest
+nonnegative integer such that d,* z-- 0 for all i > r. (Note
+that d '* ~ 0 implies that d,* = 0 for j > i.) Let s be the
+largest integer such that v, = 0 for i s. Since D*v = 0,
+necessarily r -- s. Since d* :f- 0 for j r, but d,* = 0 for
+i > r, it follows that d, 1. = 0 for these (i, j). By (6.8), the
+corresponding f,* also vanish. So the submatrix formed
+from the last n - r rows and first r columns of F* is zero.
+Similarly, the last n - r rows of G* are zero. By stabilizabil-
+Ity of 1,
+ranklz*I - F*,G*l = n, (6.13)
+so det(z*I,, -F I
+A,-r'. But 0. By (6.9) this holds also for
+(Z*1n-r - A, r*)W = 0 (6.14)
+where w is nonzero and consists of the last n - r rows of v.
+This contradicts the nonzero determinant. Thus (6.12) can-
+not hold, and the theorem is established.
+The following summarizes all the results for the pid case.
+Theorem 6.15: The following statements are equivalent
+for a strictly proper transfer matrix W:
+1) W has a regulable realization;
+2) W has a reachable and detectable realization;
+3) the canonical realization 1(W) is detectable;
+4) W has an asycontrollable and coreachable realiza-
+tion;
+5) W has a stable right factorization;
+<<PAGE-DIVIDER>>
+KHARGONIKAR AND SONTAU: FACTORIZATIONS AND RLALIZATIONS OF LINLAR SYSTLMS
+6) W has a stable left factorization-,
+7) W has a stable proper right factorization;
+8) W has a stable proper left factorization.
+Proof.- By Theorem 6.5 and its dual, 1) is equivalent to
+2) and to 4). Since E( W) is a factor of any reachable
+realization of W, Lemma 6.1 gives that 2) implies 3), which
+clearly implies 1). The equivalence of 2) and 5) [respec-
+tively, 4) and 6)] follows from Theorem 4.2 (respectively,
+Theorem 4.26). Finally, the equivalences of 7) and 8) with
+5) and 6), respectively, follow from Theorem 5.4 and its
+dual.
+This theorem shows that factorability can be checked by
+first constructing a canonical realization and then checking
+detectability of this. For pid's there are various algorithms
+for canonical realization; see, for instance, Rouchaleau and
+Sontag [251 and Eising and Hautus [9]. Checking detecta-
+bility is of varying difficulty, depending on the Hurwitz set
+considered. Two very simple examples are that of poly-
+nomial families of continuous-time systems, and that of
+delay-differential systems with arbitrary delay lengths. The
+latter studies existence of regulators for delay systems
+which are also described by delay systems and such that,
+for each value of the delay length, stabilization is achieved.
+We are grateful to E. W. Kamen for suggesting this exam-
+ple to us~ as he conjectured, it is much easier to treat than
+the usual one (see a discussion in Hautus and Sontag [141
+for detectability for a fixed delay length). In these exam-
+ples, R ~ RtOl.
+In the delay case then, take the Hurwitz set
+S: p(0, z p monic in z and p has no zeroes in L)
+(6.16)
+where L is the set of complex pairs (s, v) with Re(s) -- 0
+and I v I _< I (see Kamen [ 181, [19]).
+Lemma 6.17.- For S as in (6.16), E is asycontrollable if
+and only if rank [sI - F( v), G(v)] = n for all (s, v) in L.
+Proof: In the terminology of Hautus and Sontag [14],
+we want to show that S is perfect, i.e., that the only
+maximal ideals of pr(R. S) are the obvious ones (evalua-
+tions at points of L). For this it is enough to prove that,
+given any pair (s*, v*) not in L, there is a p in S having it
+as a root.
+If Re(s) < 0, the polynomial s*)(z - i*) (bar indi-
+cates conjugation) achieves the above purpose. If I v* I > 1,
+then there is some integer n such that
+k: v*) "(s* + (6.18)
+(and its conjugate) has magnitude less than 1. Let
+- 202a Or
+p( :. 0): + 1)' + I k 2 Re(k )(z +
+(6.19a)
+z + I - k0" )(z + I - k6"). (6.19b)
+By construction, p(s*, v*) = 0 (first factor in (6.19b)
+vanishes), while (6.19a) shows p has real coefficients. As-
+sume p has a zero (s, v) in L. Then
+637
+For the family of systems example, we take S' as in
+(6.16), but we now use L': = set of pairs (s, v) with v real
+and with Re(s) -_ 0.
+Lemma 6.21: For S' as above, I is asycontrollable if
+and only if the condition in Lemma 6.17 holds over L'.
+Proof: Again it suffices to find a suitable p passing
+through a given (s*, v*) not in L'. If Re (s) < 0, we take the
+same polynomial as before. If v is not real, consider the
+real polynomial
+b(x): = (x - v*)(x - (6.22)
+Note that there is a positive lower bound to the values of b
+on reals. Thus there is a real k with kb(x) > Re(s*) for all
+real x. This implies that
+Re(s*-kb(x))<O and Re(~*-kb(x))<O (6.23)
+for all real x. Let
+p(z, 0): = (z + kb(O) - s*)(z + kb(O) - s*). (6.24)
+It is easy to see that this is a real polynomial having
+(s*, v*) as a root and [by (6.23)] without roots in L'.
+The above lemma says simply that asycontrollability
+(detectability) of the family Y_(0) is equivalent to
+asycon troll abi li ty (detectability) for each individual system.
+The results on systems over rings then imply that construc-
+tions of compensators can be done polynomially in 0. This
+means that when the general structure of a system is
+known except for the precise value of the parameter, one
+may be able to design (off line) a compensator such that
+only tuning the parameter is needed when the original
+plant is completely identified.
+We construct over this ring a very simple example 'in
+order to illustrate the various factorability conditions. Let
+a, b, c be three fixed real constants such that either c * 0 or
+ab =,~L 0. Consider with m = p = 2 the transfer matrix W
+over R[01 with entries
+W, = (a - C02 )/( S - I) (6.25a)
+K," = (S +I_ 0 )1[S2 _ OS + (0 C02 I - b)],
+(6.25b)
+- W', = 0. (6.25c)
+VV12
+We use the Laplace variable "s " instead of -z " in order to
+emphasize here that we are viewing (6.25) as a family of
+continuous-time transfer matrices, parameterized by 6. The
+canonical realization has dimension 3 and is given up to
+isomorphism by the system
+X I X1 + U1 (6.26a)
+X, X, + (b + C02 )X3 + U-1 (6.26b)
+X3 X2 + ( 0 - 1 )X3 (6.26c)
+V, (a + C02 )X (6.26d)
+V, X1. (6.26e)
+s + I I = I k - I r" 1. (6.20) This is indeed canonical: the determinant of
+Since ~ v I _< 1, Re (s) -_ 0, a contradiction. [G, Fg, J (6.27)
+<<PAGE-DIVIDER>>
+(1,18
+is alwavs = I (so the system is reachable), while the de-
+terminant of
+ILLL TRANSAC11ONS ON AUTOMATIC CONTROL, V01. AC-27, No. 3, jusE 1982
+11% Fh', (6.28)
+[1-11
+2 + 2
+is (a which is nonzero as a polNnomial 113]
+(giving observabilitv).
+C, 114]
+To check the different factorabilit,; conditions for W. it
+is enough to studv (6.26). Assume first that ah - 0. but
+t, - [151
+c = 0. Then the determinant in (6.28) is a nonzero constant.
+so (6.20) is coreachabte. Thus W splits for these values. [10]
+Consider now the matrix [17]
+SI - F
+(6.29)
+H 118]
+Assume that c=I. b=O, and a is positive. The rows
+(4,5~2) of(6.29) give the minor -02(a-02). The sistems
+(6.26) are then all observable unless 0 = 0. But for 0 - 0 the
+system is nonetheless detectable, since rows (4.5.3) give a
+minor a(s + 1), which only has a root at s = - 1. (Intut-
+lively, from (6.26) it is clear that 0 = 0 destrovs observa-
+bility of x, from x_ but in that case the v, coordinate
+asvmptotically tracks x-) Thus the family is detectable as
+a svstem over the ring R[01 and the given Hurwitz set. One
+concludes that the original W has proper stable left and
+right factorizations. (Note that since we chose 4' svirnmet-
+ric, it is trivial in this case to obtain an asso, controllable and
+coreachable realization as claimed by the equivalence of 3)
+and 4) in Theorem 6.15: it is enough to take the transpose
+(dual) of the given realization.
+Assume finally that the constants are c = 1, h - 0, and
+that a is nonpositive. Then the family is not detectable.
+Indeed, for some 0. the first column of (6.29) vanishes at
+S = I (I.e., X, is unstable and unobservable). So IV has no
+possible Bezout factorizations of the types studied in this
+paper, and no realization of W can be made internalls,
+stable using a polynomially parameterized famiK of regula-
+tors.
+REUF.RFNCES
+11] N. Bourhaki. ( ottimutuitte .4/4ehra. Ness, York: Addi.,on-`sVcs1e\.
+197'
+R, BuinhN. L, 1). Sontag, H J. Su.,,synann, and soV. Vasconcclo.,.
+"Ronark,, (in the pole shifting problem oser rings." .1 Pare -1/t/pL
+41,~chia. N of 20, pp. 113- 127, 198 1 ~
+~3] C 13,irric.N. "Realization theors, and quadratic optinial controller,
+for s\stern, defined o%cr Ranach and Freclict alpebras." in Pro(,
+/1-0. (ood, Dettsion Contr.. Albuquerque. NM, 1480, pp~ 247-251.
+141 (lewitett to oil kfcthod~ for I.inear Si ~rctji Thvort,~. C. 11% rns!.s. and C.
+Marlin, Eds. Dord]-Ccht. The Netherlands: Reidc]. 1980
+I WS-Sl 4 11 Si mlioNia in Applicd Math. 114irt ard I I)-,). C. If\ rnc,
+and ( Martin, Fds. AMS-SIAM Publ.. 1980.
+F M, ( allier and C. A De~ocr. "An algebra of transfer functions
+[(it distributed linear time in\arijnt S.vstcnl~.- ILLF 1)(111s. (In
+Si it of CAS-25, pp 651-66-2. 1978,
+j7j A Desocr. R %' Liu. J. Murra\. and R Sacls,~ " Veedhack
+,N,1cm design: The fractional representation approach too, jnal\,1s
+and s\nthesi,,,- /FI.I_ Truns, -littoniat, %ol A( _25. pp
+199 -412. June 1980. -
+1s] S Eilenber-2. 4immiara, und Wa(limes. Nol A. Ne%A
+York. Aca(femic. 1974
+~91 R. Fisin,~ and M. L, J FIdUtUS. ---Realization jigorithins for a 'ssten]
+0%cr a PlD.- k1tuh Si sr. Thew-i . %ol. 14. pp, 3~1 It)f,. Oo. t 1981.
+l(), L. Fnirc. "On necessar-, and sufficient condition, for rc2LIlalion of
+[191
+[201
+121]
+1221
+[211
+(241
+125]
+~20j
+~271
+1-18]
+1291
+[101
+~Ilj
+linear sssterns o%er rings." SL4 Af J. Contr. Optinu:.. s,ol. 20. Mar.
+1982,
+F, Lnirc and P. Khargonckar. "Regulation of split linear svsterns
+o%cr rin-si Coefficient-assignment and obser-WTS." Trans.
+.4 utottiat ( ontr . so]. AC-27. pp. 104- 113. Feb. 1982.
+R. (idnicr, %fultiph(atit e Ideal Theori. NesA York: Marcel Dek-
+ker. 197'
+N1. L. J. Hjutus and M. Ficssmann, "Linear feedback An algebraic
+approach," S1.4 V J, Cotar. Optirnt:.. %ol. 10, pp. 83- 105, 1978.
+M, L. J. Hautus and E. D. Sontag. "An approach to derectabilit,,
+and obser).ers.- in .4 %IS-SI,4.1oI Siwiposia inApplied Math. Harvard
+11)7 1). AMS-SIAM Puhl.. 1980. pp, 99- 136.
+E. W Kartien. "Lectures on algebraic ss;stem ihcor\~ Linear svs-
+terns o%cr rings." NASA Contractor Rep '- 3010, 1978.-
+-- . -An operator theor-, of linear functional differential equations."
+J. Dql,rcimal E quoinoms. %(-)]. 27, pp. 247-297. 1978.
+- . - .'Linear discrete time ssstems defined over a commutative
+Banach algebra. sAith applications to mo-dimenNional sistem,~," in
+A WS-SL-IM St itipoviiin in 4pplied Math. Hart ard, 1079. AMS-
+SIAM Publ . 19KO. pp. 115-218.
+- ~ -On the relationship betAeen zero criteria for tsio variable
+pols,nornials and ass,mptotic stabilii,,, of delas, differential
+equations.'* ILEL Itatio. .4womar, Conir., vol. AC-215, pp. 90-91.
+1980
+- . "Linear s\,teriis sAith commensurate time delaN-s: Siabilizabil-
+wN and stabilization independent of delas,,- IEEE Trans. Autoniat.
+Colar. Nol AC-27. pp 367-375. APT. 1"2.
+P Khargonekar. "On matrix fraction representations for linear
+\stems owr commutatike rings~- SIA.VIJ. Contr. ()Pirelli: , vol. 20,
+Mar. 1982.
+T. Y, Lain. Serie's Conle(ture, Springer Le(ture.Voto in Vath, sol.
+635, NesA York: Springer-Verlag, 1978.
+E. B. Lee and A, W. Olbrot, -On reachabilits, over polsnomial rings
+and a related gencricit\ problem." in Prot. Conf. Injorm. Set. stst_
+Princeton. NJ. Mar. 1980, pp 344-346.
+A. S, Morsc. "Ring model,., for delay differential ss, Istems." Auto-
+ntali(a. %ol. 12. pp 529 53).
+- "S%,stem ins.ariants under feedback and cascade control," in
+I- V I ,"c oti, Voith. Si itcon 1,?1. Nests York: Springer-Verlag, 1976.
+Y. Rouchaleau and E. 1) Sontag. "On the existence of minimal
+realizations (if linear o1snarnical ssstems o%er Noetherian integral
+domains." J. G,oijiur, Si ~st. S(i , vol, 18, pp. 65-75. 1978.
+E. D Sontag. "Linear s,,stems cover commutative fings~ A surve-,.-
+Ri(er(he di 4 urotneimu. % ol. 7. pp. I - 34, 1976.
+- . "On spht realizations of response maps os,er rings~- Inform.
+(onit., %ol. 37. pp. 23-33, 1978.
+- . " Linear ~\,tems oNcr corrunutatio,e rings: A (partial) updated
+sur%e,%." in Pro,(. 11-4( X1. Kwto. Japan. 1981
+xf Vidsia.~agar. If. Schneider. and B. A. Francis. "Algebt-wo: and
+topological aspects of feedback stabilization," in Prtt. 11 '"El-' Coill
+Pc~moti ( onn . Albuquerque. NM. 1980. pp, 891 ~95~
+B, Wvman. Stanford Unio... Stanford. CA. lecture notes. 1972.
+D. Youla, J J Bongiorno, and H A. Jahr. "Modern Wiener-Flopf
+design of optimal controllers: Part I.- IEEE Tram. .4 womat. Cwilt_
+% of AC-2]. pp. 3 -IS. 1976,
+Praniod P. Khargonekar, for a photograph and biography, -see p, 366 of
+the April 1982 issue of this TRANSACTIONS.
+Fduardo 1). Sontag \%as born in Buenos Aires,
+Argentina, on April 16. 1951. He rcceis,ed the
+Licenciado degree in mathematics from the Uni-
+sersit.N of Bucrios Aires. and the Ph 1) degree in
+mathematics front the Center for Mathematical
+Ss.stern Theors, at the Uni\crsit\ of Florida.
+Gainc~% ilie.
+From 1970 to 1977. he held a posicloctoral
+fellos;kship at the Uniiersits. of Florida. Games-
+%ilic In 1977. he ss, as appointed Assistant Profes-
+or of Mathematics at Rutocr.N- The State Um-
+ser,ii\. Ness, Brunss%ick. NJ. fie also siorked in nonacademic computer-
+related positions, flis major research interest,, lie in mathematical ss,stem
+thcors,. applied algebra. and theoretical computer science fie Is the
+author of %arious papers in sN,teni thcor~ and algebra. and has also
+\\rittCfl SLU10 paper!, Lind a book on artificial intelligence. lie has
+authored I_c(tifte Ito Cotilod ailti jillorniellion S(leo(cs. I_?. Poll-
+m,onal Response lilup,, (Berlin. (irernianN: Springer. 1979)
+Dr Sontag is a member of Phi Beta Kappa. of the American Mathe-
+inatical Sociels.. and (if the Soocts. for Industrial and Applied Mathe-
+niatic,

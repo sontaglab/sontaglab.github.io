@@ -1,0 +1,426 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/high-gain.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/high-gain.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+CONTINUOUS STABILIZERS AND HIGH-GAIN FEEDBACK
+
+Eduardo D. Sontag* Department of Mathematics Rutgers University New Brunswick, NJ 08903, U.S.A.
+
+ABSTRACT A controller is shown to exist, universal for the family of all systems of fixed dimension n, and m controls, which  stabilizes  those  systems  that  are  stabilizable,  if  certain  gains  are  large  enough.    The  controller parameters are continuous, in fact polynomial, functions of the entries of the plant.  As a consequence, a result is proved on polynomial stabilization of families of systems.
+
+1. Introduction.
+
+This  work  continues  the  investigation  of  synthesis  problems  for  parametrized  families  of  systems. There  are  two  main  motivations  for  this  line  of  research.    The  first  is  the  expectation  that  parametrized controllers should prove useful in shifting the computational effort to "offline" preprocessing in situations in which the precise values of some system parameters are not known in advance but can be determined on-line.  The second motivation is purely mathematical: it is natural to ask whether the constructions in control theory can be made "continuous" or "algebraic" in system parameters.
+
+Consider, for any fixed positive integers n,m, the set of all possible continuous-time systems
+
+OEx(t) = Ax(t) + Bu(t) , (1.1)
+
+for  A  an  n*n  and  B  an  n*m  real  matrix.    We  know  that,  if  a  given  pair  (A,B)  is  stabilizable  --that  is,  all uncontrollable eigenvalues of A have negative real part,-- then there exists a feedback matrix K = K(A,B) such that A-BK is Hurwitz (has all eigenvalues with negative real part).  This construction is continuous, in fact smooth, on the stabilizable pairs (A,B), because a suitable K(A,B) can be found via the solution of a well-posed quadratic optimization problem; see for instance [D] for a discussion of this point.  What is not known is if a stabilizing K(A,B) can be computed in a more algebraic fashion (the optimization argument depends  on  the  implicit  function  theorem).    We  shall  prove  in  this  paper  that  this  can  indeed  be  done provided that dynamic feedback be allowed (we define "algebraic" precisely later).
+
+Another  natural  question,  which  turns  out  to  be  related  to  the  previous  one  about  algebraic dependency,  is  whether  it  is  possible  to  give  a  more  general  construction  of  "nice"  K(A,B),  for arbitrary (not  necessarily  stabilizable)  pairs  (A,B)  with  fixed  (n,m),  which  results  in  a  Hurwitz  matrix  A-BK(A,B) whenever  the  pair  (A,B) happens  to be stabilizable.   Such questions  are  of  interest in adaptive  control. Posed in this way, the answer is negative even in the case n=1,m=1: as ao""1 and bo""0 the limit k(a,b) cannot be finite, since 1-0k(1,0) = 1 is not Hurwitz.  A more plausible variation is suggested by a result in [S1]  that says  that  there is  a  K(A,B)  depending  polynomially  on  arbitrary  (A,B)  with  the  property  that,  if
+
+*Research supported in part by US Air Force Grant 85-0247
+
+2 (A,B) happens to be controllable, then A-gBK(A,B) is Hurwitz whenever the multiplicative gain g is large enough.  Moreover, an estimate on how large is "large enough" is given explicitely by the condition that g>r(A,B), where r is a rational function with no poles at reachable (A,B).  For instance, for n=m=1 we may choose  k(a,b):=  b;  then  a-gbk  =  a-gb2 is  negative  whenever g >  a/b2.  Note  that  bz'0  is  precisely  the condition that characterizes controllability in this case.
+
+We  don't  know  if  the  above  result  can  be  generalized  to  work  with  stabilizable  families  (and  n,mz'1). But we present here a variation of it which states essentially that the same is true provided that dynamic feedback is used.  (And multiple gains are allowed.)  As an easy consequence of this result and through the  application  of  a  theorem  of  Hormander  ([H]),  we  conclude  the  above  mentioned  fact  on  algebraic dependency.
+
+The paper [S3] presents an introductory survey to the general topic of control of parametrized families of  systems, and  should be consulted for other results and for  a large list  of  references.   (A sketch of a proof of the algebraic dependency result was given in an appendix to that paper.  The proof here, though having many elements in  common with  that,  is  considerably  simpler, mainly  because the  real  algebraic material is left out of the main proof and appears only at the end through Hormander's theorem.  Further, the  results  are  stronger  here,  in  that  explicit  multiplicative  gains  are  constructed.  On  the  other  hand, discrete  time  systems  are  not  treated  here,  and  the  reader  is  refered  to  [S3]  for  the  appropriate generalizations.)
+
+2. Definitions and Statement of Main Result.
+
+It is worth giving some of the needed definitions and intermediate results in somewhat more generality than needed for the main results of this paper, since the proofs will be exactly the same, and the lemmas proved are of interest in themselves.  The more general context is that of "systems over rings".
+
+An (n,m) (free) system \Sigma  over a commutative ring R is given by a pair of matrices A, B with AI^Rn*n and BI^Rn*m.  We shall be especially interested in two particular cases, "classical" real systems, for which R = A^ = reals, and (polynomial) families, where R = A^[l] = A^[l1,OEOEOE,lr], the polynomial ring over the reals in the variables l = (l1,OEOEOE,lr), and r is an integer, the number of parameters.  For any system (A,B) we consider its associated controllability matrix C = C(A,B); this is defined in block form as
+
+C(A,B) := [B,AB,OEOEOE,An-1B] I^ Rn*mn . By the Cayley-Hamilton theorem, the column module C(A,B) of C(A,B) is A-invariant.  Equivalently, there exists a matrix D = D(A,B) I^ Rnm*nm such that
+
+AC = CD . (For a very readable and complete introduction to linear algebra over commutative rings, see [M].)
+
+A very special system will be of interest, to which the intermediate lemmas will be applied in order to conclude  the  main  result.    For  fixed  (n,m),  R[n,m] denotes  the  real  polynomial  ring  in  n(n+m) indeterminates, R[n,m] = A^[a,b], where a = (a11,OEOEOE,ann) and b = (b11,OEOEOE,bnm).  The universal (n,m) system \Sigma [n,m] is the system over R[n,m] for which (A[n,m])ij = aij and (B[n,m])ij = bij.  Any (n,m) real system (A,B) can be obtained by evaluating the entries of A[n,m] and B[n,m] at appropriate real numbers.  If a = (a11,OEOEOE,ann) and b = (b11,OEOEOE,bnm), we let \Sigma [n,m](a,b), or just \Sigma (a,b) denote the system obtained from the evaluations aij:= aij and bij:=  bij.  The  corresponding  pair  of  matrices  is  denoted  by  A(a)  and  B(b)  respectively,  to
+
+3 emphasize the fact that we are viewing the particular system as obtained by evaluation of the entries of the universal system at the vectors a and b respectively.
+
+There  are  various  abstract  notions  of  stability  for  systems  over  rings,  which  generalize  the  standard one for real systems.  See for instance [HS], [KS], [E].  One such notion is as follows.  Assume given a multiplicatively  closed  subset  S  of  the  polynomial  ring  R[z]  which  consists  entirely  of  monic  (leading coefficient =1) polynomials and which contains at least one polynomial of positive degree.  We call S a set of Hurwitz polynomials.  With this definition, a linear map f:Mo""M, where M is an R-module, is Hurwitz iff there exists a Hurwitz polynomial p(z) which annihilates it: p(f)=0.  An n*n matrix A over R is Hurwitz if any (and hence all) linear maps it represents are Hurwitz, that is, if there is a Hurwitz p(z) with p(A)=0 as a matrix.  When R = A^, we take S = all monic polynomials with no zeroes in the closed right-half plane.  In the case of families, we take S to be the set of all polynomials p(l,z) in A^[l][z] = A^[l1,OEOEOE,lr][z] monic in z and such that p(l,z) is Hurwitz for all lI^A^r.  That is, all "pointwise Hurwitz" polynomials.
+
+(This definition of stability for linear maps over rings is slightly different from the usual one --see above references,--  where  one  asks  that  the  characteristic  polynomial  of f be  itself  Hurwitz.    With  this  new approach, however, the definition of stabilizability becomes much more natural than in previous work.  In any  case,  for  the  case  of  interest  R  = A^[l],  and  A(l)  is  a  matrix,  a  pointwise  argument  with  minimal polynomials  shows  that  A(l)  is  Hurwitz  --in  the  sense  defined  above  for  families--  precisely  when  its characteristic polynomial is, or equivalently, iff A(l) is a classical Hurwitz matrix for each lI^A^r.)
+
+Fix now a system (A,B) over R. Consider the controllability module C(A,B) I' Rn.  Since C is A-invariant, there is a well-defined linear mapping
+
+Af : Rn/C o"" Rn/C induced by A. The subscript "f" is intended to indicate that Af corresponds to the "free" dynamics of \Sigma , the part not influenced by controls.  This can be made explicit ("Kalman decomposition") when C and Rn/C are  free.    (This  happens,  for  all  systems  (A,B),  if  --and  only  if--  R  is  a  field.)    There  is  in  that  case  a TI^Gl(R,n) such that
+
+T-1C = ( ) ,C10
+
+where C1 is a matrix of size s*nm, s = rank of C.  For any such T, there are decompositions
+
+T-1AT = ( )A1 A20 A
+
+3T-1B = ( )B 10
+
+where B1 is s*m, and where A3 is an (n-s)*(n-s) matrix representing Af.  For the universal system \Sigma [n,m], we  denote  the  mapping  Af corresponding  to  each  specialization \Sigma (a,b)  as  A(a,b)f.  The  'b'  serves  to emphasize that this map depends on B(b) as well as on A(a).
+
+The system (A,B) is called ("globally") stabilizable if Af is Hurwitz.  (As a convention, in the "completely controllable"  case,  in  which C=Rn,  --so  that  Af acts  on  a  trivial  module,--  we  define  (A,B)  to  be stabilizable.)  For real systems, this is well-known to be equivalent to the existence of a matrix K such that A-BK is stable; for more general rings this is equivalent to the existence of a dynamic stabilizer over the ring (see below).  For the case of a family (A(l),B(l)), i.e., a system over A^[l1,OEOEOE,lr], it is natural to also define  (A,B)  to  be pointwise  stabilizable if  (A(l),B(l))  is  stabilizable  for  each lI^A^r.  It  will  follow  from  the material in this paper that global and pointwise stabilizability coincide for families.
+
+4 For real systems, one extends results from controllable to stabilizable systems by decomposing (A,B) as above via the change of basis T, and noting that (A1,B1) is controllable.  When dealing with rings, and in particular with the universal systems \Sigma [n,m], this cannot be done.  For instance, for m=n=1, (a,b) is such that R1/C = A^[a,b]/(b) is not a free A^[a,b]-module.  More geometrically, the problem is that the reachability matrix does not have constant rank as (A,B) ranges over all possible (n,m)-systems, that is, C does not define a vector bundle over A^n(n+m).
+
+A  dynamic  controller  for  the  system  in  equation  (1.1)  consists  of  a  system  of  the  same  type,  whose inputs are the states x(t) of (1.1) and whose output is the input u(t).  Thus there are in that case a pair of equations
+
+OEz(t) = Fz(t) + Gx(t),  u(t) = Hz(t) + Jx(t), (2.1)
+
+where  z(t)  is  for  each  t  a  vector  of  size  k  (=dimension  of  controller)  and  F,G,H,J  are  matrices  of appropriate  sizes.    Equivalently,  we  may  write  the  closed-loop  equations  (1.1)+(2.1)  as  the  result  of starting with the k-th extension of \Sigma :
+
+\Sigma k = (Ak,Bk) := (( ),( ) ,A 00 0 B 00 I
+
+(where I is a k*k identity matrix, so that this is an (n+k,m+k)-system) and applying feedback
+
+K = ( )J HG F
+
+to \Sigma k.  Thus it is reasonable to define a dynamic feedback controller for the system (A,B) (over any ring R) as  simply  the  specification  of  an  integer  k  and  an  (m+k)*(n+k)  matrix  K  over  R.  For  families,  this  will correspond to the specification of a (polynomially parametrized) family of real systems as in (2.1).*
+
+Consider now the universal system \Sigma [n,m], and let R:= R[n,m][e], where e is a new indeterminate (to be used to control  stability  margins).   Assume  we are given  nonnegative integers k,u,  matrices  Ko,OEOEOE,Ku in R(m+k)*(n+k), such that the first m rows of Ko are identically zero, and elements y, and fi, qi, i=1,OEOEOE,u, in R. For each set of t positive real numbers g1,OEOEOE,gt, 0<=t<=u, we introduce the parametric feedback
+
+Kg1...gt := Ko + g1q1K1 + OEOEOE + gtqtKt . Finally, for any (n,m)-system \Sigma (a,b), where a = (a11,OEOEOE,ann) and b = (b11,OEOEOE,bnm), and any eI^A^, we let
+
+s = s(a,b,e) := min{i, 0<=i<=u, qj(a,b,e)=0 for all j>i} (so s=0 if all qi(a,b,e) vanish, and s=u if they are all nonzero).  Pick any such (a,b,e), and assume first that s>0.  Consider the set G(a,b,e) consisting of all those positive reals g1,OEOEOE,gs such that
+
+gsq2s(a,b,e) > y(a,b,e) + g1q1(a,b,e)f1(a,b,e) + OEOEOE + gs-1qs-1(a,b,e)fs-1(a,b,e) . Note that this is a "high-gain set" in the sense that r(g1,OEOEOE,gs) is in G(a,b,e) if (g1,OEOEOE,gs) is.  If instead s=0, we let G(a,b,e) be arbitrary.  We shall be interested in the the closed loop characteristic polynomial
+
+ccl := char.poly {Ak(a) - Bk(b)Kg1...gs(a,b,e)}. (2.2) (When s=0, ccl reduces  to  Ak(a)-Bk(b)Ko(a,b).)  This  is  the  characteristic  polynomial  of  the  composite system
+
+*Mixing terminologies from algebraic topology and control theory, the dynamic stabilization problem is obtained by "stabilizing" --in the K-theoretic sense-- the static stabilization problem.
+
+5 OEx = Ax + B(g1K1+OEOEOE+gsKs)z OEz = Fz + Gx,
+
+where  F,  G,  and  the Ki are  obtained  from  the  above  data  and  have  entries  over  R  (and  we  omit  the arguments a,b,e).  The main result is:
+
+Theorem A. For any n,m, there exist data as above such that, for each (a,b,e) and each (g1,OEOEOE,gs) in G(a,b,e), ccl splits as a product cscf , where cs has all roots with real part <= -e and cf is the characteristic polynomial of A(a,b)f.  Further, if s=s(a,b,e) and Ak(a) - Bk(b)Kg1...gs-1(a,b,e) is already Hurwitz, and e>0, then (2.2) is Hurwitz for arbitrary positive gs.n
+
+In  particular  if \Sigma (a,b)  is  stabilizable  and  e>0,  the  matrix  in  (2.2)  is  Hurwitz  if  the  gains  gi are  large enough.
+
+The  proof  will  give  (rather  impractical) u =  n, k =  n2,  and s (independent  of  e)  =  dimension  of  the pointwise controllability subspace C(a,b).  It would be an interesting question to know if smaller k,u can be used.
+
+We shall apply Theorem A in establishing the following. Theorem  B. Let \Sigma  =  (A,B)  be  a  system  over A^[l]  = A^[l1,OEOEOE,lr]  (that  is,  a polynomially parametrized family of real systems).  Let \Sigma (l) = (A(l),B(l)) be the system obtained when substituting l = lI^A^r.  If \Sigma (l) is stabilizable  for  each  lI^A^r,  then  there  exist  an  integer k and  a  matrix  KI^R(m+k)*(n+k) (that  is,  a polynomially parametrized dynamic feedback law) such that
+
+A(l)k - B(l)kK(l) is Hurwitz for all lI^A^r.
+
+The following local-global principle is basically a restatement of the above: Theorem C. A family (A,B) is stabilizable iff it is pointwise stabilizable.
+
+6 3. Some Results on Systems over Rings.
+
+We need a lemma on pseudoinverses of matrices over rings, which generalizes the result in [S2].  This is exactly as in [S3], but since the construction is so central to all that follows, we include the (short) proof here.  We let R be an arbitrary commutative ring.
+
+Let C = (cij) be an n*q matrix over R. For any positive r <= min{n,q}, we denote by Ir(C) the ideal of R generated by all the r*r minors of C. In general, we let C(a,b), where a and b are ordered sets of indices for  rows  and  columns  respectively,  denote  the  minor  obtained  from  the  rows/columns  indexed  by a, b. Thus Ir(C) is the set of all linear combinations, with coefficients in R, of the C(a,b) with a and b ordered index sets of cardinality r.  If a = (a1,OEOEOE,ar) and n is an integer, we write "nI^a" to indicate that there is an index  k  such  that ak = n;  this  index  k  is  then  denoted  by a[n].  If nI^a, a\{n}  denotes  the  (r-1)-tuple obtained by deleting n; if nI"a, aE`{n} is the (r+1)-tuple obtained by inserting n in the appropiate position of a.  Finally, we also let C({},{}):= 1 for the empty sets of indices, and Is(C):= {0} if s is larger than min{n,q}.
+
+Lemma 3.1: ([S3]) Let C be as above, and let q be an arbitrary element of Ir(C).  Then there exists a matrix H over R such that
+
+CHC = qC + L for some matrix L all whose entries are in Ir+1(C).
+
+Proof: Let q =  -a* ma,bC(a,b) be  an  expression  in terms  of  the generators  of Ir(C) (we  will omit summation indices when clear from the context).  Then, define H := (hij), where
+
+hji := a* (-1)a[i]+b[j]+1C(a\{i},b\{j})ma,b (3.1) with the sum over all ordered index sets a and b of cardinality r for which iI^a and jI^b.  We must prove that, for each indices n, u, (CHC)nu = qcnu + l, with l in Ir+1(C).  This is done exactly as in [B] (which deals essentially with the case q = 1).  First note that, for any such n, u, and any fixed index sets as above a, b,
+
+a* (-1)a[i]+b[j]+1cnjciuC(a\{i},b\{j}) + cnuC(a,b) = l, (3.2) (sum over all iI^a and jI^b) with l in Ir+1(C).  This is proved as follows.  Let l := det(C), where C is obtained by adjoining row n and column u to the matrix corresponding to a and b.  Thus either det(C) = 0 (if nI^a or uI^b)  or  det(C)  = +-C(aE`{n},bE`{u}),  so  that  l  is  in Ir+1(C)  as  required.    The  formula  now  follows  by expanding  first  in  terms  of  the  last  row  and  then  the  last  column.    Now  just  calculate  (CHC)nu =a*
+
+i,jcnjhjiciu.  Substituting 3.1 into hji, and using property 3.2, this equals qcnu + la* ma,b.n
+
+Lemma 3.2: Let \Sigma  = (A,B) be an (n,m)-system over R, and let C = C(A,B).  Pick q1,OEOEOE,qn in R such that qiI^Ii(C) for each i.  Then, there are matrices H1,OEOEOE,Hn in Rmn*n with the following property.  Let g1,OEOEOE,gn be indeterminates over R, and let
+
+G(g1,OEOEOE,gn) := A - Ca* giqiHini=1 (a  matrix  over  R[g1,OEOEOE,gn]).  Let F be  an  algebraically  closed  field  and p:  R[g1,OEOEOE,gn]o""F a  ring homomorphism.  A superscript p in a matrix will denote evaluation of all entries by p.  Assume that rankCp = s>0.  Then, the characteristic polynomial of G(g1,OEOEOE,gs,0,OEOEOE,0)p factors as
+
+cfcs , where cf is the characteristic polynomial of (Ap)f and where each root of cs is of the form
+
+7 r - gps(qps)2 , r = eigenvalue of G(g1,OEOEOE,gs-1,0,OEOEOE,0)p.
+
+Proof: We  apply  lemma  (3.1)  n  times,  using  always  the  same  matrix  C  but  with  each  of  the possible q = qi.  There result n matrices Hi, with
+
+CHiC = qiC + Li,  Li with entries in Ii+1(C) . (Thus Ln=0.)  Let Ei:= CHi for each i=1,OEOEOE,n.  Then,
+
+Ei2 = qiEi + Ni,  Ni with entries in Ii+1(C) . Consider now a homomorphism p such that rank(Cp)=s>0.  Then, Ij(Cp)=0 for j>s, so Njp and qjp vanish for such j.  In particular,
+
+(Eps)2 = qpsEps . Thus Eps is annihilated by
+
+z(z-qps) . If qps z' 0, the minimal polynomial of Eps is either z(z-qps), z, or z-qps.
+
+We let E=Es, q=qs, and g=gs.  Further, we drop from now on the superscripts p; thus A will denote Ap, q denotes qps, and so forth. This will cause no confusion, since all further arguments are over the given field F.  Assume first that qz'0.  It follows then from the form of the minimal polynomial of E that there is a TI^Gl(F,n) such that
+
+E1 := T-1ET = ( ) .qI 00  0 If the minimal polynomial is z-q, the 0 blocks are not there.  If instead the minimal polynomial is z, the qI block is empty (but we prove later that this case cannot happen).  Let
+
+L = a* giqiHiai=1 where a=s-1, (evaluated by p), and H be Hs (evaluated).  Since
+
+E = CH  and C = (1/q)EC , it  follows  that  E  and  C  have  the  same  column  space,  so  rankE  = s.  Thus  the  block qI in  E1 is s*s. Denote
+
+C1 := T-1C,  A1 := T-1AT,  LT = (L1,L2) , (3.3) where L1 is nm*s and L2 is nm*(n-s).  Then, the equality E1C1 = qC1 implies that C1 has the partitioned form
+
+( ) ,C20 (3.4) where C2 is of size s*nm.  Thus C2 has rank s.  Finally, partition A1 as
+
+( ) ,A11 A12A
+
+21 A22 (3.5)
+
+where A11 is s*s.  From the A-invariance of C, we can write
+
+AC = CD , from where it follows that A1C1 = C1D, and hence A21C2 = 0.  Since C2 has rank s and A21 is s*s, we
+
+8 conclude that A21=0; thus we are in the standard case discussed in the introduction where A22 represents Af.  Note that then
+
+T-1(A-CL-gqE)T = (3.6)( )
+
+,A11-C2L1-gq2I A12-C2L20 A 22
+
+so  the  characteristic  polynomial  of  the  desired  G(g1,OEOEOE,gs,0,OEOEOE,0)  =  A-CL-gqE  splits  as  that  of  Af and  of A11-C2L1-gqI.  The eigenvalues of the latter matrix are translates by gq2 of those of A11-C2L1, which is in turn  by  formula  (3.6)  (when g=0)  a  matrix  whose  eigenvalues  are  among  the  eigenvalues  of  A-CL  = G(g1,OEOEOE,gs-1,0,OEOEOE,0).
+
+If instead q=0, the statement to be proved is simply that cf divides A-CL.  But we may always find an  invertible  T  such  that,  with  (3.3),  the  forms  (3.4)  and  (3.5)  hold,  and  A21=0.  Thus cf is  also  then  a factor.  This completes the proof.n
+
+Partition now each matrix Hi in the form
+
+Hi1 ..
+
+Hin where each block Hij is of size m*n.  Thus
+
+G(g1,OEOEOE,gn) = A - a* a* giqiAj-1BHij .ni=1 nj=1 Note that, for each positive j,
+
+AjB = (zI-A)Uj + BVj , (3.7) for suitable Uj, Vj over R[z] (z = indeterminate over R).  This is easy to prove, by induction on j, using that
+
+AjB = (zI-A)(-Aj-1B) + z(Aj-1B) . Let \Gamma  := zI-G.  Then,
+
+\Gamma  = (zI-A)(I+a* Uj(z)Xj) + B(a* Vj(z)Xj) ,nj=1 nj=1 (3.8) where
+
+Xj := a* qigiHij.ni=1 Let \Delta (z) be any fixed polynomial in R[z,e], where e is yet another indeterminate, \Delta  monic and of degree at least 1 in z.  (We shall think of R[z,e] as polynomials in z with coefficients in R[e].)  For the main theorem, we shall use
+
+\Delta (z) := z+e , (3.9) but the argument to follow is more general (and will be used later in proving results over arbitrary rings). Let c denote  the  characteristic  polynomial  of  A.  Since  this  is  monic,  there  is  a  well  defined  division  of polynomials by c, and in particular there are polynomial matrices Tj(z), j=1,OEOEOE,n, and Sj(z), j=1,OEOEOE,n, such that
+
+\Delta nVj(z) = c(z)Tj(z) + Sj(z) and degree Sj <= n-1.  (All polynomials are over R[e].)  Let \Delta '(z):= \Delta n(z)\Gamma .  It follows that
+
+9 \Delta '(z) = (zI-A)[\Delta n(I+a* Uj(z)Xj)] +nj=1 (3.10)
+
++ c(z)B[a* Tj(z)Xj] + B[a* Sj(z)Xj] .nj=1 nj=1
+
+Since c(z)B = (zI-A)cof(zI-A)B ("cof" = matrix of cofactors), it follows from (3.10), by collecting the first two terms, that
+
+\Delta '(z) = (zI-A)Q(z) - BW(z) , (3.11)
+
+where  W(z):=  -a* Sj(z)Xj is  a  polynomial  matrix  (in  z)  of  degree  at  most  n-1.    Comparing  leadingnj=1 coefficients  in  z,  since \Delta '  is  monic  of  degree  1+deg\Delta (z),  it  follows  that  Q(z)  is  also  monic,  of  degree n'=n.deg\Delta (z).  The argument used in passing from (3.8) to (3.11), with \Delta  independent of e, proves also a general fact, which we state here for future reference:
+
+Proposition 3.3: Assume that (A,B) is an (n,m)-system over R, and that U(z), V(z) are matrices over R[z] of sizes n*n and m*n respectively, such that
+
+\Gamma  := (zI-A)U(z) + BV(z) is  monic.    Let \Delta  be  any  monic  polynomial  in  R[z]  of  degree  at  least  1.    Then,  there  exist  polynomial matrices Q(z), W(z), where Q(z) is monic and of strictly larger degree than W(z), such that, with \Delta ':= \Delta n\Gamma ,
+
+\Delta '(z) = (zI-A)Q(z) - BW(z) .n
+
+(This  result  provides  the  essential  step  in  the  proof  of  the  result  given  in  [E];  the  author  learned  the above simple proof from Malo Hautus.)  For our main result, we must now obtain a realization of Q-1W that preserves linearity in the gains g.  For simplicity, from now on we do take \Delta  as in equation (3.9), so that n'=n, and we may write
+
+Q(z) = znI - a* ziQi+1n-1i=0 and for each k=1,OEOEOE,n,
+
+Qk = Rk + a* giqiRki ,ni=1 where the matrices Ri and Rki are all n*n matrices over R[e].  Similarly,
+
+W(z) = a* ziWi+1 ,n-1i=0 Wk = a* giqiSki ,ni=1
+
+where the Ski are m*n matrices over R[e].  We now apply the lemma in the appendix, with the above Q and with P(z):= BW(z) and k=n.  (And, "R" in the appendix is R[e].)  We can interpret the conclusions in term of the extended system \Sigma k, where k = n2.  Consider the matrix
+
+0  W1 W2 W3 .  .  .  Wn 0  0  I  0  .  .  .  00  0  0  I  .  .  .  0
+
+K := -  .  .  .  .  .  .  .  .  ..  .  .  .  .  .  .  .
+
+0  0  0  0  .  .  .  II  Q
+
+1 Q2 Q3 .  .  .  Qn Then,
+
+Ak-BkK (3.12) equals M in the appendix, and hence has characteristic polynomial
+
+10 det((z+e)n(zI-G)) = (z+e)n2det(zI-G) . Furthermore, there is an expression
+
+K = K(g1,OEOEOE,gn) = Ko + a* giqiKi ,ni=1 (3.13) where the Ki are (n2+m) by (n2+n) matrices over R[e] and the first m rows of Ko are identically zero.  From lemma 3.2 we may then conclude:
+
+Proposition 3.4: Let \Sigma  = (A,B) be an (n,m)-system over R, and let C = C(A,B).  Pick q1,OEOEOE,qn in R such that qiI^Ii(C) for each i.  Let g1,OEOEOE,gn and e be indeterminates over R, and k=n2.  For the extended system \Sigma k,  there  exists  then  a  matrix  K  over  R[g1,OEOEOE,gn,e]  of  the  form  in  equation  (3.13),  such  that  the  following holds.  Let p: R[g1,OEOEOE,gn,e]o""F be any homomorphism onto an algebraically closed field such that Cp has rank s,  0<=s<=n.  Then,  the  characteristic  polynomial  of  (3.12)  splits  as  a  product cscf,  where cf is  the characteristic polynomial of (Ap)f, and where each root of cs either equals -p(e) or is of the form
+
+r - gps(qps)2 , where r is an eigenvalue of
+
+(Ak)p -(Bk)pK(g
+
+1,OEOEOE,gs-1,0,OEOEOE,0)p (if s=0, all roots of cs equal -p(e)). n
+
+(When s=0 then Cp=0, and all qi evaluate to zero, so the matrix G(g1,OEOEOE,gn)p reduces to Ap = (Ap)f.  Thus all zeroes of cs in fact equal -p(e) in that case.)
+
+To prove Theorem A, we choose now R = R[n,m], and
+
+qi := sum of the squares of all i*i minors of C . We apply the above proposition, so there result matrices Ki as there.  The number u in the statement of theorem A will be n, and k there is n2.  We pick
+
+y := e + 2 + a* a* aij2 + a* a* (BKo)ij2 ,ni=1 nj=1 ni=1 nj=1 fl := 1 + a* a* (BKl)ij2 .ni=1 nj=1
+
+Let \Sigma (a,b) = (A(a),B(b)) be choosen so that C=C(a,b) has rank s, where 0<=s<=n.  Pick any real e and positive g1,OEOEOE,gn.  Let p be homomorphism into C induced by the evaluation of a, b, e, g1,OEOEOE,gn into a, b, e, and  g1,OEOEOE,gn respectively.  Assume  first  that s=0.  Then  C=0,  so  by  the  proposition  the  desired characteristic  polynomial  factors  as  the  characteristic  polynomial  of  A  times  one  having  all  roots  =  -e. And,  since  C=0,  A=Af,  so  the  result  follows.    So  assume  that s>0,  and  that  g1,OEOEOE,gn are  arbitrary,  with gs>0.  By proposition 3.4, the characteristic polynomial of Ak(a) - Bk(b)Kg1...gs(a,b) splits as the product of the characteristic polynomial of A(a,b)f and of a polynomial cs each of whose roots either equals -e or is of the form r - gsq2s(a,b,e), where r is an eigenvalue of
+
+F := A(a) - B(b)Ko(a,b,e) -a*
+
+giqi(a,b,e)B(b)Ki(a,b,e)qi=1
+
+(where q=s-1) Let r be any such eigenvalue.  Then its real part is less than |r|, which is dominated by the spectral radius of F, and hence by the norm of F induced by Euclidean norm in A^n; thus
+
+11 Re r <= ||A(a)|| + ||B(b)Ko|| + a* giqi(a,b,e)||BKi(a,b,e)||qi=1
+
+<= 2 + y(a,b,e) + a* giqi(a,b,e)fi(a,b,e) - e .qi=1
+
+where q=s-1.  It follows that
+
+Re(r-gsq2s(a,b,e)) <= {y(a,b,e)+a* giqi(a,b,e)fi(a,b,e)-gsq2s(a,b,e)}-eqi=1 (3.14) where q=s-1.  If now g1,OEOEOE,gs satisfy
+
+gsqs(a,b,e)2 > y(a,b,e) + a* qi(a,b,e)gifi(a,b,e) ,qi=1 where q=s-1, then the expression in (3.14) is less than -e, as desired.  Finally, assume that e>0 and that gs is arbitrary but that all eigenvalues r of F have negative real part.  Then cs has all zeroes equal to -e<0 or of the form r-(positive), so all such zeroes again have negative real part.  This completes the proof of the main theorem.n
+
+4. Proof of Theorem B.
+
+In  this  section  we  prove  the  result  on  polynomially  parametrized  families.    This  will  be  an  easy consequence  of  Theorem  A  once  that  we  establish  a  result  in  real  algebraic  geometry.    Recall  that  a semialgebraic subset of A^r is one that can be defined by a first-order formula in the theory of real-closed fields.  By a rational function defined on F, where F is a semialgebraic set of A^r, we shall mean a rational function in r variables which has no poles in F. The main fact that we need is as follows.
+
+Proposition  4.1: Given  a  closed  semialgebraic  subset  F  of A^r and  a  rational  function z defined  on  F, there exists a polynomial pI^A^[l1,OEOEOE,lr] such that p(l)>z(l) whenever lI^F and p(l)>0 for all lI^A^r.
+
+Proof: Let z = f/q, where q has no zeroes on F. Without loss, we assume that q>0 on F (otherwise use -f).  Also, we may assume that F is nonempty, otherwise the result is trivial.  Consider the following subset E of A^2:
+
+E := {(x,y) s.t. if lI^A^r is such that ||l||2<=x and lI^F then yq(l)>f(l)}. This is again a semialgebraic set.  Now let f: A^o""A^ be the function defined by
+
+f(x) := inf{y s.t. (x,y)I^E} , with  f(x)=+e^ if  the  set  is  empty.    Then  (see  [H],  pages  367-368,)  the  function  f  is  semialgebraic,  and hence if it is finite for large positive x then f has the form
+
+f(x) = Axa(1+o(1)) as xo""e^ , (4.1) where a is rational.  Let x>0 be such that Cx:= FC,Bx is nonempty, where Bx is the ball of radius x.  Since z is continuous on the compact set Cx, it is in particular bounded there.  So
+
+f(x) = sup{z(l), lI^Cx} is finite, and f(x) has the form (4.1) for large x.  Let q(x) be a polynomial such that q(x)>f(x) for all large x; such a q exists because of (4.1).  Since f is a nondecreasing function for x>0, there is a constant c such that q'(x):= c+q(x) is larger than f(x) for all positive x.  Finally, choose
+
+p(l) := q'(||l||2). This is a polynomial, and it dominates z on F by construction. If p is not everywhere positive, just replace it by p2+1, which is positive and dominates p.n
+
+12 We now complete the proof of theorem B. It is slightly easier to prove the theorem if we use the explicit construction of the qi's, but we prefer to obtain it as a corollary of theorem A. In this way we emphasize that  B  follows  from  the  existence  of  a  "high-gain  theorem"  plus  the  above  algebraic-geometric  fact. Possible improvements in theorem A (smaller u and k, for instance) will then give improvements in B.
+
+Pick  n,m,  and  let k, u,  Ki's,  etc.,  be  as  concluded  by  theorem  A.  Now  assume  that \Sigma  is  a  pointwise stabilizable  (n,m)-system  over A^[l]  = A^[l1,OEOEOE,lr],  and  denote  by  aij(l)  and  bij(l)  the  entries  of  A  and  B respectively, as polynomials in the variables l.  Evaluate the entries of the Ki, fi, qi, and y, at aij:= aij(l), bij:= bij(l), and e:= 1.  There result polynomial matrices and polynomials in A^[l], which we denote again by Ki, etc.  Define the function
+
+s: A^r o"" nonnegative integers, s(l):= s(a(l),b(l),1). Then, whenever s(l) = s and g1,OEOEOE,gs satisfy
+
+gsq2s(l) > y(l) + g1q1(l)f1(l) + OEOEOE + gs-1qs-1(l)fs-1(l) , it follows that
+
+Lg1,...,gj(l) := A(l)k - B(l)k(Ko(l) + g1q1K1(l) + OEOEOE + gjqjKj(l)) is Hurwitz for j=s.  (When s(l)=0, only Ko appears.)  This is true because the vanishing of qi for i>s means that  Lg1,...,gs coincides  with  the  closed-loop  matrix  in  (2.2),  and  stabilizability  of \Sigma (l)  means  that  A(l)f is stable.  Further, it also follows from theorem A that Lg1,...,gj(l) is Hurwitz, for j=s, if gs is arbitrary positive but Lg1,...,gj(l), j=s-1, is known to be Hurwitz.
+
+Claim: There are polynomials pj, j=1,OEOEOE,u, such that, if l is such that s(l)=j>0, then Lp1(l),...,pj(l) is Hurwitz. Theorem B follows from this: for any l, if s(l)=0 then stability follows from theorem A, independently of the choice of the pi's; for s(l)>0 the conclusion follows from the claim.
+
+We  prove  the  claim  by  induction  on  j.    Assume  that  p1,OEOEOE,pj-1 have  been  constructed,  such  that  if s(l)=i<=j-1 then Lp1(l),...,pi(l) is Hurwitz (no assumption when j=1).  Consider the set
+
+Fj := {l s.t. Lp1(l),...,pj-1(l) is not Hurwitz and qi(l)=0 for i>j} . This is a closed semialgebraic set, because Hurwitz matrices form an open semialgebraic set.  We claim that  if  l  is  in  Fj then qj(l)z'0.  Otherwise,  Lp1(l),...,pj-1(l) coincides  with  Lp1(l),...,pi(l),  with s(l)=i<j,  and  this
+
+contradicts the inductive hypothesis.  (When j=1, only Ko appears, and this matrix equals Ak(l)-Bk(l)Ko(l), which is Hurwitz since s=0.)  Thus, by proposition (4.1), there is a polynomial pj such that
+
+pj(l)qj2(l) > y(l) + p1(l)q1(l)f1(l) + OEOEOE + pj-1(l)qj-1(l)fj-1(l) , (4.2) whenever l is in Fj.  Assume now that s(l)=j.  If l is in Fj, then by (4.2) it follows that Lp1(l),...,pj(l) is indeed Hurwitz.  If not in Fj, then Lp1(l),...,pj-1(l) must be Hurwitz, so since ps is always positive, again Lp1(l),...,pj(l) is Hurwitz.  This completes the proof of the claim and hence of theorem B.n
+
+5. Complements on Stabilizability.
+
+In  this  section,  we  include  some  remarks  concerning  stabilizability  of  systems  over  arbitrary commutative rings, and in particular show why theorem C is just a restatement of B. It will also follow that our  definition  of  stabilizability  coincides  with the  usual  one  (see  e.g.    [HS],  [KS],  [E]).    Let  R  be  a fixed commutative ring, with a given Hurwitz set S. Also, \Sigma  = (A,B) is a fixed (n,m)-system over R.
+
+13 We shall say that a polynomial \Psi I^R[z] is assignable for \Sigma  iff there exist polynomial matrices QI^R[z]n*n and PI^R[z]m*n such that
+
+(zI-A)Q(z) + BP(z) = \Psi (z)I . (5.1)
+
+Assume that \Psi  is like this, and let P = a* Pizi.  Let C:= C(A,B).  For each i>0 we may write
+
+BPizi = (zI-A)Mi(z) + AiBLi , for suitable polynomial Mi and constant Li.  This follows by iterating on the formula
+
+BPz = (zI-A)BP + ABP . The argument can be reversed --using equation (3.7).  Thus, \Psi  is assignable iff there exist Q(z) as before and LI^Rnm*n (constant, not polynomial) such that
+
+(zI-A)Q(z) + CL = \Psi (z)I . (5.2) This  last  equation  implies  that \Psi (A)  =  CL.    (Basically,  by  evaluation  of  both  sides  at  z:=  A.  But  the argument is slightly more subtle, because of the noncommutativity of the matrix ring, and it depends on the  fact  that \Psi (z)I  commutes  with  A.  See  [G],  "generalized  Bezout's  theorem,"  IV.3,  theorem  1.) Conversely, if \Psi (z) is arbitrary, we may divide on the left by the monic polynomial (zI-A), thus if \Psi (A) = CL then (5.2) holds for some Q(z).  So, \Psi  is assignable iff the image of \Psi (A) is included in C, or, by definition of Af:
+
+Proposition 5.1: \Psi  is assignable if and only if it annihilates Af. n
+
+The  usual  definition  of  stabilizability  for  systems  over  rings  is  in  terms  of  assignability  of  Hurwitz polynomials; by the proposition, it coincides with the definition which we use.  It is a result of Emre (see [E])  that  this  implies  the  existence  of  dynamic  stabilizers;  we  shall  prove  this  now,  using  facts  already derived.
+
+Assume  that \Psi  is  assignable  and  Hurwitz.    Pick  any \Delta I^S  of  positive  degree.    Then,  proposition  3.3 applies, and we may write
+
+\Delta n(z)\Psi (z)I = (zI-A)Q(z) + BP(z) , with Q monic and larger degree than P. By the lemma in the Appendix, there are then an integer k and a matrix K such that Ak-BkK has characteristic polynomial (\Delta n\Psi )n, and hence is Hurwitz.
+
+Conversely, assume that there exist k,K like that.  Let \Psi  be a Hurwitz polynomial annihilating Ak-BkK. Then \Psi  also annihilates Af.  Indeed, if Ck denotes C(Ak,Bk), then
+
+\Psi (Ak-BkK) = \Psi (Ak) + CkL and the form of Ak, Bk imply that \Psi (A)+CL' = 0 for some L'.  We conclude then:
+
+Theorem D. The following statements are equivalent, for any fixed R,S, and \Sigma :
+
+i. \Sigma  is stabilizable (i.e., Af is Hurwicz). ii. There is an assignable Hurwitz polynomial.iii. There are k,K such that Ak-BkK is Hurwitz (\Sigma  is dynamically stabilizable).n
+
+Theorem C then follows from B and D. From the last condition in D, it follows that stabilizability implies pointwise  stabilizability  for  families.    And  the  converse  is  proved  by  theorem  B,  using  again  the  last characterization.
+
+14 6. Appendix.
+
+The following lemma is needed in the text.
+
+Lemma  6.1: Let  R  be  a  commutative  ring,  n,k  positive  integers,  and  consider  the  following  n(k+1)  by n(k+1) matrix over R (each block of size n*n):
+
+A  P1 P2 P3 .  .  .  Pk 0  0  I  0  .  .  .  00  0  0  I  .  .  .  0
+
+M =  .  .  .  .  .  .  .  .  ..  .  .  .  .  .  .  .
+
+0  0  0  0  .  .  .  II  Q
+
+1 Q2 Q3 .  .  .  Qk Then, the characteristic polynomial of M equals the determinant of
+
+N(z) = (zI-A)Q(z) - P(z) , where
+
+Q(z) := zkI - a* ziQi+1 , andk-1i=0 P(z) := a* ziPi+1 .k-1i=0
+
+Proof: Consider the matrix zI-M.  It is enough to prove that there is an unimodular (det=1) matrix E over R[z] such that
+
+I *  *  .  .  .  0 (6.1)0  N  0  .  .  .  0
+
+0  * I 0  .  .  0E(zI-M) =  0  *  0 I 0  .  0  . .  .  .  .  .  .  ..  .  .  .  .  .  . 0  *  *  *  *  . I The matrix zI-M has k+1 block rows each consisting of n rows; when we write "row i", we shall mean "i-th block of rows", and row operations will be by blocks.  Now operate as follows.  In the order i=3,OEOEOE,k, do
+
+row_i := row_i + z.row_(i-1) . Thus the i-th block of zI-M becomes
+
+[0,zi-1,0,OEOEOE,0,-I,0,OEOEOE,0] , with the -I in block position i+1, for i=2,OEOEOE,k.  Now do
+
+row_1 := row_1 + (zI-A)row_(k+1) , so row 1 now looks as
+
+[0,-P1-(zI-A)Q1,OEOEOE,-Pk-1-(zI-A)Qk-1,-Pk-(zI-A)Qk+z(zI-A)] . Operating now again on row 1,
+
+row_1 := row_1 + [-Pk-(zI-A)Qk+z(zI-A)]row_k , results in the block (1,k+1) being zero.  Finally, apply the operations
+
+row_1 := row_1 + [-Pi - (zI-A)Qi]row_i , in the order i = k-1,OEOEOE,2.  There results a matrix
+
+0  N(z)  0  .  .  .  0
+
+15 0  zI -I 0  .  .  00  z2I 0  -I .  .  0 .  .  .  .  .  .  ..  .  .  .  .  .  . -I *  *  *  .  .  * Multiply now rows 2,OEOEOE,k+1 by -1 and do kn exchanges to bring block row k+1 to block row 1.  This results in the desired form (6.1).n
+
+16 7. References. [B]  Bhaskara  Rao,K.P.S.,  "On  generalized  inverses  of  matrices  over  integral  domains," Linear  Alg.&  itsAppls. 49(1983): 179-189. [D] Delchamps,D.F., "Analytic stabilization and the algebraic Riccati equation," Proc. IEEE Conf. Dec. andControl (1983):1396-1401. [E]  Emre,E.,  "On  necessary  and  sufficient  conditions  for  regulation  of  linear  systems  over  rings," SIAMJ.Contr.Opt. 20(1982):155-160. [G] Gantmacher,F.R., Matrizenrechnung, v.I, Veb Deutscher Verlag der Wissenschaften, Berlin, 1959. [HS]  Hautus,M.L.J.  and  E.D.Sontag,  "An  approach  to  detectability  and  observers,"  in AMS-SIAMSymp.Appl.Math., Harvard, 1979 (Byrnes,C.  and Martin,C., eds.):99-136, AMS-SIAM Pbl., 1980.
+
+[H] Hormander,L., The Analysis of Linear Partial Differential Operators II, Springer, Berlin, 1983. [KS] Khargonekar,P.P. and E.D.Sontag, "On the relation between  stable  matrix fraction decompositionsand regulable realizations of systems over rings," IEEE Trans.Autom. Control 27(1982):627-638.
+
+[M] McDonald, Bernard R., Linear Algebra over Commutative Rings, Dekker, New York, 1984. [S1] Sontag, E.D., "Polynomial stabilization is easy," Systems and Control Letters 4(1984): 181-188. [S2]  Sontag,E.D.,  "On  generalized  inverses  of  polynomial  and  other  matrices," IEEE  Trans.  Autom.Contr. AC-25(1980):514-517.
+
+[S3]  Sontag,E.D.,  "An  introduction  to  the  stabilization  problem  for  parametrized  families  of  linearsystems,"  in Contemporary  Mathematics,  Vol.47,  Linear  Algebra  and  its  Role  in  Systems  Theory, pp.369-400, AMS, Providence, RI, 1985.
+
+i Table of Contents1. Introduction. 1 2. Definitions and Statement of Main Result. 23. Some Results on Systems over Rings. 6 4. Proof of Theorem B. 115. Complements on Stabilizability. 12 6. Appendix. 147. References. 16</pre>
+</body>
+</html>

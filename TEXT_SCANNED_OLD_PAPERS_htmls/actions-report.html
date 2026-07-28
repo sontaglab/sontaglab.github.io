@@ -1,0 +1,1518 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/actions-report.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/actions-report.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+This file contains the original version of the following report: Integrability of certain distributions associated to actions onmanifolds and an introduction to Lie-algebraic control
+
+Rutgers Center for Systems and Control (SYCON) Report 88-04, Eduardo D. Sontag, July 88.
+
+This report consists of two parts: pages 1-41 contain a paper published as Nonlinear Controllability and Optimal Control (H.J. Sussmann, ed.), pp. 81-131, Marcel Dekker, NY 1990. (Proceedings of the Conference on Nonlinear Control at Rutgers, May 87.) Pages 42-50 apply the results to the control of continuous time systems; this is an exposition of some of the basic results of the Lie algebraic accessibility theory.
+
+Erratum: there is (at least) one error in the report, namely, the hypotheses of Theorem 5 should include the assumption that the vector fields are everywhere defined.
+
+INTEGRABILITY OF CERTAIN DISTRIBUTIONS ASSOCIATED TO ACTIONS
+
+ON MANIFOLDS AND APPLICATIONS TO CONTROL PROBLEMS
+
+Eduardo D. Sontag 1 Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 (201)932-3072 - sontag@fermat.rutgers.edu
+
+ABSTRACT Results are given on the integrability of certain distributions which arise from smoothly parametrized families of diffeomorphisms acting on manifolds. Applications to control problems and in particular to the problem of sampling are discussed.
+
+1 Introduction The first objective of this paper is to provide a tutorial introduction to integrability results for distributions -or "singular vector bundles",- on manifolds. These distributions arise from actions of smoothly parametrized families of diffeomorphisms. Such results generalize Frobenious' Theorem in two ways: they deal with diffeomorphisms not necessarily associated to flows, and they do not require the distribution to be nonsingular. Results along these lines are important in various areas of control theory, and they originated in the work of Hermann ([7]) and subsequent research by Sussmann ([19]) and Stephan ([14]) in the early 70's, who removed the nonsingularity assumption and showed that a form of the theorem still holds in the singular case . We shall present an abstract version which summarizes all that is needed for various applications. Our result is more abstract in that it deals with rather general classes of diffeomorphisms, not just those arising from flows as in [19] and [14], but the main ideas of the proof are very similar to the ones in the former reference. Following [19], we also show how more special results due to Nagano, Lobry, and others can be obtained as consequences of the general theorem.
+
+Our interest in actions different from those arising from flows is due to the possibility of applying the obtained results in the study of discrete time invertible systems. The general theory regarding controllability questions for discrete time systems remained until recently much weaker than that possible in the more classical continuous time case. In principle, noninvertibility of transition maps in discrete time implies that semigroups appear where groups would appear in the continuous case, so less algebraic structure is available. Another difficulty is that no analogue of the infinitesimal information obtained by taking derivatives with respect to time is available for difference equations. One avoids the first of these difficulties by restricting attention to invertible systems, for which by assumption transition maps are invertible. The lack of infinitesimal information is dealt with by substituting derivations with respect to control values, assuming that, as is often the case, there is a differentiable structure in the control value
+
+1Research supported in part by US Air Force Grant 0247.
+
+1
+
+set. This gives rise to an action in the sense of this paper, and the results can then be applied to these systems.
+
+Although invertibility is in principle a strong assumption in the context of general discrete time systems, it is the case that for systems that result from sampling, this assumption is always satisfied. Recall that sampling is the process under which the state of a continuous time system is measured at discrete instants, and control actions are taken also at discrete instants. Under such a process, the obtained transition maps as observed at the sampling times give rise to an invertible model. This is analogous to the situation in classical dynamical systems, where one studies time-one diffeomorphisms and Poincar'e maps associated to differential equations. The paper [8] introduced the idea of studying invertible discrete nonlinear control systems. For other work in this area, and more in the spirit of the present paper, see for instance [5], [13], [9], [18], [10], and related papers. Applications to the sampling problem are presented in the last section.
+
+2
+
+2 The Orbit Theorem 2.1 Vector fields and diffeomorphisms For differential geometric definitions and elementary results, our main reference is [2]. Other excellent references are for instance [3] and [1]. We deviate from standard terminology mainly in allowing non-second countable manifolds and singular distributions, as described later. Much of the terminology about singular distributions is borrowed from [19]; in fact, many of the proofs on integrability are either taken from that reference or are easy generalizations of the proofs there.
+
+Throughout this paper, manifold will mean smooth, i.e. C1, and paracompact manifold. Thus manifolds are Hausdorff, not necessarily connected, but each connected component is second countable. (Recall that a paracompact space is one for which every open covering has a locally finite refinement. Thus a space is paracompact iff each connected component is. Every locally compact and second countable Hausdorff space, in particular thus every connected second countable manifold, is paracompact; see for instance [2], section V.4.) An analytic manifold means a real-analytic paracompact manifold. The tangent space to the manifold M at the point , will be denoted by T,M, and T M is the tangent bundle to M.
+
+By a submanifold N of a manifold M we mean an immersed submanifold. We do not require N to be an embedded (or regular) submanifold, nor to be connected or even second countable, even if M is. It will turn out that this generality is needed in order to establish a number of the results. Thus, for instance, if M = IR with the usual topology, we may consider the submanifold N = IRdiscr which equals IR as a set but which is endowed with the discrete topology. This is a manifold of dimension 0, and it has uncountably many components since each real number is a component. It is pathological in that it equals M as a set even though it has lower dimension.
+
+A central issue in controllability is that of determining when certain submanifolds of reachable sets fill an open subset of the ambient space, and to be able to determine this based only on algebraic computations involving the relative dimensions of M and N . Thus one would like to have the property that the submanifold N has a nonempty interior with respect to the topology of M precisely when the dimensions of the two coincide. When the dimensions do coincide then this does indeed hold, but as the example M = IR, N = IRdiscr illustrates, the converse is false in general. However, if N is know to be a second countable manifold, then indeed it cannot have lower dimension than M unless it has measure zero in M: see for instance a proof in [3], proposition 8.5.6. Thus a central objective of our study will be to give general results that insure that certain submanifolds are second countable. Equivalently, because of the paracompactness assumption and the assumption of second countability that we shall make on the state spaces, we will be interested in determining when these submanifolds have only countably many components (in the submanifold topology).
+
+Given two manifolds N1, N2, the product manifold is denoted N1 * N2. This is the cartesian product of the two sets, endowed with the usual differentiable structure: typical coordinate functions are ('1(,1), '2(,2)) for each set of local coordinates '1, '2 for N1 and N2 respectively. Note that there is a natural identification T(,1,,2)(N1 * N2) ' T,1(N1) * T,2(N2). When N2 is a discrete manifold, that is to say a manifold of dimension zero, we can identify N1 * N2
+
+3
+
+with a disjoint union of copies of N1 (one for each element of N2), and we may think of each tangent space T(,1,,2)(N1 * N2) = T,1(N1) * 0 as just T,1(N1). Such products of one manifold by another one which is discrete will appear in some of the examples to be considered.
+
+We shall allow most concepts, such as vector fields and diffeomorphisms, to be partially defined. This is necessary because many of these objects will be typically derived from flows of vector fields, and solutions of differential equations are in general only locally defined. More precisely, by a vector field X on M we shall mean a smooth vector field (smooth section of the tangent bundle) defined on some open subset VX of M; we denote by \Xi (M) the set of all such X. For a vector field X and each , 2 VX, we denote by X(,) the value of X at , 2 M; this is a vector in the tangent space T,M of M at the point ,. (The notation X, is more standard.)
+
+Given X and Y in \Xi (M), we let VX " VY = V and we define the Lie bracket [X, Y ] as the Lie bracket of X restricted to V and Y restricted to V. If V is empty, the bracket is undefined. Similarly for the sum of X and Y , and products by constants. Thus, the subset \Phi  of \Xi (M) will be said to be involutive if [X, Y ] is in \Phi  whenever the product is defined and X, Y are in \Phi , and we say that \Phi  is a subspace of \Xi (M) if for all X, Y in \Phi  and all r 2 IR, rX and X + Y are in \Phi  whenever the operations are defined. The smallest subspace containing \Phi  we shall denote by span \Phi , and the smallest involutive subspace containing \Phi  by \Phi LA. With the above operations, \Xi (M) is a pseudo-Lie algebra; for simplicity we shall take in this paper the term Lie algebra to imply only partially defined operations. The set \Xi (M) can be also seen as a module over the ring of smooth functions on M, again in the sense of partially defined operations; thus \Phi  ` \Xi (M) is a submodule of \Xi (M) if all defined linear combinations
+
+ff1X1 + . . . ffkXk of vector fields in \Phi , whose coefficients ffi(,) are smooth functions on M, are again in \Phi . When it is clear from the context that we are dealing with analytic objects, vector field will mean analytic vector field.
+
+If ss : N ! M is a smooth map and , 2 M, we let
+
+ss*[,] : T,N ! Tss(,)M denote the differential of ss at ,. We write simply ss* when , is clear from the context. Note that for each tangent vector * at ,, ss*[,](*) is a vector at ss(,), When ss : N1 * N2 ! M is defined on a product of manifolds, we may consider the differentials of each of the partial maps ss(,, *) and ss(*, i), for fixed , and i respectively. In that case, we use the alternative notation
+
+@ @z fifififiz=i ss(,, z) := ss(,, *)*[i] (1)
+
+and similarly for the other partial and for products of more factors. A smooth partial map ss : N ! M will be by definition a smooth mapping ss : D ! M, where D is an open subset ofN
+
+.
+
+By a partial diffeomorphism fl of M we mean a diffeomorphism (analytic if clear from the context) from an open subset D of M onto another open subset of M. The inverse fl-1 of fl is defined on the image of fl. The composition fl2 ffi fl1 of fl1 and fl2 is only defined if the image of fl1 intersects the domain of fl2. We let let Diff(M ) denote the set of such partial diffeomorphisms on M. As a general rule, if the Lie bracket of two vector fields, or the composition of two
+
+4
+
+partial diffeomorphisms, appears in a statement, that statement should be taken to be read `if this composition is defined, then...'. We often leave this implicit.
+
+If fl is a partial diffeomorphism of M and X is a vector field, we consider the pull-back Adfl X of X under fl. This is a new vector field, and is defined by the formula
+
+AdflX(,) = (fl-1)*[fl(,)]X(fl(,)) = (fl*[,]-1)X(fl(,)). (2) This is the same as what is denoted sometimes by (fl-1)*X in the differential geometric literature. Its open (possibly empty) domain is fl-1VX . The pull-back is natural with respect to Lie brackets, that is,
+
+Adfl[X, Y ] = [AdflX, AdflY ] (3)
+
+for all vector fields X, Y . Further, for any two partial diffeomorphisms fl1, fl2, and any X,
+
+Adfl2 Adfl1 X = Adfl1fl2 X
+
+For any vector field X 2 \Xi (M) and each , 2 VX, elementary existence theorems for differential equations insure that the initial value problem
+
+.x(o/ ) = X(x(o/ )), x(0) = , (4) has a unique solution x(o/ ), defined for an open set of pairs (o/, ,) (which depends on X), and that this solution is smooth as a function of (o/, ,), analytic if X is analytic. We denote by exp(tX)(,) the value of this solution at time t, if it exists. Here t may be positive or negative. By definition of solution, if exp(tX)(,) is defined then also exp(o/ X)(,) is defined for each o/ between 0 and t. For each fixed t, exp(tX) is a partial diffeomorphism of M. Using the time reparameterization x(so/ ) one proves that exp(t(sX)) = exp((ts)X) for each t, s. In particular, there is no ambiguity in denoting exp(1X) just as exp(X). We also use sometimes the notation etX instead of exp(tX). When exp(tX)(,) is defined for all t 2 IR and ,, one says that X is complete.
+
+If N is a submanifold of M such that X is tangent to N , that is, if X(,) 2 T,N all those , 2 N for which X is defined, then (4) can be solved in N , and by uniqueness we conclude that exp(tX)(,) stays in N for small t. [Note that for large t it may hold that exp(tX)(,) is undefined with respect to N but not with respect to M. For instance, takeM
+
+= IR, N = (-1, 1), .x(t) = 1, x(0) = 0. Then the solution is defined globally on M but only for -1 < t < 1 on N .]
+
+2.2 Smooth actions on manifolds We now introduce a notion of smooth action on a manifold. The definition generalizes that of action of a Lie group. One of the main results to be proved is a theorem that describes the orbits under such actions as submanifolds associated to certain vector fields. This theorem will generalize the fundamental orbit result of [19], who essentially established it for actions associated to flows of vector fields. The idea of the proof given here is essentially the same, however.
+
+5
+
+Definition 2.1 Let M be a manifold. An action \Sigma  = (U , fl) on M is given by a manifold U and a smooth partial map
+
+fl : M * U ! M
+
+such that flu := fl(*, u) is a partial diffeomorphism for each u 2 U .
+
+The domain of fl is denoted by D, and we let
+
+Du := {,|(,, u) 2 D} (5) be the (possibly empty) domain of flu. The notations flu(,) and fl(,, u) mean the same, and can be used interchangeably, but we will tend to use the first when we wish to use the fact that flu is a diffeomorphism, while the second will be used when it is relevant that fl depends smoothly on u. For each u, we may also consider the inverse fl-1u of flu; this is again a partial diffeomorphism, whose domain is flu(Du). From now on, we fix an action \Sigma .
+
+Definition 2.2 The action \Sigma  is analytic if M and U are analytic manifolds and fl is analytic. It is complete if the mapping flu is an (everywhere defined) diffeomorphism of M onto itself, for each fixed u 2 U . (Thus, D = M * U .)
+
+Given any family {fl*, * 2 \Lambda } ` Diff(M ), we may always consider \Lambda  as a zero dimensional manifold, and consider the action given by fl(,, *) := fl*(,), with domain D equal to the set of all (,, *) such that fl* is defined at ,. Typically however we have a continuous component to the parameter set, and the interaction between the topologies of this parameter set and the manifold will be the interesting part of the study, as will be clear from the examples given later. The orbit theorems to be proved are all trivial in the case in which U is discrete.
+
+Remark 2.3 A somewhat different definition of action was given in [17]; the present one will allow us to distinguish between forward and backward motions, which was not possible there. On the other hand, the definition in [17] was more general than the one given here, mainly in that more than one fl is allowed to act on M at the same time. The present definition appears to be general enough to cover most applications of interest, however. A related but more restrictive concept is studied in [11].
+
+Remark 2.4 Another more general definition would replace the partial diffeomorphism assumption on fl by a local invertibility assumption, which may be more natural in modeling some applications:
+
+for each fixed (,, u) 2 D, rank (flu)*[,] = dim M. (Note that a map flu is a partial diffeomorphism if and only if this property holds and in addition flu is one-to-one. Thus the generalization is in dropping the global one-to-one requirement.) Arguing via the implicit mapping theorem, we can conclude that there is in this case an open covering {V*, * 2 \Lambda } of D so that for each u, fl(*, u) is a diffeomorphism whose domain is the set of , for which (,, u) 2 V*. If we now view \Lambda  as a zero-dimensional manifold and introduce
+
+6
+
+the product manifold U * \Lambda , we may consider the action with ~fl(,, u, *) := fl(,, u), defined on the open set {
+
+(,, u, *) | (,, u) 2 V*}.
+
+The results to be given later can then be applied to this action.
+
+We now associate to \Sigma  several types of reachable sets involving positive, negative, and mixed positive and negative motions. The latter are the least interesting from a practical point of view, since they typically do not correspond to physically realizable trajectories of systems, but they are easier to study and they provide much geometric insight into the structure of the corresponding system.
+
+Definition 2.5 We shall say that the state , 2 M can be reached from itself in zero steps, and for each positive integer k we define by induction that the state i can be reached from the state , in k steps, if there exists a state i0 which can be reached from , in k - 1 steps and some u 2 U such that i0 2 Du and flu(i0) = i. Equivalently, we say that case that , can be controlled to (or steered to) i in k steps. Finally, we define inductively that , is accessible from i in k steps iff either k = 0 and , = i or there exists a state i0 which is accessible from , in k - 1 steps and such that either i can be reached from i0 in one step or i can be controlled to i0 in one step.
+
+Note that accessibility is symmetric:
+
+, is accessible from i in k steps iff i is accessible from , in k steps, but that reachability and controllability are not. If i is accessible from , in k steps for some k, we say simply that i is accessible from ,, and similarly for the other notions. Accessibility is an equivalence relation, and the state space M is partitioned into equivalence classes, the orbits
+
+O(,) = {i | i is accessible from ,}. In general, we will use script letters such as N to denote manifolds, with the corresponding roman letter N denoting the underlying sets. Thus, when we later impose a manifold structure on O(,), we shall denote such an orbit as O(,).
+
+Definition 2.6 The action is transitive if O(,) = M for all ,. The action has the accessibility property from , 2 M if O(,) is open in M.
+
+Since the flu's are partial diffeomorphisms, the accessibility property is equivalent to the requirement that O(,) contain a neighborhood of , in M, or even that just that O(,) have a nonempty interior. (Sometimes the term accessibility property is used for the stronger concept that the reachable set from , should have a nonempty interior. Here we shall use the term in the sense of the above definition. In the context of continuous time analytic systems both possible concepts coincide.)
+
+Definition 2.7 A subset N ` M is stable for the action \Sigma  if for each , 2 N and each i accessible from ,, i is again in N .
+
+7
+
+Note that stable sets are precisely the same as unions of orbits. When N is stable, we denote by fl | N * U the restriction of fl to the set D " (N * U ), seen as a map into N . WhenN
+
+is a manifold, as below, saying that this restriction is smooth means smooth as a map intoN , with the submanifold structure in N .
+
+Definition 2.8 Let N be a stable submanifold of M. If (U , fl | N * U ) is an action on N , we call this induced action a subaction of \Sigma , and denote it by \Sigma  | N . When N is an analytic submanifold and the induced action is analytic, we say that \Sigma  | N is an analytic subaction.
+
+Remark 2.9 By the implicit mapping theorem, it follows that a stable submanifold N of M induces a subaction if and only if fl | N * U is smooth.
+
+The following is one of the fundamental results about actions. It will be a consequence of Theorem 2 in section 3.2. Its main interest is in the case when N is a single orbit.
+
+Theorem 1 Let \Sigma  be an action and let N be any stable set. Then there exists a submanifold structure N on N which makes the restriction \Sigma  | N a \Sigma -subaction. When \Sigma  is an analytic action, this is an analytic subaction.
+
+Remark 2.10 There may be more than one submanifold structure O(,) on an orbit O(,), or more generally on a stable set N , for which O(,) induces a \Sigma -subaction. As an illustration, consider the case of the action fl(,, u) := , + u, with M = IR (with the usual 1-dimensional structure), and U = IRdisc. For this action, O(0) is as a set all of IR, but it is a \Sigma -subaction under both the submanifold structure IRdisc and the usual structure IR. However, we prove later that, in general, there is a unique submanifold structure on O(,) of minimal possible dimension. Thus the 0-dimensional IRdisc is more natural than IR for this example. Another uniqueness statement can be given in terms of integrability of distributions, and this is done in section 3.2.
+
+A natural topology can be imposed on the set O(,), as follows. We start by introducing the set
+
+D- := {(i, u) | i 2 flu(Du)} (6)
+
+and defining fl- by
+
+fl-(i, u) = fl-1u (i). (7)
+
+The implicit function theorem can be applied to the equation for ,
+
+fl(,, u) = i about any ,0, u0, i0 such that fl(,0, u0) = i0, because the partial differential of fl with respect to , is invertible. It follows that D- is open and that fl- is smooth. It is convenient to denote fl also as fl+ and D as D+.
+
+With these notations, we can say that O(,) is the union of the images of the (partial) mappings
+
+`b, : U k ! M : (u1, . . . , uk) 7! flb(,, u1, . . . , uk), (8)
+
+8
+
+where
+
+flb(,, u1, . . ., uk) := flak(flak-1(. . . (fla2(fla1(,, u1), u2) . . .), uk-1), uk) (9)
+
+one such mapping for each possible finite sequence b = (a1, . . . , ak) of +'s and -'s. These mappings are smooth as mappings into M, since they are obtained as compositions of smooth maps. Note that each flb is defined on an open subset Db of M * U k (see below), and `b, on
+
+an open subset of U k. Moreover, if O(,) has a submanifold structure O(,) which induces a subaction, then they must also be continuous as maps into O(,).
+
+Definition 2.11 The orbit topology on O(,) is the finest topology for which all the maps `b, are continuous.
+
+Some more terminology will help later when working with the maps flb. We let A = {+, -}, and for the element a = +- we let -a := \Upsilon  respectively. The free monoid on A is A*, the set of all possible sequences b of +'s and -'s. The subset A*+ is the set of all sequences of +'s alone, and we think of A as a subset of A* consisting of sequences of length 1. For each b = (a1, ..., ar) 2 A*, -b is the sequence (-ar, ..., -a1), ( note the reversed order) and we use the notation U b instead of U r, for the product
+
+U b = U * . . . * U-- -z ""
+
+r copies
+
+So U + = U - = U . The sets A* and A*+ include the empty sequence OE for which r = 0 and U OE is a one-point set. Each of above maps flb is defined on a subset Db of M * U b; inductively on the length of b we have flOE(,, OE) = , and for a 2 A,
+
+(x, u!) 2 Dab iff (x, u) 2 Da and (fla(x, u), !) 2 Db, for u in U a and ! in U b, and then
+
+flab(x, u!) := flb(fla(x, u), !). Each set Db is open, and the maps flb are smooth. If N induces a subaction, we denote by flb | N * U b the restriction of flb to Db " (N * U b), seen as a map into N . A concatenation notation is alternatively used to exhibit sequences in U b, as in u! above, and similarly for words in A*. If ! = (u1, . . . , ur) is in U b, we let ~! := (ur, . . ., u1), an element of U -b (note the reversed order). Even though U b = U -b, we write U -b in order to emphasize that fl-b is being used. Then (flb(x, !), ~!) is in D-b whenever (x, !) is in Db and
+
+fl-b(flb(x, !), ~!) = x. Consistently with the case when b 2 A = {+-}, we denote
+
+flb! : Db! ! M, flb!(,) := flb(,, !), (10) where Db! := {,|(,, !) 2 Db}.
+
+9
+
+2.3 Main examples We now provide the main examples of actions that we shall be concerned with. The above definition was formulated so that these become particular cases. We start with the most classical one. Here IR>0 denotes the set of positive reals.
+
+Definition 2.12 Assume that M is a manifold and that \Phi  is a set of vector fields on M. The action associated to \Phi , denoted \Sigma (\Phi ), is the action on M which has U = IR>0 * \Phi , where \Phi  is thought of as a discrete manifold, and
+
+fl(,, t, X) := exp(tX)(,).
+
+This a well-defined action because of the smooth dependence of solutions of differential equations on time and initial conditions. It is analytic (respectively, complete,) iff each X 2 \Phi  is an analytic (respectively, complete,) vector field. Note that here
+
+fl-1t,X = exp(tX)-1 = exp(-tX) = fl-t,X and if -X 2 \Phi  this inverse also equals flt,-X .
+
+Later we shall show how, conversely, certain sets of vector fields arise naturally when studying actions. We now turn to continuous and discrete time systems. We define the former in such a way that existence and uniqueness theorems for differential equations apply.
+
+By a (time-invariant) continuous time system we shall mean a controlled set of differential equations
+
+.x(t) = P (x(t), u(t)), t 2 IR, (11)
+
+where the state x(t) belongs to a second countable manifold M, controls u(t) take values in a metric space K, and
+
+P : M * K ! T M (12)
+
+is a continuous mapping defined on an open subset of M * K such that Xu := P (*, u) is a smooth vector field for each fixed u 2 K and such that [Xu, Y ] is again continuous in (,, u) for all vector fields Y on M. An analytic system is one for which M as well as each Xu is analytic.
+
+We say that the system is smooth in controls if K is a second countable manifold and P is smooth (jointly on M and K). For systems smooth in controls, analyticity is taken to mean that (12) is jointly analytic, and K is an analytic manifold. When P is jointly smooth, the above continuity requirement on each bracket [Xu, Y ] is automatically satisfied. We will be especially interested in such systems, but the more general definition is needed in order to prove some of the intermediate results.
+
+Any set of vector fields \Phi  can be seen as a continuous time system, simply by introducing a discrete metric on \Phi , but the interest here will be on time functions u(*) as controls, so the structure of K will be relevant. For a discrete metric, only controls taking a finite set of values will be admissible in the sense to be defined below.
+
+A particular class of continuous time systems which appears in modeling a large number of physical systems is that of systems affine in the control. These are systems for which K ` IRm
+
+10
+
+and for which there exist smooth vector fields f, g1, . . . , gm on M such that P (x, u) = f +Pi uigi, that is, the equations are
+
+.x = f (x) +
+
+mX
+
+i=1
+
+uigi(x). (13)
+
+Note that any set of smooth vector fields {f, g1, . . . , gm} provides such a system. The equations are always smooth on (x, u) 2 M * IRm. The system is analytic when these vector fields are. When dealing with systems affine in the control, we shall always assume that K has a nonempty interior in IRm.
+
+In typical examples of continuous time systems (11), K is a subset of an Euclidean space IRm that may include magnitude or energy constraints. For instance, K may consist of the set of all vectors u whose components satisfy |ui| <= 1, or the unit ball u21 + . . . + um <= 1. If the dynamics P restricts to a smooth mapping on M * int K, we may restrict controls to the interior of K and consider this as a smooth system. We shall see later (see remark 4.8) that many controllability properties are not changed by restricting to this interior, as long as K is, as for these examples, included in the closure of its interior.
+
+To say that a map u : [0, T ] ! K is measurable means that u-1(V ) is measurable for each open subset V ` K. To say it is essentially bounded means that there is some compact subset K ` K such that u(t) 2 K for almost all t. With this terminology, we recall a basic fact about differential equations. For each , 2 M and each measurable and essentially bounded u : [0, T ] ! K, the initial value problem
+
+.x(t) = P (x(t), u(t)), x(0) = , (14) admits a unique solution for small t. (By solution one means an absolutely continuous curve. For manifolds, absolute continuity is defined as absolute continuity of each restriction to an open subinterval for which the image is entirely in a chart.) This follows from standard existence theorems as follows. Since the statement is local, we may work in M = IRn. Taking above for Y the possible derivatives @/@xi, we have that, with Z(,, t) := P (,, u(t)), Z satisfies the classical Carath'eodory conditions for existence and uniqueness (see e.g. [4], chapter II).
+
+We shall say that , 2 M can be controlled to i 2 M with respect to the system (11) iff there exists some interval [0, T ], T >= 0, an essentially bounded measurable map u(*) : [0, T ] ! K, and a solution of the differential equation (11) with this u(*), defined on the entire interval [0, T ], such that x(0) = ,, x(T ) = i. We say equivalently that i can be reached from ,, and that u(*) steers , to i. If there exists a finite sequence of states ,1 = ,, ,2, . . ., ,k = i such that for each i = 2, . . . , k, ,i is either reachable from or controllable to ,i-1, we say that i is accessible from ,. The terminology weakly reachable is often used in the literature to refer to this last concept. We say that the accessibility property is satisfied from a state , with respect to the system (11) if the set of states accessible from , is an open subset of M. A completely controllable system will be one for which , can be controlled to i for every pair ,, i.
+
+Remark 2.13 Given any essentially bounded measurable map u(*) : [0, T ] ! K, we may always find a sequence of piecewise constant controls ul(*) : [0, T ] ! K with the property that, if the solution of (11) with x(0) = , and control u(*) is defined on the interval [0, T ], then the solutions are also defined for each of the controls ul(*) and same initial state, and the corresponding final states xl(T ) converge to x(T ). This is a consequence of general theorems
+
+11
+
+on continuous dependence of solutions of (11). Moreover, the same argument allows taking the approximating piecewise constant controls to have values in any dense subset of K.
+
+There are two very different types of actions that can be associated to a given continuous time system. The first is is the one implicitly used in the literature when dealing with continuous time systems.
+
+Definition 2.14 The time-topology action associated to the system (11) is the action \Sigma (\Phi ), where \Phi  is the set of all vector fields of the type Xu = P (*, u), u 2 K.
+
+We also write fl(,, t, u), or flt,u(,), instead of fl(,, t, Xu) in this case, and think of U as IR>0 * K (second factor with the discrete topology). In this definition, the structure of K is irrelevant. The name time-topology is due to the fact that the orbit topology (definition 2.11) is induced by the dependency of fl(,, t, u) on t. A different type of action is associated in the next definition, for which the orbit topology will be induced by the topology on control values.
+
+Definition 2.15 Let (11) be a system smooth in controls. The input-topology action associated to it is the action having also U = IR>0 * K but now with the second factor having its differentiable structure and the factor IR>0 as a discrete manifold, and again
+
+flt,u(,) := exp(tXu)(,). (15)
+
+This second type of action is not usually studied in the theory of continuous time systems (11). It turns out however to provide the right framework for understanding sampling results. Note that one could just as well introduce a "joint" action of time and inputs, where U = IR>0 * K and both factors are given their natural differentiable structures. This would give yet another natural type of action associated to such systems, but seems of less interest for applications. Whenever the input-topology action is mentioned, we assume implicitly that we are dealing with systems that are smooth in controls.
+
+We now relate the controllability definitions for continuous time systems to those for the corresponding actions. Under either type of action, time-topology or input-topology, the k-step notions correspond to states reachable in positive, negative, or mixed positive and negative time using piecewise constant controls with precisely k switches. As discussed in remark 2.13, elements in O(,) can in principle only be expected to be dense in the set of states accessible using the differential equation and arbitrary measurable controls. However it will turn out that the two concepts of accessibility are equivalent. This result is proved in section 4.5:
+
+Proposition 2.16 i is accessible from , with respect to the system (11) iff i 2 O(,).
+
+Finally, we may consider (time-invariant) invertible discrete time systems. These are a natural class of discrete time control systems, and where studied explicitely first by [8]. Their control properties are studied in detail in [10]. They are described by controlled difference equations
+
+x(t + 1) = P (x(t), u(t)), t 2 ZZ, (16)
+
+12
+
+where the state x(t) belongs to a second countable manifold M and controls u(t) take values in a second countable manifold K. The map P : D ! M is smooth on an open subset D ofM * K
+
+, and for each u in K, P (*, u) is a partial diffeomorphism ("invertibility"). An analytic system is one for which all data is analytic. A complete system is one for which P (*, u) is a (everywhere defined) diffeomorphism of M onto M, for each u 2 K.
+
+Such systems arise for instance under sampling of a (smooth in controls) continuous time system (11). For any such system and each fixed real number ffi > 0, one introduces the ffi-sampled system associated to (11); this has the same M and K, and equations as in (16) with
+
+P (,, u) := exp(ffiXu)(,). (17) Even if the vector fields Xu are everywhere defined, that is P in (11) is defined on all ofM * K
+
+, this is in general not a complete discrete time system, since the vector fields need not be complete.
+
+We identify discrete time systems with the associated actions (K, P ), and also write fl for P and U for K. Thus discrete time systems are the same as actions for which M and U are second countable. For discrete time systems, we define controllability and related notions in terms of the associated action.
+
+When the system (16) happens to be the ffi-sampled system associated to (11), for some ffi, the discrete time action is related to the input-topology action associated to (11), in the sense that flu in this definition is the particular element flffi,u in (15). For small enough ffi the elements flkffi,u, for integer k, approximate arbitrary flt,u. What will turn out to be true, but is far from obvious at this stage, is that the actions corresponding to sampled systems will be in a certain sense equal to, not just approximations of, the (input-topology) action associated to the original system, for every small enough ffi. This fact will be made precise and proved later, after more machinery is in place, and it is one of the main results about sampling.
+
+Often one might want to use control value sets which are not manifolds. Consider the following definition. A subset C of a manifold K has nice boundary if the following property holds: for each u 2 C there is a smooth curve
+
+ae : (-", 1 + ") ! K for some " > 0, such that ae(0) = u and ae(t) is in int C, the interior of C with respect to K, for each t 2 (0, 1]. If C is a subset with nice boundary of K, we may consider the action withU
+
+:= int C. It turns out that the orbits with respect to int C are the same as the states that can be obtained by allowing controls in C and defining accessibility in the same manner; see proposition 4.9, stated in section 4.5. There is no a priori reason for this equality to hold; all that one may say in principle is that each state i accessible from , using arbitrary controls is a limit of states which are accessible with respect to controls in the interior. Since orbits are not necessarily closed (consider as an illustration a rotation by an angle not commensurable with ss on M= unit circle), this result is somewhat surprising.
+
+13
+
+3 Integrability of Distributions The manifold structure in Theorem 1 can be described naturally in terms of the integrability of distributions.
+
+3.1 Distributions We start by defining (possibly singular) distributions of tangent vectors. This concept is defined in many different and not always equivalent ways in the literature. We shall take it to mean the choice of a subspace of the tangent space at each , in M. That is, a distribution D on M is a subset of the tangent bundle T M with the property that
+
+D(,) := {v 2 T,M|(,, v) 2 D} is a subspace for each ,. Its rank at , is the dimension of D(,). The distribution is nonsingular if this rank is independent of ,. (In differential geometry the term distribution is often taken to already imply nonsingularity.) We shall say that D has full rank at , if D(,) = T,M, and simply that D has full rank if this holds for each , 2 M.
+
+If N is a submanifold of M such that D(,) ` T,N for each , 2 N , there is a well-defined restriction of D to a distribution on N , which we denote by D | N . We use the inclusion notation D ` D0 to mean that D
+
+(,) ` D(,0)
+
+for each , 2 M. Similarly, we define D + D0 and intersection D " D0 pointwise:
+
+(D + D0)(,) := D(,) + D0(,)
+
+(D " D0)(,) := D(,) " D0(,).
+
+We now show how to associate in a natural way a distribution to each set of vector fields, and conversely, a set of vector fields to each distribution. Given D, a vector field X pointwise belongs to D, or takes values in D, if X(,) 2 D(,) for each , 2 VX. The set of vector fields that pointwise belong to D is denoted by vf(D). Note that vf(D) is always a submodule of vector fields.
+
+Conversely, starting with a family of vector fields \Phi , the distribution D(\Phi ) determined by \Phi  is the smallest distribution D for which all X 2 \Phi  pointwise belong to D. Thus for each , 2 M
+
+D(\Phi )(,) = span {X(,)|X 2 \Phi  and X is defined at ,}. (If no such X are defined at ,, D(\Phi )(,) = 0.) The rank of the family \Phi  at a point , is by definition the rank of the associated distribution D(\Phi ) at that point.
+
+We shall say that the distribution D is smooth if it equals D(\Phi ) for some set of vector fields \Phi . Note that always D(vf(D)) ` D, with equality iff D is smooth.
+
+An integral (sub)manifold N of D is a submanifold of M with the property that
+
+T,N = D(,)
+
+14
+
+for every , 2 N . This generalizes the notion of integral curve for a vector field X (or rather, for its associated distribution D({X})). We shall say that the distribution D is integrable if there is a partition of M into integral manifolds of D.
+
+A related definition is as follows. An integral manifold N of D is a maximal integral manifold of D if it is connected and if for every other connected integral manifold N 0 of D intersectingN
+
+, N 0 is an open submanifold of N . A distribution satisfies the maximal integral manifolds property if it induces a (singular) foliation, that is, there is a partition of M into maximal integral manifolds of D, the leaves of D. We remark later that if D is integrable then it also satisfies this property; the connected components of the integral manifolds in the definition of integrability provide the leaves of the foliation.
+
+We shall say that D is involutive if vf(D) is an involutive set of vector fields. Integrable distributions are necessarily involutive. Indeed, if X, Y are in vf(D) and , 2 M, let N be the integral manifold of D passing through ,. Then the vector fields X, Y are tangent to N and therefore their Lie bracket at , is again tangent to N . It is in general false that (smooth) involutive distributions are necessarily integrable. The classical theorem of Frobenius states that this implication does hold provided that D be nonsingular, and the Hermann-Nagano theorem states that the same conclusion is true if D is generated by analytic vector fields. Following [19], we shall review later how these results are easy consequences of the orbit theorem to be proved below.
+
+3.2 The integrability result If \Sigma  | N is a subaction, then from the fact that each flu is a partial diffeomorphism it follows that, for each u and each , 2 N " Du, the differential
+
+(flu)*[,] : T,M ! Tflu(,)M maps T,N onto Tflu(,)N . If an orbit has a manifold structure O(,) inducing a subaction, this says that in particular
+
+(flu)*[,u] TiO(,) = Tflu(i)O(,)
+
+for each i 2 O(,) in the domain of flu. In particular, if Theorem 1 where to hold, then with respect to any such manifold structure the distribution D defined at each , by the formula
+
+D(,) := T,O(,) (18) would be invariant in the sense of the following definition.
+
+Definition 3.1 Let \Sigma  be an action and D a distribution on M. We shall say that D is \Sigma - invariant if for each (,, u) 2 D, (flu)*[,]D(,) = D(flu(,)).
+
+Note that it follows directly from the definition that a \Sigma -invariant distribution must have constant rank along orbits of \Sigma .
+
+An equivalent way of defining invariance is in terms of pull-backs. For any distribution D and any partial diffeomorphism fl : M ! M we let Adfl D be the distribution defined as follows. If , is not in the domain of fl then AdflD(,) := 0, otherwise
+
+Adfl D(,) := (fl*[,])-1D(fl(,)) = {(fl*[,])-1(*), * 2 D(fl(,))}.
+
+15
+
+With this definition,
+
+AdffAdfiD = AdfiffiffD (19)
+
+where we interpret fi ffi ff(,) as undefined if ff(,) is. In particular,
+
+Adfl-1AdflD(,) = D(,) (20) whenever fl(,) is defined. Since fl is invertible, we have that whenever fl(,) is defined,
+
+Adfl D(,) = D(,) if and only if fl*[,]D(,) = D(fl(,)). Therefore,
+
+Lemma 3.2 D is \Sigma -invariant iff Adflu D(,) = D(,) for all (,, u) 2 D.
+
+When D is smooth, D = D(\Phi ), it follows from the definition (2) that
+
+AdflD(,) = span {Adfl X(,) | X 2 \Phi , X defined at fl(,)}. (21) (We make the convention that span ; = {0}.)
+
+There is always a (unique) smallest \Sigma -invariant distribution containing any given D, which we denote Ad\Sigma D. This is because there is at least one such containing distribution, namely the one with D(,) = T,M for all ,, and given any family of such distributions, their intersection is again invariant. In fact, Ad\Sigma D can be obtained by starting with the vectors at each D(,) and taking all possible iterated images and preimages under the differentials of the flu's. Because of formula (21), Ad\Sigma D is smooth whenever D is. When \Sigma  | N is a subaction for which the restriction D | N is defined, all these iterates remain in tangent spaces to N , and we conclude the following fact.
+
+Lemma 3.3 If \Sigma  | N is a subaction and D is a distribution such that D | N is defined, then Ad\Sigma D | N is also defined and it equals Ad\Sigma (D | N ).
+
+We shall now reverse the reasoning and define directly the distribution in equation (18), not assuming known that a subaction can be induced on orbits. For each (,, u) 2 D-, consider the mapping fl-(fl(,, *), u) defined in a neighborhood of u. We may consider its differential at u, applied to each tangent vector * 2 TuU :
+
+Xu,* (,) := @@v fifififi
+
+v=u fl
+
+-(fl(,, v), u)(*). (22)
+
+It is clear from its expression in local coordinates as a product of Jacobians multiplied by a vector that this expression is smooth in (,, u). In particular, (22) defines a smooth vector field on M, which is analytic if the action is analytic. These vector fields play an important role in characterizing reachability and accessibility properties of actions.
+
+Definition 3.4 The set of vector fields associated to the action \Sigma  is the set
+
+vf(\Sigma ) := {Xu,* | u 2 U , * 2 TuU }. The distribution associated to the action \Sigma  is D\Sigma  := Ad\Sigma D(vf(\Sigma )), the smallest \Sigma -invariant distribution which contains the distribution determined by the vector fields associated to \Sigma .
+
+16
+
+Alternatively, from the formula
+
+(flu)*[,](Xu,*(,)) = @@v fifififi
+
+v=u fl(fl
+
+-(fl(,, v), u), u)(*) = @
+
+@v fifififiv=u fl(,, v)(*) (23)
+
+we also know that D\Sigma  is the same as the smallest \Sigma -invariant distribution containing the distribution
+
+E(i) := span { @@v fifififi
+
+v=u fl(,, v)(*) | (,, u) 2 D, * 2 TuU , flu(,) = i}. (24)
+
+Lemma 3.5 If N is a submanifold structure on O(,) inducing a subaction, then D\Sigma (i) ` TiN for each i 2 N .
+
+Proof. Since each of the mappings fl-1u , flv leaves N invariant, all the vector fields (22) are tangent to N . Thus D(vf(\Sigma )) | N is well-defined. The conclusion follows from lemma 3.3:
+
+D\Sigma  | N = Ad\Sigma (D(vf(\Sigma )) | N ) = D\Sigma |N .
+
+Because D\Sigma  can be generated by iteratively applying the differentials of the maps flu and their inverses, we have with the notation in (10) that D\Sigma  can be also defined as
+
+D\Sigma  = D({Adflb! Xu,* | ! 2 U b, b 2 A*, u 2 U , * 2 TuU }). (25) Furthermore, from the chain rule for derivatives it follows that each partial derivative of an expression such as (9) with respect to a fixed ui is one of the vector fields appearing in the generating set in (25). It follows that
+
+Lemma 3.6 For each b 2 A* and each (,, !) 2 Db, the image of (`b,)*[!] is contained inD
+
+\Sigma (gb(,, !)).
+
+We can state a theorem which summarizes the main facts about integrability of distributions associated to actions. Note this implies Theorem 1, since the set N there can be given the submanifold structure which consists of the disjoint union of the manifold structures on the orbits contained in it. For part (4) recall the definition 2.11 of the orbit topology, and for part (2) the notations in equation (9).
+
+Theorem 2 For any action \Sigma , the distribution D\Sigma  is integrable. Furthermore, pick any , 2 M and let s be the rank of D\Sigma  along the orbit of ,. Then, O(,) admits a unique s-dimensional submanifold structure O(,) which induces a subaction, and the following properties hold forO
+
+(,):
+
+1. When \Sigma  is an analytic action, \Sigma  | O(,) is an analytic subaction. 2. Given any i 2 O(,), there is some sequence b and some ! 2 U k such that flb(,, !) = i
+
+and (`b,)* has rank s at !.
+
+17
+
+3. O(,) is an integral manifold of D\Sigma . 4. The topology of O(,) is the orbit topology.
+
+The following fact, to be proved in section 3.4, will provide the needed technical construction: Lemma 3.7 Let \Sigma  be any action on M, and pick any , 2 M. Then, O(,) has a unique structure O(,) of submanifold of M such that
+
+a. For each b 2 A*, flb | (O(,) * U b) is smooth. b. For any i in O(,), the dimension r of O(,) is the largest possible value r(,, i) of the rank
+
+of (`b,)*[!] among all b and ! such that flb(,, !) = i.
+
+When \Sigma  is analytic, O(,) and the map fl | O(,) * U are analytic. Proof of Theorem 2. We shall show here that all the conclusions of the Theorem follow from the lemma. We start by imposing on O(,) the submanifold structure O(,) given by the lemma. Statement (1) then holds. From lemma 3.5, we know that D\Sigma (i) ` TiO(i) for each i in the orbit. In particular, s <= r. By property (b) in lemma 3.7, applied with i = ,, there is some ! so that (`b,)*[!] has rank r; since by lemma 3.6 the image of this differential is included inD
+
+\Sigma (,), it follows that
+
+s = r. (26)
+
+Thus O(,) has dimension s, as wanted, and this also establishes that O(,) is an integral manifold, property (3), as well as (2). Statement (a) in the lemma together with remark 2.9 show that there is an induced subaction on O(,). If there were any other submanifold structure N on O(,) inducing a subaction, then (a) in the lemma is satisfied for N ; if N has dimension s then the equality (26) gives that (b) holds for N too, hence N = O(,) by the uniqueness assertion in the lemma.
+
+Applying part (3) of the Theorem at each , 2 M, we know that the orbits O(,) constitute a partition of M into integral manifolds of M; this provides the integrability of D\Sigma .
+
+Finally, we prove statement (4). Assume that \Upsilon  is a topology on O(,) for which the mappings `b, are all continuous. Pick any i 2 O(,); we need to show that for each open neighborhood V of i relative to \Upsilon  there is a V1 ` V which is a neighborhood of i relative toO
+
+(,) (with the topology given by the differentiable structure in the Theorem). By part (2) and the implicit function theorem applied to `b, as a mapping into O(,), there is a sequence b of +'s
+
+and -'s and an open subset W of U k such that `b, gives a diffeomorphism between W and its image in the topology of O(,), and i is in this image. Then
+
+V1 := `b,((`b,)-1(V ) " W ) is as desired.
+
+Note that the claim made in remark 2.10 regarding the uniqueness of the manifold structure of minimal dimension is a consequence of the Theorem and of lemma 3.5, since the latter implies that any such structure must have dimension at least s.
+
+18
+
+3.3 Using the distribution to determine accessibility One of the main applications of the integrability theorem is in verifying the various controllability properties by checking appropriate rank conditions on vector fields.
+
+The integrability statement says that in particular the dimension of O(,) is the same as the rank of D\Sigma (,). Note that if D\Sigma  has full rank at a given , this means that O(,) has the same dimension as M, and hence that it is open in M, that is, the accessibility property holds from ,. Conversely, if O(,) contains an open subset of M, and if in addition it is second countable in its own topology, it must have the same dimension as M. From the discussion in section 2.1, we conclude the following.
+
+Proposition 3.8 If D\Sigma  is full rank at , then the accessibility property holds from ,. Conversely, if the accessibility property holds from , and O(,) is a second countable manifold, then D\Sigma  is full rank at ,.
+
+The converse statement does not hold in general. Take for example the case of continuous time systems with input topology, example 2.15. In general, orbits will not be second countable here. For a trivial counterexample, take the equation
+
+.x(t) = 1 with M = IR and any K. The accessibility property holds from every point, since the system is transitive. But D\Sigma  is identically zero, so not full rank. In fact, in this example, the (unique) orbit is the zero dimensional submanifold IRdisc mentioned in section 2.1.
+
+On the other hand, when U is second countable, as with discrete time systems (16), O(,) is necessarily second countable in its topology. This is because O(,) can be described as the union of the (countably many) images of the continuous mappings (9), and each of these is defined on an open, hence second countable, subset.
+
+Proposition 3.9 For discrete time systems, accessibility from , is equivalent to full rank ofD
+
+\Sigma  at ,.
+
+The same result holds for continuous time systems with the time-topology. More generally, we shall use the following concept.
+
+Definition 3.10 The action \Sigma  is connected if the following property holds. For each (,, u) 2 D there exists a i 2 M, some sequence b 2 A+, and a pair of elements !1, !2 in the same connected component of Db, such that, with the notations in equation (9), flb(i, !1) = , and flb(i, !2) = flu(,).
+
+If an action is connected, then continuity of flb on its second factor implies that , and flu(,) are in the same component of O(,), and iterating this we conclude that orbits are connected submanifolds of the paracompact manifold M, hence second countable. So:
+
+19
+
+Proposition 3.11 For connected actions, accessibility from , is equivalent to full rank of D\Sigma  at ,.
+
+Time-topology actions associated to continuous time systems are always connected. Indeed, if exp(tX)(,) is defined then
+
+exp(-"X) exp((s + ")X)(,)
+
+is defined for each s 2 [0, t] for any fixed small enough " > 0. We can then use b = (-, +), !1 = (-", X)(", X), and !2 = (-", X)(t + ", X).
+
+Corollary 3.12 For time-topology actions, accessibility from , is equivalent to full rank of D\Sigma  at ,.
+
+3.4 Proof of the integrability lemma In the proof, the letters O/, !, possibly primed, will always denote elements of sets of the formU
+
+b (that is, sequences of elements of U ), while b, c stand for words in A*. Fix an , 2 M as
+
+in the statement of the lemma, and let O = O(,). For each b, we shall use `b instead of `b, to denote the map flb(,, *); its domain is
+
+Lb := {!|(,, !) 2 Db}. We first prove that r(,, i) = r(,, i0) for any i, i0 in O. Pick b, c in A* and !, !0 such that
+
+`b(!) = i and `c(!0) = i0 with full rank:
+
+rank `b*[!] = r(,, i) and rank `c*[!0] = r(,, i0).
+
+Introduce
+
+e := (b, -b, c), O/ := ! e!!0.
+
+Since `e(O/) = i0,
+
+rank `e*[O/] <= r(,, i0). (27)
+
+Let F := fl(-c,b)(*, e!0!). Then, for each v 2 U b,
+
+flb(,, v) = fl(b,-b,c,-c,b)(,, v e!!0 e!0!) = F (fle(,, v e!!0)). It follows that
+
+r(,, i) = rank @@v fifififi
+
+v=! fl
+
+b(,, v) = rank F*[i0] ffi @
+
+@v fifififiv=! fl
+
+e(,, v e!!0)
+
+and therefore by (27),
+
+r(,, i) <= rank `e*[O/] <= r(,, i0).
+
+Interchanging the roles of i and i0 establishes the other inequality, as desired.
+
+Let r be the common value of the r(,, i), for this fixed ,, and consider the set S of all triples (b, Q, h), where b is in A* and:
+
+Q is an r - dimensional embedded submanifold of Lb (28)
+
+20
+
+`b | Q : Q ! M is injective and has differential of constant rank r (29)
+
+h : Q ! IRr is a diffeomorphism with an open subset h(Q). (30) In the analytic case, we restrict to triples such that Q is an analytic manifold and h is an analytic diffeomorphism.
+
+Fix one such triple, and consider the set `b(Q) ` O. The bijection `b | Q induces a canonical manifold structure on this set for which both `b | Q and ' := h ffi (`b | Q)-1 are diffeomorphisms and ' is a chart. We now prove that with respect to this structure,
+
+(i) the inclusion i : `b(Q) ! M has injective differential at every point, and (ii) for any smooth structure O on O for which the lemma holds, the subset `b(Q) is open
+
+relative to O and the identity map provides a diffeomorphism between the two structures.
+
+The inclusion i factors as
+
+`b ffi j ffi (`b | Q)-1,
+
+where j is the embedding of Q in Lb. Therefore property (i) follows from the corresponding properties for its factors (for `b, the properties hold on the restriction to Q, which is sufficient). We now prove (ii). Consider `b as a map from Lb into O; this map is smooth because of the assumed property (a) in the lemma, since `b is a restriction of flb. So `b | Q is also smooth intoO
+
+. Since the latter is a submanifold of M and `b* | Q has constant rank r as a map into M, this rank is also r as a map into O. But this submanifold has dimension r, by part (b) of the lemma. Thus `b(Q) is indeed open relative to O, and `b | Q is a diffeomorphism between `b(Q) as a subset of O and Q. We have then proved that both (i) and (ii) hold.
+
+We now establish that the family of all such charts (`b(Q), ') defines a smooth r-dimensional manifold structure on O, analytic in the case of analytic actions. It will then follow from (i) above that this structure makes O into a submanifold of M, and the uniqueness statement follows from (ii). We start by showing that the sets `b(Q) cover O. Indeed, pick any i in O and let b, ! be such that
+
+flb(,, !) = i, rank `b*[!] = r.
+
+Since `b* has maximal rank at !, there is an r-dimensional embedded submanifold Q of Lb containing ! such that both equations (28) and (29) are satisfied. Replacing if necessary Q by an open subset, a suitable h can be found so that equation (30) holds too. Thus these sets form a covering. It is only left to prove compatibility of different charts. For this, pick any two charts (`b(Q), ') and (`c(P ), fi) corresponding to (b, Q, h) and (c, P, k) respectively.Let
+
+V := `b(Q) " `c(P ). We need to establish that:
+
+(I) '(V ) is open in '(`b(Q)). (II) fi ffi '-1 is smooth on V .
+
+21
+
+Pick an arbitrary i in V . By definition of the set V , there are !, !0 in Q and P respectively so that
+
+i = `b(!) = `c(!0)
+
+with full rank r. Let e := (b, -c, c) in A*, and take O/ := ! e!0!0, so that
+
+`e(ue!0!0) = `b(u) for all u 2 Lb (31) and
+
+`e(! e!0u) = `c(u) for all u 2 Lc. (32)
+
+Therefore
+
+r >= rank `e*[O/] >= rank `b*[!] = r,
+
+and `e*[O/] must have maximal rank too. So there is an open subset Z of Le which contains O/ and such that `e(Z) is an r-dimensional embedded submanifold of M. Introduce the open sets
+
+W := {u 2 Lb | ue!0!0 2 Z} and
+
+W 0 := {u 2 Lc | ! e!0u 2 Z}.
+
+Since O/ 2 Z also ! 2 W and !0 2 W 0. Consider the sets P 0 := P " W 0 and Q0 := Q " W . Since Q is an embedded submanifold of Lb and W is open in Lb, it follows that also Q0 is open in Q, and similarly for P , P 0. By (31) and the definition of Z it follows that `b | Q0 maps into `e(Z), and it is injective with differential of constant rank r. Thus `b establishes a diffeomorphism between Q0 and an open subset E of `e(Z). Similarly, using (32), for `c | P 0 and an open F in `e(Z). Note that E " F `
+
+V.
+
+Since !0 and ! are in P 0, Q0 respectively, i 2 E " F . By injectivity of `b | Q, (`b | Q)-1(E " F ) equals (`b | Q0)-1(E " F ). Continuity of the restrictions and openness of E " F in E imply that this is open, so also
+
+'(E " F )
+
+is an open subset of
+
+h(Q) = '(`b(Q)).
+
+Thus '(i) has a neighborhood included in '(`b(Q)), and (I) follows. To prove (II), note that ' maps E " F , seen as an embedded submanifold of `e(Z), diffeomorphically onto '(E " F ). This latter set is open in h(Q) and contains '(i). A similar statement holds for fi. So
+
+fi ffi '-1 : '(E " F ) ' fi(E " F ), and the second statement (II) follows too. We then have a manifold structure as desired. By construction, it is an analytic structure for analytic actions.
+
+Finally, we must prove the joint smoothness of flb on u and ,, property (a) of the lemma, with respect to the above manifold structure. We first establish that each of the maps `b is smooth. Pick ! 2 Lb, i = `b(!). Since r(,, i) = r, there are c, !0 so that `c(!0) = i with full rank r. Let
+
+e := (b, -c, c), O/ := ! e!0!0.
+
+22
+
+It will suffice to prove that `e is smooth on some neighborhood of O/, because
+
+`b(u) = `e(ue!0!0) for each u in a neighborhood of !. Since `(b,-c)(! e!0) = ,, also `c(u) = `e(! e!u), so
+
+r >= rank `e*[O/] >= rank `c*[!0] = r. So `e achieves maximal rank at O/. There is then a chart C of Le, centered at O/, and diffeomorphic to a cube in IRs * IRr, such that, if Q is the embedded submanifold corresponding to the factor IRr, then rank `e* is constantly r on Q and `e is injective on Q. Let h give the corresponding diffeomorphism of Q with IRr. Then (e, Q, h) gives rise to a chart, say (`e(N ), '). So `e | C is the composition of the projection onto Q and of `e | Q, and is therefore smooth. Thus `b is smooth.
+
+To prove now that each flb is smooth as a map into O, pick any (,, !) in Db, , in O. Let (c, Q, h) give a chart around ,. For (i, O/) in a neighborhood of (,, !) relative to
+
+(O * U b) " Db, flb(i, O/) equals the composition
+
+`(c,b), ((`c, | Q)-1(i), O/),
+
+and it is therefore smooth because of the smoothness of `(c,b), and of `c,. This gives property (a) of the lemma, as wanted.
+
+23
+
+4 Lie algebraic conditions and invariance In this section we study the relationships between various properties of distributions and their implications for actions.
+
+4.1 Some Lie algebraic criteria We introduce a Lie algebra associated to each action.
+
+Definition 4.1 The Lie algebra L\Sigma  associated to \Sigma  is vf(\Sigma )LA.
+
+The distribution D\Sigma  is in general very difficult to compute for actual examples, since it involves the arbitrary compositions flb of the basic mappings fl defining the action. In examples like those associated to continuous time systems, this would involve having explicit solutions for the differential equations defining the system. On the other hand, L\Sigma  can be typically readily computed using symbolic manipulation systems, by iterating the application of the Lie bracket operation to the set of vector fields in vf(\Sigma ), and the latter can be often obtained easily, as illustrated in the next section. Thus the following fact is of interest.
+
+Proposition 4.2 The distribution D(L\Sigma ) is included in D\Sigma . Proof. By Theorem 2, D\Sigma  is integrable and therefore involutive, that is, vf(D\Sigma ) is an involutive set of vector fields. With \Phi  := vf(\Sigma ), we then have that
+
+\Phi  ` vf(D\Sigma ) ) \Phi LA ` vf(D\Sigma ) ) D(\Phi LA) ` D(vf(D\Sigma )) = D\Sigma , the last equality because D\Sigma  is smooth.
+
+It follows that checking if D(L\Sigma ) has full rank provides a sufficient condition for transitivity. This condition is however far from necessary, even for continuous time systems for which the rank of D\Sigma  does provide a necessary criterion. This is because the converse of proposition 4.2 is not true in general. For time-topology actions corresponding to continuous time systems, however, such a result will be given in section 4.6 for the analytic and other important special cases. Roughly speaking, D(L\Sigma ) provides information based only on local data, while D\Sigma  uses all global information.
+
+4.2 Explicit form of the vector fields The vector fields in vf(\Sigma ) can be often computed in closed form if a closed form expression is available for fl. This is typically the case for actions corresponding to discrete time systems. Furthermore, when K is an open subset of IRm for some m, it is only necessary for each u to compute the vectors Xu,* for each of the m canonical tangent vectors * = ei = (0, . . . , 0, 1, 0, . . ., 0)0. Any other element of vf(\Sigma ) is a linear combination of these. Also, because of formula (23),
+
+24
+
+there is no need to compute the inverses of the mappings flu, just the inverses of their Jacobians. This is useful when there is no easy manner to obtain these inverses. For example, take the discrete time system with M = IR, K = [-1, 1] and
+
+P (,, u) := ,3 + 2, + u sin ,. This is strictly increasing for each fixed value of u, so it does give rise to an invertible system, but there is no closed form expression for the inverses of the maps P (*, u). Since K = IR, it is enough to compute just one vector, for * = 1:
+
+Xu(,) = @P@u / @P@, = sin ,3,2 + 2 + u cos , .
+
+We now compute vf(\Sigma ) explicitely for the case of continuous time systems with time topology in definition 2.15, or more generally for example 2.12. It is trivial here to find vf(\Sigma ): if \Phi  is a family of vector fields and X 2 \Phi  is defined at , then for each u = (t, X) so that exp(tX)(,) is defined and using * = (1, 0), we obtain that (22) equals
+
+Xt,X (,) = @@s fifififi
+
+s=t exp(-tX) exp(sX)(,) =
+
+@ @s fifififis=t exp((s - t)X)(,) (33)
+
+= @@v fifififi
+
+s=0 exp(sX)(,) = X(,). (34)
+
+(Independent of t.) The vectors in the tangent space to U are all of the form (r, 0), r 2 IR, so all the possible vectors in vf(\Sigma ) are multiples of this. We conclude that for time-topology actions associated to continuous time systems, vf(\Sigma ) = {Xu, u 2 K} and more generally for actions as in definition 2.12:
+
+Proposition 4.3 For \Sigma  = \Sigma (\Phi ), span vf(\Sigma ) = span \Phi , D(\Sigma (\Phi )) = D(\Phi ), and L\Sigma  = \Phi LA. Proposition 4.4 For systems affine in control as in equation (13),
+
+L\Sigma  = {f, g1, . . . , gm}LA. (Recall that K ` IRm must have a nonempty interior.)
+
+For the case of continuous time systems with input topology, for simplicity we restrict attention to analytic systems (13). For each i = 1, . . ., m, each positive t, and each u 2 IRm, we must consider
+
+Xt,u,i(,) := @@v
+
+i fifififiv=u exp(-t(f + u1g1 + . . . + umgm)) exp(t(f + v1g1 + . . . + vmgm))(,). (35)
+
+For small t, we may use the expansion ([6]), with Xu = f + u1g1 + . . . + umgm:
+
+Xt,u,i(,) = 1X
+
+i=1
+
+ti
+
+i! ad
+
+i-1(Xu)(gi)(,). (36)
+
+Here adk(X)(Y ) denotes the iterated Lie bracket
+
+[X, [X, [. . .[X, Y ] . . .]]] (k times). The explicit form (36) for the vector fields associated to the input-topology action forms the basis basis in [15] and [16] for an eigenvalue criterion for sampling.
+
+25
+
+4.3 Criteria involving Lie algebras of vector fields We know from propositions 3.8 that if D\Sigma  is full rank at , then the accessibility property holds from ,. With the stronger statement that L\Sigma  has full rank, it is possible to obtain results on reachability. Given any (i, u) 2 D, consider the differential of fl at (i, u). For any vector oe 2 TiM,
+
+@
+
+@x fifififix=i fl(x, u)(oe) = (flu)*[i](oe) (37)
+
+by definition, while for each * 2 TuU ,
+
+@ @v fifififiv=u fl(i, v)(*) =
+
+@ @v fifififiv=u fl(fl-(fl(i, v), u), u)(*) = (flu)*[i](Xu,* (i)). (38)
+
+Thus, if the vectors oe1, . . . , oer 2 TiM are linearly independent and if Xu,* (i) is not in their span, it follows that fl*[i, u] maps
+
+oe1, . . . , oer, Xu,*(i)
+
+(seen as tangent vectors to M * U at (i, u)) into a set of r + 1 linearly independent vectors. From this it follows that when S is an r-dimensional submanifold containing i and the oei are a basis of TiS, if Xu,* (i) is not in TiS then fl(S * U ) must contain a submanifold of M of dimension at least r + 1 (implicit mapping theorem). We therefore have the following result.
+
+Theorem 3 If L\Sigma  has full rank then \Sigma  has the accessibility property from every , 2 M and, furthermore, the set of states that can be reached from each , contains an open subset of M.
+
+Proof. Let s be the maximal possible dimension of a submanifold S of M which is included in the set of states reachable from ,. (There is always such a submanifold, for instance S = {,}.) If some vector field Xu,* (i) were not to be defined but not tangent to S at some i 2 S, then the above argument shows that fl(S * U ) contains a submanifold of dimension r + 1, all whose points are reachable from ,, contradicting maximality of r. Thus each vector field in vf(\Sigma ) is tangent to S at every point of S. So also every vector field in L\Sigma  must be tangent, since S is a submanifold. It follows from the full rank assumption that S must have the dimension as M, and therefore it is open as wanted.
+
+The accessibility statement also follows as a consequence of proposition 4.2, since full rank of the Lie distribution implies full rank of D\Sigma , and hence O(,), an integral manifold of this distribution, must have full dimension.
+
+Remark 4.5 The above theorem is a particular case of a stronger result established in [10]; the result there says that the same conclusion is true if one considers instead the Lie algebra generated by the larger set consisting of all vector fields of the form (25) with b 2 A*+.
+
+4.4 Foliations For completeness, we prove here that integrability coincides with the existence of singular foliations. Together with Theorem 2, this will mean that the connected components of the
+
+26
+
+possible orbits are the maximal integral manifolds of D\Sigma . In general, if D is an integrable distribution and a partition into integral manifolds is given, we may refine this partition by taking all connected components of each element. This exhibits M as the disjoint union of connected integral submanifolds of D; the next result shows that these are then maximal integral manifolds.
+
+Proposition 4.6 If {N*, * 2 \Lambda } is a partition of M into connected integral submanifolds of a distribution D, then each N* is a maximal integral manifold of D.
+
+Proof. We first prove that if N and N 0 are two integral manifolds of a distribution D then their intersection is open in each of them. For this, we pick any , 2 N " N 0 and claim that there is a set V which is a neighborhood of , in N 0 such that V is entirely contained in N . Thus , is in the interior of N " N 0 with respect to N 0, and the same argument with the roles of N and N 0 reversed gives that , is in the interior of this intersection with respect to N .
+
+Without loss of generality, we may assume for the local statement that N 0 is an embedded submanifold of M, say an open subset of the slice xk+1 = . . . = xn = 0 in a coordinate chart about ,, and that , is 0 under these coordinates. In particular, the vector fields @/@xi, i = 1, . . . , k are pointwise in D, and hence are tangent to both N and N 0. Consider the control system
+
+.x =
+
+kX
+
+i=1
+
+ui @@x
+
+i (x)
+
+with controls in IRk, defined on this coordinate chart. This differential equation has a solution in N for small t and x(0) = 0, for each constant control u(t) j (a1, . . . , ak), ai 2 IR. Moreover, by continuity of solutions on parameters, there are T, " > 0 such that the solution exists on [0, T ] for every constant control with Pi a2i = ". Thus the unit ball V of radius T " in the slice is included in N . This is an open subset of N 0 if T " is small enough, because the slice is an open subset of N 0. This establishes the claim.
+
+Assume now that N 0 is any connected integral manifold of D. Then, it is contained in precisely one of the N*. Indeed, N 0 = [(N 0 " N*), and the above argument gives that each of the elements in this union is open in N 0, so by connectedness there must be exactly one nonempty intersection. Finally, N 0 = N 0 " N* is open in N*, again by the same argument.
+
+4.5 Accessible sets for systems are included in orbits In this section, we establish proposition 2.16 and a related result for discrete time systems. We start with this lemma.
+
+Lemma 4.7 Consider a continuous time system (11) and assume that D is a distribution with the property that P (,, u) 2 D(,) for each (,, u). Suppose that there is a partition {N*, * 2 \Lambda } of M into integral submanifolds of D, and that , is controllable to i. Then, , and i are in the same element N* of the partition.
+
+27
+
+Proof. Assume that u : [0, T ] ! K is the control steering , into i, and let x(t) be the corresponding solution with x(0) = ,, x(T ) = i. Pick any fixed t0 2 [0, T ], denote ,0 := x(t0), and let N the element N* of the partition which contains ,0. We claim that there is a neighborhood V of t0 in [0, T ] such that u(V ) ` N . Since the vector fields Xu = P (*, u) are tangent to (the integral manifold) N , we may also consider the controlled differential equation (11) as an equation on N . The continuity requirements on Xu and its derivatives are still satisfied for this equation, from which it follows that there is a solution x0(t) of the equation for t near t0 with initial condition x0(t0) = ,0 and so that x0(t) 2 N on its domain. (Solving the equation backwards gives a solution for t < t0; if t0 is an endpoint, we only have a solution in one direction.) By uniqueness of solutions over M, x0(t) = x(t) where defined, and so the claim is established. We conclude that for each * the set {t|u(t) 2 N*} is open. Connectedness of [0, T ] then implies the lemma.
+
+Proof of proposition 2.16. We apply the above with D := D\Sigma , using the time-topology action \Sigma . The possible orbits will be the elements of the partition N*; Theorem 2 insures that these are integral manifolds. It is only necessary to see that Xu(,) 2 D(,) for all u 2 K, so that the lemma can be applied and one may conclude that , and i are in the same orbit whenever one state is accessible from the other. But this follows from proposition 4.3.
+
+Remark 4.8 If K0 is a dense subset of K, then controls with values in K0 give the same orbit. This is because the above proof can be applied with the distribution D0 corresponding to usingK0
+
+, but the distributions are the same. Indeed, because Xu(,) depends continuously on u andD0
+
+(,) is a finite dimensional vector space, we have that also those Xu(,) with u 2 K are in this space, as desired.
+
+For discrete time systems, one could use sets with nice boundary as control sets, and accessibility would not change:
+
+Proposition 4.9 If C is an open subset of K with nice boundary and P (i, u) = i0 for some u in C, then i0 is in the orbit of i with respect to the discrete time system that uses int C as control value set.
+
+Proof. We apply the lemma now with D = D\Sigma , where \Sigma  is the action associated to the discrete time system having U := int C. The N*'s are the orbits for this action. Assume that P (i, u) = i0, u 2 C. By the nice boundary assumption, there is some smooth curve ae with ae(0) = u and ae(t) 2 U for t 2 (0, 1]. Since the domain of P is open, there is some T <= 1 such that for each t 2 (0, T ] the element
+
+x(t) := P (i, ae(t)) = fl(i, ae(t)) is defined and belongs to the orbit O(i). We claim that i0 = x(0) is in the same orbit as i00 := x(T ). By transitivity it will then follow that i and i0 are in the same orbit, which is what we want to establish. For each fixed t in this interval, we compute the derivative of the curve x(t). This is
+
+.x(t) = @@v fifififi
+
+v=ae(t) fl(i, v)( .ae(t)),
+
+28
+
+which is in D(x(t)) for each t, by the fact that D includes (24). If we introduce the vector fields
+
+X 0u,* (,) := @@v fifififi
+
+v=u fl(fl
+
+-(,, u), v)(*),
+
+we may think of .x = X 0ae(t), .ae(t)(x) as a continuous time system whose control value space is the tangent bundle to U . Applying the lemma, the whole trajectory must remain in one orbit, as wanted.
+
+4.6 Invariance and integrability We now concentrate on actions corresponding to time topologies for continuous time systems, or more generally actions of the type \Sigma (\Phi ). Let \Phi  be a set of vector fields, D := D(\Phi ), and \Sigma  := \Sigma (\Phi ). "Invariance" will mean in this section \Sigma (\Phi )-invariance. By lemma 3.2, we know that D is invariant if and only if
+
+Adexp(tX)D(,) = D(,) whenever , 2 M, X 2 \Phi , t > 0, and exp(tX)(,) is defined. By proposition 4.3, D(vf(\Sigma )) = D. Since D\Sigma  is the smallest invariant distribution containing this, it follows that:
+
+Lemma 4.10 D is invariant if and only if D = D\Sigma .
+
+Since by Theorem 2 D\Sigma  is integrable, it follows that an invariant distribution must be integrable. Conversely, if D is integrable and {N*, * 2 \Lambda } is a partition into maximal integral manifolds, it follows from lemma 4.7, applied to the equations .x = X(x), for X 2 \Phi , that eachN
+
+* is stable and therefore that
+
+Adexp(tX)T,N*(,) ` T,N*(,) (39) for each , 2 N* and each t, X so that the flow is defined. Because T,N*(,) has the same dimension as Texp(tX)(,)N*(exp(tX)(,)), equation (39) is an equality. Since these are integral manifolds, D must be invariant. Thus we established the following result.
+
+Theorem 4 A smooth distribution D is invariant if and only if it is integrable.
+
+Recall that here invariance is under \Sigma (\Phi ), for any given set of vector fields such that D =D (\Phi ). The following local version of invariance is useful.
+
+Lemma 4.11 D is invariant if and only if for each , 2 M and each X 2 \Phi  defined at , there exists an " > 0 such that
+
+Adexp(tX)D(,) ` D(,) (40)
+
+for each t 2 (-", ").
+
+29
+
+Proof. Note first that it is equivalent to assume equality in equation (40). Indeed, when this is applied for small enough -t it implies, because of equation (20), that D(,) = Adexp(tX)Adexp(-tX)D(,) ` Adexp(tX)D(,).
+
+If the distribution is invariant, then Adexp(tX)D(,) = D(,) for all positive t. But then equality also holds for small negative t, since exp(-tX)(,) is defined for small t, again using equation (20),
+
+Assume now that the local statement in the lemma holds. Pick any X and ,, and let (t0, t1) be the interval of definition of exp(tX)(,). We will prove that (40) holds as an equality for all t in this interval. Let S be the subset of (t0, t1) where the equality holds. It will be enough to prove that S is both open and closed. (Note that S is nonempty, since 0 2 S.) We pick an " as in the statement. For each o/ 2 (t0, t1) and each small enough t 2 (-", "),
+
+Adexp((t+o/)X)D(,) = Adexp(o/X)Adexp(tX)D(,) = Adexp(o/X)D(,). Thus if o/ 2 S the last term equals D(,), so also t + o/ 2 S, and S is open. If o/ is not in S, the last term is different from D(,), and therefore t + o/ is also not in S, so the complement of S is open as well.
+
+Since D = D(\Phi ), we see that D is invariant iff for each X, Y 2 \Phi , each ,, and each small t, Adexp(tX)Y (,) 2 D(,).
+
+We now prove that integrability is equivalent to involutivity provided that D is determined by analytic vector fields or that certain other sufficient conditions hold. For this, we need the Baker-Campbell-Hausdorff formula:
+
+dl dtl Adexp(tX)Y (,) = Adexp(tX)(ad
+
+l(X)(Y ))(,) (41)
+
+valid for all vector fields X, Y defined at ,, all t such that the flow is defined, and all nonnegative integers l. Assume that \Phi  is involutive, and pick X, Y, ,. Consider
+
+ff(t) := Adexp(tX)Y (,) as a function taking values in the finite dimensional space T,M, which we identify with Euclidean space IRn. Because of involutivity and formula (41), all derivatives of ff at t = 0 are in the subspace D(,). When both X and Y are analytic, this implies that ff(t) 2 D(,) for all t, so the distribution is invariant, or equivalently, integrable.
+
+We next show that the same conclusion is true if \Phi  is an involutive locally finitely generated set of vector fields. For involutive \Phi , we define this latter property to mean: for each , 2M
+
+there are vector fields Y1, . . . , Yk 2 \Phi  such that any Y 2 \Phi  can be expressed in some neighborhood V of , as
+
+Y (i) =
+
+kX
+
+i=1
+
+aei(i)Yi(i) (42)
+
+for a set of smooth functions ae1, . . . , aek defined on V . In other words, \Phi  is locally finitely generated as a module over the ring of smooth functions. Examples of locally finitely generated involutive \Phi  are finite dimensional Lie algebras of vector fields (just take for the Yi's a basis of this Lie algebra), as well as involutive sets of vector fields for which the distribution D(\Phi )
+
+30
+
+has constant rank (if {Y1(,), . . . , Yk(,)} is a basis of D(,), then {Y1(i), . . ., Yk(i)} must also be a basis in a neighborhood of ,; the aei's are then obtained from Cramer's rule). Also, it is possible to prove that distributions generated by analytic vector fields are always locally finitely generated, so this case in fact contains the previous one.
+
+One could define the concept of local finite generation for noninvolutive \Phi , but a useful definition, though equivalent to the above under the added assumption of involutivity, in the general case would have to be somewhat more complicated.
+
+Assume now that \Phi  is involutive locally finitely generated. Pick any , and X, Y 2 \Phi , and a set {Y1, . . . , Yk} as above. Let * be any element of T,M = IRn perpendicular to all elements of D, h*, Yi(,)i = 0 for all i, and introduce the functions
+
+fii(t) := h*, Adexp(tX)Yi(,)i and the vector ff(t) := (fi1(t), . . . , fik(t))0. If we prove that ff is identically zero in a neighborhood of t = 0, it will follow that for each Y 2 \Phi  also h*, Adexp(tX)Y (,)i j 0, because Y is a linear combination of the Yi's and Adexp(tX) is linear. Repeating with a basis *1, . . . , of the annihilator of D(,), we conclude that Adexp(tX)Y (,) 2 D(,), as desired. Note that ff(0) = 0. By the local finite generation property, there exist smooth functions aeij such that
+
+[X, Yi] =
+
+kX
+
+j=1
+
+aeijYj.
+
+Applying formula (41) with l = 1, we have that
+
+.ff(t) = R(t)ff(t), where R is the matrix of the aeij's. Thus ff(t) satisfies a homogeneous linear differential equation, so ff(0) = 0 implies that ff(t) j 0 as desired. We summarize the conclusions in the next theorem.
+
+Theorem 5 Assume that \Phi  is an involutive set of vector fields, D = D(\Phi ), and one of the following properties holds:
+
+* All the vector fields in \Phi  are analytic.
+
+* The span of \Phi  is finite dimensional.
+
+* D is nonsingular.
+
+Then D is integrable.
+
+Note that if D is involutive, then it can be written as D(vf(D)), and thus as D(\Phi 0) for some involutive set \Phi 0. The constant rank part of the Theorem is basically Frobenius Theorem. The analytic version is due to Nagano and Hermann, and the method of proof is due to Lobry and Sussmann.
+
+We now establish a converse of proposition 4.2.
+
+31
+
+Proposition 4.12 Assume that \Sigma  is an action of the type \Sigma (\Phi ). If either L\Sigma  is analytic, or it spans a finite dimensional space, or the distribution D(L\Sigma ) is nonsingular, then D(L\Sigma ) = D\Sigma .
+
+Proof. Recall that by definition D\Sigma  is the smallest \Sigma -invariant distribution containing D(vf(\Sigma )), and by proposition 4.2 it contains D(L\Sigma ). By definition the latter includes D(vf(\Sigma )); thus it will be enough to establish that it is invariant. We apply Theorem 5 with "\Phi " there being L\Sigma . It follows that D(L\Sigma ) is invariant under L\Sigma , and therefore in particular under vf(\Sigma ), which by proposition 4.3 equals \Phi .
+
+32
+
+5 Zero-time orbits and sampling In this section we wish to show how the previously obtained results can be applied to the problem of preservation of accessibility under sampling. The main fact to be proved is that, for continuous time smooth systems with connected control value set, the "fixed time accessibility property" from a state , is a sufficient (as well as a necessary) condition to insure that the sampled systems in (17) satisfy the accessibility property from this , as discrete time systems, for each ffi small enough. Fixed time accessibility is the requirement that the set of states accessible from , in total time zero be a neighborhood of ,. The idea of the proof is to first show that these orbits are second countable in the input topology, and to then approximate the distribution associated to the input topology by distributions corresponding to the sampled systems. Second countability will insure that distributions have full rank precisely when this strong accessibility condition holds. The sampling result can be alternatively proved using a fixed-point argument, as done in [18]; however the present approach is much more natural, and the second countability proof is of considerable interest in its own right.
+
+For this entire section, \Sigma  is the input-topology action associated to a fixed smooth-in-controls system.
+
+5.1 Zero-time orbits The zero-time orbit O0(,) of , 2 M with respect to the system (11) is the set consisting of , as well as all states of the form
+
+exp(t1Xu1) . . . exp(tkXuk )(,) (43) obtained for all possible sequences of nonzero numbers (t1, . . . , tk) such that
+
+kX
+
+i=1
+
+ti = 0
+
+and all positive integers k and all sequences of elements u1, . . ., uk 2 K. The state space M can be partitioned into zero-time orbits. Our first claim is that these are open subsets of the orbits O(,), when the latter are given the input topology.
+
+Indeed, assume given any i 2 O0(,). In particular, i 2 O(,), so by part (2) of Theorem 2 there are positive numbers
+
+s1, . . . , sl,
+
+a sequence b = (a1, . . . , al) of +'s and -'s, and control values
+
+u1, . . ., ul 2 K, such that
+
+i = exp(a1s1Xu1) . . . exp(alskXul)(,)
+
+and so that
+
+(v1, . . ., vl) 7! exp(a1s1Xv1) . . . exp(alskXvl)(,) (44)
+
+33
+
+has rank at (u1, . . . , ul) equal to dim M. Note that the image of (44) is included in O0(i), since one may go first from i to , in time - P si using the controls ui. But O0(i) = O0(,), because of the assumption that i 2 O0(,). These maps are smooth with respect to the input topology structure on O(i). By the implicit mapping theorem, there is then a neighborhood of i in O(i) = O(,) included in the image of (44), and hence in O0(,), as desired.
+
+From now on, we shall write O0(,) to denote the zero time orbit O0(,) endowed with the (input) topology from O(,).
+
+The use of the input topology is essential here. Zero-time orbits are not open with respect to the time topology, as illustrated by the example .x = 1. Here O(0) = IR and O0(0) = {0}; the former is IRdisc in the case of the input topology case but has the usual structure in the time-topology case.
+
+In general, O(,) is not second countable in the topology being considered, as illustrated again by the above example. However, we shall establish in the next subsection that its open subset O0(,) is second countable, provided that the control value set K be connected. Perhaps surprisingly, the assumption of connectedness of K is essential. Even a K with just two components may result in a non second countable zero-time orbit. As an example of this latter phenomenon, consider the discrete manifold K consisting of two points, say {0, 1}, and the equation on M = IR
+
+.x = u, u 2 K = {0, 1}. (45)
+
+For this system, O0(0) = O(0) = IRdisc, not second countable. In contrast, for the timetopology, connectedness of K is irrelevant; the same proof to be given below provides second countability for that topology when the roles of controls and times are interchanged.
+
+5.2 Second countability of zero-time orbits Pick an integer r and a permutation ss on {1 . . .r} of order 2 (ss2 = identity), and any fixed , 2 M. For any such ss, we let
+
+IRss := {t = (t1, . . . , tr) 2 IR | ti = -tssi for all i}. (If ssi = i this forces ti to vanish.) Consider also the function
+
+ffrss(t, !) := exp(trXur ) . . . exp(t1Xu1 )(,) (46) where t = (t1, ..., tr) and ! = (u1, ..., ur), thought of as defined on the open subset
+
+Erss ` IRss * Kr where the expression in (46) is defined. We write just ff(t, !) if r, ss are clear from the context.
+
+Because of the restriction to t 2 IRss, the image of each map (46) is included in O0(,). This map is continuous on ! for each fixed t, by definition of the input topology; note that ff is independent of those ui for which ti vanishes. We shall prove that the union of the images of the maps (46) cover O0(,), and that each such image is second countable. Because there is a countable number of possible maps like this, second countability of O0(,) will follow. Note that
+
+34
+
+the "proof" that Erss is second countable and therefore the image of it under ff is also second countable is fallacious, because for the input topology on orbits ff is not continuous on t.
+
+The first step is then to establish that every element of O0(,) can be written as ff(t, !) for suitable r, ss, !, and t. We shall call such an expression, where for each time ti there is also a corresponding -ti, a balanced expression. The naive approach to proving this would be as follows. Assume that
+
+i = exp(aX) exp(bY ) exp(cZ)(,), (47)
+
+where X, Y, Z are of the form Xu and a + b + c = 0. Then, since a = -b - c, we may also formally write the above as
+
+i = exp(-cX) exp(-bX) exp(bY ) exp(cZ)(,), (48) or as
+
+i = exp(-bX) exp(-cX) exp(bY ) exp(cZ)(,), (49)
+
+both of which are balanced expressions. Unfortunately, neither (48) nor (49) may be welldefined. This difficulty is illustrated by the example
+
+.x = (1 - u)x2, .y = u, with M = IR2 and K = IR. Now take a = -0.5, b = 1.5, c = -1 and for X, Y, Z the vector fields corresponding respectively to u = 0, 1, 1. Let , := (1, 0)0. Then (47) is well defined, but neither (48) nor (49) are, because the solution of
+
+.x = x2, x(0) = 1 is only defined for t 2 (-1, 1). The argument is somewhat more involved.
+
+Lemma 5.1 If i = exp(o/0X0) exp(o/1X1) . . . exp(o/kXk)(,), Pkh=0 o/h = 0, then i can also be obtained from a balanced expression.
+
+Proof. We assume without loss that o/0 > 0, otherwise the argument is the same interchanging signs. We show that
+
+i = exp((
+
+lX
+
+i=1
+
+*i)X0) exp(o/1X1) . . . exp(o/kXk)(,), (50)
+
+where l = km for some positive integer m, and where the elements of the sequence
+
+-*1, . . . , -*l are a permutation of o/
+
+1
+
+m , . . . ,
+
+o/1 m-- -z ""
+
+m times
+
+, o/2m , . . . , o/2m-- -z ""
+
+m times
+
+, . . ., o/km , . . . , o/km-- -z ""
+
+m times
+
+, (51)
+
+such that
+
+0 <=
+
+jX
+
+i=1
+
+*i <= o/0 (52)
+
+35
+
+for each j = 1, . . . , l. Because each exp(o/hXh) can be rewritten as the composition of m copies of exp((th/m)Xh), the expression (50) is balanced; by (52) it is well-defined. It equals i because necessarily Pli=1 *i = o/0.
+
+Let m be any positive integer such that
+
+|o/h/m| < o/0/2 (53) for all h = 1, . . . , k. We now construct the sequence of the *i's as a permutation of the negatives of the elements (51). Since - P o/h = o/0 > 0, there must be some h so that -o/h > 0; let *1 be this element -o/h/m. We keep defining *2, . . ., *j each equal to some -o/h/m, for negative elements of the sequence (51), as long as the constraint (52) is satisfied and there are elements left in the sequence. Because of (53), at the end of this process the sum in (52) will be at least o/0/2. If we didn't exhaust the sequence (51) (in which case we are done), we stopped because the sum would become larger than o/0 when adding some element -o/h/m, which means (because the sum of all the elements in the sequence is exactly o/0) that there is some o/h/m > 0 in the sequence. We now start adding the negatives of such elements to the sequence of the *i's, again as long as the constraint (52) is satisfied. Since the sum of the *i up to this point is at least o/0/2, this process can be done for at least one step. When we stop, either all the sequence has been reordered or the sum is less than o/0/2. Now we repeat the ascending process. It is clear that this algorithm stops after a finite number of iterations, and results in the desired reordering.
+
+Theorem 6 If K is connected, then for every , the input-topology zero-time orbit O0(,) is second countable.
+
+Proof. We will prove that for each fixed permutation ss as above, and for each (t0, !0) in Erss there exists a neighborhood N of (t0, !0) in Erss such that ffrssN ` O0(,) is connected. SinceO
+
+0(,) is a countable union of sets of the form
+
+ffrss(Erss), it will then be enough to show that each of these latter sets intersects at most countably many components of O0(,). We cover Erss by open sets N each of which maps into a connected set. Since Erss is an open subset of the second countable manifold IRss * Kr (recall that K is assumed to be connected, and hence second countable), it is itself second countable. It follows that there is a countable subcover by these sets N (Lindeloff property), and the theorem will follow. Thus the construction of N is the critical part of the proof.
+
+This is done as follows. First we introduce some auxiliary mappings. For each pair of integers 1 <= i < j <= r, we let 'ij(t, o/ ) be defined as
+
+(t1, 0, t2, 0, . . ., 0, ti, o/, ti+1, 0, . . ., 0, tj, -o/, tj+1, 0, . . . , 0, tr) and let O/ij (!, u, v) be
+
+(u1, u1, u2, u2, . . ., ui-1, ui, u, ui+1, ui+1, . . . , uj-1, uj, v, uj+1, uj+1, . . . , ur, ur). We also let ssij be the permutation of {1, . . ., 2r} with
+
+ssij(2i) = 2j, ssij(2j) = 2i, and ssij(2l - 1) = 2ssl - 1 for all l.
+
+36
+
+and ssij k = k for all other k. We denote by Z the set consisting of all
+
+(t, o/, !, u, v) 2 IRss * IR * Kr * K * K for which
+
+('ij(t, o/ ), O/(!, u, v)) 2 E2r,ssij for all i < j.
+
+The set Z is open, by continuity on controls and time of solutions of differential equations. For the given !0, let C be any compact subset of K such that int C is connected and all components ui0 of !0 are in int C. The existence of such a set C follows from the assumption that K is connected. (This is the only place where the assumption is used.) Let
+
+K := {(t0, 0, !0, u, v)|u, v 2 C}. This set is compact and it is included in Z because
+
+ff2r,ssij ('ij(t0, 0), O/(!0, u, v)) = ffrss(t0, !0) for all u, v. Thus there is an open neighborhood V of K contained in Z. Moreover, V can be taken to be rectangular, meaning that
+
+V = Y(t0i - ffi, t0i + ffi) * (-", ") * A1 * . . . * Ar * B * B, where B is an open set containing C, and for each i, Ai is a connected subset of int C which contains the corresponding ui0. Further, we assume that 2ffi < ". (The product of the intervals (t0i - ffi, t0i + ffi) is understood as a subset of IRss.) Finally, we let
+
+N := Y(t0i - ffi, t0i + ffi) * A1 * . . . * Ar. Pick any (t, !) and (s, !0) in N . We want to construct a path (in the input topology) connecting ff(t, !) with ff(s, !0). We first connect ff(s, !) with ff(s, !0). Inductively, we may assume that ! and !0 differ in only one coordinate, say the i-th. Since both ui and u0i are in Ai, a path connected subset of C, there exists a path ae with ae(0) = ui, ae(1) = u0i, and ae(*) in Ai for all *. Composing with ff (as a function of ui) we get the desired path in O0(,).
+
+Now consider the problem of connecting ff(t, !) with ff(s, !). Since ff is not continuous with respect to t, this is not as straightforward as above. Inductively, we assume that t, s differ only at the i-th coordinate. We let j := ssi, and assume i < j. (If i = j then the antisymmetry condition ti = -tssi implies that both si and ti must be zero, and hence equal.) Thus, s has the form
+
+s = (t1, . . . , ti-1, si, ti+1, . . . , tj-1, sj, tj+1, . . ., tr)
+
+with si = -sj. Since both (t, !) and (s, !) are in N , we have that |ti - si| < 2ffi. Let
+
+o/ := si - ti = tj - sj, so that o/ 2 (-", "), and note that
+
+ff(t1 . . . tr, !) = ff2r,ssij ('ij(t, 0), O/(!, ui, uj)) (54) and
+
+ff(s1 . . . sr, !) = ff2r,ssij ('ij(t, o/ ), O/(!, ui, uj)). (55)
+
+37
+
+We now claim that ff(s1 . . . sr, !) is in the same component as
+
+ff2r,sskj ('kj(t, o/ ), O/kj(!, uk, uj)) (56) if i <= k < j - 1 and in the same component as ff(t, !) if k = j - 1. We prove the claim by induction on k. For k = i, this is trivial by equation (55). Assume now that the claim has been proved for k. Since ! is in A1 * . . . * Ar, both uk and uk+1 are in int C. Thus there is a path ae connecting uk and uk+1, with the image of ae contained in int C, and hence in B. Consider the path
+
+ae0(*) := ff2r,sskj ('kj(t, o/ ), O/kj(!, ae(*), uj)). (57)
+
+This is continuous into O0(,) with the input topology. It is well defined because of the choice of the neighborhood V , and it connects the element in equation (56) with the the corresponding element having uk+1 instead of uk. If k + 1 < j, this equals
+
+ff2r,ssk+1,j ('k+1,j(t, o/ ), O/k+1,j(!, uk+1, uj)), (note the new subscripts,) because of the fact that exp(tk+1Xuk+1) and exp(o/ Xuk+1 ) commute. This establishes the inductive step, and proves the first part of the claim. Applying now the same argument with uj-1 and uj , the expression obtained at the end of the path is simply ff(t, !), by the equality exp(-o/ Xuj ) exp(tXuj ) exp(o/ Xuj ) = exp(o/ Xuj ). This completes the proof that N is as desired, and therefore the proof of the theorem.
+
+5.3 A sampling result Assume given a continuous time system (11) smooth in controls, and let \Sigma  be its associated input-topology action (definition 2.15). For each ffi > 0, the associated ffi-sampled action is the one for the discrete time system (17); we denote this action, which has U = K and the same state space M, by \Sigma ffi. For an introduction to the topic of sampling and its relevance in digital control, the reader is referred for instance to [17].
+
+Let Dffi\Sigma  be the distribution associated to the sampled action \Sigma ffi. It follows from the definition of this sampled action and from the explicit form (25) for the generating vector fields that
+
+Dffi\Sigma  ` D\Sigma . (58) Furthermore, we claim that in fact this is locally an equality for ffi small enough. Indeed, pick any , 2 M. There is a finite set of vector fields as in (25) whose values at , are a basis ofD
+
+\Sigma (,). Seen as functions of t, we may arrange these vector fields (evaluated at ,) into a realmatrix
+
+A(t1, . . . , tk). (59) We view this as a matrix of functions on IRk, where the ti are all the times appearing in "!" and "u" for each generator, and for a particular value (o/1, . . . , o/k) we have the above vector fields. The columns of A are in D\Sigma (,) for each sequence of ti's where well-defined, and they form a basis whenever |ti - o/i| < \Delta  for all i, for some \Delta  > 0. For each 0 < ffi < \Delta  and for each i, then, we may pick an integer si with |si - o/i/ffi| < 1. It follows that A(s1ffi, . . . , skffi) is a basis of D\Sigma (,) for such ffi and si's. Since the columns of this matrix are evaluations at , of generators of \Sigma ffi, we conclude as follows:
+
+38
+
+Lemma 5.2 For each , 2 M and each small enough ffi > 0, Dffi\Sigma (,) = D\Sigma (,). Definition 5.3 The system (11) satisfies the strong or fixed-time accessibility property from , 2 M iff , 2 int O0(,).
+
+For analytic systems (13) affine in controls, it is a "classical" fact ([20]) that the strong accessibility property is equivalent to the possibility of reaching in fixed (positive) time an open subset of the state space, and is also equivalent to the rank condition
+
+rank L0(,) = dim M where L0 is the strong accessibility Lie algebra defined as the smallest subspace of vector fields on M which contains g1, . . ., gm and is closed under Lie brackets by f as well as all the gi's.
+
+Definition 5.4 The system (11) satisfies the sampled accessibility property from , 2 M iff , 2 int Offi(,) for some ffi > 0, where Offi(,) is the orbit of , under the action \Sigma ffi.
+
+We may now prove the main result of this section. Theorem 7 If K is connected, sampled accessibility is equivalent to strong accessibility. Proof. Sampled accessibility at , is equivalent to the full rank of Dffi\Sigma  at ,, by proposition 3.9. Strong accessibility at , is equivalent to the full rank of D\Sigma  (input-topology action) at ,, because of proposition 3.8 and Theorem 6, plus and the fact that O0(,) is open in O(,) and therefore is also an integral manifold of \Sigma . Thus (58) gives one implication and lemma 5.2 gives the other.
+
+The Theorem is false even if K has just two components, as again illustrated by example (45): with any fixed ffi, the sampled orbit Offi(0) is the set of all integer multiples of ffi, but the zero-time orbit is as a set all of IR.
+
+More precise estimates for what are "good" ffi can be given, based on the expansions (36); see for instance [16]. These estimates generalize known results for linear systems and, in its dual form for controllability, the Nyquist-Shannon Sampling Theorem.
+
+39
+
+6 References
+
+1. Abraham, R. and J. E. Marsden, Foundations of Mechanics, second edition, Benjamin
+
+Cummings, Reading, 1978.
+
+2. Boothby, W. M., An Introduction to Differentiable Manifolds and Riemannian Geometry,
+
+Academic Press, NY, 1975.
+
+3. Brickell, F. and R.S.Clark, Differentiable Manifolds, Van Nostrand, New York, 1970. 4. Coddington, E.A., and N. Levinson, Theory of Ordinary Differential Equations, McGrawHill, NY, 1955.
+
+5. Fliess, M. and D.Normand-Cyrot, "A group-theoretic approach to discrete-time nonlinear
+
+controllability," Proc.IEEE Conf.Dec.Control, 1981.
+
+6. Goodman, R., "Lifting vector fields to nilpotent Lie groups," J.Math. Pures et Appl.
+
+57(1978): 77-86.
+
+7. Hermann,R., "The differential geometry of foliations, Part II," J.Math and Mechanics
+
+11(1962): 302-316.
+
+8. Jakubczyk, B., "Invertible realizations of nonlinear discrete time systems," Proc.Princeton
+
+Conf.Inf.Sc.and Syts. (1980):235-239.
+
+9. Jakubczyk, B., and D.Normand-Cyrot, "Orbites de pseudo-groupes de diffeomorphismes
+
+et commandabilit'e des systemes non linearires en temps discret," C.R.Acad. Sc. Paris, 298-I(1984): 257-260.
+
+10. Jakubczyk, B. and E. D. Sontag, "Controllability of nonlinear discrete time systems: a
+
+Lie-algebraic approach," SIAM J Control and Optimization, submitted.
+
+11. Kupka, I., and G.Sallet, "A sufficient condition for the transitivity of pseudo-groups:
+
+Application to system theory," J. Diff. Eqs. 47(1973): 462-470.
+
+12. Krener,A., "(Adf,g), (adf,g) and locally (adf,g) Invariant and Controllability Distributions," preprint, UC-Davis, 1984.
+
+13. Normand-Cyrot, Dorothee, Theorie et Pratique des Systemes Non Lineaires en Temps
+
+Discret, These de Docteur d'Etat, Univ. Paris-Sud, March 1983.
+
+14. Stefan, P., "Attainable sets are manifolds," preprint, Univ. of Wales, 1973. 15. Sontag, E.D., "Remarks on the preservation of various controllability properties under
+
+sampling," in Developpement et Utilisation d'Outils et Mod`eles Math'ematiques en Automatique, Analyse de Syst`emes et Traitement de Signal, Coll. CNRS, RCP 567, Belle-Ile, 1983, pp.623-637.
+
+16. Sontag, E.D., "A Chow property for sampled bilinear systems," in Proceedings of the
+
+8th International Symposium on Mathematical Theory of Networks and Systems, (C.I. Byrnes, C.F. Martin, and R. Saeks, eds.,) North Holland, Amsterdam, 1988.
+
+40
+
+17. Sontag,E.D., "Orbit theorems and sampling," in Algebraic And Geometric Methods in
+
+Nonlinear Control Theory, M.Fliess and M.Hazewinkel (Eds.), Reidel, Dordrecht, 1986, pp. 441-486.
+
+18. Sontag, E.D. and H.J.Sussmann, "Accessibility under sampling," Proc. IEEE Conf. Dec.
+
+and Control, Orlando, Dec. 1982.
+
+19. Sussmann, H.J., "Orbits of families of vector fields and integrability of distributions,"
+
+Trans.AMS 180(1973):171-188.
+
+20. Sussmann, H.J. and V.Jurdjevic, "Controllability of nonlinear systems," J.Diff.Eqs.
+
+12(1972):95-116.
+
+41
+
+7 Continuous time systems Form now on we concentrate exclusively on applications to continuous time systems.
+
+7.1 The accessibility rank condition We say that the accessibility rank condition (ARC) holds at , if L\Sigma  has full rank at ,; if this happens at all ,, we just say that the ARC holds. The controllability Lie algebra of (11) is the Lie algebra L
+
+:= {Xu, u 2 K}LA
+
+which for systems of the special form (13) is the same as
+
+{f, g1, . . . , gm}LA. This is just the Lie algebra L\Sigma  obtained from the time-topology action, and the ARC is simply the statement that the vectors X(,), X 2 L must span a space of dimension dim M.
+
+The sufficiency part of the following result is often called the (positive form of) Chow's lemma.
+
+Theorem 8 Assume that for the continuous time system (11) the ARC holds at ,. Then, for each neighborhood V of ,:
+
+* The set of states in V that are accessible from , is open.
+
+* The set of states that can be reached from , contains an open subset of V .
+
+* The set of states that can be controlled to , contains an open subset of V .
+
+All these statements hold even if controls are restricted to be piecewise constant. Conversely, if the system is analytic, and if either of the sets of states accessible from, reachable from, or controllable to , contains an open subset of M, then the ARC must hold.
+
+Proof. The value at any state , of the Lie bracket of two vector fields depends continuously on ,. Thus the ARC must hold in an open neighborhood W ` V of ,. We now consider the system (11) restricted to the manifold W as its state space. For this system, the ARC holds everywhere, so we may apply Theorem 3, using the time-topology action associated to the continuous time system. Note that controls are piecewise constant and take values in the interior of K. For the third statement, note that i can be controlled to , relative to the system (11) if and only if , can be controlled to i for the time-reversed system
+
+.x(t) = -P (x(t), u(t)), t 2 IR. (60) To apply Theorem 3 to this reversed system, we compute its Lie algebra. This turns out to be the same as the Lie algebra of the original system, since the vector fields generating L are the negatives of the original ones. Thus the third assertion holds too. Each of the reachability and
+
+42
+
+controllability conclusions implies accessibility, so the converse statement is a consequence of corollary 3.12 and proposition 4.12.
+
+Less than analiticity is needed for the converse to hold. The same conclusion is true if the algebra L\Sigma  is finite dimensional or if D\Sigma  is of constant rank
+
+The one-dimensional example .x = 1 shows that the ARC does not imply that the reachable set from , must be open, or even that it must be a neighborhood of ,, as is true for the accessible set.
+
+If the ARC holds (at every point), every orbit must be open, so M is partitioned into disjoint open subsets. So we conclude as follows.
+
+Corollary 7.1 If M is connected and the ARC holds, the continuous time system (11) is transitive. Conversely, transitivity implies the ARC provided that the system is analytic.
+
+For linear systems, transitivity is equivalent to (complete) controllability. This is because these are analytic systems and the reachable set from the origin, being a subspace, can only contain an open subset if it equals the entire space.
+
+Exercise 7.2 By computing the controllability Lie algebra for linear continuous time systems, relate the ARC to the usual controllability rank condition.
+
+Exercise 7.3 Given a time-varying continuous time linear system .x = A(t)x + B(t)u, with x(t) 2 IRn, u(t) 2 IRn, for which all the entries of A and B are smooth on t, we may consider the associated nonlinear system
+
+.x = A(o/ )x + B(o/ )u (61) .o/ = 1 (62)
+
+where o/ is a new state variable. The state space is now IRn+1. Prove that if the ARC holds for (61) then for each , 2 IRn there is a T > 0 such that the set of states reached at time T if starting from , at time 0 is all of IRn. Relate the ARC to a known controllability condition for time-varying linear systems.
+
+A continuous time system is sometimes said to be symmetric if for each u 2 K there is some u0 2 K such that -Xu = Xu0 . The typical example is that of systems (13) with f j 0 and a symmetric K, in which case u0 = -u satisfies gives symmetry. For such systems, being able to reach i from , with a constant control u is equivalent to being able to control i to , using u0. Since transitivity is equivalent to transitivity with piecewise constant controls, it follows that in this case transitivity implies reachability. So the above can be rephrased, for simplicity in the analytic case, as follows.
+
+Corollary 7.4 If (11) is symmetric and analytic, and M is connected, complete controllability is equivalent to the ARC.
+
+43
+
+Exercise 7.5 In the nonanalytic case, a system may be controllable but the ARC may not hold. Consider for instance the system on IR2, with K = IR2,
+
+.x = u1g1 + u2g2 where g1(x, y) = (1, 0)0, g2(x, y) = (0, ff(x))0, and ff is the function with ff(x) = e-1/x
+
+2 for x > 0
+
+and ff(x) j 0 for negative x. Show that this is completely controllable but that the ARC does not hold.
+
+The following is a well-known example illustrating the use of the ARC. Assume that we model an automobile in the following way, as an object in the plane. The position of the center of the front axle has coordinates (x, y), its orientation is specified by the angle ', and ` is the angle its wheels make relative to the orientation of the car.
+
+FIGURE OF CAR INDICATING COORDINATES x, y, ', ` We assume that the angle ` can take values on an interval (-`0, `0), corresponding to the maximum allowed displacement of the steering wheel, and that ' can take arbitrary values. As controls we take the steering wheel moves (u1) and the engine speed (u2). Using elementary trigonometry, the following (symmetric) model results:
+
+.z = u1 0BB@
+
+0 0 0 1
+
+1CCA
+
++ u2 0BB@
+
+cos(' + `)
+
+sin(' + `)
+
+sin `
+
+0
+
+1CCA
+
+, (63)
+
+where z = (x, y, ', `)0 can be thought of as belonging to the state space
+
+M = IR * IR * IR * (-`0, `0) ` IR4. (We could instead identify ' and ' + 2ss and take as state space the manifold IR * IR * S1 * (-`0, `0); the results to follow would be the same in that case.) We take the controls for instance as belonging to the set K
+
+= [-1, 1] * [-1, 1].
+
+A control with u2 j 0 corresponds to a pure steering move, while one with u1 j 0 models a pure driving move in which the steering wheel is fixed in one position. We let g1 = steer be the vector field (0, 0, 0, 1)0 and g2 = drive the vector field (cos(' + `), sin(' + `), sin `, 0)0. It is intuitively clear that the system is completely controllable, but it is worth proving it mathematically as follows.
+
+Exercise 7.6 Apply corollary 7.4 to show that the system is controllable. Do this by computing the vector fields wriggle:= [steer,drive] and slide:= [wriggle,drive], and showing that at each point of M, the determinant of the matrix consisting of the columns (steer, drive, wriggle, slide) is nonzero.
+
+What is perhaps less obvious is that one can reach any neighborhood of a given state without large excursions. More precisely, given any open subset V of M, the system could be thought of as a system with state space V , and as such the same result gives that the restricted system is completely controllable. This is particularly useful if we need to get out of a tight parking space.
+
+44
+
+FIGURE OF CAR IN TIGHT PARKING SPACE Exercise 7.7 Show that for ' = ` = 0 and any (x, y), wriggle is the vector (0, 1, 1, 0), a mix of sliding in the y direction and a rotation, and that slide is the vector (0, 1, 0, 0) corresponding to sliding in the y direction.
+
+The trajectories corresponding to following the vector wriggle thus represents the "wriggling" motion
+
+steer - drive - reverse steer - reverse drive, repeat because of the following basic fact about Lie brackets. (As it is often said, this is a computation that everyone should do at least once in their life.)
+
+Exercise 7.8 Show that for any two vector fields X, Y and any ,,
+
+exp(-tY ) exp(-tX) exp(tY ) exp(tX)(,) = exp(t2[X, Y ](,) + o(t2))(,) (64) as t ! 0. You will need to use the facts that (a) for any vector field Z in IRn
+
+exp(tZ)(i) = i + tZ(i) + t
+
+2
+
+2 Z*(i)Z(i) + o(t
+
+2),
+
+which follows from the definition of exp(tZ) as a solution of a differential equation (Z* denotes the Jacobian of Z), and (b) Taylor expansions to first order for each of X(x) and Y (x).
+
+Note that (64) characterizes the Lie bracket of X and Y as measuring how far they are from commuting with each other. The term t2 explains why many small-time wriggling motions are needed in order to obtain a displacement in the wriggling direction: the order of magnitude t2 of a displacement in time t is much smaller than t. The exercise also suggests how to implement the pure sliding motion: wriggle, drive, reverse wriggle, reverse drive, repeat (many times).
+
+7.2 Some further controllability results The symmetric case can be easily characterized, at least in the analytic case. The study of controllability for nonsymmetric systems is the subject of much current research, and is one of the main areas of theoretical work in nonlinear control. We will not pursue this difficult topic here, except for a few very elementary remarks.
+
+Lemma 7.9 Assume that the ARC holds, and that the set of states reachable from a given , is dense in M. Then every state is reachable from ,.
+
+45
+
+Proof. Pick any i 2 M. By the second assertion in Theorem 8, applied at the point i and taking V = M, there exists an open set W such that each state in W can be controlled to i. By the density assumption, there must be some state in W which is reachable from ,. This gives the result.
+
+A similar argument is used in the next result. Recall that proposition 2.16 says that accessibility for a continuous time system is equivalent to accessibility using piecewise constant controls. When the ARC holds, a similar statement can be made regarding controllability.
+
+Corollary 7.10 Consider a continuous time system (11). Let ,, i be any two states in M, and assume that i is in the interior of the set R(,) of states reachable from x and also that the ARC holds at i. Then, , can be controlled to i using piecewise constant controls. In particular, if the system is analytic and completely controllable, then it is possible to reach any i from any other , using piecewise constant controls.
+
+Proof. By the second assertion in Theorem 8, applied at the point i and taking for V the interior int R(,) of the set of states reachable from ,, we know that there exists an open set W ` R(,) such that each state in W can be steered to i using piecewise constant controls. Pick any state i0 2 W . By the discussion in remark 2.13, there is a sequence of states approaching i0 each of which is reachable from , with piecewise constant controls. In particular, there is one such state i00 2 W . Concatenating the piecewise constant control sending , to i00 with one sending i00 to i, we obtain the desired conclusion. For the last statement, we use the converse part of Theorem 8 in order to conclude that the ARC must hold at every point.
+
+When control values are unbounded, one may be able to cancel in some sense the effect of the "drift" term f and reduce to the symmetric situation. The following result illustrates this fact.
+
+Proposition 7.11 Assume given an affine-in-controls system (13) for which K = IRm andM
+
+is connected. A sufficient condition for the system to be completely controllable is that{ g1, . . . , gm}LA have full rank at each point.
+
+This condition is far from being necessary. For linear systems, for example, it would require the B matrix to have rank n, and in particular, that there be more controls than the dimension of the state space. However, it is a useful condition sometimes. In its proof we require the following fact.
+
+Lemma 7.12 Assume given an affine-in-controls system (13) for which K = IRm and the ARC holds. Then this system is completely controllable if and only if the system
+
+.x = u0f (x) +
+
+mX
+
+i=1
+
+uigi(x), u0 >= 0 (65)
+
+is completely controllable. (This is a system whose controls take values in K = [0, +1) * IRm ` IRm+1.)
+
+46
+
+In the analytic case, the hypothesis that the ARC holds is redundant, since it is implied by controllability.
+
+Proof. Any trajectory of the original system is also one for the new system, (simply let u0 j 1,) so only one implication needs to be proved. Assume then that (65) is controllable. We shall show that, for the system (13), the reachable set R(,) from each , 2 M is dense in M. The ARC holds for this system, because its controllability Lie algebra coincides with that for (65), since both equal {f, g1, . . ., gm}LA. Then the result will follow from lemma 7.9.
+
+By corollary 7.10, (65) is controllable using piecewise constant controls. Pick any two ,, ,0 2 M. Thus there exists a sequence of states ,1 = ,, . . . , ,k = ,0 such that each for each i = 2, . . . , k there are real numbers T, u0, . . ., um such that
+
+,i = exp(T (u0f +
+
+mX
+
+j=1
+
+uj gj))(,i-1) (66)
+
+and T, u0 are nonnegative. We prove by induction on i that each ,i is in the closure of R(,). Assume that this is true for ,i-1, and let il ! ,i-1 as l ! 1, each il 2 R(,). By continuous dependence of solutions on controls and initial states, for * large enough
+
+jl := exp(T ([u0 + 1l ]f +
+
+mX
+
+j=1
+
+uj gj))(il)
+
+is defined and jl ! ,i. But each jl is reachable from ,i-1, because it equals
+
+exp((T u0 + Tl )(f +
+
+mX
+
+i=1
+
+uj u0 + 1/l gj))(il).
+
+(Note that the fact that K = IRm is used here, since the quotients uj/(u0 + 1/l) may be very large even if the uj's where restricted to be small.) Thus the induction step is completed.
+
+Proof of proposition 7.11. By the above, it is only necessary to show that (65) is controllable. For this it is enough to establish that
+
+.x =
+
+mX
+
+i=1
+
+uigi(x)
+
+is controllable. But this follows from the Lie algebra assumption, which is the same as the ARC for this (symmetric) system, together with corollary 7.4.
+
+The gap between controllability and accessibility, at least in the situation of the above lemma, is due to the negative motions exp(tf ), t < 0:
+
+Corollary 7.13 Assume the affine-in-controls system (13) has K = IRm and satisfies the ARC. Then, it is completely controllable if and only if exp(-tf )(,) 2 R(,) for each , 2 M and each t > 0 where defined.
+
+Proof. The necessity of the condition is clear, since controllability means that R(,) = M for each ,. Conversely, assume that the the ARC holds for the system (13). Pick any pair
+
+47
+
+,, i 2 M. We need to establish that i 2 R(,). There is an integer k and a sequence of real numbers t1, . . ., tk such that
+
+, = exp(t1X1) . . . exp(tkXk)(i), (67) where each Xi is one of the vector fields f, g1, . . . , gm. This is because the system has the same controllability Lie algebra as
+
+.x = X(x), X 2 {f, g1, . . . , gm} thought of as a continuous time system having a discrete control space K with m + 1 elements, and this latter system is transitive due to the ARC. We will prove by induction on k, that exp(tX)(,) 2 R(,) for each such X, with respect to the system (65) and therefore by lemma 7.12 also for the original system. But each exp(tgi) is a motion of system (66) (just let ui j 0 for each j 6= i,) and similarly for exp(tf ) for positive f . Finally, for negative t, the case exp(tf ) follows by the hypothesis.
+
+Exercise 7.14 (a) Many physical systems can be described by equations such as (13) in which the flow of f is periodic, that is, for each , there is some T such that exp(T f )(,) = ,. Prove that if the ARC holds, M is connected, K = IRm, and the flow of f is periodic, then the system is completely controllable.
+
+(b) As an application, consider the control of the angular velocity of a satellite using a pair of opposing jets. The corresponding equations can be obtained from the classical Euler equations for rigid body motion. When the satellite is symmetric about an axis, and choosing simple values for the parameters defining the moments of inertia and the axis along which the control acts, these become
+
+.!1 = !2!3 + u .!2 = u .!3 = -!2!3 + u
+
+with state space M = IR3 and control set K = IR. Show that this system is completely controllable.
+
+Bilinear continuous time systems are systems affine in controls for which M is a submanifold of IRn and the vector fields f, g1, . . . , gm are linear. That is, the equations are
+
+.x = (F0 +
+
+mX
+
+i=1
+
+uiFi)x
+
+where the Fi are matrices such that Fi, 2 T,M for each , 2 M under the identification T,IRn = IRn. For such systems, the computation of the ARC is particularly easy, since the Lie bracket of any two linear vector fields f (x) = Ax and g(x) = Bx is obtained from the Lie bracket of the corresponding matrices, [f, g](x) = (BA - AB)x. Since the space of all n * n matrices has dimension n2, one must check at most Lie brackets involving n2 of the matrices Fj. (In fact, the computations can be arranged very efficiently by recursively computing a basis for the span of the set of all brackets formed out of k elements, k = 1, . . ., n2.) In particular,
+
+48
+
+one may consider the case of systems on Lie groups, whose state space is a (connected) Lie subgroup G of GL(n) and the equations are in matrix form
+
+.X = (A0 +
+
+mX
+
+i=1
+
+uiAi)X,
+
+with the Ai in the Lie algebra of G. A system like this can be rewritten as a bilinear system on a submanifold of IRn
+
+2 . The vector spaces L(,) are for such systems all isomorphic to each
+
+other, and equal the Lie algebra of matrices generated by {A0, . . . , Am}. In other words, the ARC is equivalent to the requirement that the set of matrices obtained by taking arbitrary Lie brackets of the Ai's should span the Lie algebra of G. For such systems, the results given about transitivity reduce to well-known and elementary facts in the theory of Lie groups.
+
+Exercise 7.15 Use corollary 7.4 to show that any 3 * 3 orthogonal matrix with determinant 1 is the product of rotations about the x-axis and rotations about the y-axis. You may use that the space SO(3) of such matrices is a connected Lie group of dimension 3 whose Lie algebra is the set of all skew-symmetric 3 * 3 matrices. Note that the two types of rotations correspond to solutions of the differential equation
+
+.X = AX, X(0) = I,
+
+where A is 0@ 0 0 0
+
+0 0 -1 0 1 0 1A
+
+or 0@
+
+0 0 1 0 0 0-
+
+1 0 0 1A
+
+respectively.
+
+An important variation on the idea of controllability is that of fixed time control. This concept is central in the study of many optimal control problems. Let RT (,) denote the set of states reachable from , in time exactly T for the continuous time system (11). It is often of interest to know if RT (,) has a nonempty interior, at least for some positive T . (If this interior is nonempty for a given T , it is also nonempty for T + ", for each small " > 0, since for each i in the interior there is some vector field Xu and some " such that the local diffeomorphism exp("X) is defined at i.) The ARC, though clearly necessary in the analytic case, is not sufficient for this: again the trivial example .x = 1 provides a counterexample. For simplicity, we restrict attention now to systems affine in control (13). Consider the strong accessibility Lie algebraL
+
+0 associated to any such system as follows: L0 is the smallest subset of L which contains thevector fields
+
+g1, . . . , gm and which is closed under Lie brackets by f as well as by all the gi's.
+
+(In other words, L0 is the ideal of L generated by the gi's.)
+
+Thus L0 is generated in the same manner as L, by taking all possible brackets of f, g1, . . . , gm, except that f itself is not included in the generating set. The only way for f to be in L0 is if it happens to be a linear combination of the gi's and of any brackets of at least two of the vector fields. Note that for each ,, either
+
+dim L0(,) = dim L(,) or
+
+dim L0(,) = dim L(,) - 1.
+
+49
+
+Intuitively, the effect of time (through the autonomous vector field f ) is left out of the generating set. At an equilibrium state (f (,) = 0), both algebras give the same vectors. The system satisfies the strong accessibility rank condition at , if L0(,) has full dimension at ,.
+
+Exercise 7.16 Prove that, for an analytic system (13) and any state ,, the interior of RT (,) is nonempty for some T > 0 if and only if the strong ARC holds at ,. Hint. Consider the system
+
+.x = f + X uigi
+
+.z = 1
+
+where z is a new variable. Use that the ARC for this system is the same as the strong ARC for the original system.
+
+50</pre>
+</body>
+</html>

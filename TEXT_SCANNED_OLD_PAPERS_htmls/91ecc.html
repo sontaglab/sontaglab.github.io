@@ -1,0 +1,466 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/91ecc.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/91ecc.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+                   SOME  CONNECTIONS  BETWEEN  CHAOTIC
+            DYNAMICAL  SYSTEMS  AND  CONTROL  SYSTEMS*
+
+                                       Francesca ALBERTINI, Eduardo D. SONTAG
+                                     SYCON- Rutgers Center for Systems and Control
+                      Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+
+Abstract.  This paper shows how to extend recent results of Colonius and Kliemann, regarding connections
+between chaos and controllability, from continuous to discrete time.  The extension is nontrivial because the
+results all rely on basic properties of the accessibility Lie algebra which fail to hold in discrete time. Thus, this
+paper first develops further results in nonlinear accessibility, and then shows how a theorem can be proved,
+which while analogous to the one given in the work by Colonius and Klieman, also exhibits some important
+differences. A counterexample is used to show that the theorem given in continuous time cannot be generalized
+in a straightforward manner.
+Keywords. Discrete-time, chaotic systems, Lie algebras, nonlinear systems, controllability, acessibility.
+
+
+1      Introduction                                                    a subset is perhaps the most interesting part of our
+                                                                       work, both because in order to establish it one must
+In a recent paper, Colonius and Kliemann [3 ] provide                  use some of the results given in the above cited pa-
+an elegant connection between controlled and classical                 pers, and also because it provides new insight into the
+(no-input) dynamical systems.  Essentially, they first                 structure of nonlinear discrete-time systems. Because
+associate to each finite-dimensional control system                    of the need to work with this dense subset and vari-
+an  infinite-dimensional  dynamical  system   *  whose                 ous associated technical difficulties, the proofs become
+state space consists of all states and possible inputs                 considerably more involved.  But otherwise the argu-
+for   ,  and  then  they  show  how  to  establish  a  one-            ments closely parallel those in [3 ], and we organized
+to-one  correspondence  between  "control  subsets"  of                this note in such a manner that a direct comparison
+   and  "chaotic  subsets"  of   * .  These  concepts  are             with that paper should be easy. A counterexample in
+defined more precisely below; the former are basically                 the last section illustrates the differences.
+sets in which approximate controllability holds,  and                    It should be noted that our results are given only
+the latter are sets in which the dynamics is chaotic in                for systems that are invertible (each control induces
+the sense defined in [4 ].                                             a diffeomorphism) and analytic.  The first restriction
+   The results in [3 ] are given in continuous-time, and               can probably be relaxed considerably, and is due to the
+the  purpose  of  this  note  is  to  study  their  discrete-          method of proof.  The second restriction is however
+time analogues.  In principle, the analogy is straight-                much deeper,  and it is doubtful that similar results
+forward, and it is obvious how one should generalize                   would hold in a more general smooth situation -for
+the above correspondence.  However,  there are diffi-                  instance, a central fact used is that from a dense set
+culties  that  have  to  do  with  controllability  proper-            of points one has accessibility,  but this may fail for
+ties of discrete-time systems.  A basic property that                  smooth but nonanalytic systems, even under further
+holds -under appropriate Lie-algebraic conditions- in                  Lie-algebraic assumptions.
+the continuous case is that of (forward) accessibility:
+from any given state one can reach in positive time
+an  open  subset,  and  one  can  do  so  with  respect  to            2     Notations
+any  fixed  open  set  containing  the  state  in  question.
+In discrete-time,  in contrast,  this fails to be true in              We will consider a discrete-time system   as follows:
+general,  even under assumptions analogous to those
+made in continuous-time.  As this basic property un-                                     x(t + 1) = f (x(t), u(t))                 *
+ *  (1)
+derlies most of the results in [3 ], it would appear at                where x(t) 2 M  and u(t) 2 U  for each t = 0, 1, 2, . ...
+first sight that one cannot generalize those results un-               We assume that:
+less one makes additional and very strong ad-hoc as-                     (1)  M  is  a  Riemannian,  paracompact,  connected,
+sumptions.                                                             and analytic manifold of dimension n.
+   Fortunately, there is a way of applying the recent                    (2) U   IR n is a compact, convex set with at least
+theory developed in [5 ] and [1 ] in such a manner that                two points and so that U   clos int U .
+the above analogy can indeed be completed.  In [3 ] a                    (3) f  : M x "U - ! M  (where U"   U  and is open)
+key fact employed, which follows from the above ac-                    is analytic, and denoting by fu  : M  -! M  the map
+cessibility property, is that the interiors of control sets            f (., u), this map is a global diffeomorphism of M  for
+are exactly (rather than approximately) controllable.                  each u 2 U (i.e., the system   is invertible).
+While not true here,  we are able to replace his fact                    (4) The system   is controlled-transitive.
+by the weaker property that inside each such set there                   We  will  use  fu-  to  denote  the  inverse  of  the  map
+exists an open dense subset, which we call its "core,"                 fu .   See  [5 ]  for  basic  background  on  such  discrete-
+in which controllability holds.  The existence of such                 time systems.  The property called here "controlled-
+   *_______________________________
+     This research was supported in part by US Air Force Grant         transitivity" is often called simply "transitivity"; we
+AFOSR-88-0235                                                          use a different terminology because of the later use in
+this paper of the word transitivity in its dynamical sys-              interior.
+tems sense.  Another name for controlled-transitivity
+is  "forward-backward  accessibility".   It  means  that               Definition 3.1 ~    A set D    M  is called a precontrol
+every  state  can  be  reached  from  every  other  state              set  if  D     R (x)  for  all  x  2  D  and  intD  6=  ;.  *
+ * A
+by  some  finite  iteration  of  maps  of  the  type  fu  or           precontrol  set  which  is  maximal  with  respect  to  set
+fu-.  The property can be elegantly characterized in                   inclusion is called a control set .
+Lie-algebraic terms (see [5 ]).  If the system   is not                Note that if D is a precontrol set, then in D the system
+controlled-transitive,  there  is  a  decomposition  of  M               is "almost" controllable, in the sense that if x, y 2 D
+into  a  disjoint  union  of  invariant  submanifolds,  in             then from x it is possible to reach any neighbourhood
+such a manner that the system can be restricted to                     of y.
+a controlled-transitive one on each of them.  This re-                   Next we state some properties of control sets that
+duces the analysis of general systems to the controlled-               will be useful later.  For the proofs of the following
+transitive case.                                                       results we refer to [2 ].
+   For  each  x  2  M ,  each  subset  S  of  M ,  and  each
+k   0, we will use the following notations:                            Lemma 3.2        Let D   M  be a control set.  Pick any
+   Rk (x)  =  {y  2  M  |  9u1 , . .,.uk  2  U  such  that             two elements x~, y~ in int D.  Then, for each sequence
+fuk O . .O.fu1S(x) = y},          S                                    (u0 , . .,.uT ) 2 U T +1 such that fuT O . . .Ofu0 (~x) = ~y*
+ *we
+   R(x) = S k 0  Rk (x), Rk (S) =   s2S  Rk (s),                       have that, necessarily, also
+
+   R(S) =   k 0  Rk (S), R~(x) = clos R(x),                              fuk O . .O.fu0 (~x) 2 int D    for  k  =  0, . .,.T - 1.  *
+ *||
+   and R~(S) = clos R(S).
+   For any sequence ! = u1 , . .,.uk  2 U k we also de-                Lemma 3.3        Let D   M  be a precontrol set.  Then
+note f!k = fuk O . .O.fu1 .  The following two facts are               we have:  D    closSFk (intlD) for all k   =   0, 1, 2, . . .
+easy to establish:                                                     where Fk (int D) =   l k  R (int D)                       ||
+   (1) R~(R~(S)) = R~(S)   8S   M .
+   (2) R~(S1 [ S2 ) = R~(S1 ) [ ~R(S2 ).                               Lemma 3.4        Let  D     M  be  a  control  set.   Then:
+   Let     =  U ZZ =  {!  :  ZZ  -!  U },  equipped  with              clos D  =  clos int D                                       *
+ * ||
+the pointwise convergence topology.  Since U  is com-
+pact, it can be shown that with this topology   is a                   Definition 3.5      Let x 2 M and S   M .  We say that
+compact, complete, separable metric space when the                     x is forward  accessible  (f.a.)  in  S   (resp.  backward
+distance between two elements !, !0 is given by:                       accessible  (b.a.)  in  S  )  if  int(R(x) \ S)  6=  ;  (res*
+ *p.
+                      X                                                int(C(x) \ S) 6= ;). If we simply say that x is forward
+          d(! , !0) =      2-|k|  | ! (k) - !0(k) |.                   (backward) accessible,  we mean forward (backward)
+                      k2ZZ                                             accessible in M .
+
+Depending on the context (control or dynamical sys-                    Lemma 3.6        Let S   M and define:
+tems,  respectively),  the  letter  !  will  denote  a  finite           S  = { x 2 M | x  is forward accessible in      S },
+sequence ! = u1 , . .,.uk  2 U * = [k 0  U k or a double               thefn S   is open.                                          *
+ *   ||
+infinite sequence !  2  .  The meaning will be clear                          f
+from the context.
+   To the system   we associate a classical dynamical                  Lemma 3.7        Let D   M be a precontrol set and pick
+system  * on M x  , where the flow   is given by the                   any x 2 D.  If x is forward accessible then x is forward
+following: {OEk ; k 2 ZZ}, where OEk : M x    - ! M x  ,               accessible in D.                                            *
+ * ||
+OEk (x, !) = (f!k(x), oek !), with:  (oek ! )(i) = ! (i + k)
+i.e. oe represents the shift operator, and with:                         We  conclude  the  following  important  property  of
+            8                                                          precontrol sets.
+            <   fuk Ofuk-1 O . . .Ofu1 (x)      if k > 0
+   f!k(x) = :   x                               if k = 0               Theorem 1       Let  D     M  be  a  precontrol  set.  Then
+                fu-k+1O fu-k+2O . . .Ofu-0(x)   if k < 0               every point of D is forward accessible in D.           ||
+
+
+where  ui  =  !(i).   Observe  that  the  notation  f!k is               The definition of precontrol set is not reversible in
+consistent with that used,  in the context of control,                 time,  so  we  cannot  conclude  backward  accessibility
+when ! is just a finite sequence.                                      from every point.  However, the next result provides
+   It can be shown that the flow   defines a continuous                backward accessibility from a dense subset.
+dynamical system on M x  ,  meaning that OEk+s   =
+OEk OOEs for all k, s, and each mapping OEk  is continuous             Proposition 3.8        Let D   M be a control set. Then
+on M x  .                                                              there exists some (necessarily nonempty) open subset
+   Observe that y 2 Rk (x) if and only if 9 ! 2   such                 E   D such that:
+that f!k(x) = y.                                                         (1) clos E = clos D,
+                                                                         (2) if y 2 E then y is backward accessible in D.   ||
+
+
+3      Properties  of  Control  Sets                                   Lemma 3.9        Let D   M  be a control set and let E
+                                                                       be any set as in the conclusion of the previous Propo-
+The  next  definition  is  a  precise  analogue  of  that  in          sition. Then E   R(x) for each x 2 D.                 ||
+[3 ], except that we make the assumption of nonempty
+Definition 3.10        For   any   set   S       M ,   define:         Definition 4.3      Let (X,  ) be a discrete-time dynam-
+Core   (S) := { x 2 int S  | x is forward and backward                 ical system. (X,  ) is called topologically mixing if for
+accessible in S }.                                                     any two open sets V1 , V2  of X  there exist k1 , k2  2 ZZ
+                                                                       with k2 > 0 such that, for all l 2 IN ,
+Using Lemma 3.6 twice (once for   and another time
+for the "inverse" system x(t + 1) = fu-(x(t))), we can                                    _-lk2+k1  (V1 ) \ V2 6= ;.
+conclude the following.                                                Definition 4.4      A  discrete-time  dynamical  system
+
+Lemma 3.11         For  any  subset  S     M ,  Core  (S)  is          (X,  ) on a metric space (X, d) is said to have sen-
+open.                                                          ||      sitive dependence on initial conditions  if there exists
+                                                                       some ffi > 0 such that for each x 2 X and each neigh-
+
+For a control set D, we proved (see results in Theorem                 bourhood  W  of  x  there  are  y  2  W  and  a  positive
+1 and Proposition 3.8) that Core   (D)   E  for some                   integer l such that: d(_l(x), _l(y))   ffi.
+E   D such that clos E = clos D. Thus we have:                         Definition 4.5      Let (X,  ) as before; (X,  ) is said to
+    _____________________________________________________________      be chaotic  if it is topologically mixing, has sensitive
+    ||  clos Core  (D) = clos D    for a control set     D.      |
+    ||___________________________________________________________|     dependence on initial condition, and has a dense set
+                                                                       of periodic points.
+Moreover the result in Lemma 3.9 can be rephrased
+as follows.                                                            The result in the next Proposition and its proof are a
+                                                                       discrete-time parallel of Proposition 3.5 in [3 ].
+Proposition 3.12         If  D  is  a  control  set,  and  E  =
+Core   (D), then E   R(x) for all x 2 D.                ||             Proposition 4.6        Let D be a control set, and define
+                                                                       D*   M x   according to Definition 4.1.  Then D*  is
+                                                                                           * = clos int D* .
+If  D  is  a  control  set,  then,  by  the  previous  results,        a chaotic set, and D
+Core   (D)  is  a  dense  subset  of  D  in  which  we  have           Proof.  We will show:
+exact  controllability.   Note  that  (as  it  is  implicitely           (1) Periodic points are dense in D* ,
+used in [3 ]) if   was a continuous time system then                     (2)  |D*  is topologically mixing,
+Core   (D) would have been equal to int D.  An exam-                     (3)  |D*  has sensitive dependence on initial condi-
+ple of a control set D  for which Core   (D) is strictly               tions,
+contained in int D  will be given later.  However the                    (4) D* = clos int D* .
+density property of Core   (D) will allow us to derive                   (1)   It is sufficient to show that each (~x, ~!) 2 D*
+analogous results of those in [3 ].                                    with f~k!(~x) 2 int D for all k 2 ZZ can be approximated
+                                                                       by periodic points.
+                                                                         Let W = (N xV )\D* be a neighbourhood of (~x, ~!).
+4      Main  Results                                                   We may assume that N , V  have the following forms:
+                                                                       N = {y 2 M | d1 (~x, y) < ffl}, V  = {! 2   | d2 (~!, !) <
+Now we associate to each given control set D a subset                  ffl}; where d1 ,  d2  represent the distances respectively
+D*  of  the  dynamical  system   *  on  the  state  space              on M and on  . There exists l > 0 such that:
+M x  .  Let D  be any control set;  we define D*  as                                                                  ffl
+follows, in exact analogy to [3 ]:                                                  k2ZZ\{-l,...,0,...,l}2-|k|    _________        *
+ *  (2)
+                                                                                                                  diam   U
+Definition 4.1       D* = clos {(x, !) 2 M x   | f!k(x) 2              where  diam  U  =  sup {|u  - u  |;  u  ,  u   2  U }.   By
+int D for all k 2 ZZ}                                                  assumption on (~x, ~!) we 1know2that f1l    2      -l
+                                                                                                             ~!(~x) and f~! (~x)
+Note that this set is obviously invariant, so   can be                 are in int D. Thus we can find "ffl("ffl  ffl), for which the
+restricted to D* .                                                     "ffl-neighbourhoods of ~x, f~l!(~x) and f~-l!(~x) are contai*
+ *ned
+                                                                       in D. By continuity, there exists some ffi so that:
+Remark 4.2        Note that, under our assumptions, D*                                  -l
+is  certainly  non-empty.   In  fact,  choose  any  ~x,  ~y 2               if d1 (y, f~! (~x)) < ffi  then, denoting by !" =
+Core   (D) with ~x 6= ~y.  By Proposition 3.12 there exist                  oe-(l+1)  (~!), we have d1 (f"l+1!(y), ~x) < "ffland
+input sequences !1 ,  !2 2   and integers k1 ,  k2 (with                    d1 (f"2l+1!(y), f~l!(~x)) < "ffl.
+ki   1 for i = 1, 2) such that: f!k11(~x) = ~yand f!k22(~y) =
+~x. Let:                                                               Let  E  =  Core -(D).l  Since  clos E  =  clos D,-lwe  can
+~!  (. . .!2 (1), . .,.!2 (k2 ), !1 (1), . .,.!1 (k1 ), . .).with      choose a point y    in E whose distance from0f~! (~x)l+1-l
+~!(0) = !2 (k2 ).                                                      is  less  than  ffi.   Then,  denoting  y   =  f"!  (y   )  *
+ *and
+   Then  the  trajectory  starting  at  ~x with  input  se-            yl = f"2l+1!(y-l ), we know that y0  and yl lie in int D.
+quence  ~! is  periodic  (in  fact  f~k1+k2!(~x)  =  ~x),  thus        So, by Proposition 3.12, there exists k > 0 and v 2
+by Lemma 3.2 it lies entirely in int D. So (~x, ~!) 2 D* .             such that fvk(yl) = y-l . Define
+                                                                                    ae
+   The next results will extablish a correspondence be-                                 ~!(i)       for i 2 {-l, . .,.0, . .,.l}
+tween control sets D and their "lifts" D* . In order to                   !p (i)  =     v(i - l)    for i 2 {l + 1, . .,.l + k}
+make this correspondence clear,  we first recall some
+definitions  for  dynamical  systems;  the  definition  of             and  extend  !p (.)  by  periodicity.   Then  (y0 , !p )  is*
+ *  a
+chaotic system is from [4 ].                                           periodic point of period 2l + 1 + k. Moreover:
+   (i) d1 (y0 , ~x)   "ffl, so y0 2 N ,                                  Thus we have D*    clos int D* .  From this we can
+   (ii) d2 (!p , ~!) =  i2ZZ 2-|i| | !p (i) - !(i) |  =                conclude D* = clos int D* , as desired.                   ||
+
+   =   i2ZZ\{-l,...,0,...,l}2-|i| | !p (i) - !(i) |
+      (diam   U ) i2ZZ\{-l,...,0,...,l}2-|i|    ffl, so !p 2 V ,       Proposition 4.7   *    Let D*   *M x   be a chaotic set
+   (iii) by Lemma 3.2, since y0  and y-l  are in int D,                for  , such that D  = clos int D  . Define:
+all the trajectories joining them lie interely in int D,                    D*  =  {x 2 M | 9 ! 2    with    (x, !) 2 D* }.
+so f!kp(y0 ) 2 int D for all k 2 ZZ.                                     M
+   Thus (y0 , !p ) 2 W .                                               Then there exists some precontrol set D     M  such
+   (2)  We have to show that for every pair W1 ,  W2 of                that D    M  D*  and clos D =  M  D* .
+open sets in D*  there exists k0 2 ZZ and k1 > 0 such
+that for all n 2 IN  OE-nk1+k0   (W2 ) \ W1 6= ;.                      Proof.  Since the system   is analytic and controlled-
+   Since, by (1), the periodic points are dense, we may                transitive  we  know  that  there  exist  two  open  sets
+assume  that  the  sets  Wi  i  =  1, 2,  are  of  the  form:          A1 ,  A2  from  which  we  have  backward  and  forward
+Wi  =  (Ni x Vi) \ D* with Vi  =  {! 2   | d2 (!, !i) <                accessibility respectively (see [1 ]).
+ffl},  Ni   =   {y  2  M  |  d1 (y, xi)  <  ffl},  where  (xi, !i)       Let A = A1 \ A2 ,*then A is still open and dense.
+i = 1, 2 are periodic points with periods li.                          Let P  = {x 2  M  D*  | 9 ! 2   for which (x, !) is a
+   Choose l > 0 as in eqution 2; we may assume that                    periodic point of D  }.
+li > l for i = 1, 2.  Using the same argument as when                   *Since  by  assumption  periodic* points  are  dense  in
+proving (1), we can find periodic points (yi, vi) 2 Wi,                D  , P  is dense in  M  D  .   *
+i  =  1, 2,  with periods Li >  li >  l,  such that,  if we             *Now let E = A \*P \ int  M  D *. Then E 6= ; since*
+denote E = Core  (D)   D, as before, then yi 2 E and                   D   = clos int D   implies* M  D   = clos int  M  D  , so
+vi(ki) = !i(ki) for ki 2 {-li, . .,.0, . .,.li}.                       in particular int  M  D  6= ;. Moreover,*since A is open
+   Since E    R(x) for all x 2 D (Proposition 3.12),                   and dense and P  is dense in  M* D  , we*can conclude
+there exist v0 2   and L0 2 IN such that fvL00(y2 ) = y1 .             that: clos  E = clos int  M  D  =  M  D  .
+For any n   1 we define !n (i) as follows:                             Claim 1     E   Core  ( M  D* ).
+
+
+  v1 (i)                       if i   -nL1                             Pick  any  e  2  E;  in  particular  e  is  forward  accessi-
+  v0 (i + 1 + nL1 + L0 )       if -nL1 > i   -nL1 - L0                 ble. By analyticity we know that, for all k sufficiently
+  v2 (i + 1 + nL1 + L0 )       if -nL1 - L0 > i.                       large, clos Rk (e) = clos int Rk (e).  Futhermore, e 2 P ,
+                                                                       thus there exist ! 2   and l > 0 such that f!l(e) = e.
+Since v1 (i) = !1 (i) = !n (i) for i 2 {-l, . .,.0, . .,.l},           Since l can be chosen arbitrarily large (in particular
+we  have  that  !n  2  V1  for  all  n.  Futhermore,  since            l > k), then e 2 clos int Rl(e).  So from the fact that
+f!kn(y1 )  =  fvk1(y1 )  for  k     -nL1  and  f!kn(y1 )  =            e 2 int  M  D*  we have that e is forward accessible in
+fvk+nL1+L02  (y2 ) for k < -nL1 - L0 , we can conclude                  M  D* . A similar argument*shows that e is also back-*
+f!kn(y1 ) 2 int D for all k 2 ZZ .  Thus (y1 , !n ) 2 W1 .             ward accessible in  M  D  . Thus e 2 Core  ( M  D  ).
+On the other hand:                                                     Claim 2     E   R(x) for all x 2 E.
+   (i) f!-nL1+(-L0-L2)n    (y1 ) = y2 ,
+   (ii) !n (-nL1 - L0 - L2 + k) = v2 (k - L2 + 1) =                    Pick x1 , x2  2 E.  By Claim 1,  there exist two open
+v2 (k) = !2 (k) for k  2 {-L2 , . .,.0, . .,.L2 } (thus in             sets W+x1,  W-x2 contained in  M  D*  such that W+x1
+particular for k 2 {-l, . .,.0, . .,.l}).                              R(x1 ) and W-x2   C(x2 ). Let:
+   So   we   can   conclude   OE-nL1-L0-L2     (y1 , !n )    =                    x1         *             x2         *
+(y2 , oe-nL1-L0-L2     (!n )) 2 W2 since from what we have                V1 = (W+   x  ) \ D      V2 = (W-   x  ) \ D
+observed  before,  v2 (k)  =  oe-nL1-L0-L2     (!n )(k)  for           By the mixing property, there exists some L > 0 such
+k 2 {-l, . .,.0, . .,.l}, and so their distance is less than           that  OE    (V  ) \ V   6=  ;.   Thus  we  can  find  !  2  *
+ * ,
+ffl. Thus (2) holds with k1 = L1 and k0 = -L0 - L2 .                   y   2 W -Lx1, 2and y 1 2 W x2 such that f k(y  ) = y   for
+   (3)  If we consider the dynamical system ( , oek ) for              s1ome k+2 IN ; this 2impli-es x  2 R(x  )!, a1s desi2red.
+k  2  ZZ it can be shown,  in complete analogy to [3 ],                  By Claim 2, in E we have exac1t cont2rollability. Next
+proposition 2.8, that this system has sensitive depen-                 we extend E to a precontrol set. Define:
+dence on initial conditions. Thus the sensitive depen-
+dence  on  initial  conditions  of   |D*   is  an  immediate                   D = {x 2  M  D*  | x  is f.a. in   M  D* }.
+consequence of the same property of ( , oek ), since if
+d is any metric on M x  , we have that if d1 (!, v)   ffi              Note that E   D    M  D* . In order to prove that D
+then d((x, !), (y, v))   ffi.                                          is a precontrol set we need to show:  (i) D   R~(x) for
+   (4)   Let  (x, !)  2  D* .   There  exists  a  sequence             all x 2 D, and (ii) int D 6= ;.
+(xn , !n )  !  (x, !) such that f!kn(xn )  2  intD  for all              To prove (i), pick any x,  y 2 D.  Since from x one
+k. By (1) we know that the periodic points are dense                   can reach an open subset of  M  D*  and E is dense in
+in  D* .   Thus  for  each  n  there  exists  (yn , vn )  peri-         M  D* , we have that from x one can reach a state e 2
+odic  of  period  ln  with  d((xn , !n ), (yn , vn ))  <  1=n.         E. Moreover, using again the density of E, there exists
+So (yn , vn ) ! (x, !).  Moreover we can assume that                   a sequence of elements en  2 E  so that en  ! y.  By
+yn  2  E,  where E  =  Core  (D).  From the facts that                 Claim 2, we know that en  2 R(e) for all n.  Therefore
+(yn , vn ) is periodic and E is open, it is not difficult to           also en  2 R(x),  which in turn implies y  2 R~ (x),  as
+prove that (yn , vn ) 2 int D* .                                       wanted.
+   We now show (ii).  Choose an element e 2 E.  By                       By maximality of D  and the fact that f!kn(x) be-
+Claim  1,  there  exists  an  open  subset  W  of   M  D*              longs  to  intD  for  infinitely  many  n     ~n,  it  follo*
+ *ws
+so that W     C(e).  Since e is forward accessible in                  that f!k(x) 2 int D for all k   k~n.  Since e" 2 E, we
+ M  D* ,  any element y  2 W  is forward accessible in                 can also find !" so that f"k!("e) 2 int D for all k   k~n.
+ M  D* ; thus W   D, which implies int D 6= ;.        ||               Define:
+                                                                                          ae
+Definition 4.8       If (X,  ) is a dynamical system, we                          ~!(i) =     "!(i)          for i < k~n
+say that W   X is a maximal chaotic set  if:                                                  !(i + k~n)     for i   k~n.
+
+  1.  W  is closed and  -invariant.                                    Then ("e, ~!) 2 ff(D), since f~k!("e) 2 int D for all k 2 ZZ.
+
+  2.   |W   is chaotic.                                                !-Moreover,lithem!-limitisettofs("e,e~!)tisoequalfto(thex, !*
+ *), which is D0.  Thus, si@
+
+
+  3.  For all W 00 W  with  |W 0  topologically mixing                 is closed, D0   ff(D).  So D0 = ff(D), from which we
+      we have W  = W .                                                 haveNmaximality.ext we prove that (1) and (2) hold for D and*
+ * ff(D).
+
+   The next theorem will establish a one-to-one corre-                   (1) Suppose that x 2 int D, and take ffl > 0 so that
+spondence between control sets of the control system                   the open ball Bfflcentered at x is contained in D. Let
+  on M  and maximal chaotic sets of the dynamical                      y 2 Bffl\ E.  Then, as shown in the proof of part (4)
+system  * on M x  .                                                    of proposition 4.6, there exists ! 2   so that (y, !) 2
+                                                                       intff(D).
+Theorem 2        Let C be the class of all control sets D                So  we  have  Bffl\ E      M  ff(D).  Since   M  ff(D)
+M , and let C*  be the class of all maximal chaotic sets               is  closed  and  clos E  =  clos D,  we  have:  clos Bffl
+D*  for   such that D* = clos int D* .  Define ff : C !                 M  ff(D), which implies x 2 int  M  ff(D).
+C*  and fi : C* ! C as follows:                                          (2)  Since  E      M  ff(D),   M  ff(D)  is  closed,  and
+                                                                       clos E = clos D, we have clos D    M  ff(D).
+ff(D) = clos {(x, !) 2 M x   | f!k(x) 2 int D 8k 2 ZZ}                   Conversely, take x 2  M  ff(D).  Then there exists
+
+                                                                       ! such that (x, !) 2  M  ff(D).  This in turn implies
+     fi(D* ) = {x 2  M  D*  | x is f. a. in  M  D* }.                  that there exists (xn , !n ) ! (x, !) with xn  2 int D,
+
+Then  ff  and  fi  give  a  one-to-one  correspondence  be-            by definition of ff(D). Thus x 2 clos D.
+tween C and C*  with ffOfi = idC*  and fiO ff = idC .                    (b)    By proposition 4.7 we know that fi(D* ) is a
+   Furthermore if either D*  = ff(D) or D  = fi(D* ),                  precontrol set.  So, also in this case, to see that fi  is
+we have:                                                               well defined we need to prove maximality of fi(D* ).
+                                                                       Suppose  that  fi(D* )  is  not  maximal,  and  let:  D"  =
+  1.  int D   int  M  D* ,                                             [~ D~  where D~  is a precontrol set such that D~
+                                                                           * ).
+  2.  clos D =  M  D* .                                                fi(D
+                                                                         Since int fi(D* ) 6= ;,  it is easy to see that D"  is a
+Proof.  We divide the proof in 3 steps. In part (a) we                 control set. If we show that D"    M  D* , then we can
+prove that ff is well defined and satisfies (1) and (2),               conclude  that  "D =  fi(D* )  since,  by  Theorem  1,  we
+in (b) we show the same properties for fi, and in (c)                  know that all x 2 D" must be forward accessible in D" .
+we prove that ff and fi are inverse maps.                              Since D"  is a control set, we can apply ff to D" .
+   Recall  that  if  (X,  )  is  a  discrete-time  dynamical             Let E* = {(x, !) 2 int D* | (x, !) is a periodic point
+system, and x 2 X, the !-limit set  of x is                            and x is forward accessible }; then E*  is dense in D* ,
+                                                                       since  the  set  of  periodic  points  is  dense.   Moreover
+!(x) = {y 2 X | 9 nk ! 1 for which    _nk (x) ! y}.                    if  (x, !)  2  E*  then  x  2  fi(D* );  thus  x  2  "D  and,
+
+
+Moreover,  the  system  (X,  )  is  called  transitive   if            futhermore,*(x, !) 2 ff(D" ).                *         *
+there exists some x 2 X for which !(x) = X.  It is a                     So E    ff(D" ), since ff(D" ) is closed, D  = clos E
+consequence of Proposition I.11.4 of [6 ] that, for the                ff(D" ). By the maximality of D* , we have D* = ff(D" ).
+system  * ,  topologically mixing implies transitivity.                  By part (a) we know that: D"     M  ff(D" ) =  M  D* .
+Since chaotic sets are topologically mixing, we are al-                Thus fi(D* ) is maximal, and so it is a control set.
+lowed,  in  what  follows,  to  use  the  fact  that  chaotic            Next we prove (1) and (2) for D* and fi(D* ). Using
+sets are transitive.                                                   proposition  4.7  we  know  that  clos fi(D* )  =   M  D* .
+   (a)   In proposition 4.6 we have already proved that                Thus (2) holds.  To prove (1), it is sufficient to notice
+ff(D) is a chaotic set such that ff(D) = clos int ff(D).               that   M  E*     int fi(D* ),  and  now,  using  the  same
+Thus in order to see that ff is well defined (i.e. ff(D) 2             arguments as in the proof of (1) of part (a), we can
+C* ), we need to establish maximality of ff(D).                        conclude int fi(D* )   int  M  D* .
+   Suppose that there exists some D0   ff(D) with D0                     (c)     Let D  be a control set.  We need to prove
+topologically mixing.  Then since D0 is also transitive                fi(ff(D)) = D. By property (1) we know that clos D =
+there exists (x, !) 2 D0 such that the !-limit set of                   M  (ff(D)) = clos fi(ff(D)), thus the equality follows
+(x, !) is all of D0. Let E = Core  (D) and choose e 2 E;               by the maximality of both D and fi(ff(D)).
+then there exists a sequence kn , with kn  ! 1, such                     Conversely, let D* be a maximal chaotic set. Again
+that f!kn(x) ! e. So, since E is open, for ~nsufficiently              choosing E*  as in part (b), E*  is a dense subset of D*
+large f!k~n(x) = "e2 E.                                                which is contained in ff(fi(D* )).  Thus,  by closeness
+                                                                                                                        P
+and maximality of D* and ff(fi(D* )), we can conclude                  Using this fact and the divergence of the series    n 1=n
+D* = ff(fi(D* )), as needed.                               ||          we will prove 4.
+                                                                                                             2 \ F .  Notice that,
+   The result of the previous Theorem is the discrete-                   Fix (~x, ~y) 2 D  and ("x, "y) 2 IR
+time version of the result given in Theorem 3.9 of [3 ].               since (~x, ~y) 62 B, it is not restrictive to assume:
+The  main  difference  is  that  in  the  continuous  time                                g(~x) 6= 0  and    y~ 6= 0.
+case the inclusion (1) is always an equality, while in
+the discrete time case it can be a proper inclusion, as                First we choose ul, vl as in 5.  Since g(~x) 6= 0 there
+it is shown in the example given in the next section.                  exists k  such that yk  > 1.  Next we apply a control
+                                                                       sequence with all vl = 0 so as to reach a state (x0, y0)
+
+5      An  Example                                                     of the type:
+
+                                                                                        x0 = "x- n   and    y0 = yk
+Here  we  provide  an  example  of  a  system  for  which
+int D 6= int  M  (ff(D)), and D is a control set so that               where n is a positive integer that will be chosen later.
+Core   (D) 6= int D.                                                   Notice that we can assume "y< y0.
+
+Example 5.1        Consider the function g(x) =  sin(ssx)_ssx.         suNowcwehwantttohfindaatsequencewofecontrolsg(0,evl)t the st*
+ *ate ("x, "y) in exactly n@
+It  is  easy  to  verify  that  |g0(x)|     1  for  all  x  2  IR.     is clear that this is possible if and only if:
+Moreover, g(x) = 0 if and only if x 2 ZZ \ {0}. Now let
+us consider the following discrete-time, analytic sys-                                             n-1X
+tem: M = IR 2,  U = [-1, 1]2 , and equations                                   y0  -  |_sin(ssx")|_     _____1_______        "y    *
+ *  (6)
+                                                                                          2ss           |"x- n + l|
+                     x+    =    x + 1 + uy                                                         l=0
+
+                     y+    =    y + v_2g(x)                            So we just have to choose n large enough such that 6
+                                                                       is satisfied. This is possible since sin (ssx") 6= 0 and:
+
+where g(x) is the above function.                                                  n-1                        n
+   This system is invertible. In fact the determinant of                           X    ______1______   =   X     ___1______
+the Jacobian matrix of the map fu,v (x, y) is given by:                             l=0 |"x- n + l|         m=1   |"x- m|
+1 - uv_2g0(x), which is never zero since u, v 2 [-1, 1],
+and |g0(x)|   1.  Moreover it is easy to verify that for               is divergent. Thus D is a control set.
+each (u, v) 2 U ,  the map fu,v (., .) is bijective.  It is              Notice  that,  for  this  control  set  D,  Core  (D)  is
+also easy to prove that this system is transitive.                     strictly contained in D = int D.  In fact, none of the
+   For this system we can see that for all k 2 IN  with                points  of  the  type  (-k, 0)  with  k  a  strictly  positi*
+ *ve
+k   1 the following hold:                                              integer, belongs to Core  (D).
+
+  1.  the points of the type (-k, 0) are not backward                    Now  if  we  consider  the  corresponding  maximal
+      accessible,                                                      chaoticisetnff(D),tithisiclearsthatcff(D)a=sMex,.tThus,he in*
+ *clusion (1) in Theorem 2 @
+
+  2.  the points of the type (k, 0) are not forward ac-                (i.e. int D 6= int  M  ff(D)).
+      cessible.
+
+Letting B = {(k, 0) | k 2 IN ,  k   1}, we want to show                References
+that D = IR 2\ B is a control set.
+   Notice  that  D  is  certainly  maximal;  in  fact,  no             [1] Albertini, F., and E.D. Sontag, "Transitivity and
+points in B could belong to a control set, since they                      forward accessibility of discrete-time nonlinear sys-
+are not forward accessible. To prove that D satisfies:                     tems," in Controlled Dynamical Systems (B. Bon-
+                                                                           nard et. al., eds), Birkhauser, Boston, 1991, to ap-
+                 D   R~(,)    for all  , 2 D                  (3)          pear.
+
+we will prove the following:                                           [2] Albertini, F., and E.D. Sontag, "Some connections
+                                                                           between  chaotic  dynamical  systems  and  control
+          IR2 \ { (k, y) | k 2 ZZ,  y 2 IR  }   R(,)          (4)          systems,"  Report SYCON-90-13,  Rutgers  Center
+
+which, by taking the closure in both sides, implies 3.                     for Systems and Control, Dec. 90.
+Let F = { (k, y) | k 2 ZZ,  y 2 IR  }.                                 [3] Colonius,  F.,  and  W.  Kliemann,  "Some  aspects
+   First  we  notice  that,   since  | sin(ss(x  +  1))|   =               of control systems as dynamical systems," Report
+| sin(ssx)|, if we apply to any (x, y) a control sequence                  No.223, Inst. Math., Univ. Augsburg, 1990.
+of the form:                                                           [4] Devaney,  R.L.,  An  Introduction  to  Chaotic  Dy-
+                                                                           namical Systems, Benjamin, Menlo Park, 1986.
+             ul = 0,   vl =  sign  (g(x + l - 1)),            (5)      [5] Jakubczyk, B., and E.D. Sontag, "Controllability
+
+then, after k steps, we will reach the point:                              ofanonlinearpdiscrete-timepsystems:rAoLie-algebraicach,"*
+ *  SIAM J. Control and Opt@
+
+            xk    =    x + k                                               1-33.
+                                       k-1X    1                       [6] Ma"n'e, R., Ergodic Theory and Differentiable Dy-
+             yk   =    y + |_sin(ssx)|_2ss  ________.                      namics, Springer-Verlag, NY, 1987.
+                                       l=0  |x + l|
+
+</pre>
+</body>
+</html>

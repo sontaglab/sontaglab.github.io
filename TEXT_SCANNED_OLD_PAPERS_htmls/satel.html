@@ -1,0 +1,310 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/satel.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/satel.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+FURTHER COMMENTS ON THE STABILIZABILITY OF THE ANGULAR
+
+VELOCITY OF A RIGID BODY1
+
+Eduardo D. Sontag2 H'ector J. Sussmann3 SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+Phones: (201)932-3072 (Sontag) and (201)932-5407 (Sussmann) e-mail: sontag@fermat.rutgers.edu, sussmann@math.rutgers.edu
+
+ABSTRACT We prove that the angular velocity equations can be smoothly stabilized with a single torque controller for bodies having an axis of symmetry. This complements a recent result of Aeyels and Szafranski.
+
+1 Introduction In a recent paper, Aeyels and Szafranski ([1]) established that a rigid body can be smoothly stabilized even if just one control torque (aligned with an axis having a nonzero component along all principal axes) is allowed. Their construction results in a linear control law. Though as pointed out in that paper the feedback so obtained is highly nonrobust, it was nonetheless a rather surprising result. There is a small gap in their proof however; one needs that the body have no symmetries in order for their construction to be correct. In fact, we remark below that no possible linear feedback law will work in the presence of symmetries. On the other hand, many objects, such as satellites, do typically exhibit such symmetries. In this paper we show that there exists a nonlinear control law which achieves asymptotic stabilizability.
+
+The existence of smooth feedback controllers has been recently linked to the construction of coprime right factorizations; see [5].
+
+To make this note more self-contained, we remind the reader of the framework in [1]. There is given a rigid body, with the components of x = (x1; x2; x3) denoting the angular velocity coordinates with respect to the principal axes, and the positive numbers I1; I2; I3 denoting the respective principal moments of inertia. Thus the system that interests us evolves in IR3 and has equations
+
+I .x = S(x)Ix + T u (1)
+
+1Keywords: Rigid body, Euler equations, Smooth stabilization 2Research supported in part by US Air Force Grants 85-0247 and 88-0235 3Research supported in part by NSF Grant DMS83-01678-01
+
+1
+
+where I is the diagonal matrix with entries I1; I2; I3 and where T = (T1; T2; T3)0 is a column vector describing the axis on which the control torque applies. We assume that
+
+Ti 6= 0; i = 1; 2; 3: (2) (See the paper [1] for a study of what may happen when some of the components of T vanish.) The controls u(\Delta ) are allowed to take arbitrary real values. The matrix S(x) is the rotation matrix
+
+S(x) = 0@
+
+0 x3 \Gamma x2 \Gamma x3 0 x1
+
+x2 \Gamma x1 0
+
+1A
+
+:
+
+In [1] it is claimed that the control law u = \Gamma T 0x stabilizes the system (1). However, this is false if some Ii = Ij; i 6= j. (The gap is in the sentence "a simple calculation shows that..." in page 36. Actually, it is easy to prove that Ii 6= Ij for all i 6= j is necessary as well as sufficient for their argument to be valid.) We concentrate then on that case. Without loss of generality, we assume that I1 = I2. If I3 = I1 as well, then the equations become .x = T u, which cannot be stabilized in any reasonable sense. So we assume that I3 6= I1, i.e. that the object is not spherical.
+
+For the rest of this note, we assume that I1 = I2 and I3 6= I1. Letting a := (I1 \Gamma  I3)=I1 and bi := Ti=Ii, we obtain the final set of equations
+
+.x1 = ax2x3 + b1u (3) .x2 = \Gamma ax1x3 + b2u (4) .x3 = b3u (5)
+
+where the hypotheses imply that a 6= 0 and all bi 6= 0.
+
+Definition 1.1 Assume that f : IRn \Theta  IR ! IRn is smooth (i.e., `1), f (0; 0) = 0. We shall say that the control system
+
+.x = f (x; u)
+
+is (globally) smoothly stabilizable if there exists a smooth function k : IRn ! IR such that k(0) = 0 and the origin is globally asymptotically stable for
+
+.x = f (x; k(x)):
+
+Our main result is as follows: Theorem. The system (3)-(5) is smoothly stabilizable.
+
+Note that it will never be possible to find a linear k as in [1], even if only local stabilization is required. This is because in that case there would exist states x arbitrarily close to the origin of the form
+
+(x1; x2; 0); x21 + x22 6= 0
+
+for which k(x) = 0. Since such points are equilibria for the closed loop system, asymptotic stability cannot result. Thus truly nonlinear feedback is needed for our problem.
+
+The next section provides the main steps of the proof of the above Theorem; technical details are left for the last section. Some of the results are stated in more generality than for the particular system that we study here, and may be useful in other contexts.
+
+2
+
+2 Proof of the Theorem First of all, it is convenient to make a linear change of coordinates in (3)-(5). This will be done in two steps. First introduce variables
+
+x01 := b3x1 \Gamma  b1x3 ; x02 := b3x2 \Gamma  b2x3: Next introduce variables
+
+x1 := b1x01 + b2x02 ; x2 := b1x02 \Gamma  b2x01: This latter change of coordinates is invertible because its determinant is the nonzero number
+
+b21 + b22: Finally, we let x3 := ax3, b := (b21 + b22)=a, and we change coordinates in the input space by u := ab3u. After all this, the equations become
+
+.x1 = x3x2 (6) .x2 = \Gamma x3x1 \Gamma  bx23 (7) .x3 = u: (8)
+
+This can be thought of as a cascade of a system with an integrator. To stabilize such a system, we use a lemma that has appeared often in the literature. It may be thought of as a "generalized principle of PD control," since it asserts for mechanical systems that if one knows how to control the position of an object then one also has a feedback law for control of both position and velocity. The proof, which for completeness we repeat in the next section, can be found also in [3], as well as in [6] and [2]. The result can also be proved using the "bounded-input bounded-output" ideas in [5]; it is only necessary to make the first system stable in that sense by a preliminary feedback.
+
+Lemma 2.1 Suppose that the following system is smoothly stabilizable:
+
+.x = f (x; u) Then the system (on IRn+1) given by
+
+.x = f (x; y) (9)
+
+.y = u (10)
+
+is also smoothly stabilizable.
+
+In order to prove the Theorem, it is then necessary to verify the hypotheses of Lemma 2.1, to be applied with
+
+f (x; u) = ` ux2\Gamma ux
+
+1 \Gamma  bu2 ' : (11)
+
+This will be in turn a consequence of the Proposition stated below.
+
+3
+
+By a weak Lyapunov function for
+
+.x = f0(x); (12)
+
+where f0 : IRn ! IRn is smooth, we mean a continuously differentiable scalar function V : IRn ! IR with V (0) = 0 and such that
+
+V (x) ? 0
+
+(V is positive definite) and
+
+Lf0V (x) := rV (x) : f0(x) ^ 0 (13)
+
+for each nonzero x and further, fxjV (x) ! ffig is compact for each ffi ? 0.
+
+A k as in Definition 1.1 that satisfies k(x) ? 0 for all x 6= 0, will be called a positive feedback. If such a k exists, we say that the system is smoothly stabilizable with positive feedback.
+
+Proposition 2.2 Assume that f0; f1 : IRn ! IRn are smooth, f0(0) = 0, and there exists a weak Lyapunov function for (12). Suppose further that for every complete trajectory fx(t); 0 ^ t ! 1g of (12) which satisfies
+
+Lf1V (x(t)) * 0 for all t
+
+it follows that x(t) j 0. Then the system
+
+.x = f0(x) + uf1(x) (14) is smoothly stabilizable with positive feedback.
+
+This result will be proved in the next section. We now show that Lemma 2.1 and Proposition 2.2 imply our main result. To do this, we use the proposition to show that the system given by (3)-(4) satisfies the hypotheses of the lemma. We need to prove that the system (11) can be smoothly stabilized. Consider first the system obtained by dropping the factor u from these equations, which is just a forced harmonic oscillator:
+
+.x1 = x2 (15) .x2 = \Gamma x1 \Gamma  bu : (16)
+
+Then (1=2)(x21 + x22) is a weak Lyapunov function for the corresponding system with no controls, and
+
+Lf1 V (x(t)) = bx2(t) = b(ff sin t + fi cos t) ;
+
+so that Lf1V (x(t)) can only have constant sign if ff = fi = 0, which implies x(t) j 0. By the proposition, there is a smooth positive feedback stabilizer k(\Delta ) for (15)-(16). But then
+
+.x1 = k(x)x2 .x2 = \Gamma k(x)x1 + bk(x)2
+
+is also asymptotically stable. This latter conclusion follows from the fact that (since k(x) remains nonzero) the nonzero trajectories of this system coincide with those of the system without the factor k(x). (Equivalently, one may argue via Lyapunov functions.) Thus the Theorem will be established once the proposition is proved.
+
+4
+
+3 Proof of the Proposition To prove the proposition we first establish the following claim:
+
+There is a feedback stabilizer k such that k(x) * 0 for all x. We simply define k to be any smooth function such that k(x) * 0 for all x and so that
+
+k(x) ? 0 if and only if Lf1V ! 0 : (Since the set where the latter inequality holds is open, there is always some such k.) We need to see that the origin is asymptotically stable for the corresponding closed loop system. This follows by the LaSalle invariance principle: observe that
+
+Lf0+kf1V (x) = Lf0 V (x) + kLf1 V (x) (17) and both terms are always nonnegative, the first by definition of weak Lyapunov function and the second by definition of k. In particular, the only way in which (17) can be zero is if both terms vanish, that is
+
+Lf0V (x) = 0
+
+and
+
+Lf1V (x) * 0 :
+
+Thus there are no nontrivial trajectories for which (17) holds identically, and the invariance principle applies. This establishes the claim.
+
+We now want to perturb the feedback k in order to make it everywhere positive, as needed for the Proposition. By standard inverse Lyapunov theorems (see for instance Theorem 14 in [4],) we know that there is a strong Lyapunov function for the system
+
+.x = f0(x) + k(x)f1(x) ; (18) that is, there is a weak Lyapunov function which satisfies also the strict inequality
+
+Lf0+kf1V (x) ! 0 (19) for all nonzero x. The proof will be concluded provided that we find a positive and smooth OE(x) such that
+
+ff(x; OE(x)) ! 0 for all x 6= 0 (20)
+
+where
+
+ff(x; u) := Lf0+kf1+uf1V
+
+is a smooth function defined for x 2 IRn and u 2 IR. This is a consequence (with W = IRn and * = 1) of the following more general result.
+
+5
+
+Lemma 3.1 Let W ` IRn be an open neighborhood of 0 and ff : W \Theta  IR ! IR continuous. Assume that ff(x; 0) ! 0 for each x 6= 0. Then there exists a smooth k : W ! IR such that k(0) = 0 and so that, for all nonzero x and for each 0 ^ * ^ 1, k(x) ? 0 and ff(x; *k(x)) ! 0 .
+
+Proof. Let W0 := W n f0g. We first obtain a smooth u(\Delta ) : W0 ! IR such that
+
+1. u(x) ? 0 and 2. ff(x; *u(x)) ! 0
+
+for all x 6= 0 and each * such that 0 ^ * ^ 1. Then we shall show that there exists a smooth OE : IR ! [0; 1] such that OE(x) ? 0 for x 2 W0, OE(0)u(0) = 0, and OEu is smooth on all of W. This, together with (1) and (2) above, will imply that k := OEu is as desired.
+
+Let fKi; i * 1g be a locally finite sequence of compact subsets of W0 such that their interiors int Ki give a covering of W0. Local finiteness means that
+
+Ni := fj j Kj " Ki 6= ;g is finite for all i. Since the set where ff ! 0 is open and ff(x; 0) ! 0 for all x 2 W0, there is for each i a positive number _i so that
+
+ff(x; _) ! 0
+
+whenever x 2 Ki and 0 ^ _ ^ _i. Pick for each i a smooth nonnegative function ui(\Delta ) supported in Ki and such that
+
+0 ! ui(x) ^ 12i min f_j; j 2 Nig
+
+for each x 2 int Ki. Finally, let
+
+u :=
+
+1X
+
+j=1
+
+uj :
+
+This is well-defined and smooth in W0, because about each x there is only a finite number of nonzero terms. Furthermore, if x 2 Ki then by construction
+
+0 ! u(x) ^ _i so both properties (1) and (2) hold. Now we must build OE as described earlier.
+
+Fix R ? 0 such that fx : kxk ^ Rg ` W, and let N be an integer such that N R ? 1. For j * N , let Aj be the compact annulus fx; 1=j ^ kxk ^ Rg, and let `j : IR ! [0; 1] be a smooth function such that `j(x) ? 0 if and only if 1=j ! kxk ! R. Then the support of `j is precisely Aj. Let vj = `ju, so vj is a compactly supported smooth function on IR. Let ^Kj denote the supremum, taken over all of IRn (or, equivalently, over Aj), of the values of the functions vj and all their partial derivatives up to order j. Similarly, let _Kj denote the supremum, taken over all of IRn, of the values of `j and all its partial derivatives up to order j. Let Kj = max(1; ^Kj; _Kj). Let
+
+OE0 =
+
+1X
+
+j=N
+
+`j 2jKj :
+
+6
+
+Notice that if k is any nonnegative integer then, if we look at the terms of the series for which j * k, all the derivatives of order ^ k of the j-th term are bounded by 2\Gamma j (because _Kj ^ Kj). So the series converges uniformly together with all the partial derivatives of all orders, and the limit is a smooth function on IR. Moreover, since Kj * 1, the function OE0 satisfies 0 ^ OE0(x) ^ 1 for all x 2 IR. Clearly, OE0(x) ? 0 if and only if 0 ! kxk ! R. The function OE0u is given by
+
+OE0u =
+
+1X
+
+j=N
+
+`jvj 2jKj :
+
+Since ^Kj ^ Kj, we see that, if k * 0 then, if we look at the terms of the series for which j * k, then all the derivatives of order ^ k of the j-th term are bounded by 2\Gamma j. So the series converges uniformly together with all the partial derivatives of all orders, and the limit is a smooth function on IR. Hence OE0u is smooth on IR. Further, OE0u vanishes at the origin because each term does.
+
+To conclude the proof, take a smooth function OE1 : IR ! [0; 1] such that OE1(x) ? 0 whenever kxk * R, and OE1 vanishes on a neighborhood of the origin. Then let OE = 12 (OE0 + OE1). It is clear that OE satisfies all the desired conditions.
+
+We conclude by providing the proof of Lemma 2.1 (cf. [3], [6], [2]). Assume that .x = f (x; u) is smoothly stabilizable, and let
+
+f0(x) := f (x; k(x))
+
+be the stable closed-loop system. Again by the Lyapunov inverse theorem, we know that there exists a positive definite function V such that
+
+Lf0V (x) ! 0 for all x 6= 0. Since f and k are smooth, there is a smooth g defined on IRn+1 so that
+
+f (x; k(x) + z) = f0(x) + zg(x; u) for all x; z. Introduce the positive definite function on IRn+1:
+
+W (x; y) := V (x) + 12 (y \Gamma  k(x))2 and take the feedback
+
+k0(x; y) := rk(x):f (x; y) \Gamma  rV (x):g(x; z) \Gamma  z ; where z := y \Gamma  k(x). Then, the derivative of W along trajectories of (9), (10) with u = k0(x; y) is
+
+Lf0V (x) \Gamma  z2 ! 0
+
+for all nonzero (x; y), and global stability is assured.
+
+The proof of the Theorem is now complete.
+
+7
+
+4 References
+
+1. Aeyels, D., and M. Szafranski, "Comments on the stabilizability of the angular velocity of
+
+a rigid body," Systems and Control Letters 10 (1988): 35-39.
+
+2. Byrnes, C.I. and A. Isidori, "New results and counterexamples in nonlinear feedback stabilization," Systems and Control Letters, to appear.
+
+3. Koditschek, D.E., "Adaptive techniques for mechanical systems," Proc.5th. Yale Workshop
+
+on Adaptive Systems, pp. 259-265, Yale University, New Haven, 1987.
+
+4. Massera, J.L., "Contributions to stability theory," Annals of Math, 64(1956): 182-206. 5. Sontag, E.D., "Stabilizability, i/o stability, and coprime factorizations," Proc. IEEE Conf.
+
+Decision and Control, Austin, Dec. 1988. Full paper to appear as "Smooth stabilization implies coprime factorization," in IEEE Trans. Autom. Control, April 1989.
+
+6. Tsinias, J., "Sufficient Lyapunovlike conditions for stabilization," to appear in Mathematics
+
+of Control, Signals, and Systems.
+
+8</pre>
+</body>
+</html>

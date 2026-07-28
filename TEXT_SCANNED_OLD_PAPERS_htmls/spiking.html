@@ -1,0 +1,1060 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/spiking.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/spiking.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Neural Systems as Nonlinear Filters Wolfgang Maass*Inst. for Theoretical Computer Science Technische Universit"at GrazKlosterwiesgasse 32/2,
+
+A-8010 Graz, Austriaemail: maass@igi.tu-graz.ac.at
+
+Eduardo D. SontagDept. of Mathematics
+
+Rutgers UniversityNew Brunswick, NJ 08903, USA email: sontag@hilbert.rutgers.edu
+
+Abstract Experimental data show that biological synapses behave quite differently from the symbolic synapses in all common artificial neural network models. Biological synapses are dynamic, i.e., their"weight" changes on a short time scale by several hundred percent in dependence of the past input
+
+to the synapse. In this article we address the question how this inherent synaptic dynamics - which should not be confused with long term "learning" - affects the computational power of a neuralnetwork. In particular we analyze computations on temporal and spatio-temporal patterns, and we
+
+give a complete mathematical characterizationof all filters that can be approximated by feedforwardneural networks with dynamic synapses. It turns out that even with just a single hidden layer such networks can approximate a very rich class of nonlinear filters: all filters that can be characterizedby Volterra series. This result is robust with regard to various changes in the model for synaptic dynam-ics. Our characterization result provides for all nonlinear filters that are approximable by Volterra
+
+series a new complexity hierarchy which is related to the cost of implementing such filters in neural systems.
+
+1 Introduction Synapses in common artificial neural network models are static: the value wi of a synaptic weightis assumed to change only during "learning". In contrast to that, the "weight"
+
+wi(t) of a biologicalsynapse at time t is known to be strongly dependent on the inputs xi(t - o/ ) that this synapse hasreceived from the presynaptic neuron
+
+i at previous time steps t - o/ . [Varela et al., 1997] have shownthat a model of the form
+
+wi(t) = wi * D(t) * (1 + F (t)) (1) with a constant wi, a depression term D(t) with values in (0, 1], and a facilitation term F (t) >= 0, canbe fitted remarkably well to experimental data for synaptic dynamics. The facilitation term
+
+F (t) isusually modeled as a linear filter with exponential decay: If xi(t - o/ ) is the output of the presynapticneuron (typically modeled by a sum of ffi-functions), then the current value of this facilitation term isof the form
+
+F (t) = ae Z 1
+
+0 x
+
+i(t - o/ ) * e-o//fl do/ (2)
+
+*Wolfgang Maass would like to thank the Sloan Foundation (USA), the Fonds zur F"orderung der wissenschaftlichen Forschung (FWF) , Austria, project P12153, and the NeuroCOLT project of the EC for partial support, and the ComputationalNeurobiology Lab at the Salk-Institute for its hospitality.
+
+1
+
+for certain parameters ae, fl > 0 that vary from synapse to synapse. A few other models have beenproposed for synaptic dynamics (see e.g. [Dobrunz and Stevens, 1997], [Murthy et al., 1997], [Tsodyks et al., 1998], [Koch, 1999], [Maass and Zador, 1998], [Maass and Zador, 1999]) thatare all quite similar. Closely related models had already been proposed and investigated in [Grossberg, 1969], [Grossberg, 1972], [Grossberg, 1984], [Francis et al., 1994]. Our analysis in thisarticle is primarily based on the model of [Varela et al., 1997]. However we will prove that our results also hold for the somewhat more complex model for synaptic dynamics in a mean-field context of[Tsodyks et al., 1998].
+
+We show in this article that such inherent synaptic dynamics empowers neural networks with a re-markable capability for carrying out computations on temporal patterns (i.e., time series) and spatiotemporal patterns. This computational mode, where inputs and outputs consist of temporal patternsor spatio-temporal patterns - rather than static vectors of numbers - appears to provide a more adequate framework for analyzing computations in biological neural systems. Furthermore their capa-bility for processing temporal and spatio-temporal patterns in a very efficient manner may be linked to their superior capabilities for real-time processing of sensory input, hence our analysis may providenew ideas for designing artificial neural systems with similar capabilities.
+
+We consider not just computations of neural systems with a single temporal pattern as input, butalso characterize their computational power for the case where several different temporal patterns u1(t), . . . , un(t) are presented in parallel as input to the neural system. Hence we also provide a com-plete characterization of the computational power of feedforward neural systems for the case where salient information is encoded in temporal correlations of firing activity in different pools of neurons(represented by correlations among the corresponding continuous functions
+
+u1(t), . . . , un(t) ). There-fore various informal suggestions for computational uses of such code can be placed on a rigorous
+
+mathematical foundation: It is easy to see that a large variety of computational operations that re-spond in a particular manner to correlations in temporal input patterns define time invariant filters with fading memory, hence they can in principle be implemented on each of the various kinds of dy-namic networks considered in this article.
+
+Previous standard models for computations on temporal patterns in artificial neural networks aretime-delay neural networks (where temporal structure is transformed into spatial structure) and recurrent neural networks, both being based on standard "static" synapses [Hertz et al., 1991]. Suchtransformation makes it impossible to let "time represent itself" [Mead, 1989] in subsequent computations, which tends to result in a loss of computational efficiency. The results of this article suggestthat feedforward neural networks with simple dynamic synapses provide an attractive alternative.
+
+Various questions regarding artificial neural networks with more general recurrent structure, inwhich the time-series character of the data plays a central role, were answered, within the framework of computational learning theory, in the papers [Dasgupta and Sontag, 1996] (studied hard-thresholdfilters with a discrete time scale), [Koiran and Sontag, 1998] (discrete-time recurrent networks), and [Sontag, 1998] (continuous-time recurrent networks). The paper [Sontag, 1997] summarizes some ofthe approximation capabilities and other properties of these classes of recurrent networks.
+
+In section 2 of this article we introduce the formal notion of a dynamic network, which combinesbiologically realistic synaptic dynamics according to [Varela et al., 1997] with standard sigmoidal neurons (modeling firing activity in a population of neurons), and we review some basic conceptsregarding filters. In section 3 we characterize the computational power of feedforward dynamic networks for computations on temporal patterns (i.e., functions of time), and we show that our resultcan be extended to the model of [Tsodyks et al., 1998] for synaptic dynamics. The formal proofs of the characterization results in this article rely on standard techniques from mathematical analysis. In sec-tion 4 we extend our investigation to computations on spatio-temporal patterns. Section 5 discusses some conclusions.
+
+2
+
+2 Basic Concepts In contrast to the static output of gates in feedforward artificial neural networks the output of biolog-ical neurons consists of action potentials ("spikes"), i.e., stereotyped events that mark certain points in time. These spikes are transmitted by synapses to other neurons, where they cause changes in themembrane potential that affect the times when these other neurons fire and thereby emit a spike. We will focus in this article on the implications of one type of temporal dynamics provided by the com-ponents of such neural computations: the inherent temporal dynamics of synapses.
+
+The empirical data of [Varela et al., 1997] describe the amplitudes of EPSC's (excitatory postsynap-tic currents) in a neuron in response to a spike train from a presynaptic neuron. These two neurons are likely to be connected by multiple synapses, and the resulting EPSC amplitude can be understoodas a population response of these multiple synapses. Therefore it is justified to employ a deterministic model for synaptic dynamics in spite of the stochastic nature of synaptic transmission at a singlerelease sit [Dobrunz and Stevens, 1997]. The EPSC amplitude in response to a spike is modeled in [Varela et al., 1997] by terms of the form w * (1 + F) and w * D * (1 + F), where F is a linear filter withimpulse response
+
+ae * e-o//fl modeling facilitation and D is some nonlinear filter modeling depressionat synapses. In some versions of the model considered in [Varela et al., 1997] this filter D consists of
+
+several depression terms. However it only assumes values > 0 and is always time invariant and hasfading memory.
+
+We analyze the impact of this synaptic dynamics in the context of common models for compu-tations in populations of neurons where one can ignore the stochastic aspects of computation in individual neurons in favor of the deterministic response of pools of neurons that receive similarinput ("population coding" or "space rate coding"), see [Georgopoulos et al., 1986], [Abbott, 1994], [Gerstner, 1999]. More precisely, our subsequent neural network model is based on a mean-field anal-ysis of networks of biological neurons, where pools
+
+P of neurons serve as computational units, whosetime-varying firing activity (measured as the number of neurons in
+
+P that fire during a short time in-terval [ t, t + \Delta ]) is represented by a continuous bounded function y(t). In case that pool P receives in-puts from
+
+m other pools of neurons P1, . . . , Pm, we assume that y(t) = oe(Pmi=1 wi(t)xi(t)+w0), where xi(t) represents the time-varying firing activity in pool Pi and wi(t) represents the time-varying av-erage "weight" of the synapses from neurons in pool
+
+Pi to neurons in pool P .1 In the context of neu-ral computation with population coding considered in this article we have to expand the model of
+
+[Varela et al., 1997] to populations of synapses that connect two pools of neurons, where presynapticactivity is described not by spike trains but by continuous functions
+
+xi(t) ranging over some boundedinterval [ B0, B1] with 0 < B0 < B1. Therefore we generalize their model for the dynamics of synapsesfrom a nonlinear filter applied to a sequence of
+
+ffi-functions (i.e., to a spike train) to a correspond-ing nonlinear filter applied to a continuous input function
+
+xi(t).2 Thus if xi(t) is a continuous func-tion describing the firing activity in the ith presynaptic pool Pi of neurons we model the size of the
+
+1The function oe : R ! Ris some "activation function", for example oe(x) = 1/(1 + e-x). For the following it suffices to assume that oe is continuous and not a polynomial. In sections 3.2 and 3.3 we have to assume in addition that oe assumesnonnegative values only. We refer to [Maass and Natschl"ager, 1999] for theoretical arguments and computer simulations that
+
+support the use of a sigmoidal activation function in this context.2
+
+So far no empirical data are available for the temporal dynamics of a population of synapses (that connects two pools ofneurons in a feedforward direction) in dependence of the pool-activity of the presynaptic pool of neurons. It is not completely
+
+unproblematic to assume that synaptic dynamics can be modeled on the level of pool-activity in the same way as for spikingneurons, although this is commonly done. The exact formula for the firing activity
+
+y(t) in the postsynaptic pool P of neuronsrequires to multiply for each presynaptic pool Pi of neurons the product of the vector of spike activity of individual neurons *i,k in pool Pi with the matrix of current synaptic coupling strengths wi,k,j (t) with neurons *j in pool P . The resulting firingactivity
+
+y(t) of pool P is the average of the current firing activities of neurons *j in pool P . In our mean-field model we assumethat this average over
+
+j can be expressed in terms of products of the average wi(t) of the synaptic weights wi,k,j(t) over j and k with the average firing activity xi(t) in the presynaptic pool Pi. In particular this mean-field model ignores that the value of wi,k,j (t) will in general depend on the specific firing history of the specific presynaptic neuron *i,k.We refer to [Tsodyks et al., 1998] for a detailed mathematical analysis of this problem. It is shown in that article through
+
+computer simulations and theoretical arguments that for the slightly different model for synaptic dynamics considered therethe error resulting from generalizing the model from presynaptic individual neurons to presynaptic pools is benign. We will discuss the model from [Tsodyks et al., 1998] in sections 3.2 and 3.3, and we will show in Theorems 3.4 and 3.6 that our resultscan be extended to their model.
+
+3
+
+resulting synaptic input to a subsequent pool P of neurons by terms of the form wi(t) * xi(t) with wi(t) := wi * (1 + Fxi(t)) or wi(t) := wi * Dxi(t) * (1 + Fxi(t)), where the filters F and D are definedas in [Varela et al., 1997]. The first equation that just models facilitation gives rise to the definition of
+
+the class DN of dynamic networks in Definition 2.1, and the second equation, that models the morecommon co-occurrence of facilitation and depression, gives rise to the definition of the class DN*.
+
+Definition 2.1. We define the class DN of dynamic networks (see Fig. 1) as the class of arbitrary feedforwardnetworks consisting of sigmoidal gates that map input functions
+
+x1(t), . . . , xm(t) to a function
+
+y(t) = oe(
+
+mX
+
+i=1
+
+wi(t)xi(t) + w0),
+
+with
+
+wi(t) = wi * (1 + ae Z 1
+
+0 x
+
+i(t - o/ )e-o//fl do/ )
+
+for parameters wi 2 R and ae, fl > 0 . oe is some "activation function" from R into R , for example the logisticsigmoid function defined by
+
+oe(x) = 1/(1 + e-x). We will assume in the following only that oe is continuousand not a polynomial 3.
+
+The slightly different class DN* is defined in the same way, except that wi(t) is of the form
+
+wi(t) = wi * Dxi(t) * (1 + ae Z 1
+
+0 x
+
+i(t - o/ )e-o//fl do/ ),
+
+where D is some arbitrary given time invariant fading memory filter4 with values Dxi(t) 2 (0, 1].5Thus dynamic networks in DN or DN* are simply feedforward neural networks consisting of sigmoidal neurons, where static weights wi are replaced by biologically realistic history-dependent functions wi(t). Theinput to a dynamic network consists of an arbitrary vector of functions
+
+u1(*), . . . , un(*). The output of a dy-namic network is defined as weighted sum
+
+z(t) =
+
+kX
+
+i=1
+
+ffiyi(t) + ff0
+
+of the time-varying outputs y1(t), . . . , yk(t) of certain sigmoidal neurons in the network, where the "weights" ff0, . . . , ffk can be assumed to be static. Thus a dynamic network with n inputs maps n input functions u1(*), . . . , un(*) onto some output function z(*). 6
+
+A somewhat related network model has been investigated in [Back and Tsoi, 1991]. They exhib-ited a learning algorithm for this model, but no characterization of the computational power of such
+
+networks was given there.
+
+Temporal patterns are modeled in mathematics as functions of time. Hence networks that operateon temporal patterns map functions of time onto functions of time. We will refer to such maps from functions to functions (or from vectors of functions to functions) as filters (in mathematics they are
+
+3According to [Leshno et al., 1993] the subsequent theorems would hold under even weaker conditions on oe. 4See the remainder of this section for a review of these notions. 5This filter D models synaptic depression, and can for example be defined as in [Varela et al., 1997]. Our subsequent results
+
+are independent of the specific definition of D.6
+
+In principle one is also interested in a more general type of operators that map vectors u of real valued functions on vectors y of m real valued functions, where m is larger than 1. However in order to answer the questions that are addressed in thispaper for the case
+
+m > 1 it suffices to focus on the case m = 1. The reason is that operators which output vectors of m realvalued functions can be viewed as vectors of
+
+m operators that output one real valued function each. In this way our results forthe case m = 1 will imply a complete characterization of all operators that can be approximated by a more generalized typeof dynamic networks that output
+
+m real valued functions instead of just one.
+
+4
+
+PSfrag replacements
+
+u1(t)
+
+u2(t)
+
+un(t)
+
+z(t) output of G1 :
+
+oe(Pni=1 wi(t) * ui(t) + w0)
+
+G1
+
+G2output of
+
+G2 :
+
+oe(Pni=1 ~wi(t) * ui(t) + ~w0)
+
+Figure 1: A dynamic network with one hidden layer consisting of two hidden neurons G1 and G2. The synapse from the ith input to G1 computes the filter ui(*) 7! wi(*) * ui(*), the synapse from the ith input to G2 computes the filter xi(*) 7!
+
+~wi(*)*ui(*). The output of the network is of the form z(t) = ff1*oe(
+
+nP
+
+i=1 w
+
+i(t)*ui(t)+w0)+ff2*oe(
+
+nP
+
+i=1 ~w
+
+i(t)*ui(t)+ ~w0)+ff0
+
+with ff0, ff1, ff2 2 R. Thus the network computes a filter that maps the input functions u1(*), . . . , un(*) onto the outputfunction
+
+z(*).
+
+usually referred to as operators). We will reserve the letters F, H, S for filters, and we write Fu forthe function resulting from an application of the filter F to a vector
+
+u of functions. Notice that whenwe write F u(t) we mean, of course, (Fu)(t) (that is, the function Fu evaluated at time t). We write C(A, B) for the class of all continuous functions f : A ! B. We will consider suitable subclasses U ` C(A, B) for A ` Rk and B ` R, and study filters that map U n into RR (where RR is the class ofall functions from R into R), i.e. filters that map
+
+n functions u(*), . . . , un(*) onto another function z(*).In this section and in section 3 we will focus on the case
+
+k = 1, i.e. the case where the input functions u1(*), . . . , un(*) are functions of a single variable - which we will interpret as time. The case k > 1will be considered in section 4.
+
+A trivial special case of a filter is the shifting filter St0 with St0u(t) = u(t - t0). An arbitrary filterF :
+
+U n ! RR is called time invariant if a shift of the input functions by a constant t0 just causes a shiftof the output function by the same constant
+
+t0, i.e., if for any t0 2 R and any u = hu1, . . . , uni 2 U none has that F ut0(t) = Fu(t - t0) where ut0 = hSt0 u1, . . . , St0uni. All filters considered in this articlewill be time invariant. Note that if
+
+U is closed under St0 for all t0 2 R then a time invariant filterF : U n ! RR is fully characterized by the values Fu(0) for u 2 U n.Another essential property of filters considered in this article is fading memory. If a filter F has
+
+fading memory then the value of Fv(0) can be approximated arbitrarily closely by the value of Fu(0)for functions
+
+u that approximate the functions v for sufficiently long bounded intervals [-T, 0]. Theformal definition is as follows:
+
+Definition 2.2. We say that a filter F : U n ! RR has fading memory if for every v = hv1, . . . , vni 2 U nand every
+
+" > 0 there exist ffi > 0 and T > 0 so that |Fv(0) - Fu(0)| < " for all u = hu1, . . . , uni 2 U nwith the property that k
+
+v(t) - u(t)k < ffi for all t 2 [-T, 0].7
+
+Remark 2.3. Interesting examples of linear and nonlinear filters F : U ! RR can be generated withthe help of representations of the form
+
+Fu(t) = Z 1
+
+0 . . . Z
+
+1 0 u(t - o/
+
+1) * . . . * u(t - o/k)h(o/1, . . . , o/k)do/1 . . . do/k
+
+for measurable and essentially bounded functions u : R ! R. We will always assume inthis article that
+
+h 2 L1. One refers to such integral as a Volterra term of order k. Note that
+
+7We will reserve k * k for the max-norm on Rn, i.e., for x = hx1, . . . , xni 2 Rn we write kxk for max{|xi| : i = 1, . . . , n}.
+
+5
+
+for k = 1 it yields the usual representation for a linear time invariant filter. The class of filtersthat can be represented by Volterra series, i.e., by finite or infinite sums of Volterra terms of arbitrary order, has been investigated for quite some time in neurobiology and engineering (see for ex-ample [Palm and Poggio, 1977], [Palm, 1978], [Marmarelis and Marmarelis, 1978], [Schetzen, 1980], [Poggio and Reichardt, 1980], [Rugh, 1981], [Rieke et al., 1997] ).It is obvious that any filter F which can be represented by a sum of finitely many Volterra terms of any order (i.e., by a Volterra polynomial or finite Volterra series) is time invariant and has fadingmemory. This holds for any class
+
+U of uniformly bounded input functions u. According to the sub-sequent Lemma 2.5 both of these properties are inherited by filters F that can be approximated by
+
+some arbitrary infinite sequence of such filters. This implies that any filter that can be approximatedby finite or infinite Volterra series (which converge in the sense used here) is time invariant and has fading memory (over any class U of uniformly bounded functions u). [Boyd and Chua, 1985] haveshown that under some additional assumptions about
+
+U (for example the assumptions in Theorem3.1 below) the converse also holds: any time invariant filter F :
+
+U ! RR with fading memory can beapproximated arbitrarily closely by Volterra polynomials.
+
+Remarks 2.4.
+
+1. It is easy to see that for classes U of functions that are uniformly bounded (i.e., U ` C(A, B)for some bounded set
+
+B ` R) our definition of fading memory agrees with that considered in[Boyd and Chua, 1985]. All classes
+
+U considered in this article are uniformly bounded.
+
+2. It is obvious that any time invariant filter F that has fading memory is causal, i.e., u(t) = v(t)for all
+
+t <= t0 implies that Fu(t0) = Fv(t0) for all t0 2 R.
+
+3. All dynamic synapses considered in this article are modeled as filters that map an input func-tion
+
+xi(*) onto an output function wi(*) * xi(*). Furthermore all these filters turn out to be timeinvariant with fading memory. This has the consequence that all models for dynamic networks
+
+considered in this article compute time invariant filters with fading memory. 4. If one considers recurrent versions of such networks, then in the absence of noise such networkscan theoretically also compute filters without fading memory. Consider for example some filter F with Fu(0) = 0 if u(t) = 0 for all t <= 0 and Fu(0) = 1 if there exists some t0 <= 0 sothat
+
+u(t0) >= 1. It is obvious that such filter does not have fading memory. But a network wheresome "self exciting" recurrent subcircuit is turned on (and stays on permanently) whenever the
+
+input u reaches a value >= 1 for some t0 2 R can compute such filter. Alternatively a feedfor-ward network can of course also compute a non-fading-memory filter if any of its components (synapses or neurons) have some permanent memory feature. 5. A special case of time invariant filters F with fading memory are those defined by Fu(0) =
+
+f(u(0)) for arbitrary continuous functions f : Rn ! R. Therefore the "Universal Approxima-tion Theorem for Filters" that follows from our subsequent Theorem 3.1 contains as a special
+
+case the familiar "Universal Approximation Theorem for Functions" from [Hornik et al., 1989]. 6. It is obvious that a filter F on U n has fading memory if and only if the functional ~F : U n ! R
+
+defined by ~Fu := Fu(0) is continuous on U n with regard to the topology T generated by theneighborhoods {
+
+u 2 U n : kv(t) - u(t)k < ffi for all t 2 [-T, 0]} for arbitrary v 2 U n and ffi, T > 0.
+
+Lemma 2.5. Assume that U is closed under St0 for all t0 2 R and a sequence (Fn)n2N of filters convergesto a filter F in the sense that for every
+
+" > 0 there exists an n0 2 N so that |Fnu(t) - Fu(t)| < " for all n >= n0, u 2 U n, and t 2 R. Then the following holds:
+
+a) If all the filters Fn are time-invariant then F is time-invariant.
+
+6
+
+b) If all the filters Fn have fading memory then F has fading memory. Proof. Claim a) follows immediately from the fact that Fu(t) = limn!1 Fnu(t) for all u 2 U n and t 2 R. In order to prove b) we can assume that some " > 0 and some v 2 U n have been given. We fixsome
+
+n0 2 N so that |Fn0u(t) - Fu(t)| < "/3 for all u 2 U n, t 2 R. Since Fn0 has fading memory thereexists some
+
+T > 0 and some ffi > 0 so that |Fn0u(0) - Fn0v(0)| < "/3 for all u 2 U n with the propertythat k u(t) - v(t)k < ffi for all t 2 [-T, 0]. By our choice of n0 this implies that |Fu(0) - Fv(0)| < " forall u 2 U n with ku(t) - v(t)k < ffi for all t 2 [-T, 0]. Hence F has fading memory.
+
+3 Computations on Temporal Patterns 3.1 Characterizing the Computational Power of Neural Networks with DynamicSynapses
+
+Our subsequent Theorem 3.1 shows that simple filters that only model synaptic facilitation (as con-sidered in the definition of DN) provide the networks already with sufficient dynamics to approximate arbitrary given time invariant filters with fading memory. We show that the simultaneous oc-currence of depression (as in DN*) is not needed for that, but it also does not hurt. This appears to be of some interest for the analysis of computations in biological neural systems, since a fairlylarge variety of different functional roles have already been proposed for synaptic depression: explaining psychological data on conditioning and reinforcement [Grossberg, 1972], boundary forma-tion in vision and visual persistence [Francis et al., 1994], switching between different neural codes [Tsodyks and Markram, 1997], and automatic gain control [Abbott et al., 1997]. As a complementa-tion of these conjectured roles for synaptic depression our subsequent Theorem 3.1 points to a possible functional role for synaptic facilitation: it empowers even very shallow feedforward neural systemswith the capability to approximate basically any linear or nonlinear filter that appears to be of interest in a biological context. Furthermore we show that this possible functional role for facilitation canco-exist with independent other functional roles for synaptic depression: Our result shows that one can first choose the parameters that control synaptic depression to serve some other purpose, and canthen still choose the parameters that control synaptic facilitation so that the resulting neural system can approximate any given time invariant filter with fading memory.8 Theorem 3.1. Assume that U is the class of functions from R into [B0, B1]) which satisfy |u(t) - u(s)| <= B2 * |t - s| for all t, s 2 R, where B0, B1, B2 are arbitrary real-valued constants with 0 < B0 < B1 and0
+
+< B2. Let F be an arbitrary filter that maps vectors u = hu1, . . . , uni 2 U n into functions from R into R .Then the following are equivalent:9
+
+(a) F can be approximated by dynamic networks S 2 DN (i.e., for any " > 0 there exists some S 2 DNsuch that |F
+
+u(t) - Su(t)| < " for all u 2 U n and all t 2 R)
+
+(b) F can be approximated by dynamic networks S 2 DN with just a single layer of sigmoidal neurons
+
+(c) F is time invariant and has fading memory (d) F can be approximated by a sequence of (finite or infinite) Volterra series.
+
+8We will show in section 3.3 that alternatively one can employ just depressing synapses for approximating any such filters by a neural system.9
+
+The implication "(c) ) (d)" was already shown in [Boyd and Chua, 1985].
+
+7
+
+These equivalences remain valid if DN is replaced by DN*.
+
+The following result follows from the proof of Theorem 3.1. It shows that the class of filters thatcan be approximated by dynamic networks is very stable with regard to changes in the definition of
+
+a dynamic network. Corollary 3.2. Dynamic networks with just one layer of dynamic synapses and one subsequent layer of sig-moidal gates can approximate the same class of filters as dynamic networks with an arbitrary finite number
+
+of layers of dynamic synapses and sigmoidal gates. Even with a sequence of dynamic networks that have anunboundedly growing number of layers one cannot approximate more filters.
+
+Furthermore if one restricts the synaptic dynamics in the definition of dynamic networks to the simplest form wi(t) = wi * (1 + ae 1R
+
+0 x
+
+i(t - o/ )e-o//fl do/ ) with some arbitrarily fixed ae > 0 and time constants fl from some
+
+arbitrarily fixed interval [a, b] with 0 < a < b, the resulting class of dynamic networks can still approximate(with just one layer of sigmoidal neurons) any filter that can be approximated by a sequence of arbitrary dynamic
+
+networks considered in Definition 2.1. In the case of DN* one can either choose to fix ae > 0 or one can arbitrarilyfix the interval [
+
+a, b] for the value of fl.
+
+In addition we will show in section 3.2 that the claim of Theorem 3.1 remains valid if we replacethe model from [Varela et al., 1997] for synaptic dynamics (that is employed in the definition of the
+
+classes DN and DN* of dynamic networks) by the model from [Tsodyks et al., 1998]. Furthermore wewill show in section 3.3 that the claim of Theorem 3.1 also holds for networks where synapses exhibit just depression, no facilitation. Remark 3.3. The proof of Theorem 3.1 shows that its claim as well as the claims of Corollary 3.2 holdunder much weaker conditions on the class
+
+U . Apart from the requirement that U is closed undertranslation it suffices to assume that U is some arbitrary class of uniformly bounded and equicontin-uous10 functions that is closed with regard to the topology defined in part 6 of Remarks 2.4, since this
+
+assumption is sufficient for the application of the Arzela-Ascoli Theorem (see [Dieudonne, 1969] or[Boyd and Chua, 1985]) in the proof.
+
+Proof of Theorem 3.1: According to Lemma 2.5 any filter that can be approximated by finite or infiniteVolterra series is time invariant and has fading memory. This implies "(
+
+d) ) (c)". Furthermore itis shown in [Boyd and Chua, 1985] that for the classes U considered in this article any time invariantfilter F : U ! RR with fading memory can be approximated by a sequence of finite Volterra series(i.e., by Volterra polynomials). This argument can be trivially extended to filters F :
+
+U n ! RR with n >= 1. This implies "(c) ) (d)". Hence we have shown that (c) , (d).The implication "(
+
+b) ) (a)" is obvious. In order to prove "(a) ) (c)" we observe that all filtersoccurring at synapses of a dynamic network (see Definition 2.1) are time invariant and have fading
+
+memory. This implies that all filters S defined by dynamic networks (i.e., all S 2 DN [DN *) are timeinvariant and have fading memory. According to Lemma 2.5 this implies that any filter F that can be approximated by such networks is time invariant and has fading memory.For the proof of "(
+
+c) ) (b)" we first consider the case n = 1. We assume that F is some arbitrarygiven filter that is time invariant and has fading memory. We will first show that F can be approximated by filters S 2 DN . The proof is based on an application of the Stone-Weierstrass Theorem (seefor example [Dieudonne, 1969] or [Folland, 1984]) similarly as in [Boyd and Chua, 1985]. That article extends earlier arguments by [Sussmann, 1975], [Fliess, 1975], and [Gallman and Narendra, 1976]from a bounded to an unbounded time interval. Furthermore our proof exploits the fact that any continuous function can be uniformly approximated on any compact set by weighted sums of sig-moidal gates [Hornik et al., 1989], [Sandberg, 1991], [Leshno et al., 1993]. We will apply the StoneWeierstrass Theorem to functionals from U- := {u|(-1,0] : u 2 U } into R. For that purpose we
+
+10U is equicontinuous if for any " > 0 there exists a ffi > 0 so that |t - s| <= ffi implies |u(t) - u(s)| <= " for all t, s 2 Rand all u 2 U.
+
+8
+
+have to show that the filters H of the form
+
+Hu(t) = u(t) * (1 + ae Z 1
+
+0 u(t - o/ )e
+
+-o//fl do/ )
+
+separate points in U-, i.e., for any u, v 2 U- with u 6= v there exists a filter H of this form such thatH
+
+u(0) 6= Hv(0). Thus we consider some arbitrary given u, v 2 U with u(t) 6= v(t) for some t <= 0.Then the function
+
+u(0) * u(-o/ ) - v(0) * v(-o/ ) assumes a value 6= 0 for some o/ >= 0. This implies that
+
+q(l) = Z 1
+
+0 (u(0) * u(-o/ ) - v(0) * v(-o/ ))e
+
+-o//l do/
+
+does not assume a constant value for all arguments l in [a, b]. This follows because, if q(l) = c for allsuch
+
+l, then q, being an analytic function of l 2 C with real part > 0, would equal c, for all real l > 0.Since the limit of
+
+q(l) as l ! 1 is zero, this means c = 0. However the Laplace transform is one-to-one (this is a standard fact; one way to prove it is using that the Laplace transform of a bounded
+
+measurable function w, evaluated at any point of the form s = 1+i!, coincides, as a function of !, withthe Fourier transform of
+
+w(t)e-t, and the Fourier transform is one-to-one on integrable functions, cf.for instance [Hewitt and Stromberg, 1965], Corollary 21.47). Hence,
+
+q(l) does not assume a constantvalue for all arguments l in [a, b]. Since q is analytic, it therefore assumes, in any interval [a, b] with0 < a < b, infinitely many different values. This implies that for any fixed ae > 0
+
+u(0) + ae * Z 1
+
+0 u(0) * u(-o/ )e
+
+-o//fl do/ 6= v(0) + ae * Z 1
+
+0 v(0) * v(-o/ )e
+
+-o//fl do/
+
+for some fl 2 [a, b]. Therefore we have Hfl u(0) 6= Hflv(0) for the filter Hfl defined by
+
+Hflu(t) = u(t) * (1 + ae * Z 1
+
+0 u(t - o/ )e
+
+-o//fl do/ ) .
+
+In order to apply the Stone-Weierstrass Theorem we also need to show that U- is a compact metricspace with regard to the topology T defined in part 6 of Remarks 2.4. Obviously this topology T coincides with the topology generated on U- by the metric
+
+d(u, v) := sup
+
+t<=0 |
+
+u(t) - v(t)|
+
+1 + |t|
+
+(since all functions in U are assumed to be uniformly bounded). The compactness of U- with regardto this metric follows by a routine argument, applying the Arzela-Ascoli Theorem successively to the sequence of restrictions U |[-T,0] := {u|[-T,0] : u 2 U } for T 2 N and by diagonalizing over convergingsubsequences for these restrictions (see, for instance, Lemma 1 in [Boyd and Chua, 1985]).
+
+The Stone-Weierstrass Theorem implies then that there exists for every given " > 0 some m 2 N,filters H
+
+fl1 , . . . , Hflm as specified above, and a polynomial p such that
+
+|Fu(0) - p(Hfl1u(0), . . . , Hflm u(0))| < "2
+
+for all u 2 U-. Since the functionals ~Hfli : U- ! R defined by ~Hfli u := Hfli u(0) are continuousover the compact space
+
+U-, the values Hfliu(0) for i 2 {1, . . . , n} and u 2 U- are contained in somebounded interval [- b, b]. Furthermore according to [Hornik et al., 1989], [Leshno et al., 1993] there ex-ist sigmoidal gates G1, . . . , Gk and parameters ff0, . . . , ffk 2 R such that
+
+|p(x) - (
+
+kX
+
+j=1
+
+ffjGj(x) + ff0)| < "2
+
+9
+
+for all x 2 [-b, b]m.11 Note that Gj(Hfl1 u(0), . . . , Hflmu(0)) is of the form oe(Pmi=1 wi(0)u(0) + w0) with w0 2 R and wi(t) as in Definition 2.1 (with xi(*) replaced by u(*)). Hence the previously constructedH
+
+fl1 , . . . , Hflm together with this layer of k sigmoidal gates G1, . . . , Gk define a dynamic network S 2DN. We then have |F
+
+u(0) - Su(0)| < " for all u 2 U-. Because of the time invariance of F andH
+
+fl1 , . . . , Hflm this implies that |Fu(t) - Su(t)| < " for all u 2 U and all t 2 R. This completes theproof of "(
+
+c) ) (b)" for the case of dynamic networks that define filters S 2 DN and n = 1.
+
+In order to show that for u, v 2 U- with u 6= v we have Hu(0) 6= Hv(0) also for some filter H thatreflects synaptic dynamics with some arbitrary given depression filter D as in the definition of DN* we consider two cases for the filter Hfl with Hflu(0) 6= Hfl v(0) that we have already constructed.
+
+Case 1: u(0) * Du(0) = v(0) * Dv(0) Then the function u(0) * Du(0) * u(-o/ ) - v(0) * Dv(0) * v(-o/ ) assumes a value 6= 0 for some o/ >= 0.Hence we can apply the same argument as before to the function
+
+~q(l) = Z 1
+
+0 (u(0) * Du(0) * u(-o/ ) - u(0) * Dv(0) * v(-o/ ))e
+
+-o//l do/
+
+to show that this function assumes infinitely many different values for l 2 [a, b], for any given interval[
+
+a, b] with 0 < a < b. This implies that there exists for every given ae > 0 some fl 2 [a, b] so that u(0) * Du(0) * (1 + ae * R 10 u(-o/ )e-o//fl do/ ) 6= v(0) * Dv(0) * (1 + ae * R 10 v(-o/ )e-o//fl do/ ).
+
+Case 2: u(0) * Du(0) 6= v(0) * Dv(0) Then the claim follows since ae * R 10 u(-o/ )e-o//fl do/ - ae * R 10 v(-o/ )e-o//fl do/ converges to 0 if ae ! 0or fl ! 0.
+
+The rest of the argument is exactly as in the preceding argument for filters S 2 DN . This completesthe proof of "(
+
+c) ) (b)" also for the case of dynamic networks that define filters S 2 DN * and n = 1.
+
+In the claim of the theorem we had considered a slightly more general class of filters F that aredefined over
+
+U n for some given n >= 1. In order to extend the preceding proof of "(c) ) (b)" to themore general input space for
+
+n >= 1 one just has to note that U n is a compact metric space with regardto the product topology generated by the topology T over
+
+U as in part 6 of Remarks 2.4 , and that ourpreceding arguments imply that filters over U n of the form hu1, . . . , uni ! Hui with i 2 {1, . . . , n}(and H modeling synaptic dynamics according to Definition 2.1) separate points in
+
+U n-.
+
+3.2 Extension of the Result to the Model for Synaptic Dynamics by Tsodyks,Pawelzik, and Markram
+
+In [Tsodyks et al., 1998] a slightly different temporal dynamics for depression and facilitation in pop-ulations of synapses has been proposed. In contrast to the model from [Varela et al., 1997] that underlies our Definition 2.1, this model has been explicitly formulated for a mean-field analysis, where theinput to a population of synapses consists of a continuous function
+
+xi(t) that models firing activityin a presynaptic pool Pi of neurons, rather than a spike train from a single presynaptic neuron. Wewill show in this section that our characterization result from the preceding section also holds for this
+
+model for synaptic dynamics.The first difference to the synapse model from [Varela et al., 1997] is a use-dependent discount factor e-ae
+
+R 0-
+
+o/ xi(o/0)do/0 *e-o//fl instead of just e-o//fl in the model for facilitation, that reduces the facilitating
+
+impact of preceding large input xi(-o/ ) on the value of the synaptic weight at time 0. In other words:
+
+11These approximation results were previously applied in this context by [Sandberg, 1991].
+
+10
+
+facilitation is no longer modeled by a linear filter, instead one assumes that facilitation has less impacton a synapse that has already been facilitated by preceding inputs.
+
+For a precise definition of the resulting variation DN+ of our definition of dynamic networks fromDefinition 2.1 we replace
+
+wi(t) = wi * (1 + ae R 10 xi(t - o/ ) e-o//fl do/ ) by wi(t) = wi * ^wi(t), where
+
+^wi(t) = ae * Z 1
+
+0 x
+
+i(t - o/ ) * e-ae
+
+R t
+
+t-o/ xi(o/0)do/0 * e-o//fl do/ . (3)
+
+This is the model for facilitation proposed in equation (3.5) of [Tsodyks et al., 1998] for a mean-fieldsetting, where
+
+xi(t - o/ ) models firing activity at time t - o/ in a presynaptic pool Pi of neurons( ^ wi(t) is denoted by U 1SE , ae is denoted by USE, fl is denoted by o/facil, and wi is denoted by ASE in[Tsodyks et al., 1998]).
+
+We will show in the subsequent result that for any given value of the parameter ae (which modelsthe normal utilization of synaptic resources caused by input to a "rested" synapse) and for any given interval [a, b] one can choose the values wi 2 R and time constants fl from [a, b] so that a network con-sisting of facilitating synapses in combination with one layer of sigmoidal neurons can approximate any time invariant filter with fading memory.[Tsodyks et al., 1998] also propose a model for populations of synapses that exhibit both depression and facilitation (one substitutes equation (3.5) for USE in (3.3) of [Tsodyks et al., 1998]). A newfeature of this model is that one can no longer express the current synaptic weight
+
+wi(t) as a prod-uct of the outputs of two separate filters, one for depression and one for facilitation. Rather, the output of the filter for facilitation (see our equation (3)) enters the computation of the current outputof the filter for depression. This is biologically plausible, since a facilitated synapses spends its resources more quickly - and hence is subject to stronger depression. In our notation the model from[Tsodyks et al., 1998] for depression and facilitation in a mean-field setting (equations (3.3) and (3.5) in [Tsodyks et al., 1998]) yields the following formula for the value wi(t) of the current weight of apopulation of synapses (with ^
+
+wi(t) defined according to equation (3)):
+
+wi(t) := wi * ^wi(t) * Z 1
+
+0 e
+
+-o//o/rec * e- R tt-o/ ^wi(o/0)xi(o/0)do/0 do/ . (4)
+
+This formula involves another parameter o/rec: the time constant for the recovery from utilizing synap-tic resources. We will write DN
+
+++ for the class of feedforward networks consisting of sigmoidal neurons with dynamic weights wi(t) according to equation (4). In order to make sure that the integralsin equation (3) and (4) assume a finite value for bounded synaptic inputs
+
+xi(*), one has to make surethat not only the network inputs, but also the outputs of sigmoidal units in networks from the classes
+
+DN+ and DN++ are always nonnegative. For that purpose we assume in this section and the nextsection that the sigmoidal activation function
+
+oe assumes nonnegative values only. Note that this isno real restriction since the output of a sigmoidal unit models the current firing activity in a pool of
+
+neurons.Note that any filter that maps
+
+xi(*) onto wi(*) * xi(*) with wi(*) defined according to equation (3)or (4) is time invariant and has fading memory. Hence every network in DN
+
++ and DN++ computes
+
+a time invariant filter with fading memory.
+
+Theorem 3.4. Assume that U is the class of functions from R into [B0, B1]) which satisfy |u(t) - u(s)| <= B2 * |t - s| for all t, s 2 R, where B0, B1, B2 are arbitrary real-valued constants with 0 < B0 < B1 and0
+
+< B2. Let F be an arbitrary filter that maps vectors u = hu1, . . . , uni 2 U n into functions from R into R.Then the following are equivalent:
+
+(a) F can be approximated by dynamic networks S 2 DN + (i.e., for any " > 0 there exists some S 2DN
+
++ such that |Fu(t) - Su(t)| < " for all u 2 U n and all t 2 R)
+
+(b) F can be approximated by dynamic networks S 2 DN + with just a single layer of sigmoidal neurons
+
+(c) F is time invariant and has fading memory
+
+11
+
+(d) F can be approximated by a sequence of (finite or infinite) Volterra series. These equivalences remain valid if DN+ is replaced by DN++.
+
+It will be obvious from the proof of Theorem 3.4 that in principle quite small ranges suffice for the"free" parameters
+
+fl and o/rec that control the synaptic dynamics according to (3) and (4):
+
+Corollary 3.5. In order to approximate an arbitrary given time invariant fading memory filter F by dynamicnetworks
+
+S from DN+, one can choose for any given ae > 0 the parameters fl of the synapses in S (definedaccording to (3)) from some arbitrarily given interval [
+
+a, b]. In order to approximate F by networks S fromDN ++ one can choose for any given ae > 0 the parameters fl from some arbitrarily given interval [a, b] and the
+
+parameters o/rec according to equation (4) from some arbitrarily given interval [a0, b0].
+
+Proof of Theorem 3.4. It suffices to describe how the proof of "(c) ) (b)" from Theorem 3.1 has to bechanged. For the case of networks from the class DN
+
++ we have to show that the filters H+fl of the form
+
+H+fl u(t) = u(t) * ae Z 1
+
+0 u(t - o/ ) * e
+
+-ae R tt-o/ u(o/0)do/0 * e-o//fl do/
+
+separate points in U-. We show that for any given ae > 0, a, b 2 R with 0 < a < b, and any u, v 2 U-with
+
+u 6= v there exists some fl 2 [a, b] such that H+fl u(0) 6= H+fl v(0). Thus we consider some arbitrarygiven
+
+u, v 2 U with u(t) 6= v(t) for some t <= 0. According to our argument in the proof of Theorem3.1 it suffices for that to show that
+
+u(0) * u(-o/ ) * e-ae
+
+R 0-
+
+o/ u(o/0)do/0 6= v(0) * v(-o/ ) * e-ae
+
+R 0-
+
+o/ v(o/0)do/0 for some o/ >= 0 , (5)
+
+because this implies that the function q+ defined by
+
+q+(`) := Z 1
+
+0 (u(0) * u(-o/ ) * e
+
+-ae R 0-o/ u(o/0)do/0 - v(0) * v(-o/ ) * e-ae R 0-o/ v(o/0)do/0 )e-o//`do/
+
+assumes infinitely many different values for ` 2 [a, b].Assume for a contradiction that (5) does not hold. This implies that
+
+u(0) = v(0). Consider some t0 < 0 with u(t0) 6= v(t0). We assume without loss of generality that u(t0) > v(t0). Set
+
+t+0 := inf{t > t0 : u(t) <= v(t)} t-0 := sup{t < t0 : u(t) <= v(t)} . We have t+0 <= 0 since u(0) = v(0).
+
+Case 1: t-0 > -1 ( i.e., 9 t < t0 : u(t) <= v(t)) Then t-0 < t0 < t+0 , u(t-0 ) = v(t-0 ), u(t+0 ) = v(t+0 ) and u(t) > v(t) for all t 2 (t-0 , t+0 ). According to our assumption this implies that R 0t+0 u(t)dt = R 0t+0 v(t)dt and R 0t-0 u(t)dt = R 0t-0 v(t)dt, althoughR
+
+t+0 t-0 u(t)dt > R
+
+t+0 t-0 v(t)dt. This yields a contradiction.
+
+Case 2: u(t) > v(t) for all t < t0
+
+Our assumptions imply then that R 0t+0 u(t)dt = R 0t+0 v(t)dt and u(t) > v(t) for all t < t+0 . Therefore there exists some " > 0 such that eae
+
+R 0
+
+t (u(o/0)-v(o/0))do/0 >= 1 + " for all t <= t0. Hence we can conclude
+
+from our assumption that u(t)v(t) >= 1 + " for all t <= t0. This implies that eae
+
+R 0
+
+t (u(o/0)-v(o/0))do/0 ! 1 for
+
+t ! -1, hence u(t)v(t) ! 1 for t ! -1. This provides a contradiction to our definition of the class U of functions to which u and v belong, since all functions in U have values in [B0, B1] for 0 < B0 < B1.
+
+12
+
+This completes our proof of the direction "(c) ) (b)". The remainder of the proof for the case ofdynamic networks from the class DN
+
++ is the same as for Theorem 3.1.
+
+I order to prove "(c) ) (b) for networks from the class DN++, we have to show that the filtersthat map an input function
+
+xi(*) onto the output function wi(*) * xi(*) with wi(t) defined accordingto equation (4), separate points in
+
+U -. Thus we fix some u, v 2 U with u(t) 6= v(t) for some t <= 0.According to the preceding proof for DN
+
++ there exists some fl 2 [a, b] such that H+fl u(0) 6= H+fl v(0).
+
+We want to show for this fl that there exists for any given a0, b0 with 0 < a0 < b0 some o/rec 2 [a0, b0] sothat the resulting filter defined by the synapse according to equation (4) can separate
+
+u and v. Moreprecisely, we show for the filter G
+
+fl that is defined in analogy to equation (3) by
+
+Gflu(t) := ae * Z 1
+
+0 u(t - o/ ) * e
+
+-ae R o/t-o/ u(o/0)do/0 * e-o//fl do/
+
+(thus H+fl u(t) = u(t) * Gflu(t)) that
+
+u(0) * Gflu(0) * Z 1
+
+0 e
+
+-o//o/rec * e- R 0-o/ Gflu(o/0)*u(o/0)do/0 do/ 6= (6)
+
+v(0) * Gflv(0) * Z 1
+
+0 e
+
+-o//o/rec * e- R 0-o/ Gflv(o/0)*v(o/0)do/0 do/ .
+
+It is obvious that the function h : R ! R defined by
+
+h(o/ ) := u(0) * Gflu(0) * e
+
+R 0-
+
+o/ Gflu(o/0)*u(o/0)do/0 - v(0) * Gflv(0) * e-
+
+R 0-
+
+o/ Gflv(o/0)*v(o/0)do/0
+
+assumes a value 6= 0 for some o/ >= 0, since h(0) 6= 0 by our choice of fl. Hence by the argument viathe Laplace transform from the proof of Theorem 3.1 there exists some
+
+o/rec 2 [a0, b0] (for any given a0, b0 2 R with 0 < a0 < b0) so that Z
+
+1
+
+0 e
+
+-o//o/rec * h(o/ )do/ 6= 0 ,
+
+which is equivalent to the desired inequality (6).Thus we have shown that the filters defined by the temporal dynamics of synapses in dynamic networks from the class DN++ separate points in U -. The rest of the proof is the same as for Theorem3.1.
+
+3.3 Universal Approximation of Filters with Depressing Synapses only We will show in this section that the computational power of feedforward neural networks with dy-namic synapses remains the same if the synapses just exhibit depression, no facilitation. This holds
+
+provided that the time constants o/rec for their recovery from depression can be chosen individuallyfrom some interval [
+
+a, b] (this holds for any values of a, b with 0 < a < b). This result is of interestsince according to [Tsodyks et al., 1998] all synapses between pyramidal neurons just exhibit depression, and no facilitation. We will employ the model from [Tsodyks et al., 1998] for synaptic depressionin a mean-field setting, that is specified in equation (3.3) of [Tsodyks et al., 1998].
+
+We write DN- for the class of feedforward neural networks consisting of sigmoidal neurons(whose activation function
+
+oe assumes nonnegative values only) with weights wi(t) evolving accord-ing to
+
+wi(t) = wi * USE * Z 1
+
+0 e
+
+-o//o/rec * e- R tt-o/ USE*xi(o/0)do/0 do/ (7)
+
+13
+
+in dependence of the presynaptic pool activity xi(o/ ), where USE > 0 is some given constant.Note that
+
+wi(t) * xi(t) agrees with the term ASE * hy(t)i with hy(t)i defined by equation (3.3) in[Tsodyks et al., 1998], which models the average value of the postsynaptic current caused in pool
+
+Pby the firing activity xi(t) in the pool Pi in the case of depressing synapses between pools Pi and P(the parameter ASE is denoted by wi in our notation).
+
+Theorem 3.6. Assume that U is the class of functions from R into [B0, B1]) which satisfy |u(t) - u(s)| <= B2 * |t - s| for all t, s 2 R, where B0, B1, B2 are arbitrary real-valued constants with 0 < B0 < B1 and0
+
+< B2. Let F be an arbitrary filter that maps vectors u = hu1, . . . , uni 2 U n into functions from R into R.Then the following are equivalent:
+
+(a) F can be approximated by dynamic networks S 2 DN - (i.e., for any " > 0 there exists some S 2DN- such that |F
+
+u(t) - Su(t)| < " for all u 2 U n and all t 2 R)
+
+(b) F can be approximated by dynamic networks S 2 DN - with just a single layer of sigmoidal neurons
+
+(c) F is time invariant and has fading memory (d) F can be approximated by a sequence of (finite or infinite) Volterra series. Proof. It is obvious that all filters defined by dynamic networks from the class DN- are time invariantand have fading memory. Hence it suffices to show how the proof of "(
+
+c) ) (b)" has to be changedin comparison with the proof of Theorem 3.1. Assume that parameters a, b, USE 2 R with 0 < a < band 0 < USE have been fixed in some arbitrary manner. We have to show that for any two functions u, v 2 U with u(t0) > v(t0) for some t0 <= 0 there exists some o/rec 2 [a, b] so that the filter that modelssynaptic dynamics according to (7) differs at time 0 for the two input functions
+
+u, v (instead of xi), i.e.,we have to show that
+
+u(0) * Z 1
+
+0 e
+
+-o//o/rec * e- R 0-o/ USE*u(o/0)do/0 do/ 6= v(0) * Z 1
+
+0 e
+
+-o//o/rec * e- R 0-o/ USE*v(o/0)do/0 do/ .
+
+According to our argument with the Laplace-transform in the proof of Theorem 3.1 it suffices for thatto show that
+
+h(o/ ) 6= 0 for some o/ >= 0 , where h : R ! R is the function defined by
+
+h(o/ ) := u(0) * e-
+
+R 0-
+
+o/ USE*u(o/0)do/0 - v(0) * e-
+
+R 0-
+
+o/ USE*v(o/0)do/0 .
+
+If u(0) 6= v(0) this is obvious, since then h(0) 6= 0 . Hence we assume that u(0) = v(0) . Furthermorewe assume for a contradiction that
+
+h(o/ ) = 0 for all o/ >= 0 . Set
+
+t+0 := inf {t > t0 : u(t) <= v(t)} . Then we have t0 < t+0 <= 0 , R 0t+0 u(o/ 0)do/ 0 = R 0t+0 v(o/ 0)do/ 0, and R 0t0 u(o/ 0)do/ 0 = R 0t0 v(o/ 0)do/ 0. This yields a contradiction to the fact that u(o/ 0) > v(o/ 0) for all o/ 0 2 [t0, t+0 ], and hence R t
+
++0
+
+t0 u(o/ 0)do/ 0 > R
+
+t+0 t0 v(o/ 0)do/ 0.
+
+3.4 Focusing on Excitatory Synapses In the preceding dynamic network models we had assumed that the constant factors wi could be cho-sen to be positive or negative, thus yielding excitatory or inhibitory synapses in a biological interpretation. This formal symmetry between excitatory and inhibitory synapses is not adequate for mostbiological neural systems, for example the cortex of primates, where just 15% of the synapses are inhibitory. We would like to point out in this section that according to [Maass, 1999a] one can replacethe dynamic networks considered in the preceding sections by an alternative type of network where just the dynamics of excitatory synapses matters - which can be just depressing, just facilitating, ordepressing and facilitating, like in the preceding sections.
+
+14
+
+The key observation is that instead of approximating the given polynomial p by a weighted sumof sigmoidal neurons in the proof of Theorem 3.1 (and analogously in the subsequent Theorems), one can approximate p by a single soft winner-take-all module applied to several weighted sums of the fil-ters H
+
+fl1 , . . . , Hflm with non-negative weights wi only.12 The resulting network structure correspondsto a biological neural system where the filters H
+
+fl1 , . . . , Hflm are realized exclusively by excitatory dy-namic synapses, and the role of inhibitory synapses is restricted to the realization of the subsequent
+
+soft winner-take-all module. We refer to [Maass, 1999a] for details of this alternative style of networkconstruction.
+
+3.5 Allowing the Input Functions to Vanish We had assumed in Theorem 3.1 that all input functions ui satisfy ui(t) >= B0 for all t 2 R, where B0 > 0 is some arbitrary constant. This assumption is usually met in the sketched application tobiological neural systems, because the minimum firing rate of neurons is larger than 0 (typically in
+
+the range of 5 Hz). Alternatively one can assume that all input functions ui are superimposed withsome positive constant input (that could be interpreted as background firing activity).
+
+The following result shows that from a mathematical point of view the assumption B0 > 0 is nec-essary at least in the case of single-layer networks, since in the case
+
+B0 = 0 a strictly smaller class offilters is approximated by dynamic networks with a single layer of sigmoidal neurons. Theorem 3.7
+
+gives a precise characterization of this smaller class of filters. Theorem 3.7. Assume that U is the class of functions u in C(R, [0, B1]) which satisfy |u(t) - u(s)| <= B2 *|
+
+t - s| for all t, s 2 R, where B1 and B2 are arbitrary real-valued constants with 0 < B1 and 0 < B2. Let F bean arbitrary filter that maps functions from
+
+U into RR. We consider here only the version of dynamic networksgiving rise to filters in DN.
+
+Then F can be approximated by dynamic networks with a single layer of sigmoidal gatesif and only if F is time invariant, has fading memory, and there exists a constant
+
+cF such that Fu(t) = cFfor all u 2 U and t 2 R with u(t) = 0.
+
+Proof of Theorem 3.7: Notice that the form of the filters defining the class DN implies that, when u(t) =0, all filters output the value 0 at the given time
+
+t, and hence the sigmoidal gate outputs the value G(t) = oe(w0), irrespective of the values of u at other times. It is easy to see from here that all filtersapproximated by such networks must also have the same property. The converse implication is established in almost exactly the same manner as in the proof of Theorem 3.1. The only difference is asfollows.
+
+It could be the case that u(0) = v(0) = 0, in which case our argument fails to provide a separatingfilter. However, this separation is not needed if we only need to approximate filters which are constant on the set of inputs which have zero value at t = 0. This follows from the following lemma, which is,in turn, a small variation of the Stone-Weierstrass Theorem. Given a compact Hausdorff topological space U , and a closed subset S of U , we say that a function f : U ! R is S-constant if the restrictionof
+
+f to S is a constant function. We say that a class of real-valued functions on U is S-separating if, foreach
+
+u, v 2 U , u 6= v, such that not both of u and v are in S, there is some f 2 F such that f(u) 6= f(v).
+
+Lemma 3.8. Suppose that F is a class consisting of continuous and S-constant functions which S-separates.Then, polynomials in elements of
+
+F approximate every S-constant continuous function U ! R.
+
+This Lemma is proved as follows. We consider the quotient space US := U/S, where we collapseall points of
+
+S to one point, endowed with the quotient topology (its open sets are those open sets Vin U for which S " V 6= ; implies S ` V ). The topological space US is compact, because the canonicalprojection onto the quotient is continuous, and
+
+U was assumed to be compact. In addition, US is aHausdorff space, as follows from the fact that for each
+
+x 62 S there are disjoint neighborhoods of x and S (since S is compact). The Lemma is established by noticing that continuous S-constant functions
+
+12If one prefers, one can replace the non-negative weighted sums of the filters Hfl1 , . . . , Hflm in this alternative approximation result by sigmoidal neurons applied to non-negative weighted sums of the filters Hfl1, . . . , Hflm .
+
+15
+
+induce continuous functions on US, so that we may apply the standard Stone-Weierstrass Theoremto this quotient space.
+
+Now the Theorem follows, using as S the set consisting of all inputs so that u(0) = 0. The S-separation property is established just as in the proof of Theorem 3.1; we omit the routine details.
+
+3.6 Combining Synaptic Dynamics with Membrane Dynamics One other source of temporal dynamics in biological neural systems is the dynamics of the membranepotential of neurons. Hence it is of interest to consider a variation of our notion of a dynamic network
+
+where a function x(t) is processed at a connection of the network first by a filter H that maps xi(*) onto wi(*) * xi(*) (modeling synapse dynamics) and then by another filter G modeling membrane dynamicsof the receiving neurons. Since each single EPSP and IPSP (i.e., each excitatory and inhibitory postsynaptic potential) can be fitted very well by a function of the form fi1e-o//fl1 - fi2e-o//fl2 , it appearsto be justified to model membrane dynamics in the context of our model for population coding with pools of neurons by first order linear filters G with an impulse response g(o/ ) consisting of a weightedsum of functions of the form
+
+e-o//fl . In the resulting variation of our notion of a dynamic networkone replaces the filters H that model synaptic dynamics according to Definition 2.1 at the connections
+
+of the network by compositions G ffi H with such linear filters G. All preceding results remain validfor this variation of the network model. In order to approximate arbitrary given time invariant filters with fading memory by such networks one just has to show that for any two functions u, v 2 U with u(t) 6= v(t) for some t <= 0 there exist filters H, G of the desired type such that (GffiH)u(0) 6= (GffiH)v(0).This holds even for
+
+u, v 2 C(R, [B0, B1]) with B0 = 0, since we just have to find a filter H modelingsynaptic dynamics according to Definition 2.1 so that H
+
+u(t) 6= Hv(t) for some t <= 0 (hence we canallow that u(0) = v(0) = 0). We then can apply to the functions Hu(t) and Hv(t) for t <= 0 the ar-gument from the proof of Theorem 3.1 to find a linear filter G with impulse response
+
+e-o//fl so that(G ffi H) u(0) 6= (G ffi H)v(0). The same argument shows that theoretically the same class of filters canbe approximated by dynamic networks if one only relies on linear filters G modeling membrane dynamics.
+
+4 Computations on Spatio-Temporal Patterns A closer look shows that many temporal patterns that are relevant for biological neural systems arenot just temporal but spatio-temporal patterns. For example in auditory systems the additional spatial dimension parameterizes different frequency bands. These are represented by spatial locationsof the inner hair cells on the cochlea , and corresponding spatial maps in higher parts of the auditory system. In visual systems it is obvious that the analysis of moving objects (and/or the stabilization ofvisual input in spite of body movements of the receiving organism) requires the processing of complex spatio-temporal patterns. In this context two spatial dimensions correspond directly to retinalocations. But one should note that other "spatial" dimensions in the subsequent Definition 4.1 need not correspond to spatial locations in the outer world (or on the retina), but can also correspond toscales in a more abstract feature space, for example to spatial frequency or phase. Therefore we will consider in the following spatio-temporal patterns with an arbitrary finite number d 2 N of spatialdimensions.
+
+The transformation and classification of complex spatio-temporal patterns appears to be rele-vant also for higher cortical areas, since recordings from larger populations of neurons via voltagesensitive dyes or MEG, EEG etc. suggest that sensory input is encoded in spatio-temporal activationpatterns of associated cortical neural systems. These spatio-temporal activation patterns provide the
+
+16
+
+input to higher cortical areas. Also the output of various systems in the motor cortex can be viewed asspatio-temporal patterns [Georgopoulos, 1995]. Hence one may argue that also higher cortical areas carry out computations on spatio-temporal patterns.We will show in this section that one can extend our analysis of computations on temporal patterns to an analysis of computations on spatio-temporal patterns. For that purpose we introduce a suitableextension of our definition of a dynamic network that allows for
+
+d spatial dimensions in the inputfunctions u.
+
+Definition 4.1. We define a spatial dynamic network and the corresponding classes SDN and SDN* of fil-ters as a variation of the preceding Definition 2.2 of a dynamic network. Fix some arbitrary
+
+d 2 N. A spatialdynamic network with d spatial input dimensions (in addition to the time dimension) assigns to vectors u of ninput functions u : Rd * R ! R an output function z : R ! R. The only difference to the preceding definitionof a dynamic network is that now there exists for each network a finite set
+
+X of vectors x 2 Rd so that the actualinput to the network consists of functions of the form u(x, *) for x 2 X.
+
+According to this definition any spatial dynamic network samples the input functions u : Rd*R !R just at a fixed finite set
+
+X of points x. Nevertheless we will show in Theorem 4.2 that these networkscan approximate a very large class of filters on functions
+
+u : Rd * R ! R.The notion of a Volterra series (see Remark 2.3) can be readily extended to input functions
+
+u :R d * R ! R (again we assume that u is measurable and essentially bounded). In this case a k-th
+
+order Volterra term is of the form
+
+1Z
+
+-1
+
+. . .
+
+1Z
+
+-1
+
+1Z 0
+
+. . .
+
+1Z
+
+0
+
+u(x1, . . . , xd, t - o/1) * . . . * u(x1, . . . , xd, t - o/k) * (8)
+
+h(x1, . . . , xd, o/1, . . . , o/k) dx1 . . . dxd do/1 . . . do/k for some function h 2 L1. Analogously as before we refer to a series consisting of finitely many suchterms as a Volterra polynomial or finite Volterra series.
+
+Theorem 4.2. Let U be the class of functions in C(Rd * R, [B0, B1]) that satisfy |u(x, t) - u(~x, ~t)| <= B2 kh
+
+x, ti - h~x, ~ti k for all hx, ti, h~x, ~ti 2 Rd * R, where d 2 N and B0, B1, B2 are arbitrary real-valued constantswith 0
+
+< B0 < B1 and 0 < B2. Then the following holds for any filter F : U n ! RR :F can be approximated by spatial dynamic networks (i.e., for any
+
+" > 0 there exists some S 2 SDN suchthat |F u(t) - Su(t)| < " for all u 2 U n and t 2 R)if and only if F can be approximated by a sequence of (finite or infinite) Volterra series.
+
+The claim remains valid if SDN is replaced by SDN* Proof. We show that the two alternative conditions on F in the claim of the theorem are equivalent byproving that both conditions are equivalent to a third condition: the condition that F is time invariant
+
+and has fading memory - for the straightforward extension of this notion to filters F : U n ! RR,where
+
+U is now a class of functions from Rd * R into R. We say that such filter F has fading memoryif for every h
+
+v1, . . . , vni 2 U n and every " > 0 there exist ffi > 0, T > 0, and K > 0 so that |Fv(0) -F u(0)| < " for all u = hu1, . . . , uni 2 U n with the property that k v(x, t)-u(x, t) k< ffi for all t 2 [-T, 0]and all
+
+x 2 [-K, K]d. Note that this condition implies "fading influence" of u(x, t) for arguments hx, tiwhere |
+
+t| or k x k are very large.It is obvious that any
+
+k-th order Volterra term of the form (8) is time invariant and has fading mem-ory. Furthermore this property is preserved by taking sums and limits (analogously as in Lemma 2.5).
+
+Hence also for filters with inputs u : Rd * R ! R we have that any filter which can be approximatedby a sequence of finite or infinite Volterra series is time invariant and has fading memory. On the other hand one can extend the proof of Theorem 1 in [Boyd and Chua, 1985] in a straightforward man-ner to show that any time invariant filter that has fading memory and receives inputs from
+
+U n (fora class U with the properties as in the claim of the theorem) can be approximated arbitrarily closelyby Volterra polynomials. For this extension of the argument of [Boyd and Chua, 1985] one just has
+
+to verify that this class U is compact with regard to the topology generated by the neighborhoods
+
+17
+
+{u 2 U n : k v(x, t) - u(x, t) k< " for all t 2 [-T, 0] and all x 2 [-K, K]n} for arbitrary v 2 U n and ", T, K > 0.It is clear that any spatial dynamic network according to Definition 4.1 is time invariant and has
+
+fading memory. Thus it only remains to show that any time invariant filter F : U n ! RR with fadingmemory can be approximated arbitrarily closely by spatial dynamic networks. In order to extend the proof of Theorem 1 in [Boyd and Chua, 1985] to this case one just has to observe that the proofof Theorem 3.1 implies that for any two functions
+
+u, v, 2 U with u(x, t) 6= v(x, t) for some t <= 0 and x 2 Rd there exists some x 2 Rd and some filter H modeling synaptic dynamics as in Definition 2.1which satisfies H
+
+u(x, *)(0) 6= Hv(x, *)(0). Thus we have shown that a filter F : U n ! RR can beapproximated by spatial dynamic networks if and only if F is time invariant and has fading memory.
+
+This completes the proof of Theorem 4.2. Remark 4.3.
+
+1. Analogous versions of Corollary 3.2, Remark 3.3, Theorem 3.4, Theorem 3.6, and Theorem 3.7also hold for the framework of computations on spatio-temporal patterns considered in Theorem 4.2. 2. If one considers a system consisting of many spatial dynamic networks that provide separateoutputs for different spatial output locations one also can produce spatio-temporal patterns in
+
+the output of such systems. Theorem 4.2 implies that exactly those maps A from spatio-temporalpatterns to spatio-temporal patterns can be realized by such systems where the restriction of the output of A to any fixed output location is a time invariant filter F with fading memory.
+
+5 Conclusion We have analyzed in this article the power of feedforward models for biological neural systems forcomputations on temporal patterns and spatio-temporal patterns. We have identified the class of filters that can be approximated by such models, and shown that this result is quite stable with regardto changes in the model. In particular we have shown that all filters which can be approximated by Volterra series can be approximated by models consisting of a single layer of dynamic synapses andneurons. Furthermore the class of filters that can be approximated does not change if one considers feedforward networks with arbitrarily many layers. In addition the filters in this class are character-ized by a very simple property (time invariance and fading memory) that is in general easy to check for a concrete filter. This class of filters is very rich. In fact, one might argue that any filter that ispossibly useful for a function of a biological organism belongs to this class.
+
+Since we have included in our analysis the case where several temporal patterns are presented si-multaneously as input to a neural system, our approach also provides a new foundation for analyzing computations that respond in a particular manner to temporal correlations in the firing activity ofdifferent pools of neurons. We show that any such computation that can be described by time invariant filters with fading memory ( which is for example the case for most conjectured computationsinvolving binding of features belonging to the same object via temporal correlations) can in principle be carried out by a feedforward neural system.So far the analysis of the possible functional role of short term synaptic dynamics has found the most convincing computational role for synaptic depression: Our results in this article point to a pos-sible computational role for the other important dynamical mechanism in biological synapses: facilitation. We show that via facilitation models for neural systems gain the power to approximateany filter in the very large class of linear and nonlinear filters described above. Furthermore we have
+
+18
+
+shown that this possible function of facilitation does not interfere with any other computational roleof synaptic depression, since we have shown that for any fixed depression mechanisms one can find parameters for the synaptic facilitation mechanisms that allow the approximation of arbitrary filtersfrom this class. Apart from this we have also shown in section 3.3 that the same very rich class of linear and nonlinear filters can be approximated by models for neural systems whose synapses justexhibit depression, no facilitation.
+
+The view of neural systems as computational models for computations on temporal patterns orspatio-temporal patterns - rather than on static vectors of numbers - is likely to have significant consequences for the analysis of learning in neural systems. It suggests that learning should be analyzedin the context of adaptive filters. Whereas we do not contribute directly to any learning result in this article, our results identify exactly the class of filters within such filter adaption would take place, andthereby prepare the ground for a closer analysis of learning in neural systems from the point of view of adaptive filtering.Finally we would like to point out that our "universal approximation results" for computations on temporal and spatio-temporal patterns suggest a new complexity measure and a new parameteri-zation for nonlinear filters in this domain, which may be more appropriate in the context of biological neural systems. We show that instead of measuring the complexity of a nonlinear filter F by the de-gree of the Volterra polynomial or Wiener polynomial that is needed to approximate F within a given ffl, one can also measure the complexity of F by the number of sigmoidal gates and dynamic synapsesthat are needed to approximate F within
+
+ffl. Our results show that both complexity hierarchies char-acterize the same class of linear and nonlinear filters. However the latter measure is more adequate
+
+in the context of neural computation, because already the approximation of a single sigmoidal gaterequires a high order Volterra polynomial for a good approximation. Hence the order of the Volterra polynomial required to approximate a given nonlinear filter F is in general a poor measure for thecost of implementing F in neural hardware. On the other hand the alternative complexity measure for filters F that is suggested by our results is closely related to the cost of implementing F in neuralhardware.
+
+In addition our approach via formal models for dynamic networks provides a new parameteri-zation for all filters that are approximable by Volterra series - in terms of parameters that control the architecture as well as the temporal dynamics and scale of synaptic dynamics. Such parameterizationis in particular of interest for the analysis of learning (if the goal is to learn a map from spatio-temporal to spatio-temporal patterns), especially since the parameters that occur in our new parameterizationappear to be related to those parameters that are "plastic" in biological neural systems.
+
+This article also prepares the ground for an investigation of the required complexity of modelsfor neural systems for approximating specific filters that are of particular interest in this context. Preliminary computer results [Natschl"ager et al., 1999] suggest that in fact quite small instances of thedynamic network models considered in this article suffice to approximate specific quadratic filters. Other topics of current research are the role of noise in this context, and the possible role of lateraland recurrent connections in the network (see [Maass, 1999b]).
+
+Acknowledgement: We would like to thank Anthony M. Zador for bringing the problems addressed in this article to ourattention. In addition we would like to thank Larry Abbott and two anonymous referees for helpful
+
+comments.
+
+References [Abbott, 1994] Abbott, L. F. (1994). Decoding neuronal firing and modelling neural networks. Quar-terly Review of Biophysics, 27:291-331.
+
+19
+
+[Abbott et al., 1997] Abbott, L. F., Varela, J. A., Sen, K., and Nelson, S. B. (1997). Synaptic depressionand cortical gain control. Science, 275:220-224. [Back and Tsoi, 1991] Back, A. D. and Tsoi, A. C. (1991). FIR and IIR synapses, a new neural networkarchitecture for time series modeling. Neural Computation, 3:375-385. [Boyd and Chua, 1985] Boyd, S. and Chua, L. O. (1985). Fading memory and the problem of approx-imating nonlinear oparators with Volterra series. IEEE Trans. on Circuits and Systems, 32:1150-11. [Dasgupta and Sontag, 1996] Dasgupta, B. and Sontag, E. D. (1996). Sample complexity for learningrecurrent perceptron mappings. IEEE Trans. Inform. Theory, 42:1479-1487. [Dieudonne, 1969] Dieudonne, J. (1969). Foundations of Modern Analysis. Academic Press, New York. [Dobrunz and Stevens, 1997] Dobrunz, L. and Stevens, C. (1997). Heterogenous release probabilitiesin hippocampal neurons. Neuron, 18:995-1008.
+
+[Fliess, 1975] Fliess, M. (1975). Un outil algebrique: les series formelles non commutatives. In Marche,G., editor, Mathematical Systems Theory, pages 122-148. Springer New York, Udine. [Folland, 1984] Folland, G. B. (1984). Real Analysis. Wiley, New York. [Francis et al., 1994] Francis, G., Grossberg, S., and Mingolla, E. (1994). Cortical dynamics of featurebinding and reset: Control of visual persistence. Vision Research, 34, 1089-1104.
+
+[Gallman and Narendra, 1976] Gallman, P. G. and Narendra, K. S. (1976). Representations of nonlin-ear systems via the Stone-Weierstrass theorem. Automatica, 12:618-622. [Georgopoulos, 1995] Georgopoulos, A. P. (1995). Reaching: coding in motor cortex. In Arbib, M. A.,editor, The Handbook of Brain Theory and Neural Networks. MIT Press, Cambridge. [Georgopoulos et al., 1986] Georgopoulos, A. P., Schwartz, A. P., and Ketner, R. E. (1986). Neuronalpopulation coding of movement direction. Science, 233:1416-1419. [Gerstner, 1999] Gerstner, W. (1999). Spiking neurons. In Maass, W. and Bishop, C., edi-tors, Pulsed Neural Networks. MIT-Press, Cambridge, 32-53. preprint electronically available at
+
+http://diwww.epfl.ch/lami/team/gerstner/wg pub.html. [Grossberg, 1969] Grossberg, S. (1969). On the production and release of chemical transmitters andrelated topics in cellular control. J. Theor. Biol., 22, 325-364.
+
+[Grossberg, 1972] Grossberg, S. (1972). A neural theory of punishment and avoidance, II: Quantita-tive theory. Mathematical Biosciences, 15, 253-285. [Grossberg, 1984] Grossberg, S. (1984). Some psychophysiological and pharmacological correlates ofa developmental, cognitive, and motivational theory. In: Brain and information: event related potentials, Karrer, R., Cohen, J., Tueting, P., eds., New York Academy of Science, New York, 58-142. [Hertz et al., 1991] Hertz, J., Krogh, A., and Palmer, R. G. (1991). Introduction to the Theory of NeuralComputation. Addison-Wesley.
+
+[Hewitt and Stromberg, 1965] Hewitt, E. and Stromberg, K. (1965). Real and Abstract Analysis.Springer-Verlag, Berlin. [Hornik et al., 1989] Hornik, K., Stinchcombe, M., and White, H. (1989). Multilayer feedforward net-works are universal approximators. Neural Networks, 2:359-366. [Koch, 1999] Koch, C. (1999). Biophysics of Computation: Information Processing in Single Neurons. Ox-ford University Press, New York.
+
+20
+
+[Koiran and Sontag, 1998] Koiran, P. and Sontag, E. D. (1998). Vapnik-Chervonenkis dimension ofrecurrent neural networks. Discrete Applied Math., 86:63-79. [Leshno et al., 1993] Leshno, M., Lin, V., Pinkus, A., and Schocken, S. (1993). Multilayer feedforwardnetworks with a nonpolynomial activation function can approximate any function. Neural Networks, 6:861-867. [Maass, 1999a] Maass, W. (1999). On the computational power of winner-take-all, submitted for pub-lication.
+
+[Maass, 1999b] Maass, W. (1999). On the role of noise and recurrent connections in neural networkswith dynamic synapses, in preparation. [Maass and Natschl"ager, 1999] Maass, W., Natschl"ager, T. (1999). A model for fast analog computa-tion based on unreliable synapses. Neural Computation, in press. [Maass and Zador, 1998] Maass, W. and Zador, A. (1998). Dynamic Stochastic Synapses as Compu-tational Units. Advances in Neural Information Processing Systems, vol. 10, MIT-Press (Cambridge),
+
+1998, 194-200; journal version in: Neural Computation, vol. 11, 1999, 903-917. [Maass and Zador, 1999] Maass, W. and Zador, A. (1999). Computing and learning with dynamicsynapses. In Maass, W. and Bishop, C., editors, Pulsed Neural Networks. MIT-Press, Cambridge.
+
+[Marmarelis and Marmarelis, 1978] Marmarelis, P. Z. and Marmarelis, V. Z. (1978). Analysis of Physi-ological Systems: The White-Noise Approach. Plenum Press, New York. [Mead, 1989] Mead, C. (1989). Analog VLSI and Neural Systems. Addison-Wesley (Reading). [Murthy et al., 1997] Murthy, V., Sejnowski, T., and Stevens, C. (1997). Heterogeneous release prop-erties of visualized individual hippocampal synapses. Neuron, 18:599-612.
+
+[Natschl"ager et al., 1999] Natschl"ager, T., Maass, W., and Zador, A. (1999). Temporal processing withdynamic synapses, in preparation. [Palm, 1978] Palm, G. (1978). On representation and approximation of nonlinear systems. Biol. Cy-bernetics, 31:119-124. [Palm and Poggio, 1977] Palm, G. and Poggio, T. (1977). The Volterra respresentation and the Wienerexpansion: validity and pitfalls. SIAM J. Appl. Math., 33(2):195-216. [Poggio and Reichardt, 1980] Poggio, T. and Reichardt, W. (1980). On the representation of multi-input systems: computational properties of polynomial algorithms. Biol. Cybernetics, 37:167-186. [Rieke et al., 1997] Rieke, F., Warland, D., Bialek, W., and de Ruyter van Steveninck, R. (1997).SPIKES: Exploring the Neural Code. MIT-Press, Cambridge. [Rugh, 1981] Rugh, W. J. (1981). Nonlinear System Theory. John Hopkins University Press, Baltimore. [Sandberg, 1991] Sandberg, I. W. (1991). Structure theorems for nonlinear systems. MultidimensionalSystems and Signal Processing, 2:267-286.
+
+[Schetzen, 1980] Schetzen, M. (1980). The Volterra and Wiener Theories of Nonlinear Systems. Wiley, NewYork. [Sontag, 1997] Sontag, E. D. (1997). Recurrent neural networks: Some systems-theoretic aspects. InKarny, M., Warwick, K., and Kurkova, V., editors, Dealing with Complexity: a Neural Network Approach, pages 1-12. Springer-Verlag, London. [Sontag, 1998] Sontag, E. D. (1998a). A learning result for continuous-time recurrent neural networks.Systems and Control Letters, 34:151-158.
+
+21
+
+[Sussmann, 1975] Sussmann, H. J. (1975). Semigroup representations, bilinear approximations ofinput-output maps, and generalized inputs. In Marchesini, G., editor, Mathematical Systems Theory, pages 172-192. Springer, New York, Udine. [Tsodyks and Markram, 1997] Tsodyks, M. and Markram, H. (1997). The neural code between neo-cortical pyramidal neurons depends on neurotransmitter release probability. Proc.Natl.Acad.Sci.,
+
+1994:719-723. [Tsodyks et al., 1998] Tsodyks, M., Pawelzik, K., and Markram, H. (1998). Neural networks with dy-namic synapses. Neural Computation, 10, 821-835.
+
+[Varela et al., 1997] Varela, J. A., Sen, K., Gibson, J., Fost, J., Abbott, L. F., and Nelson, S. B. (1997). Aquantitative description of short-term plasticity at excitatory synapses in layer 2/3 of rat primary
+
+visual cortex. Journal of Neuroscience, 17:7926-7940.
+
+22</pre>
+</body>
+</html>

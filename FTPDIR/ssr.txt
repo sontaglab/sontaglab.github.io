@@ -1,0 +1,1303 @@
+OCR of paper; see pdf file  ssr.pdf  for viewable/printable page
+
+
+RICERCHE DI AUTOMATICA
+V-1. 7, No. 1, July 1976
+P,-i,,t,d in Italy
+Invited paper
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS: A SURVEY
+E. D, SONTAG
+Abstract. An elementary presentation is given of some of the main moti-
+vations and known results on linear systems over rings, including questions of
+realization and control. The analogies and differences with the more standard
+case of systems over fields are emphasized throughout.
+Inti-oduction.
+The theory of both discrete and continuous-time finite-dimensional
+constant linear systems with real or complex coefficients
+and
+x(t)=Fx(t)+Gu(t), y(t)=Hx(t)
+x (t + 1) = Fx (t) + Gu (t), y (t) = Hx (0,
+has been thoroughly explored in the last 15 years.
+A conceptually important step was the realization that most of
+the << structural >> properties of (*) as well as of (**) depend only on
+the triple of matrices (F, G, H). Moreover, most algebraic results tumed
+out to depend only on the fact that the entries of the matrices involved
+Manuscript received September 2, 1975 and in revised form July 19, 1976.
+The Author is with the Center for Mathematical System Theory, Depart-
+ment of Mathematics, University of Florida, Gainesville, FL 32611, USA.
+This research was supported in part by US Army Research Grant DAAG
+29-76-G-0203 and USA Air Force Grant AFOSR 116-3034 through the Center
+for Mathematical System Theory, University of Florida, Gainesville, FL 32611,
+USA.
+<<PAGE-DIVIDER>>
+2 E. D. SONTAG
+are (( numbers >> in a field. [The definitions of fields and other algebraic
+notions are reviewed in APPENDix 2 at the end of this paper]. This
+set the stage for a more abstract study of linear systems, where all
+<< numbers >> appearing in the specification of (F, G, H) are taken from
+a fixed but arbitrary field (KALMAN, FALB and ARBIB [1968, Ch. 10]).
+Thus systems over the binary field, and in general over finite fields,
+became part of linear system theory. This provided a connection with
+the theory of linear sequential circuits and with coding theory; the
+BERLEKAMP -MASSEY decoding algorithm for BCH codes and FORNEY'S
+study of convolution codes became a natural part of linear system
+theory.
+The next step was to further generalize the concept of a linear system,
+to include the case in which coefficients belong to a ring. In a ring,
+addition and multiplication are defined, but (as opposed to a field)
+division is impossible in general. Examples of rings are the integers
+Z or the polynomials in one or more variables, with their usual addi-
+tion and multiplication. The work of RoUCHALEAU [1972] and
+RouCHALEAU, WYMAN, and KALMAN [1972] constituted the first in-
+depth research into the properties of systems over rings. Many appli-
+cation areas (see Part I below) require working with systems over
+a ring.
+Independently of the many examples discussed later, it should
+be clear that a strong motivation for the study of systems over rings
+lies in the hope of a better understanding of the meaning of << linea-
+rity >> in system theofy.
+Our goal in writing this survey has been to stress the methods and
+to point out the difficulties. We leave many mathematical details aside;
+these can be found in the papers referenced at the appropriate points
+of the discussion. As much as possible, especially in Section 3, refe-
+rences are given to EILENBERG [1974, Chapter 161, where many pro-
+perties of discrete-time systems are treated in detail. Open problems
+are mentioned as they appear, although undoubtedly many more will
+be easily raised by the reader.
+We hope that the treatment is sufficiently intuitive, so that a
+superficial knowledge of the definitions (with a good knowledge of
+classical linear algebra) is enough to follow the main ideas. We shall
+always assume that all rings are commutative. (Systems over noncommu-
+tative rings have begun to be studied in general, but since the problems
+and methods are very different from those of the commutative case,
+they are not an appropriate topic for this paper).
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 3
+This paper is divided into five parts. In the first part we give
+examples of the types of problems which have motivated much of the
+research in systems over rings. In the next part we abstract from the
+examples and define the systems to be studied. We then turn to the
+problem of realization of an input/output map; this is the problem
+which has attracted the largest research efforts until now. We give
+in part 4 a detailed illustration of the possible applications in control
+theory of some of the results and methods developed. We review there
+the topic of feedback control of systems over rings, and in particular,
+delay-differential systems. In the final section we briefly mention other
+areas which have been studied.
+We would like to close this introduction with a few general
+comments. While systems over rings appear naturally in studying,
+say, systems over the integers, there are application areas, like delay-
+differential systems, where the theory discussed here is just one of
+the possible tools to be applied. In these latter areas, other methods
+have in fact been traditionally involved. Systems over rings, or any
+other algebraic approaches, have the advantage of leading in most
+cases to practical procedures for solving the given problems, instead
+of giving abstract existence proofs. Such abstract results are of course
+an indispensable part of any theory, but they will probably have
+limited practical impact until integrated with more algebraic methods.
+ACKNOWLEDGEMENT: The author wishes to thank R, E. KALMAN,
+M. L. J. HAUTUs and E. KAMEN for constructive suggestions during the
+preparation of this paper, and to Y. RouCHALEAU for the many
+fruitful discussions on the topic of systems over rings.
+1. Some examples.
+A. DELAY -DIFFERENTIAL SYSTEMS.
+A (retarded, lineiir, constant) delay-differential system, or here-
+ditary system, is a system described by equations of the type
+X (t)= Z F,x(t-ai)+ X Gju(t-bi),
+y W = 2: Hk X (t - C0,
+k-1
+<<PAGE-DIVIDER>>
+4 E. D. SONTAG
+where ai, bi, Ck are nonnegative real numbers, and where x (t) as
+well as the inputs u (t) and outputs y (t) are real vectors. The matrices
+Ff, Gj, Hk have real entries. Such systems appear naturally in many
+engineering applications and in fact in any situation in which transmis-
+sion delays cannot be ignored.
+A great deal of research is being carried on today on delay-
+differential systems. We shall now discuss a procedure which allows
+the study of certain kinds of problems (e. g., structural questions,
+like those dealing with the existence of representations as in in
+the context of systems over appropriate rings.
+Consider for example a system defined by
+~, (t) = 2xi (t - 0 + X1 (t) + X2 (t) + U (t),
+X2 (0 =x, Q- 1) -3X2 (t- 5) +u (t- 1), (a)
+Y* (1) = X1 (t) - X2 (t - 1) -
+If we introduce the delay operator a defined by
+a (X) (t): = X (t - 1),
+we can rewrite (a) in matrix form as
+X1 2a+ I
+a 30~
+X2 a
+X2
+X1
+X21 -
+I
+We see then that (a) can be expressed in a fonn very similar to
+the ordinary finite-dimensional constant linear systems of control theory,
+the only difference being that the matrices (F, G, H) now have polyno-
+mial instead of real valued entries. When all the delays aj, bi, Ck in
+(*) are integral multiples of a fixed delay A, we can apply the same pro-
+cedure as above, taking now for a a shift of A seconds. If, instead,
+the delays in (*) are not commensurable, we need to define a finite set
+of delay operators a,, ... , u, and then consider systems whose matrices
+have entries in the set of polynomials in a,, u,. This set is denoted
+by R [aj, ... , aj.
+As in the case of the integers, the set of polynomials R [a-,, arl
+is not a field, although it is a ring if we define the addition and mul-
+tiplication of polynomials in the usual way. Some authors (e. g.
+ANSELL [1964], NEWCOMB [1966], YOULA [19681) introduce then
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 5
+the field of rational functions -in ai, ... , a, in order to study networks
+with transmission lines, i. e. delay-differential systems. These methods
+have the disadvantage of introducing << ideal predictors )>, i. e. ope-
+rators of the type
+a-, W (t) = X (t + 1),
+which are not physically realizable. A more natural approach to the
+problem, that of applying the theory of systems over rings of poly-
+nomials, was first introduced by KAMEN [19751.
+There is an important conceptual difference between the example
+of delay-differential systems and systems over an abstract ring, say,
+the integers. In the case of delay-differential systems only the entries
+of the matrices defining the systems belong to the ring in question; in
+the case of systems over the integers, the states, inputs and outputs are
+also in the corresponding ring. This difference will turn out to be ir-
+relevant in the study of those problems whose solution depends only
+on the form of the defining matrices.
+B. OTHER EXAMPLES AND MOTIVATIONS.
+When the theory of linear systems is applied in coding theory,
+the relevant systems have their coeflicients in a finite field. It was shown
+by JOHNSTON [1973] that a larger class of codes, generalizing BCH
+codes, can be generated by considering instead abelian group systems,
+i. e. systems over the integers Z (or over residue rings Z.). Systems
+over & were also studied by MATLUK and GILL [1971], in the con-
+text of automata theory. Abelian group systems are also an important
+special case of the systems studied by BROCKETT and WILLSKY [1972].
+The study of systems obtained from lumped approximations to
+linear partial differential equations can also be approached via systems
+over rings. The idea is in a sense to introduce an operator a for each
+a where ri is a space variable. In fact, one studies in practice
+OTi
+spatial discretizations of the above kind of equation, and a becomes
+a shift operator. For instance, consider a heat equation
+ax (t, T) 62X (t, + (t, E R.
+at OT2
+<<PAGE-DIVIDER>>
+6 F. D. SONTAG
+If we now discretize this equation by letting xi, ui denote temperatures
+at the integer point i, an approximation is given for example by the
+system
+x (t) = (a - 2 + a-') x (t) + u (t),
+where x, u are infinite column vectors with entries xi, ui, and where
+(a x)i: =xi, i. Therefore a system over the ring It, [a, a-'] is obtained.
+For a wave equation, a second derivative of x would appear, and the
+system would be higher dimensional. If (*) is written in matrix form
+x=Fx+u, the infinite matrix F is of the Toeplitz type. Similarly, an
+equation evolving on the circle will induce a system whose matrices
+are circulant, or equivalently, a system over a group algebra R[Zkl-
+In general, the rings appearing in this context will be group algebras
+(or suitable completions). [A group algebra is the set of all finite linear
+combinations X ai gi with all ai in a field, say the reals or the complexes,
+and with the gi taken out of a given group G (here G corresponds to
+the possible shift operators). The ring addition is coordinatewise (for
+each gi add the aj) and the multiplication is the linear extension of
+the group multiplication among the gi]. The same framework applies
+to the study of (linear) cellular automata, i. e. an interconnection of
+equal subsystems operating in parallel. Different aspects of the above
+systems were studied in BROCKET~r and WILLEMS [1971, 1974],
+JOHNSTON [1973] and SONTAG [19761. An application to transport
+systems was given by WILLEMS [1971].
+A general type of distributed (i. e., infinite-dimensional) systems
+which are << finitary >) in the sense of being specifiable by finitely many
+parameters, like delay-differential or partial difference systems, can be
+fruitfully studied in many aspects via systems over appropriate rings
+of operators. The particular case of systems defined via rings of distri-
+butions is analyzed in KAMEN [1975], while a general approach can
+be found in SONTAG [1976, Part D].
+There are problems which share the mathematical structure of
+systems over rings, whose interpretation is completely different from
+the above. The outstanding example of this situation is the study of
+multiplicities or <<ambiguities>> in the generation of languages by
+grammars or, equivalently, in the recognition of languages by automata.
+Such a study was begun by SCHUTZENBERGER [19611, part of whose
+work is related to realization for systems over the integers Z. An
+extended literature exists on these problems, and an excellent expo-
+sition can be found in the textbook by EILENBERG [1974]. Since in
+<<PAGE-DIVIDER>>
+LINEAR SISTEMS OVER COMMUTATIVE RINGS 7
+language theory it is more natural to work with semirings rather than
+rings (subtraction is not allowed), and since other generalizations are
+made (alphabets of more than one letter), the questions posed are
+usually different from those asked about systems over rings. Exceptions
+are the FATOU -type problems (see Section 3 below) which appear
+also in this context; see for instance FLIESS [1972, 1974], SONTAG
+[19751 and SONTAG and ROUCHALFAU [1976]. These results can be
+interpreted through bilinear systerns over rings, via the method of
+FLIESS [19731.
+The study of tirne-varying control systems in the style of KAMEN
+[19761 is in many ways analogous and uses concepts similar to the
+study of constant systems over certain (noncommutative) rings. Reali-
+zations of multidimensional filters can also be obtained using tools of
+systems over rings, as in SONTAG [1976]. Even some areas of pure
+mathematics (the study of r,-,tional power series) are intimately related
+to our topic, beginning with the work of FATOU [19061; we shall
+return to this later.
+2. Systems and Input/output maps.
+We shall give a preliminary definition of the systems to be studied.
+The main illustrations will be: in the discrete-time case, systems over
+Z; in the continuous-time case, delay-differential systems. We shall
+see later (Section 3. E) thal a larger class of systems must be considered
+in order to obtain a satisfactory theory.
+Throughout this chapter, R denotes an arbitrary but fixed commu-
+tative ring. Notations are as explained in Appendix 2.
+A. A PRELIMINARY DEFINITION.
+(2.0 DEFINITION. A (free) system 2: is given by a triple of matrices
+(17, G, H), where FeRnX11, GER nXn and HeRP" for some integers
+n, m, p. n is called the rank of I. A scalar system Z is a system for
+which m=p=1.
+The above definition of systems may seem in principle too ab-
+stract, since no explicit mention is made of dynamics, states, input
+and output functions. However, since we are interested in the simulta-
+neous study of both discrete and continuous-time systems at an ele-
+mentary level, we shall be content with informal interpretations. The
+<<PAGE-DIVIDER>>
+8 F. D. SONTAG
+interested reader can find more complete definitions in SONTAG [1976,
+Part D], but this is not at all necessary in order to follow the reaso-
+nings in the present paper.
+The main too] in the study of systems will be the discrete-time
+interpretation. Under this interpretation, (2.1) defines a system evolving
+according to:
+x (t + I Fx (t) + Gu (t),
+(2.2)
+y IIX
+where t = 0, 1, 2, an d where th e << states >> x (t) e R", the << inpu ts >>
+u (t) e R- and the << outputs >> y (t) E R" for all t. We also assume an
+initial state x (0) = 0.
+Given an input sequence u (0), u (1), u (2), we can solve (2.2)
+by recursion beginning with x (0) = 0. We then obtain sequences
+x (0), x (1), ... and y (0), y (1), It is easy to show that y (0) = 0 and
+for t> 1
+t_1
+y (t) = 2: HF'-'- ' Gu (i),
+i=0
+We see therefore that the inpatloutput map f2: -. (u (0), u (1),
+--> (y (0), y (1), ...) is compIctely determined by the sequence of matrices
+(A,, A2, ...), where Ai: =11F' I GcRjX111. (In fact, it is not difficult to
+verify that any map which sends sequences u (0), u (1), ... to sequences
+y (0), y (1), ... and which satisfies natural << linearity >>, << causality >>
+and o shift-invariance >> conditions is determincd by a suitable abstract
+sequence f Ai I so that the << convolution >> formula y (t)=X A,__j u (i)
+holds).
+Another interpretation of (2.1), valid when R is a ring of real
+polynomials R[aj, ... , a.], is in terms of hereditary systems. For sim-
+plicity, take r= 1; the general case is analogous. We shall interpret
+a=g, as a delay of one second (the actual length of the delay is
+immaterial in this context; the important matter is to fix it throughout
+the reasoning). Then (2.1) corresponds to the system described by:
+x (t) F (g) x (t) + G (t),
+(2.3)
+y (t) H (a) x (t),
+where the functions x (.), u (.), y (.) are defined for te R with values
+in vector spaces Rn, R-, Rp. The matrices F = F (a), G = G (a),
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 9
+H = H (a) are matrices over R = It [ a], i. e. matrices of polynomials,
+and the interpretation of F (g) x, G (a) u, H (u) x is that one given in
+Section 1. B. We shall not give here explicit spaces of time-functions
+for u (.), x (-), y (0, although we shall make the restriction that all
+admissible functions are zero in the past, i. e. for each such function
+a there exists a to (which depends on a) such that a (t) = 0 for all
+t<to. With such a restriction, given it(.), (2.3) has a unique solution
+x(-),y(.) (assuming the appropriate smoothness conditions on u(-)
+are satisfied). There is no need to specify an initial state, since our
+restriction on admissible functions amounts to implicitly taking a zero
+initial state.
+Let v (s) denote the Laplace transform of a time function v (t).
+Since ci,=e 5v and v=si,, (2.3) becomes, in terms of Laplace trans-
+forms,
+sx (s) = F (e-5) x (s) + G (e- s) U (s),
+y (s) = H (e-') x (s),
+for a suitable class of transformable input functions. It follows that
+y (s) H (e- ') (s - F (e-')) -G (e-') u (s),
+W (s, e--s) u (s).
+Therefore, the input/output map fs: u y (.) of the systent 2:
+given by (2.3) is determined by the transfer matrix of Z, a matrix
+IV (s, e-') rational in s, e-5. It is easy to see that W admits a (unique)
+expansion
+TV(s,e-')= 2: Ai(e-s)s-'
+i=1
+The sequence {Ai(e-")j is obtained via the substitution a~-4e` irom
+a corresponding sequence of polynomial matrices {Ail, wherc
+Ai=Ai(a)cR[a1Px-. In fact, Ai=HF'-'G for all i. (It is pos&ible
+to give a more direct characterization of those input/output maps
+u(-)~-4y(-) corresponding to delay-differential systems, via sets of
+operator equations. The characterization follows either from general
+facts about <<finitary>> systems or via systems defined by convolution equa-
+tions as in KAMEN [1975]).
+<<PAGE-DIVIDER>>
+10 E. D. SONTAG
+B, STATEMENT OF THE REALIZATION PROBLEM.
+The above considerations suggest the following abstract definition,
+for a fixed ring R:
+(2.4) DEFINITION. An input/output map / is given by a sequence
+(A,, A2, ...) where AiERPX,3 for all i. A system 2: realizes f iff Ai=
+HF'-' G for i = 1, 2, ... .
+The justification for (2.4) lies in the fact that in both of the
+above interpretations (and in fact, in general) the sequence {HF'G}
+completely characterizes the input/output behavior of -Y. In particular
+interpretations, the realization problem might be initially given in terms
+of different but equivalent data (kernels, operator equations, etc.); we
+shall assume here that a reduction to the present form has already
+been made.
+The study of existence, and the construction, of realizations are
+mathematically nontrivial. This difficulty, added to the basic system-
+theoretic significance of these problems, accounts for the fact that
+realization theory is the most developed area of system theory over
+rings at present.
+The problem of realization is a purely algebraic one of finding
+factorizations Ai=HF'-' G of a given sequence of matrices. We are
+free, however, to use our intuition via an interpretation of our choice.
+In particular, we shall use discrete-tirne systems (2.2) over the ring R.
+3. Realizntion of an iiiput/output inap.
+As in Section 2, R is again an arbitrary but fixed commutative ring.
+A. AN ABSTRACT GENERAL CRITERION.
+Let f =(A,, A2, ...) be an input/output map, The first question
+which arises is: What finiteness conditions must be imposed upon /
+so that f is realizable (i. e., so that there exists a system T which
+realizes f) ?
+We can easily see that some condition is needed. Indeed, assume
+that I is realizable, Ai=HF'-' G, for all i. By the Cayley-Harnilton
+Theorem (valid over all commutative rings), there exist ao, an-1 in
+R so that
+n-1
+Fn =: Z ai F'.
+i=0
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 11
+Therefore, F-'= 2: ai F+' for all k ~!~ 0. It follows that f is recurrent,
+i. e. there exists a recursion
+YI
+A,k= Z aiAi+k, for all k->0. (3.1)
+j=0
+Somewhat less trivial is the fact that recurrency is sufficient for
+realizability:
+(3.2) THEOREM. (KALMAN, FALB and ARBIB [1969, Chapter 10,
+Lemma 11.7]) An input loutput map f is realizable if and only if it is
+recurrent.
+Indeed, if f satisfies (3.1) for some ao, a,,- I then the system
+2: = (F, G, H) realizes f, where
+	I-
+lO	
+0	
+0 ...	
+0 a0 I
+	I
+[1	
+0	
+0 ...	
+0 a, I
+	o	1	0 ...	0 a2I
+F=~				
+	IJ	0	0 ...	0 a,, 2 1
+~	
+0	
+0	
+0 ...	
+I U"_1 I
+G= 0 H [A,, A,, A
+0
+(All block matrices above are rn X m).
+An alternative way of viewing recurrence is via the use of formal
+power series. To each input/output map f we can naturally associate
+a formal matrix power series W (z--')=Al z-'+A2 Z-2+... in the symbol
+z-'. Since each Ai is a p x m matrix, the above series can be also
+represented as a matrix (w,i(z-')), i=l,...,P, where
+each wij (z-1) is a power series in z-' with scalar coefficients. A series
+with scalar coefficients is called rational whenever it is the expansion
+in powers of z' of a quotient p (z)lq (z), where p (z), q (z) are
+polynomials on z with coefficients in R and where q (z) has leading
+coefficient equal to one and degree greater than that of p (z). An
+arbitrary series W (z-') is rational if all wij (z-') are rational (in other
+words, when W (z--') is the expansion of a suitable rational matrix).
+A proof of the following result can be found in EILENBERG [1974,
+Ch. 16, Prop. 3.2 and Prop. 9.1].
+(3.3) PROPOSITION. f is recurrent if and only if its associated power
+series W is rational.
+<<PAGE-DIVIDER>>
+12 E. D. SONTAG
+B. A MORE CONCRETE CRITERION.
+We have seen in (3.2) that realizability is equivalent to recurrency.
+An important problem, however, is to give << computable >> criteria
+allowing to decide whether a given f is recurrent.
+Given a (possibly infinite) matrix M, define the rank of M as
+the smallest I such that all minors of M of order greater than I are
+zero, In particular, 14 has infinite rank when there exist nonzero mi-
+nors of arbitrary order. The Hankel or behavior matrix of an input/
+output map f is the doubly infinite matrix given by, in block form,
+-A, A2 A3 - - - -
+A2 A3 A4 ...
+In the case of systems over fields, a well-known criterion (see KALMAN
+[1968, Chapter 8]) is:
+(3.4) f is realizable if and only if B (f) has finite rank.
+Thus (3.4) is a natural candidate for generalization. We first make a
+technical restriction on R. For the rest of this section and until Section E,
+R will be an integral domain (see APPENDIx 2). This does rule out
+some rings of interest, but still allows the consideration of systems
+over integers or delay-differential systems. Moreover, many of the
+results easily generalize to a larger class of rings (see Section F below).
+The advantage in restricting R to be an integral domain lies in the
+existence of the quotient field Q=Q (R).
+Let 1=(A1,A2,...) be an input/output map. Since R is a subset
+of Q, the sequence (A,, A2, ...) can also be viewed as a sequence of
+matrices over Q, i. e. as an input/output map over the field 0. As
+(3.4) is true for fields, the statement <<B (1) regarded as a matrix over
+Q has finite rank o is equivalent to << f is realizable over Q )Y. Thus,
+for a domain R, (3.4) can be expressed equivalently by the conclusion
+of the following (conjectured)
+(3.4. a) THEOREM. f is realizable over R if and only if f is rea-
+lizable over Q.
+A realization over R is also a realization over Q, so (3.4. a)
+reduces to: << If the sequence of R-matrices {Ail factors as Ai=HF'-' G,
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 13
+where F, G, T1 are matrices with entries in Q, then there exist R-matrices
+F, G, 11 (possibly of higher dimensions) such that Ai=HF'-' G >>. Re-
+calling the discussion at the end of Section A, (3.4) can be expressed
+in still another way, in the scalar case:
+(3.4.b) If w (z-') = 2: a, z', aj e R, is the expansion of p (z)lq (z)
+wtih p (z), q (z) polynomials with coefficients in Q, there exist p (z),
+q (z) polynomials over R such that q (z) has leading coelficient equal
+to 1 and iv (z p (z) Iq (z).
+In the general case, (3.4. b) is still the relevant criterion since a
+matrix is rational iff all its entries are rational.
+The problem of finding domain R over which (3.4. b) holds true
+is associated with the name of FATOU, who in 1906 proved that the
+ring of integers Z is such a domain. In a system-theoretic context,
+RoUCHALEAU, WYMAN and KALMAN [1972J were the first to prove
+that every Noetherian integral domain (see APPENDix 2) satisfies (3.4. a).
+(See also EILENBERG [19741, Chapter 16, Theorem 12.11 and
+JOHNSTON [1973], Section 6.21). We give in Appendix I of this paper
+a new proof of this result. A complete characterization of domains
+satisfying the equivalent statements (3.4. a) - (3.4. b), implying in
+particular that not every R satisfies them, was found by CAHEN and
+CHABERT r1972].
+An interesting interpretation of (3.4. a) in terms of a generalized
+notion of stability of systems was given by RoUCHALEAu and WYMAN
+[1974].
+Realization questions aside, results like (3.4. a) are clearly highly
+significant from a system-theoretic viewpoint, in that they allow the
+reduction of many problems on systems over rings to corresponding
+problems in the better-known area of systems over fields.
+C. CONSTRUCTING REALIZATIONS.
+The criterion stated in (3.4) is essentially an existential argument
+and does not provide an efficient method of finding an explicit reali-
+zation, or, equivalently, finding a recurrence. For a more restricted
+class of integral domains, the problem can be again reduced to the
+study of systems over fields. This reduction will obviously be achieved
+if the following statement holds true:
+<<PAGE-DIVIDER>>
+14 E. D. SONTAG
+(3.5) Let f be in inputloutput n7ap over R. Assume that
+==(& A2, -.) is realizable over 0 and that au, a~_, is a recursion
+over 0 with n minimal. Then ajeR for all i.
+Observe the strength of (3.5): it claims that, no matter what cal-
+culations are carried out over the field 0 in order to obtain a minimal
+recursion, the coefficients will belong to R. It is then surprising that
+(3.5) turns out to be true for a large class of integral domains, including
+in particular Z and It [ul, ... , a,] . It is not difficult to prove that it is
+enough to study (3.5) for scalar input/output maps, so the problem
+can be stated in terms of rational power series. In the latter form, the
+ring of integers was shown to satisfy (3.5) by FATOU [1906]. A direct
+proof of (3.5) was given by RoUCHALEAU, WYMAN, and KALMAN [1972]
+for Noetherian domains which are integrally closed (see Appendix 2).
+In Appendix 1 we indicate how (3.4. a) plus the assumption R = inte-
+grally closed imply (3.5). An abstract characterization of rings which
+satisfy (3.5) v.,as given by CHABERT [1972], see EILENBERG [1974,
+Chapter 16, Theorem 12.2]. The class of rings which satisfy (3.5) is a
+proper subclass of those rings for which (3.4) is true. For many
+system-theoretic purposes it is enough to know that R is integrally
+closed whenever R is a unique factorization domain (rings for which
+every element can be factored in an essentially unique way as a
+product of irreducibles).
+D. MINIMALITY.
+Knowledge of a recurrence, even a minimal one, is not in general
+enough to construct a realization -Y=(F, G, H) of minimal rank, since
+the construction in (3.2) has a high degree of redundancy. An impor-
+tant special case, however, is that in which m=1 [or p=11. In that
+situation, the realization in (3.2) [or a suitable dual] has rank n,
+where n is the rank of B(/), and is therefore minimal (because it is
+minimal as a realization over 0, as follows from well-known results
+over lields).
+If the restrictions on in and p are removed, the statement
+(3.6) Assume that rank It (f) = n. Then f has a realization of rank n.
+is true for principal-ideal domains, hence for Z, 11[al (see Appendix 1).
+Noetherian integral domains which satisfy (3.6) for all input/output
+maps f are completely characterized in RoUCHALEAu and SONTAG
+[1976]. In this paper, the problem of deciding for which (Noetherian)
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 15
+domains (3.6) holds is shown equivalent to one of the most important
+questions in commutative algebra and algebraic geometry. In particular,
+a resut of SHESHADRI translates into << (3.6) holds for all inputloutput
+maps over polynomial rings k [al, 921, k any field >). On the other
+hand, the input/output map I over R[91, 92, CF31 given by (with m=3,
+p=2)
+91 a3 0
+A a2 0 - a3 A2: =A3: =..-: =0,
+0 -92 -a]
+is shown to have no realizations of rank 2= dim R(f). These results
+and example serve to finally clarify the questions with respect to
+synthesis of networks posed in NEWCOMB [1966].
+The question of classifying realizations of minimal rank is very
+difficult. Under the natural notion of isomorphism (natural at least
+under the discrete-time interpretation), two SVSteMS 2:1,Z2 of rank nI,n2
+are isomorphic if and only if nl=n2=n and there exists TeRnXn such
+nXn
+that TG,=G2, F2T=TF,, H2T=Hi, and T-'eR . If R is not a
+field, it is false that all minimal realizations of the same input/output
+map are necessarily isomorphic. Indeed, if ac:R, a4=0, and a-'OR,
+then 11: = (1, a, 1) and 2;2: = (1, 1, a) are nonisomorphic minimal reali-
+zations of / =(a, a, a, ...). In f act, there may exist infinitely many mu-
+tually nonisomorphic minimal realizations: if R = R [a], then for each
+real number ~ the system
+1 01, ~_o 01, ~' 01),
+0 1 A 1 A a
+is a minimal realization of I= (or I, aI, ...), and Z A is not isomorphic to
+2; , if ~ +p.
+However, over R= principal-ideal domain, a characterization can
+be given of the set of isomorphism classes of minimal realizations of
+a given input/output map in terms of a lattice of submodules of a
+finitely generated torsion R-module (SONTAG [1977 aD. So, in particular,
+for systems over the integers Z there can exist only finitely many
+nonisomorphic minimal realizations of a fixed map.
+E. REACHABLE, OBSERVABLE AND CANONICAL SYSTEMS.
+When discussing realizations of minimal rank we mentioned the
+problem of redundancy. The question arises then as to whether there
+exist realizations that contain no information which is not implied
+<<PAGE-DIVIDER>>
+16 E. D. SONTAG
+lrorn the input/output behavior of the systems under consideration.
+From a general system-theoretic viewpoint, such realizations are cha-
+tacterized by properties of <<reachability)) and <<observability)). These
+,3roperties also appear naturally in relation to problems of controlla-
+hihiy, filtering, etc.
+The present setup, because of its generality, is not the appro-
+priate one in which to define such concepts with such precision and
+generality that they will specialize to meaningful notions of reachabi-
+lity and observability under all possible interpretations. For instance,
+function-space reachability will be different from ring reachability for
+delay-differential systems. We shall therefore make all definitions using
+as it model the discrete-time case. The reader interested primarily in
+other types of systems (e. g., delay-differential) can view these notions
+simply as (very useful) tools in the study of systems over rings. We
+again let R denote an arbitrary commutative ring.
+A discrete-time R-systern X, described as in (2.2), is reachable, or
+accessible (from the zero state), when for each xeR" there exist
+t ~-~: 0 and u (0), u (t - 1) such that, solving (2.2), x (t) = x. The
+..ys'(,m 2: is observable, or reduced, if no two different states produce
+the same input/output map when considered as initial states for 1.
+It can be proved that, as in the case of systems over fields,
+(3.7) 2: is reachable if and only if every xcR" is an R-linear
+combination of the columns of G, FG, ... , F` G;
+(3.8) 2: is observable if and only if there exists no xeR" such
+that Hx=:HFx= ... =-HP-'x=0 and x+O.
+Based on the above discrete-time intuition, we shall call an
+(abstract) system 2: = (F, G, H) reachable if (3.7) is valid, and observable
+if (3.8) holds. 2: is canonical when it is both reachable and observable.
+Assume that the discrete-time system 2; is observable but not
+reachable. The natural choice for a canonical realization is then the
+<<SL1bsystem>> 2:, of Z, obtained by restricting the state space to the
+set of reachable states X,. In order to define Z, as a system, i. e. as
+a triple of matrices, we need to find matrix representations for the
+restrictions of the linear maps F, G, H to X,. This involves the pre-
+ViOLIS step of naturally representing elements of X, as vectors in Rs, for
+some s. This representation should be uniquely defined; otherwise
+two vectors in R' which << code >> the same state would introduce
+tincbservability in 2:,.
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 17
+For example, if R = R [aL, a2l, 2: = (1, (orL, g2), 1), then the reachable
+states are given by all combinations a, p, (al, a2) + a2 p2 (al, a2), where
+PI, P2 are arbitrary polynomials in a,, a2. The obvious parametrization
+by pairs (PI, P2) is redundant since, for instance, (a2, a,) and (2 a2, 0)
+both stand for 2 a, U2, It can be proved that in fact no << linear >>
+bijective coding exists.
+The example is typical of the fundamental difficulty involved in
+working with rings instead of fields: the nonexistence ' in general, of
+bases. Therefore the above procedure to find a canonical realization
+via Z, may fail to work. Actually, the problem is deeper, since in general
+no canonical realizations exist (in the sense of Definition (2.1)). The
+above reasoning, however, points to the possible solution: relax the
+definition of system so that more general << linear >> (but still in some
+sense << finite >>) objects than those of type R" are allowed as state-
+spaces.
+Algebra provides such general objects: R-modules, or, more preci-
+sely, finitely generated R-modules. We then generalize:
+(3.9) DEFINITION. A system Z is given by (X, F, G, H), where X
+is a finitely generated R-module and G: R'->X, F: X-->X, H: X-*RP
+are R-linear maps. Z realizes (A 1, A2, if A i = H o F'-' a G, i
+1, 2, ... .
+By << system >> we shall refer henceforth to (3.9). and call the spe-
+cial case of those in (2.1), for which X=Rn. <<free)> systems. If the
+input/output map f of a system is defined via the sequence of linear
+transfonnations (or matrices) fLH o Po G I, it is easy to prove that
+f can also be realized by a free system. This means that the phrases
+<< realizable >> and o realizable by a free system o are equivalent. Non-
+free systems have an obvious discrete-time interpretation, but we shall
+not attempt to give here a delay-differential interpretation.
+Reachability and observability can be defined for systems again
+via (3.7) and (3.8) (replace << columns of G >> by G (el), ... , G (e,,,), etc.).
+In the larger class of systems (3.9) one can immediately generalize
+KALMAN'S module approach to linear systems, and prove that (see
+EILENBERG [1974, Ch. 16, Section 51, where ominimalo is used
+for our <<canonical>>):
+(3.10) THEOREM. Let f be a realizable inputloutput map. Then
+there exists a canonical system X which realizes f. If X is another cano-
+nical realization of 1, then Z is isomorphic to Z, i. e. there exists an
+<<PAGE-DIVIDER>>
+18 E. D. SONTAG
+invertible R - linear map T: X --> X such that T o G = G, F o T
+=ToF and HoT=H.
+In general canonical realizations are not free. Exceptions are
+principal-ideal domains, so that over Z or polynomial rings in one
+variable It, [a] there is no need in principle to consider nonfree sy-
+stems.
+If a canonical realization is free then it can be proven to be of
+minimal rank among free realizations. The converse is not true. For
+example (with R = Z), f = (2, 2, ...) admits the minimal free realiza-
+tion (1, 2, 1) which is not canonical: indeed, (1, 2, 1) is not reachable,
+since (33) would require that every element of R' (i. e. every integer)
+be an R-linear combination (i. e. an integer multiple) of 2. A canonical
+realization of f is given instead by (1, 1, 2).
+The canonical realization (unique up to isomorphism) can be de-
+fined directly from the input/output map f. For this purpose, let
+XI: = the R-module consisting of all R-linear combinations of the
+columns of the Hankel matrix B (1), F: = the R-linear map induced in
+Xf by the shift of columns, G(ai,...,a~)=abj+.,.+amb (where
+bi: = i-th column of It (f)) and H is defined on columns by o reading
+out >> their first p rows. Then (XI, F, G, H) is easily seen to be a canonical
+realization. (This construction was used by RoUCHALEAU [1972] and
+FLIESS [1972, 19741 to obtain various realization results). It follows
+from the Cayley-Hamillon Theorem that if Xt has s generators then
+X1 is already equal to the R-module generated by the first s block
+columns of B (f). In fact, by block symmetry, only first s block rows
+need be considered. We shall use later a corollary of this construction:
+(3.11) LEMMA. f is realizable if and only if Xf is a finitely gene-
+rated R-module.
+We remark that further acrieralizations of the concept of system
+are possible by dropping the requirement that input and output spa-
+ces be free; see EILENBERG'S treatment of discrete-time systems.
+F. o LoCAL >> METHODS.
+When R is not an integral domain, the arguments in Sections B
+to E break down, since no field containing R can exist. The standard
+way to avoid such a limitation in commutative algebra is to look for
+embeddings of R in suitable products of fields.
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 19
+For example, consider R: = R [or] l(a'- 1), the ring of real poly-
+nornials in c of degree less than k added and multiplied subject to
+the relation a'= 1. The ring R is easily seen to be isomorphic to a
+direct product of various copies of the fields R and C ; there is one
+copy of It for each real k-th root of unity and one copy of C for
+each pair of complex conjugate roots. Therefore systems over R can be
+studied via the simultaneous study of a set of real and complex systems.
+In fact, R is the ring treated by BROCKETT and WILLEMS [1971, 1974],
+and the above decomposition underlies their whole method.
+In general, however, it is impossible to obtain a complete decom-
+position of R into a product of fields, as in the above example. However,
+under the hypothesis that R be a reduced ring, an inclusion in such a
+product is possible. (A ring is reduced when it has no nonzero nilpo-
+tents, i. e. no elements for which a"=0. For example & is reduced
+but Z, is not, since 2'=O modulo 4). Given an input/output map f
+over R, let f A be the maps corresponding to the projections on the
+different factors of the product in which R is embedded. Just as in
+the case of integral domains (where the << product >> had but one factor)
+each fA can be considered as a map over an appropriate field. The
+analog of (3.4) can be studied in this context, where now each B (fA)
+is required to be of finite rank. For Noetherian reduced rings it is
+immediate to prove (based on the integral domain case) that the
+modified form of (3.4) is then true. Even the stronger statement (3.5)
+easily generalizes for the appropriate types of reduced rings (see
+RouCHALEAU [1972]).
+Another useful tool in drawing conclusions on systems over rings
+using the case of fields is the following, valid also (mutatis mutandis)
+for nonfree systems:
+(3.12) LEMMA, Let Z=(F, G, H) be a free system. For each max-
+imal ideal M of R define the RIM-system Z (M): = (F (M), G (M),
+H (M)), where F (M), ... is obtained by applying the canonical projection
+R --> RIM to each entry of F, Then, 2: is reachable if and only if
+all Z (M) are reachable.
+PROOF. Reachability of 2; [resp. 2: (M)] is equivalent to proving
+that the map given by the matrix (G, FG, ... , F n-' G) [resp. (G (M), ...
+... , F (M)"' G (M))] is surjective. The equivalence is then immediate
+from BoURBAKI [Alg6bre Commutative, 11. 3.3, Prop. 11]. 11
+<<PAGE-DIVIDER>>
+20 E. D. SONTAG
+We shall see the above lemma used in Part 4. This lemma falls
+into the category of << local methods >> of commutative algebra. Note
+that (3.12) is valid without any restrictions on R.
+4. State-Feedback and Regulation.
+The << separation property o of finite dimensional linear systems,
+which permits regulation via the independent designs of a state-
+feedback and a state estimator, extends immediately to systems over rings.
+This motivates a study into the possibility of << pole-shifting >> and
+the existence of << observers >> for systems over rings.
+A. STATE - FEEDBACK.
+One of the main algebraic results in the area of finite-dimensional
+linear systems over fields deals with the possibility of arbitrarily modi-
+fying the characteristic polynomial of a reachable system. This was
+proved for systems over infinite fields by WONHAM [1967] and for
+arbitrary fields by HEYMANN [1968] and KALMAN [1968].
+We now ask whether a similar result holds true for free systems
+over rings. In other words, we want to characterize those pairs of
+matrices (F, G), F E R nXn , GeR"X-, which are coefficient-assignable
+in the sense that
+(4.1) Given an arbitrary p(z)cR[z] nionic of degree n, there
+exists KeR-X" such that det(zl--F+GK)=p(z).
+Closely related is the problem of finding those (FG) which are only
+pole-assignable, i. e.
+(4.2) Given arbitrary a,, a,, c R, there exists K c R-Xn such that
+det (z I-F+GK)=(z-al) ... (z - a.).
+Since in general a polynomial p(z)eR[z] does not have all its
+roots in R, (4.1) is a stronger statement than (4.2) in which existence
+of K is required for only some polynomials.
+For example, consider a delay-differential system as in (2.3). The
+characteristic polynomial XF (z) = det (z I - F (a)) can be viewed either
+as a polynomial in z whose coefficients are polynomials in a, i. e.
+XFcR[z] = (R[a]) [z], or equivalently, as a real polynomial in the
+two variables z, a. It is well-known that stability properties of a delay
+system are determined by the values of s which make XF, viewed as a
+<<PAGE-DIVIDER>>
+LINEAR SYSFEMS ONER COMMUTATIVE RINGS 21
+polynomial in s, e-'=g, vanish. In particular, stabilization with arbi-
+trary convergence ratcs is closely related to both (4.1) and (4.2).
+Observe the feedback law K is allowed to be a matrix of polynomials
+in a.
+B. REACHABILITY IS NECESSARY.
+In the case of systems over fields, it is easy to verify that (4.2)
+implies that (F, G) is reachable in the sense of (3.7) (H is not relevant
+here). Indeed, it follows from the decomposition of the state-space of
+2: into the reachable part and a complement, that for nonreachable
+systems there exists a fixed polynomial of nonzero degree which divides
+ZF GK, for all K, and this clearly contradicts (4.2) (KALMAN [1968,
+Corollary 5,9]). This proof fails for rings, since as the example over
+the integers (F,G)=(1,2) shows, the reachable set does not in general
+admit a complementary SLibmodule. The following result, valid for
+arbitrary R, shows the use of local methods:
+(4.3) PROPOSITION. If (F,G) is pole-assignable then (F,G) is rea-
+chable.
+PROOF. With the notations of (3.12), it is not difficult to verify
+that if (F,G) satisfies (4.2) then for each M, (F(M), G(M)) is pole-
+assignable over the field RIM. The previously mentioned result for
+systems over fields implies that (F611), G(M)) is reachable, for all M.
+It follows from (3.12) that (F, G) must be reachable.
+C. THE CONVERSE.
+It is much more difficult to prove the converse of (4.3), i. e. that
+reachability implies (4.1), or at least (4.2). In fact, these problems
+are still unsolved for arbitrary rings. In the particular case m=1,
+however, the problem is trivial, since reachability of (F, g) implies
+that fg, ... , F"-'gl is a basis of R". Therefore (F, g) can be transformed
+into the << control canonical form >) and the proof of (4.1) can be com-
+pleted as in the case R= field (see, for instance, KALMAN [1968,
+Corollary 5.9]). This suggests trying to reduce the general case to the
+case m= 1. In the case of fields this reduction is carried out for reachable
+(F, G) using the following consequence of a lemma of HEYMANN [1968]:
+0
+(4.4) There exist uiER... and KER mXn such that (F-GK,Gu) is
+reachable.
+<<PAGE-DIVIDER>>
+22 E. D. SONTAG
+Only under strong restrictions on R can (4.4) be generalized:
+(4.5) THEOREM. Assume that R has only finitely many maximal
+ideals. Then (4.4), and hence (4.1), are true for arbitrary reachable
+(F, G).
+PROOF. It follows from BouRBAKI [Alg6re Commutative, 11. 3.2,
+Corollary 2] that it is enough to verify (4.4) for the ring R/rad R
+where rad R is the radical of R. Since Rlrad R is a product of fields,
+the problem is reduced to the already solved case of fields. 0
+The above theorem applies to some rings of system - theoretic
+interest. Every finite ring obviously satisfies (4.5), so that the result
+has been proved for the most general case of linear sequential circuits.
+This generalizes the corresponding result for finite fields studied in some
+detail in MITTER and FOULKES 119711.
+Another broad class of rings to which (4.5) can be applied are finite-
+dimensional algebras over fields, in particular group algebras on finite
+abelian groups. The result applies to classes of << cellular >> or << partial
+difference >> systems, as in (I. Q, when the original equation evolves
+in a bounded space (so the group is finite). In this case, it can be
+proved that ring-theoretic reachability is equivalent to reachability of
+the equation. A K in R-X" is interpreted as a state-feedback law with
+the same regularities (e. g., a circulant matrix) as the matrices in the
+equation. For u in R"', Gu corresponds to a regular combination of the
+controls obtained in a similar fashion. Thus (4.4) insures that a rea-
+chable cellular system may be modified, through locally defined K and
+u, so that control is possible with scalar inputs at each point. The
+interpretations of (4.1) and (4.2) are somewhat more delicate, and
+the reader is referred to BROCKETT and WILLEMS [1974] for a detailed
+treatment of the case
+Unfortunately, (4.4) is not true in general. Call a ring R suitable
+iff reachability of (F, G) implies (4.4). The following lemma will imply
+that many innocent-looking R are not suitable:
+(4.6) LEMMA. Assume that R is a suitable principal-ideal domain.
+Let a, b be tivo relatively prime elements of R. Then there exist a,
+in R such that # is a unit and
+b a' mod a.
+PROOF. Define
+F: = 0 01,G: =~ 1 01.
+Ib 0 0 a
+<<PAGE-DIVIDER>>
+LINEAR SYSTEPOS OVER COMMUTATIVE RINGS 23
+Clearly (F, G) is reachable. because by assumption that (a, b) are
+relatively prime, the identity is a linear combination of a and b.
+Since R is suitable, there exists a 2X2 matrix K and a vector u
+such that (F-GK,Gu) is reachable. Then the matrix with columns
+Gu,(F-GK)Gu must have a unit determinant#. Writing
+K= [k,j], u= ~ OY, I I
+this determinant becomes ~=ah+ba 2, where h a2 k21- 2 ay k22 +
++yak,,-a,,Ik]2. 11
+Now consider the particular case R:=R[x], a:=x'-I, b:=x.
+If R is suitable, by the lemma there would exist polynomials h, a, and
+a nonzero real number fl such that
+h (X2 _ 1)=a 2 X_#.
+Specializing x=1 and xzz- I in the above equality,
+1 a2=(_ 1)-a 2=#+O.
+This last equation gives a contradiction, since I . a2 and (-I).a 2 are
+both elements of It .
+A similar negative result holds for R: =Z, a: =5, b: =2; in this
+case a check for a = 0, 4 shows that 2a'_~ --'- I mod 5 is unsatisfiable
+over Z .
+Therefore neither R [x] nor Z are suitable rings. This answers
+a question raised bv Nlot~sr,. [1974, Example in Section 31.
+A direct approach to (4.1) might still be possible, but the problem
+remains open. However, MORSE [1974] gave a constructive proof of
+the following result:
+(4.7) DJEOREM. Assume that R is the polynomial ring R [a]. Then
+any reachable pair (F, G) satisfies (4.2).
+The above result can be applied in the study of stabilization of
+delay-differential systems. The main drawback in this application is
+the fact that the requirement that (F, G) be reachable is very restrictive;
+for instance, in the important special case in= 1, (F, g) is reachable only
+when det (g, Fg, ... , F" g) is a nonzero constant. Nonetheless it still
+illustrates the power of the present method, since a condition like
+(3.7) does not appear naturally in the study of delay systems while it
+suggests itself immediately in the context of systems over rings.
+<<PAGE-DIVIDER>>
+24 E. D, SONTAG
+We sketch now another approach to the stabilization of delay-
+differential systems, based on systems over rings. Let _Rja] denote
+the set of those rational functions p(cOlq(a) in a, wih real coeffi-
+cients, which satisfy the condition
+q (g) has no zeroes in f z e C, jzj
+It is easy to verify that RJor] is a ring with the usual operations
+on rational functions. Moreover, R,[al is a principal ideal domain:
+the g. c. d. of two elements p (a)lq ((7) and p (g)lq (a) can be found by
+calculating the g, c. d. of p (g) - q (or) and p (a) - q (a) and then dividing
+the result by q (or) - q (g).
+The polynomial ring 11[gl is a subring of Rjgj, Therefore a
+given pair (F,G) of 11[a]-matrices can be also viewed as a pair of
+R,[a]-matrices. It is not difficult to see that (4.7) depends only on
+11ral being a principal ideal domain. In fact, MORSE's algorithm can
+be easily extended to the case of R, [a] -matrices. Therefore if (F,G)
+is a pair reachable over 11,Ful there exists a matrix K, also over
+E, [a], such that det (z I - F + GK) = p (a, z), where p (e-', s) has all
+its zeroes with real part less than some negative number.
+We now interpret the meaning of our construction. Since the
+entries of K are rational functions p(g)lq(a) with q(O)+O, the
+transformation or-g` and multiplication of p(a-') and q(a-') by
+a suitable power of a lets us view K as a transfer function of a conti-
+nuous-time linear system built from delays rather than integrators. The
+restriction on the zeroes of q translates into stability of the system
+described by the transfer function K. Let
+x (t + 1) = Fx (t) + Gu (t)
+y (t) = Hx (t) + ju (t)
+be a minimal realization of K. This system is stable because of mini-
+mality and stability of K. Consider the closed-loop system obtained
+by controlling (F, G) with ("), L e. the system
+x (t) = (F (a) - G (g) 1) x (t) - G (a) Hv (t)
+v (t + 1) = Fv (t) + Gx (t).
+Then (**) can be represented as a neutral delay-differential equation
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVER COMMUTATIVE RINGS 25
+on x (.), with characteristic equation
+A (s) = q (e - s) " p (e s),
+where q (g) is a common denominator for K= K (a). A zero of A (s)
+is either a zero of q (e-') or of p (e-', s). Since q (a) has no roots with
+i9' _< 1, it follows that all roots of .6 (s) have real parts bounded from
+above by a negative number. Therefore (**) is uniformly asymptotically
+stable ().
+It is clear that the same reasoning would have applied if a re-
+presented a delay of A+1 second-s. It is not difficult to prove that the
+stabilization procedure we have just sketched is insensitive to small
+variations in the plant and controller parameters.
+The R, [a]-reachability condition under which the above algorithm
+applies can be equivalently expressed as follows. Let
+Yt	0	...	0	0	... 0
+0					
+-0	0	...	Y"	0	... 0-,
+be the Smith form of the polynomial matrix (G, FG, F"-' G). Then
+(F, G) is reachable over R, [g] provided that the Oi have no roots a
+with igl<l. By contrast, application of (4.7) would only be possible
+if all Oi are scalar. Note, however, that we have paid a price in wea-
+kening the reachability criteria, in that the feedback law is more com-
+plex than in the polynomial case. The necessity of including dynamic
+compensation, in what from the viewpoint of systems over rings is a
+state-feedback problem, is better understood once it is realized that
+x (t) does not represent the true state of equation (2.3) but rather a
+projection of the state. We are solving an output stabilization problem
+in disguise.
+Comparison with the conditions given by PANDOM [1974] and
+BHAT and Koivo [1976] shows that It. [or]-reachability is sufficient but
+not necessary for stabilization. The comparison is immediate once we
+(1) Professor R. E. KALMAN has pointed out to us the striking similarity
+between our constructions using R, [,71 and some aspects of BODE'S theory of
+feedback amplifiers. This remains a topic for future investigation.
+<<PAGE-DIVIDER>>
+26 E. D. SONTAG
+observe that, over any ring R, reachability is equivalent to right-
+invertibility of (z I-F, G). In particular, (F(u), G (a)) is R, [a]-rea-
+chable when
+rank (,u I - F (e-1), G (e -A)) = n
+for all ~ with nonnegative real part and for all p. The necessary condi-
+tions in the above references require only full rank for ~=,u. The
+procedure discussed here, on the other hand, is completely algorithmic,
+based on simple matrix calculations, and requires no functional-
+analytic tools.
+D. STATE - RECONSTRUCTION.
+When the state variables are not directly available, the design of
+regulators is achieved with the use of Kalman filters or << observers o.
+In other words, a system must be designed which must estimate the
+unknown state using the knowledge of inputs and outputs of the ori-
+ginal system. When trying to apply this design method to the case of
+delay systems (using observers which are themselves delay systems), the
+arguments of the classical case are easily generalized and the condition
+(F', H')= pole assignable appears naturally (see a discussion of the
+case over the real field in WONIJAM [1974, Chapter 3]). A similar
+situation holds for discrete-time systems over Z.
+The above examples suggest the study in general of the problem
+Z",
+of finding conditions under which a given input/output map will
+admit a free realization (F, G, H) for which both of the following condi-
+tions hold: (i) (F, G) is reachable and (ii) (F', H') is reachable (i. e.,
+the odual system>> (F', H', G') is reachable). These realizations are called
+split in SONTAG F 1977 b] . A particular case of a result proved there
+is the following
+(4.8) THEOREm. Let R be a principal-ideal domain. Suppose f is
+an inputloutput n7ap for which rank B(f)=n. Then the following
+statements are equivalent:
+(i) f admits a split realization.
+(ii) The greatest common divisor of all the n-minors of
+A, ... A,,
+-An A2-1
+is a unit.
+<<PAGE-DIVIDER>>
+LINFAR SYSTEMS OVER COMMUTATIVE RINGS 27
+For instance, if R = Z, then f = (2, 2, ...) admits no split realiza-
+tions. Indeed, the canonical realization (1, 1, 2) does not satisfy
+1, 2) = reachable.
+When m=p=1, condition (ii) in (4.7) can be easily expressed in
+terms of the << transfer function >> p1q of f, where q is the lowest
+denominator of f over the quotient field 0. Let R (p, q) be the resultant
+of p, q (see LANG [1965, P. 135]). Then
+(4.9) f admits a split realization ifl R (p, q) is a unit.
+If an input/output map satisfies (4.8), the design of output com-
+pensators proceeds just as in the case of fields.
+5. Other Topics.
+Although the problems in Sections 3 and 4, especially the former,
+are those that have attracted most of the past research, results have
+been obtained also in other areas. Some of these results are direct
+generalizations (with essentially the same proofs) of facts known over
+fields. In other cases, the results arc kno\,,,n only for special rings, and
+in fact may not even be expressed in ternis of systems over rings, It is
+of course not possible to review here all such topics. We shall limit
+ourselves to making brief observations on three example: system
+decomposition, optimal control, and generalizations of known algebraic
+conditions.
+Results on series or parallet decompositions ~ la. Krohn-Rhodes
+correspond to decompositions of (state) modules, over R or R [z]
+respectively, as explained in EiLENBERG [1974, Ch. 16, Section 7].
+The lattcr purely algebraic problems are in general very difficult,
+except when very strong finiteness conditions are assumed on R (or
+on the state modules). Under such restrictive conditions a rather good
+theory exists and the results can be applied to the system-theoretic
+problem. In particular, decom positions can be obtained when the
+state-space is a finite abelian group (MATLUK and GILL [1971],
+JOHNSTON [1973]).
+The related topic of obtaining o canonical forms >> for system
+matrices is essentially unexplored, except in the scalar case, as mentio-
+ned in Section 4. C.
+The quadratic optimization problem for discretized partial diffe-
+rential equations was studied by BROCKETT and WILLEMS [1971,
+19741, WILLEMS [1971]. Their main result is that if the matrices
+defining the criterion correspond to operators in the ring over which
+<<PAGE-DIVIDER>>
+28 E. D. SONTAG
+the system is defined (i. e. are circulant or Toeplitz), then an optimal
+feedback law can be implemented using operators on the same ring
+(i. e. using a feedback matrix of the circulant or Toeplitz type).
+Moreover, a spectral factorization solution can be obtained via a facto-
+rization of polynomials with coefficients on the ring.
+Many algebraic criteria for finite-dimensional linear systems over
+fields can be easily generalized, giving in some cases new results and,
+in others, more concise expressions and elegant proofs of already known
+facts. Consider for example the question of pointwise or (~ Euclidean >>
+reachability for delay-differential systems, L e. the possibility of reaching
+every value x (t) e It", given zero initial conditions. The ring reacha.
+bility condition (3.7) is unrelated to this problem, as shown by the
+trivial example x (t) = u (t - 1). This system is clearly pointwise rea.
+chable, but (F, G) = (0, cr) does not satisfy (3.7).
+A more concrete definition of systems over rings is possible, howe-
+ver (SONTAG [1976, Section 7]). In this context a general result can
+be proved, which implies in particular that a delay-differential system
+x = Fx + Gu, where both F and G are matrices of polynomials in
+0*1, ... , a, (the ai denoting noncommensurable delays), is pointwise rea-
+chable if and only if
+there exists no real constant vector V such that V (G, FG,
+F -' G) = 0.
+Since a polynomial is zero if and only if each coefficient is, (*) can
+also be expressed (in a very involved way) as a rank condition on
+real matrices. In the latter form, some very special cases (r=1, only
+one delay on F, etc.) of this result were known before; see KIRILLOVA
+and CURAKOVA [19671. By reading the various proofs (and noticing
+the triviality of (*) once that the appropriate rings are introduced), the
+advantages of working with systems over rings, at least for this pro-
+blem, will be clear.
+APPENDIX I
+We give here proofs of (3.4) for Noetherian integral domains, of
+(3.6) for principal ideal domains. and of (3.5) for integrally closed
+domains which satisfy (3.4).
+<<PAGE-DIVIDER>>
+LTNEAR SYSTEMS OVFR COMMUTATIVE RJXGS 29
+It is not too difficult to prove that if Al is a finitely generated
+R-module and R is Noetherian then every subinodule of M is also fini-
+tely generated. (Since an idea] of R is in particular a submodule of the
+finitely generated R-module R, this last property is equivalent to the
+definition of Noetherian integral dornain). Similarly, if M admits a
+system of n generators and R is a principal-ideal domain then every
+submodule of M can be generated by at most n elements (see LANG
+[1965, pages 144 and 387]).
+Let L be an infinite matrix over R and let N be the R-module
+consisting of all R-linear combinations of the columns of L (seen as
+infinite vectors). Assume that rank L = n < -. Then there exist columns
+V11 ... I V11 which generate the 0-vector space spanned by the columns of
+L, where Q is the quotient field of R. Any other column v can then
+be written as 2:i (dild) vi, where d is the determinant of an n X n
+matrix of full rank obtained from the columns V1, --- , Vn by a choice of
+suitable rows, and where di is the determinant of the matrix obtained
+by replacing the column vi by the column v (Cramer's rule). Observe
+that by definition dieR for all i.
+Denote wi: vi, and let M be the R-module generated by
+ivi, w.. The previous discussion shows that every column v is an
+R-linear combination of ivi, ... , iv,,. Therefore N is a submodule of M.
+It follows that N is finitely generated if R is Noetherian, and N admits
+a basis of n generators if R is a principal-ideal domain.
+The above reasoning, along with (3.11), and applied to B
+proves (3.4) for Noetherian rings and (3.6) for principal-ideal domains.
+Explicit algorithms for the principal-ideal domain case can be easily
+given, based on algorithms For finding bases of modules. See for in-
+stance RoUCHALEAu and SONTAG [1977] or KAMEN [1975].
+Assume now that R is integrally closed and satisfies (3.4). We
+outline a proof of (3.5) along the lines of RoUCHALEAU [1972]. Let f
+be realizable over 0. By (3.4), there exists a realization (F, G, H) over
+R. Consider the set I (f) of all those polynomials z"+a,,-, z`+...+aD
+in 0 [z] for which ao, ... a~_, is a recursion for f. It is easily verified
+that I (f) is a principal ideal, whose generator is the polynomial m (z)
+corresponding to the minimal recursion for f. By the Cayley-Hamilton
+theorem the characteristic polynomial ZF (z) is in I (f). So m (z) divides
+XF(z). By BoURBAKI [Alg6bre Commutative, V. 1, 3, Prop. 11],
+m (z) is in R [z], as wanted.
+<<PAGE-DIVIDER>>
+30 r. D. SONTAG
+APPENDIX 2
+We review here some elementary algebraic notions. The reader
+may find details in any modern algebra book; for instance MACLANE
+and BIRKHOFF [19671.
+A ring R (with identity) is a set, together with two binary opera-
+tions (x,y)F->x+y and (x,y)~-4xy, and two distinguished elements
+0, 1, such that:
+a) (R, +, 0) is an abelian group (i. e. addition is commutative,
+associative,. 0 is the neutral element and every element x has an addi-
+tive inverse -x);
+b) (xy) z=x (yz) for all X, Y, Z;
+c) lx=xl=x for all x;
+d) x (y+z) =xy+xz and (y+z) x=yx+zx for all x, y, z,
+Example: the integers Z with their usual addition and multipli-
+cation.
+R is commutative when x *v=yx for all x,y. All rings considered
+in this paper are commutative. I CR is an ideal of R iff G) I is closed
+tinder addition, and (ii) for any r in R and a in I, ra is in I (e. g.,
+the even integers form an ideal in Z
+A commutative ring R is
+- an integral domain iff xv::--O implies x=O or y=0 (e. g., Z
+is an integral domain; instead, the ring of residues modulo 4 is not
+an integral domain since 2 by 2=0 modulo 4, but 2+0);
+- a field iff for each x+O there exists a y in R such that xy=1
+(then y is unique and is denoted x-');
+- Noetherian iff every ideal I of R is finitely generated, i. e.
+there exist a,, ... , a, in I (n depending on I) such that every b in I
+admits an expression b = r, a, +... + r,, a. for some ri in R. (<< Noethe-
+rian >> is a very weak restriction on commutative rings - but very
+strong otherwise - ; in fact every commutative ring which has appea-
+red until now in system theory is Noetherian);
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS ONTIZ COMMUTATIVE RINGS 31
+a principal-ideal domain iff every ideal I is principal (n= I
+above, for all I); this is eqLiivalent to requiring Noetherian + every
+pair of elements a,, a2 has a greatest common divisor which can be
+expressed as an R-combination of al,a2.
+Let R be an inte-ral domain. Consider the set of all fractions
+r1s, r, s in R, s+0, subject to the equivalence relation: rls=rllsl if
+rsi=ri s. When such fractions are added and multiplied in the obvious
+way, one obtains a field 0 (R), the quotient field of R, which contains
+R when the latter is identified with the fractions r1l. For instance,
+Q ( Z ) = rational numbers; if R: = k [Xi, ... , X,] is the ring of all
+polynomials in the indeterminates Xi, ... , X, with coefficients in a
+field k, then 0 (R) is the field of all rational functions in XI, , X,.
+A map J: R --> S between two rings R, S is a ring-homomorphism
+iff f preserves addition and multiplication and f (1) = 1. Let I be an
+ideal of R; the residue ring R11 is the set of equivalence classes [r] ,
+r in R, where [r] = [s] iff r - s belongs to I, with operations
+[r] -ñ: [s] = [r_~:s], and [0], [1] as neutral element and identity. The
+canonical map R -> RII: r F-> [r] is a ring homomorphism. An ideal
+is maximal iff RII is a field.
+The integral domain R is integrally closed iff any q in 0 (R)
+which satisfies an equation
+Z17+a, I z"- '+...+ao=O, all ai in R,
+is already in R. Examples: Z , k [Xi,... , X,] for any field k and inte-
+ger s.
+An R-module M is a vector space in which the scalars belong to
+a ring. So M is an abel ian group equipped with an operation R X M ->
+---> M: (r, m) ~-> rin which satisfies, for all r, ri, r2 in R and M, MI, M2
+in M,
+a) Im=m;
+b) r(M1+M2)=rm1+rm2;
+c) (r, + r2) m = ri in + r2 in;
+d) (ri r2) in = ri (1'2 M) -
+Example: an ideal of R is an R-module. The elements mi__m,
+of M generate M iff every in in M can be expressed as in = rim, +...
+... + r, in, for some ri in R. If such mi, ... , m, exist for some s, M is
+<<PAGE-DIVIDER>>
+32 E. 1). SONTAG
+finitely generated. A (finite) basis for Al is a generating set nil,
+such that, for each in, the ri are unique. Al is (finitely generated) free
+if M has a basis. A map L: M-->,kl between two R-modules is (R)-linear
+or an R-honioniorphism iff L (r, nil + r2 1112) = rl L (nil) + r2 L (ni2) for all
+ri in R, mi in Al. An invertible linear map is an isomorphism.
+A free module M is always isomorphic to a module of the type
+K', where R': = column vectors over R with coordinatewise addition
+and with r (r,, ... , rX: = (rri, ... , rr,)'. Let Rx-1 denote the set of
+tXs matrices with entries in R, A linear map L: R'-),R' can be
+represented uniquely by a matrix L in RIX, whose columns are given by
+where ei is the vector whose only nonzero entry is a
+1 in the i-th position. Conversely, each matrix in R'XI defines a
+linear map R'--->R'. We shall therefore speak interchangeably about
+linear maps Rs -> R' and matrices in R'X1
+REFERENCES
+H. C. ANSELL
+[1964] << On certain two-variable general izations of circuit theory, with ap-
+plications to networkb of trasmission lines and lumped reactances
+IEEE Trans. Circuit Theory, CT - If: 214-223.
+K. P. M. BHAT and H. N. Koivo
+[1976] oModal characterizations of controllability and observability for time
+delay systems>>, to appear.
+N. BoURBAKI
+[19611 Alg~bre Commutative, Chalo. 1: Modules Plats, et Chap. 2: Localisation,
+Hermann.
+R. BROCKETT and J. L. WILLEMS
+[1971] (<Least squares optimization for stationary linear partial difference
+equations)>, IFAC Symposium on the Control of Distributed Parameter
+Systems, Banff, Canada.
+[1974] <<Discretized partial differential equations: examples of control systems
+defined on modules)>, Automatica, 10: 507-515.
+R. W. BROCKFTT and A. S. WILLSKY
+[1972] oFinite group homomorphic sequential systems>>, IEEE Trans. on
+Automatic Control, AC-17: 483-490.
+P. J, CAHEN and J. L. CHABERT
+[1972] <<06ments quasi-entiers et extensions de Fatou>>, Queen's Math. Pre-
+print 22, Queen's University. Kingston, Ontario.
+<<PAGE-DIVIDER>>
+LINEAR SYSTEMS OVI.R COMMUTAIWE RINGS 33
+L. CHABERT
+L1972] (<Anneaux de Falou>>, Enscigncment Math., 18: 141-144.
+S. EILENBERG
+[1974] Automata, Languages, and Mac.1iines, Vol. A, Academic Press.
+P. FATOU
+119061 <(S6ries trigonorn6triques ct s6ries de Taylor>>, Acta Math., 30: 335-400.
+M. FLIESS
+[1972] oSur certaines familles de s6ries formelles>), Th6se de Doctorat d'Etat,
+Universitd Paris VII.
+[1973J ((Sur la rdalization des syst~ines dynamiques bilin6aireso, C.R. Acad.
+Sci. Paris, 277, A: 923-926.
+[1974] <(Matrices de Hankelo, J. Math. PUres Appl. 53:197-224
+M. HEYMANN
+[19681 ((Comments on ' Pole Assignment in Multi-input Controllable Linear
+Systems'>>, IEEE Trans. Automatic Control, AC-13: 748-749.
+R. JOHNSTON
+[1973] <<Linear systems over various rings>>, Ph D. dissertation, M.I.T.
+R. E. KALMAN
+[1968A' Lectures on Controllability and Observability, CIME Summer Course
+1968; Cremonese, Roina, 1969.
+R. E. KALMAN, P. L. FALB and M. A. ARBIB
+[1969] Topics in Mathematical System Theory, McGraw-Hill.
+E. KAMLN
+1975] o On an algebraic theory of systems defined by convolution operators o,
+Math. System Theory, 9: 57-74.
+[1976] <<A new algebraic approach to linear time-varying systems)), to appear.
+F. M. KIRILLOVA and S. V. ~URAKOVA
+11976] oOn the problem of controllability of linear systems with aftereffect>),
+Differencial'nye Uravnenija, 3: 436-443.
+S. LANG
+[1965] Algebra, Addison-Wesley.
+S. NIACLANE and G. BIRKHOFF
+119671 Algebra, MacMillan.
+M. M. MATLUK and A. GILL
+1971 j << Linear sequential circuits over rings >>, Proc. Internat'l IEEE Conf.
+on Systems, Networks, and Computers, Vol. 1.
+S. MITTER and R. FOULKES
+[19711 <~ Controllability and pole assignment for discrete-time linear systems
+defined over arbitrary fields>>, SIAM J. Control, 9: 1-7.
+A. S. MORSE
+[19741 <<Ring models for delay-differential systems)>, Proc. IFAC Symp. on
+Multivariable Technological Systems, Man~~ester, U.K., pp. 56.1-56.7.
+<<PAGE-DIVIDER>>
+34 E. 1). SONTAG
+R. W. NEWCOMB
+[1966] <<0n the realization of multivariable transfer functions>>, Research
+Report EERL 58, Cornell.
+L. PANDOLF1
+[1974] ((On feedback stabilization of functional differential equationso, Re-
+port 1974/75-8, University of Florence, Italy.
+Y. RouCHALEAU
+[1972] v Linear, discrete time, finite din)-crisional dynamical systems over some
+classes of commutative rings>>, Ph. D. dissertation, Stanford.
+Y. RoUCHALEAU and E. D. SONTAG
+[1977] oMinimal realizations of systems over rings>>, to appear.
+Y. RouCHALEAu and B. F. WYMAN
+1975] << Linear dynamical systems over integral domainso, J. Comp. Syst.
+Sci., 9: 129-142.
+Y. RoUCHALFAu, B. F. WYMAN, and R. E. KALMAN
+[1972] vAlgebraic structure of linear dynamical systems. 111. Realization theory
+over a commutative ring)>, Proc. Not. Acad. Sch (USA), 69:3404-3406.
+M, P. SCHUTZENBERGER
+[1961] ((On the definition of a family of automatao, Info. and Control, 4:
+245-270.
+E. D. SONTAG
+1975] o On certain questions of rationality and decidability o, J. Comp,
+Syst. Sci., 11: 375-381.
+[1976] ((On linear systems and noncommutative rings>>, Math. System Theory,
+9 4: 327-344.
+[1977a] <<A note on matrix factorization over commutative rings>>, to appear.
+[1977 b] o On split realizations of systems over rings >>, to appear,
+E. D. SONTAG and Y. RoUCHALIFAU
+1976] <<Sur les anneaux de Fatou forts>>, C. R. Acad. Sci. Paris, to appear.
+L. WILLEMS
+[1971] o Optimal control of a uniform string of moving vehicles >>, Ricerche
+di Automatica, 2: 184-192.
+W. M. WONHAM
+[1976] << On pole assignment in multi-input controllable linear systems o, IEEE
+Trans. on Automatic Control, AC - 12: 660-665.
+[1974] Linear Multivariable Control, A Geometric Approach, Springer Lecture
+Notes in Economics and Mathematical Systems.
+D. C. YOULA
+[1968] << The synthesis of networks containing lumped and distributed elements,
+Part I o, Network and Switching Theory, 11: 73-133.

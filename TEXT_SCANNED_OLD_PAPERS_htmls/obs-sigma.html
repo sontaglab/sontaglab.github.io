@@ -1,0 +1,2453 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/obs-sigma.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/obs-sigma.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "formatted-obs-sigma.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 0
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Dvi file name: "formatted-obs-sigma.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 0
+
+
+Report SYCON-92-07rev STATE OBSERVABILITY IN RECURRENT NEURAL NETWORKS
+
+Francesca Albertini
+
+\Lambda 
+
+Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+E-mail: albertin@pdmat1.unipd.it,sontag@hilbert.rutgers.edu
+
+ABSTRACT We obtain a characterization of observability for a class of nonlinear systems which appear in neural networks research.
+
+Keywords: Recurrent neural networks, observability. This research was supported in part by US Air Force Grant AFOSR-91-0346, and also by an INDAM (Istituto Nazionale di Alta Matematica Francesco Severi, Italy) fellowship.
+
+Rutgers Center for Systems and Control
+
+December 1992, rev May 1993
+
+\Lambda 
+
+Also: Universita' di Padova, Dipartimento di Matematica, Via Belzoni 7, 35100 Padova, Italy.Pass1: Page 1
+
+
+STATE OBSERVABILITY IN RECURRENT NEURAL NETWORKS
+
+y
+
+Francesca Albertini
+
+z
+
+Eduardo D. Sontag Department of Mathematics Rutgers University, New Brunswick, NJ 08903
+
+E-mail: albertin@hilbert.rutgers.edu, sontag@hilbert.rutgers.edu
+
+Key words: Recurrent neural networks, observability
+
+ABSTRACT We obtain a characterization of observability for a class of nonlinear systems which appear in neural networks research.
+
+1 Introduction Systems consisting of a large number of interconnected "neurons" evolving according to differ- ence (in discrete-time) or differential (in continuous-time) equations have attracted considerable attention lately; see for instance the material on "recurrent nets" in the textbook [4]. The basic models considered are those in which the dynamics take one of the following two forms, in dis- crete or continuous time (to simplify notations, we drop time arguments t, and use superscripts "+" and "\Delta " to indicate time-shift and time-derivative, respectively):
+
+x
+
++
+
+(or .x) = ~oe(Ax + Bu)
+
+y = Cx ;
+
+(1)
+
+where A, B, and C are respectively real matrices of sizes n\Theta n, n\Theta m, and p\Theta n, and ~oe indicates the application of a function
+
+oe : IR ! IR
+
+to each coordinate of an n-vector, ~oe(x
+
+1
+
+; : : : ; x
+
+n
+
+) = (oe(x
+
+1
+
+); : : : ; oe(x
+
+n
+
+)). See Figure 1 for a block
+
+diagram, where \Delta  indicates either a unit delay or integration. The complete model is specified
+
+u
+
+-
+
+B
+
+-
+
+h
+
++
+
+-
+
+~oe
+
+-
+
+\Delta 
+
+-
+
+C
+
+-
+
+y x
+
+r
+
+oe A
+
+6
+
+Figure 1: Block Diagram of Recurrent Net once that oe and the triple (A; B; C) are given. (In continuous time, one needs to assume also that oe is at least locally Lipschitz, so that existence and local uniqueness of the differential equation holds.)
+
+y
+
+This research was supported in part by US Air Force Grant AFOSR-91-0343, and in part by an INDAM
+
+fellowship.
+
+z
+
+Also: Universita' di Padova, Dipartimento di Matematica, Via Belzoni 7, 35100 Padova, Italy.
+
+1Pass1: Page 2
+
+
+Many questions, mirroring those for linear systems (for which oe is the identity) can be posed. In the recent work [1], we explored realization questions, and in particular the fact that all the entries of the matrices A, B, and C can be recovered (up to a small number of symmetries) from the zero-initial state input/output behavior, assuming suitable minimality assumptions, and as long as oe is nonlinear enough. This is somewhat surprising, since for the linear case one can only recover the parameters up to basis changes, and it is reminiscent of old work of Rugh and coworkers, as well as Boyd and Chua --see for instance [5] and [3]-- on uniqueness of interconnections containing nonlinearities. (The paper [2] explains the relation between those more classical facts and the result in [1]).
+
+In this paper, we look at questions of observability, that is, state distinguishability for a known system, as opposed to determination of the systems parameters with a known initial state. Our main result is that observability can be characterized, if one assumes certain condi- tions on the nonlinearity and on the system, in a manner very analogous to that of the linear case. Recall that for the latter, observability is equivalent to the requirement that there not be any nontrivial A-invariant subspace included in the kernel of C. We show that the result generalizes in a natural manner, except that one now needs to restrict attention to certain special "coordinate" spaces.
+
+The paper is organized as follows. We first state precise definitions and results, then prove the results, and in the last sections we compare with linear systems and give some further remarks.
+
+2 Statement of Main Result The function oe will be assumed to satisfy the following independence property ("IP" from now on): Given any positive integer l, any nonzero real numbers b
+
+1
+
+; : : : ; b
+
+l
+
+, and any real numbers
+
+fi
+
+1
+
+; : : : ; fi
+
+l
+
+such that
+
+(b
+
+i
+
+; fi
+
+i
+
+) 6= \Sigma (b
+
+j
+
+; fi
+
+j
+
+) 8i 6= j ;
+
+the functions
+
+1 ; oe(b
+
+1
+
+u + fi
+
+1
+
+) ; : : : ; oe(b
+
+l
+
+u + fi
+
+l
+
+)
+
+are linearly independent; that is:
+
+c
+
+0
+
++
+
+l X
+
+i=1
+
+c
+
+i
+
+oe(b
+
+i
+
+u + fi
+
+i
+
+) = 0 8u 2 IR ) c
+
+0
+
+= c
+
+1
+
+= : : : = c
+
+l
+
+= 0 :
+
+The following result is from [2], and it provides sufficient conditions for a given function oe to satisfy property IP; these conditions are weak enough to allow inclusion of most examples of interest in neural networks.
+
+Fact 1 Assume that oe is a real-analytic function, and it extends to an analytic function oe : C ! C defined on a subset D ` C of the form:
+
+D = fz j jIm zj ^ *g n fz
+
+0
+
+; _z
+
+0
+
+g
+
+for some * ? 0, where Im z
+
+0
+
+= * and z
+
+0
+
+and _z
+
+0
+
+are singularities, that is, there is a sequence
+
+z
+
+n
+
+! z
+
+0
+
+so that joe(z
+
+n
+
+)j ! 1, and similarly for _z
+
+0
+
+. Then, oe satisfies property IP.
+
+2Pass1: Page 3
+
+
+Note that if oe has a meromorphic extension which has a unique pole of minimal positive real part, then it satisfies the above hypotheses. Most rational functions are like this; more interestingly, consider the main example in neural networks research, namely:
+
+oe(z) =
+
+1
+
+1 + e
+
+\Gamma z
+
+; (2)
+
+Here the set of poles is the set
+
+fkssi ; k oddg
+
+and one can take z
+
+0
+
+= ssi above. Another example which appears often in the context of
+
+neural nets is that of arctan(x). Here, integrating
+
+1
+
+1+z
+
+2
+
+, one can find a branch defined on the
+
+complement of fRe z = 0; jIm zj * 1g, so one may pick z
+
+0
+
+= i. See [2] for much more on
+
+property IP and related matters.
+
+We will provide results under a restriction on the class of systems (1). We state this condition next. For any matrix M , M
+
+i
+
+denotes the i-th row of M . Fix a pair of positive integers m; n.
+
+Let
+
+B
+
+n;m
+
+=
+
+(
+
+B 2 IR
+
+n\Theta m
+
+fi fi fi fi fi
+
+B
+
+i
+
+6= 0; for all i = 1; : : : ; n;
+
+and B
+
+i
+
+6= \Sigma B
+
+j
+
+for all i 6= j:
+
+)
+
+: (3)
+
+We drop the subscripts n; m when clear from the context. Observe that in the special case in which m = 1, a vector b is in B if and only if all its entries are nonzero and have different absolute values.
+
+We denote by S the set of all systems (1) for which B 2 B and oe satisfies the property IP. Let e
+
+i
+
+; i = 1; : : : ; n denote the canonical basis elements in IR
+
+n
+
+. A subspace V of the form
+
+V = span fe
+
+i
+
+1
+
+; : : : ; e
+
+i
+
+l
+
+g ; l ? 0 (4)
+
+will be called a coordinate subspace. Coordinate subspaces are exactly those that are invariant under all the projections
+
+ss
+
+i
+
+: IR
+
+n
+
+! IR
+
+n
+
+; ss
+
+i
+
+e
+
+j
+
+= ffi
+
+ij
+
+e
+
+i
+
+:
+
+Sums of coordinate subspaces are again of that form. Thus, for each pair of matrices (A; C) with A 2 IR
+
+n\Theta n
+
+and C 2 IR
+
+p\Theta n
+
+, there is a unique largest A-invariant coordinate subspace included
+
+in ker C; we denote this by O
+
+c
+
+(A; C). One way to compute O
+
+c
+
+= O
+
+c
+
+(A; C) is by the following
+
+recursive procedure:
+
+O
+
+0
+
+c
+
+:= ker C
+
+O
+
+k+1
+
+c
+
+:= O
+
+k
+
+c
+
+"
+
+A
+
+\Gamma 1
+
+O
+
+k
+
+c
+
+"
+
+ss
+
+\Gamma 1
+
+1
+
+O
+
+k
+
+c
+
+"
+
+: : :
+
+"
+
+ss
+
+\Gamma 1
+
+n
+
+O
+
+k
+
+c
+
+; k = 0; : : : ; n \Gamma  1
+
+O
+
+c
+
+:= O
+
+n
+
+c
+
+:
+
+(This can be implemented by an algorithm which employs a number of elementary algebraic operations which is polynomial on the size of n and m.)
+
+Recall that a system is observable if for each two distinct initial states there is some control sequence that gives a different output when the system is started at those states. This definition can be formalized in the obvious way both for discrete and continuous-time systems; see e.g. [7] for details, as well as for references to equivalences between this definition and "single experiment" definitions. We now state the main result (in fact, two different results, one for discrete and another one for continuous time, but the proofs, given in the next section, will be essentially the same for both cases).
+
+3Pass1: Page 4
+
+
+Theorem 1 Let \Sigma  2 S. Then \Sigma  is observable if and only if
+
+ker A
+
+T
+
+ker C = O
+
+c
+
+(A; C) = 0 :
+
+The condition O
+
+c
+
+(A; C) = 0 is equivalent to: no A-invariant coordinate subspace is included
+
+in ker C.
+
+Recall that the pair of matrices (A; C) is said to be observable -in the sense of classical linear systems theory; see e.g. [7], Section 5.2- if the largest A-invariant subspace included in ker C, denoted O(A; C), is zero. Since both O
+
+c
+
+(A; C) and ker A " ker C are subspaces of O(A; C), the
+
+following holds:
+
+Corollary 2.1 If \Sigma  2 S and the pair of matrices (A; C) is observable then \Sigma  is observable.
+
+A usual case is that in which A is invertible. In that case, ker A
+
+T
+
+ker C = 0. So in particular:
+
+Corollary 2.2 If \Sigma  2 S and det A 6= 0, then \Sigma  is observable if and only if O
+
+c
+
+(A; C) = 0.
+
+Remark 2.3 It is perhaps remarkable that this latter condition is formally the same as the observability condition (see e.g. [6]) that results for bilinear systems with transition matrices A; ss
+
+1
+
+; : : : ; ss
+
+n
+
+and output matrix C. (We thank Leonid Gurvits for pointing this out to us.)
+
+As any coordinate subspace has the form V =
+
+P
+
+j
+
+ss
+
+i
+
+j
+
+(IR
+
+n
+
+), for some finite set of indices
+
+i
+
+1
+
+; : : : ; i
+
+l
+
+, for such a space CV = 0 implies that Css
+
+i
+
+j
+
+= 0 for all j. In other words, if all columns
+
+of C are nonzero then O
+
+c
+
+= 0. Thus we have yet another sufficient condition:
+
+Corollary 2.4 If \Sigma  2 S, ker A
+
+T
+
+ker C = 0, and each column of C is nonzero, then \Sigma  is
+
+observable.
+
+3 Proof of Theorem 1. First we introduce some more notations and prove some intermediate technical results.
+
+For each matrix D, we denote by I
+
+D
+
+the following set:
+
+I
+
+D
+
+= f i j the i-th column of D is zero g = f i j Dss
+
+i
+
+= 0g : (5)
+
+Note that, for a coordinate subspace V as in Equation (4), V ` ker D if and only if all i
+
+j
+
+2 I
+
+D
+
+.
+
+Lemma 3.1 Assume that D 2 IR
+
+q\Theta n
+
+and B 2 B
+
+n;m
+
+, and that oe satisfies property IP. Then,
+
+the following two properties are equivalent, for each pair of vectors ,; i 2 IR
+
+n
+
+:
+
+1. ,
+
+j
+
+= i
+
+j
+
+for all j 62 I
+
+D
+
+.
+
+2. D~oe(, + Bu) = D~oe(i + Bu) for all u 2 IR
+
+m
+
+.
+
+4Pass1: Page 5
+
+
+Proof. Obviously, the first property implies the second one. Assume now that the second equality holds for some pair ,; i, but that for this pair, there exists some J 62 I
+
+D
+
+so that
+
+,
+
+J
+
+6= i
+
+J
+
+. Pick any row index i so that the entry D
+
+iJ
+
+6= 0. We will prove that
+
+n X
+
+j=1
+
+D
+
+ij
+
+oe(,
+
+j
+
++ (Bu)
+
+j
+
+) =
+
+n X
+
+j=1
+
+D
+
+ij
+
+oe(i
+
+j
+
++ (Bu)
+
+j
+
+) 8u 2 IR
+
+m
+
+) D
+
+ij
+
+= 0 8j = 1; : : : ; n ; (6)
+
+which will contradict the fact that D
+
+iJ
+
+6= 0. Since the terms for which ,
+
+j
+
+= i
+
+j
+
+can be cancelled
+
+out, we may assume without loss of generality that ,
+
+j
+
+6= i
+
+j
+
+for all j. (Not all terms cancel out
+
+in this manner, because by assumption ,
+
+J
+
+6= i
+
+J
+
+.)
+
+First note that since B 2 B, there must exist some _u 2 IR
+
+m
+
+such that:
+
+ffl B
+
+i
+
+_u = (B _u)
+
+i
+
+6= 0 for all i = 1; : : : ; n,
+
+ffl B
+
+i
+
+_u = (B _u)
+
+i
+
+6= \Sigma (B _u)
+
+j
+
+= \Sigma B
+
+j
+
+_u for all i 6= j.
+
+Indeed, each of the equations B
+
+i
+
+u = 0, (B
+
+i
+
++ B
+
+j
+
+)u = 0, and (B
+
+i
+
+\Gamma  B
+
+j
+
+)u = 0 defines a hyperplane
+
+in IR
+
+m
+
+, so we only need to avoid their (finite) union.
+
+Now pick elements u 2 IR
+
+m
+
+of the form u = _uv and let b
+
+i
+
+:= B
+
+i
+
+_u in Equation (6). We have
+
+that
+
+n X
+
+j=1
+
+D
+
+ij
+
+oe(b
+
+j
+
+v + ,
+
+j
+
+) \Gamma 
+
+n X
+
+j=1
+
+D
+
+ij
+
+oe(b
+
+j
+
+v + i
+
+j
+
+) = 0
+
+for all v 2 IR. Consider the functions oe(b
+
+j
+
+v + ,
+
+j
+
+) and oe(b
+
+j
+
+v + i
+
+j
+
+), for j = 1; : : : ; n. As the
+
+numbers b
+
+j
+
+are all nonzero and have distinct absolute values, and because oe satisfies property
+
+IP, the only way in which these functions could be linearly dependent is if (b
+
+j
+
+; ,
+
+j
+
+) = (b
+
+j
+
+; i
+
+j
+
+) for
+
+some j, that is, ,
+
+j
+
+= i
+
+j
+
+, contradicting the assumption that these are all distinct.
+
+Next we establish some intermediate results useful for proving Theorem 1.
+
+Lemma 3.2 If x is indistinguishable from z then (Ax)
+
+i
+
+= (Az)
+
+i
+
+for all i 62 I
+
+C
+
+Proof. We want to prove that, both for discrete-time and for continuous-time, x indistinguish- able from z implies:
+
+C~oe(Ax + Bu) = C~oe(Az + Bu) 8 u 2 IR
+
+m
+
+: (7)
+
+After this is shown, applying Lemma 3.1 with D = C, , = Ax, and i = Az to Equation (7) provides the desired result.
+
+In the discrete-time case, Equation (7) holds since each side of Equation (7) represents the output that one obtains by applying the one-step control u to the states x (left-hand-side) and z (right-hand-side).
+
+Consider now the continuous-time case. Then, for any control value u 2 IR
+
+m
+
+, let u(t) be the
+
+control function constantly equal to u. Denote by x(t) and z(t) the solutions of the differential equation (1) starting at x and z respectively. Since both of these solutions exist at least on a small enough interval [0; ffl), indistinguishability implies Cx(t) = Cz(t) for all t 2 [0; ffl). Taking derivatives in this equality, we conclude:
+
+C .x(t)j
+
+t=0
+
+= C .z(t)j
+
+t=0
+
+;
+
+which, in turn, says that also in this case Equation (7) holds.
+
+5Pass1: Page 6
+
+
+For any two pairs of states (x; z); (,; i) 2 IR
+
+n
+
+\Theta  IR
+
+n
+
+, we denote
+
+(x; z) ; (,; i) if, for the discrete-time case, there exists some input sequence u
+
+1
+
+; : : : ; u
+
+l
+
+, for some l * 0, such
+
+that, if we initialize the system at x (resp., at z), we reach , (resp., i). For the continuous- time case, we require that there exists some (measurable, essentially bounded) control function u(t) : [0; T ] ! IR
+
+m
+
+, such that, if we solve the differential equation (1) starting at x (resp z),
+
+then the solution is defined on the entire interval [0; T ], and at time T the state , (resp. i) is reached.
+
+Note that, with this notation, two states (x; z) 2 IR
+
+n
+
+\Theta  IR
+
+n
+
+are distinguishable with respect
+
+to the system (1), in the standard sense of control theory, if and only if there is some pair (,; i) 2 IR
+
+n
+
+such that (x; z) ; (,; i) and C, 6= Ci. Observability means that every pair
+
+(x; z) 2 IR
+
+n
+
+\Theta  IR
+
+n
+
+with x 6= z is distinguishable.
+
+Proposition 3.3 Let \Sigma  2 S, and pick any pair of states x; z 2 IR
+
+n
+
+. This pair is distinguishable
+
+if and only if: either x \Gamma  z 62 ker C or there exists a pair of states x
+
+0
+
+; z
+
+0
+
+so that (x; z) ; (x
+
+0
+
+; z
+
+0
+
+)
+
+and A
+
+j
+
+x
+
+0
+
+6= A
+
+j
+
+z
+
+0
+
+for some j 62 I
+
+C
+
+.
+
+Proof. Pick any pair of (distinct) states x; z. We first prove necessity.
+
+Case 1. Assume we are dealing with the discrete-time case. If x is distinguishable from z, then either Cx 6= Cz or Cx = Cz and there exists a pair (,; i) such that (x; z) ; (,; i), and C, 6= Ci. If the second condition holds, then let (x
+
+0
+
+; z
+
+0
+
+) and u 2 IR
+
+m
+
+be such that
+
+(x; z) ; (x
+
+0
+
+; z
+
+0
+
+) and ~oe(Ax
+
+0
+
++ Bu) = , and ~oe(Az
+
+0
+
++ Bu) = i (notice that such an u exists since
+
+necessarily (x; z) 6= (,; i)). Then, by Lemma 3.1 -applied with D = C, , = Ax
+
+0
+
+, and i = Az
+
+0
+
+-
+
+there is some j 62 I
+
+C
+
+such that A
+
+j
+
+x
+
+0
+
+6= A
+
+j
+
+z
+
+0
+
+.
+
+Case 2. Assume we are in the continuous-time case, and Cx = Cz. Then since the pair is distinguishable there exists, as before, a pair (,; i) such that (x; z) ; (,; i), and C, 6= Ci. Let u(\Delta ) : [0; T ] ! IR
+
+m
+
+be the control function which steers (x; z) to (,; i). (Notice that
+
+necessarily T ? 0.) We now prove by contradiction that there exists some t 2 (0; T ] such that A
+
+j
+
+x(t) 6= A
+
+j
+
+z(t) for some j 62 I
+
+C
+
+(where x(t) (resp. z(t)) denotes the solution of the differential
+
+equation (1) with control function u(t) and initial condition x (resp. z)). Assume that our conclusion does not hold, that is: for all t 2 (0; T ]:
+
+A
+
+j
+
+x(t) = A
+
+j
+
+z(t) 8 j 62 I
+
+C
+
+:
+
+This implies that ( .x(t))
+
+j
+
+= ( .z(t))
+
+j
+
+; for all j 62 I
+
+C
+
+. Thus, by integrating, we have
+
+(x(t))
+
+j
+
+= (z(t))
+
+j
+
++ (x
+
+j
+
+\Gamma  z
+
+j
+
+); 8 j 62 I
+
+C
+
+:
+
+Since for each j 2 I
+
+C
+
+the jth column of C is zero, and since Cx = Cz, the previous equation
+
+implies:
+
+Cx(t) = Cz(t) 8 t 2 [0; T ];
+
+which, in particular, says that C, = Cx(T ) = Cz(T ) = Ci, giving the desired contradiction.
+
+Conversely, assume that the property holds. If Cx 6= Cz, the states are distinguishable. Otherwise, from Lemma 3.2 we get that x
+
+0
+
+is distinguishable from z
+
+0
+
+, which, in turn, implies
+
+that x is distinguishable from z.
+
+6Pass1: Page 7
+
+
+For any subspace V of IR
+
+n
+
+, and any two x; z 2 IR
+
+n
+
+, we denote:
+
+x j z mod V if x \Gamma  z 2 V . Observe that, if V is a coordinate subspace, then:
+
+x j z mod V ) oe(x) j oe(z) mod V : (8)
+
+The next Lemma establishes a useful property of A-invariant coordinate subspaces. Notice that the conclusion for discrete-time is slightly different from the one for continuous-time.
+
+Lemma 3.4 Let V be an A-invariant coordinate subspace. Assume that x j z mod A
+
+\Gamma 1
+
+(V ).
+
+Pick any (,; i) such that (x; z) ; (,; i), then:
+
+1. for the discrete-time setting, we have , j i mod V , 2. for the continuous-time setting, we have , \Gamma  x j i \Gamma  z mod V . Proof. The discrete-time result is easy to see. If V is A-invariant and a coordinate subspace, then x j z mod A
+
+\Gamma 1
+
+(V ), implies Ax + Bu j Az + Bu mod V for all u 2 IR
+
+m
+
+. Thus arguing
+
+inductively on the length of controls, and using equation (8), our conclusion follows.
+
+Now we establish the continuous-time result. Without loss of generality, we may assume that there exists 1 ^ k ^ n such that:
+
+V = span f e
+
+1
+
+; : : : ; e
+
+k
+
+g:
+
+Let:
+
+A =
+
+
+
+A
+
+1
+
+A
+
+2
+
+A
+
+3
+
+A
+
+4
+
+!
+
+; B =
+
+
+
+B
+
+1
+
+B
+
+2
+
+!
+
+;
+
+with A
+
+1
+
+2 IR
+
+k\Theta k
+
+, A
+
+2
+
+2 IR
+
+k\Theta n\Gamma k
+
+, A
+
+3
+
+2 IR
+
+n\Gamma k\Theta k
+
+, A
+
+4
+
+2 IR
+
+n\Gamma k\Theta n\Gamma k
+
+, B
+
+1
+
+2 IR
+
+k\Theta m
+
+, and B
+
+2
+
+2 IR
+
+n\Gamma k\Theta m
+
+.
+
+Since V is A-invariant, we must have (Ae
+
+i
+
+)
+
+l
+
+= a
+
+li
+
+= 0 for all l 2 fk+1; : : : ; ng and i 2 f1; : : : ; kg.
+
+So A
+
+3
+
+= 0.
+
+For each y 2 IR
+
+n
+
+, we denote y = (y
+
+1
+
+; y
+
+2
+
+) where y
+
+1
+
+= (y
+
+1
+
+; : : : ; y
+
+k
+
+) and y
+
+2
+
+= (y
+
+k+1
+
+; : : : ; y
+
+n
+
+).
+
+With this notation we have y j ~y mod V if and only if y
+
+2
+
+= ~y
+
+2
+
+.
+
+Let p = Ax and q = Az. Since x j z mod A
+
+\Gamma 1
+
+(V ), we have p
+
+2
+
+= q
+
+2
+
+. Let u(t) : [0; T ] ! IR
+
+m
+
+be the control function that steers (x; z) to (,; i). Denote by x(t), z(t) the corresponding trajectory staring at x and z respectively, and let p(t) = Ax(t), q(t) = Az(t). Since A
+
+3
+
+= 0, we
+
+have:
+
+.p
+
+2
+
+(t) = A
+
+4
+
+~oe(p
+
+2
+
+(t) + B
+
+2
+
+u(t))
+
+.q
+
+2
+
+(t) = A
+
+4
+
+~oe(q
+
+2
+
+(t) + B
+
+2
+
+u(t)):
+
+Thus p
+
+2
+
+(t) and q
+
+2
+
+(t) are both solutions of the same differential equation; since q
+
+2
+
+(0) = p
+
+2
+
+(0),
+
+by uniqueness of solutions we may conclude p
+
+2
+
+(t) = q
+
+2
+
+(t) for all t 2 [0; T ]. This implies
+
+.x
+
+2
+
+(t) = .z
+
+2
+
+(t), for all t 2 [0; T ]. So, we have:
+
+x
+
+2
+
+(t) \Gamma  x
+
+2
+
+(0) =
+
+Z
+
+t
+
+0
+
+.x
+
+2
+
+(s)ds =
+
+Z
+
+t
+
+0
+
+.z
+
+2
+
+(s)ds = z
+
+2
+
+(t) \Gamma  z
+
+2
+
+(0):
+
+Evaluating the previous equation at t = T , we get:
+
+,
+
+2
+
+\Gamma  x
+
+2
+
+= i
+
+2
+
+\Gamma  z
+
+2
+
+;
+
+which implies that , \Gamma  x j i \Gamma  z mod V , as desired.
+
+7Pass1: Page 8
+
+
+Remark 3.5 Since V is A-invariant, then V ` A
+
+\Gamma 1
+
+(V ), thus, in particular, the previous
+
+Lemma applies when x j z mod V .
+
+Now we are ready to prove Theorem 1. We will in fact establish the following stronger fact:
+
+Two states x; z are indistinguishable if and only if
+
+x j z mod (A
+
+\Gamma 1
+
+O
+
+c
+
+T
+
+ker C) :
+
+(\Lambda )
+
+We first show the sufficiency of this condition. Assume that Cx = Cz and Ax j Az mod O
+
+c
+
+.
+
+Now we apply Lemma 3.4 to any pair (,; i) such that (x; z) ; (,; i). For the discrete-time case, we get that , \Gamma  i 2 O
+
+c
+
+` ker C, so C, = Ci. For the continuous-time case, we have that
+
+, \Gamma  i \Gamma  (x \Gamma  z) 2 O
+
+c
+
+` ker C, thus, also in this case, we conclude C(, \Gamma  i) = C(x \Gamma  z) = 0. So,
+
+in both cases, the chosen states cannot be distinguished.
+
+Now we show necessity of the condition. That is, we need to see that if x\Gamma z 62 A
+
+\Gamma 1
+
+O
+
+c
+
+T
+
+ker C
+
+then the states are distinguishable. We wish to apply the criterion in Proposition 3.3. We may assume that x \Gamma  z 2 ker C, since otherwise the states are obviously distinguishable. Since ker A " ker C ` A
+
+\Gamma 1
+
+O
+
+c
+
+T
+
+ker C, Cx = Cz implies that Ax 6= Az. So for some j it is the case
+
+that ss
+
+j
+
+Ax 6= ss
+
+j
+
+Az. Hence the following set is nonempty:
+
+J := fj j 9(x
+
+0
+
+; z
+
+0
+
+) [(x; z) ; (x
+
+0
+
+; z
+
+0
+
+) and x
+
+0
+
+\Gamma  z
+
+0
+
+62 ker ss
+
+j
+
+A]g :
+
+Consider the following coordinate subspace:
+
+V = span fe
+
+j
+
+j j 2 Jg:
+
+Note that by definition (case where (x; z) = (x
+
+0
+
+; z
+
+0
+
+)), A
+
+j
+
+x 6= A
+
+j
+
+z ) j 2 J; that is, Ax \Gamma  Az 2 V ,
+
+or equivalently, x \Gamma  z 2 A
+
+\Gamma 1
+
+V .
+
+If we prove that V is A-invariant, then it will follow that either CV 6= 0 or, by definition of O
+
+c
+
+, V is included in O
+
+c
+
+. In this latter case, we would have that x \Gamma  z 2 A
+
+\Gamma 1
+
+V ` A
+
+\Gamma 1
+
+O
+
+c
+
+,
+
+contradicting the choice of the pair x; z. Thus it must be the case that CV 6= 0, which is the same as saying that J must contain some element not in I
+
+C
+
+, and then Proposition 3.3 applies.
+
+Thus we only need to prove invariance.
+
+Pick an index j 2 J. By definition of J, we can write (x; z) ; (x
+
+0
+
+; z
+
+0
+
+) and A
+
+j
+
+x
+
+0
+
+6= A
+
+j
+
+z
+
+0
+
+.
+
+Writing , := Ax
+
+0
+
+and i := Az
+
+0
+
+, we have that
+
+,
+
+j
+
+6= i
+
+j
+
+: (9)
+
+We wish to prove that Ae
+
+j
+
+2 V , that is, we need to see that, for each given l 62 J, a
+
+lj
+
+=
+
+ss
+
+l
+
+(Ae
+
+j
+
+) = 0. So take one such l.
+
+Then, for the discrete-time case, since l 62 J, it must be the case that
+
+ss
+
+l
+
+A~oe(Ax
+
+0
+
++ Bu) = ss
+
+l
+
+A~oe(Az
+
+0
+
++ Bu) for all u 2 IR
+
+m
+
+: (10)
+
+Assume that a
+
+lj
+
+6= 0. Consider the matrix D = ss
+
+l
+
+A; since a
+
+lj
+
+6= 0, j 62 I
+
+D
+
+. We are then in the
+
+situation of Lemma 3.1; this results in a contradiction between Equations (10) and (9).
+
+For the continuous-time setting, we argue as follows. Let u 2 IR
+
+m
+
+, and denote by u(t) the
+
+control function constantly equal to u. Let x
+
+0
+
+(t) and z
+
+0
+
+(t) be the corresponding trajectories
+
+starting at x
+
+0
+
+and z
+
+0
+
+respectively; notice that these trajectories are defined at least on a small
+
+interval [0; ffl). Since l 62 J, we must have:
+
+(Ax(t))
+
+l
+
+= (Az(t))
+
+l
+
+8 t 2 [0; ffl):
+
+8Pass1: Page 9
+
+
+By taking the derivative with respect to t in the previous equation, and evaluating at t = 0 we get that again equation (10) holds. Thus now we conclude as before.
+
+Now it remains to show that condition (*) implies Theorem 1. By the definition of observ- ability, it is enough to see that the following two conditions are equivalent:
+
+A
+
+\Gamma 1
+
+O
+
+c
+
+"
+
+ker C = 0 ; (11)
+
+ker A
+
+"
+
+ker C = O
+
+c
+
+= 0 : (12)
+
+Since O
+
+c
+
+is A-invariant, we have:
+
+O
+
+c
+
+` A
+
+\Gamma 1
+
+O
+
+c
+
+"
+
+ker C:
+
+Since also ker A " ker C ` A
+
+\Gamma 1
+
+O
+
+c
+
+T
+
+ker C, it is clear that (11) implies (12). Moreover, if (12)
+
+holds, then A
+
+\Gamma 1
+
+O
+
+c
+
+= ker A, thus also the converse holds.
+
+4 Some Examples It is interesting to notice that the observability conditions found in Theorem 1, namely:
+
+ker A
+
+"
+
+ker C = O
+
+c
+
+(A; C) = 0 ;
+
+are necessary for the observability of any system of type (1), even if it does not belong to the class S. However, as soon as a particular system \Sigma  is not in S, the previous conditions are not longer sufficient.
+
+In this section, we provide two examples which show that the assumption that the function oe satisfies Property IP, is essential to conclude Theorem 1. To see that also the assumption B 2 B
+
+n;m
+
+is needed, see Examples 5.1 and 5.2.
+
+Example 4.1 Let oe(\Delta ) be any periodic smooth function of period T ; clearly such a function does not satisfy property IP. Consider the following system, with n = 2 and p = m = 1:
+
+x
+
++
+
+(or .x) = ~oe(x + bu)
+
+y = x
+
+1
+
+\Gamma  x
+
+2
+
+;
+
+where b is any vector in B
+
+2;1
+
+.
+
+These systems satisfy all our observability conditions -except for the fact that oe does not have property IP- but they are not observable. Indeed, we consider _x = (T; T ). Then C _x = 0, and, since oe is periodic of period T , it is easy to see that both for the discrete-time, and for the continuous-time cases, _x is indistinguishable from 0.
+
+Example 4.2 Assume that oe(x) = x
+
+2
+
+, which again does not satisfy property IP. Consider
+
+first the discrete-time system, with this function oe, n = 2, m = p = 1, and matrices A, B, and C as follows:
+
+A =
+
+
+
+2 0
+
+0 1
+
+!
+
+B = (1; 2) C = (\Gamma 4; 1)
+
+9Pass1: Page 10
+
+
+Notice that also this system satisfies all our observability conditions except for the property IP, and it is not observable. To show this last fact, we argue as follows. Let ff be any real number, and consider the state x
+
+ff
+
+= (ff; 4ff). We claim that, with the obvious notation,
+
+x
+
++
+
+(u) = (ff
+
+0
+
+; 4ff
+
+0
+
+) for some ff
+
+0
+
+2 IR :
+
+Notice that if this property holds, then the system is not observable since all these states are in ker C. We have:
+
+4x
+
++
+
+1
+
+(u) = 4(2ff + u)
+
+2
+
+= (4ff + 2u)
+
+2
+
+= x
+
++
+
+2
+
+(u):
+
+Thus our claim holds with ff
+
+0
+
+= (2ff + u)
+
+2
+
+.
+
+Let's consider now the same model in continuous-time. It is possible to prove that also this continuous-time system is not observable. Fix, as before, a state of the type x
+
+ff
+
+= (ff; 4ff),
+
+which is in ker C. Then it is easy to see that, if u(t) is a control function, and we denote by x(t) = (x
+
+1
+
+(t); x
+
+2
+
+(t)) the corresponding trajectory starting at x
+
+ff
+
+, then x
+
+2
+
+(t) = 4x
+
+1
+
+(t) for all t.
+
+5 Some Comparisons with Linear Systems Corollary 2.1 showed that, if B 2 B, observability of the pair (A; C) implies that the system of interest is observable. But the converse is not true. For an example, consider any system in which each column of C is nonzero but A is a nonsingular diagonal matrix, such as A = I. In this case, the pair (A; C) is not observable (if n ? 1 and ker C 6= 0), but, from Corollary 2.4, we have that, if B 2 B, the system is observable.
+
+On the other hand, observability of the pair (A; C) is no longer sufficient if one does not assume B 2 B. To illustrate this point, consider the following two examples, the first in discrete-time and the second in continuous-time.
+
+Example 5.1 Pick any two nonzero real values x
+
+1
+
+; x
+
+2
+
+in the image of oe such that:
+
+x
+
+1
+
+oe
+
+\Gamma 1
+
+(x
+
+2
+
+) 6= x
+
+2
+
+oe
+
+\Gamma 1
+
+(x
+
+1
+
+) : (13)
+
+Such values always exist for nonlinear oe. Consider the discrete-time system with n = 2, p = 1, and B = 0:
+
+A =
+
+
+
+oe
+
+\Gamma 1
+
+(x
+
+1
+
+)
+
+x
+
+1
+
+0
+
+0
+
+oe
+
+\Gamma 1
+
+(x
+
+2
+
+)
+
+x
+
+2
+
+!
+
+C = (x
+
+2
+
+; \Gamma x
+
+1
+
+)
+
+Given (13) it is easy to see that the pair (A; C) is observable; however the nonlinear system is not. In fact, the state x = (x
+
+1
+
+; x
+
+2
+
+) is an equilibrium state and Cx = 0, so it is indistinguishable
+
+from zero.
+
+Example 5.2 Assume that oe is a smooth Lipschitz function, which satisfies property IP and such that oe(0) = oe(_x) = 0. Pick any two nonzero distinct real values x
+
+1
+
+; x
+
+2
+
+, and consider the
+
+continuous-time system with n = 2, p = 1, and B = 0:
+
+A =
+
+
+
+_x
+
+x
+
+1
+
+0
+
+0
+
+_x
+
+x
+
+2
+
+!
+
+C = (x
+
+2
+
+; \Gamma x
+
+1
+
+)
+
+Since x
+
+1
+
+6= x
+
+2
+
+, it is easy to see that the pair (A; C) is observable; however the nonlinear system is
+
+not. In fact, the state x = (x
+
+1
+
+; x
+
+2
+
+) is an equilibrium state and Cx = 0, so it is indistinguishable
+
+from zero.
+
+10Pass1: Page 11
+
+
+Of course, if one uses instead a B in B in these previous examples, then the systems become observable. This shows that observability may depend of the matrix B, which is a characteristic of nonlinear systems.
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "For neural networks, function determines form," Neural
+
+Networks, to appear. Summary in: "For neural networks, function determines form," Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 26-31.
+
+[2] Albertini, F., E.D. Sontag, and V. Maillot, "Uniqueness of weights for neural networks,"
+
+in Artificial Neural Networks with Applications in Speech and Vision (R. Mammone, ed.), Chapman and Hall, London, 1993, to appear.
+
+[3] Boyd, S., and L.O. Chua, "Uniqueness of circuits and systems containing one nonlinearity,"
+
+IEEE Trans. Automatic Control AC-30(1985): 674-681.
+
+[4] Hertz, J., A. Krogh, and R.G. Palmer, Introduction to the Theory of Neural Computation,
+
+Addison-Wesley, Redwood City, 1991.
+
+[5] Smith, W.W., and W.J. Rugh, "On the Structure of a Class of Nonlinear Systems," IEEE
+
+Trans. Automatic Control AC-19(1974): 701-706.
+
+[6] Sontag, E.D., "Realization theory of discrete-time nonlinear systems: Part I- The bounded
+
+case," IEEE Trans.Circuits and Syst., CAS-26(1979): 342-356.
+
+[7] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990.
+
+11</pre>
+</body>
+</html>

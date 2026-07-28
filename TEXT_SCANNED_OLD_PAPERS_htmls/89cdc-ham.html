@@ -1,0 +1,490 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89cdc-ham.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/89cdc-ham.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+REMARKS ON THE TIME-OPTIMAL CONTROL OF A CLASS OF
+
+HAMILTONIAN SYSTEMS\Lambda 
+
+Eduardo D. Sontag SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+ABSTRACT This paper introduces a subclass of Hamiltonian control systems motivated by mechanical models. Some problems of time-optimal control are studied, and results on singular trajectories are obtained.
+
+1 Introduction We deal here with time-optimal control and some other questions for multivariable systems for which a certain Hamiltonian structure is present. The main results characterize regions of the state space where singular trajectories cannot exist, and provide highorder conditions for optimality. This work was motivated by previous studies ([5], [6]) on robotic manipulators. Pursuing further the ideas expressed in [6], we identify a class of Hamiltonian systems which includes many mechanical models, particularly those in which the energy is at most quadratic in the momenta.
+
+This work is only preliminary, in that more questions are left open than are answered. We believe that the further study of the class of systems identified here, -or of some variant,- for instance in the direction of realization theory and algebraic properties, would be very fruitful and might be the "right" level of generality for many results on nonlinear mechanical systems (as opposed to dealing, for example, with the class of all Hamiltonian systems).
+
+2 A Class of Hamiltonian Systems The Appendix reviews some of the basic terminology about symplectic manifolds and Hamiltonian vector fields. We start here with the definition of Hamiltonian control system as in [4], but not introducing outputs. The systems that we consider are of the type
+
+.x(t) = f (x(t)) +
+
+mX
+
+i=1
+
+ui(t)gi(x(t)) (\Sigma )
+
+where f; g1; :::; gm are smooth vector fields on the n\Gamma dimensional manifold M . A control u(\Delta ) is a measurable locally essentially bounded function u : [0; T ] ! IRm. We will only
+
+\Lambda Proc. IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 217-221.
+
+1
+
+be interested in Hamiltonian systems. The system (\Sigma ) is called Hamiltonian if M is a symplectic manifold and there exist smooth functions
+
+H0; H1; \Delta  \Delta  \Delta  ; Hm : M ! IR so that the vector fields of \Sigma  are those associated to these functions:
+
+f = XH0 ; gi = XHi; i = 1::m :
+
+It may be of interest to weaken this definition and allow f to be only locally Hamiltonian as done in [4], or to consider what are sometimes called "Poisson systems" (see e.g. [3]). But we wish here to instead restrict this class further by imposing five conditions, the first four of which follow and the last of which will be given later. We assume from now on:
+
+(A1) 2m = n (A2) fHi; Hj g = 0 8 i; j * 1 (A3) dH1 ^ dH2 ^ \Delta  \Delta  \Delta  ^ dHm 6= 0 everywhere (A4) fHi; fHj ; fHk; H0ggg = 0 8 i; j; k * 1
+
+All the axioms are satisfied, for instance, when dealing with robotic manipulators for which each link can be separately controlled. Condition (3) can be dropped for a few of the results, but is essential otherwise; it corresponds to the requirement that each control act freely on one of the degrees of freedom of the system. It would be of great interest to study how far one can go without this assumption, which would allow studying failure modes.
+
+2.1 A natural gradation We introduce the following sets of smooth functions on M . Let Fk := 0 for k ! 0, and for k * 0:
+
+Fk := fF : M ! IR j ad k+1H F = 0g
+
+where H is the set of functions fHi; i = 1::mg, and where ad lHF is the linear span of the set of functions of the form
+
+ad a1 \Delta  \Delta  \Delta  ad alF
+
+over all possible sequences of elements a1; \Delta  \Delta  \Delta  ; al in H.
+
+Note that, directly from the definition of the Fk's, it follows that fFi; Fjg ` Fi+j for all i; j. This is because for each smooth functions F 2 Fi and G 2 Fj, and for each sequence a1; \Delta  \Delta  \Delta  ; ai+j+1 of elements of H, repeated applications of the Jacobi identity give that
+
+ad a1 \Delta  \Delta  \Delta  ad ai+j+1 fF; Gg
+
+2
+
+is a linear combination of terms of the form
+
+fad b1 \Delta  \Delta  \Delta  ad br F; ad c1 \Delta  \Delta  \Delta  ad csGg with the b1; \Delta  \Delta  \Delta  ; br; c1; \Delta  \Delta  \Delta  ; cs in H and r + s = i + j + 1. This last equality implies that either r ? i or s ? j, which in turn implies that each such term must vanish. Under the assumptions (A1) to (A4), one can in fact prove an inclusion in Fi+j\Gamma 1:
+
+Lemma 2.1 The following properties hold:
+
+1. 0 = \Delta  \Delta  \Delta  = F\Gamma 1 ` F0 ` F1 ` \Delta  \Delta  \Delta  2. Hi 2 F0; i = 1::m 3. H0 2 F2 4. fFi; Fjg ` Fi+j\Gamma 1 for all i; j. Proof. The first of this properties is immediate from the definition of the Fk's, while the second and third follow from (A2) and (A4) respectively. To prove the last property, note that by the Darboux/Lie Theorem and using property (A4), locally we may assume that each Hi = qi (in some set of canonical coordinates), which implies that Fk consists of those functions that can be expressed as polynomials of degree at most k on the pi's (and arbitrary on the other coordinates). From this, property (4) follows.
+
+Note that using canonical coordinates as in the above proof, property (A4) says that H0 is at most quadratic on the "generalized momenta".
+
+We now introduce
+
+E := Poisson algebra generated by Hi; i = 0::m : The algebra E completely characterizes the control theoretic properties of the system, since the associated vector fields do. If we now let
+
+Ei := Fi " E then E is graded in the same manner as the set of all functions, in the sense that all the properties in the above Lemma hold with El replaced for Fl.
+
+2.2 Strong Accesibility Condition Locally, each F 2 F0 is a smooth function of H1; \Delta  \Delta  \Delta  ; Hm,
+
+F (x) = h(H1(x); \Delta  \Delta  \Delta  ; Hm(x)) ; again by the characterization in terms of degree with respect to momenta. Thus, by (4) in the Lemma, also for each i; j * 1 it holds that fHi; fH0; Hjgg is a function of H1; \Delta  \Delta  \Delta  ; Hm.
+
+We let
+
+Aij := fHi; fH0; Hj gg
+
+and let A be the m by m matrix fAijg. The remaining axiom is:
+
+3
+
+(A5) rank A = m everywhere
+
+Note that, for mechanical systems, A is typically the inverse of the inertia matrix. Under this condition (which we assume from now on):
+
+Lemma 2.2 The following holds everywhere on M :
+
+dH1 ^ \Delta  \Delta  \Delta  ^ dHm ^ dfH0; H1g ^ \Delta  \Delta  \Delta  ^ dfH0; Hmg 6= 0
+
+Proof. In local canonical coordinates, we can write
+
+fH0; Hjg = bj(q) +
+
+mX
+
+i=1
+
+Aij(q)pi
+
+(for some functions bj) so when computing the expression in these coordinates there results
+
+(det A) dp1 ^ \Delta  \Delta  \Delta  ^ dpm ^ dq1 ^ \Delta  \Delta  \Delta  ^ dqm
+
+and the determinant is nonzero by hypothesis.
+
+Equivalently, the set of vector fields
+
+fg1; \Delta  \Delta  \Delta  ; gm; [f; g1]; \Delta  \Delta  \Delta  ; [f; gm]g forms a field of n-frames on M , which implies that the original system is strongly accessible.
+
+3 Time Optimal Control We now restrict controls to satisfy jui(t)j ^ 1 for all i; t. Other constraints sets could be used, in which case the material to follow would have to be modified accordingly.
+
+The time-optimal problem is: given states x1; x2, find a controlled trajectory that steers x1 to x2 in as small time as possible. A pair (u(\Delta ); x(\Delta )) of functions defined on some interval I = [0; T ] and satisfying the equations of \Sigma  on that interval, will be called an optimal trajectory if u is a control with jui(t)j ^ 1 for all i; t and for each other solution (u0(\Delta ); x0(\Delta )) on any interval [0; T 0] for which x(0) = x0(0) and x(T ) = x0(T 0) necessarily T 0 * T .
+
+Among the questions one wishes to understand for such problems are those dealing with the existence of bang-bang and/or singular optimal trajectories, the possibility of Fuller-like phenomena, and the feedback synthesis of controls. Lie-theoretic techniques have proved very useful, but mostly for single-input systems. Our goal here is to show how some conclusions can be drawn for multiple input systems if (A1)-(A5) are assumed.
+
+4
+
+3.1 Pontryagin's Maximum Principle In order to elegantly state the PMP, we introduce first the Hamiltonian extension (or lift) \Sigma \Lambda  of the system \Sigma  (see e.g. [4] for more details).
+
+The state space of \Sigma \Lambda  is T \Lambda M seen as symplectic manifold. Note that in our applications, M is itself a symplectic manifold, but for now we do not use that fact.
+
+With each vector field X on M one associates a Hamiltonian
+
+HX : T \Lambda M ! IR as follows:
+
+HX (*; x) := h*; X(x)i; x 2 M; * 2 T \Lambda x M
+
+and the notation (*0X)(x) is used instead of HX(*; x).
+
+When M happens to be itself a symplectic manifold and X; Y are Hamiltonian vector fields, X = XH ; Y = XK , and H; K : M ! IR are smooth, one has the formula
+
+f*0XH ; *0XKg = *0XfH;Kg (1) where the brackets on the left indicate Poisson product on T \Lambda M but in the right they indicate the Poisson bracket on M . In particular, given the vector fields f; g1; \Delta  \Delta  \Delta  ; gm defining \Sigma , we introduce the Hamiltonians
+
+' := *0f ; fli := *0gi; i = 1::m From (A2) and (1), it follows that
+
+ffli; flj g = 0 (2) for all i; j.
+
+Now the Hamiltonian extension of \Sigma  is defined as the control system
+
+., = f \Lambda (,) +
+
+mX
+
+i=1
+
+uig\Lambda i (,) (\Sigma \Lambda )
+
+where f \Lambda  (respectively, g\Lambda i ) is the Hamiltonian vector field associated to ' (respectively fli) under the symplectic structure of T \Lambda M .
+
+In local coordinates (x; *) for T \Lambda M , the equations of the Hamiltonian extension are the usual ones
+
+.x = f (x) +
+
+mX
+
+i=1
+
+uigi(x)
+
+.* = \Gamma (f +
+
+mX
+
+i=1
+
+uigi)0x* :
+
+Pontryagin's Maximum Principle (PMP) states that if (u(t); x(t)); t 2 I is an optimal trajectory then it must be an extremal, i.e. there exists an absolutely continuous curve , : I ! T \Lambda M so that for each t:
+
+,(t) = (x(t); p(t)) with p(t) 2 T \Lambda x(t)M , the pair ,; u satisfies the equations of \Sigma \Lambda , and the following properties hold:
+
+5
+
+1. p(t) 6= 0 for all t 2. for almost all t,
+
+maxj
+
+vij^1
+
+mX
+
+i=1
+
+vifli(t) =
+
+mX
+
+i=1
+
+ui(t)fli(t)
+
+3. ' + Pmi=1 uifli is constant and * 0 along the trajectory.
+
+4 Singular Trajectories Note that for each t and i for which fli(t) 6= 0, property (2) in the PMP implies that
+
+ui(t) = sign fli(t) : If the set of zeroes of fli is discrete in I, it follows that ui is piecewise constant, equal to \Sigma 1, with finitely many switchings. We say in that case that the control is ui-bang-bang. The worst case in this regard is when fli j 0 on I; we say then that the trajectory (x(\Delta ); u(\Delta )) is ui-singular. We now want to say something about singularity.
+
+If H is any Hamiltonian on M , we may consider the value ff(t) of the Hamiltonian *0XH evaluated along any trajectory of \Sigma \Lambda . A calculation shows that its derivative becomes
+
+.ff(t) = fff(t); '(t)g +
+
+mX
+
+i=1
+
+u(t)fff(t); fli(t)g (3)
+
+(bracket here is in T \Lambda M ), or equivalently, using equation (1),
+
+.ff(t) = *0XfH;H0g +
+
+mX
+
+i=1
+
+u(t)*0XfH;Hmg (4)
+
+where the right hand side functions are also evaluated along ,(\Delta ). In particular, taking H to be any of the Hi's, i * 1, and using (A2), there results
+
+.fli = *0XfHi;H0g = ffli; 'g (5) along any trajectory.
+
+Now observe that along an extremal trajectory and corresponding lift there cannot be any o/ where
+
+fl1(o/ ) = \Delta  \Delta  \Delta  = flm(o/ ) = ffl1; 'g(o/ ) = \Delta  \Delta  \Delta  fflm; 'g(o/ ) = 0 because the existence of a nonzero * 2 T \Lambda x(o/)M so that
+
+*0g1(x) = \Delta  \Delta  \Delta  = *0gm(x) = *0[f; g1](x) = \Delta  \Delta  \Delta  = *0[f; gm](x) = 0 would contradict Lemma (2.2).
+
+Proposition 4.1 There cannot be any optimal trajectory which is ui-singular for all i. Moreover, if for some i an extremal is uj-singular for all j 6= i, then ui is bang-bang.
+
+6
+
+Proof. If the result were false, there would exist some common accumulation point of zeroes of all flk's on the interval I. It follows from formula (5) that there is also a common zero of all the flk's as well as all the fflk; 'g's, contradicting what was proved above.
+
+5 m \Gamma  1 Singular Trajectories Now we ask what possibilities are there regarding trajectories for which m \Gamma  1 control coordinates are simultaneously singular. For notational simplicity, we will assume that these are the coordinates 1; \Delta  \Delta  \Delta  ; m \Gamma  1.
+
+Since fHi; fH0; Hjgg 2 F0, locally there are functions ffijk so that
+
+dAij = dfHi; fH0; Hj gg =
+
+mX
+
+k=1
+
+ffijkdHk 8 i; j * 1
+
+The same must then hold for the corresponding Hamiltonian vector fields, hence also after evaluating by any * 2 T \Lambda x M , so
+
+ffli; f'; fljgg =
+
+mX
+
+k=1
+
+ffijkflk
+
+for each i and j. By the Jacobi identity and (2), this is also the same as fflj ; f'; fligg.
+
+For any given extremal, we consider fli, for each fixed i. Since .fli = ffli; 'g along the extremal, this derivative is itself absolutely continuous and we can take a further derivative, which is almost everywhere equal to, using again formula (3):
+
+"fli = f'; f'; fligg +
+
+mX
+
+j=1f
+
+fli; f'; fljgguj(t)
+
+= f'; f'; fligg +
+
+mX
+
+k=1
+
+fiikflk
+
+where
+
+fiik(t) :=
+
+mX
+
+j=0
+
+ffikj(x(t))uj(t) :
+
+If the extremal is ui-singular for all i 6= m, then fl1 = \Delta  \Delta  \Delta  = flm\Gamma 1 j 0 on I, so
+
+f'; f'; fligg + fiimflm j 0 (6) for all i between 1 and m \Gamma  1, and still for such i,
+
+fli j f'; flig j 0 :
+
+Let Sm be that set (possibly empty) where
+
+dH0; \Delta  \Delta  \Delta  ; dHm; dfH0; H1g; \Delta  \Delta  \Delta  ; dfH0; Hm\Gamma 1g; \Delta  \Delta  \Delta  ;
+
+dfH0; fH0; H1gg; \Delta  \Delta  \Delta  ; dfH0; fH0; Hm\Gamma 1gg
+
+7
+
+span the cotangent space. So for x 2 S, and any nonzero * 2 T \Lambda x M ,
+
+'; fl1; \Delta  \Delta  \Delta  ; flm; f'; fl1g; \Delta  \Delta  \Delta  ; f'; flm\Gamma 1g; \Delta  \Delta  \Delta  ;
+
+f'; f'; fl1gg; \Delta  \Delta  \Delta  ; f'; f'; flm\Gamma 1gg
+
+cannot vanish simultaneously. Given any singular trajectory as above, and any o/ so that x(o/ ) 2 S, we claim that flm(o/ ) 6= 0. Indeed, if this were not the case then flm = 0 would imply by (6) that also all f'; f'; fligg vanish, contradicting the choice of the set Sm. We conclude:
+
+Proposition 5.1 For an extremal which is ui-singular, i = 1; :::; m \Gamma  1, necessarily the bang-bang control um is constant (has no switches) on Sm. 2
+
+Analogously one defines the sets Si interchanging the roles of i and m. Note that the definition involves 3m \Gamma  2 differentials in a space of dimension n = 2m, so we may expect that each set Si be large.
+
+Furthermore, one can typically say more about the singular controls while on this set, as follows. For k = 1::m let
+
+\Lambda k := (ffijk); i; j = 1 \Delta  \Delta  \Delta  ^k \Delta  \Delta  \Delta  m and
+
+Rk := Sk " fdet \Lambda k 6= 0g :
+
+While on the set Rk, the control um is constant, equal to either 1 or \Gamma 1. For each of these choices, and since flm is nonzero, equation (6) provides a nonsingular set of m \Gamma  1 linear equations for the m \Gamma  1 remaining controls, with matrix \Lambda . Substituting back into the Hamiltonian extension, this provides a set of simultaneous differential equations. From this we can conclude for example:
+
+Theorem 1 Assume that the system is real analytic (that is, the manifold M is analytic and all the Hamiltonians are). Then, for every a trajectory that is ui-singular for all i 6= k and such that x(t) 2 Rk for all t, it follows that u(\Delta ) is analytic as a function of time.
+
+In fact, in this case, one can find Riccati-type equations for controls, as discussed for manipulators in [5].
+
+It could be the case, of course, that everything degenerates. For instance, when det \Lambda k j 0 then Rk = ;. This can happen in turn if some row of \Lambda k, say the ith one, vanishes identically. In that case, however, it will follow from (6) that second derivatives also vanish identically, and this allows a third derivative condition to be imposed.
+
+8
+
+5.1 Example For a 2-link rotational manipulator (see equations in [6]), one computes (using a symbolic system):
+
+ffij1 j 0 8i; j
+
+(so \Lambda 1 j 0) and
+
+\Lambda 2 = \Delta 2 = ff112 = _(`2) sin 2`2
+
+as well as
+
+S2 = fx j *(`2)( .`1 + .`2) sin `2 = 0g
+
+for some everywhere negative functions _(`2); *(`2), where `1 and `2 are the joint angles. We conclude:
+
+There are no u2-singular extremals on an open dense set.
+
+This is a "degenerate case" in the discussion in the previous section. On the other hand, for k = 1 one has
+
+R2 = fx j `2 6= kss2 and .`1 + .`2 6= 0g and therefore
+
+For u1-singular trajectories, there are no switches on R2.
+
+Moreover, one can prove as in [5] that indeed there do exist such trajectories, through each point in R2.
+
+One can also apply higher-order tests for optimality, in order to eliminate singular trajectories which are not necessarily optimal. We illustrate this with the 2-link manipulator. Along trajectories that are u1-singular, we already know that u2 must be constant while on the large open set R2. Thus, we can reduce the problem to one for single-input systems, and the Legendre-Clebsch type conditions apply, namely
+
+ffl1; f'; fl1g * 0 must hold along optimal trajectories. But this equals fl2: det \Lambda 2 so we conclude:
+
+u2(t) = ae +1 if sin 2`2 ! 0,\Gamma 1 if sin 2`
+
+2 ? 0
+
+6 Comments Clearly there is a tremendous amount of work to be done even in the 2-link manipulator case, in determining optimal trajectories. But our goal was to illustrate that with extra structure, something of interest can be said in the multiple input case. More broadly, many questions other than optimal control can be studied for our subclass of Hamiltonian systems.
+
+9
+
+7 Appendix We review here some basic terminology regarding Hamiltonian systems. Our main references are [1] and [2]. A symplectic manifold consists of a differentiable manifold together with a closed (d!2 = 0) nondegenerate 2-form !2. This form induces a skew-symmetric pairing on the tangent bundle of M , which allows the identification of tangent vectors with one-forms. Under this identification, the set of exact differentials dH of smooth functions H : M ! IR is in one-to-one correspondence with the Hamiltonian vector fields. We denote by XH the vector field associated with the function or "Hamiltonian" H; observe that XH = XH0 if and only if H and H0 differ locally by a constant.
+
+The set of all Hamiltomian vector fields is a Lie subalgebra of the set of all vector fields on M with the standard Lie bracket. In fact,
+
+[XH ; XH0] = \Gamma XfH;H0g where fH; H0g denotes the Poisson bracket of the functions H and H0, defined by
+
+fH; H0g(x) := ddt jt=0H ietXH
+
+0 (x)j :
+
+This definition also implies that for all t where the flow etXH
+
+0 (x) is defined,
+
+d dtH ie
+
+tXH0 (x)j = fH ffi etXH0 ; H0g
+
+and also that
+
+dfH; H0g = fdH; dH0g
+
+(see [1], section II.3.3).
+
+The Poisson bracket satisfies the Jacobi identity:
+
+ad H fH0; H00g = fad H H0; H00g + fH0; ad H H00g ; where one denotes ad HK := fH; Kg.
+
+Darboux' Theorem says that locally about each x 2 M there is a choice of local "canonical" coordinates (p1; \Delta  \Delta  \Delta  ; pn; q1; \Delta  \Delta  \Delta  ; qn) for M (which must necessarily have even dimension) so that, in these coordinates,
+
+!2 = dp1 ^ dq1 + \Delta  \Delta  \Delta  + dpn ^ dqn : Given a Hamiltonian H, in canonical coordinates the equation .x = XH (x) takes the familiar form
+
+.p = @H@q .q = \Gamma  @H@p
+
+10
+
+and the Poisson bracket of H and H0 becomes
+
+fH; H0g(x) =
+
+nX
+
+i=1
+
+@H0
+
+@pi
+
+@H
+
+@qi \Gamma 
+
+@H0
+
+@qi
+
+@H
+
+@pi :
+
+A more general version of Darboux' Theorem can be obtained from a result due to Lie (see [1], Corollary II.5.3.31), and it says that if H1; \Delta  \Delta  \Delta  ; Hk are functions whose Hamiltonian flows commute, that is, so that fHi; Hj g = 0 for all i 6= j, and if their differentials dH1; \Delta  \Delta  \Delta  ; dHk are pointwise linearly independent, then, provided that 2k ^ dim M , there exist local coordinates as above so that Hi = qi, for i = 1; \Delta  \Delta  \Delta  ; k. We shall refer to this as the "Darboux-Lie Theorem".
+
+8 References
+
+1. Abraham, R. and J. E. Marsden, Foundations of Mechanics, second edition, Benjamin Cummings, Reading, 1978.
+
+2. Arnold, V.I., Mathematical Methods of Classical Mechanics, Springer-Verlag, New
+
+York, 1980.
+
+3. Jakubczyk, B., "Poisson structures and relations on vector fields and their Hamiltonians," Bull. Polish Acad Sci, Math 34(1986): 713-721.
+
+4. Crouch, P.E., and A.J. van der Schaft, Variational and Hamiltonian Control Systems, Springer-Verlag, New York, 1987.
+
+5. Sontag, E.D., and H.J. Sussmann, "Remarks on the time-optimal control of two-link
+
+manipulators," Proc. IEEE Conf. Dec. and Control, 1985, pp.1643-1652.
+
+6. Sontag, E.D. and H.J. Sussmann, "Time-optimal control of manipulators," Proc.
+
+IEEE Int.Conf.on Robotics and Automation, San Francisco, April 1986, pp. 1692- 1697.
+
+11</pre>
+</body>
+</html>

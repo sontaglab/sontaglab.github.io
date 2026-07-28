@@ -1,0 +1,192 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/90cdc.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/90cdc.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Nonlinear output feedback design for linear systems
+
+with saturating controls
+
+Eduardo D. Sontag\Lambda  Hector J. Sussmanny SYCON - Rutgers Center for Systems and Control Department of Mathematics, Rutgers University, New Brunswick, NJ 08903
+
+e-mail: sontag@hilbert.rutgers.edu, sussmann@hilbert.rutgers.edu
+
+Abstract This paper shows the existence of (nonlinear) smooth dynamic feedback stabilizers for linear time invariant systems under input constraints, assuming only that open-loop asymptotic controllability and detectability hold.
+
+1 Introduction The study of actuator saturation in linear control design has a long history; see for instance [1], in particular Chapter 12 on dual-mode regulators, and the references given there. The search for controllers of systems subject to such saturation can be seen as a problem in nonlinear control, and that is the point of view taken here. In particular, we look at questions of stabilization, an area that has witnessed a large amount of activity during the last few years (see for instance [6] for a survey and many bibliographical references). In this paper we provide a general result on smooth stabilizability under minimal (and clearly necessary) hypotheses.
+
+The systems that we deal with have the form
+
+.x = Ax + B `(u) (SYS) where A and B are n \Theta  n and n \Theta  m matrices respectively, and ` : IRm ! IRm is smooth, bounded, invertible in a neighborhood of the origin, has `(0) = 0, and is globally Lipschitz (for instance, the "squashing" function `(u) = (oe(u1); : : : ; oe(um))0, where oe is a "sigmoid" such as tanh u). One of our main results is:
+
+Theorem 1 For the system (SYS), the following two conditions are equivalent:
+
+1. There is a smooth feedback k : IRn ! IRm, k(0) =
+
+0, so that zero is a globally asymptotically stable state for the closed-loop system
+
+.x = Ax + B `(k(x)) : (CL)
+
+2. (SYS) is asymptotically null-controllable.
+
+\Lambda Research supported in part by US Air Force Grant AFOSR88-0235
+
+yResearch supported in part by N.S.F. Grant DMS-8902994.
+
+By asymptotic null-controllability we mean that every state of (SYS) can be driven asymptotically to zero using a bounded measurable control. This (obviously necessary) property is equivalent to the two requirements:
+
+(i) The pair (A; B) is stabilizable in the ordinary
+
+sense, and
+
+(ii) all eigenvalues of A have nonpositive real part.
+
+The equivalence follows from consideration of the associated linear system .x = Ax + Bu subject to constraints on control values; one needs that this system be asymptotically null-controllable using arbitrarily small controls. The theory of controllability of linear systems with bounded controls is well-studied; see for instance [3], [5], and references there, for the above characterization. (Note that there may be nontrivial Jordan blocks in A corresponding to critical eigenvalues, so the system .x = Ax may be unstable; this makes the problem more interesting.) We only look at global problems; local stabilization can always be achieved by the use of a linear control law.
+
+The result about stabilization of (SYS) is in turn a consequence of the following one for linear systems:
+
+Theorem 2 If the pair (A; B) is stabilizable and A has no eigenvalues with positive real part, then there exists for each " ? 0 a smooth feedback K : IRn ! IRm, K(0) = 0, such that K is globally Lipschitz, kK(x)k ! " for all x, and the closed-loop system
+
+.x = Ax + BK(x) has 0 as a globally asymptotically stable equilibrium.
+
+Now Theorem 1 for (SYS) follows from this by taking " small enough so that `\Gamma 1 is defined and smooth, and then using k(x) := `\Gamma 1(K(x)).
+
+We also consider dynamic stabilization using output feedback. Assume that only y = Cx can be used for the control of (SYS). It is reasonable then to introduce an observer
+
+.z = (A + LC)z + B`(u) \Gamma  Ly
+
+where L is picked so that A + LC is a Hurwitz matrix. Assuming detectability of the original system, this indeed provides an exponential observer. To complete the design, it is natural to feed
+
+u = k(z) rather than u = k(x). A problem arises, however, due to the nonlinearity in the control law, and the separation proof that works for linear systems fails to extend to the present situation. The problem turns out to be closely related to questions of "bounded-input bounded-output" stability surveyed in [6], and a theorem from [7] is needed to provide the final result:
+
+Theorem 3 Assume that (SYS) is asymptotically null-controllable and that the pair (A; C) is detectable. Then there exists a smooth k : IRn ! IRm, with k(0) = 0, and a p \Theta  m matrix L, such that the 2ndimensional system consisting of
+
+.x = Ax + B `(k(z))
+
+.z = (A + LC)z + B `(k(z)) \Gamma  LCx
+
+has (0; 0) as a globally asymptotically stable equilibrium point.
+
+For reasons of space, we can only provide a scketch of the proofs here. A complete version of this paper can be obtained by electronic mail from either of the authors.
+
+2 Sketch of proof for state stabilization
+
+The proof of Theorem 2 is outlined next. To begin with, the asumptions easily imply that one can reduce the general case to the case when all the eigenvalues of A are purely imaginary and the pair (A; B) is controllable. After this reduction, the next step is to prove the result for the easy case when there are no ones in the Jordan form of A. In this case, we can make a linear change of coordinates and assume that A is skew-symmetric, and we can take V (x) = kxk2 as a candidate Lyapunov function. Writing
+
+Bu = u1b1 + : : : + umbm; we take a feedback of the form ui = '(hbi; xi), where ' is a smooth real-valued function of one variable, such that j'(s)j ! " for all s, '(0) = 0, 0 ! '0(s) for all s, ' is linear for s near 0, and the derivative of ' is kept small enough for the further induction proof. A simple calculation --using the LaSalle invariance principle and the controllability of (A; B)-- then shows that this
+
+feedback has all the desired properties. This is basically the saturation control described by [2] and [4].
+
+We now proceed by induction on the dimension of the state space. For the induction we prove at each step that there is smooth feedback with the desired properties which in addition is linear near the origin, and a corresponding Lyapunov function ~V which is quadratic near the origin. Asssuming the theorem true for a particular dimension n, we prove it for n + 1. After some algebraic manipulations, and assuming that we are not in the easy case treated earlier, one can reduce the proof to the case when the state vector x of our system can be written as x = (,; z), where z is one- or two-dimensional, and ,, z obey
+
+., = ~A, + ~Bu
+
+.z = Jz + H, ; with ( ~A; ~B) controllable. Here J is the zero matrix in the one-dimensional case, or a two by two skewsymmetric matrix in the two-dimensional case.
+
+The inductive assumption implies that we can find a smooth feedback ~u = ~K(,) which stabilizes the , system, is linear near the origin, and is bounded by "=2, and a corresponding Lyapunov function which is quadratic near 0. Using the same feedback, we can consider the submanifold S of x-space consisting of all the points that are driven to zero. It is easy to see that S is the graph of a function z = h(,). (Precisely, for any given ,(0), find the corresponding trajectory ,(t) of .
+
+, = ~A, + ~B ~K(,) ;
+
+and then solve the equation .z = Jz + H, backwards along this trajectory with terminal condition z(+1) = 0. The resulting value z(0) is h(,).) We then seek to make
+
+V (x) = kz \Gamma  h(,)k2 + ~V (,)
+
+a Lyapunov function for the new system. For this, we choose the new feedback K(x) to be of the form
+
+~K(,) + v(x) :
+
+By computing .V it is easy to find a formula for a bounded v that will make .V ^ 0. The most delicate part of the proof is then to apply the invariance principle to prove asymptotic stability. This requires some lengthy calculations, but the result is indeed true. The induction is then complete. (In addition, the induction must insure that the resulting feedback is globally Lipschitz, but this can also be done.)
+
+3 Sketch of output stabilization
+
+part
+
+We assume observability for this sketch; the detectability case can be easily reduced to this after a preliminary
+
+Kalman observability decomposition is done. Let L be so that A + LC is a Hurwitz matrix. Consider the dynamic feedback equations in the statement of Theorem 3, and use coordinates (x; ffi) rather than (x; z), where ffi := z \Gamma  x. As .
+
+ffi = (A + LC)ffi
+
+just as in the linear case one has that the error ffi(t) = z(t) \Gamma  x(t) is exponentialy decreasing, for any initial conditions x(0); z(0). The equation for x can be written as
+
+.x = Ax + B `(k(x)) + B f`(k(x + ffi)) \Gamma  `(k(x))g ; that is, in the form
+
+.x = Ax + B `(k(x)) + Bv ; (PERT) as a perturbation of the system (CL), which is globally asymptotically stable provided that we picked k as a state stabilizer. The problem is that the perturbation v may cause instability. This relates to the general question of bounded-input bounded-output behavior of nonlinear stable systems.
+
+It follows from the construction, because of local exponential stability, or from results about cascades of stable systems, that the origin is locally asymptotically stable for the composite system in Theorem 3. The problem is to show global attraction. In general, even an exponentially decreasing input perturbation may destabilize a nominally globally asymptotically stable system. However, in this case, note that ` and k are globally Lipschitz, so
+
+kv(t)k ^ ckffi(t)k for all t, where c is some constant that depends only on ` and k. In particular, if ffi 2 exp(ff), the class of functions satisfying an estimate kffi(t)k ! ^e\Gamma fft for some ^ (that may depend on ffi), the same is true for v. Thus, we can guarantee that v 2 exp(ff), for any given ff, by an appropriate choice of the observer poles. In addition, the function
+
+Ax + B`(k(x)) + Bv is globally Lipschitz in x; v. So the following result, a trivial consequence of Theorem 5.3 in [7], applies to provide the desired conclusion:
+
+Lemma 3.1 Assume that .x = f (x; u) has a globally Lipschitz right-hand side, and that zero is a globally asymptotically stable state for .x = f (x; 0). Then there exists some ff ? 0 such that every solution of .x = f (x; v) converges to zero, for every v 2 exp(ff). 2
+
+Observe that one does not need the stronger hypothesis that .x = f (x; 0) is globally exponentially stable, which can never happen with bounded controls. The result from [7] holds under just global asymptotic stability.
+
+4 Comments We do not know as yet if an arbitrary linear observer (that is, built from any L so that A + LC is Hurwitz) will work in Theorem 3. The proof only shows that this holds provided that all observer poles have real part less than a certain margin (which can be estimated from the construction).
+
+If there are control and observation disturbances, represented respectively by functions v and w, it is still true that all solutions of
+
+.x = Ax + B`(k(z + v));
+
+.z = (A + LC)z + B`(k(z)) \Gamma  LC(x + w)
+
+converge to zero, provided that v and w are exponentially decreasing with a fast enough rate. This follows also from the proof.
+
+5 References
+
+1. Anderson, B.D.O., and J.B. Moore, Linear Optimal Control, Prentice-Hall, Englewood Cliffs, 1971.
+
+2. Gutman,P.-O. and P. Hagander, "A new design of
+
+constrained controllers for linear systems," IEEE Trans. Autom. Control 30(1985): 22-23.
+
+3. Schmitendorf, W.E. and B.R. Barmish, "Null controllability of linear systems with constrained controls," SIAM J. Control and Opt. 18(1980): 327- 345.
+
+4. Slemrod, M., "Feedback stabilization of a linear
+
+control system in Hilbert space," Math. Control Signals Systems 2(1989): 265-285
+
+5. Sontag, E.D., "An algebraic approach to bounded
+
+controllability of linear systems," Int. J. Control 39(1984): 181-188.
+
+6. Sontag, E.D., "Feedback stabilization of nonlinear systems," in Robust Control of Linear Systems and Nonlinear Control (M.A. Kaashoek, J.H. van Schuppen, and A.C.M. Ran, eds,.) Birkh"auser, Cambridge, MA, 1990.
+
+7. Sussmann, H.J., and P.V. Kokotovic, "The peaking phenomenon and the global stabilization of nonlinear systems," IEEE Trans. Autom. Control, to appear.</pre>
+</body>
+</html>

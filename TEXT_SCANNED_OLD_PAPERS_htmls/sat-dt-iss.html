@@ -1,0 +1,966 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/sat-dt-iss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/sat-dt-iss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Finite Gain Stabilization of Discrete-Time Linear Systems
+
+Subject to Actuator Saturation Xiangyu Bao1 Zongli Lin1 Eduardo D. Sontag2
+
+Abstract It is shown that, for neutrally stable discrete-time linear systems subject to actuator saturation, finite gain lp stabilization can be achieved by linear output feedback, for all p 2 (1; 1]. An explicit construction of the corresponding feedback laws is given. The feedback laws constructed also result in a closed-loop system that is globally asymptotically stable, and in an input-to-state estimate.
+
+Key Words : input saturation, discrete-time linear systems, finite gain stability, Lyapunov functions.
+
+1 Introduction In this paper, we consider the problem of global stabilization of a discrete-time linear system subject to actuator saturation:
+
+P : ae x
+
++ = Ax + Boe(u + u1); x 2 Rn; u 2 Rm
+
+y = Cx + u2; y 2 Rr (1)
+
+(we use the notation x+ to indicate a forward shift, that is, for a function x and an integer t, x+(t) is x(t+1)), where u1 2 Rm is the actuator disturbance, u2 2 Rr is the sensor noise, and oe : Rm ! Rm represents actuator saturation, i.e., oe(s) = [ oe1(s1) oe2(s2) \Delta  \Delta  \Delta  oem(sm) ] with oei(si) = sign(si) minf1; jsijg, and the pair (A; B) is stabilizable. The problem of global asymptotic stabilization (internal stabilization) of this system has recently been solved, in [12], using nonlinear state feedback laws and under the condition that all the eigenvalues of A are inside or on the unit circle, and in [1] for neutrally stable open-loop system using linear state feedback. Here, we are interested not only in closed-loop state space stability (internal stability), but also in stability with respect to both measurement and actuator noises. More specifically, we would like to construct a controller C so that the operator (u1; u2) 7! (y1; y2) as defined by the following standard systems interconnection (see Fig. 1.)ae
+
+y1 = P(u1 + y2) y2 = C(u2 + y1) (2)
+
+is well-defined and finite gain stable.
+
+j ?oeoe 6
+
+j
+
+-u1
+
+u2
+
+y1 y2
+
+P
+
+C Figure 1: Standard closed-loop connection This problem was first studied for continuous-time systems. It was shown in [7] that, for neutrally stable open loop systems, linear feedback laws can be used to achieve finite gain stability, with respect to every Lp-norm. For a neutrally stable system, all open loop poles are located in the closed left-half plane, with
+
+1Department of Electrical Engineering, University of Virginia, Charlottesville, VA 22903. 2Department of Mathematics, Rutgers University, New Brunswick, NJ 08903. Supported in part by US Air Force Grant
+
+F49620-97-1-0159.
+
+1 those on the j! axis having Jordan blocks of size one. In the case that full state is available for feedback (i.e., y1 = x and u2 = 0), it was shown in [6] that if the external input signal is uniformly bounded, then finite-gain Lp-stabilization and local asymptotic stabilization can always be achieved simultaneously by linear feedback, no matter where the poles of the open loop system are. The uniform boundedness condition of [6] was later removed in [5] by resorting to nonlinear feedback. Some other works related to the topic are [4, 8, 9, 11] and the references therein.
+
+There are also several studies in the discrete-time setting, showing some of the continuous-time results carry over to discrete-time (for example, [4, 12]) and some do not (for example, [3]). In particular, [3] shows that the results of [5, 6] on finite gain stabilization of continuous-time systems do not carry over to discretetime systems. The objective of this paper is to show that the results of [7], however, do carry over to discretetime systems. More specifically, we show that, for neutrally stable discrete-time linear systems subject to actuator saturation, finite gain lp stabilization can be achieved by linear output feedback for all p 2 (1; 1]. An explicit construction of the corresponding feedback laws is given. The feedback laws constructed also result in a closed-loop system that is globally asymptotically stable, and provide an input-to-state estimate. While many of the arguments used are conceptually similar to those used in the continuous-time case [7], there are technical aspects that are very different and not totally obvious. For example, unlike in [7], the feedback gain for the discrete-time case needs to be multiplied by a small factor, say ^, which causes the solution of a certain Lyapunov equation, and the subsequent estimation of the solution, to be dependent on ^ (see Lemma 2). As another example, the difficulties in evaluating the difference of the non-quadratic Lyapunov function along the trajectories of the closed-loop system entail a careful estimation by Taylor expansion.
+
+The remainder of the paper is organized as follows. Section 2 states the main results. Section 3 contains the proof of the results that were stated in Section 2. A brief concluding remark is given in Section 4.
+
+2 Preliminary and Problem Statement We first recall some notation. For a vector X 2 R`, jXj denotes the Euclidean norm of X, and for a matrix X 2 Rm\Theta n, the induced operator norm. For any p 2 [1; 1), we write lnp for the set of all sequences fx(t)g1t=0,
+
+where x 2 Rn, such that P1t=0 jx(t)jp ! 1, and the lp-norm of x 2 lnp is defined as kxklp = (P1t=0 jx(t)jp)1=p. We use ln1 to denote the set of all sequences fx(t)g1t=0, where x 2 Rn, such that supt jx(t)j ! 1, and the l1-norm of x 2 ln1 is defined as kxkl
+
+1 = supt jx(t)j.The objective of this paper is to show the following result concerning the global asymptotic stabilization
+
+as well as lp-stabilization of system P, as given by (1), using linear output feedback. Theorem 1 Consider a system (1). Let A be neutrally stable, i.e., all the eigenvalues of A are inside or on the unit circle, with those on the unit circle having all Jordan blocks of size one. Also assume that (A; B) is stabilizable and (A; C) is detectable. Then, there exits a linear observer-based output feedback law of the form ae
+
+^x+ = A^x + Boe(F ^x) \Gamma  L(y \Gamma  C ^x) u = F ^x (3)
+
+which has the following properties:
+
+1. It is finite gain lp-stable for all p 2 (1; 1], i.e., there exists a flp ? 0 such that
+
+kxklp ^ flp \Theta ku1klp + ku2klp \Lambda  ; 8u1 2 lmp ; u2 2 lrp; and x(0) = 0; ^x(0) = 0 : (4) 2. In the absence of actuator and sensor noises u1 and u2, the equilibrium (x; ^x) = (0; 0) is globally
+
+asymptotically stable.
+
+Remark 1 We will in fact actually obtain the following stronger ISS-like property (cf. [10] and references there):
+
+k(x; ^x)klp ^ `p (jx(0)j + j^x(0)j) + flp \Theta ku1klp + ku2klp \Lambda  (5)
+
+2 where `p is a class-K function. Observe that the single estimate (5) encompasses both the gain estimate (4) and asymptotic stability. Obviously, (4) is the special case of (5) for zero initial states. On the other hand, when applied with arbitrary initial states but u1 = u2 = 0, there follows that (x; ^x) is in lp, which implies, in particular, that (x(t); ^x(t)) must converge to zero as t ! 1 (global attraction) and that j(x(t); ^x(t))j is bounded by `p(jx(0)j + j^x(0)j) (stability).
+
+3 Proof of Theorem 1 The proof of Theorem 1 will follow readily from the following proposition, which we establish first. Proposition 1 Let A be orthogonal (i.e., A0A = I), and suppose that the pair (A; B) is controllable. Then, the system
+
+x+ = Ax + Boe(\Gamma ^B0Ax + u); x 2 Rn; u 2 Rm (6) is finite gain lp-stable, p 2 (1; 1], for sufficiently small ^ ? 0. Moreover, for each p 2 (1; 1] there exist a real flp, a ^\Lambda  2 (0; 1], and a class-K function `p such that, for all ^ 2 (0; ^\Lambda ],
+
+kxklp ^ flpkuklp + `p(jx(0)j) (7) for all inputs u 2 lmp and all initial states x(0).
+
+To prove this proposition, we need to establish a few lemmas. Lemma 1 For any p ? l ? 0, there exists two scalars M1; M2 ? 0 such that, for any two positive scalars , and i,
+
+,p\Gamma lil ^ M1,p + M2ip (8) and consequently, for any n ? 0 and ^ ? 0,
+
+,p\Gamma lil ^ M1^n,p + ^
+
+n(l\Gamma p)
+
+l M2ip : (9)
+
+Proof of Lemma 1. Let h : R+ ! R+ be defined as h(x) = x
+
+l p\Gamma l , which is continuous and strictly
+
+increasing with h(0) = 0 and h(1) = 1, and k(x) = x
+
+p\Gamma l
+
+l be its pointwise inverse. Define
+
+H(x) = Z
+
+x
+
+0 h(v)dv =
+
+p \Gamma  l
+
+p x
+
+p p\Gamma l (10)
+
+and
+
+K(x) = Z
+
+x
+
+0 k(v)dv =
+
+l p x
+
+p
+
+l : (11)
+
+Letting a = ,p\Gamma l and b = il, it follows from Young's inequality (see e.g. [2]), ab ^ H(a) + K(b) for all a; b 2 R+, that
+
+,p\Gamma lil ^ p \Gamma  lp ,p + lp ip = M1,p + M2ip ; (12) which also trivially implies (9). 2 Lemma 2 Let A and B be as given in Proposition 1. Then, for any ^ ? 0 such that ^B0B ! 2I, _A(^) = A \Gamma  ^BB0A is asymptotically stable. Moreover, let P (^) be the unique positive definite solution to the Lyapunov equation,
+
+_A(^)0P _A(^) \Gamma  P = \Gamma I : (13)
+
+Then, there exists a ^\Lambda  ? 0 such that
+
+O/1
+
+^ I ^ P (^) ^
+
+O/2
+
+^ I; 8^ 2 (0; ^
+
+\Lambda ] (14)
+
+for some positive constants O/1 and O/2 independent of ^.
+
+3 Proof of Lemma 2: The asymptotic stability of _A follows from a simple Lyapunov/LaSalle argument [1]. Let ^\Lambda 1 ? 0 be such that ^B0B ! 2I for all ^ 2 (0; ^\Lambda 1]. We recall that the solution to the Lyapunov equation (13) is given by
+
+P (^) =
+
+1X
+
+k=0
+
+( _Ak(^))0 _Ak(^) =
+
+1X
+
+k=0
+
+[(A \Gamma  ^BB0A)0]k[(A \Gamma  ^BB0A)]k : (15)
+
+Using the fact that AA0 = I, we have
+
+(A \Gamma  ^BB0A)0(A \Gamma  ^BB0A) = I \Gamma  2^A0BB0A + ^2A0BB0BB0A
+
+= I \Gamma  ^A0B(2I \Gamma  ^B0B)B0A : (16)
+
+Using now the fact that ^B0B ! 2I for ^ 2 (0; ^\Lambda 1], we know that there exists ^\Lambda 2 2 (0; ^\Lambda 1] such that
+
+1 2I ^ (A \Gamma  ^BB
+
+0A)0(A \Gamma  ^BB0A) ^ I; 8^ 2 (0; ^\Lambda 2] : (17)
+
+Again using the fact that A0A = I, we verify in a straightforward way that
+
+(A \Gamma  ^BB0A)n = An \Gamma  ^CA;BC0A;BAn + ^2M1(^) (18) where M1(k) is a polynomial matrix in ^ of order n \Gamma  2, n being the order of the system (6), and
+
+CA;B = [ B AB \Delta  \Delta  \Delta  An\Gamma 1B ] is the controllability matrix of the pair (A; B) and is of full rank. It then follows that
+
+((A \Gamma  ^BB0A)n)0(A \Gamma  ^BB0A)n
+
+= ((An)0 \Gamma  ^(An)0CA;BC0A;B + ^2M 01(^))(An \Gamma  ^CA;BC0A;BAn + ^2M1(^)) = I \Gamma  2^(An)0CA;BC0A;BAn + ^2M2(^) (19)
+
+where M2(^) is a symmetric polynomial matrix in ^ of order 2n \Gamma  2. Since CA;B is of full rank, and because A is nonsingular, there exists a ^\Lambda  2 (0; ^\Lambda 2] such that
+
+0 ^ I \Gamma  ^M 01 I ^ ((A \Gamma  ^BB0A)n)0(A \Gamma  ^BB0A)n ^ I \Gamma  ^M 02 I ! I; 8^ 2 (0; ^\Lambda ] (20) for some constants M 01 ; M 02 ? 0 independent of ^.
+
+Using (17), (20) and the fact that A0A = I in (15), we have that for all ^ 2 (0; ^\Lambda ],
+
+P (^) ^
+
+n\Gamma 1X
+
+i=0
+
+[(A \Gamma  ^BB0A)i]0(A \Gamma  ^BB0A)i
+
+1X
+
+k=0
+
+(1 \Gamma  ^M 02 )kI ^ n 1^M 0
+
+2 I =
+
+O/2
+
+^ I (21)
+
+and
+
+P (^) *
+
+n\Gamma 1X
+
+i=0
+
+[(A \Gamma  ^BB0A)i]0(A \Gamma  ^BB0A)i
+
+1X
+
+k=0
+
+(1 \Gamma  ^M 01 )kI * `12 '
+
+n\Gamma 1
+
+n 1^M 0
+
+1 I =
+
+O/1
+
+^ I (22)
+
+where O/1 = n2n\Gamma 1M 0
+
+1 and O/
+
+2 = nM 0
+
+2 .
+
+2
+
+Lemma 3 Let _A(^) be as given in Proposition 1, P (^) as defined in Lemma 2, then for any p 2 (1; 1), there exists a ^\Lambda  ? 0 such that
+
+[x0 _A0(^)P (^) _A(^)x]p=2 \Gamma  [x0P (^)x]p=2 ^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp; ^ 2 (0; ^\Lambda ] ; (23)
+
+where i ? 0 is some constant independent of ^.
+
+4 Proof of Lemma 3. Inequality (23) holds trivially for x = 0. Hence in what follows, we assume, without loss of generality, that x 6= 0.
+
+For simplicity, we introduce from now the following notation:
+
+_ = x0 _A0(^)P (^) _A(^)x (24) (where x and ^ will be clear from the context). By the definition of P (^), we have
+
+_ \Gamma  x0P (^)x = \Gamma x0x : (25) From Lemma 2, there exists a ^\Lambda 1 ? 0 such that for all ^ 2 (0; ^\Lambda 1]fifififi
+
+x0x x0P (^)xfifififi ^
+
+4 5 ; 8x 6= 0 : (26)
+
+With (25) and (26), we can continue the proof using Taylor expansion with remainder,
+
+[x0 _A0 (^) P (^) _A(^)x]p=2 \Gamma  [x0P (^)x]p=2
+
+= [x0P (^)x \Gamma  x0x]p=2 \Gamma  [x0P (^)x]p=2
+
+^ [x0P (^)x]p=2 "1 \Gamma  p2 x
+
+0x
+
+x0P (^)x + ffi `
+
+x0x x0P (^)x'
+
+2#
+
+\Gamma  [x0P (^)x]p=2
+
+= \Gamma  p2 [x0P (^)x]
+
+p\Gamma 2
+
+2 jxj2 + ffi[x0P (^)x]
+
+p\Gamma 4
+
+2 jxj4; ^ 2 (0; ^\Lambda 1] (27)
+
+where ffi = maxjzj^45 n p8 fififi(p \Gamma  2)(1 + z)
+
+p
+
+2 \Gamma 2fififio is a constant independent of ^.
+
+Again by Lemma 2, there exists a ^\Lambda  2 (0; ^\Lambda 1] such that
+
+[_]p=2 \Gamma  [x0P (^)x]p=2 ^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp; ^ 2 (0; ^\Lambda ] (28)
+
+for some i ? 0 independent of ^. 2
+
+Lemma 4 Let A and B be as given in Proposition 1. For any l 2 [1; 1) and any ^ 2 (0; 1],
+
+joe(\Gamma ^B0Ax + u)jl ^ 2l\Gamma 1^ljBjljxjl + 2l\Gamma 1jujl : (29) Proof of Lemma 4. Since oe is a standard saturation function and jAj = 1, for any l * 1, we have
+
+joe(\Gamma ^B0Ax + u)jl ^ (^jBjjxj + juj)l ^ 2l\Gamma 1kljBjljxjl + 2l\Gamma 1jujl ; (30) where the last inequality follows from Jensen's inequality applied to the convex function sl:
+
+(a + b)l ^ 12(2a)l + 12 (2b)l; 8a; b * 0 :
+
+2 Lemma 5 Let A and B be as given in Proposition 1. Pick any x 2 Rn and u 2 Rm, any number j * 3, and any nonnegative real number l. Denote ~x = \Gamma ^B0Ax + u. Then, provided jxj ? jjBoe(~x)j, we have:
+
+jAx + Boe(~x)jl ^ jxjl + ljxjl\Gamma 2x0A0Boe(~x) + M jxjl\Gamma 2jBoe(~x)j2 ; (31) for some constant M ? 0 which is independent of ^. Proof of Lemma 5. We first note that, since jxj ? jjBoe(~x)j * 3jBoe(~x)j,fifi
+
+2x0A0Boe(~x) + jBoe(~x)j2fifi
+
+jxj2 ^
+
+4 5 : (32)
+
+5 Hence, using Taylor expansion with remainder, we have
+
+jAx + Boe(~x)jl = \Theta jxj2 + 2x0A0Boe(~x) + jBoe(~x)j2\Lambda 
+
+l2
+
+= jxjl `1 + 2x
+
+0A0Boe(~x) + jBoe(~x)j2
+
+jxj2 '
+
+l2
+
+^ jxjl "1 + l2 2x
+
+0A0Boe(~x) + jBoe(~x)j2
+
+jxj2 + ffi `
+
+2x0A0Boe(~x) + jBoe(~x)j2
+
+jxj2 '
+
+2#
+
+^ jxjl + ljxjl\Gamma 2x0A0Boe(~x) + l2 jxjl\Gamma 2jBoe(~x)j2 + ffijxjl\Gamma 4 ((2 + 1=j)jxjjBoe(~x)j)2 (33) where ffi = maxjzj^45 ae l8 fififi(l \Gamma  2)(1 + z)
+
+l2 \Gamma 2fififioe is a constant independent of ^.
+
+So we can see that the inequality (31) holds for M = l2 + ffi(2 + 1=j)2. 2 We are now ready to prove Proposition 1. Proof of Proposition 1: We separate the proof for p 2 (1; 1) and for p = 1. Proof for p 2 (1; 1). For clarity, let us repeat here the system equation (6):
+
+x+ = Ax + Boe(\Gamma ^B0Ax + u); x 2 Rn; u 2 Rm : (34) This may also be rewritten as:
+
+x+ = _A(^)x + B(\Gamma ~x + oe(~x) + u); x 2 Rn; u 2 Rm ; (35) where _A(^) = A \Gamma  ^BB0A, ~x = \Gamma ^B0Ax + u.
+
+For this system, define the function V1 as:
+
+V1(x) = (x0P (^)x)p=2 ; (36) where P (^) is as given in Lemma 2. We next evaluate the increments V (x+(t)) \Gamma  V (x(t)), which we denote as "\Delta V1" for short, along any given trajectory of (35). It is convenient to treat separately the cases jxj ? jjBoe(~x)j and jxj ^ jjBoe(~x)j. Here j * 3 is a number to be specified soon.
+
+Case 1: jxj ? jjBoe(~x)j. Using the definition of V1, we now give an upper bound on \Delta V1 along the trajectories of the system (35). To simplify the equations, we introduce the following notation:
+
+* = 2^x0A0P (^)BB0Ax + 2x0A0P (^)Boe(~x) + oe0(~x)B0P (^)Boe(~x) ; in addition to _ as defined in Equation (24). Thus:
+
+\Delta V1 = V +1 \Gamma  V1
+
+= [(x+)0P (^)x+]p=2 \Gamma  [x0P (^)x]p=2
+
+= \Theta [ _A(^)x + ^BB0Ax + Boe(~x)]0P (^)[ _A(^)x + ^BB0Ax + Boe(~x)]\Lambda p=2 \Gamma  [x0P (^)x]p=2 = \Theta _ + 2x0A0P (^)B(^B0Ax + oe(~x)) \Gamma  ^2x0A0BB0P (^)BB0Ax
+
++oe0(~x)B0P (^)Boe(~x) i
+
+p=2 \Gamma  [x0P (^)x]p=2
+
+^ h _ + * i
+
+p=2 \Gamma  [x0P (^)x]p=2
+
+= [_]p=2 ^1 + *_ *
+
+p=2
+
+\Gamma  [x0P (^)x]p=2 : (37)
+
+By Lemma 2, there exist a ^\Lambda 1 ? 0 and j * 3 independent of ^, such that for all jxj ? jjBoe(~x)jfifififi
+
+* _ fifififi ^
+
+4 5; ^ 2 (0; ^
+
+\Lambda 1] : (38)
+
+6 To see this, let ^\Lambda 0 ? 0 be such that (14) of Lemma 2 and (17) in the proof of Lemma 2 both hold for all ^ 2 (0; ^\Lambda 0]. Then, for all ^ 2 (0; ^\Lambda 0], we have
+
+j*j ^ ^2O/2jBj2 + 2O/2^j + O/2^j2 * jxj2 (39) and
+
+j_j * O/12^ jxj2 ; (40)
+
+from which it is clear that there exist ^\Lambda 1 and j ? 3 such that (38) holds.
+
+Next, we may use a Taylor expansion with remainder to continue the bounding of \Delta V1 as follows:
+
+\Delta V1 ^ [_]p=2 "1 + p2 *_ + ffi ^ *_ *
+
+2#
+
+\Gamma  [x0P (^)x]p=2
+
+(41) where ffi = maxjzj^45 n p8 fififi(p \Gamma  2)(1 + z)
+
+p
+
+2 \Gamma 2fififio is a constant independent of ^.
+
+By Lemma 3 and Lemma 2, there exists ^\Lambda 2 2 (0; ^\Lambda 1] such that for any ^ 2 (0; ^\Lambda 2], we have
+
+\Delta V1 ^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp+ p2 [_]
+
+p\Gamma 2
+
+2 [*] + ffi[_]
+
+p\Gamma 4
+
+2 [*]2
+
+^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp + 1^
+
+2\Gamma p
+
+2 jxjp\Gamma 2 \Theta 2jxjjP (^)Bjj~x \Gamma  oe(~x)j + 2jxjjP (^)Bjjuj + jP (^)jjBoe(~x)j2\Lambda 
+
++2^
+
+4\Gamma p
+
+2 jxjp\Gamma 4 \Theta 2jxj2j^P (^)jjBj2 + 2jP (^)jjxjjBoe(~x))j + jP (^)jjBoe(~x)j2\Lambda 2 (42)
+
+where i ? 0 is as defined in Lemma 3, and 1; 2 ? 0 are some constants independent of ^.
+
+Before continuing, we digress to observe that
+
+j~x \Gamma  oe(~x)j ^ ~x0oe(~x) : (43) Using (43), Lemma 1, Lemma 4, and the condition jxj ? jjBoe(~x)j, we can show that there exists a ^\Lambda 3 2 (0; ^\Lambda 2] such that for all ^ 2 (0; ^\Lambda 3] the estimation of \Delta V1 can be now concluded as follows:
+
+\Delta V1 ^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp + 21^
+
+2\Gamma p
+
+2 jxjp\Gamma 1jP (^)Bj~x0oe(~x) + M1a^
+
+2\Gamma p
+
+2 maxf^; ^p\Gamma 1gjxjp + M2a(^)jujp ; (44)
+
+where M1a ? 0; M2a(^) ? 0 with M1a independent of ^ are defined in an obvious way. In deriving (44), we have also used the fact that jxjp\Gamma 2 ! (jBoe(~x)j=j)p\Gamma 2 for p ! 2 and Boe(~x) 6= 0.
+
+Case 2: jxj ^ jjBoe(~x)j. By using Lemma 2, Lemma 3 and Lemma 4, \Delta V1 along the trajectories of (35) is bounded as follows:
+
+\Delta V1 = [(x+)0P (^)x+]p=2 \Gamma  [x0P (^)x]p=2
+
+^ jP (^)jp=2jAx + Boe(~x)jp \Gamma  [x0P (^)x]p=2 + [_]p=2
+
+^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp + ^\Gamma 
+
+p
+
+2 O/
+
+p
+
+22 (jxj + jBoe(~x)j)p
+
+^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp + (j + 1)p^\Gamma 
+
+p
+
+2 O/
+
+p
+
+22 jBoe(~x)jp
+
+^ \Gamma ^
+
+2\Gamma p
+
+2 ijxjp + M1b^\Gamma 
+
+p\Gamma 2
+
+2 ^p\Gamma 1jxjp + M2b(^)jujp; ^ 2 (0; ^\Lambda 3] (45)
+
+where O/2 ? 0 and i ? 0 are as defined in Lemma 2 and Lemma 3 respectively, and M1b ? 0; M2b(^) ? 0 are constants with M1b being independent of ^.
+
+Summarizing, we may combine Case 1 with Case 2, to obtain:
+
+\Delta V1 ^ 8??!??:
+
+\Gamma ^
+
+2\Gamma p
+
+2 ijxjp + 21^
+
+2\Gamma p
+
+2 jP (^)Bjjxjp\Gamma 1~x0oe(~x)
+
++M1^
+
+2\Gamma p
+
+2 maxf^; ^p\Gamma 1gjxjp + M2(^)jujp; if jxj ? jjBoe(~x)j;
+
+\Gamma ^
+
+2\Gamma p
+
+2 ijxjp + M1^
+
+2\Gamma p
+
+2 ^p\Gamma 1jxjp + M2(^)jujp; if jxj ^ jjBoe(~x)j;
+
+(46)
+
+7 where M1 = maxfM1a; M1bg and M2(^) = maxfM2a(^); M2b(^)g.
+
+For system (34), we next define another function:
+
+V0(x) = jxjp+1 : (47) An estimation of its increments along the trajectories of (34) can also be carried out by separately considering each of the cases jxj ? jjBoe(~x)j and jxj ^ jjBoe(~x)j.
+
+Case 1: jxj ^ jjBoe(~x)j.
+
+By Lemma 4, for any ^ 2 (0; ^\Lambda 3],
+
+\Delta V0 = jAx + Boe(~x)jp+1 \Gamma  jxjp+1 ^ jAx + Boe(~x)jp+1
+
+^ (jxj + jBoe(~x)j)p+1 ^ ((j + 1)jBoe(~x)j)p+1 ^ ^N1ajxjp + N2ajujp (48)
+
+for some positive constants N1a and N2a independent of ^. In deriving (48), we have used the fact that both oe and ^ are bounded.
+
+Case 2: jxj ? jjBoe(~x)j.
+
+By Lemma 5, Lemma 4 and Lemma 1, there exists ^\Lambda 4 2 (0; ^\Lambda 3] such that for any ^ 2 (0; ^\Lambda 4],
+
+\Delta V0 = jAx + Boe(~x)jp+1 \Gamma  jxjp+1
+
+^ jxjp+1 + (p + 1)jxjp\Gamma 1x0A0Boe(~x) + N1bjBoe(~x)j2jxjp\Gamma 1 \Gamma  jxjp+1
+
+^ \Gamma  p + 1^ jxjp\Gamma 1~xT oe(~x) + ^N1cjxjp + N2c(^)jujp (49)
+
+where N1c; N1b ? 0; N2c(^) ? 0 are constants, and N1b; N1c are independent of ^. In deriving (49), the first inequality by Lemma 5, the second inequality is the consequence of the fact that oe is bounded and Lemmas 4 and 1.
+
+Combining Case 1 with Case 2, we have, for any ^ 2 (0; ^\Lambda 4]:
+
+\Delta V0 ^ ae \Gamma 
+
+p+1
+
+^ jxj
+
+p\Gamma 1~x0oe(~x) + ^N1jxjp + N2(^)jujp; if jxj ? jjBoe(~x)j;
+
+^N1jxjp + N2(^)jujp; if jxj ^ jjBoe(~x)j; (50)
+
+where N1 = maxfN1a; N1cg and N2(^) = maxfN2a; N2c(^)g.
+
+Finally, we define the following Lyapunov (or "storage") function:
+
+V (x) = V1(x) + $V0(x) ; (51) where
+
+$ = 2p + 1 ^
+
+4\Gamma p
+
+2 1jP (^)Bj:
+
+It is straightforward to verify that there exists some ^\Lambda  2 (0; ^\Lambda 4] such that
+
+\Delta V (x) ^ \Gamma ^
+
+2\Gamma p
+
+2 ffjxjp + fi(^)jujp; 8^ 2 (0; ^\Lambda ] (52)
+
+for some ff 2 (0; i) and fi(^) ? 0.
+
+Now consider an arbitrary initial state x(0) and control u, and the ensuing trajectory x. Summing both sides of (52) from t = 0 to 1 and using the fact that V is nonnegative, we conclude that:
+
+^
+
+2\Gamma p
+
+2 ffkxkpl
+
+p ^ fi(^)kuk
+
+p lp + `p0(jx(0)j) ; (53)
+
+where `p0(r) = $rp+1 + i O/2r
+
+2
+
+^ j
+
+p=2. This implies that
+
+kxklp ^ flpkuklp + `p(jx(0)j) ; (54) where flp = i^
+
+p\Gamma 2
+
+2 fi(^)=ffj
+
+1 p , and `
+
+p(r) = i^
+
+p\Gamma 2
+
+2 `p0(r)=ffj
+
+1 p .
+
+8 Proof for p = 1. From (52) we get for p = 2,
+
+\Delta V (x) ^ \Gamma ffjxj2 + fi(^)kuk2l
+
+1 : (55)
+
+Hence, \Delta V (x) is negative outside the ball of radius (fi(^)=ff)
+
+12 kuk
+
+l1 centered at the origin, from which it
+
+follows that, for any state x(t) in the trajectory:
+
+V (x(t)) ^  $fi
+
+32 (^)
+
+ff
+
+32 kukl1 + O/
+
+2fi(^)
+
+ff^ ! kuk
+
+2l
+
+1 + `10(jx(0)j) ; (56)
+
+where `10(r) = O/2^ r2 + $r3. If kukl
+
+1 ^ 1, we have:
+
+O/1
+
+^ jx(t)j
+
+2 ^ x(t)0P (^)x(t) ^ V (x(t)) (57)
+
+and
+
+V (x(t)) ^  $fi
+
+32 (^)
+
+ff
+
+32 + O/
+
+2fi(^)
+
+ff^ ! kuk
+
+2l
+
+1 + `10(jx(0)j) ; (58)
+
+which implies the following estimate for the entire trajectory:
+
+kxkl
+
+1 ^ ( ^$fi
+
+32 (^)
+
+ff
+
+32 O/
+
+1 +
+
+O/2fi(^)
+
+ffO/1 )
+
+12
+
+kukl
+
+1 + `11(jx(0)j); (59)
+
+where `11(r) = i ^`
+
+10(r)
+
+O/1 j
+
+12
+
+. If, instead, kukl
+
+1 ? 1, we have:
+
+$jxj3 ^ V (x) ^  $fi
+
+32 (^)
+
+ff
+
+32 + O/
+
+2fi(^)
+
+ff^ ! kuk
+
+3l
+
+1 + `11(jx(0)j); (60)
+
+from which we get that
+
+kxkl
+
+1 ^  fi
+
+32 (^)
+
+ff
+
+32 $ + O/
+
+2fi(^)
+
+^ff$ !
+
+13
+
+kukl
+
+1 + `12(jx(0)j); (61)
+
+where `12(r) = i `
+
+10(r)
+
+$ j
+
+13
+
+. Letting
+
+fl1 = max 8?!?:( ^$fi
+
+32 (^)
+
+ff
+
+32 O/
+
+1 +
+
+O/2fi(^)
+
+ffO/1 )
+
+12
+
+; ( fi
+
+32 (^)
+
+ff
+
+32 $ + O/
+
+2fi(^)
+
+ff$^ )
+
+13 9?=?
+
+; and `1 = maxf`11; `12g, we have, finally, the required conclusion:
+
+kxkl
+
+1 ^ fl1kukl1 + `1(jx(0)j) (62)
+
+for p = 1 as well. 2
+
+We are now ready to prove Theorem 1. Proof of Theorem 1. Without loss of generality, making a change of coordinates if required, we may assume that the system (1) has the following partitioned form:8!
+
+:
+
+x+1 = A1x1 + B1oe(u + u1) x+0 = A0x0 + B0oe(u + u1) y = Cx + u2
+
+(63)
+
+9 where A1 is orthogonal and A0 is asymptotically stable, and
+
+A = ^ A1 00 A
+
+0 * ; B = ^
+
+B1 B0 * :
+
+We construct the output feedback law in the form of (3) with F = [ \Gamma ^B01A1 0 ], the matrix L being chosen such that A + LC is asymptotically stable. Using this feedback, the closed-loop system is:8!
+
+:
+
+x+1 = A1x1 + B1oe(\Gamma ^B01A1^x1 + u1) x+0 = A0x0 + B0oe(\Gamma ^B01A1^x1 + u1)
+
+^x+ = A^x + Boe(\Gamma ^B01A1^x1) \Gamma  L(Cx \Gamma  C ^x + u2) :
+
+(64)
+
+Let e = [ e01 e00 ]0, where e1 = x1 \Gamma  ^x1 and e0 = x0 \Gamma  ^x0. Here we have partitioned ^x = [ ^x01 ^x00 ]0 accordingly. In the new states (x; e), (64) can be written as follows,8?!
+
+?:
+
+x+1 = A1x1 + B1oe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) x+0 = A0x0 + B0oe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) e+ = (A + LC)e
+
++B[oe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) \Gamma  oe(\Gamma ^B01A1x1 + ^B01A1e1)] + Lu2 :
+
+(65)
+
+Since oe is global Lipschitz with a Lipschitz constant 1,
+
+joe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) \Gamma  oe(\Gamma ^B01A1x1 + ^B01A1e1)j ^ ju1j : (66) Noting that A + LC is asymptotically stable and viewing
+
+oe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) \Gamma  oe(\Gamma ^B01A1x1 + ^B01A1e1) + Lu2 as an lp input to the e-subsystem, we have that, for some constant flpe ? 0,
+
+keklp ^ flpe(ku1klp + ku2klp + je(0)j) : (67) Next, applying Proposition 1 to the x1-subsystem, and viewing ^B01A1e1 + u1 as an lp input to this subsystem, we have,
+
+kx1klp ^ flp1(ku1klp + ku2klp + je(0)j) + `p1(jx1(0)j) for some flp1 ? 0 and `p1 of class K.
+
+On the other hand, viewing oe(\Gamma ^B01A1x1 + ^B01A1e1 + u1) as an lp input to the x0-subsystem, we have the estimate:
+
+kx0klp ^ flp0(kx1klp + keklp + ku1klp + jx0(0)j); for some flp0 ? 0.
+
+In conclusion, we have,
+
+kxklp ^ kx1klp + kx0klp
+
+^ flp(ku1klp + ku2klp ) + 'p(je(0)j + jx(0)j) (68)
+
+where flp ? 0 is some constant and 'p is a suitable class-K function. Together with (67), and changing back to the original coordinates, we also conclude that an estimate like the one in (5) holds. 2
+
+4 Conclusions In this paper, we have established that a discrete-time, neutrally stable, stabilizable, and detectable linear system, when subject to actuator saturation, is finite gain lp stabilizable by linear feedback, for any p 2 (1; 1]. A linear output feedback law which simultaneously achieves lp stabilization and global asymptotic stabilization was constructed.
+
+10 References
+
+[1] J. Choi, "On the stabilization of linear discrete-time systems subject to input saturation," preprint. [2] G.H. Hardy, J. E. Littlewood, and G. Polya, Inequalities, Cambridge University Press, 1952. [3] P. Hou, A. Saberi, and Z. Lin, "On lp-stabilization of strictly unstable discrete-time linear systems
+
+with saturating actuators," Proceedings of the 36th CDC, pp. 4510-4515, 1997.
+
+[4] P. Hou, A. Saberi, Z. Lin, and P. Sannuti, "Simultaneous external and internal stabilization for continuous and discrete-time critically unstable linear systems with saturating actuators," Proceedings of 1997 ACC, pp. 1292-1296, 1997.
+
+[5] Z. Lin, "H1-almost disturbance decoupling with internal stability for linear systems subject to input
+
+saturation," IEEE Transactions on Automatic Control, Vol. 42, pp. 992-995, 1997.
+
+[6] Z. Lin, A. Saberi, and A. Teel, "Simultaneously Lp- stabilization and internal stabilization of linear
+
+system subject to input saturation - state feedback case," Systems and Control Letters, Vol. 25, pp. 219-226, 1995.
+
+[7] W. Liu, Y. Chitour, and E. Sontag, "On finite gain stabilizability of linear systems subject to input
+
+saturation," SIAM J. Control and Optimization, Vol.34, No.4, pp. 1190-1219, 1996.
+
+[8] Chitour, Y., W. Liu, and E. Sontag, "On the continuity and incremental-gain properties of certain
+
+saturated linear feedback loops," Intern. J. Robust & Nonlinear Control, Vol. 5, pp. 413-440, 1995.
+
+[9] T. Nguyen and F. Jabbari, "Output feedback controllers for disturbance attenuation with bounded
+
+control," Proceedings of 36th CDC, pp. 177-182, 1997.
+
+[10] E.D. Sontag, "Comments on integral variants of ISS," Systems & Control Letters 34(1998): 93-100. [11] R. Suarez, J. Alvarez-Ramirez, M. Sznaier, and C. Ibarra-Valdez, "L2-disturbance attenuation for
+
+linear systems with bounded controls: an ARE-Based Approach," Control of Uncertain Systems with Bounded Inputs, eds. S. Tarbouriech and Germain Garcia, Lecture Notes in Control and Information Sciences, Springer-Verlag, Vol. 227, pp. 25-38, 1997.
+
+[12] Y. Yang, E.D. Sontag, and H.J. Sussmann, "Global stabilization of linear discrete-time systems with
+
+bounded feedback," Systems & Control Letters, Vol. 30, pp. 273-281, 1997.</pre>
+</body>
+</html>

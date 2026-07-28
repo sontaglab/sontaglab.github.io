@@ -1,0 +1,214 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95blockisland.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95blockisland.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A Notion of Discontinuous Feedback
+
+Yu.S. Ledyaev\Lambda  Steklov Institute of Mathematics
+
+Moscow 117966, Russia
+
+ledyaev@mian.su
+
+E.D. Sontagy Dept. of Mathematics, Rutgers University
+
+New Brunswick, NJ 08903, USA
+
+sontag@control.rutgers.edu
+
+Abstract This short note discusses a notion of discontinuous feedback which is appealing from a theoretical standpoint because, on the one hand, solutions of closed-loop equations always exist, and on the other hand, if a system can be stabilized in any manner whatsoever, then it can be also stabilized in our sense. Moreover, the implementation of this type of feedback can be physically interpreted in terms of simple switching control strategies. A recent result obtained by the authors together with Clarke and Subbotin is described, which employs techniques from controlLyapunov functions, nonsmooth analysis, and differential game theory in order to provide a general theorem on feedback stabilization.
+
+1 Discontinuous Feedback It is known that, in general, in order to control nonlinear systems one must use switching (discontinuous) mechanisms of various types. Of course, timeoptimal solutions for even linear systems often involve such discontinuities, but for linear systems most control problems usually admit also (perhaps suboptimal) continuous solutions. However, when dealing with arbitrary systems, discontinuities are unavoidable even if no optimality objectives are imposed. This was systematically discussed for one-dimensional systems in the early paper [20] (see also [23]). Perhaps the best-known result regarding the nonexistence of
+
+\Lambda Visiting Rutgers University. Supported in part by Russian Fund for Fundamental Research Grant 96-01-00219, by NSERC and La Fonde FCAR du Qu'ebec, and by the Rutgers Center for Systems and Control (SYCON)
+
+ySupported in part by US Air Force Grant AFOSR-94-0293
+
+1
+
+continuous state feedback is what has become known as the "Brockett necessary condition" (cf. [1]), which imposes severe restrictions on the right-hand side f(x; u) for it to be true that the origin of the system
+
+.x = f(x; u) (1) (in any dimension) can be stabilized under continuous feedback, that is, so that there exist any continuous k so that the origin of
+
+.x = f(x; k(x)) (2) is asymptotically stable. An elementary exposition of this and related results can be found in Section 4.8 of the textbook [17] (see also the survey paper [16]). Faced with the theoretical impossibility of having feedback laws of the form u = k(x), k a continuous function, various alternatives have been proposed. (Objectives other than state stabilization, such as tracking and disturbance rejection, output feedback, or adaptive and robust variants, also lead to the necessity of discontinuous controllers; the study of stabilization is merely the first step in the search for general controller structures.)
+
+One way of overcoming the limitations of continuous feedback is to look for dynamic feedback laws, that is to say, to allow for additional (memory) variables in controllers. This was the approach suggested, and shown to be powerful enough for all one-dimensional systems, in [20], which demonstrated that a smooth time-varying (and, though not stated explicitely, periodic in t) controller u = k(t; x) always exists. Far more interesting was the result discovered by Coron in [8], who showed that such feedback stabilizers always exist (in any dimension) provided that the original system is completely controllable and has "no drift" (f(x; 0) = 0 for all states). (This method is closely related to the use of classical gradient descent and Newton numerical algorithms for control, see [18]).) However, for the general case of not exactly-controllable systems, and possibly with drift, no such dynamic or time-varying solutions are known, so the interest in discontinuous feedback laws u = k(x) arises.
+
+The first positive general theorem along those lines was due to Sussmann, who established in the early 1980s the existence of a general type of piecewise analytic feedback for the stabilization of controllable analytic systems; see [23]. His work, which was partly motivated by related issues arising in optimal control synthesis via the dynamic programming paradigm, provided an existence proof for feedback stabilizers for a relatively large class of systems. At around the same time, one of the coauthors of the present paper proposed a different approach, based on a general theory of controllers built out of finite automata and linear systems, in [14], using constant-rate sampling to deal with rather arbitrary continuous nonlinear systems. That work took into account constraints due to partial state measurements, and proposed a synthesis using what would be today called "hybrid" controllers; an expository survey was recently prepared for the proceedings of a workshop, see [19] and references given there. However, this approach was not based on true continuous-time feedback, but rather, as remarked, was basically a discrete-time theory. A general theory was lacking.
+
+2
+
+In this note, we outline the new formulation of discontinuous feedback provided in the recent paper [3], stating the relevant definitions and main results, and discuss the implications for control of various types of systems.
+
+2 Theoretical Difficulty: Defining "Solution" The study of discontinuous feedback leads to a major theoretical difficulty, namely the need to define the meaning of solution x(\Delta ) of the differential equation (2). As a trivial illustration, consider the one-dimensional equation
+
+.x = \Gamma sign (x), where we write sign x = 1 if x * 0 and sign x = \Gamma 1 if x ! 0 (this system could have arisen, for example, from using an on/off controller u(t) 2 f0; 1g for the system .x = 1 \Gamma  2u). It is easy to see that there is no possible continuous function x(t) solving this equation when starting at x(0) = 0 (in other words, so that x(t) = \Gamma  R
+
+t
+
+0 sign x(s)ds for small t?0). Thus no "solution"in the classical sense is possible for this example, and in general for discontinuous equations. The most often proposed definition of generalized solution of (2) is due to Filippov, who introduced in [11] an approach based on the solution of a certain associated differential inclusion. It is known, however, that in general it is impossible to find feedback stabilizers that stabilize in the sense of Filippov. This negative fact follows from the results in [13, 9], which amount to the statement that the existence of a discontinuous stabilizing feedback in this sense again implies the Brockett necessary condition cited above.
+
+In [3], the following alternative is proposed. It is based on the concept of discontinuous feedback control for positional differential games introduced by Krasovskii and Subbotin in [12]. We want to define the trajectories that arise when using a feedback k(x), that is, a function k : Rn ! Ufrom the state-space to the control-value set.
+
+We do so by first considering, for any given partition ss = ftigi*0 of [0; +1), that is, for any infinite sequence consisting of numbers 0 = t0 ! t1 ! t2 ! : : : with limi!1 ti = 1, the ss-trajectory of (2) starting from x0, obtained as follows: on each interval [ti; ti+1], the initial state is measured, ui = k(x(ti)) is computed, and then the constant control u j ui is applied until time ti+1, when a new measurement is taken. In other words, we use sampled control with switching instants 0 = t0 ! t1 ! t2 ! : : :. More precisely, for each i, i = 0; 1; 2; : : :, one solves recursively
+
+.x(t) = f(x(t); k(x(ti))) ; t 2 [ti; ti+1] (3) using as initial value x(ti) the endpoint of the solution on the preceding interval, and starting with x(t0) = x0. The ensuing ss-trajectory may fail to be defined on all of [0; +1), because of possible finite escape times in one of the intervals, in which case we only have a trajectory defined on some maximal interval, but it is always defined, as in the classical case, for at least small enough intervals.
+
+Technically, we assume in this definition that the control-value set U is a locally compact metric space (for instance, U = Rm for some m) and that the mapping f : Rn \Theta  U ! Rn : (x; u) 7! f(x; u) is continuous, and locally
+
+3
+
+Lipschitz on x uniformly on compact subsets of Rn \Theta  U. Moreover, when defining feedback, we assume that the function k : Rn ! Uis locally bounded, meaning that its values on each bounded set are in some a compact subset of U (there are no "infinite singularities"). For each partition, we consider its diameter d(ss) := supi*0(ti+1 \Gamma  ti).
+
+With these assumptions, and provided the trajectories stay bounded (which our theorems do insure) it is easy to prove that, for any sequence of trajectories corresponding to partitions ssk with diameters converging to zero, there is a convergent subsequence. We think of the limit of any such sequence as a "generalized solution" of the closed-loop equation (2). Thus solutions always exist in this sense (though, as with continuous but not necessarily Lipschitz feedback, they may fail to be unique). For ease of reference, we call here such generalized solutions "s-solutions" (for "sampling" or "switching"). It is not difficult to see that if k is continuous, every s-trajectory is a solution in the usual sense, so this indeed generalizes the usual notion.
+
+It is important to emphasize the interpretation of s-solutions: they represent the limits of trajectories arising from high-frequency sampling when using the feedback law u = k(x). This type of interpretation is somewhat analogous, at least in spirit, to the way in which "relaxed" controls are interpreted in optimal trajectory calculations, namely by high-frequency switching of approximating regular controls.
+
+Now that the definition of solution has been given, we can turn to stating the main result of [3]. We present this result in somewhat different but equivalent terms to the formulation in that paper (in the paper, ss-trajectories are used instead of the limiting s-solutions). The objective in giving the result, on stabilization, is to show that the notion is useful in that it permits solving an interesting problem. Research in progress deals with the development of extensions to other control problems.
+
+3 A General Result on Stabilization We define next what we mean by a feedback stabilizer. Intuitively, this is a feedback law which, for fast enough sampling, drives all states asymptotically to the origin and with small overshoot. (The more precise statements in [3] provide very precise estimates on maximal inter-sampling times, overshoot vs accuracy, etc.)
+
+We say that the feedback k : Rn ! Us-stabilizes the system (1) if for each pair 0 ! r ! R, there exist M = M (R) ? 0 and T = T (r; R) ? 0 such that, for any initial state x0 such that jx0j ^ R, every s-solution x(\Delta ) of (2) starting from x0 is defined for all t * 0 and it holds that:
+
+1. jx(t)j ^ r for all t * T ; 2. jx(t)j ^ M (R) for all t * 0; 3. limR#0 M (R) = 0.
+
+4
+
+Observe that these three properties represent, respectively, uniform attractiveness, overshoot boundedness, and Lyapunov stability of the closed-loop system.
+
+We also need to recall the definition of global, null-asymptotic controllability.
+
+The system (1) is asymptotically controllable if (attractiveness): for each x0 2 Rn there exists some control u (a locally essentially bounded measurable function u : [0; +1) ! U) such that the trajectory x(t) = x(t; x0; u) (the solution of (1) at time t * 0, with initial condition x0 and control u) is defined for all t * 0 and x(t) ! 0 as t ! +1, and in addition it holds that (Lyapunov stability): for each " ? 0 there exists ffi ? 0 such that for each x0 2 Rn with jx0j ! ffi there is a control u like this and such that jx(t)j ! " for all t * 0. We also assume that there are compact subsets X0 and U0 of Rn and Urespectively such that, if the initial state x0 satisfies also x0 2 X0, then the control can be chosen with u(t) 2 U0 for almost all t. (This last property simply rules out the case in which the only way to control to zero is by using controls that must "go to infinity" as the state approaches the origin.)
+
+The main result in [3] is as follows:
+
+Theorem. The system (1) is asymptotically controllable if and only if it admits an s-stabilizing feedback.
+
+The "if" implication is trivial, but the proof of the converse is not, and it is based upon: (a) Techniques from control-Lyapunov functions from [15] and [21]; (b) results of nonsmooth analysis, and in particular the systematic use of proximal subgradients, which are substitutes for the gradient for a nondifferentiable function, and were originally developed in nonsmooth analysis for the study of optimization problems (see [2]); (c) the analysis of viscosity supersolutions of Hamilton-Jacobi equations in the sense of [10], or more precisely, the "proximal supersolutions" studied in [4]) and the interesting connections between these concepts developed in [4] and the book [22]; and finally, (d) methods developed in the theory of positional differential games in [12] (these techniques were used together with nonsmooth analysis tools in the construction of discontinuous feedback for differential games of pursuit in [5] and games of fixed duration in [6]).
+
+4 Remarks Although we only defined s-solutions for closed-loop systems (2), in which k is arbitrary but f is locally Lipschitz, one can extend the notion to deal with general interconnections of systems operating at discrete and continuous time scales. For example, if either the controller or the plant incorporate variables whose update occurs at discrete instants s0; s1; : : :, and if the sequence of si's does not have any finite limit points, then one may define ss-trajectories by first obtaining a common refinement of the partition ss and the partition given by the si's. We omit the straightforward details.
+
+5
+
+References
+
+[1] Brockett, R.W., "Asymptotic stability and feedback stabilization," in Differential Geometric Control theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkhauser, Boston, 1983, pp. 181-191.
+
+[2] Clarke, F.H., Methods of Dynamic and Nonsmooth Optimization. Volume 57 of CBMS-NSF Regional Conference Series in Applied Mathematics, S.I.A.M., Philadelphia, 1989.
+
+[3] Clarke, F.H., Yu.S. Ledyaev, E.D. Sontag, and A.I. Subbotin, "Asymptotic
+
+controllability implies feedback stabilization," submitted1. (Summarized version in Proc. Conf. Inform. Sci. and Systems, Princeton, March 1996.)
+
+[4] Clarke, F.H., Yu.S. Ledyaev, R.J. Stern, and P. Wolenski, "Qualitative
+
+properties of trajectories of control systems: A survey," J. Dynamical and Control Systems 1(1995): 1-48 .
+
+[5] Clarke, F.H., Yu.S. Ledyaev, and A.I. Subbotin, "Universal feedback
+
+strategies for differential games of pursuit," SIAM J. Control, (in press).
+
+[6] Clarke, F.H., Yu.S. Ledyaev, and A.I. Subbotin, "Universal feedback via
+
+proximal aiming in problems of control and differential games," preprint, U. de Montr'eal.
+
+[7] Clarke, F.H., Yu.S. Ledyaev, and P. Wolenski, "Proximal analysis and
+
+minimization principles," J. Math. Anal. Appl. 196 (1995): 722-735
+
+[8] Coron, J-M., "Global asymptotic stabilization for controllable systems
+
+without drift," Math of Control, Signals, and Systems 5(1992): 295-312.
+
+[9] Coron, J.-M., and L. Rosier, "A relation between continuous time-varying
+
+and discontinuous feedback stabilization," J.Math. Systems, Estimation, and Control 4(1994): 67-84.
+
+[10] Crandall, M., and P.-L. Lions (1983) "Viscosity solutions of HamiltonJacobi equations," Trans. Amer. Math. Soc. 277(1983): 1-42.
+
+[11] Filippov, A.F., "Differential equations with discontinuous right-hand
+
+side," Matem. Sbornik 5(1960): 99-127. English trans. in Amer. Math. Translations 42(1964): 199-231.
+
+[12] Krasovskii, N.N., and A.I. Subbotin, Positional differential games, Nauka,
+
+Moscow, 1974 [in Russian]. French translation Jeux differentiels, Editions Mir, Moscou, 1979. Revised English translation Game-Theoretical Control Problems, Springer-Verlag, New York, 1988.
+
+[13] Ryan, E.P., "On Brockett's condition for smooth stabilizability and its
+
+necessity in a context of nonsmooth feedback," SIAM J. Control Optim. 32(1994): 1597-1604.
+
+1Available via the WWW at http://www.math.rutgers.edu/~sontag
+
+6
+
+[14] Sontag, E.D., "Nonlinear regulation: The piecewise linear approach,"
+
+IEEE Trans. Autom. Control AC-26(1981): 346-358.
+
+[15] Sontag E.D., "A Lyapunov-like characterization of asymptotic controllability," SIAM J. Control and Opt. 21(1983): 462-471.
+
+[16] Sontag E.D., "Feedback stabilization of nonlinear systems," in Robust
+
+Control of Linear Systems and Nonlinear Control (M.A. Kaashoek, J.H. van Schuppen, and A.C.M. Ran, eds,.) Birkh"auser, Cambridge, MA, 1990.
+
+[17] Sontag E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990.
+
+[18] Sontag E.D., "Control of systems without drift via generic loops," IEEE
+
+Trans. Autom. Control 40(1995): 1210-1219.1
+
+[19] Sontag E.D., "Interconnected automata and linear systems: A theoretical
+
+framework in discrete-time," in Hybrid Systems III: Verification and Control (R. Alur, T. Henzinger, and E.D. Sontag, eds.), Springer, NY, 1996, to appear.1
+
+[20] Sontag, E.D., and H.J. Sussmann, "Remarks on continuous feedback," in
+
+Proc. IEEE Conf. Decision and Control, Albuquerque, Dec. 1980, IEEE Publications, Piscataway, pp. 916-921.
+
+[21] Sontag, E.D., and H.J. Sussmann, "Nonsmooth control-Lyapunov functions," Proc. IEEE Conf. Decision and Control, New Orleans, Dec. 1995, IEEE Publications, 1995, pp. 2799-2805.1
+
+[22] Subbotin, A.I., Generalized Solutions of First-Order PDEs: The Dynamical Optimization Perspective, Birkha"user, Boston, 1995.
+
+[23] Sussmann, H.J., "Subanalytic sets and feedback control," J. Diff. Eqs.
+
+31(1979): 31-52.
+
+7</pre>
+</body>
+</html>

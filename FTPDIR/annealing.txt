@@ -1,0 +1,699 @@
+OCR of paper; see pdf file annealing.pdf for viewable/printable page
+
+
+TA4 - 9:30
+Proceedings of 24th Conference
+on Decision and Control
+Ft. Lauderdale, FL - December 1985
+IMAGE RESTORATION AND SEGMENTATION USING THE ANNEALING ALGORITHM
+E. D. Sontag + H. J. Sussmann*
+Department of Mathematics
+Rutgers University
+New Brunswick, NJ 08903
+We consider the problem of estimating a signal,
+which is known -- or assumed -- to be constant on each
+of the members R11 .... Rm of a partition of a square
+lattice into m unknown regions, from the observation
+of the signal plus Gaussian noise. This is a nonlinear
+estimation problem, for which it is not appropriate to
+use the conditional expectation as the estimate. We
+show that, at least in principle, the "maximum likeli-
+hood estimator" (MLE) proposed by Geman and Geman lends
+itself to numerical computation using the annealing
+algorithm. We argue that the MLE by itself can be,
+under certain conditions (low signal to noise ratio), a
+very unsatisfactory estimator, in that it does worse
+than just deciding that the signal was zero. However,
+if combined with a rule which we propose, for deciding
+when to use and when to ignore it, the MLE can provide
+a reasonable suboptimal estimator. We then discuss
+preliminary numerical data obtained using the annealing
+method. These results indicate that: (a) the anneal-
+ing algorithm performs remarkably well, and (b) a
+criterion can be formulated in terms of quantities
+computed from the observed image (without using a
+priori knowledge of the signal-to-noise ratio) for
+deciding when to keep the MLE.
+number of squares of R.
+Let R be a nonempty connected region. It can be
+proved that the R is simply connected if and only if
+p(R)-e(R)+s(R) = 1.
+For any given n, let 0(n) denote the number of
+connected simply connected regions of the n by n
+lattice. We need the following bounds, communicated to
+us by M. Aizenman.
+LEMMA 1. There are constants C11 C2 such that
+1 < C < C < 2 and
+1 2
+n2 2
+C < e(n) < C' for all n. (2)
+1 2 2
+Notice that 2 n is exactly the number of arbi-
+trary subsets of the lattice. The upper bound of (2)
+is actually a bound on the number of connected regions.
+We omit the proof of (2), but it is important to remark
+that the lower bound depends on the existence of a
+large number of very "irregular" connected simply con-
+nected regions, whose boundaries are simple closed
+loops that nearly fill the whole lattice.
+1. The setting.
+For a positive integer n, we use A n to denote
+the n by n integer lattice, i.e. the set of pairs
+(i,j) of integers between I and n. The members of
+An are called sites. The nearest neighbors of a site
+s (i,j) are the sites s, = (i,j-1), s 2 = (i-l,j),
+s (i,j+l), s = (i+l,j). We write s-s' to indi-
+3 4
+cate that s and s' are nearest neighbors. The
+diagonal neighbors of s are the sites sd = (i_l1j_1)1
+d d d 1
+s2 =(i_l1j+l)1 S3 = (i+l,i+l), s 4 = (i+l,j-1). A
+re ion is a subset of A n - An edge is a segment that
+joins two nearest neighbors. A region R is connected
+if any two points of R can be joined by a path which
+consists of edges joining pairs of points of R. A
+region R is simply connected if, whenever 7 is a
+simple loop in R (i.e. a simple closed path made of
+edges that join points of R), then all the points of
+An that are enclosed by 7 are in R. We will be
+particularly interested in regions that are both con-
+nected and simply connected. We will refer to them as
+csc regions. For a region R, we let p(R) denote the
+number of points of R. we use e(R) for the number
+of edges of R (i.e. of unordered pairs (s,s') E RxR
+with s-s'). A square of R is a square whose four
+edges are edges of R. We use s(R) to denote the
++Partially supported by US Air Force Grant
+AFOSR-85-0247.
+*Partially supported by NSF Grant MCS78-02442-03.
+CH2245-9/85/0000-0768 $1.00 (0 1985 IEEE 768
+An m-partition is a finite sequence
+P = (Ril ... IRm) of pairwise disjoint regions such that
+R1 U ... URm = An . (Some of the Ri may be empty.) An
+m-partition is connected if all its regions are con-
+nected. A simp .ly connected m-partition is defined
+similarly. (The empty set is connected and simply con-
+nected.) A csc partition is one where all the regions
+are connected and simply connected. A csc partition
+with background (cscb partition) is one where all the
+R, are csc except possibly for R We use the nota-
+1,
+tions Part(m,n), Part csc (m,n), Part cscb (m,n) to
+denote, respectively, the class of all, all csc, all
+cscb m-partitions of A n .
+An image is a real-valued function on A . The
+n
+set of all images, denoted by IRA, is therefore an
+n2-dimensional linear space. If P is an m-partition,
+then an image X is P-constant if it is constant on
+each region of P. For .any m-partition P, let S P
+denote the space of all P-constant images. Then S
+A P
+is a linear subspace of IR 0f dimension k(P), where
+k(P) is the number of nonempty regions of P.
+For any given m, let Sm denote the union of all
+the subspaces SP, for all m-partitions P. Also, we
+let Sm,csc, Sm,cscb denote the union of those S P
+that correspond, respectively, to csc or cscb
+m-partitions. Clearly Sm'cs cC__ Sm,cscb C__- Sm. As m
+<<PAGE-DIVIDER>>
+varies, each of the three families of subsets of R An
+defined above increases with m. Notice that the Sm,
+Sm,csc, Sm,cscb are unions, and not spans, of linear
+subspaces, and so they are not themselves linear sub-
+spaces (except for m = 1 and m = n 2).
+The estimation problem that we are interested in
+A
+is as follows: given is an observed Z e R which,
+for some small m. is thought to be of the form X+U,
+with U a Gaussian noise and X in one of the sets
+SM, Sm,csc, Sm,cscb. The objective is to estimate X.
+To make this more precise, we must specify a probabi-
+lity distribution on the set of possible X's. The
+following is a natural choice: we suppose that (i) an
+integer K between 1 and m is chosen at random, so
+that the probability that K = k is some given number
+Pk, (ii) having chosen K, we select a K-partition P
+at random, such that k(P) = K, (iii) having selected
+P, we let X be in Sp and distributed according to
+some density function on S P,
+The numbers p k can be taken to be all equal, or-
+in the spirit of Statistical Mechanics -proportional to
+e-ck for some c > 0. This latter choice penalizes
+partitions with too many regions. The particular par-
+tition P in step (ii) may be allowed to be arbitrary,
+or may be restricted to be csc or cscb; further, one
+may let all the allowed P have the same probability,
+or one can choose the probabilities so as to give high-
+er weights to certain preferred regions. For instance,
+proceeding once again as in Statistical Mechanics, one
+can make the probability of P proportional to
+e-CcIpl, where a is a constant and JPJ is the
+perimeter of P - defined simply as the number of pairs
+(s,s') of nearest neighbors for which s and s' are
+in different regions of P. (This has the effect of
+making very irregular regions less likely. However,
+this also tends to give too much weight to partitions
+where all but one of the regions are very small. One
+can counter this shortcoming by adding a priori con-
+straints on the sizes of the regions, or by including
+extra exponential factors in the probabilities.)
+Finally, once P = (R ...,R ) has been selected
+1 K
+choosing X amounts to choosing the constant values
+cil ... Ic K that X is going to have on each of the
+regions. This can be done for instance by letting the
+ci be uniformly distributed on some interval, or
+Gaussian.
+As for the noise, we can take it to be Gaussian
+and white, or we can assume it to be correlated.
+As an illustration, consider the case where m = 2
+and the regions are unrestricted. Let X. U, Z be the
+image, noise and observation, respectively. Then X
+is specified by giving a partition P = (R,IR 2 ) and
+the values c of X on R11 R The probability
+1. c2 2'
+space is identified with the product
+Part (2,n) x1R 2 xIRA 1, and the joint density of X and Z
+can be taken to be
+1 -H(P,c 1'c2'y)
+p(p,cilc 2'y) (3)
+where
+2
+H(P,c 1'c2'y)= -22(cl+c2) + -2e2 X I (Y(s )-c i)
+i=l seR i
++ a 1 1 y card(R 1)-card(R 2). (4)
+seRils'eR 2
+s-s'
+Here a, y, a, are constant, and N is a nor-
+malization constant. (This choice of p corresponds
+to taking p 1 = 0' P2 = " i.e. not making a separate
+discrete decision whether to take K = 1 or 2. The
+constants a, 6 measure the power of the signal and
+the noise. The last two terms respectively penalize
+large perimeters - assuming cc > 0 - and partitions
+into regions of very unequal sizes - if y > 0 - .)
+In practice, the computation of N is a nearly impos-
+sible task but, fortunately, the Metropolis algorithm
+(cf. [4]) makes it possible to generate samples of this
+distribution without having to know N.
+The function H of (4) is called the Hamiltonian.
+The choice made in this example corresponds to taking
+c and c Gaussian, and letting the noise be uncor-
+1 2
+related. If, instead, we want to assume c 1 and c 2
+to be uniformly distributed on some interval 1, then
+we simply omit the first term, but restrict p and H
+to be defined only for cil c 2 in I. (Actually, H
+makes perfect sense even when I is the whole real
+2
+line, i.e. when a but the probabilistic inter-
+pretation is lost because N becomes infinite.)
+52. The estimation problem.
+It is well known that, no matter what X and Z
+are, the "best estimate" of X given Z is the condi-
+tional expectation IE(XIZ). However, it is also well
+known that this estimator has some obvious drawbacks.
+For instance, because it is defined as an integral, the
+conditional expectation is often hard to compute. (In
+image processing problems, these integrals are sums
+over all possible configurations, and can seldom be
+evaluated.) An even more serious difficulty with con-
+ditional expectations is the following. Even if X is
+known to take values on some (nonconvex) subset S of
+a linear space, the values of VXJZ) will in general
+fail themselves to be in S. (As a trivial illustra-
+tion, consider the case of a random variable X, uni-
+formly distributed on a sphere, U an independent
+Gaussian vector-valued random variable, and Z = X+U.)
+In our case, we encounter precisely this situation,
+because the sets S M, sm,csc, sm,cscb are clearly not
+convex, and we definitely want our estimate for X to
+lie in one of these sets.
+A general methodology for dealing with estimation
+problems of this type in the image processing setting
+has been proposed by Geman and Geman [1]. Roughly,
+the method proposed involves four steps, namely:
+(1) model the images or objects to be detected as
+Gibbs states, i.e. let the probability of a configura-
+tion a be proportional to e-H(a), where H - the
+Hamiltonian - is a function on the set of all configu-
+rations; (2) make a model for the noise so that the
+joint probability of an image a and observation
+Gobs is given by e -H(G)-K(G,Gobs ) for some function
+K, (3) let the "conditional Hamiltonian" be defined as
+Hc(,,,Obs ) = H(,)+K(G,(Jobs ). and use as the estimate
+for a given Gobs a value of a which minimizes
+Hc (i.e. the "maximum likelihood estimator", hence-
+forth abbreviated as MLE); finally (4) use the anneal-
+ing algorithm to compute the above minimum.
+769
+<<PAGE-DIVIDER>>
+Naturally, the justification of each of these
+steps raises a different set of questions. It is clear
+that, in our formulation of the model in 91, we have
+essentially followed the prescriptions of Steps I and
+2, and we will not pursue the justification problem for
+these steps. Steps 3 and 4, however, require some fur-
+ther analysis, because some of the issues involved are
+particularly critical for our estimation problem. We
+begin by discussion Step 3. The problems regarding the
+use of the annealing algorithm will be touched upon
+later.
+There is no general reason for believing that
+"maximum likelihood" estimators in the above sense are
+optimal or even reasonable. They clearly are so for
+linear Gaussian problems, where they happen to agree
+with the usual conditional expectations, but once non-
+linearity or nongaussianness if allowed in they can
+have fairly undesirable properties. For instance, let
+X be a real random variable with density
+1) x4X2
+N-1 e 4 2 1 where V > 0 and N is a normalization
+constant. Let U be Gaussian (0,I) and independent
+from X. Let Z = X+Uo Let ~ be the "maximum
+likelihood" estimator for X given Y, i.e.
+1/3 1/3
+V_ Y . Then a simple computation shows that,
+if v is sufficiently large, then E( 1i_X12) >1E(1X12).
+This says that X is worse, in the mean square sense,
+than the trivial estimator X* which consists of just
+taking X* = 0 no matter what the observed value of Z
+is. For an even simpler example involving a discrete
+X, let X take values -1, 0, 1 2 with equal probabi-
+lity, Let U be Gaussian (O,a ), and independent
+from X. Let Z = X+U. The MLE consists of esti-
+mating X to be the member of f-1,0,1} which is
+closest to Z. If is large, the mean square error
+is worse than if we just estimate X to be zero.
+Given that the MLE is not in general satisfactory,
+the question arises as to whether it is reasonable.for
+our particular problem. At the moment we are not yet
+able to perform a complete rigorous analysis, but we
+will now discuss a model problem - which resembles our
+more complicated situations - where explicit calcula-
+tions are possible.
+Let n be a positive integer, and let X be an
+Rn_valued random variable determined as follows. An
+integer k E fl,...,n} is chosen at random, with
+uniform probability, and then a value of the coordinate
+2
+xk is chosen with a normal (0,9 ) distribution,
+while the other coordinates are set equal to zero. So
+X is concentrated on L = L 1U ... UL n' where L i
+denotes the i-th axis, and its density is
+2 -1/2 -1 JxJ'/2 :,2 2 n 2
+(27To n e- (Here JxJ = ~lxi Let
+i= 2
+U be JRn-valued Gaussian noise with variance e and
+independent from X. Let Z = X+U, and consider the
+problem of estimating X given Z. The joint density
+of X and Z, on the product L xe , is given by
+e-h(x,z) times a constant, where
+2 1 2
+h(x,z) 1XI + Jz-xJ (5)
+2a2 2e2
+The mean square optimal estimate of X given
+Z is obtained by choosing, for each z, the vector
+6 L that minimizes the integral
+-h (x,
+x - 12 z)d X, (6)
+I1 1
+L
+where we write dix to emphasize that (6) is a one-
+dimensional integral. An explicit computation shows
+that x is obtained as follows: first we find an
+index k such that I-k1 = max{1zi1: i
+Then we set
+wk(z)zk
+xk = P n (7)
+..(.)
+j=1 J
+and we set all the other coordinates equal to zero.
+The weights wj are given by
+Uz2
+w.(z) = e j, (8)
+1 2
+where cc = P 0 = G
+2e 2' 02+e 2'
+The MLE ^ is even easier to compute. We get
+XML
+it by choosing k exactly as above, but then taking
+(x ML) k = Pz k *(Naturally, the other coordinates are
+again set equal to zero.)
+Notice that both i and XML agree on the choice
+of k, and this choice does not depend on the values of
+0 and 6. That is, there is a certain amount of qua-
+litative information (namely, which axis X was on)
+which is given as correctly by XML as by X. More-
+over, this information does not depend on the strength
+of the signal relative to the noise. On the other
+hand, ~ does something subtle that X^ML entirely
+misses: while XML takes x k to be a definite pro-
+portion of z k' ~ does look at the other z j 's in
+order to decide how much of zk is going to be alotted
+to ^ is very large, but the other z.'s are
+xk' If zk I
+very small, i.e. if z lies in a narrow cone about Lk'
+then X will assume that the observation comes pri-
+marily from the signal, and will estimate the signal to
+be almost as large as z. If, on the other hand, all
+the z. are roughly equal, so that z is very far
+J
+from any of the axes, then X will realize the noise
+must have been very large, and will therefore not take
+its own choice of k too seriously, and opt instead
+for guessing that the signal was very small, and there-
+fore k was very uncertain anyhow. In the limiting
+case p - 1, both ~ and XMLE reduce to the obvious
+estimate ~ = Z, which equals X, so that both ~ and
+have zero mean square error. In the other
+~m
+limiting case, as p - 0, both i and XML go to 0.
+However, it can be proved that, when p is small
+enough, then IE( 1~,_X12) >]E(IX12), i.e. ~ is
+XMIL
+worse than just taking X to be zero. (This is of
+course not true for X, because X is optimal, and so
+it is better than the zero estimator.) This suggests
+that there is a cutoff point p such that, for o > P,
+XML is worth using in that, for instance, it does
+better than the zero estimator, but for p < _p then
+- should be ignored. If we want to estimate k, we
+XML
+770
+<<PAGE-DIVIDER>>
+can first use XML (i.e. find the axis to which z is
+closest) and then decide to accept this k or not
+based on whether p > p or p < p. The first of the
+two decisions clearly does not depend on knowing p.
+It would be desirable if the second one could also be
+made independently of p. For this, a Bayesian
+approach would be needed to estimate p from the
+observed Z. On the other hand, it is intuitively
+clear that, if a value z has been observed for the
+random variable Z which happens to be very close to
+one of the axes, then this is very unlikely to have
+happened because of the noise, and one would tend to
+believe that p was large. Similarly, if many z.'s
+J
+are large, then p is more likely to have been small.
+We now argue heuristically and attempt to show
+that something like the preceding analysis should apply
+to our original estimation problem. We consider the
+case m = 2 and take a Hamiltonian of the form (4),
+with a = y = 0. Moreover, we assume that all images
+are first normalized by subtracting their mean over the
+lattice, so that all images have mean zero and there
+are no nontrivial constant images. Then each partition
+P c Part(2,n) gives rise to a one-dimensional subspace
+SP of the space of all images. The analogy with the
+above simplified model is apparent, except for the fact
+that we are now dealing with a more general collection
+Z of subspaces than the set of axes. Moreover, Z
+n n
+is actually much larger, since the ambient space has
+dimension n 2_1 but the number of partitions behaves
+2
+like e cn for some c > 0, as n Let us assume
+that the analysis of our model problem still applies
+here. The MLE is obviously (and rigorously) obtained
+by first finding the subspace S to which the
+P
+observed image Z is closest and then finding the con-
+stant values of X on the regions of P. The parti-
+tion P = (RllR 2) is, simply, the one such that, if
+we take cil c 2 to be the means of Z on R 1 and R2
+respectively, then the image with values ~ i on the
+R. will best approximate Z in the mean square sense.
+I
+Then the constants cil c 2 are taken to be multiples
+2 2 2
+of all E 2$ by the factor p, where p = G /a +6 . The
+optimum estimator, if we believe the analogy with the
+model problem, would be given exactly like the MLE,
+except that the a. would have to be multiplied by an
+1
+extra factor. However, this factor would involve, in
+2
+its denominator, a sum of terms e CTIQ(Z) where, for
+each partition Q, TT (Z) denotes the norm of the
+Q
+orthogonal projection of Z on S Q* Since the sum
+would be over all partitions, it is clear that compu-
+ting the optimum estimator is likely to be much harder
+than computing the MLE. On the other hand, we know
+that the MLE is an overoptimistic estimator, in that it
+gives a multiple of the optimum estimator by a factor
+> 1. Hence it should be possible to improve upon the
+MLE by making a rough estimate of the extra factor. To
+this effect, we propose the following heuristic argu-
+ment. Suppose we have k one-dimensional subspaces of
+RP, where p is very large, and k grows with p.
+Suppose the subspaces are "uniformly distributed". One
+can then estimate the area of the piece of the (p-l)-
+dimensional unit sphere that consists of those points
+that are closest to one particular subspace. This area
+is roughly equal to A p/k, where A p is the area of
+the (p-l)-dimensional unit sphere. Since
+p/2 p/2
+27T 2Tr
+Ap F(R) , we see that the area equals kr(R) . if
+2 2
+this piece of sphere is actually a (p-l)-dimensional
+P-1
+disc of radius r, then its volume is r p AP-1 , i.e.
+P-1
+2r P-1 TF2 1/p
+. So r roughly equals 1/k As p
+pr(p-,)
+2
+r will stay bounded away from 0 and 1 if k goes
+like Cp for some C > 1, and then r will approach
+2
+1/C. In our estimation problem, p is n , and k is
+the number of partitions. For the case of unrestricted
+n2 1
+partitions, k = 2 , and so r - 2. This says that
+3
+about 4-0 f the sample variance of a typical purely ran-
+dom image should appear to be explainable by assuming
+that the image is P-constant for some partition P.
+For csc partitions a similar conclusion should hold,
+because Lemma 1 tells us that k also behaves like an
+2
+exponential of n . The constant C is smaller, how-
+ever, so that there will still be a definite, but
+smaller, fraction of the variance that will appear to
+be explainable by approximating by a signal that is
+constant on a 2-partition. (For unrestricted parti-
+tions, one can obtain directly a better estimate, and
+show that the fraction of the variance that will be
+accounted for by a 2-constant approximation is 2
+7
+This just follows from the fact that IE(Ixl) = V2_177 if
+X is normal (0,1).) So, if we compute the best
+approximating 2-partition P, we will typically reduce
+the variance by a fixed factor, and when this happens
+no particular significance should be attached to P.
+However, if a much larger reduction results, then it is
+likely to mean that the power of the signal relative
+to the noise was large, and P really tells us some-
+thing about the signal.
+The preceding heuristic argument also suggests
+that, if we were to choose smaller classes of parti- 2
+tions, whose sizes grow less than exponentially in n
+then for large n no significant reduction of the
+variance would be achieved for a typical random image,
+and any observed reduction would be significant.
+Thus, we suggest the following procedure. First
+compute the MLE, but then estimate the signal as
+follows: let Y be the image obtained from the MLE,
+so that Y = pY*, where Y* is the orthogonal projec-
+tion of the observation Z on some space S P, If
+is larger than a certain p, then keep Y. Otherwise,
+just estimate X to be zero. If a, 6 are not known,
+just take u - in (4), and compute the MLE, which
+will be equal to Y*. Then determine the ratio
+11Z-Y*1~
+lizl~ . If this ratio is significantly smaller than
+some number x (which should be about equal to 0.34
+for the unrestricted case, and larger for the csc
+case), then regard P as a good estimate of the par-
+tition for the original signal. If the ratio is lar-
+er than x, estimate X to be zero.
+9
+3. Computing the MLE by the annealing method.
+The numerical calculation of the MLE is possible,
+at least in principle, using the annealing algorithm.
+To see this we must show: (a) that the classes of
+partitions considered here are "connected by
+switchings", in the sense that we can connect any two
+771
+<<PAGE-DIVIDER>>
+partitions in the class by means of a sequence of
+switchings at single sites, without ever leaving the
+class, (b) that the possible switchings that can be
+made at a site can be recognized by purely local con-
+siderations, and (c) that the change in the value of
+the Hamiltonian can be calculated locally. (Strictly
+speaking, (b) and (c) are not necessary, since the
+annealing procedure is in principle applicable to mini-
+mization problems on arbitrary finite sets. However,
+in practice, for image problems, one needs (b) and (c)
+if one is to avoid having to carry out searches over
+the whole lattice at each basic iteration step.) The
+truth of (a) and (b) is completely trivial for unre-
+stricted partitions.
+For csc partitions more work is required, but the
+conclusion is the same. (For example, to decide
+whether or not one can switch a site s from Region 1
+to Region 2, one has to make sure that adding s to 2
+will keep 2 a csc region. Checking whether 2 re-
+mains connected is easy, for this will happen if and
+only if 2 was empty or at least one nearest neighbor
+of s was already in it. Once this is done, the pre-
+servation of simply connectedness is equivalent to the
+condition that the left side of (1) does not change,
+i.e. that adding s to Region 2 adds to it exactly one
+more edge than it adds squares.)
+The verification of (c) is quite easy, provided
+that we allow ourselves to carry in the iterations the
+size of each region and the sum of Z over each region.
+(These numbers are easily updated at each basic itera-
+tion by purely local computations.)
+Once we know that annealing is in principle a pos-
+sible method for computing P, we must consider whether
+the computation actually works in practice, i.e.
+whether the method will take us reasonably close to the
+minimum in a realistic number of iterations. The
+existing theorems on the convergence of the annealing
+algorithm (cf., e.g., [2], [3]) do not suffice to esta-
+blish this since, when the estimates obtained in these
+theorems are applied to our problem, they give a number
+cn2
+of iterations that behaves like e , c > 0. This
+only shows that annealing is not worse than exhaustive
+search, which is certainly a necessary but by no means
+sufficient condition for an optimization method to be
+worth using. In the absence of sharper theoretical
+bounds, we can only attempt to answer the question
+empirically. As we shall see, the results we have
+obtained strongly suggest that, for our estimation
+problem, the annealing algorithm works very well.
+54. Numerical results.
+We run 25 trials, each consisting of: (a) gene-
+ration of a partition P into two regions (with
+Region 2 being csc) using the Metropolis algorithm,
+(b) generation of a P-constant image X, by choosing
+each of the two values of X to be Gaussian (0,G2),
+(c) generation of an "observed image" Z, by adding
+uncorrelated Gaussian noise to X, (d) two applications
+of the annealing algorithms to compute the MLE, one
+with "restricted switchings" (i.e. keeping Region 2
+csc) and the other one unrestricted. The lattice was
+2 2 2
+28x28. The ratio a la +0 was made to vary from 0
+to 1. The Hamiltonian used in the annealing computa-
+tion was that of (4), with a = y = 0. The first term
+of the right side of (4) was omitted, since this term
+has no effect on the determination of the partition.
+Because of this, together with the fact that a =y = ,
+we obtain a situation where, for the unrestricted c se,
+the optimization problem is in fact reducible to a
+clustering problem, and can also be solved algorith-
+mically in time 0(n 2log n). Moreover, when
+P = CY2/a 2+62 is small, we can estimate a priori that
+2
+JJZ-Y*JJ should typically be about (l - Tr)11Z11- Thus we
+get an independent test to see whether the annealing
+algorithm is really computing the minimum.
+The results show that, for smaii p, and unre-
+stricted switchings, the optimum computed by annealing
+was very close to the predicted value. This suggests
+that, for the problems considered here, annealing is
+actually computing the optimum. Convergence was quite
+fast: after 120 iterations (passes through the lat-
+tice) no significant reduction in the value of h was
+detected. Let X = 1 11 = , for Y*
+r r
+I~IF x~
+computed using restricted switchings. Let Xu, ~iu be
+defined similarly,using unrestricted switchings. A
+plot of Xu against P shows that, for low values of
+P, X is constant and its value is about 0.3. At
+u
+P = 0-0.6, Xu(P) becomes significantly smaller, and
+u
+decreases to zero as P - 1. The behavior of X r
+appears to be similar, except that (a) the constant
+value for small p is about 0.55, i.e. significantly
+larger than the value for the unrestricted case, in
+good agreement with our theoretical discussion, and
+(b) the cutoff value p # is probably lower, P #_ 0.5.
+r r
+(Since X r fluctuates more than Xu, the determina-
+tion of P# is more uncertain.) Both and 0
+r Pr u
+decrease steadily as functions of p. The graphs go
+through the value 1 at about p-0.4. This means
+that, for p < 0.4, the MLE is worse than just taking
+X = 0. For p > 0.4, the MLE does better. If we do
+not know p, we can get partial information by compu-
+ting X u (or Xd- If Xu is significantly less than
+0.3 (or X < 0.55), then this says that p is large
+r
+enough that the MLE must be taken seriously, and used
+as an estimator for the signal.
+We also run a series of trials in which the signal
+was simply a dark square on a light background. In
+this case, a similar behavior was observed. However,
+another interesting phenomenon was noticed for the case
+of very low noise. In some trials with restricted
+switchings (i.e. with Region 2 - but not Region 1 -
+required to be csc), the algorithm several times became
+fixated on taking Region 2 to be the outer one and
+Region 1 to be the square. Since Region 2 was required
+to be csc, the end result was a square of ones on a
+background of twos, except that there was a string of
+ones joining the square to the boundary. Such a con-
+figuration is clearly a local minimum which is not
+global. However, this minimum is very close in value
+to the global one, although very far in configuration
+space. Going from this local minimum to the global
+one would have required climbing a very high hill, and
+the algorithm was unable to do it.
+5. Conclusion.
+Our preliminary data indicate that, for the esti-
+mation problem considered here, the annealing algorithm
+works rather well to get quite close to the minimum in
+a reasonably small number of iterations. However, the
+phenomenon of "getting trapped at a local minimum"
+can occur, especially for restricted switchings.
+(This shows that the imposition of constraints on con-
+figurations, in order to obtain configurations with
+772
+<<PAGE-DIVIDER>>
+special properties, also has the undesirable side
+effect of making motion in configuration space more
+difficult.)
+As for the question of how the compured MLE can
+be used to estimated the signal, the answer is more
+complicated, as was shown before, but there clearly is
+a range of values of p such that (a) one can assess
+from the data whether p is in that range, and
+(b) if p is in that range, then the MLE is good.
+. - 4: - - __ - - -
+1. Geman, S. and D. Geman: Stochastic Relaxation,
+Gibbs Distributions and the Bayesian Restoration
+of Images, IEEE Transactions, PAMI 6 (1984),
+721-741.
+2. Gidas, B.: Nonstationary Markov Chains and Con-
+vergence of the Annealing Algorithm, J. Statis-
+tical Physics 39 (1985), 73-131.
+3. Hajek, B.: Cooling Schedules for Optimal Annealing,
+preprint, 1985.
+4. Metropolis, N., et al.: Equations of State Calcu-
+lations by Fast Computing Machines, J. Chem.
+Phys. 21 (1953), 1087-1091.
+773

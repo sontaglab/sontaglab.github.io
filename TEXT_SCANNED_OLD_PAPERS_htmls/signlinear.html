@@ -1,0 +1,1042 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/signlinear.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/signlinear.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+LINEAR SYSTEMS WITH SIGN-OBSERVATIONS\Lambda 
+
+REN'EE SCHWARZSCHILD AND EDUARDO D. SONTAG y
+
+Abstract. This paper deals with systems that are obtained from linear time-invariant continuousor discrete-time devices followed by a function that just provides the sign of each output. Such systems appear naturally in the study of quantized observations as well as in signal processing and neural network theory. Results are given on observability, minimal realizations, and other systemtheoretic concepts. Certain major differences exist with the linear case, and other results generalize in a surprisingly straightforward manner.
+
+Key Words. observability, minimal realization, neural networks, quantization effects AMS(MOS) subject classification. Primary 93B07, 93B10, 93B15
+
+1. Introduction. A central issue in current control theory and signal processing concerns the interface between on the one hand the continuous, physical, world and on the other hand discrete devices such as digital computers, capable of symbolic processing. Classical control techniques, especially for linear systems, have proved spectacularly successful in automatically regulating relatively simple systems. However, for large-scale problems, controllers resulting from the application of the well-developed theory are used as building blocks of more complex systems. The integration of these systems is often accomplished by means of ad-hoc techniques that combine pattern recognition devices, various types of switching controllers, and humans -or, more recently, expert systems,- in supervisory capabilities.
+
+Recently, there has been renewed interest in the formulation of mathematical models in which this interface between the continuous and the symbolic is naturally accomplished and system-theoretic questions can be formulated and resolved for the resulting models. Successful approaches will eventually allow the interplay of modern control theory with automata theory and other techniques from computer science. This interest has motivated much research into areas such as discrete-event systems, supervisory control, and more generally "intelligent control systems".
+
+One possible first step in a systematic attack of this problem is the study of partial (discrete) measurements on the state of a continuous dynamical system. When no controls are present, this is closely related to classical work on symbolic dynamics, and in fact has been pursued in the control-theory literature, where Ramadge studied in [9] the dynamical behavior of observation sequences corresponding to such systems.
+
+If inputs are available, one of the first questions that one may address in this context is that of the nature of the information that can be deduced by a symbolic "supervisor" from data transmitted by such a "lower level" continuous device, using appropriate controls in order to obtain more information about the system. Here the
+
+\Lambda  Supported in part by US Air Force Grant AFOSR-91-0343.
+
+y Department of Mathematics, Rutgers University, New Brunswick, NJ 08903, (908) 932-3072, Email: schwarzs@hilbert.rutgers.edu, sontag@hilbert.rutgers.edu
+
+1
+
+2 Ren'ee Schwarzschild and Eduardo D. Sontag work of Delchamps, especially in [3], [4], and [5], is especially relevant. His work dealt with what one may call "single-experiment observability" of constrained-output systems, systems for which the dynamics are linear but the outputs reflect various limitations of measuring devices. These are systems, in discrete or continuous time, whose equations can be expressed as
+
+x(t + 1) [or .x(t) ] = Ax(t) + Bu(t)
+
+y(t) = oe(Cx) ;(1)
+
+for some n \Theta  n real matrix A, n \Theta  m matrix B, and p \Theta  n matrix C, and where oe is a memory-free map: IRp ! IRp -in the case of Delchamp's work, a quantizer. (The simplest example of a constrained-output system occurs if oe is the identity. Then we are dealing with the class of all finite dimensional linear systems. See [12] for precise definitions of "system" and related terms.) Models of the form (1) with quantizer oe arise also in a variety of other areas besides control. For instance, in signal processing, when modeling linear channels transmitting digital data from a quantized source, the channel equalization problem becomes one of systems inversion for such systems; see [2] and also the related paper [8].
+
+In contrast to Delchamp's work, in this paper we look at the more standard notion of multiple-experiment observability, which is different for nonlinear systems from the single-experiment concept (for purely linear systems, both concepts do coincide, of course). We will be especially interested in the case in which oe simply takes the sign of each coordinate, that is sign-linear systems, those for which
+
+oe(x) = sign (x); (applied to each coordinate independently), where
+
+sign (x) = 8?!?:
+
+1 if x ? 0 0 if x = 0 \Gamma 1 if x ! 0 :
+
+Sign-linear systems correspond to the 1-bit quantization case of Delchamps' model, and are also motivated by pattern recognition applications (see below), but many technical results will be given in the paper in somewhat more generality.
+
+Among the most popular techniques in pattern classification are those based upon the use of perceptrons or linear discriminants (see e.g. [6], [13]). Mathematically, these are simply functions of the type
+
+IRn 7! IRp ; v 7! y = sign (Cv) typically with large n and small p; again, the sign is understood as being taken in each coordinate separately. Perceptrons are used to classify input patterns v = (v1; \Delta  \Delta  \Delta  ; vn) into classes, and they form the basis of many statistical techniques. In many practical situations, arising in speech processing or learning finite automata and languages (see e.g. [7]), the vector v really represents a finite window
+
+u(t \Gamma  1); : : : ; u(t \Gamma  s)(2)
+
+Linear systems with sign-observations 3 of a sequence of m-dimensional inputs u(1); u(2); : : :, where the components of (2) have been listed as v (and sm = n). In that case, the perceptron can be understood as a sign-linear system of dimension n, with a shift-register used to store the previous inputs (2). Borrowing from the signal processing terminology, perceptrons are "finite impulse response" sign-linear systems. As such, they are not suited to modeling time dependencies and recurrences in the data. More general sign-linear systems are called for, and this motivated the introduction of such systems in [1], using the name "infinite impulse response" again by analogy to the classical linear case. In that paper, the authors studied practical problems of systems identification, but did not address the more system-theoretic types of questions that this paper deals with.
+
+As a final reason for studying sign-linear systems, we point out that such systems provide a natural class of nonsmooth nonlinear systems, a class that combines logical and switching devices together with more classical continuous variables. When the nonlinearities appear in the feedback loops, the problems become far more difficult; in that context, see for instance [11] for results about the computational power of systems of the type x(t + 1) = oe(Ax(t) + Bu(t)).
+
+1.1. Summary of Paper. As mentioned earlier, the focus of this paper is the class of sign-linear systems, that is those of the type (1) with oe(x) = sign (x) (the sign is understood as being taken in each coordinate, so that the output value space could be taken simply as f\Gamma 1; 0; 1gp; careful definitions are given later). Also of interest are the associated sign-linear i/o maps of the form
+
+y(t) = sign (A1u(t) + \Delta  \Delta  \Delta  + Atu(1)) or the analogous continuous-time maps (convolution followed by sign).
+
+For a system such as (1), we call any triple (A; B; C) such that the equations of the system can be expressed in terms of that triple, a triple associated to the system \Sigma . Note that in some cases there may be many triples associated to a single system:
+
+Example 1.1. Let \Sigma  be a sign-linear system with state-space IR2 defined by the equations
+
+x(t + 1) =  0 11 0 ! x(t) +  10 ! u(t)
+
+y(t) = sign (x1 + 2x2): Then the following triples are both associated to \Sigma :
+
+A =  0 11 0 ! B =  10 ! C = i 1 2 j ; A =  0 11 0 ! B =  10 ! C = i 2 4 j :
+
+The results that we describe parallel those known for standard linear systems, but with a few, perhaps unexpected, differences. We may summarize the main conclusions on sign-linear systems as follows:
+
+4 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+(a) Though stronger than just observability of the pair (A; C), observability of sign-linear systems can be characterized in an elegant manner. The characterization is different in the continuous- and discrete-time cases, in contrast to what happens for linear systems. Moreover, in another characteristic that is typical of nonlinear systems, the degree of controllability of the system does affect observability.
+
+(b) Minimal-dimensional realizations of sign-linear i/o maps by sign-linear systems are unique up to a change of variables in the state space and a positive rescaling of outputs. This is basically as in the linear case, except for the obvious need to rescale. Moreover, finite-dimensional realizability can be characterized in the usual manner using Hankel matrices.
+
+(c) If a realization of a given sign-linear i/o map is controllable and observable, in the usual sense of control theory, then it is minimal. Conversely, a minimal realization is necessarily final-state observable (that is, there is a control allowing for determination of the state at the end of the interval of application) but, in the discrete-time case, minimal realizations may not be observable. (In continuous-time, final-state and plain --initial-state-- observability coincide.)
+
+(d) Because of the possible lack of observability of minimal realizations, for some discrete-time sign-linear i/o maps it is the case that the abstract "canonical" realization, known to exist from automata-theoretic arguments, is not given by a sign-linear system. We discuss the canonical systems that result when minimal realizations are not observable, obtaining a description in terms of cascades of finite automata and linear systems.
+
+The paper ends in Section 6 where we show how some of the continuous-time observability results can be seen as consequences of the corresponding discrete-time results by sampling at appropriate frequencies.
+
+Some of the results to be given can be stated in more generality, in terms of constrained-output systems as in (1), where oe is a fixed nonlinearity satisfying some (or all) of the following axioms:
+
+1. sign (oe(x)) = sign (x). 2. Finite precision sensor: oe(x) =constant for x 2 (0; "] and x 2 [\Gamma "; 0), for some
+
+" ? 0. 3. Sensor saturation: oe(x) =constant for x ? K ? 0 and x ! \Gamma K ! 0, for some
+
+K ? 0. 4. oe(x) is not constant on (0; 1) or (\Gamma 1; 0). (Again, for a vector z 2 IRp, the notation oe(z) denotes the vector (oe(z1); : : : ; oe(zp)) 2 IRp.) The main systems of interest in this paper, sign-linear ones, are those for which oe(x) = sign (x), which satisfies axioms 1,2,3. Some other examples of constrainedoutput systems are as follows:
+
+ffl Output-Saturated Systems (satisfying 1,3,4), those with oe(x) = s(x); where
+
+s(x) = 8?!?:
+
+1 if x ? 1 x if jxj ^ 1 \Gamma 1 if x ! \Gamma 1
+
+The output space for output-saturated systems is [\Gamma 1; 1]p.
+
+Linear systems with sign-observations 5 ffl Quantized Systems (satisfying 1,2,4), defined by oe(x) = bxc, with output space
+
+ZZp; ffl Saturated-Quantized Systems (satisfying 1,2,3,4), for which
+
+oe(x) = ( Ksign (x) if jxj ? Kbxc if jxj ! K for some fixed K ? 0. Saturated-quantized systems have output space fn 2 ZZ : jnj ^ Kgp. More details about such functions, and results specific for some of these classes, are described in the technical report [10].
+
+2. Observability. Our notion of observability is the usual concept of multipleexperiment observability. Let us recall the main ideas. For formal definitions, please refer to [12], Section 5.1.
+
+Definition 2.1. A system \Sigma  is observable if for any two initial states, there is some control which produces different outputs for each of the two initial states.
+
+This is not in general equivalent to single-experiment observability in which there exists one control function (or sequence of controls) which distinguishes any pair of states. The control we use to distinguish two states may depend on the two given states. This concept of observability really tells us only that we may distinguish between any two initial states, not that we may determine the initial state using one special control. For linear systems, multiple- and single-experiment observability are equivalent. If a linear system is observable, then the zero control will distinguish any pair of states.
+
+Definition 2.2. A system \Sigma  is final-state observable if for any two initial states, there is some control and some time T so that either the output before time T is different for each of the two states, or the states at time T are the same.
+
+For continuous-time systems, final-state observability is equivalent to observability ([12], Proposition 5.1.9).
+
+We now state a few general necessary conditions for observability of constrainedoutput systems. Later, we will provide necessary and sufficient conditions for the class of sign-linear systems. The following is obvious:
+
+Lemma 2.3. If \Sigma  is an observable constrained-output system, then (A; C) is an observable pair.
+
+Conversely, if oe is one-to-one, then observability of the pair (A; C) implies obervability of \Sigma , but in general the implication does not hold. The following lemma gives an additional necessary condition when oe is not one-to-one.
+
+Lemma 2.4. If \Sigma  is an observable discrete-time constrained-output system with a single output channel (p = 1), and oe is not one-to-one, then det A 6= 0.
+
+Proof. Suppose det A = 0. Then there exists a nonzero x 2 ker A. The output sequence for the initial state x is foe(Cx); : : :g where the part not shown is independent of x. Since \Sigma  is observable, (A; C) is an observable pair, so Cx 6= 0. Let oe(_) = oe(*); _ 6= *. Then, we may choose ff1 6= ff2 so that ff1Cx = _ and ff2Cx = *. Then ff1x 6= ff2x are indistinguishable, contradicting observability.
+
+6 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+For p ? 1, this lemma is not necessarily true. Consider the following counterexample. We will use the notation x+(t) to mean x(t + 1), and we drop the argument t from now on.
+
+Example 2.5. Let \Sigma  be the system with equations x+ = 0; y1 = oe(x); y2 = oe(2x); and
+
+oe(x) = ( x x 62 [1; 2]1 x 2 [1; 2] : The nonlinearity oe is not one-to-one, but the map x 7! (oe(x); oe(2x)) is one-to-one, so the system is observable. However, A is not invertible.
+
+If the measurement limiter oe is some form of saturation or oe has finite precision near 0, observability does imply that A is invertible, even in the multiple output case, since the following lemma will apply.
+
+Lemma 2.6. If \Sigma  is an observable discrete-time constrained-output system and oe either models sensor saturation
+
+oe(x) = constant for x ? K ? 0 and x ! \Gamma K ! 0 for some K ? 0, or has finite precision
+
+oe(x) = constant for x 2 (0; "] and x 2 [\Gamma "; 0) for some " ? 0, then det A 6= 0.
+
+Proof. If det A = 0, then there exists a nonzero x 2 ker A. In the saturated case, choose * so that for all i satisfying Cix 6= 0, then j*Cixj ? K. Then *x and 2*x are indistinguishable. In the finite precision case, choose * so that j*Cixj ^ " for all i = 1; : : : ; p. Then *x and 12 *x are indistinguishable.
+
+Before stating the next lemma we introduce the following definition. Definition 2.7. Let \Sigma  be a constrained-output system and let (A; B; C) be any triple associated to \Sigma . Then the sequence of p \Theta  m matrices
+
+A = fA1; A2; A3; : : :g where
+
+Ai = CAi
+
+\Gamma 1B; i = 1; 2; 3; : : :
+
+is called a Markov parameter sequence associated to \Sigma .
+
+Since in general C is not uniquely defined from the system equations, there may be more than one Markov sequence associated to a given system; this issue is discussed later.
+
+Lemma 2.8. Assume that \Sigma  is a single-output observable discrete-time constrainedoutput system defined by the triple (A; B; C), and oe has finite precision
+
+oe(x) = constant for x 2 (0; "] and x 2 [\Gamma "; 0):
+
+Linear systems with sign-observations 7 If A has an eigenvalue * satisfying j*j ^ 1, then A 6j 0, for any Markov sequence associated to \Sigma .
+
+Proof. Let A be any Markov sequence associated to \Sigma . Let v be a nonzero eigenvector for A corresponding to * and let fl = kvk (where k \Delta  k denotes Euclidean norm). Then Akv = *kv for all k, so kAkvk ^ fl for all k. Write v = v1 + iv2 where v1; v2 are real vectors. Then kAkv1k ^ kAkvk ^ fl for all k. Note that kCk 6= 0 since (A; C) is an observable pair. Then
+
+x := v1"flkCk
+
+satisfies
+
+jCAkxj ^ kCkkAkxk ^ kCkfl"flkCk = "
+
+for all k. If A j 0, then x; 12 x are indistinguishable, contradicting observability.
+
+3. Sign-Linear Systems. Now we concentrate on the observability of sign-linear systems. Sign-linear input/output maps and their realizations will be discussed in Sections 4 and 5.
+
+Definition 3.1. A sign-linear system \Sigma  is a system with state, input and outputvalue spaces IRn, IRm, and f\Gamma 1; 0; 1gp, respectively, for which there exist matrices A 2 IRn
+
+\Theta n; B 2 IRn\Theta m; C 2 IRp\Theta n, so that the equations of \Sigma  take the form
+
+x+(or .x) = Ax + Bu
+
+y = sign (Cx)
+
+in discrete- (or continuous-) time. If (A; B; C) is a triple like this, we denote \Sigma  = (A; B; C)s.
+
+Whether we are dealing with discrete- or continuous-time will be clear from the context. The integer n is the dimension of the system. It is convenient to include the degenerate case n = 0, corresponding to the system with zero-dimensional state space.
+
+Note that (A; B; C)s = ( ^A; ^B; ^C)s if and only if A = ^A, B = ^B, and C = \Lambda  ^C, where \Lambda  is a scaling matrix in the following sense:
+
+Definition 3.2. A p \Theta  p scaling matrix is a matrix of the type
+
+\Lambda  = diag (*1; : : : ; *p) = 0BB@
+
+*1 \Delta  \Delta  \Delta  0.
+
+.. . . . ...
+
+0 \Delta  \Delta  \Delta  *p
+
+1CCA
+
+;
+
+where *i ? 0; i = 1; : : : ; p:
+
+Any triple for which \Sigma  = (A; B; C)s will be said to be associated to \Sigma . Observe that the properties of (A; B) being a controllable pair, (A; C) being an observable pair, and (A; B; C) being canonical (controllable and observable), in the usual linear systems sense, are independent of which of the associated triples is considered.
+
+8 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+The following trivial observation will be used often. Remark 3.3. If H is a real pre-Hilbert space (that is, a space with a nondegenerate inner product), and if c 2 H; c nonzero, a; b 2 IR; a 6= b, then there is a u 2 H so that
+
+sign (a + hc; ui) 6= sign (b + hc; ui): Indeed, without loss of generality, we may assume that a ? b. Let
+
+ff := \Gamma  a + b2kck2 : Then u := ffc satisfies a + hc; ui ? 0 and b + hc; ui ! 0. 2
+
+Since controllability of a system does not depend on outputs, a sign-linear system is controllable if and only if (A; B) is a controllable pair in the usual sense ([12]). Observability requires a bit more than in the linear case, as illustrated by the system
+
+x(t + 1) = u(t); y(t) = sign (x(t)): Observability of the pair (A; C) is not sufficient to guarantee observability of the corresponding sign-linear system.
+
+We will say that a triple (A; B; C) has property P if not only is (A; C) observable, but we can choose a subset of outputs which allow observability of the pair (A; C) and for each of which the corresponding row of the Markov sequence A is nonzero. In the case p = 1, this just means that (A; C) is an observable pair and A 6j 0, or equivalently, that (A; C) is an observable pair and B 6= 0. For p ? 1, A has p rows and we only require that enough of those rows are nonzero. More precisely, let
+
+I(A) = fi1; : : : ; ikg be the indices of the nonzero rows of A; then property P is the condition that"
+
+j2I(A) q=0;:::;n\Gamma 1
+
+ker (CjAq) = f0g;(3)
+
+where Cj denotes the jth row of C. Note that if C and ^C differ only by multiplication by a scaling matrix, property P holds for (A; B; C) if and only if it holds for (A; B; ^C). Thus there is no ambiguity in the following statements. For discrete- and continuoustime the following Theorems state necessary and sufficient conditions for observability.
+
+Theorem 3.4. Let \Sigma  = (A; B; C)s be a sign-linear discrete-time system of dimension n ? 0. Then, \Sigma  is observable if and only if the following conditions hold:
+
+1. det A 6= 0, 2. (A; B; C) has property P. Proof. Necessity: Suppose \Sigma  is observable. We know det A 6= 0 from Lemma 2.6. Now assume that property P would not hold, and pick x 6= 0 in the intersection in (3). The output sequence for any given control sequence fu1; u2; : : :g is fy(0); y(1); : : :g where
+
+y(k) = sign CAkx +
+
+kX
+
+l=1 A
+
+luk\Gamma l+1! :
+
+Linear systems with sign-observations 9 For the chosen x in that intersection, each row of each term in the output sequence has the form
+
+y(k)j = ( sign (CjA
+
+kx + 0) if j 62 I(A)
+
+sign (0 + \Lambda ) if j 2 I(A)
+
+where \Lambda  denotes a (possibly nonzero) function of the inputs and the Markov parameters. Then, x and *x for any * ? 0; * 6= 1, cannot be distinguished, so observability is contradicted.
+
+Sufficiency: Now suppose det A 6= 0 and (A; B; C) has property P. We must show that \Sigma  is observable. Pick an integer l ? 0 so that the ith row of
+
+(A1 A2 \Delta  \Delta  \Delta  Al) is nonzero for every i 2 I(A). Note that since A is invertible,"
+
+j2I(A) q=0;:::;n\Gamma 1
+
+ker (CjAq+l) = f0g;(4)
+
+which follows from (3).
+
+Now look at the following n terms in the output sequence for initial state x:
+
+sign iCAlx + Alu1 + \Delta  \Delta  \Delta  + A1ulj ;
+
+sign iCAl+1x + Al+1u1 + \Delta  \Delta  \Delta  + A1ul+1j ; : : : sign iCAl+n
+
+\Gamma 1x + Al+n
+
+\Gamma 1u1 + \Delta  \Delta  \Delta  + A1ul+n\Gamma 1j :
+
+Given x 6= z we must show that x; z are distinguishable. If we can choose a sequence u1; u2; : : : ul+n\Gamma 1 so that some row of some term above is different for the initial states x and z, then x; z are distinguishable. As x \Gamma  z 6= 0, we may pick some j 2 I(A) and some q = 0; : : : ; n \Gamma  1 so that
+
+CjAq+lx 6= CjAq+lz: Since j 2 I(A), the jth row of
+
+(A1 \Delta  \Delta  \Delta  Al) is nonzero by our choice of l. Denote k := q + l so that the jth row of (A1 \Delta  \Delta  \Delta  Ak) is also nonzero. Let Aji be the jth row of Ai. Then we may apply Remark 3.3 (with H = IRk and the standard inner product) and obtain u1; u2; : : : ; uk so that
+
+sign (CjAkx + Ajku1 + \Delta  \Delta  \Delta  + Aj1uk) 6=
+
+sign (CjAkz + Ajku1 + \Delta  \Delta  \Delta  + Aj1uk):
+
+Thus, x and z are distinguishable. This completes the proof.
+
+10 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+We will say that a triple (A; B; C) is discrete-time sign-linear observable if the triple satisfies the observability conditions in Theorem 3.4.
+
+For continuous-time sign-linear systems, the conditions for observability are slightly weaker, as invertibility of the matrix A is not needed.
+
+Theorem 3.5. Let \Sigma  = (A; B; C)s be a sign-linear continuous-time system of dimension n ? 0. Then \Sigma  is observable if and only if (A; B; C) has property P.
+
+Proof. The proof is exactly the same as in the discrete-time case. Indeed, if (3) is not satisfied and x 6= 0 is in the intersection of the kernels, consider the output
+
+y(t) = sign CeAtx + Z
+
+t
+
+0
+
+1X
+
+k=1
+
+Ak(t \Gamma  s)k\Gamma 1
+
+(k \Gamma  1)! u(s)ds! :
+
+Each row has the form
+
+y(t)j = ( sign (Cje
+
+Atx + 0) if j 62 I(A)
+
+sign (0 + \Lambda ) if j 2 I(A)
+
+where \Lambda  denotes a (possibly nonzero) function of the inputs and the Markov parameters. Then x and *x for any * ? 0; * 6= 1, are indistinguishable, contradicting observability.
+
+Now suppose (A; B; C) satisfies property P. We must show that \Sigma  is observable. Look at the output function for initial state x:
+
+y(t) = sign `CeAtx + Z
+
+t
+
+0 K(t \Gamma  s)u(s)ds' ; where
+
+K(t \Gamma  s) :=
+
+1X
+
+k=1
+
+Ak(t \Gamma  s)k\Gamma 1
+
+(k \Gamma  1)! :
+
+Given x 6= z we must show that x; z are distinguishable. If we can choose a t and a control function u(\Delta ) of length t so that some row of y(t) is different for the initial states x and z, then x; z are distinguishable. As x \Gamma  z 6= 0, we may pick some j 2 I(A) and some t * 0 so that
+
+CjeAtx 6= CjeAtz; by property P. Since CjeAtx is an analytic function of t, this is true in a neighborhood of t = 0 so we may in fact fix a t ? 0 so that the inequality holds.
+
+Next note that since j 2 I(A), Aj 6j 0 so also Kj (\Delta ) 6j 0. Now apply Remark 3.3 with a = CjeAtx; b = CjeAtz; H = L1[0; t] with the L2 inner product
+
+hv(\Delta ); u(\Delta )i := Z
+
+t
+
+0 v(s)u(s)ds; and c = Kj (t \Gamma  s) 2 H. Thus we may choose a measurable essentially bounded u(\Delta ) so that
+
+sign `CeAtx + Z
+
+t
+
+0 K(t \Gamma  s)u(s)ds' 6= sign `Ce
+
+Atz + Z t
+
+0 K(t \Gamma  s)u(s)ds' :
+
+This u(\Delta ) distinguishes x; z and the proof is complete.
+
+Linear systems with sign-observations 11 4. Sign-Linear Realizations. We now focus on questions of realizability for the class of sign-linear systems. As we mentioned earlier, a sign-linear system does not have a unique associated Markov sequence. However, for sign-linear systems, we have the following obvious fact:
+
+Remark 4.1. A Markov parameter sequence associated to \Sigma  = (A; B; C)s is any sequence of p \Theta  m matrices A = fA1; A2; A3; : : :g so that
+
+Ai = \Lambda CAi
+
+\Gamma 1B; i = 1; 2; 3; : : :(5)
+
+for some scaling matrix \Lambda .
+
+For the degenerate system, its (only) associated sequence is A j 0. If A is associated to \Sigma , one also says that \Sigma  realizes A. If (A; B; C) is a triple of matrices and A = fA1; A2; : : :g is a Markov sequence so that Ai = CAi\Gamma 1B holds, we will say that (A; B; C) is a linear representation of A. The standard terminology is "realization" (as a linear system), but this can lead to confusion here, since we are interested in sign-linear realizations. Note that the above definitions imply that for any given triple (A; B; C), and any sequence of p \Theta  m matrices A, the sign-linear system \Sigma  = (A; B; C)s realizes A if and only if (A; B; \Lambda C) is a linear representation of A for some scaling matrix \Lambda . In other words, there must exist a triple associated to \Sigma  which represents A.
+
+The matrix
+
+Hs;t = 0BB@
+
+A1 \Delta  \Delta  \Delta  At.
+
+.. . . . ...
+
+As \Delta  \Delta  \Delta  As+t\Gamma 1
+
+1CCA
+
+is called the s \Theta  t Hankel matrix for the Markov sequence A. The (Hankel) rank of a sequence A is defined to be
+
+sup
+
+s;t rank H
+
+s;t:
+
+An input/output map (for a precise definition, see [12], Remark 2.2.2) is a function of controls u defined on some time interval [oe; o/ ), which gives the entire output function for the time interval [oe; o/ ].
+
+Definition 4.2. A (p \Theta  m) discrete-time sign-linear input/output map ff is a discrete-time input/output map for which there exists some sequence of (p\Theta m) matrices A1; A2; : : :, so that
+
+ff(u)(j) = sign (Aju1 + \Delta  \Delta  \Delta  + A1uj)(6) for each input sequence fu1; u2; u3; : : :g. A continuous-time sign-linear input/output map is a continuous-time i/o map ff for which there exists an analytic kernel K(t) with expansion
+
+K(t) =
+
+1X
+
+i=1 A
+
+i t
+
+i\Gamma 1
+
+(i \Gamma  1)!(7)
+
+12 Ren'ee Schwarzschild and Eduardo D. Sontag so that
+
+ff(u)(t) = sign `Z
+
+t
+
+0 K(t \Gamma  s)u(s)ds'(8) for every measurable essentially bounded control function u(\Delta ). In either case, any sequence of matrices A1; A2; : : : as above is called a Markov sequence of the map ff.
+
+We will study realizations of these input/output maps by sign-linear systems. It will be helpful to have a simple example in mind as we go through the definitions and results.
+
+Example 4.3. Let A = f1; \Gamma 1; 1; \Gamma 1; : : :g. Then ff is a 1 \Theta  1 input/output map, where
+
+ff(u)(j) = sign i(\Gamma 1)j
+
+\Gamma 1u1 + \Delta  \Delta  \Delta  + uj
+
+\Gamma 2 \Gamma  uj\Gamma 1 + ujj :
+
+For the control u = f1; 0; 0; : : :g, ff(u)(j) = (\Gamma 1)j\Gamma 1 for all j. For the control u = f1; 2; 3; 0; 0; 0; : : :g, the values of the input/output function are:
+
+ff(u)(1) = sign (1) = 1 ff(u)(2) = sign (\Gamma 1 + 2) = 1 ff(u)(3) = sign (1 \Gamma  2 + 3) = 1 ff(u)(4) = sign (\Gamma 1 + 2 \Gamma  3) = \Gamma 1
+
+ff(u)(j) = (\Gamma 1)j
+
+\Gamma 1 for j ? 4:
+
+Definition 4.4. Two triples (A; B; C) and ( ^A; ^B; ^C) are sign-similar if there is a T 2 Gl(n) and a scaling matrix \Lambda  such that
+
+T
+
+\Gamma 1AT = ^A
+
+T
+
+\Gamma 1B = ^B
+
+CT = \Lambda  ^C: If \Sigma  = (A; B; C)s and ^\Sigma  = ( ^A; ^B; ^C)s are sign-linear systems, they are called sign-similar if the corresponding triples are.
+
+Note that sign-similarity is an equivalence relation, and that the ambiguity in defining a triple associated to \Sigma  causes no difficulties in the above definition.
+
+Definition 4.5. Two Markov sequences
+
+A = fA1; A2; : : :g; and ^A = f ^A1; ^A2; : : :g are sign-equivalent if there exists a scaling matrix \Lambda  so that
+
+Aj = \Lambda  ^Aj; j = 1; 2; 3; : : : :
+
+Note that if K(\Delta ) and ^K(\Delta ) are as in (7) for the sequences A and ^A, sign-equivalence of A and ^A is the same as asking that K(t) = \Lambda  ^K(t) for all t, where \Lambda  is a scaling matrix. The Markov sequence A in Example 4.3 is sign-equivalent to ^A = fa; \Gamma a; a; \Gamma a; : : :g for any a ? 0.
+
+Linear systems with sign-observations 13 4.1. Basic Facts About Realizations. The next lemma says that the Markov sequence A is uniquely determined by a sign-linear input/output map ff up to multiplication by a scaling matrix. That is, a sign-linear input/output map is defined by many Markov sequences, but these sequences are related by scaling.
+
+Observe that the impulse response of a sign-linear input/output map (e.g. for discrete-time systems, the response to the input u = f1; 0; 0; 0; : : :g) is not enough to uniquely characterize the input/output map. For a discrete-time sign-linear input/output map ff, the impulse response is just the sequence of signs of the Markov parameters: fsign (A1); sign (A2); : : :g. Such a sign sequence represents infinitely many different families of sign-equivalent Markov sequences as illustrated by the following example.
+
+Example 4.6. Let ff1 be the discrete-time sign-linear input/output map defined by A = f1; 3; 1; 3; : : :g and ^ff the map defined by ^A = f3; 1; 3; 1; : : :g. Then the impulse response for both i/o maps is f+1; +1; +1; : : :g; however the two maps are not the same as shown by considering the output corresponding to the input u = f1; \Gamma 1; 1; \Gamma 1; : : :g:
+
+ff(u)(1) = +1; ^ff(u)(1) = +1 ff(u)(2) = +1; ^ff(u)(2) = \Gamma 1 ff(u)(3) = \Gamma 1; ^ff(u)(3) = +1 ff(u)(4) = +1; ^ff(u)(4) = \Gamma 1:
+
+Lemma 4.7. A and ^A define the same input/output map if and only if they are sign-equivalent.
+
+Proof. If A and ^A are sign-equivalent, then Ai = \Lambda  ^Ai for all i, where \Lambda  is a scaling matrix. It is then clear from formulas (6), (7), and (8) that the corresponding input/output maps coincide. To prove the converse, we can assume, without loss of generality, looking at each component of the output and each row of A, that p = 1. We first prove the following easy observation:
+
+Remark 4.8. If V is a real pre-Hilbert space and if v; w 2 V are nonzero and such that
+
+sign hv; ui = sign hw; ui for all u 2 V, then there exists * ? 0 so that v = *w.
+
+Proof. Suppose first that v and w are linearly independent, and consider the plane they span. Let u 6= 0 be in this plane and perpendicular to v + w. As hv + w; ui = 0, necessarily hv; ui 6= 0 and hw; ui 6= 0, since if either of these is zero, then the other one is too, and that would contradict linear independence. Then
+
+hv; ui + hw; ui = hv + w; ui = 0: So hv; ui = \Gamma  hw; ui 6= 0, contradicting the assumption. Thus, either v = *w with * ? 0, or v = \Gamma _w with _ ? 0. If v = \Gamma _w, then
+
+hv; ui = h\Gamma _w; ui = \Gamma _ hw; ui 6= 0
+
+14 Ren'ee Schwarzschild and Eduardo D. Sontag and so sign hv; ui 6= sign hw; ui, again a contradiction. The only remaining possibility is that there exists a * ? 0 so that v = *w.
+
+Now we can continue the proof of Lemma 4.7. For discrete-time, we must show that if
+
+sign 
+
+lX
+
+i=1 A
+
+iul\Gamma i+1! = sign 
+
+lX
+
+i=1
+
+^Aiul
+
+\Gamma i+1!
+
+for all l * 1 and for all u1; u2; : : : ; ul, then A = * ^A for some * ? 0. First choose an l so that (A1; : : : ; Al) 6= 0. Note that IRlm = (IRm)l forms a pre-Hilbert space with the standard inner product *0
+
+BB@ v1...
+
+vl
+
+1CCA
+
+; 0BB@
+
+u1.
+
+..
+
+ul
+
+1CCA+
+
+:=
+
+lX
+
+1
+
+v
+
+0
+
+iui:
+
+Applying Remark 4.8 with v = (A1; : : : ; Al)0, w = ( ^A1; : : : ; ^Al)0 and u = (u0l; : : : ; u01)0, we see that there exists a * ? 0 so that
+
+(A1; : : : ; Al) = *( ^A1; : : : ; ^Al): Now pick any q ? l. Applying the same argument to (IRm)q, we obtain a *q ? 0 so that
+
+(A1; : : : ; Aq) = *q( ^A1; : : : ; ^Aq): Since (A1; : : : ; Al) is a subvector of (A1; : : : ; Aq), and similarly ( ^A1; : : : ; ^Al) a subvector of ( ^A1; : : : ; ^Aq), this implies that * = *q. Thus Aq = * ^Aq for all q * 1.
+
+For continuous-time, we need to show that if
+
+sign `Z
+
+t
+
+0 K(t \Gamma  s)u(s)ds' = sign `Z
+
+t 0 ^K(t \Gamma  s)u(s)ds' for all t 2 [0; 1) and for all u(\Delta ), measurable and essentially bounded on [0; t], then K(t) = * ^K (t) for some * ? 0 and for all t * 0. Note that L1[0; t] forms a pre-Hilbert space with the L2 inner product
+
+hv(\Delta ); u(\Delta )i := Z
+
+t
+
+0 v(s)u(s)ds:
+
+Applying Remark 4.8 with v(s) = K(t\Gamma s) and w(s) = ^K(t\Gamma s), we see that there exists a *t ? 0 so that K(\Delta )j[0;t] = *t ^K(\Delta )j[0;t]. Using an argument similar to the one used in the discrete-time case, we can conclude that there exists a * ? 0 so that K(t) = * ^K(t) for all t * 0.
+
+Corollary 4.9. Let ff be a sign-linear input/output map, with Markov sequence A, and let \Sigma  = (A; B; C)s be any sign-linear realization of ff, with Markov sequence ^A. Then A and ^A are sign-equivalent.
+
+Proof. Just note that A and ^A define the same input/output map, namely ff. Thus, the previous Lemma applies.
+
+Linear systems with sign-observations 15 4.2. Minimality. Definition 4.10. A sign-linear system of dimension n is minimal if any other sign-linear system realizing the same input/output map has dimension n1 * n.
+
+Recall that a triple (A; B; C) is canonical if and only if it is a minimal-dimensional linear representation of its Markov sequence ([12], Theorem 20). The next lemma states that minimality of a sign-linear system is equivalent to minimality of the associated linear system.
+
+Lemma 4.11. The sign-linear system (A; B; C)s is a minimal realization of ff if and only if the triple (A; B; C) is canonical.
+
+Proof. Suppose the sign-linear system \Sigma  = (A; B; C)s is a minimal realization of the input/output map ff and A is a Markov sequence associated to ff. If (A; B; C) is not canonical, then there exists another triple ( ^A; ^B; ^C) of smaller dimension which is a linear representation of the same Markov sequence ^A as (A; B; C). Then \Sigma  = (A; B; C)s also realizes ^A so ^A is sign-equivalent to A by Corollary 4.9. But then since ( ^A; ^B; ^C)s realizes ^A, it also realizes A (a Markov sequence associated to a sign-linear system is only determined up to sign-equivalence). Thus, ( ^A; ^B; ^C)s is a sign-linear system realizing ff and of smaller dimension than (A; B; C)s, contradicting minimality.
+
+Conversely, suppose the triple (A; B; C) is canonical of dimension n which implies, in particular, that it is minimal. If (A; B; C)s is not also minimal, then there exists a sign-linear system ^\Sigma  = ( ^A; ^B; ^C)s of dimension n1 ! n which realizes the same input/output map ff as (A; B; C)s. Let A be the Markov sequence represented by (A; B; C) and ^A the sequence represented by ( ^A; ^B; ^C). Then (A; B; C)s realizes A and ( ^A; ^B; ^C)s realizes ^A. Since the two sign-linear systems realize the same input/output map ff, A and ^A are sign-equivalent (Corollary 4.9). Thus, there exists a scaling matrix \Lambda  so that Aj = \Lambda  ^Aj for all j * 1. So
+
+CAi
+
+\Gamma 1B = \Lambda  ^C ^Ai\Gamma 1 ^B; i = 1; 2; 3; : : : :
+
+But then ( ^A; ^B; \Lambda  ^C) is a linear representation of A of dimension n1 ! n contradicting the minimality of (A; B; C).
+
+Remark 4.12. If A and ^A are two Markov sequences associated to the same input/output map ff, then rank A = rank ^A. Thus, we can define the Hankel rank of ff as the rank of any of the associated Markov sequences. Indeed, by Lemma 4.7, we know that A and ^A are sign-equivalent. Thus there is a scaling matrix \Lambda  with Aj = \Lambda  ^Aj; j = 1; 2; 3; : : : : We then have, for any s; t * 1,
+
+Hs;t = \Lambda s ^Hs;t where ^Hs;t is the s \Theta  t Hankel matrix for ^A and \Lambda s = diag (\Lambda ; : : : ; \Lambda ). Since this is true for every s; t,
+
+rank(A) = sup
+
+s;t frank(H
+
+s;t)g
+
+= sup
+
+s;t frank( ^H
+
+s;t)g = rank( ^A);
+
+16 Ren'ee Schwarzschild and Eduardo D. Sontag as claimed. 2
+
+Theorem 4.13. Let ff be a sign-linear input/output map. Then ff is realizable by a sign-linear system if and only ff has finite Hankel rank.
+
+Proof. If ff has finite rank then any Markov sequence for ff, A, has finite rank. It then follows that there exists a linear representation for A, (A; B; C). Then the corresponding sign-linear system (A; B; C)s realizes ff.
+
+Conversely, given a sign-linear input/output map ff which is realizable by a signlinear system (A; B; C)s, we would like to show that ff has finite rank. One Markov sequence for (A; B; C)s is the impulse response of the linear system (A; B; C). This impulse response A is a Markov sequence for ff. From linear realization theory, we know that A has finite rank. Thus, by the remark above, ff has finite rank.
+
+Lemma 4.14. If (A; B; C) is a canonical representation of a Markov sequence A, then (A; B; C) satisfies property P.
+
+Proof. Suppose (A; B; C) does not satisfy property P. Then by observability there is some i 62 I(A) (i.e., so that the ith row Ai of A is zero) so that"
+
+j2I(A) l=0;:::;n\Gamma 1
+
+ker (CjAl) 6= f0g;
+
+but "
+
+j2I(A)[fig l=0;:::;n\Gamma 1
+
+ker (Cj Al) "
+
+j2I(A) l=0;:::;n\Gamma 1
+
+ker (CjAl):(9)
+
+Since Ai j 0 then Ci(AjB) = 0 for all j, so in particular,
+
+Ci i B AB A2B \Delta  \Delta  \Delta  An\Gamma 1B j = 0: The pair (A; B) is controllable soi
+
+B AB A2B \Delta  \Delta  \Delta  An\Gamma 1B j has full row rank. Thus Ci = 0, contradicting (9). So property P indeed holds.
+
+Lemma 4.15. If (A; B; C) is a triple satisfying property P, then the sign-linear system \Sigma  = (A; B; C)s is final-state observable.
+
+Proof. First suppose \Sigma  = (A; B; C)s is a discrete-time sign-linear system. Perform a change of variables in the state space. Let
+
+z = T
+
+\Gamma 1x =  z1
+
+z2 !
+
+where T 2 Gl(n) is chosen so that
+
+T
+
+\Gamma 1AT =  A1 0
+
+0 A2 !
+
+Linear systems with sign-observations 17 with A1 of size n1 \Theta  n1 nilpotent and A2 of size n2 \Theta  n2 nonsingular. (This can be done, for instance, by first putting A in real canonical form and then reordering the blocks so that the blocks corresponding to 0 eigenvalues come first.) Then
+
+y = sign (CT z) can be written as
+
+y = sign hi C1 C2 j zi ; and we can also write
+
+T
+
+\Gamma 1B =  B1
+
+B2 ! :
+
+Since (A; C) is an observable pair, the n columns of0
+
+BBBB@ CCA
+
+...
+
+CAn\Gamma 1
+
+1CCC CA =
+
+0BBB B@
+
+C1 C2 C1A1 C2A2.
+
+.. ...
+
+C1An
+
+\Gamma 11 C2An\Gamma 12
+
+1CCC CA T
+
+\Gamma 1
+
+are linearly independent. As T \Gamma 1 is an invertible matrix, both (A1; C1) and (A2; C2) must be observable pairs. Property P implies that the subset of outputs indexed by I(A) allows observability of the pair (A; C). Then the outputs indexed by I(A) also allow observability of the pair (A2; C2). We know that Ai 6j 0 for i 2 I(A). Since A1 is nilpotent, after n + 1 steps the output sequence looks like:
+
+sign (C2An+12 z2 + A1un+1 + \Delta  \Delta  \Delta  + An+1u1); sign (C2An+22 z2 + A1un+2 + \Delta  \Delta  \Delta  + An+2u1); : : :
+
+Now we have (A2; C2) is an observable pair, det A2 6= 0, and"
+
+j2I(A) q=0;:::;n2\Gamma 1
+
+ker ((C2)jAq2) = f0g
+
+where Ai 6j 0 for i 2 I(A). Now using Remark 3.3, we may always choose appropriate controls to distinguish any distinct z2 and ~z2. Also, z1 goes to zero (in less than n time steps). So the system is final-state observable.
+
+For a continuous-time sign-linear system, \Sigma  = (A; B; C)s, property P alone implies that the system is observable, by Lemma 3.5. Hence, \Sigma  is also final-state observable. (Observability and final-state observability are equivalent in continuous-time.)
+
+Theorem 4.16.
+
+1. If a sign-linear realization is controllable and observable then it is minimal. 2. If it is minimal then it is controllable and final-state observable. 3. Any two minimal sign-linear realizations are sign-similar.
+
+18 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+Proof. 1. If the sign-linear system (A; B; C)s is controllable and observable then in particular the triple (A; B; C) is canonical so the sign-linear system is minimal by Lemma 4.11.
+
+2. If the system \Sigma  = (A; B; C)s is minimal, then the triple (A; B; C) is canonical. If A j 0, then the minimal realization has dimension 0 and is trivially final-state observable. So now assume that we are dealing with dimension n ? 0. We know that the triple (A; B; C) is canonical, so it satisfies property P (Lemma 4.14). Next, applying Lemma 4.15, we conclude that \Sigma  = (A; B; C)s is final-state observable.
+
+3. Given two minimal realizations (A; B; C)s and ( ^A; ^B; ^C)s, of a sign-linear map ff, with Markov sequence A, we must show that they are sign-similar. The corresponding triples (A; B; C) and ( ^A; ^B; ^C) represent Markov sequences A1 and A2, respectively, which are both sign-equivalent to A (Corollary 4.9). That is, we have scaling matrices \Lambda 1; \Lambda 2 satisfying
+
+A = \Lambda 1A1; A = \Lambda 2A2: Since the sign-linear realizations are minimal, the linear representations are canonical (Lemma 4.11). Since \Lambda 1 and \Lambda 2 have full rank, this implies that (A; \Lambda 1C) and ( ^A; \Lambda 2 ^C) are also observable pairs. Thus, (A; B; \Lambda 1C) and ( ^A; ^B; \Lambda 2 ^C) are both canonical linear representations of the same Markov sequence A. By [12], Theorem 20, they must be similar, i.e., there exists some T 2 Gl(n) so that T \Gamma 1AT = ^A, T \Gamma 1B = ^B, and \Lambda 1CT = \Lambda 2 ^C. Thus (A; B; C)s and ( ^A; ^B; ^C)s are sign-similar, with T as above and scaling matrix \Lambda  = \Lambda 
+
+\Gamma 11 \Lambda 2:
+
+The rank of A = f1; \Gamma 1; 1; \Gamma 1; : : :g from Example 4.3, is 1, which is clearly finite. The triple A = \Gamma 1; B = 1; C = 1 is a realization of the input/output map ff which is controllable and observable, hence it is minimal. An example of a nonminimal signlinear realization of the same ff is
+
+A =  \Gamma 1 00 0 ! ; B =  11 ! ; C = i 1 0 j :
+
+In this case (A; B) is a controllable pair, but (A; C) is not an observable pair.
+
+4.3. Counterexamples. Note that the converses of parts 1 and 2 of Theorem 4.16 are not true for discrete-time systems. If a sign-linear system is minimal, it is not necessarily observable. For example, the system with x+ = u and y = sign (x) is minimal, but A = 0 so it is not observable. Also, a system may be final-state observable, and yet not be minimal. For example:
+
+x+ =  0 00 1 ! x +  11 ! u
+
+y = sign hi 0 1 j xi is final-state observable. After k steps (for any k * 1) any state (x1; x2) ends up at (uk; x2) and x2 can be identified. However, (A; C) is not an observable pair. If this system would be minimal, then the corresponding triple would be canonical by Lemma 4.11. But then (A; C) would have to be an observable pair. The minimal system for this input/output map is one of dimension 1, namely, x+ = x + u; y = sign (x).
+
+Linear systems with sign-observations 19 5. Canonical Realizations of Sign-Linear I/O Maps. We noted that for signlinear systems (unlike for linear systems) it is not true that a system is minimal if and only if it is canonical. The problem is that a minimal discrete-time sign-linear system may have det A = 0 in which case it is not observable (Theorem 3.4). We may then ask, what is the canonical realization of a minimal sign-linear system which is guaranteed to exist by abstract realization theory ([12], Section 5.8)? The answer, for p = 1, is that for any ff realizable by a sign-linear system, there exists a canonical (reachable and observable) system ~\Sigma  which realizes ff, where ~\Sigma  is in the form of a cascade of a sign-linear system and shift registers. (In the general case, p ? 1, the result has to be modified: one can only conclude that there is a system of this cascade form in which the minimal system may be embedded.)
+
+We know there exists some canonical realization. We need only to show that there is a canonical realization of the form described above. Next we sketch the construction for the single-output case (p = 1). First find a minimal sign-linear realization \Sigma  of ff. Then we know (A; B; C) is a canonical triple and satisfies property P (Lemmas 4.11 and 4.14). Perform a change of variables in the state space so that A has the form
+
+A1 0
+
+0 A2 !
+
+with A1 an n1 \Theta  n1 invertible matrix and A2 an n2 \Theta  n2 nilpotent matrix. (Note that if \Sigma  is already observable, then A is invertible and there is no A2. This \Sigma  is already in the canonical form we are looking for.) Now the system equations have the form
+
+x+1 = A1x1 + B1u x+2 = A2x2 + B2u
+
+y = sign (C1x1 + C2x2):
+
+From now on, assume \Sigma  has the form described above. Let ^ be the relative degree of the system and l := minf^; n2g. Let ~\Sigma  be the discrete-time system with state space IRn
+
+\Gamma l \Theta  f\Gamma 1; 0; 1gl, and system equations
+
+,+ = F , + Gu(10) i+1 = sign (,n\Gamma l + Alu) i+2 = i1
+
+...
+
+i+l = il\Gamma 1
+
+j = il
+
+20 Ren'ee Schwarzschild and Eduardo D. Sontag where (F; G) = (A1; B1) when l = n2, and when l ! n2,
+
+F = 0B@
+
+A1 0 0 C1An21 0 0
+
+0 I 0
+
+1CA
+
+; G =
+
+0BBB BBBB@
+
+B1 An2 An2\Gamma 1.
+
+..
+
+Al+1
+
+1CCC CCCCA ;
+
+and I is the identity matrix of size n2 \Gamma  l \Gamma  1. (When l = n2 \Gamma  1, there is no "I" part.) This can be seen as a cascade of a sign-linear system and shift registers.
+
+Lemma 5.1. The system ~\Sigma  is the observable reduction of \Sigma . Proof. First we show that two states x and z are indistinguishable for \Sigma  if and only if
+
+x1 = z1(11) 8????
+
+!????:
+
+CAn2\Gamma 1x = CAn2\Gamma 1z.
+
+..
+
+CAl+1x = CAl+1z
+
+CAlx = CAlz
+
+(12)
+
+8??! ??:
+
+sign (CAl\Gamma 1x) = sign (CAl\Gamma 1z).
+
+..
+
+sign (Cx) = sign (Cz) (13)
+
+In the case l = n2, we have only equations (11) and (13). Suppose all equalities hold. Since l ! relative degree, the first l output terms for \Sigma  are independent of the control. Then the last l equalities imply that the first l output terms coincide for x and z, for any input. Equations (12) imply that actually the first n2 output terms coincide for x and z.
+
+The remaining outputs only involve the first n1 components of the state because of the nilpotency of A2. So if x1 = z1, then we see that all the remaining output terms are equal for initial states x and z. Thus, x and z are indistinguishable.
+
+On the other hand, if x; z are indistinguishable then using any control sequence, the outputs for the two initial states are always equal. In particular, the first l output terms are independent of the control so we obtain the last l equalities directly. For equalities (12) (in the case l ! n2) look at the next n2 \Gamma  l output terms. If
+
+CAkx 6= CAkz; for some l ^ k ^ n2 \Gamma  1; then property P and Remark 3.3 would imply that there is some control which would cause the kth output to be different for x; z, contradicting indistinguishability. Thus, those equalities hold too. Finally, for equation (11), we may focus on the output terms y(k) for k * n2. Indistinguishability implies that in particular, for the 0 control all output terms are equal. Then CAkx1 = CAkz1 for all k * n2. But (A1; C1) is an observable pair and det A1 6= 0 so this implies x1 = z1.
+
+Linear systems with sign-observations 21 Now consider the mapping OE : IRn ! IRn
+
+\Gamma l \Theta  f\Gamma 1; 0; 1gl given by OE(x) = (,; i)
+
+where
+
+, =
+
+0BBB B@
+
+x1 CAn2\Gamma 1x.
+
+..
+
+CAlx
+
+1CCC CA 2 IR
+
+n\Gamma l
+
+i =
+
+0BBB B@
+
+sign (CAl\Gamma 1x).
+
+..
+
+sign (CAx)
+
+sign (Cx)
+
+1CCC CA 2 f\Gamma 1; 0; 1g
+
+l
+
+and , = x1 if l = n2. We just proved that x and z are indistinguishable if and only if OE(x) = OE(z). To show that the map is onto, we must show that for any (,; i) 2 IRn
+
+\Gamma l \Theta  f\Gamma 1; 0; 1gl, there is some x 2 IRn so that OE(x) = (,; i). Since (A; C) is an
+
+observable pair, (A2; C2) is also an observable pair. Thus, we may let x1 be the first n1 components of , and x2 the solution to
+
+0BBB
+
+B@
+
+C2An2
+
+\Gamma 12
+
+...
+
+C2A2
+
+C2
+
+1CCC CA x2 =
+
+0BBB BBBBBB B@
+
+,n1+1 \Gamma  C1An2
+
+\Gamma 11 x1
+
+...
+
+,n\Gamma l \Gamma  C1Al1x1
+
+i1 \Gamma  C1Al
+
+\Gamma 11 x1
+
+...
+
+il \Gamma  C1x1
+
+1CCC CCCCCC CA
+
+:
+
+Then clearly, OE(x) = (,; i). Furthermore, it is easy to verify that OE commutes with the dynamics of \Sigma  so it is a system morphism in the sense of [12], Section 5.8.
+
+Lemma 5.2. The system ~\Sigma  is reachable and observable and realizes the same input/output behavior as \Sigma .
+
+Proof. Since ~\Sigma  is the observable reduction of \Sigma , and \Sigma  is reachable, [12] Lemma 5.8.3 implies that ~\Sigma  is both reachable and observable with the same input/output behavior as \Sigma .
+
+Example 5.3. Let \Sigma  be the system with state space IR2 and
+
+x+1 = u x+2 = x2 + u
+
+y = sign (x1 + x2):
+
+Then \Sigma  is minimal. But this sign-linear system is not observable, since det A = 0. Perform a change of variables in the state space so that the A matrix is in the form discussed above. In the new coordinates, (z1; z2), the equations take the form
+
+z+1 = z1 \Gamma  u z+2 = u
+
+y = sign (\Gamma z1 + z2):
+
+22 Ren'ee Schwarzschild and Eduardo D. Sontag The Markov sequence is A = f2; 1; 1; 1; : : :g, n2 = 1, relative degree = 1, so l = 1. The state space for ~\Sigma  is IR \Theta  f\Gamma 1; 0; 1g and the equations for ~\Sigma  are
+
+,+ = , \Gamma  u i+ = sign (, + 2u)
+
+j = i:
+
+This system is reachable and observable.
+
+6. Sampling. In this section we make some remarks about the time-sampling of sign-linear systems. This is the process of replacing a given continuous-time sign-linear system by the discrete-time one that results when only piecewise constant inputs (with a fixed sampling time) are used. The results in this section can be used to obtain the continuous-time results of Theorem 3.5 as a consequence of those of Theorem 3.4, and they clarify the differences between the two types of results, in particular, the fact that invertibility of the A matrix is not needed in the continuous-time case.
+
+Remark 6.1. Suppose that (A; B; C) has property P. Then the continuous-time sign-linear system (A; B; C)s is observable.
+
+Proof. We will prove this by studying the associated sampled system. Using the notations and terminology in [12] (Section 2.10), for each ffi ? 0, the ffi-sampled system corresponding to \Sigma  is: P
+
+ffi : ( x
+
++ = F x + Gu
+
+y = sign (Cx)
+
+where F = effiA , G = A(ffi)B, and A(ffi) = R ffi0 e(ffi\Gamma s)Ads. We want to show that there is a ffi ? 0 so that if (A; B; C) has property P then the ffi-sampled system satisfies condition 2 of Theorem 3.4. If this is true then the sampled system would be observable (clearly det effiA 6= 0). Hence, \Sigma  is observable using only piecewise constant controls which are constant on intervals of length ffi, and the result is proved.
+
+Apply Kalman's sampling theorem (see [12], Proposition 5.2.11), to the pair (A; ^C) obtained by dropping the rows of C not in I(A). For any ffi satisfying
+
+ffi(* \Gamma  _) 6= 2ssik; k = \Sigma 1; \Sigma 2; \Sigma 3; : : : ;(14) for every two eigenvalues *; _ of A, one has that"
+
+j2I(A) q=0;:::;n\Gamma 1
+
+ker (Cj (effiA)q) = f0g:
+
+What's left is to show that
+
+I(A) = I(Affi) where Affi is the Markov sequence of (effiA; A(ffi)B; C). Note that I(Affi) ` I(A) is always true for any ffi, so the other inclusion is the interesting one. We will prove that if the
+
+Linear systems with sign-observations 23 kth row Ak of A is nonzero then the kth row Akffi of Affi is nonzero for all ffi satisfying (14). This will be done by showing the stronger result that Ak and Akffi have the same Hankel rank.
+
+Fix a k 2 I(A). By restricting our attention to the linear system described by (A; B; Ck), whose Markov sequence is Ak and sampled-Markov sequence is Akffi , we may, and will, assume without loss of generality that A is a sequence with p = 1 and C has only one row. Thus we need to show that if A is a Markov sequence with p = 1 represented by the triple (A; B; C) and if ffi satisfies (14) then Affi, the Markov sequence of (effiA; A(ffi)B; C), has the same Hankel rank as A.
+
+So let ffi; A; Affi and (A; B; C) be as described. Next define a sequence A(ffi) as follows. If
+
+K(t) =
+
+1X
+
+i=1 A
+
+i t
+
+i\Gamma 1
+
+(i \Gamma  1)! ;
+
+then the output function for \Sigma  = (A; B; C) is y(t) = R t0 K(t \Gamma  s)u(s)ds. If we restrict to sampled controls of length ffi, then
+
+y(lffi) =
+
+l\Gamma 1X
+
+j=0 "Z
+
+(j+1)ffi jffi K(lffi \Gamma  s)ds# uj+1:
+
+Letting
+
+A(ffi)j = Z
+
+(j+1)ffi
+
+jffi K(lffi \Gamma  s)ds; j = 0; 1; 2; : : : we get
+
+y(lffi) =
+
+l\Gamma 1X
+
+j=0 A
+
+(ffi) j uj+1:
+
+Look at any linear representation of the Markov sequence A. Take the ffi-sampled system for that representation. The Markov sequence for the ffi-sampled system is A(ffi). In particular, applied to the given triple (A; B; C), this means that
+
+A(ffi) = Affi: Take now a canonical representation (Ac; Bc; Cc) of A of dimension nc. Its eigenvalues, i.e., the eigenvalues of the matrix Ac, are among the eigenvalues of the (possibly non-canonical) original triple (A; B; C). Thus, ffi also satisfies ffi(* \Gamma  _) 6= 2ssik; k = \Sigma 1; \Sigma 2; \Sigma 3; : : : ; for any two eigenvalues * and _ of Ac. Then controllability and observability of (Ac; Bc; Cc) are preserved by sampling at this ffi; and thus the sampled triple (effiA
+
+c; (Ac)(ffi)Bc; Cc) is itself canonical and is a linear representation of A
+
+ffi = A(ffi). The
+
+rank of a Markov sequence is equal to the dimension of a canonical linear representation
+
+of that sequence ([12], Corollary 5.5.7). Therefore,
+
+rank A(ffi) = nc = rank A; as desired.
+
+24 Ren'ee Schwarzschild and Eduardo D. Sontag
+
+REFERENCES [1] A.D. Back and A.C. Tsoi, FIR and IIR synapses, a new neural network architecture for
+
+time-series modeling, Neural Computation, 3 (1991), pp. 375-385. [2] A.M. Baksho, S. Dasgupta, J.S. Garnett, and C.R. Johnson, On the similarity of conditions for an open-eye channel and for signed filtered error adaptive filter stability, Proc. IEEE Conf. Decision and Control, Brighton, UK, Dec. 1991, IEEE Publications, 1991, pp. 1786- 1787. [3] D.F. Delchamps, Extracting State Information from a Quantized Output Record, Systems and
+
+Control Letters, 13 (1989), pp. 365-372. [4] D.F. Delchamps, Controlling the Flow of Information in Feedback Systems with Measurement
+
+Quantization, Proc. IEEE Conf. Decision and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 2355-2360. [5] D.F. Delchamps, Stabilizing a Linear System With Quantized State Feedback, IEEE Trans.
+
+Autom. Control, AC-35 (1990), pp. 916-924. [6] R.O. Duda and P.E. Hart, Pattern Classification and Scene Analysis, Wiley, New York, 1973. [7] C.E. Giles, G.Z. Sun, H.H. Chen, Y.C. Lee, and D. Chen, Higher order networks recurrent and grammatical inference, Advances in Neural Information Processing Systems 2, D.S. Touretzky, ed., Morgan Kaufmann, San Mateo, CA, 1990. [8] G.W. Pulford, R.A. Kennedy, and B.D.O. Anderson, Neural network structure for emulating decision feedback equalizers, Proc. Int. Conf. Acoustics, Speech, and Signal Processing, Toronto, Canada, May 1991, pp. 1517-1520. [9] P. Ramadge, On the Periodicity of Symbolic Observations of Piecewise Smooth Discrete-Time
+
+Systems, IEEE Trans. Autom. Control, AC-35 (1990) pp. 807-813. [10] R. Schwarzschild and E.D. Sontag, Linear systems with constrained observations, Part I,
+
+Report SYCON-91-07, Rutgers Center for Systems and Control, Rutgers University, May 1991. [11] H. Siegelmann and E.D. Sontag, Turing computability with neural nets, Appl. Math. Lett.,
+
+4(6) (1991) pp. 77-80. [12] E.D. Sontag, Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990. [13] E.D. Sontag and H. Sussmann, Backpropagation separates where perceptrons do, Neural Networks, 4 (1991) pp. 243-249.</pre>
+</body>
+</html>

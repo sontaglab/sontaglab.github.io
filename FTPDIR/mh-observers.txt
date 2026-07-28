@@ -1,0 +1,1281 @@
+OCR of paper; see pdf file mh-observers.pdf for viewwable/printable page
+
+Lectures in Applied Mathematics
+Volume 18, 1980
+AN APPROACH TO DETECTABILITY AND OBSERVERS
+M. L. J. Hautus* and Eduardo D. Sontag"
+ABSTRACT. This paper proposes an approach to
+the problem of establishing the existence of
+observers for deterministic dynamical systems.
+This approach differs from the standard one
+based on Luenberger observers in that the obser-
+vation error is not required to be Markovian
+given the past input and output data. A gen-
+eral abstract result is given, which special-
+izes to new results for parametrized families
+of linear systems, delay systems and other
+classes of systems. Related problems of feed-
+back control and regulation are also studied.
+1. INTRODUCTION. An observer for a given dynamical system
+E is, roughly, a system ~ which accepts as input the inputs
+u(-) and outputs y(.) of E, and whose output ~(t) at
+time t asymptotically approaches the internal state x(t) of
+the original system, whatever x(o) was. The definition may
+require that this convergence occur for any initial state z(0)
+of 2, or just for a fixed state, say z(O) = 0. A reasonable
+design requirement is that 2 be somehow stable itself. For a
+linear observer 2 this will imply that E will remain an
+observer for any initial state z(O). The definitions of
+11asymptotically," "stable," etc. will, of course, have to be
+*This research was completed while the author was occupying the
+Kranzberg Chair in Electronics at the Department of Electrical
+Engineering, Technion, Haifa.
+"Supported by U.S. Air Force Grant AFOSR - F49620-79-C-0117.
+0 American Mathematical Society 1980
+99
+<<PAGE-DIVIDER>>
+100 M. L. J. HAUTUS and EDUARDO D. SONTAG
+made precise in the different contexts. A stronger design
+objective usually adds that observers be obtained with given
+rates of convergence of ;(t) - x(t) to zero; more generally,
+one may ask for specific dynamics for the observation error
+e(t) = ~(t) - x(t). When Z and 2 are linear systems, the
+error convergence rates are independent of u(-); in a nonlin-
+ear context the situation is more delicate, and when rates are
+independent of the particular input in a fixed set, one speaks
+of "uniform" observers with respect to that set. It is also of
+interest to determine when an observer E exists which is of
+the same "type" as 2; for example, if Z is a delay-differ-
+ential system with all delays multiples of, say, T I'--- 'Tr
+one would like to study the existence of observers E which are
+also delay-differential with all delays multiples of the T i*
+One may also consider observers for a parametrized family of
+systems EX, Indeed, assume that each E X is a system of a
+given kind and that the ZX are finitely parametrized by a
+(vector) parameter X; for example the coefficients defining
+Z may be polynomial in X or rational functions (with no
+poles). It is natural then to ask for a corresponding family
+of observers i., with the ^E X also finitely parametrized and
+if possible using the same kind of functions (polynomials,
+rational functions). This situation appears when a design is
+desired previous to the identification of certain parameters,
+or when these parameters are subject to change.
+The standard (textbook) approach to observer design for lin-
+ear systems is based on the "Luenberger observer" or "deterTninis-
+tic Kalman filter"; in this case one searches for observers in
+which the error e(t) given the past input/output data is
+Markovian. In other words, attention is restricted to observers
+~ whose measurement function is the identity: ;(t) = z(t).
+Because of the success of this approach, the study of more gen-
+eral linear situations (delay and other distributed linear sys-
+tems, family of systems, and multidimensional filters), as well
+as the study of nonlinear observers, has been directed towards
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 101
+such Luenberger-like observers. This has run into a number of
+highly technical difficulties, for example, those dealing with
+the extensions of the pole-shifting theorem to systems over
+rings, as well as necessitating strong algebraic notions of ob-
+servabi I i ty. Recent counter-examples [Bumby et al., 1979] show
+that this approach may in general fail to work.
+This paper de-emphasizes "Luenberger" observers through a
+direct construction methodology for more general observers. It
+appears that the approach presented here is new even in the
+liclassical" linear finite dimensional case. The central fact
+is that while the standard observer construction is an inher-
+entZy nonlinear probZem, the construction of more general ob-
+servers oa~,2 be posed in many cases as a linear problem once "Lin-
+earity" is properly interpreted. We shall present a series of
+abstract results which characterize the existence of observers,
+(with arbitrary or with fixed rates of convergence), in the con-
+text of linear systems over rings. Necessary and sufficient
+conditions are given in terms of corresponding notions of detect-
+ability. These results will be then specialized to delay sys-
+tems and to families of systems. In the first case we shall
+obtain observers that have a delay structure similar to that of
+the original system and, it appears from examples, a simpler
+structure than that obtained when other methods in the litera-
+ture are applicable. In the case of families of systems, the
+results will be basically that a polynomial or rational family,
+when each system is observable, admits a similarly parametrized
+family of observers. Although the results are in principle lin-
+ear, we shall point out potential applications to bilinear and
+other stare-affine systems.
+Some of the above results admit dualizations into statements
+about (dynamic) state-feedback controllers. We shall present a
+result along these lines, as well as a partial result on the
+solution of the regulator problem. Applied for examples to
+delay-differential systems, the latter permits the input/output
+regulation of a wide class of transfer functions, using delay
+<<PAGE-DIVIDER>>
+102 M. L. J. HAUTUS and EDUARDO D. SONTAG
+systems of the same type, under conditions very much weaker than
+those obtained previously ("split realization" construction).
+The next section will present the basic definitions and some
+preliminary results, while section 3 describes and proves the
+main ("detectability is equivalent to existence of observers")
+result. After that, we specialize to families of systems and
+delay systems, and briefly treat the regulator problem. Various
+open problems are posed through the paper.
+2. DEFINITIONS AND PRELIMINARIES. Our approach in this
+paper will rely heavily upon the theory of linear systems over
+rings, as developed for example in Rouchaleau [19721, Rouchaleau
+et al. [1974], Kamen [1975], Sontag [1976], Kamen [1978], Rouch-
+aleau and Sontag [1979], and others. Since we want our results
+to apply in general, including to both discrete- and continuous-
+time systems, we shall work formally with transfer functions
+being rational in a symbol "s", which will correspond to
+either the Laplace or the z-transform variable, depending on the
+applications. Similarly, systems will be just formal objects
+identified with their defining matrices. The various manipula-
+tions with transfer matrices can be made rigorous with respect
+to the different applications, in terms of Laplace or z-trans-
+forms, or in terms of operators in function spaces.
+Unless otherwise stated, R will denote an arbitrary but
+fixed integral domain with an identity element; R[s] will be
+the ring of polynomials in the indeterminate s -A (causal)
+transfer function w(S) is just a rational function p(s)q(s)- 1
+with p,q in REsh q monic in s, and deg q ~! deg p;
+w(s) is called strictly causal when the latter inequality is
+strict. A [strictly] causal transfer matrix W = (w ij ) is a
+matrix for which each entry is a [strictly] causal transfer func-
+tion. A system (over R, of dimension n, with m inputs
+and p outputs) is a quadruple E = (F,G,H,J), where F is
+an n x n, G an n x m, H a p x n, and J a p x m matrix.
+The intuitive interpretation of a system is given by the
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 103
+equations
+sx = Fx + Gu
+y = Hx + Ju
+(2.1)
+where the x's play the role of "state variables," u of
+inputs and y of outputs. Sometimes we refer to the equations
+(2.1) rather than to the quadruple (F,G,H,J) as the system E.
+When G, H, or J are irrelevant we shall refer to the "sys-
+tem" (F,H), or (F,G), etc., the meaning being clear from the
+context. A system is called strictly causal if J = 0.
+It is well known from the theory of linear systems over
+rings (see e.g., Eilenberg [1974, Chapter XVI]) that a causal
+W admits a realization, i.e., a system E = (F,G,H,J) such
+that W = H(sl- F)- IG + J. (All operations are performed for
+matrices over the ring of rational functions R(s)). In fact,
+and this will be of importance later, if q is a common denomi-
+nator for the entries of W, then a realization can be obtained
+for which the characteristic polynomial of F is a power of q.
+(Thus in applications, q having "no unstable zeroes" will
+insure a suitable "internal stability" for at least one realiza-
+tion.) Of course, many realizations are possible for a given
+W, but this need not concern us here.
+Intuitively, if a system E given by (2.1) realizes W,
+then elimination of x in (2.1) yields y = Wu, i.e., W is
+the transfer matrix from u to y of E, and hence character-
+izes the input/output behavior of Z. Conversely, given a E
+as in (2.1), there is a well-defined causal transfer matrix
+WE := H(sI -f)- IG + J. Strict causality of (2.1) corresponds
+to WE being strictly causal.
+Recall that a linear finite-dimensional continuous-time sys-
+tem (F,G,H) is detectable when all its unstable modes are
+observable or (see Hautus E1969, 1970]) equivalently when
+rank SI H_ Fj = n (2.2)
+<<PAGE-DIVIDER>>
+104 M. L. J. HAUTUS and EDUARDO D. SONTAG
+for all complex s with Re s ~ 0. For discrete-time systems
+this is replaced by (2.2) for Isl :~ 1. It is well known that
+for such systems (2.2) is equivalent to the existence of ob-
+servers. More generally, one may call (F,G,H) n-detectabZe,
+where Q is a subset of t, if the span of the generalized s-
+eigenvectors, for s in o, contains no state indistinguishable
+from zero, or equivalently if (2.2) holds for all s in 0.
+When Q is the set of s with Re s ~: -a (1s1 ~! a for dis-
+crete time), Q-detectability is equivalent to the existence of
+observers with convergence rates better than a (as e- bt in
+continuous time, or b t in discrete time, for any b > a).
+observabiZity is equivalent to detectability with arbitrary
+rates, i.e., (2.2) for all s E t.
+We now want to generalize the above concepts. Although a
+definition of detectability is possible for arbitrary commuta-
+tive rings R, we shall state it only for rings R which are
+rings of rational functions over a field k. This restriction
+will simplify matters considerably and will suffice for the
+applications to follow. Assume then that R is a subring of
+k(al~ ... 9ar), with k a field and the a i algebraically
+independent over k. Let K be an algebraically closed exten-
+r+l
+sion field of k. Let ~2 be a subset of K We shall say
+that a system 7 = (F,G,H,J) over R, or just the pair (F,H),
+is Q-detectabZe if and only if
+s F(G)
+n (2.3)
+rank I =
+for all (s,G_) C Q, where 0- = (oil ... so r). The definition
+implicitly assumes that Q is admissible, i.e., that these
+evaluations are always defined on R. (Note that we use bars
+to denote particular elements (S_,j), not complex conjugation.)
+For the more standard finite-dimensional linear system case, k
+above is either 1R or 1, r = 0 and K = 1, so that Q is
+a subset of G itself. In most examples of interest it will
+turn out that we may choose K = k., the algebraic closure of k.
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 105
+We shall say that z is (strongly or algebraically) observ-
+able if
+P' := [H',F'H ...... F1 n-l H11
+has a right inverse over R. (Prime indicates transpose.) This
+concept of observability is not to be confused with the much
+weaker condition of observability that appears in realization
+theory over rings, namely that P' have rank n over the quo-
+tient field of R. Rather, this condition of (strong) observ-
+ability is equivalent to (F',H') being (ring-)reachable.
+Observability and detectability are related according to the
+following:
+(2.4) PROPOSITION. (i) if Z is observable then E is
+Q-detectabZe for all admissible Q (and all K). (ii) if K
+is a universal field over k (i.e., an algebraically closed
+infinite transcendental extension of k), and Z is 0-detectabZe
+for all admissible Q, then E is observable.
+Proof. M Let (s,05) be in some 0. Then P'(;) is
+right invertible over the field K and hence (see Hautus [1969])
+(2.3) is true for all s- E K.
+(ii) If Z is not observable then there is a maximal "deal
+M such that P' reduced mod M is not right invertible over
+R/M. But R being a k-algebra implies that R/M is a (finitely
+generated) field extension of k and hence that it can be
+embedded in K. Reducing mod M becomes then evaluation at
+r - . r, p,(5)
+some point of K . Thus for some a in K is not
+right invertible, and, again by the results over fields, there
+is an S_ such that (2.3) fails. So, (F,H) is not {(~,C[)}-
+detectable, contrary to the assumption.
+Turning now towards the definition of observer, we first
+need to define a property corresponding to convergence, or equi-
+valently for our purposes, to stability. We do this by choosing
+a family of "stable polynomials." A stability set S will be
+any multiplicative subset of R[s] which consists entirely of
+monic polynomials, contains at least one linear monomial s + a,
+<<PAGE-DIVIDER>>
+106 M. L. J. HAUTUS and EDUARDO D. SONTAG
+a in R, and which is saturated, i.e. such that pq C S
+and p and q monic implies that both p and q are in s.
+[An example to keep in mind is S = set of monic polynomials
+over IR, or over T, with no roots with real part greater than
+-a, for some fixed real number a.] With respect to such a
+fixed S, a stabZe transfer function is one that admits a
+representation pq- 1 with q in S; a stable transfer matrix
+has each entry stable. Thus W is stable if and only if it
+admits some realization (F,G,H,J) which is stabZe, i.e., such
+that the characteristic polynomial of F is in S.
+Let Z = (F,G,H,J) be an n-dimensional system with m inputs
+and p outputs. An observer E = (A,(BltB 2 2
+), C, (D12D )) for
+E (relative to a given stability set S) will be a stable sys-
+tem (over the same ring R) with m + p inputs and n outputs
+such that, solving formally the equations
+sx = Fx + Gu + v
+y = Hx + Ju
+sz = Az + B Iu + B2y
+~ = Cz + D 1u + D2y
+leads to an equation
+(2.5)
+A
+X _ x = M(s)v (2.6)
+for some stable transfer matrix M. (The phrase "solving for-
+mally" may be rigorously interpreted by assuming that x,u,v,
+etc., are vectors of independent variables over R[s], and
+operating in a suitable extension of this ring; we shall be
+doing this implicitly.)
+Several comments are in order. The definition of observer
+sketched in the introduction involved initial states and conver-
+gence of e = ~ - x to zero. It is not reasonable, however,
+to introduce initial states in our context, since our setup will
+specialize into areas where values of x do not correspond to
+true states, in that knowledge of such values at a given time
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 107
+does not determine a unique solution of the equation for future
+times. (For example, in the case of delay systems the natural
+"initial states" are in appropriate function spaces; more gen-
+erally, when R is a ring of operators states may belong to
+sets quite unrelated to R itself.) "Solving formally" trans-
+lates in such applications into assuming that all variables are
+zero for sufficiently negative times. The concept of initial
+state can be replaced by the addition of a "disturbance input"
+v whose effect on E is what the observer tries to determine.
+(An independent "disturbance input" w could be added to the
+observer (z) equation in (2.5) to take into account the effect
+of initial states of 2, but stability of 2 insures that the
+effect of w on e will be only through a stable transfer
+matrix, and hence will not effect observer performance.)
+Finally, we shall restrict attention to strictly causal E
+(J = 0) and observers with D 1 0: if 2 observes (F,G,H,O)
+then adding a "+Ju" term to gives an observer for
+(F,G,H,J).
+We shall be interested also in questions of feedback control.
+A reachabte system has the matrix [G,FG,...,F n-l G] right
+invertible over R. This is again equivalent to a dual condi-
+tion to (2.3), since reachability corresponds to observability
+of (F',G'). Again with reference to a stability set S, a
+feedback controlZer for a system Z will be a system E 1 =
+(A,B,C,D) with n inputs and m outputs such that solving
+formally the equations
+sx = Fx + Gu + v
+sz = Az + Bx
+y = Cz + Dx
+(2.7)
+U = -Y
+results in x = W(s)v and z = (sI- A)- IBW(s)v, where W(s)
+and (sl -A)- IBW(s) are both stable transfer matrices. Thus a
+feedback controller Z 1 will, in applications, when started
+<<PAGE-DIVIDER>>
+108 M. L. J. HAUTUS and EDUARDO D. SONTAG
+with z = 0, force the state of E to zero while keeping its
+own state-variable "small." The problem of finding feedback
+controllers will be dual to that of finding observers with a
+special structure.
+Finally, we define what we mean by a reguZator (with respect
+to a given S) for a transfer matrix W, or for a realization
+z of W: this is a stable Z 2 which accepts inputs and
+outputs of E as inputs, and such that, as in (2.7) the state
+of Z becomes for the closed-loop system, a stable function of
+disturbances. A regulator for W is by definition a regulator
+for some realization of W.
+3. GENERAL RESULTS. We shall first investigate the struc-
+ture of the ring Tr(S) of transfer functions stable with
+respect to a fixed stability set S. Recall that there is an
+a in R with s + a in S. Working in the quotient field
+Q(s) of R[s], consider the field automorphism Tr induced by
+the evaluation
+Tr : s ~+ s
+For each
+q(s) = sn + qn-ls n-1 + + qO
+in S, we denote
+~(S) sn . q(s-1 Ct
+and let T be the subset of R[s] consisting of all such
+We claim that
+-ff(Tr(S)) = T_1(R[s]) (3.1)
+(The right-hand term denotes the ring of fractions with respect
+to T.) It is clear that Tr(Tr(S)) is included in T_ I (R[S]);
+to prove the converse it will be enough to see that the monomial
+s and every I are in the image of Tr. But s = Tr((s +ot)-
+and for q as above,
+Tr s + .) nq-I
+as wanted.
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 109
+Thus Tr(S) is isomorphic to a ring of fractions of a poly-
+nomial ring. This representation helps in characterizing the
+maximal ideals of the former. Indeed, by standard results in
+ring theory, the set of maximal ideals M of T_ 1 (R[s]) is in
+a one-to-one correspondence with the set of those prime ideals
+P in REs] which are maximal with respect to the property of
+not intersecting T. Moreover, the corresponding quotient
+fields satisfy
+T_I(R[sl)/M - Q(R[s]/P).
+and the respective residue maps coincide on R[s]. In other
+words, reduction modulo maximal ideals of T_ l(R[s]) corre-
+sponds to homomorphisms ("evaluations")
+y : R[s] -* E
+into fields E such that ker y is maximal with respect to not
+intersecting T. Such maps can be extended canonically to
+T_1(R[s]). The corresponding evaluations for the original ring
+Tr(S) are then obtained by composition through 7T. (The geo-
+metric interpretation of all this for R a polynomial ring will
+be discussed in the next section.)
+A residue map on Tr(S) is then obtained as y- 7T, with y
+as above. We would like to be able to express such a composite
+map in terms of R and s directly. But a map like this may
+not admit an extension which includes R[s], since Tr(S) does
+not contain s (the latter is not a causal transfer function).
+An extension will exist precisely when
+y(s) = (y - TT) (s + ot) - - = : a ~ 0 (3.3)
+This is an obviously necessary condition, and we prove it is
+also sufficient. Indeed, assume that y- Tr maps Tr(S) into
+a field E and (3.3) holds. Let c be the restriction of y
+to R; this is the same as the restriction of y- Tr to R,
+because Tf leaves R invariant. Since s is independent over
+R, we may extend E: to:
+F: R[s] , Q, F_(s) a- F_ (at)
+<<PAGE-DIVIDER>>
+110 M. L. J. HAUTUS and EDUARDO D. SONTAG
+By the theorem on extension of places, (see e.g., Bourbaki
+[1972 VI. 2.4]) there is a common extension c' of c and
+y -ff to a subring of Q(s) containing both R[s] and Tr(S).
+Thus (y -Tr)(s) has a well-defined meaning, since e' is
+uniquely determined by y -Tr.
+Thus the evaluations at maximal ideals of Tr(S) can be
+classified into two types: those that are zero at (s +a)-
+and those that are a fortiori defined on s. We let Max(S)
+be the set of maximal ideals corresponding to the latter kind
+of map. When, as in the previous section, R is a subring of
+k(all ... 10r), a maximal ideal of T_ 1(R[s]) corresponds to an
+evaluation at a point (-S,G-) in K r+l (K universal). The
+point (_S,57) is uniquely determined from M modulo the Galois
+group of K over k. We denote by "T a representative set
+of points E Kr+l corresponding to maximal ideals M in
+Max(S), and define (for this choice):
+1 -
+S , G a-) E QTJ.
+Q(s) + a(5))_ )1(s, (3.4)
+(Representative meaning that each maximal M appears as an eval-
+uation at some such point.)
+For instance, in the classical case, say for discrete-time,
+S is the set of real polynomials with no zeros s with
+Isl ~! 1, cc can be taken to be zero, and T is the set of poly-
+nomials with no roots with Isl :~ 1. The residue maps for
+T_I (R[s]) are thus the evaluations at such s, and 'IT can be
+naturally taken as corresponding to evaluations at the s with
+0 < Isl < 1 (assuming that K = C). So Q(S) corresponds to
+evaluations at s with Isl a 1. Note that the (only) maximal
+ideal missing from Q(S) is precisely the kernel of "evalua-
+tions at s = infinity."
+Let S be a fixed stability set, and R a ring of rational
+functions as above. We then have the
+(3.5) THEOREM. The system E admits an observer with
+respect to S if and only if Z is Q(S)-detectabZe.
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS
+This result will be a consequence of the following result,
+valid for any domain R:
+(3.6) LEMMA. The system Z admits an observer with respect
+to S if and only if the matrix
+(s + 00-1(sI - F)
+(3.7)
+H I
+has rank n when reduced modulo every maximal ideal of Tr(S).
+We note first that (3.6) indeed implies (3.5) if R is a
+ring of rational functions. By the previous remarks, maximal
+ideals of Tr(S) are kernels of y's which satisfy y(s) = 0
+or which evaluate at points of Q(S). Consider first those of
+type y(s) = 0. Applying 7 to each entry of the matrix in
+(3.7) results in
+I sF (3.8)
+when F I U.I .8) always has rank n when evalu-
+ated at a point with s 0. Thus, checking (3.7) at such
+ideals is redundant. For the ideals corresponding to points
+of Q(S), evaluations~give
+(_S + 0,(C-f))-I(-SI - F(G-))
+(3.9)
+H (C-7 )
+and this matrix has rank n if and only if
+rank SF -~F(a n
+~ H( )
+as wanted. Thus (3.5) and (3.6) are equivalent.
+The validity of (3.6) will in turn follow from:
+<<PAGE-DIVIDER>>
+112 M. L. 3. HAUTUS and EDUARDO D. SONTAG
+(3.10) LEMMA. The system E admits an observer if and
+only if there exist stable causal transfer matrices M(s), N(s)
+with
+[M(s) N(s)] SI H_ FJ = 1 (3.11)
+If such M,N exist, M is necessarily strictly causal.
+Assume that (3.11) holds. Then
+[(S + a)M(s) N(s)] (3.12)
+is a left inverse for the matrix (3.7) over the ring Tr(S).
+Conversely, if (3.7) admits a left inverse then there are M,N
+as in (3.11). Over any ring, left invertibility can be checked
+at each maximal ideal (see e.g. Bourbaki [1972, Chapter III).
+In other words, lemma (3.10) becomes just a restatement of
+lemma (3.6).
+We now prove (3.10). Assume first that (3.11) holds. Con-
+sider the transfer matrix W(s) with m+ p inputs and n out-
+puts corresponding to
+x = M(s)Gu + N(s)y (3.13)
+This transfer matrix admits a stable realization E, since
+M,N are causal and stable. Assume that x satisfies
+sx = Fx + Gu + v, y = Hx (3.14)
+as in (2.5). Note that M(s)(sI- F) + N(s)H = I and
+(sI- F)x = Gu + v. Then
+x = M(s)Gu + N(s)y - M(s)(sI -F)x - N(s)Hx = M(s)v,
+with M stable. (3.15)
+Thus is an observer for Z.
+Conversely, assume that such a 2 exists, and consider its
+transfer matrix W(s), written as
+~ = R(s)u + N(s)y (3.16)
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 113
+Solving formally,
+x = R(s)u + N(s)Hx - x
+= R(s)u + (N(s)H -1)((sI -F)- 1Gu + (sI -F)- V)
+= [R(s) + (N(s)H - I)(sI - F)- IG]u
++ (N(s)H -I)(sI- F)- V. (3.17)
+This must equal M(s)v, so
+and
+R(s) = -(N(s)H I)(sI -F)- G (3.18)
+(N(s)H -I)(sI -F)- M(s) (3.19)
+The last equation implies that
+N(s)H - I = M(s)(sI- F) (3.20)
+i.e., that EM NI provides a left inverse as in (3.11). This
+completes the proof of (3.10), and hence of theorem (3.5). it
+Over any domain R observers will exist if and only if the
+conditions in (3.6) or (3.10) are satisfied. Since an n-column
+matrix A over R has rank n over every residue field pre-
+cisely when the ideal generated by the n-minors A i(s) of A
+is trivial, the above conditions amount to requiring the exis-
+tence of stable rational functions a i(s) such that
+Zai(s)Ai(s) is a stable rational function. It is again easier
+to work with T_ 1(R[s]). Thus applying 7 and letting A! be
+the minors of (3.8), observers will exist if and only if there
+exist b i(s) in R[s] such that
+Eb (s)A!(s) C T (3.21)
+i I
+The actual computation of such observers, and even the verifica-
+tion of (3.21), will of course depend on the ring in question.
+Although such questions are usually "decidable" in the sense
+of computer science for effectively presented R and suitable
+finiteness conditions (Noetherian, etc.), no general reasonable
+<<PAGE-DIVIDER>>
+114 M. L. J. HAUTUS and EDUARDO D. SONTAG
+algorithm can be expected at this level of abstraction, and our
+result is purely existential. When R is a ring of rational
+functions, on the other hand, methods from elimination theory
+can be used; examples of such rings will appear in the next sec-
+tion.
+We turn now to questions of feedback control. The most gen-
+eral type of statement thatone would like to have is that E
+(F,G,H) admits an (S-)feedback controller if and only if
+(F',H',G') is Q(S)-detectable. Unfortunately such a statement
+is too general, since feedback controllers are not the precise
+dual notion to observers. However, the following somewhat less
+general theorem is valid, for any R:
+(3.22) THEOREM. The following statements are equivalent
+for Z = (F,G):
+(a) For each ot in R, there is a feedback controller with
+respect to the stability set
+t
+sc, f(s+a) , t ~: O}.
+(b) For each a in R and S a as above, there exist
+stable causal transfer matrices V,W such that
+[sI - F 131 (3.23)
+~Wl
+V
+and W causally divides V, i.e. V KW for some causal K.
+(c) (F,G) is reachable.
+Proof. We shall prove that (a) -,- (b) -* (c) -*,(a). If (a)
+holds, then we may write u = K(s)x, with a suitable K(s),
+and x = W(s)v, with
+I
+W(s) = (sI- F +GK(s))- (3.24)
+Further, W(s) and V(s) = K(s)W(s) are both stable, by the
+definition of feedback controller. Writing (3.24) as
+(sI- F +GK)W = I, we conclude that
+(sI- F)W + G(KW) = I
+as wanted.
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 115
+We now prove that (b) implies (c). Let M be a maximal
+ideal of R and let (F(M),G(M)) denote the reduction mod M
+of (F,G). Working on (R/M)Esl, we have that for each a in
+R there are polynomial matrices Wl, V 1 over (R/M)[s] such
+that, for some j,
+(sI -F(M))W 1 + GV1 = (s+ a(M)) ii (3.25)
+But R/M being a field, this implies that
+EsI- F(M), GMI
+has rank n for each s in the algebraic closure of R/M
+(given M,s, take any ot with a(M) ~ -s). Thus (F(M),G(M))
+is reachable for each M, so the original system is reachable.
+Assume finally that (c) holds, and pick (i in R. Let
+L := F +oI. Since (L,G) is again reachable, there is a right-
+inverse to G,LG,...,L n-I G, i.e. there exist m by n matrices
+b15 ... 5bn over R with
+Ln-I Gb I + ... + LGb n-I + Gb n = 1 (3.26)
+For notational convenience, we let b 0 bn+l: 0. We define:
+n
+K, (s) (s + ot)n IM E (s + c,) n -jb i (F + Oj )n G, (3.27a)
+j=1
+n
+K 2 (s) (s + ,)n-j(b j+,(F + cc, )n - bj (F + aI )n+1
+(3.27b)
+K(s) Kl(s)- IK2(s) (3.27c)
+By the result in the appendix, K(s) is a causal transfer
+matrix admitting a realization E 2 = (A,B,C,D) such that both
+W(s) := (sl -F+ GK(s))- 1 and (sl- A)- IBW(s) are causal trans-
+1
+fer matrices, in fact, polynomial matrices in (s+ a)- , so in
+particular S a-stable. So Z 2 is a feedback controller for
+(F,G). ti
+<<PAGE-DIVIDER>>
+116 M. L. J. HAUTUS and EDUARDO D. SONTAG
+The above feedback construction admits a dualization in terms
+of a generalized notion of "Luenberger" observer. The dual
+statement is that an observable system E admits an observer
+whose "error" e ~- x satisfies an equation
+se = (F -GK(s))e + v . (3.28)
+This form of the observer equation is, of course, more particu-
+lar than the original definition, and it corresponds to the con-
+dition that M causally divide N.
+4. PARAMETRIC FAMILIES OF SYSTEMS. As an application of the
+results in the previous sections we consider problems related to
+observation and control of families of linear systems, parame-
+trized either polynomially or rationally. For the types of rings
+and stability sets that appear in these applications stronger
+results than obtained in the previous section can be given.
+This will be considered now.
+Let R be a ring of polynomials kEcyls-107 r], and assume
+that S is a stability set of the type
+SX = {q E R[s] Iq monic in s and
+q(s,cy) ~ 0 for all (s,a) in X},
+where X is a subset of k r+l and k c K is the algebraic
+c c -
+closure of k,. For any subset X, S X is a saturated multipli-
+cative set, and S X will contain a monomial s+ a if some
+hyperplane s = -a fails to intersect X. We shall assume that
+there is such a hyperplane, so that S is a stability set as
+before. For the rest of this section, R and S will have
+this form, unless otherwise stated.
+In the main examples we wish to consider here, k is the
+real or complex field, K = k c is the complex field, and, for
+any fixed nonpositive real number a,
+X = f(s,cj)jRes~!-a, a in k) (4.2)
+Thus a stable transfer function is here a family of transfer
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 117
+functions, parametrized by polynomials in cy, each of which has
+all poles in a suitable left-hand semiplane. For any a > a
+the monomial s +a is in S X* The development proceeds for
+general X, but this will be our main illustration.
+The detectability condition implies checking evaluations at
+Q(S). It is always true that X can be taken as a subset of
+Q(SX ); when these two sets can be taken equal we shall say that
+X is perfect. In general, however, it may not be enough to
+check full rank at points of X. We wish to see in some more
+detail what else is required.
+It is again more convenient to work with T_ 1(R[s]). Note
+that if S = S X we may introduce
+X_ I =Ms +00- 1, a)j(s,a) E Xj U [(O,a)la E k r,
+so that T becomes 5 The ring of stable transfer functions
+becomes then isomorphic to the ring of those rational functions
+which have no zeroes in X_ 1.
+Recall from (3.21) that the condition for existence of ob-
+servers is that there be some element of T in the ideal of
+R[s] generated by the minors A!(s). In the present case, this
+means that there must be some b in R[s] such that
+Eb A, f (4.3)
+i i
+and f has no zeroes in X_ 1. Equivalently, the set of comnon
+zeroes (over k ) of the A' must be contained in the set of
+c i
+zeroes of some stabZe f. Indeed, any common zero of the A!
+is clearly a zero of an f as in (4.3) and, conversely, if all
+common zeroes of the A! are contained in the zeroes of some g
+in T, then by Hilbert's Nullstellensatz (see Bourbaki [1972,
+V. 3.3j) there is some t with f = gt satisfying (4.3).
+Since T is multiplicative, this f is in T, as desired.
+Thus the problem of deciding if an observer exists becomes
+one of "interpolating" the common zeroes of the A! by a stable
+polynomial. When r = 1 the situation is somewhat simpler.
+Assume that the rank condition is satisfied for all points of
+X_ 1, i.e. that at each point of X_ 1 there is some A! which
+1
+<<PAGE-DIVIDER>>
+118 M. L. J. HAUTUS and EDUARDO D. SONTAG
+does not vanish there. Since r = 1, the A! have either a
+finite set of common zeroes or they have a common divisor. In
+the latter case, this common divisor is already stable and inter-
+polates common zeroes, so we shall assume the A! have finitely
+many zeroes fx iI in common. If for each x i there is a poly-
+nomial f i in T which has f i(xi) = 0, then the product f
+of the f i is again in T and has all the common zeroes of the
+A' as its zeroes. We then have the
+i
+(4.4) LEMMA. Let r = 1, S = S X* The system (F,G,H)
+admits an observer if and onZy if for each common root (;,C-Y)
+(in k 2) of the minors of
+c
+SI- F(a)
+H (a)
+~
+there is a p(s,a) C S with p(s,05) = 0 .
+The above will be especially useful in the context of delay
+systems. For families of systems, the situation will be even
+better. We have:
+(4.5) PROPOSITION. Assume that X is of the form
+X kr
+c
+where X1 is an infinite subset of k C which is conjugate-
+oZosed, i.e. such that X 1 is invariant under the GaZois group
+of k c over k. Then X is perfect. In particuZar, the
+detectability condition in (3.5) needs onZy be checked for
+points in X.
+Proof. We work with X_ 1. This set again satisfies the
+hypothesis of the lemma; say X_ X x kr. We must prove
+2 c
+that the prime ideals of k[a 2 .... 9arS] which are maximal with
+respect to not intersecting T are precisely the kernels of the
+evaluations into (~,37), with in X_ Let P be such
+an ideal, and let V(P) be the zero set of P, i.e. the
+irreducible algebraic subset of k r+l at which all polynomials
+c
+in P vanish. We prove that V(P) must contain a point (-S,U-)
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 119
+with ; in X 2* If V(P) does not contain such a point, then
+the projection of V(P) on the first coordinate fails to inter-
+sect X 2' Since X 2 is infinite, this means (see Dieudonn6
+[1974, p. 109]) that the projection has only finitely many
+points, and hence by irreducibility just one. So V(P) is
+included in some hyperplane s = ~. Then the product of all
+(s -~ i) where ~ i are the conjugates of a in k ct is in
+V(P) n T, contradicting the fact that T n P was supposed
+empty. We conclude that V(P) contains a point (-S,5) with
+s in X 2' But P is then contained in the maximal ideal M
+which is the kernel of evaluation at (_S,C_T), and M n T 0.
+By maximality, P = M as wanted.
+In fact, in this case elements of T, (and thus also those
+of S), must be constant polynomials (i.e., in k[s]), since
+the set of zeroes of an irreducible polynomial p(s,a) cannot
+have a projection that fails to intersect X 2 except if it is
+contained in a hyperplane, in which case it is by dimensionality
+and irreducibility the whole hyperplane. The numerators of
+transfer functions, however, may still be arbitrary polynomials,
+so that the calculations involved are not all trivial, and in
+general rely on methods from elimination theory. With low-
+dimensional specific examples it is best to try to solve directly
+for transfer functions as in (3.11) rather than making effective
+the various steps of the theoretical results; the latter insures
+us that solutions will exist.
+Note that a family of polynomially parametrized systems
+r
+EX = (F(X), G(X), H(X)), X in k , is detectable (with X as
+in (4.5)) precisely when the systems Z X are each one detect-
+able, for the corresponding X I" For example, a polynomial con-
+tinuous-time family of linear systems over I each of which
+satisfies a detectability condition, say,
+rank SI H_ FJ = n
+for all Re -a, will admit a polynomial parametrized
+<<PAGE-DIVIDER>>
+120 M. L. J. HAUTUS and EDUARDO D. SONTAG
+family of observers such that for example for each fixed X, E
+will observe the state of the corresponding E X with error of
+the order e- bt, for some b > a. Similarly, a polynomial
+family over 1R[u,, ... sarI will admit a reat-polynomial family
+of observers provided that the detectability condition be satis-
+fied for all real ~md complex parameters, as follows from (4.5).
+(The intuitive reason why complex parameter values are relevant
+is evidenced by examples of one-dimensional systems with
+y = (X2 + 1)x: the inversion of this map cannot be carried out
+over the ring of real (or complex) polynomials, even though for
+each reaZ ~ the system will be observable!) A polynomially
+(or even rationally) parametrized family of observable real sys-
+tems, however, will admit a rational family of observers (with
+no real poles, i.e. well-defined for each real A); this fol-
+lows by considering the ring of rational functions
+P((715---~Cjr)q(cjl""$Gr)_ 1 over 1R with no real poles, and
+applying the dual version of (3.22). As a simple illustration,
+consider a two-parameter family of linear systems over IR:
+1M = -x 2(t)' Yt) = _Yt)
+yl(t) = (X 2+ 11)x2(t)' Y2(t) = (W -')Xl(t)' (4.7)
+where X,~j are allowed to take arbitrary real values. (As
+shown in Bumby, et al. [1979], pole-shifting arguments cannot
+be in general applied to real 2-parameter families). The family
+is observable as a system over the ring of rational functions
+2
+defined on IR , since the rank of
+s -1
+-1 s
+0 X2+11 (4.8)
+P-1 0
+is 2 for all complex s and real X,p. Thus there exists a
+family of observers with any given convergence rate, say s
+Indeed, a left inverse of (4.8) is for example given by (a ii),
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 121
+where
+a,, I(X 2 +1)s2+ (3X 2_ 1+4p)s + 4(~ 2+11)11(X2+1)(s+l) 3]_ I
+a12 a21 (s-')(s+')-
+a13 -a24 = 4[(X2+1)(S+l) 2 ]_3 (4.9)
+a14 -a23 = - 4s[(X 3 +l)(s+l) 2T 1
+2 2 2_ 2 3 1
+a22 NX +1)s + (3+X 4p)s + 4(jj-1)][(X +l)(s+l)
+From this matrix (a ij ) an observer over this ring, i.e. a
+family of observers for the original family, is obtained as in
+(3.13).
+(4.10) REMARK. A further area of application of the present
+setup is yet to be explored in detail. This concerns certain
+types of nonlinear systems. Specifically, consider state-linear
+systems E of the following type:
+x(t+l)[or A(t)] = F(u(t))x(t) ,
+(4.11)
+y(t) = H(u(t))x(t) ,
+where u is a (vector) control. Realization and other proper-
+ties of such systems were studied in some detail in Sontag
+[1979]. Recently, Grasselli and Isidori [1979] have studied the
+construction of uniform observers for (continuous-time)
+internaZZy-biZinear systems, i.e. the particular case where F
+is affine in u and H is constant. They have shown that if
+the system is observable for each constant u, then there are
+observers for "slowly varying" (and bounded) controls u. Their
+proof relies implicitly in constructing observers for each fixed
+value of u, viewing essentially (4.11) as a family of systems
+(F(X), H(X)), showing that such an observer construction can be
+done smoothly in u (i.e., A), and proving that the resulting
+1. observer" remains such for slowly varying u. Now, even in the
+case of bilinear systems their proof insures only that the ob-
+server has F,H differentiable. It would be, of course, more
+<<PAGE-DIVIDER>>
+122 M. L. J. HAUTUS and EDUARDO D. SONTAG
+des1rable to obtain a finite structure for F,H. The methods
+developed in this section provide in principle this finite struc-
+ture, since observers for each (constant) u 'are defined ration-
+ally in u. Since the results of Grasselli and Isidori are
+expressed for Lueberger-like observers, however, the technical
+details of this extension are not quite trivial, and we leave
+this topic as a suggestion for further research.
+5. DELAY SYSTEMS. A deZay-differentiaZ system is defined by
+equations of the type
+k(t) = E F iX(t-ai) + Z GiU(t4
+y(t) = E H 11 x(t-y d +Ejvu(t-ev)
+where the ai, 6is y 11 , 6Vare all nonnegative real numbers. If
+all delays are integral multiples of certain noncommensurable
+delays Tl, ... ~T r3 it is natural to model (5.1) as a system
+over the polynomial ring lR[ol ""'arl' (or r1) as
+suggested by Kamen [1975, 1978]. Thus, the results of sections
+3 and 4 can be applied in this context. The proper notion of
+stability is now different from that in section 4. Here the
+natural stability set to consider (see Bellman and Cooke [1962]
+or El'sgol'Ts [1966]) is S x with (for fixed a > 0):
+X = {(s,e S,...,e-t )IRe s >_ -a} . (5.2)
+Observers and regulators with respect to such a stability set
+will have exponential convergence rates of order e- bt for some
+b > a.
+Problems of control and regulation for (5.1) have been studied
+by various authors. Two approaches in particular have been
+dominant. One is the functional-analytic approach, which regards
+(5.1) as an ordinary differential system in a suitable function
+space and generalizes the classical results to this context.
+Along these lines, Pandolfi [1975] and Bhat and Koivo [1976] have
+proved that Luenberger observers will exist under the natural
+<<PAGE-DIVIDER>>
+If
+DETECTABILITY AND OBSERVERS 123
+detectability condition (i.e., that (2.3) hold for every (i,&)
+in the above X) if one allows for much more general systems
+than (5.1) as observers. The latter may now contain in the
+right-hand side terms with "distributed" delays of the form
+ft X(a)x(ct'j dx (5.3)
+t--1
+for various functions X and numbers T. A different, more
+algebraic, approach was used by Morse [1976] who proved that
+observers will exist (using only "point delays") with arbitrary
+convergence rates, if (1) the system is observable and
+(2) r = 1, i.e. all delays are multiples of some fixed unit.
+Each of these assumptions is, of course, rather restrictive.
+Somewhat more general conditions were given by Sontag [1976],
+but this involved allowing for somewhat more general observer
+configurations. A wide extension of this line of argument was
+obtained by Kamen [1978a], who considered even more general
+observer configurations. (Strictly speaking, all of the above
+concentrate on feedback controllers and treat observes by dual-
+ity.) Again in the work of Kamen, however, one encounters dis-
+tributed delays as in (5.3) when designing observers for (5.1).
+The above restrictions to observability and to r = 1 can be
+overcome using the present setup. If one has observability then
+observers (with arbitrary convergence rates) wiZZ exist whether
+r = I or not; this is clear from (3.22), and the dual statement
+holds for feedback controllers. And the observers (controllers)
+are again of type (5.1). But even if one does not have observ-
+ability, however, the results in the previous sections do insure
+that observers will exist under the respective detectability
+assumptions. For example, if X is as in (5.2), with, say,
+a = 0, observers will exist for any system that is Q(S X)_
+detectable. If one could prove that X is perfect in the sense
+of section 4, this statement would be directly comparable to
+those of Pandolfi and of Bhat and Koivo, with the greatly
+strengthened conclusion that the observer has the same structure
+as the original system. Unfortunately, it appears that X is
+<<PAGE-DIVIDER>>
+124 M. L. J. HAUTUS and EDUARDO D. SONTAG
+not perfect and that the determination of sl(SX) is nontrivial.
+Take for simplicity r = 1. In view of (4.4), a point is not
+in Q(S X) if it is a zero of a stable polynomial. For example,
+the points (so'a 0 ) with Re so < 0 are not in o(S X) (because
+S-S0 over C, or (s-s 0)(s-^SO ) over IR, where i 0 is the
+conjugate of so, are stable polynomials zero at such a point).
+Other examples can be obtained by taking the zeroes of any given
+stable polynomial. For instance, we have the following result
+(for r = 1).
+(5.4) PROPOSITION. If lool > 1, then (s 0 a0) is not in
+SI(SX) -
+Proof. We note that for a > 0, b E 9, JbJ < a, the poly-
+nomial p(s,cr) s + a - bcy is stable. Indeed
+p(s,e- s)J Js+aJ - JbI ~! a - JbI > 0 for T 2: 0,
+Re s -~ 0.
+Therefore, if Ja I > 1, we may choose b := (a+ s 0)/00 and a
+so large that
+JbI a + s01 -Fa Isol
+I CIO 1 001 a a
+Also (see El'Sgol'Ts [1966]) (0,0) is not in Q(SX ) for any
+T > 0, since the polynomial s + pa has no roots of the form
+(s,e-TS) with Re s ~ 0 whenever
+0 < 11 <
+2T
+Other points not in Q(SX) can be found by analysing the stabil-
+ity of the polynomials s+ a+ ba for various a,b (see again
+the book by El'Sgol'Ts). On the other hand, it appears (E. Kamen
+[personal communication]) that the point (1,0) is in f~(S X)
+(but not in X), and thus that X is not perfect. We leave as
+an open problem the characterization of Q(SX).
+Thus, restricting for simplicity to r = 1, we can insure the
+existence of observers precisely when each point at which
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 125
+sI - F(a)
+rank < n (5.5)
+~ H(o) I
+is the root of at least one stable polynomial p, i.e. a p(s,G)
+such that p(s,e-'us) # 0 whenever Re s 2! 0. If a real such p
+can be found for every point at which (5.5) holds, the observer
+will have real coefficients; if p is complex the resulting
+observer will be a priori complex, and then the method described
+in section 7 can be applied to obtain from this a realmcoeffim
+cient observer.
+(5.6) EXAMPLE. We work in some detail (the dual of) the main
+example given by Kamen [1978a] as an illustration of his method
+for pole-shifting. The equations here are:
+I(t) = X 2(t-T) + b 1U(t)
+2 M = X I(t-T) + X 2(t) + b2 U(t) (5.7)
+Y(t) = X2(t).
+(We added an indeterminate input term (bl,b 2) since the duali-
+zation of Kamen's example gives us just F and H.) Note that
+this system is unstable for any (positive) T, since
+2 m2TX
+X m x - e
+has a positive real root, being negative at zero and positive
+for large x. The problem of finding an observer is therefore
+nontrivial. We must find then a left inverse to
+s -C7
+_CY S-1 (5.8)
+0 1
+over the ring of stable transfer functions. The minors of (5.8)
+2 2
+are (s m s- a ), s, -a, so the only common root is (0,0),
+<<PAGE-DIVIDER>>
+126 M. L. J. HAUTUS and EDUARDO D. SONTAG
+which as remarked before is not in Q(Sx). Thus the rank of
+(5.8) is 2 for all points in Q(S X ), and the system is detect-
+able. By inspection we can find a left inverse:
+1 _P 2tp_~
+S+PCY s+PG s+PG
+0 0 1
+where ~1 is any real number such that 0 < p < 1T/2-r. Obtaining
+a realization as in the proof of (3.5), we conclude that an ob-
+server 2 is given by equations
+i(t) -PZ(t-T) + (bl-,,b 2)u(t) + (1-11 2)y(t-2) - oy(t)
+l(t) z(t) + y(t), ;2(t) = y(t) - (5.9)
+It is interesting to contrast this observer with the one ob-
+tained by Kamen's method, using his feedback matrix to define a
+Luenberger observer:
+I(t) = z 2(t-T) - 2z 2(t)- z2( t-2T) + 2y(t) + Y(t-T) + b lu(t)
+t t-2-i
+2(t) = zi (t--[) + z 2 (t) - 2 f z2(a)dct z2 Wda
+t-T t-3-r
+-4z (t) + 2 t Y(a)da + f t-2T y(ct)da (5.10)
+2 f
+t-T t-3T
++4y(t) + b 2u(t) ,
+and zil Close inspection of (5.10) reveals that in this
+particular case it so happens that this system can be enlarged
+to one containing only point delays, since the distributed
+delays that appear are just finite-time integrators. In more
+general examples, however, distributed delays may become more
+involved, For instance, if the original system is perturbed by
+adding a term 'Gi (t)" to the first equation, the new system is
+still detectable in our sense, but (5.10) includes now
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 127
+distributed delays of more complicated form. We leave as an
+open problem the comparison between these two approaches; each
+seems to have a different domain of applicability and to lead to
+very different configurations when both can be applied.
+6. REGULATION. We saw in section 3 how to construct a state-
+feedback controller for a reachable system, and how to obtain a
+state-observer for a detectable system. We do not know as yet
+how to complete the general input/output regulator design combin-
+ing these two results. A regulator may be shown to exist, how-
+ever, under the stronger hypothesis that a nondynamic feedback
+controller exists. We let R be any integral domain and S
+any stability set.
+(6.1) PROPOSITION. Assume that E is described by equations
+sx = Fx + Gu + v
+(6.2)
+y = Hx
+that
+x = M(s)Gu + N(s)y
+defines the transfer matrix of an observer for E, and that
+K(s) is a stable matrix such that
+W(s) := (sl -F + GK(s))- (6.4)
+is stable (which is in particular the case if K(s) is a non-
+dynamic solution of the feedback controller problem). Then,
+defining L(s): = K(s)(I+ M(s)GK(s))- 1N(s) (6.5)
+and considering equation (6.2) together with
+x = -L(s)y , (6.6)
+results in a stable cZosed-Zoop system, i.e.
+(sI -F+ GL(s)H)- (6.7)
+is stable.
+<<PAGE-DIVIDER>>
+128 M. L. J. HAUTUS and EDUARDO D. SONTAG
+Proof. This is just an algebraic manipulation re-expressing
+(6.7) in a suitable way. Since
+x = M(sI -F)x + Ny = x + Mv (6.8)
+we have that
+sx = Fx - GLY + v
+= Fx - G6 + v
+= Fx - G(Kx -KMv) + v
+= Fx - GKx + GKMv + v.
+Thus
+(6.9)
+(s I - F + GLH) W(GKM + 1) (6.10)
+and the right-hand term is a product of two stable transfer
+matrices; the left-hand term is therefore stable as wanted. Y1
+Thus, at least one can solve the regulation problemas defined
+in section 2 when the given transfer matrix has a realization
+which is detectable and which admits a pole-shifting theorem.
+The latter happens for example when the realization is reachable
+and R is a polynomial ring in one variable [Morse, 1976] and
+for some other rings [Bumby et al., 1979]. It is thus of inter-
+est to know when such realizations exist. We answer this ques-
+tion now for the case m = p = 1; the resulting condition turns
+out to be a generalization of the split condition in Sontag
+[1978] (see also Byrnes [1978]) which studies the stronger re-
+quirement of reachable and observable (not just detectable)
+realizations. We assume that the ring R is completely inte-
+grally closed; this is a relatively mild technical condition,
+which is satisfied for all our examples. Further, we state the
+result for the case where R is a ring of rational functions,
+i.e., R c: k (al $... ~C d.
+(6.11) THEOREM. Let w(s) be a tranzfer function. The
+following prcperties are equivalent, for fixed Q:
+(a) w(s) has a reachable and detectable realization;
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 129
+W the canonical realization of w(s) is reachable and
+detectable;
+(c) if W(s) is written as p(s)q(s)- I + W0 with w 0in
+R and q(s) of minimal degree, then p(s,o) and
+q(s,cy) have no common roots in Q.
+Proof. Since (b) trivially implies (a), it will be suffi-
+cient to prove that (a) implies (b) and that (b), (c) are equiva-
+lent. Assume that (a) holds for a realization E = (F,G,H,J).
+Since Z is reachable, there is a system epiomorphism which
+maps E onto the canonical realization Z w (see Eilenberg
+[1974, Ch. 16]). Since E w is free (because R is completely
+integrally closed,(see Rouchaleau and Sontag [19791)), this
+morphism splits, i.e. the matrices (F,H) of Z can be written
+as
+F = ~Fll 0 H = [Hl 0]
+F21 F221
+in a suitable basis, and (F 115 H are matrices defining
+(F,H) for the canonical realization, which is a priori reachable
+and weakly observable, but not necessarily detectable. If
+(F,H) is Q-detectable, (6.12) implies that (F ill H is
+also ~2-detectable, as wanted.
+To prove that (b) and (c) are equivalent, we write the canoni-
+cal realization with F in the "flat" (i.e., controllable
+canonical) form:
+0 1 0 0
+0 0 1
+F 0 H [b0 ...,b n-1]
+0 ... 0 1
+a0 a1 11, an-l (6.13)
+<<PAGE-DIVIDER>>
+130 M. L. J. HAUTUS and EDUARDO D. SONTAG
+I n-l i n-1 i
+where w ~ pq + w 01 p = E bi (CJ) s , q = S + 1: ai (CF)s
+j=0 i=O
+Assume that (b) does not hold, so that for some (i,a) in ~1
+the matrix
+~I - F(a)
+H(C-1)
+1, in K n
+admits a nonzero kernel element v = rv,.....v
+n
+Because of the form of (6.13), this implies that v 2 ~vl$
+v3 = ~v 2""' v ~v Thus
+v = v
+(6.15)
+and we may take v 1. From the last two entries of Av = 0
+we conclude that p,q have a common root, i.e. (c) does not
+hold. Reversing the above argument yields the converse implica-
+tion: a common root of p and q gives rise to a non-
+zero vector in the kernel of A(-S,C-F).
+The above condition (c) is of course much weaker than the
+"split" condition which requires that p,q have no common roots
+r+l
+at all in k c . In fact, for k ='R or T, this condition is
+11generic" when Q is a "thin" set. In the context of delay sys-
+tems with r = 1, the latter would happen if X is perfect,
+since then Q would beananalytic set of codimension one. Even
+if X fails to be perfect, the condition is rather weak. As
+an illustration, take the transfer function w = a/s, corre-
+sponding to the input/output map
+~(t) = u(t-1) (6.16)
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 131
+This is not a "split" i/o map, but the only common root
+s 0 is not in the Q considered in section 4, so a regu-
+lator can be built for this transfer function. Specifically,
+the canonical realization is given by
+AM = UM, YM = x(t-l) (6.17)
+then the feedback law u(t): = -x(t) in conjunction with the
+observer
+-~(t-l) + Y(t) + U(t) (6.18)
+serves as a regulator.
+7. REMARKS. In some applications requiring the existence
+of observers and/or controllers with real coefficients, we may
+be able to construct directly only an observer (or controller)
+with complex coefficients. It is, however, possible in general
+to modify such a construction in order to obtain also a real
+controller or observer. For example, let
+sz = Az + B 1u + B2y' ~ = Cz + Dy (7.1)
+be an observer having matrices in T[a,, ... Pa r], for a system
+whose defining matrices are in 1R[al, ... 9a rI and for which
+u(t), v(t) are real-valued. Separatin into real and complex
+(1) (2) (1) ?2)
+parts: z = z + iz A = A + iA etc., we may con
+sider the new observer (defined over the reals):
+sz = A(l)z - A(2)z + B(l)u + B(l)y
+1 1 2 1 2
+sz = A(2)z + A(l)z + B (2)u + B(2)y (7.2)
+2 1 2 1 2
+= C(2)ZI - C(2)z2 + DO) y
+Thus the error - x for the new observer will be the real
+part of the error for the original one, and, for most reasonable
+definitions of "convergence" (stability sets), this error will
+become "small" if the original does.
+<<PAGE-DIVIDER>>
+132 M. L. J. HAUTUS and EDUARDO D. SONTAG
+In the case of feedback controllers and of i/o regulators
+the situation is slightly more delicate due to the fact that
+inputs u for the original system are now produced by the con-
+troller and hence a priori may be complex valued. A similar
+reduction can be performed, however, essentially by making the
+(ideal) "complex part" of the original system part of the con-
+troller. We omit the (straightforward) details.
+APPENDIX
+We prove here the technical result needed for theorem (3.22).
+Letting z: = s + a and L: = F + a.I, L n-l GbI+ ... + Gb n = I,
+it must be proved that if (with bo bn+l 0):
+(z): znj n n
+K E z -jb L G
+j=1
+K n zn-j (b L nb L n+l
+2(z) E j+1 i
+j=0
+K(z): = Kl(z)-I K 2(z)
+and
+W(z) = (zI -L+ GK(z))-'
+then W(z) is polynomial in z- I and there is a factorization
+K(z) C(zl-A)- 1B + D such that k(z) = (zI- W IBW(z) is also
+a polynomial in z- 1. The statement about W(z) will be a con-
+sequence of (a) the fact that W(z) is the transfer function
+from u to x for the discrete-time system given by
+x(t+l) = Lx(t) - G~(t) + u(t)
+n n n+1
+~(t+n) = L (bj+l L - b iL )x(t+n-j) (M)
+j=0
+n
++ E b LnG~(t+n-j)
+j=l i
+when starting with x(t) = 0, C(t) = 0 for t < 0, and of (b)
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 133
+the fact that x(t) = 0 when t n, whenever x,C are as
+above and u is such that u(t) 0 for t ~ -1. The state-
+ment about K will similarly follow from the fact that
+~(t) = 0 for t ~! n when x,~ and u are as above, so that
+a choice of at time t will give a realiza-
+tion of the transfer function K from v to ~ which has the
+above stability property.
+We prove then that x,~ both become eventually zero. Equa-
+tions (M) are equivalent to
+x(t) = Lx(t-1) - GC(t-l) + u(t-1)
+n n n_ n+l
+C(t) = b 2L x(t-1) + L (b j+lL b iL )x(t-j) (A.2)
+j=2
+n n n
++ E b L GC(t-j) + b L U(t-l)
+j=2 i 1
+For notational convenience, introduce b n+2 , bn+3"" all
+zero, so that the above summations have upper limit infinity.
+An easy induction argument shows from (A.2) that if x(t) and
+C(t) are zero for t < 0 and if u(-I) u0 is the only non-
+zero value of u, then
+x(t) Ltu Lt-i Gb L nu
+0 0
+and
+~(t) bt+l L u0
+for all t ~! 0. Thus ~(t) is indeed zero for large t, and
+also, for t ~ n:
+x(t) = L t u L t-i Gb L nu
+0 i 0
+j=1
+t t-n n n-I n
+= L u0 L L Gbi)L uo
+Lt L t-nLn
+0 as wanted.
+<<PAGE-DIVIDER>>
+134 M. L. J. HAUTUS and EDUARDO D. SONTAG
+REFERENCES
+Bellman, R. and K. L. Cooke, Differential-Difference Equa-
+tions, Academic Press, 1963.
+Bhat, K. P. M. and H. N. Koivo, Modal characterization of
+controllability and observabiZity for time-deLay systems, IEEE
+Trans. Aut. Contr., Vol. AC-21, 1976, pp. 232-233.
+Bourbaki, N., Commutative Algebra, Addison-Wesley, 1972.
+Bumby, R., E. D. Sontag, H. Sussmann, and W. Vasconcelos,
+Some remarks on pole shifting problems over rings, to appear in
+J. Pure Appl. Algebra, 1979.
+Byrnes, C., on the control of certain infinite dimensional
+systems by aZgebra-geometric techniques, Amer. J. of Math.,
+December 1978.
+Dieudonne, cours de Geometrie AZg9brique, Univ. France Press,
+1974.
+Eilenberg, S., Automata, Languages., and Machines, Vol. A,
+Academic Press, 1974.
+El'Sgol'Ts, L. E., Introduction to the Theory of Differential
+Equations with Deviating Argument, Holden-Day, 1966.
+Grasselli, 0. M. and A. Isidori, uniform observers for
+biZinear systems, submitted for publication, 1979.
+Hautus, M. L. J., Controllability and observabitity conditions.
+of Zinear autonomous systems, Nederl. Akad. Wetensch., Proc.,
+Ser. A72, 1969, pp. 443-448.
+Hautus, M. L. J., Stabilization, controllability and observ-
+ability of linear autonomous systems, Nederl. Akad. Wetensch.,
+Proc., Ser. A73, 1970, pp. 448-455.
+Kamen, E. W., On the algebraic theory of systems defined by
+convoLution operators, Math. Syst. Theory, Vol. 9, 1975, pp. 57-
+74.
+Kamen, E. W., Lectures on algebraic system theory: Linear
+systems over rings, NASA Contra~tor Report 3016, 1978.
+Kamen, E. W., An operator theory of Zinear functional differ-
+entiaZ equations, J. of Diff. Equations, Vol. 27, 1978, pp. 274-
+297.
+Morse, A. S., Ring models for deZay-differential systems,
+Automatica, Vol. 12, 1976, pp. 529-531.
+Pandolfi, L., On feedback stabilization of functional differ-
+entiaZ equations, Bull. Un. Mat. Ital., Vol. 11, 1975, pp. 626-
+635.
+Rouchaleau, Y., Linear, discrete-time, finite-dimensional
+dynamical systems over some classes of commutative rings, Ph.D.
+dissertation, Stanford University, Stanford, California, 1972.
+<<PAGE-DIVIDER>>
+DETECTABILITY AND OBSERVERS 135
+Rouchleau, Y. and E. D. Sontag, on the existence of minimal
+realizations of linear dynamical systems over Noetherian integral
+domains, J. Comp. Syst. Sciences, Vol. 18, 1979, pp. 65-75.
+Rouchleau, Y., B. F. Wyman, and R. E. Kalman, Algebraic
+structure of linear dynamical systems, 11-T. Realization theory
+over a commutative ring, Proc. Nat. Acad. Sci. U.S.A., Vol. 69,
+1978, pp. 3404-3406.
+Sontag, E. D., Linear systems over commutative rings: A
+survey, Ric. di Automatica, Vol. 7, 1976, pp. 1-34.
+Sontag, E. D., on Split realizations of response maps over
+rings, Information and Control, Vol. 37, 1978, pp. 23-33.
+Sontag, E. D., Polynomial Response Maps, Lecture Notes in
+Control and Info. Sciences, Springer, 1979.
+*DEPARTMENT OF MATHEMATICS
+UNIVERSITY OF TECHNOLOGY
+EINDHOVEN, NETHERLANDS
+"DEPARTMENT OF MATHEMATICS
+RUTGERS UNIVERSITY
+NEW BRUNSWICK, NEW JERSEY
+U.S.A. 08903

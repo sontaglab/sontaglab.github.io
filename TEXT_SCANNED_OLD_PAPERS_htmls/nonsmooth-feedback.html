@@ -1,0 +1,916 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nonsmooth-feedback.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/nonsmooth-feedback.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 1
+
+Asymptotic Controllability Implies Feedback Stabilization
+
+F.H. Clarke Yu.S. Ledyaev
+
+E.D. Sontag A.I. Subbotin
+
+Abstract-- It is shown that every asymptotically controllable system can be globally stabilized by means of some (discontinuous) feedback law. The stabilizing strategy is based on pointwise optimization of a smoothed version of a control-Lyapunov function, iteratively sending trajectories into smaller and smaller neighborgoods of a desired equilibrium. A major technical problem, and one of contributions of the present paper, concerns the precise meaning of "solution" when using a discontinuous controller.
+
+I. Introduction A longstanding open question in nonlinear control theory concerns the relationship between asymptotic controllability to the origin in Rn of a nonlinear system
+
+.x = f (x; u) (1) by an "open loop" control u : [0; +1) ! U and the existence of a feedback control k : Rn ! U which stabilizes trajectories of the system
+
+.x = f (x; k(x)) (2) with respect to the origin.
+
+For the special case of linear control systems .x = Ax + Bu, this relationship is well understood: asymptotic controllability is equivalent to the existence of a continuous (even linear) stabilizing feedback law. But it is well-known that continuous feedback laws may fail to exist even for simple asymptotically controllable nonlinear systems. This is especially easy to see, as discussed in [27], for onedimensional (U=R, n=1) systems (1): in that case asymptotic controllability is equivalent to the property "for each
+
+F.H. Clarke is with Universite' de Lyon I (BAT 101), 69622 Villeurbanne, France, and CRM, Universit'e de Montr'eal, Montr'eal (Qc) Canada H3C 3J7; email: clarke@crm.umontreal.ca. His work was supported in part by the Natural Sciences and Engineering Research Council of Canada and Le Fonds FCAR du Qu'ebec
+
+Yu.S. Ledyaev was visiting Rutgers University when this work was done. His permanent address is Steklov Institute of Mathematics, Moscow 117966, Russia; email: ledyaev@mian.su. His work was supported in part by Russian Fund for Fundamental Research Grant 96-01-00219, by NSERC and La Fonde FCAR du Qu'ebec, and by the Rutgers Center for Systems and Control (SYCON)
+
+E.D. Sontag is with Dept. of Mathematics, Rutgers University, New Brunswick, NJ 08903, USA; email: sontag@control.rutgers.edu. His work was supported in part by US Air Force Grant AFOSR-94-0293
+
+A.I. Subbotin is with Inst. of Mathematics & Mechanics, Ekaterinburg 620219, Russia; email: sai@subb.intec.ru. His work was supported in part by Russian Fund for Fundamental Research Grant 96-01-00219
+
+x 6= 0 there is some value u so that xf(x; u) ! 0", but it is easy to construct examples of functions f , even analytic, for which this property is satisfied but for which no possible continuous section k : R n f0g ! R exists so that xf(x; k(x)) ! 0 for all nonzero x. General results regarding the nonexistence of continuous feedback were presented in the paper [3], where techniques from topological degree theory were used (an exposition is given in the textbook [25]).
+
+These negative results led to the search for feedback laws which are not necessarily of the form u = k(x), k a continuous function. One possible approach consists of looking for dynamical feedback laws, where additional "memory" variables are introduced into a controller, and as a very special case, time-varying (even periodic) continuous feedback u = k(t; x). Such time-varying laws were shown in [27] to be always possible in the case of one-dimensional systems, and in the major work [9] (see also [10]) it was shown that they are also always possible when the original system is completely controllable and has "no drift", meaning essentially that f (x; 0) = 0 for all states (see also [26] for numerical algorithms and an alternative proof of the time-varying result for analytic systems). However, for the general case of asymptotically controllable systems with drift, no dynamic or time-varying solutions are known. Thus it is natural to ask about the existence of discontinuous feedback laws u = k(x). Such feedbacks are often obtained when solving optimal-control problems, for example, so it is interesting to search for general theorems insuring their existence. Unfortunately, allowing nonregular feedback leads to an immediate difficulty: how should one define the meaning of solution x(\Delta ) of the differential equation (2) with discontinuous right-hand side?
+
+One of the best-known candidates for the concept of solution of (2) is that of a Filippov solution (cf. [13]), which is defined as the solution of a certain differential inclusion with multivalued right-hand side which is built from f (x; k(x)). However, it follows from the results in [21], [11] that the existence of a discontinuous stabilizing feedback in the Filippov sense implies the same Brockett necessary conditions [3] as the existence of a continuous stabilizing feedback does. Moreover, it is shown in [11] that the existence of a stabilizing feedback in the Filippov sense is equivalent to the existence of a continuous stabilizing one, in the case of systems affine in controls. In conclusion, there is no hope of obtaining general results if one insists on the use of Filippov
+
+2 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 solutions.
+
+In this paper, we develop a concept of solution of (2) for arbitrary feedback k(x) which has (a) a clear and reasonable physical meaning (perhaps even more so than the definitions derived from differential inclusions), and (b) allows proving the desired general theorem. Our notion is borrowed from the theory of positional differential games, and it was systematically studied in that context by Krasovskii and Subbotin in [19].
+
+There have been several papers dealing with rather general theorems on discontinuous stabilization. One of the best known is [30], which provided piecewise analytic feedback laws for analytic systems which satisfy controllability conditions. The definition of "feedback" given in that paper involves a specification of "exit rules" for certain lower-dimensional submanifolds, and these cannot be expressed in terms of a true feedback law (even in the sense of this paper). Sampling is a strategy commonly used in digital control (see e.g. [25] for a discussion of sampling in a general nonlinear systems context), and an approach to sampled control of nonlinear systems was given in [22]. Sampling is not true feedback, in that one typically uses a fixed sampling rate, or perhaps a predetermined sampling schedule, and intersample behavior is not accounted for. A stabilization approach introduced in [16] is based on a sampling-like method under strong controllability Lie algebraic conditions on the system being controlled. One may interpret our solutions as representing the behavior of sampling, with a fixed feedback law being used, as the sampling periods tend to zero - indeed, such a speedup of sampling is essential as we approach the target state, to avoid an overshoot during the sampling interval, as well as far from the target, due to possible explosion times in the dynamics.
+
+A. Definition of Feedback Solution
+
+From now on, we assume that U is a locally compact metric space and that the mapping f : Rn \Theta  U ! Rn : (x; u) 7! f (x; u) is continuous, and locally Lipschitz on x uniformly on compact subsets of Rn \Theta  U. We use jxj to denote the usual Euclidean norm of x 2 Rn , and hx; yi for the inner product of two such vectors.
+
+A locally bounded (for each compact, image is relatively compact) function k : Rn ! U will be called a feedback.
+
+Any infinite sequence ss = ftigi*0 consisting of numbers
+
+0 = t0 ! t1 ! t2 ! : : : with limi!1 ti = 1 is called a partition (of [0; +1)), and the number
+
+d(ss) := sup
+
+i*0(t
+
+i+1 \Gamma  ti)
+
+is its diameter .
+
+We next define the trajectory associated to a feedback k(x) and any given partition ss as the solution obtained by means of the following procedure: on each interval [ti; ti+1], the initial state is measured, ui = k(x(ti)) is computed, and then the constant control u j ui is applied until time ti+1,
+
+when a new measurement is taken. This notion of solution is an accurate model of the process used in computer control ("sampling").
+
+Definition I.1: Assume given a feedback k, a partition ss, and an x0 2 Rn . For each i, i = 0; 1; 2; : : :, recursively solve
+
+.x(t) = f (x(t); k(x(ti))) ; t 2 [ti; ti+1] (3)
+
+using as initial value x(ti) the endpoint of the solution on the preceding interval (and starting with x(t0) = x0). The ss-trajectory of (2) starting from x0 is the function x(\Delta ) thus obtained.
+
+Observe that this solution may fail to be defined on all of [0; +1), because of possible finite escape times in one of the intervals, in which case we only have a trajectory defined on some maximal interval. In our results, however the construction will provide a feedback for which solutions are globally defined; we say in that case that the trajectory is well-defined .
+
+Remark I.2: It is worth pointing out that the concept of solution introduced above is quite different from the "Euler solution" which would be obtained when attempting to solve the differential equation (2) using Euler's method: in that case, on each interval [ti; ti+1] one would have the formula x(t) = x(ti) + (t \Gamma  ti)f (x(ti); k(x(ti))), corresponding to the solution of the different equation .x = f (x(ti); k(x(ti))). This alternative definition does not have any physical meaning in terms of the original system. (It is amusing to note, however, that this could be interpreted as the ss-trajectory of the system .x = u under the feedback u = f (x; k(x)), so in that sense, Euler approximations are a particular case of our setup.) 2
+
+B. Statement of Main Result
+
+The main objective of this paper is to explore the relationship between the existence of stabilizing (discontinuous) feedback and asymptotic controllability of the open loop system (1). We first define the meaning of (globally) stabilizing feedback. This is a feedback law which, for fast enough sampling, drives all states asymptotically to the origin and with small overshoot. Of course, since sampling is involved, when near the origin it is impossible to guarantee arbitrarily small displacements unless a faster sampling rate is used, and, for technical reasons (for instance, due to the existence of possible explosion times), one might also need to sample faster for large states. Thus the sampling rate needed may depend on the accuracy desired when controlling to zero as well as on the rough size of the initial states, and this fact is captured in the following definition. (The "s" in "s-stabilizing" is for "sampling".)\Lambda 
+
+Definition I.3: The feedback k : Rn ! U is said to sstabilize the system (1) if for each pair
+
+0 ! r ! R there exist M = M (R) ? 0, ffi = ffi(r; R) ? 0, and T = T (r; R) ? 0 such that, for every partition ss with d(ss) !
+
+\Lambda A more cumbersome but descriptive notation would be "clssstabilizing", for stabilization under "closed-loop system sampling"
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 3 ffi and for any initial state x0 such that jx0j ^ R, the sstrajectory x(\Delta ) of (2) starting from x0 is well-defined and it holds that:
+
+1. (uniform attractiveness) jx(t)j ^ r 8 t * T ; 2. (overshoot boundedness) jx(t)j ^ M (R) 8 t * 0; 3. (Lyapunov stability) limR#0 M (R) = 0. Remark I.4: As mentioned in Section VI, if a continuous feedback k stabilizes the system (1) in the usual sense (namely, it makes the origin of (2) globally asymptotically stable), then it also s-stabilizes. In this sense, the present notion generalizes the classical notion of stabilization. 2
+
+We next recall the definition of (global, null-) asymptotic controllability. By a control we mean a measurable function u : [0; +1) ! U which is locally essentially bounded (meaning that, for each T ? 0 there is some compact subset UT ` U so that u(t) 2 UT for a.a. t 2 [0; T ]). In general, we use the notation x(t; x0; u) to denote the solution of (1) at time t * 0, with initial condition x0 and control u. The expression x(t; x0; u) is defined on some maximal interval [0; tmax(x0; u)).
+
+Definition I.5: The system (1) is asymptotically controllable if:
+
+1. (attractiveness) for each x0 2 Rn there exists some
+
+control u such that the trajectory x(t) = x(t; x0; u) is defined for all t * 0 and x(t) ! 0 as t ! +1; 2. (Lyapunov stability) for each " ? 0 there exists
+
+ffi ? 0 such that for each x0 2 Rn with jx0j ! ffi there is a control u as in 1. such that jx(t)j ! " for all t * 0; 3. (bounded controls) there are a neighborhood X0 of
+
+0 in Rn , and a compact subset U0 of U such that, if the initial state x0 in 2. satisfies also x0 2 X0, then the control in 2. can be chosen with u(t) 2 U0 for almost all t. This is a natural generalization to control systems of the concept of uniform asymptotic stability of solutions of differential equations. The last property - which is not part of the standard definition of asymptotic controllability given in textbooks, e.g. [25] - is introduced here for technical reasons, and it has the effect of ruling out the case in which the only way to control to zero is by using controls that must "go to infinity" as the state approaches the origin. Our main result is as follows.
+
+Theorem 1: The system (1) is asymptotically controllable if and only if it admits an s-stabilizing feedback.
+
+One implication is trivial: existence of an s-stabilizing feedback is easily seen to imply asymptotic controllability. Note that the bounded overshoot property, together with the fact that k is locally bounded, insures that the control applied (namely, a piecewise constant control which switches at the "sampling times" in the partition) is bounded. The attractiveness property holds by iteratively controlling to balls of small radius and using the overshoot and stability estimate to insure convergence to the origin. Finally, the Lyapunov stability property holds by construction.
+
+The interesting implication is the converse, namely the construction of the feedback law. The main ingredients in this construction are: (a) the notion of control-Lyapunov
+
+function (called just "Lyapunov function" for a control system in [25]; see also [17], [18]), (b) methods of nonsmooth analysis, and (c) techniques from positional differential games. We review these ingredients in the next section, and then develop further technical results; latter sections contain the proof as well as a robustness result.
+
+II. Some Preliminaries We start with a known characterization of asymptotic controllability in terms of control-Lyapunov functions. Given a function V : Rn ! R and a vector v 2 Rn , the lower directional derivative of V in the direction of v is
+
+DV (x; v) := lim inf
+
+t # 0 v0 ! v
+
+1
+
+t (V (x + tv
+
+0) \Gamma  V (x)) :
+
+The function v 7! DV (x; v) is lower semicontinuous. For a set F ` Rn , coF denotes its convex hull.
+
+Definition II.1: A control-Lyapunov pair for the system (1) consists of two continuous functions V; W : Rn ! R*0 such that the following properties hold:
+
+1. (positive definiteness) V (x) ? 0 and W (x) ? 0 for
+
+all x 6= 0, and V (0) = 0; 2. (properness) the set fx j V (x) ^ fig is bounded for
+
+each fi; 3. (infinitesimal decrease) for each bounded subset
+
+G ` Rn there is some compact subset U0 ` U such that
+
+min v2cof(x;U0) DV (x; v) ^ \Gamma W (x) (4)
+
+for every x 2 G. If V is part of a control-Lyapunov pair (V; W ), it is a control-Lyapunov function (clf).
+
+It was shown in [23] that asymptotic controllability is equivalent to the existence of a pair of functions (V; W ) which satisfy the properties given above, except that property 3 is expressed in an apparently weaker fashion, namely, by means of derivatives along trajectories (corresponding to relaxed controls). In [28] it was observed that in fact one can reformulate the definition in the above terms, so we obtain as follows.
+
+Theorem 2: The system (1) is asymptotically controllable if and only if it admits a control-Lyapunov function.
+
+Observe that when the function V is smooth, condition (4) can be written in the more familiar form found in the literature, namely:
+
+minu2
+
+U0 hrV (x); f (x; u)i ^ \Gamma W (x) : (5)
+
+In contrast to the situation with stability of (non-controlled) differential equations, a system may be asymptotically controllable system and yet there may not exist any possible smooth clf V . In other words, there is no analogue of the classical theorems due to Massera and Kurzweil. This issue is intimately related to that of existence of continuous feedback, via what is known as Artstein's Theorem (cf. [2], [17], [18], [24]), which asserts that existence of a differentiable V
+
+4 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 is equivalent, for systems affine in controls, to there being a stabilizing regular feedback. Nevertheless, it is possible to reinterpret the condition (5) in such a manner that relation (5) does hold in general, namely by using a suitable generalization of the gradient. Specifically, we will remark later that we may use the proximal subgradients of V at x instead of rV (x), replacing (5) by:
+
+min u2U0 hi; f (x; u)i ^ \Gamma W (x) for every i 2 @pV (x) ; (6)
+
+where i and @pV (x) are the proximal subgradients and the subdifferential, respectively, of the function V at the point x. The use of proximal subgradients as substitutes for the gradient for a nondifferentiable function plays a central role in our construction of feedback. The concept was originally developed in nonsmooth analysis for the study of optimization problems, see [4].
+
+The relation (6) says that V is a "proximal supersolution" of the corresponding Hamilton-Jacobi equation, which via the results in [6] is known to be equivalent to the statement that locally V is a viscosity supersolution (cf. [12], [14]) of the same equation. On the other hand, the relation (4) says that V is an upper minimax solution of the same equation ([29]). The coincidence of these two solution concepts reflects the deep and intrinsic connection between invariance properties of function V with respect to trajectories of the control system (1) and the characterization of these properties in terms of proximal subgradients of V . For more discussion on these aspects of viscosity and other generalized solution concepts of first-order PDEs, and their connection to nonsmooth analysis, the reader is referred to [6] and the book [29].
+
+Finally, we rely on methods developed in the theory of positional differential games in [19]. These techniques were used together with nonsmooth analysis tools in the construction of discontinuous feedback for differential games of pursuit in [7] and games of fixed duration in [8], and these results are relevant to the construction of stabilizing feedback in our main result.
+
+This paper is organized as follows. In Section III, we provide a self-contained exposition of proximal subgradients and their basic properties. These methods are used in Section IV for construction of "semiglobal" (that is to say, on each compact set) stabilizing feedback, and the results are extended to the global case in Section V. Finally, section VI discusses robustness issues.
+
+III. Proximal Subgradients and
+
+Inf-Convolutions
+
+We recall the concept of proximal subgradient, one of the basic building blocks of nonsmooth analysis.
+
+A vector i"Rn is a proximal subgradient (respectively, supergradient) of the function V : Rn ! (\Gamma 1; +1] at x if there exists some oe ? 0 such that, for all y in some neighborhood of x,
+
+V (y) * V (x) + hi; y \Gamma  xi \Gamma  oe jy \Gamma  xj2 (7) (respectively, V (y) ^ V (x)+hi; y\Gamma xi+oe jy \Gamma  xj2). The set of proximal subgradients of V at x (which may be empty)
+
+is denoted by @pV (x) and is called the proximal subdifferential of V at x. If the function V is differentiable at x, then we have from the definition that the only possible subgradient of V at x is i = rV (x), but, we note that, unless further regularity is imposed (for instance, if V is of class C2) then @pV (x) may well be empty.
+
+There is a simple relation between proximal subgradients of V at x and the lower directional derivatives DV (x; v), which follows immediately from the definitions: for any i 2 @pV (x) and any v 2 Rn ,
+
+hi; vi ^ DV (x; v) : (8) We now fix a parameter ff 2 (0; 1] and define the following function:
+
+Vff(x) := inf
+
+y2Rn ^V (y) +
+
+1 2ff2 jy \Gamma  xj
+
+2* : (9)
+
+This is called the inf-convolution of the function V (with a multiple of the squared-norm). The function Vff is wellknown in classical convex analysis as the "Iosida-Moreau regularization" of (convex) V . In the case of a lower semicontinuous V which is bounded below (for instance, for a clf V , which is continuous and nonnegative), the function Vff is locally Lipschitz and is an approximation of V in the sense that limff#0 Vff(x) = V (x); cf. [5]. In this case, the set of minimizing points y in (9) is nonempty. We choose one of them and denote it by yff(x). (We are not asserting the existence of a regular choice; any assignment will do for our purposes.)
+
+By definition, then,
+
+Vff(x) = V (yff(x)) + 12ff2 jyff(x) \Gamma  xj2
+
+^ V (y) + 12ff2 jy \Gamma  xj2 (10) for all y 2 Rn . The vector
+
+iff(x) := x \Gamma  yff(x)ff2 (11) will be of special interest; it is simultaneously a proximal subgradient of V at yff(x) and a proximal super gradient of Vff at x, as we discuss next.
+
+Lemma III.1: For any x 2 Rn ,
+
+iff(x) 2 @pV (yff(x)) : (12) Proof: We rearrange terms in (10) and obtain, for any y 2 Rn ,
+
+V (y) * V (yff(x)) + hiff(x); y \Gamma  yff(x)i \Gamma  12ff2 jy \Gamma  yff(x)j2 ; which implies (12), by definition of subgradients.
+
+Lemma III.2: For any x 2 Rn , iff(x) is a proximal supergradient of Vff at x.
+
+Proof: The assertion will be shown if we prove that, for every x; y 2 Rn ,
+
+Vff(y) ^ Vff(x) + hiff(x); y \Gamma  xi + 12ff2 jy \Gamma  xj2 : (13)
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 5 By definition, we have
+
+Vff(y) ^ V (yff(x)) + 12ff2 jyff(x) \Gamma  yj2 Vff(x) = V (yff(x)) + 12ff2 jyff(x) \Gamma  xj2 : Subtracting and rearranging quadratic terms, we obtain (13).
+
+We deduce from Equation (13) that, for any o/ 2 R1 and any v 2 Rn ,
+
+Vff(x + o/ v) ^ Vff(x) + o/ hiff(x); vi + o/
+
+2 jvj2
+
+2ff2 : (14) This plays a role analogous to that of Taylor expansions for evaluating increments of the function Vff.
+
+We introduce some additional notations and obtain several estimates which are used later. In general, we use BR to denote the closed ball of radius R. We assume that the function V is a clf as in Definition II.1. For each R ? 0 we consider the numbers
+
+fi(R) := maxj
+
+xj^R V (x) and fl(R) := minjxj*R V (x)
+
+as well as the sets
+
+GR := aex fifififi V (x) ^ 12 fl(R) oe ;
+
+GffR := aex fifififi Vff(x) ^ 12 fl(R) oe ; and
+
+ae(R) := max fae j Bae ` GRg :
+
+It is easy to verify that the following relations hold:
+
+fi(R) * fl(R) ? 0 ; ae(R) ? 0 8 R ? 0 ; (15)
+
+lim R#0 fi(R) = limR#0 ae(R) = 0 ; (16)
+
+lim R!1 fl(R) = limR!1 ae(R) = 1 : (17)
+
+Finally, the function
+
+!R (ffi) :=
+
+max nV (x) \Gamma  V (x0) fififi jx \Gamma  x0j ^ ffi; x; x0 2 BR+p2fi(R) o
+
+is the modulus of continuity of the function V on the ball BR+p2fi(R).
+
+The next Lemma provides an upper estimate of the distance between x and yff(x).
+
+Lemma III.3: For any x 2 BR, jyff(x) \Gamma  xj ^ p2fi(R)ff.
+
+Proof: The conclusion follows from the obvious inequality
+
+Vff(x) ^ V (x) (18)
+
+as well as the inequality
+
+1 2ff2 jyff(x) \Gamma  xj
+
+2 ^ V (x) \Gamma  V (yff(x)) ^ V (x) ^ fi(R) ;
+
+(19)
+
+which follows from the definitions of Vff and fi(R).
+
+Recall that ff 2 (0; 1], so it follows from here that also
+
+jxj ^ R ) jyff(x)j ^ R + p2fi(R) : (20) We next show that V is uniformly approximated by Vff on BR.
+
+Lemma III.4: For any x 2 BR,
+
+Vff(x) ^ V (x) ^ Vff(x) + !R ip2fi(R)ffj : (21)
+
+Proof: The first inequality is just (18). To prove the second one, we use the obvious relation
+
+Vff(x) * V (yff(x)) : By the estimate in Lemma III.3,
+
+V (yff(x)) * V (x) \Gamma  !R ip2fi(R)ffj : Equation (21) follows from these two inequalities.
+
+We use later the inclusions
+
+Bae(R) ` GR ` GffR ; (22) which are valid for all R ? 0 and ff ? 0 and which follow directly from the definition of ae and (18).
+
+Lemma III.5: For any R ? 0 and ff satisfying
+
+!R ip2fi(R)ffj ! 12 fl(R) (23) we have
+
+GffR ` int BR : (24) Proof: Let x 2 GffR. By definition of GffR, Vff(x) ^ 1 2 fl(R), so the fact that Vff(x) equals the expression in (10)implies that
+
+V (yff(x)) ^ 12 fl(R) and 12ff2 jyff(x) \Gamma  xj2 ^ 12 fl(R) : It follows that yff(x) 2 BR by definition of fl(R) andj
+
+yff(x) \Gamma  xj ^ p2fi(R)ff because of (15). Then
+
+V (x) ^ V (yff(x)) + !R ip2fi(R)ffj ! fl(R) ; and this implies that jxj ! R by definition of fl(R).
+
+IV. Semi-Global Practical Stabilization From now on, we assume that an asymptotically controllable system (1) has been given. Applying Theorem 2, we pick a Lyapunov pair (V; W ). Choose any 0 ! r ! R. We will construct a feedback that sends all states in the ball of radius R ("semiglobal" stabilization) into the ball of radius r ("practical" stability, as we do not yet ask that states converge to zero). By the definition of Lyapunov pair, there is some compact subset U0 ` U so that property (4) holds for every x 2 BR+p2fi(R). Because of the relation (8) between
+
+proximal subgradients and lower directional derivatives, we have that also condition (6) holds for the Lyapunov pair, for all x 2 BR+p2fi(R).
+
+6 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999
+
+Pick any ff 2 (0; 1]. In terms of the vectors iff(x) introduced in Equation (11), we define a function k* : BR ! U0 by letting k*(x) be a pointwise minimizer ofh
+
+iff(x); f (x; u)i:
+
+hiff(x); f (x; k* (x))i = minu2
+
+U0hiff(x); f (x; u)i : (25)
+
+The choice x 7! k*(x) is not required to have any particular regularity properties. We use the subscript * = (ff; r; R) to emphasize the dependence of the function k on the particular parameters (which represent respectively the "degree of smoothing" of V that is used in its construction, the radius of the ball to which we are controlling, and the radius of the ball on which the feedback will be effective). The next theorem says that for any fixed r; R, we can choose arbitrarily small ff ? 0 and then ffi ? 0 such that the set GffR is invariant with respect to any ss-trajectory of
+
+.x = f (x; k* (x)) ; (26) and that x(t) enters and stays in Br for all large t, provided that the diameter of the partition ss satisfies d(ss) ^ ffi.
+
+Theorem 3: Let V be a clf. Then, for any 0 ! r ! R there are ff0 = ff0(r; R) and T = T (r; R) such that, for any ff 2 (0; ff0) there exists ffi ? 0 such that for any x0 2 GffR and any partition ss with d(ss) ^ ffi, the ss-trajectory x(\Delta ) of (26) starting at x0 must satisfy:
+
+x(t) 2 GffR ; 8t * 0 (27) and
+
+x(t) 2 Br ; 8t * T : (28) Observe that, because of (17) and (22), for every R0 ? 0 there is some R ? 0 such that BR0 ` GffR. Thus the Theorem says that there is a feedback that steers every state of BR0 into the neighborhood Br; in this sense the result is semiglobal. The proof of the Theorem will take the rest of this section and will be based on a sequence of lemmas. The main idea behind the proof is to use the new function Vff (for sufficiently small ff) as a Lyapunov function and to use the "Taylor expansion" formula (14) to estimate the variations of Vff along ss-trajectories.
+
+By continuity of f (x; u) and the local Lipschitz property assumed, we know that there are some constants `; m such that
+
+jf (x; u) \Gamma  f (x0; u)j ^ ` jx \Gamma  x0j ; jf (x; u)j ^ m (29) for all x; x0 2 BR and all u 2 U0. Let
+
+\Delta  := 13 min aeW (y) fifififi 12 ae(r) ^ jyj ^ R + p2fi(R) oe : Note that \Delta  ? 0, due to the positivity of W for x 6= 0.
+
+Lemma IV.1: Let ff 2 (0; 1] satisfyp
+
+2fi(R)ff ! 12 ae(r) ; 2` !R ip2fi(R)ffj ! \Delta  : (30) Then, for any x 2 BR n Bae(r) it holds that
+
+hiff(x); f (x; k* (x))i ^ \Gamma 2\Delta  : (31)
+
+Proof: It follows from (25) and (29) that hiff(x); f (x; k* (x))i^
+
+min u2U0hiff(x); f (yff(x); u)i + ` jiff(x)j jyff(x) \Gamma  xj :
+
+But in view of Equation (12), and condition (6), applied at the point yff(x) 2 BR+p2fi(R) (recall (20)), we have that
+
+the first term in the right-hand side is upper bounded by\Gamma 
+
+W (yff(x)). Regarding the second term, note that the estimate
+
+jiff(x)j jyff(x) \Gamma  xj ^ 2(V (x) \Gamma  V (yff(x)))
+
+^ 2 !R ip2fi(R)ffj
+
+holds, by the definition of iff(x), the first inequality in Equation (19), the conclusion of Lemma III.3, (20), and the definition of !R. So we obtain
+
+hiff(x); f (x; k* (x))i ^ \Gamma W (yff(x)) + 2` !R ip2fi(R)ffj :
+
+(32) Since ae(r) ^ jxj ^ R, we obtain from Lemma III.3, (20), and (30) that
+
+1 2 ae(r) ^ jyff(x)j ^ R + p2fi(R) :
+
+This implies that W (yff(x)) * 3\Delta  and from (32) and (30) we obtain (31), as claimed.
+
+Now we consider any ss-trajectory of (26) corresponding to a partition ss = ftigi*0 with d(ss) ^ ffi, where ffi satisfies the inequality
+
+`mp2fi(R)
+
+ff +
+
+m2 2ff2 ! ffi ^ \Delta  : (33)
+
+Lemma IV.2: Let ff; ffi satisfy (23), (30), and (33), and assume that for some index i it is the case that x(ti) 2 GffR n Bae(r). Then
+
+Vff(x(t)) \Gamma  Vff(x(ti)) ^ \Gamma \Delta (t \Gamma  ti) (34) for all t 2 [ti; ti+1]. In particular, x(t) 2 GffR for all such t.
+
+Proof: Denote xi := x(ti) and consider the largest_ t 2 (ti; ti+1] such that x(o/ ) 2 BR for all o/ 2 [ti; _t]. Note that such a _t exists, since xi 2 int BR due to (24). Pick any t 2 [ti; _t]. We have from (29) that
+
+jx(o/ ) \Gamma  xij ^ m(o/ \Gamma  ti) : (35) In general,
+
+x(t) = xi + (t \Gamma  ti)fi ; (36)
+
+where
+
+fi = 1t \Gamma  t
+
+i Z
+
+t ti f (x(o/ ); k
+
+* (xi)) do/ = f (xi; k*(xi)) + ji :
+
+From (29) and (35) we obtain estimates
+
+jfij ^ m ; jjij ^ `m(t \Gamma  ti) : (37)
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 7 Now, using the "Taylor expansion" formula (14) and (36), we conclude that
+
+Vff(x(t)) \Gamma  Vff(x(ti)) = Vff(xi + (t \Gamma  ti)fi) \Gamma  Vff(xi)
+
+^ (t \Gamma  ti)hiff(xi); fii + 12ff2 (t \Gamma  ti)2 jfij2 : (38)
+
+On the other hand, using (36) and (37) as well as Lemma IV.1, we have:
+
+hiff(xi); fii ^ hiff(xi); f (xi; k*(xi))i + jiff(xi)j jjij
+
+^ \Gamma 2\Delta  + p2fi(R)ff `mffi
+
+which implies that
+
+Vff(x(t)) \Gamma  Vff(x(ti))
+
+^ \Gamma 2\Delta  + p2fi(R)ff `mffi + 12ff2 m2ffi! (t \Gamma  ti) :
+
+This implies (34) for all t 2 (ti; _t]. In particular, (34) implies that x(_t) 2 int BR, which contradicts the maximality of _t unless _t = ti+1. Therefore (34) holds for all t 2 [ti; ti+1].
+
+Next we establish that every ss trajectory enters the ball Br at time tN , where N is the least integer such that x(tN ) 2 Gr, and stays inside thereafter. To do this, we first show that there is a uniform upper bound on such times tN . Figure 1 may help in understanding the constructions.
+
+g( r)V < R + 2  (R)b
+
+xox(t) y (x(t)) BR
+
+GR B (r)
+
+GR Gr
+
+x(t  )N
+
+a
+
+a r
+
+B
+
+Fig. 1. The various sets appearing in the constructions Lemma IV.3: Let ff satisfy (23) and (30), and pick any ffi so that (33) is valid. Then, for any ss-trajectory x(\Delta ) with d(ss) ^ ffi and every x(0) 2 GffR, it holds that
+
+tN ^ T = fl(R)2\Delta  : (39)
+
+Proof: It follows from Lemma IV.2 and minimality of N that
+
+x(ti) 2 GffR n Gr ; i = 0; 1; : : : ; N \Gamma  1 ; (applying Lemma IV.2 recursively and using that Bae(r) ` Gr) and
+
+0 ^ Vff(x(tN )) ^ Vff(x(0)) \Gamma  \Delta tN ^ 12 fl(R) \Gamma  \Delta tN ; so (39) is valid.
+
+Lemma IV.4: Assume that, in addition to the previously imposed constraints, ff and ffi also satisfy the following two conditions:
+
+!R ip2fi(R)ffj ! 14 fl(r) ; (40)
+
+(which actually implies (23)) and
+
+!R (mffi) ! 14 fl(r) : (41) Then, x(t) 2 Br for all t * tN .
+
+Proof: If x(ti) 2 Gr, then
+
+Vff(x(t)) ^ V (x(t)) ^ V (x(ti)) + !R (mffi) ! 34 fl(r) (42) for all t 2 [ti; ti+1] (using (29) and (41)). Then,
+
+Vff(x(ti+1)) ! 34 fl(r) ; and if x(ti+1) 62 Gr we can apply Lemma IV.2 to conclude that
+
+Vff(x(t)) ! 34 fl(r) (43)
+
+for all t 2 [ti; tj], where j is the least integer such that tj ? ti and x(tj ) 2 Gr (if there is any). Starting from tj, we may repeat the argument. We conclude that (43) holds for all t * 0. Due to Lemma III.4 and (40),
+
+V (x(t)) ^ Vff(x(t)) + !R ip2fi(R)ffj ! fl(r) ; which means that x(t) 2 Br for all t * tN , as claimed.
+
+To conclude the proof of Theorem 3, let ff0 be the supremum of the set of all ff ? 0 which satisfy conditions (30) and (40). Then, for any ff 2 (0; ff0) we can choose ffi satisfying (33) and (41), so that, for each partition with d(ss) ^ ffi and every ss-trajectory starting from a state in GffR, the inclusions (27) and (28) hold.
+
+V. Proof of Global Result We now prove Theorem 1. The idea is to partition the state space Rn into a number of "spherical shells" (more precisely, sets built out of sublevel sets of the functions Vff obtained when smoothing-out the original controlLyapunov function) and to use a suitable feedback, constructed as in the semiglobal Theorem 3, in each shell.
+
+We assume given an asymptotically controllable system, and a clf V for it, and we pick an arbitrary R0 ? 0. There is then a sequence fRjg+1j=\Gamma 1 satisfying
+
+2Rj ^ ae(Rj+1) ; j = 0; \Sigma 1; \Sigma 2; : : :
+
+8 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 (just define the Rj's inductively for j = 1; 2; : : : and for j = \Gamma 1; \Gamma 2; : : :; this is possible because of (17)). We also denote rj := 12 ae(Rj\Gamma 1) for all j. We have that, for each integer j,
+
+ae(Rj ) ! Rj ! 2Rj ! ae(Rj+1) (44)
+
+and
+
+limj!\Gamma 1 Rj = 0 ; limj!+1 Rj = 1 : (45)
+
+Consider any integer j. For the pair (rj ; Rj), Theorem 3 provides the existence of numbers ffj ? 0, ffij ? 0, and Tj ? 0, and a map kj : BRj ! Uj , kj := k(ffj;rj;Rj),
+
+such that GffjRj is invariant with respect to all ss-trajectories of (26) when k* = kj and d(ss) ^ ffij, and for each such trajectory it holds that
+
+jx(t)j ^ rj ; 8t * Tj : (46) Recall that in the construction of kj, we used the fact that there is some compact subset U0 ` U, to be called here Uj to distinguish the sets used for the different indices j, so that condition (6) holds for the Lyapunov pair, for all x 2 BR
+
+j+p2fi(Rj). Since the Rj form an increasing sequence,
+
+and since if the min in condition (6) also holds if we enlarge
+
+U0, we may, and will, assume that the Uj = U0 for all j ! 0 and that Uj ` Uj+1 for all j * 0. In Equation (29) we picked a bound m on the values of jf (x; u)j for x 2 BRj and all u 2 Uj ; we call this bound mj to emphasize the dependence on j, and observe that mj ^ mj+1 for all j, because of the monotonicity of the sets Uj and BRj .
+
+Finally, we introduce the sets on which we will use the different feedbacks kj:
+
+Hj := Gffj
+
++1
+
+Rj+1 n G
+
+ffj Rj :
+
+Lemma V.1: For each i 6= j, Hi T Hj = ;, and
+
+Rn n f0g =
+
++1[
+
+j=\Gamma 1
+
+Hj : (47)
+
+Proof: We know from (44), (22), and (24) that
+
+GffjRj ` BRj ` B2Rj ` Gffj
+
++1
+
+Rj+1 (48)
+
+for all j. This implies that Hi ` GffjRj and Hi T Hj = ; whenever i ! j. For any two integers M ! N , we obtain from (48) that
+
+fx j RM ^ jxj ^ RN g `
+
+N[
+
+j=M
+
+Hj = GffN
+
++1
+
+RN+1 n G
+
+ffM RM :
+
+The first inclusion together with (45) implies (47) when taking M ! \Gamma 1 and N ! +1.
+
+We use later the inclusion
+
+Brj ` int Gffj
+
+\Gamma 1
+
+Rj\Gamma 1 (49)
+
+which follows from (22) and the definition of rj.
+
+Since the sets Hj plus the origin constitute a partition of the state space, we may define a map k : R ! U by means of the rule
+
+k(x) := kj(x) ; 8 x 2 Hj\Gamma 1 (50)
+
+for each integer j, and k(0) = u0, where u0 is any fixed element of U0. To complete the proof of the Theorem, we need to show that this feedback is s-stabilizing.
+
+Lemma V.2: The set GffjRj is invariant with respect to
+
+ss-trajectories of (2), when (50) is used and
+
+d(ss) ! min aeffij; Rj\Gamma 1m
+
+j oe : (51)Proof: Consider any ss-trajectory starting at a state
+
+in GffjRj , where ss satisfies (51). It is enough to show that x(t) 2 GffjRj for all t 2 [ti; ti+1] if x(ti) 2 GffjRj . Pick any such i. There are three possibilities which must be treated separately: (a) x(ti) 2 Hj\Gamma 1, (b) x(ti) 2 H`\Gamma 1 for some ` ^ j\Gamma 1, and (c) x(ti) = 0. In the first case, k(x) = kj(x) is known to leave GffjRj invariant, so there is nothing to prove.
+
+Assume now that we are in case (b). Observe that the partition ss may not be fine enough to guarantee that Gff`R` is invariant under the feedback k`, so we need to argue in a different way, namely that the trajectory cannot go too far because the sampling time is small. Since x(ti) 2 H`\Gamma 1 ae Gff`R` ae BR`, jx(ti)j ! R`. Pick any _t 2 [ti; ti+1] so that jx(t)j ^ Rj for all t 2 [ti; _t]. It follows from the choice of mj and the fact that k(x(ti)) 2 U` ` Uj thatj
+
+x(t) \Gamma  x(ti)j ^ mj(t \Gamma  ti) for all t 2 [ti; _t] and from here that
+
+jx(t)j ^ mj(t \Gamma  ti) + R` ^ Rj\Gamma 1 + R` ^ 2Rj\Gamma 1 ; (52) for all t 2 [ti; _t]. We claim that
+
+jx(t)j ! Rj (53) for all t 2 [ti; ti+1]. Indeed, if this were not the case, then there is some _t 2 [ti; ti+1] so that jx(t)j ^ Rj for all t 2 [ti; _t] and jx(_t)j = Rj. Since also jx(t)j ^ Rj for all t 2 [ti; _t], Equation (52) holds, which gives Rj ^ 2Rj\Gamma 1, contradicting (44). We conclude that (53) holds, so the argument leading to (52) can be applied with _t = ti+1 and we conclude that the trajectory stays in B2Rj\Gamma 1 , which is included in GffjRj by (48).
+
+There remains the special case x(ti) = 0. Recall that k(0) 2 U0 ` Uj . Then the argument given for case (b) can be repeated, where in (52) we have 0 instead of R`; we conclude that the trajectory stays in BRj\Gamma 1, so it is in GffjRj .
+
+We now prove that the feedback k is s-stabilizing. We claim that for any 0 ! r ! R, there exist ffi = ffi(r; R) ? 0, T = T (r; R) ? 0, and M = M (R), such that, when (50) is used and d(ss) ! ffi, every ss-trajectory x(\Delta ) of (2) withj
+
+x(0)j ^ R satisfies:
+
+jx(t)j ^ r ; 8t * T and j
+
+x(t)j ^ M ; 8t * 0 : (54)
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 9 We start by choosing an integer K = K(r) and the least integer N = N (R) such that
+
+GffKRK ` Br and BR ` GffNRN ; (55) and define
+
+ffi := min ae minK^j^N ffij ; RK\Gamma 1m
+
+N oe ;
+
+T :=
+
+NX
+
+j=K+1
+
+Tj ;
+
+and
+
+M := RN(R) :
+
+Consider the ss-trajectory starting from some x0 2 BR. We claim that at some instant ti 2 ss such that ti ^ T it holds that x(ti) 2 GffKRK . If x0 62 GffKRK , then x0 2 HN0 for some
+
+integer K ^ N 0 ^ N \Gamma  1. The set GffN
+
+0
+
+RN0 is invariant, by
+
+Lemma V.2 (notice the choice of ffi, consistent with what
+
+is needed there). Therefore the trajectory remains in HN0 until it enters Gff_
+
+\Gamma 1
+
+R_\Gamma 1 in some interval (ti\Gamma 1; ti], for some
+
+_ ! N 0. We note that ti ^ TN0, since due to Theorem 3 if
+
+x(\Delta ) remains in HN0 until moment TN0 then
+
+x(TN0) 2 BrN0 : Because of (49), this contradicts our assumption that x(\Delta ) remains in HN0. If _ ^ K + 1, we are done. Otherwise we repeat the argument. In conclusion, x(ti) 2 GffKRK for some ti ^ T , as claimed.
+
+But then Lemma V.2 insures that x(\Delta ) stays in this set for all future t * ti, which in accordance with (55) implies (54). It follows from these considerations that x(t) remains in GffNRN ` BRN for all t * 0. Thus jx(t)j ^ M (R) for all t, and the claim is established. We conclude that the feedback k has the attractiveness and bounded overshoot properties required by Definition I.3. To complete the proof of the Theorem, we must still verify that k has the Lyapunov stability property postulated in that definition, namely, that the function M (R) just defined satisfies also
+
+lim R#0 M (R) = 0 : (56)
+
+It follows from the definition of N = N (R) that BR is not contained in GffN
+
+\Gamma 1
+
+RN\Gamma 1. Therefore
+
+ae(RN\Gamma 1) ! R and we get from this inequality that
+
+lim R#0 N (R) = \Gamma 1 :
+
+Then (56) follows from the fact that limj!\Gamma 1 Rj = 0.
+
+VI. Robustness Properties One of the main justifications for the use of feedback control as opposed to open-loop control lies in the robustness properties of the former. Certainly, any feedback law automatically accounts for sudden changes in states. However, it is not necessarily the case that a given feedback law, especially a discontinuous one, will stabilize a system which is not identical to the model assumed for its design.
+
+We show in this section that the s-stabilizing feedback control k defined in (50) is indeed insensitive to small perturbations in the system dynamics. In particular, we establish the existence of a continuous function O/ : Rn ! R*0 , O/(x) ? 0 for x 6= 0 (which depends on the system (1) being controlled), such that for any continuous function g : Rn \Theta  U ! Rn satisfying
+
+jg(x; u) \Gamma  f (x; u)j ^ O/(x) ; for all x 2 Rn ; u 2 U ; (57) the same feedback k is s-stabilizing also for the control system
+
+.x = g(x; u) : (58)
+
+(Note that this result also demonstrates, in view of Theorem 1, that the asymptotic controllability property is structurally stable with respect to perturbations g of the system (1) which satisfy (57).) Actually, we prove an even more general result than the s-stabilization of (58), expressed in terms of differential inclusions.
+
+Let us consider ss-trajectories of the differential inclusion
+
+.x 2 f (x; k(x)) + BO/(x) (59) where k : Rn ! U is an arbitrary (not necessarily continuous) function and O/ : Rn ! R*0 is continuous. For a given partition ss of the interval [0; +1), a (complete) sstrajectory x(\Delta ) of (59) is any absolutely continuous function defined on [0; 1) and satisfying recursively the differential inclusion
+
+.x(t) 2 f (x(t); k(x(ti))) + BO/(x(t)) ; a.a. t 2 [ti; ti+1] (60) for all i.
+
+Definition VI.1: The feedback k : Rn ! U is said to robustly s-stabilize the system (1) if there exists some continuous function O/ : Rn ! R*0 , O/(x) ? 0 for x 6= 0, such that for every pair 0 ! r ! R there exist ffi = ffi(r; R) ? 0, T = T (r; R) ? 0, and M = M (R), such that, for every partition ss with d(ss) ! ffi, and every ss-trajectory x(\Delta ) of (59) with jx(0)j ^ R, all conditions 1., 2., 3. in Definition I.3 hold.
+
+The concept of robust s-stabilizing feedback k formulated in terms of solutions of differential inclusions is closely connected with robustness properties of the feedback k in the sense of stabilization of the perturbed system
+
+.x = f (x; k(x)) + w(t) (61) where w : [0; +1) ! Rn is an integrable function (which we call a "disturbance"). For the partition ss of [0; +1) the ss-trajectory of (61) starting from x0 is the absolutely
+
+10 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999 continuous function recursively defined on intervals [ti; ti+1] as solutions of the following differential equation:
+
+.x(t) = f (x(t); k(x(ti))) + w(t) ; t 2 [ti; ti+1] : (62) Remark VI.2: There is an obvious relation between ss-trajectories of the differential inclusion (59) and sstrajectories of the perturbed system (61): x(\Delta ) is a sstrajectory of (59) if and only if there is a measurable disturbance w(\Delta ) such that
+
+jw(t)j ^ O/(x(t)) ; a.a. t * 0 (63) and x(\Delta ) is a ss-trajectories of (61). 2
+
+We show that a robustly stabilizing feedback provides stabilization of the perturbed system (62) in the following sense.
+
+Definition VI.3: The feedback k : Rn ! U is said to be robustly practically stabilizing for (61) if for every pair 0 ! r ! R there exist ffi ? 0, T ? 0, and O/0 ? 0, such that, for any disturbance w(\Delta ) satisfying
+
+jw(t)j ^ O/0 ; a.a. t * 0 ; (64) and any partition ss such that d(ss) ! ffi, every ss-trajectory of (62) with jx(0)j ^ R is well-defined on [0; 1) and conditions 1., 2., 3. in Definition I.3 hold. 2
+
+We have the following relation between the two concepts of robustness.
+
+Proposition VI.4: If the feedback k is robustly s-stabilizing, then it is robustly practically stabilizing for (61).
+
+Proof: Let us fix any pair 0 ! r ! R and choose r0 such that
+
+2r0 ! r; M (2r0) ! r :
+
+We define constants
+
+O/0 := min ae 12 O/(x) j r0 ^ jxj ^ M (R)oe and
+
+ffi0 := min aeffi(r0; R); r
+
+0
+
+2moe ; where m := maxfjf (x; u)j + O/(x) j jxj ^ rg, and where the functions O/ and ffi are as in Definition VI.1. Then for every partition ss with d(ss) ! ffi, any ss-trajectory x(\Delta ) of the perturbed system(65) with the disturbance w(\Delta ) satisfying (64) and jx(0)j ^ R is a ss-trajectory of the differential inclusion (59) as long as r0 ^ jx(t)j ^ M (R). Since k is robustly s-stabilizing, jx(t)j stays bounded by M (R) until the first time ti ^ T (r0; R), ti 2 ss, such that jx(ti)j ^ r0. Assume that after this moment, x(tl), l = i + 1; : : : ; j \Gamma  1 belongs to the ball Br0, but x(tj) 62 Br0. Due to the choice of ffi0 we have that x(t) 2 B2r0 for t 2 [ti; tj]. Then r0 ^ jx(tj )j ^ 2r0 and x(\Delta ) again is a ss-trajectory of the differential inclusion (59) driven by the feedback k until the next moment tk ? tj such that jx(tk)j ! r0. It follows that
+
+jx(t)j ^ M (2r0) ! r for t 2 [tj; tk] :
+
+Finally, we can repeat this argument to obtain that jx(t)j ^ r for all t ? T (r0; R), which proves the Proposition. (Observe that since x(\Delta ) is a solution of an ordinary differential equation, boundedness implies global existence.)
+
+The main result of this Section is as follows: Theorem 4: Let the system (1) be asymptotically controllable. Then the feedback k defined in (50) is robustly s-stabilizing.
+
+We base the proof of this Theorem on the proof of the following semiglobal practical robust stabilization result, in the same manner that the proof of Theorem 1 is based on Theorem 3.
+
+Theorem 5: Let V be a clf. Then, for every 0 ! r ! R there exist ff0 = ff0(r; R) and T = T (r; R) such that for any ff 2 (0; ff0) there exists O/0 ? 0, ffi ? 0 such that for any x0 2 GffR, any feedback k* defined as in (25), and any disturbance w(\Delta ) satisfying (64), and any partition ss with d(ss) ! ffi, the ss-trajectory x(\Delta ) of the perturbed system
+
+.x = f (x; k* (x)) + w(t) (65) starting from x0 must satisfy (27) and (28).
+
+The proof of this Theorem follows from the proof of Theorem 3 with some minor changes. We explain just the needed changes, not repeating all details, and using the same notations as in Section IV.
+
+We start by defining
+
+m0 := max fjf (x; u)j j x 2 BR; u 2 U0g and redefine the constant m now as
+
+m := 2m0 : Then the upper bound O/0 in (64) on the magnitude of the admissible disturbance is given as
+
+O/0 = min (m0; \Delta ff2p2fi(R) ) : (66) For this choice of O/0 we have that the inequalities in (29) can be replaced by
+
+jf (x; u) \Gamma  f (x0; u)j ^ ` jx \Gamma  x0j ; jf (x; u) + wj ^ m ;
+
+(67) which hold for all x; x0 2 BR, all u 2 U0, and all w 2 BO/0. Because of (66) we have from Lemma III.3 that for all x 2 BR and w 2 BO/0 :
+
+hiff(x); wi ^ jiff(x)j O/0 ^ 12 \Delta  : (68) Now we analyze the behavior of any ss-trajectory of the perturbed system (65) assuming that the disturbance satisfies (64). In place of Lemma IV.2, we substitute the following:
+
+Lemma VI.5: Let ff; ffi satisfy (23), (30), and (33),, and assume that for some index i it is the case that x(ti) 2 GffR n Bae(r). Then
+
+Vff(x(t)) \Gamma  Vff(x(ti)) ^ \Gamma  12 \Delta (t \Gamma  ti) (69)
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 11 for all t 2 [ti; ti+1]. In particular, x(t) 2 GffR for all such t.
+
+The proof of this Lemma follows along the lines of the proof of Lemma IV.2, but with one important modification due to the definition (62) of x(\Delta ) as a ss-trajectory of (65). Namely, fi in (36) is defined now instead as follows:
+
+fi = 1t \Gamma  t
+
+i Z
+
+t ti [f (x(o/ ); k
+
+* (xi)) + w(o/ )] do/
+
+= f (xi; k*(xi)) + 1t \Gamma  t
+
+i Z
+
+t ti w(o/ ) do/ + j
+
+i :
+
+Note that due to (67) the estimate (37) holds again in this case. This implies, because of (68):
+
+hiff(xi); fii ^h
+
+iff(xi); f (xi; k*(xi))i + jiff(xi)j jO/0j + jiff(xi)j jjij
+
+and therefore, due to (31), (37), and (68):
+
+hiff(xi); fii ^ \Gamma  32 \Delta  + p2fi(R)ff `mffi : Next, applying the "Taylor expansion" formula (38), we obtain:
+
+Vff(x(t)) \Gamma  Vff(x(ti)) ^
+
+\Gamma  32 \Delta  + p2fi(R)ff `mffi + 12ff2 m2ffi! (t \Gamma  ti) :
+
+In view of the choice of ff and ffi, we obtain that (69) holds for all t 2 (ti; _t]. In particular, (69) implies that x(_t) 2 int BR, which contradicts the maximality of _t unless _t = ti+1. Therefore (69) holds for all t 2 [ti; ti+1].
+
+The decreasing property for Vff along every ss-trajectory of the perturbed system (65) lets us establish that every ss-trajectory enters the ball Br at time tN , where N is the least integer such that x(tN ) 2 Gr.
+
+Lemma VI.6: Let ff satisfy (23) and (30), and O/0 satisfy (66). Pick ffi ? 0 so that (33) holds. Then for every disturbance w(\Delta ) satisfying (64), and any ss-trajectory of (65) with d(ss) ^ ffi and every x(0) 2 GffR, it holds that
+
+tN ^ T = fl(R)2\Delta  : (70) Proof: It follows from Lemma VI.5 and minimality of N that
+
+x(ti) 2 GffR n Gr ; i = 0; 1; : : : ; N \Gamma  1 ; applying Lemma IV.2 recursively and using that Bae(r) ` Gr we obtain
+
+0 ^ Vff(x(tN )) ^ Vff(x(0)) \Gamma  12 \Delta tN ^ 12 ((fl(R) \Gamma  \Delta tN ) : This shows (70).
+
+Finally, note that Lemma IV.4 is valid for any sstrajectory x(\Delta ) of the perturbed system (65) and any disturbance w(\Delta ) satisfying (64), because of the choice of O/0 in (66) and the estimates (67).
+
+To conclude the proof of this theorem, we let ff0 be the supremum of all the ff ? 0 satisfying (23) and (30). Then, for every ff 2 (0; ff0) we can choose O/0 satisfying (66) and ffi satisfying (33) and (41) so that for any disturbance w(\Delta ) bounded by O/0 and any ss-trajectory x(\Delta ) of the perturbed system (65) with d(ss) ^ ffi starting from GffR the inclusions (27) and (28) hold. Proof of Theorem 4. We use the same notations as in Section V and follow closely the scheme of the proof of Theorem 1, pointing out the necessary modifications. Let
+
+m0j := max \Phi jf (x; u)j j x 2 BRj ; u 2 Uj \Psi  ;
+
+O/j := min (m0j ; \Delta ffj2p2fi(R
+
+j) )
+
+;
+
+mj = 2m0j : Without loss of generality, we can assume that mj is monotone increasing. We define the function
+
+O/(x) := inf feO/(y) + jy \Gamma  xj j y 2 Rn g ; where eO/ is a function defined as follows: eO/(0) = 0,e
+
+O/(x) = O/j for x 2 Hj\Gamma 1 : (71) It is obvious that the function O/ so defined is Lipschitz with constant 1 in all of Rn and it satisfies
+
+0 ! O/(x) ^ O/j for x 2 Hj\Gamma 1 : (72) We now consider the ss-trajectory x(\Delta ) of the differential inclusion (59). In view of Remark VI.2, x(\Delta ) is also a solution of the perturbed system (61) corresponding to some disturbance w(\Delta ) which satisfies (63).
+
+Due to the inequality (72), we obtain that if x(ti) 2 Hj\Gamma 1 for some ti, j, ande
+
+t := sup ft * ti j x(t) 2 Hj\Gamma 1g ; then on [ti; et], x(\Delta ) is a ss-trajectory of the perturbed system (65) with * = *j and w(\Delta ) bounded by O/j. Note that if x(\Delta ) stays in GffjRj then fifix(t) \Gamma  x(et)fifi ^ mj(t \Gamma  et) for any t; et.
+
+This means in accordance with Theorem 5, Lemmas VI.5 and VI.6 that we have a result analogous to Lemma V.2:
+
+Lemma VI.7: The set GffjRj is invariant with respect to
+
+ss-trajectories of the differential inclusion (59), when (50) is used and (51) holds. 2
+
+Moreover, due to Lemma VI.6 we have that for every j there is a Tj such that for any ss-trajectory of (59) starting from Hj\Gamma 1 there is a moment t0 ^ Tj such that x(t0) 2 Gffj
+
+\Gamma 1
+
+Rj\Gamma 1 if d(ss) ^ ffij. Then, to complete the proof of the factthat k is robustly s-stabilizing we need to repeat word by
+
+word the end of the proof in Section V, starting from (54).
+
+Corollary VI.8: If the system(1) is asymptotically controllable then there is a continuous function O/ : Rn ! R*0 , O/(x) ? 0 for x 6= 0 such that any continuous function g(x; u) satisfying (57), any s-stabilizing feedback (50) is s-stabilizing for the system (58). 2
+
+12 IEEE TRANSACTIONS ON AUTOMATIC CONTROL, VOL. XX, NO. Y, MONTH 1999
+
+Indeed, it is obvious that any ss-trajectory of
+
+.x = g(x; k(x)) (73) is a ss-trajectory of the differential inclusion (59); thus the Corollary follows from Theorem 4.
+
+A. Concluding Remarks
+
+It easily follows from Theorem 4 and Proposition VI.4 that the feedback k in (50) is robust with respect to actuator errors. By this we mean that, for arbitrary 0 ! r ! R, for all sufficiently small perturbations e(\Delta ) and w(\Delta ), all sstrajectories of
+
+.x(t) = f (x(t); k(x(t)) + e(t)) + w(t) with sufficiently small sampling periods d(ss) satisfy conditions 1. and 2. in Definition I.3. We leave to reader to fill the details.
+
+On the other hand, we have not made any statements regarding measurement errors. Indeed, our technique is not robust with respect to such errors. It is possible to produce examples of systems for which every s-stabilizing state feedback will fail to stabilize if the input k(x(t) + e(t)) is used instead of k(x(t)). This question is related to the fact that feedback robust to measurement error results essentially in solutions of certain differential inclusions (see [15]). However, it is possible to provide a robust dynamic (rather than purely state) stabilizing feedback; the paper [20] deals with that issue.
+
+It was mentioned in Section II that a continuous feedback which stabilizes in the usual sense is in particular s-stabilizing. We now make this precise. For a continuous feedback k (not necessarily Lipschitz, so there is no uniqueness of solutions), stabilizability is taken here to mean that, for each 0 ! r ! R there exist T = T (r; R) and M = M (R) such that for every trajectory of the closed loop system (2) with jx(0)j ^ R we have conditions 1., 2., 3. in Definition I.3.
+
+Proposition VI.9: If k is a continuous stabilizing feedback then it is s-stabilizing.
+
+We first establish: Lemma VI.10: Let T (r; R) and M (R) be as in the definition of continuous stabilizing feedback. Then there exists ffi = ffi(r; R) such that, for any partition ss with d(ss) ^ ffi and any ss-trajectory of (2) with jx(0)j ^ R,
+
+jx(t)j ! 2M (R) for all t 2 [0; T ] (74) and j
+
+x(T )j ! 2r : (75) Proof: Assume on the contrary that there is a sequence ffik # 0 and partitions ssk with d(ssk) ^ ffik, and ssktrajectories xk(\Delta ) starting from BR such that (74) does not hold. This means that there is some sequence tk 2 [0; T ] such that
+
+jxk(t)j ! 2M (Ri) 8 t 2 [0; tk) ; jxk(tk)j = 2M (R) : (76)
+
+Without loss of generality, we can assume that tk ! et 2 [0; T ] and xk(\Delta ) ! x(\Delta ) uniformly on [0; T ] (by the ArzelaAscoli theorem, since the functions are equibounded and equicontinuous because their derivatives are estimated by an upper bound of f (x; k(x)) on BR). Because of continuity of k and the fact that ffik ! 0, we conclude that x(\Delta ) is a trajectory of (2) with jx(0)j ^ R. But by (76) we have that fifix(et)fifi = 2M (R), which contradicts condition 2. in Definition I.3. The proof that (75) holds is analogous.
+
+We now prove Proposition VI.9. We 0 ! r ! R, and choose r0 ? 0 such that
+
+2M (2r0) ! r ; 2r0 ! r ; and
+
+ffi0 := min aeffi( 12 r0; R); ffi( 12 r0; 2r0); r
+
+0
+
+2m oe ; where m = maxff (x; k(x)) j jxj ^ rg.
+
+Then we obtain from Lemma VI.10 that any ss-trajectory of (2) with d(ffi) ^ ffi0 satisfies (74) and jx(T )j ^ 12 r0 for T = T ( 12 r0; R). This means that for some ti 2 ss we have jx(ti)j ! r0 and x(t) stays in Br0 for those moments ti; ti+1; : : : ; tj\Gamma 1 while jx(tj)j * r0. Due to the choice of ffi0, we have that jx(tj )j ^ 2r0 ! r. We again apply Lemma VI.10, now for T 0 = T ( 12 r0; 2r0) and M 0 = M (2r0), to obtain that
+
+jx(t)j ! 2M 0 ! r for all t 2 [tj; tj + T 0] : After that, we find the first time tk 2 ss such that tk ? tj and jx(tk)j ! r0, and repeat the arguments above. This implies that x(t) stays in Br for all t * T , which proves the Proposition.
+
+References [1] Aubin, J.-P., and A. Cellina, Differential Inclusions: Set-Valued
+
+Maps and Viability Theory, Springer-Verlag, Berlin, 1984. [2] Artstein, Z., "Stabilization with relaxed controls," Nonl. Anal.,
+
+TMA 7(1983): 1163-1173. [3] Brockett, R.W., "Asymptotic stability and feedback stabilization," in Differential Geometric Control theory (R.W. Brockett, R.S. Millman, and H.J. Sussmann, eds.), Birkhauser, Boston, 1983, pp. 181-191. [4] Clarke, F.H., Methods of Dynamic and Nonsmooth Optimization. Volume 57 of CBMS-NSF Regional Conference Series in Applied Mathematics, S.I.A.M., Philadelphia, 1989. [5] Clarke, F.H., Yu.S. Ledyaev, and P. Wolenski, "Proximal analysis and minimization principles," J. Math. Anal. Appl. 196 (1995): 722-735 [6] Clarke, F.H., Yu.S. Ledyaev, R.J. Stern, and P. Wolenski, "Qualitative properties of trajectories of control systems: A survey," J. Dynamical and Control Systems 1(1995): 1-48 . [7] Clarke, F.H., Yu.S. Ledyaev, and A.I. Subbotin, "Universal feedback strategies for differential games of pursuit," SIAM J. Control, 1997, to appear. [8] Clarke, F.H., Yu.S. Ledyaev, and A.I. Subbotin, "Universal
+
+feedback via proximal aiming in problems of control and differential games," Rapport CRM-2386, Centre de Recherches Math'ematiques, U. de Montr'eal, 1994. [9] Coron, J-M., "Global asymptotic stabilization for controllable
+
+systems without drift," Math of Control, Signals, and Systems 5(1992): 295-312. [10] Coron, J-M., "Stabilization in finite time of locally controllable
+
+systems by means of continuous time-varying feedback laws," SIAM J. Control and Opt. 33(1995): 804-833.
+
+CLARKE, LEDYAEV, SONTAG, AND SUBBOTIN: ASYMPTOTIC CONTROLLABILITY IMPLIES FEEDBACK STABILIZATION 13 [11] Coron, J.-M., and L. Rosier, "A relation between continuous
+
+time-varying and discontinuous feedback stabilization," J.Math. Systems, Estimation, and Control 4(1994): 67-84. [12] Crandall, M., and P.-L. Lions (1983) "Viscosity solutions
+
+of Hamilton-Jacobi equations," Trans. Amer. Math. Soc. 277(1983): 1-42. [13] Filippov, A.F., "Differential equations with discontinuous righthand side," Matem. Sbornik 5(1960): 99-127. English trans. in Amer. Math. Translations 42(1964): 199-231. [14] Fleming, W.H., and H.M. Soner, Controlled Markov Processes
+
+and Viscosity Solutions, Springer-Verlag, New York, 1993. [15] Hermes, H., "Discontinuous vector fields and feedback control,"
+
+in Differential Equations and Dynamic Systems (J.K. Hale and J.P. La Salle, eds.), Academic Press, New York, 1967. [16] Hermes, H., "On the synthesis of stabilizing feedback control via
+
+Lie algebraic methods," SIAM J. Control and Opt. 18(1980): 352-361. [17] Isidori, A., Nonlinear Control Systems, Third Edition, SpringerVerlag, London, 1989. [18] Krstic, M., I. Kanellakopoulos, and P. Kokotovic, Nonlinear and
+
+adaptive control design, John Wiley & Sons, New York, 1995. [19] Krasovskii, N.N., and A.I. Subbotin, Positional differential
+
+games, Nauka, Moscow, 1974 [in Russian]. French translation Jeux differentiels, Editions Mir, Moscou, 1979. Revised English translation Game-Theoretical Control Problems, SpringerVerlag, New York, 1988. [20] Ledyaev, Yu.S., and E.D. Sontag, "A remark on robust stabilization of general asymptotically controllable systems," submitted. [21] Ryan, E.P., "On Brockett's condition for smooth stabilizability
+
+and its necessity in a context of nonsmooth feedback," SIAM J. Control Optim. 32(1994): 1597-1604. [22] Sontag, E.D., "Nonlinear regulation: The piecewise linear approach," IEEE Trans. Autom. Control AC-26(1981): 346-358. [23] Sontag E.D., "A Lyapunov-like characterization of asymptotic
+
+controllability," SIAM J. Control and Opt. 21(1983): 462-471. [24] Sontag, E.D., "A `universal' construction of Artstein's theorem on nonlinear stabilization," Systems and Control Letters, 13(1989): 117-123. [25] Sontag E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990. [26] Sontag E.D., "Control of systems without drift via generic
+
+loops," IEEE Trans. Autom. Control 40(1995): 1210-1219. [27] Sontag, E.D., and H.J. Sussmann, "Remarks on continuous feedback," in Proc. IEEE Conf. Decision and Control, Albuquerque, Dec. 1980, IEEE Publications, Piscataway, pp. 916-921. [28] Sontag, E.D., and H.J. Sussmann, "Nonsmooth controlLyapunov functions," Proc. IEEE Conf. Decision and Control, New Orleans, Dec. 1995, IEEE Publications, 1995, pp. 2799- 2805. [29] Subbotin, A.I., Generalized Solutions of First-Order PDEs: The
+
+Dynamical Optimization Perspective, Birkha"user, Boston, 1995. [30] Sussmann, H.J., "Subanalytic sets and feedback control," J. Differential Equations 31(1979: 31-52.</pre>
+</body>
+</html>

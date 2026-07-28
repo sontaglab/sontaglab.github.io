@@ -1,0 +1,2732 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/chem-observers-xxx.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/chem-observers-xxx.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+               State-Estimators  for  Chemical  Reaction  Networks
+
+
+                  of  Feinberg-Horn-Jackson  Zero  Deficiency  Type*
+
+
+
+                                                   Madalena Chavesy
+
+                                                  Eduardo D. Sontag
+
+                                           Department of Mathematics
+
+                                                  Rutgers University
+
+                                             New Brunswick, NJ 08903
+
+                            E-mail:  {madalena,sontag}@math.rutgers.edu
+
+
+
+                                                          Abstract
+
+            This paper provides a necessary and sufficient condition for detectability, and an explicit
+        construction of observers when this condition is satisfied, for chemical reaction networks of
+        the Feinberg-Horn-Jackson zero deficiency type.
+
+
+                      Keywords:  observers, chemical reaction systems, detectability
+1      Introduction
+
+
+One of the most interesting questions in control theory is that of constructing observers.  Ob-
+servers  compute  estimates  of  the  internal  states  of  a  dynamical  system,  using  data  provided
+by measurement probes or partial state information.  For linear systems, Luenberger observers
+(also  known  as  "deterministic  Kalman  filters"  since  they  amount  to  Kalman  filters  designed
+without regard to the statistics of measurement noise) provide a general solution, but, for non-
+linear  systems,  establishing  generally  applicable  conditions  for  existence  and  convergence  of
+observers is an open and active area of research.
+
+     The question of constructing observers has long been of interest in chemical engineering, and
+in particular for bioreactors; see for instance the papers [2 , 5 , 15 ] and the book [3 ].  Observers
+are  of  great  potential  interest,  in  particular,  for  biological  experimentation  and  biomedical
+applications,  where  the  online  monitoring  of  proteins  involved  in  signaling  pathways  (using
+for instance fluorescent labelings of molecules) will lead to a better understanding of cellular
+dynamical processes.
+
+     The main objective of this paper is to construct (when and if possible) state observers for the
+class of systems which describe chemical reaction networks of the type introduced by Feinberg,
+Horn,  and  Jackson  in  [6 ,  7,  8,  9,  11 ,  12 ].   As  outputs,  we  take  a  subset  of  state  variables
+or,  more  generally,  monomials  in  state  variables  (which  could,  in  practice,  be  associated  to
+measured reaction rates).  We provide here a complete solution to the observer problem for this
+class.  The results given in [20 ] provide a convenient formalism as well as a set of technical tools,
+in the form of Lyapunov estimates, which are central to our results, and we will repeatedly refer
+to that paper for basic concepts and results.
+___________________________________________________*
+     Work was supported in part by US Air Force Grant F49620-98-1-0242
+    ySupported by Funda,c"ao para a Ci^encia e a Tecnologia, Portugal, under the grant PraxisXXI/BD/11322/97
+
+                                                               1
+     As a first step in this paper,  we prove a necessary and sufficient theoretical condition for
+detectability.  As a second step, we proceed to explicitly construct two full-state observers that
+are guaranteed to converge globally, under the hypothesis that the system is detectable.
+
+     In terms of performance, the second observer seems to have substantially slower convergence
+characteristics but, on the other hand, it is more "robust" to perturbations in measurements.
+This robustness can be quantified by an input-to-state stability (ISS) type of estimate, and we
+prove that the second observer is ISS with respect to a far wider class of external disturbances
+than the first (more efficient) observer.
+
+     We  also  provide  simulations  which  test  the  behavior  of  our  observers  in  the  presence  of
+observation noise and even of unknown inputs acting on the system; the observers turn out to
+be surprisingly robust to such effects, but we leave for future work the formulation of theoretical
+results  which  quantify  this  robustness.  The  advantadges  of  our  observers  over  the  standard
+constructions of Luenberger and the extended Kalman filter are also illustrated by simulations.
+Most of the examples worked out in this paper, as well as the simulations testing the robustness
+of our observers, all concern the kinetic proofreading model proposed by McKeithan in [14 ] for
+T-cell receptor signal transduction (which motivated [20 ]).
+
+     The organization of this paper is as follows:
+
+
+     o  This  section  introduces  the  problem  as  well  as  some  notations  and  definitions  to  be
+        adopted in this work.
+
+
+     o  Sections  2  and  3  introduce  the  observers,  and  the  main  results  are  stated  and  proved.
+        Some examples that illustrate the result are presented, applying the construction to the
+        case of the McKeithan network.
+
+
+     o  Section 4 shows how to adapt the proof of the main result to a more general model.
+
+
+     o  Section 5 provides simulations,  testing in particular the effect of noise and of unknown
+        inputs acting on states, or state drift.  A comparison between the Luenberger observer,
+        an extended Kalman filter and our main observer is also given here.
+
+
+     o  An appendix collects various technical results.
+
+
+
+1.1      The  Problem
+
+
+The main objective of this paper is to construct (when and if possible) observers for a certain
+type of systems that provide a mathematical model for a class of chemical reactions.  Several
+stability and other control-theoretic results applicable to such systems were discussed and sur-
+veyed (but without outputs) in the paper [20 ] (see also [4 ]).  The systems that we study all have
+the generic form
+
+
+                                                        `x  =    f (x)                                                     (1)
+
+                                                        y   =    h(x),
+
+
+with the requirements on f  and h specified next.
+
+     The function f : Rn  ! Rn  is of the mass-action kinetics form
+
+                                      Xm   Xm
+                                                aijxb1j1xb2j2. . .xbnjn(bi - bj),                                          (2)
+                                       i=1 j=1
+
+where m   n and each bj  is a column vector in Rn  and has entries b1j , b2j , . . ., bnj , which are
+nonnegative integers.  It is assumed that B := [b1 , b2 , . . ., bn ] has rank m and that none of its
+rows vanishes.
+
+
+
+                                                               2
+     The constants aij are all nonnegative, and the matrix A = [aij] is assumed to be irreducible.
+In  the  language  of  Feinberg  et.  al.,  irreducibility  amounts  to  a  restriction  to  "single  linkage
+class" systems.  This restriction can be removed, as explained in [20 ], provided that the space D
+introduced below is defined in a slightly different way to account for the number of connected
+components in the incidence graph of A.  In order to simplify the presentation, the main result
+is  stated  for  irreducible  systems,  and  a  sketch  of  how  to  treat  the  "multiple  linkage  classes"
+case is given in Section 4.
+
+     Although (2) is defined on all of Rn , we will be interested only on those trajectories which
+evolve in the positive orthant Rn>0 = {(x1 , . . ., xn ) 2 Rn  : xi > 0  for all   i}.  It is easy to verify
+(cf. [20 ] and below) that Rn>0 is a forward invariant set for (1) when f  has the form (2).
+
+     Define
+
+
+                                      D := span  {bi - bj : i, j = 1, . . ., m}
+
+
+and let the canonical basis of Rn  be {ei : i = 1, . . ., n}.
+
+     The function f  does not depend explicitly on time t; however, throughout the text, several
+variations of the system will be considered, obtained by adding input terms to f .  The inputs
+will be assumed to be measurable and bounded functions u : [0, +1) ! Rp , and the resulting
+right hand side will be denoted by f *(x, u).
+
+     In  order  to  decide  what  kind  of  output  functions  h  :  Rn  !  Rp  are  natural  to  consider,
+we should think of the quantities that may be measured when performing a chemical experi-
+ment.  Some possibilities are, for example, concentrations of some of the substances, or certain
+reaction  rates  (through  markers,  fluorescence,  or  energy  released).  This  leads  us  to  consider
+outputs whose coordinates are monomials.  This kind of output includes both the case when
+the concentrations of some of the substances are measured (x1 ,  x2 ,  etc.)  and the case when
+some of the reaction rates are measured (proportional to a monomial such as x1 x32).
+
+     Thus, we consider in this paper output maps h : Rn  ! Rp  (typically, p   n), of the form:
+                                                   0   c    c              1
+                                                      x111 x212 . . .xc1nn
+
+                                            h(x) = B@           ...        CA  ,                                           (3)
+
+                                                      xcp11xcp22. . .xcpnn
+
+where
+                                              2                            3
+                                                  c11   c12    . . . c1n
+                                              6   c21   c22    . . . c2n   7
+                                          C = 66               .           77
+                                              4                 ..         5
+
+                                                  cp1   cp2    . . . cpn
+
+
+is  a  matrix  all  whose  entries  are  either  0  or  real  numbers     1.   (In  view  of  the  preceding
+discussion, the most natural choice would be to take the entries of C to be nonnegative integers,
+but we allow more arbitrary exponents since the results do not require integers.  The restriction
+cij   1 is imposed in order to insure that h(x) is locally Lipschitz, which is needed in order to
+guarantee uniqueness of solutions in the observer equations to be presented later.  Although we
+are ultimately interested in behavior for positive xi's, the ouputs make sense on Rn , provided
+that we interpret exponents xcias |xi |c for negative xi's.)
+
+     Let us introduce the following vector functions:
+
+
+                                            aen (x) = (ln x1 , . . ., ln xn )0
+
+
+defined on Rn>0, and
+
+
+                                            Exp   n(v) = (ev1 , . . ., evn )0
+
+
+
+                                                               3
+defined on Rn .  (From now on, we will drop the subscript n of aen  and Expn , since its value is
+usually clear from the context.)  Then, for x 2 Rn>0,
+
+
+                                                  ae(h(x)) = Cae(x)
+
+
+and
+
+
+                                                h(x) = Exp   (Cae(x)),
+
+
+as long as all state variables (concentrations, when dealing with chemical models) xi are positive.
+
+
+
+No Boundary Equilibra Assumption
+
+
+For  the  rest  of  this  paper,  we  will  make  the  following  assumption:   the  system  (1)  has  no
+boundary  equilibrium  in  any  positive  stoichiometric  class.  That is,  if x = (x1 , . . ., xn ) is any
+vector with nonnegative components xi, and some component xi of x vanishes, and if x - ~x 2
+span  {bi - bj,   i, j  = 1, . . ., m} for some x~ 2 Rn>0,  then f (x) 6= 0.  This assumption amounts
+to saying that no reaction consistent with positive concentrations can be in equilibrium if one
+of  the  participating  substances  is  at  zero  concentration.   It  is  an  assumption  that  is  often
+satisfied in chemical reaction models, and is in particular satisfied in the main example (kinetic
+proofreading)  to  be  discussed.   It  is  possible  to  weaken  this  boundary  assumption  and  still
+obtain significant (though more restricted) results (using the techniques developed in [20 ]) but
+we prefer not to do so in order to streamline the presentation.
+
+     Under  the  above  assumption,  the  following  result  is  a  simple  consequence  of  the  theory
+developed  by  Feinberg  et.  al.,  see  [20 ].  A  (positive)  class  is  any  intersection  of  Rn>0  with  an
+affine manifold of the form , + D, where , 2 Rn>0  and D = span  {bi - bj : i, j = 1, . . ., m}.  We
+use the notation |x| for Euclidean norms.
+
+
+Theorem 1          For  each  positive  class  C  there  exists  a  (unique)  state  ~x =  ~xC  2  Rn>0  which
+is  a  globally  asymptotically  stable  point  relative  to  C,  i.e.,  for  each  x0  2  C,  the  solution  of
+x` = f (x),   x(0) = x0  is defined for all t   0, and x(t) ! ~x as t ! 1, and for all " > 0 there
+exists ffi > 0 such that, if |~x - x0  | < ffi, then |~x - x(t)  | < " for all t > 0.
+
+
+
+1.2      Detectability
+
+
+We will adopt the following
+
+
+Definition 1.1         The  system  (1)  is  detectable  (on  Rn>0)  if,  for  every  two  trajectories  x(.)  and
+z(.) in Rn>0, defined for all t   0,
+
+
+                            h(x(t))   h(z(t))  )  |x(t) - z(t)| ! 0 as  t ! 1.
+
+
+Remark 1.2          Although we use it in this paper, this is not the most natural definition of de-
+tectability, because it is not "well posed" enough.  In principle, one would want the definition
+of detectability to also include the property:  "h(x(t))   h(z(t)) for all t implies |x(t) - z(t)|
+is asymptotically near zero as t ! 1", which can be formulated as an "incremental output to
+state stability" (or more generally, "incremental input/output to state stability", if there are
+inputs) property.  Such a more general concept, in the style of [13 ] and [23 ], can also be studied,
+and a future paper will deal with that matter.
+
+
+Definition 1.3         By a (full-state) observer for (1) we mean a system z` = g(z, h(x)) evolving on
+a state space X  which is an open subset of Rn  containing Rn>0, such that, for each x(0), z(0) in
+Rn>0, the composite system has solutions defined for all t > 0, and |z(t) - x(t)   | ! 0 as t ! +1.
+
+
+
+                                                               4
+     This is a weak definition, on that only "attraction" and not stability is required; however,
+in  our  proofs  we  achieve  a  stability  property  as  well,  as  will  follow  from  "KL"  estimates.
+Detectability is, obviously, necessary for the existence of an observer.
+
+     The  next  observation  is  valid,  in  general,  for  any  system  `x =  f (x),  y  =  h(x)  for  which
+every trajectory converges to an equilibrium.  For such a system, we denote by E the set of all
+equilibria, i.e., all ~x such that f (~x) = 0.
+
+
+Lemma 1.4          Detectability is equivalent to:
+
+                                   [h(~x) = h(~z)  &  ~x, ~z2 E]   )   ~x= ~z.                                             (4)
+
+
+Proof.   [necessity] Suppose that the system is detectable, and pick x~ 6= z~ distinct elements of
+E so that h(~x) = h(~z).  Then x(t)   ~x and z(t)   ~z are two trajectories with h(x(t))   h(z(t))
+and distinct limits, a contradiction.
+
+     [sufficiency] Suppose that (4) holds and pick any two trajectories with h(x(t))   h(z(t)).
+Since h is continuous, this implies h(~x) = h(~z) for the limits of x and z, which exist and belong
+to E by the assumption.  Then (4) says ~x = ~z, as we wanted to prove.                                ||
+
+     This lemma applies, in particular, to our system (1) (with f  as in (2)), when we view (1)
+as restricted to the invariant set Rn>0.  In order to be consistent with the notations in [20 ], we
+denote the equilibrium set as "E+ ", emphasizing that we are only considering equilibria in the
+positive orthant.
+
+     Since the function Exp    is one to one, for positive vectors x, z 2 Rn>0 we have
+
+                                          h(x) = h(z)  ,  Cae(x) = Cae(z),
+
+so that the condition h(~x) = h(~z) becomes just
+
+                                                  ae(~x) - ae(~z) 2 ker  C .
+
+Recall also this fact from [20 ]:  if ~x 2 E+ , then, for any ~z 2 Rn>0,
+
+                                     ae(~x) - ae(~z) 2 D?     ()    ~z 2 E+  .                                             (5)
+
+
+Theorem 2          The following statements are equivalent:
+
+     (a) The system (1) with f  as in (2) and h as in (3) is detectable;
+
+     (b) 8x, z 2 Rn>0, if ae(x) - ae(z) 2 ker  C and x, z 2 E+ , then x = z;
+             T
+     (c) D?     ker  C  =  {0};
+
+     (d) D + im  C0  =  Rn .
+
+
+Proof.  [(a) , (b)] That condition (4) is equivalent to (b) follows immediately from the discussion
+above.
+                                         T
+     [(b)  )  (c)]  Pick  any  y  2  D?     ker  C;  we  need  to  show  that  y  =  0.  Let  ~x be  any  point
+of E+  and put y" = ae(~x) - y,  "y2 Rn .  Then find z  = Exp   ("y) 2 Rn>0  so that y" = ae(z).  Thus
+y = ae(~x) - ae(z) with ~x 2 E+  and z 2 Rn>0.  By definition of y, ae(~x) - ae(z) is contained both in
+D?  and in ker  C.  Condition (5) now implies that z 2 E+ .  By assumption (b), we now conclude
+that ~x = z, or equivalently, y = 0 as wanted.
+
+     [(c) ) (b)] Let x, z 2 Rn>0 satisfy both ae(x) - ae(z) 2 ker  C  and x, zT2 E+ .  Then, from (5),
+if  follows  that  ae(x) - ae(z)  2  D? .  Therefore,  ae(x) - ae(z)  2  D?     ker  C.  By  assumption  (c)
+ae(x) - ae(z) = 0, and therefore, since ae(.) is a bijective function on Rn>0, we have x = z.
+
+     [(c) , (d)] This equivalence follows by duality.                                                          ||
+
+
+Remark 1.5          Note that dimD = m - 1 and that detectability implies m - 1 + rank   C0 = n.  In
+the case the matrix C has full rank, then rank C0 = p and detectability implies m - 1 + p = n.
+
+
+
+                                                               5
+2      Constructing  Observers
+
+
+It has been shown in [20 ] that the system (1) can be steered to any of its equilibrium points
+in E+  by applying additive error feedback.  Namely, for any specific element x~ 2 E+ , a set K
+of  indices  such  that  D + span  {ek  :  k  2  K}  =  Rn  and  any  positive  constants  flk , k  2  K,  the
+following system satisfies lim  t!1   |x(t) - ~x| = 0 for any initial conditions x(0) 2 Rn>0:
+
+                                                     X
+                                         `x= f (x) +       flk (~xk - xk )ek .                                             (6)
+                                                     k2K
+
+
+     So, a natural starting point in constructing an observer for x` = f (x), would be to take a
+copy of it and add a linear feedback term similar to the above:
+
+                                                     X
+                                         z`= f (z) +       flk (xk - zk )ek .
+                                                     k2K
+
+We know that eventually the trajectories of the system we want to observe will satisfy x(t) ! ~x,
+for some ~x 2 E+ , so it seems reasonable to expect that the dynamics of the z-system will become
+very close to the dynamics of the modified x-system, (6), as time tends to infinity.
+
+     To  construct  such  an  observer,  we  need  the  "right  output",  that  is,  a  function  h(x)  that
+allows the construction of the suitable flk (xk - zk )ek  terms.  Thus, this approach will only work
+when the output map is linear and of a very special form.  For instance, if there exists a matrix
+L such that
+
+                                                         X
+                                              Ly = LCx =       xk ek
+                                                         k2K
+
+where K is such that D +span   {ek  : k 2 K} = Rn  (for detectability), then the observer suggested
+above can be constructed (using Ly instead of y as input to the observer).
+
+     But in the general case such a matrix L does not exist and a different,  but related,  con-
+struction will be used.  The main result is:
+
+
+Theorem 3          Consider  the  system  (1)  and  assume  that  it  is  detectable.   Then  the  following
+system, with state space X  = Rn , is an observer for the system (1):
+
+
+                                          z` = f (z) + C0(h(x) - h(z)).                                                    (7)
+
+
+     The proof is given in Section 2.2.
+
+
+Example 2.1          Consider the system with n = 4 and m = 3, determined by the vectors:
+
+
+                      b1 = (1, 1, 0, 0)0,    b2 = (0, 0, 1, 0)0,    and     b3 = (0, 0, 0, 1)0.
+
+
+Then
+
+
+                                     D = span  {(1, 1, -1, 0), (1, 1, 0, -1)},
+
+
+and for positive constants k, k3 , k4  and fi3 , the system (1) becomes the "McKeithan network",
+
+
+                                           `x1 =    -kx1 x2 + k3 x3 + k4 x4
+
+                                           `x2 =    -kx1 x2 + k3 x3 + k4 x4                                                (8)
+
+                                           `x3 =      kx1 x2 - (k3 + fi3 )x3
+
+                                           `x4 =           fi3 x3 - k4 x4 .
+
+
+
+                                                               6
+I. Suppose that the output is given by h(x) = (x1 , x4 )0.   We can take the following observer:
+
+                                    z`1 =    -kz1 z2 + k3 z3 + z4 z4        +(x1 - z1 )
+                                    z`2 =    -kz1 z2 + k3 z3 + z4 z4
+                                    z`3 =     kz1 z2 - (k3 + fi3 )z3
+                                    z`4 =           fi3 z3 - k4 z4          +(x4 - z4 ).
+
+
+II.  Suppose  that  the  output  is  given  by  h(x)  =  (x1 x22, x1 x4 )0.     Then,  we  can  construct  the
+following observer:
+
+                       `z1=     -kz1 z2 + k3 z3 + z4 z4        +(x1 x22- z1 z22) + (x1 x4 - z1 z4 )
+                       `z2=     -kz1 z2 + k3 z3 + z4 z4        +2(x1 x22- z1 z22)
+                       `z3=      kz1 z2 - (k3 + fi3 )z3
+                       `z4=           fi3 z3 - k4 z4           +(x1 x4 - z1 z4 ).
+
+
+     The remainder of this section will be devoted to proving this theorem.  The basic idea is to
+study the stability properties of system (1) when a certain input is added to the function f ,
+specifically, the system with right-hand side:
+
+
+                                           f *(z, u) := f (z) + C0(u - h(z)).                                              (9)
+
+
+We will show that, for the system thus obtained, an "input to state stability" condition holds.
+The observer for (1) is obtained by letting the input be u(t) = h(x(t)).
+
+     The analysis of this system with inputs is interesting in its own right,  since it provides a
+means of studying the behavior of the model under bounded inputs.
+
+
+
+2.1      An  ISS  Property
+
+
+The definition of an input-to-state stable (ISS) system was introduced in [18 ].  Here, we adapt
+this  notion  to  deal  with  constrained  inputs  and  relative  equilibria,  as  well  as  positive  states
+(i.e., those states with all coordinates in the strictly positive half-line).
+
+     From now on, whenever we mention an input u(.), we will mean a measurable essentially
+bounded function u : [0, +1) ! Rp ,  possibly restricted to take values in a set U of Rp .  For
+u : [0, +1) ! Rp  and any fixed ~u 2 Rn , denote
+
+
+                                   ku - ~u  k := ess . sup  .{|u(t) - ~u  | : t   0}.
+
+
+Definition 2.2         A  system  `z= f *(z, u),  with  input-value  set  U,  evolving  on  a  state  space  X
+which is an open subset of Rn  containing Rn>0, is Rn>0-(forward) invariant if, for each initial state
+z(0) 2 Rn>0  and each U-valued input u(.), the corresponding maximal solution of z` = f *(z, u)
+as  a  differential  equation  in  X ,  which  is  defined  on  an  interval  Jz(0),u  =  [0, tmax ),  has  values
+z(t) 2 Rn>0 for all t 2 Jz(0),u .
+
+     The system is Rn>0-(forward) complete if it is Rn -(forward) invariant and, for each z(0) 2 Rn>0
+and U-valued input u(.), Jz(0),u  = [0, +1).
+
+
+     For the following definitions, fix points ~x 2 Rn>0 and ~u 2 U, where U is a subset of Rp .
+
+
+Definition 2.3         A system z` = f *(z, u), evolving on a state space X  which is an open subset of
+Rn  containing Rn>0, is input-to-state stable with input-value set U (with respect to the point x~
+and the input u~) if it is Rn>0-complete and there exist a function fi of class KL and a function
+' of class K1   such that, for each U-valued input u(.), and each initial condition z0 2 Rn>0, for
+all t it holds that
+
+
+                                   |z(t) - ~x  |   fi(|z0 - ~x  |, t) + '(ku - ~u  k).                                    (10)
+
+
+
+                                                               7
+     To study the stability properties of the system z` = f *(z, u) a Lyapunov-type technique is
+used, and the following definition is needed.
+
+
+
+Definition 2.4         An  ISS-Lyapunov  function  with  respect  to  the  point  ~x and  input  ~u,  for  the
+system  `z =  f *(z, u)  with  inputs  in  U     Rp ,  evolving  on  a  state  space  X  which  is  an  open
+subset of Rn  containing Rn>0, is a continuous function V  : Rn 0 ! R, whose restriction to Rn>0
+is continuously differentiable, which satisfies:
+
+
+   (i)  For z 2 Rn 0, V (z)   0 and V (z) = 0 , z = ~x.
+
+
+  (ii)  The set {z 2 Rn 0 : V (z)   L} is compact, for each positive constant L.
+
+
+  (iii) There exist two functions ff, fl 2 K1   such that
+
+
+                                    rV (z) f *(z, u)   -ff(|z - ~x |) + fl(|u - ~u  |)
+
+
+        for all u 2 U and z 2 Rn>0.
+
+
+
+Remark 2.5          This definition differs slightly from other definitions of "ISS-Lyapunov" functions,
+such as given in [21 ].  The difference is in the fact that here the function V  is only required to
+be differentiable in the set Rn>0,  and it is not required to satisfy a decrease condition except
+at positive vectors.  Observe that V  is not proper when restricted to the positive orthant:  it
+remains finite as the boundary of Rn>0 is approached.
+
+
+
+Remark 2.6          For a function V  defined as above, there always exist K1   functions,  1 ,  2 , such
+that
+
+
+                                         1 (|z - ~x |)   V (z)    2 (|z - ~x |)                                           (11)
+
+
+for all z 2 Rn 0 (see Appendix A.1 for a construction of these bounds).
+
+
+
+     Next, we introduce our candidate ISS-Lyapunov function.  Fix an x~ 2 E+ , and define the
+following function:  V  : Rn 0 ! R:
+
+                                   X n        `  z  '    X n     ~ z      z         z  ~
+                           V (z) =      ~xi g   __i_   =      ~xi  _i_ ln _i_ + 1 - _i_                                   (12)
+                                   i=1          ~xi      i=1       ~xi    ~xi       ~xi
+
+
+where g : R>0  ! R, g(r) = r ln r + 1 - r, with the convention that g(0) = 1.  The function V  is
+continuously differentiable on Rn>0 and has the following properties:
+
+     (i) It is positive definite on Rn 0 with respect to ~x, i.e., V (z)   0 and V (z) = 0 , z = ~x:
+
+
+                                                        g0(r) = ln r
+
+
+so each g(r) strictly increases on (1, +1) and strictly decreases on (0, 1).  But since g(1) = 0,
+it  must  be  that  g(r)  >  0  for  all  r  2  R>0 .  As  a  sum  of  nonnegative  quantities,  V (z)  is  also
+nonnegative and, moreover,
+
+                                                `     '
+                                                   zi
+                                  V (z) = 0 , g   ___    = 0 8 i , zi = ~xi8 i,
+                                                  ~xi
+
+
+that is, V (z) = 0 , z = ~x.
+
+     (ii)  For  each  constant  L > 0  the  set  {z  2 Rn 0  : V (z)   L}  is  a  compact  subset  of  Rn 0:
+V (z)   L implies g(zi=~xi)   L for all i;  continuity of g  on [0, +1) (since lim  w!0   g(w) = 1)
+
+
+
+                                                               8
+implies that zi stays in a compact interval of R 0   and hence z  stays in a compact subset of
+Rn 0.
+
+     Finally, in Appendix A.1 examples of possible functions  1 ,  2  are given.
+
+     In the next lemma, we show that the existence of an ISS-Lyapunov function (according to
+Definition 2.4) for a given system, implies that the trajectories of that system satisfy an ISS
+estimate.
+
+
+Lemma 2.7          Consider an Rn>0-invariant system z` = f *(z, u), with input-value set U.  Suppose
+that either:
+
+
+     o  the system is Rn>0-complete, or
+
+
+     o  the state-space X  contains Rn 0.
+
+
+Fix a state x~ 2 Rn>0  and input value u~ 2 U.  Suppose that that there is some ISS-Lyapunov
+funtion V  with respect to ~x and ~u.
+
+     Then, the system is input-to-state stable with input-value set U (with respect to the same
+x~ and ~u).
+
+
+Proof.  This proof is very similar to what is done in the case of the usual definition of an ISS
+system (see [21 ], for instance).
+
+     According to the definition, V  satisfies an estimate of the form
+
+
+                                rV (z) f *(z, u)   -ff(|z - ~x |) + fl(|u - ~u  |),
+
+
+for  each  z  2  Rn>0  and  each  u  in  the  input  value  set  U,  where  ff, fl  2  K1  .   On  the  other
+hand,  we  know  from  Remark  2.6  that  there  exist  two  class  K1   functions,   1 ,  2 ,  such  that
+ 1 (|z - ~x |)   V (z)    2 (|z - ~x |).  Introducing a new K1   function O given by O(r) = ff-1 (2fl(r)),
+observe that:
+
+                                                                                         1
+      |z - ~x | > O(|u - ~u  |) , ff(|z - ~x |) > 2fl(|u - ~u  |) ) rV (z) f *(z, u) < - __ff(|z - ~x |).                 (13)
+                                                                                         2
+
+
+     Now pick any initial condition z0  2 Rn>0, and an input u : [0, +1) ! U, and consider the
+corresponding maximal solution z(t) defined on J  = [0, tmax ).  For s =  2 (O(ku - ~u  k)), define
+the following sublevel set of V :
+
+
+                                              S = {, 2 Rn 0 : V (,)   s}.
+
+
+Claim.     Suppose  there  exists  an  instant  oe  2  J  such  that  z(oe)  2  S.  Then  z(t)  2  S  for  all
+oe   t < tmax .
+
+
+     To see this, argue by contradiction:  suppose there exists a t > oe (but t < tmax ) and an " > 0
+such that V (z(t)) > s + ".  Let
+
+
+                                       o = inf {t   oe : V (z(t))   s + "}.
+
+
+Then z(o ) =2 S which implies V (z(o )) >  2 (O(ku - ~u  k)), and therefore, since V (z)    2 (|z - ~x |)
+and  2  is strictly increasing,
+
+
+                     2 (|z(o ) - ~x |) >  2 (O(ku - ~u  k)) () |z(o ) - ~x | > O(ku - ~u  k).
+
+
+By  (13),  d__dtV (z(t))|o  <  0,  implying  that  V (z(t* ))     V (z(o ))  for  some  t*  2  (oe, o ),  and  thus
+contradicting minimality of o .  So the claim holds.
+
+
+
+                                                               9
+     Now, let
+
+
+                                              T  = inf {oe : z(oe) 2 S}
+
+
+(with T  = +1 if the trajectory never enters S).  We have two cases to consider, for each t   0:
+
+     For t   T :  V (z(t))    2 (O(ku - ~u  k)) implies
+
+
+               1 (|z(t) - ~x  |)    2 (O(ku - ~u  k)) =) |z(t) - ~x  |    -11 O  2 O O(ku - ~u  k),
+
+
+so we let ' =  -11 O  2 O O.
+
+     For t < T :  V (z(t)) >  2 (O(ku - ~u  k)), which implies |z(t) - ~x  |   O(ku - ~u  k) and hence
+
+
+                            d__             1                       1
+                               V (z(t))   - __ff(|z(t) - ~x  |)   - __ff[ 2 (V (z(t)))].
+                            d t             2                       2
+
+
+By a standard comparison principle, there exists a function f"i2 KL (which depends only on ff
+and  2 ) such that V (z(t))   f"i(V (z0 ), t) for all t < T .  Then
+
+
+              |z(t) - ~x  |    -11 (f"i(V (z0 ), t))    -11 (f"i( 2 (|z0 - ~x  |), t)) := fi(|z0 - ~x  |, t).
+
+
+Thus, for all t 2 J ,
+
+
+            |z(t) - ~x  |   max   {fi(|z0 - ~x  |, t), '(ku - ~u  k)}   fi(|z0 - ~x  |, t) + '(ku - ~u  k)
+
+
+where fi 2 KL and ' 2 K1  .
+
+     Under the assumption that the system is Rn>0-complete, we know that J = [0, 1), and thus
+this inequality holds for all t   0.
+
+     If, instead, we assume that X  contains Rn 0, we argue as follows.  The above ISS inequality
+implies that {z(t), t 2 J } is bounded (by fi(|z0 - ~x  |, 0) + '(ku - ~u  k)) and is a subset of Rn 0.
+Thus, the maximal solution remains in a compact set of X  for all t in the maximal interval J ,
+which implies that J  has to be all of [0, +1).                                                                ||
+2.2      Proof  of  Theorem  3
+
+
+Lemma 2.8          Let f *(z, u) = f (z) + C0(u - h(z)) with C such that D + im C0 = Rn .  Let ~x denote
+any point in E+ , and ` be any real number with 0 < ` < 1.  Define the following subset of Rp :
+
+
+                                                          `
+                          U` = {u 2 Rp : |uk - hk (~x)|   __hk (~x), k = 1, . . ., p}.
+                                                          2
+
+Then, for the function V  defined in (12), there exist functions ff = ff~x, fl = fl~x of class K1   such
+that
+
+
+                              rV (z) f *(z, u)   -ff(|z - ~x |) + fl(|u - h(~x)   |),
+
+
+for all z 2 Rn>0 and all u 2 U` .
+
+
+Proof.  Pick any ~x 2 E+  and any 0 < ` < 1.  We have
+
+
+                rV (z) f *(z, u) = <ae(z) - ae(~x) , f (z) > + <ae(z) - ae(~x) , C0(u - h(z))     >.
+
+
+Using the notation % = ae(z) - ae(~x), notice that the second term on the right can be rewritten
+as:
+
+
+                          <C%  , u - h(z)   > = <C%  , u - h(~x)  > - <C%  , h(z) - h(~x)   >.
+
+
+
+                                                              10
+Introducing  the  notation  oe  =  C%,  ~  =  h(z) - h(~x)  and  v  =  u - h(~x),  the  expression  for
+rV (z) f *(z, u) becomes
+
+
+                                 rV (z) f *(z, u)       =    <%, f (z) > - <oe, ~> + <oe, v>
+
+                                                        =    P (z, ~x) + R(z, u, ~x)
+
+
+where
+                                         P (z, ~x) = <%, f (z) > - (1 - `)<oe, ~>
+
+and
+                                                                X
+                            R(z, u, ~x) = -`<oe, ~> + <oe, v> =      oei(-`~i + vi)
+
+
+We now bound each of these terms.
+
+     Step 1.  We show first that R(z, u, ~x)   c3 |v|2 , for some positive constant c3 .
+
+     Notice that ~ioei = (hi(z) - hi(~x))(ln hi(z) - ln hi(~x))   0 for all pairs hi(z), hi(~x).
+
+     (i) if `|~i|   |vi|, then immediately
+
+
+                                                 oei(-`~i + vi)   0.
+
+
+     (ii) if `|~i| < |vi|, then
+
+                                                                   2cL      2
+                                     oei(-`~i + vi)   2|oei||vi|   _____|vi|
+                                                                     `
+
+where the last inequality follows from the bounds on u:
+
+                                       `                                      1        1
+                |vi| = |ui - hi(~x)|   __hi(~x)   )   |hi(z) - hi(~x)| = ~i   __|vi|   __hi(~x),
+                                       2                                      `        2
+
+so  that  hi(z)     hi(~x)=2,  and  with  a  Lipschitz  constant,  cL ,  of  the  logarithmic  function  on
+[A, +1), when A = min  {hi(~x)=2 : i = 1, . . ., p} (for instance, cL  = 1=A):
+
+
+                        |oei| = | ln hi(z) - ln hi(~x)|   cL |hi(z) - hi(~x)| = cL |~i|.
+
+
+In either case,
+
+                                                           2cL   X        2
+                                             R(z, u, ~x)   _____      |vi|
+                                                             `
+
+as wanted.
+
+     Step 2.  Show that P (z, ~x)   -ff(|z - ~x |), where ff 2 K1  .
+
+     Recall a result from [20 ], namely:
+
+                                                                Xm   Xm
+                        <ae(z) - ae(~x) , f (z) >        -c(~x)          <bi - bj  , ae(z) - ae(~x) >2
+                                                                i=1  j=1
+
+                                                         -c(~x)|D0 (ae(z) - ae(~x))   |2                                  (14)
+
+
+where D0  is an (m - 1) x n matrix whose rows (transposed) constitute a basis of D, and c(.) is
+a positive function.  Using this estimate yields:
+
+
+                                    P (z, ~x)     -c1 |D0 %  |2  - (1 - `) <oe, ~>
+
+
+where c1 = c(~x).  By assumption, D + im  C0 = Rn , so we know that
+
+
+                                 span   {cols (D00)} +  span   {cols (C0)} = Rn ,
+
+
+
+                                                              11
+so the matrix D = [D00 C0]0 has rank n.
+
+     Next,  note  that  combining  Lemmas  A.2  and  A.3,  it  is  enough  to  find  two  K1   functions
+ff1 , ff2  such that,
+
+
+                                       P (z, ~x)   -ff1 (|D0 %  |) - ff2 (|C%  |).
+
+
+We may simply take ff1 (w) = c1 w2  and will next produce ff2  .
+
+     Define, for each fixed z, the following finite, disjoint sets of integers
+
+
+                                        I+  = I+ (z) = {i : hi(z) - hi(~x)   0}
+
+
+and
+                                       I-  = I- (z) = {i : hi(z) - hi(~x) < 0}.
+
+Write for each i,
+
+
+                           hi(z)_-_hi(~x)____
+                                             = ln hi(z) - ln hi(~x) + g(hi(z), hi(~x)).
+                                hi(~x)
+
+
+It is not difficult to check that
+
+                                                        hi(z)       hi(z)
+                                    g(hi(z), hi(~x)) = _______ - ln _______ - 1
+                                                       hi(~x)       hi(~x)
+
+
+has a minimum value of 0, achieved whenever hi(z) = hi(~x), and otherwise is strictly positive.
+
+     Let Ci denote the i-th row of the matrix C and let
+
+                                   __~i___
+                                           = ,i + ii  and    oei = Ci% = ,i + ji
+                                   hi(~x)
+
+
+with
+                              ae
+
+                         ,i =     oei~= ln hi(z) - ln hi(~x) = Ci%,               if i 2 I+
+                                      i=hi(~x) = (hi(z) - hi(~x))=hi(~x),         if i 2 I-
+
+
+
+                                           ae
+
+                                      ii =     g(hi(z),0hi(~x)),,     ifiif2iI+2 I
+                                                                                  -
+
+
+
+                                         ae
+
+                                    ji =     0,-g(h                    if i 2 I+
+                                                   i(z), hi(~x)),      if i 2 I- .
+
+
+     By construction, (,i + ii)(,i + ji)   ,2i, since all cross terms are nonnegative:
+
+                               ae
+
+                        ,iii =     g(hi(z),0hi(~x))(ln,hi(z) - ln hi(~x))   0,            ifiif2iI+2 I
+                                                                                                      -
+
+                            ae
+
+                     ,iji =     0,-g(h                                                      if i 2 I+
+                                      i(z), hi(~x))(hi(z) - hi(~x))=hi(~x)   0,             ifi 2 I- ,
+
+and iiji = 0 for all i.  Therefore, for each i 2 I+
+
+
+                                           oei~i   =    hi(~x)(,i + ii)(,i + ji)
+
+                                                        hi(~x),2i
+
+                                                   =    hi(~x)(Ci%)2 ,
+
+
+
+                                                              12
+and for each i 2 I-
+                                                            `                   '
+                                                              hi(z) - hi(~x)
+                                    oei~i   =     hi(~x)Ci%   __________________
+                                                                   hi(~x)
+                                                                fifi               fi
+                                                                 hi(z) - hi(~x)    fi
+                                            =     hi(~x)|Ci%  | fifi_______________fi
+                                                                      hi(~x)       fi
+                                                                fifi        fi
+                                                                 hi(z)      fi
+                                            =     hi(~x)|Ci%  | fifi____ - 1fi
+                                                                 hi(~x)     fi
+                                                                fifi   i h    j     fi
+                                                                         _i(z)_     fi
+                                            =     hi(~x)|Ci%  | fifieln  hi(~x)  - 1fifi
+
+                                                                fi                          fi
+                                            =     hi(~x)|Ci%  | fifie[ln hi(z)-ln hi(~x)]- 1fifi
+                                                                fi              fi
+                                            =     hi(~x)|Ci%  | fifie-|Ci% | - 1fifi
+
+
+since Ci% = ln hi(z) - ln hi(~x) < 0 for i 2 I- .
+
+     In summary, with c2 = min  {h1 (~x), . . ., hp (~x)},
+
+                                          0                                                 1
+                                             X               X             i             j
+                    -(1 - `)<oe, ~>   -c2 @       |Ci%  |2 +       |Ci%  |   1 - e-|Ci% |   A  ,
+                                             i2I+            i2I-
+
+
+and since both functions a(r) = c2 r2  and b(r) = c2 r(1 - e-r ) are of class K1  , one may apply
+Lemma A.3 repeatedly to obtain ff2 2 K1   such that -(1 - `)<oe, ~>   -ff2 (|C%  |).
+
+     So, taking ff   ff1 + ff2  according to Lemma A.3, and fl(r) = c3 r2 , gives the desired result.
+                                                                                                                              ||
+Proposition 2.9           Suppose that the system defined by (2) and (3) is detectable.  Consider the
+system with inputs
+
+
+                                     z` = f *(z, u) := f (z) + C0(u - h(z))                                               (15)
+
+
+with state-space X  = Rn .  Then, the system is Rn>0-invariant with input-value set Rp 0.  Fur-
+thermore, let ` be any real number with 0 < ` < 1, and pick any fixed state x~ 2 E+ .  Let U`
+be the subset of Rp  defined in Lemma 2.8.  Then, the system (15) is ISS with input-value set
+U`  (with respect to the point ~x and the input ~u = h(~x)).
+
+
+
+Proof.   The proof of the first statement, namely that the system is Rn>0-invariant with input-
+value set Rp 0, is fairly routine, and it proceeds as follows.
+
+     Given  an  initial  condition  z(0)  2  Rn>0,  and  an  U` -valued  input,  let  z(t)  be  the  maximal
+solution of (15), defined on a (maximal) interval J .  Let I = [0, +1).
+
+     Assume that one of the coordinates becomes   0 at some instant and define
+
+
+                              t0 = inf {t 2 J : zk (t) = 0 for some     1   k   n}.
+
+
+Pick one coordinate k such that zk (t0 ) = 0.  We reorder variables, singling out this coordinate,
+and look at the time-dependent differential equation that results by fixing the remaining n - 1
+variables.  It is useful for that purpose to introduce the following notation:
+
+
+                           (~z(t), x) = (z1 (t), . . ., zk-1  (t), x, zk+1  (t), . . ., zn (t)).
+
+                                                              13
+In addition, we wish to see the obtained scalar equation as well-defined for all t, not just t   t0 .
+So we construct a new function F  : I x R ! R as follows:
+
+                                             ae    *
+
+                                  F (t, x) =     fkf(~z(t),*x; u(t)),    t 2 [0, t0 )
+                                                    k (~z(t0 ), x; u0 ), t 2 [t0 , +1)
+
+
+where u0  is any fixed element of U` .  Then, for each fixed t, F (t, x) is locally Lipschitz in x and
+the Lipschitz constants, ff(t), are uniformly bounded (and hence locally integrable as a function
+of time).  In addition, for each fixed x, F (t, x) is measurable as a function of time.  Thus the
+standard existence and uniqueness conditions apply.
+
+Claim.    F (t, 0)   0 for almost all t 2 I.
+
+
+     To prove this, write
+
+                                       Xm   X                   b         b
+                 fk*(~z, x; u)   =                aijzb1j1. . .zk(k-1)j-1zk(k+1)j+1. . .zbnjnbki
+                                       i=1  j2A0
+                                       Xm   X                   b              b
+                                 +                aijzb1j1. . .zk(k-1)j-1xbkj zk(k+1)j+1. . .zbnjn(bki - bkj )            (16)
+                                       i=1  j2A+
+                                       Xp
+
+                                 +          cjk [uj - hj(~z, x)],
+                                       j=1
+
+
+where A0 = {j : bkj  = 0} and A+  = {j : bkj  > 0}.
+
+     For x = 0 and t 2 I:
+
+     (a) the third term is nonnegative since we are assuming that cji   0 and uj   0 for all i, j,
+and because hj(~z, x) = zcj11. . .xcjk . . .zcjnn, so either cjk  = 0, or cjk  > 0 and hj(~z, 0) = 0.
+
+     (b) the second term is zero since x = 0;
+
+     (c) the first term is nonnegative since, by definition of t0 , we are evaluating at zi = zi(t)   0,
+for all i and t   t0 , and zi = zi(t0 ) for t > t0 .
+
+     This proves the claim.
+
+     Moreover,  notice  that,  for  all  t     t0 ,  the  scalar  variable  zk (t)  satisfies  the  initial  value
+problem
+
+
+                                                        x`   =    F (t, x)
+
+                                                    x(0)     =    zk (0),
+
+
+where F (t, 0)   0 for all t   0.  Solutions of this initial value problem exist on an open interval
+J", and this interval contains [0, t0 ] because zk (t) solves the equation in that interval.  Then, by
+
+Lemma A.4, x(t) > 0 on J"  and zk (t) = x(t) > 0 for all t < t0 ;  since both x(t) and zk (t) are
+continuous functions, we also have that zk (t0 ) = x(t0 ), contradicting the fact that zk (t0 ) = 0.
+
+     This  concludes  the  proof  of  Rn>0-invariance  with  input-value  set  Rp 0.   As  this  implies
+that  (15)  is  also  Rn>0-invariant  with  (the  smaller)  input-value  set  U` ,  to  prove  that  (15)  is
+ISS with input-value set U` , it is enough, by Lemma 2.7, to show that this system admits the
+function  V  defined  in  (12)  as  an  ISS-Lyapunov  function  with  respect  to  the  state  ~x and  the
+input h(~x).
+
+     So we must check that V  satisfies Definition 2.4.  Properties (i) and (ii) have already been
+shown in the discussion following formula (12).  Property (iii) follows from Lemma 2.8.         ||
+
+
+
+                                                              14
+Lemma 2.10           Let f *(z, u) = f (z) + C0(u - h(z)) and let V  denote the function defined in (12).
+For each fixed ~x 2 E+ , and each constant umax    0, there exists a constant c~x,umax  such that
+
+
+                        rV (z) f *(z, u)   c~x,umax ,   8 z 2 Rn>0,   8 u 2 [0, umax ]p .
+
+
+Proof.  Pick any ~x 2 E+  and any nonnegative umax .  Then, using estimate (14),
+
+
+               rV (z) f *(z, u)       =     <ae(z) - ae(~x) , f (z) > + <ae(z) - ae(~x) , C0(u - h(z))     >
+
+                                            -c1 |D0 (ae(z) - ae(~x))   |2 + <ae(z) - ae(~x) , C0(u - h(z))     >
+
+                                            <C(ae(z) - ae(~x))   , u - h(z)   >
+                                            X p
+
+                                      :=         si(z, u, ~x)
+                                            i=1
+
+where si(z, u, ~x) = (ln hi(z) - ln hi(~x))(ui - hi(z)).
+
+     Now, let hmax  be a constant depending only on ~x such that, max   i=1,...,p| ln hi(~x)|   hmax .
+
+     For each fixed z, define the following finite, disjoint sets of integers
+
+
+                                             I+  = I+ (z) = {i : hi(z) > 1}
+
+                                            I-  = I- (z) = {i : hi(z)   1}.
+
+
+Clearly I+  [ I-  = {1, . . ., p}, and for each i 2 I- ,
+
+
+                                        ui ln hi(z)          0
+
+                                      |ui ln hi(~x)|         umax | ln hi(~x)|   umax hmax
+
+                                                             1
+                                  |hi(z) ln hi(z)|           __
+                                                             e
+                                  |hi(z) ln hi(~x)|          | ln hi(~x)|   hmax ,
+
+
+so that, for the corresponding ith term in the above sum:
+
+
+                  si(z, u, ~x)   =    ui ln hi(z) - ui ln hi(~x) - hi(z) ln hi(z) + hi(z) ln hi(~x)
+
+                                                       1
+                                      0 + umax hmax  + __ + hmax .
+                                                       e
+
+     On the other hand, for each i 2 I+ , si can be decomposed into two terms
+
+
+              -(ln hi(z) - ln hi(~x))(hi(z) - hi(~x)) + (ln hi(z) - ln hi(~x))(ui - hi(~x))
+
+
+the first of which is always negative.  Since hi(z) > 1 there is a Lipschitz constant cL  = cL (~x)
+such that | ln hi(z) - ln hi(~x)|   cL |hi(z) - hi(~x)| for all z such that hi(z) > 1.  So we have,
+                                  ae
+
+                   si(z, u, ~x)       0,2c               2     if|ui - hi(~x)|   |hi(z) - hi(~x)|
+                                          L |ui - hi(~x)|  ,   if|ui - hi(~x)| > |hi(z) - hi(~x)|.
+
+In either case, we may just write
+
+
+                                          si(z, u, ~x)   2cL (u2max + h2max)
+
+
+whenever i 2 I+ .  Then, with c~x,umax  = p max  {umax hmax  + 1=e + hmax , 2cL (u2max + h2max)},
+
+
+                        rV (z) f *(z, u)   c~x,umax ,   8 z 2 Rn>0,   8 u 2 [0, umax ]p ,
+
+
+as we wanted to show.                                                                                                ||
+
+
+     We also have the following Rn>0-completeness result (notice that Corollary 2.11 would follow
+immediately from Proposition 2.9 in the case of an input u : [0, +1) ! U` ):
+
+
+
+                                                              15
+Corollary 2.11          Under the assumptions of Proposition 2.9, system (15) is Rn>0-complete with
+input-value set Rp 0.
+
+
+Proof.   Suppose that u : [0, +1) ! [0, umax ]p , and pick any initial condition z(0) 2 Rn>0.  We
+already know, from Proposition 2.9, that system (15) is Rn>0-invariant with input-value set Rp 0.
+Suppose that the maximal interval of existence would be [0, tmax ) with tmax  < +1.
+
+     From Lemma 2.10 we have that
+
+                                 _d_                    *
+                                    V (z(t)) = rV (z) f  (z, u)   c~x,umax , 8t .
+                                 dt
+
+So  V (z(t))     V (z(0)) + c~x,umax tmax .   Since  V  is  proper  (property  (ii)  of  Definition  2.4),  we
+conclude  that  z(t)  belongs  to  a  compact  subset  of  the  state  space  Rn ,  a  contradiction  with
+tmax  < 1.                                                                                                                 ||
+
+
+     Proof  of  Theorem  3:  Pick any initial states x(0) 2 Rn>0  and z(0) 2 Rn>0  of the original
+system (1) and the observer, respectively.  We let w(.) = (x(.), z(.)) be the maximal trajectory
+of the composite system
+
+
+                                           x`   =    f (x)
+
+                                           z`   =    f (z) + C0(h(x) - h(z)),
+
+
+which  we  also  write  as  w` =  g(w),  with  initial  condition  (x(0), z(0)).  We  need  to  show  that
+w(t) = (x(t), z(t)) is defined for all t > 0, and |z(t) - x(t)   | ! 0 as t ! +1.
+
+     Since  we  know  that  x(t)  is  defined  for  all  t     0  and  converges  to  some  equilibrium  ~x as
+t ! +1, we must prove that z(t) is also defined for all t   0 and converges to this same x~ as
+t ! +1.
+
+     Fix ` to be any fixed constant such that 0 < ` < 1 and (since x(t) converges) let T  be such
+that
+
+                                                                     `
+                                    t   T    ) |hi(x(t)) - hi(~x)|   __hi(~x)
+                                                                     2
+
+for all i = 1, . . ., p.  Let U`  be the set of vectors u such that |ui - hi(~x)|   `hi(~x)=2.  Corol-
+lary 2.11 shows that the solution z(t) exists for all t   0.  Now, Proposition 2.9, applied with
+u(t) = h(x(t + T )) and u~ = h(~x) (note that h(x(t)) 2 U`  for all t   T ),  shows that,  for all
+t   T ,
+
+
+                             |z(t) - ~x  |   fi(|z(T ) - ~x  |, t) + '(kh(x) - h(~x)    k).
+
+
+where fi(r, t) ! 0 for each fixed r and '(r) ! 0 as r ! 0.
+
+     Now, given any " > 0, let T1  be such that
+
+                                                                        "
+                                              '(kh(x) - h(~x)    k1 ) < __
+                                                                        2
+
+where kh(x) - h(~x)    k1 = ess . sup  .{|h(x(t)) - h(~x)    | : t   T1 } (such T1  exists because
+
+
+                                                  |h(x(t)) - h(~x)    | ! 0
+
+
+as t ! +1).
+
+     Next, choose T2   T1  such that
+
+                                                                "
+                                       fi(|z(T1 ) - ~x  |, t) < __,    8 t   T2 .
+                                                                2
+
+Then, rechoosing T (if necessary) to be larger than T2 we have that, for all t   T , |z(t) - ~x  |   ".
+Therefore, z(t) ! ~x as t ! +1 as wanted.                                                                    ||
+                                                              16
+Remark 2.12           The observer (7) can be slightly modified to the form
+
+
+                                         z` = f (z) + C0W (h(x) - h(z))                                                   (17)
+
+
+where  W  is  any  positive  definite,  diagonal  p x p  matrix.   This  allows  more  flexibility  when
+choosing the gain matrix, namely, it is possible to assign different weights to each component
+of h(x).  The conclusions of Propositionp2.9_still_holdpfor_(17).  Since W  = diag  (w1 , w2 , . . ., wp )
+with wi > 0 and W  = S0S for S = diag  (   w1 ,   w2  , . . ., p ____wp), Rn>0-invariance is guaranteed by
+the same argument given in that Proposition.  Expression (16) becomes
+
+                                       Xm   X                   b         b
+                 fk*(~z, x; u)   =                aijzb1j1. . .zk(k-1)j-1zk(k+1)j+1. . .zbnjnbki
+                                       i=1  j2A0
+                                       Xm   X                   b              b
+                                 +                aijzb1j1. . .zk(k-1)j-1xbkj zk(k+1)j+1. . .zbnjn(bki - bkj )
+                                       i=1  j2A+
+                                       Xp       p ____
+
+                                 +          cjk   wk  [uj - hj(~z, x)],
+                                       j=1
+
+
+which is still nonegative when x = 0.
+
+     The function V  in (12) is also an ISS-Lyapunov function for (17).  To check property (iii)
+we compute (with % = ae(z) - ae(~x) and 0 < ` < 1):
+
+
+                             rV (z) f *(z, u)       =    <%, f (z) > + <%, C0S0S(u - h(z))       >
+
+                                                    =    <%, f (z) > + <SC%   , S(u - h(z))    >
+
+                                                    =    P (z, ~x) + R(z, u, ~x)
+
+
+where
+
+
+                              P (z, ~x) = <%, f (z) > - (1 - `)<SC%   , S(h(x) - h(z))      >
+
+                         R(z, u, ~x) = <SC%   , S(u - h(~x)   > - `<SC%   , S(h(x) - h(~x))     >.
+
+
+Using the notation oe = SC%, ~ = S(h(z) - h(~x)) and v = S(u - h(~x)), steps 1 and 2 of the
+proof of Lemma 2.8 still hold, and we obtain:
+
+
+                                                    R(z, u, ~x)   c|v|2
+
+                                         P (z, ~x)   -ff1 (|D0 %  |) - ff4 (|C%  |).
+
+
+The  function  ff1  2  K1   is  as  in  Lemma  2.8.  The  function  ff4  2  K1   and  the  constant  c  are
+similar to ff2  and c3 , respectively, of that Lemma:  cp=_2cL_=`, where cL  is a Lipschitz constant
+of the logarithmic function on [A, +1), when A = min  {   wi hi(~x)=2 : i = 1, . . ., p}; the function
+ff4  is obtained by repeatedly applying Lemma A.3 to the expression on the left:
+
+                            0                                                 1
+                               X               X             i             j
+                         c2 @       |Ci%  |2 +       |Ci%  |   1 - e-|Ci% |   A     ff4 (|C%  |),
+                               i2I+            i2I-
+
+
+since both functions a(r) = c2 r2  and b(r) = c2 r(1 - e-r ) are of class K1  .  The multiplicative
+constant is given by c2 = min  {w1 h1 (~x), . . ., wp hp (~x)}.
+
+     With  an  ISS  estimate  for  the  difference  |z(t) - ~x  |  and  the  completeness  result,  the  same
+proof above shows that (17) is an observer for system (1).
+                                                              17
+2.3      A  Remark  on  Observation  Noise
+
+
+The ISS estimate obtained for the observer allows us to conclude that the observer is robust
+with  respect  to  small  observation  noise.   We  sketch  this  next.   If  the  input  to  the  observer
+is  u(t)  =  h(x(t)) + n(t)  instead  of  h(x(t)),  then  the  same  conclusions  hold  regarding  global
+existence of trajectories (at least, provided that h(x(t)) + n(t) is nonnegative).  In addition, for
+large t (so h(x(t))   h(~x) = ~u), the term '(ku - ~u  k) in the ISS estimate becomes approximately
+'(knk); thus one obtains an asymptotic estimate on z(t) which is a K function of the noise level,
+and is in particular small when n is small in magnitude.
+
+
+
+2.4      A  Separation  Property
+
+
+A direct proof of Theorem 3 can be given using a Lyapunov function for the composite system
+(plant  and  observer),  which  is  entirely  analogous  to  the  "separation  theorem"  proof  used  to
+establish the convergence of Luenberger observers.  Let us sketch the procedure here.
+
+     Consider the error ffl = x - z and look at the composite system in new coordinates x and ffl
+instead of x and z:
+
+
+                                ffl:   `x=`ff(x)fl= f (x) - f (x - ffl) - C0(h(x) - h(x - ffl)) .
+
+
+
+Now consider the following function:
+
+                                               X n      ~ x  - ffl     x  - ffl        x  - ffl ~
+                   V2 (x, ffl) = V (x - ffl) =      ~xi   _i______i_ln _i______i_+ 1 - _i______i_   .
+                                               i=1           ~xi          ~xi             ~xi
+
+Using arguments similar to those employed earlier, we know that
+
+                             _d_                                                                2
+                                V2 (x(t), ffl(t))   -ff(|x - ffl - ~x |) + c3 |h(x) - h(~x)    |
+                             dt
+
+
+for all x = x(t) such that |hk (x) - hk (~x)   | <  hk_(~x)_2for all k = 1, . . ., p.  (here we are taking the
+number ` from Proposition 2.9 to be equal to 1=2.)  Since x(t) ! ~x as t ! +1 (Theorem 1),
+there exists some T  such that this inequality holds for every t > T .
+
+     Since ffl = x - z and we have shown that both solutions x(t) and z(t) exist for all t   0, we
+may conclude that a solution ffl(t) to the ffl-equation also exists for all t   0 (for a direct proof
+of this fact, one may use a similar argument to that of Proposition 2.9).
+                                                               P  n
+     Recall that we already have a Lyapunov function, V1 (x) =    i=1  ~xig(xi=~xi), for the system
+x` = f (x), which satisfies an estimate of the form (see [20 ]):
+
+
+                                            d__
+                                               V1 (x(t))   -c(~x) ffi(x, ~x)
+                                            dt
+
+where
+
+
+                                       ffi(x, ~x) = c1 |x - ~x  |2 + d(|x - ~x  |2 )
+
+
+and d(r) = o(r) as r ! 0.  Pick " < |~x|=2 such that
+
+                                                    c1           2
+                                |d(|x - ~x  |2 )| < ___|x - ~x  |      8  |x - ~x  | < " .
+                                                     2
+
+Now choose the time T  = T (") so large that
+
+
+                                                                            h(~x)
+                        |x(t) - ~x  | < "   and     |h(x(t)) - h(~x)    | < ______ ,  for all  t > T .
+                                                                              2
+
+
+                                                              18
+So, for t > T , we also have that x(t) evolves in a compact set B(~x) = {a 2 Rn>0 : |a - ~x |   |~x|=2},
+and hence there exists a Lipschitz constant, cL , (take, for example, cL  = max   | @hk__@xj(x)| with the
+
+maximum taken over j = 1, . . ., n and k = 1, . . ., p and x 2 B(~x)) such that
+
+
+                                     |h(x) - h(~x)    |   cL |x - ~x  |,    8 x 2 B(~x).
+
+
+Thus for t > T , the following estimates hold:
+
+                                             d__             c1c(~x)_        2
+                                             dtV1 (x(t))   -    2  |x - ~x  |  ,
+                                d__                                              2           2
+                                dtV2 (x(t), ffl(t))   -ff(|x - ffl - ~x |) + c3 cL |x - ~x  |  .
+
+This means that
+                                                   2(c3 c2L + 2)
+                                      W (x, ffl) = _______________ V1 (x) + V2 (x, ffl)
+                                                       c1 c(~x)
+
+is a Lyapunov function for the system  ffl, with
+
+
+                                 _d_                                                     2
+                                    W (x(t), ffl(t))   -ff(|x - ffl - ~x |) - 2|x - ~x  |  ,
+                                 dt
+
+for all t > T .
+
+     It is not difficult to verify that this estimate can be rewritten as
+
+
+                                       _d_                             2             2
+                                          W (x(t), ffl(t))   -f"f(|ffl|  + |x - ~x  |  )
+                                       dt
+
+for some other f"f2 K1  .  (First note that, with ff2 (c) = c2  and using Lemma A.3, there exists
+ff3 2 K1   such that
+
+                                                                       p  ______________________________
+                     ff(|x - ffl - ~x |) + ff2 (|x - ~x  |)       ff3 (   |x - ffl - ~x |2 + |x - ~x  |2)
+                                                                      `                                  '
+                                                                         1                   1
+                                                                  ff3    __|x - ffl - ~x | + __|x - ~x  |
+                                                                         2                   2
+                                                                      `         '
+                                                                         1
+                                                                  ff3    __|ffl|.
+                                                                         2
+
+                                                                         p  ___________________
+And then, using Lemma A.3 again, ff3 (|ffl|=2) + ff2 (|x - ~x  |)   ff3 (   |ffl|2 + |x - ~x  |2).)
+                                              2 +2)
+     Next,  notice  that  W (x, ffl)     2(c3cL_____c1c(~x) 2 (|x - ~x  |) +  2 (|x - ffl - ~x |),  where   2  2  K1   is  as
+
+in (11), so immediately
+
+                                           p  ___________________
+                        W (x, ffl)   ~ 2 (2   |ffl|2 + |x - ~x  |2) := " 2(|ffl|2 + |x - ~x  |2 ),
+
+                   2 +2)
+where ~ = 1 + 2(c3cL_____c1c(~x).  Then
+
+
+                                        d__                          -1
+                                           W (x(t), ffl(t))   -f"f(" 2  (W (x, ffl)))
+                                        dt
+
+which implies that W (x(t), ffl(t)) ! 0 as t ! +1 and so (x(t), ffl(t)) ! (~x, 0), as wanted.
+3      An  Alternative  Observer
+
+
+In this section we construct an alternative observer, which works under the same necessary and
+sufficient conditions for detectability.  As mentioned in the Introduction, this observer exhibits
+slower  convergence  but  this  is  traded  for  more  robustness  to  additive  disturbances.   Among
+
+
+
+                                                              19
+other  interesting  features,  the  observer  state  never  becomes  negative,  even  under  arbitrary
+disturbances.  which is a natural requirement on physical grounds (since the state being observed
+is always nonnegative).  This nonnegativity is enforced by a "barrier feedback" reminiscent of
+optimization techniques.
+
+     We now use logarithms of the outputs as input to the observer.
+
+
+
+Theorem 4          Consider system (1) and assume that it is detectable.  Then the following system,
+with state-space X  = Rn>0, is an observer for system (1):
+
+
+                                      z` = f (z) + C0(ae(h(x)) - ae(h(z))).                                               (18)
+
+
+
+     We restricted this to a system with state-space Rn>0 so that the logarithms are well-defined.
+
+     Using the convenient notation
+
+
+                                 H(x) := [H1 (x) H2 (x) . . .Hp (x)]0 = Cae(x)                                            (19)
+
+
+where Hi(x) = ci1 ln x1 + . . .+ cin ln xn , the observer can be written
+
+
+                                         z` = f (z) + C0(H(x) - H(z)).
+
+
+
+Example 3.1          Consider again the system in Example (2.1).  Suppose that the output is given
+by h(x) = (x1 x22, x1 x4 )0.  Then H(x) = (ln x1 + 2 ln x2 , ln x1 + ln x4 ) and we can construct the
+following observer:
+
+
+                     `z1 =    -kz1 z2 + k3 z3 + z4 z4        +(ln x1 + 2 ln x2 - ln z1 - 2 ln z2 )
+                                                             +(ln x1 + ln x4 - ln z1 - ln z4 )
+                     `z2 =    -kz1 z2 + k3 z3 + z4 z4        +2(ln x1 + 2 ln x2 - ln z1 - 2 ln z2 )
+                     `z3 =     kz1 z2 - (k3 + fi3 )z3
+                     `z4 =          fi3 z3 - k4 z4           +(ln x1 + ln x4 - ln z1 - ln z4 ).
+
+
+
+     The  proof  of  this  theorem  involves  a  technique  similar  to  the  one  used  in  the  proof  of
+Theorem 3, by studying the stability properties of the more general system
+
+
+                                    z` = f *(z, u) := f (z) + C0(u - H(z)),
+
+
+and  showing  that  it  satisfies  an  "input  to  state  stability"  condition.  The  observer  for  (1)  is
+obtained by letting the input be u(t) = H(x(t)).
+
+
+
+Lemma 3.2          Let f *(z, u) = f (z) + C0(u - H(~x)) and assume C  is such that D + im  C0 = Rn .
+Let ~x denote any point in E+  and V  be the function defined in (12).  Then there exist class K1
+functions ff = ff~x and fl = fl~x such that
+
+
+                              rV (z) f *(z, u)   -ff(|z - ~x |) + fl(|u - H(~x)    |),
+
+
+for all z 2 Rn>0 and all u 2 Rp .  Moreover, one may pick fl(r) = r2 =2.
+
+
+
+Proof.  Pick any ~x 2 E+ .  We have (using the notation % = ae(z) - ae(~x)):
+
+
+                 rV (z) f *(z, u)       =    <ae(z) - ae(~x) , f (z) > + <ae(z) - ae(~x) , C0(u - H(z))      >
+
+                                        =    <%, f (z) > + <C%  , u - H(z)    >
+
+                                        =    <%, f (z) > + <C%  , u - H(~x)   > - <C%  , C%  >
+
+
+
+                                                              20
+where the definition H(z) = Cae(z) was used, as well as the equality u - H(z) = u - H(~x) +
+H(~x) - H(z).
+
+     Now, using result (14) and then Cauchy-Schwartz and the inequality ab   1_2(a2 + b2 ):
+
+
+                        rV (z) f *(z, u)            -c(~x)|D0 %  |2 - |C %  |2 + <C%  , u - H(~x)   >
+
+                                                                      1        2   1                2
+                                                    -c(~x)|D0 %  |2 - __|C %  |  + __|u - H(~x)    |
+                                                                      2            2
+
+for all z 2 Rn>0  and all u 2 Rp , where D0  is an (m - 1) x n matrix whose rows (transposed)
+constitute a basis of D, and c(.) is a positive function.  By assumption, we know that the matrix
+D = [D00C0]0 has rank n.  So, for all z 2 Rn>0 and all u 2 Rp ,
+
+                                                           ae          oe
+                                                                     1           2   1                2
+                        rV (z) f *(z, u)            - min     c(~x), __   |D %  |  + __|u - H(~x)    |
+                                                                     2               2
+
+                                                    -ff(|z - ~x |) + fl(|u - H(~x)    |),
+
+
+where ff(r) = min  {c(~x), 1=2}f"f(r) and "ffis as in Lemma A.2 (with S = {~x}), and fl(r) = 1_2r2 .  ||
+
+
+     We will consider a system with inputs
+
+
+                                    z` = f *(z, u) := f (z) + C0(u - H(z)) .                                              (20)
+
+
+Since
+
+                                                X n  X p
+                                 C0(u - H(z)) =           cik (ui - Hi(z))ek ,
+                                                k=1  i=1
+
+
+we may introduce the set of indices
+
+
+                                       K = {k : 9i,  1   i   p with   cik 6= 0},
+
+
+which is the complement of all coordinates for which fk*(z, u)   fk (z) (i.e., all k such that the
+term ln zk  appears in fk* are contained in K).  When considering the system (20), we view it as
+evolving on the following state-space:
+
+
+                                                   X  = X1 x . . .x Xn
+
+
+where  Xk  = R  if  k  =2 K  and  Xk  = (0, +1)  if  k  2 K.  Observe  that  "the  term  ln zi appears
+anywhere in f * if and only if it appears in fi*", so the largest open set where f * is well defined
+is indeed X .
+
+
+
+Proposition 3.3           Assume  system  (1),  defined  by  (2)  and  (3),  to  be  detectable.   Then  the
+system (20) is Rn>0-complete with input-value set Rp .
+
+     Furthermore, pick any ~x 2 E+  and let ~ be a positive constant.  Define U~  to be the subset
+of Rp consisting of vectors u which satisfy |u|   ~.  Then, the system (20) is ISS with input-value
+set U~  (with respect to ~x and the input ~u = H(~x)).
+
+
+
+Proof.  Note that, for each input u : [0, +1) ! Rp , f *(., u) is of class C1  and locally Lipschitz on
+X  for each fixed u, and f *(z, .) is measurable and locally integrable on I for each fixed z.  Then,
+given an initial condition z0  and a fixed input u as above, a unique maximal solution of (20)
+exists on a maximal interval, J .  Observe that f * does not extend to zk  = 0 and k 2 K, but
+while zk (t) 2 Rn>0 no difficulties exist.  Then J is not empty, and we will show that J = [0, +1).
+                                                              21
+     Step 1.  To prove Rn>0-invariance (with input-value set Rp ), we only need to show that, for
+each coordinate k with k 2= K,
+
+
+                                                zk (t) > 0,    8 t 2 J,
+
+
+since all the others satisfy this condition by definition of X .
+
+     Assume that one of the coordinates is   0 at some instant and define
+
+
+                                t0 = inf {t 2 J : zk (t) = 0 for some     k 2= K}.
+
+
+Pick any coordinate k such that zk (t0 ) = 0.
+
+     Note that for every k 2= K, fk*(z, u)   fk (z), so using the notation
+
+
+                           (~z(t), x) = (z1 (t), . . ., zk-1  (t), x, zk+1  (t), . . ., zn (t)),
+
+
+we can construct a new function F  : [0, 1) x R ! R:
+
+                                             ae
+
+                                  F (t, x) =     fkf(~z(t), x; u(t)),    t 2 [0, t0 )
+                                                    k (~z(t0 ), x; u0 ), t 2 [t0 , +1)
+
+
+(arbitrary  u0  in  U~ ).  We  have  that  standard  existence  and  uniqueness  results  apply  to  `x =
+F (t, x).
+
+Claim.    F (t, 0)   0 for almost all t 2 I.
+
+
+     To prove this, write
+
+                                      X m   X                   b         b
+                 fk (~z, x; u)   =                aijzb1j1. . .zk(k-1)j-1zk(k+1)j+1. . .zbnjnbki
+                                       i=1 j2A0
+                                      X m   X                   b              b
+                                 +                aijzb1j1. . .zk(k-1)j-1xbkj zk(k+1)j+1. . .zbnjn(bki - bkj )
+                                       i=1 j2A+
+
+
+where A0 = {j : bkj  = 0} and A+  = {j : bkj  > 0}.
+
+     For x = 0 and t 2 I:
+
+     (a) the second term is zero (since x = 0);
+
+     (b) the first term is nonnegative since, by definition of t0 , zi(t)   0, for all i 6= k and t   t0 ,
+and either F (t, 0) = fk (~z(t), 0; u(t)) for t < t0 , or F (t, 0) = fk (~z(t0 ), 0; u(t0 )) for t   t0 .
+
+     This proves the claim.
+
+     Now, notice that the initial value problem
+
+
+                                                        x`   =    F (t, x)
+
+                                                    x(0)     =    zk (0)
+
+
+has a solution x(t) in some open interval, J", which contains [0, t0 ], and moreover, for all t < t0 ,
+that solution coincides exactly with the trajectory of the k-coordinate:  x(t)   zk (t).  Also, by
+continuity of both x(t) and zk (t), it must be that x(t0 ) = zk (t0 ).
+
+     From Lemma A.4, with X  = R and Jx0  = J" it follows that x(t) > 0 for all t 2 J", and hence
+zk (t) > x(t) for all t   t0 , which contradicts the fact that zk (t0 ) = 0.
+
+     To conclude, zk (t) > 0 for all k 2= K  and all t 2 J , and thus the solution z(t) never leaves
+the set Rn>0 in the maximal interval J , proving Rn>0-invariance with input-value set Rp .
+                                                              22
+     Step  2.   Now  assume  (to  get  a  contradiction)  that  the  interval  J  is  finite,  J  =  [0, tmax ),
+tmax   <  +1.  From  Lemma  3.2,  and  from  boundedness  of  u,  we  know  that  the  derivative  of
+V (z(t)) satisfies
+
+
+                               _d_                          2    2            2
+                                  V (z(t))   |u - H(~x)    |    ~  + |H(~x)  |  = c,
+                               dt
+
+so
+                                                   Z  t
+
+                                V (z(t))   V (0) +      c dt     V (0) + c tmax .
+                                                     0
+
+Since V -1 ([0, V (0) + c tmax ]) is compact, this inequality implies that z(t) remains bounded for
+all  t  2  J .   (This  does  not  yet  establish  that  J  =  [0, +1),  since  our  state-space  is  X ,  not
+Rn ;  trajectories  could  conceivably  approach  the  boundary  of  the  positive  orthant  for  some
+coordinates in K.)
+
+     Let  b  2  R  be  a  (strictly)  positive  constant  such  that  z(t)  2  [0, b]n  for  all  t  2  J .  Choose
+strictly positive constants "k  for each k 2 K such that:
+
+                                      X p           X p  X                    X p
+
+                 fk*(z, u) = fk (z) +      cik ui -           cik cij ln zj -      c2ikln zk  > 0,
+                                      i=1           i=1  j6=k                 i=1
+
+
+whenever each ui takes values in [-kuk, kuk], z is a vector in (0, b]n  and zk  < 2"k .  It is possible
+to make this choice of "k , because we are assuming cij   0 for all i, j  and we know that u is
+bounded and also that 0 < zj   b which imply the existence of positive constants ai such that:
+
+                                      Xp                             X p  X
+
+                    |fk (z)| < a1 ,        cik |ui| < a2 ,   and               cik cij ln zj < a3 .
+                                      i=1                             i=1 j6=k
+
+
+Thus, it is enough to take "k  such that
+
+                                                       1
+                                     ln (2"k )   - ____________Pp2(a1 + a2 + a3 ).
+                                                      i=1  cik
+           P   p
+(Note that     i=1 c2ik6= 0 precisely because k 2 K.)   If the value of "k  thus obtained is greater
+than the initial condition zk (0), we should rechoose "k  to get "k    zk (0).
+
+     Now, each coordinate function zk (t), for k 2 K  and t 2 J  satisfies an initial value problem
+of the form
+
+
+                                                      x`   =    F (t, x)
+
+                                                  x(0)     =    zk (0) > 0,
+
+
+where
+
+
+                       F (t, x) := fk*(z1 (t), . . ., zk-1  (t), x, zk+1  (t), . . ., zn (t), u(t))
+
+
+is locally Lipschitz on R>0  for each fixed t and measurable on I for each fixed x, and moreover
+F (t, x) > 0 whenever x < 2"k .  Then Lemma A.5 applies and we conclude that
+
+
+                                                zk (t) > "k ,   8 t 2 J.
+
+
+     Putting these together with the conclusion of step 1, we have that trajectories of (20) stay
+inside the set
+                                                C = ["1 , b] x . . .x ["n , b].
+
+
+
+                                                              23
+(where "k  = 0 if k 2= K), during the maximal interval J .
+     Since C  is a compact subset of the domain of definition, X , and since f *(z, u) (when seen
+as an explicit function of time through u = u(t)), is defined for all t 2 [0, +1) x X , it follows
+by  standard  ODE  arguments  (e.g.,  Proposition  C.3.6  in  [17 ])  that  the  maximal  interval  is
+J = [0, +1) \ I   [0, +1), contradicting the existence of a finite tmax .  Hence, J  must be the
+nonnegative half-line, proving Rn>0-completeness with input-value set U~ .
+
+     Step  3.   Finally,  notice  that  the  function  (12)  is  in  fact  an  ISS-Lyapunov  function  with
+respect to the point x~ and the input H(~x) for the system (20), because all three properties of
+Definition 2.4 are satisfied ((i) and (ii) we have previously shown and (iii) follows immediately
+from Lemma 3.2).
+
+     It  follows  from  Lemma  2.7  that  (20)  is  ISS  with  input-value  set  U~  (with  respect  to  the
+point ~x and the input H(~x)).                                                                                       ||
+
+
+
+Remark 3.4          Proposition  3.3  showed  that  the  given  system  is  ISS  with  respect  to  bounded
+inputs, for each possible bound on inputs.  It would be more interesting (although, not needed
+for  our  purposes)  to  know  if  the  same  system  is  ISS  with  respect  to  arbitrary  inputs.  That
+is,  it  might  be  possible  to  pick  the  comparison  functions  in  the  ISS  definition  in  a  manner
+independent of the bound ~.  It is remarked in [1 ] that "input semiglobal" ISS (ISS with respect
+to bounded inputs) indeed implies ISS. However, the proof given in that paper is for the more
+standard notion of ISS, for systems evolving in Rn , while we have generalized the notion to deal
+with systems with positive states.  Thus the proof does not apply.
+
+
+
+3.1      Proof  of  Theorem  4
+
+
+Pick any initial states x(0) 2 Rn>0 and z(0) 2 Rn>0 of the original system (1) and the observer,
+respectively.  We let w(.) = (x(.), z(.)) be the maximal trajectory of the composite system
+
+
+                                          x`   =    f (x)
+
+                                          z`   =    f (z) + C0(H(x) - H(z)),
+
+
+which  we  also  write  as  w` =  g(w),  with  initial  condition  (x(0), z(0)).  We  need  to  show  that
+w(t) = (x(t), z(t)) is defined for all t > 0, and |z(t) - x(t)   | ! 0 as t ! +1.
+
+     The rest of the argument is completely analogous to what was done for the other observer.
+Since we know that x(t) is defined for all t   0 and converges to some equilibrium ~x as t ! +1,
+we must prove that z(t) is also defined for all t   0 and converges to this same ~x as t ! +1.
+
+     Since x(t) converges to ~x, so does H(x(t)) converge to H(~x).  Let ~ be a constant such that
+|H(x(t))    |   ~ for all t.  Let U~  be the set of vectors u with norm less than or equal to ~, so
+that  H(x(t)) 2 U~  for  every  t   0.  Then  Proposition  3.3,  applied  with  u(t) = H(x(t))  and
+u~ = H(~x), shows that the solution z(t) exists for all t   0 and that z(t) satisfies
+
+
+                            |z(t) - ~x  |   fi(|z(0) - ~x  |, t) + '(kH(x) - H(~x)      k).
+
+
+where fi 2 KL, and ' 2 K1  .
+
+     Now convergence is established in a routine ISS manner:  given any " > 0, pick T1  such that
+
+                                                                         "
+                                             '(kH(x) - H(~x)      k1 ) < __
+                                                                         2
+
+where kH(x) - H(~x)      k1 = ess . sup  .{|H(x(t)) - H(~x)      | : t   T1 }.  Next, pick T2   T1  such that
+
+                                                                "
+                                       fi(|z(T1 ) - ~x  |, t) < __,    8 t   T2 .
+                                                                2
+
+Then, for all t   T2 , |z(t) - ~x  |   ".  Therefore, z(t) ! ~x as t ! +1 as wanted.
+
+
+
+                                                              24
+3.2      Robustness  of  the  Alternative  Observer
+
+
+In Sections 2-3, we have considered the general models with inputs
+
+
+                                             `z= f (z) + C0(u - h(z))                                                     (21)
+
+
+and
+
+
+                                            z` = f (z) + C0(u - H(z))                                                     (22)
+
+
+which  (besides  providing  us  with  observers  when  u(t)     h(x(t))  or  u(t)     H(x(t))  may  be
+useful  in  questions  regarding  the  control  of  the  class  of  chemical  reactions  described  in  the
+Introduction.
+
+     We  have  shown  in  Proposition  3.3  that,  as  long  as  u  remains  in  a  set  U~  for  all  times,
+trajectories of (22) are well defined for all t and satisfy an input-to-state stability condition.
+
+     The  system  (21)  also  exhibits  an  ISS  stability  property,  but  only  with  respect  to  a  more
+restricted set U, namely, kuk has to be uniformly bounded by a fixed constant depending on ~x
+which, in particular, requires every coordinate of u to be nonnegative.
+
+     In fact, if it happens that u(t) becomes less than an (arbitrary) amount -" on some interval
+of time (in the case of a systematic negative disturbance or some negative offset in a control,
+for  instance  due  to  leakage  outflows  in  a  chemical  reactor),  then  solutions  to  (21)  may  blow
+up in finite time.  This problem can be seen in the following simple example.  Take the same
+network as in Example 3.1 with n = 3, m = 2, D =span{(1, 1, -1)0} and rate constants equal
+to 1, for simplicity.  Let                              ~              ~
+
+                                                    C =    20  00   02
+
+
+and consider an input u(t) = (u1 (t), u2 (t))0 with 2(u1 (t) + u2 (t)) < -" for some " > 0 and all
+t.  Then (21) becomes
+
+
+                                         x`1 = -x1 x2 + x3         +2(u1 - x21)
+
+                                         x`2 = -x1 x2 + x3
+
+                                         x`3 = +x1 x2 - x3         +2(u2 - x23).
+
+
+Now look at the variable x1 + x3 :
+
+
+                                                                     1           2
+                         `x1 + `x3 = 2(u1 + u2 ) - (x21+ x23)   -" - __(x1 + x3 )  .
+                                                                     2
+
+Viewing this as a differential inequality, we may conclude that (x1 + x3 )(t)   w(t) where w(t)
+is the solution to w` = -" - 1_2w2 ,  w(0) = (x1 + x3 )(0), i.e.,
+
+                                                                ` p  __       '
+                                                      p  __          "
+                                     (x1 + x3 )(t)   -   " tan    ____ t - a0
+                                                                   2
+
+                       i             j
+where  a0  =  arctan     (x1+x3)(0)__p_">  0.  Therefore,  for  a  suitably  chosen  initial  condition,  w(t)
+                              p __
+blows up to -1 as t tends to  __"_2(a0 + ss_2).  Hence, since (x1 + x3 )(t)   w(t), x1 + x3  also has
+to blow up to -1 in finite time, and this can happen even if all states started positive.
+
+     In contrast, model (22), allows each coordinate of u to have negative values, for an arbitrarily
+large interval of time, and only requires that |u(t)  | < ~ for all t, for some (fixed but arbitratry)
+positive constant, ~.
+
+                                                              25
+4      Generalization  to  Systems  with  "Multiple  Linkage  Classes"
+
+
+We now look at the more general case of a system with vector field of the form (2) but where the
+matrix A = diag  (A1 , . . ., AL ) is block diagonal, and each As (of size ms) is itself irreducible and
+has nonnegative entries (or, at least, there exists a permutation matrix, P , such that P AP -1
+has that diagonal form).  The matrix B is also partitioned into B = [B1 . . .BL ], where each Bs
+is of dimension n x ms and, since the assumption that B has full rank is still valid, each Bs itself
+has full rank, ms (m1 + . .+.mL  = m).  The system (1) can be written as x` = f1 (x) + . .+.fL (x)
+where each fs(x) is computed according to formula (2) using As  and Bs.
+
+     The number L is called the number of "linkage classes" and denotes the (smallest) number
+of connected components of the incidence graph G(A).  G(A) is the graph whose nodes are the
+integers {1, . . ., m} and for which there is an edge j ! i, iff aij > 0.
+
+     To each connected component there corresponds a space
+
+
+                              Ds = span   {bi - bj : bi, bj  are columns of      Bs}.
+
+
+The assumptions on the Bs  imply that each space Ds  has dimension ms - 1,
+
+
+                                                D = D1   . . .  DL ,                                                      (23)
+
+
+(direct sum), and so dimD = (m1 - 1) + . . .+ (mL  - 1) = m - L.
+
+
+
+Example 4.1          To illustrate this structure, consider a general enzymatic mechanism with un-
+competitive  inhibitor,  consisting  of  one  enzyme  E,  one  substrate  S,  one  product  P  and  an
+uncompetitive inhibitor I  (Q and R are intermediate complexes):
+
+
+                                                                   k-1
+                                             S + E !k1 Q,        Q  !   S + E,
+                                                                       k-2
+                                             Q k2! P + E,        P + E  !   Q,
+                                                                   k-3
+                                              Q + I !k3 R,       R  !   Q + I.
+
+
+There are two linkage classes, L = 2:
+
+     (i) the first class consisting of the complexes S + E, P + E and Q;
+
+     (ii) the second class consisting of the complexes Q + I  and R.
+
+For class (i), S + E, P + E and Q are the three nodes of G(A1 ) and, due to the reversibility of
+the reactions, it is possible to "connect" any two of these nodes through a path in the graph.
+The same is true for class (ii).
+
+     Notice that the same complex, e.g., Q in the above example, may belong to different con-
+nected  components  (otherwise  the  problem  could  be  reduced  to  two  completely  independent
+"single linkage" problems).
+
+     In [16 ] it is shown that this system does not admit boundary equilibria in any positive class.
+
+     Let x = (S, P, Q, R, E, I)0.  Then B = [B1   B2 ] and A =  diag   (A1 , A2 ):
+
+                                            2              3           2          3
+                                                1   0   0                  0   0
+                                            66  0   1   0  7           6   0   0  7
+                                            6   0   0   1  77          66  1   0  77
+                                       B1 = 66             77 ,   B2 = 66         77
+                                            6   0   0   0  7           6   0   1  7
+                                            4   1   1   0  5           4   0   0  5
+
+                                                0   0   0                  1   0
+
+                                                              26
+and                                   2                      3
+                                          0      0     k-1               ~   0    k     ~
+                                 A1 = 4   0      0      k2   5  ,   A2 =    k      -30    .
+                                          k1   k-2       0                   3
+
+The space D is given by D1 + D2 :
+
+
+                                D1 = span   {(1, -1, 0, 0, 0, 0)0, (1, 0, -1, 0, 1, 0)0)}
+
+                                            D2 = span   {(0, 0, 1, -1, 0, 1)0}
+
+
+and the function f  is given by f1 + f2 :
+
+                    2                                               3               2                        3
+                                    k-1 Q - k1 SE                                                0
+                    66             -k-2 P E + k2 Q                  7               6            0           7
+                    6   -k-1 Q + k1 SE + k-2 P E - k2 Q             77              66   k-3 R - k3 QI       77
+           f1 (x) = 66                                              77 ,   f2 (x) = 66                       77 .
+                    6                       0                       7               6   -k-3 R + k3 QI       7
+                    4    k-1 Q - k1 SE - k-2 P E + k2 Q             5               4            0           5
+
+                                            0                                            k-3 R - k3 QI
+
+
+
+     For  a  general  "multiple  linkage"  system  we  may  consider  output  maps  of  the  same  form
+as before, i.e., monomials in the state variables, as in (3).  These monomials may include any
+of the variables "xi", and they have the same interpretation as before:  either representing the
+concentration of some of the substances (as in the case of x1 ), or being proportional to some
+reaction rate (as in the case of x31x4 , etc.).
+
+     The necessary and sufficient detectability condition given in Theorem 2 is still valid (The-
+orem 1 generalizes, as sketched in [20 ]).  The main fact to verify is that (5) still holds for the
+general  case.   But,  from  [20 ],  we  know  that  for  an  interior  point  ~x,  f (~x)  =  0  if  and  only  if
+fs(~x) = 0 for each s = 1, . . ., L.  (That is, x~ is an equilibrium of the entire system if and only
+if  it  is  an  equilibrium  of  every  system  `x =  fs(x);  this  nontrivial  fact  follows  from  the  block
+irreducibility property.)  Then, for each s, (5) says that, if ~x 2 E+ , then, for any ~z 2 Rn>0,
+
+
+                                     ae(~x) - ae(~z) 2 D?s    ()    ~z 2 Es+ ,
+
+
+where Es+ is the set of interior equilibria of x` = fs(x) (so E+  = E1+ \ . . .\ EL+).  Equivalently,
+if ~x 2 E+ , then, for any ~z 2 Rn>0,
+
+
+                         ae(~x) - ae(~z) 2 D?1 \ . . .\ D?L = D?     ()    ~z 2 E+  .
+
+
+Thus, Equivalence (5) holds for L > 1 as well.
+
+     So, a general system x` = f1 (x) + . . .+ fL (x), y = h(x) is detectable if and only if the matrix
+C of the (exponents of the) output map satisfies either condition (c) or (d) in Theorem 2.  Note
+that  more  "linkage  classes"  mean  more  information  is  needed  in  order  for  the  system  to  be
+detectable.  For a n-dimensional system, the space D  has dimension m - L and detectability
+implies that the matrix C  must have rank p = n - (m - L).  As we have seen, a single linkage
+class requires p = n - m + 1, whereas multiple linkage classes require p = n - m + L.
+
+     In the example above, for detectability of x` = f1 (x) + f2 (x), y = h(x), C  will need to have
+rank 3.  The following output would be a suitable choice:  h(x) = (S2 Q, RI2 , E)0.
+
+     For a detectable "multiple linkage" system, an observer for x` = f1 (x) + . . .+ fL (x) is again
+of the form
+
+
+                                 `z= f1 (z) + . . .+ fL (z) + C0(h(x) - h(z)).                                            (24)
+
+                                                              27
+To  prove  convergence  of  the  observer,  one  may  use  Proposition  2.9,  Lemma  2.8  and  Corol-
+lary 2.11 as before, after checking some points.
+
+     The Rn>0-invariance argument is unchanged since the particular forms of A and B still imply
+that (16) and the corresponding conclusions hold.
+
+     To see that Lemma 2.8 holds, we must analyse the term
+
+
+                            rV (z) f (z) = rV (z) f1 (z) + . . .+ rV (z) fL (z).
+
+
+For each s = 1, . . ., L, result (14) from [20 ] holds, so
+
+
+                             rV (z) fs(z)       =    <ae(z) - ae(~x) , fs(z) >
+                                                              X
+                                                     -cs(~x)        <bi - bj  , ae(z) - ae(~x) >2
+                                                             i,jaBs
+
+                                                     -cs(~x)|D0,s(ae(z) - ae(~x))   |2 ,
+
+
+where i, j a Bs  means that only the columns bi, bj  of Bs  are present in the sum.  Each matrix
+D0,s is such that its rows (when transposed) span the space Ds.  Therefore, because of (23), the
+rows (transposed) of the matrix D0 = [D00,1 . . .D00,L]0 span the whole of D and hence
+
+
+                                                         XL
+                               rV (z) f (z)            -      cs(~x) |D0,s(ae(z) - ae(~x))   |2
+                                                         s=1
+
+                                                       - min  cs(~x) |D0 (ae(z) - ae(~x))   |2 .
+
+
+The rest of the proof of Lemma 2.8 is unchanged, since the form of the observer is the same as
+before.  Thus the function V  satisfies an estimate
+
+
+       rV (z) f *(z, u)   -ff1 (|D0 (ae(z) - ae(~x))   |) - ff2 (|C(ae(z) - ae(~x))   |) + c3 |u - h(~x)   |2
+
+
+where ff1 (r) = min   cs(~x) r2  and ff2  2 K1   and the constant c3  are as in the Lemma.  Finally,
+detectability guarantees that D + im  C0 = Rn  (Theorem 2), so D = [D00 C0]0 has rank n which
+implies rV (z) f *(z, u)   -ff(|z - ~x |) + fl(|u - h(~x)   |) for some functions ff, fl 2 K1  .
+
+     Corollary 2.11 is still valid, as follows from the estimate rV (z) f (z)   0 verified above.
+5      Some  Simulations
+
+
+
+5.1      Robustness  of  the  Observers
+
+
+To  numerically  test  robustness  of  our  observers,  we  carried  out  some  simulations  to  explore
+their  responses  in  two  cases:   existence  of  noise  in  the  output  measurements  and  unknown
+inputs acting in the system we wish to observe.
+
+     As a working example we choose x` = f (x) to be the network proposed by McKeithan in [14 ]
+and took the output to be h(x) = (x1 x22, x1 x4 )0, as in Example 2.1.  The constants were taken
+to be:  k = 0.5, k3 = 3, k4 = 2, fi3 = 1.
+
+     In Figure 1, the convergence of both observers for this example is shown.
+
+     In one simulation, white noise was added to the outputs, so that the equation for the main
+observer becomes
+
+
+                                     `z= f (z) + C0(h(x(t)) + n(t) - h(z))
+
+
+and n(t) is an R2 -valued vector white noise.  In view of the Section 2.3, solutions of this system
+exist for all t   0, provided that h(x(t)) + n(t) is nonnegative; and the observer should provide
+
+
+
+                                                              28
+
+
+Figure  1:  The  trajectories  of  the  system  and  observers  without  noise  and  without  unknown
+inputs.  The errors, as well as the trajectories of the first coordinate, are shown against time.
+The  dotted  line  corresponds  to  the  McKeithan  network,  the  dashed  line  corresponds  to  our
+main observer, and the solid line to the alternative observer (where the logarithm of the output
+is used).
+
+
+
+estimates close to the true state as long as the magnitude of n(t) is small.  Thus we chose x(0)
+so that xi(t)   2 and |n(t)  | < 2 for all t and all i.
+
+     With output noise the alternative observer becomes
+
+
+                                 `z= f (z) + C0(ae(h(x(t)) + n(t)) - ae(h(z)))
+
+
+so the noise appears inside the logarithmic function.  But under the conditions above we know
+that this system has a solution for all t (by Proposition 3.3).
+
+     In Figure 2 we can see the trajectories of the first coordinates as a result of this simulation.
+The alternative observer, although slower in the convergence, has smoothed out the noise effect,
+whereas the main observer exhibits small magnitude perturbations.
+
+     In another simulation, the model (1) was perturbed by a disturbance consisting of a periodic
+signal and two "delta" functions.  The equation for the model is
+
+
+                                                   `x= f (x) + d(t)
+
+
+where d(t) = (d1 (t), 0, 0, 0)0 and d1  is shown in Figure 3.  The function d1  was chosen so that
+(for the same initial condition x(0) as above) xi(t) > 0 for all i and all t.  (The observers are still
+the ones for the nominal system, with no disturbance.)  Note how our first observer catches-up
+after the "delta" disturbance, and also tracks (with a small lag) the limit cycle into which the
+observed system trajectories converge.
+
+     In all simulations the initial conditions for system (1) were x(0) = (3, 2, 3, 20)0 and for the
+observers we took z(0) = (5, 6, 10, 17)0.
+
+                                                              29
+
+
+  Figure 2:  The trajectories of the system and observers in the presence of observation noise.
+
+Figure 3:  The disturbance shown on the left was added to the system.  On the right, its effect
+on coordinate 1 of the system and observers are plotted against time.
+
+
+
+5.2      Comparison  with  Standard  Observers
+
+
+In the chemical reactor literature, observers are typically constructed using an extended Kalman
+filter (EKF), or, less often, a Luenberger type observer (Lbg) for a linearized system.  Neither
+of these approaches is guaranteed to work for nonlinear systems, but it is often the case that
+they perform adequately in specific examples, and hence their practical success.  In the second
+part of this section, we compare the performance of our main observer with those of an EKF
+observer  and  of  a  Lbg  observer.  Our  purpose  in  doing  so  is  to  illustrate  that,  even  for  very
+simple  examples,  these  standard  techniqes  can  fail  in  a  major  way,  while  our  observer  is,  as
+predicted by the theory, convergent to the right estimate.
+
+     These two standard constructions both have the form
+
+
+                                         z`= f (z) + L(z)(h(x) - h(z)),
+
+
+where the gain L(z) is to be found in such a way that (at least locally) |x(t) - z(t)   | ! 0 as
+t ! +1.  Let us briefly review these constructions.
+
+     We consider the linearized dynamics of the error e = x - z, around the origin e = 0:
+
+
+                                       e` =. [F (z(t)) - L(z(t))H(z(t))]e,
+
+
+
+                                                              30
+where
+
+
+                           F (z) = Df (e + z)|e=0    and    H(z) = Dh(e + z)|e=0
+
+
+are the Jacobians of f  and h evaluated at the point z.
+
+     The gain L(z) for a (continuous) extended Kalman filter is given by
+
+
+                                          L(z(t)) = P (t)H0(z(t))R-1 ,
+
+
+where P  is a symmetric positive definite solution to the following Riccati differential equation:
+
+
+                                    P` = -P H0R-1 HP + F P + P F 0+ Q,
+
+
+and R and Q are two positive definite cost matrices.
+
+     A Luenberger type observer is obtained by finding a constant gain L such that the matrix
+F (~x) - LH(~x) is Hurwitz.  A linearized error equation can also be written as:
+
+
+                                           e` =. [F (x(t)) - LH(x(t))]e
+
+
+(note that the time-dependence of F  and H is given in terms of a dependence on the trajectory
+of  the  system  itself,  instead  of  on  the  trajectory  of  the  observer).  It  can  be  shown  that,  for
+initial conditions x(0) and z(0) sufficiently close to x~, this error is asymptotically stable with
+respect to the origin.  (Note that Luenberger observers, at least in their standard formulation,
+are not a reasonable choice for our example, since their design assumes the knowledge of the
+equilibrium  point  around  which  we  are  observing.  For  multi-stable  systems  such  as  ours,  it
+makes little sense to assume that this equilibrium is known - in fact, knowing this equilibrium
+amounts  to  solving  the  detectability  problem.   However,  we  can  still  study  the  behavior  of
+a  Luenberger  observer,  especially  since  we  will  show  that  it  does  not  work  even  when  this
+additional information is provided.)
+
+     Here we take as working example the 2-dimensional system
+
+                                 ~      ~    ~                        ~
+                                    `x1          ax21x52- x31x42                      a
+                                    `x2    =    -ax21x52+ x31x42        ,     h(x) = x1 x2
+
+
+where a is a positive real number and (in the notation used in the Introduction)
+
+                                            ~          ~              ~         ~
+
+                                        A =    01  a0      and    B =    34  25    .
+
+
+
+The invariant classes, Cff   Rn>0, are given by x1 + x2 = ff and we choose ff = a + 1, which has
+the (globally asymptotically stable with respect to the class) equilibrium ~x = (a, 1)0.
+
+     We would expect both EKF and Lbg to converge provided that z(0) is in a sufficiently small
+neighborhood of ~x, but they may diverge when z(0) is far from ~x.
+
+     To choose the gain for Lbg we need to pick L = [l1   l2 ]0 such that the matrix
+
+                                                 ~    2       a         3       a    ~
+
+                                    F - LH |~x =    -aa2--l1la  a      a3 - l1 aa
+                                                             2 a     -a  - l2 a
+
+
+is Hurwitz (that is, all its eigenvalues have negative real parts).  For the simulations shown here
+let a = 4 and L = [-0.7  1.0]0.
+
+     In Figure 4,  it is seen that all observers converge locally,  although the errors converge to
+zero in different time scales.
+
+
+
+                                                              31
+
+
+     Figure 4:  Local convergence of the observers.  The initial condition is z(0) = (4.4, 1.3)0.
+
+Figure 5:  Both extended Kalman filter and Luenberger observer diverge for initial conditions
+on the higher part of the positive orthant of the plane.  On the left plot z(0) = (3, 16)0 and on
+the right plot z(0) = (19, 6)0.
+
+
+
+     For other initial conditions,  away from x~,  both EKF and Lbg seem to diverge,  and their
+performances are clearly inferior to that of our observer.  In Figures 5 and 6 the behavior of the
+three observers is shown in several regions of the positive orthant.
+
+     In all simulations the initial conditions for the system were x(0) = (0.3, 4.7)0 and the gain
+matrix for the Luenberger observer was L = [-0.7 1.0]0.  For the Riccati differential equation
+the initial condition was P (0) = 0.1I, and the cost matrices Q, R were constant and equal to
+I, I  being the 2 x 2 identity matrix.
+A       Appendix
+
+
+
+A.1       Upper  and  Lower  Bounds  for  an  ISS-Lyapunov  Function
+
+
+For  a  general  ISS-Lyapunov  function  defined  according  to  Definition  2.4,  one  can  show  the
+existence of class K1   bounds, as follows.  Let
+
+
+                                 1 (r) = inf {V (z) : |z - ~x |   r and   z 2 Rn 0}
+                                                              32
+
+
+Figure 6:  There are regions (close to the x-axis) where one of observer converges but the other
+diverges.  On the left plot z(0) = (0.8, 0.4)0 and Lbg diverges.  On the right plot z(0) = (6, 0.1)0
+and EKF diverges.
+
+
+
+and
+
+
+                               2 (r) = max   {V (z) : |z - ~x |   r and   z 2 Rn 0}.
+
+
+The function  2 is continuous because V  is, nondecreasing and satisfies  2 (0) = 0.  Without loss
+of generality, we can say that it is strictly increasing (by taking  2 (r) + r).
+
+     The function  1  is finite, because for any r > 0, we may pick any xr  with |xr - ~x  | = r and
+consider L := V (xr ).  Then
+
+
+                      1 (r) = min  {V (z) : |z - ~x |   r and   z 2 Rn 0 and   V (z)   L}
+
+
+(the minimum over this set exists,  because it is a compact).  Thus  1  is also continuous and
+nondecreasing  and   1 (0)  =  0.   Without  loss  of  generality,   1  can  be  assumed  to  be  strictly
+increasing.
+
+     In the particular case of the function V  defined in (12) the functions  1 ,  2  may be taken as
+follows.  Consider v : R 0  ! R 0  given by:
+
+                              ae
+
+                       v(a) =     (1(-1a)+ln(1a-)a)l+na,(1 + a) - a + 2(1 - ln 2),01  aa <1+1.
+
+
+
+Then v is a K1   function (note that 2(1 - ln 2) is a positive quantity that guarantees continuity
+of v at a = 1).
+
+     From (12), recall that g(r) = r ln r + 1 - r for r   0.  Equivalently,
+
+
+                               g(1 + a) = (1 + a) ln(1 + a) - a,  for a   -1.
+
+
+Then                            ae
+
+                     g(1 + a)       (1(-1|a|)+ln(1a-)|a|)l+n|a|,(1 + a) - a + 2(1 - |a|ln21),1   a < +1.
+
+
+So g(zi=~xi)   v(|zi - ~xi|=~xi) and
+
+                                                  X n       ` |z  - ~x  |'
+                                          V (z)        ~xiv   __i_____i__   .
+                                                  i=1             ~xi
+
+
+
+                                                              33
+By using the fact that
+                                          `            '      `            '
+                                            |zi - ~xi |         |zi - ~xi |
+                                        v   ___________     v   ___________   ,
+                                                ~xi              min   ~xi
+                                        p  __________________
+and also keeping in mind that v(ai)   v(   a21+ . . .+ a2n   ), it follows that
+
+
+                            V (z)   n max    ~xiv(|z - ~x |= min  x~i) =  2 (|z - ~x |).
+
+
+     For the lower bound, consider
+
+
+                                w(a) = (1 + a) ln(1 + a) - a,    0   a   +1
+
+
+and notice that
+                                      ae
+
+                           g(1 + a)       (1(+1|a|)+ln(1a+)|a|)l-n|a|,(1 + a) |a|-1a1,  a < +1.
+
+
+
+So, g(zi=~xi)   w(|zi - ~xi|=~xi) and
+
+                                                  X n       ` |z  - ~x  |'
+                                          V (z)        ~xiw   __i_____i__   .
+                                                  i=1             ~xi
+
+Using Lemma A.3 repeatedly, we may conclude that V  is lower bounded by a K1   function.
+
+
+
+A.2       Auxiliary  Calculations
+
+
+The next lemmas state some simple inequalities which are used throughout the text.
+
+
+Lemma A.1           Let v, w 2] - 1, +1[.  Then
+
+                                                         1  i        p  ___________j   2
+                         (ln (1 + v))2 + (ln (1 + w))2   __   ln(1 +    v2 + w2   )      .
+                                                         2
+
+
+Proof.  First, note that (ln (1 + v))2   (ln (1 - v))2  for all -1 < v < 0 by putting,
+
+
+      g(v) = (ln (1 + v))2 - (ln (1 - v))2 = (ln (1 + v) + ln(1 - v))(ln (1 + v) - ln(1 - v)).
+
+
+The second factor is clearly negative and the first factor is strictly increasing on the interval
+] - 1, 0[ (by computing the derivative) and is 0 when v = 0, therefore it must be also negative
+on this interval, implying that g(v)   0 as desired.
+
+     Then it holds that
+
+
+                              (ln (1 + v))2   (ln (1 + |v|))2 ,   8v 2] - 1, +1[,
+
+
+so  it  is  enough  to  prove  the  lemma  for  all  v, w  2  [0, 1[.  Using  the  fact  that  x2  is  a  convex
+function, it follows that
+
+     1_            2             2     1                         2   1                      2
+       (ln (1 + v))  + ln(1 + w))  )   __(ln (1 + v) + ln(1 + w))  = __(ln (1 + v + w + vw))  .                           (25)
+     2                                 4                             4
+                                                    p  ___________
+Moreover, since both v and w are positive:  w + v      v2 + w2   .  The logarithm is an increasing
+function, so
+
+                            1_                     2   1          p  ___________ 2
+                              (ln (1 + v + w + vw))    __(ln (1 +    v2 + w2   ))  .                                      (26)
+                            4                          4
+
+Putting (25) and (26) together gives desired result.                                                         ||
+                                                              34
+Lemma A.2           Let m   n and let D be an m x n matrix of rank n, and consider a fixed compact
+subset  S  of  Rn>0.   Then,  there  exists  a  class  K1   function  ff  such  that  |D(ae(x) - ae(a))    |2
+ff(|x - a  |) for all a 2 S and all x 2 Rn>0.
+
+
+Proof.  Since D has maximal rank, it has a left pseudo-inverse, for example D#  = (D0D)-1 D0.
+Then, for any vector % 2 Rn ,
+
+                                                                                 1
+                         |%| = |D# D%    |   kD#   k|D%  |    =)    |D%  |   ________ |%|.
+                                                                             kD#   k
+
+Also, if % = ae(x) - ae(a),
+                                                 `               '
+                                         xi            xi - ai
+                                %i = ln  ___= ln   1 + __________     := ln (1 + vi).
+                                         ai               ai
+
+Then, applying Lemma A.1 inductively on n we have
+                           `     `     q  __________________'  ' 2          `     `              '   ' 2
+                       1                   2                            1               |x - a  |
+             |%|2   _______   ln   1 +    v1 + . . .+ v2n            _______   ln   1 + _________        .
+                    2n-1                                             2n-1               max    ai
+
+
+     Now, clearly
+
+                                                    1         i    i    w  j  j 2
+                                     ff(w) = ________________  ln   1 + ___
+                                             2n-1  kD#   k2              s
+
+with s an upper bound on the magnitudes of the coordinates of points of S,  is of class K1  ,
+which proves the lemma.
+
+                                                                                                                              ||
+
+
+     The following is easy to prove using ff3 (c) = min  {ff1 (c=2), ff2 (c=2)}:
+
+
+Lemma A.3           Assume  that  ff1 , ff2  are  two  K1   functions.   Let  a  and  b  be  positive  numbers.
+Then there exists another K1   function, ff3 , such that
+                                                                 p  __________
+                                        ff1 (a) + ff2 (b)   ff3 (   a2 + b2   ).
+
+
+for all a, b > 0.
+
+
+
+A.3       Some  Simple  Facts  Concerning  Invariance
+
+
+Consider the scalar initial value problem
+
+
+                                                        x`   =    F (t, x)                                                (27)
+
+                                                    x(0)     =    x0
+
+
+where the function F  is assumed to have domain I x X , where X  is an open subset of R and
+I = [0, +1).  Let F  be locally Lipschitz in x and measurable in t, more precisely,
+
+     (i) For each a 2 X  there exists a real number ra  and a locally integrable function ff : R !
+[0, +1) such that the ball of radius ra  centered at a, Bra (a)   X  and
+
+
+                                       kF (t, x) - F (t, y)   k   ff(t)kx - y  k
+
+
+for each t 2 R and x, y 2 Bra (a).
+
+     (ii) For each fixed a 2 X , the function g : I ! X  given by g(t) := F (t, a) is measurable.
+
+     For each x0  2 X  let J  = Jx0  be the maximal interval of existence of solutions of (27) in
+forward time.  This is an interval of the form [0, tmax ) with 0 < tmax    +1.
+
+     Using a standard comparison principle (as done for instance in [20 ]), we have:
+
+
+
+                                                              35
+Lemma A.4           Consider system (27) with domain X  = R and assume further that,
+
+
+                                        x = 0   )   F (t, 0)   0  8t 2 I.
+
+
+Assume  also  that  the  initial  condition  is  positive:  x0  >  0.  Then  x(t)  >  0   8t  2  J ,  i.e.,  the
+solution of (27) remains positive for all times in J .
+
+
+Lemma A.5           Consider again the scalar initial value problem (27), but now with domain X  =
+(0, +1).  Assume that the initial condition is positive:  x0 > 0, and that the following property
+holds, for some 0 < " < x0 :
+
+
+                                  8t 2 R,   F (t, x) > 0  whenever       x < 2".                                          (28)
+
+
+Then for all t 2 J , the solutions of (27) satisfy x(t) > ".
+
+
+Proof.  Suppose that the result is false, and let
+
+
+                                               s = inf {t : x(t)   "}.
+                                                   t2J
+
+We may assume that s < 1 and s 2 J , because otherwise the desired result is trivial.  In other
+words, let us suppose that the solution x(t) of (27) hits the value " at some finite instant s in
+J .
+
+     Continuity of solutions gives
+
+
+                       9 ffi = ffi(")   such that       |x(t) - "| < "=2   8 t 2 (s - ffi, s + ffi).
+
+
+     By property (28), F (t, x(t)) > 0 8 t 2 (s - ffi, s + ffi) implying that x(t) is strictly increasing on
+this ffi-interval and so x(s) > x(s - ffi).  But, then x(s - ffi) < ", which contradicts the definition
+of s.                                                                                                                        ||
+
+References
+
+
+  [1]  Angeli, D., E.D. Sontag, and Y. Wang, "Further equivalences and semiglobal versions of
+       integral input to state stability," Dynamics and Control 10(2000):  127-149.
+
+
+  [2]  Bastin, G., and J.F. van Impe, "Nonlinear and adaptive control in biotechnology:  A tuto-
+       rial," European J. Control  1(1995):  1-37.
+
+
+  [3]  Bastin,  G.,  and  D.  Dochain,  On-line  Estimation  and  Adaptive  Control  of  Bioreactors,
+       Elsevier, Amsterdam, 1990.
+
+
+  [4]  Bernstein, D., and S.J. Bhat, "Nonnegativity, reducibility, and semistability of mass action
+       kinetics," Proc. 1999 IEEE Conference on Decision and Control, IEEE Publications, Dec.
+       1999, pp. 2206-2211.
+
+
+  [5]  Dochain, D., E. Buyl, and G. Bastin, "Experimental validation of a methodology for on-line
+       state  estimation  in  bioreactors,"  in  Computer  Applications  in  Fermentation  Technology:
+       Modelling and Control of Biotechnological Processes (N.M. Fish, R.I. Fox, and N.F. Thorn-
+       hill, eds.), Elsevier, Amsterdam, 1988, pp. 187-194.
+
+
+  [6]  Feinberg, M., "Chemical reaction network structure and the stabiliy of complex isothermal
+       reactors - I. The deficiency zero and deficiency one theorems," Review Article 25, Chemical
+       Engr. Sci. 42(1987):  2229-2268.
+
+
+
+                                                              36
+  [7]  Feinberg, M., "The existence and uniqueness of steady states for a class of chemical reaction
+       networks," Archive for Rational Mechanics and Analysis 132(1995):  311-370.
+
+
+  [8]  Feinberg, M., "Lectures on Chemical Reaction Networks," 4.5 out of 9 lectures delivered
+       at the Mathematics Research Center, University of Wisconsin, Fall, 1979.
+
+
+  [9]  Feinberg, M., "Mathematical aspects of mass action kinetics," in Chemical Reactor Theory:
+       A Review (L. Lapidus and N. Amundson, eds.), Prentice-Hall, Englewood Cliffs, 1977.
+
+
+[10]   Hale, J.K., Ordinary Differential Equations, Wiley, New York, 1980.
+
+
+[11]   Horn, F.J.M., and Jackson, R., "General mass action kinetics," Arch. Rational Mech. Anal.
+       49(1972):  81-116.
+
+
+[12]   Horn, F.J.M., "The dynamics of open reaction systems," in Mathematical aspects of chem-
+       ical  and  biochemical  problems  and  quantum  chemistry  (Proc.  SIAM-AMS  Sympos.  Appl.
+       Math.,  New  York,  1974),  pp. 125-137. SIAM-AMS Proceedings,  Vol. VIII, Amer. Math.
+       Soc., Providence, 1974.
+
+
+[13]   Krichman,  M.,  E.D.  Sontag,  and  Y.  Wang,  "Input-output-to-state  stability,"  SIAM  J.
+       Control and Optimization, to appear.
+
+
+[14]   McKeithan,  T.W.,  "Kinetic  proofreading  in  T-cell  receptor  signal  transduction,"  Proc.
+       Natl. Acad. Sci. USA 92(1995):  5042-5046.
+
+
+[15]   Pous, N.M., A. Rajab, A. Flaus, and J.M. Engasser, "Comparison of estimation methods
+       for biotechnological processes," Chem. Engr. Sci. 43(1988):  1909-1914.
+
+
+[16]   Siegel,  D.,  and  MacLean,  D.,  "Global  Stability  of  Complex  Balanced  Mechanisms",
+       preprint.
+
+
+[17]   Sontag,  E.D.,  Mathematical  Control  Theory:   Deterministic  Finite  Dimensional  Sys-
+       tems,Second Edition, Springer-Verlag, New York, 1998.
+
+
+[18]   Sontag, E.D., "Smooth Stabilization Implies Coprime Factorization," IEEE Transactions
+       on Automatic Control, Vol.34, No.4 (1989), pp. 435-443.
+
+
+[19]   Sontag, E.D., "Remarks on stabilization and input-to-state stability," Proc.  IEEE  Conf.
+       Decision and Control, Tampa, Dec. 1989, IEEE Publications, Dec. 1989, pp. 1376-1378.
+
+
+[20]   Sontag,  E.D.,  "Structure  and  stability  of  certain  chemical  networks  and  applications
+       to  the  kinetic  proofreading  model  of  T-cell  receptor  signal  transduction,"  IEEE  Trans.
+       Autom.  Control,  to  appear.  (Preprints  available  as  math.DS/9912237  (1999),  revised  as
+       math.DS/0002113 (2000) in Los Alamos Archive, http:arXiv.org.)
+
+
+[21]   Sontag, E.D. and Y. Wang, "On characterizations of the input-to-state stability property,"
+       Systems and Control letters  24(1995), 351-359.
+
+
+[22]   Sontag, E.D. and Y. Wang, "On characterizations of input-to-state stability with respect
+       to compact sets," in Proceedings of IFAC Non-Linear Control Systems Design Symposium,
+       (NOLCOS '95), Tahoe City, CA, June 1995, pp. 226-231.
+
+
+[23]   Sontag, E.D., and Y. Wang, "Output-to-state stability and detectability of nonlinear sys-
+       tems," Systems and Control Letters  29(1997):  279-290.
+
+
+
+                                                              37
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/decide.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/decide.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+CONTROLLABILITY IS HARDER TO DECIDE THAN ACCESSIBILITY
+
+Eduardo D. Sontag* Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 (201)932-3072 - sontag@fermat.rutgers.edu
+
+ABSTRACT The present article compares the difficulties of deciding controllability and accessibility. These are standard properties of control systems, but complete algebraic characterizations of controllability have proved elusive. We show in particular that for subsystems of bilinear systems, accessibility can be decided in polynomial time, but controllability is NP-hard.
+
+x1. Introduction.
+
+One of the most important and basic outstanding problems in control theory is that of finding necessary and sufficient conditions for deciding when a continuous-time analytic nonlinear system is (locally or globally) controllable. The goal is to provide some sort of generalization of the classical Kalman controllability rank condition. An early success of this line of research was achieved with the characterization of the accessibility property: there is a Lie-algebraic rank condition for deciding if it is possible to reach an open set from a given initial state. When this accessibility rank condition does not hold, all trajectories must remain in a lower-dimensional submanifold of the state space. See for instance [HK], [Su1], or [I] for a discussion of this and related results. It is known that local controllability can also be in principle checked in terms of linear relations between Lie brackets of the vector fields defining the system ([Su1]), and recent research has succeeded in isolating a number of necessary as well as a number of sufficient explicit conditions for controllability. The literature regarding this question is very large; see for instance [Su2] and the references there. No complete characterization is yet available, however.
+
+The purpose of this note is to point out that, whatever necessary and sufficient conditions are eventually found, these are likely to be rather hard to check. One way to quantify this difficulty is in terms of complexity of computation. There has been previous work dealing with difficulty of computation in the context of control and system theory. For instance, [So1] showed the undecidability of the realization problem, and more
+
+* Research supported in part by US Air Force Grant 0247. Original manuscript for paper appeared in SIAM J. Control and Opt., 26 (1988): 1106-1118
+
+1
+
+recently [PT] (and references there) dealt with the study of complexity of decentralized control problems, while [So2] characterized the complexity of decision problems for an algebra used to study piecewise linear control systems. More in the spirit of this paper, see [BW].
+
+We shall show that the existence of easy to verify conditions for controllability -local or global, and even several "small time" variants,- would imply solutions to problems known to be hard. The relative difficulty of controllability vis a vis the already understood accessibility problem is clarified in the case of the class of systems that can appear as subsystems of bilinear ones. This is a large class of nonlinear systems, including for instance all minimal realizations of finite Volterra series, as well as of course all linear systems. In the context of this class, one can make the precise statement that the accessibility question can be decided in polynomial time, while controllability is (at least) NP-hard. Recall that NPhard problems are widely believed to be intractable, and one of the main open problems in theoretical computer science is that of establishing rigorously this intractability, the famous "P 6= NP" question ([GJ], [PS]). It could be argued that by proving that controllability is NP-hard, we are not in fact establishing precisely that this is harder than accessibility, only that this is true provided that the above open question in computer science is resolved. This is however the standard way in which one "proves" that a problem is hard in combinatorics, operations research, theoretical computer science, or, in a control-theoretic framework, [PT]. In any case, we conjecture that, even for the class of bilinear subsystems, it must be possible to establish exponential time lower bounds, as done in the area of decision methods for logical theories and certain problems in language theory (see e.g. [AHU], chapter 11). We have not yet been able to prove this stronger fact, however.
+
+x2. A few preliminaries.
+
+The systems we shall deal with have equations
+
+.x(t) = f (x(t); u(t)) ; where the state x(t) is in a differentiable manifold M for each t, and the control values u(t) = (u1(t); : : : ; um(t)) belong to an Euclidean space IRm at each time t. We assume that the dynamics f are real-analytic. Generalizations to more arbitrary control value sets and to nonanalytic systems could be made, but since our purpose is mainly to provide negative results, we shall make these results stronger by restricting to even simpler kinds of systems below.
+
+Given any fixed state x0 2 IRn, we can pose several types of problems relative to x0: reachability from x0, controllability to x0, controllability in any fixed time T . One may also consider the property of complete controllability, being able to find controls that transfer any desired state to any other state. We use the notation
+
+AT (x)
+
+2
+
+for the set of states that can be reached from x in time exactly T ; when T is negative, we mean states that from which x can be reached in time \Gamma T . We may take any reasonable family of controls: all measurable locally essentially bounded controls, piecewise continuous controls, or even piecewise constant controls; the results will be the same. The union of all the sets AT (x), over all nonnegative T , is denoted
+
+A+(x) ; this is the set of states reachable from x. Similarly,
+
+A\Gamma (x) is the union over T ^ 0, the set of states controllable to x. With these notations, for instance, controllability from x0 means that A+(x0) = M , controllability to x0 means that A\Gamma (x0) = M , and local reachability in small time means that for each T ? 0, x0 is in the interior of the union of the sets A"(x0); 0 ^ " ^ T .
+
+Two issues which must be clarified are the meanings of the words "given" (a system, and possibly also an initial state x0) and "decide" (if the system is controllable from x0, reachable, etc.) . In its weakest sense, given could be taken to mean "given a recursive description" of the system, that is, one should provide a computable real function f , as well as a computable vector x0 if a fixed initial state is of interest. (See [A] for a discussion of computable analysis, as well as [K] for an alternative viewpoint.) Decide should mean provide a computer algorithm which, when presented as an input with the description of f (and x0), will answer "yes" or "no" after a finite number of steps. At this level, controllability is undecidable for trivial reasons, even for linear systems. For example, the one-dimensional system
+
+.x = bx
+
+is controllable if and only if b is nonzero. But it is impossible to decide if a "given" real number is zero or not: see [A], theorem 6.1. We obviously want to avoid such logical traps, which have to do with the fact that a recursive description of the dynamics is not necessarily in what one would intuitively call "explicit form". For linear systems, the simplest way to get around this difficulty is to restrict to systems with rational coefficients, explicitly given in some notation, for instance in binary. More generally, one could look for instance at a class like that of systems with polynomial or rational functions f , again requiring rational coefficients.
+
+In order to avoid such trivial counterexamples, and to give a stronger negative result, we shall restrict to bilinear subsystems. These are systems with a finite dimensional Lie algebra, specified as follows. Given are integers N , m, and l, and m + 2 matrices
+
+A; G1; : : : ; Gm; B over the rational numbers. Each of A; G1; : : : ; Gm is square of size N \Theta  N , and B is of size N \Theta  m. Also given is a set of l polynomials with rational coefficients
+
+OEi(x1; : : : ; xN ); i = 1; : : : ; l
+
+3
+
+with OEi(0) = 0 and such that the Jacobian of (OE1; : : : ; OEl)0 (prime indicates transpose) has constant rank, say equal to N \Gamma  n. Further, we assume that the n-dimensional manifold M where all the OEi simultaneously vanish is invariant for the differential equation
+
+.x = (A +
+
+mX
+
+i=1
+
+uiGi)x + Bu ; (2:1)
+
+no matter what the control u(\Delta ) is. The latter can be expressed algebraically by the requirement that the Lie derivatives
+
+LX OEi (2:2)
+
+vanish identically on M , for each vector field X of the type (A + P ffiGi)x + Bff, ff 2 IRm. Then, to the data
+
+(A; G1; : : : ; Gm; B; OE1; : : : ; OEl) (2:3)
+
+we associate the system \Sigma  whose state space is
+
+M = fx j 8i; OEi(x) = 0g and whose dynamics are given by the restriction of (2.1). We shall call a system of this type a bilinear subsystem.
+
+The above definition is meant to capture the idea of a system whose dynamics can be embedded algebraically into a bilinear system. This is a rich enough class of systems for the purposes of this note, and in fact includes many subclasses of interest. For instance, bilinear systems result when one takes all the OEi j 0 (so n = N; M = IRN ,) and in particular linear systems result when also all the Gi are zero. Further, minimal realizations of finite Volterra series are always of this type ([Cr]).
+
+In order to express difficulty of computation, we associate to each \Sigma  as in (2.3) a size. This is the total number of bits needed in order to store the data (2.3). We assume a fixed data structure for the matrices, say that they are listed by row, and that each entry is listed as a quotient of integers by giving sign, and the numerator and denominator in binary. Similarly, each of the polynomials OEi may be given by specifying (again in binary) all coefficients in a fixed order. We denote by
+
+size \Sigma  the resulting integer. When we say that a certain property can be decided in polynomial time for such systems, we mean that there is a (fixed) polynomial P and an algorithm which, when given the data (2.3), will answer correctly in time at most
+
+P (size \Sigma ) whether this property holds or not. The precise definition of "algorithm" is not very critical in this context; for instance multitape Turing machines as in [AHU], or several types of
+
+4
+
+abstract computer models. For this and other related notions, we refer the reader to the standard literature in complexity theory, which we shall not repeat here.
+
+Remark 2.1. A somewhat subtle point: note that when presented with a bilinear subsystem we assume that it is true that the Jacobians have constant rank and that the derivatives (2.2) vanish on M , and we shall only be interested in answering questions related to controllability. Checking the consistency of the data, for instance via TarskiSeidenberg theory, could require a large computational effort, and we do not wish to make the problem even harder due to such reasons; we want to show that controllability is hard to check even if the data is reliable.
+
+x3. Accessibility.
+
+As an illustration of the terminology, we now restate in complexity terms the simplicity of the controllability problem for linear systems. Consider the property
+
+The linear system (A; B) is controllable. The classical condition is that the rank of the n \Theta  nm Kalman block matrix
+
+(B; AB; A2B; : : : ; An\Gamma 1B) (3:1) must equal the dimension n of the state space. Without loss of generality, we may assume that A and B are integer matrices; if they are not, we can multiply by a common denominator, which increases the total size of the data at most polynomially and doesn't affect controllability. Whether the rank of the Kalman matrix is n can be checked by Gaussian elimination, which (see e.g. [PS], proof of theorem 8.2,) requires a number of algebraic operations which is polynomial in n, m, and in the size of the integers appearing in the composite matrix (3.1). The size of these integers is in turn polynomial in the size of the original data; more generally the size in binary of each entry of a product matrix
+
+A = A1 : : : Ak is bounded by a polynomial in k and in the size of the integer matrices Ai.
+
+The analogue of the above for nonlinear systems will be obtained, as may be expected, for the accessibility problem. It turns out indeed that accessibility can be also decided in polynomial time for the class of bilinear subsystems, as we shall prove next.
+
+In general, a system \Sigma  is said to be accessible from the state x0 if and only if the reachable set from x0 has full dimension, that is if
+
+int A+(x0) 6= ; : (3:2)
+
+5
+
+For bilinear subsystems (2.3), we shall take x0 := 0 and just say that \Sigma  is accessible. Note that the state space is M , so in (3.2) one means of course the interior with respect to M . When \Sigma  is in particular linear, accessibility is equivalent to controllability, but these concepts are in general different.
+
+Assume now given a bilinear subsystem \Sigma . Consider the m + 1 affine vector fields
+
+X0(x) := Ax and
+
+Xi(x) := Gix + bi
+
+for each i = 1; : : : ; m, where bi denotes the i-th column of B. The set A of all affine vector fields on IRN is a Lie algebra of dimension
+
+k := N 2 + N ; with multiplication
+
+[Ax + b; Cx + d] := (CA \Gamma  AC)x + (Cb \Gamma  Ad) : Let Li; i * 1; be the sequence of linear subspaces of A defined as follows:
+
+L1 := span fX0; X1; : : : ; Xmg and inductively,
+
+Li+1 := Li + span f[Xi; X] j i = 0; : : : ; m; X 2 Lig : Let L be the union of all the Li. It follows from the definition that if Li = Li+1 for some integer i then also Li = L. By dimensionality we then conclude that
+
+Lk := L : For any subspace L ` A, denote
+
+L(0) := fb j Ax + b 2 L for some Ag : This is the tangent space at the state x0 = 0, corresponding to the distribution L. With these notations, we can state the by now classical characterization of accessibility (see e.g. [I], theorem 6.15,):
+
+Proposition 3.1. The system \Sigma  is accessible if and only if Lk(0) has dimension n.
+
+Note that the rank at the origin of the Jacobian matrix of (OE1; : : : ; OEl) is N \Gamma  n; this Jacobian can be computed in polynomial time, and its rank can be obtained again by Gaussian elimination. Thus n can be computed in this form, and it is only necessary to
+
+6
+
+find the dimension of Lk(0). We now show how to compute a basis of Lk in polynomial time.
+
+First of all, the problem is not changed by multiplying all the matrices in the description of \Sigma  by the product of all the denominators of all the entries. This increases the size of \Sigma  at most polynomially, so we assume from now on that A; G1; : : : ; Gm; B are matrices of integers.
+
+We shall represent elements X = Ax+b of A as vectors of size k, listing first the entries of A in some fixed order and then those of b. For any such element, we let _(X) denote the maximum of the absolute values of its entries. Also, we take _ to be the largest of the values of the _(Xi), i = 0; : : : ; m, for the generators of L1. Directly from the definition of matrix product, one obtains the formula
+
+_([X; Y ]) ^ 2N _(X)_(Y ) for any X; Y 2 A.
+
+Next we show how to build in polynomial time, for each i = 1; : : : ; k a basis
+
+fY1; : : : ; Yni g (note that ni ^ k) of Li such that
+
+_(Yj ) ^ (2N _)i for each j = 1; : : : ; ni. The case i = 1 is clear by definition: start with the Xi and use Gaussian elimination to take a subset which forms a basis. By induction, it is necessary to consider now all Lie products
+
+[Xj; Yl] (3:3)
+
+for j = 0; : : : ; m and l = 1; : : : ; ni. There are at most k2 of these. Each of them has entries of largest magnitude
+
+_([Xj; Yl]) ^ 2N _(Xj)(2N _)i ^ (2N _)i+1 : Let B be the matrix that lists all these generators (3.3). Each entry of B, expressed in binary, has length at most equal to
+
+(i + 1)log2(2N _) ; (plus a bit for the sign). Since we may assume that i + 1 ^ k = N 2 + N , this quantity is bounded by a polynomial
+
+a + bN 3 + cN 2 log _ ;
+
+which is in turn bounded by an expression of order O(M 3), where M is the total size of the original data (A; G1; : : : ; Gm; B). Thus Gaussian elimination can be performed in
+
+7
+
+polynomial time to select a subset of (3.3) which forms a basis. Note that it is essential that this elimination be performed at each step to the algorithm: otherwise we end up with an exponential number -(m + 1)k- of generators for the space L. After at most k steps we have a basis for Lk = L, and hence also by evaluation at 0 and one last elimination step, we can determine the dimension of L(0). This establishes the following fact.
+
+Theorem 1. For bilinear subsystems, the accessibility property can be decided in polynomial time.
+
+Remark 3.2. We made the convention that x0 = 0 only for notational simplicity. It is equivalent to studying accessibility (and later controllability) from an equilibrium state. The results in the case of more general x0 are entirely analogous, with accessibility as well as strong (fixed-time) accessibility both verifiable in polynomial time.
+
+Remark 3.3. Another property that is sometimes of interest is that of span reachability, meaning that the linear span of the states reachable from the origin should be the entire space. This can also be checked in polynomial time, by an argument as above. In fact, the accessibility property is basically the same as a span-reachability property at the Lie algebra level.
+
+x4. A controllability remark.
+
+In this section we shall restrict our attention to systems of the very special type
+
+.y = w2f (z)
+
+.z = Az + bu1 .w = u2 :
+
+(4:1)
+
+These are systems with state space
+
+M = IR \Theta  IRk \Theta  IR of dimension k + 2, and states partitioned as x = (y; z; w)y, with the block of variables z evolving as a linear system of dimension k. The control value set is IR2, and we assume that the single-input system (A; b) is controllable. We shall show that for systems (4.1), various variants of the notion of controllability are all equivalent to the indefiniteness of the mapping f : IRk ! IR:
+
+Definition 4.1. The mapping f is definite iff f (z) * 0 for all z or f (z) ^ 0 for all z. Otherwise, it is indefinite.
+
+This allows us to reduce the problem of deciding if a polynomial is definite to a controllability question, and we conclude that controllability is at least as hard to decide as
+
+y For simplicity, we write (y; z; w) instead of, more accurately, (y; z0; w)0.
+
+8
+
+definiteness. Further, systems of the special form (4.1) with f polynomial can be rewritten as bilinear subsystems, and this rewriting can be done in polynomial time, relative to any class of polynomials f of fixed degree. Together with the NP-hardness of the the problem of deciding definiteness (next section), the desired negative result will follow.
+
+It is clear that indefiniteness is necessary for any type of controllability: if f where definite, say f (z) * 0 for all z, then
+
+y * y0
+
+whenever x = (y; z; w) 2 A+(x0), for each x0 = (y0; z0; w0) 2 M . Thus it is impossible in that case for any x0 to be in the interior of A+(x0) or of A\Gamma (x0).
+
+Assume then that f is indefinite. We show now that, for each ffi ? 0, and for each two states x0 and x, there is a control u(\Delta ) which steers x0 into x in time 4ffi. We build u in 5 steps.
+
+Step 1. Apply the control u1 j 0; u2(t) j \Gamma w0=ffi on the interval [0; ffi]. There results a state of the form x1 = (y1; z1; 0).
+
+Consider now the number
+
+y\Lambda  := y \Gamma  ` wffi '
+
+2 Z ffi
+
+0 s
+
+2f (e(s\Gamma ffi)Az)ds :
+
+Either (a) y1 = y\Lambda  or (b) y1 6= y\Lambda . Assume first that (b) holds. We know by indefiniteness of f that there exists some vector z2 such that
+
+sign f (z2) = sign (y\Lambda  \Gamma  y1) : Pick any such z2. By continuity of the exponential, there is some 0 ! " ! ffi such that
+
+sign f (esAz2) = sign (y\Lambda  \Gamma  y1) for all s 2 [0; "] : (4:2) Finally, pick any solution ff of the equation
+
+ff2 "Z
+
+"=2
+
+0 s
+
+2f (esAz2)ds + Z
+
+"
+
+"=2(" \Gamma  s)
+
+2f (esAz2)ds# = y\Lambda  \Gamma  y1 :
+
+There is some such ff because of (4.2). In case (a), make an arbitrary choice, say z2 = z1, let 0 ! " ! ffi be also arbitrary, and let ff := 0.
+
+Step 2. Apply a control with u2 j 0, on the interval [0; ffi \Gamma  "], that takes x1 into the state x2 = (y1; z2; 0). A suitable u1(\Delta ) exists because of the assumed controllability of the pair (A; b).
+
+Step 3. Apply a control on the interval [0; "] as follows. The u1 component is identically zero, and
+
+u2(t) := ae ff; if t ! "=2,\Gamma ff; if t * "=2.
+
+9
+
+There results the state x3 = (y\Lambda ; e"Az2; 0); the total time elapsed is 2ffi.
+
+Step 4. On the interval [0; ffi], let u2 j 0 and let u1(\Delta ) be a control steering e"Az2 into e\Gamma ffiAz. Again such a control exists by the controllability of the linear system (A; b). The resulting state is x4 = (y\Lambda ; e\Gamma ffiAz; 0).
+
+Step 5. Finally, in one last interval of length ffi, use u1 j 0 and u2 j w=ffi. There results the desired state x.
+
+We can summarize the above discussion: Proposition 4.2. Let \Sigma  be a system as in (4.1), and pick any fixed x0 2 M . The following properties are then equivalent:
+
+(i) A(x) = M for each x 2 M . (Complete controllability.) (ii) AT (x) = M for each T and each x 2 M . (iii) x0 2 int A+(x0).
+
+(iv) x0 2 int A\Gamma (x0).
+
+(v) f is indefinite.
+
+It follows that other intermediate properties are also equivalent to the above, for instance local small-time reachability from x0:
+
+x0 2 int
+
+"[
+
+t=0
+
+At(x0) for each " ? 0 ;
+
+as well as local controllability to x0 in small time. Thus checking either of these properties is equivalent to checking indefiniteness of f .
+
+For accessibility, only that f not be identically zero is sufficient, which illustrates in this particular case the gap between the two concepts. Note that even for the very simple case in which f is a homogeneous quadratic form, already checking definiteness requires some computational effort.
+
+10
+
+x5. Deciding definiteness.
+
+The previous section showed how, at least for some systems, controllability is no easier to check than definiteness of a map. This latter property can be checked for polynomials via decision methods for real closed fields (see e.g. [Co]) in doubly-exponential time, but it is not clear if there are faster algorithms. We remark here that the problem is NP-hard, and we do this by polynomial time reduction of the classical NP-complete problem, 3-SAT, to the definiteness question. Thus deciding definiteness is at least as hard as any problem in NP. The remark is not at all surprising, but it is the best lower bound that we have been able to obtain until now.
+
+Recall the definition of the 3-SAT problem ([GJ], p.48). A clause c(x; y; z) in the three (distinct) variables x; y; z is an expression of the type
+
+OE1(x) . OE2(y) . OE3(z) ; (5:1) where each "literal" OEi is of the form
+
+OEi(a) = a or
+
+OEi(a) = 1 \Gamma  a
+
+and the binary variables x; y; z can take values in f0; 1g. We interpret the values 1 and 0 as "true" and "false" respectively. For any assignment (x\Lambda ; y\Lambda ; z\Lambda ) of values f0; 1g to x; y; z, we say that c(x\Lambda ; y\Lambda ; z\Lambda ) is true if at least one of OE1(x\Lambda ), OE2(y\Lambda ) or OE3(z\Lambda ) is 1, and false otherwise. Equivalently, c(x\Lambda ; y\Lambda ; z\Lambda ) is true if and only if the real polynomial
+
+~c(x; y; z) := OE1(x)2 + OE2(y)2 + OE3(z)2 does not vanish at (x\Lambda ; y\Lambda ; z\Lambda ). A set
+
+S = fci(ti;1; ti;2; ti;3); i = 1; : : : ; Lg of L clauses in the variables (t1; : : : ; tn), with each ti;j 2 ft1; : : : ; tng, is satisfiable iff there is some binary assignment t\Lambda  = (t\Lambda 1; : : : ; t\Lambda n) to the variables (t1; : : : ; tn) such that the clauses ci(t\Lambda ) become all simultaneously true. The 3-SAT problem is that of finding an algorithm for checking satisfiability. It was the first problem to be shown to be NP-complete, in the sense that if there were such an algorithm which runs in time polynomial in L then every other problem in the wide class NP, which includes many, if not most, combinatorial problems of interest, would also be decidable in polynomial time. It is a long-standing conjecture ("P 6= NP") in theoretical computer science, widely believed to be true, that indeed none of these problems can be solved in polynomial time.
+
+It is easy to reduce 3-SAT to the problem of deciding if a polynomial has any real zeroes, and hence to establish that the latter problem is NP-hard. We first show how to
+
+11
+
+do that, and then modify the construction to deal with the definiteness problem instead. Let S be as above. Consider first the polynomial
+
+`(t) = `(t1; : : : ; tn) =
+
+nX
+
+i=1
+
+t2i (1 \Gamma  ti)2 : (5:2)
+
+Denote by Bn the set of binary n-vectors, ft = (t1; : : : ; tn)j8i; ti 2 f0; 1gg, and note that Bn is the set of zeroes of `. Now let u = (u1; : : : ; un) be L new variables, and introduce
+
+(t; u) :=
+
+LX
+
+i=1
+
+(ui~ci(t) \Gamma  1)2 + `(t) : (5:3)
+
+If (t\Lambda ; u\Lambda ) = 0 then the last term in the sum vanishes, so t\Lambda  is binary, while the vanishing of the other terms implies that ~ci(t\Lambda ) 6= 0 for all i. Conversely, if t\Lambda  2 Bn is such that all ~ci(t\Lambda ) 6= 0, there is some vector u\Lambda  such that (t\Lambda ; u\Lambda ) = 0. We conclude that S is satisfiable iff  has a real zero.
+
+We next modify  in order to reduce to definiteness instead. Now let
+
+(t; u) :=
+
+LX
+
+i=1 \Gamma 
+
+2ui~ci(t) \Gamma  u2i \Gamma  1\Delta 2 + `(t) : (5:4)
+
+It is again true that S is satisfiable if  has a real zero. This is because an expression of the type 2u~c \Gamma  u2 \Gamma  1 is strictly negative unless ~c 6= 0. Conversely, assume that S is satisfiable, and let t\Lambda  2 Bn be such that all ~ci(t\Lambda ) 6= 0. Consider each 2u~ci(t\Lambda ) \Gamma  u2 \Gamma  1 = 0 as an equation on u 2 IR. Writing this as
+
+~ci(t\Lambda ) = u
+
+2 + 1
+
+2u and using the fact that, since t\Lambda  2 Bn and ~ci(t\Lambda ) 6= 0, ~ci(t\Lambda ) 2 f1; 2; 3g, and that
+
+ff : (0; 1) ! [1; 1) : u 7! u
+
+2 + 1
+
+2u is onto, we conclude that (5.4) has a zero.
+
+We show below that when S is not satisfiable not only is  always positive but in fact it is bounded away from zero. Note that in general it is false that a positive polynomial must be bounded below by a positive constant, as evidenced by the example x2 + (1 \Gamma  xy)2, so some care is required. Moreover, we need an explicit value for this lower bound, which in our case will turn out to be 1=4n2.
+
+Assume then that S is not satisfiable. Pick any element t\Lambda  2 Bn. There is some clause ci(t\Lambda ) which is false. Relabelling variables if necessary, we may assume that ci involves the polynomials OE1(t1); OE2(t2); OE3(t3). Since these all vanish at t\Lambda , we conclude that
+
+OEj (t)2 = (t\Lambda j \Gamma  t)2
+
+12
+
+for j = 1; 2; 3. In particular, using Euclidean norm, it holds that
+
+kt\Lambda  \Gamma  tk2 ? ~ci(t) (5:5) for each t 2 IRn. Now consider any fixed element (t; u) 2 IRn+L. Either (1) kt\Lambda  \Gamma  tk2 ^ 1=2 for some t\Lambda  2 Bn, or (2) the distance from t to Bn is at least 1=p2. If there is any t\Lambda  as in (1), pick a clause ci as above. Then, for this fixed i, using (5.5),fifi
+
+fi ` 2uiu2
+
+i + 1 ' ~c
+
+i(t)fififi ^ ~ci(t) ^ 1=2 ;
+
+so fififi
+
+2ui~ci(t) \Gamma  u2i \Gamma  1fififi = (u2i + 1) fififi ` 2uiu2
+
+i + 1 ' ~c
+
+i(t) \Gamma  1fififi * (u2i + 1)=2 * 1=2 :
+
+Hence, (t; u) * 1=4 * 1=4n2. Suppose that (2) holds instead. Then necessarily
+
+t2j (1 \Gamma  t2j ) * 14n2 for at least one j, and therefore again (t; u) * 1=4n2. Indeed, if this where not the case, then it would hold for each j = 1; : : : ; n that either
+
+jtj j ! 1p2n or jtj \Gamma  1j ! 1p2n : (5:6) Choose t\Lambda  2 Bn with t\Lambda j = 0 if the first case in (5.6) holds, and 1 otherwise. Then this particular t\Lambda  would satisfy that kt\Lambda  \Gamma  tk2 ^ 1=2, contradicting case (2).
+
+The conclusion from the above discussion is that S is satisfiable if and only if there is some pair (t; u) such that
+
+f (t; u) := 4n2(t; u) \Gamma  1 ! 0
+
+On the other hand, since f certainly admits positive values, for instance
+
+f ((2; 2; : : : ; 2); u) * 16n3 \Gamma  1 for any u, it follows that f is indefinite iff it takes any negative values, that is, iff S is satisfiable. The construction, including expanding f into a standard polynomial form, can be done in polynomial time, and we summarize:
+
+Lemma 5.1. For each set S of L clauses in n variables, there is a polynomial f of degree 6 in n + L variables, whose coefficients have magnitude ^ cLn2, such that S is satisfiable iff f is indefinite. The polynomial f can be obtained in polynomial time from S, and c is a constant independent of S.
+
+13
+
+x6. A reduction to bilinear subsystems.
+
+The idea behind the construction to be given in this section is basically a classical one in the field of bilinear systems, and can be traced at least as far back as the paper [B]. The point of giving the details is to keep track of the computational effort required and of the size of the numbers appearing.
+
+Lemma 6.1. Let \Sigma  be a system of the form
+
+.,0 = \Psi (,); ., = P , + Qu ; (6:1)
+
+where \Psi  is a polynomial of degree d in the r variables , = (,1; ,2; : : : ; ,r) with integer coefficients and with \Psi (0) = 0, P is an integer matrix of dimensions r \Theta  r, and Q is an integer matrix of dimensions r \Theta  m. Assume that the coefficients of \Psi ; P; Q are all of magnitude bounded by ae. Then, there is a bilinear system
+
+\Sigma b = (A; G1; : : : ; Gm; B; OE1; : : : ; OEl) with N = \Gamma r+dr \Delta , l = N \Gamma  r \Gamma  1, each coefficient of the matrices A; G1; : : : ; Gm; B of magnitude ^ daer2, and the polynomials OEi of degree ^ d and with each coefficient equal to 0, 1, or \Gamma 1, such that each of the following properties holds for the system \Sigma  if and only if it holds for the system \Sigma b:
+
+(a) 0 2 int A+(0), (b) 0 2 int A\Gamma (0),
+
+(c) A+(x) = M for all x 2 M .
+
+Further, the system \Sigma b can be constructed in polynomial time from the data \Psi ; P; Q. Proof. Note that N is the number of possible monomials of degree ^ d in the variables , = ,1; : : : ; ,r. We shall use multiindices ff = (ff1; : : : ; ffr) with weight jffj := P ffi ^ d, and
+
+,ff := ,ff11 \Delta  \Delta  \Delta  ,ffrr
+
+to denote these monomials. The coordinates of vectors in IRN will be denoted as jff, for such indices ff, ordered lexicographically. In particular, we let ei := (0; 0; : : : ; 0; 1; 0; : : : ; 0) (1 in i-th position,) and write jei just as ji. For each of the l = N \Gamma  r \Gamma  1 indices ff with weight jffj * 2, we introduce the polynomial in N variables
+
+OEff(j) := jff \Gamma  jff
+
+11 : : : jffrr :
+
+Note that the Jacobian matrix of the of the OEff's has constant rank N \Gamma  r \Gamma  1. The idea of the construction is to introduce a variable for each monomial in \Psi  (the jff's) in such a manner that the equation for ,0 becomes linear,
+
+.j0 = X
+
+fi
+
+fi jfi ;
+
+14
+
+where \Psi (,) = Pfi fi ,fi, and to introduce a differential equation for each of the monomials ,ff, thought of now as new variables jff. Note that if ,(\Delta ) is a solution of
+
+., = P , + Qu
+
+and if jffj ? 0 then
+
+d,ff=dt = X
+
+jfij=jffj
+
+afffi ,fi + X
+
+jfij=jffj\Gamma 1
+
+(gff;1fi u1 + \Delta  \Delta  \Delta  + gff;mfi um),fi ; (6:2)
+
+where the coefficients afffi ; : : : are obtained as follows. Let P = (pij ); Q = (qij ); with these notations,
+
+afffi = X
+
+i;j
+
+ffipij ; (6:3)
+
+the sum over all those indices 1 ^ i; j ^ r for which fi + ei = ff + ej, and for each j,
+
+gff;jfi = X
+
+i
+
+ffiqij ; (6:4)
+
+the sum over all those indices 1 ^ i ^ r for which fi + ei = ff. We also denote, for the case ff = (0; : : : ; 0), each fi, and each j = 1; : : : ; m, fffffi := fi and gff;jfi := 0. Finally, let A
+
+and Gj; j = 1; : : : ; m be the matrices (afffi ) and (gff;jfi ) respectively, and let B be the block matrix 0@ 0
+
+Q
+
+0
+
+1A
+
+where the first block is a row of size 1 \Theta  m and the last one is of size N \Gamma  r \Gamma  1 by m.
+
+Since there are at most r2 terms in each of (6.3) and (6.4), the claimed estimates for the magnitudes of the entries of these matrices do indeed hold. Further, the constructions can be clearly carried out in polynomial time.
+
+Given any vector x = (x0; : : : ; xr) 2 IRr+1, let h(x) 2 IRN be defined as follows: h(0;:::;0)(x) := x0, and
+
+hff(x) := xff
+
+11 : : : xffrr
+
+for jffj ? 0. Note that h is a diffeomeorphism IRr ' M , and h(0) = 0. Now assume that x(\Delta ) = (x0(\Delta ); x1(\Delta ); : : : ; xr(\Delta )) solves (6.1) with respect to a given control u(\Delta ). It follows by construction that j(t) := h(,(t)) satisfies
+
+.j(t) = (A + X ui(t)Gi)j(t) + Bu(t) : Therefore x(0) can be steered into x(T ) iff h(x(0)) can be steered into h(x(T )), and this establishes properties (a)-(c).
+
+15
+
+x7. Controllability is NP-hard.
+
+We are only left to put together all the pieces from the previous sections. Assume thatS is any set of L clauses. Note that it can involve at most n ^ 3L variables. By lemma 5.1 we may build in polynomial time an integer polynomial f of degree 6 in n + L variables, with coefficients of magnitude bounded by cL3, such that f is indefinite iff S is satisfiable. For this f , we now consider the system (4.1), where (A; b) is a cascade of integrators
+
+.z1 = z2; .z2 = z3; : : : :; .zk = u1; and k = n + L. By proposition 4.2, the system is controllable, in either of the senses there, iff S is satisfiable. We now apply lemma 6.1, with r = k + 1, m = 2,
+
+\Psi (,1; : : : ; ,k+1) := ,2k+1f (,1; : : : ; ,r) ; and P; Q found from A; b plus the last equation .w = u2. Note that d = 8, and that we may take ae = cL3. We thus obtain, in polynomial time, the bilinear subsystem \Sigma b in lemma 6.1. Listing all entries of A; : : : ; OEl results in a size of order at most N 2log2(r2ae), which is bounded by a polynomial in L. A polynomial time decision method for controllability of \Sigma b would thus imply one for 3-SAT. Thus our problem is at least as hard as that one:
+
+Theorem 2. Each of the following decision problems is NP-hard, for bilinear subsystems:
+
+(a) 0 2 int A+(0). (Local reachability at 0.) (b) 0 2 int A\Gamma (0). (Local controllability at 0.)
+
+(c) A+(x) = M for all x 2 M . (Complete controllability.)
+
+As remarked earlier, many other questions, such as local small-time reachability, are shown to be NP-hard by the same argument. As directions for further research, we'd suggest looking for a similar result using only single-input systems -the above proof shows that it is hard to decide controllability if at least two controls are allowed,- and also for the case of controls constrained to compact sets. Alternatively, it would be interesting to establish better lower bounds for the problem studied here.
+
+16
+
+x8. References. [A] Aberth, O., Computable Analysis, McGraw-Hill, New York, 1980. [AHU] Aho,A.V., J.Hopcroft, and J.D.Ullman, The Design and Analysis of Computer Algorithms, Addison-Wesley, Reading, 1974.
+
+[BW] Boothby, W.M., and E.N. Wilson, "Determination of the transitivity of bilinear systems," SIAM J.Control and Opt. 17(1979): 212-221.
+
+[B] Brockett, R., "On the algebraic structure of bilinear systems," in Theory and Applications of Variable Structure Systems (R.Mohler and A. Ruberti, eds.,) Academic Press, NY, 1972, pp. 153-168.
+
+[Co] Collins,G., "Quantifier elimination for real-closed fileds by cylindrical algebraic decomposition," in Springer Lec.Notes in C.S. 35(1975): 134-183.
+
+[Cr] Crouch,P.E., "Dynamical realizations of finite Volterra series," Ph.D. Thesis, Harvard, 1977.
+
+[GJ] Garey,M.R., and D.Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness, W.H.Freeman and Company, San Francisco, 1979.
+
+[HK] Hermann,R. and A.J.Krener, "Nonlinear controllability and observability," IEEE Trans.Autom.Ctr. 22:728-740.
+
+[I] Isidori,A., Nonlinear Control Systems: An Introduction, Springer, Berlin, 1985. [K] Ko, K., "Applying techniques of discrete complexity theory to numerical computation," in Studies in Complexity Theory, (R.V. Book, ed.), Pitman, London, 1986.
+
+[PS] Papadimitriou,C.H., and K.Steiglitz, Combinatorial Optimization: Algorithms and Complexity, Prentice-Hall, Englewood Cliffs, 1982.
+
+[PT] Papadimitriou,C.H., and J.Tsitsiklis, "Intractable problems in control theory," SIAM J.Control and Opt. 24(1986): 639-654.
+
+[So1] Sontag,E.D., "On certain questions of rationality and decidability," J. Comp. Syst. Sci. 11(1975): 375-381.
+
+[So2] Sontag,E.D., "Real addition and the polynomial hierarchy," Inform. Proc. Letters 20(1985): 115-120.
+
+[Su1] Sussmann,H.J., "Lie brackets, real analyticity, and geometric control," in Differential Geometric Control theory (R.W.Brockett, R.S.Millman, and H.J.Sussmann, eds.), Birkhauser, Boston, 1983.
+
+[Su2] Sussmann,H.J., "A general theorem on local controllability," SIAM J. Control and Opt., 25(1987): 158-194.
+
+17</pre>
+</body>
+</html>

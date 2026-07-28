@@ -1,0 +1,322 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95hurwitzconf.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/95hurwitzconf.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+GENERAL CLASSES OF CONTROL-LYAPUNOV FUNCTIONS
+
+EDUARDO D. SONTAG\Lambda  DEPARTMENT OF MATHEMATICS
+
+RUTGERS UNIVERSITY NEW BRUNSWICK, NJ 08903 EMAIL: SONTAG@CONTROL.RUTGERS.EDU
+
+H'ECTOR J. SUSSMANNy DEPT. OF MATHEMATICS
+
+RUTGERS UNIVERSITY NEW BRUNSWICK, NJ 08903
+
+EMAIL: SUSSMANN@HAMILTON.RUTGERS.EDU
+
+Abstract. The main result of this paper establishes the equivalence between null asymptotic controllability of nonlinear finite-dimensional control systems and the existence of continuous control-Lyapunov functions (clf's) defined by means of generalized derivatives. In this manner, one obtains a complete characterization of asymptotic controllability, applying in principle to a far wider class of systems than Artstein's Theorem (which relates closed-loop feedback stabilization to the existence of smooth clf's). The proof relies on viability theory and optimal control techniques.
+
+1. Introduction. In this paper, we study systems of the general form
+
+.x(t) = f(x(t); u(t))(1) where the states x(t) take values in a Euclidean space X= Rn, the controls u(t) take values in a metric space U , and f is locally Lipschitz. A common approach for stabilization of this system to x = 0 relies on the use of abstract "energy" or "cost" functions that can be made to decrease in directions corresponding to possible controls. In this methodology, one starts with a "Lyapunov pair" (V; W ), consisting of two positive definite functions
+
+V; W : X! R*0 ; with V continuously differentiable and proper ("radially unbounded") and W continuous, so that for each state , 2 Xthere is some control-value u = u, with
+
+Df(,;u)V (,) ^ \Gamma W (,) :(2) We are denoting by DvV (,) = rV (,):v the directional derivative of V in the direction of the vector v. This property guarantees that for each state , there is some control u(\Delta ) such that, solving the initial-value problem (1) with x(0) = ,, the resulting trajectory satisfies
+
+x(t) ! 0 as t ! +1 ; 1 Supported in part by US Air Force Grant F49620-95-1-0101 2 Supported in part by NSF Grant DMS92-02554
+
+1
+
+see for instance the textbook [11]. A function V which is part of a Lyapunov pair is generically called a control-Lyapunov function, henceforth abbreviated "clf." Thus, existence of a clf implies null asymptotic controllability.
+
+Besides its intrinsic theoretical interest, the clf paradigm is extremely useful in practice, as it reduces the search for stabilizing inputs to the iterative solution of a static nonlinear programming problem: when at state ,, find u such that Equation (2) holds. The idea underlies feedback control design (see the references in [12], and more recently the textbook [7]), the optimal control approach of Bellman, "artificial intelligence" techniques based on position evaluations in games and "critics" in learning programs, and can even be found in "neural-network" control design (see e.g. [8]).
+
+An obvious fundamental question arises: is the existence of a continuously differentiable clf equivalent to the possibility of driving every state asymptotically to zero? In other words, is this the only way, in principle, to stabilize systems?
+
+It is the purpose of this paper to answer this question in the affirmative. But first, the definition of clf must be reformulated in a slightly weaker form, since otherwise the answer would be negative. To see why a weakening is necessary, consider as an illustration the class of systems affine in control, that is, systems for which controls are in Rm and
+
+f(x; u) = f0(x) +
+
+mX
+
+i=1
+
+uifi(x)
+
+is affine in u. For such systems, it is well-known that the existence of a clf in the manner defined above would imply that there is some feedback law u = k(x) so that the origin is a globally asymptotically stable state for the closed-loop system
+
+.x = f(x; k(x)) and k is continuous on Rn n f0g. This is the content of Artstein's Theorem ([1]). More explicitely, and taking for simplicity the case m=1, one has the following "universal" formula for computing feedback laws (cf. [13] and also the recent textbooks [4, 9, 7] and the survey [5]): denote a(x) := rV (x):f0(x) and b(x) := rV (x):f1(x), for the given clf. Then the clf property is equivalent to:
+
+b(x) 6= 0 ) a(x) ! 0 and the following feedback law:
+
+k(x) := \Gamma  a(x) + pa(x)
+
+2 + b(x)2
+
+b(x)
+
+(with k(x) := 0 when b(x) = 0) stabilizes the system (along closed-loop trajectories, dV =dt = \Gamma pa2 + b2 ! 0) and is smooth away from the origin. But, for most systems, even affine in control and with m = 1, continuous feedback may fail to exist, even for very simple controllable systems (see e.g. [11], Section 4.8, and [5]). This means that unless one weakens the definition of clf, the converse implication "asymptotic controllability implies existence of clf" will be false.
+
+2
+
+The main result of this paper provides such a reformulation. The critical step is to relax the differentiability assumption on V to merely continuity. Of course, one must then re-interpret the directional derivative appearing in Equation (2) as a generalized directional derivative of an appropriate sort. For this generalization, we borrow from the literature of set-valued analysis and differential inclusions, using the concept known there as "upper contingent derivative" or "contingent epiderivative." Once this generalization is allowed (and, for technical reasons, allowing derivatives in directions in the closed convex hull of the velocity set f(,; U )), the main result, Theorem 4.1, says that existence of clf's is indeed equivalent to asymptotic controllability. This general result helps in interpreting some of the constructions for particular classes of systems which involve nondifferentiable clf's; see for instance [10]. The proof follows easily by combining the main result in [12], which gave a necessary condition expressed in terms of Dini derivatives of trajectories, with results from [2].
+
+Remark 1.1. Our result shows that asymptotic controllability implies the existence of a "Lyapunov function" in the strict sense that derivatives are negative for nonzero states. In analogy with ordinary differential equations, one may ask when the existence of a "weak CLF," for which W is only required to be nonnegative, suffices for the converse. It is indeed possible to provide control theory versions of the LaSalle Invariance Principle; see [14] for details.
+
+2. Asymptotic Controllability and CLF's. Throughout this paper, we write R*0 = fr 2 R : r * 0g, and use I to denote the set of all subintervals I of R*0 such that 0 2 I; thus, I 2 I iff either (i) I = R*0, or (ii) I = [0; a) for some a ? 0, or (iii) I = [0; a] for some a * 0. If _ is a map, we will use D(_) to denote the domain of _, and _jS to denote the restriction of _ to a subset S of D(_). For any subset S of Rn, we use co(S) to denote the closed convex hull of S.
+
+We consider systems as in (1) and assume that a distinguished element called "0" has been chosen in the metric space U . We let Uae denote, for each ae * 0, the ball fu j d(u; 0) ^ aeg, and assume also that each set Uae is compact. (Typically, U is a closed subset of a Euclidean space Rm and 0 is the origin.) The map
+
+f : X\Theta  U ! Rn is assumed to be locally Lipschitz with respect to (x; u) and to satisfy f(0; 0) = 0. (The Lipschitz property with respect to u can be weakened, but we will need to quote results from [12], where this was made as a blanket assumption.) A control is a bounded measurable map u : Iu ! U , where Iu 2 I. We use kuk to denote the essential supremum norm of u. i.e.
+
+kuk = inffae j u(t) 2 Uae for almost all t 2 Iug : To avoid confusion with the sup norm of the controls, we will use j,j to denote the Euclidean norm of vectors , in the state space X.
+
+We let S denote the class of all systems (1) that satisfy the above conditions. For a system in S, if , 2 X and u is a control u, we let OE(t; ,; u) denote the
+
+3
+
+value at time t of the maximally defined solution x(\Delta ) of (1) with initial condition x(0) = ,. Then OE(t; ,; u) is defined for t in some relatively open subinterval J of Iu containing 0, and either J = Iu or limt!sup J jOE(t; ,; u)j = +1.
+
+3. Asymptotic Controllability. The next definition expresses the requirement that for each state , there should be some control driving , asymptotically to the origin. As for asymptotic stability of unforced systems, we require that if , is already close to the origin then convergence is possible without a large excursion. In addition, for technical reasons, we rule out the unnatural case in which controlling small states requires unbounded controls.
+
+Definition 3.1. The system (1) is (null-)asymptotically controllable (henceforth abbreviated "AC") if there exist nondecreasing functions
+
+`; ~` : R*0 ! R*0 such that limr!0+ ~`(r) = 0, with the property that, for each , 2 X, there exist a control u : R*0 ! U and corresponding trajectory x(\Delta ) : R*0 ! X such that x(0) = ,,
+
+x(t) ! 0 as t ! +1 ;
+
+kuk ^ `(j,j) ; and
+
+supfjx(t)j : 0 ^ t ! 1g ^ ~`(j,j) : Remark 3.2. A routine argument involving continuity of trajectories with respect to initial states shows that the requirements of the above definition are equivalent to the following much weaker pair of conditions:
+
+1. For each , 2 Xthere is a control u : R*0 ! U that drives , asymptotically
+
+to 0 (i.e. x(t) := OE(t; ,; u) is defined for all t * 0 and x(t) ! 0 as t ! +1); 2. there exists ae ? 0 such that for each " ? 0 there is a ffi ? 0 such that for
+
+each , 2 X with j,j ^ ffi there is a control u : R*0 ! Uae that drives , asymptotically to 0 and is such that jOE(t; ,; u)j ! " for all t * 0. We point out, however, that Definition 3.1, as stated, makes sense even for the more general class S\Lambda  of systems (1) in which f is completely arbitrary (i.e. not necessarily locally Lipschitz or even continuous), and the set of control values is state-dependent, i.e. an additional requirement u 2 ^U(x) is imposed, where ^U : X! 2U is a multifunction with values subsets of U . This includes in particular the situation when U = Xand f(x; u) = u, in which case the system (1) is a differential inclusion .x 2 F (x). On the other hand, the formulation in terms of Conditions 1 and 2 above does not make sense for general systems in S\Lambda  (since OE(t; ,; u) need not be well defined), and the equivalence between the two formulations depends on the fact that each fixed control gives rise to a flow, which is true for systems in
+
+4
+
+S but not for systems in S\Lambda . Throughout the paper, systems of the form (1) are assumed to be in S, so we will use indistinctly the two forms of the definition of AC. However in Section 8 below, and in more detail in [14], we compare systems in S with differential inclusions --which belong to S\Lambda  but not necessarily to S-- and there one uses Definition 3.1 as stated rather than Conditions 1 and 2.
+
+4. Directional Derivatives. We now introduce an object widely studied in Set-Valued Analysis (cf., for instance, [2], Def. 1 and Prop. 1 of Section 6.1, where it is called the "upper contingent derivative.")
+
+Definition 4.1. For a function V : Rn ! R[ f+1g, a , 2 Rn such that F (,) ! +1, and a v 2 Rn, the directional subderivative of V in the direction of v at , is
+
+D\Gamma v V (,) := lim inft ! 0+
+
+w ! v
+
+1
+
+t [V (, + tw) \Gamma  V (,)] :
+
+(The notations D+V (,)(v) and D"V (,)(v) are used in [2, 6] and [3] respectively, with the same meaning as our D\Gamma v V (,).)
+
+For each fixed ,, the map v 7! D\Gamma v V (,) is lower semicontinuous as an extended-real valued function (cf. [2], page 286); thus fvjD\Gamma v V (,) ^ ffg is a closed set for any ff. Observe that if V is Lipschitz continuous then this definition coincides with that of the classical Dini derivative, that is, lim inft!0+[V (, + tv) \Gamma  V (,)]=t. However, in our results we will not assume that V is Lipschitz, so this simplification is not possible. Notice also that in the Lipschitz case D\Gamma v V (,) is automatically finite, but for a general function V , even if finite-valued, it can perfectly well be the case that D\Gamma v V (,) = +1 or D\Gamma v V (,) = \Gamma 1. Naturally, D\Gamma v V (,) is the usual directional derivative rV (,):v if V is differentiable at ,.
+
+We are now ready to define what it means for a function V to be a clf. Essentially, we want the directional derivative D\Gamma v V (,) in some --,-dependent-- control direction v to be negative for each nonzero state ,. More precisely, we will require D\Gamma v V (,) to be bounded above by a negative function of the state and, in the nonconvex case, we will allow v to belong to the convex closure of the set of control directions.
+
+A function V : X! R*0 is positive definite if V (0) = 0 and V (,) ? 0 for , 6= 0, and proper if V (,) ! 1 as j,j ! 1.
+
+Definition 4.2. A Lyapunov pair for the system (1) is a pair (V; W ) consisting of a continuous, positive definite, proper function V : X! R and a nonnegative continuous function W : X! R, for which there exists a nondecreasing * : R*0 ! R*0 with the property that for each , 2 Xthere is a
+
+v 2 co(f(,; U*(j,j))) such that
+
+D\Gamma v V (,) ^ \Gamma W (,) :(3)
+
+5
+
+Remark 4.3. For the special but very common case when the set of velocities f(,; Uae) is convex for all ae (for example if U is a closed convex subset of Rm and the system (1) is affine in the control), the condition of Definition 4.2 reduces to asking that for each , 6= 0 there be some control value u 2 U*(j,j) such that
+
+D\Gamma f(,;u)V (,) ^ \Gamma W (,) : If in addition V is differentiable at ,, then this amounts to requiring that
+
+min u2U*(j,j)[rV (,)f(,; u)] ^ \Gamma W (,) :
+
+Definition 4.4. A control-Lyapunov function (clf) for the system (1) is a function V : X! Rsuch that there exists a continuous positive definite W : X! R with the property that (V; W ) is a Lyapunov pair for (1).
+
+Our main result is as follows:
+
+Theorem 4.1. A system \Sigma  in S is AC if and only if it admits a clf. 5. A Previous Result with Relaxed Controls. We first recall the standard notion of relaxed control. If ae * 0, a relaxed Uae-valued control is a measurable map u : Iu ! P(Uae), where Iu 2 I and P(Uae) denotes the set of all Borel probability measures on Uae. An ordinary control t 7! u(t) can be regarded as a relaxed control in the usual way, using the embedding of the space Uae into P(Uae) that assigns to each w 2 Uae the Dirac Delta measure at w. For u 2 P(Uae), we write f(x; u) for RU
+
+ae f(x; w) du(w). As for ordinary controls, we also use the notationOE(t; ,; u) for the solution of the initial value problem that obtains from initial state
+
+, and relaxed control u, and we denote
+
+kuk = inffae j u(t) 2 P(Uae) for almost all t 2 Iug : The first ingredient in the proof is the following restatement of the main result in [12].
+
+Fact 5.1. A system \Sigma  of the form (1) is AC if and only if there exist two continuous, positive definite functions V; W : X! R, V proper, and a nondecreasing * : R*0 ! R*0 so that the following property holds: for each , 2 Xthere are a T ? 0 and a relaxed control ! : [0; T ) ! P(U*(j,j)), so that x(t) := OE(t; ,; !) is defined for all 0 ^ t ! T and
+
+V (x(t)) \Gamma  V (,) ^ \Gamma  Z
+
+t
+
+0 W (x(o/ )) do/ for t 2 [0; T ):(4) Proof. If there are such V , W , and *, then for each , we may pick a ! so that (4) holds; this implies the inequality lim inft!0+ t\Gamma 1[V (x(t))\Gamma V (,)] ^ \Gamma W (,), which is the sufficient condition for AC given in [12]. Conversely, if the system is AC, then that reference shows that there exist V , W , and * as above and such that
+
+V (,) = min aeZ
+
+1
+
+0 W (OE(o/; ,; !)) do/ + maxfk!k\Gamma k; 0goe
+
+6
+
+where the minimum is taken over the set of all relaxed controls
+
+! : [0; 1) ! P(U*(j,j)); and k is a constant which arises from the function ` in the definition of AC. (Here we take W (x) = N (jxj), where N : R*0 ! R*0 from [12] is a strictly increasing, continuous function satisfying also N (0) = 0 and limr!+1 N (r) = +1, i.e. a function of class K1. The main point of the proof was to construct an N so that the value function V is continuous and for which optimal controls exist.)
+
+This implies property (4). Indeed, pick , and a minimizing !. Let x(\Delta ) := OE(\Delta ; ,; !) and pick any t * 0. We may consider the new initial state x(t) and the control e! obtained by restricting ! to the interval [t; 1). Then V (x(t)) is bounded above by the cost when using e!, that is,
+
+V (x(t)) ^ Z
+
+1
+
+t W (x(o/ ))do/ + maxfke!k\Gamma k; 0g ^ Z
+
+1
+
+t W (x(o/ ))do/ + maxfk!k\Gamma k; 0g = V (,) \Gamma  Z
+
+t
+
+0 W (x(o/ ))do/: Thus property (4) holds with T = +1.
+
+6. A Previous Result on Differential Inclusions. Next we recall some concepts from set-valued analysis. We consider set-valued maps (or "multifunctions") between two Hausdorff topological spaces X and Y . A map F from X to subsets of Y is upper semicontinuous (abbreviated USC) if for each open subset V ` Y the set fx j F (x) ` V g is open. If U is a compact topological space and f : X \Theta  U ! Y is continuous, then the set valued map F (x) := F (x; U ) =f
+
+f(x; u); u 2 U g is USC (see for instance [2], Prop. 1 in Section 1.2).
+
+We will henceforth use the abbreviations DI and USCMCC for "differential inclusion" and "upper semicontinuous multifunction with compact convex values," respectively.
+
+Let X be a subset of Y = Rn. A solution of the DI .x 2 F (x) is by definition a locally absolutely continuous curve x(\Delta ) : I ! X, where I is an interval, such that .x(t) 2 F (x(t)) for almost all t 2 I.
+
+The second ingredient needed to prove Theorem 4.1 is from the literature on differential inclusions and viability theory. The relevant results are as follows. (We give them in a slightly stronger form than needed, but still not in full generality: in [2], the function "W " is allowed to depend convexly on derivatives .x(t), and in some implications less than continuity of V or W is required.) Theorem 1 in Section 6.3 of [2] shows that 2 implies 1 (with T = 1 if X is closed and F (X) is bounded), and Proposition 2 in Section 6.3 of [2] says that 1)2. (Another good reference is [6]; see in particular Theorem 14.1 there.)
+
+7
+
+Fact 6.1. Let F be an USCMCC from X into subsets of Rn, where X is a locally compact subset of Rn. Assume that V and W are two continuous functions X ! R*0. Let ~V : Rn ! R [ f+1g be such that ~V j V on X, ~V j +1 on RnnX. Then the following properties are equivalent:
+
+1. For each , 2 X there are a T ? 0 and a solution of .x(t) 2 F (x(t)) defined
+
+on [0; T ) with x(0) = , which is monotone with respect to V and W , that is,
+
+V (x(t)) \Gamma  V (x(s)) + Z
+
+t
+
+s W (x(o/ ))do/ ^ 0(5) for all 0 ^ s ^ t ! T . 2. For each , 2 X there is some v 2 F (,) such that D\Gamma v ~V (,) ^ \Gamma W (,). Moreover, if X is closed and F (X) = Sx2X F (x) is bounded, then one can pick T = +1 in 2.
+
+7. Proof of Theorem 4.1. Let \Sigma  be a system of the form (1). Assume that \Sigma  is AC. We apply Fact 5.1, and obtain V , W , and *. Pick , 2 X. Let T , !, x(\Delta ) be as in Fact 5.1. Then
+
+x(t) \Gamma  , = Z
+
+t
+
+0 f(x(s); !(s))ds = Z
+
+t 0 f(,; !(s))ds + o(t) 2 t:co(f(,; U
+
+*(j,j))) + o(t):
+
+So there is a sequence ftjg such that tj ? 0 and tj ! 0, with the property that, if vj = t\Gamma 1j (x(tj) \Gamma  ,), then vj ! v for some v 2 co(f(,; U*(j,j))). On the other hand, (4) implies that
+
+lim inf t\Gamma 1j (V (, + tjvj) \Gamma  V (,)) ^ \Gamma W (,): So D\Gamma v V (,) ^ \Gamma W (,). Therefore (V; W ) is a Lyapunov pair.
+
+Conversely, assume that (V; W ) is a Lyapunov pair with W continuous and positive definite, and let * be as in the definition of Lyapunov pair. For , 2 X, let X, be the sublevel set fx j V (x) ^ V (,)g, and write ^*(,) = *(r(,)), where r(,) = supfjxj : x 2 X,g. Then let ^*(s) = supf~*(,) : j,j ^ sg for s * 0. For x 2 X,, define
+
+F,(x) := co(f(x; U^*(j,j))); and let ~V,(x) = V (x) for x 2 X,, ~V,(x) = +1 for x =2 X,. Then it is clear that F, is an USCMCC. If x 2 X,, then Def. 4.2 implies that there is a v 2 co(f(x; U*(jxj))) such that D\Gamma v V (x) ^ \Gamma W (x). Since jxj ^ r(,), we have *(jxj) ^ ~*(,) ^ ^*(j,j). So v belongs to F,(x). If vj ! v, tj ? 0, tj ! 0, and
+
+1 tj (V (x + tjvj) \Gamma  V (x)) ! w ^ \Gamma W (x) ;
+
+then V (x + tjvj) must be finite for all large j. Therefore V (x + tjvj) = ~V,(x + tjvj) for large j. So D\Gamma v ~V,(x) ^ \Gamma W (x). This shows that Condition 2 of Fact 6.1 holds
+
+8
+
+with X = X,, F = F,, and V, = V jX in the role of V . Fact 6.1 --together with standard measurable selection theorems-- then implies that there is a control ! : [0; +1) ! P(U^*(,)) such that Equation (4) holds with T = +1, x(t) = OE(t; x; !). Since this is true for every ,, we see that the condition of Fact 5.1 holds (with ^* in the role of *), so \Sigma  is AC.
+
+Remark 7.1. The proof actually shows that in the AC case one has trajectories, corresponding to relaxed controls, which are monotone with respect to V and W , and are defined on the entire [0; +1). (Observe that the cost function used in [12] is not additive, because of the term "maxfk!k \Gamma  k; 0g", so the dynamic programming principle does not apply, and hence we cannot conclude that optimal trajectories are monotone. If desired, this situation could be remedied by redefining the optimal control problem as follows: drop the term maxfk!k\Gamma k; 0g but instead add a state-dependent control constraint forcing u(t) to be bounded by `(x(t)).)
+
+8. Comparison with differential inclusions. The purpose of this Section is basically to remark that the necessary and sufficient condition presented here is truly a result about control systems as opposed to about abstract differential inclusions. Notice first that, as explained in Remark 3.2, the systems corresponding to DI's are in S\Lambda , so the concept of asymptotic controllability given by Def. 3.1 makes sense for them. Moreover, there is an obvious definition of clf in this case as well. It is easy to see that it is still true that the existence of a clf implies AC (indeed, the proof of the "if" part of Theorem 4.1 applies in this case as well). We now show that the converse implication can fail, that is, we provide an example of an AC system for which there is no clf. (It is proved in [6] that an AC DI arising from an USCMCC always has a lower semicontinuous "clf." Our definition requires the clf to be continuous.)
+
+We let f : R2 ! R2 be given by f(x; y) = (\Gamma y; x). Let S = R*0 \Theta  f0g. Define an USCMCC F on R2 by letting
+
+F (x; y) = ae ff(x; y)g if (x; y) =2 Sco(ff(x; y); (\Gamma 1; 0)g) if (x; y) 2 S : Then for every p 2 R2 we can construct a trajectory
+
+flp : [0; Tp] ! R2 of the DI ., 2 F (,) such that fl(0) = p, fl(Tp) = 0, and t 7! jflp(t)j is nonincreasing. So our DI is AC. However, there is no continuous function V : R2 ! R such that
+
+inf v2F(,) D
+
+\Gamma  v V (,) ! 0 for all , 6= 0 :
+
+Indeed, let V be such a function. Then D\Gamma f(x;y)V (x; y) ! 0 if (x; y) =2 S. If r ? 0, then Fact 6.1 --with W j 0-- easily implies that the function
+
+[0; 2ss] 3 t 7! hr(t) = V (r cos t; r sin t)
+
+9
+
+is nonincreasing on (0; 2ss). Since V is continuous, and hr(0) = hr(2ss), we conclude that hr is constant. So V is in fact a radial function, i.e. V (,) = ^V (j,j) for some continuous bV : R*0 ! R. Given r ? 0, let , = (0; r), so that f(,) = (\Gamma r; 0), and find wn ! (\Gamma r; 0), hn ! 0+, such that
+
+V (, + hnwn) \Gamma  V (,) ^ \Gamma chn for some c ? 0. Let rn = j, + hnwnj. Then jrn \Gamma  rj = o(hn) as n ! 1. Pick any L ? 0, and define kn = hnL . Write rn = r + knsn. Then sn ! 0, kn ! 0+, andb
+
+V (r + knsn) \Gamma  bV (r) ^ \Gamma cLkn : Therefore D\Gamma 0 bV (r) ^ \Gamma cL. So D\Gamma 0 bV (r) = \Gamma 1. Since this is true for all r ? 0, Fact 6.1 --with W j \Gamma 1-- yields the existence, for each r, of an a ? 0 and a solution ae : [0; a] ! R of .ae = 0, such that ae(0) = r and bV (ae(a)) ! bV (r). Since ae(a) = r, we have reached a contradiction.
+
+REFERENCES [1] Artstein, Z., "Stabilization with relaxed controls," Nonlinear Analysis, Theory, Methods &
+
+Applications 7(1983): 1163-1173. [2] Aubin, J.-P., and A. Cellina, Differential Inclusions: Set-Valued Maps and Viability Theory,
+
+Springer-Verlag, Berlin, 1984. [3] Aubin, J.-P., Viability Theory, Birkh"auser, Boston, 1991. [4] Bacciotti, A., Local Stabilizability of Nonlinear Control Systems, World Scientific, London,
+
+1991. [5] Coron, J.M., L. Praly, and A. Teel, "Feedback stabilization of nonlinear systems: sufficient conditions and Lyapunov and input-output techniques," in Trends in Control: A European Perspective (A. Isidori, Ed.), Springer, London, 1995 (pp. 293-348). [6] Deimling, K., Multivalued Differential Equations, de Gruyter, Berlin, 1992. [7] Krstic, M., I. Kanellakopoulos, and P. Kokotovic, Nonlinear and adaptive control design,
+
+John Wiley & Sons, New York, 1995. [8] Long, Y., and M. M. Bayoumi, "Feedback stabilization: Control Lyapunov functions modeled by neural networks," in Proc. IEEE Conf. Decision and Control, San Antonio, Dec. 1993, IEEE Publications, 1993, pp. 2812-2814. [9] Isidori, A., Nonlinear Control Systems: An Introduction, Springer-Verlag, Berlin, third ed.,
+
+1995. [10] Lafferriere, G. A., "Discontinuous stabilizing feedback using partially defined Lyapunov
+
+functions," in Proc. IEEE Conf. Decision and Control, Lake Buena Vista, Dec. 1994, IEEE Publications, 1994, pp. 3487-3491. [11] Sontag, E.D., Mathematical Control Theory: Deterministic Finite Dimensional Systems,
+
+Springer, New York, 1990. [12] Sontag, E.D., "A Lyapunov-like characterization of asymptotic controllability," SIAM J.
+
+Control & Opt. 21(1983): 462-471. (See also "A characterization of asymptotic controllability," in Dynamical Systems II (A. Bednarek and L. Cesari, eds.), Academic Press, NY, 1982, pp. 645-648.) [13] Sontag, E.D., "A `universal' construction of Artstein's theorem on nonlinear stabilization,"
+
+Systems and Control Letters, 13(1989): 117-123. [14] Sontag, E.D., and H.J. Sussmann, "Non-smooth control-Lyapunov functions," Proc. IEEE
+
+Conf. Decision and Control, New Orleans, Dec. 1995, IEEE Publications, 1995.
+
+10</pre>
+</body>
+</html>

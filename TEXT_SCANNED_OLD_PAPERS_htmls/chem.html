@@ -1,0 +1,2220 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/chem.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/chem.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+           Structure  and  Stability  of  Certain  Chemical  Networks
+
+
+             and  Applications  to  the  Kinetic  Proofreading  Model
+
+
+                         of  T-Cell  Receptor  Signal  Transduction
+
+
+
+                                                  Eduardo D. Sontag
+
+                             Department of Mathematics, Rutgers University
+
+                                             New Brunswick, NJ 08903
+
+                                         sontag@control.rutgers.edu
+
+                                  http://www.math.rutgers.edu/" sontag
+                                                          Abstract
+
+       This paper deals with the theory of structure, stability, robustness, and stabilization for an appealing
+       class of nonlinear systems which arises in the analysis of chemical networks. The results given here
+       extend, but are also heavily based upon, certain previous work by Feinberg, Horn, and Jackson,
+       of which a self-contained and streamlined exposition is included.  The theoretical conclusions are
+       illustrated through an application to the kinetic proofreading model proposed by McKeithan for
+       T-cell receptor signal transduction.
+
+
+Keywords: chemical networks, stability, feedback, system structure, kinetic proofreading, immunology
+1      Introduction
+
+
+This work was originally motivated by the study of the following system of first-order ordinary differential
+equations:
+
+                         C`0   =    k1  T * - P  Ni=0Ci     M *- P  Ni=0Ci     - (k-1,0  + kp,0)  C0
+
+                                ..
+                                .
+                         C`i   =    kp,i-1 Ci-1  - (k-1,i + kp,i)  Ci
+
+                                ..
+                                .
+                         C`N   =    kp,N -1 CN -1  - k-1,N  CN
+
+
+where the subscripted k's, as well as M *and T *, are arbitrary positive constants; the Ci's are nonnegative
+functions of time t, and dots indicate derivatives with respect to t. These equations arise in immunology,
+and describe a possible mechanism, due to McKeithan, cf. [18 ], that may explain the selectivity of T-
+cell interactions (some more details are provided below).  McKeithan analyzed the equilibria of these
+equations, which represent steady-state regimes, mostly under the simplifying assumptions that kp,i   kp
+and k-1,i    k-1  for some fixed kp  and k-1 .  During Carla Wofsy's series of talks [23 ] on the topic, a
+number of questions arose: what can be said about the structure of equilibria? are the equilibria stable?
+Stability is a natural mathematical requirement, with clear biological significance.
+
+     Under the simplifying assumptions mentioned above, it is not difficult to see that there is only one
+equilibrium, whose coordinates depend, of course, on the given constants.  We will see that in fact even
+in the general case of the constants being distinct, there is a unique equilibrium. Far more interestingly,
+however,  we  will  prove  that  the  equilibrium  is  globally  asymptotically  stable:  every  solution,  for  any
+
+
+
+                                                               1
+
+choice of initial (nonnegative) values Ci(0)'s, converges to the unique equilibrium. This conclusion rules
+out, in particular, periodic orbits and, of course, chaotic behaviors, and shows the "determinism" of the
+process described by McKeithan. Moreover, we will also establish the robustness of stability with respect
+to a quantifiable class of perturbations in the dynamics.
+
+     Going further, and approaching now the equations from the point of view of a control theorist, one
+may pose questions of a very different nature as well, questions of design.  The equilibria depend, in
+particular, on the value of the constants T * and M *, which represent total concentrations (of intermedi-
+ate complexes plus T-cell receptors, and intermediates plus peptide-major histocompatibility complex,
+respectively).  If these concentrations are allowed to vary,  and are seen as additional state variables,
+multiple attracting equilibria exist.  So one may ask:  if we are allowed to manipulate some of the vari-
+ables,  can we change the equilibria at will (and preserve stability)?  How many variables need to be
+manipulated? Such questions might eventually impact approaches to therapy and rational drug design.
+We will provide a global feedback stabilization result as an answer.
+
+     As it turns out, the system of interest can be viewed as a very special instance of a very large class
+of nonlinear systems, for which the above-mentioned results can be established in general. In this paper,
+we describe a theory of structure, stability, and stabilization for that general class of systems. Thus, this
+paper can be read totally independently of the above-mentioned motivating example from immunology.
+By providing a general theory, one expects that other applications of the theorems given here will be
+possible.
+
+     The class of systems which we consider is, basically, that of "deficiency zero chemical reaction net-
+works with mass-action kinetics (and one linkage class)" in the language of the beautiful and powerful
+theory developed by Feinberg, Horn, and Jackson, cf. [8 , 9 , 10 , 11 , 15 ]. As a matter of fact, our stability
+(but not the robustness nor the feedback) results are basically contained in that previous work.  The
+existence and uniqueness of equilibria, and local asymptotic stability, are already proved in the papers
+by Feinberg, Horn, and Jackson, and we claim no originality whatsoever in that regard.  And although
+the global stability results may not be readily apparent from a casual reading of that literature,  our
+proofs of them consist basically of a careful repackaging of the discussion found in Feinberg's paper [8 ].
+(One should point out that an alternative approach to global stability, which would apply to a somewhat
+smaller class of systems, could use ideas from [19 ], which, in turn, was based on [22 ].  Also somewhat
+related, but far more restrictive, are the results described in the book [13 ], which apply to systems which
+satisfy a "conservation of energy" constraint.)
+
+     The  reliance  upon  the  Feinberg/Horn/Jackson  theory  notwithstanding,  we  provide  here  a  totally
+self-contained and streamlined exposition even of those results that are known for these systems (deep
+theories for other classes of systems have also been developed by these authors).  We do this in order
+to present things in a terminology and formalism more standard in control and dynamical systems, and
+also because it is not obvious how to put together the necessary pieces from the various sources in a way
+that allows us to refer to them efficiently.  In any case, it is our hope that this exposition will serve to
+make a wider audience in the dynamical systems and control theory communities aware of their work.
+
+     In addition to the stability results, we also prove a robustness and a feedback stabilization result,
+and we show the existence of a global change of coordinates, which brings the systems in question into
+a canonical form which exhibits a particularly elegant structure.  We develop a formalism, and present
+explicit estimates for stability margins, with a view towards further theoretical developments.  Indeed,
+in a recent follow-up joint paper [5 ] with Madalena Chaves, we have been able to derive, using these
+techniques,  various input-to-state stability results and,  in particular,  a design of globally convergent
+Luenberger-like observers for systems of the type studied here.
+
+     There is an extensive literature regarding applications of control theory to chemical engineering, and,
+in particular, to bioreactors.  Among many references, one may mention the textbook [2 ] and the more
+recent survey articles [4 ] and [1 ], and the references given there, as well as the well-known theory of
+compartmental systems (see e.g. [17 ]). More specifically, results based on Feinberg-Horn-Jackson theory
+have appeared in the control literature, see [7 ]. Other reactor biocontrol work deals with reachability and
+controllability issues, see for instance [3 ].  A preliminary version of this paper was posted electronically
+in [21 ].
+
+
+
+                                                               2
+
+     The organization of this paper is as follows. In the rest of this Introduction, we motivate the formalism
+and results to follow by reviewing some basic facts concerning chemical reaction networks and working
+through an example. This section can be skipped with no loss of continuity by readers interested in the
+mathematical developments.  The paper starts in Section 2, where we introduce the class of dynamical
+systems being studied, and the main theorems are also stated. In Section 3, we specialize to McKeithan's
+system, interpreting the results in that special case. Section 4 discusses some basic coordinatization facts,
+as well as some useful alternative system descriptions.  Section 5 deals with the main proofs regarding
+interior equilibria, Section 6 with boundary equilibria, Section 7 with technical invariance results, and,
+finally, Section 8 with the proofs of the stability theorems.
+
+
+
+Acknowledgments
+
+
+The author wishes to express great thanks to Carla Wofsy for a fascinating series of lectures, to Leah
+Keshet for organizing a superb workshop, and most especially to Marty Feinberg for making available
+reprints of his work and for very enlightening e-mail discussions.
+
+
+
+1.1      Chemical  Networks
+
+
+Let us motivate the formalism and results to follow by reviewing some basic facts concerning chemical
+reaction networks. We will restrict attention to "mass action kinetics"; however, it is important to remark
+that variations such as Michaelis-Menten reactions, obtained through singular perturbation analysis when
+starting from mass-action models, are routinely used to model many enzymatic reactions in biology.
+
+     In chemical network studies, one analyzes systems of differential equations which describe the time-
+evolution of the concentrations x1 (t), . .,.xn (t) of n given "chemical species" P1 , . .,.Pn ; the Pi's might
+denote anything from small molecules to large complexes. The equations are derived from a consideration
+of the reactions that are known to occur among the substances Pi, perhaps helped by other molecules
+which are not explicitly considered in the equations (such as catalysts or energy sources).
+
+     As an extremely simple illustration, suppose that each molecule of a certain species P1 can react with
+one molecule of P2 to produce a molecule of P3 , and that, conversely, each molecule of P3 may dissociate
+(through a different process, typically with different time constants), into P1 and P2 .  This is indicated
+graphically by
+                                        P1 + P2  !  P3   and    P3  !  P1 + P2 ,
+
+or just by
+                                                      P1 + P2     P3 .
+
+An example of this reaction is provided by the synthesis of ethyl tert-butyl ether (P3 = C6 H14 O) from
+isobutene (P1 = C4 H8 ) and ethanol (P2 = C2 H6 O). For studies of the ethyl tert-butyl ether reaction in
+the control theory literature, see [7 ], and [12 ]. Assuming that the reactor is well-mixed, particle-collision
+theories or quantum-mechanical potential energy methods are often used to justify the statement that
+the probability of such a reaction occurring, in a small time interval around time t, is proportional to
+the product x1 (t)x2 (t) of the concentrations at time t, and to the length of the interval, that is to say,
+to the probability of two molecules in this bimolecular reaction colliding by virtue of being "in the same
+place at the same time".  Since we gain a single molecule of P3  for each such reaction, we arrive at a
+formula for the rate of increase of the concentration of P3 due to the first reaction P1 + P2 ! P3 :
+
+
+                                                        `x3= k1 x1 x2 .                                                     (1)
+
+
+In addition, as one molecule of P1 and P2 each are eliminated at the same rate, we also have the following
+two differential equations:
+                                            x`1 = -k1 x1 x2 ,  x`2 = -k1 x1 x2 .                                            (2)
+
+Here, k1  is a suitable constant of proportionality, the "reaction rate constant", which is often taken to
+be (Arrhenius law) proportional to the Boltzmann factor e-E=RT    and T  is the temperature.  One also
+
+
+
+                                                               3
+
+writes graphically:
+
+                                                       P1 + P2 !k  P3 .
+
+We also assumed for our example that there is a dissociation reaction, that is,
+
+
+                                                       P3 !k  P1 + P2
+
+
+where k2 is another rate constant, and this reaction is also modeled by rate equations: P3 decays at a rate
+proportional to its concentration, x`3 = -k2 x3 , and each of x1  and x2  grow at this rate.  Incorporating
+these into the previous equations gives the final set of differential equations:
+
+
+                      `x1= -k1 x1 x2 + k2 x3 ,  x`2 = -k1 x1 x2 + k2 x3 ,  x`3 = k1 x1 x2 - k2 x3 ,                         (3)
+
+
+which describe the evolution of all the concentrations xi(t).
+
+     A  very  convenient  and  systematic  formalism  to  describe  the  complete  system  of  equations  is  as
+follows.  The entire reaction is represented by a graph, whose nodes are the "complexes" which appear
+in the reactions, such as P1 + P2  and P3  in the example given above, and whose edges are labeled by
+the reaction rate constants.  So, in the example shown above, there is an edge labeled k1  (where k1  is
+an actual positive number) starting at the node in the graph corresponding to P1 + P2 , and pointing
+to the node corresponding to P3 , and there is likewise an edge labeled k2  from the second node to the
+first.  We associate to this graph its 2 x 2 incidence (connectivity) matrix matrix A = {aij}, listing all
+the edge labels (for instance, a21 = k1 , to indicate a reaction with rate constant k1 , from the first node
+to the second node).  More generally, the size of A is m x m, if there are a total of m complexes.  One
+of the hypotheses to be made is that the matrix A is irreducible, meaning that the graph is strongly
+connected, that is, there is some path, typically through several stages of intermediate reactions, linking
+any two given complexes (in fact, results hold under a weaker, block-irreducibility, property). Next, one
+introduces a set of column n-vectors b1 , . .,.bm , one for each complex (in our simple example, m = 2).
+This is done by specifying the contributions from each type of molecule. For example, P1 + P2 gives rise
+to the vector b1 = (1, 1, 0)0, and P3 to the vector b2 = (0, 0, 1)0.
+
+     The "mass action" dynamics are then summarized by the system
+
+                                             Xm  Xm
+                                       `x =            aij xb1j1xb2j2. . .xbnjn(bi - bj)                                    (4)
+                                             i=1 j=1
+
+(where each b` 2 Rn  has entries b1`, . .,.bn` ), which the reader may easily verify reduces to (3) in the
+above example, for which                                      0    1         0    1
+                                         `          '            1              0
+
+                                     A =    0k   k2    , b1 = @  1 A  , b2 = @  0 A  .
+                                              1   0              0              1
+
+
+Note that, for instance, the term corresponding to i = 2 and j = 1 in the summation in (4) gives us
+                                                                     0             1
+                                                                        -k1 x1 x2
+                                          k1 x01x12x13(b2 - b1 )  =  @  -k1 x1 x2  A
+                                                                         k1 x1 x2
+
+
+which provides precisely the contributions to x`1, x`2, and x`3 represented by (1) and (2).  (Higher-order
+polynomial equations may result as well.  For example, suppose that each molecule of species P1  can
+react with four molecules of P2 to produce two molecules of P3 , that is, P1 + 4P2 ! 2P3 . This would give
+us equations x`1 = -kx1 x42, x`2 = -4kx1 x42, and x`3 = 2kx1 x42, and the vectors b1  and b2  would become
+b1 = (1, 4, 0)0, b2 = (0, 0, 2)0.)
+
+     A fundamental role is played by the linear subspace D of Rn  which is spanned by all the differences
+bi - bj.  This is the stoichiometric subspace associated to the reaction, and each intersection between
+a parallel translate of D and the positive orthant is called a class, or more properly a stoichiometric
+compatibility class ("stoicheion" = (Gk.)  element).  The significance of classes is that,  since x` 2 D,
+
+
+
+                                                               4
+
+trajectories remain in classes,  that is,  classes are positive-time invariant manifolds for the dynamical
+system.  (The positive orthant is itself forward invariant, as is easily shown.)  In the example discussed
+above, D is the line spanned by b1 -b2 = (1, 1, -1)0. This line can also be described as the set of solutions
+of x1 + x3 = x2 + x3 = 0, so each class is given by the positive points in {x1 + x3 = c1 , x2 + x3 = c2 },
+for different constants c1  and c2 .  Of course,  it is clear from the equations (3) that d(x1 + x3 )=dt =
+d(x2 + x3 )=dt   0 along solutions.
+
+     One of the basic facts about the systems studied here is that there is a unique equilibrium in each
+class,  and,  under  mild  conditions,  this  equilibrium  is  globally  asymptotically  stable  with  respect  to
+positive initial conditions.  Continuing with the above example, the set of possible equilibria consists of
+the points in the hyperbolic paraboloid k2 x3 - k1 x1 x2 = 0.  Let's now take for simplicity k1 = k2 = 1
+and analyze the stability of the equilibrium x0 = (1, 1, 1)0.  As the ray (1, 1, 1)0 + ~(1, 1, -1) is forward
+invariant, where ~ ranges over the interval (-1, 1) (the intersection of the corresponding line and the
+positive  orthant),  we  may  parameterize  motions  by  ~.   One  obtains  the  scalar  differential  equation
+~` = -3~ - ~2 , which has, as claimed, the point ~ = 0 as an asymptotically stable state with a basin of
+
+attraction which includes all of (-1, 1).
+
+     If we start at a point which is not in the above line, the equilibrium approached will not be x0 .  If
+this equilibrium x0 is desirable, we may want to design a feedback law to drive the solutions from every
+other (positive orthant) initial state into x0 .  Suppose that we can control the inflows and outflows of,
+let us say, P1 and P3 . This situation is represented by the following control system:
+
+
+                       x`1 = -x1 x2 + x3 + u1 ,  x`2 = -x1 x2 + x3 ,  x`3 = x1 x2 - x3 + u2 .
+
+
+Stabilization of x0  = (1, 1, 1)0 can be achieved for instance by a simple feedback linearization, taking
+u1 := x1 x2 - x3 - x1 + 1 and u2 := -x1 x2 + 1. Then, x1 (t) ! 1 and x3 (t) ! 1 as t ! 1, and thus, by
+a cascade argument, we see that also x2 (t) ! 1 as t ! 1, as wanted.  We will provide a general result
+on stabilization (but using linear feedback), as well as results on robustness of stability and on global
+decompositions of dynamics, for systems (4). These results will be illustrated again for the above simple
+example, now viewed as a particular case of McKeithan's system, in Section 3.
+2      Definitions  and  Statements  of  Main  Results
+
+
+Some standard notations to be used are:
+
+
+     o R 0  (resp., R+ ) = nonnegative (resp., positive) real numbers
+
+     o Rn+ (resp., Rmxm+  ) = n-column vectors (resp., m x m matrices) with entries on R+ ; similarly for
+       R 0
+
+     o Rn0 = boundary of Rn 0, set of vectors x 2 Rn 0 such that xi = 0 for at least one i 2 {1, . .,.n}
+
+     o x0 = transpose of vector or matrix x
+
+     o |x| = Euclidean norm of vector in Rn
+
+     o <x, z> = x0z, inner product of two vectors
+
+     o D?  = {x | <x, z> = 0 8 z 2 D}.
+
+
+Although we develop the theory for a somewhat wider class of systems, we wish to emphasize that all
+the results to be given are valid, in particular, for the following general class of systems evolving on Rn 0:
+
+                                             Xm  Xm
+                                       `x =            aij xb1j1xb2j2. . .xbnjn(bi - bj)
+                                             i=1 j=1
+                                                               5
+
+(and, as appropriate, for those systems obtained by adding control inputs, as discussed below).  Each
+column vector b` 2 Rn  has entries b1`, . .,.bn` , which are nonnegative integers, and the aij's are non-
+negative numbers. The systems defined in this fashion are described by polynomial dynamics. The only
+assumptions required in order for the results to hold are that the b`'s be linearly independent and that
+the m x m matrix A = (aij) must be irreducible.  Recall that this means that (I + A)m-1   2 Rmxm+
+or, equivalently, that the incidence graph G(A) is strongly connected (where G(A) is the graph whose
+nodes are the integers {1, . .,.m} and for which there is an edge j ! i, i 6= j, if and only if aij > 0).
+This assumption amounts to a "weak reversibility" property in the application to chemical reactors, as
+discussed briefly in Section 3, and is crucial to the validity of the results.
+
+     We  now  describe  the  underlying  dynamics  of  the  systems  to  be  studied,  and  leave  for  later  the
+introduction of additional terms in order to model the possibility of control actions.  Our systems are
+parametrized by two matrices A and B with nonnegative entries, as well as a nonnegative function `,
+and have the following general form:
+
+                                          Xm  Xm
+                          x` =  f (x)  =           aij `(x1 )b1j`(x2 )b2j . . .`(xn )bnj (bi - bj)                          (5)
+                                          i=1 j=1
+
+where  b`  denotes  the  `-th  column  of  B  (notice  that  the  diagonal  entries  of  A  are  irrelevant,  since
+bi - bi = 0).  Several restrictions on A, B, and ` are imposed below.  The powers are interpreted as
+follows, for any r, c   0: r0 = 1, 0c = 0 if c > 0, and rc = ec lnr if r > 0 and c > 0.
+
+     The  main  motivating  example,  arising  from  mass-action  kinetics  in  chemistry,  is  obtained  when
+`(y) = |y| and B is a matrix whose entries are nonnegative integers (so, for nonnegative vectors x, we
+have polynomial equations).  This is the case mentioned in the first paragraph, and will be referred to
+as the "standard setup" in this paper.
+
+     The hypotheses on `, A, and B are as follows. The map
+
+
+                                                      `  :  R ! [0, 1)
+
+                                                  R 1
+is locally Lipschitz,  has `(0)  =  0,  satisfies   0 |ln `(y)| dy  <  1,  and its restriction to R 0   is strictly
+increasing and onto. We suppose that
+
+
+                                          A  =  (aij) 2 Rmxm 0    is irreducible                                            (6)
+
+
+and, for B, that:
+                                           each entry of    B is either  0 or    1                                          (7)
+
+(this last hypothesis insures that f (x) in (5) is a locally Lipschitz vector field, so we have uniqueness of
+solutions for the differential equation),
+
+
+                                       B  =  (b1 , . .,.bm )2 Rnxm 0   has rank    m                                        (8)
+
+
+(so, its columns bi are linearly independent), and
+
+
+                                                  no row of    B vanishes.                                                  (9)
+
+
+This last hypothesis is made mainly for convenience. Observe that if some row, let us say the k-th one,
+were zero, then the same dynamics would be obtained if all entries in row k are replaced by "1" (since
+the differences bki - bkj  are still zero) and one restricts the dynamics to those states satisfying xk    c,
+where c is the positive number such that `(c) = 1.
+
+     From now on, we assume that all systems (5) considered satisfy the above assumptions.
+
+     Our study will focus on those solutions of (5) which evolve in the nonnegative orthant Rn 0.  Recall
+that a subset S   Rn  is said to be forward invariant with respect to the differential equation x` = f (x)
+provided that each solution x(.) with x(0) 2 S has the property that x(t) 2 S for all positive t in the
+domain of definition of x(.). We show in Section 7 that the nonnegative and positive orthants are forward
+invariant:
+
+
+
+                                                               6
+
+Lemma 2.1        Both Rn 0 and Rn+ are forward-invariant sets with respect to the system (5).
+
+
+     (These properties are simple consequences of the fact that, because of the assumptions made, the
+k-th component of a solution of (5) will satisfy x`k(t)   0 whenever xk (t) = 0.)  We will also show in
+Section 8.2.4 that there are no finite explosion times:
+
+
+Lemma 2.2        For each ,  2 Rn 0 there is a (unique) solution x(.) of (5) with x(0) = ,, defined for all
+t   0.
+
+
+     In order to state concisely the main results for systems (5), we need to introduce a few additional
+objects. The subspace
+
+
+                            D :=  span  { bi - bj, i 6= j}  =  span  { b1 - b2 , . .,.b1 - bm }                           (10)
+
+
+can be seen as a distribution in the tangent space of Rn ; it has dimension m - 1 because adding b1  to
+the last-shown generating set gives the column space of the rank-m matrix B.  For each vector p 2 Rn ,
+we may also consider the parallel translate of D that passes through p, i.e.  p + D = {p + d, d 2 D}.  A
+set S which arises as an intersection of such an affine subspace with the nonnegative orthant:
+
+                                                                   "
+                                                   S  =  (p + D)      Rn 0
+
+
+(for some p, without loss of generality in Rn 0) will be referred to as a class.  If S intersects the positive
+orthant Rn+, we say that S is a positive class.  The significance of classes is given by the fact that any
+solution x(.) of (5) must satisfy
+
+                                           Z  t                Xm  Xm
+                           x(t) - x(0)  =      f (x(s)) ds  =           ~(t) (bi - bj)  2 D ,                             (11)
+                                            0                  i=1 j=1
+
+             R t
+where ~(t) =  0 aij`(x1 (s))b1j`(x2 (s))b2j . . .`(xn (s))bnj ds, so x(t) 2 x(0) + D for all t. In particular:
+
+
+Lemma 2.3        Each class is forward invariant for (5).                                                             2
+
+
+     The  introduction  of  control  action,  through  additional  feedback  loops,  may  be  used  in  order  to
+overcome the constraints imposed by (11).  In order to formulate our control-theoretic results, we will
+suppose that r external inputs u` can be used to independently influence each of ` state coordinates,
+In  other  words,  we  will  also  consider  the  following  control  system  associated  to  the  basic  open-loop
+model (5):
+                                                                X r
+                                                  `x =  f (x) +      u` ek`                                               (12)
+                                                                `=1
+
+(f  is as in (5)), where r is a positive integer, e1 , . .,.en  are the n canonical basis vectors in Rn , and
+k1 , . .,.kr are r distinct elements of {1, . .,.n}.
+
+     Of  course,  inputs  might  influence  the  system  in  manners  other  than  through  independent  action
+on some coordinates, which represent what are sometimes (especially in compartmental models) called
+inflow-controlled systems, see [1 ].  Bilinear control action, for instance, is arguably more interesting in
+reaction systems.  We will only study the above class of control systems,  but research is ongoing on
+generalizations to other formulations.
+
+     We will first state the main results for autonomous systems (5), and later we state a stabilization
+result for (12).
+
+     We denote by E (respectively, E+  or E0 ) the set of nonnegative (respectively, positive or boundary)
+equilibria of (5), i.e. the set of states x~ 2 Rn 0 (respectively, 2 Rn+ or 2 Rn0), such that f (~x) = 0.  Of
+course, E is the disjoint union of E+  and E0 .
+
+
+
+                                                               7
+
+Theorem 1        Consider any system (5), under the stated assumptions.  For every maximal solution of (5)
+with x(0) 2 Rn 0, it holds that x(t) ! E as t ! +1.
+
+
+     This will be proved in Section 8.2.2.  The invariance of classes (which are contained in subspaces of
+dimension m - 1 < n) precludes asymptotic stability of equilibria of (5).  The appropriate concept is
+that of asymptotic stability relative to a class. We say that an equilibrium ~x2 S is asymptotically stable
+relative to a class S if it is (a) stable relative to S (for each " > 0, there is some ffi > 0 such that, for all
+solutions x(.), |x(0) - ~x|  < ffi and x(0) 2 S imply |x(t) - ~x|  < " for all t   0) and (b) locally attractive
+relative to S  (for some " > 0,  if |x(0) - ~x|  < " and x(0) 2 S  then x(t) ! x~ as t ! +1).  We say
+that ~x 2 S is globally asymptotically stable relative to a class S if it is stable relative to S and globally
+attractive relative to S (x(t) ! ~x for all solutions with x(0) 2 S).  The main results are as follows; the
+first part is shown in Section 5.1, and the remaining two in Section 8.
+
+
+Theorem 2        Consider any system (5), under the stated assumptions.  Fix any positive class S.
+
+                                             T
+    a. There is a unique equilibrium ~xS 2 S    E+ .
+
+    b. The equilibrium ~xS is asymptotically stable relative to S.
+                                                                                            T
+    c. The equilibrium ~xS is globally asymptotically stable relative to S if and only if S    E0 = ;.
+
+
+Example 2.4        The following two trivial examples may help in understanding the above theorems.  In
+both cases we take n = m = 2 and `(y) = |y|. The first example has
+
+                                                 `       '           `       '
+
+                                           A  =    01   10  ,  B  =    11   21  .
+
+
+
+The system (5) is (for nonnegative states):
+
+
+                                                   `x1  =    (x1 - 1)x1 x2
+
+                                                   `x2  =    0
+
+
+and thus E0  = R20 = {x | x1 x2  = 0} and E+  = {x | x1  = 1, x2  > 0}.  The positive classes are the sets
+S = Sr = {x | x1   0, x2 = r}, for each r > 0, and for each such S = Sr, ~xS = (1, r)0 is asymptotically
+
+
+                                    |         |                      |
+                                    |         |                      |
+                                    |         |                      |
+                                    |         |                    r |
+                                    | Sr      |~x      Sr            |@  Sr
+                                  r |_________|-____________oe       |  @
+                                    |         |                      |    @R~x
+                                    |         |                      |
+                                    |         |                      |       @I   Sr
+                                    |         |                      |         @
+                                    |_______________________|        |_______________________@
+                                              1                                     r
+
+                       Figure 1: Equilibria for example 2.4, dark lines indicate equilibria
+
+
+
+stable  with  domain  of  attraction  {x | x1  >  0, x2  =  r}.   See  Figure  1.   Each  class  Sr  has  a  second
+equilibrium (0, r)0, but this second equilibrium is in the boundary, so there is no contradiction with part
+a of Theorem 2.  Regarding Theorem 1, observe that every trajectory either converges to an interior
+equilibrium (1, r)0 or it is itself a trajectory consisting of an equilibrium (and hence also converges to E,
+in a trivial sense).
+
+     The second example has                      `       '           `       '
+
+                                           A  =    01   10  ,  B  =    10   01  .
+                                                               8
+
+We now have (for nonnegative states) the following linear system:
+
+
+                                                      `x1   =    x2 - x1
+
+                                                      `x2   =    x1 - x2
+
+
+and thus E0 = {0} and E+  = {x | x1 = x2 > 0}.  The positive classes contain no boundary equilibria;
+they are the sets S = Sr = {x 2 R2 0 | x1 - x2 = r}, for each r > 0 (see Figure 1). For each such S = Sr,
+x~S = (r, r)0 is globally asymptotically stable.                                                                      2
+
+
+
+Feedback stabilization
+
+
+The invariance of classes precludes the existence of global (not merely relative to a class) attractors for
+the uncontrolled system (5).  Now suppose that we wish to find a feedback law which forces all the
+solutions  of  the  closed-loop  system  obtained  from  the  controlled  system  (12)  under  this  feedback  to
+converge, as t ! +1, to a specific equilibrium ~x 2 Rn+. It turns out that the obvious negative feedback
+solution, namely to use inputs proportional to the errors ~xk- xk , achieves the goal of global stabilization
+to ~x, provided that enough inputs are used (r   n - m + 1, which is obviously necessary, since solutions
+of (12) evolve in linear subspaces of dimension m - 1 + r) and that the k`'s are appropriately chosen.
+We next state a result in that regard. For each j 2 {1, . .,.m} we consider the set
+
+
+                                                    Sj  :=  {k | bkj > 0}                                                 (13)
+
+
+which is nonempty, by (8).
+
+
+Theorem 3        Let r = n - m + 1, and suppose that fl1 , . .,.flr  are arbitrary positive real numbers, and
+k1 , . .,.kr 2 {1, . .,.n} are such that
+
+
+                                            D + span   {ek1 , . .,.ekr } =  Rn                                            (14)
+
+
+and
+                                                     Sj    { k1 , . .,.kr}                                                (15)
+
+for some j 2 {1, . .,.m}.  Pick any equilibrium ~x 2 E+ .  Then, all maximal solutions of
+
+                                                         X r
+                                          x`  =  f (x) +      fl` (~xk`- xk` )  ek`                                       (16)
+                                                         `=1
+
+with x(0) 2 Rn 0 are defined for all t   0 and remain in Rn 0, and x~ is a globally asymptotically stable
+equilibrium of (16).
+
+
+     The invariance statement is proved in Section 7.  The global stability statement is proved in Sec-
+tion 8.2.1.
+
+     To study the closed-loop system (16), and also to be able to formulate a result concerning robustness
+of the stability properties described by Theorems 1 and 2, we will study "positive perturbations" of the
+basic uncontrolled system model (5). These are described by equations as follows:
+
+
+                                               x` =  f *(x)  =  f (x) + g(x)                                              (17)
+
+
+where f is as in (5) (and all the stated assumptions hold), and g is a locally Lipschitz vector field on Rn
+for which the following property holds:
+                                       n
+                                8 x 2 R 0     (8 k 2 {1, . .,.n})     [xk = 0  )  gk (x)   0]                             (18)
+
+
+where gk (x) denotes the k-th coordinate of g(x).  Property (18) is the most natural assumption which
+guarantees the forward-invariance of Rn 0 (since it will imply that x`k(t)   0 whenever xk (t) = 0).  Of
+course, any results established for arbitrary systems (17) will be also true for systems (5) (take g   0).
+
+
+
+                                                               9
+
+     The feedback system (16) is of this type. To see that (18) holds, note that either gk (x) = fl`(~xk`-xk` )
+(if k = some k`) or gk (x) = 0, and, in the first case, xk  = 0 implies gk (x) = fl`x~k` > 0.  Moreover, it
+satisfies the following strengthening of (18):
+
+                                                       n
+                        (9 j 2 {1, . .,.m})     8 x 2 R 0     (8 k 2 Sj)    [xk = 0  )  gk (x) > 0]                       (19)
+
+
+(note the strict inequality, in contrast to (18)).  Indeed, pick j as in (15), k 2 Sj, and x so that xk = 0.
+Then, for each k 2 Sj, property (15) guarantees that gk (x) = fl`x~k` > 0.
+
+
+
+Robustness
+
+
+A different specialization of the general form (17) allows the study of robustness with respect to pertur-
+bations which preserve classes.  The corresponding systems are obtained by adding vector fields which
+lie pointwise in the span of the bi - bj's.  We suppose given a collection of locally Lipschitz functions
+ ij : Rn  ! R 0  (i, j 2 {1, . .,.m}) such that
+
+                                                       n
+                      (8 i, j 2 {1, . .,.m})    8 x 2 R 0      (8 k 2 Sj)    [xk = 0  )   ij(x) = 0]                      (20)
+
+
+and, using these, define the system:
+
+                                                      Xm   Xm
+                                        x` =  f (x) +            ij(x) (bi - bj)  .                                       (21)
+                                                       i=1 j=1
+
+
+Observe that property (20) impliesPthatPthis system is of the general type (17). Indeed, the only possible
+negative signs for gk (x) =         ij(x)(bki - bkj ) can arise from the terms of the form  ij(x)bkj  with
+bkj  6= 0 (i.e. k  2 Sj), but these vanish, because of (20), when xk  = 0.  Of course, systems (5) are a
+subclass of (21) (take all  ij   0). The main robustness result will be as follows.
+
+                                                                                                   T
+Theorem 4        For  each  positive  class  S  there  exists  a  continuous  function  ffiS  :  S    Rn+ !  R 0 ,  with
+ffiS (x) > 0 if and only if x 6= ~xS, such that, for any collection { ij} such that
+
+                                                Xm   Xm
+                                                           ij(x)2     ffiS (x)                                            (22)
+                                                 i=1 j=1
+              T
+for all x 2 S    Rn+, the following properties hold for the system (21):
+
+
+    1. Both Rn 0 and Rn+, and the class S, are forward-invariant.
+
+    2. For each , 2 S there is a (unique) solution x(.) with x(0) = ,, defined for all t   0.
+
+    3. The equilibrium ~xS is asymptotically stable relative to S.
+                                                                                            T
+    4. The equilibrium ~xS is globally asymptotically stable relative to S if and only if S    E0 = ;.
+
+
+     In other words, the claim is that the conclusions previously stated for systems (5) are preserved by
+perturbations, as long as the magnitude constraint (22) is satisfied. The result is not in itself surprising;
+the main interest is in its proof, which will be largely constructive, offering an explicit formula for the
+function ffiS  and, moreover, the fact that ffiS  will depend nicely on the class S  (in a sense that will be
+clear).  The invariance of S  is clear from the form (21), and the (also easy) invariance of orthants is
+proved in Section 7. Parts 2-4 are proved in Section 8.2.3.
+
+
+
+                                                              10
+
+Regularity
+
+
+For all results to be stated next, we suppose a fixed system (5) has been given.
+
+     We say that a function defined on an open subset of Rn  is of class Ck ,  k  = 1, 2, . .,.1, !  if it is
+k-times continuously differentiable (for k = 1, . .,.1) or real-analytic (for k = !).  We will refer to the
+following hypothesis, for each such k:
+
+
+                     (Hk )      ` restricted to R+  is of class Ck , and `0(y) > 0 for all y > 0.
+
+
+Obviously, this hypothesis is satisfied with k = ! when ` is the identity map for y > 0, as is the case in
+the standard setup leading to polynomial systems.
+
+     We will show, in Section 5.2:
+
+
+Theorem 5        If hypothesis (Hk ) holds, then E+  is an embedded submanifold of Rn+, Ck -diffeomorphic to
+Rn-m+1   .
+
+
+     Observe that, in the standard setup, f is a polynomial vector field, so E+  = {x 2 Rn+ | f (x) = 0} and
+hence is an algebraic subset.
+
+     Theorem 2 states that there is a unique interior equilibrium ~xin each positive class. This equilibrium
+depends nicely (smoothly, analytically) on the class, provided that ` be regular enough. In order to make
+this statement precise, we introduce the map ss : Rn+ ! Rn+ which assigns, to each x 2 Rn+, the unique
+interior equilibrium ~xS in the class S which contains x. The next result is proved in Section 5.1.
+
+
+Theorem 6        If hypothesis (Hk ) holds, then ss is of class Ck .
+
+
+     Note that, once that we know that E+  an embedded submanifold, there is no ambiguity in the above
+statement: if we view ss as a map ss : Rn+ ! E+ , it is also of class Ck .
+
+     The following open subset of Rn :
+                                                       R :=  Rn+ + D                                                      (23)
+
+is the union of all those parallel translates of D which intersect the positive orthant.  It includes all
+positive classes.  Assuming again hypothesis (Hk ), it turns out that one may always find a change of
+variables which transforms R onto Rn , and in particular E+  onto the set {(X1 , X2 ) | X1 = 0} and positive
+classes into subsets of sets of the form {(X1 , X2 ) | X2 = c} for constants c, and transforms the dynamics
+on R into the following form:
+
+                                                   X`1    =    F1 (X1 , X2 )
+
+                                                   X`2    =    0
+
+
+where X1 and X2 represent blocks of variables according to the decomposition Rn  = Rm-1   x Rn-m+1   .
+Since points of E+  are equilibria, this implies that F1 (0, X2 )   0. To be precise, we prove in Section 5.3:
+
+
+Theorem 7        Assume  that  hypothesis  (Hk )  holds.   Then,  there  exists  a  Ck  diffeomorphism     :  R  !
+Rm-1   x Rn-m+1    such that, denoting
+
+
+                                           F (X)  =   * ( -1 (X))f ( -1 (X))
+
+
+and writing F = (F1 , F2 ) and   = ( 1 ,  2 ) in block form,
+
+
+    1. x - z 2 D if and only if  2 (x) =  2 (z),
+
+    2.  1 (x) = 0 if and only if x 2 E+ , and hence F (0, X2 ) = 0 for all X2 , and
+                                                              11
+
+    3. F2 (X) = 0 for all X.
+
+
+     The preceding results provide steps in proving this one, but conversely, Theorem 7 implies Theorem 5,
+since  E+  is  transformed  into  a  coordinate  space.   In  fact,  it  also  establishes  that  E+  transversally
+intersects each class S.  Also Theorem 7 implies Theorem 6, since the map that selects the element in
+E+  in the same class as a given point amounts to a coordinate projection, let us call it ess, onto the last
+n - m + 1 variables under the change of variables given by  , Moreover, let O be the set of nonnegative
+points that are not boundary equilibria of (5), that is, O = Rn 0 \ E0 . We will prove (Corollary 7.7) that
+each x 2 O belongs to some positive class; thus, the mapping ss extends to O.  Since R includes every
+positive class, it includes O, and the extension of ss to O transforms into the restriction of essto  (O).
+Thus, we have the following consequence of Theorem 7:
+
+
+Corollary 2.5       If hypothesis (Hk ) holds, then the extension of ss to O is also of class Ck .                2
+3      Mass-Action  Kinetics,  and  McKeithan's  System
+
+
+As mentioned in the Introduction,  the results explained in Theorems 1 and 2 are basically theorems
+for  what  are  called  mass-action  networks  of  zero  deficiency,  and  are  given  (implicitly  in  the  case  of
+global stability) in [8 , 9 , 10 , 11 , 15 ].  (There is one global stability result stated explicitly in the above
+papers,  namely  in  [15 ].   The  statement  would  be  that  every  trajectory  which  starts  in  the  positive
+orthant must converge to the interior equilibrium in the corresponding class.  However, this question is
+still open, since the suggested proof used the implication that if a positive definite function V  of states
+has a negative derivative along trajectories while away from an equilibrium, then global stability of the
+equilibrium follows. This implication is, in general, false, without the assumption of some sort of radial
+unboundedness, a property which definitely does not hold in the context in which it is being applied;
+see [16 ] for a retraction of that proof.)
+
+     The assumptions of irreducibility of A and full rank of B (both of which may be relaxed somewhat,
+cf. Remark 5.4) are key ones.  They serve to rule out periodic (or even chaotic) behaviors which may
+otherwise arise in chemical networks such as the Belousov-Zhabotinsky reaction or Prigogine-Lefever's
+"Brusselator" (for which see e.g. [6 ]).
+
+
+
+3.1      Kinetic  Proofreading  in  T-Cell  Signaling
+
+
+The equations with which we started represent the dynamics of the "kinetic proofreading" model pro-
+posed by McKeithan in [18 ] in order to describe how a chain of modifications of the T-cell receptor
+complex, via tyrosine phosphorylation and other reactions, may give rise to both increased sensitivity
+and selectivity of response. Let us introduce two additional variables T (t) and M (t), which represent the
+concentrations of T-cell receptor (TCR) and a peptide-major histocompatibility complex (MHC). The
+constant k1  is the association rate constant for the reaction which produces an initial ligand-receptor
+complex C0 from TCR's and MHC's. The quantities Ci(t) represent concentrations of various intermedi-
+ate complexes, and McKeithan postulates that recognition signals are determined by the concentrations
+of the final complex CN . The constants kp,i are the rate constants for each of the steps of phosphorylation
+or other intermediate modifications, and the constants k-1,i  are dissociation rates.
+
+     Global stability of a unique equilibrium will be deduced from Part c in Theorem 2 when we view the
+equations as those of an appropriate system (5) restricted to a suitable class (which is determined by
+the constants M * and T *).  The complete reaction network is represented graphically in Figure 2 (this
+is the same as Figure 1 in [18 ], except that we do not make the simplifying assumption of equal rates).
+In other words, we have a system of form (5), where we use x = (T, M, C0 , . .,.CN )0 as a state, and take
+                                                              12
+
+                                             Figure 2: McKeithan's network
+m = n - 1 = N + 2,
+                                  0  1 1         0  0 1         0  0 1               0  0 1
+
+                                  BB 1 C         B  0 C         B  0 C               B  0 C
+                                  B  0 CC        BB 1 CC        BB 0 CC              BB 0 CC
+                             b1 = BB 0 CC , b2 = BB 0 CC , b3 = BB 1 CC , . . .bm  = BB 0 CC ,
+                                  B@ ..C         B  . C         B  . C               B  . C
+                                     . A         @  ..A         @  ..A               @  ..A
+                                     0              0              0                    1
+
+and A = (aij) with a21  = k1 , a1i = k-1,i-2   (i = 2, . .,.m), ai,i-1 = kp,i-3  (i = 3, . .,.m), and all other
+aij = 0. The corresponding set of differential equations is:
+
+                                                              XN
+                                          T`   =    -k1 T M +     k-1,i Ci
+
+                                                              i=0
+                                                              XN
+                                         M`    =    -k1 T M +     k-1,i Ci
+
+                                                              i=0
+                                         C`0   =    k1 T M - (k-1,0  + kp,0)  C0
+
+                                                ..
+                                                .
+                                         C`i   =    kp,i-1 Ci-1  - (k-1,i + kp,i)  Ci
+
+                                                ..
+                                                .
+                                        C`N    =    kp,N -1 CN -1  - k-1,N  CN  .
+
+
+Notice that D = {x | T + C0 + . . .+ CN  = M + C0 + . . .+ CN  = 0}, and the positive classes are of the
+form S = Sff,fi, intersections with Rn 0 of the affine planes
+
+
+                                T + C0 + . . .+ CN  = ff ,   M + C0 + . . .+ CN  = fi ,
+
+
+with ff > 0 and fi  > 0.  The original system is nothing else than the restriction of the dynamics to
+the class determined by ffT= T * and fi  = M *.  Thus, the conclusions will follow from Theorem 2 as
+soon as we prove that S    E0  = ; for any positive class S.  Pick any x 2 Rn0 and any positive class
+Sff,fi.  According to Proposition 6.3, it will be enough to find some j  2 {1, . .,.m} with the property
+that xk  6= 0 for all k 2 Sj.  Here, S1 = {1, 2} and Sj = {j + 1} for j = 2, . .,.m.  If the property is not
+satisfied for some j 2 {2, . .,.m}, then Ci = 0 for all i. But in this case, the equations for Sff,figive that
+T  = ff > 0 and also M = fi > 0, so j = 1 can be used.  In conclusion, x =2 E0 , and hence Part c of the
+theorem applies.
+
+     Let us compute equilibria explicitly. Setting right-hand sides to zero gives CN  = (kp,N -1 =k-1,N  )CN -1 ,
+and recursively using Ci = (kp,i-1 =(k-1,i + kp,i))Ci-1  we may express all Ci's as multiples of C0 .  We
+also have C0 = [k1 =(k-1,0  + kp,0)]T M . Thus
+
+
+                                  E+   =  {(ff, fi, ~0 fffi, ~1 fffi, . .,.~N fffi) | ff, fi > 0}
+
+
+where the ~i's are rational functions of the constants defining the system (these are the equilibria studied
+in [18 ]).  It is obvious in this example that we obtained a two-dimensional (n - m + 1 = 2) nonsingular
+algebraic subvariety of Rn .
+
+
+
+                                                              13
+
+     We next discuss the application of Theorem 3 to this example.  As r = 2, we consider feedback laws
+of the type fl1 (~xk1 - xk1 ) + fl2 (~xk2 - xk2 ), where fli > 0 and k1 , k2  satisfy (14) and (15).  Since D is
+spanned by e1 + e2 - e3 , . .,.e1 + e2 - en , this means that (14) is satisfied provided that 1 2 {k1 , k2 } or
+2 2 {k1 , k2 }, and this is sufficient to guarantee that also (15) satisfied.  In other words, stabilization to
+any desired equilibrium is possible provided that some pair of reactants, including at least one of T  or
+M , can be manipulated by a controller.
+
+     To illustrate some of our constructions in a comparatively trivial case,  let us now specialize even
+further,  taking just N  = 0 and all constants equal to one.  (This is mathematically the same as the
+example treated in Section 1.1.) Writing x, y, z instead of T, M, C0 , we have the system
+
+                                       x` = -xy + z , y` = -xy + z , z` = xy - z
+                                   T
+and E+  = {(x, y, z) | z - xy = 0}    R3+ is a hyperbolic paraboloid (intersected with the main orthant).
+This  is  obviously  a  nonsingular  algebraic  set,  but  it  is  instructive  to  see  it  also  as  the  image  of  the
+diffeomorphism M : D?  ! E+  constructed in the proof of Theorem 5 in Section 5.2. Using ~x= (1, 1, 1)0,
+we have the formula M (r1 , r2 , r3 ) = (er1 , er2 , er3 )0 for (r1 , r2 , r3 ) 2 D? . Here, D is the span of (1, 1, -1)0,
+i.e.   {(r1 , r2 , r3 ) | r1 + r3  =  r2 + r3  =  0},  and  D?   =  {(r1 , r2 , r3 ) | r3  =  r1 + r2 },  so  it  is  clear  that
+M (D? ) = E+ .
+                                                                                              S
+     Note, incidentally. that there are boundary equilibria as well: E0 = {(x, 0, 0) | x   0}   {(0, y, 0) | y
+0}, but none of these is in a positive class (since both x + z and y + z are positive constants on positive
+classes).
+
+     The most natural (in the motivating application, anyway) initial state is one in which z(0) = 0. We
+now compute the value of the map ss considered in Corollary 2.5 at such a point (0, y0 , z0 ).  We must
+find the positive-orthant intersection of {z  = xy} with the line Lx0,y0  = {x + z  = x0 , y + z  = y0 }.
+Equivalently, we need to solve (z - x0 )(z - y0 ) - z = 0 subject to the constraint 0 < z < min  {x0 , y0 },
+which guarantees that x > 0 and y > 0 as well as z > 0.  There is exactly one such solution, and it is
+the smallest of the two solutions, since the graphs of f1 (z) = z and f2 (z) = (z - x0 )(z - y0 ) intersect at
+precisely one point in the interval (0, min {x0 , y0 }), so we take the negative sign in the quadratic formula:
+                                                 h               p  __________________________________i
+                         ss3 (x0 , y0 , 0)  =  1_2 x0 + y0 + 1 -    (x0 - y0 )2 + 2(x0 + y0 ) + 1
+
+
+(and corresponding values for ss1 and ss2 ), which is, indeed, a real-analytic (hypothesis H! ) function.
+
+     Finally, let us find a decomposition as in Theorem 7. We let X1 := z and X2 = (u, v) = (x + z, y + z).
+Thus X2`    0 along all solutions, and X1`  = z` = F1 (z, u, v) = (u - z)(v - z) - z.  This does not yet
+have F1 (0, u, v) = 0 for all u, v, so one needs a further change of variables to bring the equilibrium to
+zero, which can be achieved by translating z 7! ez := z - ss3 (0, u, v).  Note that E+ , the set of points
+with z = xy, gets mapped into ez = 0, and the positive orthant gets mapped into the set given by the
+inequalities u > 0, v > 0, and z 2 (-ss3 (0, u, v), min {u, v} - ss3 (0, u, v)).
+4      Some  Preliminary  Facts
+
+
+The equations (5) (and their perturbed form (17)) have a considerable amount of structure, and various
+useful properties are reflected in alternative expressions for the system equations.
+
+
+
+4.1      Other  Expressions  for  the  System  Equations
+
+
+Let us introduce the map
+                                                      ae(y) :=  ln `(y)
+                                                     R 1
+(with ae(0) = -1); note that lim y&0  ae(y) = -1 and   0 |ae(y)|dy < 1.  Furthermore, the restriction of
+ae to R+  is locally Lipschitz, strictly increasing, and onto R. For any positive integer n, we let
+
+                                   "ae:  Rn  ! [-1, 1)n  :  x 7! (ae(x1 ), . .,.ae(xn ))0
+
+
+
+                                                              14
+
+(we do not write ""aen" to emphasize the dependence on n, because n will be clear from the context).
+Then (5) can also be written as
+
+                                                      Xm  Xm
+                                     x`  =  f (x)  =           aije<bj,"ae(x)>(bi - bj) .                                 (24)
+                                                      i=1 j=1
+
+Here, the expression "e<bj,"ae(x)>" in (5) is interpreted in accordance with the conventions made for powers:
+if x is a vector and k 2 {1, . .,.n} is an index such that xk = 0 and bkj > 0, then ebkjae(xk) = 0, consistently
+with e-1   = 0, and thus also
+
+                                   e<bj,"ae(x)>=  eb1jae(x1)eb2jae(x2). . .ebnj ae(xn )=  0 ,
+
+but, if bkj = 0, then we have ebkjae(xk) = 1.
+
+     Another useful way of rewriting (5) is as follows.  We write fk  for the k-th coordinate of f  (i.e., the
+coordinates xk  of solutions x satisfy x`k = fk (x)).  The terms in the sums defining fk  can be collected
+into two disjoint sets:  those that do not involve a product containing `(xk ),  for which bkj  = 0,  and
+those  which  do  involve  `(xk ).  The  latter,  by  assumption  (7),  have  bkj     1,  so  we  can  factor  `(xk )
+from `(x1 )b1j`(x2 )b2j . . .`(xn )bnj  and there remains a locally Lipschitz product. In other words, we can
+introduce, for each k 2 {1, . .,.n}, these two locally Lipschitz functions:
+                                  _                       !
+                            X       Xm
+               ffk (x) :=                aij (bki - bkj )    `(x1 )b1j`(x2 )b2j . . .`(xk )bkj-1  . . .`(xn )bnj          (25)
+                           j2Jk,1   i=1
+
+and                                            _            !
+                                         X       Xm
+                            fik (x) :=                aijbki    `(x1 )b1j`(x2 )b2j . . .`(xn )bnj ,                       (26)
+                                        j2Jk,0   i=1
+
+where Jk,1 := {j | bkj   1} and Jk,0 := {j | bkj = 0}.  (Note that, in terms of the sets introduced in (13),
+k 2 Sj if and only if j 2 Jk,1.) Note that fik (x)   0 for all x. More generally, for perturbed systems (17),
+we let
+                                                      feik:=  fik + gk .
+
+In terms of these functions,
+
+                       fk (x) = ffk (x) `(xk ) + fik (x)   and    fk*(x) = ffk (x) `(xk ) + efik(x)                       (27)
+
+(where fk* = fk + gk ).  If x 2 Rn 0 and k are such that xk  = 0, then property (18) says that gk (x)   0.
+In particular, since `(0) = 0,
+
+
+                              xk = 0   )   fk (x) = fik (x)   0  and   fk*(x) = efik(x)   0                               (28)
+
+so the vector fields f  and f * = f + g always point towards the nonnegative orthant, on the boundary
+Rn0.
+
+
+
+4.2      A  Coordinatization  Property
+
+
+When we apply the following Lemma, we will always take D = D, but we can state the result in more
+generality.
+
+
+Lemma 4.1        Let D be any subspace of Rn . For each p, q in Rn+, there exists a unique x = '(p, q) 2 Rn+
+such that:
+                                                         x - p 2 D                                                        (29)
+
+and
+                                                    "ae(x) - "ae(q) 2 D?  .                                               (30)
+
+Furthermore, if hypothesis (Hk ) holds, then the map p, q 7! '(p, q) is also of class Ck .
+
+
+
+                                                              15
+
+Proof. We start by introducing the following mapping, for each i 2 {1, . .,.n}:
+
+                                                     Z  t+ae(qi)
+                                           Li(t) :=             ae-1 (s) ds - pit
+                                                      0
+
+defined for t 2 R.  Since ae-1  is an increasing onto map from R into R+ , L0i(t) = ae-1 (t + ae(qi)) - pi,
+and hence also Li(t), increases to infinity as t ! +1.  Also, Li(t) ! +1 as t ! -1, because ae-1  is
+nonnegative and pi > 0. Thus, Li is proper, that is, {t | Li(t)   v} is compact for each v.
+
+     Now we take the (continuously differentiable) function
+
+                                                             Xn
+                                                    Q(y) :=      Li(yi)
+                                                             i=1
+
+thought of as a function of y 2 Rn . This function is also proper, because
+
+                                                      Yn
+                                   {y | Q(y)   w}        {t | Li(t)   w - (n - 1)`}
+                                                      i=1
+
+where ` is any common lower bound for the functions Li.  Restricted to D? ,  Q is still proper,  so it
+attains a minimum at some point y 2 D? .  In particular, y must be a critical point of Q restricted to
+D? , so
+                (rQ(y))0 = (ae-1 (y1 + ae(q1 )) - p1 , . .,.ae-1 (yn + ae(qn )) - pn )0 2 (D? )?  = D .                   (31)
+
+Pick x 2 Rn+ such that a"e(x) = y + "ae(q).  Then a"e(x) - "ae(q) 2 D?  by definition,  and (31) gives also
+x - p 2 D.
+
+     Finally, we show uniqueness. Suppose that there a second z 2 Rn+ so that z - p 2 D and "ae(z) - "ae(q) 2
+D? . This implies that x - z 2 D and "ae(x) - "ae(z) 2 D? . Since ae is an increasing function, we have that,
+for any two distinct numbers a, b, (a - b)(ae(a) - ae(b)) > 0. So
+
+                               Xn
+                                   (xi - zi)(ae(xi) - ae(zi)) = <x - z, "ae(x) - "ae(z)> = 0
+                               i=1
+
+implies x = z.
+
+     It follows that '(p, q) = x is a well-defined mapping from Rn+ x Rn+ into Rn+.  Suppose now that
+hypothesis (Hk ) holds, and therefore also ae has positive derivative and is Ck  for positive arguments. Let
+W  be an n x (m - 1) matrix whose columns are a basis of D (for instance, when D = D, we may take
+the columns b1 - b2 , . .,.b1 - bm ), and let V  be an n x (n - m + 1) matrix whose columns form a basis
+of D? . Consider the map F : Rn+ ! Rn  given by
+                                                            `      0    '
+
+                                                  F (x) :=    W 0V"axe(x)  .
+
+
+Observe that F  is of class Ck . Denote by J (x) the Jacobian of F  evaluated at an x 2 Rn+.
+
+     We claim that J (x) is nonsingular, for any x.  The transpose of J (x) can be expressed as a block
+matrix:  J (x)0 = (V, T W ), where T  = diag  (ae0(~x1), . .,.ae0(~xn)) is a symmetric positive definite matrix.
+As the columns of T W  are linearly independent, as are the columns of V , it will suffice to prove that
+the column spans of V  and of T W  intersect only at zero.  Since the column spaces of V  and W  are
+orthogonal,Tthis fact follows from the following observation: if T is self-adjoint and positive definite, then
+T W    W ? = {0}Tfor any subspace W  of Rn . (Proof: factor T = R0R, with R nonsingular,Tand suppose
+that T w 2 T W    W ? . For any w0 2 W , 0 = <T w, w0 > = <Rw, Rw0 >. Thus, Rw 2 RW   (RW )?  = {0},
+so Rw = 0, which implies w = 0.)
+
+     To conclude, we note that, given p and q, x = '(p, q) is the unique solution of
+                                                               `      0    '
+
+                                        G(x, p, q)  =  F (x) -   W 0V"ape(q)  =  0 .                                      (32)
+                                                              16
+
+Thus, the Implicit Function Theorem gives that ' is class Ck , since  @G__@x(x, p, q) = J (x) has rank n at all
+x, p, q and G is of class Ck .                                                                                             ||
+
+
+Remark 4.2        Note that, since G('(p, q), p, q)   0 in (32), we know that
+                                                                      `    0'
+
+                                           J ('(p, q)) @'__@p(p, q) +    V0     =  0                                      (33)
+
+
+for all p, q.  Thus (@'  =@p )(p, q) = -J ('(p, q))-1 (V, 0)0, and we conclude that @'  =@p  has constant rank,
+equal to n - m + 1.                                                                                                     2
+
+
+     The following quantity measures deviations relative to D? . Let us define, for each x, z 2 Rn+:
+
+                                                   Xm  Xm   i                           j 2
+                                     ffi(x, z) :=             <bi - bj, "ae(x) - "ae(z)>    .                             (34)
+                                                   i=1 j=1
+
+
+Remark 4.3        Note that ffi(x, z) = 0 if and only if "ae(x) - "ae(z) 2 D? , since D is spanned by the differences
+bi - bj. Also, note that, since x - x = 0 2 D, x satisfies both (29) and (30) (which uniquely characterize
+'(x, z)) if and only if "ae(x) - "ae(z) 2 D? . To summarize:
+
+                                  x = '(x, z)  ,  ffi(x, z) = 0  ,  "ae(x) - "ae(z) 2 D?                                  (35)
+
+for any x, z 2 Rn+.                                                                                                       2
+
+
+Remark 4.4        We could also have defined a smaller, but basically equivalent, sum using only the gener-
+ating differences bi - b1 , i = 1, . .,.m - 1, but the above definition for ffi seems more natural. Moreover,
+note that if we let
+                                         m-1X                                  Xn
+                          ffi_(x, z) :=       (<bi - b1 , "ae(x) - "ae(z)>)2+      ( <v`, x - z>) 2 ,
+                                         i=1                                  `=m
+
+where the vi constitute a basis of D? , then the uniqueness part of Lemma 4.1, applied with D = D,
+gives that ffi_(x, z) = 0 if and only if x = z. (Because x = '(x, x), and ffi_(x, z) = 0 implies z = '(x, x).) 2
+
+
+Remark 4.5        Recall the definition (23) of R.  We can extend ' to a map R x Rn+ ! Rn+ by defining
+'(p, q) := '(p + d, q) for any p 2 R and q 2 Rn+, where d 2 D is any element of D with the property
+that p + d 2 Rn+.  This definition is valid because, for any d1  and d2  in D such that p + d1  and p + d2
+are in Rn+, we have '(p + d1 , q) = '(p + d2 , q), since x = '(p + d1 , q) is uniquely determined by the two
+conditions ffi(x, q) = 0 and x - (p + d1 ) 2 D, and the second condition is equivalent to x - (p + d2 ) 2 D.
+Moreover, if hypothesis (Hk ) holds, then the extension of ' to R x Rn+, which we denote again by ', is of
+class Ck . Indeed, given any p0 2 R, and a d0 2 D so that p0 + d0 2 Rn+, it holds that p + d0 2 Rn+ for all
+p in some neighborhood of p0 , so the extension of ' is obtained (on that neighborhood) by composition
+of the original ' with the translation (p, q) 7! (p + d0 , q), and the former is of class Ck  by Lemma 4.1. 2
+
+
+Remark 4.6        If hypothesis (H1 ) holds, then, for some continuous d(.) > 0,
+                                                        i          j
+                      ffi(x, z)     d(z) |x - z| 2  + o  |x - z| 2        8 x, z 2 Rn+ , x - z 2 D .                      (36)
+
+                    P  m
+Indeed, ffi(x, z)      i=2 (<bi - b1 , "ae(x) - "ae(z)>)2 , and "ae(x) = "ae(z) + Q(x - z) + o(|x - z| ), where Q =
+Q(z) = diag  (ae0(z1P), . .,.ae0(zn )) is the Jacobian of "aeevaluated at z (nonsingular, by hypothesis (H1 )),
+so ffi(x, z)      mi=2(<bi - b1 , x - z>Q )2 + o(|x - z| 2 ), where <j, ,>Q  := <j, Q,> is a nondegenerate inner
+product on D.P This gives (36),  because the bi - b1 's constitute a basis of D.  (Or,  more concretely:
+ffi(x, z)      mi=2|Wz0,| 2 + o(|x - z| 2 ), where , := Rz (x - z), Wz  := (Rz (b2 - b1 ), . .,.Rz (bm  - b1 )), and
+Rz  is a symmetric positive definite matrix,  continuous on z,  with R2z = Q(z).  So,  we may use that
+|Wz0,|    d0 (z) |,|, where d0 (z) is the smallest singular value of Wz0 restricted to Rz D, which is nonzero
+since  Wz0,  =  0  implies  ,  2  (Rz D)? ,  together  with  |,|    d1 (z) |x - z| ,  where  d1 (z)  is  the  smallest
+eigenvalue of Rz , to obtain again an estimate (36).)                                                              2
+
+
+
+                                                              17
+
+5      Interior  Equilibria
+
+
+It is convenient to also express the dynamics (5) in matrix terms. Letting
+
+                                                         0    P  m                                                1
+                         _  m                    !          -    i6=1ai1      P  a12m       . . .      a1m
+                           X             Xm              B       a21        -    i6=2ai2    . . .      a2m        C
+        Ae  =  A - diag        ai1, . .,.    aim      =  BB       .               .          .           .        CC
+
+                           i=1           i=1             @        ..              ..         ..     P    ..       A
+                                                                am1             am2         . . . -    mi6=maim
+
+we write:
+                                                 `x =  f (x)  =  BAe  B (x)                                               (37)
+
+where  B  is the mapping
+
+                                                            i                              0j
+                                  B  :  Rn  ! Rm 0  :  x 7!   e<b1,"ae(x)>, . .,.e<bm ,"ae(x)>
+
+
+obtained as the composition of the maps x 7! "ae(x), z 7! B0z, and y 7! (ey1 , . .,.eym )0.  In particular,
+since rank  B = m and ae maps R+  onto R,
+
+
+                                       the restriction      B  : Rn+ ! Rm+  is onto.                                      (38)
+
+                                                                                                 0
+Note that  B (x) =  `(x1 )b11`(x2 )b21 . . .`(xn )bn1 , . .,.`(x1 )b1m `(x2 )b2m  . .`.(xn )bnm   .
+
+     For any two ~x, x 2 Rn+, it holds that:
+
+
+                                (9 ~ > 0)    B (x) = ~ B (~x)  ()  "ae(x) - "ae(~x) 2 D?                                  (39)
+
+
+(recall the definition (10) of D).  To see this, denote y :=  B (x), y~ :=  B (~x).  If y = ~~y, then, with
+k := ln ~, ln yj = k + ln ~yj, for each j = 1, . .,.m.  Thus <bj, "ae(x)> = k + <bj, "ae(~x)>, which implies that
+<bj, "ae(x) - "ae(~x)> = k for all j, and therefore
+
+
+                                            <bj - bi, "ae(x) - "ae(~x)> = 0   8 i, j .
+
+
+Conversely, if this holds, we may define k := <b1 , "ae(x) - "ae(~x)>, ~ := ek , and reverse all implications.
+
+     We also note, using once again that B has full column rank, that f (~x) = 0 is equivalent to Ae  B (~x) =
+0, that is:
+
+
+Lemma 5.1        A state ~x is an equilibrium if and only if  B (~x) 2 ker Ae.                                       2
+
+
+
+     We now consider the matrix Ae. The row vector 1_= (1, . .,.1) has the property that 1_eA= (0, . .,.0),
+so, in particular, Ae is singular. The following is a routine consequence of the Perron-Frobenius (or finite
+dimensional Krein-Rutman) Theorem.
+
+                                      T                                T
+Lemma 5.2        There exists ~y2 Rn+   ker  eA so that  Rn 0 \ {0}       ker Ae = {~~y, ~ > 0}.
+
+
+
+Proof. If y 2 Rn 0 is any eigenvector of Ae, corresponding to an eigenvalue ~, it follows that 0 = 1_eAy =
+1_~y = ~q, where q := 1_y is a positive number (because y, being an eigenvector, is nonzero), and therefore
+necessarily ~ = 0. In other words, a nonnegative eigenvector can only be associated to the zero eigenvalue.
+Pick now any fl > 0 large enough such that all entries of Ab := Ae+flI are nonnegative. Since the incidence
+graph G(Ab) coincides with G(A), it follows that Ab is also irreducible. By the Perron-Frobenius Theorem,
+the spectral radius oe of Ab is positive and it is an eigenvalue of Ab of algebraic multiplicity one, with an
+associated positive eigenvector ~y2 Rn+.  Moreover, every nonnegative eigenvector y 2 Rn 0 associated to
+oe is a positive multiple of ~y.  As adding flI moves eigenvalues by fl while preserving eigenvectors (that
+is, (Ae + flI)y = (~ + fl)y is the same as Aey = ~y), ~y is a positive eigenvector of the original matrix Ae.
+
+
+
+                                                              18
+
+It is necessarily in the kernel of Ae, since we already remarked that any nonnegative eigenvector must be
+associated to zero.TFinally, if y is any other nonnegative eigenvector of Ae, and in particular any element
+of (Rn 0 \ {0})    ker eA, then it is also a nonnegative eigenvector of Ab , and thus it must be a positive
+multiple of ~y, completing the proof.                                                                                  ||
+
+
+
+Corollary 5.3       The set of positive equilibria E+  is nonempty. Moreover, pick any fixed ~x 2 E+ . Then,
+for any positive vector x 2 Rn+, the following equivalence holds:
+
+
+                                                x 2 E+   ()  ffi(x, ~x) = 0 .                                             (40)
+
+
+Proof. By Lemma 5.2, there is some ~y2 Rn+ in ker Ae. By (38), there is some ~x2 Rn+ such that  B (~x) = ~y.
+In view of Lemma 5.1, ~x is an equilibrium.
+
+     Now fix any x~ 2 E+  and any x 2 Rn+,  and let y  :=  B (x),  ~y:=  B (~x).  Suppose x 2 E+ .  By
+
+Lemma 5.1, y 2 ker Ae. By Lemma 5.2, every two positive eigenvectors of Ae are multiples of each other,
+so there is some ~ 2 R+  such that y = ~~y.  By (39), "ae(x) - "ae(~x) 2 D? .  Conversely, if this holds, then,
+again by (39), y = ~~y. hence y is also an eigenvector of Ae, so by Lemma 5.1 we conclude x 2 E+ .      ||
+
+
+
+Remark 5.4        It  is  possible  to  generalize  many  of  the  results  to  the  case  when  A  is  not  irreducible
+but, instead, there exists a permutation matrix P  with the property that P 0AP  is a block matrix with
+irreducible blocks.  Let us sketch this next.  Assuming already such a reordering has taken place, the
+family of systems considered is as follows. The dynamics are described by
+
+
+                                                 x` = f1 (x) + . . .+ fL (x)
+
+
+where L is a positive integer (the "number of linkage classes"), and each fs has the form in Equation (5),
+for some matrices A = As and B = Bs.  We suppose that each As is an irreducible nonnegative matrix
+of size ms x ms, and each Bs has size n x ms. We let m = m1 + . . .+ ms. Further, we also assume that
+the matrix B which is composed from the blocks Bs, namely B = (B1 , . .,.BL ), satisfies the properties
+(7), (8), (9) required of B. We let Ds be the subspace of Rn  spanned by the differences bi- bj of columns
+of Bs, for each s = 1, . .,.L, and now define D as the sum of the spaces Ds.  (Note that the column
+spaces of the Bs's intersect only at zero, because we are assuming that the columns of B are linearly
+independent; thus D is also a direct sum of the Ds's.  The dimension of each Ds is ms - 1, and D has
+dimension m - L.)  Since the differences bi - bj of columns of different Bs's do not ever appear in the
+vector fields defining the system, the same argument as before shows that the cosets p + D (with the
+new definition of D) are invariant. Classes are now defined using this D, and are also invariant. We can
+express the dynamics in the form (37), where Ae is formed as before, starting from the m x m matrix A
+that is obtained by using A1 , . . . , AL  as diagonal blocks.
+
+     Since  each  eAs is  irreducible,  we  can  find  positive  eigenvectors  for  the  entire  matrix  eA,  and  the
+possible  such  eigenvectors  are  of  the  form  (~1 ~y01, . .,.~L ~yL)0,  where  each  ~ysis  a  positive  eigenvector
+of As  and the ~s's are positive numbers.  The function  B  is still onto, so we obtain the existence of
+positive equilibria. Note that  B (x) decomposes into blocks  1B, . .,. LB, mapping into Rms 0respectively,
+
+and (39) generalizes to:   sB(x) = ~ sB(~x) for some ~ > 0 iff "ae(x) - "ae(~x) 2 D?s.  Thus, uniqueness in
+each class holds just as before, since D?  is the intersection of the D?s, s = 1, . .,.L, and also x~ is an
+equilibrium iff all fi(~x) = 0.
+
+     As a last comment along these lines, we remark that the assumption that B has full rank can also
+be slightly relaxed, as follows.  Suppose that the column spaces of the Bi's intersect only at the origin,
+and the column space of some Bs  spans an affine space of dimension ms - 1, i.e., Ds  has dimension
+ms - 1, but Bs itself has rank ms - 1 (instead of ms). Then, we may add a state variable to the system,
+which satisfies a differential equation x`0 = 0, and extend the system in such a manner that Bs has rank
+ms:  this is equivalent to adding a row constantly equal to 1 to the matrix Bs  (and to the remaining
+matrices as well).  The original system appears as the restriction of the new system to the invariant
+subset consisting of those states whose last coordinate is equal to one.                                       2
+
+
+
+                                                              19
+
+5.1      Proof  of  Part  a  in  Theorem  2  and  Theorem  6
+
+
+Fix an ~x 2 E+  and any p 2 Rn+.  Applied with q = ~x (and D = D), Lemma 4.1 says that x = '(p, ~x) is
+uniquely characterized by (a) x 2 p + D and (b) ffi(x, ~x) = 0, the second of which is in turn equivalent
+by (40) to x 2 E+ . In conclusion, x = '(p, ~x) is the unique point in Rn+ which is an equilibrium and lies
+in the same class as p. This proves Part a in Theorem 2, and, moreover, shows that
+
+
+                                                       ss(p) = '(p, ~x)                                                   (41)
+
+
+is the assignment of p into the unique positive equilibrium in its class.  Furthermore, by Lemma 4.1,
+'(., ~x) is of class Ck  provided hypothesis (Hk ) holds, which proves Theorem 6.                              ||
+
+
+Remark 5.5        Recall Remark 4.5.  After fixing an x~ 2 E+ , we may extend ss to R by letting ss(p) :=
+'(p, ~x) for any p 2 R.  As '(p, ~x) := '(p + d, ~x) for some d so that p + d 2 Rn+, and '(p + d, ~x) 2 E+
+by (41), we have that ss(p) 2 E+  for all p 2 R. Note also that ss(p) = p if p 2 E+ , since in that case p is
+itself the unique positive equilibrium in its class. Thus,
+
+
+                                                  p = ss(p)  ()  p 2 E+                                                   (42)
+
+
+for any p 2 R. Furthermore, as '(p, ~x) - (p + d) = '(p + d, ~x) - (p + d) 2 D by definition of ', we know
+that '(p, ~x) 2 p + D, so
+                                                        p - ss(p) 2 D                                                     (43)
+
+for all p 2 R. We also have that
+
+
+                                            ss(p1 ) = ss(p2 )  ()  p1 - p2 2 D                                            (44)
+
+
+for all p1 , p2 2 R, by (43) and because ss(p2 ) is the unique positive equilibrium in p2 + D = p1 + D when
+p1 - p2 2 D. Finally, note that ss is of class Ck  if hypothesis (Hk ) holds, once more by Remark 4.5.   2
+
+
+
+5.2      Proof  of  Theorem  5
+
+
+Suppose that hypothesis (Hk ) holds. Then the restriction of ae to R+  is of class Ck , and so is its inverse,
+which is a map R ! R+ .  With some abuse of notation, we will denote in this section the restriction of
+ae to R+ , and more generally its vector form "ae, restricted to Rn+, with the same symbols.  Note that "aeis
+a Ck -diffeomorphism (class Ck  and has an inverse which is also of class Ck ). Now we fix any equilibrium
+x~ 2 E+ , and in terms of it, define:
+
+
+                                         M : Rn  ! Rn+ : y 7! "ae-1(y + "ae(~x)),
+
+
+which is a Ck -diffeomorphism since both y 7! y+"ae(~x) and "ae-1are Ck -diffeomorphisms. As an illustration,
+in the standard setup we would have ae(r) = ln r and ae-1 (s) = es, so M (y) = (~x1ey1 , . .,.~xneyn )0.
+
+     We claim that M (D? ) = E+ .  Once that this is shown, Theorem 5 will be established, since dif-
+feomorphisms  map  submanifolds  into  submanifolds,  and  D?  has  dimension  n - (m - 1).  Note  that
+x 2 M (D? ) if and only if "ae(x) = y + "ae(~x) for some y 2 D? , that is, if and only if "ae(x) - "ae(~x) 2 D? , so
+Corollary 5.3 gives the equivalence with x 2 E+ .                                                                  ||
+
+
+
+5.3      Proof  of  Theorem  7
+
+
+We  will  construct  a  preliminary  transformation  b  of  R  into  D x E+ .   Since  D  is  a  linear  space  of
+dimension m - 1, and since by Theorem 5 we know that E+  is a manifold diffeomorphic to Rn-m+1   , the
+result will then easily follow. We assume that hypothesis (Hk ) holds, and fix any ~x 2 E+ .
+
+     Recalling Remark 5.5, we define, for x 2 R:
+
+                                     b (x) = (b 1 (x), b 2(x)) :=  (x - ss(x), ss(x))
+
+
+
+                                                              20
+                                           |    _____________________________
+                                           |      _________________________________________________________
+                                           |          ____________________________________________________
+                                           |              ________________________________________________
+                                           |       E+        _____________________________________________
+                                           |                   __________________________________________
+                                           |                     ________________________________________
+                                           |                      ______________________________________
+                                           |                        ____________________________________
+                                           |                         ___________________________________
+                                           |                          __________________________________D + x
+                                           |     n                    _________________________________
+                                                R+                     _________________________________s
+                                           |                           _________________________________ss(x)
+                                           |                            ___________________________________
+                                           |          x                 _____________________________________
+                                           |            s     x - ss(x)  _______________________________________
+                                           |            ss                 __________________________________________D
+                                           |                                ______________________________________________
+                                           |                                  __________________________________________________
+                                           |                                     __________________________________________________*
+ *______
+                                           |                                        _______________________________________________*
+ *________________@
+                                           |                                            ___________________________________________*
+ *________________@
+                                           |
+                                           |
+                                           |
+                                ___________|__________________________________________________
+                                           |
+                                           |
+                                           |
+                                           |
+                                           |
+
+
+                                            Figure 3: Change of coordinates
+
+(see Figure 3). The function b  is of class Ck  as a map into Rn x Rn+, and, because of (42),
+
+
+                                     x 2 E+   ()  b 1(x) = 0  ()  b (x) = (0, x)                                          (45)
+
+
+for all x 2 R. Also, property (43) gives that b 1(x) 2 D for all x, and we have that b 2(x) 2 E+  (since ss
+assigns positive equilibria). So the image of b  is contained in DxE+ , which is an embedded submanifold
+of Rn x Rn+ because D is a linear subspace and using Theorem 5.  Thus,  b defines also a Ck  mapping
+into the submanifold D x E+ , and we view it as such.
+
+     Now consider the mapping
+
+
+                                            : D x Rn+ ! Rn  : (a, b) 7! a + b
+
+
+and its image R =  (D x Rn+) = Rn++ D. If we show that the restriction e  of   to D x E+  is the inverse
+
+of  b, then we will know that  b is a diffeomorphism.  It is clear from the formulas that  e (b (x)) = x.
+Pick now any (a, b) 2 D x E+ , and let x =  e (a, b) = a + b.  Thus, x - a = b 2 E+ , and '(b, ~x) = b
+by (35) and (40). By the definition of ', and thus ss, on R, we have that ss(x) = '(x, ~x) = '(x - a, ~x),so
+ b(x) = (x - '(x - a, ~x), '(x - a, ~x)), which equals (x - b, b) = (a, b). Thus also b ( e(a, b)) = (a, b).
+
+     In conclusion, we have a diffeomorphism R ! DxE+ , which can be composed with a diffeomorphism
+_1 x _2  : D x E+  ! Rm-1   x Rn-m+1     (where _1  is a linear map) to yield the final diffeomorphism
+   =  ( 1 ,  2 )  :  R  !  Rm-1   x Rn-m+1   .  We let F  be the vector field obtained under this change of
+coordinates (namely, F (X) =  * ( -1 (X))f ( -1 (X))) and write F = (F1 , F2 ) in block form. Note that,
+by (45),  1 (x) = 0 if and only if x 2 E+ . That is, block vectors (X1 , X2 ) with X1 = 0 correspond under
+the coordinate change to E+ .  That is, every vector of the form (0, X2 ) is an equilibrium.  This implies
+that F (0, X2 ) = 0 for all X2 , and in particular the same is true for the first block F1 .  Also, by (44) we
+know that x - z 2 D if and only if b 2(x) = b 2(z), i.e., if and only if  2 (x) =  2 (z).
+
+     Finally, we show that F2   0. It suffices to prove that X2 (t) =  2 (x(t)) is constant, for an arbitrary
+solution x(t) of (5) taking values in R.  This follows from the fact that classes are invariant, and hence
+the function '(x(t), ~x) is constant, which gives from the definition that b 2(x(t)), and thus also  2 (x(t)),
+is constant.                                                                                                                ||
+                                                              21
+
+6      Boundary  Equilibria
+
+
+Fix any x = (x1 , . .,.xn ) 2 Rn 0.  We wish to study the implications of some coordinate xk  vanishing.
+Recall the definition (13) of the sets Sj. We will use repeatedly the following fact, for any j 2 {1, . .,.m}
+and k 2 {1, . .,.n}:
+
+
+                             xk = 0  and   k 2 Sj   )   `(x1 )b1j`(x2 )b2j . . .`(xn )bnj = 0                             (46)
+
+
+which is obvious, since `(xk )bkj vanishes when xk = 0 and bkj 6= 0. In particular,
+
+
+                                    xk = 0  )  `(x1 )b1j`(x2 )b2j . . .`(xn )bnj bkj = 0                                  (47)
+
+
+since  either  bkj  =  0  or  (46)  applies.   We  state  results  for  arbitrary  perturbed  systems  (17).   (Note
+that (48) below is merely the particular case of (49) that arises for systems with g   0, but it will be
+useful to have the conclusion for fk  stated separately.)
+
+
+Lemma 6.1        Take any i, j 2 {1, . .,.m} such that aij 6= 0. Then,
+
+
+                             (8 ` 2 Sj) (x` > 0)    )    (8 k 2 Si) (xk > 0 or  fk (x) > 0)                               (48)
+
+
+and
+                            (8 ` 2 Sj) (x` > 0)    )    (8 k 2 Si) (xk > 0 or  fk*(x) > 0) .                              (49)
+
+
+Proof. Pick any k 2 Si, and assume that xk  = 0.  The assumption "` 2 Sj ) x` > 0" is equivalent to
+j 2 J`,1 ) x` > 0. So, since xk = 0, necessarily j 2 Jk,0. By (28), fk (x) = fik (x), where fik  is as in (26),
+and the index j being considered does appear in the sum defining fik . Moreover, for each ` 2 Sj, x` 6= 0
+by hypothesis, so `(x1 )b1j`(x2 )b2j . . .`(xn )bnj  > 0.  On the other hand, k 2 Si means that bki > 0, and
+also aij 6= 0. Thus, the term involving this particular i and j in the sums defining fik (x) is positive (and
+the remaining terms are nonnegative). We conclude that fik (x) > 0, establishing (48). In addition, since
+we are assuming that xk  = 0, property (28) also says that fk*(x) = fik (x) + gk (x); as we proved that
+fik (x) > 0, and gk (x)   0 (by assumption (18)), also (49) holds.                                                ||
+
+
+     We  will  denote  by  E*  (respectively,  E*+ or  E*0)  the  set  of  nonnegative  (respectively,  positive  or
+boundary) equilibria of (17),  i.e. the set of states x~ 2  Rn 0 (respectively,  2  Rn+ or 2  Rn0),  such that
+f *(~x)  =  0.   When  g     0,  these  are  the  same  as  the  sets  E,  E+ ,  and  E0 ,  and,  more  generally,  for
+systems (17), we still use E, etc., for the equilibria of the system (5) which has the same f .
+
+
+Proposition 6.2        For any system (17), and for an arbitrary x 2 Rn 0, consider the following properties:
+
+
+    1. x 2 E*0.
+
+    2. For every j 2 {1, . .,.m} there is some k 2 Sj such that xk = 0.
+
+    3. For every j 2 {1, . .,.m}, `(x1 )b1j`(x2 )b2j . . .`(xn )bnj = 0.
+
+    4. x 2 E0 .
+
+
+Then 1 ) 2 , 3 ) 4.
+
+
+Proof. [1 ) 2] Pick any x 2 E*0.  If the second property is false, then there is some indexSj such that
+x` > 0 for all ` 2 Sj.  We claim that for every index i, xk  > 0 for all k 2 Si.  Since    jSj = {1, . .,.n}
+(recall hypothesis (9)), this will mean that xk > 0 for all k, so x could not have been a boundary point,
+a contradiction. Let J = {j | x` > 0 8 ` 2 Sj} and let I = {1, . .,.m} \ J . We know that J 6= ; and must
+prove that I = ;.  Suppose by contradiction that I 6= ;.  Pick some i 2 I  and j 2 J  such that aij 6= 0
+(irreducibility of A), and take any k 2 Si.  We claim that xk > 0.  Suppose that this is not the case, i.e.
+
+
+
+                                                              22
+
+xk = 0. From (49) in Lemma 6.1, we conclude that fk*(x) > 0. This contradicts the fact that x is in E* .
+In conclusion, xk > 0 for all k 2 Si, contradicting the fact that i 2 I.
+
+     [2 , 3] The product in 3 can vanish if and only if some bkj > 0 and xk = 0 for the same k, but this
+is precisely the condition in 2.
+
+     [3 ) 4] Since all terms in the definition (5) of f (x) vanish, it follows that x 2 E. On the other hand,
+x must be a boundary point, since otherwise no product as in 3 could vanish.                               ||
+
+
+     For systems (5), all the properties are equivalent, since E*0= E0 . More generally, this stronger result
+holds for all systems of form (21):
+
+
+Proposition 6.3        For any system (21) and for an arbitrary x 2 Rn 0, the properties in Proposition 6.2
+are equivalent.
+
+
+Proof. We prove that 4 ) 2 ) 1.  If 4 holds, we apply Proposition 6.2 to the system (5) which has the
+same f , to conclude that 2 holds.  Assume now that 2 (and hence also 4) holds.  Since we already know
+that f (x) = 0, all that needs to be verified is that  ij(x) = 0 for all i, j.  Pick any i, j.  Choose k 2 Sj
+so that xk = 0. Property (20) then gives the conclusion.                                                         ||
+
+7      Invariance
+
+
+We start with an easy but key observation.
+
+
+Lemma 7.1        Suppose that x : [0, t* ] ! Rn 0 is any solution of (17).  Then the following implication
+holds for any k = 1, . .,.n:
+                                               xk (0) > 0   )   xk (t* ) > 0 .
+
+
+Proof. Suppose that k is so that xk (0) > 0.  Let F  : R2 ! R be the (locally Lipschitz) function which
+coincides for t 2 [0, t* ] and y 2 R with
+
+
+                               F (t, y) :=  fk*(x1 (t), . .,.xk-1  (t), y, xk+1 (t), . .,.xn (t))
+
+
+and has F (t, y) = F (0, y) for t < 0 and F (t, y) = F (t* , y) for t > t* .  Note that F (t, 0)   0 for all t,
+because (28) says that fk*(x) = efik(x)   0 when xk = 0.  For t 2 [0, t* ], the scalar function y(t) := xk (t)
+satisfies the scalar differential equation
+
+
+                                                     `y(t)  =  F (t, y(t)) .
+
+
+We must prove that y  never vanishes.  For this, we let G(t, p) := F (t, p) - F (t, 0) and introduce the
+auxiliary initial value problem
+                                            `z(t)  =  G(t, z(t)) ,  z(0) = y(0) .
+
+Since G is locally Lipschitz (in both variables, but just on z locally uniformly on t would be enough) and
+0 is an equilibrium of z`= G(t, z), z(t) > 0 for all t in its domain of definition.  Moreover, we have that
+z` = G(t, z)   F (t, z) for all t. By a standard comparison theorem, see e.g. [14 ], Corollary I.6.3, we know
+that z(t)   y(t) for all t in the common domain of definition of z and y. Since y(t* ) is well-defined, z(t)
+remains bounded, and thus is defined as well for t = t* . So, y(t* )   z(t* ) > 0.                              ||
+
+
+
+Corollary 7.2       The set Rn+ is forward invariant for (17).
+                                                              23
+
+Proof. Consider any solution x : [0, T ] ! Rn  of (17),  and suppose that x(0) 2 Rn+.  We must prove
+that  x(T )  2  Rn+.   Since  x(0)  is  in  the  interior  of  Rn 0,  the  only  way  that  the  conclusion  could  fail
+is  if  x(t)  2  Rn0 for  some  t  2  (0, T ].   We  assume  that  this  happens  and  derive  a  contradiction.   Let
+t*  :=  min {t  2  [0, T ] | x(t)  2  Rn0}  >  0.  By minimality,  for all i,  xi(t)  >  0 for all t  2  [0, t* ),  and in
+particular xi(t) 2 Rn 0 for all t 2 [0, t* ], and also there is some index k such that xk (t* ) = 0.  But this
+contradicts the conclusion of Lemma 7.1.                                                                           ||
+
+
+     The closure of an invariant set is also invariant, so:
+
+
+Corollary 7.3       The set Rn 0 is forward invariant for (17).
+
+
+     Note that Corollaries 7.2 and 7.3 prove Lemma 2.1 as well as the invariance parts of Theorems 3
+and 4.
+
+
+Lemma 7.4        Consider any solution x : [0, T ] ! Rn  of (17) for which x(0) 2 Rn 0. Suppose that there is
+some j0 2 {1, . .,.m} such that
+
+
+                                       (8` 2 Sj0) [ x`(0) > 0  or  f`*(x(0)) > 0 ]     .
+
+
+Then, x(t) 2 Rn+ for all t 2 (0, T ].
+
+
+Proof. We know that x(t) 2 Rn 0, by Corollary 7.3, and we need to prove that xk (t) > 0 for all k and all
+t 2 (0, T ]. Let
+                              I  :=  {i 2 {1, . .,.m} | xk (t) > 0 8 k 2 Si, 8 t 2 (0, T ]}    .
+      S
+Since    iSi = {1, . .,.n}, it will be enough to show that I = {1, . .,.m}.
+
+     We start by remarking that j0 2 I, because, for each k 2 Sj0, either xk (0) > 0, and then Lemma 7.1,
+applied on any subinterval [0, t* ], says that xk (t) > 0 for all t, or x`k(0) = fk*(x(0)) > 0 and xk (0) = 0
+imply that xk (t) > 0 for all t small enough, so also (again by Lemma 7.1) for all t.
+
+     Suppose by way of contradiction that H := {1, . .,.m} \ I 6= 0.  Pick some i 2 I and h 2 H so that
+ahi  6= 0 (irreducibility of A).  We will show that, for any given t0  2 (0, T ], and for any given k 2 Sh ,
+xk (t0 ) > 0, and this will contradict h 2 H.
+
+     Since i 2 I, x`(t0 =2) > 0 for all ` 2 Si.  Then, we can apply Lemma 6.1, to obtain that xk (t0 =2) > 0
+or fk*(x(t0 =2)) > 0.  As before, if xk (t0 =2) > 0 then via Lemma 7.1 we conclude the positivity of xk (t)
+for all t > t0 =2, and in particular of xk (t0 ).  And if instead fk (x(t0 =2)) > 0, then x`k(t0 =2) > 0 and
+xk (t0 =2)   0 imply xk (t) > 0 for all t > t0 =2 near t0 =2, and so by Lemma 7.1 once again xk (t0 ) > 0.   ||
+
+
+     For the special case of systems (5), and more generally perturbed systems (21), we conclude that
+every trajectory starting on the boundary Rn0 which is not an equilibrium must immediately enter the
+positive orthant:
+
+
+Corollary 7.5       Consider any solution x : [0, T ] ! Rn 0 of (21) for which x(0) 62 E*0.  Then, x(t) 2 Rn+
+for all t 2 (0, T ].
+
+
+Proof. By Proposition 6.3, x(0) 62 E*0 implies that there is some j 2 {1, . .,.m} such that x` 6= 0 for all
+` 2 Sj. So, Lemma 7.4 insures that x(t) 2 Rn+ for all t 2 (0, T ].                                                 ||
+
+
+     Another special case of that of the feedback system (16), and more generally when property (19)
+holds. This property says that there is some j0 2 {1, . .,.m} such that, for every ` 2 Sj0, it holds for each
+z 2 Rn 0 that either (a) z` > 0, or (b) z` = 0 and g`(z) > 0 (in which case also fk*(z) = fik (z)+gk (z) > 0).
+Applying with z = x(0) and using Lemma 7.4 with this j0 , we have:
+
+
+Corollary 7.6       Suppose that property (19) holds.  and consider any solution x : [0, T ] ! Rn 0 of (17).
+Then, x(t) 2 Rn+ for all t 2 (0, T ].                                                                                    2
+
+
+
+                                                              24
+
+     We also note, for further reference:
+
+
+Corollary 7.7       Consider a system (21), and pick any , 2 Rn 0.  Then, either , 2 E*0 or ,  belongs to
+some positive class.
+
+
+Proof. If , 62 E*0, then Corollary 7.5, applied to a solution starting from ,, and forward invariance of
+classes, give that , is in the positive class containing x(T ).                                                      ||
+
+8      Stability
+
+
+We start by establishing some useful estimates.
+
+
+Lemma 8.1        Define the following quadratic function:
+
+                                                             Xm  Xm
+                                        Q(j1 , . .,.jm ) :=           aij(ji - jj)2 .                                     (50)
+                                                             i=1 j=1
+
+Then, there exists a constant ~ > 0 such that
+
+                                                                 Xm   Xm
+                                          Q(q1 , . .,.qm )     ~          (qi - qj)2                                      (51)
+                                                                 i=1  j=1
+
+for all (q1 , . .,.qm ) 2 Rm .
+
+
+Proof. We first observe that
+
+                                  Q(q1 , . .,.qm ) = 0  )  qi = qm  , i = 1, . .,.m - 1 .
+
+Indeed, obviously Q(q1 , . .,.qm ) = 0 implies qi = qj for each pair i, j for which aij 6= 0. Now let I be the
+set of indices i such that qi = qm , and J  its complement; as m 2 I, I 6= ;.  We need to see that J = ;.
+Suppose that J 6= ;.  The connectedness of the incidence graph of A provides an i 2 I and j 2 J  such
+that aij 6= 0. Thus, qj = qi = qm , contradicting j 2 J .
+
+     Now consider the following quadratic form in m - 1 variables:
+
+                                              m-1X m-1X                  m-1X            m-1X
+                     P (,1 , . .,.,m-1  ) :=            aij(,i - ,j)2  +       aim ,2i +       amj ,2j.
+                                              i=1   j=1                   i=1             j=1
+
+Since (ji - jm ) - (jj - jm ) = ji - jj for all i, j, one has
+
+                                   Q(j1 , . .,.jm )  =  P (j1 - jm , . .,.jm-1   - jm ) .
+
+Note that P  is positive definite:  if P (q1 , . .,.qm-1  ) = 0, then Q(q1 , . .,.qm-1  , 0) = 0, which as already
+observed implies that all qi = 0. Thus, there is some constant ~0 > 0 such that
+
+                                                                         m-1X
+                                             P (p1 , . .,.pm-1  )     ~0       p2i
+                                                                          i=1
+
+for all (p1 , . .,.pm-1  ) 2 Rm-1  , which means that
+
+                                                                  m-1X
+                                          Q(q1 , . .,.qm )     ~0      (qi - qm )2                                        (52)
+                                                                   i=1
+
+for all (q1 , . .,.qm ) 2 Rm .  As (qi - qj)2   2(qi - qm )2 + 2(qj - qm )2  for all i, j, we may re-express the
+estimate (52) in the form (51), using a smaller constant ~ which depends only on ~0 and m.             ||
+
+
+     The following estimate will be the basis of a Lyapunov function property to be established later.
+
+
+
+                                                              25
+
+Lemma 8.2        There exist two continuous functions
+
+
+                                              v  : Rn  ! Rn ,  c : Rn+ ! R+
+
+
+such that, for every pair of points x, z in Rn+:
+
+
+                           <"ae(x) - "ae(z), f (x)>     -c(z)ffi(x, z) + <v("ae(x) - "ae(z)), f (z)> .                    (53)
+
+
+Proof. As B has full column rank, there is an m x n matrix B#  (for instance, its pseudo-inverse) such
+that B# B = I. We let                               i                             j0
+
+                                          v(oe) :=   (e<b1,oe>, . .,.e<bm ,oe>)B#
+
+and
+                                               c0 (i) :=  j=min1,...,me<bj,"ae(i)>.
+
+
+Now take any pair of positive vectors x, z. Denote, for each j = 1, . .,.m:
+
+
+                                                  qj  :=  <bj, "ae(x) - "ae(z)>
+
+
+and observe that
+                                       <bi, v("ae(x) - "ae(z))>  =  eqi ,  i = 1, . .,.m
+
+so, using formula (24),
+
+                                                             Xm  Xm
+                             <v("ae(x) - "ae(z)), f (z)>  =           aije<bj,"ae(z)>(eqi - eqj) .                        (54)
+                                                             i=1 j=1
+
+Therefore (writing g(x, z) = <v("ae(x) - "ae(z)), f (z)> for simplicity):
+
+                                              Xm  Xm
+               <"ae(x) - "ae(z), f (x)>  =             aije<bj,"ae(x)>(qi - qj)
+                                              i=1 j=1
+                                              Xm  Xm
+                                         =             aije<bj,"ae(z)>eqj(qi - qj)
+                                              i=1 j=1
+                                              Xm  Xm
+                                         =             aije<bj,"ae(z)>(eqj(qi - qj) - (eqi - eqj)) + g(x, z)              (55)
+                                              i=1 j=1
+                                                  Xm  Xm
+                                              - 1_2        aije<bj,"ae(z)>(qi - qj)2  + g(x, z)                           (56)
+                                                  i=1 j=1
+                                                          Xm  Xm
+                                              - 1_2c0 (z)          aij(qi - qj)2  + g(x, z)
+                                                          i=1 j=1
+
+                                         =    - 1_2c0 (z) Q(q1 , . .,.qm ) + g(x, z) ,
+
+
+where Q is the quadratic form in Lemma 8.1.  Equality (55) follows by adding and subtracting g(x, z)
+and using (54). To justify (56), we note first that, for each a > 0, the function R 0  ! R:
+
+
+                                       fa (r) :=  ea (r - a) - er + ea + 1_2(r - a)2
+
+
+is always   0 (because fa (0) = -ea a - 1 + ea + (1=2)a2  < 0, fa (r) ! -1 as r ! +1, and fa0(r) =
+ea - er + (r - a) 6= 0 for all r > 0). Now we use the inequality ea (r - a) - er + ea   - 1_2(r - a)2 in each
+term of the sum with a = qj and r = qi (recall aije<bj,"ae(z)>  0).
+
+     Lemma 8.1 gives that Q(q1 , . .,.qm )   ~ffi(x, z). Thus, we may take c(z) := ~c0 (z)=2.                  ||
+                                                              26
+
+8.1      An  Entropy  Distance
+
+                                 R 1
+Recall that we are assuming that   0 |ae(r)| dr  <  1.  For any fixed constant c  2  R,  we consider the
+following function:                                      Z  r
+
+                                               Rc(r) :=      ae(s) ds - cr .
+                                                          1
+
+This function is a well-defined continuous mapping R 0   !  R,  continuously differentiable for r  >  0.
+Moreover, Rc is strictly convex, since for r > 0 its derivative ae(r) - c is strictly increasing and onto R; it
+achieves a global minimum at the unique rc 2 R+  where ae(rc) = c, decreases for r 2 [0, rc], and increases
+to +1 for r > rc.
+
+     The following function will play a central role:
+
+                                                                     Xn
+                                   W  :  Rn 0 x Rn+ ! R :  (x, z) 7!      Rae(zi)(xi) .
+                                                                     i=1
+
+The above-mentioned properties of the functions Rae(zi)imply that
+
+
+                                           x 6= z    )    W (x, z) > W (z, z) ,                                           (57)
+
+
+i.e., for each fixed z 2 Rn+, the function W (., z) has a unique global minimum, at z.  Note also that the
+gradient of W (., z):
+                                                @W___(x, z) = ("ae(x) - "ae(z))0                                          (58)
+                                                 @x
+
+(defined for x 2 Rn+) vanishes only at x = z and that (since Rae(zi)(xi) ! +1 if xi ! +1)
+
+
+                                           |x| ! +1    )    W (x, z) ! +1                                                 (59)
+
+
+for every given z. As W (., z) is continuous, this implies that
+
+
+                                                     {x | W (x, z)   w}                                                   (60)
+
+
+is compact for every z and every w 2 R.
+
+                                                            P  n
+Remark 8.3        In the special case ae = ln ,  W (x, z) =    i=1  xi lnxi - xi - xi lnzi.  Then this formula,
+when states x are interpreted probabilistically in applications such as chemical networks, is suggested
+by "relative entropy" considerations.                                                                                2
+
+
+
+8.2      Main  Stability  Results
+
+
+The next lemma will be applied later with S equal to the whole space or to a class, depending on the
+type of system.
+
+
+Lemma 8.4        Let S   Rn 0 be a closed set, and pick ~x 2 S. Suppose that
+
+
+                                                <"ae(x) - "ae(~x), f *(x)>  <  0                                          (61)
+
+                       T
+is valid for all x 2 S    Rn+, x 6= ~x.  Consider any , 2 Rn 0 for which the maximal solution x(t) of (17)
+with x(0) = , is included in S.
+
+
+    1. If the system has the form (21) then x(t) is defined for all t   0, and
+
+                                                           S
+                                                 x(t) ! E0   {~x}  as  t ! +1 .
+
+
+                                                              27
+
+    2. If (19) holds, then x(t) is defined for all t   0, and
+
+                                                     x(t) ! ~x as   t ! +1 .
+
+
+Furthermore, in either case ~x is an equilibrium of (17), asymptotically stable relative to S.
+
+
+Proof. Fix S, ~x, and , as in the statement, and let x(.) be the maximal solution of (17) with x(0) = ,,
+defined a priori on some maximal interval [0, t* ). We will use
+
+                                              V (x) :=  W (x, ~x) - W (~x, ~x)                                            (62)
+
+as a Lyapunov-like function.  By (57),  this function is positive definite relative to the equilibrium x~,
+i.e., V (x)   0 for all x 2 Rn 0, and V (x) = 0 if and only if x = x~.  Moreover, V  is proper, meaning
+that the sublevel sets {x | V (x)   w} are compact, for all w 2 R 0 , by (60).  Finally, V  is continuously
+differentiable in the interior Rn+, and, using (58),
+
+                                                     rV (x) f *(x)  <  0                                                  (63)
+               T
+whenever x 2 S    Rn+, x 6= ~x, by (61).
+
+     If the system has the form (21) and ,  2 E0 , then ,  2 E*0 (cf. Proposition 6.3), and thus, in that
+special case, x(t) is of course defined for all t > 0 and converges to an equilibrium in E0 (it is constant,
+in fact).
+
+     So, from now on, we suppose that either the system has the form (21)Tand , 62 E0 , or that (19) holds.
+By, respectively, Corollary 7.5 and Corollary 7.6, we know that x(t) 2 S    Rn+ for all t 2 [0, t* ).  So
+V (x(t)) is differentiable for t 2 (0, t* ), and dV (x(t))=dt   0 (by (63) if x(t) 6= ~x, and obvious otherwise,
+since rV (~x) = 0), which means that V (x(t)) is nonincreasing.  Since V  is proper, this means that the
+maximal trajectory is precompact, and hence it is defined on the entire interval [0, +1), as claimed.
+Furthermore, the LaSalle Invariance Theorem implies that
+
+                                               x(t) !  + (,)  as  t ! +1 ,
+
+where  + (,) is the !-limit set of ,, which is a compact subset of {p | V (p) = a}, for some a   0. As the
+set S is closed,  + (,)   S.  We pick any i 2  + (,), and show that necessarily i = ~x or, in the case of
+systems (21), i 2 E0 .
+
+     If i  = x~, we are done, so we may assume from now on that i  6= x~.  Similarly, if the system is of
+type (21), we will assume that i 62 E0 . We now derive a contradiction.
+
+     Consider the forward trajectory z(t) starting from i.  Since  + (,) is invariant and a subset of S,
+z(t) 2 S for all t, and z(t) 6= ~x for all t (since otherwise z(t)   ~x).  Moreover, z(t) 2 Rn+ for all t > 0
+(using either Corollary 7.5 or Corollary 7.6).  Thus (63) says that dV (z(t))=dt < 0 for all t > 0, which
+means that V (z(.)) is strictly decreasing. But this is a contradiction, since V (z(t))   a.
+
+     The stability statement is a simple consequence of the factTthat V  is a Lyapunov function (see e.g. [20 ],
+section 5.7) relative to ~x for the dynamics restricted to S    Rn+.                                                ||
+8.2.1     Proof of Theorem 3
+
+
+Suppose r = n - m + 1, fl1 , . .,.flr are positive, k1 , . .,.kr 2 {1, . .,.n} are such that (14) holds, and j is
+such that (15) holds. Fix any equilibrium ~x 2 E+ .
+
+     We must prove that, for any given , 2 Rn 0, the maximal solution x(t) of (16) with x(0) = , is defined
+for all t   0 (the fact that the solution remains in Rn 0 has already been established) and that x~ is a
+globally asymptotically stable equilibrium of (16).
+
+     We apply Lemma 8.4, with S = Rn 0. Notice that
+
+                                       <"ae(x) - "ae(~x), f (x)>     -c(~x) ffi(x, ~x)     0                              (64)
+
+
+
+                                                              28
+
+for all x 2 Rn+ by (53) (since f (~x) = 0). The inequality is strict unless ffi(x, ~x) = 0, i.e.,
+
+
+                                                    "ae(x) - "ae(~x) 2 D?  .                                              (65)
+
+
+On the other hand,
+
+                                                       Xr
+                        <"ae(x) - "ae(~x), g(x)>  =        fl` (~xk`- xk` )  <"ae(x) - "ae(~x), ek` >
+                                                       `=1
+                                                       Xr
+                                                  =        fl` (~xk`- xk` )  (ae(xk` ) - ae(~xk`))    0
+                                                       `=1
+
+where the last inequality follows from the fact that ae is an increasing function, and the inequality is
+strict unless
+                                      <"ae(x) - "ae(~x), ek` >  =  ae(xk` ) - ae(~xk`)  =  0                              (66)
+
+for ` = 1 . .r.. Thus
+
+
+                    <"ae(x) - "ae(~x), f *(x)>  =  <"ae(x) - "ae(~x), f (x)> + <"ae(x) - "ae(~x), g(x)>     0 ,           (67)
+
+
+and this inner product can only vanish if both (65) and (66) hold, which implies, because of (14), that
+"ae(x) = "ae(~x), i.e., x = ~x. This means that (61) holds. As the system (16) is a system (17) for which (19)
+holds, Lemma 8.4 provides the proof of global stability.                                                          ||
+
+
+
+8.2.2     Proof of Theorem 1
+
+
+Consider any system (21) and any maximal solution x(.).  By Corollary 7.7, either x(t)   , 2 E*0 = E0 ,
+in which case of course x(t) ! E, or there is a positive class S such that x(t) 2 S for all t, which we
+assume from now on. Let ~x = ~xS. Notice that (64) again holds, for all x 2 Rn+. Let us now specialize to
+systems (5). We claim that
+                                                 <"ae(x) - "ae(~x), f (x)>  <  0                                          (68)
+                                                     T
+(i.e., property (61) for (5)) is valid for all x 2 S    Rn+, x 6= ~x. Since c(~x) > 0, by (64) all we need to show
+is that ffi(x, ~x) 6= 0. But the onlyTway that ffi(x, ~x) could vanish is if x is an equilibrium (cf. Corollary 5.3),
+and uniqueness of equilibria in S    Rn+ then gives x = ~x. So, Part 1 in Lemma 8.4 gives x(t) ! E,     ||
+
+
+
+8.2.3     Proof of Theorem 4
+
+
+Let S be a positive class, and pick ~x = ~xS. Define:
+
+
+                                                 ffiS (x) :=  1_4c(~x)2 ffi(x, ~x)
+
+                    T
+restricted to x 2 S    Rn+.  Since c(~x) > 0 and ffi(x, ~x) = 0 if and only if x is an equilibrium, which by
+uniqueness means x = ~x, we have ffiS (x) > 0 for all x 6= ~x.  take now any collection of functions { ij}
+such that (22) holds.
+                                                                                 T
+     Notice that (64) again holds, for all x 2 Rn+. On the other hand, for x 2 S    Rn+:
+
+                                                         Xm   Xm
+                           <"ae(x) - "ae(~x), g(x)> =               ij(x) <"ae(x) - "ae(~x), bi - bj>
+                                                         i=1  j=1
+                                                         p  _______p  _________
+                                                            ffiS (x)  ffi(x, ~x)
+
+                                                          1_2c(~x)ffi(x, ~x) ,
+
+
+                                                              29
+
+where the first inequality follows from the Cauchy-Schwartz inequality, the estimate (22), and the defi-
+nition of ffi. Therefore:
+
+
+             <"ae(x) - "ae(~x), f *(x)>  =  <"ae(x) - "ae(~x), f (x)> + <"ae(x) - "ae(~x), g(x)>     - 1_2c(~x)ffi(x, ~x) (69)
+
+              T
+for all x 2 S    Rn+, and this expression is negative when x 6= ~x.  Thus, hypothesis (61) in Lemma 8.4
+holds, with S as given. Part 3 (asymptotic stability of ~x) follows from the Lemma.
+
+     We pick any , 2 S, and consider the ensuing maximal solution. BySPart 1 of Lemma 8.4, the solution
+is defined for all t   0 (proving Part 2 in Theorem 4) and x(t) ! E0   {~x} as t ! +1.  Since E0  and
+{~x} are at positive distance,Tthis means that either x(t) ! E0  or x(t) ! ~x.  In the first case, S being
+closed implies that x(t) ! E0T   S.  Thus, if E0 = E*0 does not intersect S, the only possibility is that
+x(t) ! ~x.  Conversely,Tif S    E0 6= ; then ~xS is not globally asymptotically stable relative to S.  This is
+clear, since if i 2 E0    S 6= ; then i (being an equilibrium) is not attracted to ~x. This proves Part 4 of
+Theorem 4.                                                                                                                ||
+
+     Observe ffi(x, ~x) = ffi(x, ss(x)) is of class Ck  if hypothesis (Hk ) holds.  One may pick easily a smooth
+lower bound for the function c, and in that manner obtain a class Ck  function ffiS .
+
+
+
+8.2.4     Proof of Parts b and c in Theorem 2 and Lemma 2.2
+
+
+Pick any positive class S.  We let ffiS  be any function as in the statement of Theorem 4; as  ij(x)   0,
+the hypotheses of that theorem are verified.  In this manner, all conclusions in Theorem 2 as well as
+Lemma 2.2 are established.                                                                                            ||
+
+
+Remark 8.5        A different approach to the proof of Theorem 1, not using LaSalle invariance relies upon
+the fact that V (x(t)) can be shown to decrease strictly along every trajectory (not merely in the positive
+orthant). This proof applies as well in the multiple-linkage class case described in Remark 5.4.         2
+
+
+
+8.3      A  Remark  on  Exponential  Stability
+
+
+Suppose that hypothesis (H1 ) holds.  Recalling the definition (62) of the Lyapunov function V ,  and
+the form of its gradient given by (58), ("ae(x) - "ae(~x))0, we know that the Hessian of V  at ~x is given by
+Q = diag (ae0(~x1), . .,.ae0(~xn)) and is therefore nonsingular. Since the gradient of V  vanishes at x = ~x, we
+have a Taylor expansion V (x) = (x - ~x)0Q(x - ~x) + o(|x - ~x|2 ), and thus, for all x in some neighborhood
+of x~,  c1 |x - ~x|2    V (x)   c2 |x - ~x|2  for some positive constants c1  and c2 .  If we let d2  = d2 (~x)=2
+in (36), we also have that ffi(x, ~x)   d2 |x - ~x|2 for all x in a neighborhood of ~x. So inequality (69) gives
+us that, along trajectories in the class containing ~x, as long as x(t) is near ~x we have
+
+
+                                  dV_(x(t))__ =  <"ae(x) - "ae(~x), f *(x)>     -c V (x(t)) ,
+                                      dt
+
+where  c  =  c(~x)d2 c1 =2.   Integrating,  V (x(t))     e-ct V (x(0)),  so  we  obtain  an  estimate  |x(t) - ~x|2
+(c2 =c1 )e-ct |x(0) - ~x| 2  for all trajectories of system (21) which start near ~x.  In other words, (relative)
+stability is in fact exponential.                                                                                         ||
+
+
+
+                                                              30
+
+References
+
+
+  [1] Bastin, G., "Issues in modelling and control of mass balance systems," in Stability and Stabilization
+      of Nonlinear Systems (D. Aeyels, F. Lamnabhi-Lagarrigue, and A.J. van der Schaft, eds), Springer-
+      Verlag, Berlin, 1999, pp. 53-74.
+
+  [2] Bastin,  G.,  and  D.  Dochain,  On-line  Estimation  and  Adaptive  Control  of  Bioreactors,  Elsevier,
+      Amsterdam, 1990.
+
+  [3] Bastin, G., and J. Levine, "On state accessibility in reaction systems," IEEE Trans. Autom. Control
+      38(1992): 733-742.
+
+  [4] Bastin,  G.,  and  J.F.  van  Impe,  "Nonlinear  and  adaptive  control  in  biotechnology:  A  tutorial,"
+      European J. Control 1(1995): 1-37.
+
+  [5] Chaves, M., and Eduardo D. Sontag, "State-estimators for chemical reaction networks of Feinberg-
+      Horn-Jackson zero deficiency type," submitted.
+
+  [6] Epstein, I.R., and Pojman, J.A., An Introduction to Nonlinear Chemical Dynamics. Oscillations,
+      Waves, Patterns, and Chaos, Oxford University Press, New York, 1998.
+
+  [7] Fabrice, J., Dynamics and Robust Nonlinear Control of Stirred Tank Reactors, Th'ese de Docteur
+      en Sciences Appliqu'ees, Universit'e catholique de Louvain, Belgium, 1996.
+
+  [8] Feinberg, M., "Chemical reaction network structure and the stabiliy of complex isothermal reactors
+      -  I.  The  deficiency  zero  and  deficiency  one  theorems,"  Review  Article  25,  Chemical  Engr.  Sci.
+      42(1987): 2229-2268.
+
+  [9] Feinberg, M., "The existence and uniqueness of steady states for a class of chemical reaction net-
+      works," Archive for Rational Mechanics and Analysis 132(1995): 311-370.
+
+[10]  Feinberg,  M.,  "Lectures on Chemical Reaction Networks,"  4.5 out of 9 lectures delivered at the
+      Mathematics Research Center, University of Wisconsin, Fall, 1979.
+
+[11]  Feinberg,  M.,  "Mathematical  aspects  of  mass  action  kinetics,"  in  Chemical  Reactor  Theory:  A
+      Review (L. Lapidus and N. Amundson, eds.), Prentice-Hall, Englewood Cliffs, 1977.
+
+[12]  Fran,coisse, O., Mod'elisation et Commande Adaptative de R'eacteurs Tubulaires, Th'ese de Docteur
+      en Sciences Appliqu'ees, Universit'e catholique de Louvain, Belgium, 1993.
+
+[13]  Gavalas, G.R., Nonlinear Differential Equations of Chemically Reacting Systems, Springer-Verlag,
+      Berlin, 1968.
+
+[14]  Hale, J.K., Ordinary Differential Equations, Wiley, New York, 1980.
+
+[15]  Horn,  F.J.M.,  and  Jackson,  R.,  "General  mass  action  kinetics,"  Arch.  Rational  Mech.  Anal.
+      49(1972): 81-116.
+
+[16]  Horn, F.J.M., "The dynamics of open reaction systems," in Mathematical aspects of chemical and
+      biochemical problems and quantum chemistry (Proc. SIAM-AMS Sympos. Appl. Math., New York,
+      1974), pp. 125-137. SIAM-AMS Proceedings, Vol. VIII, Amer. Math. Soc., Providence, 1974.
+
+[17]  Jacquez,  J.A.,  and C.P. Simon,  "Quanlitative theory of compartmental systems,"  SIAM  Review
+      35(1993): 43-79.
+
+[18]  McKeithan, T.W., "Kinetic proofreading in T-cell receptor signal transduction," Proc. Natl. Acad.
+      Sci. USA 92(1995): 5042-5046.
+
+[19]  Siegel, D., and Chen, S.F., "Global stability of deficiency zero chemical networks," Canadian Applied
+      Math Quarterly 2(1994): 413-434.
+
+
+
+                                                              31
+
+[20]  Sontag,  E.D.,  Mathematical  Control  Theory:  Deterministic  Finite  Dimensional  Systems,  Second
+      Edition, Springer-Verlag, New York, 1998.
+
+[21]  Sontag, E.D., "Global stability of McKeithan's kinetic proofreading model for T-cell receptor signal
+      transduction," Mathematics ArXiv, paper math.DS/9912237, 1999.
+
+[22]  Vol'pert,  A.,  and Hudjaev,  S.,  Analysis in Classes of Discontinuous Functions and Equations of
+      Mathematical Physics, Marinus Nijhoff, Dordrecht, 1985.
+
+[23]  Wofsy, C., "Modeling receptor aggregation," series of lectures at the Workshop on Mathematical
+      Cellular Biology, Pacific Institute for the Mathematical Sciences, UBC, Vancouver, August 1999.
+                                                              32
+
+</pre>
+</body>
+</html>

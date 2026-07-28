@@ -1,0 +1,976 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/crc.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/crc.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Input-Output Stability A.R. Teel\Lambda , T.T. Georgiou\Lambda , L. Pralyy and E. Sontagz
+
+1 Introduction A common task for an engineer is to design a system which reacts to stimuli in some specific and desirable way. One way to characterize appropriate behavior is through the formalism of input-output stability. In this setting a notion of well-behaved input and output signals is made precise and the question is posed: do well-behaved stimuli (inputs) produce well-behaved responses (outputs)?
+
+General input-output stability analysis has its roots in the development of the electronic feedback amplifier of H.S. Black in 1927 and the subsequent development of classical feedback design tools for linear systems by H. Nyquist and H.W. Bode in the 30's and 40's, all at Bell Telephone Laboratories. These latter tools focused on determining input-output stability of linear feedback systems from the characteristics of the feedback components. Generalizations to nonlinear systems were made by several researchers in the late 50's and early 60's. The most notable contributions were those of G. Zames, then at M.I.T., and I.W. Sandberg at Bell Telephone Laboratories. Indeed, much of this chapter is based on the foundational ideas found in [Sandberg, 1964] and [Zames, 1966], with additional insights drawn from [Safonov, 1980]. A thorough understanding of nonlinear systems from an input-output point of view is still an area of ongoing and intensive research.
+
+The strength of input-output stability theory is that it provides a method for anticipating the qualitative behavior of a feedback system with only rough
+
+\Lambda University of Minnesota, Department of Electrical Engineering.
+
+y 'Ecole Des Mines de Paris, Centre Automatique et Syst`emes. zRutgers University, Department of Mathematics.
+
+Submitted to The Control Handbook, CRC Press
+
+information about the feedback components. This, in turn, leads to notions of robustness of feedback stability and motivates many of the recent developments in modern control theory.
+
+2 Systems and Stability Throughout our discussion of input-output stability, a signal is a "reasonable" (e.g., piecewise continuous) function defined on a finite or semi-infinite time interval, i.e. an interval of the form [0; T ) where T is either a strictly positive real number or infinity. In general, a signal is vector-valued; its components typically represent actuator and sensor values. A dynamical system is an object which produces an output signal for each input signal.
+
+To discuss stability of dynamical systems, we introduce the concept of a norm function, denoted jj\Delta jj, which captures the "size" of signals defined on the semi-infinite time interval. The significant properties of a norm function are that 1) the norm of a signal is zero if the signal is identically zero, and is a strictly positive number otherwise, 2) scaling a signal results in a corresponding scaling of the norm, and 3) the triangle inequality holds, i.e. jju1 + u2jj ^ jju1jj + jju2jj. Examples of norm functions are the p-norms. For any positive real number p * 1, the p-norm is defined by
+
+jjujjp := `Z
+
+1
+
+0 ju(t)j
+
+p'
+
+1 p (1)
+
+where j \Delta  j represents the standard Euclidean norm. For p = 1, we define
+
+jjujj1 := sup
+
+t*0 ju(t)j : (2)
+
+The 1-norm is useful when amplitude constraints are imposed on a problem, while the 2-norm is of more interest in the context of energy constraints. The norm of a signal may very well be infinite. We will typically be interested in measuring signals which may only be defined on finite time intervals or measuring truncated versions of signals. To that end, given a signal u and a strictly positive real number o/ , we use uo/ to denote the truncated signal which is generated by appending zeros to u to extend it onto the semi-infinite interval if necessary and then truncating, i.e. uo/ is equal to the (extended) signal on the interval [0; o/ ] and is equal to zero on the interval (o/; 1).
+
+2
+
+d1 y1
+
+y2 d2 - ` j' i+ - \Sigma 1
+
+? 6
+
+\Sigma 2 oe ` j' i+ oe Figure 1: Standard feedback configuration. Informally, a system is stable in the input-output sense if small input signals produce correspondingly small output signals. To make this concept precise, we need a way to quantify the dependence of the norm of the output on the norm of the input applied to the system. To that end, we define a gain function as a function from the nonnegative real numbers to the nonnegative real numbers which is continuous, nondecreasing, and zero when its argument is zero. For notational convenience we will say that the "value" of a gain function at 1 is 1. A dynamical system is stable (with respect to the norm jj \Delta  jj) if there is a gain function fl which gives a bound on the norm of truncated output signals as a function of the norm of truncated input signals, i.e.
+
+jjyo/ jj ^ fl(jjuo/ jj) for all o/ : (3)
+
+In the very special case when the gain function is linear, i.e. there is at most an amplification by a constant factor, the dynamical system is finite gain stable. The notions of finite gain stability and closely related variants are central to much of classical input-output stability theory, but in recent years much progress has been made as well in understanding the role of more general (nonlinear) gains in system analysis.
+
+The focus of this chapter will be on the stability analysis of interconnected dynamical systems as described in figure 1. The composite system in figure 1 will be called a well-defined interconnection if it is a dynamical system
+
+3
+
+with id1d2j as input and iy1y2j as output. The dynamical systems which make up a well-defined interconnection will be called its feedback components. For stability of well-defined interconnections, it is not necessary for either of the feedback components to be stable nor is it sufficient for both of the feedback components to be stable. On the other hand, necessary and sufficient conditions for stability of a well-defined interconnection can be expressed in terms of the set of all possible input-output pairs for each feedback component. To be explicit in this regard, we make some definitions. For a given dynamical system \Sigma  with input signals u and output signals y, the set of its ordered input-output pairs (u; y) is referred to as the graph of the dynamical system and is denoted G\Sigma . When the input and output are exchanged in the ordered pair, i.e. (y; u), the set is referred to as the inverse graph of the system and is denoted GI\Sigma . Note that, for the system in figure 1, the inverse graph of \Sigma 2 and the graph of \Sigma 1 lie in the same Cartesian product space which we will call the ambient space. We will use as norm on the ambient space the sum of the norms of the coordinates.
+
+The basic observation regarding input-output stability for a well-defined interconnection says, in informal terms, that if a signal in the inverse graph of \Sigma 2 is near any signal in the graph of \Sigma 1 then it must be small. To formalize this notion, we need the concept of the distance to the graph of \Sigma 1 from signals x in the ambient space. This (truncated) distance is defined by
+
+do/ (x; G\Sigma 1) := inf
+
+z2G\Sigma 1 jj(x \Gamma  z)o/ jj : (4)
+
+Graph separation theorem: A well-defined interconnection is stable if and only if there exists a gain function fl which gives a bound on the norm of truncated signals in the inverse graph of \Sigma 2 as a function of the truncated distance from the signals to the graph of \Sigma 1, i.e.
+
+x 2 GI\Sigma 2 =) jjxo/jj ^ fl i do/ (x; G\Sigma 1) j for all o/ : (5) In the special case where fl is a linear function, the well-defined interconnection is finite gain stable.
+
+The idea behind this observation can be understood by considering the signals that arise in the closed loop which belong to the inverse graph of \Sigma 2,
+
+4
+
+i.e. the signals (y2; y1 + d2). (Stability with these signals taken as output is equivalent to stability with the original outputs.) Notice that, for the system in figure 1, signals in the graph of \Sigma 1 have the form (y2+d1; y1). Consequently, signals x 2 GI\Sigma 2 and z 2 G\Sigma 1 which satisfy the feedback equations also satisfy
+
+(x \Gamma  z)o/ = (d1; \Gamma d2)o/ (6) and
+
+jj(x \Gamma  z)o/ jj = k(d1; d2)o/ k (7)
+
+for truncations within the interval of definition. If there are signals x in the inverse graph of \Sigma 2 with large truncated norm but small truncated distance to the graph of \Sigma 1, i.e. there exists some z 2 G\Sigma 1 and o/ ? 0 such that jj(x\Gamma z)o/jj is small, then we can choose (d1; d2) to satisfy (6) giving, according to (7), a small input which produces a large output. This contradicts our definition of stability. Conversely, if there is no z which is close to x then only large inputs can produce large x signals and thus the system is stable.
+
+The distance observation presented above is the unifying idea behind the input-output stability criteria that are applied in practice. However, the observation is rarely applied directly because of the difficulties involved in exactly characterizing the graph of a dynamical system and measuring distances. Instead, various simpler conditions have been developed which constrain the graphs of the feedback components in a way that guarantees the graph of \Sigma 1 and the inverse graph of \Sigma 2 are sufficiently separated. There are many such sufficient conditions and in the remainder of this chapter we will describe a few of them.
+
+3 Practical conditions and examples 3.1 The classical small gain theorem One of the most commonly used sufficient conditions for graph separation constrains the graphs of the feedback components by assuming that each feedback component is finite gain stable. Then, the appropriate graphs will be separated if the product of the coefficients of the linear gain functions is sufficiently small. For this reason, the result based on this type of constraint has come to be known as the small gain theorem.
+
+5
+
+Graph of \Sigma 1 Graph of \Sigma 2
+
+y
+
+u 1=fl2 Inverse
+
+fl1
+
+Figure 2: Classical small gain theorem Small gain theorem: If each feedback component is finite gain stable and the product of the gains (the coefficients of the linear gain functions) is less than one then the well-defined interconnection is finite gain stable.
+
+Figure 2 provides the intuition for the result. If we were to draw an analogy between a dynamical system and a static map whose graph is a set of points in the plane, the graph of \Sigma 1 would be constrained to the darkly shaded conic region by the finite gain stability assumption. Likewise, the inverse graph of \Sigma 2 would be constrained to the lightly shaded region. The fact that the product of the gains is less than one guarantees the positive aperture between the two regions and, in turn, that the graphs are separated sufficiently.
+
+To apply the small gain theorem, we need a way to verify that the feedback components are finite gain stable (with respect to a particular norm) and determine their gains. In particular, any linear dynamical system that can be represented with a real, rational transfer function G(s) is finite gain stable
+
+6
+
+in any of the p-norms if and only if all of the poles of the transfer function have negative real part. A popular norm to work with is the 2-norm. It is associated with the energy of a signal. For a single-input, single-output (SISO) finite gain stable system modeled by a real, rational transfer function G(s), the smallest possible coefficient for the stability gain function with respect to the 2-norm is given by:
+
+_fl := sup
+
+! jG(j!)j : (8)
+
+For multi-input, multi-output systems, the magnitude in (8) is replaced by the maximum singular value. In either case, this can be established using Parseval's theorem. For SISO systems, the quantity in (8) can be obtained from a quick examination of the Bode plot or Nyquist plot for the transfer function. If the Nyquist plot of a stable SISO transfer function lies inside a circle of radius _fl centered at the origin then the coefficient of the 2-norm gain function for the system is less than or equal to _fl.
+
+More generally, consider a dynamical system that can be represented by a finite dimensional ordinary differential equation with zero initial state :
+
+.x = f (x; u) ; x(0) = 0 y = h(x; u) : (9)
+
+Suppose that f has globally bounded partial derivatives and that there exist positive real numbers `1 and `2 such that
+
+jh(x; u)j ^ `1jxj + `2juj : (10) Under these conditions, if the trajectories of the unforced system with nonzero initial conditions,
+
+.x = f (x; 0) ; x(0) = xffi ; (11)
+
+satisfy
+
+jx(t)j ^ k exp(\Gamma *t)jxffij (12)
+
+for some positive real number k and * and any xffi 2 IRn then the system (9) is finite gain stable in any of the p-norms. This can be established using Lyapunov function arguments that apply to the system (11).
+
+Example 3.1 Consider a nonlinear control system modeled by an ordinary differential equation with state x 2 IRn, input v 2 IRm and disturbance d1 2 IRm :
+
+.x = f(x; v + d1) : (13)
+
+7
+
+Suppose that f has globally bounded partial derivatives and that a control v = ff(x) can be found, also with a globally bounded partial derivative, so that the trajectories of the system
+
+.x = f(x; ff(x)) ; x(0) = xffi (14)
+
+satisfy the bound j
+
+x(t)j ^ k exp(\Gamma *t)jxffij (15)
+
+for some positive real numbers k and * and for all xffi 2 IRn. As mentioned above, for any function h satisfying the type of bound in (10), this implies that the system
+
+.x = f(x; ff(x) + d1) ; x(0) = 0 y = h(x; d1) (16)
+
+has finite 2-norm gain from input d1 to output y. We consider the output
+
+y := .ff = @ff@x f(x; ff(x) + d1) (17) which satisfies the type of bound in (10) since ff and f both have globally bounded partial derivatives.
+
+We will show, using the small gain theorem, that disturbances d1 with finite 2-norm continue to produce outputs y with finite 2-norm even when the actual input v to the process is generated by the following fast dynamic version of the commanded input ff(x) :
+
+ffl .z = Az + B(ff(x) + d2) ; z(0) = \Gamma A\Gamma 1Bff(x(0))
+
+v = Cz : (18)
+
+Here, ffl is a small positive parameter, the eigenvalues of A all have strictly negative real part (thus A is invertible) and \Gamma CA\Gamma 1B = I. This system may represent unmodeled actuator dynamics.
+
+To see the stability result, we will consider the composite system in the coordinates x and i = z + A\Gamma 1Bff(x). We have, using the notation from figure 1 :
+
+\Sigma 1 : .x = f(x; ff(x) + u
+
+1) ; x(0) = 0
+
+y1 = .ff(x)
+
+(19)
+
+and
+
+\Sigma 2 :
+
+.i = ffl\Gamma 1Ai + A\Gamma 1Bu2 ; i(0) = 0
+
+y2 = Ci
+
+(20)
+
+with the interconnection conditions
+
+u1 = y2 + d1; u2 = y1 + ffl\Gamma 1Ad2 : (21)
+
+8
+
+Of course, if the system is finite gain stable with the inputs d1 and ffl\Gamma 1Ad2 then it is also finite gain stable with the inputs d1 and d2. We have already discussed that the system \Sigma 1 in (19) has finite 2-norm gain, say fl1. Now consider the system \Sigma 2 in (20). It can be represented with the transfer function
+
+G(s) = C(sI \Gamma  ffl\Gamma 1A)\Gamma 1A\Gamma 1B
+
+= fflC(fflsI \Gamma  A)\Gamma 1A\Gamma 1B =: ffl _G(ffls) :
+
+(22)
+
+Identifying _G(s) = C(sI \Gamma  A)\Gamma 1A\Gamma 1B, we see that if
+
+fl2 := sup
+
+! oe(
+
+_G(j!)) (23)
+
+then
+
+sup
+
+! oe(G(j!)) = fflfl
+
+2 : (24)
+
+We conclude from the small gain theorem that if ffl ! fl
+
+1
+
+fl2 then the composite system (19)-(21) with inputs d1 and d2 and outputs y1 = .ff(x) and y2 = Ci is finite gain stable.
+
+3.2 The classical passivity theorem Another very popular condition which is used to guarantee graph separation is given in the passivity theorem. For the most straightforward passivity result, we must have that the number of input channels is equal to the number of output channels for each feedback component. We then identify the relative location of the graphs of the feedback components using a condition involving the integral of the product of the input and the output signals. This operation is known as the inner product and is denoted h\Delta ; \Delta i. In particular, for two signals u and y of the same dimension defined on the semi-infinite interval,
+
+hu; yi := Z
+
+1
+
+0 u
+
+T (t)y(t)dt : (25)
+
+Note that hu; yi = hy; ui and hu; ui = jjujj22. A dynamical system is passive if, for each input-output pair (u; y) and each o/ ? 0, huo/ ; yo/ i * 0. The terminology used here comes from the special case where the input and output are a voltage and a current, respectively, and the energy absorbed by the dynamical system, which is the inner product of the input and output, is nonnegative.
+
+9
+
+InverseGraph of \Sigma 
+
+2
+
+u
+
+y Graph of \Sigma 1
+
+Figure 3: General passivity-based interconnection Again by analogy to a static map whose graph lies in the plane, passivity of a dynamical system can be thought of as the condition that the graph is constrained to the darkly shaded region in figure 3, i.e. the first and third quadrant of the plane. This graph and the inverse graph of a second system would be separated if, for example, the inverse graph of the second system were constrained to the lightly shaded region in 3, i.e. the second and fourth quadrant but bounded away from the horizontal and vertical axes by an increasing and unbounded distance. But, this is the same as asking that the graph of the second system followed by the scaling `-1', i.e. all pairs (u; \Gamma y), be constrained to the first and third quadrant again bounded away from the axes by an increasing and unbounded distance, as in figure 4a. For classical passivity theorems, this region is given a linear boundary as in figure 4b. Notice that, for points (uffi; yffi) in the plane, if uffi \Delta  yffi * ffl(u2ffi + y2ffi) then (uffi; yffi) is in the first or third quadrant and (ffl)\Gamma 1juffij * jyffij * ffljuffij as in figure 4b. This motivates the following stronger version of passivity. A dynamical system is input and output strictly passive if there exists a
+
+10
+
+Graph of \Sigma 
+
+y
+
+u
+
+(a)
+
+Graph of \Sigma 
+
+y
+
+u
+
+(b) Figure 4: Different notions of input and output strict passivity strictly positive real number ffl such that, for each input-output pair (u; y) and each o/ ? 0, huo/ ; yo/ i * ffl (jjuo/ jj22 + jjyo/ jj22).
+
+There are intermediate versions of passivity which are also useful. These correspond to asking for an increasing and unbounded distance from either the horizontal axis or the vertical axis but not both. For example, a dynamical system is input strictly passive if there exists a strictly positive real number ffl such that, for each input-output pair (u; y) and each o/ ? 0, huo/ ; yo/ i * ffljjuo/ jj22. Similarly, a dynamical system is output strictly passive if there exists a strictly positive real number ffl such that, for each inputoutput pair (u; y) and each o/ ? 0, huo/ ; yo/ i * ffljjyo/ jj22. It is worth noting that input and output strict passivity is equivalent to input strict passive plus finite gain stability. This can be shown with standard manipulations of the inner product. Also, the reader is warned that all three types of strict passivity mentioned above are frequently simply called "strict passivity" in the literature.
+
+Again by thinking of a graph of a system as a set of points in the plane, output strict passivity is the condition that the graph is constrained to the darkly shaded region in figure 5, i.e. the first and third quadrant with an increasing and unbounded distance from the vertical axis. To complement
+
+11
+
+y
+
+u Graph of \Sigma 1
+
+Graph of \Sigma 2Inverse
+
+Figure 5: Interconnection of output strictly passive systems
+
+12
+
+such a graph, consider a second dynamical system which, when followed by the scaling `-1', is also output strictly passive. Such a system has a graph (without the `-1' scaling) which is constrained to the second and fourth quadrant with an increasing and unbounded distance from the vertical axis. In other words, its inverse graph is constrained to the lightly shaded region of figure 5, i.e. to the second and fourth quadrants but with an increasing and unbounded distance from the horizontal axis. The conclusions that we can then draw, using the graph separation theorem, are summarized in the following passivity theorem.
+
+Passivity theorem: If one dynamical system and the other dynamical system followed by the scaling `-1' are
+
+ffl both input strictly passive, OR ffl both output strictly passive, OR ffl respectively, passive and input and output strictly passive then the well-defined interconnection is finite gain stable in the 2-norm.
+
+To apply this theorem, we need a way to verify that the (possibly scaled) feedback components are appropriately passive. For stable SISO systems with real, rational transfer function G(s) it again follows from Parseval's theorem that if
+
+Re G(j!) * 0
+
+for all real values of ! then the system is passive. If the quantity Re G(j!) is positive and uniformly bounded away from zero for all real values of ! then the linear system is input and output strictly passive. Similarly, if there exists ffl ? 0 such that, for all real values of !,
+
+Re G(j! \Gamma  ffl) * 0 (26) then the linear system is output strictly passive. So, for SISO systems modeled with real, rational transfer functions, passivity and the various forms of strict passivity can again be easily checked by means of a graphical approach such as a Nyquist plot.
+
+13
+
+More generally, for any dynamical system that can be modeled with a smooth, finite dimensional ordinary differential equation
+
+.x = f (x) + g(x)u ; x(0) = 0 y = h(x) ; (27)
+
+if there exists a strictly positive real number ffl and a nonnegative function V : IRn ! IR*0 with V (0) = 0 satisfying
+
+@V
+
+@x (x)f (x) ^ \Gamma fflh
+
+T (x)h(x) (28)
+
+@V
+
+@x (x)g(x) = h
+
+T (x) (29)
+
+then the system is output strictly passive. With ffl = 0, the system is passive. Both of these results are established by integrating .V over the semi-infinite interval.
+
+Example 3.2 (This example is motivated by the work in Berghuis and Nijmeijer, Systems & Control Letters, 21:289-295. 1993). Consider a "completely controlled dissipative Euler-Lagrange" system with generalized "forces" F , generalized coordinates q, uniformly positive definite "inertia" matrix I(q), Rayleigh dissipation function R( .q) and, say positive, potential V (q) starting from the position qd. Namely, let the dynamics of the system be given by the Euler-Lagrange-Rayleigh equations :
+
+.z -@L @ .q (q; .q) =
+
+@L
+
+@q (q; .q) + F
+
+? \Gamma  @R
+
+@ .q ( .q) ; q(0) = q
+
+d ; .q(0) = 0 (30)
+
+where L is the Lagrangian :
+
+L(q; .q) = 12 .q?I(q) .q \Gamma  V (q) : (31) Along the solutions of (30), we have :
+
+.L = @L@ .q "q + @L@q .q = @L@ .q "q + 24
+
+.z -@L
+
+@ .q \Gamma  F
+
+? + @R
+
+@ .q 35 .q (32)
+
+=
+
+.z -`@L
+
+@ .q .q' \Gamma  ^F
+
+? \Gamma  @R
+
+@ .q * .q =
+
+.z -\Gamma  .q?I(q) .q\Delta  \Gamma  ^F ? \Gamma  @R
+
+@ .q * .q (33)
+
+= 2 .z -L + V \Gamma  ^F ? \Gamma  @R@ .q * .q = \Gamma 2 .V + ^F ? \Gamma  @R@ .q * .q (34)
+
+14
+
+We will suppose that there exists ffl ? 0 such that
+
+@R
+
+@ .q ( .q) .q * ffl j .qj
+
+2 : (35)
+
+Now let Vd be a function so that the modified potential:
+
+Vm = V + Vd (36) has a global minimum as q = qd and let the generalized "force" be
+
+F = \Gamma  @V
+
+d
+
+@q (q) + F
+
+m : (37)
+
+We can see that the system (30) combined with (37), having input Fm and output .q, is output strictly passive by integrating the derivative of the defined Hamiltonian
+
+H = 12 .q?I(q) .q + Vm(q) = L + 2 V + Vd : (38) Indeed the derivative is
+
+.H = ^F ?m \Gamma  @R@ .q * .q (39)
+
+and, integrating, we get for each o/ :o/^
+
+Fmo/ \Gamma  @R@ .q ( .qo/ )?* ; .qo/ AE = H(o/ ) \Gamma  H(0) : (40) Since H * 0, H(0) = 0 and (35) holds we get
+
+hFmo/ ; .qo/ i * ffljj .qo/ jj22 : (41) Now we know from the passivity theorem that if Fm is generated from negative dynamic feedback of .q, where the compensator is output strictly passive, then the composite feedback system, with the standard definitions of inputs and outputs, will be finite gain stable using the 2-norm. One such compensator is simply the identity mapping. However, there is interest in designing a linear, output strictly passive compensator which, in addition, has no direct feed-through term. The reason is that if, in fact, there is no disturbance at the input of the compensator we can implement the compensator with measurement only of q and without .q. Indeed, in general
+
+G(s) .q = G(s)s ` 1s .q' = G(s)s(q \Gamma  qd) (42) and the system G(s)s is implementable if G(s) has no direct feed-through terms. To design an output strictly passive linear system without direct feed-through, let A be a matrix having all eigenvalues with strictly negative real part so that, by a well-known result in linear systems theory, there exists a positive definite matrix P satisfying :
+
+AT P + P A = \Gamma I : (43)
+
+15
+
+Then, for any B matrix of appropriate dimensions, the system modeled by the transfer function
+
+G(s) = BT P (sI \Gamma  A)\Gamma 1B (44)
+
+is output strictly passive. To see this, consider a state-space realization
+
+.x = Ax + Bu x(0) = 0 y = BT P x
+
+(45)
+
+and note that
+
+.z -x?P x = \Gamma x?x + 2 x?P B u (46)
+
+= \Gamma x?x + 2 y?u : (47) But, with (45) we have, for some strictly positive real number c,
+
+2c y?y ^ x?x : (48) So, integrating (47) and using that P is positive definite, we get, for all o/ ,
+
+hyo/ ; uo/ i * cjjyo/ jj22 : (49) As a point of interest, one could verify that
+
+G(s)s = BT P A(sI \Gamma  A)\Gamma 1B + BT P B : (50)
+
+3.3 Simple nonlinear separation theorems In this section we illustrate how allowing regions with nonlinear boundaries in the small gain and passivity contexts may be useful. First we need a class of functions that will help us describe nonlinear boundaries. A proper separation function is a function from the nonnegative real numbers to the nonnegative real numbers which is continuous, zero at zero, strictly increasing and unbounded. The main difference between a gain function and a proper separation function is that the latter is invertible and the inverse is another proper separation function.
+
+3.3.1 Nonlinear passivity We will briefly discuss a notion of nonlinear input and output strict passivity. To our knowledge, this notion has not been used much in the literature. The notion that we have in mind simply replaces the linear boundaries in the input
+
+16
+
+and output strict passivity definition by nonlinear boundaries as in figure 4a. A dynamical system is nonlinearly input and output strictly passive if there exists a proper separation function ae such that, for each input-output pair (u; y) and each o/ ? 0, huo/ ; yo/ i * jjuo/ jj2ae(jjuo/ jj2) + jjyo/ jj2ae(jjyo/ jj2). (Note that in the classical definition of strict passivity, ae(s) = ffls for all s * 0.)
+
+Nonlinear passivity theorem: If one dynamical system is passive and the other dynamical system followed by the scaling `-1' is nonlinearly input and output strictly passive then the well-defined interconnection is stable using the 2-norm.
+
+Example 3.3 Let \Sigma 1 be a single integrator system:
+
+.x1 = u1 x1(0) = 0 y1 = x1 : (51)
+
+This system is passive since
+
+0 ^ 12x1(o/ )2 = Z
+
+o/
+
+0
+
+d dt
+
+1 2 x(t)
+
+2dt = Z
+
+o/
+
+0 y
+
+1(t)u1(t)dt = hy1o/ ; u1o/ i : (52)
+
+Let the \Sigma 2 be a system which scales the instantaneous value of the input according to the energy of the input:
+
+.x2 = u22 x2(0) = 0
+
+y2 = \Gamma u2 ` 11 + jx
+
+2j0:25 ' :
+
+(53)
+
+This system followed by the scaling `-1' is nonlinearly strictly passive. To see this, first note that
+
+x2(t) = jju2tjj22 (54)
+
+which is a nondecreasing function of t. So,
+
+h\Gamma y2o/ ; u2o/ i = Z
+
+o/
+
+0 u
+
+2 2(t) ` 11 + jx
+
+2(t)j0:25 ' dt* ` 1
+
+1 + jx2(o/ )j0:25 ' Z
+
+o/
+
+0 u
+
+2 2(t)dt
+
+= ` 11 + jju
+
+2o/ jj
+
+0:5
+
+2 ' jju
+
+2o/ jj
+
+2
+
+2 :
+
+(55)
+
+Now we can define
+
+ae(s) := 0:5s1 + s0:5 (56)
+
+17
+
+which is a proper separation function so that
+
+h\Gamma y2o/ ; u2o/ i * 2ae(jju2o/ jj2)jju2o/ jj2 : (57) Finally, note that
+
+jjy2o/ jj22 = Z
+
+o/
+
+0 u
+
+2 2(t) 1(1 + x0:25
+
+2 (t))
+
+2 dt ^ jju2o/ jj
+
+2 2 (58)
+
+so that h\Gamma 
+
+y2o/ ; u2o/ i * ae(jju2o/ jj2)jju2o/ jj2 + ae(jjy2o/ jj2)jjy2o/ jj2 : (59)
+
+The conclusion that we can then draw from the nonlinear passivity theorem is that the interconnection of these two systems:
+
+.x1 = \Gamma (x1 + d2) ` 11 + jx
+
+2j0:25 ' + d
+
+1
+
+.x2 = (x1 + d2)2 y1 = x1 y2 = \Gamma (x1 + d2) ` 11 + jx
+
+2j0:25 '
+
+(60)
+
+is stable when measuring input (d1; d2) and output (y1; y2) using the 2-norm. 3.3.2 Nonlinear small gain
+
+Just as with passivity, the idea behind the small gain theorem does not require the use of linear boundaries. Consider a well-defined interconnection where each feedback component is stable but not necessarily finite gain stable. Let fl1 be a stability gain function for \Sigma 1 and let fl2 be a stability gain function for \Sigma 2. Then the graph separation condition will be satisfied if the distance between the curves (s; fl1(s)) and (fl2(r); r) grows without bound as in figure 6. This is equivalent to asking whether it is possible to add to the curve (s; fl1(s)) in the vertical direction and to the curve (fl2(r); r) in the horizontal direction by an increasing and unbounded amount, i.e. yielding new curves i s; fl1(s) + ae(s) j and i fl2(r) + ae(r); r j where ae is a proper separation function, in such a way that the modified first curve is never above the modified second curve. If this is possible, we will say that the composition of the functions fl1 and fl2 is a strict contraction. To say that a curve (s; ~fl1(s)) is never above a second curve (~fl2(r); r) is equivalent to saying that ~fl1(~fl2(s)) ^ s or ~fl2(~fl1(s)) ^ s for all s * 0. (Equivalently, we
+
+18
+
+u y Graph of \Sigma 2Inverse
+
+(fl2(r); r)
+
+Graph of \Sigma 1
+
+(s; fl1(s))
+
+Figure 6: Nonlinear small gain theorem will write ~fl1 ffi ~fl2 ^ Id or ~fl2 ffi ~fl1 ^ Id.) So, requiring that the composition of fl1 and fl2 is a strict contraction is equivalent to requiring that there exists a strictly proper separation function ae so that (fl1 + ae) ffi (fl2 + ae) ^ Id, (equivalently (fl2 + ae) ffi (fl1 + ae) ^ Id). This condition was made precise in [Mareels and Hill, 1992]. (See also [Jiang, et. al., 1995].) Note that it is not enough to add to just one curve since it is possible for the vertical or horizontal distance to grow without bound while the total distance remains bounded. Finally, note that if the gain functions are linear the condition is the same as the condition that the product of the gains is less than one.
+
+Nonlinear small gain theorem: If each feedback component is stable (with gain functions fl1 and fl2) and the composition of the gains is a strict contraction then the well-defined interconnection is stable.
+
+To apply the nonlinear small gain theorem we need a way to verify that the feedback components are stable. To date, the most common setting for using the nonlinear small gain theorem is when measuring the input and
+
+19
+
+output using the 1-norm. For a nonlinear system which can be represented by a smooth, ordinary differential equation :
+
+.x = f (x; u) ; x(0) = 0 y = h(x; u) (61)
+
+where h(0; 0) = 0, the system is stable (with respect to the 1-norm) if there exists a positive definite and radially unbounded function V : IRn ! IR*0, a proper separation function  and a gain function ~fl such that
+
+@V
+
+@x f (x; u) ^ \Gamma (jxj) + ~fl(juj) : (62)
+
+Since V is positive definite and radially unbounded, there exist additional proper separation functions ff and _ff such that
+
+ff(jxj) ^ V (x) ^ _ff(jxj) : (63) Also, since h is continuous and zero at zero, there exist gain functions OEx and OEu such that
+
+jh(x; u)j ^ OEx(jxj) + OEu(juj) : (64)
+
+Given all of these functions, a stability gain function can be computed to be
+
+fl = OEx ffi ff\Gamma 1 ffi _ff ffi \Gamma 1 ffi ~fl + OEu : (65) For more details, the reader is directed to [Sontag, 1989].
+
+Example 3.4 Consider the composite system
+
+.x = Ax + Bsat(z + d1) ; x(0) = 0
+
+.z = \Gamma z + ffl(exp(jxj + d2) \Gamma  1) ; z(0) = 0
+
+(66)
+
+where x 2 IRn, z 2 IR, the eigenvalues of A all have strictly negative real part, ffl is a small parameter and sat(s) = sgn(s) minfjsj; 1g. This composite system is a well-defined interconnection of the subsystems
+
+\Sigma 1 : .x = Ax + Bsat(u
+
+1) ; x(0) = 0
+
+y1 = jxj (67)
+
+20
+
+and
+
+\Sigma 2 : .z = \Gamma z + ffl (exp(u
+
+2) \Gamma  1) ; z(0) = 0
+
+y2 = z : (68) A gain function for the \Sigma 1 system is the product of the 1-gain for the linear system
+
+.x = Ax + Bu ; x(0) = 0 y = x ; (69)
+
+which we will call _fl1, with the function sat(s), i.e. for the system \Sigma 1,
+
+jjyjj1 ^ _fl1sat(jju1jj1) : (70) For the system \Sigma 2, it is easy to see that
+
+jjzjj1 ^ jfflj (exp (jju2jj1) \Gamma  1) : (71) We must have that the distance between the curves (s; _fl1sat(s)) and (jfflj (exp (r) \Gamma  1) ; r) grows without bound. Graphically, one can see that a necessary and sufficient condition for this to be the case is that j
+
+fflj ! 1exp(_fl
+
+1) \Gamma  1 : (72)
+
+3.4 General conic regions There are many different ways to partition the ambient space in an attempt to establish the graph separation condition in (5). So far we have looked at only two very specific sufficient conditions, the small gain theorem and the passivity theorem. The general idea in these theorems is to constrain signals in the graph of \Sigma 1 to be inside some conic region, and signals in the inverse graph of \Sigma 2 to be outside of this conic region. Conic regions more general than those used for the small gain and passivity theorems can be generated by using operators on the input-output pairs of the feedback components.
+
+Let C and R be operators on truncated ordered pairs in the ambient space and let fl be a gain function. We say that the graph of \Sigma 1 is inside Cone(C; R; fl) if, for each (u; y) =: z belonging to the graph of \Sigma 1,
+
+jjC(zo/ )jj ^ fl(jjR(zo/)jj) for all o/ : (73) On the other hand, we say that the inverse graph of \Sigma 2 is strictly outside Cone(C; R; fl) if there exists a proper separation function ae such that, for each (y; u) =: x belonging to the inverse graph of \Sigma 2,
+
+jjC(xo/ )jj * fl ffi (Id + ae)(jjR(xo/ )jj) + ae(jjxo/ jj) for all o/ : (74)
+
+21
+
+We will only consider the case where the maps C and R are incrementally stable, i.e. there exists a gain function _fl such that, for each x1 and x2 in the ambient space and all o/ ,
+
+jjC(x1o/ ) \Gamma  C(x2o/ )jj ^ _fl(jjx1o/ \Gamma  x2o/ jj) jjR(x1o/ ) \Gamma  R(x2o/ )jj ^ _fl(jjx1o/ \Gamma  x2o/ jj) : (75)
+
+In this case, the following result holds.
+
+Nonlinear conic sector theorem: If the graph of \Sigma 1 is inside Cone(C; R; fl) and the inverse graph of \Sigma 2 is strictly outside Cone(C; R; fl) then the well-defined interconnection is stable.
+
+In fact, when fl and ae are linear functions, the well-defined interconnection is finite gain stable.
+
+The small gain and passivity theorems we have discussed can be interpreted in the framework of the nonlinear conic sector theorem. For example, for the nonlinear small gain theorem, the operator C is a projection onto the second coordinate in the ambient space while R is a projection onto the first coordinate; fl is the gain function fl1 and the small gain condition guarantees that the inverse graph of \Sigma 2 is strictly outside of the cone specified by this C, R and fl.
+
+In the remaining subsections we will discuss other useful choices for the operators C and R.
+
+3.4.1 The classical conic sector (circle) theorem For linear SISO systems connected to memoryless nonlinearities, there is an additional classical result, known as the circle theorem, which follows from the nonlinear conic sector theorem using the 2-norm and taking
+
+C (u; y) = y + cu R (u; y) = ru r * 0
+
+fl(s) = s :
+
+(76)
+
+Indeed, suppose OE is a memoryless nonlinearity which satisfies
+
+jOE(u; t) + cuj ^ jruj for all t; u : (77)
+
+22
+
+OE(u; t)
+
+u \Gamma (c \Gamma  r)
+
+\Gamma (c + r) Figure 7: Instantaneous sector Graphically, the constraint on OE is shown in figure 7. (In the case shown, c ? r ? 0.) We will use the notation Sector[\Gamma (c + r); \Gamma (c \Gamma  r)] for the memoryless nonlinearity. It is also clear that the graph of OE lies in the Cone(C; R; fl) with C; R; fl defined in (76). For a linear, time invariant, finite dimensional SISO system, whether its inverse graph is strictly outside of this cone can be determined by examining the Nyquist plot of its transfer function. The condition on the Nyquist plot is expressed relative to a disk Dc;r in the complex plane centered on the real axis passing through the points on the real axis with real part \Gamma 1=(c + r) and \Gamma 1=(c \Gamma  r) as shown in figure 8.
+
+23
+
+. .
+
+D \Gamma  1(c\Gamma r) \Gamma  1c \Gamma  1(c+r)
+
+=[s]
+
+IR[s]
+
+Figure 8: A disc in the complex plane Circle theorem: Let r * 0 and consider a well-defined interconnection of a memoryless nonlinearity belonging to Sector[\Gamma (c + r); \Gamma (c \Gamma  r)] with a SISO system having a real, rational transfer function G(s). If:
+
+ffl r ? c, G(s) is stable and the Nyquist plot of G(s) lies in the interior
+
+of the disc Dc;r, or
+
+ffl r = c, G(s) is stable and the Nyquist plot of G(s) is bounded away
+
+and to the right of the vertical line passing through the real axis at the value \Gamma 1=(c + r), or
+
+ffl r ! c, the Nyquist plot of G(s) (with Nyquist path indented into
+
+the right-half plane) is outside of and bounded away from the disc Dc;r, and the number of times the plot encircles this disc in the counterclockwise direction is equal to the number of poles of G(s) with strictly positive real part,
+
+then the interconnection is finite gain stable.
+
+24
+
+Case 1 is similar to the small gain theorem, while case 2 is similar to the passivity theorem. We will now explain case 3 in more detail. Let n(s) and d(s) represent, respectively, the numerator and denominator polynomials of G(s). Since the point (\Gamma 1=c; 0) is inside the disc Dc;r, it follows from the assumption of the theorem together with the well-known Nyquist stability condition that all of the roots of the polynomial d(s) + cn(s) have negative real part. Then we can write y = G(s)u = N (s)D(s)\Gamma 1u where
+
+D(s) := d(s)d(s) + cn(s) N (s) := n(s)d(s) + cn(s)
+
+(78)
+
+and, by taking z = D(s)\Gamma 1u, we can describe all of the possible input-output pairs as
+
+(u; y) = i D(s)z; N (s)z j : (79)
+
+Notice that D(s) + cN (s) = 1 so that
+
+jju + cyjj2 = jjzjj2 : (80) To put a lower bound on this expression in terms of jjujj2 and jjyjj2, for the purpose of showing that the graph is strictly outside of the cone defined in (76), we will need the 2-norm gains for systems modeled by the transfer functions N (s) and D(s). We will use the symbols flN and flD for these gains. The condition of the circle theorem guarantees that flN ! r\Gamma 1. To see this, note that
+
+N (s) = G(s)1 + cG(s) (81)
+
+implying
+
+flN := sup
+
+!2IR fififififi
+
+G(j!) 1 + cG(j!) fififififi : (82)
+
+25
+
+But
+
+j1 + c G(j!)j2 \Gamma  r2jG(j!)j2 = (c Re fG(j!)g + 1)2 + c2 Im2 fG(j!)g
+
+\Gamma  r2 Re2 fG(j!)g \Gamma  r2 Im2 fG(j!)g = (c2 \Gamma  r2) `Re fG(j!)g + cc2 \Gamma  r2 '
+
+2
+
++ (c2 \Gamma  r2) Im2 fG(j!)g \Gamma  r
+
+2
+
+c2 \Gamma  r2 : (83)
+
+Setting the latter expression to zero defines the boundary of the disc Dc;r. Since outside of this disc the expression is positive, it follows that flN ! r\Gamma 1.
+
+Returning to the calculation initiated in (80), note that flN ! r\Gamma 1 implies that there exists a strictly positive real number ffl such that
+
+(1 \Gamma  fflflD)fl\Gamma 1N * r + 2ffl : (84) So,
+
+jju + cyjj2 = jjzjj2 = (1 \Gamma  fflflD)jjzjj2 + fflflDjjzjj2
+
+* (1 \Gamma  fflflD)fl\Gamma 1N jjyjj2 + ffljjujj2 * (r + ffl)jjyjj2 + ffl(jjujj2 + jjyjj2) :
+
+(85)
+
+We conclude that the inverse graph of the linear system is strictly outside of the Cone(C; R; fl) as defined in (76).
+
+Note, incidentally, that N (s) is the closed loop transfer function from d1 to y1 for the special case where the memoryless nonlinearity satisfies OE(u) = \Gamma cu. This suggests another way of determining stability: first make a preliminary loop transformation with the feedback \Gamma cu, changing the original linear system into the system with transfer function N (s) and changing the nonlinearity into a new nonlinearity ~OE satisfying j ~OE(u; t)j ^ rjuj, and then apply the classical small gain theorem to the resulting feedback system.
+
+Example 3.5 Let
+
+G(s) = 175(s \Gamma  1)(s + 4)2 : (86)
+
+The Nyquist plot of G(s) is shown in figure 9. Since G(s) has one pole with positive real part only the third condition of the circle theorem can apply. A disc centered at -8.1
+
+26
+
+-12 -10 -8 -6 -4 -2 0 -4
+
+-2
+
+0 2 4
+
+Real part Imaginary part
+
+-8.1
+
+2.2
+
+Figure 9: The Nyquist plot for G(s) in example 3.5. on the real axis and with radius 2.2 can be placed inside the left loop of the Nyquist plot. Such a disc corresponds to the values c = 0:293 and r = 0:079. Since the Nyquist plot encircles this disc once in the counterclockwise direction, it follows that the standard feedback connection with the feedback components G(s) and a memoryless nonlinearity constrained to the Sector[-0.372,-0.214] is stable using the 2-norm.
+
+3.4.2 Coprime fractions Typical input-output stability results based on stable coprime fractions are corollaries of the conic sector theorem. For example, suppose both \Sigma 1 and \Sigma 2 are modeled by transfer functions G1(s) and G2(s). Moreover, assume there exist stable (in any p-norm) transfer functions N1; D1, ~N1; ~D1, N2 and
+
+27
+
+D2 such that D1, D2 and ~D1 are invertible and
+
+G1 = N1D\Gamma 11 = ~D\Gamma 11 ~N1 G2 = N2D\Gamma 12
+
+Id = ~D1D2 \Gamma  ~N1N2 :
+
+(87)
+
+Let C(u; y) = ~D1(s)y \Gamma  ~N1(s)u, which is incrementally stable in any p-norm, let R(u; y) = 0 and let fl j 0. Then, it turns out that the graph of \Sigma 1 is inside and the inverse graph of \Sigma 2 is strictly outside Cone(C; R; fl) and thus the feedback loop is finite gain stable in any p-norm.
+
+To verify these claims about the properties of the graphs, first recognize that the graph of \Sigma i can be represented as
+
+G\Sigma i = i Di(s)z ; Ni(s)z j (88) where z represents any reasonable signal. Then, for signals in the graph of \Sigma 1,
+
+C (D1(s)zo/ ; N1(s)zo/ ) = ~D1(s)N1(s)zo/ \Gamma  ~N1(s)D1(s)zo/ j 0 : (89)
+
+Conversely, for signals in the inverse graph of \Sigma 2,flflfl
+
+flC ` N2(s)zo/ ; D2(s)zo/ 'flflflfl = flflfl ~D1(s)D2(s)zo/ \Gamma  ~N1(s)N2(s)zo/ flflfl
+
+= kzo/ k * ffl flflflfl` N2(s)zo/ ; D2(s)zo/ 'flflflfl
+
+(90)
+
+for some strictly positive real number ffl. The last inequality follows from the fact that D2 and N2 are finite gain stable.
+
+Example 3.6 (This example is drawn from the work in Potvin, M-J., J. Jeswiet, and J.-C. Piedboeuf, Trans. of NAMRI/SME. vol. XXII, pp. 373-377, 1994.) Let \Sigma 1 represent the fractional Voigt-Kelvin model for the relation between stress and strain in structures displaying plasticity. For suitable values of Young's modulus, damping magnitude, and order of derivative for the strain, the transfer function of \Sigma 1 is given by
+
+g1(s) = 11 + ps :
+
+28
+
+Integral feedback control, g2(s) = \Gamma  1s , may be used for purposes of asymptotic tracking. Here we can take
+
+N1(s) = 1s + 1 D1(s) = 1 + pss + 1 N2(s) = \Gamma  s + 11 + s(1 + ps) D2(s) = s(s + 1)1 + s(1 + ps)
+
+(91)
+
+It can be shown that these fractions are stable linear operators, and thereby incrementally stable, in the 2-norm. (This fact, in essence, is equivalent to proving nominal stability and can be shown using Nyquist theory.) Moreover, it is easy to see that D1D2 \Gamma  N1N2 = 1 so that the feedback loop is stable, in fact finite gain stable.
+
+3.4.3 Robustness of stability and the gap metric It is clear from the original graph separation theorem that if a well-defined interconnection is stable, i.e. the appropriate graphs are separated in distance, then modifications of the feedback components will not destroy stability if the modified graphs are close to the original graphs.
+
+Given two systems \Sigma 1 and \Sigma  define ~ffi(\Sigma 1; \Sigma ) = ff if ff is the smallest number for which
+
+x 2 G\Sigma ; =) do/ (x; G\Sigma 1) ^ ffkxko/ for all o/ : The quantity ~ffi(\Delta ; \Delta ) is called the "directed gap" between the two systems and characterizes basic neighborhoods where stability as well as closed loop properties are preserved under small perturbations from the nominal system \Sigma 1 to a nearby system \Sigma .
+
+More specifically, if the interconnection of (\Sigma 1; \Sigma 2) is finite gain stable, we define the gain fi\Sigma 1;\Sigma 2 to be the smallest real number such that
+
+kd1 + y2y
+
+1 !k
+
+o/ ^ fi\Sigma 1;\Sigma 2 kd1d2!ko/ ; for all o/ :
+
+If \Sigma  is such that ~
+
+ffi(\Sigma 1; \Sigma )fi\Sigma 1;\Sigma 2 ! 1 ;
+
+then the interconnection of (\Sigma ; \Sigma 2) is also finite gain stable.
+
+As a special case let \Sigma ; \Sigma 1; \Sigma 2 represent linear systems acting on finite energy signals. Further, assume that there exist stable transfer functions N; D where D is invertible, G1 = N D\Gamma 1 and normalized so that
+
+29
+
+DT (\Gamma s)D(s) + N T (\Gamma s)N (s) = Id. Then, the class of systems in a ball with radius fl * 0, measured in the directed gap, is given by Cone(C; R; fl), where R = Id and
+
+C = Id \Gamma   D(s)N (s) ! \Pi +(DT (\Gamma s); N T (\Gamma s)) where \Pi + designates truncation part of the Laplace transform of finite energy signals to the part with poles in the left half plane. At the same time, if fi\Sigma 1;\Sigma 2 ! 1=fl, then it can be shown that \Sigma 2 is strictly outside the cone Cone(C; R; fl) and, therefore, stability of the interconnection of \Sigma  with \Sigma 2 is guaranteed for any \Sigma  inside Cone(C; R; fl).
+
+Given \Sigma  and \Sigma 1, the computation of the gap reduces to a standard H1- optimization problem (see [Georgiou and Smith, 1990]). Also, given \Sigma 1, the computation of a controller \Sigma 2 which stabilizes a maximal cone around \Sigma 1 reduces to a standard H1-optimization problem ([Georgiou and Smith, 1990]) and forms the basis of the H1-loop shaping procedure for linear systems introduced in [McFarlane and Glover, 1989].
+
+A second key result which motivated introducing the gap metric is the claim that the behavior of the feedback interconnection of \Sigma  and \Sigma 2 is "similar" to that of the interconnection of \Sigma 1 and \Sigma 2 if and only if the distance between \Sigma  and \Sigma 1, measured using the gap metric, is small (i.e., \Sigma  lies within a "small aperture" cone around \Sigma 1). The "gap" function is defined as
+
+ffi(\Sigma 1; \Sigma ) = maxf~ffi(\Sigma 1; \Sigma ); ~ffi(\Sigma ; \Sigma 1)g to "symmetrize" the distance function ~ffi(\Delta ; \Delta ) with respect to the order of the arguments. Then, the above claim can be stated more precisely as follows: for each ffl ? 0 there exists a i(ffl) ? 0 such that
+
+ffi(\Sigma 1; \Sigma ) ! i(ffl) =) kx \Gamma  x1ko/ ! fflkdko/ where d = id1d2j is an arbitrary signal in the ambient space and x (resp. x1) represents the response id1+y2y1 j of the feedback interconnection of (\Sigma ; \Sigma 2) (resp. (\Sigma 1; \Sigma 2)). Conversely, if kx \Gamma  x1ko/ ! fflkdko/ for all d and o/ , then ffi(\Sigma 1; \Sigma ) ^ ffl.
+
+30
+
+4 Defining terms Ambient space: The Cartesian product space containing the inverse graph of \Sigma 2 and the graph of \Sigma 1.
+
+Distance (from a signal to a set): Measured using a norm function. The infimum, over all signals in the set, of the norm of the difference between the signal and a signal in the set. See equation (4). Used to characterize necessary and sufficient conditions for input-output stability. See section 2.
+
+Dynamical system: An object which produces an output signal for each input signal.
+
+Feedback components: The dynamical systems which make up a welldefined interconnection.
+
+Finite gain stable system: A dynamical system is finite gain stable if there exists a nonnegative constant such that, for each input-output pair, the norm of the output is bounded by the norm of the input times the constant.
+
+Gain function: A function from the nonnegative real numbers to the nonnegative real numbers which is continuous, nondecreasing and zero when its argument is zero. Used to characterize stability. See section 2. (Some form of) the symbol fl is usually used.
+
+Graph (of a dynamical system): The set of ordered input-output pairs (u; y).
+
+Inner product: Defined for signals of the same dimension defined on the semi-infinite interval. The integral from zero to infinity of the componentwise product of the two signals.
+
+Inside (or strictly outside) Cone(C; R; fl): Used to characterize the graph or inverse graph of a system. Determined by whether or not signals in the graph or inverse graph satisfy certain inequalities involving the operators C and R and the gain function fl. See equations (73) and (74). Used in the conic sector theorem. See section 3.4.
+
+Inverse graph (of a dynamical system): The set of ordered outputinput pairs (y; u).
+
+31
+
+Norm function (jj \Delta  jj): Used to measure the size of signals defined on the semi-infinite interval. Examples are the p-norms p 2 [1; 1] (see equations (1) and (2)).
+
+Parseval's theorem: Used to make connections between properties of graphs for SISO systems modeled with real, rational transfer functions and frequency domain characteristics of their transfer functions. Parseval's theorem relates the inner product of signals to their Fourier transforms if they exist. For example, it states that, if two scalar signals u and y, assumed to be zero for negative values of time, have Fourier transforms ^u(j!) and ^y(j!) then
+
+hu; yi = 12ss Z
+
+1
+
+\Gamma 1 ^y
+
+\Lambda (j!)^u(j!)d! :
+
+Passive: Terminology motivated from electrical network theory. A dynamical system is passive if the inner product of each input-output pair is nonnegative.
+
+Proper separation function: A function from the nonnegative real numbers to the nonnegative real numbers which is continuous, zero at zero, strictly increasing and unbounded. Such functions are invertible on the nonnegative real numbers. Used to characterize nonlinear separation theorems. See section 3.3. (Some form of) the symbol ae is usually used.
+
+Semi-infinite interval: The time interval [0; 1). Signal: A "reasonable" vector-valued function defined on a finite or semiinfinite time interval. By "reasonable" we mean piecewise continuous or measurable.
+
+SISO systems: An abbreviation for single input, single output systems. Stable system: A dynamical system is stable if there exists a gain function such that, for each input-output pair, the norm of the output is bounded by the gain function evaluated at the norm of the input.
+
+Strict contraction: The composition of two gain functions fl1 and fl2 is a strict contraction if there exists a proper separation function ae such that (fl1 + ae) ffi (fl2 + ae) ^ Id. Recall that Id(s) = s and ~fl1 ffi ~fl2(s) = ~fl1(~fl2(s)). Graphically, this is the equivalent to the curve (s; fl1(s) + ae(s)) never being
+
+32
+
+above the curve (fl2(r) + ae(r); r). This concept is used to state the nonlinear small gain theorem. See section 3.3.2.
+
+Strictly passive: We have used various notions of strictly passive including input-, output-, input and output-, and nonlinear input and output- strictly passive. All notions strengthen the requirement that the inner product of the input-output pairs be positive by requiring a positive lower bound that depends on the 2-norm of the input and/or output. See section 3.2.
+
+Truncated signal: A signal defined on the semi-infinite interval which is derived from another signal (not necessarily defined on the semi-infinite interval) by first appending zeros to extend the signal onto the semi-infinite interval and then keeping the first part of the signal and setting the rest of the signal to zero. Used to measure the size of finite portions of signals.
+
+Well-defined interconnection: An interconnection of two dynamical systems in the configuration of figure 1 which results in another dynamical system, i.e. one in which an output signal is produced for each input signal.
+
+5 References Georgiou, T.T. and M.C. Smith, 1990. Optimal robustness in the gap metric. IEEE Trans. on Automatic Control, 35:673-686.
+
+Jiang, Z.P., A.R. Teel and L. Praly, 1995. Small-gain theorem for ISS systems and applications. Mathematics of Control, Signals, and Systems, 7(2):95- 120.
+
+Mareels, I.M.Y. and D.J. Hill, 1992. Monotone stability of nonlinear feedback systems. Journal of Mathematical Systems, Estimation and Control, 2(3):275-291.
+
+McFarlane, D.C. and K. Glover, 1989. Robust controller design using normalized coprime factor plant descriptions. Lecture Notes in Control and Information Sciences, Springer-Verlag, vol. 138.
+
+Safonov, M., 1980. Stability and robustness of multivariable feedback systems. The MIT Press, Cambridge, MA.
+
+Sandberg, I.W., 1964. On the L2-boundedness of solutions of nonlinear func33
+
+tional equations. Bell Sys. Tech. J., 43:1581-1599. Sontag, E., 1989. Smooth stabilization implies coprime factorization. IEEE Transactions on Automatic Control, 34:435-443.
+
+Zames, G., 1966a. On the input-output stability of time-varying nonlinear feedback systems. Part I: Conditions using concepts of loop gain, conicity, and positivity. IEEE Transactions on Automatic Control, 11:228-238.
+
+G. Zames, 1966b. On the input-output stability of time-varying nonlinear feedback systems. Part II: Conditions involving circles in the frequency plane and sector nonlinearities. IEEE Transactions on Automatic Control, 11:465- 476.
+
+6 For further information As mentioned at the outset, the material presented in this chapter is based on the results in [Sandberg, 1964], [Zames, 1966(a,b)] and [Safonov, 1980]. In the latter, a more general feedback interconnection structure is considered where nonzero initial conditions can also be consider as inputs.
+
+Other excellent references on input-output stability include The Analysis of Feedback Systems, 1971, by J.C. Willems and Feedback systems: inputoutput properties, 1975, by C. Desoer and M. Vidyasagar. A nice text addressing the factorization method in linear systems control design is Control Systems Synthesis: a Factorization Approach, 1985, by M. Vidyasagar. A treatment of input-output stability for linear, infinite dimensional systems can be found in chapter 6 of Nonlinear Systems Analysis, 1993, by M. Vidyasagar. That chapter also discusses many of the connections between input-output stability and state-space (Lyapunov) stability. Another excellent reference is Nonlinear Systems, 1992, by H. Khalil.
+
+There are results similar to the circle theorem that we have not discussed. These results go under the heading of "multiplier" results and apply to feedback loops with a linear element and a memoryless, nonlinear element with extra restrictions such as time invariance and constrained slope. Special cases are the well-known Popov and off-axis circle criterion. Some of these results can be recovered using the general conic sector theorem although we have not taken the time to do this. Other results, like the Popov criterion, im34
+
+pose extra smoothness conditions on the external inputs which are not found in the standard problem. References for these problems are Hyperstability of Control Systems, 1973, V.M. Popov and Frequency domain criteria for absolute stability, 1973, by K.S. Narendra and J.H. Taylor.
+
+Another topic closely related to these multiplier results is the structured small gain theorem for linear systems which motivates much of the _-synthesis control design methodology. This is described, for example, in _-Analysis and synthesis toolbox, 1991, by G. Balas, J. Doyle, K. Glover, A. Packard and R. Smith.
+
+There are many advanced topics concerning input-output stability that we have not addressed. These include the study of small-signal stability, well-posedness of feedback loops, and control design based on input-output stability principles. Many articles on these topics frequently appear in control and systems theory journals such as IEEE Transactions on Automatic Control, Automatica, International Journal of Control, Systems and Control Letters, Mathematics of Control, Signals, and Systems, to name a few.
+
+35</pre>
+</body>
+</html>

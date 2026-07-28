@@ -1,0 +1,588 @@
+OCR of paper; see pdf file localobs.pdf for viewable/printable page
+
+
+
+Systems & Control Letters 5 (1984) 41-47
+North-Holland
+A concept of local
+Eduardo D. SONTAG *
+Department of Mathenzatics, RutXers Univervitly
+New BrunsK'i(k, NJ 08903, USA
+Received 21 May 1984
+observability
+A notion of local observability, which is natural in the
+context of nonlinear input/output regulation. is introduced. A
+simple characterization is provided, a comparison is made with
+other local nonlinear observability definitions. and its behavior
+under constant-rate sampling is analyzed.
+Keoiords: Observability, Sampling, Stabilization.
+1. Introduction
+Observability is a fundamental system- theoretic
+property which reflects the possibility of estimat-
+ing internal states on the basis of input/output
+data. In the context of nonlinear systems, various
+possible ways of formalizing this property give rise
+to different, nonequivalent, notions. These notions
+differ mainly in the choice of inputs used in testing
+observability (see for instance a discussion in the
+introduction to [10]) or in the type of local behav-
+ior desired (see [5]).
+For continuous-time systems the fundamental
+global observability results are found in [13,14],
+where the necessary techniques are developed in
+the context of the minimal realization problem.
+Here we shall be interested more in local observa-
+bility: intuitively, distinguishing states only from
+their neighbors. In that area, by far the most
+important work is that of Hermann and Krener in
+[51 (see [3] for related results), who introduced and
+compared various notions of local observability
+and obtained Lie-theoretic characterizations of
+some of these. The best results relate to 'local
+weak observability', which we shall review below.
+In what follows, we refer to this later concept
+simply as HK-observability.
+When dealing with problems of input/output
+stabilization [111, where observation and control
+Research supported in part by US Air Force Grant 80-0196.
+October 1984
+alternate and a closed-loop design is Lyapunov
+stable, a notion of local observability somewhat
+different to those in [5] appears naturally. We shall
+call this notion L- (for Lyapunou) observability. We
+show below that the new notion can be char-
+acterized in a fashion analogous to that of HK-ob-
+servability, coinciding with it in the analytic case
+but admitting a somewhat nicer characterization in
+the general smooth case. Technically, the results
+elaborate on the material in [5].
+Recent work of the author has concentrated on
+the study of the preservation of sys tem- theoretic
+properties under sampling; see for instance [12,9].
+We present a result along these lines regarding
+L-observability; in fact, this was one of the main
+motivations for studying L-observability in the
+first place. Note that the term 'sampling' is used
+here in the sense of digital control (constant-rate
+sampling) as opposed to the very different case of
+arbitrary (non-equispaced) piecewise constant con-
+trols as in [1,21, or [4]. Nonetheless, the techniques
+used in proving some of the statements are closely
+related to the later reference.
+2. Lyapunov observability
+The systems Z to be considered are described
+by equations
+~(t) =f (X(t), ~40) (2.1 a)
+u(t) = h(x(t)), (2. 1 b)
+where states x(t) belong to a smooth (i.e. C')
+Hausdorff second countable connected n-dimen-
+sional manifold X, controls ~t take values in a
+subset U of a manifold V, and measurements y(t)
+take values ing?P, for somep. The map h:X-~RP
+is smooth, and F,:=f(-, u) is a smooth vector
+field for each u F= U. An analytic system is one for
+which It and all F. are real-analytic. In Section 3,
+we shall need that the dynamics be smooth in p(t),
+more precisely:
+(2.2) f extends to a smooth map X X T - T X,
+int(U) is connected, and U C clos(int(U)).
+0167-6911/84/$3.00 (1) 1984, Elsevier Science Publishers B.V. (North-Holland) 41
+<<PAGE-DIVIDER>>
+Volume 5. Number I SYSTEMS & CONTROL LET`TERS October 1984
+A control (function) is a map
+[L: [0, TJ , U
+which is measurable and essentially bounded; T =
+I/il is the length of [t.
+The following notations will be used. Let a =
+(s ...... s,) be a sequence of positive real numbers,
+with T:= Y_s, and let u:= (u ...... u,) be a se-
+quence of elements in U. Then u. is the control
+function pt of length T defined as follows:
+The obseruabili(y rank condition at x E=- X intro-
+duced in [5] is
+dim d-V'(x) = n. (ORC)
+Let W be a subset of X. The states ~' in W
+are indistinguishable inside W (denoted ~]..O
+the following property holds: given any T ~~! 0. and
+any control ft of length T for which
+W and E W
+[t ( I ) := U, if t C= [ S, + . . . + s" SO + - - - + S,
+i=0,...,r (denoting s,:=0). The state X(T) at
+time T G [0, TI corresponding to solving (2.1a) with
+x (0) = ~ and control p, is denoted by 4) [ T, ~, [L I "
+the corresponding output measurement
+h((A[T, ~, tL]) is denoted by 71[T, ~, /11. When T = T
+( ~ length of It) these are denoted just by q,[~, ILI
+and 71[~, p] respectively.
+For a system 2: as in (2.1), let Y be the Lie
+algebra of vector fields generated by all the ( F., u
+G U), and let Y, be the ideal of Ygenerated by all
+the vector fields of the form Fu - F,, with u, ty in U.
+The accessibility rank condition at x G X is the
+condition
+dim Y(x) = n. (ARC)
+The strong accessibility rank condition at x is the
+condition
+dim Y,)(x) = n. (SARC).,
+(These are standard properties considered 'in non-
+linear control; details about the later can be found
+in [15].)
+The svsteni 2: satisfies either of the above condi-
+tions if it holds for all x Ez X. For vector fields F
+and functions g we denote the Lie derivative Fg
+(dg, F); in local coordinates, this is dg - F, where
+d g is the gradient of g. For a map 0: X --, M', d 0
+denotes its differential (Jacoblan In local coordi-
+nates). Hermann and Krener introduced d_Xil, the
+smallest 4-vector space of one-forms that contains
+dh,,...,dh,, (h,:=i-th component of h) and is
+closed under Lie differentiation by elements of Y.
+In analogy to the discrete-time situation in [10], we
+may call d,)~' the obseruation space of 1. Its
+generators are the elements of the form
+d( F,,, F,,,h, (2.3
+for all possible sequences (U1--Ur) in Ur and
+i ~ 1,...,P.
+for all 0 :!~ T ~~ T, necessarily
+(That is, ~ and ~' cannot be distinguished by i/o
+experiments if trajectories are to stay in W.) De-
+note also ],.:= (~' s.t. The following no-
+tion of ('local weak') observability at x E=- X was
+introduced in [51:
+(HK-obs), There exists a neighborhood W of x
+such that, for every open neighborhood V C W of
+X, I,,(x) X).
+The intuition behind this definition is that states
+close to x should be 'instantaneously' distinguisha-
+ble from x. As discussed in the 'Introduction, we
+wish to study a somewhat different notion of local
+observability at x, more closely related to stabiliza-
+tion problems:
+(L-obs), For every neighborhood W of x, there
+exists a neighborhood V C W of x such that IW (x)
+r) V= (X).
+Note the difference in the quantifier order with
+the previous definition. Intuitively, this says that
+states close to x should be distinguishable from x
+without 'large' excursions. System- theoretically,
+such a property is of interest if we are trying to
+control I to the state x using only output measure-
+ments, and such that the closed-loop system is
+Lyapunov stable; precise details about such ques-
+tions are provided in [111. Mathematically, one
+may expect that this requirement will be more
+natural than (HK-obs) when deailing with nonana-
+lytic systems, since no 'instantaneous' properties
+are involved.
+The relevant results of Hermann and Krener
+relating (HK-obs) and (ORC) can be summarized
+as follows ([5], Theorems 3.1, 3.11, and 3.12):
+(2.4) For any x, (ORC), - (HK-obs),.
+42
+<<PAGE-DIVIDER>>
+Volume 5, Number I SYSTEMS & CONTROL LETTERS October 1984
+(2.5) (HK-obs), holds for all x - (ORC), is true
+on an open densesubset of X
+Furthermore, if 2: satisfies the ARC and 2: is
+anali-tic then also:
+(2.6) (ORC), holds for all x - (HK-obs), holds
+for all x.
+For (L-obs), there is a characterization analo-
+gous to (2.6) but valid in the general smooth case:
+2.7. neorem. If 2: satisfies the ARC, then the
+following statements are equivalent:
+(a) (L-obs), holds at all x;
+(b) (ORC), holds on an open dense subset of X.
+z E=- D, there is a neighborhood V' C W of z such
+that I, (z) n V' = f z ). And since z c= W', there is
+a control [t of length T such that (p[7-, x, [L] C W
+for all 0 < T:!~~ T and O[x, yJ = z. By continuity of
+the map (~, T) T, ~, 11], there exists a neigh-
+borhood V C W of x with the following properties:
+(i) 0[ -, p I maps V into W, and
+(ii) 1P [ T, ~, 11 ] E-= W for each ~ G V and all 0 :!~ T
+T.
+We claim that lw(x) n V= (x), so that Vis as
+desired. Indeed, pick any ~ in V. Applying ju to 4
+results in a trajectory included in W and leading
+up to a state ~' in 17'. But ~' can be distinguished
+from z = O[x, fLJ without leaving W, say by a
+control IA'. Thus the concatenation of 1A and 1i'
+distinguishes ~ from x without leaving W. 171
+Note that (b) is in principle easier to check
+computationally than the satisfiability of (ORC),
+for all x. For instance, most natural examples of
+smooth nonanalytic systems (e.g. in the approxi-
+matlon of switching discontinuities by a rapidly
+changing function) are piecewise analytic; in such a
+situation It is enough in order to check (b) to find
+a single point in each domain of analyticity where
+(ORC), holds. For analytic systems, (b) is equiva-
+lent to (ORC) holding everywhere, but not so in
+the general case. The proof of Theorem 2.7 will
+follow from a few lemmas.
+2.8. Lemma. (HK-obs), - (L-obs),
+Proof. Fix first a neighborhood W of x as in the
+definition of (HK-obs),. Now let W' be any
+neighborhood of x. Let V be any open neighbor-
+hood of x contained in W n W'. Thus, Iw, n V is
+contained in 4., By (HK-obs),, I,.(x) x), so
+also 1,,(x) n V x), as wanted. Li
+2.9. Lemma. If ly satisfies the A R C, then the follow-
+ing statements are equivalent:
+(1) (L-obs), holds everywhere;
+(ifi) (L-obs), holds on a dense subset of X.
+Proof. Assume that the condition holds on the
+dense subset D of X; we must prove it holds
+everywhere. Pick then any x (=- X and any neigh-
+borhood W of x. By the ARC and Chow's theorem
+(see [6]) there exists an open subset W' of W such
+that every z (=- W' is reachable from x by trajecto-
+ries staying inside W. Pick any z in D n W'. Since
+2.10. Lemma. If (L-obs), holds on a dense subset of
+X, then also (ORC), holds on a dense (hence, open
+dense) set.
+Proof. Assume that (L-obs) holds on D. The argu-
+ment used in the proof of [51, Theorem 3.11, can
+be adapted to the present case almost without
+changes. We use the terminology from that refer-
+ence. Assume that there exists an open subset
+B c X where the ORC does not hold; without loss
+of generality we may assume that dim -V'(x) -- k
+(constant) < n there. There is then an open subset
+W C B where the 'strong indistinguishability rela-
+tion' S1 is regular, with equivalence classes being
+submanifolds of dimension n - k. Pick now any x
+in D C) W and any neighborhood V C W of x.
+Since SI(x) is connected, there is a z in V which is
+strongly indistinguishable from x. If y is any con-
+trol such that (P[ -, x, [t] and 4)[ -, z, tt] both remain
+in W, the existence of a quotient dynamics on
+X/Sl implies that q[x, [t] =,q[z, fL]. Thus z E
+I,. (x) r) V, contradicting (L-obs) at x. El
+We can now complete the proof of Theorem
+2.7. That (a) implies (b) follows from Lemma 2.10.
+Conversely, assume that (b) holds- By (2.4), (HK-
+obs), holds on a dense set, so by Lemma 2.8 this is
+also true of (L-obs), It then follows from Lemma
+2.9 that (L-obs), holds at all x, as desired. El
+3. Sampled observability
+If 8 is a positive real and u = (u ...... u,) C U',
+consider the control 1i = u. obtained using a := 8'
+43
+<<PAGE-DIVIDER>>
+Volume 5, Number I SYSTEMS & CONTROL LETTERS October 1984
+= (r times); we call such a control a
+8-sampled control, and denote it also by a'. Note
+that its length is T r8. If Z = q)[X, Ur j for some
+sequence u = (u,- Ur), then z is k-step 8-sam-
+pled reachable from x; the set of such states is
+denoted by A'(x). See [12,91 for various results on
+sampled controllability; here we want to study a
+suitable sampled (local) observability notion.
+For the rest of this paper, hYpothesis (2.2) is
+assumed to hold for all systems considered.
+Let W be a subset of X and pick any 8 > 0. By
+analogy with the previous section, we shall say
+that states ~, ~' E= W are 8-indistinguishable inside
+W if the following property holds: given
+any r > 0 and any 8-sampled control ju ~ u' of
+length T - r8 for which 5
+W and q)[T,~',fLl C= W
+> 0, a real A > 0, and sequences u' (E U% such
+that for each 0 < 8 <.A the following condition
+holds: let tL' := u' a, := 8",; then
+rank dn"' 'Ax) n. (3.2)
+(See [71 for a related notion in the context of
+discrete-time systems with no controls.)
+3.3. Theorem. Assume that 2: satisfies the YARC.
+Then each of the following statements is equivalent
+to (a) and (b) in Theorem 2.7:
+(c) (L-s.obs), holds at all x;
+(d) (s.ORC)_, holds on an open dense subset of X.
+Since I,(x) c 1,'(x) for any W, 8, x, it is clear
+that (c) implies (a). That (b) implies (d) follows
+from:
+for iall 0 :!~ T :!~ T, necessarily 77[~, It] = i7[~', ti]. We
+write (~' s.t. ~0 ~'). We then have a
+It W
+notion of Lyapunov sampled observability at x E-=
+X:
+(L-s.obs), For every neighborhood W of x, there
+exists a real ~A > 0 such that, for each 0 < 8 < 3
+there is a neighborhood VC W of x such that
+1'~ (X) n V - ~ X ).
+IV
+Other definitions of local sampled observability
+are of course possible, even of a 'Lyapunov' type.,
+the above one seems to be the easiest to work with.
+Also, a notion of 'weak' observability can be
+defined as for discrete-time systems in [8]: in that
+case both positive time and (ideal) negative time
+trajectories are allowed in testing indistinguishabil-
+ity. Another possibility is to make sampling peri-
+ods 8 to be uniformly bounded on compacts, in
+the style of the sampled controllability results
+mentioned earlier.
+It will be technically convenient to introduce a
+rank condition associated to sampled observabil-
+ity. If pl,._11k are (non-necessarily sampled) con-
+trols, let
+T1 1.,A n[~, tit (3.1)
+n[~, AkJ
+Consider now the following sampled observabil-
+it-y rank condition at x:
+(s.ORC), There exist integers k > 0 and nl,...,nk
+3.4. Lemma. (ORC), - (s,ORC),.
+This result will be established in Section 4. In a
+way totally analogous to that of Section 2, the
+Theorem will then follow from these two lemmas:
+3.5. Lemma. (s.ORC), - (L-s.obs),.
+3.6. Lemma. If 2: satisfies the SARC then the
+following are equivalent:
+(i) (L-s.obs)x holds everywhere;
+(it) (L-s.obs), holds on a dense set.
+Proof of Lemma 3.5. This is basically the inverse
+function theorem. Pick any x in X, and let W be
+any neighborhood of x. Let the sequences u' be as
+in the definition of the (s.ORC),. The lengths of
+the corresponding controls ti' are uniformly
+bounded by 8N, where N:= max(nJ; further they
+take values on a finite (hence compact) subset of
+U. It follows from continuity on controls and
+initial conditions that, for some A small enough,
+and for some neighborhood V'c W of x, the
+trajectories (p[ -, ~, ji'] remain in W whenever ~ G
+W, 0:!~ T:!~ n,8, and 0 < 8 <,A. Without loss of
+generality, A is small enough that
+rankdi7l"' "(x)=n for0<8_<,A.
+Pick any such 8. The map q'"' "' is thus, by the
+inverse function theorem, locally 1-1 at x. Let V
+be a neighborhood of x contained in V' where this
+map is 1-1. It follows that trajectories starting at
+44
+<<PAGE-DIVIDER>>
+Volume 5, Number I SYSTEMS & CONTROL LET`TERS October 1984
+~ (=- V corresponding to the controls fL' remain in
+W, and for each such ~ there is an i such that
+71[x, tt'] * 71[6, tt']. Thus 18 (x) n V x), as
+W
+desired. n
+Before establishing Lemma 3.6, we need the
+auxiliary result of Lemma 3.9 given below, on
+sampled controllability. This result plays for
+Lemma 3.6 a role analogous to that of Chow's
+theorem for the proof of Lemma 2.9 in the previ-
+ous section. We shall state a somewhat stronger
+form 'than needed (cf. Remark 3.10). If r is a
+positive integer, and T > 0 is real, denote
+M,(T):= ( a = (s ...... sJ C= P,? S. t.
+all s, > 0 and Es, = T) (3.7)
+seen as a manifold of dimension r - 1. Further, for
+any fixed r, T as above, u G U', and x E= X, let 0
+be the map
+0: 2~,(T) , X: a , 4,[x, uJ (3.8)
+3.9. Lemma. Let x G X and let W be an open
+neighborhood of x. Assume given T and r as above,
+and a sequence a C -q,(T) such that
+(a) -P [ T, X, U ~ 19: W for each T :!~ T, and
+(b) 4) has full rank differential at a.
+Let z := q)[x, u.). Assume given a neighborhood V
+C W of z. Then there are a neighborhood T~, C W Of
+* and a A > 0 such that, for each 0 < 8 <.A, there is
+* 8-sampled control [i of length T = T(S) such that
+z = (p[x, jil and:
+-!~ T(S) and all ~ E-= j~
+and (i) 0 [ T, ~, [t ] C Wfor all T
+(it) Ov, it] C
+Proof. (Sketch). This is a refinement of the result
+in Theorem 2.2 of [12], so only the idea is given
+here. That reference shows that, for each 8 small
+enough, there is a 8-sampled control ~t with z =
+q)[x, lt] satisfying (i), and further, pt is close to u. in
+a suitable sense, uniformly with respect to 8. Let
+then V' be any neighborhood of z whose closure is
+included in V, and let V. be the pre-image of V'
+under the map 0[-, u.], intersected with W. Thus,
+,~tv, uJ g V, C clos(v') c V.
+Picking if necessary a smaller A, (ii) is also satis-
+fied. El
+Proof of Lemma 3.6. Assume that (L-s.obs)-, holds
+for x E=- D dense. Pick any x c- X and any neigh-
+borhood W of x. Since the SARC holds, there
+exist a, T, r as in the previous lemma, so that (a)
+and (b) there hold. (This is a consequence of
+normal strong-or 'fixed time'- accessibility'; see
+for instance [91, Lemma 2.2.) Further, since 0 is an
+open map at a, we may assume that z = O[x, u.] is
+in the (dense) set D. Let V,:= W, and apply the
+previous lemma to this data. Let V, Ax be as in
+the conclusion of the lemma. Since z is in D, there
+is a A, and for each 0 < 8 <,A, there is a neighbor-
+hood V W
+,, of z in W such that 16 (z) n V, z ). Let
+rr~n ( A x, A z ), and pick any 0 :!~ 8 :!~ A and the
+corresponding 8-sampled 1i as in Lemma 3.9. Let V
+be the preimage of V. under 0[ -, jul, intersected
+with V.. Thus, the 8-sampled control [t sends x
+into z, and sends any ~ e V into some ~' Ei V6,
+with trajectories remaining in W. Concatening with
+a sampled control which distinguishes ~' from z, it
+follows that I' (x) n V x ), as desired. 0
+W
+3.10. Remark. Lemma 3.6 admits a stronger ver-
+sion, which is of interest if the sampled observabil-
+ity rank condition holds uniformly on 8 over D.
+More precisely, assume that we require that the
+neighborhoods V in the definition of sampled
+observability at x can be choosen independently of
+6, for 0 < 8 <A. We then have an analogue of
+Lemma 3.6 for this stronger property. Indeed, the
+only change needed in the above proof is the
+choice V := this common neighborhood, instead of
+V = W as above. Now all V, are equal to V_ so
+the neighborhood V of x obtained at the end of
+the proof is again independent of S. Thus the same
+type of uniform sampled observability holds at x.
+We leave as a topic for further research the clarifi-
+cation of the relation between this uniform notion
+and that developed in this paper.
+4. Proof of Lemma 3.4
+The proof will be a generalization of that in [4].
+In that paper, the author establishes what can be
+interpreted as a non-controlled, non-cons tan t- rate
+version of Lemma 3.4. Since the result is local, we
+work with coordinates in X = M".
+Assume then that (ORC)_, holds. Thus there is a
+finite set of control values { v, i = 1_ . ., k ) such
+that (denoting Fi:= F,.,) the row vectors
+(d F,, F,,h, (x), I :!~ i, !~ k, I :!~j!~~ p, 0:!~~ r:!~ q)
+(4.1)
+45
+<<PAGE-DIVIDER>>
+Volume 5, Number I SYSTEMS & CONTROL LETTERS October 1984
+span an n-dimensional space, for some q > 0.
+Equivalently, there exists an Integer / and a se-
+quence of control values u = (u ...... u,.) such that,
+(with the rows
+d F," ... F,"h, ( x i, > 0, Y_i, :,~ q, I :!~j :!~ p
+f
+(4.2)
+matrix
+k I I...... V0
+(4.8)
+a(s, I ...... V\~')
+has rank N. Thus the pN by pN) matrix
+span an n-dimensional space, for (the same) q > 0:
+the second statement follows from the first simply
+by taking 1:= kq and considering the sequence
+(Ull .... U, ) obtained by repeating q times the se-
+quence (I ....... v, ). This second form will be used
+in what follows.
+Choose an ordering for the set of all /-vectors
+(iP._i,) of nonnegativc integers I, such that Li,
+q, or equivalently, for all monomials of degree
+q in I variables t ...... t, With this ordering, let
+a(tj'-..'0 be the row vector (say, with N col-
+umns) consisting of all the monomials
+t; t111101! ... 11!) (4.3)
+with Y_i, :!~ q. For each j = 1,...,p, let D, be the
+matrix whose rows are the n-vectors
+d Fj" ... F111h I (x
+fistedwith the aboveorder for exponents(i,_ .. JI).
+Consider the Taylor expansion of degree q,
+d-q"'', "'(x)=A(t ...... tjD + B(ij .... ~tj. (4.4)
+where the p by pN matrix A (t ...... t,) is defined as
+0 ... 0
+0
+A
+0
+(4.5)
+D,
+D (4.6)
+DI,
+and Is a p by n matrix all whose
+entries satisfy that
+b, I (t, ~ .... tI)1jj(tj' _ _.' t1) Iq _ 0
+as (t,, - - -, 0 --~ 0. (4.7)
+Choose positive integers fs,, 1,._N,j ~
+such that the multivariable Vandermonde
+A(s,,_..s,,)
+(4.9)
+A(.V%l ...... V10)
+has rank pN.
+For each i = I ..... N let u' be the sequence in
+U", defined as follows:
+(4.10)
+11
+(141'.. 111 - U2 ..... U2 III, .... III),
+where u, is repeated s, times. Finally, let
+A ( 8s I I 8S
+08) (4.12)
+A
+and E(8):= the pN by n matrix with blocks of
+rows
+B(8s ....... 8sj, i N.
+Note that the entries of E(8) are o(8") and that
+C(S) = C - R (8), where R (8) is a diagonal matrix
+containing powers of 8 of degree at most q.
+Let a,. denote the smallest singular value of a
+matrix L (i.e., a 2 is the smallest nonzero eigenvalue
+L
+of L'L). Applying repeatedly the general fact that
+(for the Euclidean norm) jLzjj ~~: a, Ilzil, we obtain,
+for 0 1,
+jC(8)Dzjj ~! 0, Gj'8qjlZj (4.13)
+for all vectors z. Let a :~ a, a, > 0. Then, for all z,
+I(C(8)D + E(8))zjj ~~! (a - 8-11JE(8 ) 11) 8 q I I Z 11.
+(4.14)
+For 8 small enough, a-8_'IjjE(8)jj>0, and so
+C(8)D + E(8) has rank n. Thus there is a A > 0
+such that, whenever 0 < 8 <,~A,
+dql" ""(x) = C(S) D + E(8) (4.15)
+has rank n, for tt' ;= u',, a, := 8",. This establishes
+the sampled ORC property, as desired. D
+46
+<<PAGE-DIVIDER>>
+Volume 5. Number 1 SYSTEMS & CONTROL LETTERS October 1984
+References
+[1] 1). Acycls, Generic observability of differentiable systems,
+Siam J. Control Optim. 19 (1981) 595-603.
+[21 D. Aeyels, On the number of samples necessary to achieve
+observability, Systems Control Lett. 1 (1981) 92-94.
+[3] M. Fliess, The unobservability ideal for nonlinear systems,
+IEEE Trans. AWOMat. Control 26 (1981) 592-593.
+t4l S.T. Glad, Observability and nonlinear deadbeat ob-
+servers, Proc. IEEE Conf. Dec. Control (1983) 800-802.
+15) R. Hermann and A.J. Krener, Nonlinear controllability
+and observability, IEEE Trans. Automat. Control 22 (1977)
+728-740.
+[61 A. Krener, A generalization of Chow's theorem and the
+bang-bang theorem to nonlinear control systems, SIAM
+J. Control 12 (1974) 43-52.
+[7) H. Nijmeijer, Observability of autonomous discrete-time
+nonlinear systems: a geometric approach, Internat. J. Con-
+trol -16 (1982) 867- 874.
+181 D. Normand-Cyrot, Theorie et Pratique des Systernes Non
+Lineaires en Temps Discret, These de Docteur d'Etat,
+Univ. Paris-Sud (March 1983).
+f9] F.D. Sontag, Remarks on the preservation of various
+controllability properties under sampling, in: Deueloppe-
+ment et Utilisation d'Outils et ModHes Math~matiques en
+Automatique, Analyse de Systemes et Traitement de Signal
+Coll. CNRS, RCP 567, Belle-Ile (1983) 623-637.
+[10] F.D. Sontag, On the observability of polynomial systems,
+SIAM J. Control Optim. 17 (1979) 139-151.
+[11] E.D. Sontag, Conditions for abstract nonlinear regulation,
+Inform. and Control 51 (1981) 105-127.
+[121 F.D. Sontag and H.J. Sussmann, Accessibility under sam-
+pling, Proc. IEEE Conf. Dec- Control, Orlando (Dec. 1982).
+[13] H.J. Sussmann, Minimal realizations of nonlinear systems,
+in: Geometric Methods in System Theory (Reidel, Dordrecht,
+1973).
+[14] H.J. Sussmann, A generalization of the closed subgroup
+theorem to quotients of arbitrary manifolds, J. Differential
+Geometry 10 (1975) 151-166.
+[15] H.J. Sussmann and V. Jurdjevic, Controllability of nonlin-
+ear systems, J. Differential Equations 12 (1972) 95-116.
+47

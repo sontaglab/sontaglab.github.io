@@ -1,0 +1,268 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/bilin2.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/bilin2.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A CHOW PROPERTY FOR SAMPLED BILINEAR SYSTEMS Eduardo D. Sontag\Lambda  Department of Mathematics, Rutgers University New Brunswick, NJ 08903
+
+An eigenvalue condition is given for the sampled positive-time accessibility of a class of nonlinear systems. This result generalizes a previous result of the author, which applied only to bilinear systems and which only concluded a weaker notion of controllability.
+
+1 Introduction When a continuous-time system is regulated by a digital computer, control decisions are often restricted to be taken at fixed times 0; ffi; 2ffi; :::; one calls ffi ? 0 the sampling time. Under what is called zero-th order hold sampled control, the resulting situation can be modeled through the constraint that the inputs applied be constant on intervals of length ffi. A prefilter may be applied to the system to smooth out control discontinuities, but mathematically the situation is as with piecewise constant controls.
+
+It is thus of interest to characterize the preservation of basic system properties when the controls are so restricted. For controllability, this problem motivated the results in the classical paper of Kalman, Ho, and Narendra [3]. This studied the case of linear systems and established that controllability when sampling at intervals of length ffi is preserved provided that ffi(* \Gamma  _) is not of the form 2kssi, for any pair of distinct eigenvalues of the A matrix. The dual version of this result, for observability, is basically the classical Nyquist-Shannon sampling theorem from digital signal processing, and is usually summarized by the statement that controllability (or observability) is preserved provided that one samples at more than twice the natural frequencies of the system.
+
+In [5], we found a general result which in particular implies, for the class of bilinear systems, an analogous property; one now needs that ffi(* + *0 \Gamma  _ \Gamma  _0) not be equal to 2kss, k non zero, for any four eigenvalues of the autonomous dynamics matrix. Thus in the bilinear case, one must sample at more than 4 times (rather than twice) the natural frequencies of the system. The bilinear result was obtained by inducing a linear system on the adjoint representation of a certain Lie algebra associated to the given system. The result was proved for transitivity, often called also the "weak controllability," property. The present work shows how to extend this to the much more interesting (forward) accessibility (or "positive Chow") property, with the same eigenvalue condition being sufficient. This extension is possible based on new results on discrete time controllability from [4]. Moreover, we can now generalize the result to deal with a much larger class than that of bilinear systems.
+
+The plan for this paper is as follows. We first give definitions and state the main results. After that we shall recall details of the linear case, giving an abstract proof of the classical result, and finally we shall show how to reduce the nonlinear problem to a suitable linear one on a larger dimensional space.
+
+\Lambda Research supported in part by US Air Force Grant 0247. Electronic address: sontag@fermat.rutgers.edu
+
+2 Frequencies and Accessibility The systems oe that we shall consider have the form
+
+.x = f (x) +
+
+mX
+
+i=1
+
+uigi(x); (1)
+
+where x(t) 2 IRn and ui(t) 2 IR for each t; n is the dimension of the system, m the number of independent controls. We assume also that the vector field f is complete, that is, that solutions of the unforced system are defined for all initial conditions and all t * 0. Further, we assume that f as well as the gi are real-analytic.
+
+Fix an equilibrium state x0 2 IRn of (1), that is, a zero f (x0) = 0, and consider the linearization F = (@f =@x)(x0). We shall say that the natural frequencies of the system (1) (about the equilibrium state x0) are the imaginary parts of the eigenvalues of F , and let !(oe; x0), or just !, be the set of these numbers (counted with multiplicities). Note that since F is real, \Gamma ! 2 ! whenever ! 2 !. For each nonnegative integer j we denote by
+
+Bj the set of all linear combinations 1
+
+k
+
+nX
+
+i=1
+
+aei!i (2)
+
+with k a nonzero integer, !1; : : : ; !n the natural frequencies, and the aei's nonnegative integers satisfying
+
+nX
+
+i=1
+
+aei = 2j + 2:
+
+Note that if * is the largest of the !i, (equivalently, the largest absolute value of these,) each element of Bj is in magnitude bounded by (2j + 2)*.
+
+The main results will hold for systems for which f is linear and the gi are all polynomial vector fields. By ~oeHd we denote the class of all systems for which f is linear, f (x) = F x, and the coordinates of all the gi are homogeneous polynomials of degree exactly d. For instance, ~oeH0 is the class of all linear systems (the gi's are constant vectors,) while ~oeH1 is the class of bilinear systems, treated in [5]. We drop the superscript H to indicate more general polynomials: ~oed is the class of all systems for which f is linear and the gi are polynomials of degree at most d. For such systems, the natural frequencies are just the imaginary parts of the eigenvalues of F.
+
+Under relatively mild conditions (the Poincar'e resonance conditions), it is possible to reduce under coordinate changes more general systems, at least locally, to the case where f is linear. However, any structure on the gi's is then destroyed.
+
+Accessibility
+
+Fix again an equilibrium state x0. The set of states of oe that can be reached from x0 in time T ? 0, using arbitrary (measurable locally integrable) controls u(\Delta ) is denoted by AT (x0). The system (1) is said to be (forward) accessible (from x0) if it holds that for some T ? 0 this reachable set has full dimension, more precisely if
+
+int AT (x) 6= ; : (3)
+
+Let ! ? 0 be any real number. We shall say that oe is !-(forward) accessible (from x0), or (forward) accessible under sampling at frequency ! (from x0), if the set of states
+
+AT! (x0) reachable from x0 in time T using controls sampled at that frequency has a nonempty interior. A control u(\Delta ) defined on an interval [0; T ] is said to be sampled at frequency ! (in radians/sec) iff T is an integer multiple of ffi := 2ss=!, say T = rffi, and there are vectors
+
+v1; : : : ; vr such that u(t) j vi on the interval [(i \Gamma  1)ffi; iffi). With this definition it is clear that !- accessibility for even a single ! implies accessibility. The following two main theorems provide a converses to this fact; they will be proved later.
+
+Theorem 1 Let x0 be an equilibrium state, and assume that oe 2 ~oeHd is accessible from x0. If ! ? 0 is not in Bd then oe is also !-accessible.
+
+Theorem 2 Let x0 be an equilibrium state, and assume that oe 2 ~oed is accessible from x0. If ! ? 0 is not in Bj for any j ^ d, then oe is also !-accessible.
+
+With * as above, the following is then an obvious consequence of Theorem 2. For linear systems (d = 0), it is a version of the classical Sampling Theorem. For d = 1, one recovers in a stronger form the result for bilinear transitivity given in [5].
+
+Corollary 2.0.1 Accessibility is preserved under sampling for systems in ~oed provided that the sampling frequency be larger than 2j + 2 times the largest natural frequency of the system.
+
+It is possible to generalize these theorems to deal with nonpolynomial gi's, but no simple corollary as the above would appear to hold.
+
+3 Linear systems It is worth reviewing the case of linear systems in detail, since it will be useful later. This is basically due to [3]. Let V be a vector space over the reals, and let A be a linear map V ! V . For any subspace B of V , we denote by
+
+fAjBg the smallest A-invariant subspace of V which contains B.
+
+Assume from now on that V is finite-dimensional. We may then think of V as a Banach space, when endowed with any fixed norm. (Since all norms are equivalent, the particular norm used will not be important in what follows.) If f (z) is an analytic function defined on an open set which contains the spectrum of A, we let f (A) be the application of f to A as per the spectral mapping theorem. In particular, for each ffi 2 IR, effiA denotes the exponential of
+
+the matrix ffiA, which is well-defined for all A, and `ffi(A) will denote the application to any A of the entire function
+
+`ffi(z) := e
+
+ffiz \Gamma  1
+
+z :
+
+If it held that A = fi(effiA) for some ffi and some analytic function fi, then for each vector b it would hold that Ab is a linear combination of (finitely many) terms of the form ekffiAb (k = nonnegative integers,) and therefore
+
+fAjBg = feffiAjBg (4) for any subspace B. If it also holds that `ffi(A) is invertible, then also
+
+fAjBg = feffiAj`ffi(A)Bg: (5) This last equality is a consequence of (4) applied to B = `ffi(A)B and of the fact thatB ` f
+
+Aj`ffi(A)Bg for any subspace B, which in turn follows from
+
+B = `ffi(A)\Gamma 1`ffi(A)B and the fact that `ffi(A)\Gamma 1 is again an analytic function of A (spectral mapping theorem). The reason that (5) is of interest is that when
+
+.x = Ax + Bu (6) is a linear system, the system obtained by sampling with period ffi (frequency ! = 2ss=ffi rad/sec) is, by the variation of parameters formula, the discrete time system
+
+x+ = effiAx + `ffi(A)Bu; and therefore controllability is preserved with this sampling provided that the original system is controllable and (5) holds.
+
+The zeroes of the mapping `ffi(z) are the complex numbers of the form 2ssffi p\Gamma 1, so `ffi(A) is certainly invertible if ! is not a natural frequency of (6). Furthermore, the exponential mapping effiz is everywhere nonsingular, so there it admits a one-sided inverse `ffi(z) = (1=ffi) log z defined on the spectrum of effiA iff it is one-to-one on the spectrum of A. We thus conclude the fundamental linear sampling theorem:
+
+Proposition 3.0.1 If k! 6= !1 \Gamma !2 for each two natural frequencies of (6) and each nonzero integer k, then (5) holds.
+
+Note that the condition in this proposition is precisely the one that insures that the exponential is one-to-one, but that this also implies that ! is not a natural frequency of the system: otherwise, \Gamma ! is also a natural frequency and therefore 2! = ! \Gamma  (\Gamma !) contradicts the condition.
+
+4 Discrete-time nonlinear accessibility We shall need to use a result from [4]. For this, we first introduce the following vector fields associated to a system (1) and any fixed real number ffi ? 0. Fix an i = 1; : : : ; m. Then consider
+
+Xi(x) := @@" fififi"=0e\Gamma ffif effi(f+"gi)(x):
+
+These are analytic vector fields; note that completeness of f is used in this definition, since we need to know that e\Sigma ffif (p), the flow in time \Sigma ffi of the vector field f starting at p, is defined for any p 2 IRn. (By well-posedness of ode's, this implies that effif e\Gamma ffi(f\Gamma "gi)(x) is also defined, for small ".) For small ffi, there is an expansion (see for instance [2])
+
+Xi(x) =
+
+1X
+
+i=1
+
+ffii
+
+i! ad
+
+i\Gamma 1 f (gi)(x);
+
+here adf denotes the Lie bracket linear operator on vector fields,
+
+adf (Y ) := [f; Y ]: Still for any fixed ffi, one considers also the conjugation under the flow of f , also a linear operator on vector fields:
+
+Adffif (Y )(x) := (e\Gamma ffif )\Lambda Y (effif (x));
+
+where "\Lambda " indicates differential. For small ffi, one has also the expansion
+
+Adffif (Y )(p) :=
+
+1X
+
+i=0
+
+ffii
+
+i! ad
+
+i f (Y ):
+
+Now let X be the subspace of vector fields generated by the Xi's, let
+
+Lffi := Lie algebra generated by fAdffif jX g; and let Lffi(x) denote the subspace of the tangent space at x 2 IRn spanned by the vectors Y (x); Y 2 Lffi. The main result which we need from [4] is the following, restated in terms of sampling of a continuous-time system. We state only a sufficient condition; a necessary and sufficient characterization is also given in that reference, but it is somewhat less elegant.
+
+Theorem 3 The system oe is !-accessible from the equilibrium state x0, for ! = 2ss=ffi, ifL
+
+ffi(x0) has dimension n.
+
+Let B be the span of the vector fields g1; : : : ; gm. From now on, we make the assumption that
+
+V := fadf jBg is finite dimensional: (7)
+
+Note that for systems in the classes ~oeHd and ~oed this assumption holds true, since homogeneous polynomials of any fixed degree are invariant under adf for linear f .
+
+Under assumption (7), one can introduce the operators effiA and `ffi(A), for A = adf seen as a linear operator on V . These are defined and analytic for all ffi, and from their expansions in terms of ffi and analytic continuation we conclude that
+
+Adffif = effiA
+
+as linear operators on V and that
+
+Xi = `ffi(A)gi
+
+for each i. Thus Lffi is the Lie algebra generated by the right-hand side of (5), with the present A and B. It follows that if ffi is such that (5) holds then Lffi is the same as the strong accessibility Lie algebra L
+
+0 := fadf jBgLA
+
+and hence it has rank n at x0 if the original system is accessible from x0. We thus conclude from proposition 3.0.1:
+
+Proposition 4.0.2 Let x0 be an equilibrium state, and assume that oe satisfies (7) and that it is accessible from x0. If ! ? 0 is such that k! 6= !1 \Gamma  !2 for each two imaginary parts !1; !2 of eigenvalues of adf on V and each nonzero integer k, then oe is also !-accessible.
+
+It is also possible to give a result for nonequilibrium initial states x0; see [4] for the necessary discrete-time accessibility result.
+
+5 Proofs of the main results We are only left with translating proposition 4.0.2 to the case of linear f (x) = F x and polynomial gi's. For this, we need the following fact (see a proof for instance in [1], lemma 12.2.5).
+
+Proposition 5.0.3 The eigenvalues of adf , for linear f (x) = F x, acting on the space of all vector fields whose entries are homogeneous polynomials of degree d, are given by the expressions
+
+a1*1 + : : : + an*n \Gamma  *i
+
+for all i = 1; : : : ; n and all nonnegative integers a1; : : : ; an such that
+
+a1 + : : : + an = d; (8) where *1; : : : ; *n are the eigenvalues of F .
+
+Since the space of all polynomial vector fields of degree at most d is a direct sum of the spaces corresponding to homogeneous ones, one has an analogue of the above for polynomials of degree ^ d, simply replacing equality by ^ in (8).
+
+Consider first the homogeneous case, theorem 1. Note that the imaginary part of an expression
+
+a1*1 + : : : + an*n \Gamma  *i
+
+is the expression
+
+a1!1 + : : : + an!n \Gamma  !i;
+
+where the !i are the natural frequencies. Because of proposition 4.0.2, we need to check the differences
+
+a1!1 + : : : + an!n \Gamma  !p \Gamma  (b1!1 + : : : + bn!n \Gamma  !q) (9)
+
+with nonnegative ai; bi and P ai = P bi = d. An expression as in (9) can be also written as
+
+ae1!1 + : : : + aen!n; (10) with all aei nonnegative integers and P aei = 2d + 2. This is because any negative term \Gamma b!i can be also written as b!i0 , for some other i0 (recall that the set ! of natural frequencies is closed under additive inverses). Conversely, any expression as in (10) with
+
+X ae
+
+i = 2ffi + 2
+
+can be in turn expressed as in (9), for the same reason. This gives theorem 1. To prove theorem 2, argue in exactly the same way, except that the sums of the ai and bi may now be arbitrary up to d each, and therefore the sum of the aei's can be at most equal to 2ffi + 2 and must be at least equal to 2. However, the case of sum = 1 can be reduced to that when the sum is 2 (just compare with 2k in (2),) and hence the theorem results.
+
+6 References
+
+1. Chow, S-N., and J.K. Hale, Methods of Bifurcation Theory, Springer, NY, 1982. 2. Goodman, R., "Lifting vector fields to nilpotent Lie groups," J.Math. Pures et Appl.
+
+57(1978): 77-86.
+
+3. Kalman, R.E., Y.C. Ho, and K.S. Narendra, "Controllability of linear dynamical systems," Contr.Diff.Eqs. 1(1963): 189-213.
+
+4. B. Jakubczyk and E.D. Sontag, "Controllability of nonlinear discrete-time systems: A
+
+Lie-algebraic approach," submitted.
+
+5. Sontag, E.D., "An eigenvalue condition for sampled weak controllability of bilinear
+
+systems," Systems and Control Letters 7(1986): 313-316.</pre>
+</body>
+</html>

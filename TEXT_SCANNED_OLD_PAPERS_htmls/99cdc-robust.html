@@ -1,0 +1,776 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/99cdc-robust.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/99cdc-robust.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Clocks and Insensitivity to Small Measurement Errors
+
+E. D. Sontag* Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@hilbert.rutgers.edu
+
+February 8, 1999
+
+Abstract This paper provides a precise result which shows that insensitivity to small measurement errors inclosed-loop stabilization can be attained provided that the feedback controller ignores observations
+
+during small time intervals.
+
+1 Introduction We deal in this paper with control systems
+
+.x = f (x, u) (1) for which states x(t) evolve in X = Rn and controls take values u(t) in a metric space U (precise definitions are given later). We suppose that there is some compact set A to which we would like to asymptotically drive all states. A special case is that in which A = {0}. Our results are new for that particular case, but we state and prove them in more generality, since the proofs are not harder for a general compact invariant set (such as a periodic trajectory, see Figure 1).
+
+A 0
+
+Figure 1: Controlling to set Stabilization under measurement noise The stabilization problem is usually described as that of finding a feedback law k : X ! U such that A is a globally asymptotically stable set with respect to the closed-loop dynamics
+
+.x = f (x, k(x)) . (2) *Supported in part by US Air Force Grant F49620-98-1-0242
+
+1
+
+In this paper, we will be interested in fact in a somewhat stronger notion of stabilization, in which measurement noise may occur. That is, the controller measures x(t) + e(t) at time t, where e(t) is an "observation error" and one wants that all trajectories converge to A provided that the errors e(t) be sufficiently small. The precise value of e(t) is unknown by the controller, but one uses information about upper bounds on the magnitude of e(t) when carrying out the design. The meaning of "small" will be discussed later, but it is clear that only small errors can be tolerated when close to A.
+
+Of course, when the feedback law k is a continuous function, this insensitivity, or robustness, to small errors is automatic. To see this, we may consider the perturbed system
+
+.x = f (x, k(x + e)) (3) which arises when the control u(t) = k(x(t) + e(t)) is used instead of u(t) = k(x(t)). If k was a stabilizing continuous feedback, then, since f (x, k(x + e)) ss f (x, k(x)) when e is small, the movement of the trajectories is still in the correct direction. This can be proved rigorously in several manners, for instance using Lyapunov functions. Indeed, suppose that V is a Lyapunov function for verifying the asymptotic stability of A with respect to the closed-loop system .x = f (x, k(x)) (see e.g. [7]); thus,r
+
+V (x) * f (x, k(x)) < 0 for all x 62 A. Since
+
+rV (x) * f (x, k(x + e)) ss rV (x) * f (x, k(x)) , we also have that rV (x) * f (x, k(x + e)) < 0 for all x 2 X \ A and all e(*) which satisfy that |e(t)| < fl(|x(t)|A) for all t, where fl : R>0 ! R>0 is some continuous function which can be interpreted as a robustness margin for this problem. But this proof breaks down when k is not continuous, because the vector f (x, k(x + e)) may point in a very different direction than f (x, k(x)).
+
+Discontinuous feedbacks and chattering Unfortunately, discontinuous feedback laws k are often unavoidable. For example, for the system .x = u with X = U = R, the set A = {-1, 1} can be made globally asymptotically stable under many different discontinuous feedback laws (such as: k(x) = 1 - x for x >= 0 and k(x) = -1 - x for x < 0) but there is no possible continuous global feedback stabilizer k(x) (because the domain of attraction of A has two connected components).
+
+Even if A = {0}, it may be impossible to stabilize continuously. Let us explain this with an intuitive example. We consider the following system (cf. [2]):
+
+.x = g(x)u , where g(x) = ` x
+
+21 - x22
+
+2x1x2 ' .
+
+The state space is X = R2, and the input space is U = R (if we think of points in R2 as complex numbers z, this can be described more simply as .z = z2u). The orbits of the vector field g are the circles tangent to the x1 axis and centered on the x2-axis, as well as {0} and the positive and negative x1 axes, cf. Figure 2. On the circles, input values u(t) that are positive, negative, or zero correspond respectively to motions along the integral curves of g that are counterclockwise, clockwise, or staying at one point, respectively.
+
+We want to asymptotically stabilize the origin. Since no motion can exit the integral curves, we will simply study what happens in any fixed circle, say one on the top half-plane. (We may think of the system restricted to our circle as a system on S1, with, in polar coordinates, .` = u, that is, controls allow us to move at any speed, clockwise or counterclockwise.) Let us call p the bottom point in the circle (the point 0 2 R2). Near p, and to its right, stability says that u = k(x) must make us
+
+2
+
+Figure 2: (x21 - x22) @@x1 + 2x1x2 @@x2 with typical integral manifolds move clockwise, that is, k(x) < 0, while near but to the left of p we must move counterclockwise, i.e. k(x) > 0. If k were to be a continuous function of the state x, the intermediate value theorem would force the existence, on this circle, of some state q 6= p at which k(q) = 0. Thus q is another equilibrium point, and so k cannot asymptotically stabilize p. So a continuous feedback stabilizer cannot exist, which means that the argument given earlier for insensitivity to measurement errors cannot be applied.
+
+Of course, there are many obvious discontinuous feedback stabilizers. The most obvious solution is to go clockwise if x1 > 0 and counterclockwise if x1 < 0, making an arbitrary choice, let us say clockwise, if x1 = 0. When restricting to some fixed circle as above, this would mean that one moves each state to the right of the "North" point p0, including p0 itself, clockwise towards p, and every state to the left of p0 counterclockwise towards p, see Figure 3. However, such feedback laws are extremely
+
+p'
+
+p Figure 3: Discontinuous feedback law for circle example sensitive to measurement errors, and may result in chattering behavior at the discontinuity p0. Indeed, if the true state x is slightly to the left of the top point p0, but our measurements make us believe it to be to the right, we will mistakenly use a clockwise motion, in effect bringing the state towards the top, instead of downwards towards the target (the origin); see Figure 4. It is clear that, if we are unlucky
+
+#u #u
+
+?#
+
+Figure 4: True state; measured state; erroneous motion commanded enough to consistently make measurement errors that place us on the opposite side of the true state, the result may well be an oscillation (chattering) around the top. So the feedback law which we gave is not "robust" with respect to measurement errors, in that it may get "stuck" due to such errors. (We are being deliberately vague, in this intuitive discussion, regarding the meaning of "solution" of the differential equation (3), a nontrivial issue when k is not continuous. This is a very important technical matter, which is discussed in detail in this context in the expository paper [11].)
+
+3
+
+A hybrid strategy There are many techniques that can be used in order to avoiding chattering. One such technique, which can be applied in great generality, is based upon the following modification of a given control strategy k which might not be robust to measurement errors. Starting at some initial time, let us say t0 = 0, we measure k(x(0) + e(0)), obtaining a control value u0. We now apply the constant control u(t) j u0 during a small interval [0, t1). This procedure is then repeated: at time t1 we resample, obtaining some u1 := k(x(t1) + e(t1)), and apply this control during another small interval [t1, t2), and so on. This modified strategy is not a pure "continuous time" one, in that a minimum intersample time is required. It can be interpreted, rather, as constructing a hybrid (different time scales needed) and dynamic (requiring memory) controller.
+
+Using still the simple example of .` = u in the circle as an illustration, this modified strategy would mean that we decide in which direction to move (clockwise or counterclockwise), based on the current measurement (which may well be somewhat inaccurate). Now, we continue moving in the chosen direction, not paying any attention to observations, for a small time interval. Only after that interval do we again sample. Suppose that our original observation k(x(0) + e(0)) tells us that we appear to be near the top point, p0. Depending on an assumed upper bound on the magnitude of the measurement errors, we can estimate an interval around p0 where the true state lives. Now we move away and towards the lower point for a certain minimal time whose length depends on this interval. We end up sufficiently far from the discontinuity. At this point, we know for sure on which side of the top we are. Actually, it really doesn't matter if we moved clockwise or counterclockwise; in either case, we will be far enough from p0 to be sure that errors in the next measurement k(x(t1) + e(t1)) do not lead to catastrophic consequences.
+
+This example is too simple to exhibit the complexity of the general result, especially because there is only one discontinuity, at p0, in the feedback law, and we are safe once that we are far from p0 (and, since motions directed by k are in the direction away from p0, we never go back towards it, if we started far enough). However, it illustrates the general principle that the length of time that we wait must be in some sense proportional to the uncertainty. Actually, the general case is not too difficult to understand. We now explain it intuitively.
+
+The role of Lyapunov functions We discussed already the fact that the stability of the unperturbed system (2) implies that of (3) when k is continuous. As a matter of fact, the same implication is true in the more general situation in which there is some continuously differentiable Lyapunov function for the closed-loop system. Basically, this follows from the approximation
+
+rV (x) * f (x, k(x + e)) ss rV (x + e) * f (x + e, k(x + e)) < 0 , using the Lyapunov property at the point x + e instead of at x, and not using continuity of k. The proof is given in [6] -- see also [11] -- where it is also shown that, in general, differentiable Lyapunov functions do not exist. Observe that for our circle example, this alternative argument cannot be applied; the obvious "Lyapunov function" given by the geodesic distance to p measured along the circle is not a differentiable function, since it is nondifferentiable at the conjugate point p0. However, continuous (but nondifferentiable) Lyapunov functions do play a role.
+
+The general sampling strategy, adapted to a continuous Lyapunov function V , is as follows. Suppose that the true current state, let us say at sampling time t = ti, is x, but that the controller uses u = k(~x), where ~x = x + e, and e is small. Call x0 the state that results at the next sampling time t = ti+1.
+
+4
+
+By continuity of solutions on initial conditions, |x0 - ~x0| is also small, where ~x0 is the state that would have resulted from applying the control u if the true state had been ~x. By continuity, it follows that V (x) ss V (~x) and also V (x0) ss V (~x0). On the other hand, a Lyapunov function for the feedback law k has the property that V (~x0) is much smaller than V (~x) if ti+1 - ti is large; more precisely, we will have that V (~x0) < V (~x) - d(ti+1 - ti), where d is some positive constant while sufficiently far from A. Hence, if e is sufficiently small compared to the intersample time ti+1 - ti, it will necessarily be the case that V (x0) must also be smaller than V (x). See Figure 5. Thinking of V as a Lyapunov function,
+
+CC
+
+CC
+
+CC
+
+CC
+
+CCW
+
+CC
+
+CC
+
+CC
+
+CC
+
+CW
+
+x
+
+~x = x+ error
+
+x0
+
+~x0
+
+V = ~c V = c
+
+V = c0 V = ~c0
+
+Figure 5: ti+1 AE ti ) ~c0 o/ ~c ) c0 < c this means that x0 is made "smaller", even if the wrong control u = k(~x), rather than k(x), is applied.
+
+2 Definitions and Statements of Results We now turn to the precise definitions and statements of results. We take U to be a locally compact metric space, with a distinguished element which we write as "0" and denote |u| := d(u, 0) and, for each s > 0, Ur := {u | |u| <= r}. The set A is zero-invariant: all solutions x(t) of the autonomous system .x = f (x, 0) for which x(0) 2 A have the property that x(t) 2 A for all t >= 0. The mapping f : X * U ! Rn : (x, u) 7! f (x, u) is continuous, and is locally Lipschitz on x uniformly on compact subsets of X * U. A control is a measurable essentially locally bounded function u : [0, 1) ! U, andk
+
+uk is the essential supremum (possibly infinite) of the map t 7! |u(t)|. We denote by |,|A the distance from the point , 2 X to the set A and by |x| = |x|{0} the usual Euclidean norm of x 2 X.
+
+Recall that ff : R>=0 ! R>=0 is called a K1 function if it is continuous, strictly increasing, unbounded, and satisfies ff(0) = 0, and the class of KL functions consists of those fi : R>=0 * R>=0 ! R>=0 with the properties that (1) fi(*, t) 2 K1 for all t, and (2) fi(r, t) decreases to zero as t ! 1.
+
+We say that (1) is (globally) asymptotically controllable to the compact and zero-invariant set A if there exist a KL-function fi and a continuous and increasing oe : R>=0 ! R>0 such that, for each state x0 2 X, there exists a control with kuk <= oe(|x0|A), such that the solution x(t) = x(t, x0, u) of
+
+.x = f (x, u) with x(0) = x0 exists for all t >= 0 and satisfies
+
+|x(t)|A <= fi(|x0|A , t) for all t >= 0 . (4) This bound encapsulates both the stability and attraction properties of the the invariant set A; the role of oe is simply to rule out unbounded controls as we approach it. (See e.g. [11] for the equivalence of this definition to the usual topological one.)
+
+By a sampling schedule or partition ss = {ti}i>=0 of [0, +1) we mean an infinite sequence
+
+0 = t0 < t1 < t2 < . . .
+
+5
+
+with limi!1 ti = 1; its upper and lower diameters are defined by:
+
+d(ss) := sup
+
+i>=0 (ti+1 - ti)
+
+and
+
+d(ss) := infi>=0(ti+1 - ti) .
+
+By a feedback law for (1) we mean a map k : X ! U, with with k j 0 on the set A, which is locally bounded, that is, the closure of k(C) is compact, for each compact subset C of X. If k is a feedback law, x0 2 X, ss is a sampling schedule, and e : [0, 1) ! X is any function, to be thought of as the state estimation error, we define the ss-solution of
+
+.x = f (x, k(x + e)) , x(0) = x0 (5) as the continuous (and piecewise differentiable) function obtained by recursively solving
+
+.x(t) = f (x(t), k(x(ti) + e(ti))) , t 2 [ti, ti+1) , with x(0) = x0; that is, for each interval [ti, ti+1), the initial state is measured (with error), the control value ui = k(x(ti) + e(ti)) is computed, and the constant control u j ui is applied until time ti+1. The solution is defined on some maximal nontrivial interval; it may fail to exist on the entire interval [0, +1) due to a blow-up on one of the subintervals [ti, ti+1). We denote this maximal solution as xss(t, x0, e) in order to exhibit the dependence on the initial state, ss, and measurement error, and we say that xss(t, x0, e) is well defined if it is defined on all of [0, +1).
+
+We now state our main result, a theorem assuring semiglobal practical stability (i.e., driving all states in a given compact set of initial conditions into a specified neighborhood of zero).
+
+Theorem 1 Suppose that the system (1) is globally asymptotically controllable to A. Then, there exists a function \Gamma  2 K1 with the following property. For each pair 0 < " < K, there is a feedback law k, and there exist positive ffi = ffi(", K), ^ = ^(", K), and T = T (", K), such that, for each sampling schedule ss with d(ss) <= ffi, each e : [0, 1) ! X so that
+
+|e(t)| <= ^ d(ss) 8 t >= 0 , and each x0 with |x0|A <= K, the ss-solution x(t) = xss(t, x0, e) of the noisy system (5) is well-defined and satisfies |
+
+x(t)|A <= \Gamma (K) 8 t >= 0
+
+and |
+
+x(t)|A <= " 8 t >= T .
+
+This theorem is a generalization of the one given in the paper [4] for systems with no measurement error; actually, the main result in that paper is no more than the particular case e j 0 (and A = {0}). Moreover, our proof is closely patterned after that in [4], and it will show that the same feedback laws, with no modification whatsoever, work also for the more general Theorem 1. To be precise, a global feedback in [4] was defined by patching together certain semi-global feedback laws, denoted there as k* and indexed by triples * = (ff, r, R) of positive numbers with r < R; in the proof of our theorem, we will pick k = k*, for a suitably chosen triple * which depends on the given K and ". Although our proofs, in general terms, proceed along lines parallel to [4], we need to rework all the details because
+
+6
+
+the estimates are a little different when proving the stronger result. (In addition, the notations need to be adapted in order to deal with set stability as opposed to equilibria.) The results presented here were outlined in [11], which also described ideas of how to obtain, in a similar manner, a more global version of Theorem 1.
+
+One may think of the result in [4] as a continuous-time stabilization problem. If the system (1) is globally asymptotically controllable to the origin, then there is a feedback k so that the closedloop system (2) has x = 0 as a globally asymptotically stable equilibrium. The interpretation of "solution" for the closed-loop system equations (2), and therefore of what "globally asymptotically stable equilibrium" really means, is delicate, since when k is not continuous, solutions in the usual sense (absolutely continuous functions whose derivatives satisfy the equation almost everywhere) may not exist for arbitrary initial conditions, and one must therefore first introduce an appropriate generalization of the usual notion. Techniques such as Filippov solutions are not appropriate, cf. [5] and [8]. This subject is discussed at length in [4], see also the expository paper [11], and we omit the details here, save to point out that these generalized trajectories can be interpreted as the limit points in the space of continuous paths, as d(ss) ! 0, of solutions xss. The "do not sample too fast" results in this paper are qualitatively different, and cannot really be thought of as dealing with continuous-time feedback.
+
+3 Proofs In order to keep the presentation self-contained, we review the necessary concepts of proximal analysis and control-Lyapunov functions, borrowing freely from [4] and other references.
+
+3.1 Control-Lyapunov functions We say that a continuous function
+
+V : X ! R>=0
+
+is positive definite with respect to A if V (x) = 0 if and only if x 2 A, and it is proper (or "weakly coercive") if for each a >= 0 the set {x | V (x) <= a} is compact, or, equivalently, V (x) ! 1 as |x| ! 1 (radial unboundedness). Since A is compact, the conjunction of the properties of properness and positive definiteness with respect to A is equivalent to the existence of two functions ff, ff 2 K1 so that
+
+ff(|x|A) <= V (x) <= ff(|x|A) 8 x 2 X . (6)
+
+For any continuous V : X ! R (or even, just lower semicontinuous and with extended real values), one defines a proximal subgradient of V at the point x 2 X as any vector i 2 Rn such that, for some ` > 0 and some neighborhood O of x,
+
+V (y) >= V (x) + i * (y - x) - ` |y - x|2 8y 2 O . In other words, proximal subgradients are the possible gradients of supporting quadratics at the point x. The set of all proximal subgradients at x is denoted @pV (x).
+
+A continuous V : X ! R>=0 is a control-Lyapunov function (clf) for the system (1) with respect to the set A if it is proper, positive definite with respect to A, and infinitesimally decreasing in the following sense: there exist a continuous W : X ! R>=0, positive definite with respect to A, and a nondecreasing oe : R>=0 ! R>=0, so that
+
+sup x2X maxi2@pV (x) min|u|<=oe(|x|A) i * f (x, u) + W (x) <= 0 . (7)
+
+7
+
+For differentiable V , (7) amounts to asking that rV (x) * f (x, u) < 0 for each x /2 A, by appropriate choices of input values u = ux (with ux uniformly bounded on each compact).
+
+Proposition 3.1 The system (1) is asymptotically controllable if and only if it admits a clf. Proof. This result is a simple reinterpretation of the one given in [9] for A = {0} and generalized in [1] to arbitrary A. Before quoting these previous results, we recall the notion of relaxed control. A relaxed Us-valued control is a measurable map ! : I ! P(Us), where I is an interval containing zero and P(Us) denotes the set of all Borel probability measures on Us. Note that ordinary controls can be seen also as relaxed controls, via the natural embedding of Us into P(Us) (map any point u 2 Us into the Dirac delta measure supported at u). Given any u 2 P(Us), we write RUs f (x, u) du(u) simply as f (x, u). As with ordinary controls, we also denote by x(t, x0, !) the solution of the initial value problem that obtains from initial state x0 and relaxed control !, and we consider the supremum norm k!k, defined as the infimum of the set of s such that !(t) 2 P(Us) for almost all t 2 I.
+
+The main result given in [9] for A = {0} and generalized in [1] to arbitrary A says that if (and only if) a system is AC, there exist two continuous functions V, W : X ! R, positive definite with respect to A and with V proper, and a nondecreasing function oe : R>=0 ! R>=0, so that the following property holds: for each x0 2 X there are a T > 0 and a relaxed control ! : [0, T ) ! P(Uoe(|x0|
+
+A)), sothat x(t) := x(t, x0, !) is defined for all 0 <= t < T and
+
+V (x(t)) - V (x0) <= - Z
+
+t
+
+0 W (x(o/ )) do/ 8 t 2 [0, T ) . (8) To simplify notations, let us write s := oe(|x0|A). In order to obtain the proximal version of the result, we show that
+
+min|u|<=s i * f (x0, u) <= -W (x0) (9)
+
+for all i 2 @pV (x0).
+
+As in [12], we first make an intermediate reduction, showing that
+
+minv2F (x0,s) DV (x0; v) <= -W (x0) , (10)
+
+where F (x0, s) denotes the (closed) convex hull of {f (x0, u), u 2 Us}, and DV (x0; v) is the directional subderivate, or contingent epiderivative, of V in the direction of v at x0, defined as
+
+DV (x0; v) := lim inft & 0
+
+v0 ! v
+
+1
+
+t [V (x
+
+0 + tv0) - V (x0)] .
+
+(The minimum in (10) is achieved, because the map v 7! DV (x0; v) is lower semicontinuous, see e.g. [3], ex.3.4.1e.) So, let x(t) = x(t, x0, !) be as above, and consider for each t 2 [0, T ) the vectors
+
+rt := 1t (x(t) - x0) = 1t Z
+
+t
+
+0 f (x(o/ ), !(o/ )) do/ = q
+
+t + pt ,
+
+with
+
+pt := 1t Z
+
+t
+
+0 f (x
+
+0, !(o/ )) do/ ,
+
+where qt ! 0 as t & 0 (the existence of such a qt, for each t, is an easy consequence of the fact that f is locally Lipschitz on x, uniformly on u 2 Us). Moreover, pt 2 F (x0, s) for all t (because F (x0, s) is
+
+8
+
+convex, so f (x0, !(o/ )) 2 F (x0, s) for each o/ , and then using convexity once more). By compactness, we have that there is some v 2 F (x0, s) and some subsequence ptj ! v with tj & 0; as qt ! 0, also vj := rtj ! v. For this v,
+
+DV (x0; v) <= lim inf
+
+j!1
+
+1 tj [V (x
+
+0 + tj vj) - V (x0)]
+
+= lim inf
+
+j!1
+
+1 tj [V (x(tj)) - V (x
+
+0)] <= -W (x0)
+
+(using (8)), so (10) indeed holds.
+
+Finally, we show that (10) implies (9). Let v 2 F (x0, s) achieve the minimum, and pick any i 2 @pV (x0). By definition of proximal subgradient, there is some ` > 0 so that, for each v0 2 F (x0, s) and each small t >= 0,
+
+i * v0 <= 1t [V (x0 + tv0) - V (x0)] + ` t fifiv0fifi2
+
+so taking limits along any sequence t & 0 and v0 ! v shows that i * v <= DV (x0; v) <= -W (x0). By definition of F (x0, s), this means that there must exist a u 2 UR so that also i * f (x0, u) <= -W (x0), as desired.
+
+Observe that the proximal condition (9), being linear on the velocities f (x, u), has the great advantage of not requiring convex hulls in order to state, and in that sense is far more elegant than (10).
+
+From now on, we assume given a clf V for the system (1), and ff and ff are K1 functions as in (6). We define
+
+ae(s) := ff-1 \Gamma  12ff(s)\Delta  (11)
+
+for each s >= 0.
+
+3.2 Regularization and definition of feedback For each ff 2 (0, 1] and x 2 X, we pick one point yff(x) 2 X such that
+
+V (yff(x)) + 12ff2 |yff(x) - x|2 <= V (y) + 12ff2 |y - x|2 (12) for every y 2 X (we are minimizing a proper and continuous function) and introduce the function Vff : X ! R>0 (Iosida-Moreau regularization) defined by
+
+Vff(x) := V (yff(x)) + 12ff2 |yff(x) - x|2 . (13) Note that (use y = x in (12)) for each x,
+
+Vff(x) <= V (x) . (14) For each x, ff, and the choice made of yff(x), we define the vector
+
+iff(x) := x - yff(x)ff2 (15) and rearrange terms in (12) to obtain, for any y 2 X,
+
+V (y) >= V (yff(x)) + iff(x) * (y - yff(x)) - 12ff2 |y - yff(x)|2 ,
+
+9
+
+which implies, by definition of subgradients,
+
+iff(x) 2 @pV (yff(x)) . (16) Note that (13) and (14) imply
+
+1 2ff2 |yff(x) - x|
+
+2 <= V (x) - V (yff(x)) <= V (x) , (17)
+
+so, denoting
+
+BAR := {x | |x|A <= R} (18)
+
+and recalling that V (x) <= ff(|x|A),
+
+|yff(x) - x| <= p2ff(R)ff 8 x 2 BAR . (19) In general, one has |x + y|A <= |x|A + |y| for any two x, y 2 X, so we have
+
+x 2 BAR ) yff(x) 2 BR := BAR+p2ff(R) . (20)
+
+Next, we associate as in [4] a feedback law k = k* defined on BAR to each triple * = (ff, r, R) with 0 < r < R and ff 2 (0, 1]. With the function oe as in equation (7), we let
+
+UR := nu 2 U | |u| <= oe iR + p2ff(R)jo . (21) Finally, we define k* : BAR ! UR by letting k*(x) be any pointwise minimizer of iff(x) * f (x, u):
+
+iff(x) * f (x, k*(x)) = minu2
+
+UR iff(x) * f (x, u) . (22)
+
+If |x|A <= R, then (7) applied at x = yff(x) and i = iff(x), and in view of (20), gives
+
+minu2
+
+UR iff(x) * f (yff(x), u) <= -W (yff(x)) . (23)
+
+Proposition 3.2 Pick any 0 < r < R so that 2ff(r) < ff(R). Then there exist positive numbers ff, ffi, ^, T such that, for each sampling schedule ss with d(ss) <= ffi, each e : [0, 1) ! X so that
+
+|e(t)| <= ^ d(ss) 8 t >= 0 , and each x0 with |x0|A <= 12ae(R), the ss-solution x(t) = xss(t, x0, e) of the noisy system (5) obtained when using the feedback k = kff,r,R is well-defined and satisfies
+
+x(t) 2 BAR 8t >= 0 (24) and
+
+x(t) 2 BAr 8t >= T . (25)
+
+Theorem 1 is an immediate corollary of this proposition. Indeed, we may pick the K1-function \Gamma  := (ae/2)-1:
+
+\Gamma (s) := ff-1 (2ff(2s)) . (26)
+
+Then, given " and K as in the statement of Theorem 1, we let R := \Gamma (K) (so, K = (1/2)ae(R)), and pick any r > 0 such that r < " and 2ff(r) <= ff(R); applying the result to 0 < r < R gives the desired conclusion.
+
+We prove Proposition 3.2 through a series of technical steps. Let 0 < r < R be given, with 2ff(r) < ff(R). The set UR is as in (21).
+
+10
+
+Some continuity estimates We need some additional notations:
+
+mR := max
+
+x2BAR ,u2UR |f (x, u)| ,
+
+\Delta  := 13 min {W (y) | y 2 BR and r <= \Gamma (|y|A} (from (11) and (26), the last condition says that 12 ae(r) <= |y|A),
+
+|f (x, u) - f (y, u)| <= ` |x - y| 8 u 2 UR , 8 x, y 2 BR , (27) (Lipschitz constant for f with respect to x, uniformly on u 2 UR), and
+
+!R (ffi) := max {V (x) - V (y) | |x - y| <= ffi, x, y 2 BR } (modulus of continuity of V on BR).
+
+For any ff 2 (0, 1], we consider the function Vff. By definition, we have
+
+Vff(y) <= V (yff(x)) + 12ff2 |yff(x) - y|2 (28) and
+
+Vff(x) = V (yff(x)) + 12ff2 |yff(x) - x|2 (29)
+
+for all x, y, so subtracting and rearranging quadratic terms, we obtain:
+
+Vff(y) <= Vff(x) + iff(x) * (y - x) + 12ff2 |y - x|2 . (30) On the other hand, (15) and (19) give that
+
+|iff(x)| <= p2ff(R)ff so from (30) it follows that
+
+Vff(y) - Vff(x) <= c |y - x| ,
+
+where
+
+c := p2ff(R)ff + R + Dff2
+
+and D := maxa,b2A |a - b| is the diameter of A. Interchanging x and y, we conclude that c is a Lipschitz constant for Vff on the set BAR . Without loss of generality (using if required a smaller ff in the arguments to follow) we will assume c >= 2.
+
+We also have the following estimate, for any x 2 BAR :
+
+V (x) <= Vff(x) + !R ip2ff(R)ffj . (31) This is true because V (x) <= V (yff(x)) + !R (|yff(x) - x|), V (yff(x)) <= Vff(x), and (19).
+
+11
+
+Choice of ff and feedback Finally, we pick any ff > 0 which satisfies all the following conditions:
+
+!R ip2ff(R)ffj < 12 ff(R) , (32)p
+
+2ff(R)ff < 12 ae(r) , 2` !R ip2ff(R)ffj < \Delta  , (33) and
+
+!R ip2ff(R)ffj < 116ff(r) (34)
+
+and take the feedback k = kff,r,R.
+
+3.3 The main technical lemma Note that, for any s > 0, |x|A <= ae(s) implies V (x) <= ff(ae(s)) = 12 ff(s). Define, for any s,
+
+Gs := \Phi x fifi V (x) <= 12ff(s)\Psi  and
+
+Gffs := \Phi x fifi Vff(x) <= 12 ff(s) \Psi  .
+
+The first two inclusions that follow are then clear, using (14):
+
+BAae(R) ` GR ` GffR ` int BAR . (35) The last inclusion is true because Vff(x) <= 12 ff(R) implies, by (29),
+
+V (yff(x)) <= 12ff(R) and 12ff2 |yff(x) - x|2 <= 12ff(R) , and therefore yff(x) 2 BAR and |yff(x) - x| <= pff(R)ff < p2ff(R)ff, from which we get
+
+V (x) <= V (yff(x)) + !R ip2ff(R)ffj < ff(R) , which in turn implies that |x|A < R by definition of ff(R).
+
+Next, we pick any "0 > 0 so that all the following - somewhat redundant - properties hold, where B denotes the unit ball and BAR is as defined in (18):
+
+BA1
+
+2 ae(R) + "0B ` G
+
+ffR , (36)
+
+GffR + 2"0B ` BAR , (37) "0 <= ff(r)8c <= ff(r)16 , (38) ff(r) + c "0 < 12ff(R) (39) (recall that 2ff(r) < ff(R)), and
+
+Gffr + 2"0B ` GffR . (40)
+
+(If x 2 int BAR then for any j such that x + j 2 BAR we have, since c is a Lipschitz constant for Vff on BAR , that Vff(x + j) <= Vff(x) + c |j|, and thus, for any x so that Vff(x) <= 12 ff(r) <= 14 ff(R) it holds that Vff(x + j) <= 12 ff(R) for j small.)
+
+12
+
+We let ffi0 be any positive number so that, for every initial state x0 in the compact set GffR, and for each control u : [0, ffi0] ! UR, the solution of .x = f (x, u) with x(0) = x0 is defined on the entire interval [0, ffi0] and satisfies x(t) 2 GffR + "0B for all t.
+
+Finally, we pick any ffi > 0 which satisfies:
+
+`mp2ff(R)
+
+ff +
+
+m2 2ff2 ! ffi <= \Delta  . (41)
+
+!R (mffi) < 14 ff(r) , (42) and
+
+ffi <= min ae1 , ffi0 , 2\Delta "0 , ff(r)8cm oe . (43)
+
+We take, for the proof of Proposition 3.2:
+
+^ := \Delta 4ce-` (44) and
+
+T := ff(R)\Delta  . (45)
+
+The main technical fact needed is as follows.
+
+Lemma 3.3 Let 0 < r < R satisfy 2ff(r) < ff(R). Let ff, ffi, ^, T be defined as above, and k be the feedback kff,r,R. Pick any " > 0, and consider the following set:
+
+P = Pr,R," := {x | x + "B ` GffR} . Let ss be a partition which satisfies
+
+" ^ <= ti+1 - ti <= ffi 8 i = 0, 1, . . . (46)
+
+(that is, d(ss) <= ffi and " <= ^ d(ss)). Then, for any e : [0, 1) ! X such that |e(t)| <= " for all t, and any x0 2 P , the ss-solution x(t) = xss(t, x0, e) of the noisy system (5) obtained when using the feedback k = kff,r,R is well-defined and satisfies (24) and (25), and x(ti) 2 P for all i.
+
+We will prove this via a couple of lemmas, but let us first point out how Proposition 3.2 follows from Lemma 3.3. Suppose given a partition ss with d(ss) <= ffi, an error function e so that |e(t)| <= ^ d(ss) for all t, and an initial state x0 with |x0|A <= 12 ae(R). All we need to establish is that x0 2 P , so that the Lemma applies with this initial condition. Let " := supt>=0 |e(t)| <= ^ d(ss). Note that
+
+" <= ^ d(ss) <= ^ d(ss) <= ^ ffi <= ^ 2\Delta  "0 <= ^ 4c\Delta  e`"0 = "0 . (47) Thus, by (36),
+
+BA1
+
+2 ae(R) ` P , (48)
+
+so x0 2 P .
+
+13
+
+3.4 Proof of Lemma 3.3 Observe that (46) implies " <= ^ d(ss), so, arguing as in (47), " <= "0. It is useful to introduce the following set as well:
+
+Q = Qr,R," := Gffr + "B .
+
+Observe that Q ` P , by (40).
+
+We start the proof by establishing an analogue of Lemma IV.2 in [4].
+
+Lemma 3.4 If, for some index i, xi := x(ti) 2 P \ Q, then x(t) is defined for all t 2 [ti, ti+1],
+
+x(t) 2 BAR 8t 2 [ti, ti+1] , (49) Vff(x(t)) <= Vff(xi) + "0 8t 2 [ti, ti+1] , (50) and, letting xi+1 := x(ti+1):
+
+xi+1 2 P , (51)
+
+Vff(xi+1) - Vff(xi) <= - \Delta 2 (ti+1 - ti) . (52)
+
+Proof. By definition of P , we have that ~xi := xi + e(ti) 2 GffR. Also, ~xi /2 Gffr , since otherwise xi would belong to Q. In particular, ~xi /2 BAae(r). Let ~x(*) be the solution, on [ti, ti+1], of .x = f (x, k(~xi)) with
+
+~x(ti) = ~xi. It follows from Lemma A.3 that this solution is well-defined, ~x(ti+1) 2 GffR, and
+
+Vff(~x(t)) - Vff(~xi) <= -\Delta  (t - ti) (53) for all t 2 [ti, ti+1).
+
+As xi 2 P ` GffR, and ti+1 - ti <= d(ss) <= ffi <= ffi0, the definition of ffi0 insures that the solution x(*) of .x = f (x, k(~xi)) with x(ti) = xi is also well-defined and remains in GffR + "0B ` BAR for all t 2 [ti, ti+1). So, by Gronwall's inequality, we know that
+
+|x(t) - ~x(t)| <= e(t-ti)` |xi - ~xi| <= effi`" for all t 2 [ti, ti+1]. Since Vff has Lipschitz constant c on BAR , we have
+
+Vff(x(t)) - Vff(xi)
+
+= Vff(x(t)) - Vff(~x(t)) + Vff(~x(t)) - Vff(~xi) + Vff(~xi) - Vff(xi)<=
+
+ceffi`" - \Delta  (t - ti) + c"
+
+<= \Delta 2 (ti+1 - ti) - \Delta  (t - ti)
+
+for all t 2 [ti, ti+1], where we have used that ffi <= 1, " <= ^ d(ss), the definition ^ = (\Delta /4c)e-`, and the fact that d(ss) <= ti+1 - ti. In particular, the estimate (52) results at t = ti+1, and (50) holds because (\Delta /2)ffi <= "0 by (43).
+
+We are only left to prove that xi+1 2 P . By definition of P , this means that for any given j 2 X with |j| <= " it must hold that
+
+j + xi+1 2 GffR = {x | Vff(x) <= 12ff(R)} .
+
+14
+
+Pick such an j; then |j + xi+1 - ~x(ti+1)| <= " + effi`" <= 2e`", and so, since j + xi+1 2 GffR + 2"0B ` BAR ,
+
+Vff(j + xi+1) <= 2ce`" + Vff(~x(ti+1))<=
+
+2ce`" + Vff(~xi) - \Delta  (ti+1 - ti)
+
+<= Vff(~xi) - \Delta 2 (ti+1 - ti) <= 12 ff(R)
+
+where we again used " <= ^ d(ss) as well as the fact that Vff(~xi) <= (1/2)ff(R) (since ~xi 2 GffR).
+
+We also need another observation, this one paralleling the proof of Lemma IV.4 in [4].
+
+Lemma 3.5 If, for some index i, xi := x(ti) 2 Q, then x(t) is defined for all t 2 [ti, ti+1],
+
+Vff(x(t)) <= 34 ff(r) 8t 2 [ti, ti+1] , (54) and
+
+V (x(t)) <= 78ff(r) 8t 2 [ti, ti+1] . (55)
+
+In particular, x(t) 2 BAr for all t 2 [ti, ti+1] and x(ti+1) 2 P .
+
+Proof. The fact that x is defined follows from the choice of ffi0, and we know that x(t) 2 BAR for all t 2 [ti, ti+1]. So |
+
+x(t) - xi| <= mffi 8t 2 [ti, ti+1] . (56)
+
+By definition of Q, we may write xi = x0 + j, for some x0 2 Gffr and some |j| <= ". Thus, Vff(xi) <= Vff(x0) + c"0 <= 12 ff(r) + c"0 (second inequality by definition of Gffr ). Together with (56), this gives
+
+Vff(x(t)) <= 12ff(r) + c"0 + cmffi <= 34ff(r) 8t 2 [ti, ti+1] (using (38) and (43)). So, using (34) and (31),
+
+V (x(t)) <= Vff(x(t)) + !R ip2ff(R)ffj <= 34 ff(r) + 116ff(r) < 78 ff(r) for all t 2 [ti, ti+1], as wanted. So x(t) 2 BAr for all t 2 [ti, ti+1]. Finally, if |j| <= " then
+
+Vff(x(ti+1) + j) <= c" + 34 ff(r) <= 12 ff(R) (the last inequality by (39)), which means that x(ti+1) + j 2 GffR; this implies that x(ti+1) 2 P .
+
+Back to the proof of Lemma 3.3, since x0 2 P , Lemmas 3.4 and 3.5 guarantee that the solution exists for all t and remains in BAR , and that xi := x(ti) 2 P for all i.
+
+Moreover, if there is some j so that x(tj) 2 Q, then it holds that Vff(xi) <= 34ff(r) for all i > j. This is because on intervals in which xi-1 2 Q, we already know that Vff(x(ti)) <= 34ff(r), and if instead xi-1 2 P \ Q, then we have Vff(xi) < Vff(xi-1). So, for any such i > j, either x(t) 2 BAr for all t 2 [ti, ti+1] (if xi 2 Q) or Vff(x(t)) <= 34 ff(r) + "0 for all t 2 [ti, ti+1] (if xi 2 P \ Q). Actually, in this last case we also have
+
+V (x(t)) <= Vff(x(t)) + !R ip2ff(R)ffj
+
+<= 34ff(r) + "0 + !R ip2ff(R)ffj <= 34ff(r) + 116ff(r) + 116 ff(r) < ff(r),
+
+15
+
+(using (38) and (34)), so, again x(t) 2 BAr for all t 2 [ti, ti+1]. In conclusion, trajectories stay in BAr after the first time that x(tj) 2 Q. So we only need to show that there is such a j, with tj <= T .
+
+Suppose instead that for i = 0, . . ., k it holds that x(ti) /2 Q, and tk > T . Applying (52) repeatedly,
+
+0 <= Vff(x(tk)) <= Vff(x0) - \Delta 2 tk < ff(R)2 - \Delta 2 T , (recall that x0 2 P implies that x0 2 GffR), and this contradicts (45). The proof of Lemma 3.3 is then complete.
+
+4 Non-Global Stability and Systems on Manifolds A local version of Theorem 1 holds. Suppose that (1) is locally asymptotically controllable to the compact and zero-invariant set A, meaning that there are a compact subset U0 ` U, a constant ffi > 0, and a fi 2 KL, so that for each x0 with |x0| < ffi there is some U0-valued control u so that x(t, x0, u) exists for all t >= 0 and satisfies (4). Then, there are ffi0 > 0, \Gamma  2 K1, and for each pair " < K with " > 0 and K < ffi0 there are a feedback law k, and ffi, ^, T , such that, whenever d(ss) <= ffi, |e(t)| <= ^d(ss) for all t >= 0, and |x0|A <= K, the solution xss(t, x0, e) is well-defined and satisfies |x(t)|A 2 \Gamma (K) for t >= 0 and |x(t)|A <= " for t >= T . This is a consequence of the global result, as we sketch next.
+
+We first introduce a new system which is globally asymptotically controllable to A and which reduces to the original system in the neighborhood BAffi/2. Such a system can be easily obtained in
+
+the form .x = f (x, u) + '(x)v, where ' is a smooth function which equals 1 outside BA2ffi/3 and is zero on BAffi/2, and v 2 Rn represents a set of n additional controls. Now we apply the global Theorem to this extended system. Finally, we pick ffi0 small enough so that \Gamma (ffi0) < ffi/2, which insures that when starting in a state with |x0|A <= ffi0 the trajectories will remain in BAffi/2 and hence be trajectories of the original system.
+
+More generally, one may give a version of our main result for systems in which the state space is a general (second countable) differentiable manifold X instead of Rn (one restates the stability definitions in topological terms, independent of a metric). Of course, the meaning of "measurement error" must be clarified, since the sum x(t) + e(t) makes no sense if X is not a vector space. It should be interpreted as using feedback u = k(z(t)), where z(t) is close to x(t) in a suitable metric. We sketch next a possible way to achieve such a generalization.
+
+Given a system on X, which is asymptotically controllable to the compact subset A, we embed X in an Euclidean space Rk, and extend the dynamics to Rk in such a manner that (1) when restricted to X we recover the original dynamics, and (2) the extended system is still asymptotically controllable to A. Now, a feedback law for the extension restricts to one for the original system, and it has the same robustness properties as the extension.
+
+The construction of this extension can proceed as follows. We first embed X as a closed submanifold of Rk (Whitney), and extend the original system to a tubular neighborhood of X. On this tubular neighborhood, we modify the dynamics by adding a term that attracts (contracts) to X in the normal direction (and so is zero on X). This gives an extension to the tube, preserving controllability. Finally, on a closed set disjoint from X but suitably overlapping the tube, we add a term (as "+'(x)v" above) which allows one to control all states in the embedding space Rk into the tube. We leave the details for future work.
+
+16
+
+A Some Lemmas The following is Lemma IV.1 from [4]; it is included here in order to make the paper self-contained. Lemma A.1 Let ff 2 (0, 1] satisfy (33). Then, for any x 2 BAR \ BAae(r) it holds that
+
+iff(x) * f (x, k*(x)) <= -2\Delta  . (57)
+
+Proof. It follows from (22), (27), and (23), that
+
+iff(x) * f (x, k*(x)) <= minu2
+
+UR iff(x) * f (yff(x), u) + ` |iff(x)| |yff(x) - x|<= -
+
+W (yff(x)) + ` |iff(x)| |yff(x) - x| .
+
+On the other hand, the definitions of iff(x) and !R, together with Equations (17), (19), and (20), give
+
+|iff(x)| |yff(x) - x| <= 2(V (x) - V (yff(x))) <= 2 !R ip2ff(R)ffj , so we can conclude that
+
+iff(x) * f (x, k*(x)) <= -W (yff(x)) + 2` !R ip2ff(R)ffj . (58)
+
+We have that |yff(x) - x| <= p2ff(R)ff <= ae(r)/2 by (19) and (33), so |yff(x)|A >= 12ae(r). Since also yff(x) 2 BR, we have the lower bound W (yff(x)) >= 3\Delta , so (57) now follows from (58) and (20).
+
+Actually, it is possible to sharpen the above Lemma and show that the (locally Lipschitz) function Vff behaves like a clf on the sets
+
+Cr,R := {x 2 X | r <= |x|A <= R} , for all ff small enough. We do not need this result explicitly, but it is worth proving it, since the needed techniques are already introduced. We introduce the modulus of continuity of W on BR,e
+
+!R (ffi) := max {W (x) - W (y) | |x - y| <= ffi, x, y 2 BR } and write
+
+mr,R := 13 min{W (x) | x 2 Cr,R} .
+
+Lemma A.2 Let ff 2 (0, 1] satisfy
+
+max n2` !R ip2ff(R)ffj , e!R ip2ff(R)ffjo <= mr,R . Then, for all x 2 Cr,R and all i 2 @pVff(x),
+
+minu2
+
+UR i * f (x, u) <= -mr,R .
+
+Proof. We start by remarking that, for all ff 2 (0, 1] and all x 2 BAR ,
+
+|yff(x) - x|2 <= 2ff2 !R ip2ff(R)ffj . (59)
+
+17
+
+From (17) and (19),
+
+1 2ff2 |yff(x) - x|
+
+2 <= V (x) - V (yff(x)) <= !R (|yff(x) - x|) .
+
+Thus,
+
+|iff(x)| * |yff(x) - x| = |yff(x) - x|
+
+2
+
+ff2 <= 2 !R ip2ff(R)ffj and hence
+
+iff(x) * [f (yff(x), u) - f (x, u)] <= ` |iff(x)| * |yff(x) - x| <= 2` !R ip2ff(R)ffj
+
+for all u 2 UR and all x 2 BAR , because yff(x) 2 BR. Thus,
+
+iff(x) * f (x, u) <= iff(x) * f (yff(x), u) + 2` !R ip2ff(R)ffj . As x 2 Cr,R, we have that yff(x) 2 BR and iff(x) 2 @pV (yff(x)), so we can pick a ux 2 UR so that iff(x) * f (yff(x), ux) <= -W (yff(x)) <= -W (x) + e!R ip2ff(R)ffj <= -2mr,R. Using now the fact that
+
+2` !R ip2ff(R)ffj <= mr,R, we conclude that
+
+iff(x) * f (x, u) <= -mr,R . So we only need to prove that @pVff(x) ` {iff(x)} for all x.
+
+Pick any i 2 @pVff(x). By definition, this means that exists some ` > 0 such that, for all y near x, i * (y - x) <= Vff(y) - Vff(x) + ` |y - x|2, so
+
+i * (y - x) <= Vff(y) - Vff(x) + fl (|y - x|) (60) for some fl(r) = o(r). Adding
+
+-iff(x) * (y - x) <= -Vff(y) + Vff(x) + 12ff2 |y - x|2 , which holds because of (30), we conclude
+
+(i - iff(x)) * (y - x) <= o (|y - x|) . Substituting y = x + h(i - iff(x)) and letting h & 0 shows that i = iff(x).
+
+Observe that we have proved more that claimed: Equation (60) is satisfied by any viscosity subgradient i; in particular, the gradient of V , if V happens to be differentiable at the point x, must coincide with iff(x). It is worth noticing that feedback constructed in [4] was k(x) = any u 2 UR minimizing iff(x) * f (x, u) (where ff and UR are chosen constant on certain compacts). As Vff is locally Lipschitz, it is differentiable almost everywhere. Thus, the Proposition (see the end of the proof) insures that iff(x) = rVff(x) for almost all x. So k(x) = u is, at those points, the pointwise minimizer of the Hamiltonian rVff(x) * f (x, u) associated to the regularized clf Vff.
+
+This is basically Lemma IV.2 in [4]:
+
+Lemma A.3 Let ff, ffi satisfy (32), (33), and (41). Pick any o/ <= ffi. Suppose that x0 2 GffR \ BAae(r), write u0 = k(x0), and consider the maximal solution x of .x(t) = f (x(t), u0), x(0) = x0, t 2 [0, o/ ]. Then, x is defined on all of [0, o/ ] and
+
+Vff(x(t)) - Vff(x0) <= -\Delta  t (61)
+
+holds for all t 2 [0, o/ ]. In particular, x(t) 2 GffR for all such t.
+
+18
+
+Proof. By (35), x0 2 int BAR , so there is a largest _t 2 (0, o/ ] such that x(s) 2 BAR for all s 2 [0, _t]. Now choose an arbitrary t 2 [0, _t]. Since mR bounds the values f (x(s), u0) for s 2 [0, _t],
+
+|x(t) - x0| <= mRt (62) and
+
+x(t) = x0 + tv , (63)
+
+where
+
+v := 1t Z
+
+t
+
+0 f (x(s), u
+
+0) ds .
+
+Let us write j := v - f (x0, u0). Thus, using the bound on f and its Lipschitz constant `, we obtain the following estimates: |
+
+v| <= mR , |j| <= `mRt . (64)
+
+Equation (30) gives
+
+Vff(x0 + tv) <= Vff(x0) + t iff(x0) * v + t
+
+2 |v|2
+
+2ff2 , (65) so we conclude that
+
+Vff(x(t)) - Vff(x0) = Vff(x0 + tv) - Vff(x0) <= t iff(x0) * v + 12ff2 t2 |v|2 . (66) We can use (19), (64), and Lemma A.1 in order to estimate:
+
+iff(x0) * v <= iff(x0) * f (x0, u0) + |iff(x0)| |j|
+
+<= -2\Delta  + p2ff(R)ff `mRffi which implies that
+
+Vff(x(t)) - Vff(x0) <= -2\Delta  + p2ff(R)ff `mRffi + 12ff2 m2Rffi! t . Using (41), this implies (61) for all t 2 (0, _t]. In particular, (61) implies that x(_t) 2 int BAR , which contradicts the maximality of _t unless _t = o/ . Therefore (61) holds for all t 2 [0, o/ ).
+
+References
+
+[1] Albertini, F., and E.D. Sontag, "Continuous control-Lyapunov functions for asymptotically controllable time-varying systems," submitted. (See also "Control-Lyapunov functions for timevarying set stabilization," Proc. European Control Conf., Brussels, July 1997, Paper ECC515.)
+
+[2] Artstein, Z., "Stabilization with relaxed controls," Nonl.Anal.,TMA 7 (1983): 1163-1173. [3] Clarke, F.H., Yu.S. Ledyaev, R.J. Stern, and P. Wolenski, Nonsmooth Analysis and Control Theory, Springer-Verlag, New York, 1998.
+
+[4] Clarke, F.H., Yu. S. Ledyaev, E.D. Sontag, and A.I. Subbotin, "Asymptotic controllability implies
+
+feedback stabilization," IEEE Trans. Automat. Control 42(1997): 1394-1407.
+
+19
+
+[5] Coron, J.-M., and L. Rosier, "A relation between continuous time-varying and discontinuous
+
+feedback stabilization," J.Math. Systems, Estimation, and Control 4(1994): 67-84.
+
+[6] Ledyaev, Yu.S., and E.D. Sontag, "A Lyapunov characterization of robust stabilization," J. Nonlinear Analysis, to appear. Summarized verion in "Stabilization under measurement noise: Lyapunov characterization," Proc. American Control Conf., Philadelphia, June 1998, pp. 1658-1662.
+
+[7] Lin, Y., E.D. Sontag, and Y. Wang, "A smooth converse Lyapunov theorem for robust stability,"
+
+SIAM J. Control and Optimization 34(1996): 124-160.
+
+[8] Ryan, E.P., "On Brockett's condition for smooth stabilizability and its necessity in a context of
+
+nonsmooth feedback," SIAM J. Control Optim. 32(1994): 1597-1604.
+
+[9] Sontag E.D., "A Lyapunov-like characterization of asymptotic controllability," SIAM J. Control
+
+and Opt. 21(1983): 462-471.
+
+[10] Sontag, E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems, Second
+
+Edition, Springer-Verlag, New York, 1998.
+
+[11] Sontag, E.D., "Stability and stabilization: Discontinuities and the effect of disturbances," in Proc.
+
+NATO Advanced Study Institute "Nonlinear Analysis, Differential Equations, and Control" (Montreal, Jul/Aug 1998), Kluwer, 1999, pp. 551-598, to appear. (Also, Nonlinear Control Abstracts #NCA-8-2-981026, October 1998.)
+
+[12] Sontag, E.D., and H.J. Sussmann, "Nonsmooth Control Lyapunov Functions," in Proc. IEEE
+
+Conf. Decision and Control, New Orleans, IEEE Publications, 1995, pp. 2799-2805.
+
+20</pre>
+</body>
+</html>

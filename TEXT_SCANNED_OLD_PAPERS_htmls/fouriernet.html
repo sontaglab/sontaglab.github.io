@@ -1,0 +1,1128 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/fouriernet.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/fouriernet.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Using Fourier-Neural Recurrent Networks
+
+to Fit Sequential Input/Output Data
+
+Ren'ee Koplon Dept. of Mathematics and Statistics
+
+Wright State University
+
+Dayton, Ohio 45435
+
+Eduardo D. Sontag Dept. of Mathematics
+
+Rutgers University New Brunswick, New Jersey 08903
+
+March 1, 1995
+
+Abstract This paper suggests the use of Fourier-type activation functions in fully recurrent neural networks. The main theoretical advantage is that, in principle, the problem of recovering internal coefficients from input/output data is solvable in closed form.
+
+1 Introduction Neural networks provide a useful approach to parallel computation. The subclass of recurrent architectures is characterized by the inclusion of feedback loops in the information flow among processing units. With feedback, one may exploit context-sensitivity and memory, characteristics essential in sequence processing as well as in the modeling and control of processes involving dynamical elements. Recent theoretical results about neural networks have established their universality as models for systems approximation as well as analog computing devices (see e.g. [14, 12]).
+
+The use of recurrent networks has been proposed in areas as varied as the design of control laws for robotic manipulators, in speech recognition, speaker identification, formal language inference, and sequence extrapolation for time series prediction. In spite of their attractive features, recurrent networks have not yet attained as much popularity as one might expect, compared to the feedforward nets so ubiquitous in other applications. One important reason for this is that training ("learning") algorithms for recurrent nets suffer from serious potential limitations. The learning problem is that of finding parameters that "fit" a general form to training (experimental) data, with the goal of obtaining a
+
+1
+
+model which can subsequently be used for pattern recognition and classification, or for extrapolation of numerical values.
+
+Various learning methodologies for recurrent networks have been proposed in the literature, and have been used in applications. All algorithms attempt to achieve the optimization of a penalty criterion by means of steepest descent, but due to memory and speed constraints, they usually only involve an estimate of the gradient. They differ on the approximation used, and thus on their memory requirements and convergence behavior. Among these are "recurrent backpropagation," "backpropagation through time," and the "real time recurrent learning" algorithm. In complex applications involving large models, it is difficult to simultaneously achieve good convergence speeds and reasonable accuracy.
+
+It has been pointed out by many authors that the field of control theory, with its emphasis on dynamics and optimization, is naturally related to recurrent nets. It was shown that at least some algebraic issues such as testing for identifiability and observability of system parameters can be handled analogously to the case of linear systems (see [1, 2, 3]). In a related context, recurrent net models have been proposed, and used by many authors, for adaptive control and system identification applications (see e.g. [9, 11]). In this paper, we propose a control theory-based technique for the initial estimation of weights. Most implementations of recurrent network learning algorithms assume a random initialization of weights. We suggest instead the use of nontrivial techniques from nonlinear synthesis, based on mathematical developments that have taken place during the past few years, for the initial choice of such weights.
+
+Comparison With Linear Systems Historically linear systems have been used to approximate various nonlinear systems since the parameters can be identified easily. Linear system identification is a well-established and widely used tool; see for instance [8]. In broad ranges of operation, linearity is a reasonable simplification, as the success of the linear theory attests to. However, linear systems are limited. Most real world processes are inherently nonlinear. In many areas, linear simplifications are not valid, which means that nonlinear approaches must be tried.
+
+In searching for a canonical form for approximating all nonlinear systems, we would like a class of nonlinear dynamical systems that is representationally rich, like recurrent neural nets, but at the same time parameter-identifiable, like linear systems. At the very least we want a class for which realization (noise-free identification) algorithms are simple, and an algebraic structure theory similar to that available for linear systems is possible.
+
+Motivated by this need to broaden the scope of the linear theory, and to utilize the advantages of neural nets, this paper aims to describe the development of techniques for parameter reconstruction in a class of nonlinear systems that we call Fourier-neural recurrent networks. The main departure from current practice in neural networks is that we
+
+2
+
+suggest the use of sin and cos activations (or, more precisely, because it makes the theoretical development far simpler, a complex-exponential) rather than the "sigmoids" that are used in most applications. This allows the design of parameter identification methods in closed-form. Within the resulting mathematical class of system models, parameter reconstruction can be accomplished in a theoretically justified and methodical fashion, at least in the noise-free case and if the responses to appropriate regularly spaced inputs can be obtained.
+
+This work is a first step towards an eventual theory of identification from noisy data for such systems. Viewing a system outside our class as a "noisy version" of a recurrent net, just as is routinely done when using linear techniques for nonlinear plants, may allow this approach to be broadly applicable. Mathematically justifying such potential applications is beyond the scope of the current theoretical results.
+
+The Approach Here The approach taken here is inspired by the major developments in [1] (for continuoustime) and [2] (for discrete-time) that internal coefficients or "weights" of a recurrent net can be determined from external dynamical behavior in an essentially unique manner. Even though intrinsically nonlinear, the actual implementation of the algorithm involves a number of subtasks that are routinely carried out in linear identification theory, an area of control engineering that has had major practical successes, as remarked above.
+
+We show that the parameters of an exp-system can be identified using a technique that avoids all the pitfalls of gradient descent, at least assuming low noise and a judicious choice of test inputs ("learning with queries"). Section 7 describes a preliminary computer implementation of the algorithm described in Section 5 utilizing averaging in order to handle a small amount of noise. Section 7 also includes simulation results.
+
+2 Main Results We first define general dynamic systems, since many concepts can be defined at that level of generality, and then specialize to recurrent networks.
+
+A discrete-time initialized input/output dynamical system consists of a state space X with an initial state x0, an input value space U , an output value space Y, and a transition function f : X \Theta  U ! X that computes the state at time t + 1 from the state and input values at time t. There is also an output function h : X ! Y that assigns an output value to the current state. The equations are written as
+
+x(t + 1) = f (x(t); u(t)); y(t) = h(x(t)): The dimension of the state space X is called the dimension of the system.
+
+3
+
+The system model that we deal with here, a recurrent neural network with one input and one output, can be seen as a nonlinear input/output system with a state x 2 Cn, a scalar input, and a scalar output. Let oe be a fixed nonlinear function, which we call an activation function. Let A 2 Cn\Theta n; B 2 Cn\Theta 1; C 2 C1\Theta n. Recurrent neural networks are described by equations
+
+x(t + 1) = ~oe(Ax(t) + Bu(t))
+
+y(t) = Cx(t) x(0) = x0;
+
+(1)
+
+where ~oe(x) = (oe(x1); : : : oe(xn))0. We use oe(x) = exp(ix) as the activation function and call a system as in (1) with this activation function an exp-system or Fourier-neural network , denoted \Sigma  = (A; B; C)oe. We use the subscript x0 to denote the system with initial state x0, when necessary, \Sigma x0.
+
+This oe is a natural activation function to use as we can see from its utilization in Fourier analysis. With the introduction of complex numbers and the use of the exponential, we are able to reduce a complicated nonlinearity in the output to a product. The benefit is that we may use certain input/output pairs to exactly identify the parameters A; B; C; x0 for a given exp-system.
+
+Before stating our main result, dealing with identification of parameters and initial states, we need to briefly address the question of observability, that is, the possibility of determining the internal state from input/output data, for this class of systems. Recall that a system is said to be observable if given any two distinct initial states, x0 and z0, there is a finite sequence of inputs that causes the two systems, \Sigma x0 and \Sigma z0, to have a different output.
+
+Lemma 2.1 Let \Sigma  = (A; B; C)oe be an exp-system such that
+
+1. the components b1; : : : ; bn of B are nonzero and oe(b1); : : : ; oe(bn) are distinct, and 2. the entries of C are all nonzero. Then \Sigma  is observable if and only if
+
+ker C " A\Gamma 1(ZZn) = f0g: (2) This is proved in Section 3. Condition (2) is easily seen to be generic. Indeed, for any fixed nonzero k 2 Cn, the (n + 1) \Theta  (n + 1) matrix
+
+A k C 0 !
+
+4
+
+has full rank for all A and C except those that are described by the zero set of an analytic function. Thus all nonzero k 2 ZZn are avoided for (A; C) in the complement of a countable union of such sets.
+
+Consider the following condition for a vector B = (b1; : : : ; bn)0 2 Cn and assume again that oe(b1); : : : ; oe(bn) are distinct. Let
+
+Boe = 0B@
+
+oe(b1) \Gamma  1 \Delta  \Delta  \Delta  oe(bn) \Gamma  1
+
+... ...
+
+oe ((n + 1)b1) \Gamma  1 \Delta  \Delta  \Delta  oe ((n + 1)bn) \Gamma  1
+
+1CA
+
+;
+
+and let R(B) be the condition that the column space of Boe does not contain any nonzero integer vectors. That is,
+
+col Boe " ZZn+1 = f0g: (R(B))
+
+Although it can be proved to be generic, there are exceptions to Condition R(B). For example, if any of oe(b1); : : : ; oe(bn) are integers, the condition fails. It should be possible to eliminate the need for this condition in the theorem below by modifying the part of the procedure described in the proof where we find C, to use varying inputs, but the algorithm that we give is simpler if we assume R(B).
+
+Next is the identification result. It states that the parameters of a Fourier network can be recovered using a finite number of input/output pairs. The training program does not need the complete input/output behavior as a function.
+
+Theorem 1 Let \Sigma x0 be a single input, single output system as in (1), with oe(x) = exp(ix). Assume that
+
+1. the components of B are nonzero, strictly increasing in modulus, and bj \Gamma  bk 62 2ssZZ
+
+for j 6= k,
+
+2. the entries of C are all nonzero, and 3. B satisfies R(B). If the dimension of the system is known, then the input/output data is sufficient to uniquely determine the parameters A; B; C.
+
+If in addition the system is observable, then the initial state x0 is also uniquely characterized.
+
+The theorem is proved by means of an explicit procedure for reconstructing A; B, and C, which is described in Section 4.
+
+5
+
+3 Proof of Observability Lemma We now prove Lemma 2.1 First assume that \Sigma  is observable. Suppose there exists a nonzero v 2 Cn such that
+
+Cv = 0 and Av 2 ZZn:
+
+Then the initial states 0 and x0 = 2ssv are indistinguishable, contradicting observability. To see that 0 and x0 are indistinguishable, note that
+
+C0 = Cx0; so the outputs at time zero are the same. Next, the states at time one are equal for the two initial states, after applying any input. Indeed, fix any input value u. For the initial state x0,
+
+x(1) = ~oe(Ax0 + Bu) = 0B@
+
+oe(A1x0)oe(b1u)
+
+...
+
+oe(Anx0)oe(bnu)
+
+1CA
+
+;
+
+where Aj is the jth row of A. Since Ax0 2 2ssZZn, oe(Ajx0) = 1 = oe(Aj0) for all j. Thus x(1) = ~oe(A0 + Bu) which is equal to the state at time one for initial state 0. Hence the outputs from time one and on are equal.
+
+For the converse, suppose there exists a pair x0; ^x0 that is indistinguishable. Then
+
+Cx0 = C ^x0; and C~oe(Ax0 + Bu) = C~oe(A^x0 + Bu); 8u:
+
+We can apply the above equality for the n different input values 0; 1; : : : ; n \Gamma  1. Since oe(kb) = oe(b)k,i
+
+c1oe(A1x0) \Delta  \Delta  \Delta  cnoe(Anx0) j 0B@
+
+oe(b1)0 \Delta  \Delta  \Delta  oe(b1)n\Gamma 1
+
+... ...
+
+oe(bn)0 \Delta  \Delta  \Delta  oe(bn)n\Gamma 1
+
+1CA
+
+=
+
+i
+
+c1oe(A1 ^x0) \Delta  \Delta  \Delta  cnoe(An ^x0) j 0B@
+
+oe(b1)0 \Delta  \Delta  \Delta  oe(b1)n\Gamma 1
+
+... ...
+
+oe(bn)0 \Delta  \Delta  \Delta  oe(bn)n\Gamma 1
+
+1CA
+
+:
+
+The Vandermonde matrix is invertible since the oe(bj)'s are distinct, soi
+
+c1oe(A1x0) \Delta  \Delta  \Delta  cnoe(Anx0) j = i c1oe(A1 ^x0) \Delta  \Delta  \Delta  cnoe(An ^x0) j :
+
+6
+
+Dividing out the components of C (which are nonzero by assumption), we obtain
+
+~oe(Ax0) = ~oe(A^x0); so A(x0 \Gamma  ^x0) = 2ssk for some integer vector k. Let v = (x0 \Gamma  ^x0)=2ss 6= 0. Then Cv = 0, and Av = k contradicting condition (2) in the lemma.
+
+The condition in the Lemma does not always hold, as we can see from the simple example
+
+A =  0 10 0 ! ; B =  12 ! ; C = i 1 1 j : The two initial states
+
+x0 =  00 ! ; ^x0 =  2ss\Gamma 2ss !
+
+are indistinguishable.
+
+4 The Basic Algorithm Suppose \Sigma  is a system of known dimension n that is modeled by equations such as (1), but with unknown values of A; B; C; x0. Assuming we may reset the system to the unknown initial state and apply any input to obtain the corresponding output, we can identify the parameters A; B; C using the following procedure.
+
+Finding B To compute the values of B, first apply integer-valued inputs of length one equal to 0; 1; : : : ; 2n \Gamma  1. The resulting 2n output values are
+
+C~oe(Ax0); C~oe(Ax0 + B); : : : ; C~oe(Ax0 + (2n \Gamma  1)B): (3) Let ~C be the row vector
+
+~C = i c1oe(A1x0) c2oe(A2x0) \Delta  \Delta  \Delta  cnoe(Anx0) j ;
+
+where cj is the jth component of the row vector C and Aj is the jth row of A. Then the sequence (3) can be written as
+
+~C 0B@
+
+1
+
+...
+
+1
+
+1CA
+
+; ~C 0B@
+
+oe(b1)
+
+. . .
+
+oe(bn)
+
+1CA 0B@ 1
+
+...
+
+1
+
+1CA
+
+; : : : ;
+
+~C 0B@
+
+oe(b1)2n\Gamma 1
+
+. . .
+
+oe(bn)2n\Gamma 1
+
+1CA 0B@ 1
+
+...
+
+1
+
+1CA
+
+:
+
+7
+
+These terms can be viewed as the first 2n Markov parameters (or impulse response parameters) for an n-dimensional linear system whose "A" matrix has eigenvalues exactly equal to oe(b1); : : : ; oe(bn): These eigenvalues can be found by applying linear realization techniques to the sequence. This step of the algorithm is based on Hankel-matrix techniques that are classical in the context of linear recurrences and their multivariable extensions developed in control theory (see a detailed discussion in Chapter 5 of [13]). The method appears in many other areas; for instance in coding theory for decoding BCH codes, and in learning theory for sparse polynomial interpolation (see section 3 in the paper [4]). Specifically, if we denote the sequence in (3) by h1; h2; : : : h2n, we form the two Hankel matrices
+
+H1 = 0B@
+
+h1 \Delta  \Delta  \Delta  hn
+
+. . .
+
+hn \Delta  \Delta  \Delta  h2n\Gamma 1
+
+1CA
+
+; H2 = 0B@
+
+h2 \Delta  \Delta  \Delta  hn+1
+
+. . .
+
+hn+1 \Delta  \Delta  \Delta  h2n
+
+1CA
+
+: (4)
+
+The matrix Aobs satisfying
+
+AobsH1 = H2
+
+is the observability form of the "A" matrix for the triple
+
+~C; 0B@
+
+oe(b1)
+
+. . .
+
+oe(bn)
+
+1CA
+
+; 0B@
+
+1
+
+...
+
+1
+
+1CA
+
+:
+
+The eigenvalues of Aobs are equal to oe(b1); : : : ; oe(bn).
+
+In order to compute b1; : : : ; bn themselves, one would need to apply the "inverse" of oe. This is slightly more complicated than it seems, since the complex exponential is not one-to-one. To recover the information lost by taking the complex exponential, we repeat the procedure described above, but instead of applying the first 2n nonnegative integer inputs, we apply inputs equal to 0; *; 2*; : : : ; (2n \Gamma  1)*, where * is theoretically irrational (or "close" to it for a computer implementation). By comparing the two sets of resulting eigenvalues we can determine the correct log.
+
+The procedure is as follows. First, from the integer inputs we obtain a vector B1, by taking any determination of the logarithm. Observe that this necessarily differs from the true B by an integer multiple of 2ss
+
+B1 = B + 2ssr; r an integer vector: (5) If we could determine r, we would know B, which is our goal. Now from the second set of inputs we obtain the values oe(*bj), and from these values we obtain some possibly different estimate, B2, again using any log. Here we know that
+
+B2 = B + 2ss* s; s an integer vector: (6)
+
+8
+
+From (5) and (6) we deduce
+
+B1 \Gamma  B2
+
+2ss +
+
+s * = r: (7) The integer vectors r and s are unique. To see this, suppose there were two possible solutions to (7), (r1; s1) and (r2; s2). Then
+
+r1 \Gamma  s1* = r2 \Gamma  s2* ; or r
+
+1 \Gamma  r2
+
+s1 \Gamma  s2 =
+
+1 * :
+
+The last equality is impossible since the left hand side is rational while the right side is irrational. Hence, there cannot be two possible solutions. Theoretically, then, from the input/output data one has the vector
+
+v = B1 \Gamma  B22ss : There is a unique solution (r; s) to the equation
+
+r \Gamma  s* = v: Thus the true B is recovered as B = B1 \Gamma  2ssr. Of course, this does not yet provide an explicit procedure.
+
+For the computer implemention, of course, * cannot actually be irrational. But if we assume r and s are reasonably small (which corresponds to the entries of B being reasonably small, since the determinations of log used by most computer systems have arguments in [\Gamma ss; ss] or [0; 2ss]), then a * that is not close to being the quotient of two small integers will work.
+
+Using (7) we can, in principle, find the unique integer vectors r and s and recover the true B as follows. The simplest idea for this step is to exhaustively search through integer values for s until the left hand side of (7) is equal to a vector of integers. A preliminary problem is that we are assuming the components of B are distinct, and increasing in modulus, but the components of B1 and B2 may not be in the right order. So we need to match up each component of B1 with the corresponding component of B2.
+
+Start by letting s = 0 and compare the first component of B1 with the first component of B2. If B
+
+1(1) \Gamma  B2(1)
+
+2ss
+
+9
+
+is not an integer, then compare B1(1) to B2(2); B2(3); : : : and so on. That is, test if
+
+B1(1) \Gamma  B2(k)
+
+2ss
+
+has an integer value for some k = 1; : : : ; n, and rearrange B2 such that B2(k) is now the first component of B2, then proceed to comparing B1(2) with B2(2). Otherwise, try the next s,
+
+s := \Gamma s + ( 1 if s ^ 00 if s ? 0;
+
+and repeat the evaluation of
+
+B1(1) \Gamma  B2(j)
+
+2ss +
+
+s * ; for j ranging from 1 to n. Continuing in this way, obtain a rearranged vector B2 and two integer vectors r and s. When integer match-ups are found for all entries, we are done. The true B can be then computed either from the pair B1; r by sorting the components of
+
+B = B1 \Gamma  2ssr; or from the pair B2; s by sorting the vector
+
+B = B2 \Gamma  2ss* s: Both yield the same answer, so in the actual implementation it is not necessary to store both r and s.
+
+Of course, such an exhaustive search may not be practical for systems of large dimension. But for moderate sizes and for vectors B that are a priori subject to bounds (such that the entries of r and s are small integers), our experience is that this step represents only a minor part of the time needed to execute our procedure.
+
+Finding C The next step in the identification procedure is to determine the vector C. For this, apply inputs of length two with integer values ranging from 0 to n + 1 for the first input and 0 to n \Gamma  1 for the second. We introduce the (n + 2) \Theta  n dimensional matrix Y composed of the corresponding output values
+
+Y = 0BBBB@
+
+y0;0 y0;1 \Delta  \Delta  \Delta  y0;n\Gamma 1 y1;0 y1;1 \Delta  \Delta  \Delta  y1;n\Gamma 1
+
+... ...
+
+yn+1;0 yn+1;1 \Delta  \Delta  \Delta  yn+1;n\Gamma 1
+
+1CCC CA :
+
+10
+
+The main observation at this point is that Y may be factored as Y = ~CuV , where V is the Vandermonde matrix
+
+V = 0BBBB@
+
+1 oe(b1) \Delta  \Delta  \Delta  oe(b1)n\Gamma 1 1 oe(b2) \Delta  \Delta  \Delta  oe(b2)n\Gamma 1
+
+... ...
+
+1 oe(bn) \Delta  \Delta  \Delta  oe(bn)n\Gamma 1
+
+1CCC CA : To keep the notation clear, from now on we display the special case n = 2, but the same procedure works in general. We can write, as just explained,
+
+Y = ~Cu  oe(0) oe(b1)oe(0) oe(b
+
+2) ! (8)
+
+where
+
+~Cu = 0BBB@
+
+c1oe(A1~oe(Ax0)) c2oe(A2~oe(Ax0)) c1oe(A1~oe(Ax0 + B)) c2oe(A2~oe(Ax0 + B)) c1oe(A1~oe(Ax0 + 2B)) c2oe(A2~oe(Ax0 + 2B)) c1oe(A1~oe(Ax0 + 3B)) c2oe(A2~oe(Ax0 + 3B))
+
+1CCC A ; cj is the jth component of C, bj is the jth component of B, and Aj is the jth row of A. Observe that Y is known (from the data) and the last matrix on the right in (8) is a Vandermonde matrix, also already known. Thus, we can solve the linear equation and obtain ~Cu.
+
+Next observe that for each column of ~Cu,
+
+~Cu;j = ~oe 266640BBB@
+
+1 oe(b1)0 oe(b2)0 1 oe(b1)1 oe(b2)1 1 oe(b1)2 oe(b2)2 1 oe(b1)3 oe(b2)3
+
+1CCC A 0B@
+
+vj Aj1oe(A1x0) Aj2oe(A2x0)
+
+1CA37775
+
+; (9)
+
+where oe(vj) = cj. Let Ve be the extended Vandermonde type matrix on the right hand side of (9). The goal here is to solve for the last vector on the right, call it hj. Then for each j we can use the first component of hj to find cj, and the rest of the vector will be used to recover A.
+
+Remark 4.1 The (n + 1) \Theta  (n + 1) dimensional Vandermonde matrix0
+
+B@ 1 oe(b
+
+1) \Delta  \Delta  \Delta  oe(bn).
+
+.. ...
+
+1 oe ((n + 1)b1) \Delta  \Delta  \Delta  oe ((n + 1)bn)
+
+1CA
+
+11
+
+has rank n + 1. After performing an elementary column operation, we see the matrix0
+
+B@ 1 oe(b
+
+1) \Gamma  1 \Delta  \Delta  \Delta  oe(bn) \Gamma  1.
+
+.. ...
+
+1 oe ((n + 1)b1) \Gamma  1 \Delta  \Delta  \Delta  oe ((n + 1)bn) \Gamma  1
+
+1CA
+
+also has rank n + 1. Thus, the matrix Boe has full column rank so if R(B) holds, Boev 2 ZZn+1 ) Boev = 0 which in turn implies that v = 0. 2
+
+Lemma 4.2 Assume B satisfies Condition R(B). If oe(Ve,) = oe(Ve ^,) for ,; ^, 2 Cn+1, then ,1 \Gamma  ^,1 2 2ssZZ and ,j = ^,j for j = 2; : : : ; n + 1.
+
+Proof. Let ! = , \Gamma  ^,. We need to show that if Ve! 2 2ssZZn+2, then ! = (2ssk; 0; : : : ; 0)0, or equivalently,
+
+Ve! 2 ZZn+2 ) ! = (k; 0; : : : ; 0)0:
+
+Assume Ve! 2 ZZn+2. Then
+
+!0 + !1 + \Delta  \Delta  \Delta  + !n = k0 !0 + oe(b1)!1 + \Delta  \Delta  \Delta  + oe(bn)!n = k1
+
+...
+
+!0 + oe(b1)n+1!1 + \Delta  \Delta  \Delta  + oe(bn)n+1!n = kn+1: Subtracting the first equation from all of the others gives
+
+Boe 0B@
+
+!1
+
+...
+
+!n
+
+1CA
+
+= 0B@
+
+k1 \Gamma  k0
+
+...
+
+kn+1 \Gamma  k0
+
+1CA
+
+which implies that !1 = \Delta  \Delta  \Delta  = !n = 0. Thus !0 = k0, and so ! = (k0; 0; : : : ; 0)0.
+
+We just showed that for each j, there is a unique solution for hj, up to the addition of an integer multiple of 2ss in the first coordinate. This does not contradict the uniqueness of C since for each j = 1; : : : ; n,
+
+cj = oe(vj) = oe(vj + 2ssk); 8k 2 ZZ: The procedure that we implemented for finding hj is as follows. Pick any componentwise log of ~Cu;j. Then we can write
+
+\Gamma  i log( ~Cu;j) + 2ssK = Vehj; (10)
+
+12
+
+where K is an unknown (n+2)\Theta n integer matrix that depends on the chosen determination of log. Now we search through the integers in order to find an integer vector K and a solution hj for (10) that minimize the error
+
+jVehj \Gamma  (i log ~Cu;j + 2ssK)j: (We already proved that such an hj is unique except for integer multiples of 2ss in the first row.) After finding hj for each j, let H be the matrix i h1 \Delta  \Delta  \Delta  hn j. Apply oe to the components of the first row of the matrix H to obtain C.
+
+We recognize that an exhaustive search through the integers is a very inefficient way to solve for the matrix H. Intuitively, we are looking for a point in a hyperplane with small integer coordinates, or more precisely a point with small integer coordinates closest to the hyperplane spanned by the columns of an (n+ 1) \Theta  n matrix. A more efficient way to do this might be using ellipsoid methods or interior point methods ([10]) and linear programming for finding lattice points. These ideas will be developed in the future.
+
+Finding A Once we have C and H we can immediately obtain A. Drop the first row of H and transpose the result, 
+
+A11oe(A1x0) A12oe(A2x0) A21oe(A1x0) A22oe(A2x0) ! : (11)
+
+Next use the first n outputs that were obtained earlier by applying the integer inputs,
+
+a = (C~oe(Ax0); C~oe(Ax0 + B)) : This row vector can be written as the product
+
+a = (c1oe(A1x0); c2oe(A2x0))  oe(0) oe(b1)oe(0) oe(b
+
+2) ! :
+
+Solve the linear equation to obtain the row vector (c1oe(A1x0); c2oe(A2x0)). By now we know the components of C so we may divide these out of each component leaving the vector
+
+Aoex = (oe(A1x0); oe(A2x0)): Finally, divide each row of (11) term by term by the components of the vector Aoex to obtain A.
+
+This completes the proof of the theorem. The input/output behavior can now be simulated even without precise knowledge of x0. The last two pieces of information that are
+
+13
+
+needed to have full knowledge of the input/output behavior are Cx0, which is simply the time zero output, and
+
+~oe(Ax0) = Aoe;Tx ;
+
+which provides the state at time one for any input. Both are already known.
+
+5 Procedure for Noisy Output In this section we discuss various purely heuristic considerations. The following are intuitive ideas for extending the procedure in the previous section to accomodate more practical situations. One obvious next step involves modifying the basic algorithm to make use of longer output sequences in order to find more uniform approximations. The basic algorithm uses information obtained only in the first two time steps. This may be sufficient for identification of systems that are of the desired form, but it is not enough for approximation of other systems. Using only the information obtained in the first two time steps will produce a desired network approximation for a system that will closely approximate the input/output behavior of the original system for the first two time steps only. We cannot control the accuracy of the approximation beyond that. Another major problem with the basic approach is the lack of robustness with respect to noise in the output. We have improved this by simultaneously conducting the procedure described above on sequential time intervals of length two and "averaging" the information. In Section 7, we define the noise used and give results of testing this variation of the algorithm on exp-systems with noisy output.
+
+Averaging to find B The basic algorithm applies 2n different length one integer inputs to obtain a scalar sequence that can be seen as the Markov sequence for the triple ( ^A; ^B; ^C), where
+
+^A = 0B@
+
+oe(b1)
+
+. . .
+
+oe(bn)
+
+1CA
+
+; ^B = 0B@
+
+1
+
+...
+
+1
+
+1CA
+
+^C = i c1oe(A1x0) \Delta  \Delta  \Delta  cnoe(Anx0) j : (This procedure was then repeated with "irrational" inputs so the proper logs could be recovered.)
+
+Now instead of applying one set of length one inputs, apply p sets of inputs increasing in length from one to p. That is, apply the sets of inputs
+
+length 1 : 0; 1; 2; : : : ; 2n \Gamma  1
+
+14
+
+length 2 : 00; 01; 02; : : : ; 0(2n \Gamma  1)
+
+...
+
+length p : 0 \Delta  \Delta  \Delta  00; 0 \Delta  \Delta  \Delta  01; 0 \Delta  \Delta  \Delta  02; : : : ; 0 \Delta  \Delta  \Delta  0(2n \Gamma  1): Let yu denote the output that is measured after applying the input u. The number p can be as high as 2n provided the corresponding outputs do not get too small or too large. If yu is very large or very small for some u, then just let p = length(u) \Gamma  1. If we arrange the outputs in an array as follows
+
+y0 y1 y2 \Delta  \Delta  \Delta  y2n\Gamma 1 y00 y01 y02 \Delta  \Delta  \Delta  y0(2n\Gamma 1) ...
+
+y0\Delta \Delta \Delta 0 \Delta  \Delta  \Delta  y0\Delta \Delta \Delta 2n\Gamma 1;
+
+(12)
+
+we can view the columns of (12) as 2n terms of a p \Theta  1 Markov sequence. This sequence of vectors can be realized by the triple
+
+^A = 0B@
+
+oe(b1)
+
+. . .
+
+oe(bn)
+
+1CA
+
+; ^B = 0B@
+
+1
+
+...
+
+1
+
+1CA
+
+(13)
+
+^C = 0BBBB@
+
+c1oe(A1x0) \Delta  \Delta  \Delta  cnoe(Anx0) c1oe(A1~oe(Ax0)) \Delta  \Delta  \Delta  cnoe(An~oe(Ax0)) ...
+
+c1oe(A1~oe(A~oe(\Delta  \Delta  \Delta  (Ax0) \Delta  \Delta  \Delta ))) \Delta  \Delta  \Delta  cnoe(An~oe(A~oe(\Delta  \Delta  \Delta  (Ax0) \Delta  \Delta  \Delta )))
+
+1CCC CA :
+
+The rest of the procedure for recovering b1; : : : bn is almost the same as in the basic algorithm. Here we denote
+
+hj = 0BBBB@
+
+yj y0j ...
+
+y0\Delta \Delta \Delta 0j
+
+1CCC CA ; and form the two pn \Theta  n Hankel matrices as in (4). Whereas we could have used either the controllability or the observability form in the first case, here we have to use the controllability form since H1 and H2 are no longer square. We solve
+
+H1Acontr = H2; to obtain the controllability form of ^A. We are interested in the eigenvalues of ^A, which are the same as the eigenvalues of Acontr. As before, we "invert" oe to obtain an estimate for B,
+
+15
+
+repeat the whole procedure with inputs that are "less" rational and resolve the ambiguity in B that was created by taking the complex exponential.
+
+Averaging to find C In the basic strategy we formed the (n + 2) \Theta  n dimensional matrix Y = [yi\Gamma 1;j\Gamma 1], and performed a few factorizations (and special steps to get the right log) to isolate the matrix0B
+
+BBB@
+
+v1 \Delta  \Delta  \Delta  vn A11oe(A1x0) \Delta  \Delta  \Delta  An1oe(A1x0)
+
+...
+
+A1noe(Anx0) \Delta  \Delta  \Delta  Annoe(Anx0)
+
+1CCC CA ;
+
+and recover C by applying oe to the components of the first row. We used information obtained only during the first two time steps.
+
+A similar method can be used with any matrix Y , where the elements of Y are outputs corresponding to inputs of the form
+
+u = 0 \Delta  \Delta  \Delta  0-- -z ""
+
+any # of zeros
+
+(i \Gamma  1)(j \Gamma  1):
+
+We then obtain a matrix with i
+
+v1 \Delta  \Delta  \Delta  vn j
+
+as the first row, where cj = oe(vj); j = 1; : : : ; n. In this version of the algorithm we obtain numerous estimates for the vector C by repeating the procedure with different Y 's and averaging these estimates. The number of estimates that are included in the average is at most 2n. We use fewer if the output becomes either too large or too small.
+
+Specifically, we get the first estimate for C using the basic algorithm. Next we apply inputs uij = 0(i \Gamma  1)(j \Gamma  1) to obtain the matrix
+
+Y = 0BBBB@
+
+y0;0;0 \Delta  \Delta  \Delta  y0;0;n\Gamma 1 y0;1;0 \Delta  \Delta  \Delta  y0;1;n\Gamma 1
+
+... ...
+
+y0;n+1;0 \Delta  \Delta  \Delta  y0;n+1;n\Gamma 1
+
+1CCC CA :
+
+Just as before, we can write Y as the product (assuming n = 2 for notational clarity)
+
+Y = ~Cu  oe(0) oe(b1)oe(0) oe(b
+
+2) !
+
+16
+
+where
+
+~Cu = 0BBB@
+
+c1oe(A1~oe(A~oe(Ax0))) c2oe(A2oe(A~oe(Ax0))) c1oe(A1~oe(A~oe(Ax0) + B)) c2oe(A2~oe(A~oe(Ax0) + B)) c1oe(A1~oe(A~oe(Ax0) + 2B)) c2oe(A2~oe(A~oe(Ax0) + 2B)) c1oe(A1~oe(A~oe(Ax0) + 3B)) c2oe(A2~oe(A~oe(Ax0) + 3B))
+
+1CCC A : Solve the linear equation for ~Cu, and note that for a chosen determination of the (componentwise) log,
+
+\Gamma i log( ~Cu) + 2ssK = 0BBB@
+
+1 oe(0) oe(0) 1 oe(b1) oe(b2) 1 oe(b1)2 oe(b2)2 1 oe(b1)3 oe(b2)3
+
+1CCC A 0B@
+
+v1 v2 A11oe(A1~oe(Ax0)) A21oe(A1~oe(Ax0)) A12oe(A2~oe(Ax0)) A22oe(A2~oe(Ax0))
+
+1CA
+
+:
+
+As in the basic approach, we must simultaneously solve for the rightmost matrix above and the integer matrix K. Then apply oe to the entries of the first row of the resulting matrix to obtain the second estimate for C.
+
+Repeat the procedure starting with a new Y obtained by applying inputs uij = 00(i \Gamma  1)(j \Gamma  1). At the end we will have0B
+
+@
+
+v1 v2 A11oe(A1~oe(A~oe(Ax0))) A21oe(A1~oe(A~oe(Ax0))) A12oe(A2~oe(A~oe(Ax0))) A22oe(A2~oe(A~oe(Ax0)))
+
+1CA
+
+(14)
+
+and a third estimate for C can be obtained from the first row of this matrix.
+
+Repeating this with an increasing number of zeros in the beginning of the input sequences provides many estimates for the vector C. The last step is to average all of the estimates.
+
+Averaging to find A Here we use ^C from (13) and all of the matrices such as (14) used in finding C. (Now we can discard the first row of each of these matrices.)
+
+The first task is to find ^C. By now we know ^A and ^B. We also know the controllability form for the triple: (Acontr; Bcontr; Ccontr), since all we really need to know for these matrices is the characteristic polynomial for ^A and the first n terms of the vector Markov sequence which are exactly the columns in (12). The two triples are related through an invertible matrix T as follows
+
+T \Gamma 1AcontrT = ^A
+
+T \Gamma 1Bcontr = ^B
+
+CcontrT = ^C:
+
+17
+
+We retrieve T by solvingi
+
+Bcontr AcontrBcontr \Delta  \Delta  \Delta  An\Gamma 1contrBcontr j = T i ^B ^A ^B \Delta  \Delta  \Delta  ^An\Gamma 1 ^B j : (The reachability matrices are invertible. Remember, these are not the A; B; C matrices of the underlying exp-system. The triple ( ^A; ^B; ^C) is a minimal realization of the sequence found in (12).)
+
+Multiply Ccontr by T to get ^C. Next average the rows of ^C. The resulting row vector is^ Cave, where
+
+^Cave(j) = cj ave aeoe(Ajx0); oe(Aj~oe(Ax0)); : : : ; oe(Aj~oe(A~oe(\Delta  \Delta  \Delta  ~oe(Ax0) \Delta  \Delta  \Delta )))oe:
+
+Since we already have an estimate for C, we can divide out cj from each component and we call the outcome Aoex;ave.
+
+The second matrix we need in this method for finding A comes from averaging the matrices obtained in the procedure for finding C. We drop the first row of each matrix of the form 0B@
+
+v1 v2
+
+A11oe(A1~oe(\Delta  \Delta  \Delta  ~oe(Ax0))) A21oe(A1~oe(\Delta  \Delta  \Delta  ~oe(Ax0))) A12oe(A2~oe(\Delta  \Delta  \Delta  ~oe(Ax0))) A22oe(A2~oe(\Delta  \Delta  \Delta  ~oe(Ax0)))
+
+1CA
+
+:
+
+Next let Have be the matrix formed by averaging (in a term by term way) all of these matrices.
+
+The last step is identical to the basic method. Transpose Have to obtain
+
+A11ave foe(A1x0); : : :g A21ave foe(A2x0); : : :g A12ave foe(A1x0); : : :g A22ave foe(A2x0); : : :g ! :
+
+Then divide each row, element by element, by the row vector Aoex;ave.
+
+One technicality is that the number of rows used in the average Aoex;ave, and the number of matrices used in the average Have must be equal. So if one of these is less than 2n because of potential numerical problems (numbers becoming either too large or too small), then only the smaller number is used for both computations.
+
+6 Topics for Further Study The algorithms described above only scratch the surface of the body of work that could and should be done in this area. Section 7 describes some of the shortcomings in the current numerical adaptation of the algorithm. In addition to the points mentioned there, one would also like to be able to identify the parameters without being restricted to testing with the
+
+18
+
+very special (integer and *\Theta integer) inputs used above. This should be possible. In the first step, for example, finding B, applying random inputs corresponds to measuring the output of a continuous-time system at irregularly spaced intervals. This relates to identification of continuous-time linear systems from irregularly spaced samples.
+
+The program should be tested on systems that are not exp-systems, and developed further, if necessary, to handle approximating a broad range of systems. Comparative studies should be made with other identification and approximation techniques.
+
+There are variations on the basic algorithm that should be explored further. One such variation considers the fact that engineering processes are often hybrid models with local accurate linear control together with nonlinear components, so a better model for approximation might be a parallel connection of a linear system and an exp-system
+
+x(t + 1) = ALx(t) + BLu(t)
+
+z(t + 1) = ~oe(AEz(t) + BEu(t))
+
+y(t) = CLx(t) + CEz(t):
+
+(15)
+
+This model is still a recurrent neural network with
+
+A =  AL 00 A
+
+E ! ; B = 
+
+BL BE ! ; C = i CL CE j ;
+
+and ~oe acting as the identity on the first few components. We can expand the algorithm to include this model. The parallel system may serve as a better approximator for general systems with linear components. In particular, it trivially includes the class of linear systems. The algorithm for the parallel system closely resembles the basic algorithm. This procedure will be developed in the future and incorporated into the computer implementation.
+
+7 Numerical Techniques We describe below a preliminary implementation of the algorithm introduced in the paper. This program employs a naive, but effective, approach to carrying out the given techniques for parameter reconstruction. Despite the fact that numerous steps lack creative and even robust numerical solutions, the program detailed below and the simulations that follow provide a "proof" that the concepts described above are practical, and indeed have the potential to be executed in an efficient manner. Some of the steps in the computer formulation require further study. The linear realization that is performed when finding B is done using a simple Hankel matrix technique. This step should be replaced with more sophisticated techniques like Hankel norm approximation and robust identification. The next two steps, finding C and A, use a tedious integer search to find the correct log at some point. This step should also be improved.
+
+19
+
+We experimented with the algorithm in Section 5 using MATLAB. An overview of the program structure is provided by Figure 1.
+
+The "master" function, called findabcx, simply calls the four functions that estimate B; C; A, and Cx0, respectively.
+
+The first step is to find the vector B. This is done by finding the eigenvalues of a realization for the sequence formed by time one outputs. The procedure is repeated twice, once with integer inputs, and once with "less" rational inputs. The function eigfromhankel is called by findb. It obtains a sequence by applying 2n different inputs of length one to the subsequent function truesystem. This sequence is a rational sequence, so it has some minimal realization. Using Hankel matrices, we find a realization, and return the eigenvalues of the A matrix. In order to recover the true vector B, the next function sortb2 sorts the second estimate obtained for B, to agree with the order of the components of the first estimate for B. The two vectors are compared component-by-component to find the integers needed to recover the true B.
+
+The next step is to find C using the function findc. It uses truesystem again, and the functions vdm, which returns the Vandermonde matrix of size n \Theta  n whose second column is exp(ib), vdme, which returns the Vandermonde matrix of size n\Theta (n+2) whose second column is exp(ib) and last column is exp(ib)(n+1), and intsearch, which solves AX = H + 2ssk one column at a time by finding the X producing a product closest to H\Sigma  an integer vector times 2ss.
+
+Next we use the matrix CandAave obtained by findc to estimate A in the function finda.
+
+The final step is to recover the time zero output. The function findtimezerooutput simply calls the function truesystem and finds the output at time zero for the exp system approximation. This is needed to simulate the full input/output behavior.
+
+The program behaved relatively well in practice. We tested the program on systems that were truly exp-systems, but with small random noise (uniformly distributed on (\Gamma 10\Gamma 3; 10\Gamma 3)) added to the output. The test systems that we used have dimension between two and four and the entries of the parameters all have magnitude less than 10.
+
+The program was sensitive to the number used for * - the "irrational" number, and the thresholds used when comparing numbers to integers. This lack of robustness could be eliminated by implementing more refined numerical techniques.
+
+In the simulations below, we use stable systems so that we can make comparisons between the input/output behaviors of the true and estimated systems over a longer time period than the one used for the approximation.
+
+Example 7.1 Here are the results of a simulation for a two dimensional system. The
+
+20
+
+findc
+
+vdm truesystem
+
+vdme intsearch
+
+findabcx
+
+finda
+
+truesystem findb eigfromhankel
+
+sortb2 truesystem
+
+Find B by computingtime 1 outputs, and finding a realizationof the resulting sequence.
+
+Find C using time 2outputs.  Factor out a vandermondematrix, take a log,  and factor outanother vandermonde matrix.  The functionintsearch is used to find the "right" log.
+
+A can be recoveredusing one of the matrices obtainedin findc, and dividing out other knownquantities from the components of thismatrix.
+
+Main
+
+findtimezerooutput
+
+Data about thestate at time one is obtained in this function.
+
+Find Cx0 by askingthe true system for the output at timezero.
+
+Now we have enoughdata to simulate the full input/outputbehavior.
+
+Figure 1: Organization of the program.
+
+21
+
+system parameters are
+
+A =  1:0000 2:00000:7000 1:0000 ! ; B =  1:20002:0000 ! ;
+
+C = i 2:0000 2:1000 j ; x0 =  \Gamma 1:00000:5000 ! : Without noise in the output, the program estimated correctly:
+
+^A =  1:0000 \Gamma  0:0000i 2:0000 + 0:0000i0:7000 \Gamma  0:0000i 1:0000 \Gamma  0:0000i ! ; ^B =  1:2000 + 0:0000i2:0000 \Gamma  0:0000i ! ;
+
+^C = i 2:0000 + 0:0000i 2:1000 + 0:0000i j : For the same system, the following A; B; C were estimated when the output had some noise:
+
+^A =  1:0161 \Gamma  0:0009i 1:9919 \Gamma  0:0041i0:7007 + 0:0029i 0:9978 \Gamma  0:0041i ! ; ^B =  1:2005 + 0:0008i2:0005 + 0:0006i ! ;
+
+^C = i 1:9997 + 0:0064i 2:0974 \Gamma  0:0041i j : The first two figures (Page 23) compare the real parts of the output of the true system and the one constructed when noise was present in the output during the estimation procedure. Figure 2 shows the outputs corresponding to an input sequence of 10 ones. Figure 3 displays the outputs for a random input sequence of length 10.
+
+Example 7.2 In this example, we reconstructed the parameters for a three dimensional system. The true system parameters are
+
+A = 0B@
+
+0:5000 \Gamma 0:6000 0:1000 1:3000 0:5000 1:0000 0:4000 1:0000 0:2000
+
+1CA
+
+; B = 0B@
+
+1:0300 2:7000 3:2000
+
+1CA
+
+;
+
+C = i 0:1000 0:5000 0:8000 j ; x0 = 0B@
+
+\Gamma 1:0000
+
+0:3000 2:2000
+
+1CA
+
+:
+
+In the absence of noise in the output, the program estimated the parameters exactly:
+
+^A = 0B@ 0:5000 \Gamma  0:0000i \Gamma 0:6000 \Gamma  0:0000i 0:1000 + 0:0000i1:3000 \Gamma  0:0000i 0:5000 + 0:0000i 1:0000 \Gamma  0:0000i
+
+0:4000 \Gamma  0:0000i 1:0000 + 0:0000i 0:2000 \Gamma  0:0000i
+
+1CA
+
+;
+
+22
+
+1 2 3 4 5 6 7 8 9 10-1 -0.8 -0.6 -0.4 -0.2
+
+0 0.2 0.4
+
+time output
+
+Figure 2: Two dimensional example. True (ffi) and approximating (*) outputs for an input sequence of 10 ones. Noisy case.
+
+1 2 3 4 5 6 7 8 9 10-1 -0.5
+
+0 0.5
+
+1 1.5
+
+2 2.5
+
+3 3.5
+
+time output
+
+Figure 3: Two dimensional example. True (ffi) and approximating (*) outputs for a random input sequence of length 10. Noisy case. 23
+
+^B = 0B@ 1:0300 + 0:0000i2:7000 + 0:0000i
+
+3:2000 \Gamma  0:0000i
+
+1CA
+
+;
+
+^C = i 0:1000 \Gamma  0:0000i 0:5000 + 0:0000i 0:8000 \Gamma  0:0000i j : In the presence of noise, the following A; B; C were estimated:
+
+^A = 0B@ 0:5073 \Gamma  0:0019i \Gamma 0:5872 \Gamma  0:0049i 0:0864 \Gamma  0:0169i1:2989 + 0:0083i 0:5039 \Gamma  0:0245i 0:9988 + 0:0136i
+
+0:4065 + 0:0009i 1:0006 \Gamma  0:0035i 0:2057 + 0:0124i
+
+1CA
+
+;
+
+^B = 0B@ 1:0290 + 0:0023i2:6951 \Gamma  0:0061i
+
+3:2002 \Gamma  0:0031i
+
+1CA
+
+;
+
+^C = i 0:1001 \Gamma  0:0002i 0:4964 \Gamma  0:0075i 0:8034 + 0:0058i j : The second pair of figures (4 and 5) compare the real parts of the outputs for the true system and the one reconstructed when noise was present in the output during the estimation procedure. The input sequences used have length 15.
+
+Example 7.3 This is an example of the parameter reconstruction for a four dimensional system. The true system has parameters
+
+A = 0BBB@
+
+0:5000 \Gamma 0:1000 \Gamma 0:6000 \Gamma 0:3000
+
+0 0:4000 0:5000 0 0:7000 1:0000 0:2000 0:3000 \Gamma 1:0000 0:8000 0:6000 0:1000
+
+1CCC A ; B =
+
+0BBB @
+
+0:2000 1:0000 1:9000 2:3000
+
+1CCC A ;
+
+C = i 0:4000 1:1000 6:2000 5:0000 j ; x0 = 0BBB@
+
+\Gamma 1:0000
+
+0:3000 2:2000 0:9000
+
+1CCC A : Without noise in the output, the program correctly estimated the parameters:
+
+^A = 0B@
+
+0:5000 \Gamma  0:0000i \Gamma 0:1000 + 0:0000i \Gamma 0:6000 + 0:0000i \Gamma 0:3000 \Gamma  0:0000i 0:0000 \Gamma  0:0000i 0:4000 + 0:0000i 0:5000 + 0:0000i 0:0000 \Gamma  0:0000i 0:7000 \Gamma  0:0000i 1:0000 + 0:0000i 0:2000 \Gamma  0:0000i 0:3000 + 0:0000i \Gamma 1:0000 + 0:0000i 0:8000 \Gamma  0:0000i 0:6000 \Gamma  0:0000i 0:1000 \Gamma  0:0000i
+
+1CA
+
+;
+
+^B = 0B@
+
+0:2000 \Gamma  0:0000i 1:0000 \Gamma  0:0000i 1:9000 + 0:0000i 2:3000 \Gamma  0:0000i
+
+1CA
+
+;
+
+^C = \Gamma  0:4000 \Gamma  0:0000i 1:1000 + 0:0000i 6:2000 \Gamma  0:0000i 5:0000 + 0:0000i \Delta  :
+
+24
+
+0 2 4 6 8 10 12 14 16-1.5 -1 -0.5
+
+0 0.5
+
+1 1.5
+
+2
+
+time output
+
+Figure 4: Three dimensional example. True (ffi) and approximating (*) outputs for an input sequence of 15 ones. Noisy case.
+
+0 2 4 6 8 10 12 14 16-1 -0.5
+
+0 0.5
+
+1 1.5
+
+2
+
+time output
+
+Figure 5: Three dimensional example. True (ffi) and approximating (*) outputs for a random input sequence of length 15. Noisy case. 25
+
+When there was noise in the output, the following A; B; C were estimated:
+
+^A = 0B@
+
+0:4962 + 0:0308i \Gamma 0:1166 \Gamma  0:0020i \Gamma 0:6130 \Gamma  0:0135i \Gamma 0:3069 + 0:0098i \Gamma 0:0036 \Gamma  0:0023i 0:4000 + 0:0000i 0:4954 \Gamma  0:0008i 0:0032 + 0:0003i
+
+0:7112 + 0:0036i 1:0082 + 0:0092i 0:1958 + 0:0083i 0:3036 \Gamma  0:0024i \Gamma 1:0118 \Gamma  0:0238i 0:8008 + 0:0021i 0:5938 \Gamma  0:0008i 0:1031 + 0:0004i
+
+1CA
+
+;
+
+^B = 0B@
+
+0:1999 \Gamma  0:0006i 0:9987 + 0:0019i 1:8999 + 0:0003i 2:2999 + 0:0001i
+
+1CA
+
+;
+
+^C = \Gamma  0:4039 + 0:0069i 1:1000 + 0:0052i 6:1728 \Gamma  0:0272i 4:9831 \Gamma  0:0053i \Delta  :
+
+The final two figures compare the real part of the output of the true system versus that of the estimated system. As in the previous examples, the inputs used were a sequence of ones (Figure 6) and a random sequence (Figure 7).
+
+26 2 4 6 8 10 12 14 16 18 20 0
+
+5 10 15
+
+time output
+
+Figure 6: Four dimensional example. True (ffi) and approximating (*) outputs for an input sequence of 20 ones. Noisy case.
+
+2 4 6 8 10 12 14 16 18 20 0 5 10 15
+
+time output
+
+Figure 7: Four dimensional example. True (ffi) and approximating (*) outputs for a random input sequence of length 20. Noisy case. 27
+
+References
+
+[1] Albertini, Francesca., and Eduardo. D. Sontag, "For neural networks, function determines form," Neural Networks 6 (1993), pp. 975-990. Summarized version in Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 26-31.
+
+[2] Albertini, Francesca., and Eduardo. D. Sontag, "Identifiability of discrete-time neural
+
+networks," Proc. European Control Conference, Groningen, June 1993, pp. 460-465.
+
+[3] Albertini, Francesca., and Eduardo. D. Sontag, "State observability in recurrent neural
+
+networks," Proc. IEEE Conf. Decision and Control, San Antonio, Dec. 1993, IEEE Publications, 1993, pp. 3706-3707.
+
+[4] Ben-Or, M., and P. Tiwari, "A deterministic algorithm for sparse multivariate polynomial interpolation," in Proc. 29th IEEE Symp. Foundations of Comp. Sci., 1988, pp. 301-309.
+
+[5] Koplon, Ren'ee, Linear Systems with Constrained Outputs and Transitions, Ph.D. Dissertation, Rutgers University, 1994.
+
+[6] Koplon, Ren'ee, and Eduardo. D. Sontag, "Techniques for Parameter Reconstruction
+
+in Fourier-Neural Recurrent Networks," Proc. IEEE Conf. Decision and Control, Orlando, Dec. 1994, IEEE Publications, 1994, pp. 213-218.
+
+[7] Kuhn, Gary M., and Norman P. Herzberg, "Some Variations on Training of Recurrent
+
+Networks," Neural Networks: Theory and Applications, (Richard J. Mammone and Yehoshua Zeevi, eds.) pp. 233-244.
+
+[8] Ljung, L., System Identification: Theory for the User, Prentice Hall, 1987. [9] Narendra, K.S. and K. Parthasarathy, "Identification and control of dynamical systems
+
+using neural networks," IEEE Trans. Neural Nets, 1 (1990), pp. 4-27.
+
+[10] Nesterov, Y. and A. Nemirovskii, Interior-point Polynomial Algorithms in Convex Programming, SIAM, Philadelphia, 1994.
+
+[11] Polycarpou, M.M., and P.A. Ioannou, "Neural networks and on-line approximators for
+
+adaptive control," in Proc. Seventh Yale Workshop on Adaptive and Learning Systems, pp. 93-798, Yale University, 1992.
+
+[12] Siegelmann, Hava. T., and Eduardo. D. Sontag, "Some results on computing with
+
+`neural nets'," Proc. IEEE Conf. Decision and Control, Tucson, Dec. 1992, IEEE Publications, 1992, pp. 1476-1481.
+
+28
+
+[13] Sontag, Eduardo. D., Mathematical Control Theory: Deterministic Finite Dimensional
+
+Systems, Springer, New York, 1990.
+
+[14] Sontag, Eduardo. D., "Neural networks for control," in Essays on Control: Perspectives in the Theory and its Applications (H.L. Trentelman and J.C. Willems, eds.), Birkhauser, Boston, 1993, pp. 339-380.
+
+29</pre>
+</body>
+</html>

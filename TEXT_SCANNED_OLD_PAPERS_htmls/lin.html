@@ -1,0 +1,694 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/lin.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/lin.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+CONTROLLABILITY AND LINEARIZED REGULATION
+
+Eduardo D. Sontag* Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+ABSTRACT A  nonlinear  controllable  plant,  under  mild  technical  conditions,  admits  a  precompensator  with  the following  property:  along  control  trajectories  joining  pairs  of  states,  the  composite  system (precompensator plus plant) is, up to first order, isomorphic to a parallel connection of integrators.
+
+Appeared in IEEE Trans.Autom.Control, Vol.32, 10, Oct.1987, pp877-888
+
+*Research supported in part by US Air Force Grant 0247
+
+1 1. Introduction.
+
+This note deals with "pseudolinearization" properties of nonlinear systems.  Recent research by and Baumann and Rugh ([14], [3]), and by Champetier et al. ([6], [15]) has emphasized the idea of studying families  of  linearizations  of  nonlinear  systems  around  different  operating  points,  and  in  particular  the problem  of  obtaining  compensators  with  the  property  that  all  closed-loop  linearizations  have  the  same dynamic behavior.  In a similar spirit, we study here linearizations along trajectories of nonlinear systems.
+
+The present line of work should be contrasted to that of "feedback linearization" of nonlinear systems, where one asks for a global (or almost global) reduction of the given system to linear time-invariant form (see  e.g.  Brockett  [4],  Jackubczyk  and  Respondek  [10],  Hunt  et.al.  [9]).  The  conditions  for  feedback linearizability  are  very  stringent,  and  even  when  applicable,  as  in  the  "computed  torque"  method  in robotics,  the  method  may  result  in  control  laws  that  are  not  implementable  due  to  the  existence  of actuator constraints that were ignored in the linearization process.  The pseudolinearization work, on the other  hand,  is  closely  tied  to  the  standard  approach  in  engineering  practice,  where  an  open-loop trajectory  is  preplanned  and  a  servo  is  built  in  order  to  regulate  along  it.    The  regulated  system  then corrects  for  disturbances  and  measurement  errors.    The  price  one  pays  for  this  kind  of  'hierarchical' design  is  that  only  small  perturbations  from  preplanned  trajectories  can  be  tolerated  by  the  control system.
+
+Since the main result is somewhat technical to state, we explain it first in intuitive and oversimplified terms.  A more precise discussion of what we mean by "plant", "system", and so forth, is given in the next section.  Assume that a plant is given, described by a vector differential equation
+
+xOE (t) = f(x(t),u(t)), (1.1) where x(t) is the state, and u(t) is the control, at time t.  Assume given also a pair (_x,_u) consisting of an open  loop  control _u(OE)  and  a reference  trajectory _x(OE)  which  satisfy  (1.1).  Such  a  pair  may  arise  from  a numerical optimal control procedure for command generation, or from a simulation of the plant response to  a  test  signal _u.  We  think  of _x  as  a  desired  trajectory.    Let  (x(OE),u(OE))  be  any  other  such  pair, corresponding  to  an  actual  control  being  applied,  and  an  actual  trajectory  of  the  plant.    This  pair  may differ from the reference pair (_x,_u), for instance due to an initial state xo different from the desired _xo.  The
+
+goal  is  to  drive  the  error  x(t)-_x(t)  to  zero.    Consider  the  differences d(t):=  x(t)-_x(t)  and  v(t):=  u(t)-_u(t). Dropping higher order terms, these quantities satisfy an equation
+
+dOE (t) = A(t)d(t) + B(t)v(t), (1.2) where  A(t)  =  fx(_x(t),_u(t))  and  B(t)  =  fu(_x(t),_u(t))  are  Jacobian  matrices  evaluated  along  the  reference trajectory.  To account for small disturbances and errors in _x(0), the usual procedure is to design a linear time-varying servo
+
+v(t) = K(t)d(t) such that d(OE) is forced to decrease.  The control applied on-line is then
+
+u(t) = _u(t) +  K(t) (x(t) - _x(t)) . One  typically  computes  K(OE)  via  linear  quadratic  optimization  techniques.  Note  that  the  data  for  this optimization problem depends on the linearized system (A,B), and hence on the desired (_x,_u).
+
+An  alternative  to  using  linear  quadratic  optimization  in  order  to  obtain  K  is  to  study  pole  shifting problems  for  the  linear  time  varying  systems  (1.2).    In  the  process  of  developing  his  canonical  form,
+
+2 Brunovsky  [5]  showed  how  to  reduce  (1.2)  under  feedback  and  coordinate  transformations,  into  a time-invariant system (see also the fundamental paper Morse and Silverman [13]), provided that a rank controllability condition holds and that the Kronecker structure of (A(OE),B(OE)) remains constant in time.  In terms of the original nonlinear system (1.1), this means that certain integers related to partial Jacobians of f(OE,OE)  must  remain  constant  along  the  given  trajectory.    In  any  case,  once  a  time  invariant  system  is obtained,  one  can  perform  a  pole-shifting  design  in  the  new  coordinates.    However,  the  assumption  of constancy  of  Kronecker  indices  is  fairly  restrictive.    Moreover,  even  for  such  trajectories,  there  is  the question that two different trajectories will give rise to distinct invariants, and the time-invariant systems obtained by feedback will be different.  One way to avoid the first problem, that of nonconstancy, is to add a precompensator in such a manner as to force the indices into generic form.  This is precisely what is done for fixed linear time-varying systems in Kamen et.al. [11], and in the analogous case of families of systems in Sontag [16].  For  pseudolinearization at equilibrium points, precompensation is  also used in Reboulet and Champetier [15], but the form of the precompensator needed in that case is considerably simpler.
+
+One  of  the  main  purposes  of  this  paper  is  to  describe  a  technique  that  allows  such  a  K  to  be computed  in  closed  form independently of  the  given  reference  (_x,_u)  and  the  corresponding  linear  time varying system (A,B).  Roughly, the feedback K that we obtain will be expressed symbolically in terms of variables (p,w); during actual operation of the closed loop system, at time t one substitutes _x(t) for p and_ u(t) for w.  More accurately, K will include integral terms, i.e. dynamic feedback, and for technical reasons there needs to be a variable corresponding to the solution of a fundamental matrix differential equation. The form of the precompensator, as well as all changes of coordinates, are computed symbolically.  One way of formalizing all this is as follows:
+
+Given: A plant \Pi  and a class U of (open-loop) controls.
+
+To design: A precompensator \Xi p to be connected as in Figure 1. Such  that: For  each fixed u(OE)I^U, the time-varying  system \Xi  (Figure 1, large box) that resultswhen this u(OE) is applied, as a system with external control v(OE) and states (z,x), is to first order and linear coordinate change equal to a predetermined linear system. Once  the  above  is  achieved,  time-invariant  linear  control  theory  may  be  applied  to  obtain  a  servo which will provide satisfactory closed-loop operation in the presence of small errors in the state of \Pi , the external control v(OE), and the state of \Xi p.  Note that we are requiring that all linearizations be isomorphic to a fixed linear system, independently of the particular u(OE).  Hence, the term equilinearization is probably appropriate for our objective.  Moreover, we will even require that the coordinate change be in a sense precomputable independently of the particular u(OE), so that real-time calculations are minimized.
+
+The next problem in formalizing our objective is that of deciding upon suitable classes U of controls. In order for our method to work, we must assume some sort of finite dimensional parametrization of the possible  controls  in U.  For  instance,  one  may  deal  with  the  set  of  all  controls  that  are,  as  functions  of time,  polynomials  of  degree  at  most  three.    More  generally,  we  shall  postulate  the  existence  of  an open-loop control generator system \Omega , whose outputs are fed as controls to the plant.  The idea of using autonomous  systems  as  signal  generators  is  of  course  not  new:  many  approaches  to  the  tracking problem rely on precisely such time-domain models for the signals to be tracked (steps, ramps, etc.).  For instance, if we desire to study the response to ramps, i.e. polynomials of degree 1, it is only necessary to consider  a  control  generator  with  dynamics wOE 1 =  0, wOE 2 = w1,  and  output  u(t)  = w2(t).  Different  initial conditions w1(0), w2(0) will give rise to all possible linear u(t).
+
+Our  Main  Theorem  assumes  that  such  a  control  generator  is  given,  and  provides  a  solution  to  a
+
+3 slightly modified version of the problem stated above, which we now describe.  Let Q = Q(w) be the output map of the control generator, and take \Gamma  to be the autonomous system that has state variables partitioned as g = (f,w,p), where w satisfies the equations for the control generator, p is the plant state trajectory with corresponding  control  Q(w),  and f is  a  fundamental  solution  along  the  corresponding  state  and  input trajectories --see section 2 for details.  We view Q as a function of all of g, and ask for a precompensator \Xi p and a memory-free map R, to be connected as in figure 2.  The system that should be easy to control is again denoted by \Xi , with external control v, and states (x,z).  The result says, roughly, that there exist \Xi p, R, and matrices A,B, such that, for each g(OE) = (f,w,p) there is a linear change of variables
+
+\Lambda (t) y = ( )zx-_x
+
+(det(\Lambda (t))z'0 for all t,) with the following property:  if x(0) and z(0) are arbitrary initial conditions and v is an external control, then
+
+yOE = Ay + Bv + o(y,v,t) . More  precisely,  this  happens  for  those  initial  conditions g(0)  which  correspond  to  controls  which  are "nonsingular" with respect to x(0), in a sense to be clarified later and, except for special cases like that in which  the  system  dynamics  are  described  by  polynomials  or  rational  functions,  one  must  restrict  to compacts subsets of the state space.  The matrices A,B can be chosen such that the resulting system is a simple  series/parallel  connection  of  integrators.    Further,  the  matrix \Lambda (t)  can  also  be  precomputed independently of g(0), in the sense that there is a matrix L(OE) such that \Lambda (t) = L(g(t)) for all t.
+
+A  companion  paper  to  this  one,  [19],  deals  with  the  issue  of  designing  the  open-loop  control generators  themselves.    The  main  theorem  in  that  reference  shows,  roughly,  that  if  the  plant  (1.1)  is controllable  and  if  certain  relatively  weak  assumptions  are  satisfied  --f  must  be  analytic,  and  the  statespace is for instance A^n, or a contractible open subset,-- then there exists a finite dimensional system \Omega  with outputs u(OE) such that, for any two states x1 and x2 in a compact subset of the plant, there is some initial condition of the control generator system \Omega  that results in an open loop control which transfers x1 to x2.  Moreover, this open loop control is "nonsingular" as required in the previous paragraph.  The results in  the  present  paper  are  totally  independent  of  those  in  [19].    However,  we  include  below  precise statements of the latter, since the existence result for control generators provides a strong mathematical motivation for the use of such generators.  In fact, only length constraints precluded the integration of the material in [19] into the present paper.
+
+In  summary,  combining  the  Main  Theorem  with  the  main  result  in  [19],  one  has  that,  provided  the plant satisfies certain reasonable assumptions, it is possible to affect any desired state transfer using a suitable  open  loop  signal  generator,  and  to  regulate  for  small  deviations  from  the  corresponding trajectories  using  linear  control  design  techniques.    The  system \Gamma  that  results  can  be  described  as  an interconnection of a linear system, an internal model of the plant, and a system linear in the state; Q is a polynomial  map,  and \Xi p is  linear.    If  the  original  system  is  defined  by  rational  equations,  all  functions appearing are again rational.
+
+The  systems  considered  are  described  by  analytic  differential  equations.  In  the  case  of  systems defined by rational functions, the constructions can be performed explicitely via resultant theory.  We have carried them out for various examples using the Macsyma symbolic manipulation system.  On the other hand, the theorem in [19] about the existence of signal generators is more of an abstract existential result, and should be probably seen as providing more of a "principle" for nonlinear control than as a practical design method in itself.  This principle would be used in practice in order to motivate the search for signal generators, much as inverse Lyapunov theorems are used in the context of stability.  Note however that
+
+4 the  Main  Theorem  can  be  typically  applied  directly,  with  the  precompensator  design  based  on  the assumption that  all  controls  to  be  applied  are  in  a  certain  class  (e.g.,  steps,  ramps);  these  open-loop controls may be calculated for specific state transfers via numerical methods.  The example worked out later illustrates this.
+
+The plan for the paper is as follows.  The next section introduces definitions and the statement of the Main Theorem.  After that, we deal with various issues related to the controllability of variational systems, in particular a study of those trajectories of a given system along which the linearization (as a time-varying linear  system)  is  controllable.    Such nonsingular  trajectories play  a  central  role  in  the  construction  of precompensators.  We then construct the precompensator needed for the Main Theorem.  In the final two sections we present a worked example and some conclusions and suggestions for further work.
+
+5 2. Definitions and Statement of the Main Theorem.
+
+2.1. Systems.
+
+An (analytic) system \Xi , with state space S\Xi  = open subset of A^n and control-value space U\Xi  = open subset of A^m, is described by an equation
+
+xOE (t) = f(x(t),u(t)) , (2.1) where  the dynamics map  f: S\Xi *U\Xi  o""  A^n is  real-analytic.    A polynomial system  is  one  for  which  each component of f is a polynomial, and a rational system is one for which each component of f is a rational function.  A rational function is one that can be written as a quotient of two polynomials in n+m variables, with the denominator having no zeroes in S\Xi *U\Xi .  The system is autonomous if f is independent of u; in that case the set U\Xi  is irrelevant.  Autonomous systems will appear in the modeling of signal generators. In describing systems by their evolution equations (2.1), we shall often omit the argument t.
+
+An admissible  control (or input)  u  of length T  =  Tu is  a  measurable  essentially  bounded  map  u: [0,T]o""U\Xi .  Essentially bounded means that there is a compact subset K = Ku of U\Xi  such that u(t)I^K for almost all t.  For any admissible u and initial condition x(0)=x, the unique absolutely continuous solution x(OE) of  (2.1)  at  time  t<=T,  if defined, is denoted  by  x(t) = y(t,x,u).  A  pair  (x,u) of functions on an  interval [0,T],  with  u  an  admissible  control  and  x  satisfying  (2.1),  i.e.,  x(t)  = y(t,x(0),u)  for  all  tI^[0,T],  is  an admissible trajectory on [0,T].  If u has length T and x is such that there exists an admissible trajectory (x,u) on [0,T] with x(0)=x, we say that u can be applied to x.  If there is an admissible trajectory on [0,T] with initial x(0)=x1 and final x(T)=x2, we say that x1 can be controlled to x2 in time T, or that x2 can be reached from x1, and that u steers x1 to x2.  If there is some T>0 such that that x1 can be controlled to x2 in time T, we just say x1 can be controlled to x2.
+
+The system \Xi  is complete if for every xI^S\Xi , every T>0, and every admissible control u, the solution y(t,x,u) is well-defined for all t<=T, i.e. every control can be applied to every state.  Completeness will not be  essential,  and  will  not  be  assumed  in  most  of  the  material  to  follow,  but  it  will  allow  an  elegant statement of part of the theorem from [19] quoted below.
+
+If  (x,u)  is  an  admissible  trajectory  on  [0,T],  then  z(t):= y(t,z(0),v)  is  defined  for  all  tI^[0,T]  if  z(0)  is sufficiently close to x(0) and if v is sufficiently close to u in the essential supremum norm.  More precisely, let  Le^m be  the  Banach  space  (with  sup  norm)  consisting  of  all  essentially  bounded  measurable  u: [0,T]o""A^m, for the given T>0.  Then the set of triples (t,x,u) for which the solution y(t,x,u) is defined for all t<=t  is  an  open  subset  of A^*S\Xi *Le^m.  Further,  for  each  fixed  t, y(t,x,u)  is  infinitely  differentiable  as  a function of (x,u)I^S\Xi *Le^m, and the mapping (x,u)o""y(OE,x,u), with values in Co([0,T],A^m) (with sup norm) is continuous.  These are well-known classical results; see for instance Lee and Marcus [12] and references there, as well as [19], where we also establish continuity and differentiability with respect to other norms on controls.
+
+2.2. Variational Systems.
+
+Let  (x,u)  on  [0,T]  provide  an  admissible  trajectory  for  the  system \Xi .  The  (total) variational  system associated  to \Xi  along  (x,u)  is  the  linearization  of \Xi  along  this  trajectory,  that  is,  the  linear  time  varying system Dx,u\Xi  defined by the evolution equations
+
+lOE (t) = fx(x(t),u(t))l(t) + fu(x(t),u(t))u(t) , tI^[0,T] , (2.2)
+
+6 where  fx,  fu denote  Jacobians  of  f  with  respect  to  the  first  n  variables  and  the  last  m  variables respectively, and where l(t)I^A^n and u(t)I^A^m for all  t.   (Strictly  speaking, time-varying  systems are  not "systems" with our definition.)
+
+We shall say that \Xi  is linearly controllable along (x,u) if (2.2) is (completely) controllable in [0,T], i.e. for each l1 and l2 in A^n there is a measurable essentially bounded u such that, solving (2.2) with this u and with initial condition l(0)=l1 results in l(T)=l2.
+
+An interpretation of this property can be given via the map (x,u)o""y(T,x,u) defined on an open subset of S\Xi *Le^m.  The  Fr~echet  differential  of  this  map  at  a  given  (x,u),  evaluated  at  a  tangent  element (lo,u)I^A^n*Le^m is precisely the solution l(T) at time T of (2.2) with l(0)=lo.  In particular, consider a fixed pair (T,x), and  the partial map a(u):= y(T,x,u).  Then  its differential  at  u,  evaluated  at u,  is obtained by solving (2.2) with this u and with l(0)=0.  Thus a is nonsingular at u precisely if (2.2) is reachable from zero, i.e. if for each l2 there is a u such that l(0)=0 results in l(T)=l2.  Since reachability from zero is equivalent  to  complete  controllability  for  time-varying  (continuous-time)  systems,  we  conclude  that \Xi  is linearly controllable along (x,u) if and only if a has full rank at u.
+
+We  shall  need  also  a  more  general  notion  of  variational  system.    This  notion  will  apply  to  systems which have inputs of two kinds: a "reference signal" g(t) and a "control" v(t).  For such systems, we shall be interested in linearizations with respect to perturbations in the states and control v, along trajectories corresponding  to  each  possible  reference  signal g.  Formally,  consider  a  system  for  which  the  control value set U\Xi  has the form U1*U2, where U1 and U2 are open subsets of A^k and A^l respectively.  Partition admissible controls in the form (g,v) to reflect the structure of U\Xi .  (We shall often write (x,g,v) instead of (x,(g,v)) for admissible trajectories.)  Write the system equations as
+
+xOE = f(x,g,v) . (2.3) The partial  variational  system  with  respect  to  x  and  v  along  the  admissible  trajectory (_x,_g,_v)  is  the  time varying linear system
+
+lOE (t) = fx(_x(t),_g(t),_v(t))l(t) +
+
+fv(_x(t),_g(t),_v(t))n(t) , tI^[0,T] (2.4)
+
+(note that n(t)I^A^l for each t).  Fix such an admissible trajectory (_x,_g,_v) on the interval [0,T].  Expanding the differentiable map f, we conclude the existence of a function f(t,a,b), which is defined for 0<=t<=T, for a in a neighborhood  of 0I^A^n, and for  b in a neighborhood of 0I^A^l, such that f(t,a,b) = o(a,b) for  each  t, f is analytic in (a,b) for each t, and the following property holds:  For each admissible trajectory (x,_g,v) on [0,T] with (x,v) sufficiently close to (_x,_v), if d(t):= x(t)-_x(t) and n(t):= v(t)-_v(t) then
+
+dOE (t) = fx(_x(t),_g(t),_v(t))d(t) +
+
+fv(_x(t),_g(t),_v(t))n(t) + f(t,d(t),n(t)), tI^[0,T]. (2.5)
+
+Further,  if _g is  continuous  as  a  function  of  t  -in  our  application, _g will  be  even  analytic  in  t,-  then f is uniformly o(a,b), i.e. f(t,a,b)/||(a,b)|| o"" 0 as (a,b)o""0 uniformly on tI^[0,T].  Thus the time-varying system (2.4) provides a good approximation to the perturbed system (2.5), and a feedback design based on the former can be expected to perform well for the latter, as long as d and n are kept small.
+
+7 2.3. Pseudointegrators.
+
+Let the system \Xi  be as in (2.3), and assume that the dimension of the state space S\Xi  is a multiple of l,
+
+say lb.  Fix an admissible trajectory (_x,_g,_v) of \Xi .  We shall say that \Xi  is a pseudointegrator along (_x,_g,_v) iff there exists a differentiable matrix function \Lambda (t) defined on [0,T], with det(\Lambda (t))z'0 for all t, such that, with the notations A(t):= fx(_x(t),_g(t),_v(t)) and B(t):= fv(_x(t),_g(t),_v(t)), the following equations hold:
+
+\Lambda (t)A = A(t)\Lambda (t) - \Lambda OE (t) , \Lambda (t)B = B(t) , where A and B are the following (constant) matrices:
+
+0 0 0 0 . . 0 II 0 0 . . 0 0  0 0 I 0 . . 0 0  0. . . . . . .  . A =  . . . . . . .  B =  .. . . . . . .  .
+
+0 0 0 . . I 0  0
+
+(each block is of size l by l, and there are b block rows). (2.6)
+
+This  property  can  be  interpreted  as  follows.    Assume  that,  as  above, d(t)  and n(t)  denote  small perturbations of _x, _v respectively.  Define e(t) by the coordinate change d(t):= \Lambda (t)e(t); then e satisfies an equation like
+
+eOE (t) = Ae(t) + Bn(t) + h(t,e(t),n(t)) , (2.7) where h(t,a,b)  is  again  o(a,b)  for  each  t  (uniformly  if _g is  continuous).  In  the e coordinates,  the  partial variational system is up to first order a constant linear system.
+
+Note  that  a  pseudointegrator  must  be  an  "index  invariant"  system  in  the  sense  of  Morse  and Silverman [13].  (Index invariant systems are more general, since they cannot be brought to constant form under  coordinate  changes  alone,  but  feedback  must  also  be  used.)    A  particular  consequence  of  our results  will  be  that  one  can  build  a  precompensator  that  makes  all  linearizations  along  suitably nondegenerate  trajectories  index  invariant,  and  with  the same indexes  appearing  along  all  such trajectories.
+
+Systems  (2.7)  have  very  nice  local  controllability  properties,  and  any  feedback  control  designed  in terms of e(t) gives a corresponding feedback law for the original system via the similarity \Lambda (t) (which gives rise to a Lyapunov transformation, since its determinant is bounded away from 0 on [0,T]).
+
+We introduce one last definition.  The system \Xi  is a pseudointegrator uniformly with respect to a class C of signals g iff there exists an lb by lb matrix L of analytic functions defined on an open subset of A^k such  that,  for  all g in C,  the  definition  of  pseudointegrator  is  satisfied  with \Lambda (t)  = L(g(t)).  Thus  the coordinate  change  can  be  "precomputed"  independently  of g.  We  shall  sometimes  abuse  notation  and use the notation "\Lambda " also for L, where no confusion arises.
+
+2.4. Reference Signals and Plant.
+
+From now on we fix an arbitrary system as in (2.1). We shall denote this system by \Pi , and refer to it as  the plant.  The  notations  n,  m, S\Pi , U\Pi ,  f  will  be  reserved  for  the  data  associated  to  this  particular system.  Also fixed will be an autonomous system \Omega , with state space S\Omega  I' A^r and dynamics denoted by
+
+8 P, as well as an ("output") analytic map Q: S\Omega o""U\Pi .  The notation \Omega r'\Pi  will stand for the system obtained by feeding the output of \Omega  as a control to \Pi , i.e. the autonomous system
+
+wOE = P(w) (2.8) pOE = f(p,Q(w))
+
+on the state space S\Omega *S\Pi .  Our main objective is to study the regulation of the plant \Pi  along trajectories that result from the application of controls produced by the "open-loop control generator" \Omega .  (The result from Sontag [19] quoted below establishes that a natural property of abstract controllability of \Pi  is enough to guarantee the existence of suitable "open-loop control generators" \Omega ; that fact provides a motivation for the present model.)  Among such trajectories we shall be interested in particular in those along which the plant  is  linearly  controllable.    Since  trajectories  are  parametrized  by  the  initial  states  of \Omega  and \Pi ,  we express the desired controllability property in terms of S\Omega *S\Pi , as follows.
+
+Consider a pair (wo,po)I^S\Omega *S\Pi .  At least for small enough times T>0, the solution (w(t),p(t)) of (2.8) with w(0)=wo and p(0)=po is defined on the interval [0,T].  We shall say that (wo,po) is nondegenerate iff for some such T, \Pi  is linearly controllable along the ensuing admissible trajectory (p,Q(w)) of \Pi .* The set of such pairs will be denoted by ND(\Omega r'\Pi ).  The trajectory (w,p) will be called nondegenerate if (wo,po) is. (It will be remarked later that (w(t),p(t)) is again in ND(\Omega r'\Pi ), for each t<=T.)
+
+It  is  easy  to  see  that ND(\Omega r'\Pi )  is  an  open  set;  in  fact,  we  prove  later  the  following  stronger  result, which implies in particular that -if nonempty- ND(\Omega r'\Pi ) is an open dense subset:
+
+Lemma  2.1: There  is  an  analytic  function \Delta : S\Omega *S\Pi o""A^ with  the  following  property:    (wo,po)  is nondegenerate if and only if \Delta (wo,po)z'0.  When \Omega r'\Pi  is a polynomial (resp., rational) system, \Delta  can be chosen to be a polynomial (resp., rational) function.
+
+For polynomial or rational systems, the function \Delta  could in principle be obtained algorithmically using symbolic manipulation systems, but in practice only low dimensional systems can be dealt with, because of computational complexity considerations.
+
+To  the  given  combination  (2.8)  of  control  generator  and  plant,  we  associate  one  last  system,  the reference generator \Gamma .  This is an autonomous system, whose state space is the set S\Gamma := GL(n)*S\Omega *S\Pi ,
+
+where GL(n) is the set of n*n invertible matrices viewed as an open subset of A^n2.  It is described by the set of equations
+
+\Phi OE = a(p,w)\Phi  wOE = P(w) (2.9) pOE = f(p,Q(w))  ,
+
+where a(p,w) is the Jacobian matrix fx(p,Q(w)) for each pI^S\Pi  and wI^S\Omega .  The state (\Phi (t),w(t),p(t)) of \Gamma  at time t will be denoted by g(t).
+
+Note  that,  if  (p,w)  is  any  given  admissible  trajectory  for  (2.8)  on  [0,T],  and  if \Phi (0)  is  an  arbitrary element  of  GL(n),  then  there  is  also  a  well  defined  state  trajectory g for \Gamma  on  [0,T],  having  the  given second and third coordinates (w,p) and with the given \Phi (0).  In other words, the first equation in (2.9) can be solved on all of [0,T]; this is because for fixed (w,p) it is linear in \Phi .  In fact, \Phi  is a fundamental solution for the variational system of \Pi  along (p,Q(w)).  We shall say that g(0), and the corresponding trajectory g
+
+*Here Q(w) denotes the function defined by Q(w)(t):= Q(w(t)).
+
+9 on [0,T], are nondegenerate if (w(0),p(0)) is.  A nondegenerate reference signal will mean, from now on, a nondegenerate  trajectory g of \Gamma .  We  may  see  Q(w)  as  a  function  of g which  depends  only  of  the w-coordinate of g.
+
+Note that the system \Gamma  consists of the equation for w (which in the proof of the result in [19] happens to be linear), which feeds into the last equation (an internal model of the plant) and both of these feed into the first equation, which is itself a system linear in the state with input (p,w).
+
+2.5. Statement of the Main Theorem.
+
+Consider  the  following  situation.    Let \Omega r'\Pi  and \Gamma  be  as  above,  and  assume  given  in  addition  an integer  k,  an  m  by  nk  matrix  R  of  analytic  functions  defined  on  an  open  subset W of S\Gamma ,  and  constant matrices CI^A^nk*nk and DI^A^nk*n.  These data give rise to a "regulated system" \Xi  defined as follows.  The system \Xi  is of the type described in equation (2.3), having two kinds of controls, g(OE) and v(OE), where U1=W and U2=A^n.  Its state (z(t),x(t))I^A^nk*S\Pi  satisfies the simultaneous equations:
+
+zOE = Cz + Dv , (2.10) xOE = f(x,u)  , (2.11) u = Q(w) + R(g)z . (2.12) Here w(t) is the S\Omega -coordinate of g(t)I^WI'GL(n)*S\Omega *S\Pi .)
+
+The  system \Xi  consists  of  a  cascade  of  two  systems:  a  linear  time-invariant precompensator \Xi p (equation  (2.10))  with  input  v(t),  and  the original  plant \Pi .  The control  u(t)  to \Pi  which  is  applied  at  any given time t is an analytic function of the reference signal g(t) and of the state of the precompensator (in fact, affine in the latter).  Alternatively, we may think of the control law (2.12) as the output of \Xi p.  Figure 2 illustrates the resulting system diagram; the larger box corresponds to the regulated system \Xi .  The input v is an external control, and g, generated by \Gamma , acts as a reference signal.
+
+The objective is to build precompensators in such a way that, for any nondegenerate reference signal g, the system \Xi  behaves as a (fixed) constant linear system for small z, x(0) = small perturbation of p(0), and small external controls v.  More precisely, let (w,p) be an admissible trajectory of (2.8) on [0,T], and pick any \Phi o.  There results an admissible trajectory g = (\Phi ,w,p) of the reference generator system (2.9) on
+
+the  interval  [0,T].    We  consider  this  signal g as  a  reference  input _g for  (2.10-2.12).  Together  with  the choice _v(t)z^0, _z(t)z^0, _x=p, we have an admissible trajectory for (2.10-2.12) on the time interval [0,T].  We may  then  consider  the  variational  system  of \Xi  along  this  admissible  trajectory  ((0,p),(g,0)).  The  main result of this paper is as follows.
+
+Main Theorem. Let \Omega r'\Pi  be as above, and assume that O is any given compact subset of ND(\Omega r'\Pi ). Denote G := GL(n)*O.  Then there exist:
+
+* an integer k,
+
+* an m by nk matrix R of analytic functions defined on an open subset W of S\Gamma  which containsG, and
+
+* constant matrices CI^A^nk*nk and DI^A^nk*n, with  the  following  property:    uniformly  on  reference  signals g which  satisfy  that g(t)I^G for  all  t,  the system (2.10-2.12) is a pseudointegrator along ((0,p),(g,0)).  Furthermore, if \Omega r'\Pi  is a rational system then the conclusions are true even if O is all of ND(\Omega r'\Pi ) and the  entries of  R can  be chosen  to be rational functions.n
+
+10 In applying the definition of pseudointegrator to the above system, note that the integers 'b' and 'l' in section 2.3 become, respectively, k+1 and n.
+
+Although  mathematically  independent  of  the  material  in  this  paper,  it  is  worth  quoting  precisely  the result in [19], which lends justification to the use of signals generators.  For technical reasons, we need there the following property of linear growth in controls for the plant \Pi :
+
+(*) U\Pi  = A^m and there is a continuous function b: S\Pi o""A^ such that||f
+
+u(x,u)|| <= b(x)  for all xI^S\Pi  and all uI^U\Pi .(By  ||f u||  we  denote  the  norm  of  the  Jacobian  of  f  with  respect  to  u,  for  any  fixed  operator  norm.)    Asdiscussed in  [19],  this assumption can  be  relaxed  in  various  ways.   The  system \Pi  is controllable iff for
+
+each p1 and p2 in S\Pi , p1 can be controlled to p2.  An equilibrium point for \Pi  is a pair (p,u), pI^S\Pi , uI^U\Pi , such that f(p,u)=0.  Then we have:
+
+Theorem([19]).  Assume  that  the  controllable  plant \Pi  satisfies  (*)  and either that \Pi  has  some equilibrium point or that \Pi  is complete and S\Pi  is simply connected.  Let C be any compact subset of S\Pi . There exists then an autonomous polynomial system \Omega , a polynomial map Q, and a compact subset O of ND(\Omega r'\Pi ) such that the following property holds:
+
+for each p1 and p2 in C there are a T>0 and an admissible trajectory (w,p) of the system (2.8) with p(0)=p1 and p(T)=p2 and such that (w(t),p(t))I^O for all tI^[0,T].n
+
+From the two theorems together it follows then that for a controllable plant, -provided the weak extra requirements  are  satisfied,-  for  each  compact  subset C of S\Pi  there  are  a  signal  generator  and  a precompensator such that the following holds: for any given pair of states in C, there is an initial condition of  the  signal  generator  which  gives  rise  to  an  open-loop  input  that  controls  one  of  these  states  to  the other, and along the ensuing trajectory the composite system (precompensator + plant) is up to first order and coordinate change a simple parallel/series connection of integrators.
+
+Important notational convention. Most vectors appearing in this paper are column vectors.  In order to save space when displaying them, we shall often use the alternative notation
+
+(a1 : OEOEOE : ar) (2.13) (note the ":") instead of
+
+| a1 | | OE || OE |  .
+
+| ar | If the ai are scalars, this is the same as the transpose of the row vector (a1,OEOEOE,ar), but we will mostly deal with cases in which the ai are themselves column vectors, in which case (2.13) would correspond to, in more usual but cumbersome notation, (a1',OEOEOE,ar')' (primes indicate transpose).
+
+11 3. Linearized Controllability.
+
+In this section we include some general facts about linearized controllability, which are needed for the proofs of the main results.
+
+3.1. Controllability of time-varying linear systems.
+
+First we shall develop some elementary linear system theory.  A good general reference for the latter is Chen [7], where proofs of the results in this subsection can be found.  We state the needed facts for further reference, in a language more suitable for our applications.  Given the time-varying linear system
+
+xOE (t) = C(t)x(t) + D(t)u(t) , (3.1) with tI^[0,T], (C is an l by l matrix, and D is l by m,) this is (completely) controllable on [0,T] iff there exits no poz'0 such that
+
+<po,\Phi (0,t)D(t)> = 0  for almost all tI^[0,T] , where the fundamental matrix \Phi  satisfies
+
+u""\Phi (t,t)/u""t = C(t)\Phi (t,t)  for all t,t,\Phi (0,0) = I .
+
+Equivalently,  with  p(t):= \Phi '(0,t)po,  controllability  is  equivalent  to  the  impossibility  of  simultaneous vanishing almost everywhere of all the switching functions
+
+fu(t) := <p(t),Du(t)> , u=1,OEOEOE,m, (Du:= u-th column of D), for a nonzero solution of the adjoint equation
+
+pOE (t) = -C'(t)p(t) , p(0) = po . When  all  the  entries  of  C  and  D  are  smooth  functions  of  time  on  an  open  interval  containing  [0,T],  a sufficient condition for controllability is that
+
+dim span {dku, k>=0, u=1,OEOEOE,m} = l , (3.2) where
+
+dku := dk/dtk|t=0 [\Phi (0,t)Du(t)] . (3.3) When (3.1) is analytic, meaning that all entries of C and D are analytic functions of time, condition (3.2) is necessary as well as sufficient.
+
+3.2. Vector Fields.
+
+Let W be an open subset of an Euclidean space A^s.  Using the natural global coordinate chart for W given  by  the  embedding  in A^s,  we  may  (and  will)  identify  functions  f:  Wo""Rs with  vector  fields  on W. These will be represented as s-dimensional column vectors of functions on W. An analytic vector field is one that is real analytic when seen as a function Wo""Rs.  A polynomial, (resp., rational,) vector field is one which  corresponds to a  polynomial  (resp.,  rational)  map  f.    Let f,g  be  vector  fields  on  W.  Their Lie bracket [f,g] is then the vector field on W defined by the formula
+
+[f,g](x) := gx(x)f(x) - fx(x)g(x) , (3.4) where (OE)x indicates Jacobian.  If f and g are polynomial or rational then [f,g] is also polynomial or rational respectively.  For each vector field F, we use the notation adF for the following induced linear operator on vector fields:
+
+12 adF(g) := [F,g]  . Consider now the following situation.  Given are analytic vector fields
+
+A, b1, OEOEOE, bm defined on an open subset L of A^l.  We let esA denote the flow of A, i.e., esAxo is the solution x(s) at time s (if it exists) of
+
+xOE (t) = A(x(t)), x(0) = xo (3.5) (and is undefined if the solution does not exist on [0,s]).  We use the notation (OE)* for differentials.  Then, the Baker-Campbell-Hausdorff formula gives that, for each u=1,OEOEOE,m and k>=0,
+
+dk/dtk|t=0 [(e-tA)*bu(etA(x))] = adkA(bu)(x) .
+
+We consider (3.5) as an autonomous system on A^l.  Given an admissible x(t) on [0,T], the variational system along x(OE) (there are no explicit controls here) has equations
+
+lOE (t) = C(t)l(t) , where we are denoting
+
+C(t) := Ax(x(t)) . Let \Phi  be the fundamental matrix associated to this C. It is easy to see that in this situation,
+
+\Phi (t,t) = (e(t-t)A)* .
+
+Still for the given vector fields, and the given admissible trajectory x on [0,T] as in (3.5), consider now the time-varying linear system (3.1) with the above C (n*n) and where D is the matrix whose u-th column, u=1,OEOEOE,m, is
+
+Du(t) := bu(x(t)) = bu(eta(xo)) , where xo is x(0).  Formula (3.3) becomes then
+
+dku = adkA(bu)(xo) . (3.6) Since A and the bu's are analytic, the obtained system (3.1) also is, and hence the latter is controllable if and only if these vectors dku span a space of dimension n.  This will be used in the next subsection.
+
+3.3. Nondegenerate pairs.
+
+Fix  now  a  system \Omega r'\Pi  as  in  (2.8)  consisting  of  the  plant \Pi  and  open-loop  control  generator \Omega . Nondegenerate  pairs  (w,p)  allow  the  parametrization  of  state  trajectories  and  controls  along  which  the variational system is controllable.  The above results provide an easy characterization of these pairs, as follows.  Let l be n+r, take the open set L to be S\Omega *S\Pi , and introduce
+
+A(w,p) := ( ) ,P(w)f(p,Q(w)) (3.7)
+
+bu(w,p) :=( )
+
+,0gu(w,p) (3.8)
+
+where  for u =  1,OEOEOE,m,  gu is  the u-th  column  of  the  Jacobian  of  f  with  respect  to  uI^Rm evaluated  at (p,Q(w)):
+
+fu(p,Q(w)) .
+
+13 Assume  now  given  an  admissible  trajectory  (w,p)  on  [0,T].    The  matrix  functions  C(t),  D(t), \Phi (t,t)  are defined  from  this  data  as  in  the  previous  section.    We  may  also  consider  the  variational  system  of  the plant \Pi  along the admissible trajectory (p,Q(w)) (where Q(w) appears now as an external control).  This is a time-varying system
+
+dOE (t) = C2(t)d(t) + D2(t)v(t) , where
+
+C2(t) := fx(p(t),Q(w(t))) , D2(t) := fu(p(t),Q(w(t))) ,
+
+(C2 is  an  n  by  n  matrix,  and  D2 is  n  by  m.)    Let \Phi 2(t,t)  be  the  fundamental  matrix  for  C2.  Then, \Pi  is linearly controllable along (p,Q(w)) if and only if the vectors
+
+d2ku := dk/dtk|t=0 [\Phi 2(0,t)D2u(t)] , k>=0, u=1,OEOEOE,m , span  a  space  of  dimension  n.    (D2u denotes  the u-th  column  of  D2.)  Note  that  C(t)  and  D(t)  have  the following partitioned structure:
+
+C(t) = ( )* 0* C2(t)
+
+(the (1,1)-block is of size r by r), and
+
+D(t) = ( )0D2(t)
+
+(the 0 block is size r by m).  From the form of C it then follows that there is also a partitioned structure
+
+\Phi (t,t) = ( ) .* 0* \Phi 2(t,t)
+
+Thus, it follows that for each t in [0,T],
+
+\Phi (0,t)Du(t) = ( ) ,0\Phi 2(0,t)D2
+
+u(t)
+
+and so taking derivatives that
+
+dku = ( )0d2
+
+ku
+
+for all k>=0 and u=1,OEOEOE,m.  We have proved the following result:
+
+Proposition 3.1: (wo,po)I^ND(\Omega r'\Pi ) iff  dim span {adkAbu(wo,po), k>=0, u=1,OEOEOE,m} = n.n
+
+We may restate this as follows.  For each integer k, let
+
+\Delta k(w,p) := a* rj(w,p)2 , (sum over jI^J) where {rj, jI^J} are all the possible n*n minors of the k-th reachability matrix
+
+Rk := {b1,OEOEOE,bm,adAb1,OEOEOE,adAk-1bm} . Note that \Delta k is analytic [resp., polynomial, rational] if P, Q, and f all are, and it is in the k-th reachability ideal Ik generated over analytic functions by the n*n minors of Rk.  From the block forms in the definitions of A and the bu's, it follows that Rk has the structure
+
+( ) ,0Sk (3.9)
+
+14 where the 0 block has size r*km.  Thus the minors rj are the maximal possible nonzero minors, and the span in proposition 3.1 has dimension exactly n iff one of these is nonzero, for some k.  Thus:
+
+Corollary 3.2: (wo,po)I^ND(\Omega r'\Pi ) iff \Delta k(wo,po)z'0 for some k.n
+
+Let O be any compact subset of ND(\Omega r'\Pi ).  For each (wo,po)I^O, there is then an integer ko such that \Delta ko(wo,po)z'0.  Since \Delta ko is  continuous,  there  is  a  neighborhood Vo of  (wo,po)  in ND(\Omega r'\Pi )  such  that
+
+\Delta ko(w,p)z'0  (and  hence  also \Delta k(w,p)z'0  for  all k>=ko)  for  all  (w,p)  in Vo.  Taking  a  finite  subcover  of O by such neighborhoods Vo, and choosing the largest ko, we conclude:
+
+Corollary 3.3: For each compact subset O of ND(\Omega r'\Pi ) there is an integer k such that \Delta k(w,p)z'0 for all (w,p) in O.n
+
+We  now  wish  to  show  that  a  suitable  infinite  combination  of  the  squares  of  the  functions \Delta k will  be analytic,  so  as  to  establish  lemma  2.1.    This  construction  must  be  done  over C,  since  in  general  a uniformly convergent series of real-analytic functions will not be necessarily again analytic.
+
+By definition of real-analyticity, there exists for the above vector field A an open subset V of Cl, l = r+n, such that
+
+VC,A^l = S\Omega *S\Pi  , and  an  extension  of  A  to  a  vector  function  analytic  on V,  which  we  shall  denote  with  the  same  letter A. Similarly with b1, OEOEOE, bm.  Intersecting if necessary, we assume that a common V as above has been chosen.  The elements in the Lie algebra generated by A and the bu's all admit analytic continuations to the same open subset V, since they are defined by differentiations and algebraic operations on the entries of  the  original  vector  fields.    (More  generally,  all  vectors  whose  entries  are  in  the  differential  algebra generated by the entries of A and the bu's admit analytic continuations to the same V.)  It follows finally that  there  is  an  extension  of  each \Delta k to  an  analytic  function  on V,  which  we  denote  by \Gamma k.  (Note  that, contrary to \Delta k, the vanishing of \Gamma k does not imply the vanishing of \Gamma k for k<k.)
+
+Consider  the  set V as  a  (separable)  Hausdorff  manifold.    By  an  elementary  topological  reasoning, (see for instance Brickell and Clark [2], lemma 3.4.3,) there exists a countable covering {Vk, k>=0} of V by compact subsets of V such that, for each k, Vk is contained in the interior intVk+1 of Vk+1.  We let
+
+Ok := VkC,A^l for each k>=0.  Since Vk is compact and A^l is closed in Cl, this is a compact subset of VC,A^l = S\Omega *S\Pi .  For each  k,  the  continuous  function  |\Gamma k|  is  thus  bounded  above  on Vk by  some  positive  constant  Ck. Replacing \Gamma k by the quotient \Gamma k/Ck, we may assume that |\Gamma k|<=1 on Vk, for each k.  (And \Gamma k is still analytic on V.)  Note that, since the Vk form an ascending chain, for all k it holds that
+
+|\Gamma k(v)|<=1 for all vI^Vk and all k>=k . Consider finally the function defined by the series
+
+\Gamma (v):= a* 2-k\Gamma k(v) (sum from k=0 to e^).  Given any vI^V, there is a k such that vI^Vk.  Thus, the terms in the above series are majorized in norm by 2-k for all k>=k.  It follows that the series is absolutely convergent and that \Gamma  is well-defined.  To prove that \Gamma  is analytic, it is sufficient to remark that the series converges uniformly on compacts (see for instance Dieudonn~e [8], chapter 9, section 12).  So let K be any compact subset of V.
+
+15 Since the open sets intVk also cover V, there is a finite subcover of K by such sets; since these form a chain, there is in fact an integer k such that
+
+K I' Vk . For any vI^K, then,
+
+|\Gamma (v) - a* 2-k\Gamma k(v)| <=a*
+
+[from="k=k",to="e^"] 2-k|\Gamma k(v)| <= 2k-1 .
+
+(first sum from k=0 to k-1 and second from k=k to e^).  Uniform convergence follows.  Finally, let \Delta  be the restriction of \Gamma  to S\Omega *S\Pi .  Thus \Delta  is real-analytic, and it can be expressed as
+
+\Delta  = a* [from="",to=""]  ak\Delta k , (sum from k>=0) for positive ak's.  So \Delta (w,p) is nonzero if and only if some \Delta k(w,p) is, and the first part of lemma 2.1 is established.
+
+Assume  now  that \Omega r'\Pi  is  rational.  Then,  the  functions \Delta k are  all  elements  of  the  ring  Rat(S\Omega *S\Pi ) consisting of all rational functions on A^r+n which have no poles on S\Omega *S\Pi .  This ring is a fraction ring of the polynomial ring on r+n variables, and hence is Noetherian since the polynomial ring is.  (See e.g. [B], II.2.4, corollary 2, for Noetherian fraction rings.)  Thus there exists an integer k such that, for every k, \Delta k is in the ideal generated by
+
+{\Delta 1,OEOEOE,\Delta k} . (3.10) If (wo,po) is in ND(\Omega r'\Pi ), then by corollary 3.2 there is some k such that \Delta k(wo,po) is nonzero, and hence, by choice of k, one of the generators in (3.10) is nonzero there.  This means that \Delta k(wo,po)z'0, given the construction of the \Delta k's.  If \Omega r'\Pi  is a polynomial, -rather than rational,- system the argument is the same. In the first case \Delta k is rational, in the second polynomial.  Choosing \Delta := \Delta k satisfies the last statement in lemma 2.1.  Furthermore, this argument shows also that corollary 3.3 remains true even if O = ND(\Omega r'\Pi ), provided that ND(\Omega r'\Pi ) be rational.
+
+Finally, we remark that if (wo,po) is in ND(\Omega r'\Pi ), and if (w,p) is an admissible trajectory on [0,T] with (w(0),p(0))  =  (wo,po),  then  for  each tI^[0,T]  it  holds  that  again  (w(t),p(t))I^ND(\Omega r'\Pi ).  This  is  because otherwise, for the corresponding variational system the vectors
+
+{\Phi (t,t)D(t), tI^[t,T]} , and hence also the vectors
+
+{\Phi (0,t)D(t), tI^[t,T]} , would span a space of dimension less than r+n.  By analyticity, this would imply that also the vectors
+
+{\Phi (0,t)D(t), tI^[0,T]} span a lower dimensional space, contradicting the fact that (wo,po) is in ND(\Omega r'\Pi ).
+
+16 4. Proof of the Main Theorem.
+
+The  proof  of  the  main  theorem  involves  a  number  of  intermediate  constructions.    We  shall  assume first that k has been chosen, and will then determine a value such that the theorem holds.  Similarly, we shall assume given a set of analytic functions on (an open subset of S\Gamma  which contains) G,
+
+{rkun, u=1,OEOEOE,m, n=1,OEOEOE,n, k=1,OEOEOE,k} , also to be determined later.  With this data, R is the block matrix
+
+R := (R1,OEOEOE,Rk) , and each Rk is the m by n matrix with the following elements in position (u,n), u=1,OEOEOE,m, n=1,OEOEOE,n:
+
+(Rk)un := rkun . The desired matrices C and D have the same block forms as A and B respectively have in equation (2.6), except that each block now has size n by n, and there are k block rows.  We partition the coordinates of the precompensator as z = (Z1:OEOEOE:Zk), with each Zk = (z1k,OEOEOE,znk).
+
+Note that, with the above choice of R, the u-th coordinate of u in (2.12) satisfies
+
+uu = Qu(w) + a* [from="",to=""] a* [from="",to=""] rkun(g)znk . (first sum from k=1 to k and second sum n=1 to n).  Thus,
+
+u""f(x,Q(w)+R(g)z)/u""znk =a*
+
+[from="",to=""]f uu(x,Q(w)+R(g)z)rkun . (4.1) (sum u=1 to m) (Equality of n-vectors.)
+
+Assume now that, as in the statement of the Main Theorem, g = (\Phi ,w,p) is a nondegenerate reference signal on [0,T].
+
+Let \Xi  be  the  system  given  by  (2.10-2.12).    We  wish  to  apply  the  definition  of  pseudointegrator,  as given in section 2.3, to this system, except that we denote the dynamics map "f" in (2.3) instead by ^f, so as to avoid confusion with the "f" map that describes the plant \Pi .  Note that
+
+^f((z,x),g,v) = ( ) .Cz+Dvf(x,Q(w)+R(g)z)
+
+We now consider the definition of pseudointegrator along (with the notations in section 2.3) the admissible trajectory (_x,_g,_v), where _x denotes the pair ( ), _g is the given reference signal, and _v is identically zero.0p
+
+The Jacobian matrix A becomes in this case:
+
+A(t) = ( ) ,C 0J(t) a(t)
+
+where C is, recall, an nk*nk constant matrix, the '0' block is nk*n, a(t) is n*n, and J(t) is n*nk.  Explicitely, these are as follows:
+
+a(t) = fx(p(t),Q(w(t))+R(g(t))0) = fx(p(t),Q(w(t))) , consistently with the previous definition of a, in (2.9),
+
+J(t) = [S1(t),OEOEOE,Sk(t)] , and for all k=1,OEOEOE,k
+
+17 Sk(t) = a* [from="",to=""]f
+
+uu(p(t),Q(w(t))).[rku1(g(t)),OEOEOE,rkun(g(t))]. (4.2)
+
+(sum u=1 to m) Each term in this sum is the product of an n*1 by a 1*n matrix, the latter being the u-th row of Rk.  For simplicity, we shall introduce the following notation:
+
+gu(w,p) := fuu(p,w) , pI^S\Pi , wI^S\Omega  . (To be thought of as a vector field on S\Omega *S\Pi .)  Also, note that
+
+B(t) = ( ) ,D0
+
+where  the  0  block  is  size  n*n.  We  search  for  an  n(k+1)*n(k+1)  matrix  function \Lambda (t)  defined  on  [0,T], nonsingular for all t, such that
+
+\Lambda (t)A = A(t)\Lambda (t) - \Lambda OE (t) , \Lambda (t)B = B(t) , (4.3) where  A,B  are  as  in  equation  (2.6)  (and  b,l  there  are  h+1,n  here.)    This  is  the  matrix  that  will  give  the change  of  coordinates  that  makes  the  system  time-invariant.    We  shall  construct  the  matrix \Lambda  in  the following special form:
+
+|0|. \Lambda  = I |.  ,|.
+
+|0_______________ \Lambda k. . . \Lambda 1 |\Lambda o
+
+where each \Lambda k, k = 0,OEOEOE,k, is an n*n matrix of analytic functions of t, with \Lambda o invertible for each t, and with(4.4) \Lambda kz^0.  (The "0" blocks are each n by n, and the identity I is nk*nk.)  Since det\Lambda  = det\Lambda o, \Lambda  will be indeed invertible for all t.  Furthermore, since \Lambda kz^0, the second equation \Lambda (t)B = B(t) in (4.3) is satisfied for all t. Now  we  see  what  conditions  are  needed  on  the  entries  of  R  in  order  that  the  first  equation  in  (4.3)  be satisfied for suitable \Lambda .  Calculating,
+
+\Lambda (t)A = ( ) ,C 0J3 0
+
+A(t)\Lambda (t) - \Lambda OE (t) = ( )C 0J1 J2 (using the same partitioned structure as \Lambda  above), where, omitting t arguments for simplicity:
+
+J2 = a\Lambda o - \Lambda OE o , J3 = [\Lambda k-1,\Lambda k-2,OEOEOE,\Lambda o] , and
+
+J1 = J + a[\Lambda k,OEOEOE,\Lambda 1] - [\Lambda OE k,OEOEOE,\Lambda OE 1] . Thus, the following equations must hold for the sought \Lambda k:
+
+\Lambda OE o = a\Lambda o \Lambda OE k = a\Lambda k + Sk-k+1 - \Lambda k-1 , k=1,OEOEOE,k, (4.5)\Lambda 
+
+k z^ 0 .
+
+18 The first equation is equivalent to saying that \Lambda o must be a solution of the fundamental equation for the plant.  So we shall choose \Lambda o to be \Phi , the first coordinate of the given reference signal g.  We also let \Lambda k be identically 0, and by induction on descending k = k-1, OEOEOE, 1, let
+
+\Lambda k := a\Lambda k+1 - \Lambda OE k+1 + Sk-k , (4.6) or equivalently, with (Df)(t):= fOE (t) (componentwise differentiation for vector functions),
+
+\Lambda k = (a-D)k-k-1S1 + (a-D)k-k-2S2 + OEOEOE + Sk-k . (4.7)
+
+Thus  the r's  must  be  choosen  so  that  precisely  equation  (4.5)  holds  when k=1,  the  equations  for  the other k's being satisfied by construction.  That is, we need that
+
+(a-D)\Lambda 1 + Sk = \Phi  , or equivalently, substituting \Lambda 1 from (4.7) into this equation:
+
+\Phi  = a* [from="",to=""]  (a-D)k-kSk . (sum k=1 to k).  Recalling the definition of the Sk, equation (4.2), and letting \Phi n be the n-th column of \Phi , for each n=1,OEOEOE,n, we need that the following equation hold for each such n:
+
+\Phi n = a* [from="",to=""]a*
+
+[from="u=1",to="m"] (a-D)k-k[rkun(g)gu(p)] . (4.8)
+
+(sum k=1 to k).  These equations are decoupled for the different n, so we fix any n=1,OEOEOE,n and show how to obtain the rkun for this n.  Let
+
+f: S\Gamma  o"" A^n (4.9) be the projection
+
+f(\Phi ,w,p) := n-th column of \Phi . (4.10) Still for the particular n choosen, denote
+
+sku:= (-1)krk-k,u,n , k = 0,OEOEOE,k-1 . It will be sufficient to establish the following property:
+
+(P) There are analytic functions {sku, k=1,OEOEOE,k-1, u=1,OEOEOE,m} defined on G such that, for each reference signal g(t) for which g(t)I^G for all t,
+
+f(g(t)) = a* [from="",to=""] a* [from="",to=""]  (D-a(t))k[sku(g(t))gu(p(t))]. (sum k=0 to k-1 and then u=1 to m).  (And, if the system is rational, the functions sku also are.)  The fact that f is the particular function in (4.10) is not needed in order to establish property (*).  We shall see that this holds for any analytic f (rational, in the rational case).
+
+Introduce the vector field F on S\Gamma  that defines the dynamics of \Gamma , i.e.
+
+F(g) = F(\Phi ,w,p):= (a(p,w)\Phi  : P(w) :f(p,w)) . (4.11)
+
+(Recall the convened notation for block column vectors, and that that we represent the element a(p,w)\Phi  of GL(n) as a vector in A^n2.  Thus F(g) is a vector of size n2+r+n.)  Let H be any vector field on S\Gamma  of the block form (with respect to the partition (\Phi ,w,p) of coordinates in S\Gamma ):
+
+19 H(g) = H(\Phi ,w,p) = (* : 0 : h) . (4.12) Then, the Lie bracket [F,H] again has the form in the right hand side of (4.12), and if _g is any reference signal, the following equality holds (use definition of Lie bracket and chain rule):
+
+adF(H)(_g(t)) = [F,H](_g(t)) = (* : 0 : (D-a(t))h(t)) , where  again D =  d/dt  and  a(t)  =  fx(_p(t),_w(t)).  In  particular,  assume  that,  for  each k=  0,OEOEOE,k-1  and  each u=1,OEOEOE,m, we denote
+
+Gu := (0 : 0 : gu) (4.13)
+
+(blocks of sizes n2,r, and n respectively), and
+
+Hku(g) := sku(g)Gu(p,w) with the s's still to be determined.  Thus we have the following situation.  For any choice of sku's,
+
+a* [from="",to=""] a* [from="u=1",to="m"]ad
+
+Fk(Hku) = (* : 0 : q) , (4.14) (sum k=0 to k-1), for some q, seen as an equation for vector fields on S\Gamma .  And, property (P) is satisfied iff there exist sku's for which q equals the given f.  Let now A be as in (3.7) and each bu as in (3.8). We then have the partitioned structure
+
+adFk(Gu) = ( ) ,*adk
+
+Abu (4.15)
+
+where the '*' block has size n2.
+
+Choose an integer k as in corollary 3.3, for the given compact O in the statement of the Main Theorem (or  globally,  in  the  rational  case).    With  the  notations  in  subsection  3.3,  the  desired  integer  "k"  in  the above constructions will be taken to be equal to this k.  Let aj:= rj/\Delta k for each jI^J.  These are all analytic functions defined on an open set containing O (rational if \Omega r'\Pi  is a rational system), and they satisfy
+
+a* [from="",to=""]  ajrj = 1 . (sum over jI^J).  Consider the extended reachability matrix
+
+R* := (G1,OEOEOE,adFk-1Gm). From equations (4.15) and (3.9) we conclude that
+
+R* = (* : 0 : S) , where S is an n*km matrix.
+
+We  may  think  of  the rj,  jI^J,  as  all  the  n*n  minors  of  S,  since  all  other  minors  of R are  necessarily zero.  If rj is the determinant of the matrix Sj of S obtained when picking columns in the ordered set j = {i1,OEOEOE,in}, where i1 < OEOEOE < in, we let Ej be the km by n matrix obtained as follows.  Let Dj be the cofactor matrix of Sj; then the il-th row of Ej is by definition the l -th row of Dj, and all other rows i, i not in the set j, are set to zero.  Then,
+
+SEj = rjI ,
+
+where I is  an  n*n  identity  matrix.    Finally,  introduce  the  matrix  E  := a* [from="jI^J",to="  "]  ajEj,  again  a km*n matrix.  We conclude that
+
+R*E = (* : 0 : I) .
+
+20 (Sizes of blocks are n2*n, r*n, and n*n respectively).  Now, given any function f as in (4.9), we let B be the vector Ef.  It follows that R*B has the form in the right-hand side of (4.14), with q= the desired f.  Thus we have an equation
+
+a* [from="k=0",to="k-1"] a* [from="u=1",to="m"]b
+
+kuadFk(Gu) = (* : 0 : f) , (4.16) where the bku's are the entries of the vector B. Note that the bku's are analytic in O, and are rational if \Omega r'\Pi  is rational.
+
+We are left then with the problem of finding the functions sku, assuming that the bku as above have been constructed.  But this follows from the following lemma:
+
+Lemma 4.1: Assume that F, G1, OEOEOE, Gm, H are vector fields on an open set in A^n, and that there are an integer k and functions {bku, k=0,OEOEOE,k-1,u=1,OEOEOE,m} such that
+
+H = a* [from="k=0",to="k-1"] a* [from="u=1",to="m"]b
+
+kuadFk(Gu) . (4.17) Then, there exist functions {sku, k=0,OEOEOE,k-1, u=1,OEOEOE,m} such that
+
+H = a* [from="k=0",to="k-1"] a* [from="u=1",to="m"]  adFk(skuGu) . Further,  the  functions  {sku}  can  be  choosen  in  the  differential  algebra  generated  by  the bku and  the entries of F.
+
+Proof: We prove this by induction on k.  For k=1, the result is trivial.  So assume it is proved for k. Take now an expression
+
+H = a* [from="k=0",to="k"] a* [from="u=1",to="m"]b
+
+kuadFk(Gu) . (4.18) Repeated use of the derivation formula
+
+[F,aG] = LF(a)G + a[F,G] (where LF(a) is the Lie derivative grad(a).F) results for each u=1,OEOEOE,m in
+
+adFk(bkuGu) = a* [from="k=0",to="k-1"] akuadFk(Gu) + bkuadFk(Gu) for suitable functions aku.  Solving for the last term, and substituting in the right hand side of (4.18) there results the equation
+
+H = H1 + a* [from="u=1",to="m"]  adFk(bkuGu) , where
+
+H1 = a* [from="k=0",to="k-1"]a*
+
+[from="u=1",to="m"]  (bku-aku)adFk(Gu) .
+
+By induction, H1, and hence also H, can be reduced to the desired form.n
+
+It  only  remains  to  establish  the  'uniform'  character  of \Lambda .  That  is,  we  wish  to  find  a  matrix L of functions of g such that \Lambda (t) = L(g(t)) for all signals g(OE) as in the theorem.  The block structure of L is as that of \Lambda  displayed in equation (4.4), and we denote by Lo, OEOEOE, Lk the corresponding submatrices of L.  We again define Lo := \Phi  (first block of coordinates of g), seen now as a symbolic coordinate, and Lkz^0.  By induction on descending k = k-1,OEOEOE,1, we define the n*n matrix Lk so that (4.6) holds along references, i.e.
+
+21 Lk := fx(p,Q(w))Lk+1 - L'k+1F + Sk-k , (4.19)
+
+where the Sk are defined essentially as before: same equation as (4.2), but symbolically on coordinates, and where L'kF is the n*n matrix whose (i,j)-th entry is
+
+LF((Lk)ij) , the Lie derivative by F of the (i,j)-th entry of Lk.  This completes the proof of the theorem.n
+
+Finally, note that \Lambda -1 (needed in the computation of closed-loop control laws, see example later,) can be also precomputed, since L-1 admits a simple expression W.T, T =
+
+|0|. I |.  ,|.
+
+|0_______________ Nk. . . N1 |No
+
+W = a block matrix with \Phi -1 in the diagonal, and No = I, Nk = 0, and Nk = -Lk for other k.
+
+22 5. A worked example.
+
+Here we work out an example illustrating the Main Theorem.  For simplicity, and because of the length of the paper, we shall only consider an (academic) example in dimension 1.  We shall reports on more experimental  results,  for  more  realistic  problems,  in  the  future;  see  for  instance  [20].    The  example  to consider has state space A^ and control set also A^.  The equations are
+
+xOE = 1 + u.sin 2x . (5.1) We picked this example because it is almost as pathological as possible in dimension 1; note that the only way to cancel the nonlinearity at (or near) x = 0, p, etc., is by using an infinite gain.  We shall design a closed-loop  controller  that  will  regulate  along  all  possible  reference  trajectories  corresponding  to  step inputs.
+
+Since we are interested in constant inputs, we take r=1 and S\Omega  := A^ with equations
+
+wOE = 0 for the autonomous system \Omega .  Use coordinates (w,p) for pairs of states in S\Omega *S\Pi .  The relevant vector fields are then
+
+g = g1 = ( ) ,  f = ( ) .0sin 2p 01+wsin 2p
+
+We then compute [f,g] and [f,[f,g]], and obtain the equation
+
+(w+2)g + (1/2)[f,[f,g]] = ( ) .01
+
+Note, incidentally, that the existence of such an equation shows that ND(\Omega r'\Pi ) is the whole state space S\Omega *S\Pi  of the input-generator + plant.  (These, as well as all the computations to follow, were performed using  the  Macsyma  symbolic  manipulation  system.)    We  now  introduce  the  vector  fields  F  and  G  =  G1 from equations (4.11-4.13); these are, explicitely,
+
+F(g) = (w.sin 2p.\Phi  : 0 : 1+wsin 2p) , G := (0 : 0 : sin 2p) . Note that the fundamental solution \Phi  satisfies the equation
+
+\Phi OE = \Phi .w.sin 2p . (5.2) We now apply lemma 4.1, with (from above) k = 3 and
+
+b01 = \Phi (w+2), b11 = 0, b21 = \Phi /2 . We obtain the s's, and from these the r's, which dropping the indexes that are always equal to 1 (n=1, m=1,) are then:
+
+r1 = \Phi /2, r2 = \Phi .w.sin 2p, (5.3) r3 = \Phi .(-4w2sin 4p + (3w2-2w)sin 2p + 2w + 2).
+
+These were obtained from the formulas
+
+r1 = b2, r2 = 2LFb2 - b1, r3 = b0 - LFb1 + LF2b2,
+
+as in lemma (5.2).  Finally, the coordinate change matrix L has
+
+L1 = \Phi .cos psin p.(w.sin 2p - 1) , L2 = (\Phi /2)sin 2p . (5.4)
+
+The inverse of L is computed trivially from this.
+
+23 The composite system \Xi  in Figure 2 is now described by the equations
+
+zOE 1 = v , zOE 2 = z1, zOE 3 = z1 , xOE = 1 + (r1z1+r2z2+r3z3)sin 2x ,
+
+where the ri are as in equation (5.3).  With the change of coordinates
+
+L(g(t)) ( ) = ( ) ,zy zx-p
+
+that is, with
+
+y = (x - p - L2(g)z2 - L1(g)z3)/f , (5.5) one gets the equations
+
+zOE 1 = v , zOE 2 = z1, zOE 3 = z1 , and
+
+yOE = -((((8\Phi sin 4p - 6\Phi sin 2p)w2 + (4\Phi sin 2p - 4\Phi )w - 4\Phi )z3 -2\Phi wz2sin 2p-\Phi z1-2w) sin (((2\Phi wcos psin 3p-2\Phi cos psin p)z3+\Phi sin 2pz2+2\Phi y+2p)/2)2
+
++((10\Phi sin 4p - 12\Phi sin 6p)w2 + 4\Phi sin 2p - 2\Phi )z3 +6\Phi wz2cos psin 3p + \Phi z1sin 2p + 4\Phi wycos psin p + 2wsin 2p)/(2\Phi ).
+
+A Taylor expansion of this last term with respect to (z1,z2,z3,y) gives indeed that
+
+yOE = z3 + a(g,z1,z2,z3,y) , where a(g(t),z1,z2,z3,y) is o(z1,z2,z3,y) for each t.
+
+Now close the loop by assigning all poles at, for instance, -2.  This results in a feedback law in terms of the (z,x) coordinates of the precompensator, v = KL-1(z:x-p), where K is the gain matrix
+
+K = [k1,k2,k3,k4] = -[8,24,32,16] that assigns poles at -2 for a system in control canonical form.  The resulting closed-loop controller is as follows:
+
+zOE 1 = a1(t)z1 + a2(t)z2 + a3(t)z3 + a4(t)e(t) , zOE 2 = z1 , zOE 3 = z2 , pOE = 1 + w.sin 2p , \Phi OE = \Phi .w.sin 2p ,u = w + b
+
+1(t)z1 + b2(t)z2 + b3(t)z3 , where
+
+a1 = k1, a2 = k2-(k4/2)sin 2p , a3 = k3 - k4(1 - w.sin 2p)sin pcos p,  a4 = k4/\Phi  ,
+
+and
+
+b1 = \Phi (t)/2, b2 = \Phi (t).w(t).sin 2p(t), b3 = \Phi (t).(-4w2(t)sin 4p(t) + (3w2(t)-2w(t))sin 2p(t) + 2w(t) + 2).
+
+Note that e(t) = x(t) - p(t), where x(t) is the measured state.  (With the alternative coordinates as in (5.5), the  state  (z:y)  is  seen  to  indeed  satisfy  up  to  first  order  a  linear  constant  differential  equation  with  all eigenvalues at -2.)
+
+24 The controller can be somewhat simplified by changing to coordinates z' := \Phi z, so that \Phi  dissappears completely.  But  the  actual  computational  complexity  is  not  decreased,  since  the  equations  for  the precompensator variables have now an extra term.
+
+Now we simulate the behavior of the system for a typical constant input, say w z^ 10 on the interval [0,10].  The ensuing trajectory for the model plant, with p(0) = 0, results in p(10) = 33.53.  Thus there are 22 points in this trajectory where the term sin 2x multiplying the control vanishes.  Intuitively, the system should be hard to control especially about these points.  Assume now that there is an error in the initial state (or a disturbance occurs at time t=0+), and that the true initial state x(0) of the plant happens to be x(0)  =  0.1.    Then,  after  t  =  10  seconds,  the  plant without our  servo  would  be  at  state  x  =  34.05.    (Of course, for this simple example, in dimension 1 and with a constant control, the 'wrong' trajectory is just a phase shift from the reference trajectory.)  If instead our regulator is used, the closed loop system is such that  the  state  x(10)  is  33.54.    The  enclosed  graph  (Figure  3)  shows  a  comparison  between  the unregulated error (solid line) and the error x(t)-p(t) for our closed-loop system (dotted line).
+
+25 6. Final remarks.
+
+There is a need for much more theoretical analysis as well as experimentation before it will be clear whether our precompensator design is useful in real problems.  We expect the method to be applied in conjunction with open-loop command generators acting at a higher level of design.  These other methods could  involve,  for  instance,  optimal  control  techniques.    If  it  is  known,  for  example,  that  all  controls  are relay ("bang-bang"), then one may design compensators for constant reference controls.  Otherwise one may  design  on  the  basis  of  an  assumption  of  piecewise  polynomials  of  a  certain  degree,  say  3.    The relative performance when the control happens not to be in one such class is probably very hard to study theoretically, and a large amount of simulation may be needed in each particular situation.
+
+A note on the complexity of the compensator.  The dimension of the obtained compensators is clearly huge: nk, where k is obtained from the Lie algebraic manipulations, and n is the dimension of the original system.  This number is at least n2, so it would seem that the method presented is impractical.  However, it is important to realize that dimension of a system is most emphatically not a measure of complexity of implementation.  In the necessary numerical solutions of the corresponding systems of ode's, the limiting factor is more the amount of computation needed for updating each coordinate.  In the design given, all coordinates  zij of  the  precompensator  evolve  according  to  a  simple  integration,  except  only  for  the  first block of n coordinates.  Thus the complexity is more like that of a system of dimension n.  Of course, the design may be impractical for other reasons, but dimensionality per se doesn't seem to be as serious an issue as it would first appear.
+
+26 7. References. [1] Bourbaki, N., Elements of Mathematics, Commutative Algebra, Addison-Wesley, Reading, 1972. [2] Brickell,F. and R.S.Clark, Differentiable Manifolds, Van Nostrand, New York, 1970. [3]  Baumann,W.T.,  and  W.J.Rugh,  "Feedback  control  of  nonlinear  systems  by  extended  linearization,"IEEE Trans. Autom. Control, 31(1986): 40-46.
+
+[4] Brockett,R.W., "Feedback invariants for nonlinear systems," IFAC Congress, Helsinki, 1978. [5] Brunovsky, P., "A classification of linear controllable systems," Kybernetika 6(3)(1970): 173-188. [6]  Champetier,C.,P.Mouyon,  and  F.G.Magni,  "Pseudolinearization  of  nonlinear  systems  by  dynamicprecompensation," IEEE Conf.Dec.& Control, Fort Lauderdale, Dec.1985.
+
+[7] Chen, C.T., Introduction to Linear System Theory, Holt, Reinhart and Winston, N.Y., 1970. [8] Dieudonn~e,J., Foundations of Modern Analysis, Academic Press, N.Y., 1960. [9]  Hunt,L.R.,  R.Su,  and  G.Meyer,  "Design  for  multi-input  nonlinear  systems,"  in Differential  GeometricControl theory (R.W.Brockett, R.S.Millman, and H.J.Sussmann, eds.), Birkhauser, Boston, 1983.
+
+[10]  Jackubczyk,B.  and  W.Respondek,  "On  linearization  of  control  systems," Bull  Acad.Pol.Sci.,Ser.Sci.Math.Astr.Phys. 28(1980):  517-522. [11]  Kamen,E.W.,  P.K.Khargonekar,  and  K.R.Polla,  "A  transfer  function  approach  to  linear  time-varyingsystems," SIAM J.Control & Opt. 23(1985):550-565. [12] Lee,E.B. and L.Markus, Foundations of Optimal Control Theory, Wiley, N.Y., 1968. [13]  Morse,A.S  and  L.M.Silverman,  "Structure  of  index-invariant  systems," SIAM  J.Control, 11(1972):215-225.
+
+[14]  Rugh,  W.J.,  "Linearization  about  constant  operating  points:  an  input-output  viewpoint," Proc.IEEEConf. Dec. and Control, San Antonio, 1983. [15]  Reboulet,C.  and  C.Champetier,  "A  new  method  for  linearizing  nonlinear  systems:  thepseudolinearization," Int.J. Control 40(1984):  631-638. [16] Sontag,E.D., "An introduction to the stabilization problem for parametrized families of linear systems,"in Contemporary Mathematics, Vol.47, pp.369-400, AMS, Providence, RI, 1985. [17]  Sontag,E.D.,  "Orbit  theorems  and  sampling,"  to  appear  in Algebraic  And  Geometric  Methods  inNonlinear Control Theory, M.Fliess and M.Hazewinkel (Eds.), Reidel, Dordrecht, 1986. [18]  Sontag,E.D.,  "Remarks  on  the  preservation  of  various  controllability  properties  under  sampling,"  inDeveloppement et Utilisation d'Outils et ModOEeles Math~ematiques en Automatique, Analyse de SystOEemes et Traitement de Signal, Coll. CNRS, RCP 567, Belle-Ile, 1983, pp.623-637. [19]  Sontag,E.D.,  "Finite-dimensional  control  generation  for  nonlinear  systems," Int.J.Control (1987):  toappear.
+
+[20]  Sontag,E.D.,  "Equilinearization:  A  simplified  derivation  and  experimental  results,"  in ProceedingsConf.Info. Sci. and Systems, Johns Hopkins University Press, 1987.
+
+i Table of Contents1. Introduction. 1 2. Definitions and Statement of the Main Theorem. 52.1. Systems. 5
+
+2.2. Variational Systems. 52.3. Pseudointegrators. 7 2.4. Reference Signals and Plant. 72.5. Statement of the Main Theorem. 9 3. Linearized Controllability. 113.1. Controllability of time-varying linear systems. 11
+
+3.2. Vector Fields. 113.3. Nondegenerate pairs. 12 4. Proof of the Main Theorem. 165. A worked example. 22 6. Final remarks. 257. References. 26</pre>
+</body>
+</html>

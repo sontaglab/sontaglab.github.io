@@ -1,0 +1,667 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/88cdcdec.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/88cdcdec.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "formatted.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Pass0: Page 12
+Dvi file name: "formatted.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+ABSTRACT It has been known for a long time that certain controlla- bility properties are more difficult to verify than others. This article makes this fact precise, comparing controllability with accessibility, for a wide class of nonlinear continuous time sys- tems. The original contribution is in formalizing this compar- ison in the context of computational complexity.
+
+x1. Introduction.
+
+The classical Kalman controllability condition allows one to test in an algebraic manner if a (finite dimensional) lin- ear continuous time system is controllable or not. The test is based on simple linear algebra (Gaussian elimination) and can be efficiently carried out in a digital computer. Just as in the linear case, controllability is a central property to be checked for nonlinear systems. Before any controller design is attempted, it is important to know if one can steer any state to any other state. Actually, in the nonlinear case, the properties of local controllability about a state ("is it possible to reach any state in a neighborhood of a given x
+
+0
+
+from x
+
+0
+
+?", or "is it
+
+possible to control every state in a neighborhood of a given x
+
+0
+
+to x
+
+0
+
+?") are even more basic and not necessarily equivalent to
+
+the respective global notions. Even more, there are variants of the local notions, which have to do with the possibility of controlling to (or from) nearby states in small time, or using small control amplitudes, or without large excursions.
+
+Briefly, the status of the nonlinear case is as follows. The general problems of finding necessary and sufficient conditions for deciding when a system is controllable (locally or globally, in any of their variants) are still open, even if one restricts to classes of systems with much extra structure, such as bilin- ear systems. There has been substantial progress however in finding either necessary or sufficient conditions, under the as- sumption that the system is for instance described by analytic differential equations (to be refered from now on as "analytic systems"). One does know that local controllability can be in principle checked in terms of linear relations between the Lie brackets of the vector fields defining the system ([?]), and isolating the explicit form of these relations has been a major focous of research. It is impossible to even attempt here to give a reasonably complete list of references to this very active area of research. We give just the reference [?] as an example and source of further bibliography.
+
+*Research supported in part by US Air Force Grant 0247.Pass1: Page 2
+
+
+The simplest necessary condition for controllability is (again with technical variants) that of accessibility, sometimes also refered to as "weak controllability". This is the property that one should be able to reach a set of full dimension from each state, -or for the local problem, from a fixed given state. For (analytic) systems, this property turns out to be equiva- lent to being able to steer each state to every other state us- ing possibly "negative time" motions in which the differential equation is solved backwards in time. Of course the latter mo- tions are unrealizable in most physical systems, so the resulting weak controllability notion is mostly of purely mathematical interest. (However, under extra conditions such as the exis- tence of suitable Hamiltonian structures, it is possible to prove the equivalence of controllability and accessibility. For linear systems, the concepts are also equivalent.) The advantage of considering accessibility is that this is basically the property that a certain group action be transitive, and therefore it can be characterized precisely through a Lie rank condition. See for instance [?], [?], or [?] for an introduction to the topic of accessibility.
+
+The experience with accessibility and controllability sug- gests that the latter will be much more difficult to character- ize. Our objective is to make this relative difficulty precise in some formal sense. In the spirit of computational complexity, we pick a class of systems ("bilinear subsystems") and show that for this class the accessibility property can be decided in polynomial time while controllability is NP-hard. Recall that NP-hard problems are widely believed to be intractable, and one of the main open problems in theoretical computer science is that of establishing rigorously this intractability, the famous "P 6= NP" question ([?], [?]). It could be argued that by proving that controllability is NP-hard, we are not in fact establishing precisely that this is harder than accessibility, only that this is true provided that the above open question in computer sci- ence is resolved. This is however the standard way in which one "proves" that a problem is hard in combinatorics, opera- tions research, theoretical computer science, or, in a control- theoretic framework, [?].
+
+The choice of a class of systems in order to quantify the above relative difficulty is critical. A class which is too large will contain systems for which even accessibility may be un- decidable, while a small class (such as linear systems) may be so that controllability itself is easy to decide. The next two sections discuss this point and give some basic facts about complexity. Then we state our results. The proof of the main theorem is given in [?] and will not be repeated here, but the last section provides the proof of a result not included in that reference.Pass1: Page 3
+
+
+For other work dealing with difficulty of computation in the context of control and system theory, see the remarks re- garding bilinear systems in [?], and [?] regarding the unde- cidability of the realization problem; more recently [?] (and references there) dealt with the study of complexity of decen- tralized control problems, while [?] characterized the complex- ity of decision problems for an algebra used to study piecewise linear control systems.
+
+x2. Systems and basic complexity issues.
+
+When applying computational complexity or, more gener- ally computability techniques, one must clarify what it means to "give" a system -and possibly also an initial state x
+
+0
+
+- and
+
+what it means to "decide" if the system is controllable from x
+
+0
+
+, reachable from x
+
+0
+
+, and so forth.
+
+In its most general sense, given could be taken to mean "given a recursive description" of the system, that is, one should provide a computable real function f , as well as a com- putable vector x
+
+0
+
+if a fixed initial state is of interest. See
+
+for instance [?] for a discussion of computable analysis. De- cide should in that context mean provide a computer algorithm which, when presented as an input with the description of f (and x
+
+0
+
+), will answer "yes" or "no" after a finite number of
+
+steps. The precise definition of "algorithm" is not very criti- cal in this context; for instance multitape Turing machines as in [?], or several types of abstract computer models. For this and other related notions, we refer the reader to the standard literature in complexity theory, which we shall not repeat here.Pass1: Page 4
+
+
+When using this general concept, controllability (as well as accessibility) is undecidable for trivial reasons, even for lin- ear systems. For example, the one-dimensional system .x = bx is controllable if and only if b is nonzero. But it is impossible to decide if a "given" real number is zero or not: see [?], the- orem 6.1. On the other hand, when when talks about actual systems, one has in mind a finite "explicit" representation of the structure and of the parameters of the system, typically obtained either from physical principles or from identification data.
+
+A good compromise between generality and expliciteness of that of restricting to classes such as that of systems defined by polynomial or rational equations, or more generally systems involving finite algebraic descriptions (which could include for instance trigonometric functions as those that appear naturally in mechanical models), and to ask that all parameters be given by rational numbers. For simplicity, we restrict here to the polynomial case (and later, for the main result, to a subclass of these). Thus we consider only systems
+
+.x(t) = f (x(t); u(t)) (\Sigma ) where the state x(t) evolves in a nonsingular algebraic set M ` IR
+
+N
+
+, controls take values on an Euclidean space IR
+
+m
+
+,
+
+and f is a polynomial function on IR
+
+N
+
+\Theta  IR
+
+m
+
+. An explicit
+
+representation of M by equations is assumed given, that is, a set of l polynomials with rational coefficients OE
+
+i
+
+(x
+
+1
+
+; : : : ; x
+
+N
+
+),
+
+i = 1; : : : ; l with OE
+
+i
+
+(0) = 0 and such that the Jacobian of
+
+(OE
+
+1
+
+; : : : ; OE
+
+l
+
+)
+
+0
+
+(prime indicates transpose) has constant rank, say equal to N \Gamma  n. Thus, M is a manifold of dimension n, and f is aPass1: Page 5
+
+
+vector of N polynomials in N + m variables, which is tangent to M at each point of M . This last condition means that the Lie derivatives L
+
+X
+
+OE
+
+i
+
+vanish identically on M , for each vector
+
+field X of the type f (\Delta ; u). (Recall that L
+
+X
+
+OE, for a vector field
+
+X and function OE, denotes the dot product
+
+rOE:X where rOE is the gradient of OE.)
+
+"Giving" the polynomial system \Sigma  means specifying the coefficients of the OE
+
+i
+
+'s and of the polynomial entries of f ; we
+
+assume that these coefficients are rational numbers expressed in binary notation. By
+
+size \Sigma 
+
+we denote the total size of the data in bits. A fixed data struc- ture is assumed; the precise form is irrelevant up to constant factors. When we say that a certain property is decidable for a subclass of such systems, we mean that there is a fixed algo- rithm which, when given the data describing a system in this subclass, will eventually stop and answer whether this prop- erty holds or not. The property can be decided in polynomial time if there is in addition a polynomial P such that the al- gorithm will stop after at most P (size \Sigma ) computational steps. In computational complexity, problems decidable in polyno- mial time are considered "easy" compared to problems that necessarily take as much, or more, time to compute as cer- tain "hard" combinatorial problems (the "travelling salesman problem", the "Boolean satisfiability" problem). Such harder problems are called NP-hard problems (see e.g. [?], [?]).
+
+Using the Kalman controllability matrix, it is an easy ex- ercise to prove that for the subclass of linear systems (for whichPass1: Page 6
+
+
+f is a linear map and M = IR
+
+N
+
+), controllability can indeed be
+
+decided in polynomial time.
+
+x3. Controllability and accessibility.
+
+We define the time-T accessible set A
+
+T
+
+(x) as the set of
+
+states that can be reached from x in time exactly T ; when T is negative, we mean states that from which x can be reached in time \Gamma T . We take any reasonable family of controls: all mea- surable locally essentially bounded controls, piecewise contin- uous controls, or even piecewise constant controls; the results to be given will be the same for either of these classes. The union of all the sets A
+
+T
+
+(x), over all nonnegative T , is denoted
+
+A
+
++
+
+(x); this is the set of states reachable from x. Similarly,
+
+A
+
+\Gamma 
+
+(x) is the union over T ^ 0, the set of states controllable
+
+to x. With these notations, for instance, controllability from x
+
+0
+
+means that A
+
++
+
+(x
+
+0
+
+) = M , controllability to x
+
+0
+
+means that
+
+A
+
+\Gamma 
+
+(x
+
+0
+
+) = M , and local reachability in small time means that
+
+for each T ? 0, x
+
+0
+
+is in the interior of the union of the sets
+
+A
+
+"
+
+(x
+
+0
+
+); 0 ^ " ^ T .
+
+The system \Sigma  is accessible if int A
+
++
+
+(x) 6= ; for each x 2 M .
+
+It is controllable if A
+
++
+
+(x) = M for all x. For simplicity, we deal
+
+here only with (global) accessibility and controllability. The paper [?] deals with local problems, providing results entirely similar to the global ones to be given. This will be proved in the next section:
+
+Proposition. Accessibility is decidable for the class of polynomial systems.Pass1: Page 7
+
+
+We don't know if controllability is decidable, but we are willing to risk a conjecture. The last part says that there must exist an algorithm that enumerates all controllable systems.
+
+Conjecture. Controllability is undecidable for the class of polynomial systems, but the class of all controllable polyno- mial systems is recursively enumerable.
+
+For the main result, we consider the subclass of bilinear subsystems. This consists of all polynomial systems with equa- tions
+
+.x = (A +
+
+m X
+
+i=1
+
+u
+
+i
+
+G
+
+i
+
+)x + Bu ; (3:1)
+
+where each of A; G
+
+1
+
+; : : : ; G
+
+m
+
+is a square (rational) matrix of
+
+size N \Theta  N and B is of size N \Theta  m. That is, f is linear in each of x and u separately. Recall that the system evolves in an algebraic submanifold M . These are systems whose dy- namics can be embedded algebraically into a bilinear system. This is a rich enough class of systems for the purposes of this paper, and in fact includes many subclasses of interest. For instance, bilinear systems result when one takes all the OE
+
+i
+
+j 0
+
+(so n = N; M = IR
+
+N
+
+,) and in particular linear systems result
+
+when also all the G
+
+i
+
+are zero. Further, minimal realizations
+
+of finite Volterra series are always of this type ([?]). The data specifying such a system consists of the entries of the matri- ces A; G
+
+1
+
+; : : : ; G
+
+m
+
+; B and the coefficients of the polynomials
+
+defining M .
+
+The main result is as follows; the proof is given in [?]. Theorem. For the class of bilinear subsystems, accessi- bility can be decided in polynomial time but controllability isPass1: Page 8
+
+
+NP-hard. x4. Acessibility of polynomial systems.
+
+We now prove the (easy) Proposition stated in the previ- ous section.
+
+Let F be the set of all polynomial vector fields on IR
+
+N
+
+(with rational coefficients), thought of as a Lie algebra under the standard Lie bracket operation,
+
+[X; Y ] := Y
+
+\Lambda 
+
+X \Gamma  X
+
+\Lambda 
+
+Y
+
+("\Lambda " indicates Jacobian). Note that f (\Delta ; u) is such a vector field, for each fixed control value u. Alternatively, we shall also think of F as the free module Q[x
+
+1
+
+; : : : ; x
+
+n
+
+]
+
+n
+
+of all n-tuples of
+
+polynomials in x
+
+1
+
+; : : : ; x
+
+n
+
+.
+
+It is known that accessibility is equivalent to the property that the accessibility Lie algebra L of \Sigma  should have rank n = dim M at each x 2 M . This Lie subalgebra of F is defined as follows.
+
+We let L
+
+i
+
+, i * 1, be the sequence of Q-linear subspaces of
+
+F defined inductively by:
+
+L
+
+1
+
+:= span ff (\Delta ; u); u 2 IR
+
+m
+
+g
+
+and
+
+L
+
+i+1
+
+:= L
+
+i
+
++ span f[f (\Delta ; u); X] j u 2 IR
+
+m
+
+; X 2 L
+
+i
+
+g :Pass1: Page 9
+
+
+Then L is the union of all the L
+
+i
+
+. Note that L
+
+1
+
+is in fact
+
+finite dimensional, because f is also polynomial in u, so the coefficients of the monomials in u give generators; it follows that there is also a finite (and computable) set of generators for each L
+
+i
+
+. For each fixed x 2 IR
+
+N
+
+, we let
+
+L
+
+i
+
+(x)
+
+denote the set of values fl(x); l 2 L
+
+i
+
+g. This is a (Q-)subspace
+
+because L
+
+i
+
+is. Similarly we define the subspaces L(x). Then,
+
+accessibility is equivalent to
+
+dim L(x) = n for all x 2 M . (Actually, one typically makes the statement in terms of the IR-vector space spanned by L, but both statements are equivalent.)
+
+Finally, we let N
+
+i
+
+be the Q[x
+
+1
+
+; : : : ; x
+
+N
+
+]-module of polyno-
+
+mial vector fields obtained by taking all linear combinations of elements of L
+
+i
+
+with polynomial coefficients, and we let N be
+
+the union of all of these, or equivalently the module spanned by L. By definition L ` N , and since pointwise each element of N (x) (defined analogously as above) is a linear combination of elements of L(x), we have that in fact,
+
+L(x) = N (x) for all x.
+
+From the definition of the L
+
+i
+
+'s, we know that N
+
+i
+
+is gener-
+
+ated by vectors of polynomials of degree at most
+
+2
+
+i\Gamma 1
+
+sPass1: Page 10
+
+
+where s is the maximal degree in x among the entries of f . We shall apply the following theorem (see [?]) with oe(j) := 2
+
+j\Gamma 1
+
+s
+
+and l = k = N :
+
+Fact. Assume that oe : IN ! IN is a given computable function on natural numbers. Then there exists a computable function fl : IN \Theta  IN ! IN with the following property. If
+
+N
+
+1
+
+` N
+
+2
+
+` : : : ` N
+
+j
+
+` : : :
+
+is any increasing sequence of submodules of Q[x
+
+1
+
+; : : : ; x
+
+l
+
+]
+
+k
+
+such
+
+that for each j the submodule N
+
+j
+
+can be generated by polyno-
+
+mials of degree at most oe(j) then t := fl(l; k) is such that
+
+N
+
+t
+
+= N
+
+o/
+
+for all o/ ? t.
+
+Thus there is an algorithm giving an integer t so that N
+
+t
+
+= N , and therefore such that
+
+L
+
+t
+
+(x) = L(x)
+
+for all x. Thus, it is only necessary in order to check accessi- bility to decide if a matrix of polynomial functions (obtained by listing the generators of L
+
+t
+
+) has rank n at each point in an
+
+algebraic set M . This can be expressed as a problem in the first order theory of real closed fields and is therefore indeed decidable ([?]).
+
+Of course, decidability is a property of rather limited "practical" interest; for instance determining the above rank condition may easily take doubly exponential time in the size of the data. In that sense, the result for bilinear subsystems is much more interesting. Nonetheless, it seems to be of interest to ask about the ultimate limitations of what can be checked in control theory.Pass1: Page 11
+
+
+x5. References. [1] Aberth, O., Computable Analysis, McGraw-Hill, New York, 1980.
+
+[2] Aho,A.V., J.Hopcroft, and J.D.Ullman, The Design and Analysis of Computer Algorithms, Addison-Wesley, Reading, 1974.
+
+[3] Boothby, W.M., and E.N. Wilson, "Determination of the transitivity of bilinear systems," SIAM J.Control and Opt. 17(1979): 212-221.
+
+[4] Collins,G., "Quantifier elimination for real-closed fields by cylindrical algebraic decomposition," in Springer Lec. Notes in Comp. Sci. 35(1975): 134-183.
+
+[5] Crouch,P.E., "Dynamical realizations of finite Volterra se- ries," Ph.D. Thesis, Harvard, 1977.
+
+[6] Garey,M.R., and D.Johnson, Computers and Intractabil- ity: A Guide to the Theory of NP-Completeness, W.H.Freeman and Company, San Francisco, 1979.
+
+[7] Hermann,R. and A.J.Krener, "Nonlinear controllability and observability," IEEE Trans.Autom.Ctr. 22:728-740.
+
+[8] Isidori,A., Nonlinear Control Systems: An Introduction, Springer, Berlin, 1985.
+
+[9] Papadimitriou,C.H., and K.Steiglitz, Combinatorial Op- timization: Algorithms and Complexity, Prentice-Hall, Engle- wood Cliffs, 1982.
+
+[10] Papadimitriou,C.H., and J.Tsitsiklis, "Intractable prob- lems in control theory," SIAM J.Control and Opt. 24(1986): 639-654.
+
+[11] Seidenberg, A., "On the length of a Hilbert ascending chain," Proc. Amer. Math. Soc. 29 (1971): p.443.Pass1: Page 12
+
+
+[12] Sontag,E.D., "On certain questions of rationality and de- cidability," J. Comp. Syst. Sci. 11(1975): 375-381.
+
+[13] Sontag,E.D., "Real addition and the polynomial hierar- chy," Inform. Proc. Letters 20(1985): 115-120.
+
+[14] Sontag, E.D., "Controllability is harder to decide than accessibility," SIAM J.Control and Opt. 26,5 (1988): to ap- pear.
+
+[15] Sussmann,H.J., "Lie brackets, real analyticity, and geometric control," in Differential Geometric Control the- ory (R.W.Brockett, R.S.Millman, and H.J.Sussmann, eds.), Birkhauser, Boston, 1983.
+
+[16] Sussmann,H.J., "A general theorem on local controlla- bility," SIAM J. Control and Opt., 25(1987): 158-194.</pre>
+</body>
+</html>

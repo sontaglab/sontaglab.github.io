@@ -1,0 +1,1254 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iiss-asw.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/iiss-asw.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+A Characterization of Integral Input to State Stability
+
+David Angeli Dip. Sistemi e Informatica
+
+University of Florence
+
+50139 Firenze, Italy angeli@dsi.unifi.it
+
+E. D. Sontag\Lambda  Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903, USA
+
+sontag@hilbert.rutgers.edu
+
+Yuan Wangy Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@math.fau.edu
+
+Abstract The notion of input to state stability (iss) is now recognized as a central concept in nonlinear systems analysis. It provides a nonlinear generalization of finite gains with respect to supremum norms and also of finite L2 gains. It plays a central role in recursive design, coprime factorizations, controllers for non-minimum phase systems, and many other areas. In this paper, a newer notion, that of integral input to state stability (iiss), is studied. The notion of iiss generalizes the concept of finite gain when using an integral norm on inputs but supremum norms of states, in that sense generalizing the linear "H2" theory. It allows to quantify sensitivity even in the presence of certain forms of nonlinear resonance. We obtain here several necessary and sufficient characterizations of the iiss property, expressed in terms of dissipation inequalities and other alternative and nontrivial characterizations. These characterizations serve to show that integral input to state stability is a most natural concept, one which might eventually play a role at least comparable to, if not even more important than, iss.
+
+\Lambda Supported in part by US Air Force Grant F49620-98-1-0242
+
+yCorresponding author. Supported in part by NSF Grant DMS-9457826
+
+1
+
+1 Introduction One of the main issues in control design concerns the study of closed-loop sensitivity to disturbances, and, more generally, of the dependence of state trajectories on actuator and measurement errors, magnitudes of tracking signals, and the like. In linear systems theory, classical frequency-domain measures of performance such as root loci and gain-phase characteristics have led to the modern theories of "H1" control and its variants.
+
+During the last 10 years or so, the notion of input to state stability (iss) was formulated (in [23]), and quickly became a foundational concept upon which much of modern nonlinear feedback analysis and design rest. As an illustration, let us point out Kokotovic's recent survey paper [10], intended as a summary of current work and future directions on nonlinear design, in which the notion of iss plays a central unifying concept. Several current textbooks and monographs, including [12, 13, 14, 21], make use of the iss notion and results, sometimes in an essential manner.
+
+Applications of input to state stability are now widespread. Besides the many applications to recursive design in the above-mentioned books, let us merely cite a few additional references: singular perturbation analysis [3], powerful global small-gain theorems [11], foundations of tracking design [19], supervisory/switching adaptive control [6], observers [8], almost-disturbance decoupling for non minimum-phase systems [9], and feedback stabilization with bounded controllers [29]. Moreover, this concept has many equivalent versions, which indicates that it is mathematically natural: there are characterizations in terms of dissipation, robustness margins, and classical Lyapunov-like functions; see e.g. [25, 26].
+
+As remarked in [24], input-to-state stability is a nonlinear generalization both of finite gain with respect to supremum norms and of finite L2 gain ("nonlinear H1"); this property takes account of initial states in a manner fully compatible with classical Lyapunov stability, and replaces finite linear gains, which represent far too strong a requirement for general nonlinear operators, with "nonlinear gains".
+
+A system which is iss exhibits low overshoot and low total energy response when excited by uniformly bounded or energy-bounded signals respectively. These are highly desirable qualitative characteritics. However, it is sometimes the case that feedback design does not render iss behavior, or that only a weaker property than iss is verified in a step in recursive design.
+
+One such weaker, but still very meaningful, property was given the name of integral input to state stability, iiss for short, in the recent paper [24]. This property reflects the qualitative property of small overshoot when disturbances have finite energy, and provides a qualitative analog of "finite H2 norm" for linear systems. This is a property with obvious physical significance and relevance. The paper [24] showed that iiss is, in general, strictly weaker than iss, and provided a very conservative Lyapunov-type sufficient condition. The present paper provides several foundational results, showing that the iiss property is a most natural one to be expected for well-behaved nonlinear systems, being equivalent to the combination of well-known dissipation and detectability properties, and admitting elegant Lyapunov-theoretic characterizations. We are confident that, once that the results in this paper become more widely known, iiss will play a role at least as prominent as the one that iss currently has.
+
+In fact, the notion of iiss, and the results in this paper, which were previously announced in electronic preprint form, have already played a role in several recent control works. For example, the iiss property appears in the latest approaches to supervisory design in adaptive control. In the paper [7], Hespanha and Morse -- citing preprints of this work -- studied the closed-loop system obtained when a high-level supervisor directs the switching among a family of candidate controllers for an uncertain plant. Their convergence analysis was based on the assumption that each controller stabilizes the respective plant in an iiss sense with respect to an input which is related to a measure of estimator performance. We quote from their paper: "The use of integral-input-to-state stability in the context of supervisory control of nonlinear systems, allowed us to weaken the requirements on the candidate controllers being used. It also seems quite natural when the performance signals are defined as `integral norms' of the output estimation errors." Another example of the use of the iiss concept can be found in the recent work of Liberzon [15], who approached the task of achieving
+
+2
+
+disturbance attenuation in the iiss sense for nonlinear systems using bounded controls. He derived a universal formula based on hysteresis switching, in the context in particular of switched and hybrid systems. The notion of integral input to state stability played a key role in this work. Yet another direct motivation for the study of the iiss property is as follows.
+
+1.1 Tracking Problems In the paper [19], Marino and Tomei proposed the reformulation of tracking problems by means of the notion of input to state stability. Their goal was to strengthen the robustness properties of tracking designs, and they found the notion of iss to be instrumental in the precise characterization of performance. In fact, they emphasized the novelty of using the iss notion in this role. It turns out, however, that a typical passivity-based tracking design may well not result in iss behavior, as we illustrate now by means of an example in robotic control.
+
+Consider the manipulator shown in Fig. 1. A simple model is obtained considering the arm as a
+
+q r F
+
+t
+
+m
+
+M
+
+Figure 1: A Manipulator segment with mass M and length L, and the hand as a material point with mass m. If we denote with r the position of the hand and with ` the angle of the arm, the equations for such a system are:
+
+(mr2 + M L2=3) "` + 2mr .r .` = o/
+
+m"r \Gamma  mr .`2 = F ; (1)
+
+where F and o/ indicate external torques. We now study the closed-loop system which is obtained by choosing o/ and F as:
+
+o/ = \Gamma kd1 .` \Gamma  kp1(` \Gamma  `d) F = \Gamma kd2 .r \Gamma  kp2(r \Gamma  rd) ; (2) with kp1; kp2 ; kd1; kd2 ? 0. (For notational simplicity, we will also write q = [`; r]T ). This represents a typical passivity-based tracking design, when we think of rd and `d as signals to be followed by r and `.
+
+Normally, one establishes tracking behavior, as well as the closed-loop stability of the system when the reference signal qd = (`d; rd) is constant; for such signals, one obtains q0 ! 0 and q ! qd as t ! +1. In the spirit of input-to-state stability, however, it is natural to ask what is the sensitivity of the design to additive measurement noise. That is, suppose that the input applied to the system is, instead of (2):
+
+o/ = \Gamma kd1( .` + d11) \Gamma  kp1(` + d12 \Gamma  `d) F = \Gamma kd2( .r + d21) \Gamma  kp2(r + d22 \Gamma  rd) ; (3)
+
+3
+
+where the dij (t)'s are observation errors. The closed-loop system that results is then as follows:
+
+(mr2 + M L2=3)"` + 2mr .r .` = \Gamma kd1 .` \Gamma  kp1 ` + u1
+
+m"r \Gamma  mr .`2 = \Gamma kd2 .r \Gamma  kp2r + u2 ; (4)
+
+or equivalently, in classical first-order control system form (denoting .q by z),
+
+.q1 = z1; .q2 = z2;
+
+.z1 = \Gamma 2mq
+
+2z1z2\Gamma kp1q1\Gamma kd1 z1
+
+mq22+ML2=3 +
+
+kp1u1 mq22+ML2=3 ;
+
+.z2 = q2z21 \Gamma  k
+
+p2 q2
+
+m \Gamma 
+
+kd2z2
+
+m +
+
+kp2 u2
+
+m ;
+
+(5)
+
+where
+
+u1 = \Gamma kd1d11 \Gamma  kp1 (d12 \Gamma  `d)
+
+and
+
+u2 = \Gamma kd2d21 \Gamma  kp2 (d22 \Gamma  rd)
+
+can be though of as external inputs to the closed-loop system.
+
+The goal stated earlier is to qualitatively analyze the sensitivity of the full state (q; z) as a function of the measurement errors dij . As these errors are potentially arbitrary functions, this problem amounts to the study of stability properties with respect to arbitary input functions u = (u1; u2).
+
+It is worth pointing out that we are led to exactly the same mathematical problem if interested, instead, in another very obvious question, namely, in the analysis of the behavior of the state (q; z) in response to attempts to follow time-varying tracking signals, even in the absence of observation errors. Indeed, in that case the dij's would be zero, but the different possible tracking functions `d and rd would still give rise to potentially arbitrary inputs u1 and u2. In summary, either of these two basic control questions: sensitivity to measurement error, or analysis of time-varying (instead of merely constant) tracking signals, gives rise to the problem of studying stability of the system with respect to the inputs u.
+
+As in current nonlinear control studies, and specifically as in [19] for tracking problems, one may ask then if the system (5) is iss when u is taken as an input. (The authors of [19] required tracking controllers to have an iss property with respect to disturbances acting on the system. In the special case when the disturbances are matched to the control, this amounts to the problem studied here.) In particular, if the system were to be iss, then bounded inputs u should result in bounded trajectories (iss is a stronger property than "bounded-input bounded-state" stability). However, there are bounded inputs which produce nonlinear resonance behavior, resulting in unbounded state trajectories, which implies that this system is not iss. Indeed, the input shown in Figure 2 has the
+
+Figure 2: Input Signal property that, for a suitable initial state, the ensuing trajectory is unbounded. Figure 3 shows the "r" component of the state of a certain solution which corresponds to this input (in Appendix A.3,
+
+4
+
+Figure 3: Nonlinear Resonance we explain how this input and trajectory were calculated).
+
+In conclusion, the tracking system behavior exhibits unstable behavior with respect to measurement disturbances and/or with respect to time-varying reference signals. One might hope, however, given the simplicity and common use of these designs, that some sort of robustness property is verified for this system. The study of this question, for this example, led to the work reported in the present paper. The answer turns out to have wide applicability. We discovered that the weaker but still very useful property of iiss is always satisfied for the passivity controller in our robotic example, even though iss is not. This property is defined precisely in the next section; after stating the main results, we will show why it holds for the example.
+
+Outline of Paper In this paper, we provide a complete, necessary and sufficient, Lyapunov-like characterization of the iiss property. Just as the equivalences for iss, which have found wide applicability and serve to justify the iss concept, are derived from its Lyapunov characterization, we expect that the current paper will be the first step in the understanding of which system properties are equivalent to iiss. In addition, the characterizations allow one to consider "LaSalle" types of dissipation inequalities (semidefinite derivatives), filling-in a theoretical gap in the iss literature.
+
+Section 2 discusses the main concepts and states the main results. It also explains how the notion presented here represents the obvious generalization of "finite H2 gain" under nonlinear coordinate changes. After that, we return, in Section 3, to the robotics example discussed earlier, and we verify, using the characterizations presented in the paper, why the system indeed satisfies the iiss property. Then, in Section 4, we provide the main proofs of this paper. In Section 5, we provide a counterexample to the conjecture (which would seem true at first) that iiss might be equivalent to simply forward completeness plus 0-gas. Section 6 discusses several related remarks for dual notions of observability. Section 7 summarizes the conclusions of the paper. Finally, the Appendix collects some technical lemmas and the details on the numerical calculations that led to Figures 2 and 3.
+
+2 Definitions and Statements of Main Results Consider the system
+
+.x = f (x; u) (6)
+
+with states x(t) evolving in Euclidean space Rn . Here, controls (or inputs) are measurable and locally essentially bounded functions u : R*0 ! Rm , and f : Rn \Theta  Rm ! Rn is assumed to be locally Lipschitz.
+
+5
+
+Given any control u and any , 2 Rn , there is a unique maximal solution of the initial value problem .x = f (x; u), x(0) = ,. This solution is defined on some maximal open interval, and it is denoted by x(\Delta ; ,; u).
+
+Definition 2.1 ([24]) System (6) is integral input-to-state stable (iiss) if there exist functions\Lambda  ff 2 K1, fi 2 KL, and fl 2 K, such that, for all , 2 Rn and all u, the solution x(t; ,; u) is defined for all t * 0, and
+
+ff(jx(t; ,; u)j) ^ fi(j,j ; t) + Z
+
+t
+
+0 fl(ju(s)j) ds (7) for all t * 0, where j\Delta j denotes the standard Euclidean norm. 2
+
+Observe that a system is iiss if and only if there exist functions fi 2 KL and fl1; fl2 2 K such that
+
+jx(t; ,; u)j ^ fi(j,j ; t) + fl1 `Z
+
+t
+
+0 fl
+
+2(ju(s)j) ds' (8)
+
+for all t * 0, all , 2 Rn , and all u.
+
+Also note that if system (6) is iiss, then it is 0-gas, that is, the 0-input system
+
+.x = f (x; 0) is globally asymptotically stable (gas). (That is, the zero solution of this system is globally asymptotically stable.)
+
+Definition 2.2 A continuously differentiable function V : Rn ! R is called an iiss-Lyapunov function for system (6) if there exist functions ff1, ff2 2 K1, oe 2 K, and a continuous positive definite function ff3, such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) (9)
+
+for all , 2 Rn , and
+
+DV (,)f (,; _) ^ \Gamma ff3(j,j) + oe(j_j) (10)
+
+for all , 2 Rn and all _ 2 Rm . 2
+
+Note that the estimate (9) amounts to the requirement that V must be positive definite (i.e., V (x) ? 0 for all x 6= 0 and V (0) = 0), and proper (i.e, radially unbounded, namely, V (x) ! 1 asj
+
+xj ! 1).
+
+Notice the difference between Definition 2.2 and the dissipation characterization of iss (cf. [25, 26]): the iss property is equivalent to the existence of a V as here but for which ff3 is required to be unbounded (in fact, class K1). As an example, consider the one dimensional system:
+
+.x = \Gamma  arctan x + u: Let V (x) = x arctan x. Then
+
+DV (,)f (,; _) = arctan , (\Gamma  arctan , + _) + ,1 + ,2 (\Gamma  arctan , + _)
+
+^ \Gamma (arctan j,j)2 + 2 j_j : This shows that V is an iiss-Lyapunov function for the system. But in the estimate (10) we have ff3(r) = (arctan r)2, which is not of class K1, so one does not have an iss-type estimate. Indeed,
+
+\Lambda We use standard terminology, cf. [5]: K is the class of functions [0
+
+; 1) ! [0; 1) which are zero at zero, strictly
+
+increasing, and continuous, K1 is the subset of K functions that are unbounded, L is the set of functions [0; +1) ! [0; +1) which are continuous, decreasing, and converging to 0 as their argument tends to +1, KL is the class of functions [0; 1)2 ! [0; 1) which are class K on the first argument and class L on the second argument. A positive definite function [0; 1) ! [0; 1) is one that is zero at 0 and positive otherwise.
+
+6
+
+this system does not admit any iss-Lyapunov function, since the system is not iss (the trajectory with x(0) = 1 and u(t) j ss=2 is unbounded).
+
+Our main result will establish that the existence of a smooth iiss-Lyapunov function is necessary as well as sufficient for the system to be iiss.
+
+This fact will be stated in several essentially equivalent ways. One possibility is to relax the positive definiteness requirement on ff3 to just nonnegativity, or simply omit it, but to assume explicitly that the system is 0-gas.
+
+Another possibility is to deduce the 0-gas property from LaSalle's invariance principle. This last variant is of considerable interest in applications such as the robotics example discussed in Section 3, and it may be stated using concepts of detectability, as is by now standard in the nonlinear dissipation literature (see, e.g. [30], section 3.2). Let us say that an output for the system (6) is a continuous map h : Rn ! Rp (for some p), with h(0) = 0. For each initial state , 2 Rn , and each input u, we let y(t; ,; u) be the corresponding output function, i.e., y(t; ,; u) = h(x(t; ,; u)) (defined on some maximal interval [0; T,;u)). The system (6) with output h is said to be weakly zero-detectable if, for each , such that T,;0 = 1 and y(t; ,; 0) j 0, it must be the case that x(t; ,; 0) ! 0 as t ! 1. Finally, we will say for the purposes of this paper that the system (6) with output h is dissipative if there exists a continuously differentiable, proper, and positive definite function V (a storage function for the system), together with a oe 2 K and a continuous positive definite function ff4, such that
+
+DV (,)f (,; _) ^ \Gamma ff4(jh(,)j) + oe(j_j) (11) for all , 2 Rn and all _ 2 Rm . If this property holds with a V which is also smooth, we say that the system (6) with output h is smoothly dissipative. Finally, if (11) holds with h = 0, i.e., if there exists a (smooth) proper and positive definite V , and a oe 2 K, so that
+
+DV (,)f (,; _) ^ oe(j_j) (12) holds for all , 2 Rn and all _ 2 Rm , we say that the system (6) is zero-output (smoothly) dissipative.
+
+We are now able to state the main conclusions of this paper.
+
+Theorem 1 For any system (6), the following properties are equivalent:
+
+1. The system is iiss. 2. The system admits a smooth iiss-Lyapunov function. 3. There is some output which makes the system smoothly dissipative and weakly zero-detectable. 4. The system is 0-gas and zero-output smoothly dissipative.
+
+The main step of the proof of Theorem 1 is given in Section 4, where we show 1,2 and also we prove Proposition 2.5 (see below), which characterizes the 0-gas property. The implication 4)2 will be immediate from Proposition 2.5. The remaining implications are routine, so we can dispose of them immediately, as follows. First of all, notice that 2)3. To see this, take the iissLyapunov function V as a storage function, and consider the inequality in (10). We introduce the output function h(x) := ff3(jxj). The system is weakly zero-detectable (in fact, it is even "zeroobservable"), because h(x) = 0 implies x = 0, since ff3 is positive definite. Moreover, with ff4 equal to the identity, we have that ff4(jh(,)j) = ff3(j,j), so (11) is the same as (10). Finally, we show that 3)4. Suppose that (11) holds. With _ = 0, we take V as a Lyapunov function for the zero-input system .x = f (x; 0). The zero-detectability condition means that the LaSalle invariance principle, with the Lyapunov function V , can be applied, and we conclude 0-gas. And since \Gamma ff4(h(,)) ^ 0, also (12) holds.
+
+Remark 2.3 We stated Theorem 1 requiring that the corresponding functions V (iiss-Lyapunov, storage) be smooth, that is, infinitely differentiable. This makes the existence of such V 's, which
+
+7
+
+is the hardest part to prove, more interesting. The sufficiency parts of the proofs do not require smoothness, however. In other words, system (6) is iiss if it admits an iiss-Lyapunov function, or if it has an output which makes the system dissipative and weakly zero-detectable or if it is 0-gas and zero-output dissipative. 2
+
+Remark 2.4 We used the adjective "weak" when defining zero-detectability in order to distinguish this notion from true detectability, or "(zero-input) output to state stability", cf. [27] and also Section 6 below, where one asks that "small output (when u j 0) implies small state", as opposed to merely asking that "zero output implies small state" as here. 2
+
+A Characterization of 0-GAS Control Systems In the proof Theorem 1, we utilize the following characterization of 0-gas systems. It is in itself a result of some interest.
+
+We call a positive definite function W : Rn ! R*0 semi-proper if there exist a function ss(\Delta ) of class K and a proper positive definite function W0 such that W = ss ffi W0. (It is easy to see that a continuous positive definite V : Rn ! R*0 is semiproper if and only if, for each r in the range of V , the sublevel set fx j V (x) ^ rg is compact.)
+
+Proposition 2.5 System (6) is 0-gas if and only if there exist a smooth semi-proper function W , a oe 2 K, and a continuous positive definite function ae : R*0 ! R*0 , such that
+
+DW (,)f (,; _) ^ \Gamma ae(j,j) + oe(j_j) (13) for all , 2 Rn and all _ 2 Rm .
+
+The sufficiency part follows from the standard Lyapunov results for autonomous systems: if (13) holds with W = ssffiW0, then W0 is a Lyapunov function for the 0-input system. (This is because (13) implies that DW0(,)f (,; 0) ! 0 for all , 6= 0.) The necessity implication will be proved in Section 4.
+
+Proof of 4)2 in Theorem 1. Let the functions V and oe be so that (12) holds. Since the system is 0-gas, by Proposition 2.5, there exists a smooth semi-proper, positive definite function V0 such that
+
+DV0(,)f (,; _) ^ \Gamma ae0(,) + oe0(j_j); 8 , 2 Rn ; 8 _ 2 Rm
+
+for some continuous positive definite function ae0 and some K-function oe0. Let V1(,) = V (,) + V0(,). It then clear that V1 is an iiss-Lyapunov function: it is proper because V0 is, and
+
+D(V + V0)(,)f (,; _) ^ \Gamma ae0(,) + oe0(j_j) + oe(j_j) gives an estimate as in (10).
+
+2.0.1 Motivation: Finite-Gain under Coordinate Changes As mentioned in the Introduction, we wish to explain briefly how the notion of iiss arises in an extremely natural manner when generalizing linear L2 to L1 gains (sometimes called "H2 gains") to nonlinear systems. (See also [24], which explains why, when we apply the same reasoning to "L2 to L2 stability" or to "L1 to L1 stability," we recover input to state stability, as well as [4] for more on changes of coordinates and iss.)
+
+For linear systems, one defines finite-gain stability, with respect to square norm on inputs and sup norm on states, by requiring the existence of constants c and *, with * ? 0, so that, for each input u(\Delta ) and each initial state ,, the solution x(t) of .x = Ax + Bu, x(0) = ,, satisfies the following estimate: j
+
+x(t)j ^ ce\Gamma *t j,j + c Z
+
+t
+
+0 ju(s)j
+
+2 ds for all t * 0 : (14)
+
+8
+
+(Actually, most textbooks omit the initial state, but this is the appropriate estimate if nonzero initial states are taken into account.) In a nonlinear context, it is natural to require that notions of stability should be invariant under (nonlinear) changes of variables. Let us see what this leads us to. Suppose that we take an origin-preserving state change of coordinates x = T (z) and an originpreserving change of variables u = S(v). That is, T : Rn ! Rn and S : Rm ! Rm are invertible, and they, as well as their inverses, are continuous; furthermore, we suppose that T (0) = 0 and S(0) = 0. Then, there are two functions ff1; ff2 2 K1 so that
+
+ff1(jzj) ^ jT (z)j ^ ff2(jzj) for all z 2 Rn , and, similarly, we can write jS(v)j2 ^ fl(jvj) for each v 2 Rm , for some fl 2 K1. Therefore, the estimate (14) gives us, in terms of z and v:
+
+ff1(jz(t)j) ^ ce\Gamma *tff2(jij) + c Z
+
+t
+
+0 fl(ju(s)j)
+
+2 ds for all t * 0 ;
+
+when x(t) = T (z(t)) and u(t) = S(v(t)) for all t, and i = z(0) = T \Gamma 1(,). In other words,
+
+jz(t)j ^ fi(jij ; t) + ff\Gamma 11 `Z
+
+t
+
+0 2c fl(ju(s)j)
+
+2 ds' for all t * 0 ;
+
+where we let fi(r; t) := ff\Gamma 11 (2cff2(r)e\Gamma *t). This is precisely as in the estimate (8), except that fi has what appears to be a very special form. Surprisingly, however, any KL function fi can be majorized by a function of this special form, see [24], so indeed one obtains the general notion of iiss with this reasoning.
+
+3 Verifying iiss for the Robotics Example In this section we verify the iiss property for the robotics system (4) discussed earlier. (The same example was used, for a different purpose -- namely, to illustrate a different nonlinear tracking design which produces iss, as opposed to merely iiss, behavior -- in the paper [1].) One interesting feature of this example, which in fact motivated much of the research reported here, is that it illustrates the use of the LaSalle-type condition that we obtained.
+
+To prove the iiss property, we introduce, as usual for mechanical manipulators, the following matrix notation:
+
+H(q) = ^ mr
+
+2 + M L2=3 0
+
+0 m * ; C(q; .q) = ^
+
+mr .r mr .`\Gamma 
+
+mr .` 0 * ;
+
+where H(q) is the inertia matrix, and C(q; .q) expresses the Coriolis torques. Then (4) can be rewritten as
+
+H(q)"q + C(q; .q) .q = \Gamma Kp(q \Gamma  qd) \Gamma  Kd .q;
+
+where Kp = diagfkp1; kp2 g, Kd = diagfkd1; kd2g, and qd = [`d; rd]T . We take the mechanical energy of the system as a candidate Lyapunov function:
+
+V (q; z) = 12 zT H(q)z + 12 qT Kpq = 12 .qT H(q) .q + 12 qT Kpq: (15) Taking derivatives in (15) with respect to time along trajectories of (4) yields the following passivitytype estimate:
+
+d dt V (q(t); z(t))
+
+= .q(t)T H(q(t))"q(t) + 12 .q(t)T ^ ddt H(q(t))* .q(t) + q(t)T Kp .q(t)
+
+= \Gamma  .q(t)T Kd .q(t) + .q(t)T Kpqd(t)^ \Gamma 
+
+c1j .q(t)j2 + c2jqd(t)j2 = \Gamma c1jz(t)j2 + c2ju(t)j2; (16)
+
+9
+
+for some sufficiently small number c1 ? 0 and some sufficiently large number c2 ? 0. Inspection of the equations shows that, when u j 0 and z j 0, necessarily q j 0 as well. Thus, thinking of z as an output, the system is weakly zero-detectable and dissipative; applying Theorem 1, one concludes that the system is iiss.
+
+4 Main Proofs The following Lemma will be needed several times during the proofs. Lemma 4.1 Let ae : R*0 ! R*0 be a continuous positive definite function. Then there exist ae1 2 K1 and ae2 2 L such that:
+
+ae(r) * ae1(r) ae2(r): (17)
+
+The Lemma will be proved in the appendix; it is used in establishing the following comparison theorem.
+
+Lemma 4.2 Given any continuous positive definite function ae : R*0 ! R*0 , there exists a KLfunction fi with the following property. Suppose that for some 0 ! ~t ^ 1,
+
+v : [0; ~t) ! R*0 and y : [0; ~t) ! R are, respectively, a continuous and a (locally) absolutely continuous function with y(0) * 0. Assume further that
+
+.y(t) ^ \Gamma ae\Gamma  maxfy(t) + v(t); 0g\Delta  (18)
+
+holds for almost all t 2 [0; ~t). Then, letting kvtk1 be the supremum of the restriction of v to the interval [0; t), the following estimate holds:
+
+y(t) ^ max ffi(y(0); t); kvtk1g for all t 2 [0; ~t) : (19)
+
+Proof. We start by picking ae1 2 K, ae2 2 L as in Lemma 4.1, for the function ae. Without loss of generality, we may assume that ae1 and ae2 are locally Lipschitz. Otherwise, we may always pick locally Lipschitz functions ~ae1 2 K and ~ae2 2 L that are majorized by ae1 and ae2 respectively to replace ae1 and ae2 respectively.
+
+A standard comparison principle asserts the existence of a function fi 2 KL having the following property: if q : [0; T ] ! R*0 is any absolutely continuous function that satisfies the differential inequality .q ^ \Gamma ae1(q)ae2(2q) almost everywhere, then it must be the case that q(t) ^ fi(q(0); t) for all t 2 [0; T ]. (See for instance Lemma 4.4 in [16]; the statement in that reference applies to q defined on all of [0; 1), but exactly the same proof works for a finite interval. One choice for fi(s; t) is fi(s; t) = z(t), where z is the solution of the scalar initial value problem .z = \Gamma ae1(z)ae2(2z), z(0) = s.)
+
+Let now v and y be as in the statement of the Lemma, and define
+
+t0 := minft * 0 j y(t) ^ kvtk1g (with t0 := ~t if y(t) ? kvtk1 for all t 2 [0; ~t)). For all t * t0 (if t0 ! ~t), y(t) ^ kvtk1 (because y is nonincreasing, since .y(t) ^ 0 for all t, and s 7! kvsk1 is nondecreasing), so (19) holds for all t * t0.
+
+Pick now any t 2 [0; t0). We have then that y(t) ? kvtk1 * v(o/ ) for all o/ 2 [0; t] (the last inequality by definition of kvtk1). Since y is nonincreasing, this means that also y(o/ ) * y(t) ? v(o/ ) for all such o/ . Therefore
+
+0 ^ y(o/ ) ^ y(o/ ) + v(o/ ) ^ 2y(o/ )
+
+for all o/ 2 [0; t]. From (18) and the fact that ae1 is nondecreasing, we conclude that
+
+.y ^ \Gamma ae1(y) ae2(2y) (20)
+
+10
+
+almost everywhere on [0; t]. Since t 2 [0; t0) was arbitrary, (20) holds on [0; t0) a.e. By the choice of fi, it follows that y(t) ^ fi(y(0); t) for all t 2 [0; t0). Thus (19) holds for all such t as well.
+
+The following is a consequence of Lemma 4.2. Corollary 4.3 Given any continuous positive definite function ae : R*0 ! R*0 , there exists aKL
+
+-function fi with the following property. For any 0 ! ~t ^ 1, and for any (locally) absolutely continuous function y : [0; ~t) ! R*0 and any measurable, locally essentially bounded function v : [0; ~t) ! R*0 , if
+
+.y(t) ^ \Gamma ae(y(t)) + v(t) (21)
+
+holds for almost all t 2 [0; ~t), then the following estimate holds:
+
+y(t) ^ fi(y(0); t) + Z
+
+t
+
+0 2v(s) ds for all t 2 [0;
+
+~t) : (22)
+
+Proof. First observe that one may always assume that the function ae is locally Lipschitz, for otherwise one may replace ae by any such function majorized by ae. Take now any y; v as in the statement, and consider the solution w(t) to the following initial value problem:
+
+.w(t) = \Gamma ae(jw(t)j) + v(t); w(0) = y(0) : It follows from the standard comparison principle that 0 ^ y(t) ^ w(t) for all t 2 [0; ~t). In particular, we can write ae(w(t)) instead of ae(jw(t)j) in the above equation. Now define v1 and w1 as follows:
+
+v1(t) = Z
+
+t
+
+0 v(s) ds; w
+
+1(t) = w(t) \Gamma  v1(t):
+
+Taking the derivative of w1 with respect to t yields
+
+.w1(t) = \Gamma ae(w(t)) + v(t) \Gamma  v(t) = \Gamma ae(maxfw1(t) + v1(t); 0g) for almost all t 2 [0; ~t), where the last equation holds because w is nonnegative. Let fi be a KLfunction as in Lemma 4.2 for this ae. It follows that
+
+w1(t) ^ max ffi(w1(0); t); kv1tk1g 8 t 2 [0; ~t); from which it follows that
+
+y(t) ^ w(t) ^ fi(w(0); t) + kv1tk1 + Z
+
+t
+
+0 v(s) ds = fi(y(0); t) + Z
+
+t 0 2v(s) ds for all t 2 [0; ~t).
+
+We also need the following result in our proofs. Let N denote the class of all functions k : R ! R that are:
+
+1. nondecreasing, 2. continuous, and 3. unbounded below (i.e., infx2R k(x) = \Gamma 1).
+
+We will prove: Proposition 4.4 Suppose that c : R2 ! R is such that c(\Delta ; y) 2 N for each y 2 R and c(x; \Delta ) 2 N for each x 2 R. Then, there exists some function k 2 N such that
+
+c(x; y) ^ k(x) + k(y) for all (x; y) 2 R2 .
+
+11
+
+This result generalizes the one given in [24], which applied only to functions of the form c(x; y) = g(x + y) with g 2 N . We will need the "exponential" form of this result, which is as follows:
+
+Corollary 4.5 Suppose that fl : R2*0 ! R is such that fl(\Delta ; s) 2 K for each s 2 R*0 and fl(r; \Delta ) 2 K for each r 2 R*0 . Then, there exists some function oe 2 K such that
+
+fl(r; s) ^ oe(r) oe(s) for all (x; y) 2 (R*0 )2. Proof. Consider c(x; y) := ln fl(ex; ey); then c is a class N function with respect to both arguments. Let k 2 N be as in Proposition 4.4; without loss of generality, we may assume that k is strictly increasing. Then oe(r) := ek(ln r) (and oe(0) = 0) establishes the Corollary.
+
+The proof of Proposition 4.4 will be given in the appendix.
+
+Proof of 2)1 in Theorem 1 We first prove that existence of a (just continuously differentiable, cf. Remark 2.3) iiss-Lyapunov function V implies iiss. So pick V so that (9)-(10) hold. Let ae1 2 K1 and ae2 2 L be functions as in Lemma 4.1 for ff3. We let eae be any positive definite function which is locally Lipschitz and satisfiese
+
+ae(r) ^ ae1 \Gamma ff\Gamma 12 (r)\Delta  ae2 \Gamma ff\Gamma 11 (r)\Delta  for all r * 0. By equation (9) we have:
+
+DV (,) f (,; _) ^ \Gamma ae1(j,j)ae2(j,j) + oe(j_j) ^ \Gamma eae(V (,)) + oe(j_j) (23) for all , and _.
+
+Now pick any trajectory x(\Delta ) corresponding to a control u(\Delta ). Equation (23) says that
+
+.V (x(t)) ^ \Gamma ~ae(V (x(t))) + oe(ju(t)j)
+
+for almost all t, We let fi be associated to ~ae as in Corollary 4.3. It then holds that
+
+V (x(t)) ^ fi(V (x(0)); t) + Z
+
+t
+
+0 2oe(ju(s)j) ds for all t * 0. Hence,
+
+ff1(jx(t)j) ^ V (x(t)) ^ fi(V (0); t) + Z
+
+t
+
+0 2oe(ju(s)j) ds ^ fi(ff2(jx(0)j); t) + Z
+
+t
+
+0 2oe(ju(s)j) ds (24) for all t * 0, and so the sufficiency proof is complete.
+
+Proof of 1)2 in Theorem 1 We first remark that the proof of Lemma 3.1 in [16] can be used to show the following: Lemma 4.6 For each given KL-function fi, there exists a family of mappings fTrgr?0 with:
+
+ffl for each fixed r ? 0, Tr : R?0 onto\Gamma ! R?0 is continuous and is strictly decreasing; ffl for each fixed " ? 0, Tr(") is (strictly) increasing as r increases and limr!1 Tr(") = 1;
+
+12
+
+such that
+
+fi(s; t) ! "
+
+for all s ^ r, all t * Tr("). 2
+
+Assume now that system (6) is iiss with ff; fi; fl as in Definition 2.1. Let ' be any smoothK 1-function such that fl('(s)) ^ ff(s) for all s * 0. Consider the following system:
+
+.x(t) = f (x(t); d(t)'(jx(t)j)) ; (25) where we restrict the inputs d, thought of here as "disturbances", to have values in the closed unit ball: d(\Delta ) : [0; 1) ! _B, where _B denotes the closed unit ball f_ 2 Rm : j_j ^ 1g in Rm . We let M denote the set of all such inputs, and we let x'(t; ,; d) denote the trajectory of (25) corresponding to the initial state , and the function d. This is defined on some maximal interval [0; T +,;d) with
+
+0 ! T +,;d ^ 1. It then follows from (7) that, for any given ,, d, and each t 2 [0; T +,;d), and defining fi0 := fi(\Delta ; 0):
+
+ff(jx'(t; ,; d)j) ^ fi(j,j ; t) + Z
+
+t
+
+0 fl(jd(s)j '(jx
+
+'(s; ,; d)j)) ds
+
+^ fi0(j,j) + Z
+
+t
+
+0 fl('(jx
+
+'(s; ,; d)j)) ds
+
+^ fi0(j,j) + Z
+
+t
+
+0 ff(jx
+
+'(s; ,; d)j) ds:
+
+It thus follows, using Gronwall's inequality, that
+
+ff(jx'(t; ,; d)j) ^ fi0(j,j) et for all 0 ^ t ! T +,;d. Hence the maximal solution stays in a bounded set (the ball of radius fi0(j,j) exp(T +,;d)) if T +,;d ! 1. Thus, T +,;d = +1. In conclusion:
+
+Lemma 4.7 If system (6) is iiss, then there exists a smooth K1-function ' such that system (25) is forward complete, that is, x'(t; ,; d) is defined for all t * 0, all , 2 Rn , and all d 2 M. 2
+
+Because of forward completeness, this follows from [16] (c.f. Propositions 5.1 and 5.5 of [16]): Lemma 4.8 Assume system (6) is iiss, and let ' be given as in Lemma 4.7. For any fixed T ? 0 and any compact K ae Rn , there is a compact K1 ae Rn such that x'(t; ,; d) 2 K1 for all t 2 [0; T ], all , 2 K and all d 2 M. Furthermore, there is a constant C ? 0 (which only depends on T and the set K) such that j
+
+x'(t; ,; d) \Gamma  x'(t; j; d)j ^ C j, \Gamma  jj
+
+for any ,; j 2 K, any 0 ^ t ^ T , and any d 2 M. 2
+
+We now continue with the proof of the implication 1 ) 2 of Theorem 1. Without loss of generality, one may assume that ff is a smooth K1-function. Otherwise, one can always replace ff by a smooth K1-function ~ff majorized by ff. We will first prove the result under the assumption that fl is a smooth K1-function, and then we show how to prove the result without this assumption.
+
+Define g : Rn ! R*0 by
+
+g(,) = supfz(t; ,; d) : t * 0; d 2 Mg ; (26) where for each , 2 Rn and d 2 M, z(\Delta ; ,; d) is defined by
+
+z(t; ,; d) = ff(jx'(t; ,; u)j) \Gamma  Z
+
+t
+
+0 fl(jd(s)j '(jx
+
+'(s; ,; d)j)) ds :
+
+13
+
+Note that this function is well defined, and
+
+ff(j,j) ^ g(,) ^ fi0(j,j) (27) for all , 2 Rn . In particular, g(0) = 0.
+
+Let Tr(") be defined as in Lemma 4.6. Then one sees that if 0 ! r1 ! j,j ! r2, then
+
+g(,) = supfz(t; ,; d) j 0 ^ t ^ Tr2 (ff (r1)) ; d 2 Mg:
+
+Lemma 4.9 The function g is locally Lipschitz on Rn n f0g and continuous everywhere. Proof. Fix any ,0 6= 0, and let s0 = j,0j. Let K0 = _B(,0; s0=2), the closed ball centered at ,0 and with radius s0=2. Let T = T2s0 (ff(s0=2)). Then
+
+g(,) = sup fz(t; ,; d) : t 2 [0; T ]; d 2 Mg for all , 2 K0. According to Lemma 4.8, one knows that there exists some L ? 0 such that
+
+jx'(t; ,; d)j ^ L for any , 2 K0, any t 2 [0; T ], and any d 2 M. Since fl is smooth, and in particular locally Lipschitz, there exists C1 ? 0 such that j
+
+fl(r1) \Gamma  fl(r2)j ^ C1 jr1 \Gamma  r2j
+
+for all r1; r2 2 [0; L]. Consequently,
+
+jfl(jd(s)j '(jx'(s; ,; d)j)) \Gamma  fl(jd(s)j '(jx'(s; j; d)j))j^
+
+C1 j'(jx'(s; ,; d)j) \Gamma  '(jx'(s; j; d)j)j
+
+for all ,; j 2 K0, all t 2 [0; T ], and all d 2 M. Since ff and ' are smooth, and x'(s; ,; d) is locally Lipschitz in , uniformly in t 2 [0; T ] and in d 2 M (this is what is asserted by the last statement in Lemma 4.8), there exists some C2 such that
+
+jff(jx'(t; ,; d)j) \Gamma  ff(jx'(t; j; d)j)j ^ C2 j, \Gamma  jj ; and j
+
+'(jx'(s; ,; d)j) \Gamma  '(jx'(s; j; d)j)j ^ C2 j, \Gamma  jj
+
+for all ,; j 2 K0, all t 2 [0; T ], and all d 2 M. It then follows thatfififi
+
+fiZ
+
+t
+
+0 fl(jd(s)j '(jx
+
+'(s; ,; d)j) ds \Gamma  Z
+
+t
+
+0 fl(jd(s)j '(jx
+
+'(s; j; d)j) dsfifififi ^ C3 j, \Gamma  jj
+
+for all ,; j 2 K0, all t 2 [0; T ], all d 2 M, where C3 = C1C2T . This implies that
+
+jz(t; ,; d) \Gamma  z(t; j; d)j ^ C4 j, \Gamma  jj for all ,; j 2 K0, all t 2 [0; T ], all d 2 M, where C4 = C2 + C3.
+
+Pick any " ? 0. Then for each i 2 K0, there is some ti;" 2 [0; T ] and di;" 2 M such that
+
+g(i) ^ z(ti;"; i; di;") + ": Let ,; j 2 K0. Then
+
+g(,) \Gamma  g(j) ^ z(t,;"; ,; d,;") + " \Gamma  z(t,;"; j; d,;")^
+
+C4 j, \Gamma  jj + ": (28)
+
+14
+
+Note that (28) holds for all " ? 0, so it follows that
+
+g(,) \Gamma  g(j) ^ C4 j, \Gamma  jj : By symmetry, g(j) \Gamma  g(,) ^ C4 j, \Gamma  jj. This proves that
+
+jg(,) \Gamma  g(j)j ^ C4 j, \Gamma  jj for all ,; j 2 K0. Thus, g is locally Lipschitz on Rn n f0g.
+
+To show that g is continuous at , = 0, note that g(0) = 0, and g(,) ^ fi0(,) ! 0 as , ! 0. Thus g is continuous everywhere.
+
+We next show that g cannot increase too fast along trajectories. Pick any , 6= 0, h ? 0, andj _j ^ 1. Let d_ denote the constant function d(t) j _. Then
+
+g(x'(h; ,; d_))
+
+= sup
+
+t*0;d2Mnff (jx'(t; x'(h; ,; d_); d)j)
+
+\Gamma  Z
+
+t
+
+0 fl(jd(s)j '(jx
+
+'(s; x'(h; ,; d_); d)j)) dsoe
+
+= sup
+
+t*0;d2M aeff ifififix'(t + h; ,;
+
+~d)fififij \Gamma  Z
+
+t
+
+0 fl ijd(s)j ' ifififix
+
+'(s + h; ,; ~d)fififijj dsoe
+
+= sup
+
+o/*h;d2M aeff ifififix'(o/; ,;
+
+~d)fififij \Gamma  Z
+
+o/
+
+h fl ijd(s
+
+1 \Gamma  h)j ' ifififix'(s1; ,; ~d)fififijj ds1oe
+
+^ sup
+
+o/*0;d2M aeff ifififix'(o/; ,;
+
+~d)fififij \Gamma  Z
+
+o/
+
+0 fl ifififi
+
+~d(s1)fififi ' ifififix'(s1; ,; ~d)fififijj ds1oe
+
++ Z
+
+h
+
+0 fl (j_j ' (jx
+
+'(s1; ,; d_)j)) ds1
+
+^ g(,) + Z
+
+h
+
+0 fl (j_j ' (jx
+
+'(s1; ,; d_)j)) ds1;
+
+where ~d is the concatenation of d_ and d: ~d(t) = _ if 0 ^ t ^ h, and ~d(t) = d(t \Gamma  h) if t ? h. Let f_(,) = f (,; _'(j,j)). Since g is locally Lipschitz on Rn n f0g, it is differentiable almost everywhere on Rn n f0g, and hence, for any j_j ^ 1,
+
+Lf_ g(,) = limh!0
+
++
+
+g(x'(h; ,; d_)) \Gamma  g(,)
+
+h
+
+^ limh!0
+
++
+
+1
+
+h Z
+
+h
+
+0 fl (j_j ' (jx
+
+'(s1; ,; d_)j)) ds1; a.e. :
+
+It then follows that
+
+Lf_ g(,) ^ fl(j_j '(j,j))
+
+almost everywhere.
+
+Observe that, since an iiss system is necessarily 0-gas, it follows from Proposition 2.5 that there exists a smooth semi-proper function V0 satisfying (13) with some continuous positive definite function ae and some K-function oe. Let V1 : Rn ! R be defined by V1(,) = V0(,) + g(,). Then V1 is locally Lipschitz on Rn n f0g and continuous everywhere. Furthermore,
+
+ff(j,j) ^ V1(,) ^ _ff2(j,j) for some _ff2 2 K1, and it holds that, for all j_j ^ 1,
+
+DV1(,)f (,; _'(j,j)) ^ \Gamma ae(j,j) + fl1(j_j '(j,j))
+
+15
+
+almost everywhere, where fl1(s) = oe(s) + fl(s). By Theorem B.1 in [16], one sees that there exists a continuous function V2, smooth on Rn n f0g, such that
+
+ff(j,j)
+
+2 ^ V2(,) ^ 2_ff2(j,j); 8 , 2
+
+Rn ;
+
+and
+
+DV2(,)f (,; _'(j,j)) ^ \Gamma  ae(j,j)2 + fl1(j_j '(j,j))
+
+for all , 6= 0, all j_j ^ 1. By Proposition 4.2 in [16], one sees that there exists some smoothK
+
+1-function p such that p0(s) ? 0 for all s ? 0 and p ffi V2 is smooth everywhere. Without loss of generality, one may assume that p0(s) ^ 1 for all s ? 0. Otherwise, one may replace p by any smoothK
+
+1-function ~p with the property that ~p0(s) = p0(s) in a neighborhood of 0 where p0(s) ^ 1 and and ~p0(s) ^ 1 everywhere else. Finally, we let V = p ffi V2. Then V satisfies (9) for some ff1; ff2 2 K1,
+
+and
+
+DV (,)f (,; _'(j,j)) ^ \Gamma p0(V2(,))ae(j,j)=2 + p0(V2(,))fl1(j_j '(j,j))^ \Gamma 
+
+ff3(j,j) + fl1(j_j '(j,j))
+
+for all , 2 Rn , all j_j ^ 1, where ff3 is any continuous positive definite function with the property that ff3(j,j) ^ p0(V2(,))ae(j,j)=2 (e.g., ff3(s) = p0(ff(s)=2)ae(s)=2). It then follows that
+
+DV (,) f (,; *) ^ \Gamma ff3(j,j) + fl1(j*j) for all , 2 Rn , all j*j ^ '(j,j). To show that V satisfies an estimate of type (10), we let O/ = '\Gamma 1, and let
+
+^^(r) := maxj,j^O/(j*j);j*j^rfDV (,)f (,; *) + ff3(j*j)g;
+
+and
+
+^(r) = maxf^^(r); fl1(r)g:
+
+Then ^ 2 K, and
+
+DV (,) f (,; *) ^ \Gamma ff3(j,j) + ^(j*j); 8 , 2 Rn ; 8 * 2 Rm (consider the two cases: j,j ^ O/(j*j) and j,j * O/(j*j)). This shows that V is indeed an iiss-Lyapunov function for system (6).
+
+Finally we show how to obtain the result without assuming that fl is smooth. First of all, one may always assume that fl(r) * r for all r. (Otherwise, replace fl(r) by fl(r) + r.) Pick any K1-function ` such that `(ps) is smooth and `(s) ^ fl\Gamma 1(s) for all s * 0. Consider the system
+
+.x(t) = ^f (x(t); u(t)) := f (x(t); oe(u(t))`(ju(t)j)); (29) where oe : Rm ! R is defined by oe(_) = _j_j if j_j 6= 0, and oe(_) = 0 if j_j = 0. Since ` is continuously differentiable and `(0) = `0(0) = 0, it follows that oe(*)`(j*j) is C1, and hence, ^f is also a locally Lipschitz map. We let x`(t; ,; u) denote the trajectory of this system corresponding to the initial state , and the input u. It then holds that
+
+ff \Gamma fifix`(t; ,; u)fifi\Delta  ^ fi(j,j ; t) + Z
+
+t
+
+0 fl(`(ju(s)j)) ds ^ fi(j,j ; t) + Z
+
+t
+
+0 ju(s)j ds for all , and all u. Hence, the system .x = ^f(x; u) is iiss with a smooth "gain"-function (which is the identity function). Applying the above proved result to this system, one sees that there exists a smooth iiss-Lyapunov function V satisfying
+
+DV (,)f (,; oe(_)`(j_j)) ^ \Gamma ff3(j,j) + ^2(j_j)
+
+16
+
+for some continuous positive definite function ff3 and some K-function ^2. Observe that
+
+* = oe(*)`(`\Gamma 1(j*j)) for all * 2 Rm . Hence,
+
+DV (,)f (,; *) ^ \Gamma ff3(j,j) + ^2(`\Gamma 1(j*j))
+
+for all , 2 Rn , all * 2 Rm .
+
+Proof of Proposition 2.5 To prove Proposition 2.5, we need the following result:
+
+Lemma 4.10 System (6) is 0-gas if and only if there exist a smooth function V : Rn ! R, K1 functions ff1; ff2; ff3, and K-functions * and ffi, such that, for all , 2 Rn and _ 2 Rm ,
+
+ff1(j,j) ^ V (,) ^ ff2(j,j); (30) and
+
+DV (,)f (,; _) ^ \Gamma ff3(j,j) + *(j,j)ffi(j_j): (31)
+
+Proof. Again, one direction of the implication is easy to prove by the Lyapunov direct method applied to system (6) for u = 0. The reverse is more interesting. Assume (6) is 0-gas. Then we have f (0; 0) = 0, and by a converse Lyapunov argument (see e.g. [16]), there exist a smooth V : Rn ! R and functions ff1; ff2; ff3 in K1 such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) (32) for all , 2 Rn , and
+
+DV (,)f (,; 0) ^ \Gamma ff3(j,j): (33)
+
+Consider now the following function:
+
+~fl(r; s) := maxj,j^r;j_j^s jf (,; _) \Gamma  f (,; 0) \Gamma  f (0; _)j : (34)
+
+Notice that ~fl(r; s) is continuous, nondecreasing with respect to each argument, and vanishes for r = 0 or s = 0 (since f (0; 0) = 0). Hence, it can be majorized by a function fl(r; s) separately of class K (e.g., we can take ~fl(r; s) + r + s). We pick oe as in Corollary 4.5. Then, it follows from (33) and Corollary 4.5 that:
+
+DV (,)f (,; _) = DV (,)f (,; 0) + DV (,)[f(,; _) \Gamma  f (,; 0)]^ \Gamma 
+
+ff3(j,j) + DV (,)[f (,; _) \Gamma  f (,; 0) \Gamma  f (0; _)] + DV (,)f (0; _)^ \Gamma  ff3(j,j) + jDV (,)j fl(j,j ; j_j) + jDV (,)j jf (0; _)j^ \Gamma  ff3(j,j) + jDV (,)j oe(j,j)oe(j_j) + jDV (,)j jf (0; _)j : (35)
+
+It follows from (32) that , = 0 is a global minimum for V (,) and hence DV (0) = 0; so, since V is smooth, continuity of DV gives that
+
+^(r) = r + maxj,j^r jDV (,)j (36)
+
+is a class K function. By local Lipschitz continuity of f (\Delta ; \Delta ), also jf (0; _)j ^ O/(j_j) for some O/ 2 K. Thus, recalling equations (35) and (36) we have,
+
+DV (,)f (,; _) ^ \Gamma ff3(j,j) + ^(j,j)oe(j,j)oe(j_j) + ^(j,j)O/(j_j) ^ \Gamma ff3(j,j) + *(j,j)ffi(j_j) ; with *(r) = ^(r)oe(r) + ^(r) and ffi(r) = oe(r) + O/(r).
+
+17
+
+Remark 4.11 The same result can also be obtained along different lines, exploiting a result appeared in [22]. It is shown there that the 0-gas property for system (6) implies the existence of an everywhere nonzero smooth function G(x) such that .x = f (x; G(x)v) is iss with respect to v. Then, the result follows from the Lyapunov characterization of input-to-state stability. 2
+
+We now can complete the proof of Proposition 2.5. Define ss(\Delta ) of class K as follows:
+
+ss(r) = Z
+
+r
+
+0
+
+ds 1 + O/(s) ; (37)
+
+with O/ a suitable class K function to be defined later. It follows from 0-GAS that there exists a smooth V (,) as in Lemma 4.10. Composing ss with V and taking derivatives yields:
+
+D[(ss ffi V )(,)]f (,; _) = DV (,)f (,; _)1 + O/(V (,)) ^ \Gamma ff3(j,j)1 + O/(V (,)) + *(j,j)ffi(j_j)1 + O/(V (,)) : (38) Then, letting O/(r) = * ffi ff\Gamma 11 , W = ss ffi V , and recalling (30) we obtain:
+
+DW (,) f (,; _) ^ \Gamma ae(j,j) + ffi(j_j) ; (39) where ae is the continuous positive definite function defined as
+
+ff3(r) 1 + * \Gamma ff\Gamma 11 (ff2(r))\Delta  :
+
+5 A Counter-Example As already remarked in section 2, iiss implies 0-gas. The converse is easily seen to be false, taking any 0-gas system that exhibits a finite escape time for some constant input signal u 6= 0. In fact, it follows by definition (7) that iiss implies forward completeness of the control system (6), viz., for any control u and any , 2 Rn , the unique maximal solution of the initial value problem
+
+.x = f (x; u), x(0) = ,, is defined over the interval [0; +1). It is reasonable to conjecture that iiss might be equivalent to simply forward completeness plus 0-gas. This would make the iiss concept less interesting. In this section, we provide a counter-example to this conjecture, exhibiting a system that is forward complete and 0-gas, but is not iiss. In other words, this example shows that, even when restricting attention to forward complete systems, iiss is a strictly stronger property than 0-gas.
+
+We begin the construction with a differential equation
+
+.x = f (x) which evolves in R2 and satisfies:
+
+1. it is gas; 2. jf (x)j ^ 1 for all x 2 R2 ; and 3. there is a sequence of states
+
+x0; z0; x1; z1; x2; z2; : : :
+
+so that x(Tk; xk) = zk for each k, for some sequence of positive numbers fTkg, (where x(\Delta ; p) denotes the trajectory of the system with initial value p,) and
+
+xk = ` 4k\Lambda  ' ; zk = ` 4k + 3\Lambda  ' for each k, where "\Lambda " is arbitrary.
+
+18
+
+It is easy to construct such differential equations. For example, one may start with a linear system
+
+.x = Ax, having an A matrix which is Hurwitz with non-real eigenvalues, and constructed so that its orbits are clockwise-turning converging spirals. One then scales the equation so that sequences of points as claimed exist, and finally one divides Ax by 1 + jAxj2 in order to guarantee that jf (x)j ^ 1 for all x.
+
+Let us denote \Delta k := max \Phi fifixi+1 \Gamma  zififi : 0 ^ i ^ k\Psi , k = 0; 1; 2; : : :, and pick any scalar function ' : R ! R which satisfies the following properties:
+
+1. '(r) = 0 when r 2 [4k + 1; 4k + 2], for all k = 0; 1; 2; : : :, 2. '(r) = 2k\Delta k + 1 when r 2 [4k + 3; 4(k + 1)], for all k = 0; 1; 2; : : :, 3. 0 ^ '(r) ^ 2k\Delta k + 1 if r ^ 4(k + 1), for all k = 0; 1; 2; : : :, 4. '(r) = 0 if r ^ 0.
+
+The hypotheses imply that '(r) ^ M (r) for all r, where M is some increasing function which is zero for negative r (all we need, for r ? 0, is M (r) * 2k\Delta k +1, where k is the least positive integer so that r ! 4(k + 1)). See Fig. 4 for an illustration of the orbits of f and '. Now we let G(x) = '(x1)I (that is, G depends only on the first coordinate) and consider the two-input system .x = f (x) + G(x)u. We will show that this system is complete but is not iiss; it is 0-GAS by construction.
+
+Claim: This system .x = f (x) + G(x)u is complete. Proof: Let x(\Delta ) be a maximal trajectory corresponding to a given control u and initial condition x(0), and suppose that x is defined on an interval [0; T ), with T ! 1. Let K be an upper bound on the supremum norm of u (controls are locally essentially bounded, by definition). We will show that the trajectory is bounded, thus contradicting T ! 1. We look at the first coordinates x1 of the states along this trajectory. There are two cases to consider:
+
+(i) fx1(t); t 2 [0; T )g is bounded above. Suppose that x1(t) ^ L for all t. Then, since jG(x)j = '(x1) ^ M (x1) for all x, the velocities are bounded by 1 + M (L)K and so the trajectory stays in the ball about x(0) of radius (1 + M (L)K)T .
+
+(ii) fx1(t); t 2 [0; T )g is not bounded above. There must be an infinite number of intervals of the form [4k + 1; 4k + 2] which are transversed by x1(t). That is, there are a countable set of disjoint closed intervals J1; J2; : : : included in [0; T ), each Ji = [si; ti], so that x1(si) = 4ki + 1 and x1(ti) = 4ki + 2, for some ki's. We claim that every Ji has length at least one, which then contradicts T ! 1. Indeed, take any interval Ji and suppose that ti \Gamma  si ! 1. Observe that, on Ji, ' j 0, so the system equations are .x = f (x). By the Mean Value Theorem,
+
+1 ^ jx(ti) \Gamma  x(si)j ^ jf (x(t))j (ti \Gamma  si) ! 1 ;
+
+a contradiction. This completes the proof of completeness. Claim: This system is not iiss. Proof: We will show that there is an initial state , and a control u so that jx(t; ,; u)j ! 1 as t ! 1, where u has the following property: there is some increasing sequence tk ! +1 so that
+
+ju(t)j ^ 1 if t 2 \Theta tk; tk + 2\Gamma k\Lambda  and u(t) = 0 otherwise; moreover, the sequence is also assumed to satisfy tk+1 \Gamma  tk ? 2\Gamma k.
+
+The existence of such ,; u means that the system cannot be iiss. To see this, suppose that the system would be iiss. Then, for some ff; fl 2 K1, it holds that
+
+lim sup
+
+t!1 ff(jx(t; ,; u)j) ^ Z
+
+1 0 fl(ju(s)j) ds ^
+
+1X
+
+k=0 Z[tk;tk+2
+
+\Gamma k] fl(1) ds = 2fl(1) ! 1 ;
+
+but this contradicts the fact that jx(t; ,; u)j ! 1 as t ! 1.
+
+19
+
+r j(r)
+
+0
+
+0
+
+1
+
+1
+
+2
+
+2 3
+
+3
+
+x
+
+x
+
+x x
+
+z z
+
+z z
+
+Figure 4: Flow f and function ' for example of forward complete, 0-gas but not iiss system
+
+We start with , = x1, and let u j 0 on [0; t1], where t1 := T1. So, x(t1; ,; u) = z1, and t1 * 1 because of the assumption that jf (x)j ^ 1. Next we continue building the control u and the trajectory x(\Delta ) = x(\Delta ; ,; u), inductively on the intervals
+
+[tk; tk+1] : We do the construction in such a fashion that
+
+x (tk) = zk and
+
+x \Gamma tk + 2\Gamma k\Delta  = xk+1
+
+for k = 1; 2; : : :. The idea is to switch between an uncontrolled motion on every interval of the form [tk + 2\Gamma k; tk+1] and appropriate control motions on the small intervals. To clarify the construction, we first do separately the case k = 1.
+
+The control on the interval [t1; t1 + 1=2] is defined as follows. We wish to force
+
+x(t) = z1 + 2(t \Gamma  t1) \Gamma x2 \Gamma  z1\Delta  ; t 2 [t1; t1 + 1=2]
+
+20
+
+so that we go from x(t1) = z1 to x(t1 + 1=2) = x2 along a straight line. The equation .x = f + Gu along this line is:
+
+2(x2 \Gamma  z1) \Gamma  f (x(t)) = G(x(t))u(t) = (2\Delta 1 + 1) u(t)
+
+so we may let
+
+u(t) := 2(x
+
+2 \Gamma  z1) \Gamma  f (z1 + 2(t \Gamma  t1)(x2 \Gamma  z1))
+
+2\Delta 1 + 1 : Since fifix2 \Gamma  z1fifi ^ \Delta 1 (by definition of the \Delta k's) and jf (x(t))j ^ 1 for all t, we conclude thatj
+
+u(t)j ^ 1 on [t1; t1 + 1=2], as was desired. Finally, we let u(t) = 0 for t 2 [t1 + 1=2; t2], where t2 := T2 + (t1 + 1=2), which makes x(t2) = z2.
+
+Now we do the case of arbitrary k. We pick the curve:
+
+x(t) = zk + 2k(t \Gamma  tk) \Gamma xk+1 \Gamma  zk\Delta  ; t 2 \Theta tk; tk + 2\Gamma k\Lambda  so that we go from x(tk) = zk to x(tk + 2\Gamma k) = xk+1 along a line, and the equation along this line becomes:
+
+2k \Gamma xk+1 \Gamma  zk\Delta  \Gamma  f (x(t)) = G(x(t))u(t) = \Gamma 2k\Delta k + 1\Delta  u(t)
+
+so we may let
+
+u(t) := 2
+
+k \Gamma xk+1 \Gamma  zk\Delta  \Gamma  f (zk + 2k(t \Gamma  tk)(xk+1 \Gamma  zk))
+
+(2k\Delta k + 1) : Since fifixk+1 \Gamma  zkfifi ^ \Delta k and jf (x(t))j ^ 1 for all t, we have ju(t)j ^ 1 for all t in this interval of length 2\Gamma k. Finally, we let
+
+u(t) = 0 for t 2 \Theta tk + 2\Gamma k; tk+1\Lambda  ;
+
+where tk+1 := Tk+1 + \Gamma tk + 12k \Delta , so that we have x (tk+1) = zk+1, as needed for the induction step.
+
+6 Comments on Related Notions The notion of iiss differs from iss in its use of "R fl(juj)" instead of "sup fl(juj)." The same substitution may be used to define analogues of input/output stability and of detectability notions. We briefly discuss some of these now. Reasons of space preclude a detailed discussion, but proofs of the various claims are not difficult to obtain by following steps like those used in the rest of the paper. In this section, we deal with systems with outputs
+
+.x = f (x; u) ; y = h(x) ; (40) where, as earlier, the output map h : Rn ! Rp is assumed to be continuous and h(0) = 0. For each , 2 Rn and each input u, we let y(t; ,; u) be the output function of the system, i.e., y(t; ,; u) = h(x(t; ,; u)) (defined on some maximal interval [0; T,;u)).
+
+Consider the following type of estimation:
+
+ff(jx(t; ,; u)j) ^ fi(j,j ; t) + Z
+
+t
+
+0 fl
+
+1(jy(s; ,; u)j) ds + Z
+
+t
+
+0 fl
+
+2(ju(s)j) ds (41)
+
+for all t 2 [0; T,;u), where fi 2 KL, ff 2 K1, and fl1; fl2 2 K. If (41) holds for every trajectory of (40), then we say that system (40) is integral input-output-to-state stable (iioss). This is a notion of detectability: inputs and outputs are "small" implies that states are also small; see [27] for the corresponding notion of (sup-norm) ioss. We say that a smooth function V is an iioss-Lyapunov function for system (40) if there exist functions ff1, ff2 2 K1, oe1; oe2 2 K, and a continuous positive definite function ff3, such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j) (42)
+
+for all , 2 Rn , and
+
+DV (,)f (,; _) ^ \Gamma ff3(j,j) + oe1(jh(,)j) + oe2(j_j) (43)
+
+21
+
+for all , 2 Rn and all _ 2 Rm . A proof analogous to that of Theorem 1, by virtue of Corollary 4.3, shows the following: If a system admits an iioss-Lyapunov function, then the system is iioss.
+
+The area of input-to-output (as opposed to input-to-state) stability deals with properties which may be described, informally, as "small inputs produce small outputs." Such properties appear naturally in regulation problems. In particular, one may define a concept of ios (input-to-output stability), see [23] and [28]. This is yet another obvious candidate for the replacement of sup norms by integrals. So let us call system (40) integral input-to-output stable (iios) if there exist ff 2 K1, fi 2 KL, and fl 2 K such that
+
+ff(jy(t; ,; u)j) ^ fi(j,j ; t) + Z
+
+t
+
+0 fl(ju(s)j) ds (44) holds on the maximal interval [0; T,;u) for every trajectory of the system. Correspondingly, we may define a Lyapunov concept as follows. A smooth function V is called an iios-Lyapunov function for system (40) if there exist functions ff1, ff2 2 K1, oe 2 K, and a continuous positive definite function ff3, such that
+
+ff1(jh(,)j) ^ V (,) ^ ff2(j,j) (45)
+
+for all , 2 Rn , and
+
+DV (,)f (,; _) ^ \Gamma ff3(V (,)) + oe(j_j) (46)
+
+for all , 2 Rn and all _ 2 Rm . Again, by virtue of Corollary 4.3, one can prove: If a system adimits an iios-Lyapunov function, then the system is iios.
+
+Note that the difference between (9) and (45) is that the function V in (9) is proper (i.e., radially unbounded), while in (45) the function V only majorizes a K1-function of jyj. It is also interesting to consider the following type of condition on V :
+
+ff1(jh(,)j) ^ V (,) ^ ff2(jh(,)j) (47) for some K1-function ff1; ff2. It then follows, again appealing to Corollary 4.3, that if system (40) admits a V satisying (47) and (46), then the following holds for all trajectories of the system:
+
+ff(jy(t; ,; uj) ^ fi(jy0j ; t) + Z
+
+t
+
+0 fl(ju(s)j) ds; 8 t 2 [0; T
+
+,;u);
+
+for some ff 2 K1; fi 2 KL and fl 2 K, where y0 = y(0; ,; u).
+
+7 Conclusions The iiss notion was introduced and motivated both as a natural mathematical concept, generalizing finite H2 gain, and through a tracking problem and other applications. We proved a necessary and sufficient Lyapunov-like characterization of the iiss property, as well as a characterization based on a LaSalle-type dissipation inequality and detectability notions. We also provided a counterexample showing that iiss is not just the conjunction of forward completeness and 0-gas. We are confident that the results presented here, besides their intrinsic interest, will motivate much further research into the theory and applications of iiss.
+
+A Appendices A.1 Proof of Lemma 4.1 Assume without loss of generality that ae(r) ! 0 as r ! +1 (otherwise one can always consider
+
+~ae(r) = minfae(r); 1=(1 + r)g). Then the function ae admits a global maximum over the interval
+
+22
+
+[0; +1). Let M = maxr*0 ae(r), and define ^ae(r) = ae(r)=M . Pick now rM ? 0 such that ^ae(rM ) = 1. Then, we can define the following functions:
+
+^ae1(r) = ae min r^s^rM ^ae(s) for r ^ rM1 for r ? r
+
+M ;
+
+(48)
+
+^ae2(r) = ae 1 for r ! rMmin
+
+rM^s^r ^ae(s) for r * rM :
+
+Notice that ^ae1, (^ae2) is a non-decreasing (non-increasing) function, and, by equation (48), considering separately the cases r ? rM and r ^ rM ,
+
+^ae(r) * ^ae1(r) ^ae2(r) : (49) Then, we can choose ae1 and ae2 according to:
+
+ae1(r) = M ^ae1(r)r ae2(r) = ^ae2(r)=(1 + r) :
+
+Notice that ae1 2 K1 and ae2 2 L. Taking into account (49) we have:
+
+ae(r) = M ^ae(r) * M ^ae1(r)^ae2(r) * ae1(r)ae2(r) (50) for all r * 0.
+
+A.2 Proof of Proposition 4.4 Proposition 4.4 will follow from the following result.
+
+Lemma A.1 Let c be as in the statement of Proposition 4.4. Then, there exists a function g 2 N such that, for each y 2 R,
+
+c(x; y) \Gamma  g(x) ! \Gamma 1 as jxj ! 1 : (51)
+
+Proof. We will assume without loss of generality that c(0; 0) ? 0. (If c(0; 0) ! 0, we simply pick any constant a so that a ! c(0; 0), apply the Lemma to c0 := c \Gamma  a to obtain some function g0, and then let g := g0 + a). Let
+
+_x := sup
+
+x2Rfx j c(x; 0) = 0g :
+
+(Note that, since c(\Delta ; 0) is continuous, unbounded below, and achieves the some positive value, there is indeed at least one x so that c(x; 0) = 0; and by continuity, c(_x; 0) = 0). Now introduce the following set: G
+
+:= \Phi (x; y) 2 R2 j y * 0; c(x; y) + y = 0\Psi  :
+
+Claim: G is the graph of a continuous, nonincreasing, onto function
+
+g0 : (\Gamma 1; _x] ! [0; 1) :
+
+To establish this claim, we first prove that, if x2 ^ x1 and (x1; y1) 2 G, then there is a y2 so that (x2; y2) 2 G, and any such y2 must satisfy y1 ^ y2. Consider the function C(y) := c(x2; y) + y. As
+
+C(y1) = c(x2; y1) + y1 ^ c(x1; y1) + y1 = 0 and C(y) ! +1 as y ! +1 (because c(x2; \Delta ) is nondecreasing), we conclude, using continuity of C, that there is some y2 so that C(y2) = 0, as required. And, given any y2 so that (x2; y2) 2 G, if it were the case that y1 ? y2 then it would hold that
+
+0 = c(x1; y1) + y1 ? c(x2; y2) + y2 = 0 ;
+
+23
+
+a contradiction. Thus, as stated, y1 ^ y2.
+
+In particular, it follows that if (x; y1) and (x; y2) are both in G then necessarily y1 = y2 (apply with x1 = x2 = x), so G is the graph of some function g0, and g0 is nonincreasing.
+
+Next, we note that the projection of G on the x coordinate (that is, the domain of the function g0) is (\Gamma 1; _x]. Pick any (x; y) 2 G. Suppose that x ? _x. Then, c(_x; 0) ^ c(x; 0) ^ c(x; y) + y = 0 = c(_x; 0) (using that c is nondecreasing in each variable, and y * 0). Then, c(x; 0) = 0, so x ^ _x by maximality of _x, a contradiction. Thus, x ^ _x. Conversely, given any x ^ _x, we may apply again the argument given earlier (now with x2 = x and x1 = _x) to obtain that there is some y so that (x; y) 2 G.
+
+The projection of G on the y coordinate is [0; 1). Indeed, pick any y * 0; as c(_x; y) + y * c(_x; 0) = 0 and c(\Delta ; y) is continuous and unbounded below, there is some x so that c(x; y) + y = 0.
+
+To complete the proof of the claim, we need to see that g0 is continuous. But this is an immediate consequence of the fact that g0 is monotonic and onto an interval.
+
+Finally, we define
+
+g(x) := ae \Gamma 
+
+1 2 g0(x) if x ^ _xc(x; x) \Gamma  c(_x; _x) + x \Gamma  _x if x ? _x :
+
+By construction, g 2 N . We show the desired limit property. Pick any y 2 R.
+
+For x * maxf_x; yg,
+
+c(x; y) \Gamma  g(x) = c(x; y) \Gamma  c(x; x) \Gamma  x + c ^ c \Gamma  x where c := _x + c(_x; _x), so c(x; y) \Gamma  g(x) ! \Gamma 1 as x ! +1.
+
+On the other hand, for any x ^ _x such that g0(x) ? y,
+
+c(x; y) \Gamma  g(x) = c(x; y) + 12 g0(x) ^ c(x; g0(x)) + g0(x) \Gamma  12 g0(x) = \Gamma  12 g0(x) and \Gamma  12 g0(x) ! \Gamma 1 as x ! \Gamma 1.
+
+We now complete the proof of Proposition 4.4. Let g be as in Lemma A.1, and define the following function h : R ! R:
+
+h(y) := sup
+
+x2R[c(x; y) \Gamma  g(x)] :
+
+(As c(\Delta ; y) \Gamma  g is continuous, and is negative for large jxj, the supremum is indeed finite.)
+
+Since h is the sup of a family fc(x; \Delta )\Gamma g(x); x 2 Rg of continuous functions, h is itself continuous, and since each member of this family is nondecreasing, h is also nondecreasing. We prove now that h(y) ! \Gamma 1 when y ! \Gamma 1, which will then allow us to conclude that h 2 N .
+
+Pick any K 2 R. For this K, we pick a ae ? 0 so that c(x; 0) \Gamma  g(x) ! K whenever jxj ? ae. Next we pick an L ^ 0 so that c(ae; L) ! K + g(\Gamma ae). (Such an L exists because c(ae; \Delta ) is unbounded below.) We claim that
+
+y ! L ) h(y) ! K :
+
+Take one such y, and any x 2 R; we need to see that c(x; y) \Gamma  g(x) ! K. Consider first the casej
+
+xj ^ ae; then
+
+c(x; y) \Gamma  g(x) ^ c(ae; L) \Gamma  g(\Gamma ae) ! K :
+
+If instead jxj ? ae, then also
+
+c(x; y) \Gamma  g(x) ^ c(x; 0) \Gamma  g(x) ! K (using that y ! L ^ 0).
+
+So we have constructed g and h in N such that
+
+c(x + y) ^ g(x) + h(y) ^ maxfg(x); h(x)g + maxfg(y); h(y)g for all x and y. Thus, k := maxfg; hg is as wanted for Proposition 4.4.
+
+24
+
+A.3 Resonance example We explain here how the bounded control and the trajectory leading to r(t) in Figures 2 and 3 were generated. To obtain this trajectory, we did as follows. We started with the initial state (0; 0:1; 0; 0:1)0, and took the feedback control u1 = 3tanh(z1) (= 3tanh( .`)) and u2 = 0. Sincej
+
+tanh(x)j ^ 1 for all x 2 R, the input signal, resulting from this destabilizing feedback, shown in Fig. 3, is bounded. Note that a sort of "non-linear resonant behavior" is obtained. (It is worth pointing out that a similar effect is met also for vanishing references, if the convergence of u1 to 0 is sufficiently slow.) The simulation used the parameters values shown in the next table, and were obtained using the ode23 MATLAB routine, with tolerance 0:001 and initial condition [0; 0:1; 0; 0:1]0.
+
+Parameter Value Parameter Value
+
+m 1 M L2 3 kp1 2 kd1 2 kp2 1 kd2 1
+
+References [1] Angeli, D., "Input-to-state stability of PD-controlled robotic systems," Automatica, to appear. [2] Battilotti, S., "Robust stabilization of nonlinear systems with pointwise norm bounded uncertainties: A control Lyapunov approach," IEEE Trans. Autom. Control , to appear.
+
+[3] Christofides, P.D., and A.R. Teel, "Singular perturbations and input-to-state stability," IEEE
+
+Trans. Automat. Control 41(1996): 1645-1650.
+
+[4] Gr"une, L., E.D. Sontag, and F. Wirth, "Asymptotic stability equals exponential stability, and
+
+ISS equals finite energy gain--if you twist your eyes," Systems and Control Letters, to appear.
+
+[5] Hahn, W., Stability of Motion, Springer-Verlag, Berlin, 1967. [6] Hespanha, J.P, and A.S. Morse, "Certainty equivalence implies detectability," Systems and Control Letters 36(1999): 1-13.
+
+[7] Hespanha, J.P, and A.S. Morse, "Supervisory control of integral-input-to-state stabilizing controllers," 1999 European Control Conference, to appear.
+
+[8] Hu, X.M., "On state observers for nonlinear systems," Systems & Control Letters 17 (1991),
+
+pp. 645-473.
+
+[9] Isidori, A., "Global almost disturbance decoupling with stability for non minimum-phase singleinput single-output nonlinear systems," Systems & Control Letters 28 (1996), pp. 115-122.
+
+[10] Kokotovic, P., "Constructive nonlinear control: progress in the 90's," Invited Plenary Talk,
+
+IFAC Congress, 1999.
+
+[11] Jiang, Z.-P., A. Teel, and L. Praly, "Small-gain theorem for ISS systems and applications,"
+
+Mathematics of Control, Signals, and Systems, 7 (1994), pp. 95-120.
+
+[12] Khalil, H.K., Nonlinear Systems, Prentice-Hall, Upper Saddle River, NJ, second ed., 1996. [13] Krstic, M. and H. Deng, Stabilization of Uncertain Nonlinear Systems, Springer-Verlag, London,
+
+1998.
+
+[14] Krsti'c, M., I. Kanellakopoulos, and P. V. Kokotovi'c, Nonlinear and Adaptive Control Design,
+
+John Wiley & Sons, New York, 1995.
+
+[15] Liberzon, D., "Disturbance attenuation with bounded controls," submitted.
+
+25
+
+[16] Lin, Y., E.D. Sontag and Y. Wang, "A smooth converse Lyapunov theorem for robust stability,"
+
+SIAM Journal on Control and Optimization 34(1996): 124-160
+
+[17] Lu, W.M., A class of globally stabilizing controllers for nonlinear systems, Systems & Control
+
+Letters 25 (1995), pp. 13-19.
+
+[18] Lu, W..M., "A state-space approach to parameterization of stabilizing controllers for nonlinear
+
+systems," IEEE Transactions on Automatic Control 40 (1995): 1576-1588.
+
+[19] Marino, R., and P. Tomei, "Nonlinear output feedback tracking with almost disturbance decoupling," IEEE Trans. Automat. Control 44(1999): 18-28.
+
+[20] Praly, L., and Y. Wang, "Stabilization in spite of matched unmodelled dynamics and an equivalent definition of input-to-state stability," Math. of Control, Signals, and Systems 9 (1996): 1-33.
+
+[21] Sepulchre, R., M. Jankovic, and P.V. Kokotovic, "Integrator forwarding: a new recursive nonlinear robust design," Automatica 33(1997): 979-984.
+
+[22] Sontag, E.D., "Further facts about input to state stabilization," IEEE Trans. on Autom. Control
+
+35(1990): 473-476.
+
+[23] Sontag, E.D., `Smooth stabilization implies coprime factorization", IEEE Trans. Automat.
+
+Contr. 34(1989): 435-443.
+
+[24] Sontag, E.D,. "Comments on integral variants of ISS," Systems & Control Letters, to appear. [25] Sontag, E.D., and Y. Wang, "On characterizations of the input-to-state stability property,"
+
+Systems & Control Letters 24 (1995): 351-359.
+
+[26] Sontag, E.D., and Y. Wang, "New characterizations of the input to state stability property,"
+
+IEEE Trans. on Autom. Control 41 (1996): 1283-1294.
+
+[27] Sontag, E.D., and Y. Wang, "Output-to-state stability and detectability of nonlinear systems,"
+
+Systems and Control Letters 29(1997): 279-290.
+
+[28] Sontag, E.D., and Y. Wang, "A notion of input to output stability," Proc. European Control
+
+Conf., Brussels, July 1997, Paper WE-E A2, CD-ROM file ECC958.pdf, 6 pages.
+
+[29] Tsinias, J., "Input to state stability properties of nonlinear systems and applications to bounded
+
+feedback stabilization using saturation," ESAIM Control Optim. Calc. Var. 2(1997): 57-85.
+
+[30] van der Schaft, A,. L2-gain and passivity techniques in nonlinear control (Lecture Notes in
+
+Control and Information Sciences, 218), Springer-Verlag, London, 1996.
+
+26</pre>
+</body>
+</html>

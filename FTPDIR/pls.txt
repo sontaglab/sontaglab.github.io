@@ -1,0 +1,1398 @@
+OCR of paper; see pdf file pls.pdf for viewable/printable page
+
+
+346 11 FF FRANSA(TIONS ON AUTOMATIC CON F ROL. ~OL. ~(-26. No. 2. A?R I L 1981
+Nonlinear Regulation: The Piecewise
+Linear Approach
+EDUARDO D. SONTAG
+Abstract-T'his paper approaches nonlinear control problems through
+the use of (discrete-time) pieceivise linear systems. These are systems
+whose next-state and output maps are both described by PL map!;, i.e., by
+maps which are affine on each of the components of a finite polyhedral
+rtition. Various results on state and output feedback, observers, and
+a
+p
+inverses, standard for linear systems, are proved for PL systems. Many of
+thew results are then used in the study of more general (both discrete- and
+continuous-time) systems, using suitable approximations.
+1. INTRODUCTION
+HIS paper approaches nonlinear regulation through
+The study of piecewise linear (PL) systems, with two
+quite different sets of goals: the study of PL systems per se
+(as a generalization of linear systems), and the use of the
+tools and methods developed for PL systems in the control
+of other. more general, classes of systems. This latter aspect
+may be seen as constituting one systematic approach to
+numerical nonlinear control, based on piecewise linear
+approximations.
+These are various reasons which suggest that it may be
+worthwhile to investigate PL systems: simplicity of imple-
+mentation, theoretical analysis, and calculation. 'Me former
+is due to the fact that digital controllers based on such
+systems can be built easily using "if P(x) then f(x) else-.."
+programs, where P, f involve only affine combinations and
+"greater than" comparisons. This shifting of computational
+emphasis from arithmetic to logic is especially convenient
+when using microprocessors. Simplicity of analysis is in
+principle less obvious, but the recent development of the
+beginnings of a "PL algebra" in Sontag [121 indicates that
+this may indeed be the case. The remarks in this paper
+illustrate this simplicity on system theoretic grounds. The
+last claimed advantage, regarding off-line calculation, is yet
+to be explored in any serious detail. Preliminary investiga-
+tions indicate that, at least for systems of reasonably small
+dimension, low complexity algorithms may be available for
+analysis and synthesis. Among other advantages, it should
+be noted that the use of PL systems permits introducing
+thresholds and other discontinuities in a natural way that is
+not available in other algebraic approaches to nonlinear
+system theory.
+Manuscript received January 24, 1980; revised Au~ust 25, 1980. Paper
+recommended by M. Vidyasa&ar, Past Chairman of the Stability, Nonhn-
+ear, and Distributed Systems Committee. This work was supported in part
+by the U.S. Air Force under Grant AFOSR-F4%20-79-C-0 117.
+-The author is with the Department of Mathematics, Rutgers University,
+New Brunswick, NJ 08903.
+In order to make this paper self-contained. we review
+briefly the relevant definitions and results from [ 12]. A PL
+subset of a finite-dimensional real vector space V is the
+union of a finite number of relatively open polyhedra. i.e..
+of sets defined by (finitely many) linear equations f(x)= a
+and linear inequalities f(x):>a. A PL set is a PL subset of
+some V. A PL relation R: X--* Y between PL sets is one
+whose graph is a PL set, and similarly for PL maps.
+Equivalently, the map f is PL if there is a covering of X by
+PL subsets X, such that the restrictions f I X, are all affine
+(=linear+ translation). A useful way of defining PL sets is
+the following. Let L be the first-order language consisting
+of constants r and unary function symbols r(.) for each
+real r, variables X I I X2,' - -, binary function symbol +, and
+relation symbols >, =. Then we have the following.
+Lemma 1.1[12, Lemma (2.6)]: Every sentence in L de-
+fines a PL set.
+When applying the above, one can include in L labels
+for sets and functions already known to be PL-, sentences
+will still define PL sets. The study of "elementary" prob-
+lems, those expressible by finitely many such sentences, is
+considerably simplified by (1.1), as will be seen in Section
+11. Another very useful tool is the existence of selection
+(choice) functions.
+Selection Lemma 1. 2 [12, Theorem (2. 11) ]: Let R: X - Y
+be a PL relation with domain Z. There is then a PL map s:
+Z--), Y with s(x) in R(x) for all x.
+Alternative ways of stating (1.2) are as a "global implicit
+function theorem," through sections of congruences, or as
+a "PL axiom of choice." Checking the truth of a sentence
+in L, or constructing a set defined by such a sentence (as
+those in Section II), can be carried out via three basic
+algorithms: one for projecting polyhedra on hyperplanes.
+another for checking feasibility of a linear program. and a
+standard Boolean table. These procedures appear to be as
+central as matrix multiplication is in the case of linear
+algebra. The 'construction of sections in (1.2) can be also
+accomplished via linear programming methods. Thus, all
+constructions are "effective" in a very concrete sense, and
+recent linear programming developments imply polynomial
+time decidability of many types of formulas. Various useful
+"closed-form" representations for PL maps have been in-
+troduced by Kang and Chua [81, motivated by the network
+theoretic applications developed by Chua [11; the develop-
+ment of software for PL algebra will probably include the
+use of such representations. There are already a consider-
+0018-9286/81/0400-0346$00.75 C1981 IEEE
+<<PAGE-DIVIDER>>
+SONTA(_i: NONLINEAR REGULATION
+able number of results relating to PL maps (see, for ins-
+tance, Fujisawa and Kuh [3] and the references therein)
+which deal with algorithms for checking various specific
+algebraic properties. Our proofs in this paper are, however,
+of a theoretical nature; the study of implementations
+should, of course, be an important project in itself.
+A fixed but arbitrary PL set U (the "input value set")
+will be used throughout. A special element "0" will be
+singled out in U, to correspond to the notion of "no input
+being applied." Up to a translation, there is no loss of
+generality in taking 0 to be the zero vector in a vector space
+of which U is a PL subset. When output behavior is of
+interest, Y will denote a fixed but arbitrary PL set ("output
+value set").
+A system S = (U, X, Y, p, q) (where U, X, Y, or q may be
+omitted if clear from the context or if irrelevant) is given
+by a pair of maps p, q from XX U into X and Y, respec-
+tively, for some set X ("state set"). One interprets S as
+defining the equations
+X(t+ 1)=P(X(t), u(t))
+y(t) =q(x(t), u(1)), 1=0, 1, (1.3
+)
+with the x(t), u(t), y(t) representing states, inputs, and
+outputs at time t. A state output system has q independent
+of u; S is autonomous if p is also independent of u. In both
+cases one simply drops the corresponding u(t) in display-
+ing (1.3). A PL system is one for which X is a PL set and
+both p, q are PL maps. A convenient way of specifying PL
+systems is via algol-like "if-then-else" programs, and this
+will be done when appropriate. Note that the class of PL
+systems includes in particular finite automata and linear
+systems; the former appear when every set is finite (hence
+PL); any map among such sets is obviously PL. Various
+("hierarchical") combinations of automata and linear sys-
+tems are also PL: for example, a finite counter added to a
+set of linear systems, deciding "which system" to use
+depending on the value of the counter. Linear systems with
+(polyhedral) input and state constraints (and/or saturation
+effects) are also modeled by the theory. More general
+nonlinear systems can be (under weak hypotheses) globally
+approximated arbitrarily close by PL systems. Of course,
+this generality means that one cannot expect to obtain
+computationally trivial solutions to all control problems ;
+even though the basic procedures developed below are no
+hard to understand. Efficient tools for the linear algebra
+and combinatorics involved in the (off-line) computations
+will have to be developed, and this should have high
+priority in future research in this area. Similarly, the study
+of approximations by PL systems is in itself basically open,
+and it is clear that deeper results will depend upon a
+systematic use of the powerful results developed for non-
+linear systems during the past decade.
+This paper should be seen as just a first step in the
+development of a PL system theory. In contrast to most
+previous approaches to the modeling of systems with dis-
+continuities ("sliding mode systems," "PL networks," etc.),
+the emphasis here will be first on discrete-time systems.
+This different emphasis allows for the use of the algebraic
+tools in [121, since the iterated transition maps are still PL.
+347
+(Instead, for continuous-time systems with PL system maps,
+the evolution map does not inherit the PL structure.) Since
+the number of "linear pieces," of course, increases with the
+iterations, various compactness and other finiteness as-
+sumptions are used at various points. The application to
+non-PL systems is via approximations and, for continuous
+time, the introduction of time sampling. For the latter the
+theory is, then, one of sampled systems, suitable more for
+digital control than for classical analog control. The con-
+nections with the work of Aiserman, Gantmacher, and
+others (e.g., see Minorski [10, chapters 6- 10]) on continu-
+ous time PL systems are not yet totally clear, however. For
+a less systematic but very interesting discussion of various
+problems for discrete-time systems with nonsmooth transi-
+tions, see Vidal [16].
+The first part will deal with bounded-time problems for
+PL systems per se, while the second deals with "asymp-
+totic" properties for PL and other systems. The number of
+problems left open for further research is very large. Prob-
+lems for PL systems of decoupling, disturbance rejection,
+and many others treated successfully by the linear theory
+are not studied here, although it is reasonable to expect
+that similar methods will apply to these. Even for the
+problems which are treated, many improvements in state-
+ments and proofs should be possible, and open problems
+are pointed out throughout.
+11. ELEMENTARY PL CONTROL PROBLEMS
+This section deals with the control and observation of
+PL systems over finite time intervals. Besides being of
+interest in themselves, the understanding of the corre-
+sponding problems is helpful in the study of asymptotic
+properties. The general approach is to express the proper-
+ties of interest in the first-order language L, and to apply
+tools from PL algebra to obtain easly the desired results.
+The latter say in essence that for most reasonable bounded-
+time problems for PL systems, if a solution exists ab-
+stractly, then there is also a solution which can be imple-
+mented using PL systems. Throughout this part, S will
+denote a fixed PL system (p, q). The extension of p to
+input sequences will be denoted by P. An arbitrary PL
+subset Z of the state space X will be also fixed, with all
+definitions made relative to Z.
+A. State Feedback
+All the properties in this section will be stated relative to
+a fixed equilibrium state x, i.e., an x for which p(x,O)=O,
+for simplicity x will be taken to be zero. Both of the
+definitions below describe, for fixed n, elementary first-
+order properties of Z, since they include quantification
+only over states and input values.
+Definition 2. 1: The subset Z is (n-step, globally) control-
+lable (to zero) if for each state x in Z there is some input
+sequence w of length at most n for which P(x, w) = 0.
+Definition 2.2: The subset Z is (n-step, globally) finitely
+stable if the state 0 is an (n-step) attractor relative to Z, i.e.,
+if P(x,O*)=O for all x in Z and for any null input
+sequence 0* of length (at least) n.
+<<PAGE-DIVIDER>>
+348
+ILF1 TRANSA( FIONS ON ALI TOMATK CON rROL, VOL. M -26. No. 2. APKIL 1981
+Remark 2.3: For discrete-time linear systems (with un-
+bounded inputs) it is well known that, with Z=X, (2.1) is
+equivalent to the property that for any state x there be an
+input sequence driving x to the origin, with no a priori
+bounds on the length of such sequences. In fact, one may,
+by Cayley- Hamilton, take n there as the dimension of the
+system. For more general systems such a property is, of
+course, not equivalent to the above (bounded-time) control-
+lability-any normilpotent linear system with bounded
+controls serves as a counterexample. Consequences of such
+more general definitions will be studied in Section 111.
+Clearly, various technical restrictions (of compactness, con-
+vexity, etc.) could in any case be used, as linearity, to
+ensure the above controllability under weaker conditions.
+The analog of the following result is well known in the
+linear case ("dead-beat controllers").
+Theorem 2.4 The subset Z is controllable if and only if
+there exists a (feedback) PL map K: X--+ U with K(0) = 0
+such that Z is finitely stable for the closed-loop system
+x(t+ 1)=p(x(t), K(x(t))).
+Proof: When a stabilizing feedback exists, the original
+set Z must be controllable [use u(1)=K(x(t))J. The con-
+verse is proved via a dynamic programming argument: let
+X(t) denote the set of states controllable to zero in t (but
+not less) steps. Thus, X(O) is just (0) and the union of the
+disjoint sets X(t), t = 0, - - -, n, covers Z for some n. Each of
+the X(t) is a PL set, since it can be defined by first-order
+sentences. Consider for each t= I,- - -,n the set R(t) con-
+sisting of all the pairs (x, u) with x in X(t) and p(x, u) in
+X(t - 1), seen as a PL relation with domain X(t). By the
+selection lemma there is a PL section K(t): X(t)--), U of
+R(t). Define K(O) as the zero map and K as the union of
+the K(t), and extend K to all of X arbitrarily. Any state x
+of Z is in some X(t) and is hence driven to zero in t steps
+under u(t)=K(x(t)). (Note this K gives a minimal-time
+controller.) ##
+As an easy illustration take the (almost-) linear system
+for which Z is the set of real numbers x with I x I< B, X is
+the union of Z and a distinguished state e, U is the set of
+reals with I u I < 1, and whose transitions are given by:
+x(t + 1) = x(t) + u(t) when x(t) is not e and the right-hand
+side has absolute value less than B, and x(t + 1) = e other-
+wise. (This kind of system arises if B is a bound on the
+domain of linearity of a given model and e denotes an
+error situation.) Then every state except e is controllable,
+and a natural (and obvious) choice of K on Z is K(x): = if
+x I > I then - sign (x) else - x.
+B. Observers
+The iterated output map h gives the output resulting
+from state x after the application of the input sequence
+w = u(0) ... u(t), i.e., h(x, w) is q(P(x, u(0) ... u(t -
+1)),u(t)); the sequence of all the outputs is H(x,w)=
+h(x, u(0)), - - -, h(x, w).
+Definition 2.5: The input sequence w determines the
+states of Z iff the outputs H(x,w) for x in Z are sufficient
+to uniquely determine P(x, w).
+Remark 2.6: A w as above is called a "homing se-
+quence" in automata theory (e.g., see Gill [5]). For linear
+systems any input sequence whose length is at least equal
+to the dimension of the system serves to determine Z,
+provided that at least one such w exists, and in particular
+observable systems admit such w. For various classes of
+nonlinear systems there are similar results; see Sontag I I
+and Sussmann [ 14]. #
+The cascade S#S' of two systems S = (U, X. Y. p, q) and
+S' = (U X Y, X', Y', p', q') is the system (U, X X
+X', Y', p*, q*), where
+p*((x,x'),u)=(p(x,u),p'(x',(u,q(x,u))), (2.7)
+q*((x, x'), u)=q'(x',(u, q(x, u))). (2.8)
+Definition 2.9: The system S' is an observer for (the
+states of) Z, relative to a set W of input sequences. iff
+Y'= X and for each initial state (x, x') of S#S' having x in
+Z, and each sequence w in W, h *((x, x'), w) = P(x, w).
+If S' and W are as above then any w in W determines
+the states of Z. The converse is as follows.
+Theorem 2.10.- Let W be a set of length-n input se-
+quences each of which determines the states of Z. There
+exists then a PL observer S' for Z relative to W.
+Proof.- Replace W by the set consisting of all those w
+of length n which determine Z. This (larger) set is PL, since
+(2.5) is a first-order definition. Let D be the PL subset of
+Y" consisting of all H(x, w) with x in Z and w in W.
+Consider the set of all triples (ffix, w), w, P(x, w)) with x
+in Z and w in W. This is the graph of a map f: D X U n __4. X
+and it is a PL set, so f is a PL map. The observer S' is now
+constructed as follows. The memory of S' is composed of a
+pair of shift registers which store the past n - I input and
+output values, as well as of an extra register for storing the
+last output y' of S'. If the past (n- 1) outputs and inputs
+together with the present (y,u) constitute a pair in the
+domain of f, then S' outputs the corresponding value of f.
+Otherwise, S' simply evaluates p(y', u), where u is the
+present input. Clearly, S' is an observer, and in fact the
+output of S' is equal to the state of S for any time t~_>n, as
+long as the first n input values constitute a sequence in W.
+C Input-Output Regulation
+There are various ways to pose problems of input-output
+regulation, i.e., problems of constructing a system S' (regu-
+lator) which, on the basis of the output of a given system S,
+calculates the inputs necessary to force S to behave in a
+desired way. Only stabilization is considered; other topics
+like disturbance rejection, tracking, etc., will not be studied
+in this note. The situation here has, of course, strong
+overlaps with the results for linear systems (e.g., see
+Wonham [171 for the linear case), and with those for finite
+automata (for which see Gatto and Guardabassi [41). Even
+when restricting attention to 1/0 stabilization there are
+still many possibilities in the choice of definitions. The
+main choice is in how one wants to model a situation in
+which unobservable (finite-time) disturbances may in-
+fluence S. If S' is to regulate S but is "unaware" of when a
+<<PAGE-DIVIDER>>
+SONIAG: NONIINLAR RLGLILAHON
+disturbance occurs (except through its effect on the 1/0
+behavior of S), then S' must regulate S even when S' starts
+at an arbitrary initial state (namely, the one in which S'
+ends up at the end of the action of the disturbance). If
+instead S' can be made aware of the disturbance, it could
+reset itself to a special state and only regulation when
+starting at that state is required. (One could also model
+disturbances as extra inputs.) Alternative ways of thinking
+about this are in terms of "time (in)variance" of the
+regulator, or in terms of the "degree of feedback" in the
+regulator construction. A related situation has been studied
+in automata theory by Gatto and Guardabassi, who intro-
+duced the terms "synchronous" and "asynchronous" regu-
+lation. Since output feedback will be involved, the system S
+will in this section be a state output system. As in Section
+1, there is a fixed equilibrium state 0.
+Definition 2. 11: The PL system S'= (Y, X', U, p', q') is
+an (n-step) weak regulator for the subset Z of X iff there is
+a state x' in X' such that, for each x in Z, solving the
+closed-loop equations
+x(I + 1) =p(x(t), q'(x'(t), q(x(l)))) (2.12a)
+x'(1 + 1) =p'(x'(t), q(x(t))) (2.12b)
+with x(O)=x, x'(O)=x' results in x(t)=O for all t--n. A
+strong regulator is one for which this property holds for
+every x' in S'. A weakly or a strongly regulable system is an
+S which admits a regulator S' for Z = X.
+Proposition 2.13: Assume that there exists an input se-
+quence w which determines the states of Z, and that
+P( Z X ( w)) is controllable. There is then a weak regulator
+for Z.
+Proof- Just cascade an observer with a system that
+computes a controlling input. That is, S' first feeds w into
+S, for the first r (=length of w) instants, storing corre-
+sponding outputs of S. Once that the state x of S is
+determined, S' sends the necessary input to control and
+sends zero thereafter. S' can be designed as a PL system
+through the application of the selection lemma to the
+relation R(x):=(v of length nIP(x,v)=O) (where n=
+controlling time). # #
+Theorem 2.14: Assume that there exists an integer r
+such that every sequence of length r determines the states
+of Z, and that P(ZX U') is controllable. Then there exists
+a strong regulator for Z.
+Proof: Let K be a PL feedback map as in (2.4) and let
+S' be an observer for Z relative to W, where W denotes the
+set of all input sequences of length r, constructed as in
+(2.4). Define S" using the same X' and p' as S' but with
+output q"(x', q(x)): = K(q'(x', q(x))). For any x(0), x'(0),
+the sequence w=q"(x'(0),q(x(O))),-..,q"(x'(r-1),q(x(r
+- 1))) determines the states of Z, so the output
+q'(x'(i), q(x(t))) is equal to x(t) for any t~_-r. After t=r,
+therefore, q"(x'(t),q(x(t)))=K(x(f),q(x(t))), so x(t) is
+zero for all t ~_- r + n. # #
+Although the observability assumption used above is
+probably too strong in general, it may very well be that (for
+large enough r) it will apply to wide classes of systems [cf.
+(2.6)]. In any case, it can usually be obtained by restricting
+349
+U or (equivalently) avoiding values of K that result in
+nondetermining inputs. Under suitable continuity assump-
+tions, K can be perturbed while still controlling. as. in the
+constructions in Section 111.
+D. System Inverses
+The notion of inverse system is an input-output one, so
+one needs here a few more definitions. An initialized PL
+system (S, x) (or just S, if x is clear) is a PL system S with
+a choice of a state x in X. The input-output map of (S, x) is
+the map f which sends each input sequence w into the
+output sequence H(x, w). When U'= Y, systems can be
+composed in series as follows: S": = S'- S is the system
+whose state space is XXX' (in that order) and with
+p"((x,x'),u)=(p(x,u),p'(x',q(x,u))) and q"((x,x').u)
+= q'(x', q(x, u)). For initialized systems (S, x), (S', x') one
+defines S'. S as initialized at (x, x'). The 1/0 map f '-f of
+S'- S is then the composition of f and f '. A special type of
+1/0 map of interest is the delay d* associated with a
+nonnegative integer d:
+d. (U(O),- 1))
+=(O,.-.,O,u(O),u(I),..-,u(t-d-1)) (2.15)
+(input preceded by d zeros). Note that d* can be realized
+by an obvious PL system (with U= Y). A (left) d-invertible
+f is one for which there exists somef' with f'-f=d*. It is of
+interest in coding and other applications to characterize
+those systems whose 1/0 map is d-invertible.
+Theorem 2.16: The 1/0 map f of (S, x.) is d-invertible
+if and only if, for each state x reachable from x0. and for
+each pair of input sequences w=u(O) ... u(d) and w'=
+u'(0) ... u'(d), the equality H(x, w) = H(x, w') implies that
+u(0) = u'(0).
+Proof: Assume that f is d-invertible, f'-f=d*, f' the
+1/0 map of S'. Let x = P(x,, w*), with w* of length r. If
+H(x,w)=H(x,w'), the outputs f(ww*) and f(w'w*) are
+equal and have length r+ d+ 1. The output of S'- S at time
+r+d+ I is therefore equal for both inputs. But f'~f=d*
+means that the output at time r + d+ I is u(O) = u'(0), as
+wanted. Assume conversely that the required property holds
+for H. Let M: XX Y`~ U be a PL map having the
+following properties: if there exists an input sequence
+u(O) ... u(d) such that H(x, u(O) ... u(d)) =y(0) ... y(d),
+then M(x, y(O) ... y(d)) is any u(0) obtained in this way.
+(Note that u(0) may not be unique, since the property on H
+holds only for reachable states, but the latter cannot be
+singled out in the definition because they may not con-
+stitute a PL subset of X.) If (x, -y( - )) is such that no such
+u(.) exists, M(x, j,(.)) is zero. By the selection lemma and
+first-order definition methods, there exists such an M. The
+system S' is now defined. Its state space is the product of d
+copies of Y, X, and [d], where the latter denotes the set of
+integers (0, - - -, d), thought of as a counter. The initial
+state of S' will have this counter at zero, all copies of Y at
+zero, and X at the initial state of S. The dynamics of S' are
+as follows: the d copies of Y will constitute a shift register
+storing the past d values of the input to S'. While the value
+<<PAGE-DIVIDER>>
+350
+i of [d] is less than d, the states of the copy of X will
+remain unchanged and the value of i increases by I at each
+step. When I reaches d, it remains there, and states in X are
+updated according to the original transition function p and
+using the inputs M(x, y) where the first d terms of y are
+the values stored in the shift register (last d inputs) and the
+last entry of y is the current input to S' (output of S). The
+output of S' is given by: zero if i < d, and M(x, y), with y
+as above, if i = d.
+Note that the existence of an abstract (non-PL) d-inverse
+S' of S would already imply the above property. Thus,
+invertibility implies PL invertibility. The only nontrivial
+part in the above proof is the fact that there is a PL map M
+with the desired properties. The construction of S' is just a
+way of expressing the computations involved in d-inverting.
+This kind of approach is very much the general one with
+elementary properties of PL systems: after a certain map
+or set is shown to be PL, the "system" implementing the
+solution is just the obvious algorithm: PL systems are
+general enough to accommodate the needed control struc-
+tures. Related to the results in this section, we leave as a
+suggestion the study of problems of feedback equivalence
+for PL systems using the approach of Hautus 161 together
+with the methods here.
+111. AsYmPTOTic BEHAVIOR
+Since PL systems are defined in a finitary way (a PL
+map can only have finitely many affine components), the
+study of asymptotic problems for such systems is more
+delicate than that in Section 11. Infinite-time problems are
+of interest because they often more accurately describe the
+behavior of real systems, and also because they transfer
+more easily under approximations of a non-PL system by a
+PL system and vice versa. The general approach in this
+section is to impose appropriate compactness conditions
+and to couple this with weak local assumptions. Again the
+emphasis is in proving that abstract existence of the vari_
+ous types of controllers implies the existence of PL con-
+trollers; checking the first of these (for non-PL systems) is
+itself a major (and active) area of system theory, in whose
+study the methods here may be useful numerically.
+A. AsYmptotic Control: Discrete Time
+First, PL systems are treated. The following assumptions
+will hold unless otherwise stated: X and U are connected
+PL sets, p is continuous, and Z is compact. (These hypothe-
+ses are much stronger than those actually needed in the
+different proofs, but they appear to be natural enough to
+be used as a blanket assumption.) Statements about open
+or closed sets are always to be understood with respect to
+the topology of X as a PL subset of a given Euclidean
+space. The following definition will be used for both PL
+and non-PL systems, and for Z not necessarily compact.
+Definition 3.1: The subset Z is asymptotically controlla-
+ble (a.c.) (to zero) iff for each state x in Z there exists an
+infinite input sentence w such that the limit of x(t)=
+IILL TRANSACTIONS ON AUTOMATIC CONTROL, VOL. AC-26, NO. 2. APRIL 1981
+P(x,w') exists and is zero. (Here w' indicates the subse-
+quence w(0), - - -,w(t).) The subset Z is (globally) asymptoti-
+cally stable (a.s.) iff, for every x in Z, and with w constantly
+equal to zero,
+(a) x(t) is bounded if x(O) = x;
+(b) for each neighborhood V of zero there exists a
+neighborhood W of x and a T> 0 such that z(t) is in V for
+any z(0) in Wn Z and any I ~_> T.
+The above definition of a.s. is equivalent to the standard
+Lyapunov notion (e.g., see Lee and Markus [91), but rela-
+tivized to Z. When Z contains zero, the definition is
+equivalent to asymptotic stability of the origin plus all
+solutions starting at the subset Z converging to zero. In the
+results below, which already assume a local condition, only
+convergence to zero will be nontrivial to obtain. The same
+definition will be used later for continuous time systems. If
+a feedback law exists inducing closed-loop asymptotic sta-
+bility for Z then Z is a.c. The interest here is in the
+converse statement, dealing essentially with the choice of
+infinite input sequences via a "finite" feedback. A first
+sufficient condition for this to be possible is the following.
+Lemma 3.2: Let Z be asymptotically controllable. As-
+sume that there is a PL neighborhood V' of zero and a
+continuous PL map L: V'---* U such that, for some neigh-
+borhood V of 0, the iterates qi(x) are always in V' for any
+x in V, and V is a.s. for the system with transitions
+q(x): =p(x, L(x)). There exists then a feedback PL map
+K: X--), U for which Z is a.s.
+Proof: Without loss of generality, take V to be a
+connected open PL neighborhood of zero whose closure C
+is compact and satisfies the same property. For ever y x in
+C, there is some positivej such that the iterate qJ(x) is
+back in V. Thus the (open) preimages q -'(V), i> 1, cover
+C, and by compactness these cover for i 1, - - -, j, some j.
+Let D be the union of the sets V, q(V),- -,qJ (V). Since p
+and L are PL maps, D is a PL set, and it is invariant under
+q (if x is in qi(V), write x=qi(z) for some z in V; then
+q'(z) is in V for some i between I and j, and hence q(x) is
+in qi-'-1(V)). Let V(i) denote the set of elements of X
+which can be controlled into V in i steps. Each V(i) is the
+union, ranging over all w of length i, of the preimages of V
+under the maps P(-, w). By continuity of P with respect to
+x, every V(i) is open. Since each V(i) is also the projection
+on X of the set consisting of all pairs (x, w) with w of
+length i and for which P(x, w) is in V, these are also PL
+sets. By asymptotic controllability, the union of the V(i)
+covers Z. By compactness of Z, there is some r so that
+V(I), - - .,V(r) already cover the set Z. Let W(i) be the
+complement of D and W(i - 1) in V(i) (where W(O) = D).
+Let K be equal to L on D, and equal to a selection function
+on the W(i), i = 1, - - -, r, in such a way that K(x) is an
+input sending states of W(i) into V(i- 1). Outside the
+W(i), K is arbitrary. Any state x in Z is in some W(i), so it
+will be sent in at most r steps into D; after that the
+feedback L takes over, driving x(t) towards 0. Thus, states
+converge to zero, and the proof follows from the fact that
+the origin is already a.s. for the local system.
+Somewhat less than asymptotic controllability of Z is
+<<PAGE-DIVIDER>>
+SONIA(,: NoNLINI.NR RIGULArION
+needed: it is enough to have "approximate controllability,"
+i.e., existence of finite sequences driving the states of Z
+arbitrarily close to zero. The lemma could be extended to
+include the case in which it is required that Z also be
+invariant under the closed-loop transitions. A feedback K
+giving such an invariance will exist iff asymptotic control
+can be assumed without the sequence x(-) ever leaving Z.
+The proof is basically the same, only the V(i) should be
+now defined as the set of elements of the subset Z which
+satisfy the necessary properties. Another extension would
+be to prove that controls outside D may in fact be chosen
+piecewise constant. This is not difficult to prove using
+compactness, but is relatively less interesting, due to the
+fact that the number of "pieces" and/or control times now
+become large in almost any instance (for a trivial example,
+consider an n-dimensional linear system x(t+l)=x(t)+
+u(t), with U also n-dimensional, and with V' a small
+neighborhood of zero and Z a large set. The obvious
+feedback u: x is linear (and so PL), but there is no
+piecewise constant feedback which uses "few" pieces).
+The hypothesis of (3.2) holds, for example, if it is known
+that some controllability set X(t) contains the origin in its
+interior (then L is as in Section II-A). A more interesting
+case is that in which p is linear at the origin, i.e., when
+there is a neighborhood of x = 0, u = 0, where p is defined
+and linear, and where this linear part is itself asymptoti-
+cally controllable. In other words, p(x,u)=Fx+Gu for
+small x, u, and the modes of F corresponding to eigenval-
+ues of at least magnitude one give a reachable system. In
+the linear neighborhood a suitable feedback exists by the
+linear theory. Note that such a condition on (FG) is
+"generic" in any reasonable sense. This argument gener-
+alizes to the non-PL case. The basic method there will be:
+for states near the origin a linear controller is used; for
+other states, a controller designed using a PL approximant
+will be sufficient. Discrete time is treated first.
+Theorem 3.3.- Let S be a discrete-time system with tran-
+sitions x(t+l)=p(x(t),u(t)), whose state space X and
+input value set U are PL, connected, and contain 0 in their
+interiors, and with p continuous and p differentiable in a
+neighborhood of x = 0, u = 0. Let Z be a compact subset of
+X. Assume that Z and the linearization (F, G) of S at the
+equilibrium state 0 (i.e., F=(aplax)(0,O), G=
+(ap 'lau)(0,0)) are both a.c. There exists, then, a feedback
+map K: X_ U such that Z is a.s. for the corresponding
+closed-loop system.
+Proof.- Let K be a linear map such that all eigenvalues
+of A:=F-~-GK have absolute value less than one. The
+notation x I for a vector will be used for the box norm max
+(I x , 1, - -x,, 1) ~ I A I is the corresponding operator norm.
+"Distance" will refer to this norm. Since powers of A
+converge to zero, there is some t with IA'1<114. Let
+q(x): -p(x, Kx), for those x in X for which Kx is in U.
+Pick a neighborhood V of 0 small enough so that, for all x
+in V, q'(x) is defined and differentiable for i=O,---,t.
+Further, V should be small enough that the closure of the
+union of the images of these q'(V) is also inside the
+domain of differentiability of p. Since q' is differentiable,
+351
+one may write, for x in V, q(x) = A'x + h(x), with h(x) of
+order o(x). Taking a smaller V if necessary, one may
+assume that jh(x)j<(l14)jxj for allx in V. Further, Vcan
+be taken as a box lxl<a. It follows that, on V, lq'(x)l<
+(1/2)lxl, and in particular V is invariant under the con-
+traction q. Moreover, (q'(x)) converges to zero, for any x
+in V, since q, - - -,q'-' are all continuous and the subse-
+quence (q"(x)) converges to zero. Let C be the compact
+box consisting of those x with jxj<(a12). Since Z is a.c.,
+there is for each x in Z an input sequence w with P(x, w) in
+the interior i(C) of C. Thus, the preimages of i(C) under
+the continuous maps P(., w) cover Z, and by compactness
+a finite subset of the w is enough to cover. Let the integer r
+and the compact PL subset U' be such that every x in Z
+can be controlled to i(C) (and hence to C) in at most r
+steps using input values in U'. Replace U by U'. Consider
+the union of all sets P(Zx U'), for i=O, - - -,r. This is
+again compact and is hence contained in a compact PL
+subset X' of X.
+Let D' be the union of the images (q'( V)) for i = 0,
+- 1. If x is in D' it returns to V, in fact to the interior of C,
+in at most t steps. So D' is also q-invariant. Let D be an
+open PL neighborhood of D' with the property that all
+q'(D) are well defined and also that q'. (D) is eventually
+inside V. There is always such a D, because, for each x in
+the (compact!) closure of D', q'(x) is in C for some i < t,
+and q, - - .,q'-' are all continuous. If x is any state in D
+then applying the linear feedback u: = Kx results in x being
+driven asymptotically to zero. The global feedback K will
+be constructed as an extension of the map K as defined on
+D. The global K, which will in fact be defined only on X'
+(but can be extended arbitrarily outside X'), will in particu-
+lar drive any state in Z into D. After reaching D, the
+"local" K takes over. Since the local system is a.s., only
+convergence to zero needs to be verified.
+Consider the set C' of those states in X' which can be
+driven into C using a single input in U. (This set is
+compact.) Let p* be a PL map defined on the product of
+X' and U and such that p*(x, u) is uniformly at distance
+less than (al4l) of p(x, u) (e.g., a continuous p* which is a
+suitable simplicial approximation of p, with values in the
+convex hull of X'- or, for a much cruder approximation, a
+piecewise constant p*). For each x in C' there is then some
+u such that p*(x, u) is at distance less than a14 from C.
+Let V' be the open set consisting of all x in X' which can
+be so controlled in one step via the PL map p* into a state
+at a distance less than a14 from C. Since the latter is a
+compact PL set, P" is also PL. By the selection lemma,
+there exists a PL map K' defined on V' and with values in
+U such that the distance of p*(x, K'(x)) to C is always less
+than a14. Thus, p(x, K'(x)) is in V for any x in V'. Extend
+K to V' using K' outside D. The argument may be repeated
+now using C', V' instead of C, V; instead of a as above,
+one uses now a number a such that the distance from C' to
+the complement of P" is a12. The only difficulty is that C'
+is not necessarily PL. But since C' is a compact subset of
+the open set V', there is always a PL C* lying between C'
+and P", so C' can be simply replaced by this (larger) C* if
+<<PAGE-DIVIDER>>
+352
+IILL rRANSA(TIONS ON AUTOMATIC CONrROL, VOL. A(-26, No. 2, APRIL 1981
+necessary. Repeating, a new p* is defined on a suitable V",
+and a K" results which extends the previous K to V". By
+the definition of r, after r steps the resulting C' already
+covers Z. Extend K arbitrarily outside the last V'. Under
+u = K(x), a state x in Z is driven in at most r steps into D,
+as required. # #
+What should be emphasized of the above result is the
+underlying idea of constructing an approximating PL sys-
+tem S* (for example, the successive p* on the P that
+appear in the proof) and building a PL controller for S*; if
+S* is sufficiently close to S, the same controller works for
+the latter. (Introducing a uniform topology for systems,
+one could make this precise: there is a neighborhood of S
+such that any PL system in this neighborhood, equal on V
+to the linearization of S at zero, is also a.c.) The method
+could be reversed to give a (sufficient) test for the control-
+lability of the original S (based on checking controllability
+of PL systems); if S* is controllable, and if S is sufficiently
+close to S*, it is itself controllable. It would, of course be
+desirable to have a version of this stated directly in terms
+of S.
+Example 3.4: As a simple illustration, consider the sys-
+tem with X= U= R, Z the set of states with I x 1 3, and
+transitions x(t+ 1)=X(1)2 +X(t)+U(t). In this very simple
+case there is, of course, an obvious non-PL controller,
+namely, u: = - x 2 - x, but we wish to obtain a PL solution.
+For this note that the linear feedback K(x): = - x stabi-
+lizes for I x I < 1. Interpolating linearly on the complement,
+one obtains for an approximant S*:
+p*(x, u) = - 3x- 3 + u on 3, - 11 (3.5a)
+p*(x, u) = 5x - 3 + u on [ 1, 31. (3.5b)
+The obvious controller K(x): = 3x + 3 on 3, - 1],
+K(x): = 3 - 5x on [ 1, 31 when applied to the original system
+already happens to yield stability. Indeed, I p(x, K(x))l < I
+for all x except x=2, -2. But in those cases the next state
+is - 1, which is driven to zero in the next iteration. (Of
+course, one can not expect that such a simple procedure
+will always work, and better approximations of S may be
+necessary.) # #
+Generalizations of (3.3) could proceed in various direc-
+tions. For instance, X could be taken to be a more general
+topological space. One could then expect in that case an
+analogous argument using triangulations of X, but the
+detailed work remains to be done. Similarly, the control
+space U could be taken as a more general space.
+B. Continuous-Time State Feedback
+Consider now continuous-time systems S with X, U, PL
+open connected sets, f continuous [this can be weakened:
+see (3.9)], and such that
+(dxldt)(t) =f(x(l), u(t)) (3.6)
+has a well-defined unique solution for t~_-O when starting
+at any x(0) in X and given any u(-) piecewise continuous
+with values in U. (By definition such u's will be assumed to
+be bounded on finite time intervals.) The definition of
+asymptotic controllability is the obvious analog of the one
+before. The following result proves that sampled control is
+(almost) always possible using PL feedback.
+Theorem 3.7: Let S be as in (3.6), with f differentiable
+in a neighborhood of zero. Assume that the linearization
+(A, B) of f at 0 gives an a.c. linear system and that the
+compact subset Z of X is a.c. in the system S. Then there
+exist a PL map K: X'---> U and a positive real number d,
+such that, for the system (3.6) with the feedback
+u(t): = K(x(id)) if id-_--t-<(i+ I)d, (3.8)
+the set Z is asymptotically stable.
+Proof: By an easy modification of the argument in
+Kalman et al. [7, Theorem 121 one shows that there exists
+an integer j such that the sampled linear system (F, G)
+obtained from (A, B) using a sampling period 2 -J is a.c. as
+a discrete-time system. Let S' be the discrete-time system
+with the same X and U as S and with p(x, u): = solution of
+(3.9) at time 2 -i for x(0) = x and u(t) = u (constant). (One
+says that S' is obtained through sampling of S at rate 2J.)
+Let L be such that E: = F+ GL has all eigenvalues with
+absolute value less than 1, and let V be a neighborhood of
+zero such that Ex is in U for each x in V and such that
+using u:=Ex on S' yields a system which is a.s. when
+starting at x in V. (Such a V exists by the argument in
+(3.3), since (F, G) is the linearization of p; an alternative
+proof would work directly on S using the Bellman-
+Gronwall lemma as in Desoer 12, p. 1531.) Since z is a.c. in
+S, for each x in Z there is some input function u(.) and a T
+such that x(1) is in V for all t~_- T. Since V is open, one
+may approximate such a u(-) by piecewise constant inputs
+in any fine enough partition of [0, TI, so for each x there is
+some input constant on intervals of the form [n2-',(n+
+1)2-'] controlling x, and hence also a neighborhood of x,
+into V, in a time T that can be chosen as an integral
+multiple of 2 - i. By compactness of Z, there are some i and
+T which work for all x in Z. Without loss of generality one
+may assume that i >j. Take d: = 2 -'.
+Claim: The discrete-time system S" obtained by sam-
+pling S at rate d has Z a.c. Indeed, if x is in Z the above
+construction shows that x can be taken into V using
+d-sampled inputs, i.e., as a state of the system S". But once
+in V one may use the inputs u(t+i):=Ex(t) (for i=
+0,...,m-1, and t a multiple of m=2'-') to drive x
+asymptotically to zero. (Note that the mth iterate of the
+transition map p" of S", with "piecewise constant" inputs
+u as above, is by construction the same as p.) Thus, Z is
+a.c. The linearization (F',G') of p" at zero is also a.c.,
+because the lower frequency sampling (F, G) already is.
+Thus, (3.3) applies to give a K which stabilizes Z for S",
+which is equivalent to stabilizing Z in S with the d-sampled
+feedback K.
+Remark 3.9: a) The assumption of continuity on f can
+be weakened considerably. All that is really needed is that
+sampled systems obtained from S satisfy (3.3), and this will
+sometimes happen under piecewise continuity of f. To
+make this precise would require entering the topic of
+defining "solution" of o.d.e.'s with discontinuous right-hand
+side.
+<<PAGE-DIVIDER>>
+SONIA(i: NONLINLAR RIArNATION
+b) For computations, the above proof is, of course,
+rather inefficient, and directly approximating S by a PL
+system may be more practical; this is yet another area
+requiring more careful study. Although of a very different
+nature. this result has some analogies with the piecewise-
+analytic theory of Sussmann [14]; these analogies are ex-
+plored in Sontag and Sussmarm [ 13], where it is also shown
+that, in general, a "piecewise" smoothness of control laws
+is unavoidable.
+C. (Asymptotic) Regulators
+The notions of weak and strong regulation introduced in
+Section 11-C can be generalized in the obvious ways to the
+asymptotic'case~ Z should now be required to be a.s.
+instead of 'finite-time stable. This applies also to non-PL
+systems, as, defined in A and B above. (Output maps are
+defined in the continuous case just as with discrete time.)
+In the continuous case, one looks for sampled regulators.
+As in Section II-C, S will be a state-output system.
+Definition 3.10: Let S be a discrete-time system. The
+subset Z of X is weakly regulable iff there exists a system S'
+and a state x' in X' such that Z is a.s. [i.e., the coordinate
+x(t) satisfies the conditions in (3.1)] for the closed-loop
+system when S' starts at x'. If Z is a.s. for S' starting at any
+state in X'. then Z is strongly regulable. For a continuous-
+time system S, the subset Z is (weakly or strongly) regula-
+ble iff there is a discrete-time system obtained from S by
+sampling for which Z is (weakly or strongly) regulable. The
+system S is (weakly or strongly) regulable on compacts iff
+the above properties hold for each compact subset Z of X.
+Variations of the definition are possible which would
+require S' itself to be stable. The constructions given below
+will provide this stability in any case, but the relations
+between the various possible definitions should be studied
+in detail in the future. Of course, the interest will be in
+"nice" (here, PL) regulators, but the above definition per-
+mits posing the question of whether such nice regulators
+exist when only the abstract possibility of regulation is
+given. Note that a regulable linear system (F, G, H) is one
+for which (i.e., (F, G) is stabilizable and (F, H) is detecta-
+ble. Since linear systems appear, it will be convenient to
+assume that q(0) = 0; this can always be done up to coordi-
+nates in Y.
+Recall that two states x, x' of a system S are indis-
+titigiiishableiffh(x,x,)=h(x',~t,) for every admissible (finite
+length) input function ~t% (The notations are as in Section
+I I-B: in continuous time, P(x, w) is the state reached after
+application of w.) "Admissible input function" means any
+sequence in discrete time, and any piecewise continuous w
+in continuous time. (Values (w(t) must, of course, belong
+to U.) If Z is a subset of X, a coset for the indistinguisha-
+bility (for simplicity, "indy") equivalence relation restricted
+to Z is an indistinguishability class rel (=relative to) Z. A
+set which is a union of such classes, for a given Z, is
+saturated rel Z. As a final definition, an input function w of
+finite length (final-state) determines the states of Z up to
+indistinguishability (u.t.i.) iff for any x in Z the outputs
+353
+H(x, w) are enough to determine the indy class of P(x, w);
+a sampled such function w will be a w which is constant on
+intervals [id, (i+ I)d] for some d, and such that just
+outputs at times id (not greater than the length of w) are
+sufficient for this determination.
+Assume now that S is weakly regulable on compacts. Let
+L be an indy class rel Z, some Z compact. Let S' be a weak
+regulator for Z, and let S start at t=0 in a state x
+belonging to L. From (2.12) it is clear that the future
+inputs to S will be the same if S starts at a different x' in
+L. Call w(-) the (infinite) input function thus obtained,
+which depends only on L and not on the particular x. The
+solutions x(t) starting at the x in L satisfy the conditions
+in (3.1) for the given Z. Since L is compact (because indy
+classes are always closed by continuity of p, q), the conver-
+gence to zero is uniform on L, i.e., for any neighborhood V
+of zero there is a T such that x(t) is in V for all t~_- T and
+all x(0) in L. This can be achieved by first covering L by
+neighborhoods W as in (3.1) and then taking a finite
+subcover. (In fact, although with different w's, a T can be
+obtained for the same reason as depending only on the
+compact Z.) Note that the existence of such w(.) depend-
+ing only on L would be implied even if S and S' were both
+continuous-time systems and (2.12) would be suitably mod-
+ified; this is all the more interesting in view of the fact that
+this condition turns out to be equivalent to the existence of
+a (sampled) regulator, and in fact a PL one.
+Theorem 3.11: Let S be either a discrete- or a continu-
+ous-time system, with X, U, open, PL, and connected, and
+with p, q continuous, and differentiable in a neighborhood
+of zero. Assume that a) for every compact Z and every
+indy class L rel Z there exists an input function w(-) such
+that solutions x(-) starting at states in L converge uni-
+formly to zero; b) the linearization (A, B, C) of S at zero is
+regulable; and c) for every compact Z there exists a sam-
+pled v which determines the states of Z up to indy.
+Then S is weakly regulable (by PL systems). Further, if
+(p,q) are real-analytic and the local condition b) holds,
+then a) alone is, in fact, a necessary and sufficient condi-
+tion for weak regulability.
+Proof: The first part of the proof basically repeats the
+arguments in (3.3) and (3.7). More details are provided for
+the continuous-time case; discrete time is analogous but
+simpler, Let k be such that the linear system obtained by
+sampling (A, B, C) at rate 2* is discrete-time regulable.
+From the linear theory one concludes the existence of a
+linear regulator for the latter, say S"=(A",B",C",D"),
+where S" is built by cascading a Luenberger observer and
+a constant feedback matrix that provides asymptotic stabil-
+ity. Denote the state space of this regulator by R", and
+states by x"; this S" feeds C'Y'+D"y to (the sampled
+version of) (A, B, C). By the argument in (3.4), applied to
+the closed-loop system which consists of the sampling of S
+at that rate and of S", there exists an open bounded PL
+neighborhood of zero D* in XXR" such that a) D* is
+invariant under closed-loop dynamics when the (sampling
+of) the original system is used together with S"; and b)
+there is asymptotic stability for the latter nonlinear closed-
+loop system when starting in D*.
+<<PAGE-DIVIDER>>
+354
+Moreover, this stability is preserved under higher rate
+sampling. For later use, note that there exists also a smaller
+set E* with the same properties and such that the closure
+cl(E*) of E* is included in D*. (This can be proved simply
+by starting in (3.3) with the box of sides a12 for "V"
+instead of a.) Let the open subset D of X be such that
+D X (0) is included in D *, and let F be a compact subset of
+R" such that the projection of D* in the second coordinate
+is included in F. Again for future reference, find E such
+that E X (0) is included in E * and such that the closure of
+E is included in D.
+Let Z now be a compact subset of X. We want to obtain
+a regulator S' for the states of Z. By c) there exists a
+sampled input v which determines states of Z u.t.i.; rescal-
+ing time if needed, we may assume that the sampling rate
+for v is 2' for some i. (In discrete time, just let i=O.) Let i
+be the largest of i and the above k. By continuity of P(., v)
+the set Z: = P(Z X ( v 1) is again compact.
+Consider now an indy class L rel Z', and a correspond-
+ing w as in a). Let T be an integer such that x(t) is in D for
+all x(O) in L and all t ~_- T. Let x be in L. Consider the map
+(a restriction of p) pT: XX U(T) --+ X, which assigns final
+states x(T) to initial states x(0) and piecewise continuous
+input sequences of length T. With the uniform convergence
+topology on U(T), pT is continuous. Since P(x, w) is in D,
+there is then a neighborhood A X B of (x, w) which is also
+mapped into D. For each x in L find such an A(x) and
+B(x). Since the A(x) then cover the compact L, there is a
+finite subcover, say A(x,), - - .,A(x,,). Let A be the union of
+the A(xi), and let B be the intersection of the B(xi). Pick
+any w' in B. For some j, there is such a w' which is
+moreover sampled at rate 2J. Thus, P(x, w') is in D for any
+x in A. Replacing w by w', one concludes that there is a
+sampled w controlling L (and a neighborhood A of L) into
+D at time T. Let A' be the intersection of A and Z'.
+The set A' (open in Z') can be assumed to be saturated
+rel Z'. Indeed, consider the quotient space Z'II, where I is
+the indy relation, and let (0 be the canonical quotient map.
+Since Z' is compact and Z'1I is Hausdorff (by continuity
+again). 6 is closed. So the complement of 0 - 'O(Z'IA) is
+open in Z', saturated rel Z', contained in the original A',
+and still contains L, as required.
+For each class L there are then a sequence w, an integer
+T, and a neighborhood A with the above properties. By
+compactness of Z', one concludes that there exist finitely
+many, say m, open sets A and corresponding A' saturated
+I J
+rel Z', and input functions wj of lengths T(j), all sampled
+at some rate 2 -k' such that P(x, w~) is in D whenever x is
+in A,, Replacing i by the largest of i and k, a fixed
+sampling rate 2' will be used for the input v which de-
+termines states of Z u.t.i. (in the process driving Z to Z'),
+the inputs w, which control Z', and the sampling rate for
+(A, B, C) for which S" regulates locally.
+From now on, the problem is strictly one about discrete-
+time systems: for the continuous-time case a regulator will
+be constructed for the system obtained sampling at the
+above rate. Let r be the length of v and let k be the largest
+length of the sequences w, When sampling as above, one
+would get k = largest of the lengths k(j) = 27(j). Consider
+IEFL TRANSACTIONS ON AUTOMATIC CONTROL, VOL. AC-26, No. 2, APRIL 1981
+the set
+C: (H(x, v), [P(x, v)])Ix in Z) C Y' X (Z'II)
+(3-12)
+where indicates indy class (restricted to Z'). Since Z' is
+compact and P, H, are continuous, C is also compact.
+Since v determines states of Z u.t.i., H(x, v) ur"'quely
+determines [P(x, v)], so C is the graph of a continuous
+function f. Denote by J the domain of f. Let W. be any
+open set in Y" interesting J at f -'([Aj']). (Note that
+saturation of A' gives precisely that it is open in the
+quotient space.) If x is any state in Z whose output y(-)
+(when v is applied) is in J, then y(-) is in some WJ, and for
+that j the corresponding wj controls P(x, v) into ~. Re-
+place now each Wj by a subset W.' which is PL, in such a
+way that the latter still cover J. (This can be done'~using
+that the Wi are open and compactness of J.) Replacing by
+new sets WT one obtains a disjoint PL (nonopen) subcover
+of J. Let g be the PL map which assigns the integer j to
+each WT -
+The construction of the regulator S' is now easy. The
+state set of S' will consist of the product
+yr- I XN(r+k+ 1) XN(m) XR (3.13)
+where N(j) is the set of integers (I, j). (The compact
+set F could'have been used instead of the last coordinate.)
+To describe the dynamics of S', denote by i, j, y", x" the
+contents of N(r+k+ 1), N(m), Y", and R" respectively.
+The operation shift (a, y") stores the value a in the last
+coordinate of y" and shifts the rest of y" to the left,
+dropping the first value. The input is the present output
+value y of S (sampled at the beginning of the period in the
+continuous-time case), and the output is the value that
+results in the register u. Finally, the, vector k(j), the
+function g, the linear system S", the vector v(i), and the
+matrix w(i, j) [containing w,(i)] are assumed to have been
+already defined. Then S' evolves according to the follow-
+ing:
+u: =if i<r then vG)
+else if r< i < k(j) then w(i - r, j)
+else C"x"+D"y;
+if i=r thenj: =g(y", y);
+ifi,---r+k theni:=i+l;
+y: = shift (y", y);
+if i> r + k(j) then x": =A"x" + B" Y_ (3.14)
+The initial state is i: = 1, j arbitrary, y" arbitrary, and
+x": =0. It is clear that (3.14) defines a PL system. By
+construction, any state of Z is first sent into a known state
+in Z', and then driven to the domain of local a.s.; thus S' is
+indeed a weak regulator.
+<<PAGE-DIVIDER>>
+SONFAW NONLINIAR REGULAIJON
+It does remain to prove that condition c) is not needed
+in the analytic case. Since the proof is basically that in
+Sontag [11, Section 3], it will only be sketched here. For
+any input function w let K(w) be the set of pairs of states
+x, x' of Z with h(x, w) = h(x', w). Each K(w) is compact
+and defined by analytic equations. For each finite set
+(W I " * '' W, 1, let K ( w, - - -, w,): = intersection of
+K(w,),- - -, K(wl,- - -,w,). Consider the subclass consisting
+of all those sets of type K(w,,, - .,w,) which use only input
+sequences K~ which are sampled at rate 2, for all possible i
+and r. Let K(w,, - - - K,,) be such a minimal set. Assume
+that the outputs to v=w, - - -w, at the end of w1, ww2, etc.,
+would not determine states of Z u.t.i. There are then two
+states x, x' in Z which give the same output at those times
+under v, i.e., such that (x, x') is in K(w,,. - -,w,), but such
+that (a, a'): = ( P(x, v), P(x', v)) is not in I. Let w be an
+input with h(a, w) =,,~= h(a', w). By continuity of output val-
+ues on time, %, may be assumed to be of some length k 2 -'
+for some k, i. By continuity of output values on input
+functions, K' may be assumed to be sampled at some rate
+2'. Thus, the set K(w, - - -,w,, w) is strictly contained in
+K( vv, - - -, vv,), contradicting minimality of the latter. Thus,
+v indeed determines states of Z u.t.i., as a sampled input.
+For strong regulation the situation is more complicated,
+but the result given below appears to be nearly necessary
+and sufficient at least in the continuous-time analytic (or in
+the discrete-time but polynomial) case: in that case it i-s
+generally known that a generic set of inputs (relative to a
+suitable topology) exists, each of which serves to determine
+final states u.t.i.; it is not known (and in fact it is false)
+that this set should contain a neighborhood of zero, or that
+sampled inputs may be used, and these facts will be needed
+below. (It is possible, however, that the stronger facts may
+still hold in the analytic discrete and continuous cases, at
+least when the state space is bounded and requiring only
+11 almost" indy u.t.i., which is enough for the proofs.) For
+simplicity, the result will be proved under an observability
+assumption. When dealing with "smooth" systems observa-
+bility may be expected to be a generic condition on systems
+(transition maps transversal to "kernel" of output maps,
+intuitively)-a rigorous version and proof of this has in
+fact been shown to the author by H. Sussmann. A com-
+pactness assumption on U is also made for simplicity;
+mathematically, this is a nontrivial assumption, but from a
+practical viewpoint it is, of course, very natural [this is
+dropped in (3.23)]. Call a subset V of the state space X
+globally observable iff every indy class in X has at tinost one
+element in V. The topology on input functions is taken to
+be that of uniform convergence, and "generic" will mean a
+countable intersection of open dense sets. Assume that U is
+compact and contains a neighborhood of zero.
+Theorem 3.15: Let S be as in (3.11), satisfying a) and b)
+there, as well as: c)' there exist an integer M and a generic
+subset U of the set of input functions of length M such that
+U contains all functions with values in a neighborhood G
+of zero and such that each sampled w in U determines the
+states of X u.t.i.; and c)' there is a globally observable
+355
+neighborhood V of the zero state. Then S is strongly
+regulable (by PL systems).
+Proof.- Let k, S", D, etc., be as in the first paragraph
+of the proof of (3.11). Assume without loss of generality
+that V is an open PL set, and that all values C'Y' + D"q(x)
+are in G when (x, x') is in D*. Construct all of these in
+such a way that the closure of the projection F' of D* in
+the first factor is included in V. Let Z be a compact, and
+assume without loss that it contains F'. Let Z" be a
+compact set containing the union of all the images P(ZX
+U(t)) (where U(t): =set of input functions of length t), for
+0<t-_:::2M, and let Z' be another compact containing all
+the images P(Z-XU(t)), for 0<t-_::M. (Thus, Z' also
+contains all states reached from the original Z in at most
+time 3M.)
+Repeat now the constructions of the covering (AJJ and
+the sequences wj, but regarding controllability to E as
+opposed to controlling only to D. Moreover, pick the final
+vvj corresponding in the proof to each class L as a sequence
+such that either T(j)<M or every length-M sampled sub-
+sequence of w, determines states of u.t.i. (The latter require-
+ment will be met if one can prove that length-M sequences
+with that property form a dense set, since B will then
+contain at least one such sequence. But the set of wanted
+sequences is given by a finite intersection of generic sets-
+the sampling having been already chosen-and hence still
+dense.) Use the notations k(j), k, m as earlier, and r: = TM.
+Construct the set C using the constant input v = 0 of length
+r (any other small enough v would do), but using Z"
+whenever Z was used for (3.12). The function g is con-
+structed as before.
+The above constructions can be combined as before to
+give a weak regulator which first determines the state u.t.i.
+and then drives this state to the domain of regulation for
+S". Recall from Part 11 that the idea of strong regulation is
+intuitively that sudden disturbances during the operation
+of this closed-loop system should not affect eventual stabil-
+ity. One way to ensure this stability is to constantly check
+(using a PL system!) for deviations of the observed 1/0
+behavior from the "expected" behavior obtained when no
+disturbances occur. This checking will be accomplished as
+follows.
+Let v,J be the length-r input sequence obtained as the
+restriction of wj to (sampled instants) t=i,- - -,i+r- 1.
+Thus, vijisdefined forj= I,. - -,m and i= I,- - .,k(j)-r+ I
+when k(j) is at least r. Note that each v,, determines states
+of Z' u.t.i. For each 0<i-_--k(j), let W,', denote the tail
+subsequence obtained by restricting wj to its last k(j) - i + I
+values. Let Dj [respectively, Ej] be the set of states of Z'
+that wij sends into D [respectively, El. Each Dj and Ej is
+saturated rel Z'. Indeed, let x be in Dij and let x' be
+indistinguishable from x. Then P(x, w, j) and P(x', K~ ) are
+indistinguishable. But P(x, wj) is in D, which is included
+in the globally observable V; thus P(x,w,,)=P(x',wJ)
+and x' is also in Dij (clearly, much less than global
+observability of V would be needed here, since all that one
+really wants is that P(x', wij) be again in V). The same
+argument applies to Eij. Their closures are also saturated,
+and by the construction of D, E, cl(Ej) is contained in
+<<PAGE-DIVIDER>>
+356
+D, I. Consider when k(j) ~_- r the sets
+-!~j,:=((H(x,v,,),[P(x,v,_,)])Ixincl(D,j)). (3.16)
+Since the v,, determine u.t.i., each such _Cj defines anfij as
+in (3.12). Let E,, [respectively, Dii] be the (open set in the
+domain of fi,) preimage of E,,_,+,) [respectively, D,(j+,)].
+Note that cl(E,,) is included in DO.
+There is, then, a closed PL subset L(i, j) of Y' which
+contains Ej and is contained in Di,. Further, the L(i, j)
+can be constructed, for each j, satisfying certain compati-
+bility conditions for different i. Namely, that
+p(f,,(L(i,j)x(wi,)))C:fi,,,,(L(i-l,j)). (3.17)
+To obtain this, start by defining L(i,j) for i=l; next
+consider the compact set P(f,,(L(i,j))X(wij)); this is
+included in D* and includes E*, so in constructing the next
+set one may require containing this set, then repeat for
+larger i. Let g,j be the (PL) characteristic function of
+L(i, j). Then, if g,j(ffix, vi,)) is I it follows that P(x, w,_,)
+is in D, and conversely if P(x, wj) is in E one knows that
+this value is one.
+The above functions will be used to detect deviations
+while the h~ are being applied. But disturbances may also
+happen while in the domain of local linear regulation. For
+this case, consider the set
+f(u, H(x, u), [P(x, u)])Ix in F', u in Ur) (3.18)
+(recall that F' includes cl(pr,(D*))). This defines on its
+domain a continuous function 0 such that 0(u, y) gives
+[ P(x, u)] in XII for the uniquely determined class. Con-
+sider the product space (XII)XR" (the second factor is
+the linear regulator state). Since I is trivial on V, the set
+VXR" can be identified with a subset of this product
+space, and hence also E* and D* are subsets of it. Let
+0'(u, y, x") be (O(u, y), x"). Since cl(E*) is included in
+D*, there exists a PL subset of Ur X yr XR" which maps
+under 0 into a set containing E* and contained in D*; let c
+be its characteristic function. Thus, at any time c(u, y, x")
+is in particular I when (x, x") is in E* for the unique x
+giving past 1/0 data (u, y), and conversely if this value is
+I then at least (x, x") is in D*.
+The construction of S' is now as follows. The state set is
+X,: ~ Ur- I X yr- I XN(r) XN(m) XN(k) X R"X X0
+(3.19)
+with notations as earlier and X. a three-element set {TEST,
+CONTROL, STANDBY). To display the dynamics, denote by z
+the coordinate of X. and denote y", x" as before, u" the
+content of the U'- 1 factor, w(i, j) as before, i, j, k' the
+contents of the N(r), N(m), and N(k) registers respec-
+tively, g'(i, j, y) for g,,(y), and let INPUT(U) be false iff u
+is in V. All partially defined maps are assumed extended
+arbitrarily outside their domains. The dynamics are
+IEEF FRANSA( FIONS ON AU r0,MAfIC CONTROL. VOL, AC-26, NO. 2, APRIL 1981
+( Z = TEST:)U: = 0;
+ifi<rtheni:=i+l else
+beginj: = g( y", y); k': = I ; Z: = CONTROL; end
+y": = shift (y", y); u": = shift (u", u); (3.20)
+(Z = CONTROL:)U: = w(k', j);
+if k'< k(j) then k': = k'+ I else
+begin Z: =STANDBY; x": = 0; end;
+if r<k' then
+if g'(i, j, y", y) = 0 then Z: =TEST;
+y": =shift (y", y); u": =shift (u", u); (3.21)
+(Z STANDBY:)U: = if INPUT (U) then 0
+else C'Y' + D"y;
+X": =A"x" +B"y;
+11 =0)
+if (INPUT (U) OR C(U", Y , X")
+then Z: =TEST;
+y": =shift (y", y); u": =shift (u", u); (3.22)
+To prove that S' is a strong regulator, let x' be an
+arbitrary initial state of S' and let x be in Z. Consider the
+closed-loop evolution. Say that the alarm sounds if at some
+time during the evolution z changes from CONTROL or
+STANDBY into TEST.
+Assume that the alarm does sound. Then it must sound
+at a time when x is in Z". This is proved as follows. If
+originally z=TEsT, then after at most r instants one has
+that Z=CONTROL. Assume that the alarm sounds while
+Z =CONTROL. Let k' be the (first) time it sounds. If r < k'-
+1, then at I - 1, S' had decided that x(t - 1) will be driven
+into D by wj (which is being applied) and will hence
+converge asymptotically to zero. The condition in (3.17)
+ensures that the alarm will not sound again. So k'- I > r,
+i.e., k'--<r, and so at most 2r steps have elapsed since the
+initial time. Thus, x(k') is indeed in Z". If the alarm does
+not sound while Z =CONTROL it means that k (j) < r (other-
+wise the argument above ensures it would never sound).
+Then at most 2r- I steps have elapsed by the time the
+state enters z =standby. If the alarm does sound at the first
+time that Z=STANDBY then t--2r and again x(t) is in Z".
+Otherwise, it will never sound, since c ensures that (x, x ")
+is in the invariant a.s. set D*. If the alarm does not sound,
+the above arguments show that one indeed has a.s., since
+x(t) is sent to D* and the convergence is uniform once
+there. If the alarm did sound, z is set to TEST, and after r
+more steps the state of S is determined u.t.i., and a suitable
+j is obtained with convergence to E thereafter (the alarm
+does not sound again, since x is sent into E, not just D,
+and EX (0) is in E*).
+Various modifications of the above would be desirable.
+For example, the replacement of all the equality decisions
+by tolerance comparisons would be needed in order to
+insure robustness of the design. We leave this as a point to
+<<PAGE-DIVIDER>>
+SONTAG. NONLINEAR REGULAHON
+be further studied, and concentrate instead in weakening
+the hypotheses of (3.15). The proof of the following variant
+is (except for a more complicated notation) basically the
+same as for (3.15), and hence will be omitted. Note that
+compactness of U is not required anymore.
+Theorem 3.23: Let S be as in (3.15) and assume that 1)
+the linearization of S at zero is regulable; 2) there is a
+globally observable neighborhood V of the zero state; and
+3) for each compact Z there exist a compact neighborhood
+U. of 0 in U, a positive M, and a generic subset U of
+U,(M) such that the following properties hold: i) for some
+compact Z' containing all P(Z X Qjt)), 0 < t < 3M, and for
+each indy class L rel Z', there is an input function driving
+states in L uniformly to zero; and ii) there is a sampling
+time d (dividing M) such that any input in U which is
+sampled at a rate divisible by d ` serves to determine
+states of Z' u.t.i. Then S is strongly regulable. # #
+In the continuous-time case, the assumption on V im-
+plies observability. This can be weakened by asking di-
+rectly if there exists a linear regulator wMch converges
+when starting at states indistinguishable from those close
+to the origin.
+Example 3.24: The hypotheses of (3.23) seem to be quite
+weak. As a very simple illustration, consider the one-
+dimensional, single input system (dx1dl)(l)=x(t)+u(t),
+Y(t) =X(j) + X(t)2. Clearly, 1) above is satisfied, while 2)
+follows from observability. Consider the sampled system
+Y=X+X2, d
+(rate d - 1): x(t+ l)=ax(t)+bu(t), where a= e I
+b =a - 1. Assume that input u is applied to this system in
+2 )2 =
+state x; then y, =x+x and y2=ax+bu+(ax+bu
+... )+(a-a2+2abu)x are observed, where de-
+pends only on y, and u. Thus, x will be obtainable from y,,
+y, when a-a 2 + 2 abu =/- 0, i.e., when a =?~= 1/2. Thus, inputs
+of length 2 are always sufficient for determining states of
+the sampled system, as long as the value 1/2 is not used.
+We shall now choose both d and M: =2d. Let Z be a
+compact, say, contained in k, k ]. A suitable U. (to be
+taken of the form sk, sk 1) and a d should be such that
+inputs of magnitude sk suffice for controlling states re-
+ached in time 3M=6d from Z. In other words, one needs
+that 1e 6dX +(e 6d _ I)ul<sk, where xj<k, juj-<sk. Thus
+6d 6d
+d, s must satisfy ke +sk(e _I)<sk,or6d<ln(2s1(s+
+1). For example, d=0.04, s=2 will satisfy the above. (In
+fact, since s can be taken as close to I as wanted, this
+means that the "transient" state set Z' can be made to be
+as close to Z as wanted, as long as the sampling rate is high
+enough. Obviously, in a practical situation too fast a
+sampling will lead to numerical instability.)
+IV. CONCLUSIONS AND REMARKS
+After an introduction and basic terminology, Section 11
+studied bounded time problems. The study there consisted
+basically in showing that certain "external" (and nonfirst-
+order) properties of systems are equivalent to natural "in-
+-order) properties, resulting then in PL solu-
+ternal" (first
+tions for regulators. Section III concentrated on properties
+which are not purely algebraic, although the PL structure
+was also very useful here, and in the design of PL regula-
+357
+tors for non-PL systems.
+The previous material should be taken mostly as an
+illustration of the possibility of developing an approach to
+nonlinear regulation using PL systems. Although various
+results were given, a much greater number of questions,
+some of which were already mentioned, remain open. This
+applies both to problems of computation and to problems
+of a more theoretical nature. Among the latter we wish to
+suggest a few other areas not treated above. One of these is
+the topic of optimization. It is easy to see that finite-time
+optimal control problems with PL costs (e.g., absolute-value
+norms) result in closed-loop PL feedback solutions. In fact,
+even a "piecewise quadratic" theory could be developed,
+resulting in PL solutions. For infinite time problems, an
+approach much like that in the last section (around the
+origin a linear-quadratic problem) should give a constant
+PL feedback. This should be worked out in more detail.
+The structural stability of the various constructions should
+be also explored carefully. Finally, questions involving
+uncertainty have not been treated at all, but it conceivable
+(although not clear!) that suitable stochastic control and
+filtering questions may be posed and solved in the present
+setup.
+REFERENCES
+[11 L. 0. Chua, Introduction to Nonlinear Network Theory. New York:
+McGraw-Hill, 1969.
+[21 C. A- Desoer, Notes for a Second Course on Linear Systems.
+Princeton, NJ: Van Nostrand, 1970.
+[31 T. Fujisawa and E. S. Kuh, "Pieccwise linear theory of nonlinear
+networks," SIAM J. Appl. Math., vol. 22.1 pp. 307-328, 1972-
+[4 M. Gatto and G. Guardabassi, "The regulator theory of finite
+automata," Inform. Contr., vol. 3 1, pp. 1- 16, 1976.
+[51 A. Gill, Introduction to the Theory of Finue-State Machines. New
+York: McGraw-Hill, 1962.
+[61 M. L. J. Hautus, "Feedback in general discrete-time systems,"
+Eindhoven Univ. Technol., Memo. COSOR 78-17, 1978.
+[71 R. E. Kalman, Y. C. Ho, and K. S. Narendra, "Controllability of
+linear dynan-fical systems," Contr. Differential Equations, vol. 1, pp,
+189-213, 1963.
+[8] S. K. Kang and L. 0. Chua, "A global representation of multidi-
+mensional piccewise linear functions with linear partitions," IEEE
+Trans. Circuits Syst., vol. CAS-25, pp. 938-940, 1978.
+[9] E. B. Lee and L. Markus, introduction to Optimal Control Theory.
+New York: Wiley, 1967.
+[10] N. Minorski, Theory of Nonlinear Control Systems. New York:
+McGraw-Hill, 1969.
+[III E. D. Sontag, "On the observability of polynomial systems, 1: Finite
+time problems," SIAM J. Contr. Opt., vol. 17, pp. 139-151, 1979-
+[12] - ,"Remarks on piecewise linear algebra," Pacific J. Math., to be
+published.
+[131 E. D. Sontag and H. J. Sussmann, "Remarks on continuous feed-
+back," in Proc. IEEE Conf. Decision Comr., Albuquerque, NM,
+1980.
+[141 H J. Sussmarm, "Single input observability of continuous time
+sy'stems," Math. Syst. Theory, vol. 12, pp. 31-52, 1979.
+[151 -, "Subanalytic sets and feedback control," J. Differential Equa-
+tions, vol. 31, pp. 31-52, 1979.
+[161 P. Vidal, Nonlinear Sampled-Data Systems. Gordon and Breach,
+1969.
+[171 M. Wonham, Linear Multivariable Control. New York: Springer,
+1974.
+Eduardo D. Sontag was born in Buenos Aires.
+Argentina, on April 16, 1951. He received the
+Licenciado degree in mathematics from the Uni-
+versity of Buenos Aires, and the Ph.D. degree in
+mathematics from the Center for Mathematical
+System Theory at the University of Florida,
+Gainesville.
+From 1976 to 1977, he held a postdoctoral
+fellowship at the University of Florida, Gaines-
+ville. In 1977, he was appointed Assistant Profes-
+! sor of Mathematics at Rutgers-The State Uni-
+<<PAGE-DIVIDER>>
+358
+versit), New Brunswick, NJ. He also worked in nonacademic computer-
+related positions- His major research interests lie in mathematical system
+theory, applied algebra. and theoretical computer science. He is the
+author of various papers in system theory and algebra, and has also
+written survey papers and a book on artificial intelligence. He has
+11-LL TRANSA( TIONS ON AUTOMATIC (ON rROL. VOL. A( -26, No. 2, APRIL 1981
+authored Lecture Notes in Control and Information Sciences, 13: Polv-
+nonnal Response Maps (Berlin: Springer, 1979)_
+Dr. Sontag is a member of Plui Beta Kappa, of the American Mathe-
+matical Society, and of the Society for Industrial and Applied Mathe-
+matics.

@@ -1,0 +1,392 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97eurocolt.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/97eurocolt.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+Vapnik-Chervonenkis Dimension of
+
+Recurrent Neural Networks
+
+Pascal Koiran1? and Eduardo D. Sontag2?? 1 Laboratoire de l'Informatique du Parall'elisme
+
+Ecole Normale Sup'erieure de Lyon - CNRS
+
+46 all'ee d'Italie, 69364 Lyon Cedex 07
+
+France koiran@lip.ens-lyon.fr 2 Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+USA sontag@hilbert.rutgers.edu
+
+Abstract. Most of the work on the Vapnik-Chervonenkis dimension of neural networks has been focused on feedforward networks. However, recurrent networks are also widely used in learning applications, in particular when time is a relevant parameter. This paper provides lower and upper bounds for the VC dimension of such networks. Several types of activation functions are discussed, including threshold, polynomial, piecewise-polynomial and sigmoidal functions. The bounds depend on two independent parameters: the number w of weights in the network, and the length k of the input sequence. In contrast, for feedforward networks, VC dimension bounds can be expressed as a function of w only. An important difference between recurrent and feedforward nets is that a fixed recurrent net can receive inputs of arbitrary length. Therefore we are particularly interested in the case k AE w. Ignoring multiplicative constants, the main results say roughly the following:
+
+- For architectures with activation oe = any fixed nonlinear polynomial,
+
+the VC dimension is ss wk. - For architectures with activation oe = any fixed piecewise polynomial,
+
+the VC dimension is between wk and w2k. - For architectures with activation oe = H (threshold nets), the VC
+
+dimension is between w log(k=w) and minfwk log wk; w2 +w log wkg. - For the standard sigmoid oe(x) = 1=(1 + e
+
+\Gamma x), the VC dimension is
+
+between wk and w4k2.
+
+1 Introduction In this paper we deal with questions that arise when training and testing data have a time series structure. This is a fairly common situation in many applic? This research was carried out in part while visiting DIMACS and the Rutgers Center
+
+for Systems and Control (SYCON) at Rutgers University. ?? This research was supported in part by US Air Force Grant AFOSR-94-0293.
+
+ations. It arises in control problems, when the inputs to a regulator are timedependent measurements of plant states, or in speech processing, where inputs are windowed Fourier coefficients and signal levels at each instant.
+
+In PAC-theoretic terms, it is natural to take into account this additional structure through the use of hypotheses classes F which consist of dynamical systems. We will take the inputs (for training and testing) to be functions of time, and the hypotheses classes will be defined by means of dynamical recognizers, which allow one to exploit the information inherent in the correlations and dependencies that exist among the terms of the input sequence. (As a close analogy, Kalman filtering, which relies on linear dynamical systems for extracting information -- filtering of noise -- from a stream of data, is perhaps the most successful known example of an application of the idea of using dynamical systems as data processors.) Through a limitation of the memory and power (dynamic order, number of adjustable parameters) of the elements of F, and analyzing behavior for longer and longer input sequences, one is able to focus on the properties that truly reflect the dependence of f (u) on long-term time correlations in the input sequence u. This paradigm is inspired by the use of finite automata for the recognition of languages, and the use of recursive least squares techniques in statistical problems, but the interest here is in nonlinear, continuous-state, dynamical systems. In particular, we use recurrent (sometimes "feedback" or "dynamic") neural networks. In contrast to feedforward nets, which only contain static units, recurrent nets incorporate dynamic elements (delay lines), and their behavior is described by means of systems of difference equations. (It is also possible to study continuoustime nets, which are defined in terms of differential equations, but we restrict attention in this paper to the discrete time case. Similar results can be obtained in the continuous-time framework, however.)
+
+Recurrent networks are among the models considered by Grossberg and his school during the last twenty or more years, and include the networks proposed by Hopfield for associative memory and optimization. They have been employed in the design of control laws for robotic manipulators (Jordan), as well as in speech recognition (Fallside, Kuhn), speaker identification (Anderson), formal language inference (Giles), and sequence extrapolation for time series prediction (Farmer). See for instance the book [2], which emphasizes digital signal processing, or the work on language learning in [5], and the many references given in both citations. In both the areas of signal processing ([9]) and control ([10]), recurrent nets have been proposed as generic identification models or as prototype dynamic controllers. In addition, theoretical results about neural networks established their universality as models for systems approximation ([14]) as well as analog computing devices ([11, 12]).
+
+2 Precise Definitions In order to be able to formally state our main results, we now provide precise definitions of recurrent nets. Just as one does with Turing machines - or similar models of computation - in the analysis of algorithms, however, in proofs we
+
+revert to a more informal approach, leaving implicit the precise specification of networks in the formalism introduced here.
+
+By an n-dimensional, m-input, p-output initialized recurrent net we mean a 5-tuple
+
+\Sigma  = (A; B; C; x0; oe) (1)
+
+consisting of three matrices A 2 Rn\Theta n , B 2 Rn\Theta m , C 2 Rp\Theta n , a vector x0 2 Rn , and a diagonal mapping
+
+oe : Rn ! Rn :
+
+0@ x1
+
+...
+
+xn
+
+1A
+
+7!
+
+0B @
+
+oe1(x1)
+
+...
+
+oen(xn)
+
+1C A ; (2)
+
+where oe1; : : : ; oen are maps R ! R. The (discrete time) system induced by the net (1) is the set of n coupled difference equations, plus measurement function:
+
+x(t + 1) = oe (Ax(t) + Bu(t)) ; x(0) = x0 ; y(t) = Cx(t) : (3) One also writes (3) simply as x+ = oe (Ax + Bu), x(0) = x0, y = Cx. The component maps oe1; : : : ; oen of oe are the activations of the net. If it is the case that all the oei are equal to a fixed function oe, we say that the net is homogeneous with activation oe and write also oe(n) instead of oe. The spaces Rm , Rn , and Rp are called respectively the input, state, and output spaces of the net.
+
+In the present context, one interprets the vector equations for x in (3) as representing the evolution of an ensemble of n "neurons" (also called sometimes "units", or "gates") where each coordinate xi of x is a real-valued variable which represents the internal state of the ith neuron, and each coordinate ui; i = 1; : : : ; m of u is an external input signal. The vector x0 lists the initial values of these states. The coefficients Aij ; Bij denote the weights, intensities, or "synaptic strengths," of the various connections. The coordinates of y(t) represent the output of p probes, or measurement devices, each of which averages the activation values of many neurons. Often C is just a projection on some coordinates, that is, the components of y are simply a subset of the components of x.
+
+The linear systems customarily studied in control theory (see e.g. the textbook [13]) are precisely the homogeneous initialized recurrent nets with identity activation and x0 = 0.
+
+To each initialized recurrent net (A; B; C; x0; oe) we associate a discrete time input/output behavior. Assume given a sequence u = u(0); : : : ; u(k \Gamma  1) of elements of the input space Rm . One may iteratively solve the difference equation (3) starting with x(0) = x0, thereby obtaining a sequence of state vectors x(1); : : : ; x(k). In this manner, each initialized recurrent net induces a mapping, on inputs of fixed length k,
+
+*k\Sigma  : (Rm )k ! Rp : u 7! y(k) = Cx(k) (4) which assigns to the input u the last output produced in response.
+
+Remark. One may broaden the notion of initialized recurrent net by allowing "biases" or "offsets", i.e. nonzero vectors d 2 Rn and e 2 Rp in the update and the measurement equations respectively. These equations would then take the more general form x+ = oe(Ax + Bu + d), y = Cx + e. Despite the fact that biases are useful, and we employ them in proofs, we do not need to include such an extension in the formal definition. This is because the input/output behavior of any such net also arises as the input/output behavior of a net in the sense defined earlier (zero biases), with state space Rn+1 and same activations. The simulation is achieved by means of the introduction of an additional variable z whose value is constantly equal to a nonzero number z0 in the range of one of the activations, say oe, in such a manner that the equations become x+ = oe(Ax + zd0 + Bu), z+ = oe(a0z), y = Cx + ze0, where a0 is chosen so that oe(a0z0) = z0 and d0; e0 are so that z0d0 = d and z0e0 = e (if the only activation is oe j 0, there would be nothing to prove).
+
+2.1 Architectures Roughly, by an "architecture" one means a choice of interconnection structure and of the activation functions oe for each neuron, leaving weights and initial states unspecified, as parameters. One may also stipulate that the initial state, or just certain specific coordinates of it, should be zero (as with linear systems in control theory). Feedback networks with a fixed architecture provide parametric classes of dynamical systems. We formalize the notion of architecture by means of incidence matrices, employing binary matrices in order to specify the allowed interconnection patterns and initial states.
+
+By an n-dimensional, m-input, p-output recurrent architecture we mean a 5-tuple
+
+A = (ff; fi; fl; ,; oe) (5)
+
+consisting of three matrices ff 2 f0; 1gn\Theta n, fi 2 f0; 1gn\Theta m, and fl 2 f0; 1gp\Theta n, a vector , 2 f0; 1gn, and a diagonal mapping oe as in Equation (2). An initialized recurrent net with architecture A is an instantiation obtained by choosing values for the nonzero entries, that, is, any initialized recurrent net (A; B; C; x0; oe0) such that oe = oe0 and the entries of the matrices and vector satisfy Aij = 0 whenever ffij = 0, Bij = 0 whenever fiij = 0, Cij = 0 whenever flij = 0, and x0i = 0 whenever ,i = 0.
+
+We say also here that the component maps oe1; : : : ; oen of oe are the activations of the net, which is homogeneous with activation oe if all oei are equal to a fixed function oe. The spaces Rm , Rn , and Rp are respectively the input, state, and output spaces of the architecture. Suppose that the binary matrices ff, fi, and fl and the vector , have exactly ^, *, _, and * nonzero entries respectively; then we call the number w := ^+*+_+* the number of parameters or weights of A, and call Rw the parameter or weight space. Arrange the indices of the nonzero entries in any fixed manner, for instance by listing their nonzero entries row by row, for ff, fi, fl, and , in that order. These indices are in one-to-one correspondence with the coordinates of vectors in Rw . In this manner, one may view the architecture
+
+A as representing a parameterized system x+ = oe (ffx + fiu), x(0) = ,, y = flx where, by substituting the parameters ae 2 Rw into the nonzero entries of (ff; fi; fl; ,), every possible initialized recurrent net \Sigma  = A(ae) with architecture A results.
+
+Recalling the notations in Equation (4), for each recurrent architecture A and each k ? 0, we may introduce the set
+
+FA;k := \Phi *k\Sigma  ; \Sigma  = A(ae); ae 2 Rw \Psi  (6)
+
+of mappings (Rm )k ! Rp . Elements of this set are the input/output mappings induced on inputs of length k by each possible initialized recurrent net with architecture A.
+
+2.2 VC Dimension In all our results, we will take the number of input components (m) and of output components (p) to be one, and, except in Theorem 7, we consider only homogeneous (all activations equal) architectures. By oe-architecture, we mean an architecture where all activations are the same function oe : R ! R. The choice of m = 1 makes our lower bounds more interesting. It is fairly easy, though notationally somewhat more cumbersome, to extend the upper bounds to vector inputs. The same can be said about the homogeneity assumption, although it is the case that some proofs use nonhomogeneous nets in intermediate steps. The choice p = 1 is made in order to be able to see the input/output behaviors of networks as classifiers.
+
+Given any A with m = p = 1, and any k ? 0, we denote
+
+BA;k := \Phi Hffi*k\Sigma  ; \Sigma  = A(ae); ae 2 Rw ; , 2 Rn \Psi  (7) where H is the threshold function: H(x) = 0 if x ^ 0 and H(x) = 1 if x ? 0. This is a class of mappings Rk ! f0; 1g, and we write vc(A; k) to denote its VC dimension. We refer to this quantity also as the "VC dimension of A when receiving inputs of length k".
+
+We are particularly interested in understanding the behavior of vc(A; k) as k ! 1, for various recurrent architectures, as well as the dependence of this quantity on the number of weights and the particular type of activation being used. In particular, we continue the work described in [4] (see also [16] for related work), which had obtained estimates of these quantities for architectures with identity activations.
+
+By a threshold recurrent architecture we mean a homogeneous one with oe = H. As in [15], we say that oe : R ! R is sigmoidal , or a sigmoid, if:
+
+1. oe is differentiable at some point x0 where oe0(x0)6=0. 2. limx!\Gamma 1 oe(x) = 0 and limx!+1 oe(x) = 1. (the limits 0 and 1 can be replaced by any distinct numbers).
+
+In particular, the standard sigmoid is oe(x) = 1=(1 + e\Gamma x). By oe-gate, or oe-unit, we mean a gate with activation oe. These two special cases are worth recording: by linear (respectively, threshold) unit we mean a unit with activation a linear or threshold function.
+
+2.3 Statements of Main Results For each A and k, by "unfolding" the iterations, one may also see the class BA;k as a class of classifiers representable by feedforward neural nets (with k "hidden layers"). This trivial fact allows one to easily obtain estimates, based on those bounds which were developed (cf. [3, 1], [6], [7]) for the feedforward case.
+
+Theorem 1. For recurrent architectures, with w weights receiving inputs of length k:
+
+1. The VC dimension of threshold recurrent architectures is O(kw log kw). 2. If oe : R ! R is a fixed piecewise-polynomial function, The VC dimension of
+
+recurrent architectures with activation oe is O(kw2). 3. The VC dimension of recurrent architectures with activation the standard
+
+sigmoid O(k2w4).
+
+The bounds would seem to be too conservative, since they completely disregard the fact that the weights in the different layers of the "unfolded" net are actually the same. The surprising aspect of the results to be stated next (and of the results in [4]) is that we obtain lower bounds which do not look much different. We first state two more upper bounds. The first one is interesting because for fixed w, it shows a log k dependence, rather than the k log k obtained by unfolding.
+
+Theorem 2. The VC dimension of an n-dimensional threshold recurrent architecture, with w weights and receiving inputs of length k, is O(wn + w log kw).
+
+Theorem 3. Let oe : R ! R be a fixed polynomial function. The VC dimension of recurrent architectures with activation oe, with w weights and receiving inputs of length k, is O(kw). Moreover, if oe is linear this bound can be improved to O(w log k).
+
+For a corresponding lower bound in the linear case, see [4]. We now turn to other lower bounds.
+
+Theorem 4. The VC dimension of threshold recurrent architectures, with w weights and receiving inputs of length k = \Omega (w), is \Omega (w log(k=w)).
+
+Here and throughout the paper, the \Omega  symbol is to be interpreted as follows: "there exist universal constants c1; c2; c3 ? 0 such that for every w * c1 and every k * c2w, there exists a threshold recurrent architecture with w weights which has VC dimension at least c3w log(k=w) for inputs of length k."
+
+Theorem 5. Let oe be an arbitrary sigmoid. The VC dimension of recurrent architectures with activation oe, with w weights and receiving inputs of length k, is \Omega (wk).
+
+It is possible to generalize Theorem 5 to even more arbitrary gate functions:
+
+Theorem 6. Let oe be a function which is twice continuously differentiable function in an open interval containing some point x0 where oe00(x0)6=0. The VC dimension of recurrent architectures with activation oe, with w weights and receiving inputs of length k, is \Omega (wk).
+
+This is an intermediate technical result, but it seems of interest in its own right:
+
+Theorem 7. The VC dimension of recurrent architectures with threshold and linear activations, with w weights and receiving inputs of length k, is \Omega (wk).
+
+It is interesting to contrast the situation with the one that holds for feedforward nets. For the latter, it holds, in general terms, that linear activations provide VC dimension proportional to w, threshold activations give VC dimension proportional to w log(w), and piecewise polynomial activations result in VC dimension proportional to w2.
+
+Proofs and a few additional results can be found in sections 3 and 4.
+
+3 Threshold Networks 3.1 Lower Bounds Lemma 8. Given two integers m; L ? 0 such that L is a power of 2, let k = mL and consider the following family F of boolean functions on f0; 1gk: the functions in F are indexed by m parameters t0; : : : ; tm\Gamma 1 2 f0; : : : ; L \Gamma  1g. The corresponding function maps an input u = (u(k \Gamma  1); : : : ; u(0)) 2 f0; 1gk to
+
+ft0;:::;tm
+
+\Gamma 1(u) =
+
+m\Gamma 1.
+
+j=0
+
+u(jL + tj);
+
+i.e., we select one input in each interval of the form [jL; (j + 1)L \Gamma  1] and take the logical OR of these boolean values.
+
+The VC dimension of F is exactly m log L.
+
+Proof. Since each parameter tj can take L distinct values, there are at most Lm = 2m log L functions in F. Hence the VC dimension of F is at most m log L. In order to show that this upper bound is tight, we will construct a set S of s = m log L inputs u0; : : : ; us\Gamma 1 such that each labeling (ffl0; : : : ; ffls\Gamma 1) 2 f0; 1gs of S can be obtained in the following way: let tj be the integer with binary digits (from the low-order bit to the high-order bit) fflj log L; fflj log L+1; : : : ; ffl(j+1) log L\Gamma 1. Then ft0;:::;tm
+
+\Gamma 1(ui) = ffli.Input u
+
+i is defined as follows: write i = q log L + r, with q 2 f0; : : : ; m \Gamma  1g and r 2 f0; : : : ; log L \Gamma  1g. Then ui(t) = 0 for every t62[qL; (q + 1)L \Gamma  1]. For
+
+t 2 [qL; (q + 1)L \Gamma  1], one can write t = qL + r0 where r0 2 f0; : : : ; L \Gamma  1g. We set ui(t) = 1 if the bit of weight 2r of r0 is equal to 1; otherwise, ui(t) = 0.
+
+To see that for any labeling ffl0; : : : ; ffls\Gamma 1 one has ft0;:::;tm
+
+\Gamma 1 (ui) = ffli (witht
+
+0; : : : ; tm\Gamma 1 as defined above), note that by construction of ui, ui(jL + tj) = 0
+
+for all j6=q. Hence ft0;:::;tm
+
+\Gamma 1(ui) = ui(qL + tq). Again by construction of ui, thisis just the bit of weight 2r of t
+
+q. However, by construction of the tj's, this bit is nothing but fflq log L+r = ffli. Hence we get the correct output.
+
+Remark. An explicit description of the inputs constructed in the above proof is as follows. Consider the L by log L matrix
+
+V =
+
+0B BBB @
+
+1 0 \Delta  \Delta  \Delta  0 0 1 \Delta  \Delta  \Delta  0 1 1 \Delta  \Delta  \Delta  0.
+
+.. ... ... ...
+
+1 1 \Delta  \Delta  \Delta  1
+
+1C CCC A
+
+which is obtained by listing all binary row vectors of size log L in the reverse of their natural order (i.e., the leftmost bit is the least significant bit). Let U be the direct sum matrix V \Phi  V \Phi  \Delta  \Delta  \Delta  \Phi  V (this is the block-diagonal matrix with m copies of V on the diagonal). The input set S is the same as the set of columns of this matrix. We may also describe the set functions in F in this manner. Let ei, i = 0; : : : ; L \Gamma  1 be the unit row vector (0; : : : ; 0; 1; 0; : : : ; 0) (with a "1" in the (i + 1)st position) and consider the row vector Et0;:::;tm
+
+\Gamma 1 = (et0; : : : ; etm\Gamma 1).Then, f
+
+t0;:::;tm\Gamma 1 (ui) is the product of Et0;:::;tm\Gamma 1 and the ith column of U .
+
+Proof of Theorem 4. We first assume that w is of the form 8m + 2, for some m * 1. We also assume that L = ^=m is a power of 2, where ^ = k \Gamma  2, and that L * 2. The (straightforward) generalization to arbitrary values of w and k is explained at the end of the proof.
+
+We shall construct an architecture N of w weights which implements the family F of Lemma 8 for inputs of length ^. It will become clear that in the initialized recurrent network implementation, we need two additional inputs at time ^ and ^ + 1. This explains why k = ^ + 2. According to Lemma 8, our shattered set S0 will be of size m log L = [(w \Gamma  2)=8]: log[8(k \Gamma  2)=(w \Gamma  2)]. This is indeed \Omega (w log(k=w)).
+
+S0 is defined as follows. For each input u in the shattered set S of Lemma 8 there is an input u0 2 S0 satisfying u0(t) = 2t + u(ti) for t = 0; : : : ; ^ \Gamma  1. There are two additional "dummy" inputs u0(^) = 0 and u0(^+ 1) = 0 (the values (0; 0) can be replaced by an arbitrary pair of real numbers).
+
+Let us now describe network N . We need m subnetworks to perform the tests "u(jL + tj) = 1 ?" for j = 0; : : : ; m \Gamma  1. By construction of S0, this question has a positive answer if and only if there exists t 2 f0; : : : ; ^ \Gamma  1g such that u0(t) = 2(jL + tj) + 1. The outcome ej of this test can be computed by a simple network of 3 threshold units and 7 weights:
+
+ej = H[H(u0 \Gamma  `j + 0:5) + H(`j + 0:5 \Gamma  u0) \Gamma  1:5] where `j = 2(jL +tj) +1. The network has one additional threshold gate o which serves as output unit. It keeps computing the OR of the ej's and of the previous output (to make sure that is some ej is equal to 1 at some time, the output
+
+remains 1 ever after). This can be implemented with m + 2 weights as follows: o+ = H(o + Pmj=1 ej \Gamma  0:5): Therefore N has 7m + (m + 2) = w weights.
+
+Note that the last two inputs u0(^) and u0(^ + 1) are "wasted", i.e., they do not influence the final output o(k). All gates are initialized to 0. This guarantees that the outputs at t = 1 and t = 2 are both 0. These outputs are "bogus" in the sense that they occur before even the first input u0(0) is processed. If one of these bogus outputs was equal to 1 then the final output would be 1, no matter what the input sequence is (and we certainly don't want that to happen).
+
+The generalization to arbitrary values of w and k is as follows: let m = b(w \Gamma  2)=8c and L the largest power of 2 which is not larger than (k \Gamma  2)=m (we can assume that L * 2). The construction above yields a network of w0 = 8m + 2 weights with VC dimension m log L. This is still \Omega (w log(k=w)), albeit with a slightly smaller constant. One can obtain a network of exactly w weights by adding to the present construction w0 \Gamma  w "dummy" units which are completely disconnected from the rest of the network (for instance, each dummy unit might be of the form x+ = H(x)).
+
+3.2 Upper Bounds Proof of Theorem 1 (threshold case). By unfolding, the recurrent network can be simulated by a (depth k) feedforward threshold network with kw weights (note that the only effect of having the initial x(0) 2 Rn as a programmable parameter is to change the threshold values in the first layer of that feedforward net). The result then follows from the Baum-Haussler bound [1].
+
+Proof of Theorem 2. Let S = fu1; : : : ; usg be a set of s inputs. We will bound the number of distinct transition functions of the architecture for inputs in S. The transition function is of the form
+
+OE : (x; u) 7! H(n)(Ax + Bu) ; where the network state x is in f0; 1gn and the input u in R. Since we are considering only inputs from S, u can take any of the (at most) ks values ui(t) (i = 1; : : : ; s; t = 0; : : : ; k\Gamma 1). Hence the domain D of OE has at most jf0; 1gnjks = 2nks elements. Let Ti be the threshold function computed by gate number i. If this gate has wi incoming weights, then Ti can induce at most 2jDjwi distinct functions on D by, e.g., Sauer's lemma. Hence there are at most Qni=1 2jDjwi = 2njDjw\Gamma * distinct transition functions, where * is the number of entries equal to 1 in , (in other words, * is the number of "unspecified" coordinates of initial states; by definition, the total number of parameters is w = Pni=1 wi + *). If two settings of the architecture's parameters give rise to the same transition function and the initial states are the same, the functions induced on S will be identical. Therefore if S is to be shattered, 2s ^ 2n(2nks)w\Gamma * \Theta  2* ^ 2n(2nks)w. This implies that s ^ n(w + 1) + w log k + w log s, hence s=2 ^ n(w + 1) + w log k or s=2 ^ w log s. In both cases, s = O(wn + w log kw).
+
+We don't know if a O(w log kw) bound applies for all values of k; w * 2. It is clear from the proof of this theorem that the "extra" term wn comes from the 2n bound on the number of network states. One may be able to give better bounds for networks with a smaller number of "accessible" states.
+
+Theorem 9. The VC dimension of a recurrent architecture of n threshold units and w weights receiving boolean inputs of length k is O(wn + w log w). (Note that this bound is independent of k.)
+
+Proof. This follows from the proof of Theorem 2. The domain of the transition function OE has only 2n+1 elements since u 2 f0; 1g. Hence one can set jDj = 2n+1 in the proof of that theorem.
+
+The same result applies to architectures taking their inputs in any fixed finite set. This is in sharp contrast with the case of feedforward architectures, where maximum VC dimension \Omega (w log w) can be achieved with boolean inputs.
+
+4 Sigmoidal Networks 4.1 Upper Bounds Proof of Theorem 1 (piecewise-polynomial case). It takes O(w) arithmetic operations to update the network's state after a new input component is received. Hence the whole computation requires O(kw) operations for inputs of length k. The architecture has w + n ^ 2w programmable parameters, where n is the number of units in the network. Hence by [6] (Theorem 2.3) its VC dimension is O(w \Theta  kw).
+
+Interestingly, one can give a better upper bound for polynomial activation functions than for piecewise-polynomial activation functions. The linear case is included in [4].
+
+Proof of Theorem 3. We denote by W the vector listing all weights in the three systems matrices ff; fi; fl, so that the parameter vector ae can be partitioned as (W; ae0), where ae0 lists the weights in ,. Let P : Rw\Gamma * +1+n ! Rn be the function mapping W , the input u 2 R, and the network's current state x 2 Rn to the next state x+ 2 Rn . For instance, the network's state after reading u(0) and u(1) is P (W; u(1); P (W; u(0); x(0))). If oe is a degree-d polynomial then each component of P is a polynomial of degree 2d. (this twofold increase is due to multiplications between weight and input or state variables; the degree in the weight variables is only d.) After the whole input u 2 Rk has been read, the state of any unit in the network (and in particular the state of the output unit) can be expressed as a polynomial Pk in u 2 Rk , W 2 Rw\Gamma * and the parameters ae0 for the nonzero coordinates of x(0) 2 Rn . The degree of Pk in the programmable parameters is
+
+at most D = 2dk + Pk\Gamma 1j=1 dj. By [6] (Theorem 2.2) the VC dimension is bounded by 2w log(8eD). (note that the degree in the input variables does not appear in this bound.) The theorem follows from the obvious observations: D = k + 1 for d = 1 and D ! 2dk+1 for d * 2.
+
+Proof of Theorem 1 (standard-sigmoidal case). By unfolding, the recurrent architecture can be simulated by a feedforward net with kn nodes, where n be the number of nodes in the original architecture, and the same number w of programmable parameters. By [7] there is a O((kn)2w2) upper bound on the VC dimension of that architecture. This is O(k2w4) as claimed.
+
+Note: one can argue that the feedforward net has kw weights, but many of those weights are "shared" and there are only w + n ^ 2w programmable parameters. The result in [7] explicitly allows such weight-sharing arrangements (see condition e in section 4.1 of their paper).
+
+4.2 Lower Bounds Theorem 6 shows that the O(kw) upper bound of Theorem 3 is tight (for nonlinear polynomials). In fact, the matching \Omega (kw) lower bound applies to a much wider class of functions than just polynomials. Let us consider first the simpler case of sigmoidal functions.
+
+Proof of Theorem 5. This follows from Theorem 7 and the fact on any finite set of inputs, linear and threshold gates can be simulated by gates with activation oe.
+
+Proof of Theorem 7. We can assume that ^ = k \Gamma  2 * 1. We also assume that w is of the form 14* + 2. As in Theorem 4, the generalization to other values of w is straightforward. We first define the shattered set S: a sequence u 2 R^ is in S if it has exactly one non-zero component, and that component is in f1; : : : ; *g (obviously, jSj = ^*). Next we define a family F of functions which shatters S. The functions in this family are indexed by * parameters w1; :::; w* 2 [0; 1]. Each parameter is assumed to have a finite ^-bit binary expansion 0:wi1 : : : wi^. Given an input u 2 S with i = u(j) as non-zero component, the corresponding output simply is fw1;:::;w* (u) := wij (i.e., we select bit number j of wi). It is clear that F shatters S: any function f : S ! f0; 1g can be implemented by setting wij = f (iej) (ej denotes the element of S with a 1 in the j-th position).
+
+In a recurrent network implementation of this, the set S0 of shattered sequences is obtained by adding two "dummy" inputs u(^) = u(k \Gamma  2) = 0 and u(^ + 1) = u(k \Gamma  1) = 0 at the end of a sequence (u(0); : : : ; u(^ \Gamma  1)) 2 S, as in the proof of Theorem 4.
+
+The parameters w1; : : : ; w* are stored in the initial states of units x1; : : : ; x* . As the computation proceeds, these units will store shifted versions of the parameters. The leading bits of x1; : : : ; x* are stored in * other units y1; : : : ; y*. The initial state of xi is wi=2; all other units are initialized to 0. (note that this implies in particular that at t = 0, yi indeed stores the leading bit of xi.) New values of xi and yi can be computed at each time step by the following 5-weight system:
+
+x+i = 2xi \Gamma  yi
+
+y+i = H(4xi \Gamma  2yi \Gamma  1)
+
+The network should output 1 if the current input u is equal to i6=0, and yi = 1. This can be checked by computing ei = H[H(u \Gamma  i + 0:5) + H(i + 0:5 \Gamma  u) + yi \Gamma 
+
+2:5] (this requires 3* threshold gates and 8* weights). There is one additional threshold gate o which serves as output unit. It keeps computing the OR of the ei's and of the previous output This can be implemented with * + 2 weights as in the proof of Theorem 4: o+ = H(o + P*i=1 ei \Gamma  0:5):
+
+The architecture described above has 5* + 8* + (* + 2) = 14* + 2 = w weights. The output fw1;:::;w* (u(0); : : : ; u(^ \Gamma  1)) is carried by the output unit at time (^ \Gamma  1) + 3 = k. Note that the last two inputs u(^) and u(^ + 1) are "wasted", i.e., they do not influence the final output o(k). Note also that the outputs at t = 1 and t = 2 are both 0 as needed.
+
+Theorem 6 generalizes Theorem 5 to even more arbitrary activations. For this we need some of the machinery of [8]. In particular, we need to allow networks with multiplication and division gates. These gates have fan-in two and number of weights also two (even though there is no natural numerical parameter associated to the gate; we need to assign weights to multiplication and division gates to account for the numerical parameters that will occur when simulating these gates by oe-gates). The output of a multiplication gate is defined as the product of its two inputs. The output of a division gate is defined as the quotient of its two inputs, assuming that the second input is nonzero. An input to a circuit is said to be valid if it does not cause a division by zero at any division gate. We will only work with sets of valid inputs (so the domain of the function computed by such a generalized network is a subset of Rm and shattering is only defined for subsets of this domain).
+
+We will use feedforward architectures as building blocks in our recurrent architectures. The necessary background is standard and can be found for instance in [8]. To be self-contained, we recall that the units of feedforward architecture are grouped into layers. We use the same type of units as in recurrent architectures (in particular, multiplication and division gates are allowed, as mentioned earlier in this section). The inputs to the architecture are fed to units in the first layer. For i ? 1, units in layer i receive their inputs from layer i \Gamma  1. The last layer is made of a single gate: the output gate. The function computed by a gate is defined by a straightforward induction on its depth in the architecture. The function computed by the architecture is the function computed by the output gate.
+
+Readers familiar with feedforward nets will notice that we do not allow connections between non-adjacent layers. For synchronization reasons, such connections are to be avoided in recurrent nets. One can always convert a non-layered feedforward architecture into a layered one by introducing delays (identity gates).
+
+The following two lemmas from [8] are needed (the first one is well-known and easy to prove).
+
+Lemma 10. Let OE : [0; 1] ! [0; 1] be the logistic map OE(x) = 4x(1 \Gamma  x). For every n * 1 and every ffl 2 f0; 1gn there exists x1 2 [0; 1] such that the sequence (xk)1^k^n defined by xk+1 = OE(xk) for k = 1; : : : ; n \Gamma  1 satisfies the following property: 0 ^ xk ! 1=2 if fflk = 0 and and 1=2 ! xk ^ 1 if fflk = 1.
+
+The next result is essentially Lemma 1 from [8].
+
+Lemma 11. For every n * 0, there is a feedforward architecture A with inputs (x; W0; : : : ; Wn) in Rn+2 such that the following property holds: for every ffl ? 0 there exists a choice of the weights of A such that the function fffl implemented by the network satisfies lim
+
+ffl!0 fffl(i; W0; : : : ; Wn) = Wi for i = 0; : : : ; n.This architecture is made of linear, multiplication and division gates. It has
+
+\Theta (n) weights and depth \Theta (log n). Lemma 12. The VC dimension of recurrent architectures of linear, multiplication and division gates with w weights receiving inputs of length k = \Omega (log w) is \Omega (wk).
+
+Proof. It is similar to that of Theorem 7. In particular, the shattered set S ` R^ is the same and the class F of functions shattering S is indexed in the same way. Hence we will just sketch the main differences with the linear-threshold case in the implementation of F on a recurrent network. The bit-extracting device in Theorem 7 can be replaced by the following system:
+
+x+i = 4xi(1 \Gamma  xi): (8) A value of xi smaller than 1/2 should be understood as encoding the binary digit 0 ("reject") and a value larger than 1/2 the digit 1 ("accept"). By Lemma 10, any (finite) binary sequence can be produced by (8) with a suitable choice of xi(0). This system can be implemented by a subnetwork of two linear gates (computing 1 \Gamma  xi and 4xi) and one product gate. It produces an output at every other time step. Therefore we can only feed an input to the network at every other time step, too (the gaps in the input sequence can be filled by arbitrary, meaningless values).
+
+The output of (8) should be selected if the current input u is equal to i6=0. By Lemma 11, this can be done (approximately) as follows:
+
+e = fffl(u; 0; x1; : : : ; x*): (9) Note that the subnetwork implementing this function has depth \Theta (log w), whence the condition k = \Omega (log w) in the lemma's statement (we need to add \Theta (log w) dummy inputs at the end of the input sequence). Since the network has to work only on a finite set of inputs, the construction will be correct if ffl is small enough (this can be justified as in [8]).
+
+Finally, the output unit accumulates the values of e, starting from the initial state o = 0. Note that these accumulated values are all (approximately) zero, except at most one of them. This is because any input in the shattered set S of Theorem 9 has only one non-zero component. And whenever the current input component u is zero, the function fffl in (9) selects the first number in the sequence (0; x1; : : : ; x* ), that is, 0.
+
+In order to implement this on a recurrent network, we have to introduce a delay since meaningful values of e come only at every other time step. Therefore one would like to write
+
+o+ = Id(o) + e (10)
+
+where the identity function Id is implemented by a linear gate. An input would be rejected if the output at time k is smaller than 1/2; it would accepted if the output is larger than 1/2. The only problem with this construction is that the output unit might accumulate non-zero values of e which occur even before the first input can be processed. In the proof of Theorem 7 we have checked "by hand" that this problem does not occur. Here we prefer to use instead a special-purpose device: we replace (10) by
+
+o+ = I(o) + s0e (11) where s0 is designed to output 0 for the first few T = O(log *) time steps, and 1 thereafter. This can be done with the following system of T + 1 units: s+i = si+1 for i = 0; : : : ; T \Gamma  1 and s+T = sT . These units are initialized as follows: si(0) = 0 for i = 0; : : : ; T \Gamma  1, and sT (0) = 1.
+
+Theorem 13. The VC dimension of recurrent architectures of linear and multiplication gates with w weights receiving inputs of length k = \Omega (log w) is \Omega (wk).
+
+Proof. The theorem follows from Lemma 12 and the (simple) simulation of networks with linear, multiplication and division gates by networks with linear and multiplication gates only ([8]). This simulation applies to feedforward as well as to recurrent networks. Note that since the length of the longest path in the network increases by a constant factor, it is necessary to pad the input sequence with O(log w) dummy inputs. This changes only the implied constants in the \Omega  symbols.
+
+As in [8], this result makes it possible to prove good VC dimension lower bounds for a wide class of transfer functions. The most important case is the following:
+
+Proof of Theorem 6. Linear and multiplication gates can be simulated by oe-gates as in [8]. The input sequence must be padded by a small number of dummy inputs as in the proof of Theorem 13.
+
+5 Final Remarks We have left several questions unanswered:
+
+1. For piecewise-polynomial functions, can one close the gap between the
+
+O(kw2) upper bound and the \Omega (kw) lower bound ? 2. This gap is even bigger for the standard sigmoid: O(k2w4) versus \Omega (kw).
+
+A tight bound is probably too much to ask for since even for feedforward architectures there is a gap: O(w4) versus \Omega (w2). A less ambitious goal would be to replace the k2 factor in the upper bound by k. 3. For threshold architectures, we have a tight \Theta (w log k) bound for k AE w.
+
+However this tight bound applies only when k is exponentially larger than w. It would be interesting to have a tight bound when k is polynomial in w.
+
+References
+
+1. E.B. Baum and D. Haussler, "What size net gives valid generalization?", Neural
+
+Computation, 1(1989), pp. 151-160. 2. Y. Bengio, Neural Networks for Speech and Sequence Recognition, Thompson Computer Press, Boston, 1996. 3. T.M. Cover, "Capacity problems for linear machines", in: Pattern Recognition (L.
+
+Kanal ed.), Thompson Book Co., 1968, pp. 283-289 4. B. Dasgupta and E.D. Sontag, "Sample complexity for learning recurrent perceptron mappings," IEEE Trans. Inform. Theory, September 1996, to appear. (Summary in Advances in Neural Information Processing Systems 8 (NIPS95) (D.S. Touretzky, M.C. Moser, and M.E. Hasselmo, eds.), MIT Press, Cambridge, MA, 1996, pp. 204-210.) 5. C.L. Giles, G.Z. Sun, H.H. Chen, Y.C. Lee and D. Chen, "Higher order recurrent networks and grammatical inference", in Advances in Neural Information Processing Systems 2, D.S. Touretzky (ed.), Morgan Kaufmann, San Mateo, CA, 1990. 6. P. Goldberg and M. Jerrum, "Bounding the Vapnik-Chervonenkis dimension of
+
+concept classes parametrized by real numbers," Machine Learning 18(1995), pp. 131-148. 7. M. Karpinski and A. Macintyre, "Polynomial bounds for VC dimension of sigmoidal
+
+and general Pfaffian neural networks," J. Computer Sys. Sci., to appear. (Summary in "Polynomial bounds for VC dimension of sigmoidal neural networks," in Proc. 27th ACM Symposium on Theory of Computing, 1995 , pp. 200-208.) 8. P. Koiran and E.D. Sontag, "Neural networks with quadratic VC dimension," J.
+
+Computer Sys. Sci., to appear. (Summary in Advances in Neural Information Processing Systems 8 (NIPS95) (D.S. Touretzky, M.C. Moser, and M.E. Hasselmo, eds.), MIT Press, Cambridge, MA, 1996, pp. 197-203.) 9. M. Matthews, "A state-space approach to adaptive nonlinear filtering using recurrent neural networks," Proc. 1990 IASTED Symp. on Artificial Intelligence Applications and Neural Networks, Z"urich, pp. 197-200, July 1990. 10. M.M. Polycarpou, and P.A. Ioannou, "Neural networks and on-line approximators
+
+for adaptive control," in Proc. Seventh Yale Workshop on Adaptive and Learning Systems, pp. 93-798, Yale University, 1992. 11. H. Siegelmann and E.D. Sontag, "On the computational power of neural nets," J.
+
+Comp. Syst. Sci. 50(1995): 132-150. 12. H. Siegelmann and E.D. Sontag, "Analog computation, neural networks, and circuits," Theor. Comp. Sci. 131(1994): 331-360. 13. E.D. Sontag, Mathematical Control Theory: Deterministic Finite Dimensional Systems, Springer, New York, 1990. 14. E.D. Sontag, "Neural nets as systems models and controllers," in Proc. Seventh
+
+Yale Workshop on Adaptive and Learning Systems, pp. 73-79, Yale University, 1992. 15. E.D. Sontag, "Feedforward nets for interpolation and classification," J. Comp. Syst.
+
+Sci. 45(1992): 20-48. 16. A.M. Zador and B.A. Pearlmutter, "VC dimension of an integrate-and-fire neuron
+
+model," Neural Computation 8(1996): 611-624.
+
+This article was processed using the LATEX macro package with LLNCS style</pre>
+</body>
+</html>

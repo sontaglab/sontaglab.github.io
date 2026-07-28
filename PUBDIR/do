@@ -1,0 +1,24 @@
+cp ~sontag/grants/make_publications.tex .
+cp  ~sontag/grants/publication_list.bib .
+chmod u+w make_publications.tex
+chmod u+w publication_list.bib
+pdflatex make_publications.tex
+bibtex make_publications > log-bibtex
+pdflatex make_publications.tex
+pdflatex make_publications.tex
+mv make_publications.pdf sontag_all_publications.pdf
+/bin/rm *.log *.aux *.blg *.bbl
+ls -lat|head -4
+# oct 2013 recompiled in new feedback; WATCH IT! ubuntu installed bibtex2html is a completely different package!!!!!
+# bibtex2htmlv103 ~sontag/grants/publication_list.bib -sort-criterium year
+# newer version 103 had problems recognizing "editor" fields, ignored all entries with editor
+bibtex2htmlv102 ~sontag/grants/publication_list.bib -sort-criterium year
+# head -10 index.html > top
+# 29sep2012 changing to "frozen" version so can insert search before /head
+sed '1,10 d' index.html > bot
+# modified 07aug2019 to put search at start of HEAD, as instructed!
+cat top_adding_search to_insert_navigation_after_blue.html bot > index.html
+echo "now protecting"
+chmod -R a+rx *;chmod -R o-w *
+echo "done; check log-bibtex now:"
+cat log-bibtex

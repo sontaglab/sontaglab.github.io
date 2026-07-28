@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratory for Control, Learning, and Systems Biology · Northeastern University</title>
+<meta name="description" content="Eduardo D. Sontag's group at Northeastern University: control theory, dynamical systems, systems and synthetic biology, cancer and immunology.">
+<meta name="keywords" content="control theory, dynamical systems, systems and synthetic biology, mathematical modeling, cancer, immunology, Northeastern">
+<meta name="author" content="Eduardo D. Sontag">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#eef1f2;
+    --paper-2:#e6eaec;
+    --ink:#14171a;
+    --muted:#5e656b;
+    --line:#d7dcde;
+    --crimson:#c8102e;
+    --hero:#0c0f14;
+
+    --serif:"Spectral", Georgia, serif;
+    --sans:"IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --wrap:1120px;
+    --nav-h:66px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:400;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:var(--nav-h);
+    display:flex;align-items:center;
+    transition:background .35s ease, border-color .35s ease, box-shadow .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#fff;
+    transition:color .35s ease;
+    white-space:nowrap;
+  }
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{
+    text-decoration:none;
+    font-size:.86rem;
+    color:rgba(255,255,255,.82);
+    letter-spacing:.01em;
+    padding:4px 0;
+    position:relative;
+    transition:color .25s ease;
+  }
+  .menu a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;
+    background:var(--crimson);transition:right .28s ease;
+  }
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0;transition:transform .25s ease,opacity .25s ease}
+  .nav.solid .burger{color:var(--ink)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:100vh;background:var(--hero);color:#fff;overflow:hidden;display:flex;align-items:flex-end}
+  #phase{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-fog{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 18% 82%, rgba(12,15,20,.78) 0%, rgba(12,15,20,.35) 42%, rgba(12,15,20,0) 70%),
+      linear-gradient(to top, rgba(12,15,20,.65), rgba(12,15,20,0) 55%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;padding:120px 0 76px}
+  .hero .eyebrow{color:rgba(255,255,255,.66)}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.3rem,6.2vw,4.9rem);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:.5rem 0 .1rem;
+    max-width:16ch;
+  }
+  .hero h1 .thin{color:rgba(255,255,255,.9)}
+  .hero .depts{
+    font-family:var(--mono);
+    font-size:.82rem;
+    letter-spacing:.02em;
+    color:rgba(255,255,255,.72);
+    margin-top:22px;
+    line-height:1.9;
+  }
+  .hero .depts span{color:var(--crimson)}
+  .legend{
+    position:absolute;z-index:2;top:calc(var(--nav-h) + 34px);right:28px;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;
+    color:rgba(255,255,255,.5);text-align:right;line-height:1.8;
+  }
+  .legend .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--crimson);
+    box-shadow:0 0 12px 2px rgba(200,16,46,.7);margin-left:8px;vertical-align:middle}
+
+  .scrollcue{position:absolute;left:28px;bottom:26px;z-index:2;font-family:var(--mono);
+    font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+  .scrollcue::before{content:"";display:block;width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);margin:0 auto 12px}
+
+  /* ---------- Grid backdrop (phase-plane echo) ---------- */
+  .plane{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:44px 44px;
+    background-position:center;
+    position:relative;
+  }
+  .plane::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 100% at 50% 0%, transparent 60%, var(--paper) 100%),
+              linear-gradient(var(--paper),transparent 8%, transparent 92%, var(--paper));
+  }
+  .plane .wrap{position:relative}
+
+  section{padding:96px 0}
+
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:38px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
+
+  /* Research interests */
+  .lead{font-size:1.18rem;font-weight:300;max-width:60ch;color:var(--ink);margin:0 0 40px}
+  .areas{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .area{background:var(--paper);padding:30px 30px 34px;transition:background .25s ease}
+  .area:hover{background:#fff}
+  .area h3{font-family:var(--sans);font-weight:500;font-size:1.06rem;margin:14px 0 8px;letter-spacing:.01em}
+  .area p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.6}
+  .area .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson)}
+
+  /* About / PI */
+  .about{background:var(--ink);color:var(--paper)}
+  .about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  .about .eyebrow{color:rgba(238,241,242,.55)}
+  .about h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.05rem);line-height:1.3;margin:.4rem 0 0;color:#fff;letter-spacing:-.01em}
+  .about p{color:rgba(238,241,242,.72);font-size:1.02rem}
+  .links{list-style:none;margin:0;padding:0;border-top:1px solid rgba(238,241,242,.16)}
+  .links li{border-bottom:1px solid rgba(238,241,242,.16)}
+  .links a{display:flex;justify-content:space-between;align-items:center;text-decoration:none;
+    padding:18px 2px;color:var(--paper);transition:padding-left .25s ease,color .25s ease}
+  .links a:hover{padding-left:12px;color:#fff}
+  .links .lbl{font-size:1.02rem}
+  .links .arw{font-family:var(--mono);color:var(--crimson);transition:transform .25s ease}
+  .links a:hover .arw{transform:translateX(4px)}
+
+  /* Publications callout */
+  .pub .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .pub .txt{max-width:52ch}
+  .pub h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);margin:.4rem 0 .5rem}
+  .pub p{margin:0;color:var(--muted)}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;color:#fff;background:var(--crimson);
+    padding:16px 26px;border-radius:2px;transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+
+  /* Thesis / framing figure */
+  .thesis .wrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:60px;align-items:center}
+  .figcard{margin:0;background:#fff;border:1px solid var(--line);padding:24px;
+    box-shadow:0 22px 44px -30px rgba(20,23,26,.55)}
+  .figcard img{width:100%;height:auto}
+  .figcard figcaption,.banner figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;
+    color:var(--muted);line-height:1.65;margin-top:18px}
+  .figcard figcaption{text-align:center}
+  .thesis-txt h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);
+    letter-spacing:-.01em;margin:.4rem 0 .8rem}
+  .thesis-txt p:last-child{color:var(--muted);max-width:52ch;margin:0}
+
+  /* Applications banner */
+  .banner{padding:0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .banner figure{margin:0 auto;max-width:var(--wrap);padding:46px 28px 42px;text-align:center}
+  .banner img{width:100%;max-width:980px;height:auto;margin:0 auto;border:1px solid var(--line);background:#fff}
+  .banner figcaption{max-width:60ch;margin:20px auto 0;text-align:center}
+
+  /* Footer */
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .thesis .wrap{grid-template-columns:1fr;gap:34px}
+    .about .wrap{grid-template-columns:1fr;gap:34px}
+    footer .wrap{grid-template-columns:1fr 1fr}
+    .legend{display:none}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{
+      position:absolute;top:var(--nav-h);left:0;right:0;
+      flex-direction:column;gap:0;
+      background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);
+      padding:8px 0;
+      transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease;
+    }
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    .areas{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr}
+    section{padding:72px 0}
+    .hero-inner{padding:110px 0 64px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Control<b>·</b>Learning<b>·</b>Systems Biology</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="PUBDIR/index.html">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="activities.html">Activities</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="phase" aria-hidden="true"></canvas>
+  <div class="hero-fog"></div>
+
+  <div class="legend" aria-hidden="true">
+    trajectories → attractor <span class="dot"></span>
+  </div>
+
+  <div class="hero-inner">
+    <div class="wrap">
+      <p class="eyebrow">Northeastern University</p>
+      <h1>Laboratory for <span class="thin">Control, Learning,</span> and Systems Biology</h1>
+      <p class="depts">
+        Department of Bioengineering<br>
+        Department of Electrical &amp; Computer Engineering<br>
+        <span>·</span> Directed by Eduardo D. Sontag
+      </p>
+    </div>
+  </div>
+
+  <div class="scrollcue" aria-hidden="true">Scroll</div>
+</header>
+
+<main>
+  <section class="thesis" id="idea">
+    <div class="wrap">
+      <figure class="figcard">
+        <img src="images/sfest2011_poster_picture.png" width="360" loading="lazy" decoding="async"
+             alt="Diagram: a centrifugal governor above the state-space equations x prime = f(x,u), y = h(x), with arrows leading down to a spacecraft and a bacterial cell.">
+        <figcaption>From a centrifugal governor to the state equations x&prime;=f(x,u), y=h(x) to the systems they describe: spacecraft and single cells.</figcaption>
+      </figure>
+      <div class="thesis-txt">
+        <p class="eyebrow">The idea</p>
+        <h2>One language for many systems.</h2>
+        <p>A spinning governor, a set of state equations, an aircraft, a living cell. Control
+           theory treats them with the same mathematics: what a system does, how it responds to
+           input, and how feedback keeps it stable. That throughline runs through everything
+           we work on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plane" id="research">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <h2>Research</h2>
+      </div>
+      <p class="lead">
+        We study how systems evolve, stabilize, and can be steered, whether they are biological,
+        engineered, or computational. Our interests span the mathematics of dynamical systems
+        and the biology of cells, and the places where the two meet.
+      </p>
+
+      <div class="areas">
+        <div class="area">
+          <span class="k">Biology</span>
+          <h3>Systems &amp; synthetic biology</h3>
+          <p>Modeling, analysis, and principled design of biomolecular and cellular networks.</p>
+        </div>
+        <div class="area">
+          <span class="k">Medicine</span>
+          <h3>Modeling in cancer &amp; immunology</h3>
+          <p>Quantitative models of tumor dynamics and the immune response to them.</p>
+        </div>
+        <div class="area">
+          <span class="k">Theory</span>
+          <h3>Feedback control &amp; dynamical systems</h3>
+          <p>Stability, robustness, and the structure of nonlinear and monotone systems.</p>
+        </div>
+        <div class="area">
+          <span class="k">Computation</span>
+          <h3>Complexity &amp; theory of computing</h3>
+          <p>Limits of computation and the complexity of analysis and design.</p>
+        </div>
+        <div class="area">
+          <span class="k">Therapy</span>
+          <h3>Drug combinations &amp; resistance</h3>
+          <p>Dynamics of treatment, adaptation, and the emergence of resistance.</p>
+        </div>
+        <div class="area">
+          <span class="k">Learning</span>
+          <h3>Learning in dynamical settings</h3>
+          <p>How adaptation and inference interact with the systems being controlled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner" aria-labelledby="banner-cap">
+    <figure>
+      <img src="images/control_theory_and_engineering_figure.jpg" width="1000" loading="lazy" decoding="async"
+           alt="Collage titled Control Theory and Engineering: an aircraft, a centrifugal governor, a chemical apparatus, a self-driving car, a bacterial chemotaxis diagram, a feedback block diagram, calcium-regulation physiology, a cruise-control stalk, a robot arm, and a smart thermostat.">
+      <figcaption id="banner-cap">A field that reaches from aerospace and robotics to physiology and the machinery of the cell.</figcaption>
+    </figure>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">The Group</p>
+        <h2>Led by Eduardo D. Sontag, with appointments in Bioengineering and in Electrical &amp; Computer Engineering at Northeastern University.</h2>
+        <p>The lab brings together control theory, applied mathematics, and quantitative
+           biology. We are always interested in hearing from prospective students and
+           collaborators who share these interests.</p>
+      </div>
+      <ul class="links">
+        <li><a href="eduardo.html"><span class="lbl">About Eduardo D. Sontag</span><span class="arw">→</span></a></li>
+        <li><a href="people.html"><span class="lbl">People in the lab</span><span class="arw">→</span></a></li>
+        <li><a href="news.html"><span class="lbl">News</span><span class="arw">→</span></a></li>
+        <li><a href="activities.html"><span class="lbl">Activities &amp; events</span><span class="arw">→</span></a></li>
+        <li><a href="contact.html"><span class="lbl">Get in touch</span><span class="arw">→</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pub plane" id="publications">
+    <div class="wrap">
+      <div class="txt">
+        <span class="no" style="font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em">02</span>
+        <h2>Publications</h2>
+        <p>Papers, preprints, and technical reports from the group, spanning control theory,
+           systems biology, and the mathematics of dynamical systems.</p>
+      </div>
+      <a class="btn" href="PUBDIR/index.html">Browse publications <span class="arw">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="name">Control · Learning · Systems Biology</p>
+      <p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">
+        Northeastern University · Boston, Massachusetts
+      </p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="PUBDIR/index.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="colophon">
+      <span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span>
+      <span>&copy; <span id="yr"></span> Sontag Lab</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- Nav: solid-on-scroll + mobile toggle ---- */
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  function onScroll(){
+    if(window.scrollY > window.innerHeight * 0.7) nav.classList.add('solid');
+    else nav.classList.remove('solid');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.getElementById('menu').addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ nav.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* ---- Phase-portrait hero ---- */
+  var canvas = document.getElementById('phase');
+  var ctx = canvas.getContext('2d');
+  var W=0, H=0, dpr=1, cx=0, cy=0;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Stable focus: dv = A v, eigenvalues have negative real part + rotation.
+  var alpha = 0.14;   // inward damping
+  var omega = 0.85;   // rotation
+  var scale = 46;     // pixels per unit -> velocity magnitude
+
+  function fieldStep(px, py, dt){
+    var u = (px - cx) / scale;
+    var v = (py - cy) / scale;
+    var du = -alpha*u - omega*v;
+    var dv =  omega*u - alpha*v;
+    return {
+      x: px + du * scale * dt,
+      y: py + dv * scale * dt,
+      speed: Math.hypot(du, dv)
+    };
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = canvas.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W*dpr);
+    canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = W * 0.62;
+    cy = H * 0.46;
+  }
+
+  function seed(){
+    // spawn away from the attractor, biased to the outer plane
+    var ang = Math.random()*Math.PI*2;
+    var rad = (0.35 + Math.random()*0.75) * Math.max(W,H)*0.6;
+    return {
+      x: cx + Math.cos(ang)*rad,
+      y: cy + Math.sin(ang)*rad,
+      life: 0,
+      max: 260 + Math.random()*260
+    };
+  }
+
+  function drawAttractor(){
+    var g = ctx.createRadialGradient(cx,cy,0,cx,cy,26);
+    g.addColorStop(0,'rgba(200,16,46,0.9)');
+    g.addColorStop(0.4,'rgba(200,16,46,0.22)');
+    g.addColorStop(1,'rgba(200,16,46,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx,cy,26,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = 'rgba(230,60,80,0.95)';
+    ctx.beginPath(); ctx.arc(cx,cy,2.6,0,Math.PI*2); ctx.fill();
+  }
+
+  var particles = [];
+
+  function initParticles(){
+    var count = Math.round(Math.min(180, Math.max(80, (W*H)/9000)));
+    particles = [];
+    for(var i=0;i<count;i++){ var p = seed(); p.life = Math.random()*p.max; particles.push(p); }
+  }
+
+  function reducedRender(){
+    // Static streamlines: integrate each particle fully, draw the curve, stop.
+    ctx.fillStyle = '#0c0f14';
+    ctx.fillRect(0,0,W,H);
+    var lines = 90;
+    for(var i=0;i<lines;i++){
+      var ang = Math.random()*Math.PI*2;
+      var rad = (0.15 + Math.random()*0.9) * Math.max(W,H)*0.6;
+      var x = cx + Math.cos(ang)*rad, y = cy + Math.sin(ang)*rad;
+      ctx.beginPath(); ctx.moveTo(x,y);
+      for(var s=0;s<220;s++){
+        var n = fieldStep(x,y,0.06); x=n.x; y=n.y;
+        ctx.lineTo(x,y);
+        if(Math.hypot(x-cx,y-cy) < 6) break;
+      }
+      ctx.strokeStyle = 'rgba(210,220,228,0.16)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    drawAttractor();
+  }
+
+  var raf = null;
+  function frame(){
+    // fade previous frame -> streaks
+    ctx.fillStyle = 'rgba(12,15,20,0.055)';
+    ctx.fillRect(0,0,W,H);
+
+    for(var i=0;i<particles.length;i++){
+      var p = particles[i];
+      var n = fieldStep(p.x, p.y, 0.055);
+      var a = Math.min(0.5, 0.10 + n.speed*0.06);
+      ctx.strokeStyle = 'rgba(206,216,224,'+a+')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(n.x, n.y);
+      ctx.stroke();
+
+      p.x = n.x; p.y = n.y; p.life++;
+      var d = Math.hypot(p.x - cx, p.y - cy);
+      if(d < 7 || p.life > p.max || p.x < -60 || p.x > W+60 || p.y < -60 || p.y > H+60){
+        particles[i] = seed();
+      }
+    }
+    drawAttractor();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){
+    resize();
+    if(reduce){ reducedRender(); return; }
+    initParticles();
+    ctx.fillStyle = '#0c0f14';
+    ctx.fillRect(0,0,W,H);
+    if(raf) cancelAnimationFrame(raf);
+    frame();
+  }
+
+  var rt;
+  window.addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(start, 180);
+  });
+
+  // Pause when hero is off-screen (save cycles)
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ if(!raf) frame(); }
+        else { if(raf){ cancelAnimationFrame(raf); raf = null; } }
+      });
+    }, {threshold:0.02});
+    io.observe(canvas);
+  }
+
+  start();
+})();
+</script>
+</body>
+</html>

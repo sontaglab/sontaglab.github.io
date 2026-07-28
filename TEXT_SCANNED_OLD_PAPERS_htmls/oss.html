@@ -1,0 +1,504 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/oss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/oss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+
+
+DETECTABILITY OF NONLINEAR SYSTEMS
+
+Eduardo Sontag\Lambda  Dept. of Mathematics
+
+Rutgers University New Brunswick, NJ 08903 sontag@control.rutgers.edu
+
+Yuan Wangy Dept. of Mathematics Florida Atlantic University
+
+Boca Raton, FL 33431 ywang@polya.math.fau.edu
+
+Abstract We propose a definition of detectability for nonlinear systems. This definition generalizes naturally the standard property in the linear case, and is consistent with the "input to state stability" approach to controlled stability. We provide a characterization in terms of a dissipation inequality involving storage (Lyapunov) functions.
+
+1. Introduction This paper proposes two notions of detectability for nonlinear systems and shows their equivalence. Recall (see e.g. [5], Chapter 6) that detectability (or "asymptotic observability") for linear systems with no controls
+
+.x = Ax, y = Cx is the property that x(t) ! 0 for every trajectory for which the output is identically zero: Cx(t) j 0. This property is one of the most important in systems analysis, because it holds that every state of a linear system can be driven asymptotically to zero using only output (not state) measurements (we say that in that case the system is "i/o stabilizable") if and only if the system is both detectable and state stabilizable (meaning that for each state there is a control that sends that state asymptotically to zero).
+
+There have been many attempts to generalize this concept to not necessarily linear systems of the type
+
+.x = f(x; u), y = h(x). A state-space definition, which allows showing a version of "i/o stabilizable = detectable plus state stabilizable" was proposed in the paper [4]. The definition was that under zero inputs, states whose outputs are identically zero should form an asymptotically stable subsystem. Since input perturbations are not taken into account in the definition, however, this notion is too weak; it has the disadvantage of not being "robust" enough to input or measurement disturbances. On the other hand, the paper [6] gave a definition of "observability" for nonlinear systems which does naturally incorporate such robustness, since it is expressed in the language of "input to state stability" (cf. [7]). Observability was defined there, essentially, as the property that "small inputs and small outputs should imply small state trajectories" and "bounded inputs and outputs imply bounded trajectories". This generalizes the linear concept of observability in a natural manner. The usual way of understanding detectability is as the relaxation of observability
+
+\Lambda Supported in part by US Air Force Grant F49620-95-1-0101
+
+ySupported in part by NSF Grants DMS-9457826 and DMS9403924
+
+that results when asking for convergence instead of precise state values. That is, estimates on trajectories are only required to be asymptotic rather than uniform in time. Thus, when combined with the definition in [4], it makes sense to define detectability as the property that states should converge to zero when inputs and outputs are zero, and in general be ultimately bounded by a bound that depends only on the magnitude of inputs and outputs. Thus the natural definition is to require that an estimate of the following type holds:
+
+jx(t; ,)j ^ max \Phi fi(j,j ; t); fl1 \Gamma flfluj[0;t]flfl\Delta  ; fl2 \Gamma flflyj[0;t]flfl\Delta \Psi  for every initial state ,.\Lambda  This is entirely analogous to the definition of iss (input to state stability), which results if we omit y from the estimate. Moreover, it is almost the same as (actually, a particular case of) the notion called "strong unboundedness observability" in [1]; in that paper, the authors were also motivated by combining the above-mentioned definitions of (weak) detectability and observability. We call the above property, from now on, input/output to state stability (ioss). The question, of course, is what interesting properties can be proved when using this definition. More specifically, one should ask if there are other different properties that could be called detectability.
+
+Indeed, there is another, equally strong, contender for the role of detectability. This is the notion defined by requiring that there exist a "Lyapunov" function (positive for x 6= 0, radially unbounded) V defined on states, such that an estimate of the type
+
+.V (x(t)) ^ \Gamma ff1(jx(t)j) + ff2(ju(t)j) + ff3(jy(t)j) (1)
+
+holds along all trajectories (for some functions ffi of class K and ff1 of class K1, that is to say, unbounded). Notice the interpretation of this definition: the "energy" of states decreases when u and y are zero, and more generally when the state is large compared with the input/output data. In particular, consider the special case of (1) when there are no controls (u j 0). For nonzero states, this says that. V (x(t)) ! ff3(jy(t)j). In this restricted form, the definition has appeared frequently in the literature; sometimes
+
+\Lambda Here j,j indicates Euclidean norm, flfluj[0;t]flfl and flflyj[0;t]flfl denote respectively the sup norms of the input and the output y = h(x(t)), where x(t) is the solution with x(0) = , and input u(\Delta ) on the interval [0; t], the functions fli are of class K, that is zero at zero, strictly increasing, and continuous, and fi is a function of class KL, i.e. it decreases to zero on t and is of class K on x.
+
+for the more special case in which ff3(s) = s2; see for instance [2]. It is easy to see that the "dissipation" characterization given by the estimate (1) implies ioss (the proof is similar to the proof given below for the special case of u j 0). The main contribution of the current work is to investigate the converse implication. In this paper, we show that, for systems with no controls, the ioss property (in that case, we call it just oss, output to state stability) implies the estimate. (We are fairly sure that this converse implication is true also for the general case when there are controls, but we were not able to write a complete proof in time for the conference deadline.) The precise statement is given in the next section, and the proof follows. The last section has a remark about i/o stabilization.
+
+2. Output to State Stability We next consider autonomous systems, i.e., systems with no inputs:
+
+.x = f(x); y = h(x); (2) where f : X ! X is locally Lipschitz continuous and h : X! Rp is continuously differentiable, and where the state space X= Rn for some n. We assume that x = 0 is an equilibrium, that is, f(0) = 0. We also assume that h(0) = 0. In what follows, we always use x(t; ,) to denote the trajectory of (2) with initial state ,, and write y(t; ,) = h(x(t; ,)). This trajectory, and consequently also y(t; ,), is defined on some maximal interval [0; tmax), where tmax = tmax(,) ^ +1.
+
+For systems without inputs, the ioss property reduces to: there exists some fi 2 KL, some fl 2 K such that
+
+jx(t; ,)j ^ max \Phi fi(j,j ; t); fl \Gamma flflyj[0;t]flfl\Delta \Psi  (3) for all t 2 [0; tmax). If this property holds for system (2), then we say that the system is output-to-state stable (oss).
+
+Definition 2.1 An oss-Lyapunov function for system (2) is any function V with the following properties: (i) There exist K1-functions ff1 and ff2 such that
+
+ff1(j,j) ^ V (,) ^ ff2(j,j); 8 , 2 X: (4) (ii) V is differentiable along trajectories, that is, for every trajectory x(t; ,) of (2), V (x(t; ,)) is differentiable in t. Furthermore, there exist K1-functions ff3 and oe such that for every trajectory x(t; ,), and all t * 0,
+
+d dt V ((x(t; ,)) ^ \Gamma ff3(jx(t; ,)j) + oe(jh(x(t; ,))j) : (5)
+
+Our main result is as follows.
+
+Theorem 1 System (2) is oss if and only it admits an oss-Lyapunov function.
+
+We wish to note that the proof of the main result is not an immediate application of the converse theorem for the
+
+iss property given in [8]. (Superficially it would appear that it is enough to replace u by y in the iss definition and hence obtain oss, but the roles of controls and outputs are very different; most importantly, it is not possible to concatenate pieces of output trajectores and obtain a valid output, as it is the case with inputs, and this fact is essential in the proof in [8].) As a matter of fact, a proof along the lines of that in [8] would provide an infinitely differentiable function V of x. We do not yet know if this can always be insured.
+
+Sufficiency is an easy consequence of this lemma, which is basically in page 441 of [6]) and is easy to prove:
+
+Lemma 2.2 For each continuous and positive definite function ff : [0; 1) ! R*0, there exists a KL-function fiff with the following property: for any absolutely continuous function w : [0; T ] ! R*0 and any number v\Lambda  * 0, if, for all t 2 [0; T ] it holds that
+
+w(t) * v\Lambda  =) .w(t) ^ \Gamma ff(w(t)) a.e. ; then w(T ) ^ maxffiff(w(0); T ); v\Lambda g : To prove sufficiency, assume that the system (2) admits an oss-Lyapunov function V satisfying (4)-(5). Let O/ be the K1 function defined by O/(r) = ff\Gamma 13 (2oe(r)), and pick ^ff3(s) = (1=2)ff3 ffi ff\Gamma 12 . Finally, apply Lemma 2.2, to obtain a KL-function fi0 = fi^ff3. Now pick any initial state , and consider the trajectory x(t) := x(t; ,). We then have that:
+
+jx(t)j * O/(jh(x(t))j) ) ddt V (x(t)) ^ \Gamma ^ff3(V (x(t))) : It then follows that
+
+V (x(t)) * ^O/(jh(x(t)j) ) ddtV (x(t)) ^ \Gamma ^ff3(V (x(t)) ; where ^O/(s) = ff2(O/(s)). Take any T 2 [0; tmax), and consider w(t) = V (x(t)) and v\Lambda  = the maximum of
+
+^O/(jh(x(t))j) restricted to [0; T ]. The choice of fi0 then insures that
+
+w(T ) ^ max \Phi fi0(w(0); T ); ^O/ \Gamma flflyj[0;T]flfl\Delta \Psi  : From this we obtain (3) with fi(s; r) = fi0(ff2(s); r) and fl(s) = ^O/(s).
+
+The proof of the necessity part of Theorem 1 will be based on a sequence of preliminary technical results. From now on, we assume given an oss system (2). Without loss of generality (take a larger fi if necessary), we assume that fi(s; 0) ? s for all s ? 0.
+
+Lemma 2.3 There exists some K1-function ae so that the following properties hold:
+
+ffl For any , 2 X and any o/ 2 [0; tmax), if jx(t; ,)j *
+
+ae(jy(t; ,)j) for all 0 ^ t ^ o/ , then fl(jy(t; ,)j) ^ j,j =2, and hence jx(t; ,)j ^ fi(j,j ; 0) for all 0 ^ t ^ o/ . In particular, if jx(t; ,)j * ae(jy(t; ,)j) for all t 2 [0; tmax), then tmax = 1.
+
+ffl For any " ? 0, any r ? 0, there exists some Tr;" such
+
+that for any j,j ^ r and any T * Tr;", if jx(t; ,)j * ae(jy(t; ,)j) for all 0 ^ t ^ T , then jx(t; ,)j ! " for all t 2 [Tr;"; T ].
+
+Proof. Assume that system (2) is oss. Without loss of generality, we may assume that fl in Equation (3) is of class K1.
+
+Let ff0(s) = fi(s; 0). Recall that we assumed that ff0(s) ? s for all s ? 0. Now let ae be any K1-function satisfying the inequality ae(s) ? ff0(4fl(s)) for all s ? 0.
+
+Pick any , 6= 0, and assume that jx(t; ,)j * ae(jy(t; ,)j) for all 0 ^ t ^ o/ for some o/ 2 (0; tmax). Then, at t = 0,
+
+fl(jy(0; ,)j) ^ fl(ae\Gamma 1(j,j)) ^ fl(ae\Gamma 1(ff0(j,j))) ! j,j =4: Hence, fl(jy(t; ,)j) ! j,j =4 for all t 2 [0; ffi) for some ffi ? 0. Let t1 = infft ? 0 : fl(jy(t; ,)j) * j,j =2g: Then t1 ? 0. Assume now that t1 ^ o/ . Then
+
+fl(jy(t1; ,)j) = j,j =2; and fl(jy(t; ,)j) ! j,j =2; for each t 2 [0; t1), and hence for such t: jx(t; ,)j ^ ff0(j,j) : Then, for each 0 ^ t ^ t1,
+
+fl(jy(t; ,)j) ^ fl(ae(jx(t; ,)j) ^ fl(ae(ff0(j,j))) ! j,j =4: By continuity, fl(jy(t1; ,)j) ^ j,j =4, contradicting the definition of t1. This shows that it is impossible to have t1 ^ o/ , and the proof of part 1 of the lemma is complete.
+
+For each r ? 0 and each i = 1; 2; : : :, let ri := 21\Gamma ir, and let Tr be any nonnegative number so that fi(r; t) ! r=2 for all t * Tr. Now, given any r ? 0 and any " ? 0, let k(") be any positive integer so that 2\Gamma k(")r ! " and define Tr;" as Tr1 + Tr2 + : : : + Trk(") .
+
+Pick any trajectory x(t; ,) as in the statement of the lemma, defined on an interval of the form [0; T ], with T * Tr;", with initial condition j,j ^ r, and satisfying jx(t; ,)j * ae(jy(t; ,)j) for all t 2 [0; T ]. Then, part 1 of the lemma implies that fl(jy(t; ,)j) ! j,j =2 for all such t. Therefore, for any t ? Tr1 = Tr,
+
+jx(t; ,)j ^ maxffi(j,j ; t); j,j =2g
+
+^ maxffi(r; t); r=2g ^ r=2 :
+
+Consider now the restriction of the trajectory to the interval [Tr1; T ]. This is the same as the trajectory that starts from the state x(Tr1; ,), which has norm less than r1, so by the same argument and the definition of Tr2 we have that jx(t; ,)j ^ r=4 for all t * Tr2. Repeating on each interval [Tri ; Tri+1 ], we conclude that jx(t; ,)j ! " for all Tr;" ^ t ^ T .
+
+Let ae be any K1-function satisfying the conclusions of Lemma 2.3. Without loss of generality, one may assume that ae is smooth on (0; 1). Consider the closed set:
+
+D = f, 2 X: j,j ^ ae(jh(,)j)g: Observe that if D = X, then any smooth, proper, positive definite function V can be taken as an oss-Lyapunov
+
+function for the system. Assume now that D 6= X. Let, for each ,, *, = infft 2 [0; tmax) : x(t; ,) 2 Dg (with the understanding that *, = tmax if x(t; ,) 62 D for all t). Notice that D has the following two properties:
+
+Property 1. There exists a K-function ! such that for any , 62 D, jx(t; ,)j ^ !(j,j) for all t 2 [0; *,) (e.g., !(r) = fi(r; 0)).
+
+Property 2. For any " ? 0, any r ? 0, there exists some Tr;" such that for any , 2 X with j,j ^ r, if *, ? Tr;", then jx(t; ,)j ! " for all t 2 [Tr;"; *,).
+
+The function ^0(,) := jD(ae ffi jhj)(,)f(,)j is welldefined and continuous on the set of ,'s such that h(,) 6= 0; thus we may pick a smooth function ^ : X! [0; 1) such that ^(,) * ^0(,) whenever jh(,)j * 1.
+
+It will be useful to introduce the auxiliary system which "slows down" the motions of the original system:
+
+.z = bf (z) = 11 + jf(z)j2 + ^(z) f(z); y = h(z) : (6)
+
+To distinguish from the trajectories of (2), we use z(s; ,) to denote the trajectory of (6) at time s whose initial state is z(0; ,) = ,. Note that since the right-hand is bounded, solutions are well-defined for all times. We can relate the trajectories of (6) and (2) by the formula z(s; ,) = x(o/ (s); ,), where o/ (\Delta ) is a suitable reparametrization of time. For this, it is only necessary to define, for each fixed trajectory x(t) = x(t; ,) defined on [0; tmax), tmax = tmax(,),
+
+oe(t) := Z
+
+t
+
+0 i1 + jf(x(r))j
+
+2 + ^(x(r))j dr ; t 2 [0; tmax) ;
+
+and o/ := oe\Gamma 1. It holds then that
+
+z(s; ,) = x(o/ (s); ,); 8 s 2 [0; 1); and
+
+x(t; ,) = z(o/ \Gamma 1(t); ,); 8 t 2 [0; tmax): So, in particular z(s; ,) 62 D if and only if x(o/ (s); ,) 62 D. Let, for each , 2 X, `, = oe(*,) (and `, = 1 if *, = tmax). Then `, = inffs * 0 : z(s; ,) 2 Dg: Claim: The function `(,) := `, is lower semicontinuous.
+
+Proof. Let ,0 2 X. Pick a sequence f,kg that converges to ,0. Let `k = `,k and `0 = `,0 . We need to show that
+
+`0 ^ ^` = lim inf
+
+k!1 `k :
+
+If ^` = 1, there is nothing to prove, so assume without loss of generality that limk!1 `k = ^` ! 1: It follows by continuity that z(^`; ,0) 2 D, and hence, `0 ^ ^`, as required.
+
+We now define g : X! [0; 1] by
+
+g(,) = supfjz(s; ,)j : s 2 [0; `,)g (7) for each , 2 E, where E is the open set:
+
+E = Xn D = f, : j,j ? ae(jh(,)j)g; (8)
+
+and g(,) = 0 if , 2 D. Clearly g(z(s; ,)) is non-increasing in s for all s 2 [0; `,), if , 2 E. Also, according to Property 1 of the set D, g(,) ^ !(j,j); 8 , 2 X; and hence,
+
+j,j ^ g(,) ^ !(j,j); 8 , 2 E: Notice that, by Property 2, if `, = 1 then z(s; ,) ! 0 as s ! 1, and otherwise the sup in Equation (7) can be taken over the finite interval [0; `,]; thus, for every , in E there is some s, 2 [0; `,] (or in [0; `,) if `, = 1) such that g(,) = jz(s,; ,)j. In particular, g takes only finite values.
+
+Lemma 2.4 The function g(,) is continuous at 0 and lower semicontinuous on E. Furthermore, for any , 2 E, g(z(s; ,)) is continuous (even locally Lipschitz) in s on [0; `,).
+
+Proof. Pick , 2 E. For each " ? 0, by the continuity property of trajectories on initial states and times, there is some neighborhood U ae E of ,, and some 0 ! ffi ! s, such that for every j 2 U, jz(s; j)j ? jz(s,; ,)j \Gamma  " for all s 2 [s, \Gamma  ffi; s,]. By the lower semicontinuity of `, one may assume that s, \Gamma  ffi ^ `, \Gamma  ffi ! `j for all j 2 U (shrink U if necessary). It then follows that g(j) * z(s, \Gamma  ffi; j) * z(s,; ,) \Gamma  ", so: g(j) ? g(,) \Gamma  "; 8j 2 U: This shows that g is lower semicontinuous.
+
+The continuity of g at 0 follows from the facts that g(0) = 0 and that 0 ^ g(,) ^ !(j,j).
+
+Since jz(s; ,)j is a locally Lipschitz function of s 2 [0; `,), g(z(s; ,)) also is (as for each 0 ^ s ^ t ! `, there is some r 2 [s; t] so that 0 ^ g(z(s; ,)) \Gamma  g(z(t; ,)) ^ jz(r; ,)j \Gamma  jz(t; ,)j).
+
+Now define V0 : X! [0; 1) by the formula:
+
+V0(,) = Z
+
+`,
+
+0 g(z(s; ,))e
+
+\Gamma s ds ; (9)
+
+if , 2 E, and V0(,) = 0 if , 2 D.
+
+This integral is finite, because g(z(s; ,)) is nonincreasing. Let , 2 E. If `, ! 1, clearly from the definition, V0(,) ! g(,), and if `, = 1 then the fact that g(z(s; ,)) ! 0 as s ! 1 (which follows from z(s; ,) ! 0 as s ! 1) insures that again in that case V0(,) ! g(,).
+
+Lemma 2.5 The function V0 is continuous at 0 and lower semicontinuous on E. Furthermore, for each , 2 E, V0(z(s; ,)) is differentiable in s on the interval [0; `,), and there one has
+
+d ds V0(z(s0; ,)) = V0(z(s0; ,)) \Gamma  g(z(s0; ,)): (10)
+
+Proof. Let ,0 2 E. Pick any " ? 0. Choose 0 ! K ! `0 = `,0 ^ 1 so that e\Gamma K \Gamma  e\Gamma `0 ! ". By the lower semicontinuity of `,, we know that there exists a neighborhood U ae E such that for every , 2 U, `, ? K, and hence, for every , 2 U,
+
+V0(,) = Z
+
+`,
+
+0 g(z(s; ,))e
+
+\Gamma s ds * Z
+
+K
+
+0 g(z(s; ,))e
+
+\Gamma s ds:
+
+(11)
+
+Now consider any sequence f,kg ae U that converges to ,0. Thus z(s; ,k) 2 E for all s 2 [0; K], so by Fatou's Lemma and lower semicontinuity of g on E,
+
+lim inf
+
+k!1 Z
+
+K
+
+0 g(z(s; ,
+
+k))e\Gamma s ds
+
+* Z
+
+K
+
+0 lim infk!1 g(z(s; ,
+
+k))e\Gamma s ds
+
+* Z
+
+K
+
+0 g(z(s; ,
+
+0))e\Gamma s ds
+
+= V0(,0) \Gamma  Z
+
+`0
+
+K g(z(s; ,
+
+0))e\Gamma s ds
+
+* V0(,0) \Gamma  (e\Gamma K \Gamma  e\Gamma `0 )!(j,0j) * V0(,0) \Gamma  "!(j,0j) : Combining this with Inequality (11), one concludes that lim infk!1 V0(,k) * V0(,0) \Gamma  "!(j,0j) for this " ? 0. Taking " ! 0 shows lower semicontinuity of V0.
+
+Continuity of V0 at 0 follows from the continuity of g at 0 and the facts that 0 ^ V0(,) ^ g(,) and g(0) = 0.
+
+Next we establish differentiability along trajectories while in E. We show that for every , 2 X, the function V0(z(s; ,)) is differentiable at s0 if z(s0; ,) 2 E. Note that z(s1; z(s2; ,)) = z(s1 + s2; ,). For any s0 for which z(s0; ,) 2 E, we let j = z(s0; ,). Then z(s0 + h; ,) = z(h; j), and `z(h; j) = ` \Gamma  h, where ` = `j, for all h in some neighborhood of zero. Thus,
+
+V0(z(s0 + h; ,)) = Z
+
+`\Gamma h
+
+0 g(z(s; z(h; j)))e
+
+\Gamma sds
+
+= eh Z
+
+`
+
+h g(z(s; z(h; j)))e
+
+\Gamma sds
+
+for all h small, from which it follows by continuity of g(z(s; z(h; j))) on s that
+
+d ds V0(z(s0; ,)) = V0(j)\Gamma g(j) = V0(z(s0; ,))\Gamma g(z(s0; ,)) ;
+
+and Equation (10) indeed holds.
+
+From g(,) ? V0(,) for , 2 E, dds V0(z(s0; ,)) ! 0 for all s0 such that z(s0; ,) 2 E. Moreover, this expression can be bounded away from zero on compacts:
+
+Lemma 2.6 For each compact subset K of E,
+
+inf ,2K(g(,) \Gamma  V0(,)) ? 0.
+
+Proof. Pick a compact subset K of E. Since K is compact, by lower semicontinuity of V0, one knows that there is some r0 ? 0 such that V0(,) ? r0, and so also g(,) ? r0, for all , 2 K. By Property 2, since K is bounded, there exists some sK ? 0 such that if `, ? sK, then
+
+jz(s; ,)j ! r0=2 ^ g(,)=2; 8 s 2 [sK; `,): This then implies that
+
+V0(,) = Z
+
+`,
+
+0 g(z(s; ,))e
+
+\Gamma s ds
+
+^ Z
+
+sK
+
+0 g(z(s; ,))e
+
+\Gamma s ds + g(,)
+
+2 Z
+
+1
+
+sK e
+
+\Gamma s ds
+
+^ g(,)(1 \Gamma  e\Gamma sK) + g(,)2 esK = g(,) \Gamma  g(,)2 e\Gamma sK ^ g(,) \Gamma  r02 e\Gamma sK: Thus g(,) \Gamma  V0(,) ? r02 e\Gamma sK on K.
+
+We now let E1 = f, 2 X: j,j * 2ae(jh(,)j)g ae E [ f0g: Lemma 2.7 There are real numbers K; c ? 0 such that V0(,) * c j,j for all , 2 E1 so that j,j * K. (This says, in particular, that the restriction V0jE1 of V0 to E1 is proper.)
+
+Proof. We will prove the lemma by first showing that if , 2 E1 with j,j * K0, where K0 = ae(1) + 4, then `, * 1.
+
+For this purpose, fix any , 2 E1 with j,j * K0. Assume
+
+` := `, ^ 1. Let j = z(`; ,). Since fififi bf(i)fififi ^ 1 for all i 2 X, it holds that jjj * j,j \Gamma  ` * K0 \Gamma  1: By the definitions of j and `, one has
+
+ae(jh(j)j) = jjj * K0 \Gamma  1; (12) so also jh(j)j * ae\Gamma 1(K0 \Gamma  1) ? 1. Thus, jh(z(s; j)j ? 1 for all s near zero.
+
+Claim: jh(z(s; j))j ? 1 for all s 2 [\Gamma 1; 0]. Assume the claim is false. Then there must exist some \Gamma 1 ^ s0 ! 0 so that s0 = maxfs ^ 0 : jh(z(s; j))j ^ 1g: We have that for each s 2 (s0; 0], jh(z(s; j))j ? 1. Recall that jD(ae ffi jhj)(i)f(i)j ^ 1 for all i with jh(i)j * 1. Thus fifififi
+
+d ds ae(jh(z(s; j))j)fifififi ^ 1; 8 s 2 (s0; 0]:
+
+This, in turn, implies that
+
+ae(jh(z(s0; j))j) * ae(jh(j)j) + s0 * K0 + s0 \Gamma  1 ? ae(1); contradicting the definition of s0. This proves the claim.
+
+It follows from the claim that jh(z(s; ,))j ? 1 for all s 2 [0; `]. Thus,
+
+ae(jh(j)j) = jjj * j,j \Gamma  `
+
+* 2ae(j,j) \Gamma  ` * 2ae(jh(j)j) \Gamma  3`
+
+from which it follows that ae(jh(j)j) ^ 3`, so from (12) we know that K0 ^ 3` + 1 ^ 4, contradicting the choice of K0. This shows that it is impossible to have ` ^ 1.
+
+To complete the proof of the lemma, observe that if , 2 E1 with j,j * K0, then
+
+V0(,) * Z
+
+1
+
+0 g(z(s; ,))e
+
+\Gamma s ds
+
+* g(z(1; ,))(1 \Gamma  e\Gamma 1) * (j,j \Gamma  1)(1 \Gamma  e\Gamma 1) Since j,j * K0 ? 2, j,j \Gamma  1 * j,j =2. Hence, if , 2 E1 with j,j * K0, then V0(,) * c j,j, where c = (1 \Gamma  e\Gamma 1)=2 ? 0.
+
+By Lemma 2.6, we know that
+
+inf fg(,) \Gamma  V0(,) ; a ^ j,j ^ b; , 2 Eg ? 0
+
+for each pair 0 ! a ! b. Thus there is some continuous, positive definite function ff3 such that
+
+g(,) \Gamma  V0(,) ? ff3(j,j) ; 8 , 6= 0; , 2 E : In particular, dds V0(z(s; ,)) ^ \Gamma ff4(V0(z(s; ,))) for all s 2 [0; ^`,), where ^`, = inffs * 0 : z(s; ,) 62 E1g; and ff4(r) = ff3(!\Gamma 1(r)) (using that !(j,j) ? V0(,) on E, and hence in particular on E1). Consequently, in terms of the original time parameter and trajectory:
+
+d dt V0(x(t; ,)) ^ \Gamma ff4(V0(x(t; ,)))
+
+for all t 2 [0; ^*,), where ^*, = infft 2 [0; tmax) : x(t; ,) 62 E1g:
+
+To construct a Lyapunov function defined everywhere, consider a smooth function ' : Xn f0g ! [0; 1] with the property that
+
+'(,) = ae 1; if ae(jh(,)j) ^ j,j =30; if ae(jh(,)j) * j,j =2 and ' is nonzero elsewhere. Note that such a smooth function exists because the two sets fae(jh(,)j) ^ j,j =3g and fae(jh(,)j) * j,j =2g are two disjoint closed subsets of Xn f0g. Define '(0) = 0. Let, for each , 2 X,
+
+V1(,) = '(,)V0(,) + (1 \Gamma  '(,)) j,j2 : Consider any , 2 Xwith j,j * maxfK; cg, where K and c have been chosen as in Lemma 2.7. If , 2 E1 then the Lemma assures that
+
+V1(,) * c j,j (13) and if , 62 E1 then V1(,) = j,j2 so this inequality is also satisfied; thus (13) holds globally; in particular, V1 is proper. Note also that V1 is positive definite, since on E1 n f0g the function V0 is nonzero (it is nonzero on all of
+
+E) and on the complement of this set it is equal to j,j2.
+
+We summarize our conclusions as follows:
+
+ffl V1 is lower semicontinuous everywhere, and continuous at 0 with V1(0) = 0.
+
+ffl V1 is positive definite and proper, and hence (being
+
+lower semicontinuous), there exists ff1 2 K1 such that V1(,) * ff1(j,j) for all , 2 X. Moreover, since V0(,) ^ g(,) ^ !(j,j), it follows that there exists some ff2 2 K1 such that V1(,) ^ ff2(j,j).
+
+ffl For any , 2 X, V1(x(t; ,)) is differentiable in t for
+
+all t * 0, and ddt V1(x(t; ,)) ^ \Gamma ff4(V1(x(t; ,))) if jx(t; ,)j * 3ae(jh(x(t; ,))j and there is some function  of class K such that
+
+d dtV1(x(t; ,)) ^ (x(t; ,)) (14)
+
+whenever ae(jh(x(t; ,))j ! jx(t; ,)j ^ 3ae(jh(x(t; ,))j.
+
+The last inequality follows from the fact that
+
+d dt V0(x(t; ,)) ^ V0(x(t; ,)) ^ !(jx(t; ,)j) everywhere
+
+on E, and both ' and j,j2 are smooth.
+
+Finally, let ss : R*0 ! R*0 be any K1-function which can be extended as a C1 function to a neighborhood of [0; 1) and such that ff5(r) := ss(ff1(r))ff4(ff1(r)) is a K1 function. Define: V2(,) = \Phi (V1(,)) ; where \Phi (r) =R
+
+r
+
+0 ss(s) ds: Then the following properties hold for V2: (1)V
+
+2 is lower semicontinuous, and
+
+^ff1(j,j) ^ V2(,) ^ ^ff2(j,j); (15) where ^ffi(r) = \Phi (ffi(r)), i = 1; 2; (2) V2 is differentiable along trajectories, and
+
+d dt V2(x(t; ,)) = ss(V1(x(t; ,)))
+
+d dt V1(x(t; ,)) ^ \Gamma ff5(jx(t; ,)j) (16)
+
+whenever jx(t; ,)j * 3ae(jh(x(t; ,))j.
+
+Since V1(,) = j,j2 is smooth on the set E3 := f, : j,j ^ 2ae(jh(,)j)g, it follows that if jx(t; ,)j 2 E3, then
+
+d dtV2(x(t; ,)) ^ oe0(jx(t; ,)j) (17)
+
+for some K1-function oe0. Because of (14), one knows that if 2ae(jh(x(t; ,))j)g ^ jx(t; ,)j ^ 3ae(jh(x(t; ,))j)g, then
+
+d dt V2(x(t; ,)) ^ oe1(jx(t; ,)j) (18)
+
+for some oe1 2 K1. Let
+
+oe(r) = maxfoe1(3ae(r)); oe0(2ae(r)) + ff5(3ae(r)): Then, combining (16), (17) and (18), we get
+
+d dt V2(x(t; ,)) ^ \Gamma ff5(jx(t; ,)j) + oe(jh(x(t; ,))j); 8t * 0:(19)
+
+This shows that V2 is an oss-Lyapunov function for the system.
+
+Remark 2.8 To find an explicit way of constructing the function ss, we refer the reader to [3]. By Lemmas 11 and 12 in [3], one can construct a K1-function ss which can be extended as a C1 function to [\Gamma 1; 1) such that ss0(r) *
+
+ss(r) ff4(r) ; 8 r ? 0: With such a choice of ss, inequality (16)becomes:
+
+d dtV2(x(t; ,)) = ss
+
+0(V1(x(t; ,))) d
+
+dt V1(x(t; ,)) ^ \Gamma V2(x(t; ,)) (20)
+
+whenever jx(t; ,)j * 3ae(jh(x(t; ,))j. Consequently, the estimation (19) becomes
+
+d dt V2(x(t; ,)) ^ \Gamma V2(jx(t; ,)j) + oe(jh(x(t; ,))j); 8t * 0;(21)
+
+for some oe 2 K1. Hence, we obtain with the same proof the following sharper version of the theorem:
+
+Corollary 2.9 System (2) is oss if and only if it admits an oss-Lyapunov function V satisfying an estimation of type (21). 2
+
+3. A Remark on I/O Stabilization Reasons of space preclude discussing here the relationship between the ioss property and i/o stabilization. We merely point out the following fact: if there is for each state , an open loop control u,(\Delta ) that drives , asymptotically to zero (and itself converges to zero), if the righthand side f(x; u) is an analytic function of (x; u), and if the system is ioss, then there is a controller which, based only upon output information, produces a control that drives all states to zero. The procedure is roughly as follows: 1: apply a "random" input on some interval [0; T ]; 2: pick any state , = x(T ) consistent with the observed i/o data (we assume here that there are no finite explosion times, so this data is indeed well-defined); and finally 3: pick a control u, so that x(t; ,; u,) ! 0 and u(t) ! 0. We claim that this procedure indeed drives the internal state asymptotically to zero. Indeed, we know from the Universal-Input Theorem for analytic systems that a "generic" control will identify the final state x(T ) up to indistinguishability, that is, when we apply the further control u,, the true state i at time T will produce the same output, going to zero, as , does. Now the ioss property implies that the trajectory starting from i must also converge to zero. The full version of this paper will make this argument more rigorous, including a version in which input and output disturbances are taken into account.
+
+References
+
+[1] Jiang, Z.-P., A. Teel, and L. Praly, "Small-gain theorem
+
+for ISS systems and applications," Mathematics of Control, Signals, and Systems 7(1994): 95-120.
+
+[2] Morse, A.S., "Control using logic-based switching," in
+
+Trends in Control: A European Perspective (A. Isidori, Ed.), Springer, London, 1995 (pp. 69-114).
+
+[3] Praly, L., and Y. Wang, "Stabilization in spite of matched
+
+unmodelled dynamics, and an equivalent definition of input-to-state stability," Math of Control, Signals, and Systems, to appear.
+
+[4] Sontag, E.D., "Conditions for abstract nonlinear regulation," Information and Control 51(1981): 105-127.
+
+[5] Sontag, E.D., Mathematical Control Theory, Deterministic Finite Dimensional Systems, Springer-Verlag, New York, 1990.
+
+[6] Sontag, E.D., "Smooth stabilization implies coprime factorization," IEEE Trans. on Automatic Control AC34(1989): 435-443.
+
+[7] Sontag, E.D., "On the input-to-state stability property,"
+
+European J. Control 1(1995): 24-36.
+
+[8] Sontag, E.D., and Y. Wang, "On characterizations of the
+
+input-to-state stability property," Systems & Control Letters 24(1995): 351-359.</pre>
+</body>
+</html>

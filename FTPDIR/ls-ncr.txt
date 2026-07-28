@@ -1,0 +1,815 @@
+OCR of paper; see pdf file ls-ncr.pdf for viewable/printable page
+
+
+On Linear Systems and Noncommutative Rings
+by
+EDUARDO D. SONTAG
+Center for Mathematical System Theory
+Department of Mathematics, Univ. of Florida
+Gainesville, FL 32611
+ABSTRACT
+This paper studies some problems appearing in the extension of the theory of linear
+dynamical systems to the case in which parameters are taken from noncommutative
+rings. Purely algebraic statements of some of the problems are also obtained.
+Through systems defined by operator rings, the theory of linear systems over
+rings may be applied to other areas of automata and control theory; several such
+applications are outlined.
+Introduction. The algebraic theory of linear constant systems with coefficients
+over an arbitrary field has gone through major developments during the past
+decade. A comprehensive account is given in Kalman, Falb and Arbib [9,
+Chap. 10]. Since a considerable number of the results remain valid for the
+case of commutative rings, it is natural to develop the theory in this direction.
+A systematic study of the realization problem over commutative rings was
+initiated by Rouchaleau [16] and Rouchaleau, Wyman and Kalman [17]. An
+exposition may be found in Eilenberg [4, Chap. 16], or Sontag [21].
+The situation with noncommutative rings is completely different, however,
+essentially because the Cayley-Hamilton theorem fails to hold. Part B of the
+present paper grew out of an effort to isolate the exact condition(s) for extending
+the commutative theory. These conditions are further studied from a purely
+algebraic viewpoint in Sontag [19] which may be viewed as a complement to
+this work. Part C of the paper shows that the situation is not at all surprising
+when viewed in the context of automata theory and rational power series.
+Why study systems over arbitrary rings? Various answers are possible. As
+pointed out in the work of Rouchaleau, it is natural to study systems which
+have integer parameters, because integers are more "natural" for computers
+than real numbers. Other reasons are the design of error-correcting codes, the
+study of partial difference equations, and the consideration of certain systems
+defined on groups, as indicated and developed in the case of codes in Johnston
+This research was supported in part by US Army Research Grant DA-ARO-D-31-124-
+72-G 114 and by US Air Force Grant 72-2268 through the Center for Mathematical System
+Theory, University of Florida, Gainesville, FL 32611, USA.
+327
+MATHEMATICAL SYSTEMS THEORY, VOL 9, No. 4.
+C) 1976 by Springer-Verlag New York Inc.
+<<PAGE-DIVIDER>>
+328 EDUARt)o D.SONTAG
+[7]. Another application, at least at the level of an analogy, is the global study of
+time-varying control systems (Kamen [111). Perhaps equally important is the
+hope that the study and understanding of such linear systems may be eventually
+useful for the formulation of more general, i.e., nonlinear, theories. It is also
+of general scientific interest to know the ultimate limits of linear system theory.
+An entirely different application is due to Kamen [101 (see also Newcomb
+[13]), where discrete time systems appear not as the object of study for their own
+sake but as a too] in the theory of certain infinite-dimensional continuous-time
+systerns from the point of view of distributions. The model presented in Part D
+generalizes this approach. The examples given there should suffice to indicate
+how the introduction of more or less sophisticated operator rings (even non-
+Commutative) can be useful in studying a broad class of systems which are
+-essentially" finite-dimensional. A detailed discussion of the commutative case
+will be given in Sontag [20], but the setup is introduced here in its full generality
+along with a general realizability result. The rings considered in Part B play a
+dominant role in this construction, but Part D can also be read independently
+if the reader is willing to restrict himself to considering commutative rings
+instead of arbitrary rings".
+A different approach to systems which can be Studied using rings of operators
+is given by Wyman [24].
+A. Preliminaries
+Although no deep algebraic results will be used, it is assumed the reader
+feels comfortable with the definitions and elementary properties of rings and
+modules. All rings will be assumed associative and with a unit element, and all
+modules unitary (i.e., I acts as the identity); unless otherwise stated, module
+will stand for "left module" and homomorphisms will be written on the right;
+for right modules they will be written oil the left. If R is a ring, R" will denote
+the free R-module in it generators, considered as a left module; consequently,
+'ll be v
+ma+rIces wi vritten to the right of the (row) vectors in R' and the endo-
+i-norphism ring End (R") will be identified with the rnatrix ring R" by expressing
+transformations in the given basis.
+Given an R-i-nodule M, <91, - - -, 9~ ~R will denote the (left) submodule
+generated by the elements g, - - -, g,, of M. Let R'P denote the ring which
+coincides with R as an abelian group but such that for all a, b the product ab
+is defined to be equal to ba in R. Any left R-module is naturally a right R'P-
+module and vice versa.
+A subsemigrOUp T of the multiplicative semigroup of R is called a left
+denominator set in R if and only if for all r in R, I in T, (i) Tr r) Rt is nonempty,
+and (n) if either rt = 0 or tr ~ 0, then r ~ 0. For such a T one can construct
+(as in Cohn [3, Chap. 01) a ring containing R, the localization T-'R consisting
+of all quotients t -'r. Defining W'r),~: = (tg)-'(rg), a routine calculation
+proves:
+(0.1) ff g: R -- S is an inJective ring hoinoinorphism such that Tg con-
+sists of units in S, there is a unique extension of g to an inclusion
+,~: T-'R ->- S.
+<<PAGE-DIVIDER>>
+On Linear Systems and Noncommutative Rings 329
+For an R-module M, denote by M((x)) the set of (truncated) Laurent series
+in the indeterminate x, i.e., the set of all (formal) SUMS Y_i~,k aix' for some
+integer k and ai in M. (We will ornit mention of k when irrelevant.) We endow
+R((x) with coefficientwise addition and with the (convolution) multiplication
+defined by
+(Y_aix')(Ybjxi) = Y_Ck__Ck, where c,: ~ Y aibj.
+i+j=k
+Since the surn is clearly finite, R((x)) is a ring; it can also be seen as the localiza-
+tion of the usual power series ring R[[x]] at ~ x", n e NJ. Given an R-module M,
+define the R((x))-module M((x)) in the same way. For any s = s(x) = Yaix' 0 0
+in M((x)) define o(s): = min f k: ak :A 0 1, deg s: o(s); a,(,) will be referred
+f
+to as the "coefficient of least order (in x)" and if s c M[x-'] - M((x)), a,(,)
+will be also called the "leading coefficient (in x-')". Both for notational con-
+venience in Parts C and D and for historical reasons, we will usually take
+X = Z 1; then for exam ple i n Z((z - ')), o(2z + 1) = - 1, deg (2z + 1) = I and
+a-, = 2, and the coefficient of least order of z-' + 5z -2 is 1. The units of R((x))
+are the nonzero elements whose coefficient of least order is a unit in R. So if
+PC M[x-'] and q c R[x-'] is a unit, then q -'p is a well-defined element of
+M((x)) and can be clearly calculated by the so-called "long division" algorithm.
+Observe that for any R-module M there exists a canonical inclusion M[z]
+M((z-)), giving rise to an exact sequence of R[z]-modules
+(0.2) 0 - MIZI - M((Z-,)) P>. M((z-'))/Mlzl - 0
+with p the canonical projection. M((z-'))1M[z] can be identified with z-'M
+[[z-']], the R-module of power series in --' with zero constant term.
+For the linear systems results, this paper is based upon Kalman [8], Kalman,
+Arbib and Falb [9, Chap. 10], and Eilenberg [4, Chap. 161: the first two
+references treat the case of R a field and the third R a commutative ring. All
+results which extend without restrictions to any R and are proved in an analogous
+way will be quoted freely from the above. The Laurent series formalism used
+here is borrowed from Wyman [23]. The reader should have no trouble in
+translating the language in the previous references into the one used here.
+Another useful source, especially for rationality, is Fliess [6].
+We review briefly the fundamental notions. R will denote a ring, and U
+and Y will stand in each case for the input and output modules; U will be finitely
+generated (i.e., an image of some free module of finite rank R') and Y will be
+included in a free module RP. This covers most cases of interest, e.g., scalar
+systems (when U = Y = R), and those in Part D. All of Section I holds without
+any restrictions on Y and Section 2 holds without restrictions on U. Unless
+otherwise specified, a fixed system of generators e, - - -, e. is implicitly assumed
+for U (in other words, we really look at pairs (U, presentation of U)). We let
+Q, F denote the R[z]-modules U[z], z-' Y[[z-']].
+A (discrete-time, constant, R-linear dynamical) system I consists of an
+R-module X (the state space) and homomorphisms (F, G, H) where G: U - X,
+F: X -->- X, and H: X --->- Y. The result of E is the map f: U((z-')) - Y((Z- 1))
+<<PAGE-DIVIDER>>
+330 FDUARDO D. SONTA6
+given by whereYk: I ujGF'-'_'H. Then f is easily
+seen to be an R((z-'))-homomorphisrn, so in particular f = f, given by the
+composition (see (0.2)) i2 ---> U((z -- 1)) ~- Y((z - 1)) ~P I, is an R[z]-homo-
+morphism. (Any suchf defines a uniquef andf defines a uniqUef so there are
+no ambiguities.) Giving a system 1: is equivalent to giving an R[z]-module X
+and R[z]-homomorphisms W and -*" where zx: = xF, az"X: = aGF" and
+X_/X": = YxF"Hz-". See the Suggested references for details. In fact, J'= ~7~X'-.
+Denote by gi: = eiG the accessible generators of )~. Then the reachable part of
+X is X, = '2~~ = <91 I - - *, 9./R[zj S~Z X; since X, is F-stable, by restricting
+everything to X, we get a subsystem E, of 'E.
+We call Z reachable in time k if the restriction of SV to the R-submodule of
+Q consisting of the polynomials of degree less than or equal to k - I is surjective.
+It is observable in time k provided that xF'H = 0, i = 0, - - -, k, implies x ~ 0.
+We call E reachable (observable) in bounded time if and only if it is reachable
+(observable) in time k for some k. Finally, we call x e X controllable if there
+exists k and u) c Q, deg co < k, such that xF'4- w~'/' = 0. We call -Y controllable
+when every x e X is; for each x the condition can be restated as:
+k
+(0.3) There exist aij c R, i in, j ~ 1, k - 1, ivith xF
+Y_jj aijgiFj.
+Controllable in bounded time means that some k as above can be found for E
+independently of x.
+Conversely, any R[z]-homomorphism f: Q ---> F (for short, an I10 map)
+can be factorized as Q _~' Xf F with Xf ~2/ker f, and 9, X' the induced
+maps. Call the systern Ef obtain,-d from Xf, 27 and the canonical realization
+off In general, any Z such thatfj = fis called a realization off. The canonical
+realization is characterized up to a unique isomorphism by the properties of
+reachability and observability; we have (Eilenberg [4, p. 419j):
+(0.4) For any realization Y_ of f there is a (unique) surjective R[z]-homo-
+morphisin (p: (Xy
+Xf such that Gyp = Gf.
+If f has some.finite realization E (i.e., A, is finitely generated) f will be
+called sequential; we have (Eilenberg [4, p. 4131):
+(0.5) Assume that U is a ftee R-module and f is sequential. Then fhas a
+realization E ivith X, -_ R", for some n.
+When Xf is finitely generated, we call f canonically sequential.
+By definition, any canonically sequential f is sequential. The converse,
+although true for commutative rings, is not true in general. The rings which
+satisfy the converse turn out to be precisely those over which much of the
+standard linear system theory remains valid. These rings can be equivalently
+defined by a number of highly desirable system-theoretic properties, as we shall
+see. The property of observability in bounded time, on the other hand, is in a
+certain sense dual to the facts discussed above.
+<<PAGE-DIVIDER>>
+On Linear Systems and Noncommutative Rings 331
+B. Discrete-Time R-Systems
+(1) .~~'.4-Rings and Reachability.
+(1.1) Definition. A ring R is called finitely accessible if and only if every
+sequentialf: i2 - F is even canonically sequential, (We say, for simplicity, that
+R i s .~i7. ~7/. )
+The following holds without any assumption on the ring R.
+(1.2) LEMMA. 1, is reachable in bounded time it"and only ~f X, is finitely
+generated.
+Prooj'. If 1_', is reachable in time it, then g c <g,, - g~, g, F, - - -, g.F~,~R
+for all g in X,. Conversely, if.v, = Y_j wi.gi., h 1, n, generate X,, then
+~:r is reachable in time k: = max deg (J!). j in, h = 1, n
+(1.3) Definition. Given ,in R-modLL M with an R-endomorphism F and
+g c M, we say that g is recurrent for F when there is some integer k and a, -
+a,-, in R such that gF' = Y~- 1 aigF'.
+-1=0
+We ornit mention of F if clear from the context.
+Observe that this definition corresponds to controllability ofg in a system for
+which G = g. An equivalent definition, via the natural R[z]-module structure
+on Al, is that some monic q in R[z] annihilates the element g, or that <g'IR[.1
+is finitely generated over R. As X, = Y_ <gi/R[z), each gi being recurrent is a
+sufficient condition for X, being finitely generated. Another sufficient condition
+is controllability:
+(1.4) LEMMA. If each gi in 1: is controllable, then X, is controllable in
+bounded time, and, in particular, finitely generated.
+Proof'. For each h ~ 1, - - -, m we have, as in (0.3), ghF", c <g,, gn1F kh- I /R,
+gbFk C lgl,. - -, k- I, "
+If k > k, for all h, then g F for every h. Hence, by an
+easy induction, each I\g,>,,[,, and hence also X, is in <g,, - - -, g.F k - II" R- SO X,
+is controllable in time k and finitely generated. El
+(1.5) LEMMA. Suppose in 1 each gi is recurrent [controllable]. Then each
+accessible generator k j of Xf. is recurrent [controllahle].
+Proof By the definition or -acc,,~ssible generator" and by (0.4), ki = girp.
+Clearly giFjq) = ~jFj~ for all j ~_: 0. Hence any relation Y-i,j ajgiFj ~ 0 is
+mapped into Y-,,j aig,Fl . = 0. F-1
+(1.6.) THEOREM. For any ring R the JbIlowing are equivalent. (a) R is all
+ring. (b) For euery finitely generated R-module M and any F in End (M) ally
+- f -ency. (c) Same as (b) with m = 1.
+finite set f g, - - , gml in M has a common rectiri
+(d) For any n and F e R" I nany g in R" is recurrent. (e) E, is reachable in bounded
+timejor everyfinite R-system E. (f) For everyfinite R-system 2: reachable states
+are controllable. (g) Same as (J) with controllable in hounded time. (h) X,- is
+COInrollablefin- any sequentialf (i) Sallie as (h) in bounded time.
+Proof We shall prove (a) => (d) =:> (c) => (b) => (e) => (g) => (f) => (i) =>
+(h) - (a).
+<<PAGE-DIVIDER>>
+332 EDUARDO D. SONTAG
+(a) ~> (d): Given F, g, define !:: ~ (F, G, H) by U: ~ R (as a left module),
+Y: = R", X: = R", G: I ~~ g, 11: ~ I ~ f' as given. Since -v is observable,
+Ef,; is Isoniorphic to ~:,. SD ~9>'R[~] = X, - XfY* Sinc,~Jj: is sequential, by (a),
+Xf. is finitely generated. So g is recurrent.
+(d) => (c): Let (p: R" M by an R-epiniorphism with g(p = g, and q~F
+for some f F R"", g e R", n c N. Then, a recurrency for g induces one for g,
+(c) => (b): Consider R' as a bimodUle and define Ah = R"' (DR M. Then
+A~ is a finitely generated (left) R-modUle. Define g: = lin- , e, 0 gi e M and
+f : = I - 0 F c E n d (j* ). Bv (c), there exist k and a, ak- 1, ak = I In R
+such that
+0 = k ajgf k aj( j ej Ox gi)
+I I
+j=0 j~o i=1
+k /H
+= L ai( Y e, & giFj
+j=0 i-1
+k
+ejo ajgiFj
+Each term in parentheses on the last line must vanish. which proves (b).
+(b) => (e): If each gi is recurrent, apply (1.2).
+(e) => (g): Given that E, is reachable in tirne k, 1-1" c: 'g, g,,IP for
+any g E~ X, So E, is controllable in time k.
+(g) =:> (f): Trivial.
+(f) => (i): Take a finite '-' realizing,/. By (f) each gi is controllable. Apply
+(1.5) and (1.4).
+(i) => (h): Trivial.
+(h) => (a): By (h) Xf is controllable. Applying (1.4) shows that Xf is finitely
+generated. Hencef is canonically sequential. El
+Remark. Alternative characterizations of rings can be given in terms
+of a Cayley-Hamilton type matrix condition as well as in terms Of integral
+extensions of R (see Sontag [19, Theorem 1.31).
+(2) .3w'C Rings and Observability.
+We begin by dualizing (1.6.e).
+(2.1) Definition. A ring R is finitel"t, observable if and only it' every finitely
+generated and observable L is even observable in bounded time. (We say, for
+simplicity, that R is ~k C).
+(2.2) Observation. For any R-i-nodules, M, N and homomorphisms T:
+M - M and JI: M -~ N the following are equivalent. (a) T lie descending
+chain -1n,=0 ker T'Hfl,,o has length k. (b) ker PH -~-- ker T kH. (c)
+( ' i=O
+k: 1
+i , ker T'H is T-invariant.
+n
+(2.3) PROPOSITION. flor any ring R thefilloiving are equivalent. (a) R is
+,j,- C. (h) For any finitely generated R-modide M, any p e N, F c End (M), and
+H c Hoin (Vi, RP), condition (2.2.a) holalsfor some k. (c) For any n c N. T L R"
+and h (: R" x ', condition (2.2. a) holds for some k.
+<<PAGE-DIVIDER>>
+On Linear Systerns and Noncoinniutative Rings 333
+Proqf. Since (b) trivially implies (c), prove (c) =;> (a) and (a) => (b).
+(c) =:t:. (a): Given ~ (F, G, 14) observable (and finite), choose n and an
+epimorphism q-,: R" X with cpF ~ T(,, for some Tc R"". If Y -_ RP, let hj,
+j = 1, - - -, p, be the composition of ~,,H with the projection on the ith coordinate.
+Let k be the maximum of the lengths of the chains f ni., ker T'hjl,,,:O. Suppose
+f
+g c X is such that gF'H 0 for i 1, - Choose x (-- R" with x(P = g. Then
+xT'hi = 0, i = 1, - - -, j = 1, 1). It follows that gF'11 = 0 for every
+i = 1, 2, - - -. By observability of this implies g = 0. So 1 is observable in
+time
+ker PH and
+(a) => (b): Given F, H as in the hypothesis, let Al: =n,-
+observe that M is F-invariant and M - ker 11. So if X: = R"IAI and q;: R' --~- X
+is the canonical projection, (p induces F, H, with (pF, = F(p and q)H,; = H.
+Define :~: = (F, 0, H.). Clearly ~: is an observable finite system, hence observ-
+able in time k. So k then satisfies (22a). El
+The class of -J-Y, rings is very large. but except for the case of rings without
+zero-divisors, the condition is quite independent of the )~'_-~,/-condition. From
+the Usual "duality" of linear systera theory, it Would be expected that a statement
+such as "R is an ring if and only if R"P is an ring" would hold; it
+can be proved however thatjust the "only if" part holds in general (Sontag [19,
+Sections (3) and (4)1).
+For all rings embeddable in a division ring the k in (2.2) exists and is in fact
+bounded by the cardinality of any set of generators for M. Such rings are an
+extrernely simple example of "efifectively -~FC rings". defined below.
+(2.4) Definition. A ring R is called e#ecth cly j,-.,/(resp. 170) if given any
+finite system .1~ over R a bound on reachability time (resp. observability time)
+exists and is effectively calculable.
+It is of course implicit in the definiiion that R is itself effectively describable
+and that "given" means in terms of. say, matrices. For any 2~, fj = 0 if and
+only if ejGF'H = 0 for i = I - - - - ~ in and all i > 0. If R is ~FC, it is enough to
+check- the condition for i = 1, - - .. k. If R is then there is a k such that
+e,GF' for i > k is a combination of terms with i < k. So in any case we have
+(2.5) PROPOSITION. ~f R is either eftectirely or 6F0, then the
+equalit), ofhehauior ofa pair of sYstems is (1ccidable.
+(2.6) Remark. The decidability question in (2.5) is by no means trivial. In
+fact, it is intimately related to in outstanding open problem in the developing
+theory of Lindenmayer systems, narnely the so-called equivalence problem (see
+Linderimayer [12], Nielsen [14], Salornaa [18]).
+The relation with the latter is obtained by giving a construction which
+embeds Linderimayer systerns (cssentiall~ nonlinear objects) in discrete-time
+R-systems.
+Let X _v -v,, If be an alphabet. and V the free monoid generated
+. it")'(r I" UJ: - (11, (1-
+by it, Define a product in the set (X*)" bv(ii,,-
+v~), uJr, where ui(r, is the word obtained by replacing
+each occurrence of vi in ui by cj. This operation is clearly associative, and
+admits the identity (.v, - - -, v,,). Wc denote the nionoid so obtained by Al.
+<<PAGE-DIVIDER>>
+334 EDUARDo D.SONTAG
+Choosing (and fixing) an arbitrary field k, we denote the corresponding monoid
+algebra k[M] by R.
+Now let 8: X* --~- X* be an arbitrary monoid homomorphism, which we
+shall write (exceptionally) on the left of its argurnent. Let 7T be in X*. We shall
+interpret 6 as the production rule and 7T as the axiom of a Lindenmayer system.
+Consider the R-system given by U = X = Y: = R, If: ~ identity, F: = map
+sending each r in R to r - (8(v,), - - -, 6(xj), and G: r " r - (7T, - - -, 77). Then the
+"impulse response" of the system, i.e., the sequence 5GPH~, is the sequence
+~ (6i(7), - - -, 5i(71)), i - 0, 1, - - - ~1. Hence equivalence of Lindenmayer systems
+corresponds to equal input/output behavior of the associated R-systems.
+Finally, as a "bonus" from the construction in the last paragraph, many
+generalizations of Lindenmayer systems are immediate. For example, taking
+k: = real numbers, systems with a convex combination of G's as before would
+correspond to only knowing a (finite) distribution of probabilities of axioms-,
+a similar stochastic interpretation Would hold with respect to F. Quotients of
+R, on the other hand, would correspond to certain cell configurations determin-
+ing the extinction of the process.
+C. Rationality
+(3) Rational Power Series.
+Let R be a ring, x an indeterminate and R((x)) as in Part A. A subset S of
+R((x)) is called rat ionally closed if and only ifthe inverse ofany invertible element
+of S is again in S.
+(3.1) Definition. The ring R*[(x)] of rational Laurent series in x over R is
+the smallest rationally closed SUbring of R((.v)) containing R[x]. The subring
+of R*[(x)] consisting of series s with o(s) -,~ 0 (the ring of rational power series
+in x) is denoted by R[(x)]; the Subset of series s with o(s) ~!! I (the "causal-
+power series) is denoted by R,[(x)].
+(3.2) Remark. It is easy to verify that the definition of R[(.v)] given here
+coincides with the standard one as the smallest rationally closed SUbring of
+R[[x]l including the polynomials. In any case, observe that s e R((.v)) is rational
+if and only if it may be expressed as products and sums of polynomials and
+inverses of such combinations when the coefficients of least order are units in R.
+In the case R is a commutative field, R*[(x)] reduces to R(x), the field of rational
+functions.
+The following is a particular case of a result due to SchUtzenberger (see
+Eilenberg [4, Chap. 7, Theorem 5.11; the result is true without the assumption
+that R is commutative).
+(3.3) If s R((z - ')), then s ~: R,[(-- if and only it there is a sequentialf
+with U = Y R and s = If.
+We shall frequently identify any s as in (3.3) with the correspondingf
+If R is commutative terms can be regrouped and common denominators
+chosen so that any rational power series is a quotient of two polynomials. This
+property will give LIS yet another characterization of J~'a rings.
+<<PAGE-DIVIDER>>
+On Linear Systems and NoncommutatiNe Rings 335
+(3.4) Definition. A series s c z-1 M[[::- 1]], /V1 an R-module, is called elernen-
+lary rational if it can be expressed in the form q -'p with q c R[z] monic and
+P C M[zl.
+For such an s = q`p, clearly deg q < deg p. A standard argument shows
+that s c z-'M[[z-']] is elementary rational if and only if its coefficients satisfy
+a monic recurrence relation. Equivalently, s is elementary rational if the
+columns of its "Hankel matrix" generate a finitely generated R-module.
+An input/output mapf: ~2 - F with Y c= RP gives rise to a matrix of series
+with elements fi, .: - e ,- fiTi- c - -'R[[z `11, where 7rj, j ~ 1, - - -, p indicates the
+result of applying the coordinate maps for Y to the coefficients of a series in
+--I - 1]]. As in the Commutative casej is sequential if and only if eachfij is
+- Y[[z
+rational.
+By definition of the (quotient) R[z]-module structure on F, qeif E Y[Z] if
+and only if qeif = 0 in 17. For the canonical realization,f = and _XK' is
+injjective, so that this last condition is equivalent to qgi = 0. Hence we have
+(3.5) LEMMA. Let f: Q --->. F be an inputloutput inap and q e R[z]. Then
+q(eif) is a polynomial if and only ~f'q annihilates gi in Xf.
+(3.6) THEOREM. For any ring R, thefolloiving are equivalent. (a) R is an
+,!j7.~/ ring.
+(b) Any inputloutput nlapj is sequential if and only ij'allfij are ele"len-
+tary rational. (c) Saine as (b), ~vilh a coninion denominator. (d) The set T of
+inonic polynomials in z is a left denominator set in R[z] and T-'(R[zj) call be
+naturally identified ivith R*[(---')].
+Proq1' We shall prove (a) <=> (c) and (c) => (b) => (d) => (c).
+(a) -> (c): For any polynomial q in R[z], one has qeif7Tj = 0 for j = 1, - - -, p
+if and only if qei.f'= 0. By (3.5), this is equivalent to q annihilating every 9,, so
+the equivalence of (a) and (b) in (1.6) gives the result.
+(c) (b): Trivial.
+(b) => (d): If s in R*[(z- ')] is nonzero, let n > 0 be an integer such that
+Z's is in R,[(z-')]. By (3.3), Z-s ~ If for some seqUentialf; so, by (b), it is
+elementary rational, say equal to q-'p withp in R[zl, qin T. Then s = q-'(z"p).
+In particular, for every nonzero p in R[z] and q in T, pq -' is in R*[(z- 1)]. so
+it follows thatthere existp, in R[z] and q, in Tsuch thatpq- ql 'p, Hence
+q1p = pjq c Tp r) Rq- Thus T is a left-denominator set, and the inclusion of
+R[z] in R*[(z-')] extends to an isornorphism as in (0.1).
+(d) =;- (c): Iffis sequential, then eachfij is in R*[(z-')]. Then (d) says that
+eachfij is elementary rational. By Cohn [3, Exercise 0.5.2]-or by an argument
+similar to our proof of (1.6.c)-all fij can be written with a common denomina-
+tor.
+(3.7) Remark. It clearly follows that T is a right denominator set when
+R" is an ring. Since the property of being ~FV is left-right independent
+(Sontag [19, Section (4)]), it is perfectly possible that in a ring R every power
+series i n R*Yz - ')] be expressible as q -'p while, for some, no representation of
+the form pq -' exists. I n fact, R may even be a (non-COMMUtative) left principal-
+ideal domain, and still have this property.
+<<PAGE-DIVIDER>>
+336 EDUARDO D. SONTAG
+(3.8) Remark. There is a natural generalization of the Fatou-type problems
+which appear in the theory of systems over commutative integral domains (see
+for instance Eilenberg [4, Chap. 16, Section 12], RouchaleaLl [161, Fliess [61).
+Assume that R is a left Noetherian ring with no zero divisors. Let K be any
+division ring containing it (for example, its field of left fractions, which exists
+because of the Noetherian condition). The result is
+R[[z-']] r) K[(z-')] = R[(z-')].
+This is equivalent to the following. Let 1 Ail be a sequence of m xp matrices
+over R. In particular, they are matrices over K, and as such define a corre-
+sponding input-output map. Assume that there is a realization over K, i.e.,
+a triple of matrices (F, G. H). of appropriate dimensions, with entries in K,
+such that A. = GPH for all n. Then (*) asserts that there are matrices F, G', H'
+with entries in R (possibly of higher dimensions) such that A, = G'F"'11' for
+all n. The utility of such a result lies in that the techniques involving determinants
+(over K) of Hankel matrices become available (see Fliess [6, 11. I.d], and Artin
+[1, Chap. 4] for determinants in the noncommutative case).
+The proof of (*) is fairly straightforward. The inclusion of R[(z-')] in the
+left side is obvious. Take now s = Y. aiz -' in R[[.-- 1 1] and suppose it is rational
+over K. Being a division ring, K'P is an 3~7.r/ ring. So there are an n and a right
+recurrence
+n
+ah I ah-uku for all h ~: n
+U= J
+with ku in K. Call M the (left) R-submodule of R" generated by the set of all
+xi ~ (ai, ai+ ,, , *, ai+,- j), i ~ 0, 1, - - -. By the Noetherian assumption, M
+is finitely generated. In particular., there is an m with x. = Y-i<. rixi. Then,
+when 0 :~~ j :!~ n - 1,
+am+j Y_ rjai+j.
+i=O
+Assuming that (***) is true for all j < t (where n :!~ t), we show it is also
+true forj = t. Indeed, by (**), am+, ~ Y. am,,_.k. = Y. (Yiriai+,-.)k. = Yj
+ri (Y. a,+,-.k.) = Yi riai+t, as wanted. Then (***) is true for all j, and s is
+elementary rational over R. So (*) holds.
+Observe that the only property of K needed for the proof is that K'P is J~7&/.
+D. Applications to Finitary Linear Systems
+(4) Admissible Triples.
+(4.1) Definition. Given a right B-module A, a B-endomorphism 0'. of A is
+called transcendental (over B) if and only if no expression of the form b,a"+
+b~_,a` I + - - - + h, with all bi in B, b~ =A 0, acts as the zero map on A.
+Observe that this implies that every b ~A 0 acts as a non-zero map, i.e., that
+A is a faithful B-module. The definition of transcendental is equivalent to
+requiring that the smallest subring of End (A) containing both B and ~X be ill
+fact (isomorphic to) the polynomial ring B[a].
+<<PAGE-DIVIDER>>
+On Linear Systems and Noncommutative Rings 337
+(4.2) Definition. Assume that A, B, ~c are as in (4.1). The triple (A, B, a)
+is called admissible if and only if the inclusion of B[o] into End (A) extends to an
+inclusion of B*[(a--')] into End (A).
+In other words, admissible (A, B, ot)'s correspond to the faithful B*[(.-')]-
+rnodUleS. In practice, however, A, B, %, are usually given, and it must be checked
+whether Y induces such a representation. In the case of the rings introduced in
+Section B, the following is a useful criterion.
+(4.3) LEMMA. If A, B, r/ are as in (4. 1) and B is an F-d ring, a necessary
+and sufficient condilionfor admissibility oj'(A, B, o~) is that all monic polynomials
++ b" + + b0 be bijections.
+Proof. Necessity is clear, because nionic polynomials are units in B*[(Y-`)].
+Sufficiency. Denote by i the inclusion of B[oc] in End (A). Then, by (0.1) and
+Theorem (3.6), i extends to an inclusion of B*[(ot')] into End (A). Ej
+The condition in (4.3) is intended to be interpreted as stating the existence
+and uniqueness of solutions of equations (differential, difference, etc.). This is
+precisely the sense in which we are interested in admissible triples.
+When B is an algebraically closed field, a triple (A, B, o~) is admissible if
+and only if the spectrum of i (as an element of the B-algebra End (A)) is empty;
+then for many cases we have a negative result. For example, if B = C, if A is a
+Banach space, and a is continuous, (A, B, oc) can never be admissible (see Taylor
+[22, Theorems 4.7-13, C and 5.2-13]).
+Note also that (4.3) still holds if B'P, instead of B, is F.-4 (apply the left-
+right dual of (0.1) and (3.7)). The lemma is not true, however, without some
+condition, and a counterexample can be constructed using for B a ring
+of noncomMUtative polynomials.
+The notion of admissibility can be made less restrictive, but it involves
+increasing somewhat the complexity of the treatment. The generalization is
+analogous to the replacement of differential by integral equations.
+(4.4.) Definition. If (A, B, oc) is admissible, a mapf: A --* A is called (strictly
+causal) rational if it is (via the given inclusion) in B, [(a -')]. A mapf: A' - A'
+is rational if and only if each coordinate map is.
+The relation given by.f in (4.4) can almost always be interpreted as a poly-
+nomial (difference, differential, difference-differential, - - -) equation:
+(4.5) PROPOSITION. Assume that (A, B, oc) is admissible and that B'P
+is an J F .~V ring. Giiien m, p, consider an equation yQ = uP with P c B' ' P[11,
+Q c BP'P[a] and such that the leading coefficient of Q is a unit in BP'P and deg
+Q > deg P. Then there is a unique solution y for each u e A' which defines a
+rationalf: A' - AP. Conversely,for anysuchf there are P, Q as before such that
+qf = y ~f wid on1j, ij'yQ = uP; moreouer, 0 may be chosen as a scalar matrix.
+These properties characterize F.V rings.
+Proof If Q is invertible in BP ' ", the equation is equivalent to y = uPQ
+with PQ_' , P by the degree requirement, and hence corresponding
+to an /'as in (4.4). Conversely, it' B"P is an FV ring, any rational J': A"' - AP
+can be written as Pq _' with q e B[-I], using (3.6) and (3.7).
+<<PAGE-DIVIDER>>
+338 EDUARDO D. SONTAG
+(4.6) Examples. We give a few examples of admissible triples, each corre-
+sponding to a particular type of equation. They will be used later in the definition
+of different kinds of systems.
+(a) Difference equations. Let B be an arbitrary ring, A: = B((z-')), 0'.: = z.
+The structure of a B*[(z `+module on A is the one given by right multiplication.
+This kind of "standard" triple will be useful in the study of arbitrary triples.
+(b) Differential equations. Let A: = C!, consist of all infinitely differentiable
+functions f: R R with support bounded to the left. Take B: = R and Y: =
+derivative operator. Given such a function, assume f(t) = 0 for all t < to.
+From well-known theorems on ordinary differential equations, given real
+numbers b, - - -, b,, -,, there is a unique g (also in A) satisfying g(") + b~ - jg(n - 1) +
+. . . + bog = f and -(t) = 0 for all t < to. This proves that (A, B, ot) satisfies the
+condition stated in (4.3).
+The restriction of infinite dij)erentiahilily which appears in this and the
+other "continuous-time" examples is not at all essential, and can in fact be
+replaced by local (Lebesgue) integrability. This involves relaxing the definition
+of admissibility as indicated above.
+(c) Delay-differential equations using generalized functions. Let A be the
+algebra of real-valued distributions with support bounded to the left with
+convolution product, B: ~ R[8~,, - - -, Saj for a, ~ - -, a, e R and a: = 80'- (8a is
+the Dirac distribution centered at a > 0). These systems were defined and studied
+by Karnen [101. Admissibility follows from his Theorem I and Proposition 4.
+(d) Delay-difftrential equations again. Let A. = C+', o-.: = shift operator,
+B: = RI-a,, - - -, -j and ot: = derivation. Admissibility is a consequence of the
+theory of delay-differential (or "hereditary") systems by setting initial conditions
+to zero on a conveniently chosen interval. This approach permits one to speak
+of the "input at time t" and obtain for systems explicit criteria for reachability,
+etc. (see Section (7) below). Of course, it does not allow consideration of
+irregular inputs as does (c). The setup can be extended to allow for more general
+functional-differential equations.
+(e) Delays. Let A: all continuous f: R - R with support bounded to
+the left), B: = R and oc I-second shift. Admissibility is easy. More generally,
+can be a time-varying delay.
+(f) Certain "infinite-dimensional" difference equations. Here let M be a faitb-
+ful right B-module, where B is an arbitrary ring. Denote A: = M((z `)), and
+0c: = Z. Then A: = M((z-')) is naturally a B((z `+module. Moreover, A is a
+fiaithful module. In fact, since M is a faithful B-module, bk =A 0 implies the
+existence of some ink C M such that Mkbk :~L 0. Hence if b = Y-ilk biz' (with
+bk 0 0), then Mkb 0 0. In particular, there is an inclusion of B*[(Y--')] into
+End (A). So admissibility follows. This example and the next one will be discussed
+further in Section (6).
+(g) Certain "infinite-dimensional" af~fferential equations. Let X be a real (or
+complex) Banach space, and B an algebra of linear bounded operators on X.
+Define A as the additive group of all infinitely differentiable functions R - X
+with support bounded to the left. Let oc be the derivative operator. As in example
+(b), there is existence and uniqueness of solutions. So. if B is an ring,
+(A, B, ic) is admissible.
+<<PAGE-DIVIDER>>
+On Linear Systems and Noncommutative Rings 339
+(11) Substitution. Assume that (A, B, x) is admissible, with B an 3~7,_-/ ring
+and s an element of Bj(-Y`)j which is a unit in B*[(oc')]. A monic polynomial
+in s' with coefficients in B is clearly an invertible element of B*[(X-')]. It
+follows that (A, B, s-') is also admissible. In the particular case of example (f),
+s can be more arbitrary, i.e., not necessarily rational, but the same conclusion
+follows.
+(i) Variations on the above. One possibility is to allow for esoteric time sets
+(this might be useful in some studies of periodic behaviors). Another is to give
+non-standard (in the sense of logic) models of the above: for example, a model
+of (b) where there is an "infinitely differentiable" impulse "function"; first-
+order statements about (b) Would then be true also for the non-standard model.
+The use of-time-varying" operators for a (forexample, (fot)(t): = e-!f(t), oran
+arbitrary Volterra operator) is also allowed, provided that ot Commutes with
+elements of B (e.g., in (b)). Approaches formalized in terms of Mikusi6ski's
+operational calculus can also be given.
+(5) Finitary Systems.
+We shall need the following result due to Richard [15] (it is, Of Course,
+trivial when B is commutative).
+(5.1) For any ring B the restriction of' the canonical isomorphism betiVeen
+(B((.v)))" and B" ' "((x)) gives a canonical isomorphism between (B*[(x)])n '" and
+(B" '
+(5.2) Definition. Given an admissible triple (A, B, ot), a (constant, linear,
+finitary) (A, B, y)-system is a triple of matrices (F, G, H), where F~=B`,
+G r- B' ' ", and Il c B'" P. The input map L: A'" - A" is the group homomorphism
+which assigns to each u) c A' the unique solution x c A" of the system of equa-
+tions xy. ~ vF+ oiG. The result is LIP A' - AP.
+(5.3) Remark. The input map is well defined. By (5.1)
+(B" ' ")*[(x _')] = (B*[(- _')])" " --- (End (A))~ - " = End (A").
+Si rice 7J - F is a unit in (B" - ')], clearly L = G(od - F) -' is well defined.
+Everything is set Lip so that we can state
+(5.4) THEOREM. Consider a fixed admissible (A, B, oe). Then the result
+qfany (A, B, x)-systeni is rational. Conversely, every rational map f: A' ~ AP
+(,an he realized as the result oj'such a system.
+Proof Observe that the faithfulness of the action of B[(,x-')] on A implies
+the equivalence of the given problem with that of the correspondence between
+power series of the form Ii., GPHx _'_' (F, G, H being B-matrices) and
+those in Bj(x-')1`P. Since the above power series correspond to discrete
+B-systems with free state modules, (3.3) and (0.5) give the theorem. 11
+(5.5) Observation. Far from being an abstract result, the preceding allows
+us to explicitly compute realizations, provided Such a method exists for B. See,
+for example, R0LAchalcaU [161 and Kamen [101.
+<<PAGE-DIVIDER>>
+340 EDUARDo D. SONTAG
+(5.6) Discussion. Various types of interpretations are possible. For the
+most usual one, think of elements of A as defining the time-evolution of
+inputs, "states" and outputs. The elements of B would correspond to the
+input-output functions of certain components, while x- ' denotes the input-
+output behavior of a fixed system :~,. An (A, B, 7)-system will then correspond
+to a set of n copies of the basic system '-,, interconnected (and feeding back)
+via adders and operators in B. The inputs act via similar connections, and
+outputs are obtained by forming suitable combinations of the outputs of the
+!:,'s. Then (5.4) gives a characterization of the input-output behavior of the
+composite system.
+Via the same reasoning, the results in -ininimal" realizations over B can
+be used to find systerns with equal input-output relations but requiring the
+fewest possible number of copies of.'],.
+Under this interpretation, for example, (4.6.a) corresponds to the usual
+discrete-time systems over B, while (4.6.b) defines the linear continUOUS-tirne
+systems used in control theory.
+Example (4.6.h) allows "hierarchical" considerations: once a system is
+defined and optimized as above, it can be used as a "building block" for new,
+more complex, systems. For "complete]y integrally closed" domains it is possible
+to give an algorithrn to decide whether a given (A, B. x)-system can be simulated
+by using any number of components of a fixed type; this algorithm is a direct
+application of the theory of partial realizations.
+A different "hierarchical" reasoning is also possible, by iterating on B
+instead of,,x. Indeed, assume that B is itself of the form C[(O- 1)], where (A, C
+0) is admissible. Then, once that an input-output map on Bj(oc')] has been
+realized over B, the procedure can be iterated by realizing each of the enti les of
+F, G, H over the ring C. The precise description of this process corresponds to
+the theory of n-component linear systems, which we sketch below for the case
+n = 2. Assurne that ot, 0 are two Commuting C-endomorphisms of A, algebraic-
+ally independent over C. A suitable definition of admissibility allows to embed
+in End (A) the ring of rational power series in two variables. Now systems
+correspond to equations of the type
+Xjo-, XtFI+X2FI2+ojGl
+X20 X, F21 + X2F2 2 + _G2
+Y X, H, +X,H2
+with oj in A"', X, in A', X2 in A' and all matrices over C. The realization theorem
+(5.4) generalizes immediately, since the set of rational power series over C in two
+variables a', ~` can be identihed with B[(x`fl. where B = C[(~`)]. This
+two-step realization procedure gives realizations of rather small dimensions.
+An example of the above kind of system is given by the most general kind of
+delay-differential systems, where o~ denotes differentiation and 0 is the delay.
+Another example is given by two-dimensional filters, i.e., systems with "time
+set" Z ~ Z, where s, and J3 correspond to the two possible shifts.
+<<PAGE-DIVIDER>>
+On Unear Systems and Noncommutative Rings 341
+(6) Some Examples: "Cellular" Systems or Partial Difference Equations.
+In this section we shall assume for simplicity that all systems considered
+are scalar (i.e., in = p = 1). The interpretations can be easily extended to the
+general case.
+(6.1) Example. Let R be a ring and C a group. Denote by M, the set of all
+functions C - R, with the pointwise R-modUle structure. Let B: = R[C] be
+the group ring of C over R. There is a natural action of B on M, given as
+follows. If f: C R and B = Yrg, define f-b: = h, where h(g) = Y~,c
+(xf) - r, Applying b (= B to the characteristic function of the identity of C, it
+is clear that M, is a faithful B-module. The construction in example (4.6.f) is
+then applicable, giving an admissible triple (A, B, a).
+We may interpret (6. 1) as follows. Assume (F, G, H) is an (A, B, a)-system.
+Elements of M,' denote the states of subsystems (or "cells") indexed by elements
+of C. All these Subsystems have the same transition functions'. and the next
+state of each depends on the present states of those cells in a certain relative
+position, weighted according to F. Inputs are simultaneously applied, at each
+instant, to every point in the pattern given by C. Each input has an effect over
+cells in a fixed "neighborhood" Of Subsystems, according to the form of G.
+Outputs correspond to an assignment of values to each point of C as a function
+of the states of the cells which lie in a certain neighborhood of the point. Thus
+(6.1) models cellular automata with linear local transitions.
+As a particular case, assume C: = Z and R: = R, the real numbers. Then
+an element of Mi indicates an assignment of n-vectors to each cell of a doubly
+infinite tape, and if we write B = Rfx, X_'], then x, x-' act as the right and left
+shift on the tape. Elements of A (M,((z-')))" - M"((z-')) indicate the
+temporal behavior of states.
+The situation in (6.1) applies also to space-time discretizations of certain
+kinds of linear partial differential equations. For an equation evolving in the
+plane, one would choose C: = Z ~ Z; for the 2-torus, C: ~ Z,, (D Z. (for
+different n's), and so on.
+(6.2) Example. Let R: = R, C: ~ Z, and let B, M, be as in (6.1). Define
+,V,: ~ 12(Z), the set of allf in M, with Y, - _, 117fJ2 < oo. It is again trivial to
+_n
+verify fait Iffill ness. The shifts are Coritin UOUS operators, so (4.6.g) applies to
+give an admissible triple (A2, B, a). An analogous construction holds for different
+groups C.
+This setup applies to the case of space discretizations of partial differential
+equations, as in Brockctt and Willems [2]. The same comments as for (6.1)
+apply here, with the only difference that the evolution now takes place in con-
+tinUOUS-time.
+(6.3) Evample. Let R, C be defined as in (6.1), but restricted to the B-
+submodUle M, of M, consisting of the functions f: C --~- R which are zero
+almost everywhere. Again (4.5.f) applies to give an admissible (A3, B, a).
+This txample models the case in which at every instant only a finite number
+<<PAGE-DIVIDER>>
+342 EDUARDo D.SONTAG
+of cells are "active", and where controls can be applied Simultaneously at a
+finite number of points only.
+Observe that M, is isomorphic to B (acting on itself by right multiplication).
+So (A3, B, a)-systems correspond to B-systems, in the sense of Part B. The
+study of partial difference equations via B-systems has been suggested by
+Johnston [7] and Wyman [24], among others.
+(6.4) Observations. Assume C is finite in the previous examples. Then
+M1 = M3. Also, M, = M2 for R = R. Moreover, M, can be identified with
+R", where n is the cardinality of C, and the elements of B, as R-Iinear maps
+M, ~ M,, can be represented by n x n matrices over R. The present approach
+allows one to exploit the algebraic structure of the ring B.
+(6.5) Example. A simple and natural noncoMMUtative example of B appears
+when modelling the situation in which the contents of a cell c,, after being acted
+upon by an element of B, are allowed to depend not only on previously stored
+values in a "neighborhood" of c,, but also on stored values in a fixed distin-
+guished set of cells. For simplicity take G: = Z and distinguish the 0-th cell.
+More precisely, this amounts to taking B as the R-algebra generated by (R[x,
+X_'], iT) where 7T c- End (M,) is the projection on the 0-th coordinate. The same
+setup is also useful in studying situations in which controls can only be applied
+at certain points of a system, for example, systems defined by equations of tile
+type x(t + 1) = (xF) (t) + (u7T) (t).
+In all the cases in this section, the availability of a minimization algorithm
+for B-systems would give realizations where the state spaces of the cell-
+subsystems are smallest possible. In general, the advantages of the approach lie
+in the reduction of problems (realization, reachability, observability, etc.) to the
+corresponding problems for "finite-dimensional" discrete-time systems (which
+in turn may be studied using the theory of group algebras). This general method,
+rather than just the application of Theorem (5.4), is what should be stressed.
+(7) Extensions.
+Many notions (e.g., "invertibility") can be defined in the general context
+of admissible triples and can be characterized as in the classical cases given
+adequate restrictions on B. However, in order to allow consideration of time,
+initial conditions, observability and other system-theoretic notions, the definition
+of admissibility must be specialized in different ways. As an example, we sketch
+the case of reachability.
+Let the "time-set" T be an ordered group and k a field. Restrict admissible
+triples to those for which A is a k[T]-SUbmodule of V and B[a] is a Commutative
+k-subalgebra of End,,,.,(A), i.e., the operators are time-invariant.
+A system (F, G, H) is (pointwise) reachable provided that for every x in V
+there exist to in A' and t in T such that x = (coL) (t). It can be proved that the
+system is reachable if and only if there exists no matrix V in V with GF kV = 0
+fork = 0,---,n-1.
+The above gives a unified and algebraic proof of the classical reachability
+<<PAGE-DIVIDER>>
+On Linear Systems and Noncommutative Rings 343
+criterion for both discrete and continuous time systems, where B ~ k. Moreover,
+in the case that B is a polynomial ring over k, the above criterion is equivalent to
+a rank condition over k, and a new characterization of pointwise reachability is
+obtained for (retarded) delay-differentlial systems.
+As suggestions for further work, we might mention further specializations
+allowing Studies of other system- theoretic properties. Another interesting
+possibility is that of generalizing the present framework to include bilinear
+systems, where the map F is replaced by an affine rnap from A' into B" ' ".
+This approach would permit the treatment of delaj-differential bilinear systems
+using the results on realization of rational power series on several non-commut-
+ing variables given by Fliess ([51, [61).
+E. Conclusions
+Some essential aspects of the extension of linear system theory to the case
+of arbitrary coefficient rings were studied, isolating in particular a class of
+rings characterized by any of a number of properties which are well
+known for the commutative case. Another class (,SFC) was also defined by
+interchanging observability with reachability in the definitions. Algebraic
+characterizations were obtained in both cases, with the purpose of comparing
+them at a strictly algebraic level.
+An approach to the use of system theory over rings as a tool for the study
+of more general systems was presented in Part D. Observe that, for example,
+(5.4) together with (4.6.b) and the discrete-time theory over R gives a rigorous
+and completely algebraic theory for existence and uniqueness of realizations
+of finite-dimensional constant continuous-time systems: the only nonalgebraic
+component is involved in the proof of admissibility, and then no knowledge is
+needed of the form of the solutions.
+REFERENCES
+[11 E. ARTIN, Geometric Algebra, Interscience, New York, 1957.
+[2) R. W. BROCKFTT and J. L. WILLEMS, "Least squares optimization for stationary linear
+partial difference equations", Proc. I FAC Symposium Control of Distributed Parameter
+Systems, Banff, Canada, 1971.
+[31 P. M. COHN, Free Rings and their Relations, Academic Press, New York, 1971.
+[4] S. EILENBERG, Automata, Languages, andAlachines. Vol. A, Academic Press, New York,
+1974.
+[51 M. FLIESS, Sur la r6alisation des syst&mes dynamiques bilin~aires, C. R. Acad. Sci. Paris
+227 A (1973), 923-926.
+[6] M. FLIESS, Matt-ices de Hankel, J. Alath. Pures App/. 53 (1974), 197-224.
+[71 R. JOHNSTON, Linear Systems orer Various Rings, Ph.D. Dissertation, Mass. Inst. Tech-
+nology, 1973.
+[81 R. E. KALMAN, Lectures on Controllability and Obserrability, CIME Summer Course
+1968; Cremonese, Roma, 1969.
+[9] R. E. KALMAN, P. L. FALB and M. A. ARBIB, Topics in Alathematical System Theory,
+McGraw-Hill, New York, 1969.
+[10] E. KAMEN, On an algebraic theory of systems defined by convolution operators, J. Math.
+System Theory 9 (1975), 57-74.
+<<PAGE-DIVIDER>>
+344 EDUARDO D. SONTAG
+[11] E. KAMEN, A new algebraic approach to linear tinIC-Varying systems (to appear).
+[121 A. LINDENMAYER, Developmental systems without cellular interactions, their languages
+and grammars, J. Theor. Biol. 30 (1971), 455-484~
+[131 R. W. NEWCOMB, On the realization of multivariable transfer functions, Research Report
+EERL 58, Cornell Univ., Ithaca, N.Y., 1966.
+[14 M. NIELSEN, On the decidability of some equivalence problems for DOL-systems,
+Information and Control 25 (1974), 166-193.
+[15) J. RICHARD, Representations matricielles des s6ries rationelles en variables non commu-
+tatives, C. R. Acad. Sci. Paris 270 A (1970), 224-227.
+[161 Y. RoUCHALEAu, Linear, Discrete-Thne, Finite-Dimensional D 'vnamical Systems over
+some Classes of Commutatire Rings, Ph.D. Dissertation, Stanford Univ., 1972.
+(171 Y. ROUCHALEAU, B. F. WYMAN and R. E. KALMAN, Algebraic structure of linear dynamical
+systems. 111. Realization theory over a commutative ring, Proc. Nat. Acad. Sci. USA
+69 (1972), 3404-3406.
+[181 A. SALOMAA, Formal languages, Academic Press, New York, 1973.
+[191 E. D. SONTAG, On finitely accessible and finitely observable rings, to appear.
+f201 E. D. SONTAG, Finitary linear systems, to appear.
+[21] E. D. SONTAG, Linear Systems over Commutative Rings: A Survey, to appear in Ricerche
+di A utomatica, 197 5.
+(22] A. E. TAYLOR, Introduction to Functional Analysis, Wiley, New York, 1958.
+[231 B. F. WYMAN, "Linear systems over commutative rings", Lecture Notes, Stanford Univ.,
+1972.
+[241 B. F. WYMAN, Linear systems over rings of operators, Proc. First Internat. Symposium
+on Category Theory Applied to Computation and Control, San Francisco, 1974.
+(Re(eived 27 August 1974, and in revisedform
+20 November 1974 and 20 March 1975)

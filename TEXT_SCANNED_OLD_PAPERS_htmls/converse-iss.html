@@ -1,0 +1,2081 @@
+<html>
+<body BGCOLOR="#FFFFCE" text="#00009C" link="#FF2400" vlink="#8E236B" alink="#FF0000"red>
+
+<h2>
+<center>
+<em>This is ONLY the text version of the file which you are looking for!</em>
+</center>
+</h2>
+      You most probably arrived to this file by performing a search.
+<p>
+This file was generated <em>only</em> in order to help search engines; its
+contents will display poorly, as the file was obtained by filtering out all
+symbols. 
+<p>
+The file that you <em>really</em> want to look at is the (gzipped) postscript,
+or the pdf, version of the one that you are currently looking at.
+<br>
+These files, as well others, with publication information, can be found in
+<a href="http://www.math.rutgers.edu/~sontag/papers.html">Eduardo Sontag's
+Online Papers</a> site.
+<br>
+If the file that you are looking at is named "foo.html", then
+the file that you want is (only one of the formats may be
+available) foo.ps.gz and/or foo.pdf.
+<br>
+For convenience, here are direct links to those files (the pdf file is in some
+cases unavailable):
+<br>
+<ul>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converse-iss.ps.gz">ps.gz</a>
+<li>
+<a href="http://www.math.rutgers.edu/~sontag/FTPDIR/converse-iss.pdf">pdf</a>
+</ul>
+The text version follows.
+<br>
+<pre>
+TeXPS: dvi->PostScript Driver dvitps, Version 3.11 of September 5, 1990
+Dvi file name: "converse-iss.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass0: Page 1
+Pass0: Page 2
+Pass0: Page 3
+Pass0: Page 4
+Pass0: Page 5
+Pass0: Page 6
+Pass0: Page 7
+Pass0: Page 8
+Pass0: Page 9
+Pass0: Page 10
+Pass0: Page 11
+Dvi file name: "converse-iss.dvi".
+This PostScript file was produced on host "control.rutgers.edu".
+Pass1: Page 1
+
+
+On Characterizations of the Input-to-State Stability Property
+
+Eduardo D. Sontag
+
+\Lambda 
+
+Department of Mathematics
+
+Rutgers University New Brunswick, NJ 08903
+
+sontag@hilbert.rutgers.edu
+
+Yuan Wang
+
+y
+
+Department of Mathematics
+
+Florida Atlantic University
+
+Boca Raton, FL 33431
+
+ywang@polya.math.fau.edu
+
+Abstract We show that the well-known Lyapunov sufficient condition for "input-to-state stability" is also necessary, settling positively an open question raised by several authors during the past few years. Additional characterizations of the ISS property, including one in terms of nonlinear stability margins, are also provided.
+
+1 Introduction In practice, control systems are very often affected by noise, expressed for instance as pertur- bations on controls and errors on observations. Thus, it is desirable for a system not only to be stable, but also to display so-called "input/state" stability properties. Intuitively, this means that the behavior of the system should remain bounded when its inputs are bounded, and should tend to equilibrium when inputs tend to zero. These notions are closely related to the topic of stability under perturbations (total stability), studied in the classical dynamical systems literature.
+
+In the late 1980s, one of the coauthors introduced a particular precise definition of in- put/state stability, and established a few basic results; see for instance [4], [6], and [5]. These results then were applied in different areas, including observer design and new small-gain the- orems; see for instance [7], [8], [1], and [3].
+
+One of the main observations used in [4] as well as in subsequent papers has been the fact that a system is input/state stable if it admits an "ISS-Lyapunov function." This motivates checking the ISS property by investigating ISS-Lyapunov functions for the given system. In this work, we show that it is also necessary for a input/state stable system to admit an ISS-Lyapunov function. The proof is based on a reduction to a question about systems with disturbances and relies on a new Converse Lyapunov Theorem for such systems proved in [2].
+
+In the process of proving the main result, a number of other natural characterizations became available, including one in terms of nonlinear stability margins. The main theorem of this paper will state the equivalence of all these new notions, which will probably be of interest in themselves.
+
+\Lambda 
+
+Supported in part by US Air Force Grant AFOSR-91-0346
+
+y
+
+Supported in part by NSF Grant DMS-9108250
+
+Keywords: Nonlinear stability, Input/state stability, Lyapunov function techniques AMS(MOS) subject classifications: 93D05, 93D09, 93D20, 93D25, 34D20
+
+1Pass1: Page 2
+
+
+2 Input to State Stability In this section we introduce the property of input/state stability.
+
+Consider the following general nonlinear system:
+
+.x = f (x; u) : (1) Here f : IR
+
+n
+
+\Theta  IR
+
+m
+
+\Gamma ! IR
+
+n
+
+is continuously differentiable and satisfies f (0; 0) = 0.
+
+Controls or inputs are measurable locally essentially bounded functions u : IR
+
+*0
+
+\Gamma ! IR
+
+m
+
+.
+
+The set of all such functions, endowed with the (essential) supremum norm kuk = supfju(t)j ; t * 0g ^ 1, is denoted by L
+
+m
+
+1
+
+. (Everywhere, j\Delta j denotes the usual Euclidean norm.) For each
+
+, 2 IR
+
+n
+
+and each u 2 L
+
+m
+
+1
+
+, we denote by x(t; ,; u) the trajectory of the system (1) with initial
+
+state x(0) = , and the input u. This is defined on some maximal interval [0; T
+
+,; u
+
+), with
+
+T
+
+,; u
+
+^ +1. We recall that a function fl : IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+is a K-function if it is continuous,
+
+strictly increasing and fl(0) = 0; it is a K
+
+1
+
+-function if it is a K-function and also fl(s) !
+
+1 as s ! 1; and it is a positive definite function if fl(s) ? 0 for all s ? 0, and fl(0) = 0. A function fi : IR
+
+*0
+
+\Theta  IR
+
+*0
+
+\Gamma ! IR
+
+*0
+
+is a KL-function if for each fixed t * 0 the function fi(\Delta ; t)
+
+is a K-function, and for each fixed s * 0 it is decreasing to zero as t ! 1.
+
+Definition 2.1 The system (1) is (globally) input/state stable (ISS) if there exist a KL-function fi : IR
+
+*0
+
+\Theta  IR
+
+*0
+
+\Gamma ! IR and a K-function fl such that, for each input u 2 L
+
+m
+
+1
+
+and each , 2 IR
+
+n
+
+,
+
+it holds that
+
+jx(t; ,; u)j ^ fi(j,j ; t) + fl(kuk) (2)
+
+for each t * 0. 2
+
+Note that, by causality, the same definition would result if one would replace kuk by ku
+
+t
+
+k
+
+in (2), where u
+
+t
+
+is the truncation of u at t; i.e., u
+
+t
+
+(s) = u(s) if s ^ t, and u(s) = 0 if s ? t.
+
+The definition is intended as a nonlinear generalization of the bound jx(t)j ^ j,j e
+
+\Gamma fft
+
++ ckuk
+
+which holds for linear systems .x = Ax + Bu when the matrix A is asymptotically stable. Using this definition, it was proved in [4] and [6] that a system can be stabilized by a smooth feedback if and only if it is feedback equivalent to an ISS system. Thus the definition appears to be natural, and the further characterizations given later confirm this fact.
+
+Definition 2.2 A smooth function V : IR
+
+n
+
+\Gamma ! IR
+
+*0
+
+is called an ISS-Lyapunov function for
+
+system (1) if there exist K
+
+1
+
+-functions ff
+
+1
+
+; ff
+
+2
+
+, and K-functions ff
+
+3
+
+and O/, such that
+
+ff
+
+1
+
+(j,j) ^ V (,) ^ ff
+
+2
+
+(j,j) (3)
+
+for any , 2 IR
+
+n
+
+and
+
+rV (,) \Delta  f (,; _) ^ \Gamma ff
+
+3
+
+(j,j) (4)
+
+for any , 2 IR
+
+n
+
+and any _ 2 IR
+
+m
+
+so that j,j * O/(j_j). 2
+
+Observe that if V is an ISS-Lyapunov function for (1), then V is a Lyapunov function, in the usual sense, for the autonomous system .x = f (x; 0) obtained when no controls are applied.
+
+Note that the first inequality in Equation (3) states that V is positive definite (because ff
+
+1
+
+(r) is nonzero for r 6= 0) and proper, that is, "radially unbounded" (because ff
+
+1
+
+(r) increases to
+
+infinity). The second inequality in Equation (3) is redundant, since the existence of a function ff
+
+2
+
+2Pass1: Page 3
+
+
+is an immediate consequence of continuity of V , but it is useful to have the function ff
+
+2
+
+explicitly
+
+for proofs, and when dealing with more general stability considerations (such as stability with respect to invariant sets, or time-varying systems). Also, without loss of generality, one can assume that ff
+
+3
+
+2 K
+
+1
+
+(cf. [2], Remark 4.1). Finally, observe that Equation (4) states that
+
+the derivative
+
+. V along trajectories is negative definite for large enough x, given any control
+
+magnitude.
+
+In [4] as well as in the literature since the publication of that paper, the fact that a system is ISS has always been established by showing that there is an ISS-Lyapunov function. The main result of this paper will be that the converse holds as well:
+
+The system (1) is ISS if and only if it admits an ISS-Lyapunov function. There turns out to be also an interesting connection between ISS stability and robust sta- bility.
+
+By a (possibly time-varying) feedback law for a system (1) we will mean any (at least measurable) function k : IR
+
+*0
+
+\Theta  IR
+
+n
+
+\Gamma ! IR
+
+n
+
+for which the differential equation corresponding
+
+to using k as a feedback,
+
+.x = f (x; k(t; x)) ; (5)
+
+is well-posed; that is, for each initial state x(0) there is an absolutely continuous solution, defined at least for small times, and any two such solutions coincide on their interval of existence. (For instance this will happen if k(t; ,) is continuous in , and measurable locally essentially bounded in t, and is locally Lipschitz in , uniformly with respect to t on finite intervals.)
+
+Let ae be any K
+
+1
+
+function. A feedback law will be said to bounded by ae if for each , 2 IR
+
+n
+
+jk(t; ,)j ^ ae(j,j) holds for almost all (recall that k is assumed to be only measurable) t * 0.
+
+We will say that the system (1) is robustly stable if there exist a K
+
+1
+
+function ae (called a
+
+stability margin) and a KL function fi such that, for every feedback law bounded by ae it holds that
+
+jx(t)j ^ fi(jx(0)j ; t) 8t * 0; (6)
+
+for every solution of the corresponding system (5).
+
+Remark 2.3 Note that ISS is not a notion of local stability with respect to "small" perturba- tions. It is a global notion, and perturbations can be arbitrarily large (since the function ae is in class K
+
+1
+
+). In some sense, this is analogous to exponential stability for linear systems, where
+
+a perturbation of the spectrum preserves global asymptotic stability. 2
+
+The main result in this context will be:
+
+The system (1) is ISS if and only if it is robustly stable. After introducing several other notions, we will prove a Theorem that will imply the above two claims as well as the equivalence with several other control-systems properties.
+
+2.1 Restatements of the Definition of ISS In this section, we introduce various notions and establish their equivalence with input/state stability.
+
+3Pass1: Page 4
+
+
+Remark 2.4 A smooth function V is an ISS-Lyapunov function for (1) if and only if there exist ff
+
+i
+
+2 K
+
+1
+
+(1 ^ i ^ 4) such that (3) holds, and
+
+rV (,)f (,; _) ^ \Gamma ff
+
+3
+
+(j,j) + ff
+
+4
+
+(j_j): (7)
+
+This provides a "dissipation" type of characterization for the ISS property. Clearly (7) im- plies (4). Assume now that (4) holds with some ff
+
+3
+
+2 K
+
+1
+
+and O/ 2 K. Let ff
+
+4
+
+(r) = maxf0; ^ff
+
+4
+
+(r)g
+
+where ^ff
+
+4
+
+(r) = maxfrV (,)f (,; _) + ff
+
+3
+
+(O/(j_j)) : j_j ^ r; j,j ^ O/(r)g. Then ff
+
+4
+
+is continuous
+
+and ff
+
+4
+
+(0) = 0, and one can assume that ff
+
+4
+
+is a K-function (majorize it by one if it is not).
+
+Note then that (7) holds because ff
+
+4
+
+(r) * sup
+
+j_j=r
+
+rV (,)f (,; _) + ff
+
+3
+
+(j,j) (consider the two
+
+separate cases j,j * O/(j_j) and j,j ^ O/(j_j)).
+
+Remark 2.5 Noticing that fi + fl ^ maxf2fi; 2flg, one sees that an equivalent form of decay estimation for ISS systems can be given as follows: the system (1) is ISS if and only if there exist fi 2 KL and fl 2 K such that
+
+jx(t; ,; u)j ^ max ffi(j,j ; t); fl(kuk)g 8, 2 IR
+
+n
+
+; 8u; 8t * 0 : (8)
+
+The next lemma relates ISS to the "input/output stability" property introduced in [4]: Lemma 2.6 A system (1) is ISS if and only if there exist KL functions fi
+
+0
+
+; fi
+
+1
+
+and a K-function
+
+fl such that, for any , 2 IR
+
+n
+
+and any input u, it holds that
+
+jx(t; ,; u)j ^ fi
+
+0
+
+(j,j ; t) + fi
+
+1
+
+(ku
+
+T
+
+k; t \Gamma  T ) + fl(ku
+
+T
+
+k) (9)
+
+for any 0 ^ T ^ t, where u
+
+T
+
+is defined by u
+
+T
+
+= u \Gamma  u
+
+T
+
+.
+
+Proof. Clearly, (9) implies (2). We now assume that there exist a KL-function fi and a K function fl such that (2) holds. Then one has the following:
+
+jx(t; ,; u)j ^ fi
+
+i
+
+jx(T; ,; u)j ; t \Gamma  T
+
+j
+
++ fl(ku
+
+T
+
+k)
+
+^ fi
+
+i
+
+fi( j,j ; T ) + fl(ku
+
+T
+
+k); t \Gamma  T
+
+j
+
++ fl(ku
+
+T
+
+k):
+
+for any , 2 IR
+
+n
+
+, any u and any 0 ^ T ^ t. Since fi(r + s; o/ ) ^ fi(2r; o/ ) + fi(2s; o/ ) holds for any
+
+r; s; o/ * 0, it follows that
+
+jx(t; ,; u)j ^ fi
+
+i
+
+2fi( j,j ; T ); t \Gamma  T
+
+j
+
++ fi
+
+i
+
+2fl(ku
+
+T
+
+k); t \Gamma  T
+
+j
+
++ fl(ku
+
+T
+
+k) : (10)
+
+Now define fi
+
+0
+
+by letting fi
+
+0
+
+(s; t) = sup ffi(2fi(s; o/ ); t \Gamma  o/ ) : 0 ^ o/ ^ tg +
+
+s
+
+1+t
+
+: Then fi
+
+0
+
+(0; t) = 0
+
+for any t * 0; and for each fixed t, fi
+
+0
+
+(s; t) is continuous and strictly increasing in s. Thus,
+
+fi
+
+0
+
+(\Delta ; t) 2 K for each t * 0. It is not hard to see that for each fixed s * 0, fi
+
+0
+
+(s; t) is decreasing
+
+in t. To show that fi
+
+0
+
+(s; t) ! 0 as t ! 1 for each fixed s, just notice that
+
+fi(2fi(s; T ); t \Gamma  T ) ^ max
+
+n
+
+fi(2fi(s; t=2); 0); fi(2fi(s; 0); t=2)
+
+o
+
+holds for any s * 0; 0 ^ T ^ t, and both of the functions in the parentheses are KL-functions.
+
+Let fi
+
+1
+
+be defined by fi
+
+1
+
+(s; t) = fi(2fl(s); t). Then fi
+
+1
+
+2 KL, and it follows from (10) that
+
+(9) holds for any , 2 IR
+
+n
+
+, any u, and any 0 ^ T ^ t.
+
+The ISS property can also be described without using class KL functions, in a manner analogous to the standard definition of global asymptotic stability for systems with no controls:
+
+4Pass1: Page 5
+
+
+Lemma 2.7 The system (1) is ISS if and only if the following two properties hold:
+
+1. For each " ? 0 there exists a ffi ? 0 such that
+
+jx(t; ,; u)j ^ " 8t * 0; (11) for all inputs u and initial states , with j,j ^ ffi and kuk ^ ffi. 2. There exists a K-function fl such that, for any r; " ? 0, there is a T ? 0 so that for every
+
+input u:
+
+jx(t; ,; u)j ^ " + fl(kuk) (12)
+
+whenever j,j ^ r and t * T .
+
+This will be proved below. Remark 2.8 In Lemma 2.7, Property 1 can be replaced by:
+
+1
+
+0
+
+. There exists a K
+
+1
+
+-function ffi(\Delta ) and a K-function ~fl such that
+
+jx(t; ,; u)j ^ " + ~fl(kuk) 8t * 0; 8u; whenever j,j ^ ffi(") and t * 0 : (13)
+
+Clearly Property 1
+
+0
+
+implies Property 1. Next we show that Property 1 implies Property 1
+
+0
+
+. Pick
+
+r; s ? 0, and consider the trajectories x(t; ,; u) with j,j ^ s and kuk ^ r. Applying Property 2 with " = 1, one knows that there exists a T ? 0 such that
+
+jx(t; ,; u)j ^ 1 + fl(r) (14) for all t * T . Note that Property 2 also implies that the system is forward complete, that is, T
+
+,;u
+
+= 1 for all , 2 IR
+
+n
+
+and all u. By Proposition 5.1 in [2], there is an L ? 0 such that
+
+jx(t; ,; u)j ^ L for all 0 ^ t ^ T , all j,j ^ s and all kuk ^ r. Combining this with (14), one concludes that
+
+jx(t; ,; u)j ^ C; 8t * 0; j,j ^ s; kuk ^ r; (15)
+
+where C = 1+L+fl(r). Let '(r) = inf fC * 0 : jx(t; ,; u)j ^ C; 8t * 0; 8 j,j ^ r; 8kuk ^ rg : Note that '(r) ! 1 for each r * 0 because of (15). Clearly, ' is nondecreasing, and jx(t; ,; u)j ^ '(j,j) + '(kuk) for all ,, all u, and all t * 0. Also, it follows from Property 1
+
+that '(r) ! 0 as r ! 0. Let ~'(r) =
+
+1
+
+r
+
+Z
+
+2r
+
+r
+
+'(s) ds; for r * 0; and let ~'(0) = 0. Then ~' is
+
+continuous, and '(r) ^ ~'(r). Now we define _'(r) = r + max
+
+0^s^r
+
+~'(s): Then _' is of class
+
+K
+
+1
+
+, and jx(t; ,; u)j ^ _'(j,j) + _'(kuk) holds for all t * 0, all , 2 IR
+
+n
+
+and all inputs u. Let
+
+ffi(r) = _'
+
+\Gamma 1
+
+(r); then ffi(\Delta ) is a K
+
+1
+
+-function. Clearly, with such a choice of ffi and ~fl = _', it holds
+
+that jx(t; ,; u)j ^ " + ~fl(kuk) ; for all j,j ^ ffi("), all u, and all t * 0. 2
+
+Lemma 2.9 Property 2 in Lemma 2.7 is equivalent to the following: There exist a K function fl and a family of mappings fT
+
+r
+
+g
+
+r?0
+
+with the properties
+
+ffl for each fixed r ? 0, T
+
+r
+
+: IR
+
+?0
+
+onto \Gamma ! IR
+
+?0
+
+is continuous and is strictly decreasing, and in
+
+particular, lim
+
+s!+1
+
+T
+
+r
+
+(s) = 0;
+
+ffl for each fixed " ? 0, T
+
+r
+
+(") is (strictly) increasing as r increases and lim
+
+r!1
+
+T
+
+r
+
+(") = 1;
+
+5Pass1: Page 6
+
+
+such that, for each input u, jx(t; ,; u)j ^ " + fl(kuk) whenever j,j ^ r and t * T
+
+r
+
+(") :
+
+Proof. Sufficiency is clear. Now we show the necessity part. This is very similar to the proof of Lemma 3.1 in [2], so only a sketch is given. Let fl be given as in Property 2 of the ISS definition. For each r; " ? 0, let
+
+~ T
+
+r; "
+
+= inf fo/ : jx(t; ,; u)j ^ " + fl(kuk); 8t * o/; 8 j,j ^ rg: Note then
+
+that
+
+~ T
+
+r;"
+
+! 1 for any r; " ? 0. Further,
+
+~ T
+
+r
+
+1
+
+;"
+
+^
+
+~ T
+
+r
+
+2
+
+;"
+
+if r
+
+1
+
+^ r
+
+2
+
+; and
+
+~ T
+
+r;"
+
+1
+
+*
+
+~ T
+
+r;"
+
+2
+
+if "
+
+1
+
+^ "
+
+2
+
+:
+
+Also, Property 1
+
+0
+
+implies that, for every fixed r,
+
+~ T
+
+r;s
+
+! 0 as s ! 1. Now, for each r ? 0 and
+
+s ? 0, let
+
+_ T
+
+r
+
+(s) =
+
+2
+
+s
+
+R
+
+s
+
+s=2
+
+~ T
+
+r; oe
+
+doe : Then, for each fixed r ? 0,
+
+_ T
+
+r
+
+is a continuous function, and
+
+_ T
+
+r
+
+(s) *
+
+~ T
+
+r
+
+(s). Finally, for each r ? 0 and s ? 0, we let T
+
+r
+
+(s) =
+
+r
+
+s
+
++ sup
+
+oe*s
+
+_ T
+
+r
+
+(oe): One can
+
+easily check that the family fT
+
+r
+
+g
+
+r?0
+
+satisfies all conditions in the lemma.
+
+We now return to prove Lemma 2.7. Proof. The necessity part is clear. Assume now that conditions in Lemma 2.7 hold. Let ffi be as in Property 1
+
+0
+
+, and without loss of generality, we assume that ~fl in Property 1
+
+0
+
+and fl in
+
+Property 2 are the same function, denoted by fl. Let '(\Delta ) be the K
+
+1
+
+-function ffi
+
+\Gamma 1
+
+. Then it
+
+holds that
+
+jx(t; ,; u)j ^ '(j,j) + fl(kuk); 8t * 0 : (16)
+
+Let fT
+
+r
+
+g
+
+r?0
+
+be as in Lemma 2.9, and for each r ? 0, let 
+
+r
+
+(s) = T
+
+\Gamma 1
+
+r
+
+(s) for s ? 0, and for s = 0,
+
+we also denote 
+
+r
+
+(0) = 1. Note then that 
+
+r
+
+is continuous on (0; 1) and lim
+
+s!0
+
+
+
+r
+
+(s) = 1 for
+
+each r ? 0. Since j,j ^ r; t * T
+
+r
+
+(") ) jx(t; ,; u)j ^ " + fl(kuk); and t = T
+
+r
+
+(
+
+r
+
+(t)) for t ? 0,
+
+it follows from the above, applied in particular for t = T
+
+r
+
+("), that for t ? 0:
+
+jx(t; ,; u)j ^ 
+
+r
+
+(t) + fl(kuk) (17)
+
+for any u and any j,j ^ r. This formula also holds for t = 0 by the definition 
+
+r
+
+(0) = 1.
+
+Now for any s * 0 and t * 0, let
+
+_ (s; t) = min finf
+
+r*s
+
+
+
+r
+
+(t); '(s)g : Then by (16) and (17),
+
+one has
+
+jx(t; ,; u)j ^
+
+_ (j,j ; t) + fl(kuk): (18)
+
+Pick any function
+
+~  : IR
+
+*0
+
+\Theta  IR
+
+*0
+
+! IR
+
+*0
+
+with the following properties: (1) for any fixed
+
+t * 0,
+
+~ (\Delta ; t) is continuous and strictly increasing; (2) for any fixed s * 0,
+
+~ (s; t) decreases to
+
+0 as t ! 1; and (3)
+
+~ (s; t) *
+
+_ (s; t) : It is an easy exercise to show that such a majorizing
+
+function
+
+~  for
+
+_ (s; t) always exists; for details, we refer the reader to similar step in the proof
+
+of Proposition 2.5 in [2]. Finally, we let fi(s; t) =
+
+p
+
+'(s)
+
+q
+
+~ (s; t) : Then fi is of class KL, and
+
+moreover,
+
+fi(s; t) * min f'(s);
+
+~ (s; t)g 8s * 0; 8t * 0: (19)
+
+Combining (18) and (19), one concludes that jx(t; ,; u)j ^ fi(j,j ; t) + fl(kuk) for all , 2 IR
+
+n
+
+, all
+
+t * 0 and all inputs u.
+
+2.2 Robustness with Respect to Feedback Lemma 2.10 If there exists an ISS-Lyapunov function for system (1), then the system is robustly stable.
+
+Proof. Assume that V is an ISS-Lyapunov function. Let ff
+
+i
+
+(i = 1; 2; 3) and O/ be as in Def-
+
+inition 2.2. Without loss of generality, we assume that O/ 2 K
+
+1
+
+(otherwise, replace O/(r)
+
+6Pass1: Page 7
+
+
+by O/(r) + r). Let ae(r) = O/
+
+\Gamma 1
+
+(r); then ae 2 K
+
+1
+
+as well, and DV (,)f (,; _) ^ \Gamma ff
+
+3
+
+(j,j) ^
+
+\Gamma ff
+
+3
+
+ffi ff
+
+\Gamma 1
+
+2
+
+(V (,)) whenever _ ^ ae(j,j), which implies that DV (,)f (,; k(,; t)) ^ \Gamma  ^ff
+
+3
+
+(V (,)) for
+
+any feedback k bounded by ae and for almost all t, where ^ff
+
+3
+
+= ff
+
+3
+
+ffi ff
+
+\Gamma 1
+
+2
+
+. This implies that for
+
+any such feedback, and for every solution x(t) of the corresponding system (5), it holds that
+
+d dt
+
+V (x(t)) ^ \Gamma  ^ff
+
+3
+
+(V (x(t))) for almost all t. A simple comparison principle (see e.g. [2]) implies
+
+that there exists some KL-function
+
+~ fi, which depends only on ^ff
+
+3
+
+and not on the particular k
+
+being used, such that V (x(t)) ^
+
+~ fi
+
+i
+
+V (x(0)); t
+
+j
+
+; 8t * 0; for every solution x(t) of (5) and feed-
+
+back bounded by ae, from which it follows that there exists some KL-function fi such that (6) holds for every solution of (5) whenever k is a feedback of the form considered.
+
+Note that the proof of the Lemma provides a sightly stronger conclusion than stated, namely, robustness holds even with respect to feedback laws that do not result in unique solutions.
+
+A particular case of the above setup is as follows. Fix any smooth function '. Then, for any d(t) 2 M
+
+D
+
+= the set of all measurable functions from IR to D = [\Gamma 1; 1]
+
+m
+
+, the function
+
+k(t; ,) = d(t)'(,) is an admissible feedback law. We view the system
+
+.x(t) = f (x(t); d(t)'(x(t))) = g(x(t); d(t)) (20) as a "system with disturbances d(t)".
+
+For such systems, there is a natural definition of uniform global asymptotic stability (UGAS): this means the system must be uniformly stable (that is, for some K
+
+1
+
+-function ffi(\Delta ), and for
+
+each " * 0, the estimate jx(t; ,; d)j ^ " holds for all d 2 M
+
+D
+
+, j,j ^ ffi("), and t * 0) and
+
+uniformly attractive (that is, for each r; " ? 0, there is a T ? 0 such that,jx(t; ,; d)j ! " for every d 2 M
+
+D
+
+, j,j ! r and t * T ). This definition, when restricted to the current context, is
+
+exactly the same as saying that an estimate like the one in Equation (6) must hold, for every solution, when using any d(t) 2 M
+
+D
+
+, where fi does not depend on the particular d.
+
+We say that system (1) is weakly robustly stable if there exists a smooth function ', satisfying (j,j) ^ '(,) for some K
+
+1
+
+-function  (that is, ' is positive definite and proper or "radially
+
+unbounded"), so that the corresponding system (20) is UGAS.
+
+Note that for any K
+
+1
+
+-function ae, there exist a smooth function ' : IR
+
+n
+
+! IR
+
+*0
+
+and a
+
+K
+
+1
+
+-function  such that (j,j) ^ '(,) ^ ae(j,j) for all , 2 IR
+
+n
+
+. (Proof: Let ae be a K
+
+1
+
+-
+
+function. Let ~ae(r) = ae(
+
+p
+
+r). Note that ~ae is still of class K
+
+1
+
+. Pick any smooth K
+
+1
+
+-function
+
+oe with oe(r) ^ ~ae(r). Let '(,) = oe(j,j
+
+2
+
+). Then ' is the desired function, and we may take
+
+(r) = oe(r
+
+2
+
+).) Given ae, pick any smooth positive definite proper function ' in this manner.
+
+Now d(t)'(,) is just a particular type of feedback bounded by ae. Consequently, if there exists an ISS-Lyapunov function for system (1), then (1) is weakly robustly stable. We have then proved:
+
+Lemma 2.11 If system (1) is robustly stable, then it is also weakly robustly stable.
+
+The following two lemmas provide the key connections between ISS, robust stability, and existence of ISS-Lyapunov functions.
+
+Lemma 2.12 If system (1) is ISS, then it is also weakly robustly stable. Proof. Assume that (1) is ISS. Then by Remark 2.5, there exist some KL-function fi and some K-function fl such that (8) holds for any ,, any u and all t * 0. Let ff(r) = fi(r; 0). Then
+
+7Pass1: Page 8
+
+
+ff is a K-function. Without loss of generality, one can always assume that ff(r) ? r for all r ? 0 (otherwise, one can replace ff(r) by maxfff(r); 3r=2g) and thus ff is K
+
+1
+
+. Similarly, one
+
+can assume that fl is also K
+
+1
+
+. It follows that ff
+
+\Gamma 1
+
+is K
+
+1
+
+and ff
+
+\Gamma 1
+
+(r) ! r for all r ? 0. Now
+
+let oe(r) be a K
+
+1
+
+function satisfying oe(r) ! fl
+
+\Gamma 1
+
+i
+
+1
+
+4
+
+ff
+
+\Gamma 1
+
+(r)
+
+j
+
+for all r ? 0. For instance, one
+
+can simply let oe(r) be
+
+1
+
+2
+
+fl
+
+\Gamma 1
+
+i
+
+1
+
+4
+
+ff
+
+\Gamma 1
+
+(r)
+
+j
+
+. Arguing as in the proof of Lemma 2.11, there exist a
+
+smooth function ' and a K
+
+1
+
+-function  such that (j,j) ^ '(,) ^ oe(j,j) ; for all ,. Now for
+
+the fixed function ', consider system (20). In what follows we show that with the ' chosen above, system (20) is UGAS. Let x
+
+'
+
+(t; ,; d) denote the solution of (20) with initial state , and
+
+disturbance d. To prove the desired conclusion, we first show that
+
+fl
+
+i
+
+jd(t)'(x
+
+'
+
+(t; ,; d))j
+
+j
+
+^
+
+j,j
+
+2
+
+a.e. t * 0 (21)
+
+for any , 2 IR
+
+n
+
+and any d 2 M
+
+D
+
+. For this it is enough to show, because of the monotonicity of
+
+fl, that
+
+fl('(x
+
+'
+
+(t; ,; d))) ^
+
+j,j
+
+2
+
+8t * 0 : (22)
+
+Pick any , 2 IR
+
+n
+
+n f0g and d 2 M
+
+D
+
+, and use simply x(t) to denote x
+
+'
+
+(t; ,; d). Notice then
+
+that fl('(x(t))) ^
+
+j,j
+
+4
+
+for all t small enough, since fl('(x(0))) ^ fl(oe(j,j)) !
+
+1
+
+4
+
+ff
+
+\Gamma 1
+
+(j,j) ^
+
+j,j
+
+4
+
+:
+
+Now let t
+
+1
+
+= inf
+
+n
+
+t ? 0 : fl('(x(t))) ?
+
+j,j
+
+2
+
+o
+
+: Assume that t
+
+1
+
+! 1. Then (22) holds for all
+
+t 2 [0; t
+
+1
+
+), from which it follows that fl(jd(t)'(x(t))j) ^
+
+1
+
+2
+
+ff(j,j); for almost all t 2 [0; t
+
+1
+
+).
+
+By (8), one sees that jx(t)j ^ fi(j,j ; 0) ^ ff(j,j) for all 0 ^ t ^ t
+
+1
+
+, which, in turn, implies
+
+that fl(j'(x(t
+
+1
+
+))j) ^ fl(oe(jx(t
+
+1
+
+)j)) ^
+
+ff
+
+\Gamma 1
+
+(jx(t
+
+1
+
+)j)
+
+4
+
+^
+
+j,j
+
+4
+
+: This contradicts the definition of t
+
+1
+
+(by
+
+continuity, from the definition it must hold that fl(j'(x(t
+
+1
+
+))j) *
+
+j,j
+
+2
+
+). Thus t
+
+1
+
+= 1, and (22) is
+
+proved.
+
+Claim: for each r ? 0 there is some T
+
+r
+
+* 0 so that
+
+t * T
+
+r
+
+; j,j ^ r ) jx
+
+'
+
+(t; ,; d)j ^
+
+r
+
+2
+
+: (23)
+
+To establish this claim, note that, from (8) and (21), it follows that jx
+
+'
+
+(t; ,; d)j ^
+
+max
+
+n
+
+fi(j,j ; t);
+
+j,j
+
+2
+
+o
+
+for all ,. On the other hand, since fi 2 KL, for each r ? 0 there ex-
+
+ists T
+
+r
+
+? 0 such that fi(r; t) ! r=2 for all t * T
+
+r
+
+. This T
+
+r
+
+satisfies the requirements of the
+
+claim.
+
+Now pick any " ? 0. Let k be a positive integer such that 2
+
+\Gamma k
+
+r ! ". Let r
+
+1
+
+= r and
+
+and r
+
+i
+
+= r
+
+i\Gamma 1
+
+=2 for i * 2, and let o/ = T
+
+r
+
+1
+
++ T
+
+r
+
+2
+
++ \Delta  \Delta  \Delta  + T
+
+r
+
+k
+
+: Then for t * o/ , it holds that
+
+jx
+
+'
+
+(t; ,; d)j ^
+
+r
+
+2
+
+k
+
+! " for all j,j ^ r, all d 2 M
+
+D
+
+and all t * o/ . This shows that the origin is
+
+a uniform attractor for system (20).
+
+To show the uniform stability for the system, notice that (8) and (21) imply that jx
+
+'
+
+(t; ,; d)j ^ fi(j,j ; 0) for all t * 0, all , 2 IR
+
+n
+
+, and all d 2 M
+
+D
+
+. We conclude that sys-
+
+tem (20) is UGAS.
+
+Lemma 2.13 If system (1) is weakly robustly stable, then there exists an ISS-Lyapunov func- tion for the system.
+
+8Pass1: Page 9
+
+
+Proof. This is an easy consequence of the Converse Lyapunov Theorem for systems with bounded disturbances proved in [2]. The details are as follows. Assume that system (1) is weakly robustly stable. Then there exist a smooth function ' : IR
+
+n
+
+! IR, such that
+
+'(,) * (j,j) for some K
+
+1
+
+-function , for which the system (20) is UGAS, as defined earlier.
+
+It then follows from the Converse Lyapunov result in [2] that there exists a uniform smooth Lyapunov function V for the system (20), that is, a smooth V so that, for some positive definite K
+
+1
+
+-functions ff
+
+i
+
+, i = 1; 2; 3, it holds that ff
+
+1
+
+(j,j) ^ V (,) ^ ff
+
+2
+
+(j,j) 8, 2 IR
+
+n
+
+and
+
+rV (,) \Delta  f (,; d '(,)) ^ \Gamma ff
+
+3
+
+(j,j) 8, 2 IR
+
+n
+
+; 8 jdj ^ 1 : (24)
+
+Note that from (24), it follows that
+
+rV (,) \Delta  f (,; v) ^ \Gamma ff
+
+3
+
+(j,j) ; (25)
+
+whenever jvj ^ '(,). Since (j,j) ^ '(,), (25) holds whenever jvj ^ (j,j). Let O/(r) = 
+
+\Gamma 1
+
+(r).
+
+Clearly O/ is a function as required for Definition 2.2, and thus, V is an ISS-Lyapunov function for (1).
+
+The next lemma provides a Lyapunov-like criterion for input/state stability. It was intro- duced and proved in [4]. To make this work self-contained, we provide the statement together with its proof in this paper.
+
+Lemma 2.14 If system (1) admits an ISS-Lyapunov function, then it is ISS. Proof. Assume system (1) admits an ISS-Lyapunov function V . Let ff
+
+i
+
+(i = 1; 2; 3) and O/ be as
+
+in Definition 2.2. Fix a point , 2 IR
+
+n
+
+and an input function u. Let x(t) denote the corresponding
+
+trajectory x(t; ,; u). Consider the set: S = fj : V (j) ^ cg ; where c = ff
+
+2
+
+ffi O/(kuk).
+
+Claim: If there exists t
+
+0
+
+* 0 such that x(t
+
+0
+
+) 2 S, then x(t) 2 S for all t * t
+
+0
+
+.
+
+Proof. Assume that this is not true. Then there exists some t ? t
+
+0
+
+and some " ? 0 such that
+
+V (x(t)) ? c + " : Let o/ = inf ft * t
+
+0
+
+: V (x(t)) * c + "g. It then follows that jx(o/ )j * O/(kuk),
+
+which in turn, implies that
+
+d
+
+dt
+
+fi fi fi
+
+t=o/
+
+V (x(t)) ^ \Gamma ff
+
+3
+
+(jx(o/ )j) ! 0 : Thus V (x(t)) * V (x(o/ )) for
+
+some t in (t
+
+0
+
+; o/ ). This contradicts the minimality of o/ , and hence, x(t) 2 S for all t * t
+
+0
+
+, as
+
+claimed.
+
+Now let t
+
+1
+
+= inf ft * 0 : x(t) 2 Sg ^ 1. Then it follows from the above argument that
+
+V (x(t)) ^ ff
+
+2
+
+ffi O/(kuk) for all t * t
+
+1
+
+. This implies that
+
+jx(t)j ^ fl(kuk); 8t * t
+
+1
+
+; (26)
+
+where fl = ff
+
+\Gamma 1
+
+1
+
+ffi ff
+
+2
+
+ffi O/. For t ! t
+
+1
+
+, x(t) 62 S, which implies that jx(t)j * O/(kuk) for all t ^ t
+
+1
+
+.
+
+Consequently, one has
+
+d dt
+
+V (x(t)) = DV (j)f (j; u)
+
+fi fi fi fi
+
+j=x(t)
+
+^ \Gamma ff
+
+3
+
+(jx(t)j) ^ \Gamma ff
+
+3
+
+ffi ff
+
+\Gamma 1
+
+2
+
+(V (x(t))) ; a.e. t ^ t
+
+1
+
+:
+
+First of all, this inequality guarantees that x(t) is defined for all t * 0. Secondly, a standard comparison principle ([2]) implies that there exists some KL-function
+
+~ fi which only depends on
+
+ff
+
+2
+
+and ff
+
+3
+
+, such that V (x(t)) ^
+
+~ fi(V (,); t) for t ^ t
+
+1
+
+, from which it follows that
+
+jx(t)j ^ fi(j,j ; t); 8t ^ t
+
+1
+
+; (27)
+
+9Pass1: Page 10
+
+
+where fi(r; t) = ff
+
+\Gamma 1
+
+1
+
+~ fi(ff
+
+2
+
+(r); t). Combining (26) and (27), one concludes that jx(t)j ^
+
+fi(j,j ; t) + fl(kuk) ; for all t * 0. Noting that in the above proof, the functions fi and fl do not depend on each individual initial state , or the input u, one concludes that the system is ISS.
+
+Summarizing all the above, we have our main result:
+
+Theorem 1 The following properties are equivalent for any system:
+
+1. It is ISS. 2. It admits an ISS-Lyapunov function. 3. It is robustly stable. 4. There exist KL-functions fi
+
+0
+
+; fi
+
+1
+
+and a K-function fl so that (9) holds.
+
+5. There exists a K-function fl, such that for any " ? 0, (11) and (12) hold for properly
+
+chosen ffi and T .
+
+6. It is weakly robustly stable.
+
+Proof. 1: () 4: See Lemma 2.6. 1: () 5: See Lemma 2.7. 1: =) 6: See Lemma 2.12. 6: =) 2: See Lemma 2.13. 2: =) 1: See Lemma 2.14. 2: =) 3: See Lemma 2.10. 3: =) 6: See Lemma 2.11.
+
+Acknowledgment. We thank an anonymous referee for many useful suggestions on improving the presentation.
+
+References [1] Z.-P. Jiang, L. Praly, and A. Teel, Propagating the input to state stability property
+
+through integrators and applications. To appear in Math of Control, Signals, and Systems.
+
+[2] Y. Lin, E. D. Sontag, and Y. Wang, A smooth converse Lyapunov theorem for robust
+
+stability. Submitted. (See also IMA Preprint #1192, Institute for Mathematics and Its Applications, University of Minnesota, November 1993.)
+
+[3] L. Praly and Z.-P. Jiang, Stabilization by output feedback for systems with ISS inverse
+
+dynamics, Systems & Control Letters, 21 (1993), pp. 19-34.
+
+[4] E. D. Sontag, Smooth stabilization implies coprime factorization, IEEE Transactions on
+
+Automatic Control, AC-34 (1989), pp. 435-443.
+
+10Pass1: Page 11
+
+
+[5] , Some connections between stabilization and factorization, in Proc. IEEE Conf. Deci-
+
+sion and Control, Tampa, Dec. 1989, IEEE Publications, 1989, pp. 990-995.
+
+[6] , Further facts about input to state stabilization, IEEE Transactions on Automatic
+
+Control, AC-35 (1990), pp. 473-476.
+
+[7] J. Tsinias, Versions of Sontag's input to state stability condition and the global stabilizabil-
+
+ity problem. To appear in SIAM Journal on Control and Optimization.
+
+[8] , Sontag's "input to state stability condition" and global stabilization using state detec-
+
+tion, Systems & Control Letters, 20 (1993), pp. 219-226.
+
+11</pre>
+</body>
+</html>
