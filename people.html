@@ -1,470 +1,451 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Eduardo Sontag Lab at Northeastern University</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Eduardo D. Sontag's group at Northeastern University" />
-	<meta name="keywords" content="control theory, dynamical systems, systems and synthetic biology, mnathematical modeling, cancer, immunology, Northeastern" />
-	<meta name="author" content="Eduardo D. Sontag" />
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People · Control, Learning, and Systems Biology</title>
+<meta name="description" content="People of the Sontag Lab at Northeastern University: current and recent members working on control theory, dynamical systems, and quantitative biology.">
+<meta name="author" content="Eduardo D. Sontag">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-  <!--
-	//////////////////////////////////////////////////////
+  /* Nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FreeHTML5.co
+  /* Hero */
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);
+    background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:60ch;margin:0}
 
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+  /* Sections */
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:38px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
-	//////////////////////////////////////////////////////
-	 -->
+  /* People grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 30px}
+  .person{text-align:left}
+  .person .ph{aspect-ratio:4/5;background:var(--paper-2);border:1px solid var(--line);overflow:hidden;margin-bottom:15px}
+  .person .ph img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1);transition:filter .4s ease}
+  .person:hover .ph img{filter:grayscale(0)}
+  .person h3{font-family:var(--sans);font-weight:500;font-size:1.06rem;margin:0 0 3px;letter-spacing:.01em}
+  .person .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--crimson);margin:0 0 12px}
+  .soc{list-style:none;display:flex;gap:13px;margin:0;padding:0}
+  .soc a{display:inline-flex;color:var(--muted);transition:color .2s ease,transform .2s ease}
+  .soc a:hover{color:var(--crimson);transform:translateY(-2px)}
+  .ic{width:18px;height:18px;display:block}
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  .recent-sec{background:var(--paper-2);border-top:1px solid var(--line)}
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+  /* Alumni callout */
+  .former{display:flex;gap:14px;align-items:baseline;padding:20px 24px;background:var(--ink);color:#fff;margin-top:56px}
+  .former .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--crimson);white-space:nowrap}
+  .former a{color:#fff;text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:3px;font-size:1.02rem}
+  .former a:hover{color:var(--crimson)}
 
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  /* Footer */
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+  @media (max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}footer .wrap{grid-template-columns:1fr 1fr}}
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (max-width:440px){.grid{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
+</style>
+</head>
+<body>
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.5 2.6 15.5 0 18M12 3c-2.6 2.5-2.6 15.5 0 18"/></g></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 1 9l11 6 7-3.82V16h2V9z"/><path fill="currentColor" d="M6 12.4V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.6l-6 3.27z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3.2 9h3.6v12H3.2zM9.3 9h3.4v1.7h.05c.5-.9 1.7-1.9 3.6-1.9 3.85 0 4.55 2.5 4.55 5.8V21h-3.6v-5.1c0-1.22-.02-2.8-1.7-2.8-1.7 0-1.96 1.33-1.96 2.7V21H9.3z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></symbol>
+  <symbol id="i-email" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5.8A1.8 1.8 0 0 1 4.8 4h14.4A1.8 1.8 0 0 1 21 5.8v.2l-9 5.35L3 6zM3 8.05l8.55 5.08a.9.9 0 0 0 .9 0L21 8.05V18.2A1.8 1.8 0 0 1 19.2 20H4.8A1.8 1.8 0 0 1 3 18.2z"/></symbol>
+</svg>
 
-<!-- following style command suggested by chatGPT for more uniform picture sizes, though I don't know if it overrides the individual picture commands-->
-	 
-   <style>
-    .fh5co-staff img {
-      width: 210px;
-      height: auto;
-    }
-  </style>
-	 
-	</head>
-	<body>
-
-	<div id="fh5co-page">
-
-		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-		<aside id="fh5co-aside" role="complementary" class="border">
-
-			<h1 id="fh5co-logo"><a href="index.html"><img src="images/sfest2011_poster_picture.png" width="280" alt="Free HTML5 Bootstrap Website Template"></a></h1>
-			<nav id="fh5co-main-menu" role="navigation">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-          <li><a href="research.html">Research</a></li>
-					<li><a href="eduardo.html">Eduardo D. Sontag</a></li>
-					<li class="fh5co-active"><a href="people.html">People</a></li>
-					<li><a href="PUBDIR/index.html">Publications</a></li>
-					<li><a href="news.html">News</a></li>
-					<li><a href="activities.html">Activities</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-			</nav>
-
-			<!--
-						<div class="fh5co-footer">
-							<p><small>&copy; 2016 Nitro Free HTML5. All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
-							<ul>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-instagram"></i></a></li>
-								<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							</ul>
-						</div>
-					-->
-
-	</aside>
-
-<div id="fh5co-main">
-	<div class="fh5co-narrow-content  animate-box" data-animate-effect="fadeInLeft">
-<h1 class="fh5co-heading-colored" >Current Lab Members</span></h1>
-
-<div class="row">
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/20220405_isec_crop_face-removebg-rev.png" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-	<h3>Eduardo D. Sontag</h3>
-	<h4>Principal Investigator</h4>
-	<ul class="fh5co-social">
-	<li><a href="http://www.sontaglab.org" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="https://scholar.google.com/citations?user=CCToMygAAAAJ&hl=en&oi=ao" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/eduardo-sontag-64a9b16/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:sontag@sontaglab.org" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/arthur_castello.jpg" alt="placeholder" class="img-responsive">
-	<h3>Arthur C. B. de Oliveira</h3>
-	<h4>Post-doctoral Associate</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://arthurcbdo.sites.northeastern.edu//" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="https://scholar.google.com/citations?user=uQIXFNgAAAAJ&hl=en" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/arthurcbdo/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:a.castello@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/wafi_photo_crop.png" alt="placeholder" class="img-responsive">
-	<h3>Moh Kamalul Wafi</h3>
-	<h4>Graduate Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://www.linkedin.com/in/kamalulwafi/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:wafi.m@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-</div><!-- end row-->
-<p>
-	
-<div class="row">
-
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/dhruv_jatkar.jpg" alt="placeholder" class="img-responsive">
-	<h3>Dhruv Jatkar</h3>
-	<h4>Undergraduate Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://github.com/dhruvjatkar" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="https://scholar.google.com/citations?hl=en&user=4HEFLogAAAAJ" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/dhruvjatkar" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:jatkar.d@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
- 	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/mali.jpg"  alt="Free HTML5 Bootstrap Template" class="img-responsive" align="center">
-	<h3>Muhammad Ali Al-Radhawi</h3>
-	<h4>Affiliate Research Scientist </h4>
-	<ul class="fh5co-social">
-	<li><a href="http://web.mit.edu/malirdwi/www/" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="https://scholar.google.com/citations?user=BiH1nGYAAAAJ&hl=en&oi=sra" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/muhammad-ali-al-radhawi-48869811/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:m.ali@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/kareva_headshot.jpg" alt="placeholder" class="img-responsive">
-	<h3>Irina Kareva</h3>
-	<h4>Affiliate Research Scientist</h4>
-	<ul class="fh5co-social">
-	<li><a href="kareva.html"
-	target="_blank"><i class="icon-home"></i></a></li>				<li><a href="https://scholar.google.com/citations?user=vPJibBwAAAAJ&hl=en&oi=ao" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="http://www.linkedin.com/in/irina-kareva-34a67419b" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:irina.kareva@alumni.harvard.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
- 	</div>
-
-</div><!-- end row-->
-<p>
-
-<div class="row">
-
-<p>
-
-<h1 class="fh5co-heading-colored" >Recent Lab Members</span></h1>
-
-</div>
-
-<div class="row">
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/alon_duvall.jpg" alt="placeholder" class="img-responsive">
-	<h3>Alon Duvall</h3>
-	<h4>Ph.D.Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://alonduvall.sites.northeastern.edu//" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="http://www.linkedin.com/in/alonduvall/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:duvall.a@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-        </div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/sepideh_fouladzadeh.jpg" alt="placeholder" class="img-responsive">
-	<h3>Sepideh Fouladzadeh </h3>
-	<h4>Ph.D.Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="http://www.linkedin.com/in/sepideh-fouladzadeh/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:fouladzadeh.s@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/atefe_darabi.jpg" alt="placeholder" class="img-responsive">
-	<h3>Atefe Darabi</h3>
-	<h4>Post-doctoral Associate</h4>
-	<ul class="fh5co-social">
-<!--	<li><a href="https://alonduvall.sites.northeastern.edu//" target="_blank"><i class="icon-home"></i></a></li>-->
-	<li><a href="https://scholar.google.com/citations?user=0b_Cg3kAAAAJ&hl=en" target="_blank"><i class="icon-google"></i></a></li>
-<!--	<li><a href="https://www.linkedin.com/in/arthurcbdo/" target="_blank"><i class="icon-linkedin"></i></a></li>-->
-	<li><a href="mailto:a.darabi@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-
-</div><!-- end row-->
-<p>
-
-
-<div class="row">
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/samantha_prosperi.jpg" width="230" alt="placeholder" class="img-responsive">
-	<h3>Samantha Prosperi</h3>
-	<h4>Undergraduate Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="http:// www.linkedin.com/in/seprosperi" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:prosperi.s@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
- 	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/will_cho.jpg" width="240" alt="placeholder" class="img-responsive">
-	<h3>William Cho</h3>
-	<h4>Ph.D.Student</h4>
-	<ul class="fh5co-social">
-<!--	<li><a href="https:..." target="_blank"><i class="icon-home"></i></a></li>-->
-	<li><a href="https://www.linkedin.com/in/willchoprojects/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:willchoprojects@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/zheming_an_photo_new.jpg" width="280"  alt="Free HTML5 Bootstrap Template" class="img-responsive" align="center">
-	<h3>Zheming An</h3>
-	<h4>Postdoctoral Fellow</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://scholar.google.com/citations?user=EtQP2uwAAAAJ&hl=en&hl=en&oi=sra" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/zheming-an-067274138/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:za131@scarletmail.rutgers.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-</div><!-- end row-->
-<div class="row">
-<p>
-
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/tianchi.jpg" width="230" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-	<h3>Tianchi Chen</h3>
-	<h4>Ph.D. Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://chentianchi.wordpress.com/" target="_blank"><i class="icon-home"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/tianchi-chen-415b136a/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:chentianchi@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-
-	<div class="col-md-4 fh5co-staff" align="center">
-	<img src="images/mahdiar.jpg" width="240" alt="Free HTML5 Bootstrap Template" class="img-responsive" align="center">
-	<h3>Mahdiar Sadeghi</h3>
-	<h4>Ph.D. Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://scholar.google.com/citations?user=mur_V3kAAAAJ&hl=en&oi=ao" target="_blank"><i class="icon-google"></i></a></li>
-	<li><a href="https://www.linkedin.com/in/mahdiars/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:sadeghi.ma@husky.neu.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
-			
-    <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/phong.jpg" width="220" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>Anh Phong Tran</h3>
-    <h4>Ph.D. Student</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://phongatran.github.io/" target="_blank"><i class="icon-home"></i></a></li>
-      <li><a href="https://scholar.google.com/citations?user=cy3YZS8AAAAJ&hl=en&oi=sra" target="_blank"><i class="icon-google"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/phongatran/" target="_blank"><i class="icon-linkedin"></i></a></li>
-      <li><a href="mailto:anhphong.t@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Control<b>·</b>Learning<b>·</b>Systems Biology</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+      <li><a href="people.html" class="active">People</a></li>
+      <li><a href="PUBDIR/index.html">Publications</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
+</nav>
 
-</div><!-- end row-->
-<p>
-
-<div class="row">
-
-
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/deepak.jpg" width="250" height="250" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>Deepak Agrawal</h3>
-    <h4>Postdoctoral Scholar</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://web.northeastern.edu/dkagrawal/" target="_blank"><i class="icon-home"></i></a></li>
-      <li><a href="mailto:agwal.deepak@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-    </ul>
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p>
+    <h1>People</h1>
+    <p class="role">The researchers and students working across control theory, dynamical systems, and quantitative biology at Northeastern University.</p>
   </div>
+</header>
 
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/MostafaAsheghan.png"  alt="Free HTML5 Bootstrap Template" class="img-responsive" align="center">
-	<h3>Mostafa Asheghan</h3>
-	<h4>Postoctoral Researcher</h4>
-	<ul class="fh5co-social">
-	<li><a href="https://www.linkedin.com/in/mohammad-mostafa-asheghan-13302a62/" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:mostafa.asheghan@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
-	</div>
+<main>
 
-				
-	<div class="col-md-4 fh5co-staff" align = "center">
-	<img src="images/harriet_wu_crop.jpg" alt="placeholder" class="img-responsive">
-	<h3>Yuqianxun (Harriet) Wu</h3>
-	<h4>Undergraduate Student</h4>
-	<ul class="fh5co-social">
-	<li><a href="http://www.linkedin.com/in/wuyuqianxun" target="_blank"><i class="icon-linkedin"></i></a></li>
-	<li><a href="mailto:wu.yuqia@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-	</ul>
- 	</div>
+  <section id="current">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">01</span><h2>Current members</h2></div>
+      <div class="grid">
+        <article class="person">
+          <div class="ph"><img src="images/20220405_isec_crop_face-removebg-rev.png" alt="Eduardo D. Sontag" loading="lazy" decoding="async"></div>
+          <h3>Eduardo D. Sontag</h3>
+          <p class="role">Principal Investigator</p>
+          <ul class="soc">
+            <li><a href="http://www.sontaglab.org" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=CCToMygAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/eduardo-sontag-64a9b16/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:sontag@sontaglab.org" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/arthur_castello.jpg" alt="Arthur C. B. de Oliveira" loading="lazy" decoding="async"></div>
+          <h3>Arthur C. B. de Oliveira</h3>
+          <p class="role">Post-doctoral Associate</p>
+          <ul class="soc">
+            <li><a href="https://arthurcbdo.sites.northeastern.edu/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=uQIXFNgAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/arthurcbdo/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:a.castello@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/wafi_photo_crop.png" alt="Moh Kamalul Wafi" loading="lazy" decoding="async"></div>
+          <h3>Moh Kamalul Wafi</h3>
+          <p class="role">Graduate Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/kamalulwafi/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:wafi.m@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/dhruv_jatkar.jpg" alt="Dhruv Jatkar" loading="lazy" decoding="async"></div>
+          <h3>Dhruv Jatkar</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="https://github.com/dhruvjatkar" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?hl=en&amp;user=4HEFLogAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/dhruvjatkar" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:jatkar.d@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/mali.jpg" alt="Muhammad Ali Al-Radhawi" loading="lazy" decoding="async"></div>
+          <h3>Muhammad Ali Al-Radhawi</h3>
+          <p class="role">Affiliate Research Scientist</p>
+          <ul class="soc">
+            <li><a href="http://web.mit.edu/malirdwi/www/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=BiH1nGYAAAAJ&amp;hl=en&amp;oi=sra" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/muhammad-ali-al-radhawi-48869811/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:m.ali@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/kareva_headshot.jpg" alt="Irina Kareva" loading="lazy" decoding="async"></div>
+          <h3>Irina Kareva</h3>
+          <p class="role">Affiliate Research Scientist</p>
+          <ul class="soc">
+            <li><a href="kareva.html" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=vPJibBwAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="http://www.linkedin.com/in/irina-kareva-34a67419b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:irina.kareva@alumni.harvard.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-</div>
-<p>
+  <section class="recent-sec" id="recent">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">02</span><h2>Recent members</h2></div>
+      <div class="grid">
+        <article class="person">
+          <div class="ph"><img src="images/alon_duvall.jpg" alt="Alon Duvall" loading="lazy" decoding="async"></div>
+          <h3>Alon Duvall</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="https://alonduvall.sites.northeastern.edu/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="http://www.linkedin.com/in/alonduvall/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:duvall.a@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/sepideh_fouladzadeh.jpg" alt="Sepideh Fouladzadeh" loading="lazy" decoding="async"></div>
+          <h3>Sepideh Fouladzadeh</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="http://www.linkedin.com/in/sepideh-fouladzadeh/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:fouladzadeh.s@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/atefe_darabi.jpg" alt="Atefe Darabi" loading="lazy" decoding="async"></div>
+          <h3>Atefe Darabi</h3>
+          <p class="role">Post-doctoral Associate</p>
+          <ul class="soc">
+            <li><a href="https://scholar.google.com/citations?user=0b_Cg3kAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="mailto:a.darabi@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/samantha_prosperi.jpg" alt="Samantha Prosperi" loading="lazy" decoding="async"></div>
+          <h3>Samantha Prosperi</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/seprosperi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:prosperi.s@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/will_cho.jpg" alt="William Cho" loading="lazy" decoding="async"></div>
+          <h3>William Cho</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/willchoprojects/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:willchoprojects@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/zheming_an_photo_new.jpg" alt="Zheming An" loading="lazy" decoding="async"></div>
+          <h3>Zheming An</h3>
+          <p class="role">Postdoctoral Fellow</p>
+          <ul class="soc">
+            <li><a href="https://scholar.google.com/citations?user=EtQP2uwAAAAJ&amp;hl=en&amp;oi=sra" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/zheming-an-067274138/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:za131@scarletmail.rutgers.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/tianchi.jpg" alt="Tianchi Chen" loading="lazy" decoding="async"></div>
+          <h3>Tianchi Chen</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="https://chentianchi.wordpress.com/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/tianchi-chen-415b136a/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:chentianchi@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/mahdiar.jpg" alt="Mahdiar Sadeghi" loading="lazy" decoding="async"></div>
+          <h3>Mahdiar Sadeghi</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="https://scholar.google.com/citations?user=mur_V3kAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/mahdiars/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:sadeghi.ma@husky.neu.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/phong.jpg" alt="Anh Phong Tran" loading="lazy" decoding="async"></div>
+          <h3>Anh Phong Tran</h3>
+          <p class="role">Ph.D. Student</p>
+          <ul class="soc">
+            <li><a href="https://phongatran.github.io/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=cy3YZS8AAAAJ&amp;hl=en&amp;oi=sra" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/phongatran/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:anhphong.t@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/deepak.jpg" alt="Deepak Agrawal" loading="lazy" decoding="async"></div>
+          <h3>Deepak Agrawal</h3>
+          <p class="role">Postdoctoral Scholar</p>
+          <ul class="soc">
+            <li><a href="https://web.northeastern.edu/dkagrawal/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="mailto:agwal.deepak@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/MostafaAsheghan.png" alt="Mostafa Asheghan" loading="lazy" decoding="async"></div>
+          <h3>Mostafa Asheghan</h3>
+          <p class="role">Postdoctoral Researcher</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/mohammad-mostafa-asheghan-13302a62/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:mostafa.asheghan@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/harriet_wu_crop.jpg" alt="Yuqianxun (Harriet) Wu" loading="lazy" decoding="async"></div>
+          <h3>Yuqianxun (Harriet) Wu</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="http://www.linkedin.com/in/wuyuqianxun" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:wu.yuqia@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/kona.jpg" alt="Yingxue (Kona) He" loading="lazy" decoding="async"></div>
+          <h3>Yingxue (Kona) He</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/kona-he/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:he.yingx@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/Helena.Tattersfield.jpg" alt="Helena Tattersfield" loading="lazy" decoding="async"></div>
+          <h3>Helena Tattersfield</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/helenatattersfield/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:tattersfield.h@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/swetha_yogeswaran_compress.jpg" alt="Swetha Yogeswaran" loading="lazy" decoding="async"></div>
+          <h3>Swetha Yogeswaran</h3>
+          <p class="role">High School Student</p>
+          <ul class="soc">
+            <li><a href="http://www.linkedin.com/in/swetha-y" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:swetha.yoga@gmail.com" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/naomi_polonia.png" alt="Naomi Polonia" loading="lazy" decoding="async"></div>
+          <h3>Naomi Polonia</h3>
+          <p class="role">Undergraduate Student</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/naomipolonia/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="mailto:polonia.n@northeastern.edu" aria-label="Email"><svg class="ic" aria-hidden="true"><use href="#i-email"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/cynthia.jpg" alt="Cynthia Sanchez Tapia" loading="lazy" decoding="async"></div>
+          <h3>Cynthia Sanchez Tapia</h3>
+          <p class="role">Postdoctoral Scholar (Rutgers)</p>
+          <ul class="soc">
+            <li><a href="https://www.linkedin.com/in/cynthia-sanchez-tapia-6b329987" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/jim_greene_crop.jpg" alt="James Greene" loading="lazy" decoding="async"></div>
+          <h3>James Greene</h3>
+          <p class="role">Postdoctoral Scholar (Rutgers)</p>
+          <ul class="soc">
+            <li><a href="http://sites.math.rutgers.edu/~jcg219/" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+          </ul>
+        </article>
+        <article class="person">
+          <div class="ph"><img src="images/nikolaev.jpg" alt="Zhenya Nikolaev" loading="lazy" decoding="async"></div>
+          <h3>Zhenya Nikolaev</h3>
+          <p class="role">Research Associate (Rutgers)</p>
+          <ul class="soc">
+            <li><a href="https://www.cinj.org/researcher-profiles/?id=831" target="_blank" rel="noopener" aria-label="Website"><svg class="ic" aria-hidden="true"><use href="#i-web"/></svg></a></li>
+            <li><a href="https://scholar.google.com/citations?user=k_MCE6sAAAAJ&amp;hl=en&amp;oi=sra" target="_blank" rel="noopener" aria-label="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#i-scholar"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/evgeni-nikolaev-8a508a135/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+          </ul>
+        </article>
+      </div>
+      <div class="former">
+        <span class="k">Alumni</span>
+        <a href="former_students.html">Partial list of former Ph.D. students &rarr;</a>
+      </div>
+    </div>
+  </section>
 
-<div class="row">
+</main>
 
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/kona.jpg"  width="230" alt="placeholder" class="img-responsive">
-    <h3>Yingxue (Kona) He</h3>
-    <h4>Undergraduate Student</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://www.linkedin.com/in/kona-he/" target="_blank"><i class="icon-linkedin"></i></a></li>
-      <li><a href="mailto:he.yingx@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-    </ul>
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="name">Control · Learning · Systems Biology</p>
+      <p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University · Boston, Massachusetts</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="PUBDIR/index.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+        <li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="colophon">
+      <span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span>
+      <span>&copy; <span id="yr"></span> Sontag Lab</span>
+    </div>
   </div>
+</footer>
 
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/Helena.Tattersfield.jpg" width="210" alt="placeholder" class="img-responsive">
-    <h3>Helena Tattersfield</h3>
-    <h4>Undergraduate Student</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://www.linkedin.com/in/helenatattersfield/" target="_blank"><i class="icon-linkedin"></i></a></li>
-      <li><a href="mailto:tattersfield.h@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-    </ul>
-  </div>
-
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/swetha_yogeswaran_compress.jpg" width="210" alt="placeholder" class="img-responsive">
-    <h3>Swetha Yogeswaran</h3>
-    <h4>High School Student</h4>
-    <ul class="fh5co-social">
-      <li><a href="http://www.linkedin.com/in/swetha-y" target="_blank"><i class="icon-linkedin"></i></a></li>
-      <li><a href="mailto:swetha.yoga@gmail.com" target="_blank"><i class="icon-envelope"></i></a></li>
-    </ul>
-  </div>
-
-</div><!-- end row-->
-<p>
-
-<div class="row">
-
-    <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/naomi_polonia.png" width="250" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>Naomi Polonia</h3>
-    <h4>Undergraduate Student</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://www.linkedin.com/in/naomipolonia/" target="_blank"><i class="icon-linkedin"></i></a></li>
-      <li><a href="mailto:polonia.n@northeastern.edu" target="_blank"><i class="icon-envelope"></i></a></li>
-    </ul>
-  </div>
-
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/cynthia.jpg" width="250" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>Cynthia Sanchez Tapia</h3>
-    <h4>Postdoctoral Scholar (Rutgers)</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://www.linkedin.com/in/cynthia-sanchez-tapia-6b329987" target="_blank"><i class="icon-linkedin"></i></a></li>
-    </ul>
-  </div>
-
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/jim_greene_crop.jpg" width="250" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>James Greene</h3>
-    <h4>Postdoctoral Scholar (Rutgers)</h4>
-    <ul class="fh5co-social">
-      <li><a href="http://sites.math.rutgers.edu/~jcg219/" target="_blank"><i class="icon-home"></i></a></li>
-    </ul>
-  </div>
-
-</div><!-- end row-->
-<p>
-
-<div class="row">
-
-  <div class="col-md-4 fh5co-staff" align = "center">
-    <img src="images/nikolaev.jpg" width="250" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-    <h3>Zhenya Nikolaev</h3>
-    <h4>Research Associate (Rutgers)</h4>
-    <ul class="fh5co-social">
-      <li><a href="https://www.cinj.org/researcher-profiles/?id=831" target="_blank"><i class="icon-home"></i></a></li>
-      <li><a href="https://scholar.google.com/citations?user=k_MCE6sAAAAJ&hl=en&oi=sra" target="_blank"><i class="icon-google"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/evgeni-nikolaev-8a508a135/" target="_blank"><i class="icon-linkedin"></i></a></li>
-    </ul>
-  </div>
-
-</div><!-- end row-->
-<p>
-
-<div class="row">
-
-  <b><h4><a href="former_students.html">Partial List of Former Ph.D. Students</a></h4></b>
-	
-
-</div>
-	</div>
-
-<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
-
-
-
-
-	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
-
-	</body>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
 </html>
