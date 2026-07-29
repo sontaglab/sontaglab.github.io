@@ -1,168 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News from the Laboratory for Control, Learning, and Systems Biology at Northeastern University</title>
-    <style>
-        body {
-            font-size: 18px;
-        }
-        h1 {
-            text-align: center;
-        }
-	ul {
-            font-size: 20px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News · Control, Learning, and Systems Biology</title>
+<meta name="description" content="News from the Sontag Lab at Northeastern University: awards, papers, and lectures in control theory, dynamical systems, and quantitative biology.">
+<meta name="author" content="Eduardo D. Sontag">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
+
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:58ch;margin:0}
+  .page-hero .role a{color:#fff;text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+
+  section{padding:80px 0}
+  .plane{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;background-position:center;position:relative}
+  .plane::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(var(--paper),transparent 8%,transparent 92%,var(--paper))}
+  .plane .wrap{position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
+
+  .feed{list-style:none;margin:0;padding:0;max-width:80ch}
+  .feed>li{padding:24px 0;border-top:1px solid var(--line)}
+  .feed>li:first-child{border-top:0}
+  .feed .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--crimson);display:block;margin-bottom:9px}
+  .feed .title{font-style:italic}
+  .feed .who{color:var(--muted);font-size:.96rem}
+  .feed .venue{color:var(--muted);font-size:.96rem}
+  .feed a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-decoration-thickness:1px;text-underline-offset:2px;transition:color .2s ease}
+  .feed a:hover{color:var(--crimson)}
+  .feed .sub{list-style:none;margin:14px 0 0;padding:0}
+  .feed .sub li{padding:12px 0;border-top:1px dashed var(--line)}
+  .feed .sub .when{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--crimson);margin-right:8px}
+
+  .note-line{font-size:.98rem;color:var(--muted);margin:0 0 30px;max-width:72ch}
+  .note-line a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .note-line a:hover{color:var(--crimson)}
+
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
+
+  @media (max-width:860px){footer .wrap{grid-template-columns:1fr 1fr}}
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:58px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
+</style>
 </head>
 <body>
-<h1>
- News from the <a href="index.html">Laboratory for Control, Learning, and Systems Biology at Northeastern University</a>
 
- <br>
- <br>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Control<b>·</b>Learning<b>·</b>Systems Biology</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="PUBDIR/index.html">Publications</a></li>
+      <li><a href="news.html" class="active">News</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-   
-<img src="images/control_theory_and_engineering_figure.jpg"  width="1000" alt="image missing" >
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p>
+    <h1>News</h1>
+    <p class="role">Awards, new papers, and lectures. For abstracts and the most current list, see the <a href="PUBDIR/index.html">publications page</a>.</p>
+  </div>
+</header>
 
-</h1>
+<main>
 
-<h2>
-  General News
-</h2>
+  <!-- 01 General news -->
+  <section id="general">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">01</span><h2>General news</h2></div>
+      <ul class="feed">
+        <li>
+          <span class="tag">Award</span>
+          Congratulations to all authors: two <em>Editors' Choice</em> selections for <em>Automatica</em>.
+          <ul class="sub">
+            <li><span class="when">Dec 2025</span><span class="title">Convergence analysis of gradient flow for overparameterized LQR formulations</span><br><span class="who">Arthur Castello B. de Oliveira, Milad Siami, Eduardo D. Sontag</span> <span class="venue">(Automatica, vol. 182, 112504)</span></li>
+            <li><span class="when">Jun 2025</span><span class="title">Properties of immersions for systems with multiple limit sets with implications to learning Koopman embeddings</span><br><span class="who">Zexiang Liu, Necmiye Ozay, Eduardo D. Sontag</span> <span class="venue">(Automatica, vol. 176, 112226)</span></li>
+          </ul>
+        </li>
+        <li>
+          <span class="tag">Jan 2026 · Accepted</span>
+          Three papers accepted to ACC 2026:
+          <ul class="sub">
+            <li><span class="title">Small-covariance noise-to-state stability of stochastic systems and its applications to stochastic gradient dynamics</span><br><span class="who">L. Cui, Z. P. Jiang, E. D. Sontag</span></li>
+            <li><span class="title">Modular machine learning with applications to genetic circuit composition</span><br><span class="who">J. Wang, E. D. Sontag, D. Del Vecchio</span></li>
+            <li><span class="title">On the (almost) global exponential convergence of overparameterized policy optimization for the LQR problem</span><br><span class="who">M. K. Wafi, A. C. B. de Oliveira, E. D. Sontag</span></li>
+          </ul>
+        </li>
+        <li>
+          <span class="tag">Jan 2026 · Accepted</span>
+          Paper accepted to L4DC 2026: <span class="title">On the convergence of overparameterized problems: inherent properties of the compositional structure of neural networks</span><br><span class="who">A. C. B. de Oliveira, D. D. Jatkar, E. D. Sontag</span>.
+        </li>
+        <li>
+          <span class="tag">Jul 2025 · Honor</span>
+          Eduardo Sontag elected to Argentina's Academia Nacional de Ciencias Exactas, Físicas y Naturales.
+        </li>
+        <li>
+          <span class="tag">Apr 2025 · Honor</span>
+          Eduardo Sontag elected to the U.S. National Academy of Sciences.
+        </li>
+        <li>
+          <span class="tag">Apr 2024 · Honor</span>
+          Eduardo Sontag elected to the American Academy of Arts and Sciences.
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<li>
-  Congratulations to all authors: Editors' Choice for Automatica two awards:
-<br>
-  December 2025: Convergence analysis of gradient flow for
-  overparameterized LQR formulations, Arthur Castello B. de Oliveira,
-  Milad Siami, Eduardo D. Sontag.
-[Volume 182, December 2025, 112504]
+  <!-- 02 Lectures -->
+  <section class="plane" id="lectures">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">02</span><h2>Lectures</h2></div>
+      <ul class="feed">
+        <li><span class="tag">Jun 2025</span>Keynote at L4DC, Michigan.</li>
+        <li><span class="tag">Apr&ndash;May 2025</span>Three talks at Imperial College, Cambridge, and Oxford.</li>
+        <li><span class="tag">Feb&ndash;Mar 2025</span>Four talks at UCSD and UCSB, including the Petar Kokotović Lecture at UCSB.</li>
+      </ul>
+    </div>
+  </section>
 
-<br>
-  June 2025: Properties of immersions for systems with multiple limit
-sets with implications to learning Koopman embeddings, 
-Zexiang Liu, Necmiye Ozay, Eduardo D. Sontag
-[Volume 176, June 2025, 112226]  
+  <!-- 03 New publications -->
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">03</span><h2>New publications</h2></div>
+      <p class="note-line">A selection of recent papers. See the <a href="PUBDIR/index.html">publications page</a> for abstracts and the most up-to-date list.</p>
+      <ul class="feed">
+        <li>
+          <span class="title">Global linearization of asymptotically stable systems without hyperbolicity</span><br><span class="who">M. D. Kvalheim, E. D. Sontag</span>. <span class="venue">Systems and Control Letters.</span>
+        </li>
+        <li>
+          <span class="title">Convergence analysis of gradient flow for overparameterized LQR formulations</span><br><span class="who">Arthur Castello Branco de Oliveira, Milad Siami, Eduardo Sontag</span>. <span class="venue">Automatica (accepted).</span>
+        </li>
+        <li>
+          <span class="tag">2025.04.23</span>
+          <a href="FTPDIR/2025_04_bispecific.pdf"><span class="title">Quantitative pharmacology methods for bispecific T cell engagers</span></a><br><span class="who">M. Sadeghi, I. Kareva, G. Pogudin, E. D. Sontag</span>. <span class="venue">Bulletin of Mathematical Biology, 2025.</span>
+        </li>
+        <li>
+          <span class="tag">2025.04.21</span>
+          <a href="FTPDIR/2025_gupta_sontag_cdr_rsi.pdf"><span class="title">Cumulative dose responses for adapting biological systems</span></a><br><span class="who">A. Gupta, E. D. Sontag</span>. <span class="venue">J. Royal Society Interface, 2025.</span>
+        </li>
+        <li>
+          <span class="tag">2025.04.04</span>
+          <a href="FTPDIR/2025_03_gevertz_greene_prosperi_comandantelou_sontag_therapeutic_tolerance_published.pdf"><span class="title">Understanding therapeutic tolerance through a mathematical model of drug-induced resistance</span></a><br><span class="who">L. Gevertz, J. M. Greene, S. Prosperi, N. Comandante-Lou, E. D. Sontag</span>. <span class="venue">npj Systems Biology and Applications, 2025.</span>
+        </li>
+        <li>
+          <span class="tag">2024.10.14</span>
+          <a href="FTPDIR/2024_nature_chembio_partitioning_padmakumar_et_al_voigt.pdf"><span class="title">Partitioning of a 2-bit hash function across 66 communicating cells</span></a><br><span class="who">J. P. Padmakumar, J. Sun, W. Cho, Y. Zhou, C. Krenz, W. Z. Zhong Han, D. Densmore, E. D. Sontag, C. A. Voigt</span>. <span class="venue">Nature Chemical Biology, 21:268&ndash;279, 2025.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<li>
-  Jan 2026 news: Three papers accepted to ACC 2026:
+</main>
 
-  <br>
-  Small-covariance noise-to-state stability of stochastic systems and
-  its applications to stochastic gradient dynamics, L. Cui and
-  Z.P. Jiang and E. D. Sontag
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="name">Control · Learning · Systems Biology</p>
+      <p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University · Boston, Massachusetts</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="PUBDIR/index.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="eduardo.html">Eduardo D. Sontag</a></li>
+        <li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="colophon">
+      <span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span>
+      <span>&copy; <span id="yr"></span> Sontag Lab</span>
+    </div>
+  </div>
+</footer>
 
-  <br>
-  Modular machine learning with applications to genetic circuit
-  composition, J. Wang and E.D. Sontag and D. Del Vecchio
-
-  <br>
-  On the (almost) global exponential convergence of overparameterized
-  policy optimization for the {LQR} problem, M.K. Wafi and A.C.B de
-  Oliveira and E.D. Sontag
-
-<li>
-  Jan 2026 news: Paper accepted to L4DC'26:
-
-  <br> On the convergence of overparameterized problems: Inherent
-  properties of the compositional structure of neural networks, A.C.B
-  de Oliveira and D.D. Jatkar and E.D. Sontag,
-  
-  
-  <li>
-  Eduardo Sontag elected to Argentina's Academia Nacional de Ciencias
-  Exactas, Físicas y Naturales, July 2025.
-
-  <li>
-    Eduardo Sontag elected to National Academy of Sciences, April 2025.
-
-  <li>
-    Eduardo Sontag elected to American Academy of Arts and Sciences, April 2024.
-
-<h2>
-  Lectures
-</h2>
-
-<ul>
-  <li>
-    Eduardo Sontag gave keynote at L4DC in Michigan, in June 2025.
-
-  <li>
-    Eduardo Sontag gave three talks at Imperial College, Cambridge, and
-    Oxford in April-May 2025.
-
-  <li>
-    Eduardo Sontag gave four talks at UCSD and UCSB (including the Petar
-    Kokotovic lecture at UCSB) in February-March 2025.
-
-</ul>
-
-<h2> 
-New Publications! (Please consult
-the <a href="PUBDIR/index.html">publications page</a> for abstracts and more up to date information)
-</h2>
-<ul>
-
-  <li>
-    Paper on global linearizations published in Systems and Control
-    Letters:
-"Global linearization of asymptotically stable systems without hyperbolicity"
-M. D. Kvalheim and E. D. Sontag
-
-  <li>
-    Paper on overparametrized LQR accepted for Automatica:
-"Convergence analysis of gradient flow for overparameterized LQR
-formulations"
-Arthur Castello Branco de Oliveira, Milad Siami, Eduardo Sontag
-
-  <li>
-      <a href="FTPDIR/2025_04_bispecific.pdf">
-  (2025.04.23) Paper on bispecific T cell engagers accepted for Bulletin of Mathematical Biology
-  </a>
-  <br>
-  M. Sadeghi, I. Kareva, G. Pogudin, and E.D. Sontag. 
-  <em>. Quantitative pharmacology methods for bispecific T cell engagers.</em> 
-   Bulletin of Mathematical Biology, 2025.
- </li>
- 
-  <li>
-  <a href="FTPDIR/2025_gupta_sontag_cdr_rsi.pdf">
-  (2025.04.21) Paper on cumulative dose responses accepted for J Royal
-  Society Interface
-  </a>
-  <br>
-  A. Gupta and E. D. Sontag. 
-  <em>Cumulative dose responses for adapting biological systems.</em> 
-  J Royal Society Interface 2025.
- </li>
-
- <li>
-  <a href="FTPDIR/2025_03_gevertz_greene_prosperi_comandantelou_sontag_therapeutic_tolerance_published.pdf">
-  (2025.04.04) Paper on induced resistance in chemotherapy accepted for Nature's npj Systems and Synthetic Biology
-  </a>
-
-  <br>
-  L. Gevertz, J.M Greene, S. Prosperi, N. Comandante-Lou, and E.D. Sontag. 
-  <em>Understanding therapeutic tolerance through a mathematical model of drug-induced resistance.</em> 
-   npj Systems Biology and Applications, 2025.
- </li>
-
- <li>
-  <a href="FTPDIR/2024_nature_chembio_partitioning_padmakumar_et_al_voigt.pdf">
-  (2024.10.14) Paper on synthetic circuits accepted for Nature Chemical Biology
-  </a>
- 
-  <br>
-  J.P. Padmakumar, J. Sun 2, W. Cho 3, Y. Zhou, C. Krenz, Zhong Han W.Z, D. Densmore, E. D. Sontag, and C.A. Voigt. 
-  <em> Partitioning of a 2-bit hash function across 66 communicating cells.</em>
-  Nature Chemical Biology, 21:268-279, 2025. 
- </li>
-
-
-
- 
-</ul>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
 </body>
 </html>
