@@ -1,566 +1,164 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>feedback control</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Publications about 'feedback control'</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Publications about 'feedback control'
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Articles in journal or book chapters
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="2026_05_wafi_oliveira_sontag_antithetic_arxiv"></a>M.K. Wafi,
-A.C.B de Oliveira,
- and E.D. Sontag.
-<strong>Boundedness of solutions in feedback systems with antithetic controllers</strong>.
-2026.
-Note: Submitted. Preprint in arXiv 2604.27290.Keyword(s): boundedness of solutions,
-nonlinear systems,
-antithetic controller,
-integral feedback,
-synthetic biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Antithetic feedback controllers have become a key experimental and theoretical tool in synthetic biology. Introduced by Khammash and collaborators about 10 years ago, they are employed in order to achieve the practical regulation of protein expression, including tracking and robust disturbance rejection. In closed-loop, there are unique equilibria which, depending on parameter values, can be unstable. It had been shown, however, that this instability is not arbitrary: any bounded trajectory that stays away from the equilibrium must converge to a periodic orbit. This motivated a long-standing open question: is every trajectory bounded? In other words, even if the equilibrium is unstable, can nonlinear effects prevent unbounded excursions in the state space? This paper provides an affirmative answer, establishing the boundedness of all solutions. Previous attempts to prove this fact using Lyapunov functions had no success. Instead, this paper takes a completely different approach, specific to antithetic configurations, in which the key idea is to think of the controller as providing a ``persistently negative feedback'' which acts far away from the equilibrium in such a way so as to keep trajectories from diverging. This new approach, although tailored to the antithetic controller, might be useful in other applications as well.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2025_l4dc_talk_paper"></a>E.D. Sontag.
-<strong>Some remarks on gradient dominance and LQR policy optimization</strong>.
-<em>arXiv 2507.10452</em>,
-2025.
-[<a href="../../FTPDIR/2025_l4dc_sontag_arxiv_some_remarks.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/https://doi.org/10.48550/arXiv.2507.10452">https://doi.org/10.48550/arXiv.2507.10452</a>]
-Keyword(s): gradient dynamics,
-gradient descent,
-gradient systems,
-numerical methods,
-dynamics of algorithms,
-gradient dominance,
-gradient flows,
-dynamics of algorithms,
-LQR,
-reinforcement learning,
-machine learning,
-artificial intelligence,
-optimal control.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Solutions of optimization problems, including policy optimization in reinforcement learning, typically rely upon some variant of gradient descent. There has been much recent work in the machine learning, control, and optimization communities applying the Polyak-Łojasiewicz Inequality (PLI) to such problems in order to establish an exponential rate of convergence (a.k.a. ``linear convergence'' in the local-iteration language of numerical analysis) of loss functions to their minima under the gradient flow. Often, as is the case of policy iteration for the continuous-time LQR problem, this rate vanishes for large initial conditions, resulting in a mixed globally linear / locally exponential behavior. This is in sharp contrast with the discrete-time LQR problem, where there is global exponential convergence. That gap between CT and DT behaviors motivates the search for various generalized PLI-like conditions, and this paper addresses that topic. Moreover, these generalizations are key to understanding the transient and asymptotic effects of errors in the estimation of the gradient, errors which might arise from adversarial attacks, wrong evaluation by an oracle, early stopping of a simulation, inaccurate and very approximate digital twins, stochastic computations (algorithm ``reproducibility''), or learning by sampling from limited data. We describe an ``input to state stability'' (ISS) analysis of this issue. We also discuss convergence and PLI-like properties of ``linear feedforward neural networks'' in feedback control. Much of the work described here was done in collaboration with Arthur Castello B. de Oliveira, Leilei Cui, Zhong-Ping Jiang, and Milad Siami. This is a short paper summarizing the slides presented at my keynote at the 2025 L4DC (Learning for Dynamics \& Control Conference) in Ann Arbor, Michigan, 05 June 2025. A partial bibliography has been added.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="24submitted_arthur_nn_gradient"></a>A.C.B de Oliveira,
-M. Siami,
- and E.D. Sontag.
-<strong>Convergence analysis of overparametrized LQR formulations</strong>.
-<em>Automatica</em>,
-182:112504,
-2025.
-Note: Version with more details in arXiv 2408.15456.
-[<a href="../../FTPDIR/2025_automatica_olivera_siami_sontag_overparametrized_lqr_reprint.pdf">PDF</a>]
-Keyword(s): gradient dynamics,
-gradient descent,
-gradient systems,
-numerical methods,
-dynamics of algorithms,
-gradient dominance,
-gradient flows,
-machine learning,
-artificial intelligence,
-learning theory,
-singularities in optimization,
-neural networks,
-overparametrization,
-input to state stability,
-feedback control,
-LQR.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Motivated by the growing use of Artificial Intelligence (AI) tools in control design, this paper takes the first steps towards bridging the gap between results from Direct Gradient methods for the Linear Quadratic Regulator (LQR), and neural networks. More specifically, it looks into the case where one wants to find a Linear Feed-Forward Neural Network (LFFNN) feedback that minimizes a LQR cost. This paper starts by computing the gradient formulas for the parameters of each layer, which are used to derive a key conservation law of the system. This conservation law is then leveraged to prove boundedness and global convergence of solutions to critical points, and invariance of the set of stabilizing networks under the training dynamics. This is followed by an analysis of the case where the LFFNN has a single hidden layer. For this case, the paper proves that the training converges not only to critical points but to the optimal feedback control law for all but a set of measure-zero of the initializations. These theoretical results are followed by an extensive analysis of a simple version of the problem (the ``vector case''), proving the theoretical properties of accelerated convergence and robustness for this simpler example. Finally, the paper presents numerical evidence of faster convergence of the training of general LFFNNs when compared to traditional direct gradient methods, showing that the acceleration of the solution is observable even when the gradient is not explicitly computed but estimated from evaluations of the cost function.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="sontag2022iss_gradient_flows"></a>E.D. Sontag.
-<strong>Remarks on input to state stability of perturbed gradient flows, motivated by model-free feedback control learning</strong>.
-<em>Systems and Control Letters</em>,
-161:105138,
-2022.
-Note: Important: there is an error in the paper. For the LQR application, the paper only shows iISS, not ISS. See the paper Small-disturbance input-to-state stability of perturbed gradient flows: Applications to LQR problem for details.[<a href="../../FTPDIR/iss_gradient_reprint_2022.pdf">PDF</a>]
-Keyword(s): gradient dominance,
-iss,
-input to state stability,
-data-driven control,
-gradient systems,
-steepest descent,
-model-free control,
-gradient dynamics,
-gradient descent,
-gradient systems,
-gradient descent,
-numerical methods,
-dynamics of algorithms.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Recent work on data-driven control and reinforcement learning has renewed interest in a relatively old field in control theory: model-free optimal control approaches which work directly with a cost function and do not rely upon perfect knowledge of a system model. Instead, an "oracle" returns an estimate of the cost associated to, for example, a proposed linear feedback law to solve a linear-quadratic regulator problem. This estimate, and an estimate of the gradient of the cost, might be obtained by performing experiments on the physical system being controlled. This motivates in turn the analysis of steepest descent algorithms and their associated gradient differential equations. This paper studies the effect of errors in the estimation of the gradient, framed in the language of input to state stability, where the input represents a perturbation from the true gradient. Since one needs to study systems evolving on proper open subsets of Euclidean space, a self-contained review of input to state stability definitions and theorems for systems that evolve on such sets is included. The results are then applied to the study of noisy gradient systems, as well as the associated steepest descent algorithms.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2019_deepak_integral_controller"></a>D.K. Agrawal,
-R. Marshall,
-V. Noireaux,
- and E.D. Sontag.
-<strong>In vitro implementation of robust gene regulation in a synthetic biomolecular integral controller</strong>.
-<em>Nature Communications</em>,
-10:1-12,
-2019.
-[<a href="../../FTPDIR/agrawal_marshall_noireaux_sontag_natcom_with_SI.pdf">PDF</a>]
-Keyword(s): antithetic controller,
-tracking,
-synthetic biology,
-integral feedback,
-TX/TL,
-systems biology,
-dynamical systems,
-adaptation,
-internal model principle,
-identifiability.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Cells respond to biochemical and physical internal as well as external signals. These signals can be broadly classified into two categories: (a) ``actionable'' or ``reference'' inputs that should elicit appropriate biological or physical responses such as gene expression or motility, and (b) ``disturbances'' or ``perturbations'' that should be ignored or actively filtered-out. These disturbances might be exogenous, such as binding of nonspecific ligands, or endogenous, such as variations in enzyme concentrations or gene copy numbers. In this context, the term robustness describes the capability to produce appropriate responses to reference inputs while at the same time being insensitive to disturbances. These two objectives often conflict with each other and require delicate design trade-offs. Indeed, natural biological systems use complicated and still poorly understood control strategies in order to finely balance the goals of responsiveness and robustness. A better understanding of such natural strategies remains an important scientific goal in itself and will play a role in the construction of synthetic circuits for therapeutic and biosensing applications. A prototype problem in robustly responding to inputs is that of ``robust tracking'', defined by the requirement that some designated internal quantity (for example, the level of expression of a reporter protein) should faithfully follow an input signal while being insensitive to an appropriate class of perturbations. Control theory predicts that a certain type of motif, called integral feedback, will help achieve this goal, and this motif is, in fact, a necessary feature of any system that exhibits robust tracking. Indeed, integral feedback has always been a key component of electrical and mechanical control systems, at least since the 18th century when James Watt employed the centrifugal governor to regulate steam engines. Motivated by this knowledge, biological engineers have proposed various designs for biomolecular integral feedback control mechanisms. However, practical and quantitatively predictable implementations have proved challenging, in part due to the difficulty in obtaining accurate models of transcription, translation, and resource competition in living cells, and the stochasticity inherent in cellular reactions. These challenges prevent first-principles rational design and parameter optimization. In this work, we exploit the versatility of an Escherichia coli cell-free transcription-translation (TXTL) to accurately design, model and then build, a synthetic biomolecular integral controller that precisely controls the expression of a target gene. To our knowledge, this is the first design of a functioning gene network that achieves the goal of making gene expression track an externally imposed reference level, achieves this goal even in the presence of disturbances, and whose performance quantitatively agrees with mathematical predictions.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2019_biorxiv_margaliot_sontag"></a>M. Margaliot and E.D. Sontag.
-<strong>Compact attractors of an antithetic integral feedback system have a simple structure</strong>.
-<em>bioRxiv</em>,
-2019.
-[<a href="https://www.biorxiv.org/content/early/2019/12/08/868000">WWW</a>]
-[doi:<a href="http://dx.doi.org/10.1101/868000">10.1101/868000</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Since its introduction by Briat, Gupta and Khammash, the antithetic feedback controller design has attracted considerable attention in both theoretical and experimental systems biology. The case in which the plant is a two-dimensional linear system (making the closed-loop system a nonlinear four-dimensional system) has been analyzed in much detail. This system has a unique equilibrium but, depending on parameters, it may exhibit periodic orbits. An interesting open question is whether other dynamical behaviors, such as chaotic attractors, might be possible for some parameter choices. This note shows that, for any parameter choices, every bounded trajectory satisfies a Poincar{\'e}-Bendixson property. The analysis is based on the recently introduced notion of k-cooperative dynamical systems. It is shown that the model is a strongly 2-cooperative system, implying that the dynamics in the omega-limit set of any precompact solution is conjugate to the dynamics in a compact invariant subset of a two-dimensional Lipschitz dynamical system, thus precluding chaotic and other strange attractors.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="weinstein07"></a>A.M. Weinstein and E.D. Sontag.
-<strong>Modeling proximal tubule cell homeostasis: Tracking changes in luminal flow</strong>.
-<em>Bulletin of Mathematical Biology</em>,
-71:1285-1322,
-2009.
-[<a href="../../FTPDIR/weinstein_sontag_bulletin_math_biology_proximal_tubule_2009.pdf">PDF</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-During normal kidney function, there are are routinely wide swings in proximal tubule fluid flow and proportional changes in Na+ reabsorption across tubule epithelial cells. This "glomerulotubular balance" occurs in the absence of any substantial change in cell volume, and is thus a challenge to coordinate luminal membrane solute entry with peritubular membrane solute exit. In this work, linear optimal control theory is applied to generate a configuration of regulated transporters that could achieve this result. A previously developed model of rat proximal tubule epithelium is linearized about a physiologic reference condition; the approximate linear system is recast as a dynamical system; and a Riccati equation is solved to yield optimal linear feedback that stabilizes Na+ flux, cell volume, and cell pH. This optimal feedback control is largely consigned to three physiologic variables, cell volume, cell electrical potential, and lateral intercellular hydrostatic pressure. Transport modulation by cell volume stabilizes cell volume; transport modulation by electrical potential or interspace pressure act to stabilize Na+ flux and cell pH. This feedback control is utilized in a tracking problem, in which reabsorptive Na+ flux varies over a factor of two. The resulting control parameters consist of two terms, an autonomous term and a feedback term, and both terms include transporters on both luminal and peritubular cell membranes. Overall, the increase in Na+ flux is achieved with upregulation of luminal Na+/H+ exchange and Na+-glucose cotransport, with increased peritubular Na+-3HCO_3- and K+-Cl- cotransport, and with increased Na+,K+-ATPase activity. The configuration of activated transporters emerges as testable hypothesis of the molecular basis for glomerulotubular balance. It is suggested that the autonomous control component at each cell membrane could represent the cytoskeletal effects of luminal flow. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="liberzon_sontag_wang_universalISS_SCL02"></a>D. Liberzon,
-E.D. Sontag,
- and Y. Wang.
-<strong>Universal construction of feedback laws achieving ISS and integral-ISS disturbance attenuation</strong>.
-<em>Systems Control Lett.</em>,
-46(2):111-127,
-2002.
-Note: Errata here: http://sontaglab.org/FTPDIR/iiss-clf-errata.pdf.
-[<a href="../../FTPDIR/iISS-CLFs.pdf">PDF</a>]
-Keyword(s): input to state stability,
-integral input to state stability,
-ISS,
-iISS,
-nonlinear control,
-feedback stabilization.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- We study nonlinear systems with both control and disturbance inputs. The main problem addressed in the paper is design of state feedback control laws that render the closed-loop system integral-input-to-state stable (iISS) with respect to the disturbances. We introduce an appropriate concept of control Lyapunov function (iISS-CLF), whose existence leads to an explicit construction of such a control law. The same method applies to the problem of input-to-state stabilization. Converse results and techniques for generating iISS-CLFs are also discussed. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="clocks99"></a>E.D. Sontag.
-<strong>Clocks and insensitivity to small measurement errors</strong>.
-<em>ESAIM Control Optim. Calc. Var.</em>,
-4:537-557,
-1999.
-[<a href="../../FTPDIR/clocks-sampling.pdf">PDF</a>]
-Keyword(s): nonlinear control,
-feedback stabilization,
-hybrid systems,
-discontinuous feedback,
-measurement noise.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- This paper provides a precise result which shows that insensitivity to small measurement errors in closed-loop stabilization can be attained provided that the feedback controller ignores observations during small time intervals. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="MR1424371"></a>Y. Lin and E.D. Sontag.
-<strong>Control-Lyapunov universal formulas for restricted inputs</strong>.
-<em>Control Theory and Advanced Technology</em>,
-10(4, part 5):1981-2004,
-1995.
-[<a href="../../FTPDIR/clf-bounded-ctat_reprint.pdf">PDF</a>]
-Keyword(s): control-Lyapunov functions,
-saturation,
-bounded inputs.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- We deal with the question of obtaining explicit feedback control laws that stabilize a nonlinear system, under the assumption that a "control Lyapunov function" is known. In previous work, the case of unbounded controls was considered. Here we obtain results for bounded and/or positive controls. We also provide some simple preliminary remarks regarding a set stability version of the problem and a version for systems subject to disturbances. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="MR605868"></a>M. L. J. Hautus and E.D. Sontag.
-<strong>An approach to detectability and observers</strong>.
-In <em>Algebraic and geometric methods in linear systems theory (AMS-NASA-NATO Summer Sem., Harvard Univ., Cambridge, Mass., 1979)</em>,
-volume 18 of <em>Lectures in Appl. Math.</em>,
-pages 99-135.
-Amer. Math. Soc.,
-Providence, R.I.,
-1980.
-[<a href="../../FTPDIR/mh-observers.pdf">PDF</a>]
-Keyword(s): observability.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- This paper proposes an approach to the problem of establishing the existence of observers for deterministic dynamical systems. This approach differs from the standard one based on Luenberger observers in that the observation error is not required to be Markovian given the past input and output data. A general abstract result is given, which special- izes to new results for parametrized families of linear systems, delay systems and other classes of systems. Related problems of feedback control and regulation are also studied. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>feedback control</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2025</div><ol class="pub-list">
+<li id="24submitted_arthur_nn_gradient"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/DE-OLIVEIRA-ACB.html">A.C.B de Oliveira</a>, <a href="../Author/SIAMI-M.html">M. Siami</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Convergence analysis of overparametrized LQR formulations"</span>, <span class="venue">Automatica, vol. 182, pp. 112504</span>, <span class="yr"><a href="../Year/2025.html">2025</a></span>. <span class="links"><a href="../../FTPDIR/2025_automatica_olivera_siami_sontag_overparametrized_lqr_reprint.pdf">pdf</a></span><div class="venue" style="font-size:.88rem">Version with more details in arXiv 2408.15456</div><div class="kw"><a href="../Keyword/GRADIENT-DYNAMICS.html">gradient dynamics</a> &middot; <a href="../Keyword/GRADIENT-DESCENT.html">gradient descent</a> &middot; <a href="../Keyword/GRADIENT-SYSTEMS.html">gradient systems</a> &middot; <a href="../Keyword/NUMERICAL-METHODS.html">numerical methods</a> &middot; <a href="../Keyword/DYNAMICS-OF-ALGORITHMS.html">dynamics of algorithms</a> &middot; <a href="../Keyword/GRADIENT-DOMINANCE.html">gradient dominance</a> &middot; <a href="../Keyword/GRADIENT-FLOWS.html">gradient flows</a> &middot; <a href="../Keyword/MACHINE-LEARNING.html">machine learning</a> &middot; <a href="../Keyword/ARTIFICIAL-INTELLIGENCE.html">artificial intelligence</a> &middot; <a href="../Keyword/LEARNING-THEORY.html">learning theory</a> &middot; <a href="../Keyword/SINGULARITIES-IN-OPTIMIZATION.html">singularities in optimization</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a> &middot; <a href="../Keyword/OVERPARAMETRIZATION.html">overparametrization</a> &middot; <a href="../Keyword/INPUT-TO-STATE-STABILITY.html">input to state stability</a> &middot; <a href="../Keyword/FEEDBACK-CONTROL.html">feedback control</a> &middot; <a href="../Keyword/LQR.html">LQR</a></div><details><summary>Abstract</summary><p>Motivated by the growing use of Artificial Intelligence (AI) tools in control design, this paper takes the first steps towards bridging the gap between results from Direct Gradient methods for the Linear Quadratic Regulator (LQR), and neural networks. More specifically, it looks into the case where one wants to find a Linear Feed-Forward Neural Network (LFFNN) feedback that minimizes a LQR cost. This paper starts by computing the gradient formulas for the parameters of each layer, which are used to derive a key conservation law of the system. This conservation law is then leveraged to prove boundedness and global convergence of solutions to critical points, and invariance of the set of stabilizing networks under the training dynamics. This is followed by an analysis of the case where the LFFNN has a single hidden layer. For this case, the paper proves that the training converges not only to critical points but to the optimal feedback control law for all but a set of measure-zero of the initializations. These theoretical results are followed by an extensive analysis of a simple version of the problem (the ``vector case&#x27;&#x27;), proving the theoretical properties of accelerated convergence and robustness for this simpler example. Finally, the paper presents numerical evidence of faster convergence of the training of general LFFNNs when compared to traditional direct gradient methods, showing that the acceleration of the solution is observable even when the gradient is not explicitly computed but estimated from evaluations of the cost function.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Conference articles
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="2025_margal"></a>M. Margaliot,
-C. Wu,
- and E.D.Sontag.
-<strong>Compact attractors of an antithetic integral feedback system have a simple structure</strong>.
-In <em>Proc. 64th IEEE Conference on Decision and Control (CDC)</em>,
-pages 2880-2885,
-2025.
-[<a href="../../FTPDIR/2025_cdc_margaliot_wu_sontag_antithetic_compact_attractors_of_an_antithetic_integral_feedback_system_have_a_simple_structure.pdf">PDF</a>]
-Keyword(s): Poincar�-Bendixson,
-synthetic biology,
-nonlinear control.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Since its introduction by Briat, Gupta and Khammash, the antithetic feedback controller design has attracted considerable attention in both theoretical and experimental systems biology. The case in which the plant is a two-dimensional linear system (making the closed-loop system a four-dimensional nonlinear system) has been analyzed in much detail. This system has a unique equilibrium~$e$ but, depending on parameters, it may exhibit periodic orbits. An interesting question is for what parameter values periodic orbits exist. Another open question is whether other dynamical behaviors, such as chaotic attractors, might be possible for some parameter choices. We show that, for any parameter choices, every compact omega-limit set that does not include~$e$ is a periodic solution￼. We also show that if the Jacobian of the vector field at the equilibrium is unstable then a (non-trivial) periodic orbit exists. The analysis is based on the theory of strongly~$2$-cooperative systems.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="24cdc_arthur_nn_gradient"></a>A.C.B de Oliveira,
-M. Siami,
- and E.D. Sontag.
-<strong>Remarks on the gradient training of linear neural network based feedback for the LQR Problem</strong>.
-In <em>Proc. 2024 63rd IEEE Conference on Decision and Control (CDC)</em>,
-pages 7846-7852,
-2024.
-[<a href="../../FTPDIR/2024_cdc_lqr_overparametrized_published.pdf">PDF</a>]
-Keyword(s): gradient dynamics,
-gradient descent,
-gradient systems,
-numerical methods,
-dynamics of algorithms,
-gradient dominance,
-gradient flows,
-machine learning,
-artificial intelligence,
-neural networks,
-overparametrization,
-dynamics of algorithms,
-input to state stability,
-feedback control,
-LQR.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Motivated by the current interest in using Artificial intelligence (AI) tools in control design, this paper takes the first steps towards bridging results from gradient methods for solving the LQR control problem, and neural networks. More specifically, it looks into the case where one wants to find a Linear Feed-Forward Neural Network (LFFNN) that minimizes the Linear Quadratic Regulator (LQR) cost. This work develops gradient formulas that can be used to implement the training of LFFNNs to solve the LQR problem, and derives an important conservation law of the system. This conservation law is then leveraged to prove global convergence of solutions and invariance of the set of stabilizing networks under the training dynamics. These theoretical results are then followed by and extensive analysis of the simplest version of the problem (the ``scalar case'') and by numerical evidence of faster convergence of the training of general LFFNNs when compared to traditional direct gradient methods. These results not only serve as indication of the theoretical value of studying such a problem, but also of the practical value of LFFNNs as design tools for data-driven control applications.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2022_sznaier_olshevsky_sontag_mtns_control_oriented_learning"></a>M. Sznaier,
-A. Olshevsky,
- and E.D. Sontag.
-<strong>The role of systems theory in control oriented learning</strong>.
-In <em>Proc. 25th Int. Symp. Mathematical Theory of Networks and Systems (MTNS 2022)</em>,
-2022.
-Note: Looks like only the abstract was published!.
-[<a href="../../FTPDIR/2022_sznaier_olshevsky_sontag_mtns_control_oriented_learning.pdf">PDF</a>]
-Keyword(s): control oriented learning,
-neural networks,
-reinforcement learning,
-feedback control,
-machine learning.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Systems theory can play an important in unveiling fundamental limitations of learning algorithms and architectures when used to control a dynamical system, and in suggesting strategies for overcoming these limitations. As an example, a feedforward neural network cannot stabilize a double integrator using output feedback. Similarly, a recurrent NN with differentiable activation functions that stabilizes a non-strongly stabilizable system must be itself open loop unstable, a fact that has profound implications for training with noisy, finite data. A potential solution to this problem, motivated by results on stabilization with periodic control, is the use of neural nets with periodic resets, showing that indeed systems theoretic analysis is instrumental in developing architectures capable of controlling certain classes of unstable systems. This short conference paper also argues that when the goal is to learn control oriented models, the loss function should reflect closed loop, rather than open loop model performance, a fact that can be accomplished by using gap-metric motivated loss functions.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="19cdc_sequestration"></a>D. K. Agrawal,
-R. Marshall,
-M.A. Al-Radhawi,
-V. Noireaux,
- and E. D. Sontag.
-<strong>Some remarks on robust gene regulation in a biomolecular integral controller</strong>.
-In <em>Proc. 2019 IEEE Conf. Decision and Control</em>,
-pages 2820-2825,
-2019.
-[<a href="../../FTPDIR/2019_cdc_integral_controller.pdf">PDF</a>]
-Keyword(s): adaptation,
-biological adaptation,
-perfect adaptation,
-tracking,
-synthetic biology,
-integral feedback,
-TX/TL,
-systems biology,
-dynamical systems,
-adaptation,
-internal model principle,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Integral feedback can help achieve robust tracking independently of external disturbances. Motivated by this knowledge, biological engineers have proposed various designs of biomolecular integral feedback controllers to regulate biological processes. In this paper, we theoretically analyze the operation of a particular synthetic biomolecular integral controller, which we have recently proposed and implemented experimentally. Using a combination of methods, ranging from linearized analysis to sum-of-squares (SOS) Lyapunov functions, we demonstrate that, when the controller is operated in closed-loop, it is capable of providing integral corrections to the concentration of an output species in such a manner that the output tracks a reference signal linearly over a large dynamic range. We investigate the output dependency on the reaction parameters through sensitivity analysis, and quantify performance using control theory metrics to characterize response properties, thus providing clear selection guidelines for practical applications. We then demonstrate the stable operation of the closed-loop control system by constructing quartic Lyapunov functions using SOS optimization techniques, and establish global stability for a unique equilibrium. Our analysis suggests that by incorporating effective molecular sequestration, a biomolecular closed-loop integral controller that is capable of robustly regulating gene expression is feasible.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="19acc"></a>S. Bruno,
-M.A. Al-Radhawi,
-E.D. Sontag,
- and D. Del Vecchio.
-<strong>Stochastic analysis of genetic feedback controllers to reprogram a pluripotency gene regulatory network</strong>.
-In <em>Proc. 2019 Automatic Control Conference</em>,
-pages 5089-5096,
-2019.
-[<a href="../../FTPDIR/2019_acc_stochastic_pluripotency_bruno_alradhawi_sontag_delvecchio_reprint.pdf">PDF</a>]
-Keyword(s): multistability,
-reaction networks,
-systems biology,
-stochastic systems,
-cell differentiation,
-multistationarity,
-chemical master equations.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Cellular reprogramming is traditionally accomplished through an open loop control approach, wherein key transcription factors are injected in cells to steer a gene regulatory network toward a pluripotent state. Recently, a closed loop feedback control strategy was proposed in order to achieve more accurate control. Previous analyses of the controller were based on deterministic models, ignoring the substantial stochasticity in these networks, Here we analyze the Chemical Master Equation for reaction models with and without the feedback controller. We computationally and analytically investigate the performance of the controller in biologically relevant parameter regimes where stochastic effects dictate system dynamics. Our results indicate that the feedback control approach still ensures reprogramming even when analyzed using a stochastic model.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2024</div><ol class="pub-list">
+<li id="24cdc_arthur_nn_gradient"><a class="cat-mark" href="../Category/conferences.html" title="Conference articles">&#9642;</a><span class="au"><a href="../Author/DE-OLIVEIRA-ACB.html">A.C.B de Oliveira</a>, <a href="../Author/SIAMI-M.html">M. Siami</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Remarks on the gradient training of linear neural network based feedback for the LQR Problem"</span>, <span class="venue">In Proc. 2024 63rd IEEE Conference on Decision and Control (CDC), pp. 7846-7852</span>, <span class="yr"><a href="../Year/2024.html">2024</a></span>. <span class="links"><a href="../../FTPDIR/2024_cdc_lqr_overparametrized_published.pdf">pdf</a></span><div class="kw"><a href="../Keyword/GRADIENT-DYNAMICS.html">gradient dynamics</a> &middot; <a href="../Keyword/GRADIENT-DESCENT.html">gradient descent</a> &middot; <a href="../Keyword/GRADIENT-SYSTEMS.html">gradient systems</a> &middot; <a href="../Keyword/NUMERICAL-METHODS.html">numerical methods</a> &middot; <a href="../Keyword/DYNAMICS-OF-ALGORITHMS.html">dynamics of algorithms</a> &middot; <a href="../Keyword/GRADIENT-DOMINANCE.html">gradient dominance</a> &middot; <a href="../Keyword/GRADIENT-FLOWS.html">gradient flows</a> &middot; <a href="../Keyword/MACHINE-LEARNING.html">machine learning</a> &middot; <a href="../Keyword/ARTIFICIAL-INTELLIGENCE.html">artificial intelligence</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a> &middot; <a href="../Keyword/OVERPARAMETRIZATION.html">overparametrization</a> &middot; <a href="../Keyword/DYNAMICS-OF-ALGORITHMS.html">dynamics of algorithms</a> &middot; <a href="../Keyword/INPUT-TO-STATE-STABILITY.html">input to state stability</a> &middot; <a href="../Keyword/FEEDBACK-CONTROL.html">feedback control</a> &middot; <a href="../Keyword/LQR.html">LQR</a></div><details><summary>Abstract</summary><p>Motivated by the current interest in using Artificial intelligence (AI) tools in control design, this paper takes the first steps towards bridging results from gradient methods for solving the LQR control problem, and neural networks. More specifically, it looks into the case where one wants to find a Linear Feed-Forward Neural Network (LFFNN) that minimizes the Linear Quadratic Regulator (LQR) cost. This work develops gradient formulas that can be used to implement the training of LFFNNs to solve the LQR problem, and derives an important conservation law of the system. This conservation law is then leveraged to prove global convergence of solutions and invariance of the set of stabilizing networks under the training dynamics. These theoretical results are then followed by and extensive analysis of the simplest version of the problem (the ``scalar case&#x27;&#x27;) and by numerical evidence of faster convergence of the training of general LFFNNs when compared to traditional direct gradient methods. These results not only serve as indication of the theoretical value of studying such a problem, but also of the practical value of LFFNNs as design tools for data-driven control applications.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Internal reports
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="arxiv_iffl_jan2016"></a>E.D. Sontag.
-<strong>A remark on incoherent feedforward circuits as change detectors and feedback controllers</strong>.
-Technical report,
-arXiv:1602.00162,
-2016.
-[<a href="../../FTPDIR/arxiv_iffl_change_detection_jan2016_1602.00162v1.pdf">PDF</a>]
-Keyword(s): scale invariance,
-fold change detection,
-T cells,
-incoherent feedforward loops,
-immunology,
-incoherent feedforward loop,
-feedforward,
-IFFL.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This note analyzes incoherent feedforward loops in signal processing and control. It studies the response properties of IFFL's to exponentially growing inputs, both for a standard version of the IFFL and for a variation in which the output variable has a positive self-feedback term. It also considers a negative feedback configuration, using such a device as a controller. It uncovers a somewhat surprising phenomenon in which stabilization is only possible in disconnected regions of parameter space, as the controlled system's growth rate is varied.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2022</div><ol class="pub-list">
+<li id="2022_sznaier_olshevsky_sontag_mtns_control_oriented_learning"><a class="cat-mark" href="../Category/conferences.html" title="Conference articles">&#9642;</a><span class="au"><a href="../Author/SZNAIER-M.html">M. Sznaier</a>, <a href="../Author/OLSHEVSKY-A.html">A. Olshevsky</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"The role of systems theory in control oriented learning"</span>, <span class="venue">In Proc.\ 25th Int.\ Symp.\ Mathematical Theory of Networks and Systems (MTNS 2022)</span>, <span class="yr"><a href="../Year/2022.html">2022</a></span>. <span class="links"><a href="../../FTPDIR/2022_sznaier_olshevsky_sontag_mtns_control_oriented_learning.pdf">pdf</a></span><div class="venue" style="font-size:.88rem">Looks like only the abstract was published!</div><div class="kw"><a href="../Keyword/CONTROL-ORIENTED-LEARNING.html">control oriented learning</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a> &middot; <a href="../Keyword/REINFORCEMENT-LEARNING.html">reinforcement learning</a> &middot; <a href="../Keyword/FEEDBACK-CONTROL.html">feedback control</a> &middot; <a href="../Keyword/MACHINE-LEARNING.html">machine learning</a></div><details><summary>Abstract</summary><p>Systems theory can play an important in unveiling fundamental limitations of learning algorithms and architectures when used to control a dynamical system, and in suggesting strategies for overcoming these limitations. As an example, a feedforward neural network cannot stabilize a double integrator using output feedback. Similarly, a recurrent NN with differentiable activation functions that stabilizes a non-strongly stabilizable system must be itself open loop unstable, a fact that has profound implications for training with noisy, finite data. A potential solution to this problem, motivated by results on stabilization with periodic control, is the use of neural nets with periodic resets, showing that indeed systems theoretic analysis is instrumental in developing architectures capable of controlling certain classes of unstable systems. This short conference paper also argues that when the goal is to learn control oriented models, the loss function should reflect closed loop, rather than open loop model performance, a fact that can be accomplished by using gap-metric motivated loss functions.</p></details></li>
 </ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:26 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>

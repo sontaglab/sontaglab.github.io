@@ -1,516 +1,162 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>resistance</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Publications about 'resistance'</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Publications about 'resistance'
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Articles in journal or book chapters
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="2025_chen_mali_levine_sontag_notch"></a>T. Chen,
-M. A. Al-Radhawi,
-H. Levine,
- and E. D. Sontag.
-<strong>The interaction between dynamic ligand signaling and epigenetics in Notch-induced cancer metastasis</strong>.
-<em>Physical Biology</em>,
-23:016002,
-2026.
-Note: Also 2025 biorxiv 10.1101/2025.05.19.654987.
-[<a href="http://iopscience.iop.org/article/10.1088/1478-3975/ae2c34">WWW</a>]
-[<a href="../../FTPDIR/2026_chen_notch_delta_physbio_reprint_and_si.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/10.1088/1478-3975/ae2c34">10.1088/1478-3975/ae2c34</a>]
-Keyword(s): metastasis,
-melanoma,
-Notch signaling,
-miR-222,
-epigenetics,
-drug resistance,
-therapy resistance.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Metastatic melanoma presents a formidable challenge in oncology due to its high invasiveness and resistance to current treatments. Central to its ability to metastasize is the Notch signaling pathway, which, when activated through direct cell-cell interactions, propels cells into a metastatic state through mechanisms akin to the epithelial-mesenchymal transition (EMT). While the upregulation of miR-222 has been identified as a critical step in this metastatic progression, the mechanism through which this upregulation persists in the absence of active Notch signaling remains unclear. Here we introduce a dynamical system model that integrates miR-222 gene regulation with histone feedback mechanisms. Through computational analysis, we delineate the non-linear decision boundaries that govern melanoma cell fate transitions, taking into account the dynamics of Notch signaling and the role of epigenetic modifications. Our approach highlights the critical interplay between Notch signaling pathways and epigenetic regulation in dictating the fate of melanoma cells.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2025_toxicity"></a>J.L. Gevertz,
-H.V. Jain,
-I. Kareva,
-K.P. Wilkie,
-J. Brown,
-Y.P. Huang,
-E.D. Sontag,
-V. Vinogradov,
- and M. Davies.
-<strong>Delaying cancer progression by integrating toxicity constraints in a model of adaptive therapy</strong>.
-<em>npj Systems Biology and Applications</em>,
-12:11,
-2026.
-[<a href="../../FTPDIR/gevertz_et_al_toxicity_npj_2026.pdf">PDF</a>]
-Keyword(s): toxicity,
-adaptive anti-cancer therapy,
-virtual populations,
-therapy resistance,
-drug resistance,
-mathematical model,
-mathematical oncology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Cancer therapies often fail when intolerable toxicity or drug-resistant cancer cells undermine otherwise effective treatment strategies. Over the past decade, adaptive therapy has emerged as a promising approach to postpone emergence of resistance by altering dose timing based on tumor burden thresholds. Despite encouraging results, these protocols often overlook the crucial role of toxicity-induced treatment breaks, which may permit tumor regrowth. Herein, we explore the following question: would toxicity feedback improve or hinder the efficacy of adaptive therapy? To address this question, we propose a mathematical framework for incorporating toxic feedback into treatment design. We find that the degree of competition between sensitive and resistant populations, along with the growth rate of resistant cells, critically modulates the impact of toxicity feedback on time to progression. Further, our model identifies circumstances where strategic treatment breaks, which may be based on either tumor size or toxicity, can mitigate overtreatment and extend time to progression, both at the baseline parameterization and across a heterogeneous virtual population. Taken together, these findings highlight the importance of integrating toxicity considerations into the design of adaptive therapy.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2024_gevertz_greene_prosperi_comandantelou_sontag_therapeutic_tolerance"></a>J.L Gevertz,
-J.M Greene,
-S. Prosperi,
-N. Comandante-Lou,
- and E.D. Sontag.
-<strong>Understanding therapeutic tolerance through a mathematical model of drug-induced resistance</strong>.
-<em>npj Systems Biology and Applications</em>,
-11:1-15,
-2025.
-[<a href="../../FTPDIR/2025_03_gevertz_greene_prosperi_comandantelou_sontag_therapeutic_tolerance_published.pdf">PDF</a>]
-Keyword(s): cancer,
-drug resistance,
-therapy resistance,
-phenotypic plasticity,
-mathematical models,
-optimal control.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-There is growing recognition that phenotypic plasticity enables cancer cells to adapt to various environmental conditions. An example of this adaptability is the persistence of an initially sensitive population of cancer cells in the presence of therapeutic agents. Understanding the implications of this drug-induced resistance is essential for predicting transient and long-term tumor tumor dynamics subject to treatment. This paper introduces a mathematical model of this phenomenon of drug-induced resistance which provides excellent fits to time-resolved in vitro experimental data. From observational data of total numbers of cells, the model unravels the relative proportions of sensitive and resistance subpopulations, and quantifies their dynamics as a function of drug dose. The predictions are then validated using data on drug doses which were not used when fitting parameters. The model is then used, in conjunction with optimal control techniques, in order to discover dosing strategies that might lead to better outcomes as quantified by lower total cell volume.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="johnson_et_al_brock_integrating_physbio_2020"></a>K. Johnson,
-G. Howard,
-D. Morgan,
-E. Brenner,
-A. Gardner,
-R. Durrett,
-W. Mo,
-A. Al'Khafaji,
-E.D. Sontag,
-A. Jarrett,
-T. Yankeelov,
- and A. Brock.
-<strong>Integrating transcriptomics and bulk time course data into a mathematical framework to describe and predict therapeutic resistance in cancer</strong>.
-<em>Physical Biology</em>,
-18:016001,
-2021.
-[<a href="../../FTPDIR/johnson_et_al_brock_published_plus_SI.pdf">PDF</a>]
-Keyword(s): oncology,
-cancer,
-chemoresistance,
-resistance,
-intratumor heterogeneity,
-population dynamics,
-DNA barcoding,
-evolution,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-The development of resistance to chemotherapy is a major cause of treatment failure in cancer. Intratumoral heterogeneity and phenotypic plasticity play a significant role in therapeutic resistance. Individual cell measurements such as flow and mass cytometry and single cell RNA sequencing (scRNA-seq) have been used to capture and analyze this cell variability. In parallel, longitudinal treatment-response data is routinely employed in order to calibrate mechanistic mathematical models of heterogeneous subpopulations of cancer cells viewed as compartments with differential growth rates and drug sensitivities. This work combines both approaches: single cell clonally-resolved transcriptome datasets (scRNA-seq, tagging individual cells with unique barcodes that are integrated into the genome and expressed as sgRNA's) and longitudinal treatment response data, to fit a mechanistic mathematical model of drug resistance dynamics for a MDA-MB-231 breast cancer cell line. The explicit inclusion of the transcriptomic information in the parameter estimation is critical for identification of the model parameters and enables accurate prediction of new treatment regimens.
-
-</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="phong_et_membranes"></a>A.P. Tran,
-J.H. Meldon,
- and E.D. Sontag.
-<strong>Transient diffusion into a bi-layer membrane with mass transfer resistance: Exact solution and time lag analysis</strong>.
-<em>Frontiers in Chemical Engineering</em>,
-2:25,
-2021.
-[<a href="../../FTPDIR/2021_01_tran_meldon_sontag_frontiers_chemical_engineering.pdf">PDF</a>]
-Keyword(s): Bi-layer membrane,
-transient diffusion,
-heat conduction,
-mass transfer resistance.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Exact analytical and closed-form solutions to a problem involving transient diffusion in a bi-layer membrane with external transfer resistance are presented. In addition to the solutions of the transient response, the lead and lag times that are often of importance in the characterization of membranes and arise from the analysis of the asymptotic behavior of the mass permeated through the membrane are also provided. The solutions presented here are also compared to previously derived limiting cases of the diffusion in a bi-layer with an impermeable wall and constant concentrations at the upstream and downstream boundaries. Analysis of the time lag shows that this membrane property is independent of the direction of flow. Finally, an outline is provided of how these solutions, which characterize the response to a step function increase in concentration, can be also used to derive more complex input conditions. Adequately handling boundary layer effects has a wide array of potential applications such as the study of bi-layer undergoing phenomena of heat convection, gas film resistance, and absorption/desorption.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="greene_sanchez_sontag_2020"></a>J. M. Greene,
-C. Sanchez-Tapia,
- and E.D. Sontag.
-<strong>Mathematical details on a cancer resistance model</strong>.
-<em>Frontiers in Bioengineering and Biotechnology</em>,
-8:501: 1-27,
-2020.
-[<a href="../../FTPDIR/2020_greene_sancheztapia_sontag_frontiers_bioe.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/10.3389/fbioe.2020.00501">10.3389/fbioe.2020.00501</a>]
-Keyword(s): resistance,
-chemotherapy,
-phenotype,
-optimal control,
-singular controls,
-cancer,
-oncology,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-One of the most important factors limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. We have recently introduced a framework for quantifying the effects of induced and non-induced resistance to cancer chemotherapy. In this work, we expound on the details relating to an optimal control problem outlined in our previous paper (Greene et al., 2018). The control structure is precisely characterized as a concatenation of bang-bang and path-constrained arcs via the Pontryagin Maximum Principle and differential Lie algebraic techniques. A structural identifiability analysis is also presented, demonstrating that patient-specific parameters may be measured and thus utilized in the design of optimal therapies prior to the commencement of therapy. For completeness, a detailed analysis of existence results is also included.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="2019_phong_tran1"></a>A.P. Tran,
-M.A. Al-Radhawi,
-I. Kareva,
-J. Wu,
-D.J. Waxman,
- and E.D. Sontag.
-<strong>Delicate balances in cancer chemotherapy: Modeling immune recruitment and emergence of systemic drug resistance</strong>.
-<em>Frontiers in Immunology</em>,
-11:1376-,
-2020.
-[<a href="../../FTPDIR/2020_tran_et_al_metronomic_model_frontiers_immunology.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/10.3389/fimmu.2020.01376">10.3389/fimmu.2020.01376</a>]
-Keyword(s): metronomic chemotherapy,
-cyclophosphamide,
-mathematical modeling,
-immune recruitment,
-cancer,
-resistance,
-oncology,
-immunology,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Metronomic chemotherapy can drastically enhance immunogenic tumor cell death. However, the responsible mechanisms are still incompletely understood. Here, we develop a mathematical model to elucidate the underlying complex interactions between tumor growth, immune system activation, and therapy-mediated immunogenic cell death. Our model is conceptually simple, yet it provides a surprisingly excellent fit to empirical data obtained from a GL261 mouse glioma model treated with cyclophosphamide on a metronomic schedule. The model includes terms representing immune recruitment as well as the emergence of drug resistance during prolonged metronomic treatments. Strikingly, a fixed set of parameters, not adjusted for individuals nor for drug schedule, excellently recapitulates experimental data across various drug regimens, including treatments administered at intervals ranging from 6 to 12 days. Additionally, the model predicts peak immune activation times, rediscovering experimental data that had not been used in parameter fitting or in model construction. The validated model was then used to make predictions about expected tumor-immune dynamics for novel drug administration schedules. Notably, the validated model suggests that immunostimulatory and immunosuppressive intermediates are responsible for the observed phenomena of resistance and immune cell recruitment, and thus for variation of responses with respect to different schedules of drug administration.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="mali_delvecchio_sontag_slow_gene_binding_2017"></a>M. A. Al-Radhawi,
-D. Del Vecchio,
- and E. D. Sontag.
-<strong>Multi-modality in gene regulatory networks with slow gene binding</strong>.
-<em>PLoS Computational Biology</em>,
-15:e1006784,
-2019.
-[<a href="https://doi.org/10.1371/journal.pcbi.1006784">PDF</a>]
-Keyword(s): multistability,
-gene networks,
-Markov Chains,
-Master Equation,
-cancer heterogeneity,
-phenotypic variation,
-nonlinear systems,
-stochastic systems,
-epigenetics,
-chemical master equations,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-In biological processes such as embryonic development, hematopoietic cell differentiation, and the arising of tumor heterogeneity and consequent resistance to therapy, mechanisms of gene activation and deactivation may play a role in the emergence of phenotypically heterogeneous yet genetically identical (clonal) cellular populations. Mathematically, the variability in phenotypes in the absence of genetic variation can be modeled through the existence of multiple metastable attractors in nonlinear systems subject with stochastic switching, each one of them associated to an alternative epigenetic state. An important theoretical and practical question is that of estimating the number and location of these states, as well as their relative probabilities of occurrence. This paper focuses on a rigorous analytic characterization of multiple modes under slow promoter kinetics, which is a feature of epigenetic regulation. It characterizes the stationary distributions of Chemical Master Equations for gene regulatory networks as a mixture of Poisson distributions. As illustrations, the theory is used to tease out the role of cooperative binding in stochastic models in comparison to deterministic models, and applications are given to various model systems, such as toggle switches in isolation or in communicating populations and a trans-differentiation network.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="greene_gevertz_sontag_resistance_2017"></a>J.M. Greene,
-J.L. Gevertz,
- and E. D. Sontag.
-<strong>A mathematical approach to distinguish spontaneous from induced evolution of drug resistance during cancer treatment</strong>.
-<em>JCO Clinical Cancer Informatics</em>,
-DOI: 10.1200/CCI.18.00087:1-20,
-2019.
-[<a href="../../FTPDIR/2019_greene_gevertz_sontag_asco.pdf">PDF</a>]
-Keyword(s): cancer heterogeneity,
-phenotypic variation,
-nonlinear systems,
-epigenetics,
-oncology,
-cancer,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Resistance to chemotherapy is a major impediment to the successful treatment of cancer. Classically, resistance has been thought to arise primarily through random genetic mutations, after which mutated cells expand via Darwinian selection. However, recent experimental evidence suggests that the progression to resistance need not occur randomly, but instead may be induced by the therapeutic agent itself. This process of resistance induction can be a result of genetic changes, or can occur through epigenetic alterations that cause otherwise drug-sensitive cancer cells to undergo "phenotype switching". This relatively novel notion of resistance further complicates the already challenging task of designing treatment protocols that minimize the risk of evolving resistance. In an effort to better understand treatment resistance, we have developed a mathematical modeling framework that incorporates both random and drug-induced resistance. Our model demonstrates that the ability (or lack thereof) of a drug to induce resistance can result in qualitatively different responses to the same drug dose and delivery schedule. The importance of induced resistance in treatment response led us to ask if, in our model, one can determine the resistance induction rate of a drug for a given treatment protocol. Not only could we prove that the induction parameter in our model is theoretically identifiable, we have also proposed a possible in vitro experiment which could practically be used to determine a treatment's propensity to induce resistance.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="nikolaev_zloza_sontag_2018"></a>E.V. Nikolaev,
-A. Zloza,
- and E.D. Sontag.
-<strong>Immunobiochemical reconstruction of influenza lung infection - melanoma skin cancer interactions</strong>.
-<em>Frontiers in Immunology</em>,
-10:Article 4,
-2019.
-[<a href="../../FTPDIR/2019_01_nikolaev_zloza_sontag_frontiers_immunology_melanoma_flu.pdf">PDF</a>]
-Keyword(s): oncology,
-cancer,
-infections,
-immunology,
-checkpoint inhibition,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Recent experimental results from the Zloza lab combined a mouse model of influenza A virus (IAV) infection (A/H1N1/PR8) and a highly aggressive model of infection-unrelated cancer, B16-F10 skin melanoma. This paper showed that acute influenza infection of the lung promotes distal melanoma growth in the dermis of the flank and leads to decreased host survival. Here, we proceed to ground the experimental observations in a mechanistic immunobiochemical model that incorporates the T cell receptor signaling pathway, various transcription factors, and a gene regulatory network (GRN). A core component of our model is a biochemical motif, which we call a Triple Incoherent Feed-Forward Loop (TIFFL), and which reflects known interactions between IRF4, Blimp-1, and Bcl-6. The different activity levels of the TIFFL components, as a function of the cognate antigen levels and the given inflammation context, manifest themselves in phenotypically distinct outcomes. Specifically, both the TIFFL reconstruction and quantitative estimates obtained from the model allowed us to formulate a hypothesis that it is the loss of the fundamental TIFFL-induced adaptation of the expression of PD-1 receptors on anti-melanoma CD8+ T cells that constitutes the essence of the previously unrecognized immunologic factor that promotes the experimentally observed distal tumor growth in the presence of acute non-ocogenic infection. We therefore hope that this work can further highlight the importance of adaptive mechanisms by which immune functions contribute to the balance between self and non-self immune tolerance, adaptive resistance, and the strength of TCR-induced activation, thus contributing to the understanding of a broader complexity of fundamental interactions between pathogens and tumors.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>resistance</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2021</div><ol class="pub-list">
+<li id="johnson_et_al_brock_integrating_physbio_2020"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/JOHNSON-K.html">K. Johnson</a>, <a href="../Author/HOWARD-G.html">G. Howard</a>, <a href="../Author/MORGAN-D.html">D. Morgan</a>, <a href="../Author/BRENNER-E.html">E. Brenner</a>, <a href="../Author/GARDNER-A.html">A. Gardner</a>, <a href="../Author/DURRETT-R.html">R. Durrett</a>, <a href="../Author/MO-W.html">W. Mo</a>, <a href="../Author/ALKHAFAJI-A.html">A. Al&#x27;Khafaji</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/JARRETT-A.html">A. Jarrett</a>, <a href="../Author/YANKEELOV-T.html">T. Yankeelov</a>, <a href="../Author/BROCK-A.html">A. Brock</a></span>, <span class="ti">"Integrating transcriptomics and bulk time course data into a mathematical framework to describe and predict therapeutic resistance in cancer"</span>, <span class="venue">Physical Biology, vol. 18, pp. 016001</span>, <span class="yr"><a href="../Year/2021.html">2021</a></span>. <span class="links"><a href="../../FTPDIR/johnson_et_al_brock_published_plus_SI.pdf">pdf</a></span><div class="kw"><a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/CANCER.html">cancer</a> &middot; <a href="../Keyword/CHEMORESISTANCE.html">chemoresistance</a> &middot; <a href="../Keyword/RESISTANCE.html">resistance</a> &middot; <a href="../Keyword/INTRATUMOR-HETEROGENEITY.html">intratumor heterogeneity</a> &middot; <a href="../Keyword/POPULATION-DYNAMICS.html">population dynamics</a> &middot; <a href="../Keyword/DNA-BARCODING.html">DNA barcoding</a> &middot; <a href="../Keyword/EVOLUTION.html">evolution</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a></div><details><summary>Abstract</summary><p>The development of resistance to chemotherapy is a major cause of treatment failure in cancer. Intratumoral heterogeneity and phenotypic plasticity play a significant role in therapeutic resistance. Individual cell measurements such as flow and mass cytometry and single cell RNA sequencing (scRNA-seq) have been used to capture and analyze this cell variability. In parallel, longitudinal treatment-response data is routinely employed in order to calibrate mechanistic mathematical models of heterogeneous subpopulations of cancer cells viewed as compartments with differential growth rates and drug sensitivities. This work combines both approaches: single cell clonally-resolved transcriptome datasets (scRNA-seq, tagging individual cells with unique barcodes that are integrated into the genome and expressed as sgRNA&#x27;s) and longitudinal treatment response data, to fit a mechanistic mathematical model of drug resistance dynamics for a MDA-MB-231 breast cancer cell line. The explicit inclusion of the transcriptomic information in the parameter estimation is critical for identification of the model parameters and enables accurate prediction of new treatment regimens.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Conference articles
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="18cdc_greene_sanchez"></a>J.M. Greene,
-C. Sanchez-Tapia,
- and E.D. Sontag.
-<strong>Control structures of drug resistance in cancer chemotherapy</strong>.
-In <em>Proc. 2018 IEEE Conf. Decision and Control</em>,
-pages 5195-5200,
-2018.
-[<a href="../../FTPDIR/greene_sanchez_sontag_cdc2018.pdf">PDF</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-The primary factor limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. This work extends the work reported in "A mathematical approach to distinguish spontaneous from induced evolution of drug resistance during cancer treatment" by introducing a time-optimal control problem that is analyzed utilizing differential-geometric techniques: we seek a treatment protocol which maximizes the time of treatment until a critical tumor size is reached. The general optimal control structure is determined as a combination of both bang-bang and path-constrained arcs. Numerical results are presented which demonstrate decreasing treatment efficacy as a function of the ability of the drug to induce resistance. Thus, drug-induced resistance may dramatically effect the outcome of chemotherapy, implying that factors besides cytotoxicity should be considered when designing treatment regimens.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2020</div><ol class="pub-list">
+<li id="greene_sanchez_sontag_2020"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/GREENE-JM.html">J. M. Greene</a>, <a href="../Author/SANCHEZ-TAPIA-C.html">C. Sanchez-Tapia</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Mathematical details on a cancer resistance model"</span>, <span class="venue">Frontiers in Bioengineering and Biotechnology, vol. 8, pp. 501: 1-27</span>, <span class="yr"><a href="../Year/2020.html">2020</a></span>. <span class="links"><a href="https://doi.org/10.3389/fbioe.2020.00501">doi</a><a href="../../FTPDIR/2020_greene_sancheztapia_sontag_frontiers_bioe.pdf">pdf</a></span><div class="kw"><a href="../Keyword/RESISTANCE.html">resistance</a> &middot; <a href="../Keyword/CHEMOTHERAPY.html">chemotherapy</a> &middot; <a href="../Keyword/PHENOTYPE.html">phenotype</a> &middot; <a href="../Keyword/OPTIMAL-CONTROL.html">optimal control</a> &middot; <a href="../Keyword/SINGULAR-CONTROLS.html">singular controls</a> &middot; <a href="../Keyword/CANCER.html">cancer</a> &middot; <a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a></div><details><summary>Abstract</summary><p>One of the most important factors limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. We have recently introduced a framework for quantifying the effects of induced and non-induced resistance to cancer chemotherapy. In this work, we expound on the details relating to an optimal control problem outlined in our previous paper (Greene et al., 2018). The control structure is precisely characterized as a concatenation of bang-bang and path-constrained arcs via the Pontryagin Maximum Principle and differential Lie algebraic techniques. A structural identifiability analysis is also presented, demonstrating that patient-specific parameters may be measured and thus utilized in the design of optimal therapies prior to the commencement of therapy. For completeness, a detailed analysis of existence results is also included.</p></details></li>
+<li id="2019_phong_tran1"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/TRAN-AP.html">A.P. Tran</a>, <a href="../Author/AL-RADHAWI-MA.html">M.A. Al-Radhawi</a>, <a href="../Author/KAREVA-I.html">I. Kareva</a>, <a href="../Author/WU-J.html">J. Wu</a>, <a href="../Author/WAXMAN-DJ.html">D.J. Waxman</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Delicate balances in cancer chemotherapy: Modeling immune recruitment and emergence of systemic drug resistance"</span>, <span class="venue">Frontiers in Immunology, vol. 11, pp. 1376-</span>, <span class="yr"><a href="../Year/2020.html">2020</a></span>. <span class="links"><a href="https://doi.org/10.3389/fimmu.2020.01376">doi</a><a href="../../FTPDIR/2020_tran_et_al_metronomic_model_frontiers_immunology.pdf">pdf</a></span><div class="kw"><a href="../Keyword/METRONOMIC-CHEMOTHERAPY.html">metronomic chemotherapy</a> &middot; <a href="../Keyword/CYCLOPHOSPHAMIDE.html">cyclophosphamide</a> &middot; <a href="../Keyword/MATHEMATICAL-MODELING.html">mathematical modeling</a> &middot; <a href="../Keyword/IMMUNE-RECRUITMENT.html">immune recruitment</a> &middot; <a href="../Keyword/CANCER.html">cancer</a> &middot; <a href="../Keyword/RESISTANCE.html">resistance</a> &middot; <a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/IMMUNOLOGY.html">immunology</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a></div><details><summary>Abstract</summary><p>Metronomic chemotherapy can drastically enhance immunogenic tumor cell death. However, the responsible mechanisms are still incompletely understood. Here, we develop a mathematical model to elucidate the underlying complex interactions between tumor growth, immune system activation, and therapy-mediated immunogenic cell death. Our model is conceptually simple, yet it provides a surprisingly excellent fit to empirical data obtained from a GL261 mouse glioma model treated with cyclophosphamide on a metronomic schedule. The model includes terms representing immune recruitment as well as the emergence of drug resistance during prolonged metronomic treatments. Strikingly, a fixed set of parameters, not adjusted for individuals nor for drug schedule, excellently recapitulates experimental data across various drug regimens, including treatments administered at intervals ranging from 6 to 12 days. Additionally, the model predicts peak immune activation times, rediscovering experimental data that had not been used in parameter fitting or in model construction. The validated model was then used to make predictions about expected tumor-immune dynamics for novel drug administration schedules. Notably, the validated model suggests that immunostimulatory and immunosuppressive intermediates are responsible for the observed phenomena of resistance and immune cell recruitment, and thus for variation of responses with respect to different schedules of drug administration.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Internal reports
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="gevertz_greene_sontag_biorxiv2019"></a>J.L. Gevertz,
-J.M. Greene,
- and E.D. Sontag.
-<strong>Validation of a mathematical model of cancer incorporating spontaneous and induced evolution to drug resistance</strong>.
-Technical report,
-Cold Spring Harbor Laboratory,
-2019.
-Note: BioRxiv preprint 10.1101/2019.12.27.889444.
-Keyword(s): cancer heterogeneity,
-phenotypic variation,
-nonlinear systems,
-epigenetics,
-optimal control theory,
-oncology,
-cancer.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This paper continues the study of a model which was introduced in earlier work by the authors to study spontaneous and induced evolution to drug resistance under chemotherapy. The model is fit to existing experimental data, and is then validated on additional data that had not been used when fitting. In addition, an optimal control problem is studied numerically.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="tran_et_al_biorxiv2019"></a>A. P. Tran,
-M. A. Al-Radhawi,
-I. Kareva,
-J. Wu,
-D. J. Waxman,
- and E. D. Sontag.
-<strong>Delicate balances in cancer chemotherapy: modeling immune recruitment and emergence of systemic drug resistance</strong>.
-Technical report,
-Cold Spring Harbor Laboratory,
-2019.
-Note: BioRxiv 2019.12.12.874891.
-Keyword(s): chemotherapy,
-immunology,
-immune system,
-oncology,
-cancer,
-metronomic.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Metronomic chemotherapy can drastically enhance immunogenic tumor cell death. However, the responsible mechanisms are still incompletely understood. Here, we develop a mathematical model to elucidate the underlying complex interactions between tumor growth, immune system activation, and therapy-mediated immunogenic cell death. Our model is conceptually simple, yet it provides a surprisingly excellent fit to empirical data obtained from a GL261 mouse glioma model treated with cyclophosphamide on a metronomic schedule. The model includes terms representing immune recruitment as well as the emergence of drug resistance during prolonged metronomic treatments. Strikingly, a fixed set of parameters, not adjusted for individuals nor for drug schedule, excellently recapitulates experimental data across various drug regimens, including treatments administered at intervals ranging from 6 to 12 days. Additionally, the model predicts peak immune activation times, rediscovering experimental data that had not been used in parameter fitting or in model construction. The validated model was then used to make predictions about expected tumor-immune dynamics for novel drug administration schedules. Notably, the validated model suggests that immunostimulatory and immunosuppressive intermediates are responsible for the observed phenomena of resistance and immune cell recruitment, and thus for variation of responses with respect to different schedules of drug administration.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="greene_sanchez_sontag_biorxiv_nov2018"></a>J.M. Greene,
-C. Sanchez-Tapia,
- and E.D. Sontag.
-<strong>Mathematical details on a cancer resistance model</strong>.
-Technical report,
-bioRxiv 2018/475533,
-2018.
-[<a href="../../FTPDIR/2018_11_greene_sanchez_sontag_cancer_resistance_biorxiv.pdf">PDF</a>]
-Keyword(s): identifiability,
-drug resistance,
-chemotherapy,
-optimal control theory,
-singular controls,
-oncology,
-cancer.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-The primary factor limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. We have recently introduced a framework for quantifying the effects of induced and non-induced resistance to cancer chemotherapy . In this work, the control structure is precisely characterized as a concatenation of bang-bang and path-constrained arcs via the Pontryagin Maximum Principle and differential Lie techniques. A structural identfiability analysis is also presented, demonstrating that patient-specfic parameters may be measured and thus utilized in the design of optimal therapies prior to the commencement of therapy.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-</ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:26 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>

@@ -1,176 +1,159 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>bifurcations</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Publications about 'bifurcations'</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Publications about 'bifurcations'
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Articles in journal or book chapters
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="IEEEsysbio_AS"></a>D. Angeli and E.D. Sontag.
-<strong>Oscillations in I/O monotone systems</strong>.
-<em>IEEE Transactions on Circuits and Systems, Special Issue on Systems Biology</em>,
-55:166-176,
-2008.
-Note: Preprint version in arXiv q-bio.QM/0701018, 14 Jan 2007.
-[<a href="../../FTPDIR/angeli_sontag_circadian_TAC_CAS_2008.pdf">PDF</a>]
-Keyword(s): monotone systems,
-hopf bifurcations,
-circadian rhythms,
-tridiagonal systems,
-nonlinear dynamics,
-systems biology,
-reaction networks,
-oscillations,
-periodic behavior,
-delay-differential systems.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-In this note, we show how certain properties of Goldbeter's 1995 model for circadian oscillations can be proved mathematically, using techniques from the recently developed theory of monotone systems with inputs and outputs. The theory establishes global asymptotic stability, and in particular no oscillations, if the rate of transcription is somewhat smaller than that assumed by Goldbeter, based on the application of a tight small gain condition. This stability persists even under arbitrary delays in the feedback loop. On the other hand, when the condition is violated a Poincare'-Bendixson result allows to conclude existence of oscillations, for sufficiently high delays.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="pnasangeliferrellsontag04"></a>D. Angeli,
-J. E. Ferrell,
- and E.D. Sontag.
-<strong>Detection of multistability, bifurcations, and hysteresis in a large class of biological positive-feedback systems.</strong>.
-<em>Proc Natl Acad Sci USA</em>,
-101(7):1822-1827,
-2004.
-Note: A revision of Suppl. Fig. 7(b) is here: http://sontaglab.org/FTPDIR/nullclines-f-g-REV.jpg; and typos can be found here: http://sontaglab.org/FTPDIR/angeli-ferrell-sontag-pnas04-errata.txt.
-[<a href="http://dx.doi.org/10.1073/pnas.0308265100">WWW</a>]
-[<a href="../../FTPDIR/angeli_ferrell_sontag_pnas04_paper_and_supplementary.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/10.1073/pnas.0308265100">10.1073/pnas.0308265100</a>]
-Keyword(s): MAPK cascades,
-multistability,
-systems biology,
-reaction networks,
-nonlinear stability,
-dynamical systems,
-monotone systems.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- Multistability is an important recurring theme in cell signaling, of particular relevance to biological systems that switch between discrete states, generate oscillatory responses, or "remember" transitory stimuli. Standard mathematical methods allow the detection of bistability in some very simple feedback systems (systems with one or two proteins or genes that either activate each other or inhibit each other), but realistic depictions of signal transduction networks are invariably much more complex than this. Here we show that for a class of feedback systems of arbitrary order, the stability properties of the system can be deduced mathematically from how the system behaves when feedback is blocked. Provided that this "open loop," feedback-blocked system is monotone and possesses a sigmoidal characteristic, the system is guaranteed to be bistable for some range of feedback strengths. We present a simple graphical method for deducing the stability behavior and bifurcation diagrams for such systems, and illustrate the method with two examples taken from recent experimental studies of bistable systems: a two-variable Cdc2/Wee1 system and a more complicated five-variable MAPK cascade. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="moreau_sontagPRE03"></a>L. Moreau and E.D. Sontag.
-<strong>Balancing at the border of instability</strong>.
-<em>Phys. Rev. E (3)</em>,
-68(2):020901, 4,
-2003.
-[<a href="../../FTPDIR/moreau-sontag-physrevE03.pdf">PDF</a>]
-Keyword(s): bifurcations,
-adaptive control.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- Some biological systems operate at the critical point between stability and instability and this requires a fine-tuning of parameters. We bring together two examples from the literature that illustrate this: neural integration in the nervous system and hair cell oscillations in the auditory system. In both examples the question arises as to how the required fine-tuning may be achieved and maintained in a robust and reliable way. We study this question using tools from nonlinear and adaptive control theory. We illustrate our approach on a simple model which captures some of the essential features of neural integration. As a result, we propose a large class of feedback adaptation rules that may be responsible for the experimentally observed robustness of neural integration. We mention extensions of our approach to the case of hair cell oscillations in the ear. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="moreau_sontag_arcak03"></a>L. Moreau,
-E.D. Sontag,
- and M. Arcak.
-<strong>Feedback tuning of bifurcations</strong>.
-<em>Systems Control Lett.</em>,
-50(3):229-239,
-2003.
-[<a href="../../FTPDIR/moreau-sontag-arcak-bifurcations.pdf">PDF</a>]
-Keyword(s): bifurcations,
-adaptive control.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- This paper studies a feedback regulation problem that arises in at least two different biological applications. The feedback regulation problem under consideration may be interpreted as an adaptive control problem for tuning bifurcation parameters, and it has not been studied in the control literature. The goal of the paper is to formulate this problem and to present some preliminary results. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>bifurcations</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2003</div><ol class="pub-list">
+<li id="moreau_sontagPRE03"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/MOREAU-L.html">L. Moreau</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Balancing at the border of instability"</span>, <span class="venue">Phys. Rev. E (3), vol. 68, no. 2, pp. 020901, 4</span>, <span class="yr"><a href="../Year/2003.html">2003</a></span>. <span class="links"><a href="../../FTPDIR/moreau-sontag-physrevE03.pdf">pdf</a></span><div class="kw"><a href="../Keyword/BIFURCATIONS.html">bifurcations</a> &middot; <a href="../Keyword/ADAPTIVE-CONTROL.html">adaptive control</a></div><details><summary>Abstract</summary><p>Some biological systems operate at the critical point between stability and instability and this requires a fine-tuning of parameters. We bring together two examples from the literature that illustrate this: neural integration in the nervous system and hair cell oscillations in the auditory system. In both examples the question arises as to how the required fine-tuning may be achieved and maintained in a robust and reliable way. We study this question using tools from nonlinear and adaptive control theory. We illustrate our approach on a simple model which captures some of the essential features of neural integration. As a result, we propose a large class of feedback adaptation rules that may be responsible for the experimentally observed robustness of neural integration. We mention extensions of our approach to the case of hair cell oscillations in the ear.</p></details></li>
+<li id="moreau_sontag_arcak03"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/MOREAU-L.html">L. Moreau</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/ARCAK-M.html">M. Arcak</a></span>, <span class="ti">"Feedback tuning of bifurcations"</span>, <span class="venue">Systems Control Lett., vol. 50, no. 3, pp. 229–239</span>, <span class="yr"><a href="../Year/2003.html">2003</a></span>. <span class="links"><a href="../../FTPDIR/moreau-sontag-arcak-bifurcations.pdf">pdf</a></span><div class="kw"><a href="../Keyword/BIFURCATIONS.html">bifurcations</a> &middot; <a href="../Keyword/ADAPTIVE-CONTROL.html">adaptive control</a></div><details><summary>Abstract</summary><p>This paper studies a feedback regulation problem that arises in at least two different biological applications. The feedback regulation problem under consideration may be interpreted as an adaptive control problem for tuning bifurcation parameters, and it has not been studied in the control literature. The goal of the paper is to formulate this problem and to present some preliminary results.</p></details></li>
 </ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:25 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>

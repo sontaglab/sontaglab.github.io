@@ -1,338 +1,171 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>modular response analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Publications about 'modular response analysis'</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Publications about 'modular response analysis'
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Articles in journal or book chapters
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="kholodenko_naturebiotech_2015_letter"></a>P. Bastiaens,
-M. R. Birtwistle,
-N. Bluthgen,
-F. J. Bruggeman,
-K.-H. Cho,
-C. Cosentino,
-A. de la Fuente,
-J. B. Hoek,
-A. Kiyatkin,
-S. Klamt,
-W. Kolch,
-S. Legewie,
-P. Mendes,
-T. Naka,
-T. Santra,
-E.D. Sontag,
-H. V. Westerhoff,
- and B. N. Kholodenko.
-<strong>Silence on the relevant literature and errors in implementation</strong>.
-<em>Nature Biotech</em>,
-33:336-339,
-2015.
-[<a href="../../FTPDIR/bastiaens_et_al_kholodenko_about_barabasi_nature_biotech2015.pdf">PDF</a>]
-Keyword(s): modular response analysis,
-systems biology,
-reaction networks,
-reverse engineering,
-gene and protein networks,
-protein networks,
-gene networks,
-systems identification.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This letter discusses a paper in the same journal which reported a method for reconstructing network topologies. Here we show that the method is a variant of a previously published method, modular response analysis. We also demonstrate that the implementation of the algorithm in that paper using statistical similarity measures as a proxy for global network responses to perturbations is erroneous and its performance is overestimated.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="15bleris_direct_indirect"></a>T. Kang,
-R. Moore,
-Y. Li,
-E.D. Sontag,
- and L. Bleris.
-<strong>Discriminating direct and indirect connectivities in biological networks</strong>.
-<em>Proc Natl Acad Sci USA</em>,
-112:12893-12898,
-2015.
-[<a href="../../FTPDIR/kang_moore_li_sontag_bleris2015.pdf">PDF</a>]
-Keyword(s): modular response analysis,
-stochastic systems,
-reverse engineering,
-gene networks,
-synthetic biology,
-feedforward,
-systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Reverse engineering of biological pathways involves an iterative process between experiments, data processing, and theoretical analysis. In this work, we engineer synthetic circuits, subject them to perturbations, and then infer network connections using a combination of nonparametric single-cell data resampling and modular response analysis. Intriguingly, we discover that recovered weights of specific network edges undergo divergent shifts under differential perturbations, and that the particular behavior is markedly different between different topologies. Investigating topological changes under differential perturbations may address the longstanding problem of discriminating direct and indirect connectivities in biological networks.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="essays_biochemistry"></a>E.D. Sontag.
-<strong>Network reconstruction based on steady-state data</strong>.
-<em>Essays in Biochemistry</em>,
-45:161-176,
-2008.
-[<a href="../../FTPDIR/unravel_essays_biochem_reprint.pdf">PDF</a>]
-Keyword(s): modular response analysis,
-systems biology,
-reaction networks,
-reverse engineering,
-gene and protein networks,
-protein networks,
-gene networks,
-systems identification,
-MAPK cascades.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- The ``reverse engineering problem'' in systems biology is that of unraveling of the web of interactions among the components of protein and gene regulatory networks, so as to map out the direct or local interactions among components. These direct interactions capture the topology of the functional network. An intrinsic difficulty in capturing these direct interactions, at least in intact cells, is that any perturbation to a particular gene or signaling component may rapidly propagate throughout the network, thus causing global changes which cannot be easily distinguished from direct effects. Thus, a major goal in reverse engineering is to use these observed global responses - such as steady-state changes in concentrations of active proteins, mRNA levels, or transcription rates - in order to infer the local interactions between individual nodes. One approach to solving this global-to-local problem is the ``Modular Response Analysis'' (MRA) method proposed in work of the author with Kholodenko et. al. (PNAS, 2002) and further elaborated in other papers. The basic method deals only with steady-state data. However, recently, quasi-steady state MRA has been used by Santos et. al. (Nature Cell Biology, 2007) for quantifying positive and negative feedback effects in the Raf/Mek/Erk MAPK network in rat adrenal pheochromocytoma (PC-12) cells. This paper presents an overview of the MRA technique, as well as a generalization of the algorithm to that quasi-steady state case. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="berman-dasgupta-sontag-nyacad"></a>P. Berman,
-B. Dasgupta,
- and E.D. Sontag.
-<strong>Algorithmic issues in reverse engineering of protein and gene networks via the modular response analysis method</strong>.
-<em>Annals of the NY Academy of Sciences</em>,
-1115:132-141,
-2007.
-[<a href="../../FTPDIR/berman_dasgupta_sontag_modular_response_analysis_ann_ny_acad_sci_2007.pdf">PDF</a>]
-Keyword(s): systems biology,
-reaction networks,
-gene and protein networks,
-reverse engineering,
-systems identification,
-graph algorithms.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This paper studies a computational problem motivated by the modular response analysis method for reverse engineering of protein and gene networks. This set-cover problem is hard to solve exactly for large networks, but efficient approximation algorithms are given and their complexity is analyzed.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="kholodenkoJTB05"></a>M. Andrec,
-B.N. Kholodenko,
-R.M. Levy,
- and E.D. Sontag.
-<strong>Inference of signaling and gene regulatory networks by steady-state perturbation experiments: structure and accuracy</strong>.
-<em>J. Theoret. Biol.</em>,
-232(3):427-441,
-2005.
-Note: Supplementary materials are here: http://sontaglab.org/FTPDIR/andrec-kholodenko-levy-sontag-JTB04-supplementary.pdf.
-[<a href="../../FTPDIR/andrec_kholodenko_levy_sontag_JTB04.pdf">PDF</a>]
-Keyword(s): systems biology,
-reaction networks,
-gene and protein networks,
-systems identification,
-reverse engineering,
-modular response analysis,
-systems biology,
-reaction networks,
-reverse engineering,
-gene and protein networks,
-protein networks,
-gene networks,
-systems identification.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- One of the fundamental problems of cell biology is the understanding of complex regulatory networks. Such networks are ubiquitous in cells, and knowledge of their properties is essential for the understanding of cellular behavior. This paper studies the effect of experimental uncertainty on the accuracy of the inferred structure of the networks determined using the method in "Untangling the wires: a novel strategy to trace functional interactions in signaling and gene networks". </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="SontagKiyatinKholodenko04"></a>E.D. Sontag,
-A. Kiyatkin,
- and B.N. Kholodenko.
-<strong>Inferring dynamic architecture of cellular networks using time series of gene expression, protein and metabolite data</strong>.
-<em>Bioinformatics</em>,
-20(12):1877-1886,
-2004.
-Note: Supplementary materials are here: http://sontaglab.org/FTPDIR/sontag-kiyatkin-kholodenko-informatics04-supplement.pdf.
-[<a href="../../FTPDIR/sontag_kiyatkin_kholodenko_informatics04.pdf">PDF</a>]
-[doi:<a href="http://dx.doi.org/http://dx.doi.org/10.1093/bioinformatics/bth173">http://dx.doi.org/10.1093/bioinformatics/bth173</a>]
-Keyword(s): modular response analysis,
-systems biology,
-reaction networks,
-reverse engineering,
-gene and protein networks,
-protein networks,
-gene networks,
-systems identification.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- High-throughput technologies have facilitated the acquisition of large genomics and proteomics data sets. However, these data provide snapshots of cellular behavior, rather than help us reveal causal relations. Here, we propose how these technologies can be utilized to infer the topology and strengths of connections among genes, proteins, and metabolites by monitoring time-dependent responses of cellular networks to experimental interventions. We show that all connections leading to a given network node, e.g., to a particular gene, can be deduced from responses to perturbations none of which directly influences that node, e.g., using strains with knock-outs to other genes. To infer all interactions from stationary data, each node should be perturbed separately or in combination with other nodes. Monitoring time series provides richer information and does not require perturbations to all nodes. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="kholodenkoPNAS02"></a>B.N. Kholodenko,
-A. Kiyatkin,
-F.J. Bruggeman,
-E.D. Sontag,
-H.V. Westerhoff,
- and J. Hoek.
-<strong>Untangling the wires: a novel strategy to trace functional interactions in signaling and gene networks</strong>.
-<em>Proceedings of the National Academy of Sciences USA</em>,
-99:12841-12846,
-2002.
-[<a href="../../FTPDIR/unravel_pnas02_including_supporting.pdf">PDF</a>]
-Keyword(s): modular response analysis,
-MAPK cascades,
-systems biology,
-reaction networks,
-reverse engineering,
-gene and protein networks,
-protein networks,
-gene networks,
-systems identification.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- Emerging technologies have enabled the acquisition of large genomics and proteomics data sets. This paper proposes a novel quantitative method for determining functional interactions in cellular signaling and gene networks. It can be used to explore cell systems at a mechanistic level, or applied within a modular framework, which dramatically decreases the number of variables to be assayed. The topology and strength of network connections are retrieved from experimentally measured network responses to successive perturbations of all modules. In addition, the method can reveal functional interactions even when the components of the system are not all known, in which case some connections retrieved by the analysis will not be direct but correspond to the interaction routes through unidentified elements. The method is tested and illustrated using computer-generated responses of a modeled MAPK cascade and gene network. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>modular response analysis</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2015</div><ol class="pub-list">
+<li id="kholodenko_naturebiotech_2015_letter"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/BASTIAENS-P.html">P. Bastiaens</a>, <a href="../Author/BIRTWISTLE-MR.html">M. R. Birtwistle</a>, <a href="../Author/BLUTHGEN-N.html">N. Bluthgen</a>, <a href="../Author/BRUGGEMAN-FJ.html">F. J. Bruggeman</a>, <a href="../Author/CHO-KH.html">K.-H. Cho</a>, <a href="../Author/COSENTINO-C.html">C. Cosentino</a>, <a href="../Author/DE-LA-FUENTE-A.html">A. de la Fuente</a>, <a href="../Author/HOEK-JB.html">J. B. Hoek</a>, <a href="../Author/KIYATKIN-A.html">A. Kiyatkin</a>, <a href="../Author/KLAMT-S.html">S. Klamt</a>, <a href="../Author/KOLCH-W.html">W. Kolch</a>, <a href="../Author/LEGEWIE-S.html">S. Legewie</a>, <a href="../Author/MENDES-P.html">P. Mendes</a>, <a href="../Author/NAKA-T.html">T. Naka</a>, <a href="../Author/SANTRA-T.html">T. Santra</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/WESTERHOFF-HV.html">H. V. Westerhoff</a>, <a href="../Author/KHOLODENKO-BN.html">B. N. Kholodenko</a></span>, <span class="ti">"Silence on the relevant literature and errors in implementation"</span>, <span class="venue">Nature Biotech, vol. 33, pp. 336-339</span>, <span class="yr"><a href="../Year/2015.html">2015</a></span>. <span class="links"><a href="../../FTPDIR/bastiaens_et_al_kholodenko_about_barabasi_nature_biotech2015.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-AND-PROTEIN-NETWORKS.html">gene and protein networks</a> &middot; <a href="../Keyword/PROTEIN-NETWORKS.html">protein networks</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYSTEMS-IDENTIFICATION.html">systems identification</a></div><details><summary>Abstract</summary><p>This letter discusses a paper in the same journal which reported a method for reconstructing network topologies. Here we show that the method is a variant of a previously published method, modular response analysis. We also demonstrate that the implementation of the algorithm in that paper using statistical similarity measures as a proxy for global network responses to perturbations is erroneous and its performance is overestimated.</p></details></li>
+<li id="15bleris_direct_indirect"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/KANG-T.html">T. Kang</a>, <a href="../Author/MOORE-R.html">R. Moore</a>, <a href="../Author/LI-Y.html">Y. Li</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/BLERIS-L.html">L. Bleris</a></span>, <span class="ti">"Discriminating direct and indirect connectivities in biological networks"</span>, <span class="venue">Proc Natl Acad Sci USA, vol. 112, pp. 12893-12898</span>, <span class="yr"><a href="../Year/2015.html">2015</a></span>. <span class="links"><a href="../../FTPDIR/kang_moore_li_sontag_bleris2015.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/STOCHASTIC-SYSTEMS.html">stochastic systems</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYNTHETIC-BIOLOGY.html">synthetic biology</a> &middot; <a href="../Keyword/FEEDFORWARD.html">feedforward</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a></div><details><summary>Abstract</summary><p>Reverse engineering of biological pathways involves an iterative process between experiments, data processing, and theoretical analysis. In this work, we engineer synthetic circuits, subject them to perturbations, and then infer network connections using a combination of nonparametric single-cell data resampling and modular response analysis. Intriguingly, we discover that recovered weights of specific network edges undergo divergent shifts under differential perturbations, and that the particular behavior is markedly different between different topologies. Investigating topological changes under differential perturbations may address the longstanding problem of discriminating direct and indirect connectivities in biological networks.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-Conference articles
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="16cdc_bleris"></a>Q. Tyles,
-T. Kang,
-E.D. Sontag,
- and L. Bleris.
-<strong>Exploring the impact of resource limitations on gene network reconstruction</strong>.
-In <em>Proc. IEEE Conf. Decision and Control, Dec. 2016</em>,
-pages 3350-3355,
-2016.
-[<a href="../../FTPDIR/2016cdc_quarton_kang_sontag_bleris">PDF</a>]
-Keyword(s): Biological systems,
-Genetic regulatory systems,
-Systems biology.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Applying Modular Response Analysis to a synthetic gene circuit, which was introduced in a recent paper by the authors, leads to the inference of a nontrivial "ghost" regulation edge which was not explicitly engineered into the network and which is, in fact, not immediately apparent from experimental measurements. One may thus hypothesize that this ghost regulatory effect is due to competition for resources. A mathematical model is proposed, and analyzed in closed form, that lends validation to this hypothesis.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2008</div><ol class="pub-list">
+<li id="essays_biochemistry"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Network reconstruction based on steady-state data"</span>, <span class="venue">Essays in Biochemistry, vol. 45, pp. 161-176</span>, <span class="yr"><a href="../Year/2008.html">2008</a></span>. <span class="links"><a href="../../FTPDIR/unravel_essays_biochem_reprint.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-AND-PROTEIN-NETWORKS.html">gene and protein networks</a> &middot; <a href="../Keyword/PROTEIN-NETWORKS.html">protein networks</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYSTEMS-IDENTIFICATION.html">systems identification</a> &middot; <a href="../Keyword/MAPK-CASCADES.html">MAPK cascades</a></div><details><summary>Abstract</summary><p>The ``reverse engineering problem&#x27;&#x27; in systems biology is that of unraveling of the web of interactions among the components of protein and gene regulatory networks, so as to map out the direct or local interactions among components. These direct interactions capture the topology of the functional network. An intrinsic difficulty in capturing these direct interactions, at least in intact cells, is that any perturbation to a particular gene or signaling component may rapidly propagate throughout the network, thus causing global changes which cannot be easily distinguished from direct effects. Thus, a major goal in reverse engineering is to use these observed global responses - such as steady-state changes in concentrations of active proteins, mRNA levels, or transcription rates - in order to infer the local interactions between individual nodes. One approach to solving this global-to-local problem is the ``Modular Response Analysis&#x27;&#x27; (MRA) method proposed in work of the author with Kholodenko et. al. (PNAS, 2002) and further elaborated in other papers. The basic method deals only with steady-state data. However, recently, quasi-steady state MRA has been used by Santos et. al. (Nature Cell Biology, 2007) for quantifying positive and negative feedback effects in the Raf/Mek/Erk MAPK network in rat adrenal pheochromocytoma (PC-12) cells. This paper presents an overview of the MRA technique, as well as a generalization of the algorithm to that quasi-steady state case.</p></details></li>
 </ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:26 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+<div class="yr-head">2005</div><ol class="pub-list">
+<li id="kholodenkoJTB05"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/ANDREC-M.html">M. Andrec</a>, <a href="../Author/KHOLODENKO-BN.html">B.N. Kholodenko</a>, <a href="../Author/LEVY-RM.html">R.M. Levy</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Inference of signaling and gene regulatory networks by steady-state perturbation experiments: structure and accuracy"</span>, <span class="venue">J. Theoret. Biol., vol. 232, no. 3, pp. 427–441</span>, <span class="yr"><a href="../Year/2005.html">2005</a></span>. <span class="links"><a href="../../FTPDIR/andrec_kholodenko_levy_sontag_JTB04.pdf">pdf</a></span><div class="venue" style="font-size:.88rem">Supplementary materials are here: http://sontaglab.org/FTPDIR/andrec-kholodenko-levy-sontag-JTB04-supplementary.pdf</div><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-AND-PROTEIN-NETWORKS.html">gene and protein networks</a> &middot; <a href="../Keyword/PROTEIN-NETWORKS.html">protein networks</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYSTEMS-IDENTIFICATION.html">systems identification</a></div><details><summary>Abstract</summary><p>One of the fundamental problems of cell biology is the understanding of complex regulatory networks. Such networks are ubiquitous in cells, and knowledge of their properties is essential for the understanding of cellular behavior. This paper studies the effect of experimental uncertainty on the accuracy of the inferred structure of the networks determined using the method in &quot;Untangling the wires: a novel strategy to trace functional interactions in signaling and gene networks&quot;.</p></details></li>
+</ol>
+<div class="yr-head">2004</div><ol class="pub-list">
+<li id="SontagKiyatinKholodenko04"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/KIYATKIN-A.html">A. Kiyatkin</a>, <a href="../Author/KHOLODENKO-BN.html">B.N. Kholodenko</a></span>, <span class="ti">"Inferring dynamic architecture of cellular networks using time series of gene expression, protein and metabolite data"</span>, <span class="venue">Bioinformatics, vol. 20, no. 12, pp. 1877–1886</span>, <span class="yr"><a href="../Year/2004.html">2004</a></span>. <span class="links"><a href="http://dx.doi.org/10.1093/bioinformatics/bth173">doi</a><a href="../../FTPDIR/sontag_kiyatkin_kholodenko_informatics04.pdf">pdf</a></span><div class="venue" style="font-size:.88rem">Supplementary materials are here: http://sontaglab.org/FTPDIR/sontag-kiyatkin-kholodenko-informatics04-supplement.pdf</div><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-AND-PROTEIN-NETWORKS.html">gene and protein networks</a> &middot; <a href="../Keyword/PROTEIN-NETWORKS.html">protein networks</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYSTEMS-IDENTIFICATION.html">systems identification</a></div><details><summary>Abstract</summary><p>High-throughput technologies have facilitated the acquisition of large genomics and proteomics data sets. However, these data provide snapshots of cellular behavior, rather than help us reveal causal relations. Here, we propose how these technologies can be utilized to infer the topology and strengths of connections among genes, proteins, and metabolites by monitoring time-dependent responses of cellular networks to experimental interventions. We show that all connections leading to a given network node, e.g., to a particular gene, can be deduced from responses to perturbations none of which directly influences that node, e.g., using strains with knock-outs to other genes. To infer all interactions from stationary data, each node should be perturbed separately or in combination with other nodes. Monitoring time series provides richer information and does not require perturbations to all nodes.</p></details></li>
+</ol>
+<div class="yr-head">2002</div><ol class="pub-list">
+<li id="kholodenkoPNAS02"><a class="cat-mark" href="../Category/articles.html" title="Articles in journal or book chapters">&#9642;</a><span class="au"><a href="../Author/KHOLODENKO-BN.html">B.N. Kholodenko</a>, <a href="../Author/KIYATKIN-A.html">A. Kiyatkin</a>, <a href="../Author/BRUGGEMAN-FJ.html">F.J. Bruggeman</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/WESTERHOFF-HV.html">H.V. Westerhoff</a>, <a href="../Author/HOEK-J.html">J. Hoek</a></span>, <span class="ti">"Untangling the wires: a novel strategy to trace functional interactions in signaling and gene networks"</span>, <span class="venue">Proceedings of the National Academy of Sciences USA, vol. 99, pp. 12841–12846</span>, <span class="yr"><a href="../Year/2002.html">2002</a></span>. <span class="links"><a href="../../FTPDIR/unravel_pnas02_including_supporting.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MODULAR-RESPONSE-ANALYSIS.html">modular response analysis</a> &middot; <a href="../Keyword/MAPK-CASCADES.html">MAPK cascades</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REVERSE-ENGINEERING.html">reverse engineering</a> &middot; <a href="../Keyword/GENE-AND-PROTEIN-NETWORKS.html">gene and protein networks</a> &middot; <a href="../Keyword/PROTEIN-NETWORKS.html">protein networks</a> &middot; <a href="../Keyword/GENE-NETWORKS.html">gene networks</a> &middot; <a href="../Keyword/SYSTEMS-IDENTIFICATION.html">systems identification</a></div><details><summary>Abstract</summary><p>Emerging technologies have enabled the acquisition of large genomics and proteomics data sets. This paper proposes a novel quantitative method for determining functional interactions in cellular signaling and gene networks. It can be used to explore cell systems at a mechanistic level, or applied within a modular framework, which dramatically decreases the number of variables to be assayed. The topology and strength of network connections are retrieved from experimentally measured network responses to successive perturbations of all modules. In addition, the method can reveal functional interactions even when the components of the system are not all known, in which case some connections retrieved by the analysis will not be direct but correspond to the interaction routes through unidentified elements. The method is tested and illustrated using computer-generated responses of a modeled MAPK cascade and gene network.</p></details></li>
+</ol>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>

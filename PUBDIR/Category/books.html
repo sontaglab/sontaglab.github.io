@@ -1,300 +1,179 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Books and proceedings</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Books and proceedings</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Books and proceedings
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2026
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="sontag_sysbionotes"></a>E.D. Sontag.
-<strong>Notes on Mathematical Systems Biology (online)</strong>.
-Online only.,
-2026.
-Note: Continuously updated. If the link does not work, then copy/paste this: http://drive.google.com/drive/folders/1lIRqaCPeXMVZGoY-44bBsvtnsHtlRfIO?usp=sharing.
-[<a href="https://drive.google.com/drive/folders/1lIRqaCPeXMVZGoY-44bBsvtnsHtlRfIO?usp=drive_link">PDF</a>]
-Keyword(s): systems biology,
-mathematical biology.
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>Books and proceedings</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2026</div><ol class="pub-list">
+<li id="sontag_sysbionotes"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Notes on Mathematical Systems Biology (online)"</span>, <span class="venue">Online only.</span>, <span class="yr"><a href="../Year/2026.html">2026</a></span>. <span class="links"><a href="https://drive.google.com/drive/folders/1lIRqaCPeXMVZGoY-44bBsvtnsHtlRfIO?usp=drive_link">pdf</a></span><div class="venue" style="font-size:.88rem">Continuously updated. If the link does not work, then copy/paste this: http://drive.google.com/drive/folders/1lIRqaCPeXMVZGoY-44bBsvtnsHtlRfIO?usp=sharing</div><div class="kw"><a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/MATHEMATICAL-BIOLOGY.html">mathematical biology</a></div></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1999
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="openprob"></a>V.D. Blondel,
-E.D Sontag,
-M. Vidyasagar,
- and J.C. Willems.
-<strong>Open Problems in Mathematical Systems and Control Theory (edited book)</strong>.
-Springer Verlag,
-1999.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1999</div><ol class="pub-list">
+<li id="openprob"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/BLONDEL-VD.html">V.D. Blondel</a>, <a href="../Author/SONTAG-ED.html">E.D Sontag</a>, <a href="../Author/VIDYASAGAR-M.html">M. Vidyasagar</a>, <a href="../Author/WILLEMS-JC.html">J.C. Willems</a></span>, <span class="ti">"Open Problems in Mathematical Systems and Control Theory (edited book)"</span>, <span class="venue">Springer Verlag</span>, <span class="yr"><a href="../Year/1999.html">1999</a></span>. </li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1998
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="mct"></a>E.D. Sontag.
-<strong>Mathematical Control Theory. Deterministic Finite-Dimensional Systems</strong>,
-volume 6 of <em>Texts in Applied Mathematics</em>.
-Springer-Verlag,
-New York,
-Second edition,
-1998.
-[<a href="../../FTPDIR/sontag_mathematical_control_theory_springer98.pdf">PDF</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- This book is copyrighted by Springer-Verlag. Springer has kindly allowed me to place a copy on the web, as a reference and for ease of web searches. Please consider buying your own hardcopy. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1998</div><ol class="pub-list">
+<li id="mct"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Mathematical Control Theory. Deterministic Finite-Dimensional Systems"</span>, <span class="venue">Springer-Verlag, Texts in Applied Mathematics</span>, <span class="yr"><a href="../Year/1998.html">1998</a></span>. <span class="links"><a href="../../FTPDIR/sontag_mathematical_control_theory_springer98.pdf">pdf</a></span><details><summary>Abstract</summary><p>This book is copyrighted by Springer-Verlag. Springer has kindly allowed me to place a copy on the web, as a reference and for ease of web searches. Please consider buying your own hardcopy.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1996
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="AHS"></a>R. Alur,
-T.A. Henzinger,
- and E.D. Sontag.
-<strong>Hybrid Systems III. Verification and Control (edited book)</strong>.
-Springer Verlag, Berlin,
-1996.
-Note: (LNCS 1066).
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1996</div><ol class="pub-list">
+<li id="AHS"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/ALUR-R.html">R. Alur</a>, <a href="../Author/HENZINGER-TA.html">T.A. Henzinger</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Hybrid Systems III. Verification and Control (edited book)"</span>, <span class="venue">Springer Verlag, Berlin</span>, <span class="yr"><a href="../Year/1996.html">1996</a></span>. <div class="venue" style="font-size:.88rem">(LNCS 1066)</div></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1990
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="MR1070569"></a>E.D. Sontag.
-<strong>Mathematical Control Theory. Deterministic Finite-Dimensional Systems</strong>,
-volume 6 of <em>Texts in Applied Mathematics</em>.
-Springer-Verlag,
-New York,
-1990.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- The second edition (1998) is now online; please follow that link. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1990</div><ol class="pub-list">
+<li id="MR1070569"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Mathematical Control Theory. Deterministic Finite-Dimensional Systems"</span>, <span class="venue">Springer-Verlag, Texts in Applied Mathematics</span>, <span class="yr"><a href="../Year/1990.html">1990</a></span>. <details><summary>Abstract</summary><p>The second edition (1998) is now online; please follow that link.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1988
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="siam88book"></a>B.N. Datta,
-C.R. Johnson,
-M.A. Kaashoek,
-R.J. Plemmons,
- and E.D. Sontag.
-<strong>Linear Algebra in Signals, Systems, and Control (edited book)</strong>.
-SIAM,
-1988.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1988</div><ol class="pub-list">
+<li id="siam88book"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/DATTA-BN.html">B.N. Datta</a>, <a href="../Author/JOHNSON-CR.html">C.R. Johnson</a>, <a href="../Author/KAASHOEK-MA.html">M.A. Kaashoek</a>, <a href="../Author/PLEMMONS-RJ.html">R.J. Plemmons</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Linear Algebra in Signals, Systems, and Control (edited book)"</span>, <span class="venue">SIAM</span>, <span class="yr"><a href="../Year/1988.html">1988</a></span>. </li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1979
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="Springer79"></a>E.D. Sontag.
-<strong>Polynomial Response Maps</strong>,
-volume 13 of <em>Lecture Notes in Control and Information Sciences</em>.
-Springer-Verlag,
-Berlin,
-1979.
-[<a href="../../FTPDIR/polynomial_response_maps.pdf">PDF</a>]
-Keyword(s): realization theory,
-discrete-time,
-real algebraic geometry.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- (This is a monograph based upon Eduardo Sontag's Ph.D. thesis. The contents are basically the same as the thesis, except for a very few revisions and extensions.) This work deals the realization theory of discrete-time systems (with inputs and outputs, in the sense of control theory) defined by polynomial update equations. It is based upon the premise that the natural tools for the study of the structural-algebraic properties (in particular, realization theory) of polynomial input/output maps are provided by algebraic geometry and commutative algebra, perhaps as much as linear algebra provides the natural tools for studying linear systems. Basic ideas from algebraic geometry are used throughout in system-theoretic applications (Hilbert's basis theorem to finite-time observability, dimension theory to minimal realizations, Zariski's Main Theorem to uniqueness of canonical realizations, etc). In order to keep the level elementary (in particular, not utilizing sheaf-theoretic concepts), certain ideas like nonaffine varieties are used only implicitly (eg., quasi-affine as open sets in affine varieties) or in technical parts of a few proofs, and the terminology is similarly simplified (e.g., "polynomial map" instead of "scheme morphism restricted to k-points", or "k-space" instead of "k-points of an affine k-scheme"). </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1979</div><ol class="pub-list">
+<li id="Springer79"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Polynomial Response Maps"</span>, <span class="venue">Springer-Verlag, Lecture Notes in Control and Information Sciences</span>, <span class="yr"><a href="../Year/1979.html">1979</a></span>. <span class="links"><a href="../../FTPDIR/polynomial_response_maps.pdf">pdf</a></span><div class="kw"><a href="../Keyword/REALIZATION-THEORY.html">realization theory</a> &middot; <a href="../Keyword/DISCRETE-TIME.html">discrete-time</a> &middot; <a href="../Keyword/REAL-ALGEBRAIC-GEOMETRY.html">real algebraic geometry</a></div><details><summary>Abstract</summary><p>(This is a monograph based upon Eduardo Sontag&#x27;s Ph.D. thesis. The contents are basically the same as the thesis, except for a very few revisions and extensions.) This work deals the realization theory of discrete-time systems (with inputs and outputs, in the sense of control theory) defined by polynomial update equations. It is based upon the premise that the natural tools for the study of the structural-algebraic properties (in particular, realization theory) of polynomial input/output maps are provided by algebraic geometry and commutative algebra, perhaps as much as linear algebra provides the natural tools for studying linear systems. Basic ideas from algebraic geometry are used throughout in system-theoretic applications (Hilbert&#x27;s basis theorem to finite-time observability, dimension theory to minimal realizations, Zariski&#x27;s Main Theorem to uniqueness of canonical realizations, etc). In order to keep the level elementary (in particular, not utilizing sheaf-theoretic concepts), certain ideas like nonaffine varieties are used only implicitly (eg., quasi-affine as open sets in affine varieties) or in technical parts of a few proofs, and the terminology is similarly simplified (e.g., &quot;polynomial map&quot; instead of &quot;scheme morphism restricted to k-points&quot;, or &quot;k-space&quot; instead of &quot;k-points of an affine k-scheme&quot;).</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1972
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="AI"></a>E.D. Sontag.
-<strong>Temas de Inteligencia Artificial</strong>.
-PROLAM, Buenos Aires,
-1972.
-[<a href="../../FTPDIR/sontag_1972_temas_inteligencia_artificial_ocr_searchable_adobe_online.pdf">PDF</a>]
-Keyword(s): machine learning,
-artificial intelligence,
-neural networks.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Textbook on Artificial Intelligence. (Libro de texto con introduccion a la inteligencia artificial)</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1972</div><ol class="pub-list">
+<li id="AI"><a class="cat-mark" href="../Category/books.html" title="Books and proceedings">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Temas de Inteligencia Artificial"</span>, <span class="venue">PROLAM, Buenos Aires</span>, <span class="yr"><a href="../Year/1972.html">1972</a></span>. <span class="links"><a href="../../FTPDIR/sontag_1972_temas_inteligencia_artificial_ocr_searchable_adobe_online.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MACHINE-LEARNING.html">machine learning</a> &middot; <a href="../Keyword/ARTIFICIAL-INTELLIGENCE.html">artificial intelligence</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a></div><details><summary>Abstract</summary><p>Textbook on Artificial Intelligence. (Libro de texto con introduccion a la inteligencia artificial)</p></details></li>
 </ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:25 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>

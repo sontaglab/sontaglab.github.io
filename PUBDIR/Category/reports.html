@@ -1,639 +1,201 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Internal reports</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+    --paper:#eef1f2;--paper-2:#e6eaec;--ink:#14171a;--muted:#5e656b;--line:#d7dcde;--crimson:#c8102e;--hero:#0c0f14;
+    --serif:"Spectral",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1120px;--nav-h:66px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400}
 
-<head>
-<title>
-Internal reports</title>
-<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<META name="keywords" lang="en" content="bibtex2html, bibliography, article, report">
-<META name="GENERATOR" content="bibtex2html 1.01">
-</head>
-<body bgcolor="#ffffff" link="blue" alink="blue" vlink="blue">
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .35s ease;white-space:nowrap}
+  .brand b{color:var(--crimson);font-weight:500}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.86rem;color:rgba(255,255,255,.82);padding:4px 0;position:relative;transition:color .25s ease}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--crimson);transition:right .28s ease}
+  .menu a:hover{color:#fff}
+  .menu a:hover::after{right:0}
+  .menu a.active{color:#fff}
+  .menu a.active::after{right:0;background:currentColor;opacity:.5}
+  .nav.solid{background:rgba(238,241,242,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom-color:var(--line)}
+  .nav.solid .brand{color:var(--ink)}
+  .nav.solid .menu a{color:var(--muted)}
+  .nav.solid .menu a:hover,.nav.solid .menu a.active{color:var(--ink)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  .burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0}
+  .nav.solid .burger{color:var(--ink)}
 
+  .page-hero{position:relative;color:#fff;overflow:hidden;padding:calc(var(--nav-h) + 78px) 0 80px;
+    background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),var(--hero);background-size:44px 44px,44px 44px,auto}
+  .page-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 100% at 82% 20%,rgba(200,16,46,.12),transparent 55%),linear-gradient(to bottom,transparent 62%,rgba(12,15,20,.6))}
+  .page-hero .wrap{position:relative;z-index:2}
+  .page-hero .eyebrow{color:rgba(255,255,255,.6)}
+  .page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.03;letter-spacing:-.01em;margin:.45rem 0 .6rem}
+  .page-hero .role{font-size:1.14rem;font-weight:300;color:rgba(255,255,255,.84);max-width:56ch;margin:0}
 
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .no{font-family:var(--mono);font-size:.72rem;color:var(--crimson);letter-spacing:.1em}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);margin:0;letter-spacing:-.01em}
 
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--crimson);padding:14px 22px;border-radius:2px;transition:transform .2s ease,background .2s ease}
+  .btn:hover{background:#a50d26;transform:translateY(-2px)}
+  .btn .arw{transition:transform .2s ease}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:#fff;border-color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="50" bgcolor="#669999" align="center">
-<strong><font size=6 color="#ffffff" face="times">
-Internal reports
-</font></strong>
-</td></tr>
-</table>
+  .getting{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .getting p{margin:0 0 18px}
+  .getting .lead{font-size:1.16rem}
+  .note{color:var(--muted);font-size:.98rem}
+  figure.bldg{margin:0}
+  figure.bldg img{width:100%;max-width:420px;border:1px solid var(--line);background:#fff}
+  figure.bldg figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);margin-top:12px}
+  .route{margin-top:28px}
 
+  .details{background:var(--paper-2);border-top:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .infocard{background:#fff;border:1px solid var(--line);padding:28px}
+  .infocard .ic{width:22px;height:22px;color:var(--crimson);margin-bottom:14px}
+  .infocard h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:400}
+  .infocard a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:2px}
+  .infocard a:hover{color:var(--crimson)}
+  .infocard p{margin:0 0 4px}
+  .infocard .big{font-size:1.15rem}
+  .rooms{list-style:none;margin:0;padding:0}
+  .rooms li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  .rooms li:first-child{border-top:0}
+  .rooms .rm{font-family:var(--mono);font-size:.82rem;color:var(--crimson)}
 
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2019
-</font></strong>
-</td></tr>
-</table>
+  footer{background:var(--ink);color:rgba(238,241,242,.6);padding:64px 0 40px;font-size:.9rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,241,242,.42);margin:0 0 16px;font-weight:400}
+  footer .name{font-family:var(--serif);font-size:1.2rem;color:#fff;margin:0 0 6px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:10px}
+  footer a{text-decoration:none;color:rgba(238,241,242,.7);transition:color .2s ease}
+  footer a:hover{color:#fff}
+  .colophon{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:rgba(238,241,242,.4)}
 
+  @media (max-width:860px){
+    .getting{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .burger{display:block}
+    .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.12);padding:8px 0;transform:translateY(-8px);opacity:0;visibility:hidden;transition:.28s ease}
+    .nav.open .menu{transform:none;opacity:1;visibility:visible}
+    .menu a{color:rgba(255,255,255,.85);padding:12px 28px;font-size:.95rem}
+    .nav.solid .menu{background:var(--ink)}
+    .nav.solid .menu a{color:rgba(255,255,255,.85)}
+    .menu a::after{display:none}
+    section{padding:60px 0}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 
-<ol>
-
-<li>
-<a name="chen_et_al_biorxiv2019"></a>T. Chen,
-M. A. Al-Radhawi,
- and E. D. Sontag.
-<strong>A mathematical model exhibiting the effect of DNA methylation on the stability boundary in cell-fate networks</strong>.
-Technical report,
-Cold Spring Harbor Laboratory,
-2019.
-Note: BioRxiv preprint 10.1101/2019.12.19.883280.
-Keyword(s): Cell-fate networks,
-gene regulatory networks,
-DNA methylation,
-epigenetic regulation,
-pluripotent stem cell circuit.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Cell-fate networks are traditionally studied within the framework of gene regulatory networks. This paradigm considers only interactions of genes through expressed transcription factors and does not incorporate chromatin modification processes. This paper introduces a mathematical model that seamlessly combines gene regulatory networks and DNA methylation, with the goal of quantitatively characterizing the contribution of epigenetic regulation to gene silencing. The ``Basin of Attraction percentage'' is introduced as a metric to quantify gene silencing abilities. As a case study, a computational and theoretical analysis is carried out for a model of the pluripotent stem cell circuit as well as a simplified self-activating gene model. The results confirm that the methodology quantitatively captures the key role that methylation plays in enhancing the stability of the silenced gene state.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="gevertz_greene_sontag_biorxiv2019"></a>J.L. Gevertz,
-J.M. Greene,
- and E.D. Sontag.
-<strong>Validation of a mathematical model of cancer incorporating spontaneous and induced evolution to drug resistance</strong>.
-Technical report,
-Cold Spring Harbor Laboratory,
-2019.
-Note: BioRxiv preprint 10.1101/2019.12.27.889444.
-Keyword(s): cancer heterogeneity,
-phenotypic variation,
-nonlinear systems,
-epigenetics,
-optimal control theory,
-oncology,
-cancer.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This paper continues the study of a model which was introduced in earlier work by the authors to study spontaneous and induced evolution to drug resistance under chemotherapy. The model is fit to existing experimental data, and is then validated on additional data that had not been used when fitting. In addition, an optimal control problem is studied numerically.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="tran_et_al_biorxiv2019"></a>A. P. Tran,
-M. A. Al-Radhawi,
-I. Kareva,
-J. Wu,
-D. J. Waxman,
- and E. D. Sontag.
-<strong>Delicate balances in cancer chemotherapy: modeling immune recruitment and emergence of systemic drug resistance</strong>.
-Technical report,
-Cold Spring Harbor Laboratory,
-2019.
-Note: BioRxiv 2019.12.12.874891.
-Keyword(s): chemotherapy,
-immunology,
-immune system,
-oncology,
-cancer,
-metronomic.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Metronomic chemotherapy can drastically enhance immunogenic tumor cell death. However, the responsible mechanisms are still incompletely understood. Here, we develop a mathematical model to elucidate the underlying complex interactions between tumor growth, immune system activation, and therapy-mediated immunogenic cell death. Our model is conceptually simple, yet it provides a surprisingly excellent fit to empirical data obtained from a GL261 mouse glioma model treated with cyclophosphamide on a metronomic schedule. The model includes terms representing immune recruitment as well as the emergence of drug resistance during prolonged metronomic treatments. Strikingly, a fixed set of parameters, not adjusted for individuals nor for drug schedule, excellently recapitulates experimental data across various drug regimens, including treatments administered at intervals ranging from 6 to 12 days. Additionally, the model predicts peak immune activation times, rediscovering experimental data that had not been used in parameter fitting or in model construction. The validated model was then used to make predictions about expected tumor-immune dynamics for novel drug administration schedules. Notably, the validated model suggests that immunostimulatory and immunosuppressive intermediates are responsible for the observed phenomena of resistance and immune cell recruitment, and thus for variation of responses with respect to different schedules of drug administration.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+main{padding-bottom:20px}
+main section{padding:56px 0}
+main section:nth-child(even){background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-list{list-style:none;margin:0;padding:0}
+.pub-list>li{padding:16px 0;border-top:1px solid var(--line)}
+.pub-list>li:first-child{border-top:0}
+.yr-head{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:36px 0 6px;color:var(--ink)}
+.cat-mark{color:var(--crimson);text-decoration:none;margin-right:.35rem}
+.au a{font-family:var(--sans);font-weight:600;color:var(--ink);text-decoration:none}
+.au a:hover{color:var(--crimson)}
+.ti{font-family:var(--serif)}
+.venue{color:var(--muted)}
+.yr a{color:var(--crimson);text-decoration:none}
+.yr a:hover{text-decoration:underline}
+.kw{font-family:var(--mono);font-size:.68rem;letter-spacing:.02em;margin-top:.35rem}
+.kw a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.kw a:hover{color:var(--crimson)}
+.links{font-family:var(--mono);font-size:.64rem;margin-left:.4rem;white-space:nowrap}
+.links a{display:inline-block;padding:1px .4rem;margin:0 .1rem;border:1px solid var(--line);border-radius:2px;color:var(--crimson);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+.links a:hover{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+details{margin:.35rem 0 .1rem}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.04em}
+details p{margin:.5rem 0 .1rem;color:var(--ink);font-size:.96rem;max-width:74ch}
+.count{color:var(--muted);font-family:var(--mono);font-size:.72rem}
+.toc{columns:260px;column-gap:34px}
+.toc>div{break-inside:avoid;margin:.28rem 0}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--crimson)}
+.yearline a{color:var(--ink);text-decoration:none;margin-right:.2rem}
+.yearline a:hover{color:var(--crimson)}
+.disclaimer{grid-column:1/-1;border-top:1px solid rgba(238,241,242,.14);margin-top:24px;padding-top:22px;color:rgba(238,241,242,.5);font-size:.82rem;max-width:80ch}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap"><a class="brand" href="../../index.html">Control<b>&middot;</b>Learning<b>&middot;</b>Systems Biology</a><button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="menu" id="menu"><li><a href="../../index.html">Home</a></li><li><a href="../../research.html">Research</a></li><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html" class="active">Publications</a></li><li><a href="../../news.html">News</a></li><li><a href="../../contact.html">Contact</a></li></ul></div></nav>
+<header class="page-hero"><div class="wrap"><p class="eyebrow">Laboratory for Control, Learning, and Systems Biology</p><h1>Internal reports</h1></div></header>
+<main><section><div class="wrap">
+<div class="yr-head">2019</div><ol class="pub-list">
+<li id="chen_et_al_biorxiv2019"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/CHEN-T.html">T. Chen</a>, <a href="../Author/AL-RADHAWI-MA.html">M. A. Al-Radhawi</a>, <a href="../Author/SONTAG-ED.html">E. D. Sontag</a></span>, <span class="ti">"A mathematical model exhibiting the effect of DNA methylation on the stability boundary in cell-fate networks"</span>, <span class="venue">Cold Spring Harbor Laboratory</span>, <span class="yr"><a href="../Year/2019.html">2019</a></span>. <div class="venue" style="font-size:.88rem">BioRxiv preprint 10.1101/2019.12.19.883280</div><div class="kw"><a href="../Keyword/CELL-FATE-NETWORKS.html">Cell-fate networks</a> &middot; <a href="../Keyword/GENE-REGULATORY-NETWORKS.html">gene regulatory networks</a> &middot; <a href="../Keyword/DNA-METHYLATION.html">DNA methylation</a> &middot; <a href="../Keyword/EPIGENETIC-REGULATION.html">epigenetic regulation</a> &middot; <a href="../Keyword/PLURIPOTENT-STEM-CELL-CIRCUIT.html">pluripotent stem cell circuit</a></div><details><summary>Abstract</summary><p>Cell-fate networks are traditionally studied within the framework of gene regulatory networks. This paradigm considers only interactions of genes through expressed transcription factors and does not incorporate chromatin modification processes. This paper introduces a mathematical model that seamlessly combines gene regulatory networks and DNA methylation, with the goal of quantitatively characterizing the contribution of epigenetic regulation to gene silencing. The ``Basin of Attraction percentage&#x27;&#x27; is introduced as a metric to quantify gene silencing abilities. As a case study, a computational and theoretical analysis is carried out for a model of the pluripotent stem cell circuit as well as a simplified self-activating gene model. The results confirm that the methodology quantitatively captures the key role that methylation plays in enhancing the stability of the silenced gene state.</p></details></li>
+<li id="gevertz_greene_sontag_biorxiv2019"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/GEVERTZ-JL.html">J.L. Gevertz</a>, <a href="../Author/GREENE-JM.html">J.M. Greene</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Validation of a mathematical model of cancer incorporating spontaneous and induced evolution to drug resistance"</span>, <span class="venue">Cold Spring Harbor Laboratory</span>, <span class="yr"><a href="../Year/2019.html">2019</a></span>. <div class="venue" style="font-size:.88rem">BioRxiv preprint 10.1101/2019.12.27.889444</div><div class="kw"><a href="../Keyword/CANCER-HETEROGENEITY.html">cancer heterogeneity</a> &middot; <a href="../Keyword/PHENOTYPIC-VARIATION.html">phenotypic variation</a> &middot; <a href="../Keyword/NONLINEAR-SYSTEMS.html">nonlinear systems</a> &middot; <a href="../Keyword/EPIGENETICS.html">epigenetics</a> &middot; <a href="../Keyword/OPTIMAL-CONTROL-THEORY.html">optimal control theory</a> &middot; <a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/CANCER.html">cancer</a></div><details><summary>Abstract</summary><p>This paper continues the study of a model which was introduced in earlier work by the authors to study spontaneous and induced evolution to drug resistance under chemotherapy. The model is fit to existing experimental data, and is then validated on additional data that had not been used when fitting. In addition, an optimal control problem is studied numerically.</p></details></li>
+<li id="tran_et_al_biorxiv2019"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/TRAN-AP.html">A. P. Tran</a>, <a href="../Author/AL-RADHAWI-MA.html">M. A. Al-Radhawi</a>, <a href="../Author/KAREVA-I.html">I. Kareva</a>, <a href="../Author/WU-J.html">J. Wu</a>, <a href="../Author/WAXMAN-DJ.html">D. J. Waxman</a>, <a href="../Author/SONTAG-ED.html">E. D. Sontag</a></span>, <span class="ti">"Delicate balances in cancer chemotherapy: modeling immune recruitment and emergence of systemic drug resistance"</span>, <span class="venue">Cold Spring Harbor Laboratory</span>, <span class="yr"><a href="../Year/2019.html">2019</a></span>. <div class="venue" style="font-size:.88rem">bioRxiv 2019.12.12.874891</div><div class="kw"><a href="../Keyword/CHEMOTHERAPY.html">chemotherapy</a> &middot; <a href="../Keyword/IMMUNOLOGY.html">immunology</a> &middot; <a href="../Keyword/IMMUNE-SYSTEM.html">immune system</a> &middot; <a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/CANCER.html">cancer</a> &middot; <a href="../Keyword/METRONOMIC.html">metronomic</a></div><details><summary>Abstract</summary><p>Metronomic chemotherapy can drastically enhance immunogenic tumor cell death. However, the responsible mechanisms are still incompletely understood. Here, we develop a mathematical model to elucidate the underlying complex interactions between tumor growth, immune system activation, and therapy-mediated immunogenic cell death. Our model is conceptually simple, yet it provides a surprisingly excellent fit to empirical data obtained from a GL261 mouse glioma model treated with cyclophosphamide on a metronomic schedule. The model includes terms representing immune recruitment as well as the emergence of drug resistance during prolonged metronomic treatments. Strikingly, a fixed set of parameters, not adjusted for individuals nor for drug schedule, excellently recapitulates experimental data across various drug regimens, including treatments administered at intervals ranging from 6 to 12 days. Additionally, the model predicts peak immune activation times, rediscovering experimental data that had not been used in parameter fitting or in model construction. The validated model was then used to make predictions about expected tumor-immune dynamics for novel drug administration schedules. Notably, the validated model suggests that immunostimulatory and immunosuppressive intermediates are responsible for the observed phenomena of resistance and immune cell recruitment, and thus for variation of responses with respect to different schedules of drug administration.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2018
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="greene_sanchez_sontag_biorxiv_nov2018"></a>J.M. Greene,
-C. Sanchez-Tapia,
- and E.D. Sontag.
-<strong>Mathematical details on a cancer resistance model</strong>.
-Technical report,
-bioRxiv 2018/475533,
-2018.
-[<a href="../../FTPDIR/2018_11_greene_sanchez_sontag_cancer_resistance_biorxiv.pdf">PDF</a>]
-Keyword(s): identifiability,
-drug resistance,
-chemotherapy,
-optimal control theory,
-singular controls,
-oncology,
-cancer.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-The primary factor limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. We have recently introduced a framework for quantifying the effects of induced and non-induced resistance to cancer chemotherapy . In this work, the control structure is precisely characterized as a concatenation of bang-bang and path-constrained arcs via the Pontryagin Maximum Principle and differential Lie techniques. A structural identfiability analysis is also presented, demonstrating that patient-specfic parameters may be measured and thus utilized in the design of optimal therapies prior to the commencement of therapy.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="arxiv_periodic_rfm_dec2018"></a>M. Sadeghi,
-M.A. Al-Radhawi,
-M. Margaliot,
- and E.D. Sontag.
-<strong>On the periodic gain of the Ribosome Flow Model</strong>.
-Technical report,
-bioRxiv 2018/507988,
-2018.
-[<a href="../../FTPDIR/2018_12_sadeghi_alradhawi_margaliot_sontag_rfm_periodic_biorxiv.pdf">PDF</a>]
-Keyword(s): systems biology,
-reaction networks,
-ribosomes,
-RFM,
-ribosome flow model.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-We consider a compartmental model for ribosome flow during RNA translation, the Ribosome Flow Model (RFM). This model includes a set of positive transition rates that control the flow from every site to the consecutive site. It has been shown that when these rates are time-varying and jointly T-periodic, the protein production rate converges to a unique T-periodic pattern. Here, we study a problem that can be roughly stated as: can periodic rates yield a higher average production rate than constant rates? We rigorously formulate this question and show via simulations, and rigorous analysis in one simple case, that the answer is no.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2018</div><ol class="pub-list">
+<li id="greene_sanchez_sontag_biorxiv_nov2018"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/GREENE-JM.html">J.M. Greene</a>, <a href="../Author/SANCHEZ-TAPIA-C.html">C. Sanchez-Tapia</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Mathematical details on a cancer resistance model"</span>, <span class="venue">bioRxiv 2018/475533</span>, <span class="yr"><a href="../Year/2018.html">2018</a></span>. <span class="links"><a href="../../FTPDIR/2018_11_greene_sanchez_sontag_cancer_resistance_biorxiv.pdf">pdf</a></span><div class="kw"><a href="../Keyword/IDENTIFIABILITY.html">identifiability</a> &middot; <a href="../Keyword/DRUG-RESISTANCE.html">drug resistance</a> &middot; <a href="../Keyword/CHEMOTHERAPY.html">chemotherapy</a> &middot; <a href="../Keyword/OPTIMAL-CONTROL-THEORY.html">optimal control theory</a> &middot; <a href="../Keyword/SINGULAR-CONTROLS.html">singular controls</a> &middot; <a href="../Keyword/ONCOLOGY.html">oncology</a> &middot; <a href="../Keyword/CANCER.html">cancer</a></div><details><summary>Abstract</summary><p>The primary factor limiting the success of chemotherapy in cancer treatment is the phenomenon of drug resistance. We have recently introduced a framework for quantifying the effects of induced and non-induced resistance to cancer chemotherapy . In this work, the control structure is precisely characterized as a concatenation of bang-bang and path-constrained arcs via the Pontryagin Maximum Principle and differential Lie techniques. A structural identfiability analysis is also presented, demonstrating that patient-specfic parameters may be measured and thus utilized in the design of optimal therapies prior to the commencement of therapy.</p></details></li>
+<li id="arxiv_periodic_rfm_dec2018"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SADEGHI-M.html">M. Sadeghi</a>, <a href="../Author/AL-RADHAWI-MA.html">M.A. Al-Radhawi</a>, <a href="../Author/MARGALIOT-M.html">M. Margaliot</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"On the periodic gain of the Ribosome Flow Model"</span>, <span class="venue">bioRxiv 2018/507988</span>, <span class="yr"><a href="../Year/2018.html">2018</a></span>. <span class="links"><a href="../../FTPDIR/2018_12_sadeghi_alradhawi_margaliot_sontag_rfm_periodic_biorxiv.pdf">pdf</a></span><div class="kw"><a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/RIBOSOMES.html">ribosomes</a> &middot; <a href="../Keyword/RFM.html">RFM</a> &middot; <a href="../Keyword/RIBOSOME-FLOW-MODEL.html">ribosome flow model</a></div><details><summary>Abstract</summary><p>We consider a compartmental model for ribosome flow during RNA translation, the Ribosome Flow Model (RFM). This model includes a set of positive transition rates that control the flow from every site to the consecutive site. It has been shown that when these rates are time-varying and jointly T-periodic, the protein production rate converges to a unique T-periodic pattern. Here, we study a problem that can be roughly stated as: can periodic rates yield a higher average production rate than constant rates? We rigorously formulate this question and show via simulations, and rigorous analysis in one simple case, that the answer is no.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2016
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="arxiv_iffl_jan2016"></a>E.D. Sontag.
-<strong>A remark on incoherent feedforward circuits as change detectors and feedback controllers</strong>.
-Technical report,
-arXiv:1602.00162,
-2016.
-[<a href="../../FTPDIR/arxiv_iffl_change_detection_jan2016_1602.00162v1.pdf">PDF</a>]
-Keyword(s): scale invariance,
-fold change detection,
-T cells,
-incoherent feedforward loops,
-immunology,
-incoherent feedforward loop,
-feedforward,
-IFFL.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This note analyzes incoherent feedforward loops in signal processing and control. It studies the response properties of IFFL's to exponentially growing inputs, both for a standard version of the IFFL and for a variation in which the output variable has a positive self-feedback term. It also considers a negative feedback configuration, using such a device as a controller. It uncovers a somewhat surprising phenomenon in which stabilization is only possible in disconnected regions of parameter space, as the controlled system's growth rate is varied.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="arxiv_moments_dec2016"></a>E.D. Sontag.
-<strong>Examples of computation of exact moment dynamics for chemical reaction networks</strong>.
-Technical report,
-arXiv:1612.02393,
-2016.
-[<a href="http://arxiv.org/abs/1612.02393">PDF</a>]
-Keyword(s): systems biology,
-reaction networks,
-stochastic systems,
-chemical master equation,
-reaction networks,
-reaction networks,
-moments,
-molecular networks,
-complex-balanced networks.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-We review in a unified way results for two types of stochastic chemical reaction systems for which moments can be effectively computed: feedforward networks and complex-balanced networks.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="biorxiv_two_zone_dec2016"></a>E.D. Sontag.
-<strong>Two-zone tumor tolerance can arise from a simple immunological feedforward motif that estimates tumor growth rates</strong>.
-Technical report,
-bioRxiv https://doi.org/10.1101/095455,
-2016.
-[<a href="http://biorxiv.org/content/biorxiv/early/2016/12/20/095455.full.pdf">PDF</a>]
-Keyword(s): scale invariance,
-fold change detection,
-T cells,
-incoherent feedforward loops,
-immunology,
-cancer.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-Preprint version of "A dynamical model of immune responses to antigen presentation predicts different regions of tumor or pathogen elimination", appeared in Cell Systems 2017. However, the journal version does not include Section 9 on degradation-based IFFL's from this preprint.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2016</div><ol class="pub-list">
+<li id="biorxiv_two_zone_dec2016"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Two-zone tumor tolerance can arise from a simple immunological feedforward motif that estimates tumor growth rates"</span>, <span class="venue">bioRxiv https://doi.org/10.1101/095455</span>, <span class="yr"><a href="../Year/2016.html">2016</a></span>. <span class="links"><a href="http://biorxiv.org/content/biorxiv/early/2016/12/20/095455.full.pdf">pdf</a></span><div class="kw"><a href="../Keyword/SCALE-INVARIANCE.html">scale invariance</a> &middot; <a href="../Keyword/FOLD-CHANGE-DETECTION.html">fold change detection</a> &middot; <a href="../Keyword/T-CELLS.html">T cells</a> &middot; <a href="../Keyword/INCOHERENT-FEEDFORWARD-LOOPS.html">incoherent feedforward loops</a> &middot; <a href="../Keyword/IMMUNOLOGY.html">immunology</a> &middot; <a href="../Keyword/CANCER.html">cancer</a></div><details><summary>Abstract</summary><p>Preprint version of &quot;A dynamical model of immune responses to antigen presentation predicts different regions of tumor or pathogen elimination&quot;, appeared in Cell Systems 2017. However, the journal version does not include Section 9 on degradation-based IFFL&#x27;s from this preprint.</p></details></li>
+<li id="arxiv_moments_dec2016"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Examples of computation of exact moment dynamics for chemical reaction networks"</span>, <span class="venue">arXiv:1612.02393</span>, <span class="yr"><a href="../Year/2016.html">2016</a></span>. <span class="links"><a href="http://arxiv.org/abs/1612.02393">pdf</a></span><div class="kw"><a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/STOCHASTIC-SYSTEMS.html">stochastic systems</a> &middot; <a href="../Keyword/CHEMICAL-MASTER-EQUATION.html">chemical master equation</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/MOMENTS.html">moments</a> &middot; <a href="../Keyword/COMPLEX-BALANCED-NETWORKS.html">complex-balanced networks</a></div><details><summary>Abstract</summary><p>We review in a unified way results for two types of stochastic chemical reaction systems for which moments can be effectively computed: feedforward networks and complex-balanced networks.</p></details></li>
+<li id="arxiv_iffl_jan2016"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"A remark on incoherent feedforward circuits as change detectors and feedback controllers"</span>, <span class="venue">arXiv:1602.00162</span>, <span class="yr"><a href="../Year/2016.html">2016</a></span>. <span class="links"><a href="../../FTPDIR/arxiv_iffl_change_detection_jan2016_1602.00162v1.pdf">pdf</a></span><div class="kw"><a href="../Keyword/SCALE-INVARIANCE.html">scale invariance</a> &middot; <a href="../Keyword/FOLD-CHANGE-DETECTION.html">fold change detection</a> &middot; <a href="../Keyword/T-CELLS.html">T cells</a> &middot; <a href="../Keyword/INCOHERENT-FEEDFORWARD-LOOPS.html">incoherent feedforward loops</a> &middot; <a href="../Keyword/IMMUNOLOGY.html">immunology</a> &middot; <a href="../Keyword/INCOHERENT-FEEDFORWARD-LOOP.html">incoherent feedforward loop</a> &middot; <a href="../Keyword/FEEDFORWARD.html">feedforward</a> &middot; <a href="../Keyword/IFFL.html">IFFL</a></div><details><summary>Abstract</summary><p>This note analyzes incoherent feedforward loops in signal processing and control. It studies the response properties of IFFL&#x27;s to exponentially growing inputs, both for a standard version of the IFFL and for a variation in which the output variable has a positive self-feedback term. It also considers a negative feedback configuration, using such a device as a controller. It uncovers a somewhat surprising phenomenon in which stabilization is only possible in disconnected regions of parameter space, as the controlled system&#x27;s growth rate is varied.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2015
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="biorxiv_change_detection_immune_2015"></a>E.D. Sontag.
-<strong>Incoherent feedforward motifs as immune change detectors</strong>.
-Technical report,
-bioRxiv http://dx.doi.org/10.1101/035600,
-December 2015.
-[<a href="../../FTPDIR/iffl_immune_change_detectors_biorxiv_035600_30dec2015.pdf">PDF</a>]
-Keyword(s): scale invariance,
-fcd,
-fold change detection,
-T cells,
-incoherent feedforward loops,
-immunology,
-incoherent feedforward loop,
-feedforward,
-IFFL.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-We speculate that incoherent feedforward loops may be phenomenologically involved in self/nonself discrimination in immune-infection and immune-tumor interactions, acting as "change detectors". In turn, this may result in logarithmic sensing (Weber phenomenon) and even scale invariance (fold-change detection).</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2015</div><ol class="pub-list">
+<li id="biorxiv_change_detection_immune_2015"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Incoherent feedforward motifs as immune change detectors"</span>, <span class="venue">bioRxiv http://dx.doi.org/10.1101/035600</span>, <span class="yr"><a href="../Year/2015.html">2015</a></span>. <span class="links"><a href="../../FTPDIR/iffl_immune_change_detectors_biorxiv_035600_30dec2015.pdf">pdf</a></span><div class="kw"><a href="../Keyword/SCALE-INVARIANCE.html">scale invariance</a> &middot; <a href="../Keyword/FCD.html">fcd</a> &middot; <a href="../Keyword/FOLD-CHANGE-DETECTION.html">fold change detection</a> &middot; <a href="../Keyword/T-CELLS.html">T cells</a> &middot; <a href="../Keyword/INCOHERENT-FEEDFORWARD-LOOPS.html">incoherent feedforward loops</a> &middot; <a href="../Keyword/IMMUNOLOGY.html">immunology</a> &middot; <a href="../Keyword/INCOHERENT-FEEDFORWARD-LOOP.html">incoherent feedforward loop</a> &middot; <a href="../Keyword/FEEDFORWARD.html">feedforward</a> &middot; <a href="../Keyword/IFFL.html">IFFL</a></div><details><summary>Abstract</summary><p>We speculate that incoherent feedforward loops may be phenomenologically involved in self/nonself discrimination in immune-infection and immune-tumor interactions, acting as &quot;change detectors&quot;. In turn, this may result in logarithmic sensing (Weber phenomenon) and even scale invariance (fold-change detection).</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2014
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="arxiv_barton_sontag_2014"></a>J. Barton and E.D. Sontag.
-<strong>Remarks on the energy costs of insulators in enzymatic cascades</strong>.
-Technical report,
-http://arxiv.org/abs/1412.8065,
-December 2014.
-[<a href="../../FTPDIR/barton_sontag_insulators_energy_part2_arxiv2014_1412.8065v1.pdf">PDF</a>]
-Keyword(s): retroactivity,
-systems biology,
-reaction networks,
-futile cycles,
-singular perturbations,
-modularity.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- The connection between optimal biological function and energy use, measured for example by the rate of metabolite consumption, is a current topic of interest in the systems biology literature which has been explored in several different contexts. In [J. P. Barton and E. D. Sontag, Biophys. J. 104, 6 (2013)], we related the metabolic cost of enzymatic futile cycles with their capacity to act as insulators which facilitate modular interconnections in biochemical networks. There we analyzed a simple model system in which a signal molecule regulates the transcription of one or more target proteins by interacting with their promoters. In this note, we consider the case of a protein with an active and an inactive form, and whose activation is controlled by the signal molecule. As in the original case, higher rates of energy consumption are required for better insulator performance.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2014</div><ol class="pub-list">
+<li id="arxiv_barton_sontag_2014"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/BARTON-J.html">J. Barton</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Remarks on the energy costs of insulators in enzymatic cascades"</span>, <span class="venue">http://arxiv.org/abs/1412.8065</span>, <span class="yr"><a href="../Year/2014.html">2014</a></span>. <span class="links"><a href="../../FTPDIR/barton_sontag_insulators_energy_part2_arxiv2014_1412.8065v1.pdf">pdf</a></span><div class="kw"><a href="../Keyword/RETROACTIVITY.html">retroactivity</a> &middot; <a href="../Keyword/SYSTEMS-BIOLOGY.html">systems biology</a> &middot; <a href="../Keyword/REACTION-NETWORKS.html">reaction networks</a> &middot; <a href="../Keyword/FUTILE-CYCLES.html">futile cycles</a> &middot; <a href="../Keyword/SINGULAR-PERTURBATIONS.html">singular perturbations</a> &middot; <a href="../Keyword/MODULARITY.html">modularity</a></div><details><summary>Abstract</summary><p>The connection between optimal biological function and energy use, measured for example by the rate of metabolite consumption, is a current topic of interest in the systems biology literature which has been explored in several different contexts. In [J. P. Barton and E. D. Sontag, Biophys. J. 104, 6 (2013)], we related the metabolic cost of enzymatic futile cycles with their capacity to act as insulators which facilitate modular interconnections in biochemical networks. There we analyzed a simple model system in which a signal molecule regulates the transcription of one or more target proteins by interacting with their promoters. In this note, we consider the case of a protein with an active and an inactive form, and whose activation is controlled by the signal molecule. As in the original case, higher rates of energy consumption are required for better insulator performance.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2013
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="arxiv_aminzare_sontag_chemotaxis_advection_diffusion_feb2013"></a>Z. Aminzare and E. D. Sontag.
-<strong>Remarks on a population-level model of chemotaxis: advection-diffusion approximation and simulations</strong>.
-Technical report,
-arxiv:1302.2605,
-2013.
-[<a href="http://arxiv.org/pdf/1302.2605">PDF</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-This note works out an advection-diffusion approximation to the density of a population of E. coli bacteria undergoing chemotaxis in a one-dimensional space. Simulations show the high quality of predictions under a shallow-gradient regime.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="arxiv_polynomials_2013"></a>E.D. Sontag.
-<strong>A remark about polynomials with specified local minima and no other critical points</strong>.
-Technical report,
-arxiv 1302.0759,
-2013.
-[<a href="http://arxiv.org/pdf/1302.0759">PDF</a>]
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
-The following observation must surely be "well-known", but it seems worth giving a simple and quite explicit proof. Take any finite subset X of Rn, n>1. Then, there is a polynomial function P:Rn -> R which has local minima on the set X, and has no other critical points. Applied to the negative gradient flow of P, this implies that there is a polynomial vector field with asymptotically stable equilibria on X and no other equilibria. Some trajectories of this vector field are not pre-compact; a complementary observation says that, again for arbitrary X, one can find a vector field with asymptotically stable equilibria on X, no other equilibria except saddles, and all omega-limit sets consisting of singletons.</td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2013</div><ol class="pub-list">
+<li id="arxiv_aminzare_sontag_chemotaxis_advection_diffusion_feb2013"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/AMINZARE-Z.html">Z. Aminzare</a>, <a href="../Author/SONTAG-ED.html">E. D. Sontag</a></span>, <span class="ti">"Remarks on a population-level model of chemotaxis: advection-diffusion approximation and simulations"</span>, <span class="venue">arxiv:1302.2605</span>, <span class="yr"><a href="../Year/2013.html">2013</a></span>. <span class="links"><a href="http://arxiv.org/pdf/1302.2605">pdf</a></span><details><summary>Abstract</summary><p>This note works out an advection-diffusion approximation to the density of a population of E. coli bacteria undergoing chemotaxis in a one-dimensional space. Simulations show the high quality of predictions under a shallow-gradient regime.</p></details></li>
+<li id="arxiv_polynomials_2013"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"A remark about polynomials with specified local minima and no other critical points"</span>, <span class="venue">arxiv 1302.0759</span>, <span class="yr"><a href="../Year/2013.html">2013</a></span>. <span class="links"><a href="http://arxiv.org/pdf/1302.0759">pdf</a></span><details><summary>Abstract</summary><p>The following observation must surely be &quot;well-known&quot;, but it seems worth giving a simple and quite explicit proof. Take any finite subset X of Rn, n&gt;1. Then, there is a polynomial function P:Rn -&gt; R which has local minima on the set X, and has no other critical points. Applied to the negative gradient flow of P, this implies that there is a polynomial vector field with asymptotically stable equilibria on X and no other equilibria. Some trajectories of this vector field are not pre-compact; a complementary observation says that, again for arbitrary X, one can find a vector field with asymptotically stable equilibria on X, no other equilibria except saddles, and all omega-limit sets consisting of singletons.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-2009
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="arxiv_chaos_2009"></a>E.D. Sontag.
-<strong>An observation regarding systems which converge to steady states for all constant inputs, yet become chaotic with periodic inputs</strong>.
-Technical report,
-arxiv 0906.2166,
-2009.
-[<a href="http://arxiv.org/pdf/0906.2166">PDF</a>]
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">2009</div><ol class="pub-list">
+<li id="arxiv_chaos_2009"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"An observation regarding systems which converge to steady states for all constant inputs, yet become chaotic with periodic inputs"</span>, <span class="venue">arxiv 0906.2166</span>, <span class="yr"><a href="../Year/2009.html">2009</a></span>. <span class="links"><a href="http://arxiv.org/pdf/0906.2166">pdf</a></span></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1996
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="bremen96"></a>E.D. Sontag and F.R. Wirth.
-<strong>Remarks on universal nonsingular controls for discrete-time systems</strong>.
-Technical report 381,
-Institute for Dynamical Systems, University of Bremen,
-1996.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1996</div><ol class="pub-list">
+<li id="bremen96"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/WIRTH-FR.html">F.R. Wirth</a></span>, <span class="ti">"Remarks on universal nonsingular controls for discrete-time systems"</span>, <span class="venue">Institute for Dynamical Systems, University of Bremen, 381</span>, <span class="yr"><a href="../Year/1996.html">1996</a></span>. </li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1990
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="SYCON-90-13"></a>F. Albertini and E.D. Sontag.
-<strong>Some connections between chaotic dynamical systems and control systems</strong>.
-Technical report SYCON-90-13,
-Rutgers Center for Systems and Control,
-1990.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1990</div><ol class="pub-list">
+<li id="SYCON-90-13"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/ALBERTINI-F.html">F. Albertini</a>, <a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Some connections between chaotic dynamical systems and control systems"</span>, <span class="venue">Rutgers Center for Systems and Control, SYCON-90-13</span>, <span class="yr"><a href="../Year/1990.html">1990</a></span>. </li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1989
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="SYCON-89-12"></a>E.D. Sontag.
-<strong>Sigmoids distinguish more efficiently than Heavisides</strong>.
-Technical report SYCON-89-12,
-Rutgers Center for Systems and Control,
-1989.
-Keyword(s): machine learning,
-neural networks.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1989</div><ol class="pub-list">
+<li id="SYCON-89-12"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Sigmoids distinguish more efficiently than Heavisides"</span>, <span class="venue">Rutgers Center for Systems and Control, SYCON-89-12</span>, <span class="yr"><a href="../Year/1989.html">1989</a></span>. <div class="kw"><a href="../Keyword/MACHINE-LEARNING.html">machine learning</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a></div></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1988
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="SYCON4"></a>E.D. Sontag.
-<strong>Integrability of certain distributions associated to actions on manifolds and an introduction to Lie-algebraic control</strong>.
-Technical report SYCON-88-04,
-Rutgers Center for Systems and Control,
-1988.
-
-</li>
-<br /><br />
-
-
-<li>
-<a name="SYCON2"></a>E.D. Sontag.
-<strong>Some remarks on the backpropagation algorithm for neural net learning</strong>.
-Technical report SYCON-88-02,
-Rutgers Center for Systems and Control,
-1988.
-[<a href="../../FTPDIR/sycon88-02.pdf">PDF</a>]
-Keyword(s): machine learning,
-artificial intelligence,
-neural networks.
-<center>
-<table border=1 align=center width=80%>
-<tr>
-Abstract: <td>
- This is a very old informal report that discusses the study of local minima of quadratic loss functions for fitting errors in sigmoidal neural net learning. It also includes several remarks concerning the growth of weights during gradient descent. There is nothing very interesting here - far better knowledge is now available - but the report was placed here by request. </td>
-
-</tr></table></center>
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1988</div><ol class="pub-list">
+<li id="SYCON4"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Integrability of certain distributions associated to actions on manifolds and an introduction to Lie-algebraic control"</span>, <span class="venue">Rutgers Center for Systems and Control, SYCON-88-04</span>, <span class="yr"><a href="../Year/1988.html">1988</a></span>. </li>
+<li id="SYCON2"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a></span>, <span class="ti">"Some remarks on the backpropagation algorithm for neural net learning"</span>, <span class="venue">Rutgers Center for Systems and Control, SYCON-88-02</span>, <span class="yr"><a href="../Year/1988.html">1988</a></span>. <span class="links"><a href="../../FTPDIR/sycon88-02.pdf">pdf</a></span><div class="kw"><a href="../Keyword/MACHINE-LEARNING.html">machine learning</a> &middot; <a href="../Keyword/ARTIFICIAL-INTELLIGENCE.html">artificial intelligence</a> &middot; <a href="../Keyword/NEURAL-NETWORKS.html">neural networks</a></div><details><summary>Abstract</summary><p>This is a very old informal report that discusses the study of local minima of quadratic loss functions for fitting errors in sigmoidal neural net learning. It also includes several remarks concerning the growth of weights during gradient descent. There is nothing very interesting here - far better knowledge is now available - but the report was placed here by request.</p></details></li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1987
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="CAIP1"></a>E.D. Sontag and H.J. Sussmann.
-<strong>Optimization algorithms for image restoration and segmentation</strong>.
-Technical report 34,
-Rutgers Center for Computer Aids for Industrial Productivity,
-1987.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1987</div><ol class="pub-list">
+<li id="CAIP1"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/SUSSMANN-HJ.html">H.J. Sussmann</a></span>, <span class="ti">"Optimization algorithms for image restoration and segmentation"</span>, <span class="venue">Rutgers Center for Computer Aids for Industrial Productivity, 34</span>, <span class="yr"><a href="../Year/1987.html">1987</a></span>. </li>
 </ol>
-
-<table width="100%">
-<tr><td height="35"  align="center" valign="center" bgcolor="#badfe1">
-<strong><font size=4 face="times">
-1981
-</font></strong>
-</td></tr>
-</table>
-
-
-<ol>
-
-<li>
-<a name="BTL1"></a>E.D. Sontag and D.E. Stevenson.
-<strong>Remarks on multi-server, multi-priority queuing models related to MVS job scheduling</strong>.
-Technical report TM-81-45281-1,
-Bell Telephone Labs.,
-1981.
-
-</li>
-<br /><br />
-
-
+<div class="yr-head">1981</div><ol class="pub-list">
+<li id="BTL1"><a class="cat-mark" href="../Category/reports.html" title="Internal reports">&#9642;</a><span class="au"><a href="../Author/SONTAG-ED.html">E.D. Sontag</a>, <a href="../Author/STEVENSON-DE.html">D.E. Stevenson</a></span>, <span class="ti">"Remarks on multi-server, multi-priority queuing models related to MVS job scheduling"</span>, <span class="venue">Bell Telephone Labs., TM-81-45281-1</span>, <span class="yr"><a href="../Year/1981.html">1981</a></span>. </li>
 </ol>
-
-<br />
-<a href="../index.html"><strong> BACK TO INDEX </strong></a>
-<br /><br />
-
-
-<br /><hr size="2" width="100%"><br />
-
-<u><strong>Disclaimer:</strong></u><br /><br />
-<p><em>
-This material is presented to ensure timely dissemination of
-scholarly and technical work. Copyright and all rights therein
-are retained by authors or by other copyright holders.
-
-</em></p>
-
-<br /><hr size="2" width="100%"><br />
-
-Last modified: Tue Jul 28 21:46:25 2026
-
-<br />Author: sontag.
-
-<br /><hr size="2" width="100%"><br />
-
-<p>This document was translated from BibT<sub>E</sub>X by
-<a href="http://www-sop.inria.fr/epidaure/personnel/malandain/codes/bibtex2html.html"><em>bibtex2html</em></a>
-</p>
-
-
-</body>
-
-
-</html>
+</div></section></main>
+<footer><div class="wrap"><div><p class="name">Control &middot; Learning &middot; Systems Biology</p><p style="margin:0;color:rgba(238,241,242,.55);max-width:34ch">Northeastern University &middot; Boston, Massachusetts</p></div><div><h4>Explore</h4><ul><li><a href="../../research.html">Research</a></li><li><a href="../../people.html">People</a></li><li><a href="../index.html">Publications</a></li><li><a href="../../news.html">News</a></li></ul></div><div><h4>Connect</h4><ul><li><a href="../../eduardo.html">Eduardo D. Sontag</a></li><li><a href="https://eduardosontag.substack.com/" target="_blank" rel="noopener">Substack</a></li><li><a href="mailto:sontag@sontaglab.org">Email</a></li></ul></div><div class="disclaimer">Disclaimer: This material is presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders.</div><div class="colophon"><span>Departments of Bioengineering and Electrical &amp; Computer Engineering</span><span>&copy; <span id="yr"></span> Sontag Lab</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var nav=document.getElementById('nav'),burger=document.getElementById('burger');
+  function onScroll(){ if(window.scrollY>40) nav.classList.add('solid'); else nav.classList.remove('solid'); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  document.getElementById('menu').addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body></html>
